@@ -45,12 +45,19 @@
       <div class="video-list" id="video-list"></div>
     </section>
 
-    <section class="section salary" id="luong">
-      <div class="salary-art"><div class="paper back"></div><div class="paper"><small>BẢNG THANH TOÁN LƯƠNG</small><h3>THÁNG GẦN NHẤT</h3><i></i><i></i><i></i><i></i><b>₫</b></div><span>ĐỐI CHIẾU<br><strong>THỰC TẾ</strong></span></div>
-      <div><p class="kicker">BẢNG LƯƠNG CÔNG NHÂN THANH HÓA</p><h2>Xem số liệu trước khi quyết định</h2><p class="body-copy">Thư viện tập hợp các bảng lương do người lao động cung cấp, giúp anh em có thêm thông tin thực tế về thu nhập theo công việc và năng suất từng tháng.</p>
-        <div class="facts"><span><b>Ảnh gốc</b>Xem trực tiếp trong thư viện</span><span><b>Có đối chiếu</b>Đi kèm câu chuyện người thật</span></div>
-        <a class="btn" href="https://photos.app.goo.gl/gECC6hkaiEBumpwu9" target="_blank" rel="noopener">Mở thư viện bảng lương ↗</a>
-        <p class="note">Thu nhập thực tế tùy vị trí, số ngày công, năng suất và từng đơn vị. Thông tin riêng tư cần được che trước khi công khai.</p>
+    <section class="section salary-gallery" id="luong">
+      <div class="salary-head">
+        <div><p class="kicker">BẢNG LƯƠNG CÔNG NHÂN THANH HÓA</p><h2>Lướt xem bảng lương thực tế</h2></div>
+        <div><p class="body-copy">Vuốt ngang hoặc dùng nút điều hướng để xem từng bảng lương. Bấm vào ảnh để phóng to và đọc rõ hơn.</p><span class="salary-total"><b id="salary-count">21</b> ảnh trong thư viện</span></div>
+      </div>
+      <div class="salary-carousel">
+        <button class="salary-arrow prev" id="salary-prev" type="button" aria-label="Xem bảng lương trước">‹</button>
+        <div class="salary-track" id="salary-track" aria-label="Danh sách bảng lương công nhân Thanh Hóa"></div>
+        <button class="salary-arrow next" id="salary-next" type="button" aria-label="Xem bảng lương tiếp theo">›</button>
+      </div>
+      <div class="salary-bottom">
+        <p class="note">Thu nhập thực tế tùy vị trí, số ngày công, năng suất và từng đơn vị. Bấm vào ảnh để xem toàn màn hình.</p>
+        <a class="btn" href="https://photos.app.goo.gl/gECC6hkaiEBumpwu9" target="_blank" rel="noopener">Mở album Google Photos ↗</a>
       </div>
     </section>
 
@@ -76,6 +83,12 @@
 
   <section class="contact"><div><small>TƯ VẤN TRỰC TIẾP</small><h2>Thầy Linh – Tuyển Thợ Mỏ</h2><p>Kiểm tra điều kiện trước khi chuẩn bị hồ sơ.</p></div><strong>0963 048 585</strong><a class="btn white" href="https://zalo.me/0963048585" target="_blank" rel="noopener">Nhắn Zalo ngay</a></section>
   <footer><span>Công nhân các tỉnh · Người thật · Việc thật · Thu nhập thật</span><a href="#top">Lên đầu trang ↑</a></footer>
+  <div class="salary-lightbox" id="salary-lightbox" role="dialog" aria-modal="true" aria-label="Xem bảng lương phóng to" hidden>
+    <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Đóng ảnh">×</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" type="button" aria-label="Ảnh trước">‹</button>
+    <figure><img id="lightbox-image" alt="Bảng lương công nhân Thanh Hóa"><figcaption id="lightbox-caption"></figcaption></figure>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" type="button" aria-label="Ảnh tiếp theo">›</button>
+  </div>
   <a class="floating" href="https://zalo.me/0963048585" target="_blank" rel="noopener">Z <b>Nhắn Zalo</b></a>
   <script src="script.js"></script>
 </body>
