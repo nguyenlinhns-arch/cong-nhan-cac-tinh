@@ -79,6 +79,12 @@ document.getElementById('lightbox-close').addEventListener('click',closeSalary);
 document.getElementById('lightbox-prev').addEventListener('click',()=>openSalary(activeSalary-1));
 document.getElementById('lightbox-next').addEventListener('click',()=>openSalary(activeSalary+1));
 lightbox.addEventListener('click',event=>{if(event.target===lightbox)closeSalary();});
+let lightboxTouchStart=0;
+lightbox.addEventListener('touchstart',event=>{lightboxTouchStart=event.changedTouches[0].clientX;},{passive:true});
+lightbox.addEventListener('touchend',event=>{
+  const distance=event.changedTouches[0].clientX-lightboxTouchStart;
+  if(Math.abs(distance)>55)openSalary(activeSalary+(distance<0?1:-1));
+},{passive:true});
 document.addEventListener('keydown',event=>{
   if(lightbox.hidden)return;
   if(event.key==='Escape')closeSalary();
