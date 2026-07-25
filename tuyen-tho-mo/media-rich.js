@@ -6,13 +6,14 @@
     { id: 'ts41cqu7r9c', tag: 'Câu chuyện công nhân', title: 'Chàng trai Mường Lát có thu nhập trên 300 triệu đồng/năm', desc: 'Video phỏng vấn công nhân quê Thanh Hóa đang làm việc trong ngành Than.' },
     { id: 'TIDiY-Nuo_4', tag: 'An cư lập nghiệp', title: 'Hành trình an cư, lập nghiệp tại vùng đất Mỏ', desc: 'Góc nhìn thực tế về cuộc sống sau khi gắn bó với nghề mỏ.' },
     { id: 'ZynHtWJvyUs', tag: 'Người thật việc thật', title: 'Gắn bó với ngành Than là một quyết định đúng đắn', desc: 'Chia sẻ của người lao động về công việc, thu nhập và cuộc sống.' },
-    { id: 'zViKdr-D1aw', tag: 'Thu nhập tham khảo', title: 'Những người thợ lò có thu nhập 300 triệu đồng/năm', desc: 'Câu chuyện tiêu biểu, không dùng như cam kết thu nhập cố định.' }
+    { id: 'zViKdr-D1aw', tag: 'Thu nhập tham khảo', title: 'Những người thợ lò có thu nhập 300 triệu đồng/năm', desc: 'Câu chuyện tiêu biểu để người lao động tham khảo trước khi đăng ký.' },
+    { id: 't7ekLxtWRLE', tag: 'Đời sống thợ mỏ', title: 'An cư, lập nghiệp cùng ngành Than', desc: 'Câu chuyện về hành trình xây dựng cuộc sống tại vùng mỏ Quảng Ninh.' }
   ];
 
   const photos = [
     { type: 'Ảnh ngành mỏ', title: 'Khai thác than hầm lò', localB64: 'assets/gallery-longwall-machine.webp.b64', large: true },
     { type: 'Video thumbnail', title: 'Công nhân ngành Than trong câu chuyện thật', img: 'https://i.ytimg.com/vi/TIDiY-Nuo_4/maxresdefault.jpg' },
-    { type: 'Video thumbnail', title: 'Người lao động sau khi lập nghiệp', img: 'https://i.ytimg.com/vi/ZynHtWJvyUs/maxresdefault.jpg' },
+    { type: 'Video thumbnail', title: 'Người lao động lập nghiệp tại Quảng Ninh', img: 'https://i.ytimg.com/vi/ZynHtWJvyUs/maxresdefault.jpg' },
     { type: 'Fanpage', title: 'Ảnh bìa và hoạt động tuyển sinh', fb: true },
     { type: 'Video thumbnail', title: 'Câu chuyện thợ lò Thanh Hóa', img: 'https://i.ytimg.com/vi/zViKdr-D1aw/maxresdefault.jpg' }
   ];
@@ -56,7 +57,7 @@
             <p class="badge">Video & hình ảnh thực tế</p>
             <h2>Xem nghề mỏ bằng hình ảnh và video trước khi quyết định.</h2>
           </div>
-          <p class="section-lead">Thư viện có video phỏng vấn công nhân, ảnh hầm lò và hình ảnh ngành mỏ để website sinh động hơn, nhưng vẫn giữ nguyên nguyên tắc: thông tin tham khảo, không hứa chắc lương hoặc trúng tuyển.</p>
+          <p class="section-lead">Thư viện có video phỏng vấn công nhân, ảnh hầm lò và hình ảnh ngành mỏ để website sinh động hơn. Người lao động có thể xem trước công việc, môi trường học nghề và đời sống vùng mỏ.</p>
         </div>
         <div class="rich-tabs" role="tablist" aria-label="Chọn video">
           ${videos.map((video, index) => `<button type="button" role="tab" aria-selected="${index === 0}" data-video-index="${index}">${index + 1}. ${video.tag}</button>`).join('')}
@@ -83,7 +84,7 @@
                 <figcaption><small>${photo.type}</small><strong>${photo.title}</strong></figcaption>
               </figure>`).join('')}
           </div>
-          <p class="media-disclaimer">Các video/câu chuyện được dùng để người lao động tham khảo thực tế nghề mỏ; mức thu nhập, điều kiện tiếp nhận và đơn vị bố trí vẫn phải kiểm tra theo từng đợt.</p>
+          <p class="media-disclaimer">Các video/câu chuyện giúp người lao động tham khảo thực tế nghề mỏ; thông tin về thu nhập, điều kiện tiếp nhận và đơn vị bố trí được tư vấn theo từng đợt.</p>
           <div class="rich-media__cta">
             <a href="https://zalo.me/0963048585" target="_blank" rel="noopener" data-contact="zalo">Nhắn Zalo kiểm tra điều kiện</a>
             <a href="https://www.facebook.com/thaylinhtuyenthomo/videos/" target="_blank" rel="noopener">Xem thêm video trên Fanpage</a>
