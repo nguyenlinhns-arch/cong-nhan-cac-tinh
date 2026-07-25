@@ -12,10 +12,10 @@
 
   const photos = [
     { type: 'Ảnh ngành mỏ', title: 'Khai thác than hầm lò', localB64: 'assets/gallery-longwall-machine.webp.b64', large: true },
-    { type: 'Video thumbnail', title: 'Công nhân ngành Than trong câu chuyện thật', img: 'https://i.ytimg.com/vi/TIDiY-Nuo_4/maxresdefault.jpg' },
-    { type: 'Video thumbnail', title: 'Người lao động lập nghiệp tại Quảng Ninh', img: 'https://i.ytimg.com/vi/ZynHtWJvyUs/maxresdefault.jpg' },
-    { type: 'Fanpage', title: 'Ảnh bìa và hoạt động tuyển sinh', fb: true },
-    { type: 'Video thumbnail', title: 'Câu chuyện thợ lò Thanh Hóa', img: 'https://i.ytimg.com/vi/zViKdr-D1aw/maxresdefault.jpg' }
+    { type: 'Câu chuyện công nhân', title: 'Công nhân ngành Than trong câu chuyện thật', img: 'https://i.ytimg.com/vi/TIDiY-Nuo_4/maxresdefault.jpg' },
+    { type: 'Đời sống thợ mỏ', title: 'An cư lập nghiệp tại Quảng Ninh', img: 'https://i.ytimg.com/vi/t7ekLxtWRLE/maxresdefault.jpg' },
+    { type: 'Người thật việc thật', title: 'Người lao động lập nghiệp từ nghề mỏ', img: 'https://i.ytimg.com/vi/ZynHtWJvyUs/maxresdefault.jpg' },
+    { type: 'Thu nhập tham khảo', title: 'Câu chuyện thợ lò Thanh Hóa', img: 'https://i.ytimg.com/vi/zViKdr-D1aw/maxresdefault.jpg' }
   ];
 
   function track(action, label) {
@@ -24,10 +24,9 @@
   }
 
   function photoMarkup(photo) {
-    if (photo.fb) return '<span class="photo-card__bg" aria-hidden="true"></span>';
-    const src = photo.localB64 ? '' : photo.img;
-    const attr = photo.localB64 ? `data-local-b64="${photo.localB64}"` : '';
-    return `<img src="${src}" ${attr} alt="${photo.title}" loading="lazy">`;
+    const fallback = 'https://i.ytimg.com/vi/ts41cqu7r9c/maxresdefault.jpg';
+    if (photo.localB64) return `<img src="${fallback}" data-local-b64="${photo.localB64}" alt="${photo.title}" loading="lazy">`;
+    return `<img src="${photo.img || fallback}" alt="${photo.title}" loading="lazy">`;
   }
 
   async function hydrateLocalImages(section) {
