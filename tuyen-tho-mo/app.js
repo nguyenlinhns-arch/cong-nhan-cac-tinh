@@ -80,7 +80,7 @@
     });
   });
 
-  // Tải mô-đun ảnh/video Fanpage theo đường dẫn của chính app.js,
+  // Tải mô-đun bổ sung theo đường dẫn của chính app.js,
   // để hoạt động đúng cả ở trang chủ và các trang con theo tỉnh.
   try {
     const scriptUrl = document.currentScript && document.currentScript.src
@@ -88,20 +88,27 @@
       : new URL('app.js', location.href).href;
     const assetBase = new URL('.', scriptUrl);
 
-    if (!document.querySelector('link[data-fanpage-media-style]')) {
-      const mediaStyle = document.createElement('link');
-      mediaStyle.rel = 'stylesheet';
-      mediaStyle.href = new URL('fanpage-media.css', assetBase).href;
-      mediaStyle.dataset.fanpageMediaStyle = 'true';
-      document.head.append(mediaStyle);
-    }
+    const loadStyle = (href, marker) => {
+      if (document.querySelector(`link[${marker}]`)) return;
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = new URL(href, assetBase).href;
+      link.setAttribute(marker, 'true');
+      document.head.append(link);
+    };
 
-    if (!document.querySelector('script[data-fanpage-media-script]')) {
-      const mediaScript = document.createElement('script');
-      mediaScript.src = new URL('fanpage-media.js', assetBase).href;
-      mediaScript.defer = true;
-      mediaScript.dataset.fanpageMediaScript = 'true';
-      document.head.append(mediaScript);
-    }
+    const loadScript = (src, marker) => {
+      if (document.querySelector(`script[${marker}]`)) return;
+      const script = document.createElement('script');
+      script.src = new URL(src, assetBase).href;
+      script.defer = true;
+      script.setAttribute(marker, 'true');
+      document.head.append(script);
+    };
+
+    loadStyle('facebook-brand.css', 'data-facebook-brand-style');
+    loadScript('facebook-brand.js', 'data-facebook-brand-script');
+    loadStyle('fanpage-media.css', 'data-fanpage-media-style');
+    loadScript('fanpage-media.js', 'data-fanpage-media-script');
   } catch (_) {}
 })();
