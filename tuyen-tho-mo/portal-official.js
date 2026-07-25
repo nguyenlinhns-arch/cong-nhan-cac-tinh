@@ -3,7 +3,9 @@
   const $ = (s, r=document) => r.querySelector(s);
   const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
   const BASE = new URL('.', document.currentScript?.src || new URL('portal-official.js', location.href).href);
-  const COVER = ['assets/fb-cover.webp.b64.00','assets/fb-cover.webp.b64.01','assets/fb-cover.webp.b64.02'];
+  // Dùng ảnh hầm lò người dùng đã tải lên làm ảnh chủ đạo của landing page.
+  // Ảnh bìa Facebook cũ vẫn giữ trong repository để rollback/đối chiếu, nhưng không dùng làm hero chính.
+  const COVER = ['assets/gallery-longwall-machine.webp.b64'];
   const AVATAR = ['assets/fb-avatar.webp.b64'];
   const toast = $('[data-toast]');
   let toastTimer;
