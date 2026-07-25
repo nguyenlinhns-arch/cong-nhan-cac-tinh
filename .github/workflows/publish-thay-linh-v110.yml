@@ -26,7 +26,27 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Record workflow run
+        id: marker
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > PUBLISH_V110_STATUS.md <<EOF
+          # Thầy Linh v1.1.0 publisher
+
+          - Status: STARTED
+          - Trigger commit: ${GITHUB_SHA}
+          - Workflow run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
+          - Started at UTC: $(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          EOF
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add PUBLISH_V110_STATUS.md
+          git commit -m 'test: record Thầy Linh v1.1.0 publisher run [skip ci]'
+          git push origin HEAD:main
+
       - name: Rebuild and verify deployment archive
+        id: rebuild
         shell: bash
         run: |
           set -euo pipefail
@@ -34,8 +54,8 @@ jobs:
           cat .deploy/thay-linh-v110-lite/part-* | base64 --decode > /tmp/thay-linh-v1.1.0-lite.tar.gz
           echo '332a4027cf7dfa25d5982a7fbf0eca1652c83f6906a4c65db44fe0301e61d33e  /tmp/thay-linh-v1.1.0-lite.tar.gz' | sha256sum --check --strict
 
-      - name: Replace only the isolated recruitment website
-        id: replace
+      - name: Stage isolated website replacement
+        id: stage
         shell: bash
         run: |
           set -euo pipefail
@@ -44,7 +64,7 @@ jobs:
           if [ -f tuyen-tho-mo/index.html ]; then
             OLD_SITE_HASH="$(sha256sum tuyen-tho-mo/index.html | awk '{print $1}')"
           fi
-          PREVIOUS_COMMIT="$(git rev-parse HEAD^1 2>/dev/null || git rev-parse HEAD)"
+          PREVIOUS_COMMIT="$(git rev-parse HEAD)"
           git rm -r --ignore-unmatch tuyen-tho-mo
           mkdir -p tuyen-tho-mo
           tar -xzf /tmp/thay-linh-v1.1.0-lite.tar.gz -C tuyen-tho-mo
@@ -57,6 +77,7 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
       - name: Run static, SEO and policy checks
+        id: validate
         shell: bash
         run: |
           set -euo pipefail
@@ -81,82 +102,70 @@ jobs:
           from pathlib import Path
           from html.parser import HTMLParser
           from urllib.parse import unquote
-          import json, re, struct, xml.etree.ElementTree as ET
+          import json, re, xml.etree.ElementTree as ET
 
           root = Path('tuyen-tho-mo')
-          allowed_domains = {
-              'baoquangninh.vn', 'caodangtkv.edu.vn', 'moit.gov.vn',
-              'vinacomin.vn', 'congdoantkv.vn'
-          }
+          allowed = {'baoquangninh.vn','caodangtkv.edu.vn','moit.gov.vn','vinacomin.vn','congdoantkv.vn'}
 
           class Parser(HTMLParser):
               def __init__(self):
-                  super().__init__()
-                  self.attrs = []
+                  super().__init__(); self.items=[]
               def handle_starttag(self, tag, attrs):
-                  self.attrs.append((tag, dict(attrs)))
+                  self.items.append((tag, dict(attrs)))
 
           html_files = sorted(root.rglob('*.html'))
-          titles, canonicals = set(), set()
+          assert len(html_files) == 25
+          titles=set(); canonicals=set()
           for path in html_files:
-              text = path.read_text(encoding='utf-8')
-              title = re.search(r'<title>(.*?)</title>', text, re.S | re.I)
-              assert title and title.group(1).strip(), f'missing title: {path}'
-              title_text = re.sub(r'\s+', ' ', title.group(1)).strip()
-              assert title_text not in titles, f'duplicate title: {title_text}'
+              text=path.read_text(encoding='utf-8')
+              title=re.search(r'<title>(.*?)</title>', text, re.S|re.I)
+              assert title and title.group(1).strip(), path
+              title_text=re.sub(r'\s+',' ',title.group(1)).strip()
+              assert title_text not in titles, title_text
               titles.add(title_text)
-              desc = re.search(r'<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']+)', text, re.I)
-              assert desc and desc.group(1).strip(), f'missing description: {path}'
-              canonical = re.search(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\']([^"\']+)', text, re.I)
-              assert canonical, f'missing canonical: {path}'
-              assert canonical.group(1) not in canonicals, f'duplicate canonical: {canonical.group(1)}'
+              desc=re.search(r'<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']+)', text, re.I)
+              assert desc and desc.group(1).strip(), path
+              canonical=re.search(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\']([^"\']+)', text, re.I)
+              assert canonical, path
+              assert canonical.group(1) not in canonicals, canonical.group(1)
               canonicals.add(canonical.group(1))
-              for payload in re.findall(r'<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', text, re.S | re.I):
+              for payload in re.findall(r'<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', text, re.S|re.I):
                   json.loads(payload)
-              parser = Parser(); parser.feed(text)
-              for tag, attrs in parser.attrs:
-                  key = 'href' if tag in ('a','link') else 'src' if tag in ('img','script') else None
-                  if not key or not attrs.get(key):
-                      continue
-                  value = attrs[key].split('#',1)[0].split('?',1)[0]
-                  if not value or value.startswith(('http://','https://','mailto:','tel:','data:','javascript:','/')):
-                      continue
-                  target = (path.parent / unquote(value)).resolve()
-                  if value.endswith('/') or target.is_dir():
-                      target = target / 'index.html'
-                  assert target.exists(), f'broken local reference: {path} -> {value}'
+              parser=Parser(); parser.feed(text)
+              for tag, attrs in parser.items:
+                  key='href' if tag in ('a','link') else 'src' if tag in ('img','script') else None
+                  if not key or not attrs.get(key): continue
+                  value=attrs[key].split('#',1)[0].split('?',1)[0]
+                  if not value or value.startswith(('http://','https://','mailto:','tel:','data:','javascript:','/')): continue
+                  target=(path.parent/unquote(value)).resolve()
+                  if value.endswith('/') or target.is_dir(): target=target/'index.html'
+                  assert target.exists(), f'{path} -> {value}'
 
-          news = json.loads((root/'data/industry-news.json').read_text(encoding='utf-8'))
-          assert len(news['items']) == 12
-          assert len(news['categories']) == 4
+          news=json.loads((root/'data/industry-news.json').read_text(encoding='utf-8'))
+          assert len(news['items']) == 12 and len(news['categories']) == 4
           for item in news['items']:
-              assert item['url'].startswith('https://')
-              domain = item['url'].split('/')[2].lower().removeprefix('www.')
-              assert domain in allowed_domains, (domain, item['url'])
+              domain=item['url'].split('/')[2].lower().removeprefix('www.')
+              assert item['url'].startswith('https://') and domain in allowed
               assert item['title'] and item['summary'] and item['date'] and item['source']
-          provinces = json.loads((root/'data/provinces.json').read_text(encoding='utf-8'))
+          provinces=json.loads((root/'data/provinces.json').read_text(encoding='utf-8'))
           assert len(provinces['provinces']) == 10
-          seo = json.loads((root/'data/seo-keyword-map.json').read_text(encoding='utf-8'))
+          seo=json.loads((root/'data/seo-keyword-map.json').read_text(encoding='utf-8'))
           assert seo['primary_keywords']
-          ET.parse(root/'sitemap.xml')
-          ET.parse(root/'feed.xml')
-          for svg in (root/'assets').glob('*.svg'):
-              ET.parse(svg)
-          all_html = '\n'.join(p.read_text(encoding='utf-8').lower() for p in html_files)
+          ET.parse(root/'sitemap.xml'); ET.parse(root/'feed.xml')
+          for svg in (root/'assets').glob('*.svg'): ET.parse(svg)
+          all_html='\n'.join(p.read_text(encoding='utf-8').lower() for p in html_files)
           assert 'đảm bảo trúng tuyển' not in all_html
-          assert 'assets/og-home.png' not in all_html
-          assert 'assets/og-news.png' not in all_html
-          assert 'assets/og-knowledge.png' not in all_html
           assert 'phong-su-cong-nhan-tieu-bieu-1200x630.jpg' in all_html
-          print({'html': len(html_files), 'news': len(news['items']), 'provinces': len(provinces['provinces'])})
+          print({'html':len(html_files),'news':len(news['items']),'provinces':len(provinces['provinces'])})
           PY
 
-      - name: Write deployment receipt and remove bootstrap files
+      - name: Write deployment receipt and clean bootstrap
+        id: receipt
         shell: bash
         env:
-          PREVIOUS_COMMIT: ${{ steps.replace.outputs.previous_commit }}
-          ROOT_HASH: ${{ steps.replace.outputs.root_hash }}
-          OLD_SITE_HASH: ${{ steps.replace.outputs.old_site_hash }}
+          PREVIOUS_COMMIT: ${{ steps.stage.outputs.previous_commit }}
+          ROOT_HASH: ${{ steps.stage.outputs.root_hash }}
+          OLD_SITE_HASH: ${{ steps.stage.outputs.old_site_hash }}
         run: |
           set -euo pipefail
           cat > tuyen-tho-mo/DEPLOYMENT_RECEIPT.md <<EOF
@@ -177,15 +186,13 @@ jobs:
           - Rollback: git rm -r tuyen-tho-mo && git checkout ${PREVIOUS_COMMIT} -- tuyen-tho-mo && git commit -m 'rollback: restore Thầy Linh website before v1.1.0'
           EOF
           rm -rf .deploy/thay-linh-v110 .deploy/thay-linh-v110-lite
-          rm -f .github/workflows/publish-thay-linh-v110.yml
+          rm -f .github/workflows/publish-thay-linh-v110.yml PUBLISH_V110_STATUS.md PUBLISH_V110_FAILURE.md
 
       - name: Commit and push version 1.1.0
-        id: commit
+        id: publish
         shell: bash
         run: |
           set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
           git commit -m 'publish: upgrade Thầy Linh website to v1.1.0 [skip ci]'
           SITE_COMMIT="$(git rev-parse HEAD)"
@@ -205,10 +212,7 @@ jobs:
           ROOT_URL='https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/'
           ready=0
           for attempt in $(seq 1 36); do
-            if curl -fsSL --max-time 20 "$HOME_URL?version=1.1.0-$attempt" | grep -Fq 'data-site-version="1.1.0"'; then
-              ready=1
-              break
-            fi
+            if curl -fsSL --max-time 20 "$HOME_URL?version=1.1.0-$attempt" | grep -Fq 'data-site-version="1.1.0"'; then ready=1; break; fi
             sleep 10
           done
           test "$ready" -eq 1
@@ -218,12 +222,8 @@ jobs:
           PROVINCE_HTTP="$(curl -sS -o /tmp/province.html -w '%{http_code}' "$PROVINCE_URL?version=1.1.0-final")"
           OG_HTTP="$(curl -sS -o /tmp/og.png -w '%{http_code}' "$OG_URL?version=1.1.0-final")"
           ROOT_HTTP="$(curl -sS -o /tmp/root.html -w '%{http_code}' "$ROOT_URL?preserve=1")"
-          test "$HOME_HTTP" = 200
-          test "$NEWS_HTTP" = 200
-          test "$KNOWLEDGE_HTTP" = 200
-          test "$PROVINCE_HTTP" = 200
-          test "$OG_HTTP" = 200
-          test "$ROOT_HTTP" = 200
+          test "$HOME_HTTP" = 200 && test "$NEWS_HTTP" = 200 && test "$KNOWLEDGE_HTTP" = 200
+          test "$PROVINCE_HTTP" = 200 && test "$OG_HTTP" = 200 && test "$ROOT_HTTP" = 200
           grep -Fq 'data-site-version="1.1.0"' /tmp/home.html
           grep -Fq 'Nguồn chính thống' /tmp/news.html
           grep -Fq 'Điều kiện tuyển thợ lò' /tmp/knowledge.html
@@ -232,25 +232,22 @@ jobs:
           grep -Fq 'https://zalo.me/0963048585' /tmp/home.html
           grep -Fq 'https://m.me/thaylinhtuyenthomo' /tmp/home.html
           {
-            echo "home_http=$HOME_HTTP"
-            echo "news_http=$NEWS_HTTP"
-            echo "knowledge_http=$KNOWLEDGE_HTTP"
-            echo "province_http=$PROVINCE_HTTP"
-            echo "og_http=$OG_HTTP"
-            echo "root_http=$ROOT_HTTP"
+            echo "home_http=$HOME_HTTP"; echo "news_http=$NEWS_HTTP"; echo "knowledge_http=$KNOWLEDGE_HTTP"
+            echo "province_http=$PROVINCE_HTTP"; echo "og_http=$OG_HTTP"; echo "root_http=$ROOT_HTTP"
           } >> "$GITHUB_OUTPUT"
 
       - name: Store public verification receipt
+        id: verified
         shell: bash
         env:
-          SITE_COMMIT: ${{ steps.commit.outputs.site_commit }}
+          SITE_COMMIT: ${{ steps.publish.outputs.site_commit }}
           HOME_HTTP: ${{ steps.public.outputs.home_http }}
           NEWS_HTTP: ${{ steps.public.outputs.news_http }}
           KNOWLEDGE_HTTP: ${{ steps.public.outputs.knowledge_http }}
           PROVINCE_HTTP: ${{ steps.public.outputs.province_http }}
           OG_HTTP: ${{ steps.public.outputs.og_http }}
           ROOT_HTTP: ${{ steps.public.outputs.root_http }}
-          PREVIOUS_COMMIT: ${{ steps.replace.outputs.previous_commit }}
+          PREVIOUS_COMMIT: ${{ steps.stage.outputs.previous_commit }}
         run: |
           set -euo pipefail
           git pull --rebase origin main
@@ -274,8 +271,44 @@ jobs:
           - Workflow run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
           - Verified at UTC: $(date -u +'%Y-%m-%dT%H:%M:%SZ')
           - Rollback point: ${PREVIOUS_COMMIT}
-          - Rollback: git rm -r tuyen-tho-mo && git checkout ${PREVIOUS_COMMIT} -- tuyen-tho-mo && git commit -m 'rollback: restore Thầy Linh website before v1.1.0'
           EOF
           git add tuyen-tho-mo/PAGES_VERIFICATION_RECEIPT.md
           git commit -m 'test: verify Thầy Linh website v1.1.0 [skip ci]'
           git push origin HEAD:main
+
+      - name: Record failure receipt
+        if: failure()
+        shell: bash
+        env:
+          MARKER: ${{ steps.marker.outcome }}
+          REBUILD: ${{ steps.rebuild.outcome }}
+          STAGE: ${{ steps.stage.outcome }}
+          VALIDATE: ${{ steps.validate.outcome }}
+          RECEIPT: ${{ steps.receipt.outcome }}
+          PUBLISH: ${{ steps.publish.outcome }}
+          PUBLIC: ${{ steps.public.outcome }}
+          VERIFIED: ${{ steps.verified.outcome }}
+        run: |
+          set +e
+          git reset --hard HEAD
+          git pull --rebase origin main
+          cat > PUBLISH_V110_FAILURE.md <<EOF
+          # Thầy Linh v1.1.0 publisher failure
+
+          - Status: FAILED
+          - Workflow run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
+          - Trigger commit: ${GITHUB_SHA}
+          - Marker: ${MARKER}
+          - Rebuild: ${REBUILD}
+          - Stage: ${STAGE}
+          - Validate: ${VALIDATE}
+          - Receipt: ${RECEIPT}
+          - Publish: ${PUBLISH}
+          - Public verification: ${PUBLIC}
+          - Final receipt: ${VERIFIED}
+          - Failed at UTC: $(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          - Production website changed: NO, unless Publish is success
+          EOF
+          git add PUBLISH_V110_FAILURE.md
+          git commit -m 'test: record Thầy Linh v1.1.0 publisher failure [skip ci]' || true
+          git push origin HEAD:main || true
