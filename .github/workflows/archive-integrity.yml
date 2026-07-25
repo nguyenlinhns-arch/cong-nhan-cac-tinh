@@ -1,0 +1,57 @@
+name: Compare v1.1.0 archive blob integrity
+
+on:
+  push:
+    branches: [main]
+    paths: ['.archive-integrity-trigger']
+
+permissions:
+  contents: write
+
+jobs:
+  compare:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Compare exact Git blobs and decoded archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import base64, hashlib, os
+          expected={
+          'part-000-00':'1b3dfae9dfbf156aeecd5ac3ecaab0c781dd42d7',
+          'part-000-01':'38cc721e38220359a11977f50b379c1319451df9',
+          'part-000-02':'4ca74cd55798c5d0d4d839f4256161fb825fc9c8',
+          'part-000-03':'8ac83f8ae709f20f37ee0effae57aa1435b342ca',
+          'part-001':'4ecc6e45145d27eeb258242f0ee6fef75d0fc24f',
+          'part-002-00':'cac1da6e32fb74f361f9114fdfe1096c924b450c',
+          'part-002-01':'2825932eab8be2407a04d4eab05765be5fb8c0f2',
+          'part-002-02':'949a1f2750b15c0d779f7d3a917caae157e459a4',
+          'part-002-03':'b03a396098ecc687af9c3647c4cd1023da3e48f3',
+          'part-003-00':'cb2df821edb8bbdd3ac201fbc91e9ec8d8273d1f',
+          'part-003-01':'878b1ab82f6cdcef1d183c630caaba0a46632031',
+          'part-003-02':'7201587825586bec5c92b3fdfa1055e901b3ea04',
+          'part-003-03':'02658b5ac571d9962fb6562bd8c2bab0c090e025'}
+          d=Path('.deploy/thay-linh-v110-lite')
+          combined=bytearray(); rows=[]
+          for name in sorted(expected):
+              raw=(d/name).read_bytes()
+              blob=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+              try: dec=base64.b64decode(raw,validate=False); combined.extend(dec); decode='OK'
+              except Exception as e: dec=b''; decode='FAILED: '+str(e)
+              rows.append((name,len(raw),expected[name],blob,'MATCH' if blob==expected[name] else 'MISMATCH',decode,len(dec)))
+          lines=['# Archive blob integrity','','- Workflow run: https://github.com/nguyenlinhns-arch/cong-nhan-cac-tinh/actions/runs/'+os.environ['GITHUB_RUN_ID'],f'- Combined bytes: {len(combined)}',f'- Combined SHA-256: {hashlib.sha256(combined).hexdigest()}','- Expected archive SHA-256: 332a4027cf7dfa25d5982a7fbf0eca1652c83f6906a4c65db44fe0301e61d33e','','| Part | Bytes | Expected blob | Actual blob | Result | Decode | Decoded |','|---|---:|---|---|---|---|---:|']
+          lines += [f'| {a} | {b} | {c} | {d} | {e} | {f} | {g} |' for a,b,c,d,e,f,g in rows]
+          Path('ARCHIVE_INTEGRITY.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
+          PY
+          rm -f .archive-integrity-trigger .github/workflows/archive-integrity.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'test: record exact v1.1.0 blob integrity [skip ci]'
+          git push origin HEAD:main
