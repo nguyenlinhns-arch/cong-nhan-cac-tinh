@@ -1,0 +1,46 @@
+name: Diagnose v1.1.0 archive parts
+
+on:
+  push:
+    branches: [main]
+    paths: ['.archive-diagnostic-trigger']
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Inspect every archive part
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import base64, hashlib
+          d=Path('.deploy/thay-linh-v110-lite')
+          parts=sorted(d.glob('part-*'))
+          rows=[]; combined=bytearray()
+          for p in parts:
+              raw=p.read_bytes()
+              try:
+                  decoded=base64.b64decode(raw,validate=True)
+                  rows.append((p.name,len(raw),'OK',len(decoded),hashlib.sha256(decoded).hexdigest()))
+                  combined.extend(decoded)
+              except Exception as e:
+                  rows.append((p.name,len(raw),'FAILED',0,str(e)))
+          out=['# Archive diagnostic','','- Workflow run: https://github.com/nguyenlinhns-arch/cong-nhan-cac-tinh/actions/runs/'+__import__('os').environ['GITHUB_RUN_ID'],f'- Part count: {len(parts)}',f'- Combined bytes: {len(combined)}',f'- Combined SHA-256: {hashlib.sha256(combined).hexdigest()}','','| Part | Encoded bytes | Decode | Decoded bytes | SHA/error |','|---|---:|---|---:|---|']
+          out += [f'| {a} | {b} | {c} | {d} | {e} |' for a,b,c,d,e in rows]
+          Path('ARCHIVE_DIAGNOSTIC.md').write_text('\n'.join(out)+'\n',encoding='utf-8')
+          PY
+          rm -f .archive-diagnostic-trigger .github/workflows/archive-diagnostic.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A ARCHIVE_DIAGNOSTIC.md .archive-diagnostic-trigger .github/workflows/archive-diagnostic.yml
+          git commit -m 'test: record v1.1.0 archive diagnostic [skip ci]'
+          git push origin HEAD:main
