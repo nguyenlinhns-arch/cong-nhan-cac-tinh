@@ -36,6 +36,24 @@
     }
   }
 
+  function loadExtraAsset(kind, path, marker) {
+    if (document.querySelector(`[${marker}]`)) return;
+    const url = new URL(path, BASE).href;
+    if (kind === 'style') {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = url;
+      link.setAttribute(marker, 'true');
+      document.head.append(link);
+    } else {
+      const script = document.createElement('script');
+      script.src = url;
+      script.defer = true;
+      script.setAttribute(marker, 'true');
+      document.head.append(script);
+    }
+  }
+
   const button = $('[data-menu-button]');
   const nav = $('[data-nav]');
   if (button && nav) {
@@ -78,4 +96,6 @@
   }));
 
   loadBrandImages();
+  loadExtraAsset('style', 'media-rich.css', 'data-rich-media-style');
+  loadExtraAsset('script', 'media-rich.js', 'data-rich-media-script');
 })();
