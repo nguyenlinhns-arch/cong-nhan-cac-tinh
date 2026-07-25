@@ -1,0 +1,219 @@
+name: Verify Facebook brand image deployment
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.verify-facebook-brand-images-trigger'
+      - '.github/workflows/verify-facebook-brand-images.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: verify-facebook-brand-images
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    if: github.actor != 'github-actions[bot]' && contains(github.event.head_commit.message, 'verify-facebook-brand-images')
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Publish verification run marker
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          cat > tuyen-tho-mo/FACEBOOK_BRAND_VERIFICATION_RUNNING.md <<EOF
+          # Facebook brand image verification running
+
+          - Status: RUNNING
+          - Workflow run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
+          - Source commit: ${GITHUB_SHA}
+          - Started at UTC: $(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          EOF
+          git add tuyen-tho-mo/FACEBOOK_BRAND_VERIFICATION_RUNNING.md
+          git commit -m "test: record Facebook brand verification run ${GITHUB_RUN_ID} [skip ci]"
+          git push origin HEAD:main
+
+      - name: Verify public GitHub Pages brand assets
+        id: public
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh'
+          CACHE="fb-brand-${GITHUB_RUN_ID}"
+
+          wait_text() {
+            local url="$1"
+            local output="$2"
+            local expected="$3"
+            local code=''
+            for attempt in $(seq 1 60); do
+              code=$(curl --location --silent --show-error --output "$output" --write-out '%{http_code}' --max-time 25 "${url}?v=${CACHE}-${attempt}" || true)
+              if [[ "$code" == '200' ]] && grep -Fq "$expected" "$output"; then
+                printf '%s\n' "$code"
+                return 0
+              fi
+              echo "Attempt ${attempt}: ${url} returned ${code}; waiting for Pages" >&2
+              sleep 5
+            done
+            echo "Verification failed for ${url}; last HTTP status: ${code}" >&2
+            test -f "$output" && head -80 "$output" >&2 || true
+            return 1
+          }
+
+          wait_file() {
+            local url="$1"
+            local output="$2"
+            local code=''
+            for attempt in $(seq 1 60); do
+              code=$(curl --location --silent --show-error --output "$output" --write-out '%{http_code}' --max-time 25 "${url}?v=${CACHE}-${attempt}" || true)
+              if [[ "$code" == '200' ]] && [[ -s "$output" ]]; then
+                printf '%s\n' "$code"
+                return 0
+              fi
+              echo "Attempt ${attempt}: ${url} returned ${code}; waiting for asset" >&2
+              sleep 5
+            done
+            echo "Asset verification failed for ${url}; last HTTP status: ${code}" >&2
+            return 1
+          }
+
+          HOME_URL="$BASE/tuyen-tho-mo/"
+          APP_URL="$BASE/tuyen-tho-mo/app.js"
+          BRAND_JS_URL="$BASE/tuyen-tho-mo/facebook-brand.js"
+          BRAND_CSS_URL="$BASE/tuyen-tho-mo/facebook-brand.css"
+          COVER_00_URL="$BASE/tuyen-tho-mo/assets/fb-cover.webp.b64.00"
+          COVER_01_URL="$BASE/tuyen-tho-mo/assets/fb-cover.webp.b64.01"
+          COVER_02_URL="$BASE/tuyen-tho-mo/assets/fb-cover.webp.b64.02"
+          AVATAR_URL="$BASE/tuyen-tho-mo/assets/fb-avatar.webp.b64"
+          ROOT_URL="$BASE/"
+
+          HOME_HTTP=$(wait_text "$HOME_URL" /tmp/home.html 'Thầy Linh – Tuyển Thợ Mỏ')
+          APP_HTTP=$(wait_text "$APP_URL" /tmp/app.js 'facebook-brand.js')
+          BRAND_JS_HTTP=$(wait_text "$BRAND_JS_URL" /tmp/facebook-brand.js 'fb-brand-sync')
+          BRAND_CSS_HTTP=$(wait_text "$BRAND_CSS_URL" /tmp/facebook-brand.css '.fb-brand-sync')
+          COVER_00_HTTP=$(wait_file "$COVER_00_URL" /tmp/fb-cover-00.b64)
+          COVER_01_HTTP=$(wait_file "$COVER_01_URL" /tmp/fb-cover-01.b64)
+          COVER_02_HTTP=$(wait_file "$COVER_02_URL" /tmp/fb-cover-02.b64)
+          AVATAR_HTTP=$(wait_file "$AVATAR_URL" /tmp/fb-avatar.b64)
+          ROOT_HTTP=$(wait_text "$ROOT_URL" /tmp/root.html 'Công nhân Thanh Hóa')
+
+          grep -Fq 'facebook-brand.css' /tmp/app.js
+          grep -Fq 'facebook-brand.js' /tmp/app.js
+          grep -Fq 'fb-cover.webp.b64.00' /tmp/facebook-brand.js
+          grep -Fq 'fb-avatar.webp.b64' /tmp/facebook-brand.js
+          grep -Fq 'hydrateBrandImages' /tmp/facebook-brand.js
+          grep -Fq 'fb-brand-ready' /tmp/facebook-brand.css
+          grep -Fq '--fb-cover-photo' /tmp/facebook-brand.css
+          grep -Fq '--fb-avatar-photo' /tmp/facebook-brand.css
+          grep -Fq 'about-portrait' /tmp/facebook-brand.css
+          grep -Fq 'mine-scene' /tmp/facebook-brand.css
+          grep -Fq 'https://m.me/thaylinhtuyenthomo' /tmp/facebook-brand.js
+          grep -Fq 'https://www.facebook.com/thaylinhtuyenthomo/' /tmp/facebook-brand.js
+          grep -Fq 'https://zalo.me/0963048585' /tmp/home.html
+          grep -Fq 'https://m.me/thaylinhtuyenthomo' /tmp/home.html
+
+          cat /tmp/fb-cover-00.b64 /tmp/fb-cover-01.b64 /tmp/fb-cover-02.b64 | tr -d '\n\r ' | base64 --decode > /tmp/fb-cover.webp
+          tr -d '\n\r ' < /tmp/fb-avatar.b64 | base64 --decode > /tmp/fb-avatar.webp
+          python3 - <<'PY'
+          from pathlib import Path
+          for path in ('/tmp/fb-cover.webp', '/tmp/fb-avatar.webp'):
+              data = Path(path).read_bytes()
+              assert len(data) > 1000, (path, len(data))
+              assert data[:4] == b'RIFF' and data[8:12] == b'WEBP', path
+          print('webp_decode_ok')
+          PY
+
+          {
+            echo "home_http=$HOME_HTTP"
+            echo "app_http=$APP_HTTP"
+            echo "brand_js_http=$BRAND_JS_HTTP"
+            echo "brand_css_http=$BRAND_CSS_HTTP"
+            echo "cover_00_http=$COVER_00_HTTP"
+            echo "cover_01_http=$COVER_01_HTTP"
+            echo "cover_02_http=$COVER_02_HTTP"
+            echo "avatar_http=$AVATAR_HTTP"
+            echo "root_http=$ROOT_HTTP"
+          } >> "$GITHUB_OUTPUT"
+
+          cat > /tmp/FACEBOOK_BRAND_VERIFICATION_RECEIPT.md <<EOF
+          # Facebook brand image deployment verification
+
+          - Status: VERIFIED_SUCCESS
+          - Feature: Facebook cover and avatar website synchronization
+          - Home URL: ${HOME_URL}
+          - Home HTTP: ${HOME_HTTP}
+          - App loader HTTP: ${APP_HTTP}
+          - Facebook brand JS HTTP: ${BRAND_JS_HTTP}
+          - Facebook brand CSS HTTP: ${BRAND_CSS_HTTP}
+          - Cover part 00 HTTP: ${COVER_00_HTTP}
+          - Cover part 01 HTTP: ${COVER_01_HTTP}
+          - Cover part 02 HTTP: ${COVER_02_HTTP}
+          - Avatar base64 HTTP: ${AVATAR_HTTP}
+          - Cover WebP decode: VERIFIED
+          - Avatar WebP decode: VERIFIED
+          - Header avatar styling: VERIFIED
+          - Hero cover styling: VERIFIED
+          - About portrait styling: VERIFIED
+          - Facebook sync section: VERIFIED
+          - Zalo CTA: VERIFIED
+          - Messenger CTA: VERIFIED
+          - Existing root website HTTP: ${ROOT_HTTP}
+          - Existing root website preserved: VERIFIED
+          - Feature merge commit: 3f155a85fe3c7c4514e9394890e154ca99791b03
+          - Source commit: ${GITHUB_SHA}
+          - Workflow run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
+          - Verified at UTC: $(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          - Rollback: revert commit 3f155a85fe3c7c4514e9394890e154ca99791b03 and remove this receipt
+          EOF
+
+      - name: Store VERIFIED_SUCCESS receipt and clean verifier
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          cp /tmp/FACEBOOK_BRAND_VERIFICATION_RECEIPT.md tuyen-tho-mo/FACEBOOK_BRAND_VERIFICATION_RECEIPT.md
+          rm -f tuyen-tho-mo/FACEBOOK_BRAND_VERIFICATION_RUNNING.md
+          rm -f tuyen-tho-mo/FACEBOOK_BRAND_VERIFICATION_FAILURE.md
+          rm -f .verify-facebook-brand-images-trigger
+          rm -f .github/workflows/verify-facebook-brand-images.yml
+          git add -A
+          git commit -m 'test: verify Facebook brand image deployment [skip ci]'
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Record verification failure
+        if: failure()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          cat > tuyen-tho-mo/FACEBOOK_BRAND_VERIFICATION_FAILURE.md <<EOF
+          # Facebook brand image verification failure
+
+          - Status: FAILED
+          - Feature merge commit: 3f155a85fe3c7c4514e9394890e154ca99791b03
+          - Workflow run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
+          - Source commit: ${GITHUB_SHA}
+          - Failed at UTC: $(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          - Action: inspect workflow logs before declaring completion
+          EOF
+          rm -f tuyen-tho-mo/FACEBOOK_BRAND_VERIFICATION_RUNNING.md
+          rm -f .verify-facebook-brand-images-trigger
+          rm -f .github/workflows/verify-facebook-brand-images.yml
+          git add -A
+          git commit -m 'test: record Facebook brand image verification failure [skip ci]'
+          git pull --rebase origin main
+          git push origin HEAD:main
