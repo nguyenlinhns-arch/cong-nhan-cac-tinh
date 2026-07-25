@@ -83,6 +83,8 @@
           <h2>Bạn muốn kiểm tra điều kiện học nghề mỏ?</h2>
           <p>Gửi thông tin để được tư vấn</p>
           <ul><li>Năm sinh</li><li>Chiều cao / cân nặng</li><li>Sức khỏe hiện tại</li></ul>
+          <button class="copy-message" type="button" data-copy-message aria-describedby="copy-status">Sao chép mẫu tin nhắn</button>
+          <span class="copy-status" id="copy-status" role="status" aria-live="polite"></span>
           <a class="button button-zalo button-full" href="https://zalo.me/0963048585" target="_blank" rel="noopener" data-contact="zalo">Gửi thông tin qua Zalo</a>
         </aside>
       </div>
@@ -115,14 +117,14 @@
         <div class="section-heading"><p class="eyebrow">Góc nhìn thực tế</p><h2>Video câu chuyện công nhân</h2><p>Xem câu chuyện người lao động, môi trường làm việc và đời sống vùng mỏ trước khi đăng ký.</p></div>
         <div class="video-layout">
           <article class="video-feature">
-            <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/ts41cqu7r9c?rel=0" title="Câu chuyện công nhân ngành Than" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-            <div><small>Câu chuyện công nhân</small><h3>Hành trình lập nghiệp cùng nghề mỏ</h3></div>
+            <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/ts41cqu7r9c?rel=0" title="Câu chuyện công nhân ngành Than" loading="lazy" data-featured-video allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div><small data-video-label>Câu chuyện công nhân</small><h3 data-video-heading>Hành trình lập nghiệp cùng nghề mỏ</h3></div>
           </article>
-          <div class="video-list">
-            <a class="video-item" href="https://www.youtube.com/watch?v=TIDiY-Nuo_4" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/TIDiY-Nuo_4/hqdefault.jpg" alt="Công nhân vùng mỏ Quảng Ninh" loading="lazy"><span><small>Đời sống vùng mỏ</small><strong>An cư, lập nghiệp tại Quảng Ninh</strong></span></a>
-            <a class="video-item" href="https://www.youtube.com/watch?v=ZynHtWJvyUs" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/ZynHtWJvyUs/hqdefault.jpg" alt="Người lao động ngành Than" loading="lazy"><span><small>Người thật, việc thật</small><strong>Gắn bó với ngành Than</strong></span></a>
-            <a class="video-item" href="https://www.youtube.com/watch?v=zViKdr-D1aw" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/zViKdr-D1aw/hqdefault.jpg" alt="Thu nhập người thợ lò" loading="lazy"><span><small>Thu nhập tham khảo</small><strong>Câu chuyện người thợ lò</strong></span></a>
-            <a class="video-item" href="https://www.youtube.com/watch?v=t7ekLxtWRLE" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/t7ekLxtWRLE/hqdefault.jpg" alt="Đời sống thợ mỏ" loading="lazy"><span><small>Cuộc sống Quảng Ninh</small><strong>An cư cùng ngành Than</strong></span></a>
+          <div class="video-list" aria-label="Chọn câu chuyện công nhân để xem">
+            <button class="video-item" type="button" data-video-id="TIDiY-Nuo_4" data-video-label="Đời sống vùng mỏ" data-video-title="An cư, lập nghiệp tại Quảng Ninh"><img src="https://i.ytimg.com/vi/TIDiY-Nuo_4/hqdefault.jpg" alt="" loading="lazy" decoding="async" width="480" height="360"><span><small>Đời sống vùng mỏ</small><strong>An cư, lập nghiệp tại Quảng Ninh</strong></span></button>
+            <button class="video-item" type="button" data-video-id="ZynHtWJvyUs" data-video-label="Người thật, việc thật" data-video-title="Gắn bó với ngành Than"><img src="https://i.ytimg.com/vi/ZynHtWJvyUs/hqdefault.jpg" alt="" loading="lazy" decoding="async" width="480" height="360"><span><small>Người thật, việc thật</small><strong>Gắn bó với ngành Than</strong></span></button>
+            <button class="video-item" type="button" data-video-id="zViKdr-D1aw" data-video-label="Thu nhập tham khảo" data-video-title="Câu chuyện người thợ lò"><img src="https://i.ytimg.com/vi/zViKdr-D1aw/hqdefault.jpg" alt="" loading="lazy" decoding="async" width="480" height="360"><span><small>Thu nhập tham khảo</small><strong>Câu chuyện người thợ lò</strong></span></button>
+            <button class="video-item" type="button" data-video-id="t7ekLxtWRLE" data-video-label="Cuộc sống Quảng Ninh" data-video-title="An cư cùng ngành Than"><img src="https://i.ytimg.com/vi/t7ekLxtWRLE/hqdefault.jpg" alt="" loading="lazy" decoding="async" width="480" height="360"><span><small>Cuộc sống Quảng Ninh</small><strong>An cư cùng ngành Than</strong></span></button>
           </div>
         </div>
         <a class="text-link" href="https://www.youtube.com/channel/UCjQmG8ShxuD_qf_o6YGWz8w" target="_blank" rel="noopener">Xem kênh YouTube Thầy Linh →</a>
