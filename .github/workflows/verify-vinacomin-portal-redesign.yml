@@ -7,7 +7,6 @@ on:
     paths:
       - '.verify-vinacomin-portal-redesign'
       - '.github/workflows/verify-vinacomin-portal-redesign.yml'
-      - 'tuyen-tho-mo/**'
 
 permissions:
   contents: write
