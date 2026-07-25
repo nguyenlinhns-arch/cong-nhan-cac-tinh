@@ -130,6 +130,34 @@
     formatVisiblePhone();
   }
 
+  function injectContactPanel() {
+    if (document.querySelector('.contact-panel')) return;
+    const hero = $('.hero');
+    if (!hero) return;
+    const section = document.createElement('section');
+    section.className = 'contact-panel';
+    section.id = 'lien-he-nhanh';
+    section.innerHTML = `
+      <div class="wrap contact-panel__inner">
+        <div class="contact-panel__copy">
+          <p class="badge badge--dark">Liên hệ nhanh</p>
+          <h2>Gửi 3 thông tin để được tư vấn ngay.</h2>
+          <p>Chỉ cần năm sinh, chiều cao/cân nặng và tình trạng sức khỏe. Thầy Linh sẽ kiểm tra sơ bộ và hướng dẫn bước tiếp theo.</p>
+        </div>
+        <div class="contact-panel__actions" aria-label="Chọn kênh liên hệ">
+          <a class="contact-panel__zalo" href="https://zalo.me/0963048585" target="_blank" rel="noopener" data-contact="zalo"><b>Zalo</b><span>096 304 8585</span></a>
+          <a class="contact-panel__messenger" href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener" data-contact="messenger"><b>Messenger</b><span>Nhắn tin ngay</span></a>
+          <a class="contact-panel__call" href="tel:+84963048585" data-contact="phone"><b>Gọi trực tiếp</b><span>096 304 8585</span></a>
+        </div>
+        <ol class="contact-panel__steps" aria-label="Ba thông tin cần gửi">
+          <li><span>1</span>Năm sinh</li>
+          <li><span>2</span>Chiều cao / cân nặng</li>
+          <li><span>3</span>Sức khỏe hiện tại</li>
+        </ol>
+      </div>`;
+    hero.insertAdjacentElement('afterend', section);
+  }
+
   function injectQuickContact() {
     if (document.querySelector('.quick-contact')) return;
     const nav = document.createElement('nav');
@@ -157,6 +185,7 @@
   }
 
   removeNegativeCopy();
+  injectContactPanel();
   injectQuickContact();
 
   $$('[data-contact]').forEach(link => link.addEventListener('click', () => {
