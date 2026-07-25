@@ -80,7 +80,7 @@
     });
   });
 
-  // Tải mô-đun ảnh/video Fanpage theo đường dẫn của chính app.js,
+  // Tải các mô-đun nhận diện và ảnh/video theo đường dẫn của chính app.js,
   // để hoạt động đúng cả ở trang chủ và các trang con theo tỉnh.
   try {
     const scriptUrl = document.currentScript && document.currentScript.src
@@ -88,20 +88,27 @@
       : new URL('app.js', location.href).href;
     const assetBase = new URL('.', scriptUrl);
 
-    if (!document.querySelector('link[data-fanpage-media-style]')) {
-      const mediaStyle = document.createElement('link');
-      mediaStyle.rel = 'stylesheet';
-      mediaStyle.href = new URL('fanpage-media.css', assetBase).href;
-      mediaStyle.dataset.fanpageMediaStyle = 'true';
-      document.head.append(mediaStyle);
-    }
+    const loadStyle = (filename, dataAttribute) => {
+      if (document.querySelector(`link[${dataAttribute}]`)) return;
+      const style = document.createElement('link');
+      style.rel = 'stylesheet';
+      style.href = new URL(filename, assetBase).href;
+      style.setAttribute(dataAttribute, 'true');
+      document.head.append(style);
+    };
 
-    if (!document.querySelector('script[data-fanpage-media-script]')) {
-      const mediaScript = document.createElement('script');
-      mediaScript.src = new URL('fanpage-media.js', assetBase).href;
-      mediaScript.defer = true;
-      mediaScript.dataset.fanpageMediaScript = 'true';
-      document.head.append(mediaScript);
-    }
+    const loadScript = (filename, dataAttribute) => {
+      if (document.querySelector(`script[${dataAttribute}]`)) return;
+      const script = document.createElement('script');
+      script.src = new URL(filename, assetBase).href;
+      script.defer = true;
+      script.setAttribute(dataAttribute, 'true');
+      document.head.append(script);
+    };
+
+    loadStyle('facebook-brand-sync.css', 'data-facebook-brand-sync-style');
+    loadStyle('fanpage-media.css', 'data-fanpage-media-style');
+    loadScript('facebook-brand-sync.js', 'data-facebook-brand-sync-script');
+    loadScript('fanpage-media.js', 'data-fanpage-media-script');
   } catch (_) {}
 })();
