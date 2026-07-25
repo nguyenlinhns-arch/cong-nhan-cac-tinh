@@ -79,4 +79,29 @@
       window.dataLayer.push(event);
     });
   });
+
+  // Tải mô-đun ảnh/video Fanpage theo đường dẫn của chính app.js,
+  // để hoạt động đúng cả ở trang chủ và các trang con theo tỉnh.
+  try {
+    const scriptUrl = document.currentScript && document.currentScript.src
+      ? document.currentScript.src
+      : new URL('app.js', location.href).href;
+    const assetBase = new URL('.', scriptUrl);
+
+    if (!document.querySelector('link[data-fanpage-media-style]')) {
+      const mediaStyle = document.createElement('link');
+      mediaStyle.rel = 'stylesheet';
+      mediaStyle.href = new URL('fanpage-media.css', assetBase).href;
+      mediaStyle.dataset.fanpageMediaStyle = 'true';
+      document.head.append(mediaStyle);
+    }
+
+    if (!document.querySelector('script[data-fanpage-media-script]')) {
+      const mediaScript = document.createElement('script');
+      mediaScript.src = new URL('fanpage-media.js', assetBase).href;
+      mediaScript.defer = true;
+      mediaScript.dataset.fanpageMediaScript = 'true';
+      document.head.append(mediaScript);
+    }
+  } catch (_) {}
 })();
