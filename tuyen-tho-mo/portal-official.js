@@ -130,6 +130,18 @@
     formatVisiblePhone();
   }
 
+  function injectQuickContact() {
+    if (document.querySelector('.quick-contact')) return;
+    const nav = document.createElement('nav');
+    nav.className = 'quick-contact';
+    nav.setAttribute('aria-label', 'Liên hệ nhanh với Thầy Linh');
+    nav.innerHTML = `
+      <a class="quick-contact__zalo" href="https://zalo.me/0963048585" target="_blank" rel="noopener" data-contact="zalo"><b>Zalo</b><span>096 304 8585</span></a>
+      <a class="quick-contact__messenger" href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener" data-contact="messenger"><b>Messenger</b><span>Nhắn tin ngay</span></a>
+      <a class="quick-contact__call" href="tel:+84963048585" data-contact="phone"><b>Gọi</b><span>096 304 8585</span></a>`;
+    document.body.append(nav);
+  }
+
   const button = $('[data-menu-button]');
   const nav = $('[data-nav]');
   if (button && nav) {
@@ -144,6 +156,9 @@
     }));
   }
 
+  removeNegativeCopy();
+  injectQuickContact();
+
   $$('[data-contact]').forEach(link => link.addEventListener('click', () => {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -153,7 +168,6 @@
     });
   }));
 
-  removeNegativeCopy();
   loadBrandImages();
   loadExtraAsset('style', 'media-rich.css', 'data-rich-media-style');
   loadExtraAsset('script', 'media-rich.js', 'data-rich-media-script');
