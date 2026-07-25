@@ -1,6 +1,7 @@
 (() => {
   'use strict';
 
+  const MODULE_BASE = new URL('.', document.currentScript?.src || new URL('media-rich.js', location.href).href);
   const videos = [
     { id: 'ts41cqu7r9c', tag: 'Câu chuyện công nhân', title: 'Chàng trai Mường Lát có thu nhập trên 300 triệu đồng/năm', desc: 'Video phỏng vấn công nhân quê Thanh Hóa đang làm việc trong ngành Than.' },
     { id: 'TIDiY-Nuo_4', tag: 'An cư lập nghiệp', title: 'Hành trình an cư, lập nghiệp tại vùng đất Mỏ', desc: 'Góc nhìn thực tế về cuộc sống sau khi gắn bó với nghề mỏ.' },
@@ -9,7 +10,7 @@
   ];
 
   const photos = [
-    { type: 'Hình ảnh', title: 'Không khí ngành Than Quảng Ninh', img: 'https://i.ytimg.com/vi/ts41cqu7r9c/maxresdefault.jpg', large: true },
+    { type: 'Ảnh ngành mỏ', title: 'Khai thác than hầm lò', localB64: 'assets/gallery-longwall-machine.webp.b64', large: true },
     { type: 'Video thumbnail', title: 'Công nhân ngành Than trong câu chuyện thật', img: 'https://i.ytimg.com/vi/TIDiY-Nuo_4/maxresdefault.jpg' },
     { type: 'Video thumbnail', title: 'Người lao động sau khi lập nghiệp', img: 'https://i.ytimg.com/vi/ZynHtWJvyUs/maxresdefault.jpg' },
     { type: 'Fanpage', title: 'Ảnh bìa và hoạt động tuyển sinh', fb: true },
@@ -19,6 +20,29 @@
   function track(action, label) {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: 'rich_media_action', action, label, page_path: location.pathname });
+  }
+
+  function photoMarkup(photo) {
+    if (photo.fb) return '<span class="photo-card__bg" aria-hidden="true"></span>';
+    const src = photo.localB64 ? '' : photo.img;
+    const attr = photo.localB64 ? `data-local-b64="${photo.localB64}"` : '';
+    return `<img src="${src}" ${attr} alt="${photo.title}" loading="lazy">`;
+  }
+
+  async function hydrateLocalImages(section) {
+    const images = [...section.querySelectorAll('img[data-local-b64]')];
+    await Promise.all(images.map(async img => {
+      try {
+        const url = new URL(img.dataset.localB64, MODULE_BASE);
+        const response = await fetch(url, { cache: 'force-cache' });
+        if (!response.ok) throw new Error(img.dataset.localB64);
+        const b64 = (await response.text()).trim();
+        img.src = `data:image/webp;base64,${b64}`;
+      } catch (error) {
+        img.removeAttribute('data-local-b64');
+        img.src = 'https://i.ytimg.com/vi/ts41cqu7r9c/maxresdefault.jpg';
+      }
+    }));
   }
 
   function createSection() {
@@ -32,7 +56,7 @@
             <p class="badge">Video & hình ảnh thực tế</p>
             <h2>Xem nghề mỏ bằng hình ảnh và video trước khi quyết định.</h2>
           </div>
-          <p class="section-lead">Thêm các video phỏng vấn công nhân, thumbnail thật và thư viện ảnh ngành mỏ để website sinh động hơn, nhưng vẫn giữ nguyên nguyên tắc: thông tin tham khảo, không hứa chắc lương hoặc trúng tuyển.</p>
+          <p class="section-lead">Thư viện có video phỏng vấn công nhân, ảnh hầm lò và hình ảnh ngành mỏ để website sinh động hơn, nhưng vẫn giữ nguyên nguyên tắc: thông tin tham khảo, không hứa chắc lương hoặc trúng tuyển.</p>
         </div>
         <div class="rich-tabs" role="tablist" aria-label="Chọn video">
           ${videos.map((video, index) => `<button type="button" role="tab" aria-selected="${index === 0}" data-video-index="${index}">${index + 1}. ${video.tag}</button>`).join('')}
@@ -51,11 +75,11 @@
           </div>
         </div>
         <div class="photo-gallery">
-          <div class="photo-gallery__head"><h3>Hình ảnh ngành mỏ</h3><p>Website cần có cảm giác thật: hầm lò, công nhân, kỷ luật đồng tâm, đào tạo và đời sống. Các ảnh dưới đây ưu tiên hiển thị nhanh, rõ và phù hợp điện thoại.</p></div>
+          <div class="photo-gallery__head"><h3>Hình ảnh ngành mỏ</h3><p>Ảnh hầm lò, công nhân, đào tạo và đời sống làm website có cảm giác thật hơn. Các ảnh được tối ưu nhẹ để tải nhanh trên điện thoại.</p></div>
           <div class="photo-mosaic">
             ${photos.map(photo => `
               <figure class="photo-card ${photo.large ? 'photo-card--large' : ''}">
-                ${photo.fb ? '<span class="photo-card__bg" aria-hidden="true"></span>' : `<img src="${photo.img}" alt="${photo.title}" loading="lazy">`}
+                ${photoMarkup(photo)}
                 <figcaption><small>${photo.type}</small><strong>${photo.title}</strong></figcaption>
               </figure>`).join('')}
           </div>
@@ -102,6 +126,7 @@
     const section = createSection();
     target.insertAdjacentElement('beforebegin', section);
     bindVideo(section);
+    hydrateLocalImages(section);
   }
 
   inject();
