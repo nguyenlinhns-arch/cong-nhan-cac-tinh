@@ -58,15 +58,23 @@
     } catch (_) {
       const area = document.createElement('textarea');
       area.value = template;
-      area.style.position = 'fixed'; area.style.opacity = '0';
-      document.body.append(area); area.select(); document.execCommand('copy'); area.remove();
+      area.style.position = 'fixed';
+      area.style.opacity = '0';
+      document.body.append(area);
+      area.select();
+      document.execCommand('copy');
+      area.remove();
       showToast('Đã sao chép mẫu tin nhắn.');
     }
   }));
 
   $$('[data-contact]').forEach(link => link.addEventListener('click', () => {
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'contact_click', channel: link.dataset.contact, page_path: location.pathname });
+    window.dataLayer.push({
+      event: 'contact_click',
+      channel: link.dataset.contact,
+      page_path: location.pathname
+    });
   }));
 
   loadBrandImages();
