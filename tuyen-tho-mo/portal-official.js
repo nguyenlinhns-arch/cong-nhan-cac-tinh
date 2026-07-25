@@ -70,6 +70,25 @@
     }));
   }
 
+  const leadTitle = $('#lead-card-title');
+  if (leadTitle) leadTitle.textContent = 'Bạn muốn kiểm tra điều kiện học nghề mỏ?';
+
+  const leadCopyButton = $('[data-copy-template]');
+  if (leadCopyButton) {
+    const leadLink = document.createElement('a');
+    leadLink.className = leadCopyButton.className;
+    leadLink.href = 'https://zalo.me/0963048585';
+    leadLink.target = '_blank';
+    leadLink.rel = 'noopener';
+    leadLink.dataset.contact = 'zalo';
+    leadLink.textContent = 'Gửi thông tin để được tư vấn';
+    leadLink.style.display = 'flex';
+    leadLink.style.alignItems = 'center';
+    leadLink.style.justifyContent = 'center';
+    leadLink.style.width = '100%';
+    leadCopyButton.replaceWith(leadLink);
+  }
+
   const template = 'Em muốn kiểm tra điều kiện học nghề mỏ.\n- Năm sinh: ...\n- Chiều cao/cân nặng: ...\n- Sức khỏe hiện tại (mắt, huyết áp, tim mạch): ...';
   $$('[data-copy-template]').forEach(btn => btn.addEventListener('click', async () => {
     try {
