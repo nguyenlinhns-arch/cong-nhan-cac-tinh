@@ -1,0 +1,321 @@
+name: Publish Thay Linh website v1.1.0 fixed
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.publish-v110-fixed-trigger'
+      - '.github/workflows/publish-thay-linh-v110-fixed.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-thay-linh-v110
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Record run marker
+        id: marker
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          rm -f PUBLISH_V110_FAILURE.md
+          cat > PUBLISH_V110_STATUS.md <<EOF
+          # Thầy Linh v1.1.0 publisher
+
+          - Status: STARTED
+          - Workflow run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
+          - Trigger commit: ${GITHUB_SHA}
+          - Started at UTC: $(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          EOF
+          git add -A PUBLISH_V110_STATUS.md PUBLISH_V110_FAILURE.md
+          git commit -m 'test: record fixed Thầy Linh v1.1.0 publisher run [skip ci]'
+          git push origin HEAD:main
+
+      - name: Decode every archive segment and verify SHA-256
+        id: rebuild
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -d .deploy/thay-linh-v110-lite
+          mapfile -t PARTS < <(find .deploy/thay-linh-v110-lite -maxdepth 1 -type f -name 'part-*' | LC_ALL=C sort)
+          test "${#PARTS[@]}" -eq 13
+          : > /tmp/thay-linh-v1.1.0-lite.tar.gz
+          for part in "${PARTS[@]}"; do
+            base64 --decode "$part" >> /tmp/thay-linh-v1.1.0-lite.tar.gz
+          done
+          ACTUAL_SHA="$(sha256sum /tmp/thay-linh-v1.1.0-lite.tar.gz | awk '{print $1}')"
+          echo "actual_sha=$ACTUAL_SHA" >> "$GITHUB_OUTPUT"
+          test "$ACTUAL_SHA" = '332a4027cf7dfa25d5982a7fbf0eca1652c83f6906a4c65db44fe0301e61d33e'
+          tar -tzf /tmp/thay-linh-v1.1.0-lite.tar.gz >/dev/null
+
+      - name: Stage isolated website replacement
+        id: stage
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT_HASH_BEFORE="$(sha256sum index.html | awk '{print $1}')"
+          OLD_SITE_HASH="missing"
+          if [ -f tuyen-tho-mo/index.html ]; then OLD_SITE_HASH="$(sha256sum tuyen-tho-mo/index.html | awk '{print $1}')"; fi
+          PREVIOUS_COMMIT="$(git rev-parse HEAD)"
+          git rm -r --ignore-unmatch tuyen-tho-mo
+          mkdir -p tuyen-tho-mo
+          tar -xzf /tmp/thay-linh-v1.1.0-lite.tar.gz -C tuyen-tho-mo
+          ROOT_HASH_AFTER="$(sha256sum index.html | awk '{print $1}')"
+          test "$ROOT_HASH_BEFORE" = "$ROOT_HASH_AFTER"
+          {
+            echo "root_hash=$ROOT_HASH_BEFORE"
+            echo "old_site_hash=$OLD_SITE_HASH"
+            echo "previous_commit=$PREVIOUS_COMMIT"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Validate HTML, SEO, sources and policy
+        id: validate
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s tuyen-tho-mo/index.html
+          test -s tuyen-tho-mo/styles.css
+          test -s tuyen-tho-mo/app.js
+          test -s tuyen-tho-mo/assets/hero-mine.svg
+          test -s tuyen-tho-mo/assets/about-linh.svg
+          test -s tuyen-tho-mo/assets/training-route.svg
+          grep -Fq 'data-site-version="1.1.0"' tuyen-tho-mo/index.html
+          grep -Fq 'https://zalo.me/0963048585' tuyen-tho-mo/index.html
+          grep -Fq 'https://m.me/thaylinhtuyenthomo' tuyen-tho-mo/index.html
+          grep -Fq 'TÔI LÀ AI?' tuyen-tho-mo/index.html
+          grep -Fq 'Nguồn chính thống' tuyen-tho-mo/tin-nganh-than/index.html
+          grep -Fq 'noindex,follow' tuyen-tho-mo/404.html
+          test "$(find tuyen-tho-mo -type f -name '*.html' | wc -l)" -eq 25
+          test "$(find tuyen-tho-mo/viec-lam-nganh-than -mindepth 2 -maxdepth 2 -name index.html | wc -l)" -eq 10
+          test "$(find tuyen-tho-mo/kien-thuc -mindepth 2 -maxdepth 2 -name index.html | wc -l)" -eq 6
+          test "$(find tuyen-tho-mo/tin-nganh-than -name index.html | wc -l)" -eq 5
+          node --check tuyen-tho-mo/app.js
+          python - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          from urllib.parse import unquote
+          import json, re, xml.etree.ElementTree as ET
+
+          root=Path('tuyen-tho-mo')
+          official={'baoquangninh.vn','caodangtkv.edu.vn','moit.gov.vn','vinacomin.vn','congdoantkv.vn'}
+          class P(HTMLParser):
+              def __init__(self): super().__init__(); self.items=[]
+              def handle_starttag(self,tag,attrs): self.items.append((tag,dict(attrs)))
+          html=sorted(root.rglob('*.html'))
+          assert len(html)==25
+          titles=set(); canonicals=set()
+          for path in html:
+              text=path.read_text(encoding='utf-8')
+              title=re.search(r'<title>(.*?)</title>',text,re.S|re.I)
+              assert title and title.group(1).strip(),path
+              t=re.sub(r'\s+',' ',title.group(1)).strip(); assert t not in titles,t; titles.add(t)
+              desc=re.search(r'<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']+)',text,re.I)
+              assert desc and desc.group(1).strip(),path
+              canonical=re.search(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\']([^"\']+)',text,re.I)
+              assert canonical and canonical.group(1) not in canonicals,path
+              canonicals.add(canonical.group(1))
+              for payload in re.findall(r'<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',text,re.S|re.I): json.loads(payload)
+              parser=P(); parser.feed(text)
+              for tag,attrs in parser.items:
+                  key='href' if tag in ('a','link') else 'src' if tag in ('img','script') else None
+                  if not key or not attrs.get(key): continue
+                  value=attrs[key].split('#',1)[0].split('?',1)[0]
+                  if not value or value.startswith(('http://','https://','mailto:','tel:','data:','javascript:','/')): continue
+                  target=(path.parent/unquote(value)).resolve()
+                  if value.endswith('/') or target.is_dir(): target=target/'index.html'
+                  assert target.exists(),f'{path} -> {value}'
+          news=json.loads((root/'data/industry-news.json').read_text(encoding='utf-8'))
+          assert len(news['items'])==12 and len(news['categories'])==4
+          for item in news['items']:
+              domain=item['url'].split('/')[2].lower().removeprefix('www.')
+              assert item['url'].startswith('https://') and domain in official
+              assert all(item[k] for k in ('title','summary','date','source'))
+          assert len(json.loads((root/'data/provinces.json').read_text(encoding='utf-8'))['provinces'])==10
+          assert json.loads((root/'data/seo-keyword-map.json').read_text(encoding='utf-8'))['primary_keywords']
+          ET.parse(root/'sitemap.xml'); ET.parse(root/'feed.xml')
+          for svg in (root/'assets').glob('*.svg'): ET.parse(svg)
+          joined='\n'.join(p.read_text(encoding='utf-8').lower() for p in html)
+          assert 'đảm bảo trúng tuyển' not in joined
+          assert 'phong-su-cong-nhan-tieu-bieu-1200x630.jpg' in joined
+          print({'html':len(html),'news':len(news['items']),'provinces':10})
+          PY
+
+      - name: Write deployment receipt and remove bootstrap
+        id: prepare
+        shell: bash
+        env:
+          PREVIOUS_COMMIT: ${{ steps.stage.outputs.previous_commit }}
+          ROOT_HASH: ${{ steps.stage.outputs.root_hash }}
+          OLD_SITE_HASH: ${{ steps.stage.outputs.old_site_hash }}
+        run: |
+          set -euo pipefail
+          cat > tuyen-tho-mo/DEPLOYMENT_RECEIPT.md <<EOF
+          # Deployment receipt
+
+          - Website: Thầy Linh – Tuyển Thợ Mỏ
+          - Version: 1.1.0
+          - Target path: /tuyen-tho-mo/
+          - Source archive SHA-256: 332a4027cf7dfa25d5982a7fbf0eca1652c83f6906a4c65db44fe0301e61d33e
+          - Trigger commit: ${GITHUB_SHA}
+          - Rollback point: ${PREVIOUS_COMMIT}
+          - Existing root index SHA-256: ${ROOT_HASH}
+          - Previous recruitment home SHA-256: ${OLD_SITE_HASH}
+          - Workflow run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
+          - Deployed at UTC: $(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          EOF
+          rm -rf .deploy/thay-linh-v110 .deploy/thay-linh-v110-lite
+          rm -f .github/workflows/publish-thay-linh-v110-fixed.yml .publish-v110-fixed-trigger
+          rm -f PUBLISH_V110_STATUS.md PUBLISH_V110_FAILURE.md ACTIONS_HEALTH_RECEIPT.md
+
+      - name: Commit and push website v1.1.0
+        id: publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -A
+          git commit -m 'publish: upgrade Thầy Linh website to v1.1.0 [skip ci]'
+          echo "site_commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          git push origin HEAD:main
+
+      - name: Verify live GitHub Pages
+        id: public
+        shell: bash
+        run: |
+          set -euo pipefail
+          HOME='https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/'
+          NEWS='https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/'
+          KNOWLEDGE='https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/kien-thuc/dieu-kien-tuyen-tho-lo/'
+          PROVINCE='https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/viec-lam-nganh-than/gia-lai/'
+          OG='https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/assets/phong-su-cong-nhan-tieu-bieu-1200x630.jpg'
+          ROOT='https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/'
+          ready=0
+          for n in $(seq 1 36); do
+            if curl -fsSL --max-time 20 "$HOME?version=1.1.0-$n" | grep -Fq 'data-site-version="1.1.0"'; then ready=1; break; fi
+            sleep 10
+          done
+          test "$ready" -eq 1
+          HOME_HTTP="$(curl -sS -o /tmp/home -w '%{http_code}' "$HOME?final=1")"
+          NEWS_HTTP="$(curl -sS -o /tmp/news -w '%{http_code}' "$NEWS?final=1")"
+          KNOWLEDGE_HTTP="$(curl -sS -o /tmp/knowledge -w '%{http_code}' "$KNOWLEDGE?final=1")"
+          PROVINCE_HTTP="$(curl -sS -o /tmp/province -w '%{http_code}' "$PROVINCE?final=1")"
+          OG_HTTP="$(curl -sS -o /tmp/og -w '%{http_code}' "$OG?final=1")"
+          ROOT_HTTP="$(curl -sS -o /tmp/root -w '%{http_code}' "$ROOT?preserve=1")"
+          test "$HOME_HTTP" = 200 && test "$NEWS_HTTP" = 200 && test "$KNOWLEDGE_HTTP" = 200
+          test "$PROVINCE_HTTP" = 200 && test "$OG_HTTP" = 200 && test "$ROOT_HTTP" = 200
+          grep -Fq 'data-site-version="1.1.0"' /tmp/home
+          grep -Fq 'Nguồn chính thống' /tmp/news
+          grep -Fq 'Điều kiện tuyển thợ lò' /tmp/knowledge
+          grep -Fq 'Gia Lai' /tmp/province
+          grep -Fq 'Công nhân Thanh Hóa' /tmp/root
+          grep -Fq 'https://zalo.me/0963048585' /tmp/home
+          grep -Fq 'https://m.me/thaylinhtuyenthomo' /tmp/home
+          {
+            echo "home=$HOME_HTTP"; echo "news=$NEWS_HTTP"; echo "knowledge=$KNOWLEDGE_HTTP"
+            echo "province=$PROVINCE_HTTP"; echo "og=$OG_HTTP"; echo "root=$ROOT_HTTP"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Store VERIFIED_SUCCESS receipt
+        id: verified
+        shell: bash
+        env:
+          SITE_COMMIT: ${{ steps.publish.outputs.site_commit }}
+          PREVIOUS_COMMIT: ${{ steps.stage.outputs.previous_commit }}
+          HOME_HTTP: ${{ steps.public.outputs.home }}
+          NEWS_HTTP: ${{ steps.public.outputs.news }}
+          KNOWLEDGE_HTTP: ${{ steps.public.outputs.knowledge }}
+          PROVINCE_HTTP: ${{ steps.public.outputs.province }}
+          OG_HTTP: ${{ steps.public.outputs.og }}
+          ROOT_HTTP: ${{ steps.public.outputs.root }}
+        run: |
+          set -euo pipefail
+          git pull --rebase origin main
+          cat > tuyen-tho-mo/PAGES_VERIFICATION_RECEIPT.md <<EOF
+          # GitHub Pages verification receipt
+
+          - Status: VERIFIED_SUCCESS
+          - Website: Thầy Linh – Tuyển Thợ Mỏ
+          - Version: 1.1.0
+          - Publish commit: ${SITE_COMMIT}
+          - Home URL: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/
+          - Home HTTP: ${HOME_HTTP}
+          - News hub HTTP: ${NEWS_HTTP}
+          - Knowledge page HTTP: ${KNOWLEDGE_HTTP}
+          - Gia Lai page HTTP: ${PROVINCE_HTTP}
+          - OG image HTTP: ${OG_HTTP}
+          - Existing root website HTTP: ${ROOT_HTTP}
+          - Zalo CTA: VERIFIED
+          - Messenger CTA: VERIFIED
+          - Version marker: VERIFIED
+          - Existing root website: VERIFIED
+          - Workflow run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
+          - Verified at UTC: $(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          - Rollback point: ${PREVIOUS_COMMIT}
+          EOF
+          git add tuyen-tho-mo/PAGES_VERIFICATION_RECEIPT.md
+          git commit -m 'test: verify Thầy Linh website v1.1.0 [skip ci]'
+          git push origin HEAD:main
+
+      - name: Record failure and rollback if live verification failed
+        if: failure()
+        shell: bash
+        env:
+          MARKER: ${{ steps.marker.outcome }}
+          REBUILD: ${{ steps.rebuild.outcome }}
+          STAGE: ${{ steps.stage.outcome }}
+          VALIDATE: ${{ steps.validate.outcome }}
+          PREPARE: ${{ steps.prepare.outcome }}
+          PUBLISH: ${{ steps.publish.outcome }}
+          PUBLIC: ${{ steps.public.outcome }}
+          VERIFIED: ${{ steps.verified.outcome }}
+          PREVIOUS_COMMIT: ${{ steps.stage.outputs.previous_commit }}
+          ACTUAL_SHA: ${{ steps.rebuild.outputs.actual_sha }}
+        run: |
+          set +e
+          git reset --hard HEAD
+          git pull --rebase origin main
+          ROLLBACK='NOT_NEEDED'
+          if [ "$PUBLISH" = 'success' ] && [ "$PUBLIC" != 'success' ] && [ -n "$PREVIOUS_COMMIT" ]; then
+            git rm -r --ignore-unmatch tuyen-tho-mo
+            git checkout "$PREVIOUS_COMMIT" -- tuyen-tho-mo
+            git add -A
+            git commit -m 'rollback: restore Thầy Linh website after failed live verification [skip ci]'
+            git push origin HEAD:main
+            ROLLBACK='SUCCESS'
+          fi
+          cat > PUBLISH_V110_FAILURE.md <<EOF
+          # Thầy Linh v1.1.0 publisher failure
+
+          - Status: FAILED
+          - Workflow run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
+          - Trigger commit: ${GITHUB_SHA}
+          - Actual archive SHA-256: ${ACTUAL_SHA}
+          - Marker: ${MARKER}
+          - Rebuild: ${REBUILD}
+          - Stage: ${STAGE}
+          - Validate: ${VALIDATE}
+          - Prepare: ${PREPARE}
+          - Publish: ${PUBLISH}
+          - Public verification: ${PUBLIC}
+          - Final receipt: ${VERIFIED}
+          - Rollback: ${ROLLBACK}
+          - Failed at UTC: $(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          EOF
+          git pull --rebase origin main
+          git add PUBLISH_V110_FAILURE.md
+          git commit -m 'test: record fixed Thầy Linh v1.1.0 publisher failure [skip ci]' || true
+          git push origin HEAD:main || true
