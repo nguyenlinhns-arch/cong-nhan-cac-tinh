@@ -3,8 +3,6 @@
   const $ = (s, r=document) => r.querySelector(s);
   const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
   const BASE = new URL('.', document.currentScript?.src || new URL('portal-official.js', location.href).href);
-  // Dùng ảnh hầm lò người dùng đã tải lên làm ảnh chủ đạo của landing page.
-  // Ảnh bìa Facebook cũ vẫn giữ trong repository để rollback/đối chiếu, nhưng không dùng làm hero chính.
   const COVER = ['assets/gallery-longwall-machine.webp.b64'];
   const AVATAR = ['assets/fb-avatar.webp.b64'];
   const toast = $('[data-toast]');
@@ -56,6 +54,82 @@
     }
   }
 
+  function formatVisiblePhone() {
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        const tag = node.parentElement?.tagName;
+        if (tag === 'SCRIPT' || tag === 'STYLE') return NodeFilter.FILTER_REJECT;
+        return /0963\s*048\s*585|0963048585/.test(node.nodeValue || '') ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+      }
+    });
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(node => {
+      node.nodeValue = node.nodeValue
+        .replace(/0963\s*048\s*585/g, '096 304 8585')
+        .replace(/0963048585/g, '096 304 8585');
+    });
+  }
+
+  function removeNegativeCopy() {
+    $('.safe-note')?.remove();
+
+    const sourceProof = $('.source-proof');
+    if (sourceProof) {
+      sourceProof.innerHTML = `
+        <div class="wrap source-proof__grid">
+          <div><p class="badge badge--dark">Thông tin rõ ràng</p><h2 id="source-proof-title">Người lao động có thể tìm hiểu nhanh, hiểu đúng và liên hệ dễ dàng.</h2></div>
+          <div class="source-proof__cards">
+            <article><b>Nguồn chính thống</b><p>Tin tuyển sinh và ngành Than được tóm tắt, biên tập và dẫn link gốc để đối chiếu.</p></article>
+            <article><b>Quy trình tư vấn nhanh</b><p>Gửi ba thông tin ban đầu để được kiểm tra điều kiện trước khi chuẩn bị hồ sơ.</p></article>
+            <article><b>Học và làm việc tại Quảng Ninh</b><p>Người lao động được tư vấn rõ nơi học, thời gian đào tạo, chế độ và lộ trình tiếp nhận từng đợt.</p></article>
+          </div>
+        </div>`;
+    }
+
+    const salaryCard = $('.salary-card');
+    if (salaryCard) {
+      salaryCard.innerHTML = `
+        <p class="badge">Thu nhập & đời sống</p>
+        <h3>Tìm hiểu thu nhập và đời sống thợ lò.</h3>
+        <p>Thu nhập thực tế phụ thuộc vị trí, ngày công, năng suất và từng đơn vị. Thầy Linh tư vấn để người lao động hiểu rõ trước khi đăng ký.</p>
+        <a href="bai-viet/luong-va-doi-song-tho-lo/">Đọc bài về lương và đời sống →</a>`;
+    }
+
+    const disclaimer = $('.disclaimer');
+    if (disclaimer) {
+      disclaimer.textContent = 'Thầy Linh trực tiếp tư vấn điều kiện, hướng dẫn hồ sơ và đồng hành cùng người lao động trong quá trình tìm hiểu nghề mỏ.';
+    }
+
+    const leadTitle = $('#lead-card-title');
+    if (leadTitle) leadTitle.textContent = 'Bạn muốn kiểm tra điều kiện học nghề mỏ?';
+
+    const leadCopyButton = $('[data-copy-template]');
+    if (leadCopyButton) {
+      const leadLink = document.createElement('a');
+      leadLink.className = leadCopyButton.className;
+      leadLink.href = 'https://zalo.me/0963048585';
+      leadLink.target = '_blank';
+      leadLink.rel = 'noopener';
+      leadLink.dataset.contact = 'zalo';
+      leadLink.textContent = 'Gửi thông tin để được tư vấn';
+      leadLink.style.display = 'flex';
+      leadLink.style.alignItems = 'center';
+      leadLink.style.justifyContent = 'center';
+      leadLink.style.width = '100%';
+      leadCopyButton.replaceWith(leadLink);
+    }
+
+    const salaryAnswerTitle = [...document.querySelectorAll('.answer-grid h3')].find(el => /Lương thợ lò/.test(el.textContent || ''));
+    if (salaryAnswerTitle) {
+      salaryAnswerTitle.textContent = 'Thu nhập thợ lò được tính như thế nào?';
+      const p = salaryAnswerTitle.nextElementSibling;
+      if (p) p.textContent = 'Thu nhập phụ thuộc vị trí, ngày công, năng suất và từng đơn vị. Người lao động được tư vấn kỹ trước khi đăng ký.';
+    }
+
+    formatVisiblePhone();
+  }
+
   const button = $('[data-menu-button]');
   const nav = $('[data-nav]');
   if (button && nav) {
@@ -70,43 +144,6 @@
     }));
   }
 
-  const leadTitle = $('#lead-card-title');
-  if (leadTitle) leadTitle.textContent = 'Bạn muốn kiểm tra điều kiện học nghề mỏ?';
-
-  const leadCopyButton = $('[data-copy-template]');
-  if (leadCopyButton) {
-    const leadLink = document.createElement('a');
-    leadLink.className = leadCopyButton.className;
-    leadLink.href = 'https://zalo.me/0963048585';
-    leadLink.target = '_blank';
-    leadLink.rel = 'noopener';
-    leadLink.dataset.contact = 'zalo';
-    leadLink.textContent = 'Gửi thông tin để được tư vấn';
-    leadLink.style.display = 'flex';
-    leadLink.style.alignItems = 'center';
-    leadLink.style.justifyContent = 'center';
-    leadLink.style.width = '100%';
-    leadCopyButton.replaceWith(leadLink);
-  }
-
-  const template = 'Em muốn kiểm tra điều kiện học nghề mỏ.\n- Năm sinh: ...\n- Chiều cao/cân nặng: ...\n- Sức khỏe hiện tại (mắt, huyết áp, tim mạch): ...';
-  $$('[data-copy-template]').forEach(btn => btn.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(template);
-      showToast('Đã sao chép mẫu tin nhắn. Hãy dán vào Zalo hoặc Messenger.');
-    } catch (_) {
-      const area = document.createElement('textarea');
-      area.value = template;
-      area.style.position = 'fixed';
-      area.style.opacity = '0';
-      document.body.append(area);
-      area.select();
-      document.execCommand('copy');
-      area.remove();
-      showToast('Đã sao chép mẫu tin nhắn.');
-    }
-  }));
-
   $$('[data-contact]').forEach(link => link.addEventListener('click', () => {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -116,6 +153,7 @@
     });
   }));
 
+  removeNegativeCopy();
   loadBrandImages();
   loadExtraAsset('style', 'media-rich.css', 'data-rich-media-style');
   loadExtraAsset('script', 'media-rich.js', 'data-rich-media-script');
