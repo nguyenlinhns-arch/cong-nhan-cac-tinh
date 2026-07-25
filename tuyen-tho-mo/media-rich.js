@@ -56,7 +56,7 @@
             <p class="badge">Video & hình ảnh thực tế</p>
             <h2>Xem nghề mỏ bằng hình ảnh và video trước khi quyết định.</h2>
           </div>
-          <p class="section-lead">Thư viện có video phỏng vấn công nhân, ảnh hầm lò và hình ảnh ngành mỏ để website sinh động hơn. Người lao động có thể xem trước công việc, môi trường học nghề và đời sống vùng mỏ.</p>
+          <p class="section-lead">Thư viện chọn các video phù hợp từ YouTube, kết hợp ảnh hầm lò và hình ảnh ngành mỏ để website sinh động hơn. Người lao động có thể xem trước công việc, môi trường học nghề và đời sống vùng mỏ.</p>
         </div>
         <div class="rich-tabs" role="tablist" aria-label="Chọn video">
           ${videos.map((video, index) => `<button type="button" role="tab" aria-selected="${index === 0}" data-video-index="${index}">${index + 1}. ${video.tag}</button>`).join('')}
@@ -86,7 +86,7 @@
           <p class="media-disclaimer">Các video/câu chuyện giúp người lao động tham khảo thực tế nghề mỏ; thông tin về thu nhập, điều kiện tiếp nhận và đơn vị bố trí được tư vấn theo từng đợt.</p>
           <div class="rich-media__cta">
             <a href="https://zalo.me/0963048585" target="_blank" rel="noopener" data-contact="zalo">Nhắn Zalo kiểm tra điều kiện</a>
-            <a href="https://www.facebook.com/thaylinhtuyenthomo/videos/" target="_blank" rel="noopener">Xem thêm video trên Fanpage</a>
+            <a href="https://www.youtube.com/channel/UCjQmG8ShxuD_qf_o6YGWz8w" target="_blank" rel="noopener">Xem thêm video trên kênh YouTube</a>
           </div>
         </div>
       </div>`;
