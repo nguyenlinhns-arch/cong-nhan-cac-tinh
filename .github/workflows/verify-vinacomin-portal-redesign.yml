@@ -1,0 +1,130 @@
+name: Verify Vinacomin-style portal redesign
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.verify-vinacomin-portal-redesign'
+      - '.github/workflows/verify-vinacomin-portal-redesign.yml'
+      - 'tuyen-tho-mo/**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: verify-vinacomin-portal-redesign
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    if: github.actor != 'github-actions[bot]' && contains(github.event.head_commit.message, 'publish: Vinacomin-style portal redesign')
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Static checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s tuyen-tho-mo/index.html
+          test -s tuyen-tho-mo/portal-official.css
+          test -s tuyen-tho-mo/portal-official.js
+          test -s tuyen-tho-mo/tin-nganh-than/index.html
+          test -s tuyen-tho-mo/bai-viet/dieu-kien-tuyen-tho-lo/index.html
+          test -s tuyen-tho-mo/bai-viet/lo-trinh-hoc-nghe-mo/index.html
+          test -s tuyen-tho-mo/bai-viet/luong-va-doi-song-tho-lo/index.html
+          grep -Fq 'CỔNG THÔNG TIN TƯ VẤN TUYỂN SINH NGHỀ MỎ' tuyen-tho-mo/index.html
+          grep -Fq 'BÀI VIẾT CHẤT LƯỢNG' tuyen-tho-mo/index.html
+          grep -Fq 'Nguồn: Trường Cao đẳng Than' tuyen-tho-mo/index.html
+          grep -Fq 'https://zalo.me/0963048585' tuyen-tho-mo/index.html
+          grep -Fq 'https://m.me/thaylinhtuyenthomo' tuyen-tho-mo/index.html
+          grep -Fq 'Không cam kết quá mức' tuyen-tho-mo/index.html
+          grep -Fq 'portal-official.css' tuyen-tho-mo/index.html
+          grep -Fq 'portal-official.js' tuyen-tho-mo/index.html
+          grep -Fq 'var(--fb-cover-photo)' tuyen-tho-mo/portal-official.css
+          grep -Fq 'fb-cover.webp.b64.00' tuyen-tho-mo/portal-official.js
+          grep -Fq 'fb-avatar.webp.b64' tuyen-tho-mo/portal-official.js
+          node --check tuyen-tho-mo/portal-official.js
+          python3 - <<'PY'
+          from pathlib import Path
+          import json, re, xml.etree.ElementTree as ET
+          for p in Path('tuyen-tho-mo').rglob('*.html'):
+              txt=p.read_text(encoding='utf-8')
+              assert '<title>' in txt, p
+              for payload in re.findall(r'<script[^>]+type="application/ld\+json"[^>]*>(.*?)</script>', txt, re.S):
+                  json.loads(payload)
+          ET.parse('tuyen-tho-mo/sitemap.xml')
+          print('static_ok')
+          PY
+      - name: Verify public GitHub Pages URLs
+        id: public
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh'
+          CACHE="vinacomin-redesign-${GITHUB_RUN_ID}"
+          fetch_until() {
+            local url="$1" output="$2" expected="$3" code=''
+            for attempt in $(seq 1 72); do
+              code=$(curl --location --silent --show-error --output "$output" --write-out '%{http_code}' --max-time 25 "${url}?v=${CACHE}-${attempt}" || true)
+              if [[ "$code" == '200' ]] && grep -Fq "$expected" "$output"; then printf '%s\n' "$code"; return 0; fi
+              sleep 5
+            done
+            echo "failed ${url} ${code}" >&2; head -60 "$output" >&2 || true; return 1
+          }
+          HOME_HTTP=$(fetch_until "$BASE/tuyen-tho-mo/" /tmp/home.html 'CỔNG THÔNG TIN TƯ VẤN TUYỂN SINH NGHỀ MỎ')
+          NEWS_HTTP=$(fetch_until "$BASE/tuyen-tho-mo/tin-nganh-than/" /tmp/news.html 'Tin ngành Than')
+          ARTICLE_HTTP=$(fetch_until "$BASE/tuyen-tho-mo/bai-viet/dieu-kien-tuyen-tho-lo/" /tmp/article.html 'Điều kiện tuyển thợ lò')
+          CSS_HTTP=$(fetch_until "$BASE/tuyen-tho-mo/portal-official.css" /tmp/css.txt 'hero-official')
+          JS_HTTP=$(fetch_until "$BASE/tuyen-tho-mo/portal-official.js" /tmp/js.txt 'loadBrandImages')
+          ROOT_HTTP=$(fetch_until "$BASE/" /tmp/root.html 'Công nhân Thanh Hóa')
+          grep -Fq 'https://zalo.me/0963048585' /tmp/home.html
+          grep -Fq 'https://m.me/thaylinhtuyenthomo' /tmp/home.html
+          grep -Fq 'BÀI VIẾT CHẤT LƯỢNG' /tmp/home.html
+          grep -Fq 'Trường Cao đẳng Than' /tmp/news.html
+          {
+            echo "home_http=$HOME_HTTP"; echo "news_http=$NEWS_HTTP"; echo "article_http=$ARTICLE_HTTP";
+            echo "css_http=$CSS_HTTP"; echo "js_http=$JS_HTTP"; echo "root_http=$ROOT_HTTP";
+          } >> "$GITHUB_OUTPUT"
+      - name: Store receipt and clean verifier
+        shell: bash
+        env:
+          HOME_HTTP: ${{ steps.public.outputs.home_http }}
+          NEWS_HTTP: ${{ steps.public.outputs.news_http }}
+          ARTICLE_HTTP: ${{ steps.public.outputs.article_http }}
+          CSS_HTTP: ${{ steps.public.outputs.css_http }}
+          JS_HTTP: ${{ steps.public.outputs.js_http }}
+          ROOT_HTTP: ${{ steps.public.outputs.root_http }}
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          cat > tuyen-tho-mo/VINACOMIN_STYLE_VERIFICATION_RECEIPT.md <<EOF
+          # Vinacomin-style portal redesign verification
+
+          - Status: VERIFIED_SUCCESS
+          - Feature: Professional Vinacomin-style recruitment portal homepage
+          - Home HTTP: ${HOME_HTTP}
+          - News hub HTTP: ${NEWS_HTTP}
+          - Article HTTP: ${ARTICLE_HTTP}
+          - CSS HTTP: ${CSS_HTTP}
+          - JS HTTP: ${JS_HTTP}
+          - Existing root website HTTP: ${ROOT_HTTP}
+          - Zalo CTA: VERIFIED
+          - Messenger CTA: VERIFIED
+          - Official style layout: VERIFIED
+          - Quality article links: VERIFIED
+          - Existing root website preserved: VERIFIED
+          - Source commit: ${GITHUB_SHA}
+          - Workflow run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
+          - Verified at UTC: $(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          - Rollback: revert merge commit for PR 'publish: Vinacomin-style portal redesign'
+          EOF
+          rm -f .verify-vinacomin-portal-redesign .github/workflows/verify-vinacomin-portal-redesign.yml
+          git add -A
+          git commit -m 'test: verify Vinacomin-style portal redesign [skip ci]'
+          git pull --rebase origin main
+          git push origin HEAD:main
