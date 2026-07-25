@@ -1,0 +1,82 @@
+{
+  "updated_at": "2026-07-25",
+  "base_url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo",
+  "provinces": [
+    {
+      "slug": "gia-lai",
+      "name": "Gia Lai",
+      "region": "Tây Nguyên",
+      "intro": "Dành cho lao động nam tại Gia Lai đang tìm một hướng học nghề rõ ràng, có nơi đào tạo và cơ hội làm việc lâu dài tại Quảng Ninh.",
+      "local_note": "Bước đầu kiểm tra điều kiện hoàn toàn từ xa. Chỉ chuẩn bị hồ sơ và di chuyển khi đã được tư vấn rõ ràng."
+    },
+    {
+      "slug": "dak-lak",
+      "name": "Đắk Lắk",
+      "region": "Tây Nguyên",
+      "intro": "Thông tin dành cho lao động nam tại Đắk Lắk có nhu cầu học nghề mỏ và làm việc tại các đơn vị ngành Than ở Quảng Ninh.",
+      "local_note": "Có thể gửi trước năm sinh, chiều cao, cân nặng và tình trạng sức khỏe để được kiểm tra điều kiện."
+    },
+    {
+      "slug": "quang-ngai",
+      "name": "Quảng Ngãi",
+      "region": "Miền Trung",
+      "intro": "Kênh tư vấn cho lao động nam tại Quảng Ngãi muốn tìm hiểu chương trình học nghề mỏ, chế độ trong thời gian học và công việc sau đào tạo.",
+      "local_note": "Tư vấn từ xa trước giúp người lao động tránh chuẩn bị hồ sơ hoặc đi lại khi chưa đủ điều kiện."
+    },
+    {
+      "slug": "quang-tri",
+      "name": "Quảng Trị",
+      "region": "Miền Trung",
+      "intro": "Thông tin tuyển sinh nghề mỏ dành cho lao động nam tại Quảng Trị, với lộ trình kiểm tra điều kiện, học nghề và làm việc tại Quảng Ninh.",
+      "local_note": "Mọi chính sách được kiểm tra lại theo từng đợt tiếp nhận trước khi hướng dẫn hồ sơ."
+    },
+    {
+      "slug": "thanh-hoa",
+      "name": "Thanh Hóa",
+      "region": "Bắc Trung Bộ",
+      "intro": "Trang tư vấn dành cho lao động nam Thanh Hóa muốn học nghề mỏ, tìm hiểu môi trường làm việc và các câu chuyện công nhân đồng hương.",
+      "local_note": "Có thể xem thêm thư viện video, bảng lương và câu chuyện thực tế của công nhân Thanh Hóa trên website hiện có.",
+      "story_url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/"
+    },
+    {
+      "slug": "nghe-an",
+      "name": "Nghệ An",
+      "region": "Bắc Trung Bộ",
+      "intro": "Kênh kiểm tra điều kiện và hướng dẫn ban đầu cho lao động nam Nghệ An quan tâm học nghề mỏ và làm việc tại Quảng Ninh.",
+      "local_note": "Trao đổi trực tiếp trước qua Zalo hoặc Messenger, sau đó mới hướng dẫn hồ sơ theo đợt tiếp nhận.",
+      "story_url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/nghe-an/"
+    },
+    {
+      "slug": "ha-tinh",
+      "name": "Hà Tĩnh",
+      "region": "Bắc Trung Bộ",
+      "intro": "Thông tin dành cho lao động nam Hà Tĩnh muốn tìm hiểu nghề mỏ, điều kiện sức khỏe và lộ trình học nghề trước khi làm việc tại Quảng Ninh.",
+      "local_note": "Không cần vội chuẩn bị hồ sơ; hãy kiểm tra điều kiện cá nhân trước.",
+      "story_url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/ha-tinh/"
+    },
+    {
+      "slug": "dien-bien",
+      "name": "Điện Biên",
+      "region": "Tây Bắc",
+      "intro": "Trang tư vấn tuyển sinh nghề mỏ dành cho lao động nam Điện Biên cần một quy trình rõ ràng trước khi ra Quảng Ninh học tập.",
+      "local_note": "Kiểm tra điều kiện từ xa trước, xác nhận đợt tiếp nhận và hướng dẫn hành trình sau.",
+      "story_url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/dien-bien/"
+    },
+    {
+      "slug": "son-la",
+      "name": "Sơn La",
+      "region": "Tây Bắc",
+      "intro": "Thông tin cho lao động nam Sơn La quan tâm học nghề mỏ, chế độ ăn ở trong thời gian học và cơ hội làm việc tại Quảng Ninh.",
+      "local_note": "Nên gửi đủ ba thông tin cơ bản để được kiểm tra trước khi chuẩn bị giấy tờ.",
+      "story_url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/son-la/"
+    },
+    {
+      "slug": "lao-cai",
+      "name": "Lào Cai",
+      "region": "Tây Bắc",
+      "intro": "Kênh tư vấn cho lao động nam Lào Cai muốn tìm hiểu chương trình học nghề mỏ và nơi làm việc thực tế tại Quảng Ninh.",
+      "local_note": "Thu nhập được trao đổi theo tính chất công việc và đơn vị; website không cam kết mức lương cố định.",
+      "story_url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/lao-cai/"
+    }
+  ]
+}
