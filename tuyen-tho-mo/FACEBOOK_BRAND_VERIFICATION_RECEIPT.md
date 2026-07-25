@@ -1,0 +1,28 @@
+# Facebook brand image deployment verification
+
+- Status: VERIFIED_SUCCESS
+- Feature: Facebook cover and avatar website synchronization
+- Home URL: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/
+- Home HTTP: 200
+- App loader HTTP: 200
+- Facebook brand JS HTTP: 200
+- Facebook brand CSS HTTP: 200
+- Cover part 00 HTTP: 200
+- Cover part 01 HTTP: 200
+- Cover part 02 HTTP: 200
+- Avatar base64 HTTP: 200
+- Cover WebP decode: VERIFIED
+- Avatar WebP decode: VERIFIED
+- Header avatar styling: VERIFIED
+- Hero cover styling: VERIFIED
+- About portrait styling: VERIFIED
+- Facebook sync section: VERIFIED
+- Zalo CTA: VERIFIED
+- Messenger CTA: VERIFIED
+- Existing root website HTTP: 200
+- Existing root website preserved: VERIFIED
+- Feature merge commit: 3f155a85fe3c7c4514e9394890e154ca99791b03
+- Source commit: 8dc48a4c68fda86ca8c18665cd91a3dd6b61e1b0
+- Workflow run: https://github.com/nguyenlinhns-arch/cong-nhan-cac-tinh/actions/runs/30158826252
+- Verified at UTC: 2026-07-25T12:57:05Z
+- Rollback: revert commit 3f155a85fe3c7c4514e9394890e154ca99791b03 and remove this receipt
