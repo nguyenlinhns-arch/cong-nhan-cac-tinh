@@ -1,0 +1,39 @@
+name: Actions health check
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.actions-health-trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  health:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Record health receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > ACTIONS_HEALTH_RECEIPT.md <<EOF
+          # GitHub Actions health receipt
+
+          - Status: VERIFIED
+          - Trigger commit: ${GITHUB_SHA}
+          - Workflow run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
+          - Checked at UTC: $(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          EOF
+          rm -f .actions-health-trigger .github/workflows/actions-health-check.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'test: record GitHub Actions health [skip ci]'
+          git push origin HEAD:main
