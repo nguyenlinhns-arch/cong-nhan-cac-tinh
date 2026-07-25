@@ -1,0 +1,41 @@
+name: Fix one v1.1.0 archive byte
+
+on:
+  push:
+    branches: [main]
+    paths: ['.fix-v110-chunk-trigger']
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Remove the verified extra character
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          p=Path('.deploy/thay-linh-v110-lite/part-003-02')
+          s=p.read_text(encoding='utf-8')
+          assert len(s)==4001, len(s)
+          assert s[3245]=='s', repr(s[3235:3256])
+          corrected=s[:3245]+s[3246:]
+          assert len(corrected)==4000
+          blob=hashlib.sha1(b'blob 4000\0'+corrected.encode()).hexdigest()
+          assert blob=='7201587825586bec5c92b3fdfa1055e901b3ea04', blob
+          p.write_text(corrected,encoding='utf-8')
+          PY
+          rm -f .fix-v110-chunk-trigger .github/workflows/fix-v110-chunk.yml ARCHIVE_DIAGNOSTIC.md
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'fix: remove verified extra byte from v1.1.0 archive [skip ci]'
+          git push origin HEAD:main
