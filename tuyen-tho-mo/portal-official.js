@@ -130,6 +130,39 @@
     formatVisiblePhone();
   }
 
+  function injectProvinceVideoShowcase() {
+    const mediaSection = $('#anh-video');
+    const showcase = $('.media-showcase', mediaSection || document);
+    if (!mediaSection || !showcase || showcase.dataset.provinceVideos === 'true') return;
+
+    const title = $('.media-copy h2', mediaSection);
+    if (title) title.textContent = 'Xem video câu chuyện công nhân theo tỉnh.';
+    const copy = $('.media-copy p:not(.badge)', mediaSection);
+    if (copy) copy.textContent = 'Các video được chọn từ kênh YouTube để người lao động xem hình ảnh thật, câu chuyện thật và đời sống vùng mỏ trước khi nhắn tư vấn.';
+    const ghost = $('.media-actions .btn--ghost', mediaSection);
+    if (ghost) {
+      ghost.href = 'https://www.youtube.com/channel/UCjQmG8ShxuD_qf_o6YGWz8w';
+      ghost.textContent = 'Mở kênh YouTube';
+    }
+
+    const videos = [
+      { id: 'ts41cqu7r9c', province: 'Thanh Hóa', title: 'Chàng trai Mường Lát lập nghiệp từ nghề mỏ', large: true },
+      { id: 'TIDiY-Nuo_4', province: 'Thanh Hóa · Quảng Ninh', title: 'Hành trình an cư, lập nghiệp tại vùng đất Mỏ' },
+      { id: 'ZynHtWJvyUs', province: 'Câu chuyện công nhân', title: 'Gắn bó với ngành Than là một quyết định đúng đắn' },
+      { id: 't7ekLxtWRLE', province: 'Đời sống thợ mỏ', title: 'An cư, lập nghiệp cùng ngành Than' }
+    ];
+
+    showcase.dataset.provinceVideos = 'true';
+    showcase.className = 'media-showcase province-video-showcase';
+    showcase.innerHTML = videos.map(video => `
+      <article class="province-video-card${video.large ? ' province-video-card--large' : ''}">
+        <div class="province-video-frame">
+          <iframe loading="lazy" title="${video.title}" src="https://www.youtube-nocookie.com/embed/${video.id}?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="province-video-caption"><small>${video.province}</small><strong>${video.title}</strong></div>
+      </article>`).join('');
+  }
+
   function injectContactPanel() {
     if (document.querySelector('.contact-panel')) return;
     const hero = $('.hero');
@@ -185,6 +218,7 @@
   }
 
   removeNegativeCopy();
+  injectProvinceVideoShowcase();
   injectContactPanel();
   injectQuickContact();
 
