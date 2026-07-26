@@ -7,7 +7,7 @@
 - Người lao động ở Gia Lai, Đắk Lắk, Quảng Ngãi, Quảng Trị, Thanh Hóa, Nghệ An, Hà Tĩnh, Điện Biên, Sơn La, Lào Cai và các tỉnh khác có thể kiểm tra điều kiện từ xa.
 - Nơi học nghề và nơi làm việc thực tế là Quảng Ninh theo kế hoạch tiếp nhận từng đợt.
 - Chế độ hiện hành được tư vấn lại theo từng đợt: miễn học phí theo chỉ tiêu; ăn, ở và hỗ trợ theo chính sách.
-- Thu nhập thợ lò chỉ là thông tin tham khảo, không phải cam kết lương cố định.
+- Thu nhập thực tế phụ thuộc vị trí, ngày công, năng suất và đơn vị.
 - Điều kiện cụ thể được kiểm tra trước khi hướng dẫn hồ sơ. Thông tin được tư vấn theo từng đợt tiếp nhận.
 
 ## Người tư vấn
@@ -25,6 +25,8 @@ Nguyễn Tử Linh, thường được biết đến với tên “Thầy Linh �
 - Điều kiện tuyển thợ lò: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/dieu-kien-tuyen-tho-lo/
 - Lộ trình học nghề mỏ: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/lo-trinh-hoc-nghe-mo/
 - Thu nhập và đời sống thợ lò: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/luong-va-doi-song-tho-lo/
+- Hơn 13.500 thợ lò thu nhập trên 300 triệu đồng năm 2025: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/
+- Thu nhập thợ lò qua các năm 2022–2025: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/thu-nhap-tho-lo-qua-cac-nam/
 - Quyền riêng tư: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/quyen-rieng.html
 
 ## Nguyên tắc nguồn và video
@@ -33,4 +35,4 @@ Nguyễn Tử Linh, thường được biết đến với tên “Thầy Linh �
 - Website không tải lại video bằng công cụ không chính thức.
 - Nếu nội dung gốc chuyển khỏi chế độ công khai, phần nhúng có thể không còn hiển thị.
 
-Cập nhật: 2026-07-25
+Cập nhật: 2026-07-26
