@@ -17,7 +17,7 @@
 - Trong thời gian thực tập tại doanh nghiệp, thông báo 2025 nêu mức hưởng từ 85% đến 100% lương công nhân cùng dây chuyền, kèm bảo hộ lao động, ăn định lượng, xe đưa đón và chỗ ở.
 - Sau tốt nghiệp đạt yêu cầu, người học được ký hợp đồng lao động, bố trí công việc theo nghề đào tạo và hưởng các chế độ bảo hiểm theo quy định.
 - Ba nhóm nghề được nêu: Kỹ thuật khai thác mỏ hầm lò, Kỹ thuật xây dựng mỏ hầm lò và Kỹ thuật cơ điện mỏ hầm lò.
-- Hồ sơ cần mang: căn cước công dân gốc.
+- Hồ sơ cần chuẩn bị: căn cước công dân, giấy khai sinh và bằng tốt nghiệp cấp 2 hoặc cấp 3 nếu có; chưa có bằng thì không bắt buộc.
 - Các mốc độ tuổi, thể lực, thời gian đào tạo và mức hưởng trong thông báo 2025 chỉ dùng để tham khảo. Điều kiện 2026 phải được xác nhận theo từng doanh nghiệp, nghề học và đợt tiếp nhận.
 
 ## Người tư vấn
@@ -34,6 +34,7 @@ Nguyễn Tử Linh, thường được biết đến với tên “Thầy Linh �
 - Tin ngành Than: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/
 - RSS bài mới: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/feed.xml
 - JSON Feed bài mới: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/feed.json
+- Phúc lợi thợ mỏ TKV 2026: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/2026/07/30/phuc-loi-tho-mo-tkv-2026/
 - Muốn học nghề mỏ, cần gửi 3 thông tin gì trước?: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/2026/07/30/ba-thong-tin-kiem-tra-dieu-kien-hoc-nghe-mo/
 - Điều kiện tuyển thợ lò: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/dieu-kien-tuyen-tho-lo/
 - Lộ trình học nghề mỏ: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/lo-trinh-hoc-nghe-mo/
@@ -48,4 +49,4 @@ Nguyễn Tử Linh, thường được biết đến với tên “Thầy Linh �
 - Website không tải lại video bằng công cụ không chính thức.
 - Nếu nội dung gốc chuyển khỏi chế độ công khai, phần nhúng có thể không còn hiển thị.
 
-Cập nhật: 2026-07-30 — hồ sơ chỉ cần căn cước công dân gốc.
+Cập nhật: 2026-07-30 — bổ sung bài về phúc lợi thợ mỏ TKV 2026; hồ sơ gồm căn cước công dân, giấy khai sinh và bằng cấp 2 hoặc cấp 3 nếu có.
