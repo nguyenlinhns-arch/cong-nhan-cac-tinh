@@ -7,8 +7,8 @@ const published = "2026-07-30T10:30:00+07:00";
 const dateLabel = "30/07/2026";
 
 const images = {
-  entry: ["vinacomin-dao-tao-tho-lo.webp", "vinacomin-hoc-sinh-trai-nghiem-mo.webp"],
-  training: ["vinacomin-hoc-sinh-trai-nghiem-mo.webp", "vinacomin-dao-tao-tho-lo.webp"],
+  entry: ["vinacomin-tho-mo-ham-lo-1200.webp", "vinacomin-hoc-sinh-trai-nghiem-mo.webp"],
+  training: ["vinacomin-hoc-sinh-trai-nghiem-mo.webp", "vinacomin-tho-mo-ham-lo-1200.webp"],
   work: ["vinacomin-tho-mo-ham-lo-1200.webp", "vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp"],
   welfare: ["vinacomin-tho-lo-thao-a-bang.webp", "vinacomin-tho-mo-ham-lo-1200.webp"],
   technology: ["vinacomin-co-gioi-hoa-ham-lo.webp", "gallery-longwall-machine.webp"],
