@@ -139,7 +139,7 @@
   const provinceTitle = document.querySelector("[data-province-title]");
   const provinceCount = document.querySelector("[data-province-count]");
   const provinceSalary = document.querySelector("[data-province-salary]");
-  const provinceAlbum = document.querySelector("[data-province-album]");
+  const provinceSalaryView = document.querySelector("[data-province-salary-view], [data-province-album]");
   const provinceAlbumButton = document.querySelector("[data-province-album-button]");
   const provincePage = document.querySelector("[data-province-page]");
   const provinceMissing = document.querySelector("[data-province-missing]");
@@ -158,13 +158,12 @@
 
     const hasSalary = Boolean(province.salaryImage && province.album);
     provinceCount.textContent = hasSalary ? `${province.salaryCount} ảnh lương` : "Đang cập nhật ảnh";
-    provinceAlbum.hidden = !hasSalary;
+    provinceSalaryView.hidden = !hasSalary;
     provinceMissing.hidden = hasSalary;
     provinceAlbumButton.hidden = !hasSalary;
     if (hasSalary) {
       provinceSalary.src = `${province.salaryImage}=w1000-no`;
       provinceSalary.alt = `Bảng lương công nhân ${province.name}`;
-      provinceAlbum.href = province.album;
       provinceAlbumButton.href = province.album;
     }
     provinceStatus.textContent = province.fallback
