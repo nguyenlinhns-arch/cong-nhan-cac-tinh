@@ -133,13 +133,14 @@ function esc(value) {
 }
 
 function description(topic) {
-  const text = `${topic.title}. ${topic.lead} Hướng dẫn rõ điều kiện, quy trình và lưu ý thực tế từ Thầy Linh.`;
+  const cleanTitle = topic.title.replace(/[?.!]+$/,"");
+  const text = `${cleanTitle}. ${topic.lead} Hướng dẫn rõ điều kiện, quy trình và lưu ý thực tế từ Thầy Linh.`;
   return text.length > 158 ? `${text.slice(0,155).replace(/\s+\S*$/,"")}…` : text;
 }
 
 function secondaryKeywords(topic) {
   const label = clusterInfo[topic.cluster].label.toLowerCase();
-  return [topic.keyword, "tuyển thợ mỏ Quảng Ninh", "học nghề mỏ", label, "Thầy Linh tuyển thợ mỏ"];
+  return [...new Set([topic.keyword, "tuyển thợ mỏ Quảng Ninh", "học nghề mỏ", label, "Thầy Linh tuyển thợ mỏ"])];
 }
 
 function pointExpansion(point, index, topic) {
