@@ -1,47 +1,759 @@
 {
   "version": "https://jsonfeed.org/version/1.1",
-  "title": "Bài mới – Thầy Linh Tuyển Thợ Mỏ",
-  "home_page_url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/",
+  "title": "Thầy Linh – Cẩm nang nghề mỏ",
+  "home_page_url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/",
   "feed_url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/feed.json",
-  "description": "Tin ngành Than, điều kiện tuyển thợ lò, hướng dẫn học nghề mỏ và đời sống người lao động tại Quảng Ninh.",
   "language": "vi-VN",
-  "authors": [
-    {
-      "name": "Nguyễn Tử Linh",
-      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/#gioi-thieu",
-      "avatar": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/thay-linh-avatar.webp"
-    }
-  ],
   "items": [
     {
-      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/2026/07/30/phuc-loi-tho-mo-tkv-2026/",
-      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/2026/07/30/phuc-loi-tho-mo-tkv-2026/",
-      "title": "Phúc lợi thợ mỏ TKV 2026: nhà ở, sức khỏe và bữa ăn",
-      "summary": "Tóm tắt có nguồn về hỗ trợ nhà ở, khám sức khỏe, nghỉ dưỡng, bữa ăn và đối thoại với người lao động TKV trong 6 tháng đầu năm 2026.",
-      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-mo-ham-lo-1200.webp",
-      "date_published": "2026-07-30T14:00:00+07:00",
-      "date_modified": "2026-07-30T14:00:00+07:00",
-      "tags": ["phúc lợi thợ mỏ TKV 2026", "đời sống công nhân mỏ", "Mái ấm Công đoàn TKV"]
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/dieu-kien-tuyen-tho-lo-2026/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/dieu-kien-tuyen-tho-lo-2026/",
+      "title": "Điều kiện tuyển thợ lò 2026: kiểm tra trước khi đăng ký",
+      "summary": "Điều kiện cơ bản gồm độ tuổi, thể lực và sức khỏe; kết quả cuối cùng căn cứ kiểm tra của đơn vị tiếp nhận.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-dao-tao-tho-lo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "điều kiện tuyển thợ lò 2026",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "điều kiện và hồ sơ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
     },
     {
-      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/2026/07/30/ba-thong-tin-kiem-tra-dieu-kien-hoc-nghe-mo/",
-      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/2026/07/30/ba-thong-tin-kiem-tra-dieu-kien-hoc-nghe-mo/",
-      "title": "Muốn học nghề mỏ, cần gửi 3 thông tin gì trước?",
-      "summary": "Ba thông tin giúp kiểm tra điều kiện ban đầu trước khi hướng dẫn hồ sơ học nghề mỏ tại Quảng Ninh.",
-      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-mo-ham-lo-1200.webp",
-      "date_published": "2026-07-30T11:00:00+07:00",
-      "date_modified": "2026-07-30T11:00:00+07:00",
-      "tags": ["học nghề mỏ 2026", "tuyển thợ lò 2026", "điều kiện học nghề mỏ"]
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/ba-thong-tin-dang-ky-hoc-nghe-mo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/ba-thong-tin-dang-ky-hoc-nghe-mo/",
+      "title": "Ba thông tin cần gửi khi đăng ký học nghề mỏ",
+      "summary": "Năm sinh, chiều cao/cân nặng và tình trạng sức khỏe giúp kiểm tra nhanh khả năng phù hợp.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "đăng ký học nghề mỏ",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "điều kiện và hồ sơ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
     },
     {
-      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/",
-      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/",
-      "title": "Hơn 13.500 thợ lò thu nhập trên 300 triệu đồng/năm 2025",
-      "summary": "Số liệu TKV năm 2025 về nhóm thợ lò đạt thu nhập trên 300 triệu đồng mỗi năm.",
-      "image": "https://i.ytimg.com/vi/ts41cqu7r9c/maxresdefault.jpg",
-      "date_published": "2026-07-26T08:00:00+07:00",
-      "date_modified": "2026-07-26T08:00:00+07:00",
-      "tags": ["thu nhập thợ lò", "TKV 2025"]
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/ho-so-hoc-nghe-mo-can-gi/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/ho-so-hoc-nghe-mo-can-gi/",
+      "title": "Hồ sơ học nghề mỏ cần gì? Danh sách ngắn dễ nhớ",
+      "summary": "Hồ sơ hiện hướng dẫn gồm căn cước công dân, giấy khai sinh và bằng cấp 2 hoặc cấp 3 nếu có.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-dao-tao-tho-lo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "hồ sơ học nghề mỏ cần gì",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "điều kiện và hồ sơ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/tuoi-hoc-nghe-mo-va-lam-tho-lo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/tuoi-hoc-nghe-mo-va-lam-tho-lo/",
+      "title": "Bao nhiêu tuổi có thể học nghề mỏ và làm thợ lò?",
+      "summary": "Người từ 18 đến 40 tuổi có thể gửi thông tin kiểm tra ban đầu, sau đó tiếp tục xét sức khỏe và tiêu chí của đợt tuyển.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "tuổi học nghề mỏ",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "điều kiện và hồ sơ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/chieu-cao-can-nang-tuyen-tho-lo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/chieu-cao-can-nang-tuyen-tho-lo/",
+      "title": "Chiều cao, cân nặng tuyển thợ lò: cách tự kiểm tra",
+      "summary": "Mốc tham khảo hiện hành là từ 1m53 và 47kg; nên đo đúng thay vì ước lượng.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-dao-tao-tho-lo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "chiều cao cân nặng tuyển thợ lò",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "điều kiện và hồ sơ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/suc-khoe-hoc-nghe-mo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/suc-khoe-hoc-nghe-mo/",
+      "title": "Sức khỏe học nghề mỏ: những điều phải khai trung thực",
+      "summary": "Nghề mỏ có yêu cầu sức khỏe riêng; việc khai đúng giúp bảo vệ chính người lao động và đồng đội.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "sức khỏe học nghề mỏ",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "điều kiện và hồ sơ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/can-thi-co-hoc-nghe-mo-duoc-khong/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/can-thi-co-hoc-nghe-mo-duoc-khong/",
+      "title": "Cận thị có học nghề mỏ được không? Cách kiểm tra đúng",
+      "summary": "Tình trạng thị lực cần được khai trước và đánh giá theo tiêu chuẩn sức khỏe của vị trí dự kiến.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-dao-tao-tho-lo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "cận thị có học nghề mỏ được không",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "điều kiện và hồ sơ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/quy-trinh-dang-ky-tuyen-tho-mo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/quy-trinh-dang-ky-tuyen-tho-mo/",
+      "title": "Quy trình đăng ký tuyển thợ mỏ từ xa đến nhập học",
+      "summary": "Quy trình rõ ràng giúp người ở xa giảm đi lại và tránh chuẩn bị sai giấy tờ.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "quy trình đăng ký tuyển thợ mỏ",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "điều kiện và hồ sơ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/chuan-bi-truoc-ngay-nhap-hoc-nghe-mo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/chuan-bi-truoc-ngay-nhap-hoc-nghe-mo/",
+      "title": "Chuẩn bị gì trước ngày nhập học nghề mỏ?",
+      "summary": "Ngoài giấy tờ, người học cần chuẩn bị đồ dùng cá nhân, lịch trình và tâm lý tuân thủ nội quy.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-dao-tao-tho-lo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "chuẩn bị nhập học nghề mỏ",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "điều kiện và hồ sơ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/sai-lam-khi-dang-ky-hoc-nghe-mo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/sai-lam-khi-dang-ky-hoc-nghe-mo/",
+      "title": "7 sai lầm thường gặp khi đăng ký học nghề mỏ",
+      "summary": "Các lỗi phổ biến thường đến từ thông tin thiếu, tin lời môi giới không rõ danh tính hoặc đi trước khi có lịch.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "sai lầm khi đăng ký học nghề mỏ",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "điều kiện và hồ sơ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/",
+      "title": "Học nghề khai thác mỏ 2–3 tháng gồm những gì?",
+      "summary": "Khóa học tập trung vào kỹ năng khai thác, an toàn, thực hành và kỷ luật lao động trước khi làm việc.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "học nghề khai thác mỏ 2–3 tháng",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "học nghề mỏ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/hoc-nghe-xay-dung-mo-2-3-thang/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/hoc-nghe-xay-dung-mo-2-3-thang/",
+      "title": "Học nghề xây dựng mỏ 2–3 tháng: công việc và kỹ năng",
+      "summary": "Người học được làm quen với công việc đào, chống giữ và duy trì đường lò theo thiết kế, quy trình an toàn.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-dao-tao-tho-lo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "học nghề xây dựng mỏ",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "học nghề mỏ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/hoc-co-dien-mo-10-thang/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/hoc-co-dien-mo-10-thang/",
+      "title": "Học cơ điện mỏ 10 tháng: lộ trình cho người mới",
+      "summary": "Cơ điện mỏ cần thời gian dài hơn để học kiến thức điện, cơ khí, thiết bị và quy trình an toàn.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "học cơ điện mỏ 10 tháng",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "học nghề mỏ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/mien-hoc-phi-hoc-nghe-mo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/mien-hoc-phi-hoc-nghe-mo/",
+      "title": "Học nghề mỏ có mất học phí không?",
+      "summary": "Người học theo chỉ tiêu được miễn kinh phí đào tạo; chế độ cụ thể cần xác nhận theo đợt tiếp nhận.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-dao-tao-tho-lo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "học nghề mỏ miễn học phí",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "học nghề mỏ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/ky-tuc-xa-va-an-o-khi-hoc-nghe-mo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/ky-tuc-xa-va-an-o-khi-hoc-nghe-mo/",
+      "title": "Ký túc xá và ăn ở khi học nghề mỏ tại Quảng Ninh",
+      "summary": "Người học được bố trí ăn và ở theo kế hoạch của khóa; cần tuân thủ nội quy sinh hoạt tập thể.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "ký túc xá học nghề mỏ",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "học nghề mỏ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/hoc-thuc-hanh-nghe-mo-ham-lo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/hoc-thuc-hanh-nghe-mo-ham-lo/",
+      "title": "Học thực hành nghề mỏ hầm lò có gì khác lý thuyết?",
+      "summary": "Thực hành giúp người học chuyển kiến thức thành thao tác, phối hợp tổ đội và phản xạ an toàn.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-dao-tao-tho-lo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "học thực hành nghề mỏ hầm lò",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "học nghề mỏ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/dao-tao-an-toan-truoc-khi-vao-lo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/dao-tao-an-toan-truoc-khi-vao-lo/",
+      "title": "Đào tạo an toàn trước khi vào hầm lò",
+      "summary": "An toàn là nội dung bắt buộc trước khi người học tiếp cận môi trường sản xuất thực tế.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "đào tạo an toàn hầm lò",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "học nghề mỏ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/lo-trinh-hoc-nghe-mo-den-nhan-viec/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/lo-trinh-hoc-nghe-mo-den-nhan-viec/",
+      "title": "Lộ trình học nghề mỏ đến khi được nhận việc",
+      "summary": "Từ kiểm tra điều kiện đến học, đánh giá và doanh nghiệp tiếp nhận là một chuỗi bước cần hoàn thành đầy đủ.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-dao-tao-tho-lo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "lộ trình học nghề mỏ",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "học nghề mỏ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/hoc-xong-nghe-mo-lam-viec-o-dau/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/hoc-xong-nghe-mo-lam-viec-o-dau/",
+      "title": "Học xong nghề mỏ làm việc ở đâu tại Quảng Ninh?",
+      "summary": "Người đạt yêu cầu được bố trí về doanh nghiệp ngành Than theo chỉ tiêu, nhu cầu và kết quả đào tạo.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "học nghề mỏ làm việc ở đâu",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "học nghề mỏ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/chon-nghe-khai-thac-xay-dung-hay-co-dien-mo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/chon-nghe-khai-thac-xay-dung-hay-co-dien-mo/",
+      "title": "Nên chọn khai thác mỏ, xây dựng mỏ hay cơ điện mỏ?",
+      "summary": "Lựa chọn nên dựa vào sức khỏe, sở thích kỹ thuật, thời gian học và công việc mong muốn.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-dao-tao-tho-lo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "nên chọn nghề mỏ nào",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "học nghề mỏ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/tho-khai-thac-mo-lam-cong-viec-gi/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/tho-khai-thac-mo-lam-cong-viec-gi/",
+      "title": "Thợ khai thác mỏ làm công việc gì trong hầm lò?",
+      "summary": "Công việc gắn với khai thác than, vận hành theo quy trình và phối hợp chặt chẽ trong tổ sản xuất.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-mo-ham-lo-1200.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "thợ khai thác mỏ làm gì",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "công việc và thu nhập",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/tho-xay-dung-mo-lam-gi/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/tho-xay-dung-mo-lam-gi/",
+      "title": "Thợ xây dựng mỏ làm gì? Vai trò của đường lò",
+      "summary": "Thợ xây dựng mỏ tham gia tạo lập, chống giữ và duy trì hệ thống đường lò phục vụ khai thác an toàn.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "thợ xây dựng mỏ làm gì",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "công việc và thu nhập",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/cong-viec-co-dien-mo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/cong-viec-co-dien-mo/",
+      "title": "Công việc cơ điện mỏ: thiết bị, bảo dưỡng và an toàn",
+      "summary": "Người làm cơ điện góp phần duy trì thiết bị, nguồn điện và hệ thống phục vụ sản xuất hoạt động ổn định.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-mo-ham-lo-1200.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "công việc cơ điện mỏ",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "công việc và thu nhập",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/ca-lam-viec-cua-tho-lo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/ca-lam-viec-cua-tho-lo/",
+      "title": "Ca làm việc của thợ lò được tổ chức như thế nào?",
+      "summary": "Mỗi ca gồm chuẩn bị, di chuyển, nhận vị trí, sản xuất và bàn giao; thời gian cụ thể theo đơn vị.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "ca làm việc của thợ lò",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "công việc và thu nhập",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/luong-tho-lo-20-25-trieu-moi-thang/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/luong-tho-lo-20-25-trieu-moi-thang/",
+      "title": "Lương thợ lò 20–25 triệu/tháng được hiểu thế nào?",
+      "summary": "Đây là mức tham khảo phổ biến; thực nhận thay đổi theo doanh nghiệp, vị trí, ngày công và năng suất.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-mo-ham-lo-1200.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "lương thợ lò 20–25 triệu",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "công việc và thu nhập",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/cach-tinh-luong-tho-lo-theo-ngay-cong-nang-suat/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/cach-tinh-luong-tho-lo-theo-ngay-cong-nang-suat/",
+      "title": "Cách tính lương thợ lò theo ngày công và năng suất",
+      "summary": "Muốn đọc đúng bảng lương cần đối chiếu đơn giá, ngày công, sản lượng, phụ cấp và các khoản khấu trừ.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "cách tính lương thợ lò",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "công việc và thu nhập",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/phu-cap-va-che-do-tho-lo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/phu-cap-va-che-do-tho-lo/",
+      "title": "Phụ cấp và chế độ thợ lò cần hỏi những gì?",
+      "summary": "Ngoài lương, người lao động nên hỏi rõ ăn ca, bảo hộ, đi lại, chỗ ở và các khoản theo điều kiện làm việc.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-mo-ham-lo-1200.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "phụ cấp thợ lò",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "công việc và thu nhập",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/bao-hiem-cho-cong-nhan-nganh-than/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/bao-hiem-cho-cong-nhan-nganh-than/",
+      "title": "Bảo hiểm cho công nhân ngành Than: điều cần biết",
+      "summary": "Khi ký hợp đồng, người lao động cần đọc nội dung về bảo hiểm, quyền lợi và trách nhiệm của hai bên.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "bảo hiểm công nhân ngành Than",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "công việc và thu nhập",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/lam-sao-tang-thu-nhap-tho-lo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/lam-sao-tang-thu-nhap-tho-lo/",
+      "title": "Làm sao để tăng thu nhập thợ lò bền vững?",
+      "summary": "Thu nhập bền vững đến từ ngày công ổn định, tay nghề, năng suất và kỷ luật an toàn, không phải làm nhanh bằng mọi giá.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-mo-ham-lo-1200.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "tăng thu nhập thợ lò",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "công việc và thu nhập",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/nghe-tho-lo-co-on-dinh-khong/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/nghe-tho-lo-co-on-dinh-khong/",
+      "title": "Nghề thợ lò có ổn định không? Cách tự đánh giá",
+      "summary": "Sự ổn định phụ thuộc nhu cầu sản xuất, hợp đồng, sức khỏe, kỷ luật và khả năng gắn bó của mỗi người.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "nghề thợ lò có ổn định không",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "công việc và thu nhập",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/nha-o-ky-tuc-xa-cong-nhan-mo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/nha-o-ky-tuc-xa-cong-nhan-mo/",
+      "title": "Nhà ở, ký túc xá cho công nhân mỏ tại Quảng Ninh",
+      "summary": "Chỗ ở ổn định giúp lao động xa quê giảm áp lực chi phí và duy trì sức khỏe khi làm việc theo ca.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-lo-thao-a-bang.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "nhà ở công nhân mỏ Quảng Ninh",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "đời sống và phúc lợi",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/bua-an-ca-va-dinh-duong-tho-mo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/bua-an-ca-va-dinh-duong-tho-mo/",
+      "title": "Bữa ăn ca và dinh dưỡng cho thợ mỏ",
+      "summary": "Công việc nặng nhọc cần bữa ăn đủ năng lượng, nước uống và thói quen phục hồi sau ca.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-mo-ham-lo-1200.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "bữa ăn ca thợ mỏ",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "đời sống và phúc lợi",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/kham-suc-khoe-dinh-ky-tho-mo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/kham-suc-khoe-dinh-ky-tho-mo/",
+      "title": "Khám sức khỏe định kỳ cho thợ mỏ có ý nghĩa gì?",
+      "summary": "Khám định kỳ giúp theo dõi ảnh hưởng nghề nghiệp, phát hiện sớm vấn đề và điều chỉnh công việc khi cần.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-lo-thao-a-bang.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "khám sức khỏe định kỳ thợ mỏ",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "đời sống và phúc lợi",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/xe-dua-don-cong-nhan-mo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/xe-dua-don-cong-nhan-mo/",
+      "title": "Xe đưa đón công nhân mỏ: điều cần xác nhận",
+      "summary": "Xe đưa đón giúp kết nối khu ở với nơi làm việc; giờ và tuyến phụ thuộc từng doanh nghiệp.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-mo-ham-lo-1200.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "xe đưa đón công nhân mỏ",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "đời sống và phúc lợi",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/bao-ho-lao-dong-tho-lo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/bao-ho-lao-dong-tho-lo/",
+      "title": "Bảo hộ lao động thợ lò gồm gì và dùng ra sao?",
+      "summary": "Trang bị chỉ bảo vệ tốt khi đúng loại, vừa kích cỡ, được kiểm tra và sử dụng trong suốt thời gian yêu cầu.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-co-gioi-hoa-ham-lo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "bảo hộ lao động thợ lò",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "an toàn và công nghệ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/thong-gio-ham-lo-va-an-toan/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/thong-gio-ham-lo-va-an-toan/",
+      "title": "Thông gió hầm lò và vai trò đối với an toàn thợ mỏ",
+      "summary": "Thông gió giúp kiểm soát không khí, nhiệt và khí mỏ; người lao động phải tuân thủ tuyến và cảnh báo kỹ thuật.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/gallery-longwall-machine.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "thông gió hầm lò",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "an toàn và công nghệ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/co-gioi-hoa-khai-thac-ham-lo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/co-gioi-hoa-khai-thac-ham-lo/",
+      "title": "Cơ giới hóa khai thác hầm lò thay đổi công việc ra sao?",
+      "summary": "Thiết bị giúp giảm sức lao động ở nhiều công đoạn, nâng năng suất và yêu cầu người thợ hiểu quy trình vận hành.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-co-gioi-hoa-ham-lo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "cơ giới hóa khai thác hầm lò",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "an toàn và công nghệ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/tu-dong-hoa-trong-nganh-than/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/tu-dong-hoa-trong-nganh-than/",
+      "title": "Tự động hóa trong ngành Than và kỹ năng người lao động",
+      "summary": "Tự động hóa hỗ trợ giám sát và điều khiển, đồng thời làm tăng nhu cầu về kỹ năng kỹ thuật và xử lý thông tin.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/gallery-longwall-machine.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "tự động hóa ngành Than",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "an toàn và công nghệ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/chuyen-doi-so-trong-mo-ham-lo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/chuyen-doi-so-trong-mo-ham-lo/",
+      "title": "Chuyển đổi số trong mỏ hầm lò: người thợ được lợi gì?",
+      "summary": "Dữ liệu sản xuất, thiết bị và an toàn được kết nối tốt hơn giúp doanh nghiệp phản ứng nhanh và tổ chức công việc chính xác.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-co-gioi-hoa-ham-lo.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "chuyển đổi số mỏ hầm lò",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "an toàn và công nghệ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/van-tai-ham-lo-hien-dai/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/van-tai-ham-lo-hien-dai/",
+      "title": "Vận tải hầm lò hiện đại giúp giảm sức lao động thế nào?",
+      "summary": "Hệ thống vận tải người, vật tư và than là mắt xích quan trọng để giảm thời gian di chuyển và công việc thủ công.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/gallery-longwall-machine.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "vận tải hầm lò hiện đại",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "an toàn và công nghệ",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-thanh-hoa/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-thanh-hoa/",
+      "title": "Việc làm thợ mỏ cho lao động Thanh Hóa tại Quảng Ninh",
+      "summary": "Lao động Thanh Hóa có thể kiểm tra điều kiện từ xa, chuẩn bị hồ sơ và kế hoạch di chuyển trước khi nhập học.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-lo-thao-a-bang.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "việc làm thợ mỏ Thanh Hóa",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "việc làm theo địa phương",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-nghe-an/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-nghe-an/",
+      "title": "Việc làm thợ mỏ cho lao động Nghệ An: lộ trình đăng ký",
+      "summary": "Người lao động Nghệ An nên hoàn thành sàng lọc sức khỏe và xác nhận lịch trước khi ra Quảng Ninh.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "việc làm thợ mỏ Nghệ An",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "việc làm theo địa phương",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-ha-tinh/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-ha-tinh/",
+      "title": "Việc làm thợ mỏ cho lao động Hà Tĩnh cần chuẩn bị gì?",
+      "summary": "Kế hoạch tốt giúp người Hà Tĩnh chủ động chi phí đi lại, hồ sơ và thời gian xa gia đình.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-lo-thao-a-bang.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "việc làm thợ mỏ Hà Tĩnh",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "việc làm theo địa phương",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-quang-tri/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-quang-tri/",
+      "title": "Việc làm thợ mỏ cho lao động Quảng Trị tại Quảng Ninh",
+      "summary": "Từ Quảng Trị ra Quảng Ninh là hành trình dài, vì vậy mọi thông tin tuyển sinh cần được xác nhận trước.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "việc làm thợ mỏ Quảng Trị",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "việc làm theo địa phương",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-quang-ngai/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-quang-ngai/",
+      "title": "Việc làm thợ mỏ cho lao động Quảng Ngãi: điều kiện và hồ sơ",
+      "summary": "Người lao động Quảng Ngãi có thể đăng ký từ xa nếu cung cấp đủ thông tin và đáp ứng tiêu chí sức khỏe.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-lo-thao-a-bang.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "việc làm thợ mỏ Quảng Ngãi",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "việc làm theo địa phương",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-gia-lai/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-gia-lai/",
+      "title": "Việc làm thợ mỏ cho lao động Gia Lai: câu chuyện đi xa lập nghiệp",
+      "summary": "Nhiều lao động Tây Nguyên quan tâm nghề mỏ vì thu nhập và lộ trình đào tạo rõ; quyết định cần đi cùng chuẩn bị sức khỏe.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "việc làm thợ mỏ Gia Lai",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "việc làm theo địa phương",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-dak-lak/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-dak-lak/",
+      "title": "Việc làm thợ mỏ cho lao động Đắk Lắk tại Quảng Ninh",
+      "summary": "Lao động Đắk Lắk nên tìm hiểu kỹ môi trường làm việc, thời gian học và phương án đi xa trước khi đăng ký.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-lo-thao-a-bang.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "việc làm thợ mỏ Đắk Lắk",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "việc làm theo địa phương",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-son-la/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-son-la/",
+      "title": "Việc làm thợ mỏ cho lao động Sơn La: đăng ký từ xa",
+      "summary": "Người Sơn La có thể gửi thông tin sàng lọc trước, sau đó nhận hướng dẫn hồ sơ và lịch cụ thể.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "việc làm thợ mỏ Sơn La",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "việc làm theo địa phương",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-dien-bien/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-dien-bien/",
+      "title": "Việc làm thợ mỏ cho lao động Điện Biên: chuẩn bị hành trình",
+      "summary": "Khoảng cách xa đòi hỏi người Điện Biên phải kiểm tra điều kiện và lập kế hoạch di chuyển kỹ hơn.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-lo-thao-a-bang.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "việc làm thợ mỏ Điện Biên",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "việc làm theo địa phương",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-lao-cai/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-lao-cai/",
+      "title": "Việc làm thợ mỏ cho lao động Lào Cai tại Quảng Ninh",
+      "summary": "Người lao động Lào Cai nên đối chiếu điều kiện sức khỏe, chọn nghề và xác nhận lịch trước khi khởi hành.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
+      "date_published": "2026-07-30T10:30:00+07:00",
+      "tags": [
+        "việc làm thợ mỏ Lào Cai",
+        "tuyển thợ mỏ Quảng Ninh",
+        "học nghề mỏ",
+        "việc làm theo địa phương",
+        "Thầy Linh tuyển thợ mỏ"
+      ]
     }
   ]
 }

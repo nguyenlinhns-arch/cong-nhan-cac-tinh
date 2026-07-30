@@ -1,52 +1,64 @@
 # Thầy Linh – Tuyển Thợ Mỏ
 
-> Kênh thông tin và tư vấn của Nguyễn Tử Linh về tuyển thợ lò, học nghề mỏ, việc làm ngành Than tại Quảng Ninh và kiểm tra điều kiện trước khi làm hồ sơ.
+> Website tư vấn học nghề mỏ và việc làm ngành Than tại Quảng Ninh do Nguyễn Tử Linh biên soạn.
 
-## Trả lời nhanh
-- Đối tượng sàng lọc ban đầu: nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg, sức khỏe phù hợp công việc hầm lò.
-- Người lao động ở Gia Lai, Đắk Lắk, Quảng Ngãi, Quảng Trị, Thanh Hóa, Nghệ An, Hà Tĩnh, Điện Biên, Sơn La, Lào Cai và các tỉnh khác có thể kiểm tra điều kiện từ xa.
-- Nơi học nghề và nơi làm việc thực tế là Quảng Ninh theo kế hoạch tiếp nhận từng đợt.
-- Hỗ trợ 7,5 triệu trong thời gian học; chi phí đào tạo, ăn ở và mức hưởng cụ thể được xác nhận theo từng đợt tiếp nhận.
-- Thu nhập thực tế phụ thuộc vị trí, ngày công, năng suất và đơn vị.
-- Điều kiện cụ thể được kiểm tra trước khi hướng dẫn hồ sơ. Thông tin được tư vấn theo từng đợt tiếp nhận.
+## Nội dung chính
 
-## Chính sách tham khảo từ thông báo chính thức năm 2025
-- Nguồn: Thông báo số 8588/TB-CĐTKV ngày 04/12/2024 của Trường Cao đẳng Than - Khoáng sản Việt Nam, áp dụng tuyển sinh năm 2025.
-- Doanh nghiệp ký hợp đồng tuyển lao động và cử đi học nghề; người học được miễn toàn bộ kinh phí đào tạo.
-- Trong thời gian học tại trường, thông báo 2025 nêu phục vụ miễn phí 3 bữa/ngày, 7 ngày/tuần và bố trí ký túc xá khép kín 6 người/phòng.
-- Trong thời gian thực tập tại doanh nghiệp, thông báo 2025 nêu mức hưởng từ 85% đến 100% lương công nhân cùng dây chuyền, kèm bảo hộ lao động, ăn định lượng, xe đưa đón và chỗ ở.
-- Sau tốt nghiệp đạt yêu cầu, người học được ký hợp đồng lao động, bố trí công việc theo nghề đào tạo và hưởng các chế độ bảo hiểm theo quy định.
-- Nghề khai thác mỏ và xây dựng mỏ học 2–3 tháng; Cơ điện mỏ học 10 tháng.
-- Hồ sơ cần chuẩn bị: căn cước công dân, giấy khai sinh và bằng tốt nghiệp cấp 2 hoặc cấp 3 nếu có; chưa có bằng thì không bắt buộc.
-- Các mốc độ tuổi, thể lực và mức hưởng được xác nhận theo từng doanh nghiệp, nghề học và đợt tiếp nhận.
+- Điều kiện tham khảo: Nam 18–40 tuổi, chiều cao từ 1m53, cân nặng từ 47kg và sức khỏe phù hợp.
+- Nghề khai thác mỏ và xây dựng mỏ: 2–3 tháng. Cơ điện mỏ: 10 tháng.
+- Hồ sơ hướng dẫn: căn cước công dân, giấy khai sinh, bằng cấp 2 hoặc cấp 3 nếu có.
+- Thu nhập thợ lò tham khảo: 20–25 triệu đồng/tháng, phụ thuộc vị trí, ngày công, năng suất và đơn vị.
+- Liên hệ tư vấn: Zalo 096 304 8585.
 
-## Người tư vấn
-Nguyễn Tử Linh, thường được biết đến với tên “Thầy Linh – Tuyển Thợ Mỏ”.
+## Thư viện 50 bài SEO
 
-## Liên hệ chủ động
-- Zalo: https://zalo.me/0963048585
-- Messenger: https://m.me/thaylinhtuyenthomo
-- Fanpage công khai: https://www.facebook.com/thaylinhtuyenthomo/
-
-## Trang chính
-- Trang chủ: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/
-- Ảnh và video thực tế: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/anh-video-thuc-te/
-- Tin ngành Than: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/
-- RSS bài mới: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/feed.xml
-- JSON Feed bài mới: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/feed.json
-- Phúc lợi thợ mỏ TKV 2026: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/2026/07/30/phuc-loi-tho-mo-tkv-2026/
-- Muốn học nghề mỏ, cần gửi 3 thông tin gì trước?: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/2026/07/30/ba-thong-tin-kiem-tra-dieu-kien-hoc-nghe-mo/
-- Điều kiện tuyển thợ lò: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/dieu-kien-tuyen-tho-lo/
-- Lộ trình học nghề mỏ: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/lo-trinh-hoc-nghe-mo/
-- Thu nhập và đời sống thợ lò: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/luong-va-doi-song-tho-lo/
-- Hơn 13.500 thợ lò thu nhập trên 300 triệu đồng năm 2025: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/
-- Thu nhập thợ lò qua các năm 2022–2025: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/thu-nhap-tho-lo-qua-cac-nam/
-- Quyền riêng tư: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/quyen-rieng.html
-
-## Nguyên tắc nguồn và video
-- Nội dung ngành Than chỉ tóm tắt, biên tập và dẫn link gốc từ nguồn chính thống.
-- Nội dung Facebook được nhúng hoặc dẫn về bài công khai trên fanpage.
-- Website không tải lại video bằng công cụ không chính thức.
-- Nếu nội dung gốc chuyển khỏi chế độ công khai, phần nhúng có thể không còn hiển thị.
-
-Cập nhật: 2026-07-30 — bổ sung bài về phúc lợi thợ mỏ TKV 2026; hồ sơ gồm căn cước công dân, giấy khai sinh và bằng cấp 2 hoặc cấp 3 nếu có.
+- [Điều kiện tuyển thợ lò 2026: kiểm tra trước khi đăng ký](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/dieu-kien-tuyen-tho-lo-2026/): Điều kiện cơ bản gồm độ tuổi, thể lực và sức khỏe; kết quả cuối cùng căn cứ kiểm tra của đơn vị tiếp nhận.
+- [Ba thông tin cần gửi khi đăng ký học nghề mỏ](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/ba-thong-tin-dang-ky-hoc-nghe-mo/): Năm sinh, chiều cao/cân nặng và tình trạng sức khỏe giúp kiểm tra nhanh khả năng phù hợp.
+- [Hồ sơ học nghề mỏ cần gì? Danh sách ngắn dễ nhớ](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/ho-so-hoc-nghe-mo-can-gi/): Hồ sơ hiện hướng dẫn gồm căn cước công dân, giấy khai sinh và bằng cấp 2 hoặc cấp 3 nếu có.
+- [Bao nhiêu tuổi có thể học nghề mỏ và làm thợ lò?](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/tuoi-hoc-nghe-mo-va-lam-tho-lo/): Người từ 18 đến 40 tuổi có thể gửi thông tin kiểm tra ban đầu, sau đó tiếp tục xét sức khỏe và tiêu chí của đợt tuyển.
+- [Chiều cao, cân nặng tuyển thợ lò: cách tự kiểm tra](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/chieu-cao-can-nang-tuyen-tho-lo/): Mốc tham khảo hiện hành là từ 1m53 và 47kg; nên đo đúng thay vì ước lượng.
+- [Sức khỏe học nghề mỏ: những điều phải khai trung thực](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/suc-khoe-hoc-nghe-mo/): Nghề mỏ có yêu cầu sức khỏe riêng; việc khai đúng giúp bảo vệ chính người lao động và đồng đội.
+- [Cận thị có học nghề mỏ được không? Cách kiểm tra đúng](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/can-thi-co-hoc-nghe-mo-duoc-khong/): Tình trạng thị lực cần được khai trước và đánh giá theo tiêu chuẩn sức khỏe của vị trí dự kiến.
+- [Quy trình đăng ký tuyển thợ mỏ từ xa đến nhập học](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/quy-trinh-dang-ky-tuyen-tho-mo/): Quy trình rõ ràng giúp người ở xa giảm đi lại và tránh chuẩn bị sai giấy tờ.
+- [Chuẩn bị gì trước ngày nhập học nghề mỏ?](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/chuan-bi-truoc-ngay-nhap-hoc-nghe-mo/): Ngoài giấy tờ, người học cần chuẩn bị đồ dùng cá nhân, lịch trình và tâm lý tuân thủ nội quy.
+- [7 sai lầm thường gặp khi đăng ký học nghề mỏ](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/sai-lam-khi-dang-ky-hoc-nghe-mo/): Các lỗi phổ biến thường đến từ thông tin thiếu, tin lời môi giới không rõ danh tính hoặc đi trước khi có lịch.
+- [Học nghề khai thác mỏ 2–3 tháng gồm những gì?](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/): Khóa học tập trung vào kỹ năng khai thác, an toàn, thực hành và kỷ luật lao động trước khi làm việc.
+- [Học nghề xây dựng mỏ 2–3 tháng: công việc và kỹ năng](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/hoc-nghe-xay-dung-mo-2-3-thang/): Người học được làm quen với công việc đào, chống giữ và duy trì đường lò theo thiết kế, quy trình an toàn.
+- [Học cơ điện mỏ 10 tháng: lộ trình cho người mới](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/hoc-co-dien-mo-10-thang/): Cơ điện mỏ cần thời gian dài hơn để học kiến thức điện, cơ khí, thiết bị và quy trình an toàn.
+- [Học nghề mỏ có mất học phí không?](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/mien-hoc-phi-hoc-nghe-mo/): Người học theo chỉ tiêu được miễn kinh phí đào tạo; chế độ cụ thể cần xác nhận theo đợt tiếp nhận.
+- [Ký túc xá và ăn ở khi học nghề mỏ tại Quảng Ninh](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/ky-tuc-xa-va-an-o-khi-hoc-nghe-mo/): Người học được bố trí ăn và ở theo kế hoạch của khóa; cần tuân thủ nội quy sinh hoạt tập thể.
+- [Học thực hành nghề mỏ hầm lò có gì khác lý thuyết?](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/hoc-thuc-hanh-nghe-mo-ham-lo/): Thực hành giúp người học chuyển kiến thức thành thao tác, phối hợp tổ đội và phản xạ an toàn.
+- [Đào tạo an toàn trước khi vào hầm lò](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/dao-tao-an-toan-truoc-khi-vao-lo/): An toàn là nội dung bắt buộc trước khi người học tiếp cận môi trường sản xuất thực tế.
+- [Lộ trình học nghề mỏ đến khi được nhận việc](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/lo-trinh-hoc-nghe-mo-den-nhan-viec/): Từ kiểm tra điều kiện đến học, đánh giá và doanh nghiệp tiếp nhận là một chuỗi bước cần hoàn thành đầy đủ.
+- [Học xong nghề mỏ làm việc ở đâu tại Quảng Ninh?](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/hoc-xong-nghe-mo-lam-viec-o-dau/): Người đạt yêu cầu được bố trí về doanh nghiệp ngành Than theo chỉ tiêu, nhu cầu và kết quả đào tạo.
+- [Nên chọn khai thác mỏ, xây dựng mỏ hay cơ điện mỏ?](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/chon-nghe-khai-thac-xay-dung-hay-co-dien-mo/): Lựa chọn nên dựa vào sức khỏe, sở thích kỹ thuật, thời gian học và công việc mong muốn.
+- [Thợ khai thác mỏ làm công việc gì trong hầm lò?](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/tho-khai-thac-mo-lam-cong-viec-gi/): Công việc gắn với khai thác than, vận hành theo quy trình và phối hợp chặt chẽ trong tổ sản xuất.
+- [Thợ xây dựng mỏ làm gì? Vai trò của đường lò](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/tho-xay-dung-mo-lam-gi/): Thợ xây dựng mỏ tham gia tạo lập, chống giữ và duy trì hệ thống đường lò phục vụ khai thác an toàn.
+- [Công việc cơ điện mỏ: thiết bị, bảo dưỡng và an toàn](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/cong-viec-co-dien-mo/): Người làm cơ điện góp phần duy trì thiết bị, nguồn điện và hệ thống phục vụ sản xuất hoạt động ổn định.
+- [Ca làm việc của thợ lò được tổ chức như thế nào?](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/ca-lam-viec-cua-tho-lo/): Mỗi ca gồm chuẩn bị, di chuyển, nhận vị trí, sản xuất và bàn giao; thời gian cụ thể theo đơn vị.
+- [Lương thợ lò 20–25 triệu/tháng được hiểu thế nào?](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/luong-tho-lo-20-25-trieu-moi-thang/): Đây là mức tham khảo phổ biến; thực nhận thay đổi theo doanh nghiệp, vị trí, ngày công và năng suất.
+- [Cách tính lương thợ lò theo ngày công và năng suất](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/cach-tinh-luong-tho-lo-theo-ngay-cong-nang-suat/): Muốn đọc đúng bảng lương cần đối chiếu đơn giá, ngày công, sản lượng, phụ cấp và các khoản khấu trừ.
+- [Phụ cấp và chế độ thợ lò cần hỏi những gì?](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/phu-cap-va-che-do-tho-lo/): Ngoài lương, người lao động nên hỏi rõ ăn ca, bảo hộ, đi lại, chỗ ở và các khoản theo điều kiện làm việc.
+- [Bảo hiểm cho công nhân ngành Than: điều cần biết](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/bao-hiem-cho-cong-nhan-nganh-than/): Khi ký hợp đồng, người lao động cần đọc nội dung về bảo hiểm, quyền lợi và trách nhiệm của hai bên.
+- [Làm sao để tăng thu nhập thợ lò bền vững?](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/lam-sao-tang-thu-nhap-tho-lo/): Thu nhập bền vững đến từ ngày công ổn định, tay nghề, năng suất và kỷ luật an toàn, không phải làm nhanh bằng mọi giá.
+- [Nghề thợ lò có ổn định không? Cách tự đánh giá](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/nghe-tho-lo-co-on-dinh-khong/): Sự ổn định phụ thuộc nhu cầu sản xuất, hợp đồng, sức khỏe, kỷ luật và khả năng gắn bó của mỗi người.
+- [Nhà ở, ký túc xá cho công nhân mỏ tại Quảng Ninh](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/nha-o-ky-tuc-xa-cong-nhan-mo/): Chỗ ở ổn định giúp lao động xa quê giảm áp lực chi phí và duy trì sức khỏe khi làm việc theo ca.
+- [Bữa ăn ca và dinh dưỡng cho thợ mỏ](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/bua-an-ca-va-dinh-duong-tho-mo/): Công việc nặng nhọc cần bữa ăn đủ năng lượng, nước uống và thói quen phục hồi sau ca.
+- [Khám sức khỏe định kỳ cho thợ mỏ có ý nghĩa gì?](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/kham-suc-khoe-dinh-ky-tho-mo/): Khám định kỳ giúp theo dõi ảnh hưởng nghề nghiệp, phát hiện sớm vấn đề và điều chỉnh công việc khi cần.
+- [Xe đưa đón công nhân mỏ: điều cần xác nhận](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/xe-dua-don-cong-nhan-mo/): Xe đưa đón giúp kết nối khu ở với nơi làm việc; giờ và tuyến phụ thuộc từng doanh nghiệp.
+- [Bảo hộ lao động thợ lò gồm gì và dùng ra sao?](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/bao-ho-lao-dong-tho-lo/): Trang bị chỉ bảo vệ tốt khi đúng loại, vừa kích cỡ, được kiểm tra và sử dụng trong suốt thời gian yêu cầu.
+- [Thông gió hầm lò và vai trò đối với an toàn thợ mỏ](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/thong-gio-ham-lo-va-an-toan/): Thông gió giúp kiểm soát không khí, nhiệt và khí mỏ; người lao động phải tuân thủ tuyến và cảnh báo kỹ thuật.
+- [Cơ giới hóa khai thác hầm lò thay đổi công việc ra sao?](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/co-gioi-hoa-khai-thac-ham-lo/): Thiết bị giúp giảm sức lao động ở nhiều công đoạn, nâng năng suất và yêu cầu người thợ hiểu quy trình vận hành.
+- [Tự động hóa trong ngành Than và kỹ năng người lao động](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/tu-dong-hoa-trong-nganh-than/): Tự động hóa hỗ trợ giám sát và điều khiển, đồng thời làm tăng nhu cầu về kỹ năng kỹ thuật và xử lý thông tin.
+- [Chuyển đổi số trong mỏ hầm lò: người thợ được lợi gì?](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/chuyen-doi-so-trong-mo-ham-lo/): Dữ liệu sản xuất, thiết bị và an toàn được kết nối tốt hơn giúp doanh nghiệp phản ứng nhanh và tổ chức công việc chính xác.
+- [Vận tải hầm lò hiện đại giúp giảm sức lao động thế nào?](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/van-tai-ham-lo-hien-dai/): Hệ thống vận tải người, vật tư và than là mắt xích quan trọng để giảm thời gian di chuyển và công việc thủ công.
+- [Việc làm thợ mỏ cho lao động Thanh Hóa tại Quảng Ninh](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-thanh-hoa/): Lao động Thanh Hóa có thể kiểm tra điều kiện từ xa, chuẩn bị hồ sơ và kế hoạch di chuyển trước khi nhập học.
+- [Việc làm thợ mỏ cho lao động Nghệ An: lộ trình đăng ký](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-nghe-an/): Người lao động Nghệ An nên hoàn thành sàng lọc sức khỏe và xác nhận lịch trước khi ra Quảng Ninh.
+- [Việc làm thợ mỏ cho lao động Hà Tĩnh cần chuẩn bị gì?](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-ha-tinh/): Kế hoạch tốt giúp người Hà Tĩnh chủ động chi phí đi lại, hồ sơ và thời gian xa gia đình.
+- [Việc làm thợ mỏ cho lao động Quảng Trị tại Quảng Ninh](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-quang-tri/): Từ Quảng Trị ra Quảng Ninh là hành trình dài, vì vậy mọi thông tin tuyển sinh cần được xác nhận trước.
+- [Việc làm thợ mỏ cho lao động Quảng Ngãi: điều kiện và hồ sơ](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-quang-ngai/): Người lao động Quảng Ngãi có thể đăng ký từ xa nếu cung cấp đủ thông tin và đáp ứng tiêu chí sức khỏe.
+- [Việc làm thợ mỏ cho lao động Gia Lai: câu chuyện đi xa lập nghiệp](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-gia-lai/): Nhiều lao động Tây Nguyên quan tâm nghề mỏ vì thu nhập và lộ trình đào tạo rõ; quyết định cần đi cùng chuẩn bị sức khỏe.
+- [Việc làm thợ mỏ cho lao động Đắk Lắk tại Quảng Ninh](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-dak-lak/): Lao động Đắk Lắk nên tìm hiểu kỹ môi trường làm việc, thời gian học và phương án đi xa trước khi đăng ký.
+- [Việc làm thợ mỏ cho lao động Sơn La: đăng ký từ xa](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-son-la/): Người Sơn La có thể gửi thông tin sàng lọc trước, sau đó nhận hướng dẫn hồ sơ và lịch cụ thể.
+- [Việc làm thợ mỏ cho lao động Điện Biên: chuẩn bị hành trình](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-dien-bien/): Khoảng cách xa đòi hỏi người Điện Biên phải kiểm tra điều kiện và lập kế hoạch di chuyển kỹ hơn.
+- [Việc làm thợ mỏ cho lao động Lào Cai tại Quảng Ninh](https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/viec-lam-tho-mo-lao-cai/): Người lao động Lào Cai nên đối chiếu điều kiện sức khỏe, chọn nghề và xác nhận lịch trước khi khởi hành.
