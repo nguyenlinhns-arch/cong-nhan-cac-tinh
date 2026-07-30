@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bài mới – Thầy Linh Tuyển Thợ Mỏ</title>
+    <link>https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/</link>
+    <description>Tin ngành Than, điều kiện tuyển thợ lò, hướng dẫn học nghề mỏ và đời sống người lao động tại Quảng Ninh.</description>
+    <language>vi-VN</language>
+    <lastBuildDate>Thu, 30 Jul 2026 11:00:00 +0700</lastBuildDate>
+    <atom:link href="https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/feed.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/og-cover-v2.webp</url>
+      <title>Bài mới – Thầy Linh Tuyển Thợ Mỏ</title>
+      <link>https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/</link>
+    </image>
+    <item>
+      <title>Muốn học nghề mỏ, cần gửi 3 thông tin gì trước?</title>
+      <link>https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/2026/07/30/ba-thong-tin-kiem-tra-dieu-kien-hoc-nghe-mo/</link>
+      <guid isPermaLink="true">https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/2026/07/30/ba-thong-tin-kiem-tra-dieu-kien-hoc-nghe-mo/</guid>
+      <pubDate>Thu, 30 Jul 2026 11:00:00 +0700</pubDate>
+      <author>Nguyễn Tử Linh</author>
+      <category>Hướng dẫn học nghề mỏ</category>
+      <description>Ba thông tin giúp kiểm tra điều kiện ban đầu trước khi hướng dẫn hồ sơ học nghề mỏ tại Quảng Ninh.</description>
+    </item>
+    <item>
+      <title>Hơn 13.500 thợ lò thu nhập trên 300 triệu đồng/năm 2025</title>
+      <link>https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/</link>
+      <guid isPermaLink="true">https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/</guid>
+      <pubDate>Sun, 26 Jul 2026 08:00:00 +0700</pubDate>
+      <author>Nguyễn Tử Linh</author>
+      <category>Thu nhập thợ lò</category>
+      <description>Số liệu TKV năm 2025 về nhóm thợ lò đạt thu nhập trên 300 triệu đồng mỗi năm.</description>
+    </item>
+    <item>
+      <title>Thu nhập thợ lò qua các năm 2022–2025</title>
+      <link>https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/thu-nhap-tho-lo-qua-cac-nam/</link>
+      <guid isPermaLink="true">https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/thu-nhap-tho-lo-qua-cac-nam/</guid>
+      <pubDate>Sun, 26 Jul 2026 08:00:00 +0700</pubDate>
+      <author>Nguyễn Tử Linh</author>
+      <category>Thu nhập thợ lò</category>
+      <description>Tổng hợp sự thay đổi số người có thu nhập trên 300 triệu đồng qua các năm.</description>
+    </item>
+    <item>
+      <title>Điều kiện tuyển thợ lò: kiểm tra trước khi làm hồ sơ</title>
+      <link>https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/dieu-kien-tuyen-tho-lo/</link>
+      <guid isPermaLink="true">https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/dieu-kien-tuyen-tho-lo/</guid>
+      <pubDate>Sun, 26 Jul 2026 08:00:00 +0700</pubDate>
+      <author>Nguyễn Tử Linh</author>
+      <category>Điều kiện tuyển thợ lò</category>
+      <description>Tuổi, thể lực, sức khỏe và thông tin cần gửi để được tư vấn.</description>
+    </item>
+  </channel>
+</rss>

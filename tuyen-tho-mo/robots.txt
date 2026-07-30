@@ -11,3 +11,6 @@ User-agent: GPTBot
 Disallow: /
 
 Sitemap: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/sitemap.xml
+
+# Nguồn cập nhật bài mới
+# RSS: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/feed.xml

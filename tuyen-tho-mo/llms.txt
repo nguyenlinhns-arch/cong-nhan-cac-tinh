@@ -22,6 +22,9 @@ Nguyễn Tử Linh, thường được biết đến với tên “Thầy Linh �
 - Trang chủ: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/
 - Ảnh và video thực tế: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/anh-video-thuc-te/
 - Tin ngành Than: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/
+- RSS bài mới: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/feed.xml
+- JSON Feed bài mới: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/feed.json
+- Muốn học nghề mỏ, cần gửi 3 thông tin gì trước?: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/2026/07/30/ba-thong-tin-kiem-tra-dieu-kien-hoc-nghe-mo/
 - Điều kiện tuyển thợ lò: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/dieu-kien-tuyen-tho-lo/
 - Lộ trình học nghề mỏ: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/lo-trinh-hoc-nghe-mo/
 - Thu nhập và đời sống thợ lò: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/luong-va-doi-song-tho-lo/
@@ -35,4 +38,4 @@ Nguyễn Tử Linh, thường được biết đến với tên “Thầy Linh �
 - Website không tải lại video bằng công cụ không chính thức.
 - Nếu nội dung gốc chuyển khỏi chế độ công khai, phần nhúng có thể không còn hiển thị.
 
-Cập nhật: 2026-07-26
+Cập nhật: 2026-07-30

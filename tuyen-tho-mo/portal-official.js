@@ -32,21 +32,6 @@
     });
   });
 
-  const copyButton = document.querySelector("[data-copy-message]");
-  const copyStatus = document.querySelector(".copy-status");
-  if (copyButton && copyStatus) {
-    copyButton.addEventListener("click", async () => {
-      const template = "Em muốn kiểm tra điều kiện học nghề mỏ. Năm sinh: ...; Chiều cao/cân nặng: ...; Sức khỏe hiện tại: ...";
-      try {
-        await navigator.clipboard.writeText(template);
-        copyStatus.textContent = "Đã sao chép — mở Zalo và dán tin nhắn.";
-        copyButton.textContent = "Đã sao chép mẫu";
-      } catch {
-        copyStatus.textContent = "Hãy nhắn: năm sinh, chiều cao/cân nặng và sức khỏe hiện tại.";
-      }
-    });
-  }
-
   const featuredVideo = document.querySelector("[data-featured-video]");
   const videoLabel = document.querySelector("[data-video-label]");
   const videoHeading = document.querySelector("[data-video-heading]");

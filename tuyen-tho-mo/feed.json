@@ -1,0 +1,37 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Bài mới – Thầy Linh Tuyển Thợ Mỏ",
+  "home_page_url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/",
+  "feed_url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/feed.json",
+  "description": "Tin ngành Than, điều kiện tuyển thợ lò, hướng dẫn học nghề mỏ và đời sống người lao động tại Quảng Ninh.",
+  "language": "vi-VN",
+  "authors": [
+    {
+      "name": "Nguyễn Tử Linh",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/#gioi-thieu",
+      "avatar": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/thay-linh-avatar.webp"
+    }
+  ],
+  "items": [
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/2026/07/30/ba-thong-tin-kiem-tra-dieu-kien-hoc-nghe-mo/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/tin-nganh-than/2026/07/30/ba-thong-tin-kiem-tra-dieu-kien-hoc-nghe-mo/",
+      "title": "Muốn học nghề mỏ, cần gửi 3 thông tin gì trước?",
+      "summary": "Ba thông tin giúp kiểm tra điều kiện ban đầu trước khi hướng dẫn hồ sơ học nghề mỏ tại Quảng Ninh.",
+      "image": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/assets/vinacomin-tho-mo-ham-lo-1200.webp",
+      "date_published": "2026-07-30T11:00:00+07:00",
+      "date_modified": "2026-07-30T11:00:00+07:00",
+      "tags": ["học nghề mỏ 2026", "tuyển thợ lò 2026", "điều kiện học nghề mỏ"]
+    },
+    {
+      "id": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/",
+      "url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/",
+      "title": "Hơn 13.500 thợ lò thu nhập trên 300 triệu đồng/năm 2025",
+      "summary": "Số liệu TKV năm 2025 về nhóm thợ lò đạt thu nhập trên 300 triệu đồng mỗi năm.",
+      "image": "https://i.ytimg.com/vi/ts41cqu7r9c/maxresdefault.jpg",
+      "date_published": "2026-07-26T08:00:00+07:00",
+      "date_modified": "2026-07-26T08:00:00+07:00",
+      "tags": ["thu nhập thợ lò", "TKV 2025"]
+    }
+  ]
+}
