@@ -8,7 +8,7 @@ User-agent: ChatGPT-User
 Allow: /
 
 User-agent: GPTBot
-Disallow: /
+Allow: /
 
 Sitemap: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/sitemap.xml
 
