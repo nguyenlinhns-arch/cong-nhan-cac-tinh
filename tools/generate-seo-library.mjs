@@ -5,15 +5,9 @@ const root = path.resolve("tuyen-tho-mo");
 const base = "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo";
 const published = "2026-07-30T10:30:00+07:00";
 const dateLabel = "30/07/2026";
-
-const images = {
-  entry: ["vinacomin-tho-mo-ham-lo-1200.webp", "vinacomin-hoc-sinh-trai-nghiem-mo.webp"],
-  training: ["vinacomin-hoc-sinh-trai-nghiem-mo.webp", "vinacomin-tho-mo-ham-lo-1200.webp"],
-  work: ["vinacomin-tho-mo-ham-lo-1200.webp", "vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp"],
-  welfare: ["vinacomin-tho-lo-thao-a-bang.webp", "vinacomin-tho-mo-ham-lo-1200.webp"],
-  technology: ["vinacomin-co-gioi-hoa-ham-lo.webp", "gallery-longwall-machine.webp"],
-  province: ["vinacomin-tho-lo-thao-a-bang.webp", "vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp"],
-};
+const imageSources = JSON.parse(
+  fs.readFileSync(path.join(root, "assets", "articles", "sources.json"), "utf8"),
+);
 
 const clusterInfo = {
   entry: {
@@ -123,7 +117,7 @@ const topics = [
   ["viec-lam-tho-mo-lao-cai","Việc làm thợ mỏ cho lao động Lào Cai tại Quảng Ninh","việc làm thợ mỏ Lào Cai","Người lao động Lào Cai nên đối chiếu điều kiện sức khỏe, chọn nghề và xác nhận lịch trước khi khởi hành.","province",["Tìm hiểu khai thác, xây dựng và cơ điện mỏ","Gửi thông tin sàng lọc trung thực","Chốt điểm đón và nơi ở","Chuẩn bị hồ sơ gọn, đúng yêu cầu","Giữ số tư vấn để xử lý tình huống"]],
 ].map(([slug,title,keyword,lead,cluster,points], index) => ({
   slug,title,keyword,lead,cluster,points,position:index,
-  image: images[cluster][index % images[cluster].length],
+  image: `articles/${slug}.webp`,
 }));
 
 if (topics.length !== 50) throw new Error(`Expected 50 topics, got ${topics.length}`);
@@ -200,7 +194,10 @@ function articleHtml(topic, index) {
   const keywords = secondaryKeywords(topic);
   const faqs = faq(topic);
   const related = info.related.filter(slug => slug !== topic.slug).slice(0,2);
-  const sourceName = topic.image.startsWith("vinacomin-") ? "Vinacomin/TKV" : "Tư liệu ngành Than";
+  const imageSource = imageSources[topic.slug];
+  const sourceName = imageSource
+    ? `${imageSource.creator} / Wikimedia Commons (${imageSource.license})`
+    : "Tư liệu ngành Than";
   const paragraphs = topic.points.map((p,i) => `<li><strong>${esc(p)}</strong><span>${esc(pointExpansion(p,i,topic))}</span></li>`).join("");
   const steps = info.steps.map((s,i) => `<li><time>${String(i+1).padStart(2,"0")}</time><div><strong>${esc(s)}</strong><span>${esc(topic.points[i] || topic.points[0])}.</span></div></li>`).join("");
   const warning = info.warnings.map(x => `<li>${esc(x)}</li>`).join("");
@@ -316,7 +313,7 @@ function hubHtml() {
   <meta name="robots" content="index,follow,max-image-preview:large"><meta name="author" content="Nguyễn Tử Linh">
   <link rel="canonical" href="${base}/tin-nganh-than/"><link rel="icon" href="../assets/favicon.svg?v=2" type="image/svg+xml"><link rel="manifest" href="../manifest.webmanifest">
   <link rel="alternate" type="application/rss+xml" title="Bài viết – Thầy Linh Tuyển Thợ Mỏ" href="${base}/feed.xml"><link rel="alternate" type="application/feed+json" title="Bài viết – Thầy Linh Tuyển Thợ Mỏ" href="${base}/feed.json">
-  <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="50 bài cẩm nang nghề mỏ và việc làm ngành Than"><meta property="og:description" content="Tìm hiểu điều kiện, học nghề, lương, phúc lợi, an toàn và công nghệ mỏ."><meta property="og:image" content="${base}/assets/vinacomin-co-gioi-hoa-ham-lo.webp">
+  <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="50 bài cẩm nang nghề mỏ và việc làm ngành Than"><meta property="og:description" content="Tìm hiểu điều kiện, học nghề, lương, phúc lợi, an toàn và công nghệ mỏ."><meta property="og:image" content="${base}/assets/og-cover-v2.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../article-insights.css?v=6">
   <script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"CollectionPage","name":"50 bài cẩm nang thợ mỏ và việc làm ngành Than","description":"Thư viện nội dung về tuyển thợ lò, học nghề mỏ, thu nhập, an toàn, công nghệ và việc làm theo tỉnh.","url":`${base}/tin-nganh-than/`,"inLanguage":"vi-VN","dateModified":published,"publisher":{"@type":"Organization","name":"Thầy Linh – Tuyển Thợ Mỏ","url":`${base}/`},"mainEntity":{"@type":"ItemList","numberOfItems":50,"itemListElement":itemList}})}</script>
@@ -326,7 +323,7 @@ function hubHtml() {
   <main>
     <section class="news-hero"><div class="container"><p class="eyebrow">Thư viện nội dung · 50 bài chuyên sâu</p><h1>Cẩm nang thợ mỏ và việc làm ngành Than</h1><p class="lead">Nội dung được chia theo nhu cầu tìm kiếm: điều kiện, hồ sơ, học nghề, công việc, thu nhập, phúc lợi, an toàn, công nghệ và hướng dẫn cho lao động từng tỉnh.</p><nav class="cluster-nav" aria-label="Nhóm bài viết">${Object.entries(clusterInfo).map(([k,v])=>`<a href="#${k}">${esc(v.label)}</a>`).join("")}</nav></div></section>
     <div class="container news-main">
-      <article class="news-feature"><img src="../assets/vinacomin-co-gioi-hoa-ham-lo.webp" alt="Cẩm nang nghề mỏ và công nghệ khai thác hầm lò"><div class="news-feature__body"><p class="news-kicker">Bắt đầu tại đây</p><h2>50 câu hỏi người muốn vào nghề mỏ thường quan tâm</h2><p>Mỗi bài giải quyết một nhu cầu tìm kiếm cụ thể, có hướng dẫn thực tế, câu hỏi thường gặp và liên kết sang nội dung liên quan.</p><a class="news-link" href="#entry">Xem theo chủ đề →</a></div></article>
+      <article class="news-feature"><img src="../assets/og-cover-v2.webp" alt="Cẩm nang nghề mỏ và công nghệ khai thác hầm lò"><div class="news-feature__body"><p class="news-kicker">Bắt đầu tại đây</p><h2>50 câu hỏi người muốn vào nghề mỏ thường quan tâm</h2><p>Mỗi bài giải quyết một nhu cầu tìm kiếm cụ thể, có hướng dẫn thực tế, câu hỏi thường gặp và liên kết sang nội dung liên quan.</p><a class="news-link" href="#entry">Xem theo chủ đề →</a></div></article>
       ${groups}
     </div>
   </main>
