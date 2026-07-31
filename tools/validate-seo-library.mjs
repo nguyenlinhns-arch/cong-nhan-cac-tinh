@@ -99,7 +99,6 @@ for (const [index, slug] of slugs.entries()) {
   const primaryKeyword = getAttr(html, /<meta name="keywords" content="([^,"]+)/i, `${prefix}primary keyword`);
   const image = getAttr(html, /<section class="article-hero">[\s\S]*?<img src="([^"]+)"/i, `${prefix}hero image`);
   const ogImage = getAttr(html, /<meta property="og:image" content="([^"]+)"/i, `${prefix}Open Graph image`);
-  const sourceCount = Number(html.match(/data-editorial-source-count="(\d+)"/)?.[1] || 0);
   const h1Count = (html.match(/<h1(?:\s|>)/gi) || []).length;
   const visibleWords = visible.split(/\s+/).filter(Boolean).length;
 
@@ -112,7 +111,10 @@ for (const [index, slug] of slugs.entries()) {
   if (!/"@type":"(?:NewsArticle|Article|BlogPosting)"/.test(html) || !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing article or FAQ schema`);
   if (!image.startsWith("https://vinacomin.vn/Share/Media/")) errors.push(`${prefix}image is not from the Vinacomin image library`);
   if (ogImage !== image || item.image !== image) errors.push(`${prefix}hero, Open Graph and feed images must match`);
-  if (sourceCount < 1) errors.push(`${prefix}missing editorial source note`);
+  if (/editorial-sources|Nguồn dữ kiện đã đối chiếu|Bài viết do Nguyễn Tử Linh phân tích và biên soạn độc lập/iu.test(html)) {
+    errors.push(`${prefix}contains a public editorial-source block`);
+  }
+  if (!/class="article-source-credit"/i.test(html)) errors.push(`${prefix}missing concise public source credit`);
   if (/Bài\s+\d{1,2}\s*\/\s*50|50\+?\s*bài|Cách đọc đúng:|Tóm tắt:/iu.test(visible)) errors.push(`${prefix}contains quota-driven or generic template wording`);
   if (/10\s*tháng/iu.test(visible)) errors.push(`${prefix}contains obsolete 10-month training information`);
 

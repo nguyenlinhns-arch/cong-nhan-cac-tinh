@@ -21,7 +21,11 @@ const displayDate = (iso) => new Intl.DateTimeFormat("vi-VN", {
   day: "2-digit", month: "2-digit", year: "numeric", timeZone: "Asia/Bangkok",
 }).format(new Date(iso));
 
-const sourceLabel = (source) => `${source.publisher} · ${source.title} · ${source.date}`;
+const sourceLabel = (source) => `${source.publisher} — “${source.title}” (${source.date})`;
+
+function renderSourceCredit(sources) {
+  return `<p class="article-source-credit"><strong>Nguồn:</strong> ${sources.map((source) => esc(sourceLabel(source))).join("; ")}.</p>`;
+}
 
 function renderFacts(facts) {
   return `<div class="fact-grid">${facts.map(([value, label]) => `<div class="fact-card"><strong>${esc(value)}</strong><span>${esc(label)}</span></div>`).join("")}</div>`;
@@ -42,14 +46,6 @@ function renderSections(sections) {
 
 function renderChecklist(items) {
   return `<ol class="timeline">${items.map(([title, text], index) => `<li><time>${String(index + 1).padStart(2, "0")}</time><div><strong>${esc(title)}</strong><span>${esc(text)}</span></div></li>`).join("")}</ol>`;
-}
-
-function renderSources(sources) {
-  return `<section class="editorial-sources" data-editorial-source-count="${sources.length}">
-    <h2>Nguồn dữ kiện đã đối chiếu</h2>
-    <ul>${sources.map((source) => `<li>${esc(sourceLabel(source))}</li>`).join("")}</ul>
-    <p>Bài viết do Nguyễn Tử Linh phân tích và biên soạn độc lập từ các dữ kiện công khai; không sao chép nguyên văn bài nguồn. Website không đặt liên kết dẫn người đọc ra ngoài.</p>
-  </section>`;
 }
 
 function renderArticle(article) {
@@ -149,6 +145,7 @@ function renderArticle(article) {
     <div class="container article-layout">
       <article class="article-body">
         <p class="article-meta"><time datetime="${article.updated}">Cập nhật ${displayDate(article.updated)}</time> · Phân tích và biên soạn: <a rel="author" href="../../#gioi-thieu">${author}</a> · Ảnh: ${esc(article.imageSource)}</p>
+        ${renderSourceCredit(article.sources)}
         ${article.intro.map((paragraph) => `<p>${paragraph}</p>`).join("")}
         <h2>Dữ kiện chính</h2>
         ${renderFacts(article.facts)}
@@ -158,7 +155,6 @@ function renderArticle(article) {
         <div class="expert-takeaway"><strong>Góc nhìn chuyên gia</strong><p>${esc(article.takeaway)}</p></div>
         <h2>Câu hỏi thường gặp</h2>
         <div class="faq-list">${article.faq.map(([question, answer]) => `<section class="faq-item"><h3>${esc(question)}</h3><p>${esc(answer)}</p></section>`).join("")}</div>
-        ${renderSources(article.sources)}
         <nav class="article-nav" aria-label="Bài viết liên quan">${related}</nav>
       </article>
       <aside class="article-aside">
