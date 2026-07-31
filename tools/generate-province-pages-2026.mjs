@@ -186,7 +186,8 @@ function provincePage(province) {
   <div class="mobile-contact" aria-label="Liên hệ nhanh"><a class="mobile-contact__zalo" href="https://zalo.me/0963048585" target="_blank" rel="noopener noreferrer" data-contact="zalo"><b>Z</b><span>Nhắn Zalo</span></a><a class="mobile-contact__messenger" href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener noreferrer" data-contact="messenger"><b>M</b><span>Messenger</span></a></div>
   <div class="toast" role="status" aria-live="polite" data-toast hidden></div>
   <script src="../../app.js?v=2" defer></script>
-  <script src="/mobile-ux.js?v=1" defer></script>
+  <script src="/analytics.js?v=1" defer></script>
+  <script src="/mobile-ux.js?v=2" defer></script>
 </body>
 </html>
 `;

@@ -158,7 +158,8 @@ function renderArticle(article) {
   </main>
   <footer class="site-footer"><div class="container footer-inner"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Thông tin ngành Than được tuyển chọn, kiểm chứng và giải thích cho người lao động.</p></div><a href="../../tin-nganh-than/">Xem kho kiến thức ngành mỏ →</a></div></footer>
   <nav class="article-contact" aria-label="Liên hệ nhanh"><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Zalo · 096 304 8585</a><a href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener">Messenger</a></nav>
-  <script src="/mobile-ux.js?v=1" defer></script>
+  <script src="/analytics.js?v=1" defer></script>
+  <script src="/mobile-ux.js?v=2" defer></script>
 </body>
 </html>`;
 }
@@ -242,7 +243,8 @@ function hubHtml() {
   </main>
   <footer class="site-footer"><div class="container footer-inner"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Nội dung ngành mỏ được chọn lọc theo giá trị, không theo chỉ tiêu số lượng.</p></div><a href="../#dang-ky">Kiểm tra điều kiện →</a></div></footer>
   <nav class="article-contact" aria-label="Liên hệ nhanh"><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Zalo · 096 304 8585</a><a href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener">Messenger</a></nav>
-  <script src="/mobile-ux.js?v=1" defer></script>
+  <script src="/analytics.js?v=1" defer></script>
+  <script src="/mobile-ux.js?v=2" defer></script>
 </body></html>`;
 }
 

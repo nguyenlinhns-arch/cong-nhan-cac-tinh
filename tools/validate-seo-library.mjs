@@ -221,7 +221,8 @@ for (const file of allHtml) {
   const visible = strip(html);
   if (!/<meta\s+name="viewport"\s+content="[^"]*width=device-width/i.test(html)) errors.push(`${rel}: missing responsive viewport`);
   if (!/<link\s+rel="stylesheet"\s+href="\/mobile-ux\.css\?v=1"/i.test(html)) errors.push(`${rel}: missing shared mobile stylesheet`);
-  if (!/<script\s+src="\/mobile-ux\.js\?v=1"\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing shared mobile script`);
+  if (!/<script\s+src="\/analytics\.js\?v=1"\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing shared analytics script`);
+  if (!/<script\s+src="\/mobile-ux\.js\?v=2"\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing shared mobile script`);
   if (/Bài\s+\d{1,2}\s*\/\s*50|50\+?\s*bài/iu.test(visible)) errors.push(`${rel}: contains an obsolete article-count claim`);
   if (/10\s*tháng/iu.test(visible)) errors.push(`${rel}: contains obsolete 10-month training information`);
   if (/18(?:–|-|\s+đến\s+)40|1(?:m|,)53|47\s*kg/iu.test(visible)) errors.push(`${rel}: contains superseded 2026 recruitment criteria`);
@@ -252,9 +253,13 @@ else {
   }
 }
 
-for (const required of ["tin-nganh-than/index.html", "index.html", "article-insights.css", "mobile-ux.css", "mobile-ux.js", "search-index.json", "feed.xml", "jobs.json", "jobs.xml", "jooble.xml", "llms.txt"]) {
+for (const required of ["tin-nganh-than/index.html", "index.html", "analytics.js", "article-insights.css", "mobile-ux.css", "mobile-ux.js", "search-index.json", "feed.xml", "jobs.json", "jobs.xml", "jooble.xml", "llms.txt"]) {
   if (!fs.existsSync(path.join(root, required))) errors.push(`Missing ${required}`);
 }
+
+const analytics = fs.readFileSync(path.join(root, "analytics.js"), "utf8");
+if (!analytics.includes("G-PZRRY10JNN")) errors.push("GA4 measurement ID is missing from analytics.js");
+if (!analytics.includes("1382247304000287")) errors.push("Meta Pixel ID is missing from analytics.js");
 
 console.log(JSON.stringify({
   curatedArticles: slugs.length,
