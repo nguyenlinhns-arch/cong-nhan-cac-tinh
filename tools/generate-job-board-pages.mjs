@@ -110,7 +110,7 @@ function page(role) {
   <section class="final-cta"><div><p class="eyebrow eyebrow--light">CHƯA CẦN HỒ SƠ</p><h2>Kiểm tra điều kiện và tạo tin nhắn đăng ký</h2><p>Nguyễn Tử Linh · 096 304 8585</p></div><div class="contact-pair"><a class="contact-button contact-button--zalo" href="${applicationUrl}"><span class="contact-icon contact-icon--text">✓</span><span><small>Biểu mẫu 1 phút</small><strong>Ứng tuyển nhanh</strong></span></a><a class="contact-button contact-button--messenger" href="tel:+84963048585"><span class="contact-icon contact-icon--text">☎</span><span><small>Gọi trực tiếp</small><strong>096 304 8585</strong></span></a></div></section>
   <footer class="site-footer"><div class="footer-brand"><span class="brand-mark">TL</span><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Thông tin tuyển dụng, học nghề mỏ và việc làm ngành Than tại Quảng Ninh.</p></div></div><div class="footer-links"><a href="../../">Trang chủ</a><a href="../cong-nhan-mo-ham-lo-quang-ninh/">Tin tuyển dụng 2026</a><a href="../../#theo-tinh">34 tỉnh, thành</a><a href="../../quyen-rieng.html">Quyền riêng tư</a></div><p class="footer-note">Căn cứ Thông báo 10/TB-CĐTKV ngày 02/04/2026 và chính sách đợt tuyển. Thu nhập thực tế phụ thuộc vị trí, ngày công, năng suất và đơn vị.</p></footer>
   <div class="mobile-contact" aria-label="Liên hệ nhanh"><a class="mobile-contact__zalo" href="${applicationUrl}"><b>✓</b><span>Ứng tuyển</span></a><a class="mobile-contact__messenger" href="tel:+84963048585"><b>☎</b><span>Gọi 096 304 8585</span></a></div>
-  <script src="../../app.js" defer></script><script src="/mobile-ux.js?v=1" defer></script>
+  <script src="../../app.js?v=2" defer></script><script src="/mobile-ux.js?v=1" defer></script>
 </body>
 </html>\n`;
 }
