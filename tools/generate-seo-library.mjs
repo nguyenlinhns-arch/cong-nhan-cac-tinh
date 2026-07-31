@@ -21,12 +21,6 @@ const displayDate = (iso) => new Intl.DateTimeFormat("vi-VN", {
   day: "2-digit", month: "2-digit", year: "numeric", timeZone: "Asia/Bangkok",
 }).format(new Date(iso));
 
-const sourceLabel = (source) => `${source.publisher} — “${source.title}” (${source.date})`;
-
-function renderSourceCredit(sources) {
-  return `<p class="article-source-credit"><strong>Nguồn:</strong> ${sources.map((source) => esc(sourceLabel(source))).join("; ")}.</p>`;
-}
-
 function renderFacts(facts) {
   return `<div class="fact-grid">${facts.map(([value, label]) => `<div class="fact-card"><strong>${esc(value)}</strong><span>${esc(label)}</span></div>`).join("")}</div>`;
 }
@@ -144,8 +138,6 @@ function renderArticle(article) {
     </section>
     <div class="container article-layout">
       <article class="article-body">
-        <p class="article-meta"><time datetime="${article.updated}">Cập nhật ${displayDate(article.updated)}</time> · Phân tích và biên soạn: <a rel="author" href="../../#gioi-thieu">${author}</a> · Ảnh: ${esc(article.imageSource)}</p>
-        ${renderSourceCredit(article.sources)}
         ${article.intro.map((paragraph) => `<p>${paragraph}</p>`).join("")}
         <h2>Dữ kiện chính</h2>
         ${renderFacts(article.facts)}

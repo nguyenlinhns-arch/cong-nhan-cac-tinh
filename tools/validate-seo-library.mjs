@@ -114,7 +114,7 @@ for (const [index, slug] of slugs.entries()) {
   if (/editorial-sources|Nguồn dữ kiện đã đối chiếu|Bài viết do Nguyễn Tử Linh phân tích và biên soạn độc lập/iu.test(html)) {
     errors.push(`${prefix}contains a public editorial-source block`);
   }
-  if (!/class="article-source-credit"/i.test(html)) errors.push(`${prefix}missing concise public source credit`);
+  if (/class="article-(?:meta|source-credit)"/i.test(html)) errors.push(`${prefix}contains visible author, image or source credits`);
   if (/Bài\s+\d{1,2}\s*\/\s*50|50\+?\s*bài|Cách đọc đúng:|Tóm tắt:/iu.test(visible)) errors.push(`${prefix}contains quota-driven or generic template wording`);
   if (/10\s*tháng/iu.test(visible)) errors.push(`${prefix}contains obsolete 10-month training information`);
 
