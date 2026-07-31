@@ -8,8 +8,8 @@ Sàn giao dịch việc làm quốc gia,government_job_board,1,requires_employer
 JobsGO,job_board,2,blocked_cloudflare,2026-07-31,https://jobsgo.vn/,Cloud browser received a site-served Cloudflare access block
 Việc Làm Tốt,classified_job_board,2,blocked_cloudflare,2026-07-31,https://www.vieclamtot.com/nha-tuyen-dung,Cloud browser remained in a human-verification challenge
 Việc Làm Nhà Máy,industry_job_board,2,requires_login,2026-07-31,https://vieclamnhamay.vn/,Employer sign-in required before posting
-Jooble,search_aggregator,2,awaiting_email_and_captcha,2026-07-31,https://help.jooble.org/en/support/tickets/new,XML feed integration form is ready; a contact email and CAPTCHA confirmation are required
-Indeed,search_aggregator,2,feed_ready_pending_onboarding,2026-07-31,https://thaylinhtuyenthomo.vn/jobs.xml,Public XML feed is ready; Indeed onboarding or employer access is required
+Jooble,search_aggregator,2,feed_ready_awaiting_email_and_captcha,2026-07-31,https://thaylinhtuyenthomo.vn/jooble.xml,Two role-specific jobs follow the official Jooble feed format; a contact email and CAPTCHA confirmation are required for the integration ticket
+Indeed,search_aggregator,2,role_feed_prepared_pending_onboarding,2026-07-31,https://thaylinhtuyenthomo.vn/jobs.xml,Two role-specific jobs are prepared; Indeed requires employer onboarding and a verified contact email before activation
 Viecoi,job_board,2,requires_login,,,Employer account required
 Vieclam24h,job_board,3,requires_login,2026-07-31,https://ntd.vieclam24h.vn/,Employer sign-in required before posting
 TopCV,job_board,3,requires_login,,,Employer account required

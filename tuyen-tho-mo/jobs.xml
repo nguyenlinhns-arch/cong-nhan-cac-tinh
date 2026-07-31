@@ -1,49 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jobs version="1.0" generatedAt="2026-07-31T12:00:00+07:00">
-  <publisher>
-    <name>Thầy Linh – Tuyển Thợ Mỏ</name>
-    <contactName>Nguyễn Tử Linh</contactName>
-    <contactTitle>Trưởng phòng Tuyển sinh Miền Trung</contactTitle>
-    <phone>0963048585</phone>
-    <website>https://thaylinhtuyenthomo.vn/</website>
-  </publisher>
-  <job>
-    <id>10-TB-CDTKV-2026-so-cap-mo-ham-lo</id>
-    <status>open</status>
-    <title>Lao động học nghề khai thác, xây dựng mỏ hầm lò – Quảng Ninh</title>
-    <url>https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/</url>
-    <datePosted>2026-04-02</datePosted>
-    <validThrough>2026-12-31T23:59:59+07:00</validThrough>
-    <employmentType>FULL_TIME</employmentType>
-    <hiringOrganization>Trường Cao đẳng Than - Khoáng sản Việt Nam phối hợp với các doanh nghiệp trong TKV</hiringOrganization>
-    <recruitmentCoordinator>Trường Cao đẳng Than - Khoáng sản Việt Nam</recruitmentCoordinator>
-    <occupation>Kỹ thuật khai thác mỏ hầm lò</occupation>
-    <occupation>Kỹ thuật xây dựng mỏ hầm lò</occupation>
-    <trainingDuration>2–3 tháng</trainingDuration>
-    <location region="Quảng Ninh" country="VN" />
-    <candidateSources>Toàn bộ 34 tỉnh, thành Việt Nam</candidateSources>
-    <requirements gender="Nam" ageMin="18" ageMax="35" heightMinCm="156" weightMinKg="48">
-      <health>Sức khỏe tốt, phù hợp yêu cầu tuyển dụng</health>
-      <education>Đọc và viết thành thạo; trình độ cụ thể đối chiếu theo hệ đào tạo</education>
-      <experience>Không yêu cầu</experience>
-    </requirements>
-    <compensation currency="VND" period="MONTH" min="20000000" max="25000000">Thu nhập thực tế phụ thuộc vị trí, ngày công, năng suất và đơn vị</compensation>
-    <benefits>
-      <benefit>Miễn toàn bộ kinh phí đào tạo</benefit>
-      <benefit>Hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển</benefit>
-      <benefit>Miễn phí 3 bữa/ngày, 7 ngày/tuần với mức ăn 90.000 đồng/ngày</benefit>
-      <benefit>Miễn phí ký túc xá khép kín</benefit>
-      <benefit>Thực tập hưởng 85–100% lương công nhân trong cùng dây chuyền</benefit>
-      <benefit>Được ký hợp đồng lao động và bố trí việc làm sau tốt nghiệp</benefit>
-    </benefits>
-    <application>
-      <contactName>Nguyễn Tử Linh</contactName>
-      <phone>0963048585</phone>
-      <zalo>https://zalo.me/0963048585</zalo>
-      <messenger>https://m.me/thaylinhtuyenthomo</messenger>
-      <address>Số 8 Chu Văn An, phường Hạ Long, Quảng Ninh</address>
-      <applyUrl>https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky</applyUrl>
-    </application>
-    <sourceNotice>10/TB-CĐTKV ngày 02/04/2026</sourceNotice>
-  </job>
+<jobs version="2.0" generatedAt="2026-07-31T17:00:00+07:00">
+  <job id="10-TB-CDTKV-2026-khai-thac-mo-ham-lo"><title><![CDATA[Kỹ thuật khai thác mỏ hầm lò]]></title><url><![CDATA[https://thaylinhtuyenthomo.vn/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/]]></url><datePosted>2026-07-31</datePosted><validThrough>2026-12-31T23:59:59+07:00</validThrough><employmentType>FULL_TIME</employmentType><hiringOrganization><![CDATA[Trường Cao đẳng Than - Khoáng sản Việt Nam phối hợp với các doanh nghiệp trong TKV]]></hiringOrganization><recruitmentCoordinator><![CDATA[Trường Cao đẳng Than - Khoáng sản Việt Nam]]></recruitmentCoordinator><occupation><![CDATA[Kỹ thuật khai thác mỏ hầm lò]]></occupation><trainingDuration><![CDATA[2–3 tháng]]></trainingDuration><location locality="Hạ Long" region="Quảng Ninh" country="VN"/><description><![CDATA[Trường Cao đẳng Than - Khoáng sản Việt Nam phối hợp với các doanh nghiệp trong TKV tổ chức tuyển lao động, cử đi học nghề khai thác mỏ hầm lò để làm việc tại Quảng Ninh. Thời gian học 2–3 tháng. Điều kiện: nam 18–35 tuổi, cao từ 1,56 m, nặng từ 48 kg, sức khỏe tốt, đọc và viết thành thạo; không yêu cầu kinh nghiệm. Quyền lợi: miễn kinh phí đào tạo; hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển; miễn phí ba bữa mỗi ngày với mức ăn 90.000 đồng/ngày; miễn phí ký túc xá. Thực tập hưởng 85–100% lương công nhân trong cùng dây chuyền. Sau tốt nghiệp được doanh nghiệp tiếp nhận ký hợp đồng lao động, bố trí đúng nghề; thu nhập 20–25 triệu đồng/tháng tùy vị trí, ngày công, năng suất và đơn vị. Tiếp nhận liên tục trong năm 2026.]]></description><compensation currency="VND" period="MONTH" min="20000000" max="25000000"/><application><contactName>Nguyễn Tử Linh</contactName><phone>0963048585</phone><applyUrl><![CDATA[https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky]]></applyUrl></application></job>
+  <job id="10-TB-CDTKV-2026-xay-dung-mo-ham-lo"><title><![CDATA[Kỹ thuật xây dựng mỏ hầm lò]]></title><url><![CDATA[https://thaylinhtuyenthomo.vn/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/]]></url><datePosted>2026-07-31</datePosted><validThrough>2026-12-31T23:59:59+07:00</validThrough><employmentType>FULL_TIME</employmentType><hiringOrganization><![CDATA[Trường Cao đẳng Than - Khoáng sản Việt Nam phối hợp với các doanh nghiệp trong TKV]]></hiringOrganization><recruitmentCoordinator><![CDATA[Trường Cao đẳng Than - Khoáng sản Việt Nam]]></recruitmentCoordinator><occupation><![CDATA[Kỹ thuật xây dựng mỏ hầm lò]]></occupation><trainingDuration><![CDATA[2–3 tháng]]></trainingDuration><location locality="Hạ Long" region="Quảng Ninh" country="VN"/><description><![CDATA[Trường Cao đẳng Than - Khoáng sản Việt Nam phối hợp với các doanh nghiệp trong TKV tổ chức tuyển lao động, cử đi học nghề xây dựng mỏ hầm lò để làm việc tại Quảng Ninh. Thời gian học 2–3 tháng. Điều kiện: nam 18–35 tuổi, cao từ 1,56 m, nặng từ 48 kg, sức khỏe tốt, đọc và viết thành thạo; không yêu cầu kinh nghiệm. Quyền lợi: miễn kinh phí đào tạo; hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển; miễn phí ba bữa mỗi ngày với mức ăn 90.000 đồng/ngày; miễn phí ký túc xá. Thực tập hưởng 85–100% lương công nhân trong cùng dây chuyền. Sau tốt nghiệp được doanh nghiệp tiếp nhận ký hợp đồng lao động, bố trí đúng nghề; thu nhập 20–25 triệu đồng/tháng tùy vị trí, ngày công, năng suất và đơn vị. Tiếp nhận liên tục trong năm 2026.]]></description><compensation currency="VND" period="MONTH" min="20000000" max="25000000"/><application><contactName>Nguyễn Tử Linh</contactName><phone>0963048585</phone><applyUrl><![CDATA[https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky]]></applyUrl></application></job>
 </jobs>

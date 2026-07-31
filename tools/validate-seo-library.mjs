@@ -159,10 +159,26 @@ for (const item of items) if (!sitemap.includes(`<loc>${item.url}</loc>`)) error
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 if (new Set(sitemapUrls).size !== sitemapUrls.length) errors.push("Sitemap contains duplicate URLs");
 
-const jobUrl = `${base}/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/`;
-const jobFile = path.join(root, "viec-lam", "cong-nhan-mo-ham-lo-quang-ninh", "index.html");
-if (!fs.existsSync(jobFile)) errors.push("Missing canonical recruitment page");
+const campaignUrl = `${base}/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/`;
+const campaignFile = path.join(root, "viec-lam", "cong-nhan-mo-ham-lo-quang-ninh", "index.html");
+if (!fs.existsSync(campaignFile)) errors.push("Missing recruitment campaign page");
 else {
+  const campaignHtml = fs.readFileSync(campaignFile, "utf8");
+  for (const phrase of ["2–3 tháng", "7,5 triệu", "18–35", "1m56", "48kg", "ky-thuat-khai-thac-mo-ham-lo-quang-ninh", "ky-thuat-xay-dung-mo-ham-lo-quang-ninh"]) {
+    if (!campaignHtml.includes(phrase)) errors.push(`Recruitment campaign page is missing ${phrase}`);
+  }
+}
+const roleJobs = [
+  { slug: "ky-thuat-khai-thac-mo-ham-lo-quang-ninh", title: "Kỹ thuật khai thác mỏ hầm lò" },
+  { slug: "ky-thuat-xay-dung-mo-ham-lo-quang-ninh", title: "Kỹ thuật xây dựng mỏ hầm lò" },
+];
+for (const role of roleJobs) {
+  const jobUrl = `${base}/viec-lam/${role.slug}/`;
+  const jobFile = path.join(root, "viec-lam", role.slug, "index.html");
+  if (!fs.existsSync(jobFile)) {
+    errors.push(`Missing job page: ${role.slug}`);
+    continue;
+  }
   const jobHtml = fs.readFileSync(jobFile, "utf8");
   const scripts = [...jobHtml.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi)];
   let jobPosting;
@@ -172,21 +188,24 @@ else {
       const nodes = parsed["@graph"] || [parsed];
       jobPosting ||= nodes.find((node) => node["@type"] === "JobPosting");
     } catch (error) {
-      errors.push(`Recruitment page has invalid JSON-LD: ${error.message}`);
+      errors.push(`${role.slug}: invalid JSON-LD: ${error.message}`);
     }
   }
-  if (!jobPosting) errors.push("Recruitment page is missing JobPosting schema");
+  if (!jobPosting) errors.push(`${role.slug}: missing JobPosting schema`);
   else {
     for (const property of ["title", "description", "datePosted", "validThrough", "employmentType", "hiringOrganization", "jobLocation", "baseSalary"]) {
-      if (!jobPosting[property]) errors.push(`JobPosting is missing ${property}`);
+      if (!jobPosting[property]) errors.push(`${role.slug}: JobPosting is missing ${property}`);
     }
+    if (jobPosting.title !== role.title) errors.push(`${role.slug}: JobPosting title must be a single role`);
   }
   for (const phrase of ["2–3 tháng", "7,5 triệu", "18–35", "1m56", "48kg", "02 bộ hồ sơ"]) {
-    if (!jobHtml.includes(phrase)) errors.push(`Recruitment page is missing ${phrase}`);
+    if (!jobHtml.includes(phrase)) errors.push(`${role.slug}: missing ${phrase}`);
   }
+  if (!sitemap.includes(jobUrl)) errors.push(`${role.slug}: absent from sitemap`);
+  if (!jobFeed.jobs?.some(job => job.url === jobUrl && job.status === "open" && job.title === role.title)) errors.push(`${role.slug}: absent from jobs.json`);
 }
-if (!sitemap.includes(`<loc>${jobUrl}</loc>`)) errors.push("Canonical recruitment page is absent from sitemap");
-if (!Array.isArray(jobFeed.jobs) || !jobFeed.jobs.some((job) => job.url === jobUrl && job.status === "open")) errors.push("jobs.json has no open canonical job");
+if (!sitemap.includes(`<loc>${campaignUrl}</loc>`)) errors.push("Recruitment campaign page is absent from sitemap");
+if (!Array.isArray(jobFeed.jobs) || jobFeed.jobs.length !== roleJobs.length) errors.push("jobs.json must contain exactly two role-specific jobs");
 if (provinceDirectory.provinces?.length !== 34) errors.push(`Expected 34 current provinces/cities, got ${provinceDirectory.provinces?.length || 0}`);
 for (const province of provinceDirectory.provinces || []) {
   const file = path.join(root, "viec-lam-nganh-than", province.slug, "index.html");
@@ -231,7 +250,7 @@ else {
   }
 }
 
-for (const required of ["tin-nganh-than/index.html", "index.html", "article-insights.css", "mobile-ux.css", "mobile-ux.js", "search-index.json", "feed.xml", "jobs.json", "jobs.xml", "llms.txt"]) {
+for (const required of ["tin-nganh-than/index.html", "index.html", "article-insights.css", "mobile-ux.css", "mobile-ux.js", "search-index.json", "feed.xml", "jobs.json", "jobs.xml", "jooble.xml", "llms.txt"]) {
   if (!fs.existsSync(path.join(root, required))) errors.push(`Missing ${required}`);
 }
 

@@ -15,6 +15,7 @@ const urls = new Set([
   `${base}/`,
   `${base}/jobs.json`,
   `${base}/jobs.xml`,
+  `${base}/jooble.xml`,
   `${base}/sitemap.xml`,
   ...jobs.jobs.filter(job => job.status === "open").map(job => job.url),
   ...provinceData.provinces.map(province => `${base}/viec-lam-nganh-than/${province.slug}/`),

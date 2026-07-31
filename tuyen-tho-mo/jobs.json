@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "2.0",
   "publisher": {
     "name": "Thầy Linh – Tuyển Thợ Mỏ",
     "contact_name": "Nguyễn Tử Linh",
@@ -7,24 +7,22 @@
     "phone": "+84963048585",
     "website": "https://thaylinhtuyenthomo.vn/"
   },
-  "updated_at": "2026-07-31T12:00:00+07:00",
+  "updated_at": "2026-07-31T17:00:00+07:00",
   "jobs": [
     {
-      "id": "10-TB-CDTKV-2026-so-cap-mo-ham-lo",
+      "id": "10-TB-CDTKV-2026-khai-thac-mo-ham-lo",
       "status": "open",
-      "title": "Lao động học nghề khai thác, xây dựng mỏ hầm lò – Quảng Ninh",
-      "url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
-      "date_posted": "2026-04-02",
+      "title": "Kỹ thuật khai thác mỏ hầm lò",
+      "url": "https://thaylinhtuyenthomo.vn/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/",
+      "date_posted": "2026-07-31",
       "valid_through": "2026-12-31T23:59:59+07:00",
       "employment_type": "FULL_TIME",
       "hiring_organization": "Trường Cao đẳng Than - Khoáng sản Việt Nam phối hợp với các doanh nghiệp trong TKV",
       "recruitment_coordinator": "Trường Cao đẳng Than - Khoáng sản Việt Nam",
-      "occupations": [
-        "Kỹ thuật khai thác mỏ hầm lò",
-        "Kỹ thuật xây dựng mỏ hầm lò"
-      ],
+      "occupation": "Kỹ thuật khai thác mỏ hầm lò",
       "training_duration": "2–3 tháng",
       "location": {
+        "locality": "Hạ Long",
         "region": "Quảng Ninh",
         "country": "VN"
       },
@@ -35,7 +33,7 @@
         "age_max": 35,
         "height_min_cm": 156,
         "weight_min_kg": 48,
-        "health": "Sức khỏe tốt, phù hợp yêu cầu tuyển dụng",
+        "health": "Sức khỏe tốt",
         "education": "Đọc và viết thành thạo; trình độ cụ thể đối chiếu theo hệ đào tạo",
         "experience": "Không yêu cầu"
       },
@@ -52,9 +50,65 @@
         "Miễn phí 3 bữa/ngày, 7 ngày/tuần với mức ăn 90.000 đồng/ngày",
         "Miễn phí ký túc xá khép kín",
         "Thực tập hưởng 85–100% lương công nhân trong cùng dây chuyền",
-        "Được ký hợp đồng lao động và bố trí việc làm sau tốt nghiệp",
+        "Sau tốt nghiệp được doanh nghiệp tiếp nhận ký hợp đồng lao động và bố trí việc làm",
         "Bảo hiểm và quyền lợi theo quy định"
       ],
+      "description": "Trường Cao đẳng Than - Khoáng sản Việt Nam phối hợp với các doanh nghiệp trong TKV tổ chức tuyển lao động, cử đi học nghề khai thác mỏ hầm lò để làm việc tại Quảng Ninh. Thời gian học 2–3 tháng. Điều kiện: nam 18–35 tuổi, cao từ 1,56 m, nặng từ 48 kg, sức khỏe tốt, đọc và viết thành thạo; không yêu cầu kinh nghiệm. Quyền lợi: miễn kinh phí đào tạo; hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển; miễn phí ba bữa mỗi ngày với mức ăn 90.000 đồng/ngày; miễn phí ký túc xá. Thực tập hưởng 85–100% lương công nhân trong cùng dây chuyền. Sau tốt nghiệp được doanh nghiệp tiếp nhận ký hợp đồng lao động, bố trí đúng nghề; thu nhập 20–25 triệu đồng/tháng tùy vị trí, ngày công, năng suất và đơn vị. Tiếp nhận liên tục trong năm 2026.",
+      "application": {
+        "contact_name": "Nguyễn Tử Linh",
+        "phone": "0963048585",
+        "zalo": "https://zalo.me/0963048585",
+        "messenger": "https://m.me/thaylinhtuyenthomo",
+        "address": "Số 8 Chu Văn An, phường Hạ Long, Quảng Ninh",
+        "apply_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky"
+      },
+      "source_notice": "10/TB-CĐTKV ngày 02/04/2026"
+    },
+    {
+      "id": "10-TB-CDTKV-2026-xay-dung-mo-ham-lo",
+      "status": "open",
+      "title": "Kỹ thuật xây dựng mỏ hầm lò",
+      "url": "https://thaylinhtuyenthomo.vn/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/",
+      "date_posted": "2026-07-31",
+      "valid_through": "2026-12-31T23:59:59+07:00",
+      "employment_type": "FULL_TIME",
+      "hiring_organization": "Trường Cao đẳng Than - Khoáng sản Việt Nam phối hợp với các doanh nghiệp trong TKV",
+      "recruitment_coordinator": "Trường Cao đẳng Than - Khoáng sản Việt Nam",
+      "occupation": "Kỹ thuật xây dựng mỏ hầm lò",
+      "training_duration": "2–3 tháng",
+      "location": {
+        "locality": "Hạ Long",
+        "region": "Quảng Ninh",
+        "country": "VN"
+      },
+      "candidate_sources": "Toàn bộ 34 tỉnh, thành Việt Nam",
+      "requirements": {
+        "gender": "Nam",
+        "age_min": 18,
+        "age_max": 35,
+        "height_min_cm": 156,
+        "weight_min_kg": 48,
+        "health": "Sức khỏe tốt",
+        "education": "Đọc và viết thành thạo; trình độ cụ thể đối chiếu theo hệ đào tạo",
+        "experience": "Không yêu cầu"
+      },
+      "compensation": {
+        "currency": "VND",
+        "period": "MONTH",
+        "min": 20000000,
+        "max": 25000000,
+        "note": "Thu nhập thực tế phụ thuộc vị trí, ngày công, năng suất và đơn vị"
+      },
+      "benefits": [
+        "Miễn toàn bộ kinh phí đào tạo",
+        "Hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển",
+        "Miễn phí 3 bữa/ngày, 7 ngày/tuần với mức ăn 90.000 đồng/ngày",
+        "Miễn phí ký túc xá khép kín",
+        "Thực tập hưởng 85–100% lương công nhân trong cùng dây chuyền",
+        "Sau tốt nghiệp được doanh nghiệp tiếp nhận ký hợp đồng lao động và bố trí việc làm",
+        "Bảo hiểm và quyền lợi theo quy định"
+      ],
+      "description": "Trường Cao đẳng Than - Khoáng sản Việt Nam phối hợp với các doanh nghiệp trong TKV tổ chức tuyển lao động, cử đi học nghề xây dựng mỏ hầm lò để làm việc tại Quảng Ninh. Thời gian học 2–3 tháng. Điều kiện: nam 18–35 tuổi, cao từ 1,56 m, nặng từ 48 kg, sức khỏe tốt, đọc và viết thành thạo; không yêu cầu kinh nghiệm. Quyền lợi: miễn kinh phí đào tạo; hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển; miễn phí ba bữa mỗi ngày với mức ăn 90.000 đồng/ngày; miễn phí ký túc xá. Thực tập hưởng 85–100% lương công nhân trong cùng dây chuyền. Sau tốt nghiệp được doanh nghiệp tiếp nhận ký hợp đồng lao động, bố trí đúng nghề; thu nhập 20–25 triệu đồng/tháng tùy vị trí, ngày công, năng suất và đơn vị. Tiếp nhận liên tục trong năm 2026.",
       "application": {
         "contact_name": "Nguyễn Tử Linh",
         "phone": "0963048585",
