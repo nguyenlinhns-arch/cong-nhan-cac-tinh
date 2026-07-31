@@ -77,6 +77,13 @@
     .replace(/\s+/g, " ")
     .trim();
 
+  const normalizePhrase = (value) => String(value || "")
+    .toLocaleLowerCase("vi")
+    .normalize("NFC")
+    .replace(/[^\p{L}\p{N}\s-]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
   function createContactButtons() {
     if (document.querySelector(".tl-mobile-contact")) return;
     const nav = document.createElement("nav");
@@ -154,13 +161,26 @@
     return item._searchText;
   }
 
+  function itemPhraseText(item) {
+    if (!item._phraseText) {
+      item._phraseText = normalizePhrase([
+        item.title,
+        item.description,
+        ...(Array.isArray(item.keywords) ? item.keywords : []),
+      ].join(" "));
+    }
+    return item._phraseText;
+  }
+
   function scoreItem(item, query) {
     if (!query) return Number(item.priority || 0);
     const title = normalize(item.title);
     const keywords = normalize((item.keywords || []).join(" "));
     const description = normalize(item.description);
     const words = query.split(" ").filter(Boolean);
-    if (!words.every((word) => itemSearchText(item).includes(word))) return -1;
+    const indexedWords = itemSearchText(item).split(" ");
+    const hasWord = (word) => indexedWords.some((candidate) => candidate === word || (word.length >= 3 && candidate.startsWith(word)));
+    if (!words.every(hasWord)) return -1;
     let score = Number(item.priority || 0);
     if (title === query) score += 80;
     if (title.startsWith(query)) score += 40;
@@ -176,9 +196,14 @@
     const status = dialog.querySelector(".tl-search-status");
     const grid = dialog.querySelector(".tl-search-results__grid");
     const query = normalize(input.value);
+    const phraseQuery = normalizePhrase(input.value);
     const source = searchIndex || popular;
-    const matches = source
-      .filter((item) => activeCategory === "all" || item.category === activeCategory)
+    let candidates = source.filter((item) => activeCategory === "all" || item.category === activeCategory);
+    if (phraseQuery.includes(" ")) {
+      const phraseMatches = candidates.filter((item) => itemPhraseText(item).includes(phraseQuery));
+      if (phraseMatches.length) candidates = phraseMatches;
+    }
+    const matches = candidates
       .map((item) => ({ item, score: scoreItem(item, query) }))
       .filter(({ score }) => score >= 0)
       .sort((a, b) => b.score - a.score || a.item.title.localeCompare(b.item.title, "vi"))
