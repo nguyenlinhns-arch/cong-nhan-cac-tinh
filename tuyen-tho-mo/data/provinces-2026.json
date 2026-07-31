@@ -1,0 +1,195 @@
+{
+  "updated_at": "2026-07-31",
+  "source_scope": "Các tỉnh, thành từ Lâm Đồng trở ra theo hệ thống đơn vị hành chính cấp tỉnh năm 2026",
+  "provinces": [
+    {
+      "slug": "lam-dong",
+      "name": "Lâm Đồng",
+      "region": "Tây Nguyên & Nam Trung Bộ",
+      "aliases": [
+        "Đắk Nông",
+        "Bình Thuận"
+      ]
+    },
+    {
+      "slug": "khanh-hoa",
+      "name": "Khánh Hòa",
+      "region": "Tây Nguyên & Nam Trung Bộ",
+      "aliases": [
+        "Ninh Thuận"
+      ]
+    },
+    {
+      "slug": "dak-lak",
+      "name": "Đắk Lắk",
+      "region": "Tây Nguyên & Nam Trung Bộ",
+      "aliases": [
+        "Phú Yên"
+      ]
+    },
+    {
+      "slug": "gia-lai",
+      "name": "Gia Lai",
+      "region": "Tây Nguyên & Nam Trung Bộ",
+      "aliases": [
+        "Bình Định"
+      ]
+    },
+    {
+      "slug": "quang-ngai",
+      "name": "Quảng Ngãi",
+      "region": "Tây Nguyên & Nam Trung Bộ",
+      "aliases": [
+        "Kon Tum"
+      ]
+    },
+    {
+      "slug": "da-nang",
+      "name": "Đà Nẵng",
+      "region": "Tây Nguyên & Nam Trung Bộ",
+      "aliases": [
+        "Quảng Nam"
+      ]
+    },
+    {
+      "slug": "hue",
+      "name": "Huế",
+      "region": "Bắc Trung Bộ",
+      "aliases": []
+    },
+    {
+      "slug": "quang-tri",
+      "name": "Quảng Trị",
+      "region": "Bắc Trung Bộ",
+      "aliases": [
+        "Quảng Bình"
+      ]
+    },
+    {
+      "slug": "ha-tinh",
+      "name": "Hà Tĩnh",
+      "region": "Bắc Trung Bộ",
+      "aliases": []
+    },
+    {
+      "slug": "nghe-an",
+      "name": "Nghệ An",
+      "region": "Bắc Trung Bộ",
+      "aliases": []
+    },
+    {
+      "slug": "thanh-hoa",
+      "name": "Thanh Hóa",
+      "region": "Bắc Trung Bộ",
+      "aliases": []
+    },
+    {
+      "slug": "ninh-binh",
+      "name": "Ninh Bình",
+      "region": "Đồng bằng & Đông Bắc",
+      "aliases": [
+        "Nam Định",
+        "Hà Nam"
+      ]
+    },
+    {
+      "slug": "hung-yen",
+      "name": "Hưng Yên",
+      "region": "Đồng bằng & Đông Bắc",
+      "aliases": [
+        "Thái Bình"
+      ]
+    },
+    {
+      "slug": "hai-phong",
+      "name": "Hải Phòng",
+      "region": "Đồng bằng & Đông Bắc",
+      "aliases": [
+        "Hải Dương"
+      ]
+    },
+    {
+      "slug": "bac-ninh",
+      "name": "Bắc Ninh",
+      "region": "Đồng bằng & Đông Bắc",
+      "aliases": [
+        "Bắc Giang"
+      ]
+    },
+    {
+      "slug": "ha-noi",
+      "name": "Hà Nội",
+      "region": "Đồng bằng & Đông Bắc",
+      "aliases": []
+    },
+    {
+      "slug": "quang-ninh",
+      "name": "Quảng Ninh",
+      "region": "Đồng bằng & Đông Bắc",
+      "aliases": []
+    },
+    {
+      "slug": "phu-tho",
+      "name": "Phú Thọ",
+      "region": "Trung du & miền núi phía Bắc",
+      "aliases": [
+        "Vĩnh Phúc",
+        "Hòa Bình"
+      ]
+    },
+    {
+      "slug": "thai-nguyen",
+      "name": "Thái Nguyên",
+      "region": "Trung du & miền núi phía Bắc",
+      "aliases": [
+        "Bắc Kạn"
+      ]
+    },
+    {
+      "slug": "tuyen-quang",
+      "name": "Tuyên Quang",
+      "region": "Trung du & miền núi phía Bắc",
+      "aliases": [
+        "Hà Giang"
+      ]
+    },
+    {
+      "slug": "lao-cai",
+      "name": "Lào Cai",
+      "region": "Trung du & miền núi phía Bắc",
+      "aliases": [
+        "Yên Bái"
+      ]
+    },
+    {
+      "slug": "cao-bang",
+      "name": "Cao Bằng",
+      "region": "Trung du & miền núi phía Bắc",
+      "aliases": []
+    },
+    {
+      "slug": "lang-son",
+      "name": "Lạng Sơn",
+      "region": "Trung du & miền núi phía Bắc",
+      "aliases": []
+    },
+    {
+      "slug": "son-la",
+      "name": "Sơn La",
+      "region": "Trung du & miền núi phía Bắc",
+      "aliases": []
+    },
+    {
+      "slug": "dien-bien",
+      "name": "Điện Biên",
+      "region": "Trung du & miền núi phía Bắc",
+      "aliases": []
+    },
+    {
+      "slug": "lai-chau",
+      "name": "Lai Châu",
+      "region": "Trung du & miền núi phía Bắc",
+      "aliases": []
+    }
+  ]
+}
