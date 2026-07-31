@@ -133,6 +133,27 @@
     }
   };
 
+  const genericProvinces = [
+    ["lam-dong", "Lâm Đồng"], ["khanh-hoa", "Khánh Hòa"], ["da-nang", "Đà Nẵng"],
+    ["hue", "Huế"], ["ninh-binh", "Ninh Bình"], ["hung-yen", "Hưng Yên"],
+    ["hai-phong", "Hải Phòng"], ["bac-ninh", "Bắc Ninh"], ["ha-noi", "Hà Nội"],
+    ["quang-ninh", "Quảng Ninh"], ["phu-tho", "Phú Thọ"], ["thai-nguyen", "Thái Nguyên"],
+    ["tuyen-quang", "Tuyên Quang"], ["cao-bang", "Cao Bằng"], ["lang-son", "Lạng Sơn"],
+    ["lai-chau", "Lai Châu"]
+  ];
+  genericProvinces.forEach(([key, name]) => {
+    provinceData[key] = {
+      name,
+      videoId: "WkSt6eOvlkA",
+      title: "Video tổng quan về học nghề mỏ, công việc và thu nhập trong ngành Than",
+      salaryCount: 0,
+      salaryImage: "",
+      album: "",
+      page: `viec-lam-nganh-than/${key}/`,
+      general: true
+    };
+  });
+
   const provinceButtons = document.querySelectorAll("[data-province-key]");
   const provinceVideo = document.querySelector("[data-province-video]");
   const provinceName = document.querySelector("[data-province-name]");
@@ -166,8 +187,8 @@
       provinceSalary.alt = `Bảng lương công nhân ${province.name}`;
       provinceAlbumButton.href = province.album;
     }
-    provinceStatus.textContent = province.fallback
-      ? "Playlist 90 video chưa có video gắn nhãn Đắk Lắk; đang hiển thị video tổng quan ngành Than để tránh gắn nhầm người của tỉnh khác."
+    provinceStatus.textContent = province.fallback || province.general
+      ? `Chưa có video và album lương gắn đúng nhãn ${province.name}; đang hiển thị video tổng quan ngành Than để tránh gắn nhầm người của tỉnh khác.`
       : hasSalary
         ? `Video và ảnh lương được đối chiếu theo đúng tỉnh ${province.name}.`
         : `Playlist đã có video công nhân ${province.name}; album ảnh lương riêng chưa được chia sẻ công khai.`;
@@ -177,7 +198,11 @@
   }
 
   provinceButtons.forEach(provinceButton => {
-    provinceButton.addEventListener("click", () => selectProvince(provinceButton.dataset.provinceKey));
+    provinceButton.addEventListener("click", event => {
+      if (provinceButton.tagName === "A" && (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)) return;
+      event.preventDefault();
+      selectProvince(provinceButton.dataset.provinceKey);
+    });
   });
 
   const readingProgress = document.querySelector("[data-reading-progress]");
