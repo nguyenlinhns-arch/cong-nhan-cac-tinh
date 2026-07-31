@@ -34,9 +34,9 @@
       category: "entry",
     },
     {
-      url: "/bai-viet/luong-tho-lo-20-25-trieu-moi-thang/",
-      title: "Lương thợ lò 20–25 triệu/tháng",
-      description: "Hiểu đúng mức tham khảo, ngày công, năng suất và phụ cấp.",
+      url: "/bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/",
+      title: "13.507 thợ lò thu nhập trên 300 triệu đồng/năm",
+      description: "Đọc đúng số liệu năm 2025 và các yếu tố tạo nên thu nhập thực tế.",
       type: "Công việc & lương",
       category: "work",
     },

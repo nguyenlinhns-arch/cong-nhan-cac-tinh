@@ -44,7 +44,7 @@ function classify(url, title, keywords) {
   if (/an toàn|công nghệ|cơ giới|tự động|thông gió|vận tải|bảo hộ|chuyển đổi số/.test(haystack)) return ["technology", "An toàn & công nghệ"];
   if (/phúc lợi|bảo hiểm|ký túc|nhà ở|bữa ăn|dinh dưỡng|xe đưa đón|đời sống/.test(haystack)) return ["welfare", "Đời sống & phúc lợi"];
   if (/lương|thu nhập|công việc|thợ khai thác|thợ xây dựng|cơ điện mỏ làm/.test(haystack)) return ["work", "Công việc & lương"];
-  if (/học nghề|đào tạo|thực hành|khóa học|2–3 tháng|10 tháng|chọn nghề/.test(haystack)) return ["training", "Học nghề"];
+  if (/học nghề|đào tạo|thực hành|khóa học|2–3 tháng|chọn nghề/.test(haystack)) return ["training", "Học nghề"];
   if (/điều kiện|hồ sơ|đăng ký|sức khỏe|cận thị|chiều cao|cân nặng|bao nhiêu tuổi|nhập học/.test(haystack)) return ["entry", "Điều kiện & hồ sơ"];
   if (url.includes("/tin-nganh-than/")) return ["news", "Tin ngành Than"];
   return ["guide", "Thông tin nghề mỏ"];

@@ -1,350 +1,62 @@
 {
-  "13500-tho-lo-thu-nhap-tren-300-trieu-2025": {
-    "album_id": "3065",
-    "album_title": "TGĐ Đặng Thanh Hải làm việc với Than Khe Chàm",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_8765.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "ba-thong-tin-dang-ky-hoc-nghe-mo": {
-    "album_id": "3065",
-    "album_title": "TGĐ Đặng Thanh Hải làm việc với Than Khe Chàm",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_8660.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "ba-thong-tin-kiem-tra-dieu-kien-hoc-nghe-mo": {
-    "album_id": "3065",
-    "album_title": "TGĐ Đặng Thanh Hải làm việc với Than Khe Chàm",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_8544.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "bao-hiem-cho-cong-nhan-nganh-than": {
-    "album_id": "3065",
-    "album_title": "TGĐ Đặng Thanh Hải làm việc với Than Khe Chàm",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_8533.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "bao-ho-lao-dong-tho-lo": {
-    "album_id": "3065",
-    "album_title": "TGĐ Đặng Thanh Hải làm việc với Than Khe Chàm",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_8528.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "bua-an-ca-va-dinh-duong-tho-mo": {
-    "album_id": "2932",
-    "album_title": "Đẩy mạnh ứng dụng THH, TĐH vào sản xuất và quản lý nhằm nâng cao hiệu quả SXKD",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_5803.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "ca-lam-viec-cua-tho-lo": {
-    "album_id": "2932",
-    "album_title": "Đẩy mạnh ứng dụng THH, TĐH vào sản xuất và quản lý nhằm nâng cao hiệu quả SXKD",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_5786.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "cach-tinh-luong-tho-lo-theo-ngay-cong-nang-suat": {
-    "album_id": "2932",
-    "album_title": "Đẩy mạnh ứng dụng THH, TĐH vào sản xuất và quản lý nhằm nâng cao hiệu quả SXKD",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_5778.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "can-thi-co-hoc-nghe-mo-duoc-khong": {
-    "album_id": "2932",
-    "album_title": "Đẩy mạnh ứng dụng THH, TĐH vào sản xuất và quản lý nhằm nâng cao hiệu quả SXKD",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_5769.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "chieu-cao-can-nang-tuyen-tho-lo": {
-    "album_id": "2932",
-    "album_title": "Đẩy mạnh ứng dụng THH, TĐH vào sản xuất và quản lý nhằm nâng cao hiệu quả SXKD",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_5759.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "chon-nghe-khai-thac-xay-dung-hay-co-dien-mo": {
-    "album_id": "2932",
-    "album_title": "Đẩy mạnh ứng dụng THH, TĐH vào sản xuất và quản lý nhằm nâng cao hiệu quả SXKD",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_5755.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "chuan-bi-truoc-ngay-nhap-hoc-nghe-mo": {
-    "album_id": "2932",
-    "album_title": "Đẩy mạnh ứng dụng THH, TĐH vào sản xuất và quản lý nhằm nâng cao hiệu quả SXKD",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_5727.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "chuyen-doi-so-trong-mo-ham-lo": {
-    "album_id": "2896",
-    "album_title": "Lễ ký kết dự án đào tạo CN khai thác than giữa TKV và CT Kushiro Nhật Bản",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_2366.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "co-gioi-hoa-khai-thac-ham-lo": {
-    "album_id": "2896",
-    "album_title": "Lễ ký kết dự án đào tạo CN khai thác than giữa TKV và CT Kushiro Nhật Bản",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_2365.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "cong-viec-co-dien-mo": {
-    "album_id": "2896",
-    "album_title": "Lễ ký kết dự án đào tạo CN khai thác than giữa TKV và CT Kushiro Nhật Bản",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_2360.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "dao-tao-an-toan-truoc-khi-vao-lo": {
-    "album_id": "2896",
-    "album_title": "Lễ ký kết dự án đào tạo CN khai thác than giữa TKV và CT Kushiro Nhật Bản",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_2357.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "dieu-kien-tuyen-tho-lo": {
-    "album_id": "2877",
-    "album_title": "Lãnh đạo LĐLĐ tỉnh Quảng Ninh và Công đoàn TKV thăm, tặng quà công nhân các đơn vị xuất sắc Than Dương Huy",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4274.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "dieu-kien-tuyen-tho-lo-2026": {
-    "album_id": "2877",
-    "album_title": "Lãnh đạo LĐLĐ tỉnh Quảng Ninh và Công đoàn TKV thăm, tặng quà công nhân các đơn vị xuất sắc Than Dương Huy",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4207.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "ho-so-hoc-nghe-mo-can-gi": {
-    "album_id": "2877",
-    "album_title": "Lãnh đạo LĐLĐ tỉnh Quảng Ninh và Công đoàn TKV thăm, tặng quà công nhân các đơn vị xuất sắc Than Dương Huy",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4110.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "hoc-co-dien-mo-10-thang": {
-    "album_id": "2877",
-    "album_title": "Lãnh đạo LĐLĐ tỉnh Quảng Ninh và Công đoàn TKV thăm, tặng quà công nhân các đơn vị xuất sắc Than Dương Huy",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4084.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "hoc-nghe-khai-thac-mo-2-3-thang": {
-    "album_id": "2877",
-    "album_title": "Lãnh đạo LĐLĐ tỉnh Quảng Ninh và Công đoàn TKV thăm, tặng quà công nhân các đơn vị xuất sắc Than Dương Huy",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4075.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "hoc-nghe-xay-dung-mo-2-3-thang": {
-    "album_id": "2877",
-    "album_title": "Lãnh đạo LĐLĐ tỉnh Quảng Ninh và Công đoàn TKV thăm, tặng quà công nhân các đơn vị xuất sắc Than Dương Huy",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4062.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "hoc-thuc-hanh-nghe-mo-ham-lo": {
-    "album_id": "2807",
-    "album_title": "Lễ gắn biển công trình đoàn thanh niên công ty than Quang Hanh",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_8699.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "hoc-xong-nghe-mo-lam-viec-o-dau": {
-    "album_id": "2807",
-    "album_title": "Lễ gắn biển công trình đoàn thanh niên công ty than Quang Hanh",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_8697.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "kham-suc-khoe-dinh-ky-tho-mo": {
-    "album_id": "2807",
-    "album_title": "Lễ gắn biển công trình đoàn thanh niên công ty than Quang Hanh",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_8693.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "ky-tuc-xa-va-an-o-khi-hoc-nghe-mo": {
-    "album_id": "2807",
-    "album_title": "Lễ gắn biển công trình đoàn thanh niên công ty than Quang Hanh",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_8684.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "lam-sao-tang-thu-nhap-tho-lo": {
-    "album_id": "2807",
-    "album_title": "Lễ gắn biển công trình đoàn thanh niên công ty than Quang Hanh",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_8678.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "lo-trinh-hoc-nghe-mo": {
-    "album_id": "2807",
-    "album_title": "Lễ gắn biển công trình đoàn thanh niên công ty than Quang Hanh",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_8663.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "lo-trinh-hoc-nghe-mo-den-nhan-viec": {
-    "album_id": "2807",
-    "album_title": "Lễ gắn biển công trình đoàn thanh niên công ty than Quang Hanh",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_8648.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "luong-tho-lo-20-25-trieu-moi-thang": {
-    "album_id": "2486",
-    "album_title": "Lễ tuyên dương các điển hình tiên tiến và tổng kết công tác thi đua khen thưởng 2017",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/05/39A6810.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "luong-va-doi-song-tho-lo": {
-    "album_id": "2486",
-    "album_title": "Lễ tuyên dương các điển hình tiên tiến và tổng kết công tác thi đua khen thưởng 2017",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/05/39A6766.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "mien-hoc-phi-hoc-nghe-mo": {
-    "album_id": "2486",
-    "album_title": "Lễ tuyên dương các điển hình tiên tiến và tổng kết công tác thi đua khen thưởng 2017",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/05/39A6759.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "nghe-tho-lo-co-on-dinh-khong": {
-    "album_id": "2486",
-    "album_title": "Lễ tuyên dương các điển hình tiên tiến và tổng kết công tác thi đua khen thưởng 2017",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/05/39A6756.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "nha-o-ky-tuc-xa-cong-nhan-mo": {
-    "album_id": "2486",
-    "album_title": "Lễ tuyên dương các điển hình tiên tiến và tổng kết công tác thi đua khen thưởng 2017",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/05/39A6744.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "phu-cap-va-che-do-tho-lo": {
-    "album_id": "2486",
-    "album_title": "Lễ tuyên dương các điển hình tiên tiến và tổng kết công tác thi đua khen thưởng 2017",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/05/39A6690.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "phuc-loi-tho-mo-tkv-2026": {
-    "album_id": "2486",
-    "album_title": "Lễ tuyên dương các điển hình tiên tiến và tổng kết công tác thi đua khen thưởng 2017",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/05/39A6643.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "quy-trinh-dang-ky-tuyen-tho-mo": {
-    "album_id": "2486",
-    "album_title": "Lễ tuyên dương các điển hình tiên tiến và tổng kết công tác thi đua khen thưởng 2017",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/05/39A6641.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "sai-lam-khi-dang-ky-hoc-nghe-mo": {
-    "album_id": "2486",
-    "album_title": "Lễ tuyên dương các điển hình tiên tiến và tổng kết công tác thi đua khen thưởng 2017",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/05/39A6637.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "suc-khoe-hoc-nghe-mo": {
-    "album_id": "2486",
-    "album_title": "Lễ tuyên dương các điển hình tiên tiến và tổng kết công tác thi đua khen thưởng 2017",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/05/39A6633.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "tho-khai-thac-mo-lam-cong-viec-gi": {
-    "album_id": "2486",
-    "album_title": "Lễ tuyên dương các điển hình tiên tiến và tổng kết công tác thi đua khen thưởng 2017",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/05/39A6632.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "tho-xay-dung-mo-lam-gi": {
-    "album_id": "571",
-    "album_title": "Hội thi An toàn vệ sinh viên giỏi cấp Tập đoàn năm 2017",
-    "source_url": "https://vinacomin.vn/Share/Media/2017/09/IMG_8117.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "thong-gio-ham-lo-va-an-toan": {
-    "album_id": "531",
-    "album_title": "Lễ kỷ niệm 80 năm ngày truyền thống công nhân vùng mỏ - Truyền thống ngành than",
-    "source_url": "https://vinacomin.vn/Share/Media/2017/09/images1311877_DSC04521.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "thu-nhap-tho-lo-qua-cac-nam": {
-    "album_id": "531",
-    "album_title": "Lễ kỷ niệm 80 năm ngày truyền thống công nhân vùng mỏ - Truyền thống ngành than",
-    "source_url": "https://vinacomin.vn/Share/Media/2017/09/images1311883_KEN_6710.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "tu-dong-hoa-trong-nganh-than": {
-    "album_id": "526",
-    "album_title": "Khánh thành nhà ở CN Mạo Khê",
-    "source_url": "https://vinacomin.vn/Share/Media/2017/09/U39A0203.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "tuoi-hoc-nghe-mo-va-lam-tho-lo": {
-    "album_id": "526",
-    "album_title": "Khánh thành nhà ở CN Mạo Khê",
-    "source_url": "https://vinacomin.vn/Share/Media/2017/09/U39A0195.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "van-tai-ham-lo-hien-dai": {
-    "album_id": "522",
-    "album_title": "Khánh thành nhà máy sàng tuyển than Lép Mỹ",
-    "source_url": "https://vinacomin.vn/Share/Media/2017/09/IMG_9583.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "viec-lam-tho-mo-dak-lak": {
-    "album_id": "515",
-    "album_title": "Khánh thành Dây chuyền cấp hạt mịn Tuyển than Cửa Ông",
-    "source_url": "https://vinacomin.vn/Share/Media/2017/09/DSC01675.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "viec-lam-tho-mo-dien-bien": {
-    "album_id": "515",
-    "album_title": "Khánh thành Dây chuyền cấp hạt mịn Tuyển than Cửa Ông",
-    "source_url": "https://vinacomin.vn/Share/Media/2017/09/DSC_8712-copy.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "viec-lam-tho-mo-gia-lai": {
-    "album_id": "498",
-    "album_title": "Hội nghị cơ giới hóa - Đào lò 2016",
-    "source_url": "https://vinacomin.vn/Share/Media/2017/09/U39A0357.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "viec-lam-tho-mo-ha-tinh": {
-    "album_id": "465",
-    "album_title": "Dự án khai thác xuống sâu -150 Mạo Khê",
-    "source_url": "https://vinacomin.vn/Share/Media/2017/09/000000.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "viec-lam-tho-mo-lao-cai": {
-    "album_id": "460",
-    "album_title": "Chủ tịch Tổng Liên đoàn Lao động VN Bùi văn Cường thăm thợ mỏ Hà Lầm",
-    "source_url": "https://vinacomin.vn/Share/Media/2017/09/DSC_0040.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "viec-lam-tho-mo-nghe-an": {
-    "album_id": "460",
-    "album_title": "Chủ tịch Tổng Liên đoàn Lao động VN Bùi văn Cường thăm thợ mỏ Hà Lầm",
-    "source_url": "https://vinacomin.vn/Share/Media/2017/09/DSC_0127.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "viec-lam-tho-mo-quang-ngai": {
-    "album_id": "460",
-    "album_title": "Chủ tịch Tổng Liên đoàn Lao động VN Bùi văn Cường thăm thợ mỏ Hà Lầm",
-    "source_url": "https://vinacomin.vn/Share/Media/2017/09/DSC_0135.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
-  },
-  "viec-lam-tho-mo-quang-tri": {
-    "album_id": "455",
-    "album_title": "Công trinh TN Than Mạo Khê chào mừng 80 năm ngày Truyền thống Công nhân Vùng Mỏ - Truyền thống Ngành Than",
+  "an-toan-mua-mua-bao-2026": {
+    "album_title": "Thư viện ảnh Vinacomin · Công trình Than Mạo Khê",
     "source_url": "https://vinacomin.vn/Share/Media/2017/09/IMG_9953.jpg",
     "provider": "Thư viện ảnh Vinacomin"
   },
-  "viec-lam-tho-mo-son-la": {
-    "album_id": "455",
-    "album_title": "Công trinh TN Than Mạo Khê chào mừng 80 năm ngày Truyền thống Công nhân Vùng Mỏ - Truyền thống Ngành Than",
-    "source_url": "https://vinacomin.vn/Share/Media/2017/09/IMG_9910.jpg",
+  "san-xuat-sach-hon-nganh-than": {
+    "album_title": "Thư viện ảnh Vinacomin · Dây chuyền cấp hạt mịn Tuyển than Cửa Ông",
+    "source_url": "https://vinacomin.vn/Share/Media/2017/09/DSC01675.jpg",
     "provider": "Thư viện ảnh Vinacomin"
   },
-  "viec-lam-tho-mo-thanh-hoa": {
-    "album_id": "455",
-    "album_title": "Công trinh TN Than Mạo Khê chào mừng 80 năm ngày Truyền thống Công nhân Vùng Mỏ - Truyền thống Ngành Than",
-    "source_url": "https://vinacomin.vn/Share/Media/2017/09/IMG_0018.jpg",
+  "nghe-tho-lo-co-on-dinh-khong": {
+    "album_title": "Thư viện ảnh Vinacomin · Tổng giám đốc TKV làm việc với Than Khe Chàm",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_8765.jpg",
     "provider": "Thư viện ảnh Vinacomin"
   },
-  "xe-dua-don-cong-nhan-mo": {
-    "album_id": "455",
-    "album_title": "Công trinh TN Than Mạo Khê chào mừng 80 năm ngày Truyền thống Công nhân Vùng Mỏ - Truyền thống Ngành Than",
-    "source_url": "https://vinacomin.vn/Share/Media/2017/09/IMG_0007.jpg",
+  "hoc-thuc-hanh-nghe-mo-ham-lo": {
+    "album_title": "Thư viện ảnh Vinacomin · Ký kết dự án đào tạo công nhân khai thác than TKV – Kushiro",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_2357.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "dao-tao-an-toan-truoc-khi-vao-lo": {
+    "album_title": "Thư viện ảnh Vinacomin · Hội thi An toàn vệ sinh viên giỏi cấp Tập đoàn",
+    "source_url": "https://vinacomin.vn/Share/Media/2017/09/IMG_8117.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "co-gioi-hoa-khai-thac-ham-lo": {
+    "album_title": "Thư viện ảnh Vinacomin · Hội nghị cơ giới hóa – đào lò",
+    "source_url": "https://vinacomin.vn/Share/Media/2017/09/U39A0357.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "13500-tho-lo-thu-nhap-tren-300-trieu-2025": {
+    "album_title": "Thư viện ảnh Vinacomin · Kỷ niệm truyền thống công nhân Vùng mỏ – ngành Than",
+    "source_url": "https://vinacomin.vn/Share/Media/2017/09/images1311883_KEN_6710.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "hoc-nghe-khai-thac-mo-2-3-thang": {
+    "album_title": "Thư viện ảnh Vinacomin · Lãnh đạo Công đoàn thăm công nhân Than Dương Huy",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4075.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "ho-so-hoc-nghe-mo-can-gi": {
+    "album_title": "Thư viện ảnh Vinacomin · Lãnh đạo Công đoàn thăm công nhân Than Dương Huy",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4110.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "dieu-kien-tuyen-tho-lo-2026": {
+    "album_title": "Thư viện ảnh Vinacomin · Lãnh đạo Công đoàn thăm công nhân Than Dương Huy",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4207.jpg",
     "provider": "Thư viện ảnh Vinacomin"
   },
   "tai-co-cau-tkv-2026-viec-lam-tho-mo": {
-    "album_id": "2914",
-    "album_title": "Tập huấn hướng dẫn kinh nghiệm quản lý vận hành các trạm quan trắc môi trường tự động",
+    "album_title": "Thư viện ảnh Vinacomin · Tập huấn quản lý trạm quan trắc môi trường tự động",
     "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_5192.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "phuc-loi-tho-mo-tkv-2026": {
+    "album_title": "Thư viện ảnh Vinacomin · Lễ tuyên dương điển hình tiên tiến ngành Than",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/05/39A6643.jpg",
     "provider": "Thư viện ảnh Vinacomin"
   }
 }

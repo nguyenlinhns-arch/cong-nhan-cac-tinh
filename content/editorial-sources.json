@@ -1,0 +1,236 @@
+{
+  "updated_at": "2026-07-31T10:30:00+07:00",
+  "policy": "Nguồn URL chỉ dùng cho kiểm chứng nội bộ; bài công khai ghi tên nguồn bằng chữ và không đặt liên kết ra ngoài.",
+  "articles": [
+    {
+      "slug": "dieu-kien-tuyen-tho-lo-2026",
+      "title": "Điều kiện tuyển thợ lò 2026: kiểm tra đúng trước khi đăng ký",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than - Khoáng sản Việt Nam",
+          "title": "Thông báo số 10/TB-CĐTKV về tuyển sinh nghề mỏ năm 2026",
+          "date": "02/04/2026"
+        }
+      ]
+    },
+    {
+      "slug": "ho-so-hoc-nghe-mo-can-gi",
+      "title": "Hồ sơ học nghề mỏ cần gì? Danh sách gọn và cách chuẩn bị đúng",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than - Khoáng sản Việt Nam",
+          "title": "Thông báo số 10/TB-CĐTKV về hồ sơ dự tuyển nghề mỏ năm 2026",
+          "date": "02/04/2026"
+        }
+      ]
+    },
+    {
+      "slug": "hoc-nghe-khai-thac-mo-2-3-thang",
+      "title": "Học nghề mỏ 2–3 tháng: ngắn nhưng không phải học cho xong",
+      "sources": [
+        {
+          "publisher": "Thầy Linh – Phòng Tuyển sinh Miền Trung",
+          "title": "Thông tin chương trình đào tạo nghề mỏ chính đang tư vấn",
+          "date": "31/07/2026"
+        },
+        {
+          "publisher": "TKV",
+          "title": "Cách làm mới trong công tác đào tạo nghề mỏ hầm lò",
+          "date": "01/04/2025",
+          "url": "https://vinacomin.vn/news/slug/cach-lam-moi-trong-cong-tac-dao-tao-nghe-mo-ham-lo"
+        }
+      ]
+    },
+    {
+      "slug": "13500-tho-lo-thu-nhap-tren-300-trieu-2025",
+      "title": "Hơn 13.500 thợ lò thu nhập trên 300 triệu đồng/năm: đọc số liệu thế nào?",
+      "sources": [
+        {
+          "publisher": "TKV – Hội nghị Người lao động 2026",
+          "title": "Kết quả tiền lương, thu nhập người lao động năm 2025",
+          "date": "05/02/2026"
+        },
+        {
+          "publisher": "Lao Động",
+          "title": "TKV có hơn 13.000 thợ lò thu nhập trên 300 triệu đồng/người năm 2025",
+          "date": "06/02/2026",
+          "url": "https://laodong.vn/cong-doan/tkv-co-hon-13000-tho-lo-thu-nhap-tren-300-trieu-dongnguoi-nam-2025-1652193.ldo"
+        },
+        {
+          "publisher": "PetroTimes",
+          "title": "TKV đặt mục tiêu tổng doanh thu 171,6 nghìn tỷ đồng",
+          "date": "10/02/2026",
+          "url": "https://petrotimes.vn/tkv-dat-muc-tieu-tong-doanh-thu-1716-nghin-ty-dong-737702.html"
+        }
+      ]
+    },
+    {
+      "slug": "co-gioi-hoa-khai-thac-ham-lo",
+      "title": "Cơ giới hóa khai thác hầm lò 2026–2030: nghề thợ mỏ đổi ra sao?",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "Đẩy mạnh cơ giới hóa, tự động hóa, chuyển đổi số trong sản xuất hầm lò",
+          "date": "27/02/2026",
+          "url": "https://vinacomin.vn/news/slug/day-manh-co-gioi-hoa-tu-dong-hoa-chuyen-doi-so-trong-san-xuat-ham-lo"
+        },
+        {
+          "publisher": "Tạp chí Công Thương",
+          "title": "Kế hoạch công nghệ khai thác lò chợ giai đoạn 2026–2030",
+          "date": "28/02/2026",
+          "url": "https://tapchicongthuong.vn/day-manh-co-gioi-hoa--tu-dong-hoa--chuyen-doi-so-trong-san-xuat-ham-lo-464992.htm"
+        }
+      ]
+    },
+    {
+      "slug": "dao-tao-an-toan-truoc-khi-vao-lo",
+      "title": "Đào tạo an toàn trước khi vào lò: điều người mới phải hiểu",
+      "sources": [
+        {
+          "publisher": "Nhân Dân",
+          "title": "Ngành than chăm lo cho thợ lò, bảo đảm an toàn lao động",
+          "date": "15/05/2026",
+          "url": "https://nhandan.vn/nganh-than-cham-lo-cho-tho-lo-bao-dam-an-toan-lao-dong-post962555.html"
+        },
+        {
+          "publisher": "TKV",
+          "title": "Triển khai các biện pháp bảo đảm AT-VSLĐ 6 tháng cuối năm 2026",
+          "date": "11/07/2026",
+          "url": "https://vinacomin.vn/news/slug/tkv-trien-khai-cac-bien-phap-bao-dam-at-vsld-6-thang-cuoi-nam-2026"
+        },
+        {
+          "publisher": "Nhân Dân",
+          "title": "TKV và JOGMEC hợp tác đào tạo công nghệ an toàn và khai thác than",
+          "date": "13/03/2026",
+          "url": "https://nhandan.vn/tkv-va-jogmec-hop-tac-dao-tao-cong-nghe-an-toan-va-khai-thac-than-post948168.html"
+        }
+      ]
+    },
+    {
+      "slug": "hoc-thuc-hanh-nghe-mo-ham-lo",
+      "title": "Tay nghề thợ mỏ trong thời kỳ mỏ thông minh được rèn thế nào?",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "Khai mạc Hội thi thợ giỏi cấp Tập đoàn lần thứ 13, năm 2026",
+          "date": "18/07/2026",
+          "url": "https://vinacomin.vn/news/slug/tkv-khai-mac-hoi-thi-tho-gioi-cap-tap-doan-lan-thu-13-nam-2026"
+        },
+        {
+          "publisher": "Báo Quảng Ninh",
+          "title": "Trên 500 thí sinh tham gia Hội thi thợ giỏi TKV lần thứ 13",
+          "date": "18/07/2026",
+          "url": "https://baoquangninh.vn/tren-500-thi-sinh-tham-gia-hoi-thi-tho-gioi-cap-tap-doan-cua-tkv-lan-thu-13-nam-2026-3415708.html"
+        },
+        {
+          "publisher": "Trường Cao đẳng TKV",
+          "title": "Hội thi thợ giỏi cấp Tập đoàn lần thứ 13",
+          "date": "18/07/2026",
+          "url": "https://caodangtkv.edu.vn/tap-doan-cong-nghiep-than-khoang-san-viet-nam-khai-mac-hoi-thi-tho-gioi-cap-tap-doan-lan-thu-13-nam-2026/"
+        }
+      ]
+    },
+    {
+      "slug": "nghe-tho-lo-co-on-dinh-khong",
+      "title": "Nghề thợ lò có ổn định không? Nhìn từ dữ liệu ngành Than 2026",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "6 tháng đầu năm TKV cung cấp 22,77 triệu tấn than cho sản xuất điện",
+          "date": "03/07/2026",
+          "url": "https://web.vinacomin.vn/news/slug/6-thang-dau-nam-tkv-cung-cap-2277-trieu-tan-than-cho-san-xuat-dien"
+        },
+        {
+          "publisher": "Nhân Dân",
+          "title": "Sáu tháng TKV sản xuất gần 20 triệu tấn than sạch",
+          "date": "03/07/2026",
+          "url": "https://nhandan.vn/sau-thang-tkv-san-xuat-gan-20-trieu-tan-than-sach-post973256.html"
+        },
+        {
+          "publisher": "Viện Nghiên cứu Chiến lược, Chính sách Công Thương",
+          "title": "Thúc đẩy mục tiêu tăng trưởng hai con số tại TKV",
+          "date": "02/07/2026",
+          "url": "https://vioit.moit.gov.vn/vn/tin-hoat-dong-nganh/pho-thu-tuong-thuong-truc-pham-gia-tuc-lam-viec-voi-tkv--thuc-day-muc-tieu-tang-truong-hai-con-so-6882.4056.html"
+        }
+      ]
+    },
+    {
+      "slug": "san-xuat-sach-hon-nganh-than",
+      "title": "Sản xuất sạch hơn trong ngành Than: thay đổi thật nằm ở đâu?",
+      "sources": [
+        {
+          "publisher": "Bộ Công Thương",
+          "title": "Phong trào sản xuất sạch hơn giúp công nghiệp than chuyển mình",
+          "date": "05/09/2025",
+          "url": "https://moit.gov.vn/phat-trien-ben-vung/phong-trao-san-xuat-sach-hon-giup-cong-nghiep-than-chuyen-minh.html"
+        },
+        {
+          "publisher": "Bộ Công Thương",
+          "title": "Ngành than với mục tiêu phát triển bền vững",
+          "date": "15/10/2024",
+          "url": "https://moit.gov.vn/phat-trien-ben-vung/nganh-than-voi-muc-tieu-phat-trien-ben-vung.html"
+        },
+        {
+          "publisher": "TKV",
+          "title": "Đẩy mạnh xúc tiến tái sử dụng đất đá thải mỏ",
+          "date": "24/10/2025",
+          "url": "https://vinacomin.vn/news/slug/day-manh-xuc-tien-tai-su-dung-dat-da-thai-mo"
+        }
+      ]
+    },
+    {
+      "slug": "an-toan-mua-mua-bao-2026",
+      "title": "An toàn mỏ mùa mưa bão 2026: vì sao mọi khâu phải siết chặt?",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "Đảm bảo an toàn sản xuất lộ thiên trong mùa mưa bão 2026",
+          "date": "2026",
+          "url": "https://vinacomin.vn/news/slug/dam-bao-an-toan-san-xuat-lo-thien-trong-mua-mua-bao-2026"
+        },
+        {
+          "publisher": "PetroTimes",
+          "title": "TKV triển khai đồng bộ các giải pháp sản xuất, tiêu thụ than tháng 7/2026",
+          "date": "08/07/2026",
+          "url": "https://petrotimes.vn/tkv-trien-khai-dong-bo-cac-giai-phap-san-xuat-tieu-thu-than-thang-72026-743180.html"
+        },
+        {
+          "publisher": "Nhân Dân",
+          "title": "Tăng tốc tiến độ dự án băng tải nhưng phải bảo đảm an toàn",
+          "date": "13/07/2026",
+          "url": "https://nhandan.vn/tang-toc-tien-do-phan-dau-hoan-thanh-du-an-bang-tai-van-chuyen-than-trong-thang-8-post975334.html"
+        }
+      ]
+    },
+    {
+      "slug": "phuc-loi-tho-mo-tkv-2026",
+      "title": "Phúc lợi thợ mỏ TKV 2026: nhà ở, sức khỏe và bữa ăn",
+      "sources": [
+        {
+          "publisher": "Công đoàn TKV",
+          "title": "Kết quả hoạt động 6 tháng đầu năm 2026",
+          "date": "22/06/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/45759/Cong-%C4%91oan-TKV-Hoi-nghi-phan-anh-ket-qua-hoat-%C4%91ong-6-thang-%C4%91au-nam-trien-khai-nhiem-vu-6-thang-cuoi-nam-2026"
+        }
+      ]
+    },
+    {
+      "slug": "tai-co-cau-tkv-2026-viec-lam-tho-mo",
+      "title": "Tái cơ cấu TKV 2026: việc làm thợ mỏ thay đổi thế nào?",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "Làm việc về tái cơ cấu TKV giai đoạn 2026–2030",
+          "date": "29/07/2026",
+          "url": "https://vinacomin.vn/news/slug/tong-bi-thu-chu-tich-nuoc-chu-tri-lam-viec-ve-tai-co-cau-tap-doan-cong-nghiep-than-khoang-san-viet-nam"
+        },
+        {
+          "publisher": "TKV",
+          "title": "Cung cấp 22,77 triệu tấn than cho sản xuất điện trong 6 tháng đầu năm",
+          "date": "03/07/2026",
+          "url": "https://web.vinacomin.vn/news/slug/6-thang-dau-nam-tkv-cung-cap-2277-trieu-tan-than-cho-san-xuat-dien"
+        }
+      ]
+    }
+  ]
+}

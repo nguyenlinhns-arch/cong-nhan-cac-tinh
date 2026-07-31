@@ -37,23 +37,13 @@
     },
     {
       "url": "/tin-nganh-than/",
-      "title": "Tin ngành Than mới và 50 bài cẩm nang thợ mỏ",
-      "description": "Tin ngành Than mới cùng 50 bài về tuyển thợ lò, học nghề mỏ, thu nhập, an toàn, công nghệ và việc làm tại Quảng Ninh.",
+      "title": "Kho kiến thức ngành mỏ: tin chọn lọc và phân tích chuyên sâu",
+      "description": "Kho bài viết chọn lọc về ngành Than, nghề thợ mỏ, thu nhập, an toàn, công nghệ, tay nghề, phúc lợi và môi trường khai thác.",
       "keywords": [],
       "category": "news",
       "categoryLabel": "Tin ngành Than",
       "type": "Tin ngành Than",
       "priority": 90
-    },
-    {
-      "url": "/tin-nganh-than/2026/07/30/ba-thong-tin-kiem-tra-dieu-kien-hoc-nghe-mo/",
-      "title": "Muốn học nghề mỏ 2026, cần gửi 3 thông tin gì?",
-      "description": "Trước khi làm hồ sơ học nghề mỏ năm 2026, hãy gửi năm sinh, chiều cao/cân nặng và tình trạng sức khỏe để kiểm tra điều kiện ban đầu.",
-      "keywords": [],
-      "category": "news",
-      "categoryLabel": "Tin ngành Than",
-      "type": "Tin ngành Than",
-      "priority": 60
     },
     {
       "url": "/tin-nganh-than/2026/07/30/phuc-loi-tho-mo-tkv-2026/",
@@ -90,207 +80,14 @@
       "priority": 60
     },
     {
-      "url": "/bai-viet/sai-lam-khi-dang-ky-hoc-nghe-mo/",
-      "title": "7 sai lầm thường gặp khi đăng ký học nghề mỏ",
-      "description": "7 sai lầm thường gặp khi đăng ký học nghề mỏ. Các lỗi phổ biến thường đến từ thông tin thiếu, tin lời môi giới không rõ danh tính hoặc đi trước khi có…",
+      "url": "/bai-viet/an-toan-mua-mua-bao-2026/",
+      "title": "An toàn mỏ mùa mưa bão 2026: vì sao mọi khâu phải siết chặt?",
+      "description": "Mưa lớn và giông lốc tác động trực tiếp đến khai trường, bãi thải, thoát nước và vận tải. Những nguyên tắc người lao động cần hiểu năm 2026.",
       "keywords": [
-        "sai lầm khi đăng ký học nghề mỏ",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "điều kiện và hồ sơ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "training",
-      "categoryLabel": "Học nghề",
-      "type": "Học nghề",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/ba-thong-tin-dang-ky-hoc-nghe-mo/",
-      "title": "Ba thông tin cần gửi khi đăng ký học nghề mỏ",
-      "description": "Ba thông tin cần gửi khi đăng ký học nghề mỏ. Năm sinh, chiều cao/cân nặng và tình trạng sức khỏe giúp kiểm tra nhanh khả năng phù hợp. Hướng dẫn rõ điều…",
-      "keywords": [
-        "đăng ký học nghề mỏ",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "điều kiện và hồ sơ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "training",
-      "categoryLabel": "Học nghề",
-      "type": "Học nghề",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/bao-hiem-cho-cong-nhan-nganh-than/",
-      "title": "Bảo hiểm cho công nhân ngành Than: điều cần biết",
-      "description": "Bảo hiểm cho công nhân ngành Than: điều cần biết. Khi ký hợp đồng, người lao động cần đọc nội dung về bảo hiểm, quyền lợi và trách nhiệm của hai bên.…",
-      "keywords": [
-        "bảo hiểm công nhân ngành Than",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "công việc và thu nhập",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "welfare",
-      "categoryLabel": "Đời sống & phúc lợi",
-      "type": "Đời sống & phúc lợi",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/bao-ho-lao-dong-tho-lo/",
-      "title": "Bảo hộ lao động thợ lò gồm gì và dùng ra sao?",
-      "description": "Bảo hộ lao động thợ lò gồm gì và dùng ra sao. Trang bị chỉ bảo vệ tốt khi đúng loại, vừa kích cỡ, được kiểm tra và sử dụng trong suốt thời gian yêu cầu.…",
-      "keywords": [
-        "bảo hộ lao động thợ lò",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "an toàn và công nghệ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "technology",
-      "categoryLabel": "An toàn & công nghệ",
-      "type": "An toàn & công nghệ",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/tuoi-hoc-nghe-mo-va-lam-tho-lo/",
-      "title": "Bao nhiêu tuổi có thể học nghề mỏ và làm thợ lò?",
-      "description": "Bao nhiêu tuổi có thể học nghề mỏ và làm thợ lò. Người từ 18 đến 35 tuổi có thể gửi thông tin kiểm tra ban đầu, sau đó tiếp tục xét sức khỏe và tiêu chí…",
-      "keywords": [
-        "tuổi học nghề mỏ",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "điều kiện và hồ sơ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "training",
-      "categoryLabel": "Học nghề",
-      "type": "Học nghề",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/bua-an-ca-va-dinh-duong-tho-mo/",
-      "title": "Bữa ăn ca và dinh dưỡng cho thợ mỏ",
-      "description": "Bữa ăn ca và dinh dưỡng cho thợ mỏ. Công việc nặng nhọc cần bữa ăn đủ năng lượng, nước uống và thói quen phục hồi sau ca. Hướng dẫn rõ điều kiện, quy…",
-      "keywords": [
-        "bữa ăn ca thợ mỏ",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "đời sống và phúc lợi",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "welfare",
-      "categoryLabel": "Đời sống & phúc lợi",
-      "type": "Đời sống & phúc lợi",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/ca-lam-viec-cua-tho-lo/",
-      "title": "Ca làm việc của thợ lò được tổ chức như thế nào?",
-      "description": "Ca làm việc của thợ lò được tổ chức như thế nào. Mỗi ca gồm chuẩn bị, di chuyển, nhận vị trí, sản xuất và bàn giao; thời gian cụ thể theo đơn vị. Hướng…",
-      "keywords": [
-        "ca làm việc của thợ lò",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "công việc và thu nhập",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "work",
-      "categoryLabel": "Công việc & lương",
-      "type": "Công việc & lương",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/cach-tinh-luong-tho-lo-theo-ngay-cong-nang-suat/",
-      "title": "Cách tính lương thợ lò theo ngày công và năng suất",
-      "description": "Cách tính lương thợ lò theo ngày công và năng suất. Muốn đọc đúng bảng lương cần đối chiếu đơn giá, ngày công, sản lượng, phụ cấp và các khoản khấu trừ.…",
-      "keywords": [
-        "cách tính lương thợ lò",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "công việc và thu nhập",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "work",
-      "categoryLabel": "Công việc & lương",
-      "type": "Công việc & lương",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/can-thi-co-hoc-nghe-mo-duoc-khong/",
-      "title": "Cận thị có học nghề mỏ được không? Cách kiểm tra đúng",
-      "description": "Cận thị có học nghề mỏ được không? Cách kiểm tra đúng. Tình trạng thị lực cần được khai trước và đánh giá theo tiêu chuẩn sức khỏe của vị trí dự kiến.…",
-      "keywords": [
-        "cận thị có học nghề mỏ được không",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "điều kiện và hồ sơ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "training",
-      "categoryLabel": "Học nghề",
-      "type": "Học nghề",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/chieu-cao-can-nang-tuyen-tho-lo/",
-      "title": "Chiều cao, cân nặng tuyển thợ lò: cách tự kiểm tra",
-      "description": "Chiều cao, cân nặng tuyển thợ lò: cách tự kiểm tra. Mốc tham khảo hiện hành là từ 1m56 và 48kg; nên đo đúng thay vì ước lượng. Hướng dẫn rõ điều kiện, quy…",
-      "keywords": [
-        "chiều cao cân nặng tuyển thợ lò",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "điều kiện và hồ sơ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "training",
-      "categoryLabel": "Học nghề",
-      "type": "Học nghề",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/chuan-bi-truoc-ngay-nhap-hoc-nghe-mo/",
-      "title": "Chuẩn bị gì trước ngày nhập học nghề mỏ?",
-      "description": "Chuẩn bị gì trước ngày nhập học nghề mỏ. Ngoài giấy tờ, người học cần chuẩn bị đồ dùng cá nhân, lịch trình và tâm lý tuân thủ nội quy. Hướng dẫn rõ điều…",
-      "keywords": [
-        "chuẩn bị nhập học nghề mỏ",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "điều kiện và hồ sơ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "training",
-      "categoryLabel": "Học nghề",
-      "type": "Học nghề",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/chuyen-doi-so-trong-mo-ham-lo/",
-      "title": "Chuyển đổi số trong mỏ hầm lò: người thợ được lợi gì?",
-      "description": "Chuyển đổi số trong mỏ hầm lò: người thợ được lợi gì. Dữ liệu sản xuất, thiết bị và an toàn được kết nối tốt hơn giúp doanh nghiệp phản ứng nhanh và tổ…",
-      "keywords": [
-        "chuyển đổi số mỏ hầm lò",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "an toàn và công nghệ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "technology",
-      "categoryLabel": "An toàn & công nghệ",
-      "type": "An toàn & công nghệ",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/cong-viec-co-dien-mo/",
-      "title": "Công việc cơ điện mỏ: thiết bị, bảo dưỡng và an toàn",
-      "description": "Công việc cơ điện mỏ: thiết bị, bảo dưỡng và an toàn. Người làm cơ điện góp phần duy trì thiết bị, nguồn điện và hệ thống phục vụ sản xuất hoạt động ổn…",
-      "keywords": [
-        "công việc cơ điện mỏ",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "công việc và thu nhập",
-        "Thầy Linh tuyển thợ mỏ"
+        "an toàn mỏ mùa mưa bão 2026",
+        "phòng chống thiên tai ngành Than",
+        "an toàn bãi thải mỏ",
+        "sản xuất than tháng 7 2026"
       ],
       "category": "technology",
       "categoryLabel": "An toàn & công nghệ",
@@ -299,14 +96,13 @@
     },
     {
       "url": "/bai-viet/co-gioi-hoa-khai-thac-ham-lo/",
-      "title": "Cơ giới hóa khai thác hầm lò thay đổi công việc ra sao?",
-      "description": "Cơ giới hóa khai thác hầm lò thay đổi công việc ra sao. Thiết bị giúp giảm sức lao động ở nhiều công đoạn, nâng năng suất và yêu cầu người thợ hiểu quy…",
+      "title": "Cơ giới hóa khai thác hầm lò 2026–2030: nghề thợ mỏ đổi ra sao?",
+      "description": "TKV đặt mục tiêu tăng tỷ trọng than khai thác cơ giới hóa lên 34,4% năm 2030. Phân tích công việc, kỹ năng và cơ hội của người thợ mỏ.",
       "keywords": [
-        "cơ giới hóa khai thác hầm lò",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "an toàn và công nghệ",
-        "Thầy Linh tuyển thợ mỏ"
+        "cơ giới hóa khai thác hầm lò 2026–2030",
+        "mỏ hầm lò thông minh",
+        "tự động hóa ngành Than",
+        "kỹ năng thợ mỏ"
       ],
       "category": "technology",
       "categoryLabel": "An toàn & công nghệ",
@@ -315,13 +111,13 @@
     },
     {
       "url": "/bai-viet/dao-tao-an-toan-truoc-khi-vao-lo/",
-      "title": "Đào tạo an toàn trước khi vào hầm lò",
-      "description": "Đào tạo an toàn trước khi vào hầm lò. An toàn là nội dung bắt buộc trước khi người học tiếp cận môi trường sản xuất thực tế. Hướng dẫn rõ điều kiện, quy…",
+      "title": "Đào tạo an toàn trước khi vào lò: điều người mới phải hiểu",
+      "description": "Đào tạo an toàn trước khi vào lò gồm nhận diện nguy cơ, thông gió, khí mỏ, bục nước, bảo hộ và kỷ luật báo cáo trong sản xuất.",
       "keywords": [
-        "đào tạo an toàn hầm lò",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "Thầy Linh tuyển thợ mỏ"
+        "đào tạo an toàn trước khi vào lò",
+        "an toàn lao động mỏ",
+        "thông gió khí mỏ",
+        "sức khỏe thợ lò"
       ],
       "category": "technology",
       "categoryLabel": "An toàn & công nghệ",
@@ -330,39 +126,13 @@
     },
     {
       "url": "/bai-viet/dieu-kien-tuyen-tho-lo-2026/",
-      "title": "Điều kiện tuyển thợ lò 2026: kiểm tra trước khi đăng ký",
-      "description": "Điều kiện tuyển thợ lò 2026: kiểm tra trước khi đăng ký. Điều kiện cơ bản gồm độ tuổi, thể lực và sức khỏe; kết quả cuối cùng căn cứ kiểm tra của đơn vị…",
+      "title": "Điều kiện tuyển thợ lò 2026: kiểm tra đúng trước khi đăng ký",
+      "description": "Điều kiện tuyển thợ lò 2026 gồm độ tuổi, chiều cao, cân nặng và sức khỏe. Hướng dẫn tự kiểm tra trước khi chuẩn bị hồ sơ.",
       "keywords": [
         "điều kiện tuyển thợ lò 2026",
         "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "điều kiện và hồ sơ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "training",
-      "categoryLabel": "Học nghề",
-      "type": "Học nghề",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/dieu-kien-tuyen-tho-lo/",
-      "title": "Điều kiện tuyển thợ lò: kiểm tra trước khi làm hồ sơ",
-      "description": "Hướng dẫn kiểm tra điều kiện tuyển thợ lò về tuổi, chiều cao, cân nặng, học vấn và sức khỏe trước khi làm hồ sơ học nghề mỏ.",
-      "keywords": [],
-      "category": "entry",
-      "categoryLabel": "Điều kiện & hồ sơ",
-      "type": "Điều kiện & hồ sơ",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/hoc-co-dien-mo-10-thang/",
-      "title": "Học cơ điện mỏ 10 tháng: lộ trình cho người mới",
-      "description": "Học cơ điện mỏ 10 tháng: lộ trình cho người mới. Cơ điện mỏ cần thời gian dài hơn để học kiến thức điện, cơ khí, thiết bị và quy trình an toàn. Hướng dẫn…",
-      "keywords": [
-        "học cơ điện mỏ 10 tháng",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "Thầy Linh tuyển thợ mỏ"
+        "học nghề mỏ 2–3 tháng",
+        "kiểm tra sức khỏe thợ lò"
       ],
       "category": "training",
       "categoryLabel": "Học nghề",
@@ -371,73 +141,13 @@
     },
     {
       "url": "/bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/",
-      "title": "Học nghề khai thác mỏ 2–3 tháng gồm những gì?",
-      "description": "Học nghề khai thác mỏ 2–3 tháng gồm những gì. Khóa học tập trung vào kỹ năng khai thác, an toàn, thực hành và kỷ luật lao động trước khi làm việc. Hướng…",
+      "title": "Học nghề mỏ 2–3 tháng: ngắn nhưng không phải học cho xong",
+      "description": "Học nghề mỏ 2–3 tháng tập trung vào kiến thức nghề, thực hành và an toàn. Những gì người học cần chuẩn bị để theo kịp khóa học.",
       "keywords": [
-        "học nghề khai thác mỏ 2–3 tháng",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "training",
-      "categoryLabel": "Học nghề",
-      "type": "Học nghề",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/mien-hoc-phi-hoc-nghe-mo/",
-      "title": "Học nghề mỏ có mất học phí không?",
-      "description": "Học nghề mỏ có mất học phí không. Người học theo chỉ tiêu được miễn kinh phí đào tạo; chế độ cụ thể cần xác nhận theo đợt tiếp nhận. Hướng dẫn rõ điều…",
-      "keywords": [
-        "học nghề mỏ miễn học phí",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "training",
-      "categoryLabel": "Học nghề",
-      "type": "Học nghề",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/hoc-nghe-xay-dung-mo-2-3-thang/",
-      "title": "Học nghề xây dựng mỏ 2–3 tháng: công việc và kỹ năng",
-      "description": "Học nghề xây dựng mỏ 2–3 tháng: công việc và kỹ năng. Người học được làm quen với công việc đào, chống giữ và duy trì đường lò theo thiết kế, quy trình an…",
-      "keywords": [
-        "học nghề xây dựng mỏ",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "work",
-      "categoryLabel": "Công việc & lương",
-      "type": "Công việc & lương",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/hoc-thuc-hanh-nghe-mo-ham-lo/",
-      "title": "Học thực hành nghề mỏ hầm lò có gì khác lý thuyết?",
-      "description": "Học thực hành nghề mỏ hầm lò có gì khác lý thuyết. Thực hành giúp người học chuyển kiến thức thành thao tác, phối hợp tổ đội và phản xạ an toàn. Hướng dẫn…",
-      "keywords": [
-        "học thực hành nghề mỏ hầm lò",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "training",
-      "categoryLabel": "Học nghề",
-      "type": "Học nghề",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/hoc-xong-nghe-mo-lam-viec-o-dau/",
-      "title": "Học xong nghề mỏ làm việc ở đâu tại Quảng Ninh?",
-      "description": "Học xong nghề mỏ làm việc ở đâu tại Quảng Ninh. Người đạt yêu cầu được bố trí về doanh nghiệp ngành Than theo chỉ tiêu, nhu cầu và kết quả đào tạo. Hướng…",
-      "keywords": [
-        "học nghề mỏ làm việc ở đâu",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "Thầy Linh tuyển thợ mỏ"
+        "học nghề mỏ 2–3 tháng",
+        "đào tạo thợ lò",
+        "học khai thác mỏ",
+        "việc làm ngành Than"
       ],
       "category": "training",
       "categoryLabel": "Học nghề",
@@ -446,14 +156,13 @@
     },
     {
       "url": "/bai-viet/ho-so-hoc-nghe-mo-can-gi/",
-      "title": "Hồ sơ học nghề mỏ cần gì? Danh sách ngắn dễ nhớ",
-      "description": "Hồ sơ học nghề mỏ cần gì? Danh sách ngắn dễ nhớ. Hồ sơ dự tuyển gồm 02 bộ: sơ yếu lý lịch, giấy khai sinh, bằng tốt nghiệp văn hóa và căn cước công dân. Hướng dẫn rõ…",
+      "title": "Hồ sơ học nghề mỏ cần gì? Danh sách gọn và cách chuẩn bị đúng",
+      "description": "Hồ sơ học nghề mỏ gồm 02 bộ với sơ yếu lý lịch, giấy khai sinh, bằng tốt nghiệp văn hóa và căn cước công dân theo hướng dẫn năm 2026.",
       "keywords": [
         "hồ sơ học nghề mỏ cần gì",
+        "đăng ký học nghề mỏ",
         "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "điều kiện và hồ sơ",
-        "Thầy Linh tuyển thợ mỏ"
+        "nhập học nghề mỏ"
       ],
       "category": "training",
       "categoryLabel": "Học nghề",
@@ -462,471 +171,62 @@
     },
     {
       "url": "/bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/",
-      "title": "Hơn 13.500 thợ lò thu nhập trên 300 triệu năm 2025",
-      "description": "Năm 2025, TKV có trên 13.507 thợ lò thu nhập trên 300 triệu đồng/năm, chiếm 57%; 34 người đạt 600–700 triệu và 4 người trên 700 triệu đồng.",
-      "keywords": [],
-      "category": "work",
-      "categoryLabel": "Công việc & lương",
-      "type": "Công việc & lương",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/kham-suc-khoe-dinh-ky-tho-mo/",
-      "title": "Khám sức khỏe định kỳ cho thợ mỏ có ý nghĩa gì?",
-      "description": "Khám sức khỏe định kỳ cho thợ mỏ có ý nghĩa gì. Khám định kỳ giúp theo dõi ảnh hưởng nghề nghiệp, phát hiện sớm vấn đề và điều chỉnh công việc khi cần.…",
+      "title": "Hơn 13.500 thợ lò thu nhập trên 300 triệu đồng/năm: đọc số liệu thế nào?",
+      "description": "Năm 2025 có 13.507 thợ lò thu nhập trên 300 triệu đồng, chiếm 57%. Phân tích ý nghĩa, giới hạn và cách hiểu đúng trước khi vào nghề.",
       "keywords": [
-        "khám sức khỏe định kỳ thợ mỏ",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "đời sống và phúc lợi",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "welfare",
-      "categoryLabel": "Đời sống & phúc lợi",
-      "type": "Đời sống & phúc lợi",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/ky-tuc-xa-va-an-o-khi-hoc-nghe-mo/",
-      "title": "Ký túc xá và ăn ở khi học nghề mỏ tại Quảng Ninh",
-      "description": "Ký túc xá và ăn ở khi học nghề mỏ tại Quảng Ninh. Người học được bố trí ăn và ở theo kế hoạch của khóa; cần tuân thủ nội quy sinh hoạt tập thể. Hướng dẫn…",
-      "keywords": [
-        "ký túc xá học nghề mỏ",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "welfare",
-      "categoryLabel": "Đời sống & phúc lợi",
-      "type": "Đời sống & phúc lợi",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/lam-sao-tang-thu-nhap-tho-lo/",
-      "title": "Làm sao để tăng thu nhập thợ lò bền vững?",
-      "description": "Làm sao để tăng thu nhập thợ lò bền vững. Thu nhập bền vững đến từ ngày công ổn định, tay nghề, năng suất và kỷ luật an toàn, không phải làm nhanh bằng…",
-      "keywords": [
-        "tăng thu nhập thợ lò",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "công việc và thu nhập",
-        "Thầy Linh tuyển thợ mỏ"
+        "13.500 thợ lò thu nhập trên 300 triệu đồng/năm",
+        "lương thợ lò 2025",
+        "thu nhập thợ mỏ TKV",
+        "việc làm ngành Than"
       ],
       "category": "work",
       "categoryLabel": "Công việc & lương",
       "type": "Công việc & lương",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/lo-trinh-hoc-nghe-mo-den-nhan-viec/",
-      "title": "Lộ trình học nghề mỏ đến khi được nhận việc",
-      "description": "Lộ trình học nghề mỏ đến khi được nhận việc. Từ kiểm tra điều kiện đến học, đánh giá và doanh nghiệp tiếp nhận là một chuỗi bước cần hoàn thành đầy đủ.…",
-      "keywords": [
-        "lộ trình học nghề mỏ",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "training",
-      "categoryLabel": "Học nghề",
-      "type": "Học nghề",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/lo-trinh-hoc-nghe-mo/",
-      "title": "Lộ trình học nghề mỏ tại Quảng Ninh",
-      "description": "Lộ trình từ kiểm tra điều kiện, làm hồ sơ, nhập học nghề mỏ đến thực tập và làm việc tại các đơn vị ngành Than ở Quảng Ninh.",
-      "keywords": [],
-      "category": "training",
-      "categoryLabel": "Học nghề",
-      "type": "Học nghề",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/luong-tho-lo-20-25-trieu-moi-thang/",
-      "title": "Lương thợ lò 20–25 triệu/tháng được hiểu thế nào?",
-      "description": "Lương thợ lò 20–25 triệu/tháng được hiểu thế nào. Đây là mức tham khảo phổ biến; thực nhận thay đổi theo doanh nghiệp, vị trí, ngày công và năng suất.…",
-      "keywords": [
-        "lương thợ lò 20–25 triệu",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "công việc và thu nhập",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "work",
-      "categoryLabel": "Công việc & lương",
-      "type": "Công việc & lương",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/luong-va-doi-song-tho-lo/",
-      "title": "Lương và đời sống thợ lò tại Quảng Ninh",
-      "description": "Tìm hiểu mức lương thợ lò 20–25 triệu đồng/tháng, các yếu tố ảnh hưởng thu nhập và chế độ ăn ở, đi lại, bảo hiểm của ngành Than.",
-      "keywords": [],
-      "category": "welfare",
-      "categoryLabel": "Đời sống & phúc lợi",
-      "type": "Đời sống & phúc lợi",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/chon-nghe-khai-thac-xay-dung-hay-co-dien-mo/",
-      "title": "Nên chọn khai thác mỏ, xây dựng mỏ hay cơ điện mỏ?",
-      "description": "Nên chọn khai thác mỏ, xây dựng mỏ hay cơ điện mỏ. Lựa chọn nên dựa vào sức khỏe, sở thích kỹ thuật, thời gian học và công việc mong muốn. Hướng dẫn rõ…",
-      "keywords": [
-        "nên chọn nghề mỏ nào",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "training",
-      "categoryLabel": "Học nghề",
-      "type": "Học nghề",
       "priority": 50
     },
     {
       "url": "/bai-viet/nghe-tho-lo-co-on-dinh-khong/",
-      "title": "Nghề thợ lò có ổn định không? Cách tự đánh giá",
-      "description": "Nghề thợ lò có ổn định không? Cách tự đánh giá. Sự ổn định phụ thuộc nhu cầu sản xuất, hợp đồng, sức khỏe, kỷ luật và khả năng gắn bó của mỗi người. Hướng…",
+      "title": "Nghề thợ lò có ổn định không? Nhìn từ dữ liệu ngành Than 2026",
+      "description": "Nửa đầu năm 2026 TKV sản xuất khoảng 19,7 triệu tấn than sạch và giao điện 22,77 triệu tấn. Phân tích độ ổn định của nghề thợ lò.",
       "keywords": [
         "nghề thợ lò có ổn định không",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "công việc và thu nhập",
-        "Thầy Linh tuyển thợ mỏ"
+        "việc làm ngành Than 2026",
+        "TKV 6 tháng đầu năm 2026",
+        "tuyển thợ mỏ Quảng Ninh"
       ],
-      "category": "work",
-      "categoryLabel": "Công việc & lương",
-      "type": "Công việc & lương",
+      "category": "guide",
+      "categoryLabel": "Thông tin nghề mỏ",
+      "type": "Thông tin nghề mỏ",
       "priority": 50
     },
     {
-      "url": "/bai-viet/nha-o-ky-tuc-xa-cong-nhan-mo/",
-      "title": "Nhà ở, ký túc xá cho công nhân mỏ tại Quảng Ninh",
-      "description": "Nhà ở, ký túc xá cho công nhân mỏ tại Quảng Ninh. Chỗ ở ổn định giúp lao động xa quê giảm áp lực chi phí và duy trì sức khỏe khi làm việc theo ca. Hướng…",
+      "url": "/bai-viet/san-xuat-sach-hon-nganh-than/",
+      "title": "Sản xuất sạch hơn trong ngành Than: thay đổi thật nằm ở đâu?",
+      "description": "Ngành Than đầu tư xử lý nước, giảm bụi, cơ giới hóa và tái sử dụng đất đá thải. Phân tích các chỉ số cho thấy thay đổi môi trường thực tế.",
       "keywords": [
-        "nhà ở công nhân mỏ Quảng Ninh",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "đời sống và phúc lợi",
-        "Thầy Linh tuyển thợ mỏ"
+        "sản xuất sạch hơn trong ngành Than",
+        "môi trường mỏ Quảng Ninh",
+        "xử lý nước thải mỏ",
+        "kinh tế tuần hoàn ngành Than"
       ],
-      "category": "welfare",
-      "categoryLabel": "Đời sống & phúc lợi",
-      "type": "Đời sống & phúc lợi",
+      "category": "guide",
+      "categoryLabel": "Thông tin nghề mỏ",
+      "type": "Thông tin nghề mỏ",
       "priority": 50
     },
     {
-      "url": "/bai-viet/phu-cap-va-che-do-tho-lo/",
-      "title": "Phụ cấp và chế độ thợ lò cần hỏi những gì?",
-      "description": "Phụ cấp và chế độ thợ lò cần hỏi những gì. Ngoài lương, người lao động nên hỏi rõ ăn ca, bảo hộ, đi lại, chỗ ở và các khoản theo điều kiện làm việc. Hướng…",
+      "url": "/bai-viet/hoc-thuc-hanh-nghe-mo-ham-lo/",
+      "title": "Tay nghề thợ mỏ trong thời kỳ mỏ thông minh được rèn thế nào?",
+      "description": "Hội thi thợ giỏi TKV 2026 có 501 thí sinh, 27 nghề. Phân tích vai trò thực hành, kỷ luật và học công nghệ với người mới vào nghề.",
       "keywords": [
-        "phụ cấp thợ lò",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "công việc và thu nhập",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "work",
-      "categoryLabel": "Công việc & lương",
-      "type": "Công việc & lương",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/quy-trinh-dang-ky-tuyen-tho-mo/",
-      "title": "Quy trình đăng ký tuyển thợ mỏ từ xa đến nhập học",
-      "description": "Quy trình đăng ký tuyển thợ mỏ từ xa đến nhập học. Quy trình rõ ràng giúp người ở xa giảm đi lại và tránh chuẩn bị sai giấy tờ. Hướng dẫn rõ điều kiện,…",
-      "keywords": [
-        "quy trình đăng ký tuyển thợ mỏ",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "điều kiện và hồ sơ",
-        "Thầy Linh tuyển thợ mỏ"
+        "tay nghề thợ mỏ trong thời kỳ mỏ thông minh",
+        "hội thi thợ giỏi TKV 2026",
+        "đào tạo nghề mỏ",
+        "thực hành nghề mỏ"
       ],
       "category": "training",
       "categoryLabel": "Học nghề",
       "type": "Học nghề",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/suc-khoe-hoc-nghe-mo/",
-      "title": "Sức khỏe học nghề mỏ: những điều phải khai trung thực",
-      "description": "Sức khỏe học nghề mỏ: những điều phải khai trung thực. Nghề mỏ có yêu cầu sức khỏe riêng; việc khai đúng giúp bảo vệ chính người lao động và đồng đội.…",
-      "keywords": [
-        "sức khỏe học nghề mỏ",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "điều kiện và hồ sơ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "training",
-      "categoryLabel": "Học nghề",
-      "type": "Học nghề",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/thong-gio-ham-lo-va-an-toan/",
-      "title": "Thông gió hầm lò và vai trò đối với an toàn thợ mỏ",
-      "description": "Thông gió hầm lò và vai trò đối với an toàn thợ mỏ. Thông gió giúp kiểm soát không khí, nhiệt và khí mỏ; người lao động phải tuân thủ tuyến và cảnh báo kỹ…",
-      "keywords": [
-        "thông gió hầm lò",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "an toàn và công nghệ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "technology",
-      "categoryLabel": "An toàn & công nghệ",
-      "type": "An toàn & công nghệ",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/tho-khai-thac-mo-lam-cong-viec-gi/",
-      "title": "Thợ khai thác mỏ làm công việc gì trong hầm lò?",
-      "description": "Thợ khai thác mỏ làm công việc gì trong hầm lò. Công việc gắn với khai thác than, vận hành theo quy trình và phối hợp chặt chẽ trong tổ sản xuất. Hướng…",
-      "keywords": [
-        "thợ khai thác mỏ làm gì",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "công việc và thu nhập",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "work",
-      "categoryLabel": "Công việc & lương",
-      "type": "Công việc & lương",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/tho-xay-dung-mo-lam-gi/",
-      "title": "Thợ xây dựng mỏ làm gì? Vai trò của đường lò",
-      "description": "Thợ xây dựng mỏ làm gì? Vai trò của đường lò. Thợ xây dựng mỏ tham gia tạo lập, chống giữ và duy trì hệ thống đường lò phục vụ khai thác an toàn. Hướng…",
-      "keywords": [
-        "thợ xây dựng mỏ làm gì",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "công việc và thu nhập",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "work",
-      "categoryLabel": "Công việc & lương",
-      "type": "Công việc & lương",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/thu-nhap-tho-lo-qua-cac-nam/",
-      "title": "Thu nhập thợ lò trên 300 triệu qua các năm 2022–2025",
-      "description": "Bảng số liệu TKV: số thợ lò thu nhập trên 300 triệu đồng/năm tăng từ 6.941 người năm 2022 lên trên 13.507 người năm 2025.",
-      "keywords": [],
-      "category": "work",
-      "categoryLabel": "Công việc & lương",
-      "type": "Công việc & lương",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/tu-dong-hoa-trong-nganh-than/",
-      "title": "Tự động hóa trong ngành Than và kỹ năng người lao động",
-      "description": "Tự động hóa trong ngành Than và kỹ năng người lao động. Tự động hóa hỗ trợ giám sát và điều khiển, đồng thời làm tăng nhu cầu về kỹ năng kỹ thuật và xử lý…",
-      "keywords": [
-        "tự động hóa ngành Than",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "an toàn và công nghệ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "technology",
-      "categoryLabel": "An toàn & công nghệ",
-      "type": "An toàn & công nghệ",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/van-tai-ham-lo-hien-dai/",
-      "title": "Vận tải hầm lò hiện đại giúp giảm sức lao động thế nào?",
-      "description": "Vận tải hầm lò hiện đại giúp giảm sức lao động thế nào. Hệ thống vận tải người, vật tư và than là mắt xích quan trọng để giảm thời gian di chuyển và công…",
-      "keywords": [
-        "vận tải hầm lò hiện đại",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "an toàn và công nghệ",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "technology",
-      "categoryLabel": "An toàn & công nghệ",
-      "type": "An toàn & công nghệ",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/viec-lam-tho-mo-dak-lak/",
-      "title": "Việc làm thợ mỏ cho lao động Đắk Lắk tại Quảng Ninh",
-      "description": "Việc làm thợ mỏ cho lao động Đắk Lắk tại Quảng Ninh. Lao động Đắk Lắk nên tìm hiểu kỹ môi trường làm việc, thời gian học và phương án đi xa trước khi đăng…",
-      "keywords": [
-        "việc làm thợ mỏ Đắk Lắk",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "việc làm theo địa phương",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/viec-lam-tho-mo-dien-bien/",
-      "title": "Việc làm thợ mỏ cho lao động Điện Biên: chuẩn bị hành trình",
-      "description": "Việc làm thợ mỏ cho lao động Điện Biên: chuẩn bị hành trình. Khoảng cách xa đòi hỏi người Điện Biên phải kiểm tra điều kiện và lập kế hoạch di chuyển kỹ…",
-      "keywords": [
-        "việc làm thợ mỏ Điện Biên",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "việc làm theo địa phương",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/viec-lam-tho-mo-gia-lai/",
-      "title": "Việc làm thợ mỏ cho lao động Gia Lai: câu chuyện đi xa lập nghiệp",
-      "description": "Việc làm thợ mỏ cho lao động Gia Lai: câu chuyện đi xa lập nghiệp. Nhiều lao động Tây Nguyên quan tâm nghề mỏ vì thu nhập và lộ trình đào tạo rõ; quyết…",
-      "keywords": [
-        "việc làm thợ mỏ Gia Lai",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "việc làm theo địa phương",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/viec-lam-tho-mo-ha-tinh/",
-      "title": "Việc làm thợ mỏ cho lao động Hà Tĩnh cần chuẩn bị gì?",
-      "description": "Việc làm thợ mỏ cho lao động Hà Tĩnh cần chuẩn bị gì. Kế hoạch tốt giúp người Hà Tĩnh chủ động chi phí đi lại, hồ sơ và thời gian xa gia đình. Hướng dẫn…",
-      "keywords": [
-        "việc làm thợ mỏ Hà Tĩnh",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "việc làm theo địa phương",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/viec-lam-tho-mo-lao-cai/",
-      "title": "Việc làm thợ mỏ cho lao động Lào Cai tại Quảng Ninh",
-      "description": "Việc làm thợ mỏ cho lao động Lào Cai tại Quảng Ninh. Người lao động Lào Cai nên đối chiếu điều kiện sức khỏe, chọn nghề và xác nhận lịch trước khi khởi…",
-      "keywords": [
-        "việc làm thợ mỏ Lào Cai",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "việc làm theo địa phương",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/viec-lam-tho-mo-nghe-an/",
-      "title": "Việc làm thợ mỏ cho lao động Nghệ An: lộ trình đăng ký",
-      "description": "Việc làm thợ mỏ cho lao động Nghệ An: lộ trình đăng ký. Người lao động Nghệ An nên hoàn thành sàng lọc sức khỏe và xác nhận lịch trước khi ra Quảng Ninh.…",
-      "keywords": [
-        "việc làm thợ mỏ Nghệ An",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "việc làm theo địa phương",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/viec-lam-tho-mo-quang-ngai/",
-      "title": "Việc làm thợ mỏ cho lao động Quảng Ngãi: điều kiện và hồ sơ",
-      "description": "Việc làm thợ mỏ cho lao động Quảng Ngãi: điều kiện và hồ sơ. Người lao động Quảng Ngãi có thể đăng ký từ xa nếu cung cấp đủ thông tin và đáp ứng tiêu chí…",
-      "keywords": [
-        "việc làm thợ mỏ Quảng Ngãi",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "việc làm theo địa phương",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/viec-lam-tho-mo-quang-tri/",
-      "title": "Việc làm thợ mỏ cho lao động Quảng Trị tại Quảng Ninh",
-      "description": "Việc làm thợ mỏ cho lao động Quảng Trị tại Quảng Ninh. Từ Quảng Trị ra Quảng Ninh là hành trình dài, vì vậy mọi thông tin tuyển sinh cần được xác nhận…",
-      "keywords": [
-        "việc làm thợ mỏ Quảng Trị",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "việc làm theo địa phương",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/viec-lam-tho-mo-son-la/",
-      "title": "Việc làm thợ mỏ cho lao động Sơn La: đăng ký từ xa",
-      "description": "Việc làm thợ mỏ cho lao động Sơn La: đăng ký từ xa. Người Sơn La có thể gửi thông tin sàng lọc trước, sau đó nhận hướng dẫn hồ sơ và lịch cụ thể. Hướng…",
-      "keywords": [
-        "việc làm thợ mỏ Sơn La",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "việc làm theo địa phương",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/viec-lam-tho-mo-thanh-hoa/",
-      "title": "Việc làm thợ mỏ cho lao động Thanh Hóa tại Quảng Ninh",
-      "description": "Việc làm thợ mỏ cho lao động Thanh Hóa tại Quảng Ninh. Lao động Thanh Hóa có thể kiểm tra điều kiện từ xa, chuẩn bị hồ sơ và kế hoạch di chuyển trước khi…",
-      "keywords": [
-        "việc làm thợ mỏ Thanh Hóa",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "việc làm theo địa phương",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/xe-dua-don-cong-nhan-mo/",
-      "title": "Xe đưa đón công nhân mỏ: điều cần xác nhận",
-      "description": "Xe đưa đón công nhân mỏ: điều cần xác nhận. Xe đưa đón giúp kết nối khu ở với nơi làm việc; giờ và tuyến phụ thuộc từng doanh nghiệp. Hướng dẫn rõ điều…",
-      "keywords": [
-        "xe đưa đón công nhân mỏ",
-        "tuyển thợ mỏ Quảng Ninh",
-        "học nghề mỏ",
-        "đời sống và phúc lợi",
-        "Thầy Linh tuyển thợ mỏ"
-      ],
-      "category": "welfare",
-      "categoryLabel": "Đời sống & phúc lợi",
-      "type": "Đời sống & phúc lợi",
       "priority": 50
     },
     {
