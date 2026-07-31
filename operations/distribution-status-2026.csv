@@ -1,13 +1,17 @@
 channel,channel_type,priority,status,last_attempt,public_url,notes
-Google Jobs,search_aggregator,1,configured,2026-07-31,,JobPosting schema and canonical job URL prepared
-IndexNow,search_aggregator,1,configured,2026-07-31,,Automatic post-deploy submission for canonical job and 34 province pages
-JobOKO,job_board,1,pending,,,Existing employer account; first manual-browser posting target
-Sàn giao dịch việc làm quốc gia,government_job_board,1,pending,,,Employer verification may be required
-JobsGO,job_board,2,pending,,,Employer account required
-Việc Làm Tốt,classified_job_board,2,pending,,,Employer account and possible phone verification required
-Việc Làm Nhà Máy,industry_job_board,2,pending,,,Relevant industrial-workforce audience
-Viecoi,job_board,2,pending,,,Employer account required
-Vieclam24h,job_board,3,pending,,,Employer account required
-TopCV,job_board,3,pending,,,Employer account required
-CareerViet,job_board,3,pending,,,Employer account required
-VietnamWorks,job_board,3,pending,,,Employer account and paid package may be required
+Website tuyển dụng,owned_job_site,1,live,2026-07-31,https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/,Canonical job page live; 34 province pages and application form live
+Google Jobs,search_aggregator,1,eligible_schema_live,2026-07-31,https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/,JobPosting schema validated; indexing is controlled by Google
+IndexNow,search_aggregator,1,submitted_success,2026-07-31,https://github.com/nguyenlinhns-arch/cong-nhan-cac-tinh/actions/runs/30647699617,96 URLs submitted automatically after deployment; workflow succeeded
+Bing and IndexNow participants,search_aggregator,1,submitted_via_indexnow,2026-07-31,,Covered by the successful IndexNow submission
+JobOKO,job_board,1,awaiting_user_login,2026-07-31,https://em-vn.joboko.com/dang-nhap,Employer sign-in screen opened in Cloud Browser
+Sàn giao dịch việc làm quốc gia,government_job_board,1,requires_employer_verification,2026-07-31,https://vieclam.gov.vn/,Employer organization verification is required
+JobsGO,job_board,2,blocked_cloudflare,2026-07-31,https://jobsgo.vn/,Cloud browser received a site-served Cloudflare access block
+Việc Làm Tốt,classified_job_board,2,blocked_cloudflare,2026-07-31,https://www.vieclamtot.com/nha-tuyen-dung,Cloud browser remained in a human-verification challenge
+Việc Làm Nhà Máy,industry_job_board,2,requires_login,2026-07-31,https://vieclamnhamay.vn/,Employer sign-in required before posting
+Jooble,search_aggregator,2,awaiting_email_and_captcha,2026-07-31,https://help.jooble.org/en/support/tickets/new,XML feed integration form is ready; a contact email and CAPTCHA confirmation are required
+Indeed,search_aggregator,2,feed_ready_pending_onboarding,2026-07-31,https://thaylinhtuyenthomo.vn/jobs.xml,Public XML feed is ready; Indeed onboarding or employer access is required
+Viecoi,job_board,2,requires_login,,,Employer account required
+Vieclam24h,job_board,3,requires_login,2026-07-31,https://ntd.vieclam24h.vn/,Employer sign-in required before posting
+TopCV,job_board,3,requires_login,,,Employer account required
+CareerViet,job_board,3,requires_login,,,Employer account required
+VietnamWorks,job_board,3,requires_login_or_package,,,Employer account and paid package may be required
