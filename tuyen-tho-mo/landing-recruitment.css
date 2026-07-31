@@ -43,3 +43,17 @@ button{font:inherit}
 @media(max-width:900px){.province-evidence{grid-template-columns:1fr}.province-video,.province-video iframe{min-height:0;aspect-ratio:16/9}}
 @media(max-width:640px){.province-links{display:grid;grid-template-columns:repeat(2,1fr)}.province-links button{min-height:44px;padding:9px 8px}.province-evidence{border-radius:18px}.province-proof{padding:22px}.province-proof__head h3{font-size:27px}.province-proof__head>span{font-size:10px}.province-salary-preview{grid-template-columns:115px 1fr;min-height:145px}.province-salary-preview img{width:115px;height:145px}.province-salary-preview span{padding:14px 12px 14px 0}.province-actions{display:grid}.province-actions .button{width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+/* Balanced editorial cards and crawlable province directory. */
+.article-grid .article-card{display:flex;flex-direction:column}
+.article-grid .article-card>div:not(.article-media){display:flex;flex:1;flex-direction:column}
+.article-grid .article-card p{display:-webkit-box;min-height:4.65em;margin:8px 0 14px;overflow:hidden;color:var(--muted);line-height:1.55;white-space:normal;text-overflow:clip;-webkit-box-orient:vertical;-webkit-line-clamp:3}
+.article-grid .article-card a{margin-top:auto}
+.province-box{grid-template-columns:minmax(280px,.62fr) minmax(0,1.38fr);align-items:start}
+.province-directory{display:grid;gap:18px}
+.province-region{display:grid;gap:9px}
+.province-region h3{margin:0;color:#a9c7c4;font-size:11px;line-height:1.4;letter-spacing:.08em;text-transform:uppercase}
+.province-links a{display:inline-flex;min-height:46px;align-items:center;justify-content:center;padding:11px 15px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font-weight:700;text-align:center;transition:.2s}
+.province-links a:hover,.province-links a[aria-selected="true"]{background:#fff;color:var(--brand-dark);border-color:#fff;transform:translateY(-1px)}
+@media(max-width:900px){.province-box{grid-template-columns:1fr}.province-directory{margin-top:4px}}
+@media(max-width:640px){.article-grid .article-card p{min-height:0;-webkit-line-clamp:4}.province-directory{gap:22px}.province-region{gap:10px}.province-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.province-links a{min-height:46px;padding:9px 8px;font-size:13px}}
