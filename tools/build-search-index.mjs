@@ -36,6 +36,7 @@ function match(html, pattern) {
 
 function classify(url, title, keywords) {
   const haystack = `${url} ${title} ${keywords}`.toLocaleLowerCase("vi");
+  if (url.includes("/viec-lam/")) return ["recruitment", "Tin tuyển dụng"];
   if (url.includes("/viec-lam-nganh-than/") || /việc làm thợ mỏ (thanh hóa|nghệ an|hà tĩnh|quảng trị|quảng ngãi|gia lai|đắk lắk|sơn la|điện biên|lai châu|lào cai|cao bằng|lạng sơn|bắc kạn|thái nguyên)/i.test(haystack)) {
     return ["province", "Việc làm theo tỉnh"];
   }
@@ -64,6 +65,7 @@ const items = walk(root)
     const [category, categoryLabel] = classify(url, title, keywordText);
     let priority = 10;
     if (url === "/") priority = 100;
+    else if (url.includes("/viec-lam/")) priority = 95;
     else if (url === "/tin-nganh-than/") priority = 90;
     else if (url.includes("/bai-viet/")) priority = 50;
     else if (url.includes("/viec-lam-nganh-than/")) priority = 45;

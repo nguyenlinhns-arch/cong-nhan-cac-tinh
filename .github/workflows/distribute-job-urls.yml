@@ -1,0 +1,19 @@
+name: Distribute recruitment URLs
+
+on:
+  workflow_run:
+    workflows: ["Deploy GitHub Pages"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  submit-indexnow:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Notify IndexNow search engines about recruitment URLs
+        run: node tools/submit-indexnow.mjs

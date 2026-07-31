@@ -31,6 +31,14 @@ export const provinces = [
   { slug: "son-la", name: "Sơn La", region: "Trung du & miền núi phía Bắc", aliases: [] },
   { slug: "dien-bien", name: "Điện Biên", region: "Trung du & miền núi phía Bắc", aliases: [] },
   { slug: "lai-chau", name: "Lai Châu", region: "Trung du & miền núi phía Bắc", aliases: [], create: true },
+  { slug: "ho-chi-minh", name: "Thành phố Hồ Chí Minh", region: "Đông Nam Bộ", aliases: ["Bình Dương", "Bà Rịa - Vũng Tàu"], create: true },
+  { slug: "dong-nai", name: "Đồng Nai", region: "Đông Nam Bộ", aliases: ["Bình Phước"], create: true },
+  { slug: "tay-ninh", name: "Tây Ninh", region: "Đông Nam Bộ", aliases: ["Long An"], create: true },
+  { slug: "can-tho", name: "Cần Thơ", region: "Đồng bằng sông Cửu Long", aliases: ["Hậu Giang", "Sóc Trăng"], create: true },
+  { slug: "vinh-long", name: "Vĩnh Long", region: "Đồng bằng sông Cửu Long", aliases: ["Bến Tre", "Trà Vinh"], create: true },
+  { slug: "dong-thap", name: "Đồng Tháp", region: "Đồng bằng sông Cửu Long", aliases: ["Tiền Giang"], create: true },
+  { slug: "ca-mau", name: "Cà Mau", region: "Đồng bằng sông Cửu Long", aliases: ["Bạc Liêu"], create: true },
+  { slug: "an-giang", name: "An Giang", region: "Đồng bằng sông Cửu Long", aliases: ["Kiên Giang"], create: true },
 ];
 
 function provincePage(province) {
@@ -145,12 +153,12 @@ function provincePage(province) {
       <aside class="local-check"><p class="eyebrow">KIỂM TRA NHANH</p><h2>Gửi 3 thông tin</h2><ol><li><b>1</b><span>Năm sinh</span></li><li><b>2</b><span>Chiều cao – cân nặng</span></li><li><b>3</b><span>Tình trạng sức khỏe</span></li></ol><button class="copy-button copy-button--full" type="button" data-copy-template>Sao chép mẫu tin nhắn</button><p>Chỉ chuẩn bị hồ sơ và di chuyển sau khi được kiểm tra điều kiện, xác nhận lịch tiếp nhận.</p></aside>
     </section>
 
-    <section class="trust-strip trust-strip--local" aria-label="Thông tin chính"><span>✓ Nam 18–40 tuổi</span><span>✓ Cao từ 1m53</span><span>✓ Nặng từ 47kg</span><span>✓ Kiểm tra sức khỏe trước</span></section>
+    <section class="trust-strip trust-strip--local" aria-label="Thông tin chính"><span>✓ Nam 18–35 tuổi</span><span>✓ Cao từ 1m56</span><span>✓ Nặng từ 48kg</span><span>✓ Sức khỏe tốt</span></section>
 
     <section class="section local-overview" aria-labelledby="overview-title">
       <div class="section-heading"><div><p class="eyebrow">THÔNG TIN DÀNH CHO ${name.toLocaleUpperCase("vi")}</p><h2 id="overview-title">Tuyển thợ mỏ tại ${name}: cần biết gì trước?</h2></div><p>${localContext}</p></div>
       <div class="overview-grid">
-        <article><span>01</span><h3>Kiểm tra điều kiện</h3><p>Gửi thông tin cá nhân cơ bản qua Zalo hoặc Messenger để được sàng lọc từ xa.</p></article>
+        <article><span>01</span><h3>Kiểm tra điều kiện</h3><p>Nam 18–35 tuổi, cao từ 1m56, nặng từ 48kg và có sức khỏe tốt.</p></article>
         <article><span>02</span><h3>Xác nhận chế độ</h3><p>Đối chiếu học phí, ăn ở, hỗ trợ 7,5 triệu và kế hoạch tiếp nhận của từng đợt.</p></article>
         <article><span>03</span><h3>Học nghề 2–3 tháng</h3><p>Áp dụng với nghề khai thác mỏ và xây dựng mỏ; lịch cụ thể được xác nhận trước.</p></article>
         <article><span>04</span><h3>Nhận việc tại Quảng Ninh</h3><p>Người đạt yêu cầu được bố trí công việc theo nghề đào tạo và nhu cầu doanh nghiệp.</p></article>
@@ -164,7 +172,7 @@ function provincePage(province) {
 
     <section class="section local-overview" aria-labelledby="read-more-title">
       <div class="section-heading"><div><p class="eyebrow">ĐỌC TRƯỚC KHI ĐĂNG KÝ</p><h2 id="read-more-title">Bốn nội dung quan trọng</h2></div><p>Tìm hiểu đầy đủ giúp người lao động và gia đình chủ động hơn trước khi quyết định.</p></div>
-      <div class="overview-grid"><article><h3>Điều kiện tuyển thợ lò</h3><p>Tuổi, chiều cao, cân nặng và yêu cầu sức khỏe.</p><a href="../../bai-viet/dieu-kien-tuyen-tho-lo-2026/">Đọc điều kiện →</a></article><article><h3>Hồ sơ nhập học</h3><p>Các giấy tờ cần mang và trường hợp chưa có bằng.</p><a href="../../bai-viet/ho-so-hoc-nghe-mo-can-gi/">Xem hồ sơ →</a></article><article><h3>Khóa học 2–3 tháng</h3><p>Nội dung học nghề khai thác mỏ trước khi nhận việc.</p><a href="../../bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/">Xem khóa học →</a></article><article><h3>Lương và đời sống</h3><p>Cách tính thu nhập, ăn ở, bảo hiểm và ca làm việc.</p><a href="../../bai-viet/luong-va-doi-song-tho-lo/">Tìm hiểu thêm →</a></article></div>
+      <div class="overview-grid"><article><h3>Điều kiện tuyển thợ lò</h3><p>Tuổi, chiều cao, cân nặng và yêu cầu sức khỏe.</p><a href="../../bai-viet/dieu-kien-tuyen-tho-lo-2026/">Đọc điều kiện →</a></article><article><h3>Hồ sơ dự tuyển</h3><p>Sơ yếu lý lịch, giấy khai sinh, bằng văn hóa và căn cước công dân.</p><a href="../../bai-viet/ho-so-hoc-nghe-mo-can-gi/">Xem hồ sơ →</a></article><article><h3>Khóa học 2–3 tháng</h3><p>Nội dung học nghề khai thác mỏ trước khi nhận việc.</p><a href="../../bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/">Xem khóa học →</a></article><article><h3>Tin tuyển dụng 2026</h3><p>Xem đầy đủ quyền lợi, thu nhập và tạo tin nhắn đăng ký.</p><a href="../../viec-lam/cong-nhan-mo-ham-lo-quang-ninh/">Ứng tuyển ngay →</a></article></div>
     </section>
 
     <section class="section section--faq local-faq" aria-labelledby="faq-title">
@@ -192,7 +200,7 @@ for (const province of provinces.filter((item) => item.create)) {
 
 const data = {
   updated_at: "2026-07-31",
-  source_scope: "Các tỉnh, thành từ Lâm Đồng trở ra theo hệ thống đơn vị hành chính cấp tỉnh năm 2026",
+  source_scope: "Toàn bộ 34 tỉnh, thành theo hệ thống đơn vị hành chính cấp tỉnh hiện hành năm 2026",
   provinces: provinces.map(({ create, ...province }) => province),
 };
 fs.writeFileSync(path.join(root, "data", "provinces-2026.json"), `${JSON.stringify(data, null, 2)}\n`);

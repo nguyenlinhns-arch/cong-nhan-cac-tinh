@@ -1,0 +1,13 @@
+channel,channel_type,priority,status,last_attempt,public_url,notes
+Google Jobs,search_aggregator,1,configured,2026-07-31,,JobPosting schema and canonical job URL prepared
+IndexNow,search_aggregator,1,configured,2026-07-31,,Automatic post-deploy submission for canonical job and 34 province pages
+JobOKO,job_board,1,pending,,,Existing employer account; first manual-browser posting target
+Sàn giao dịch việc làm quốc gia,government_job_board,1,pending,,,Employer verification may be required
+JobsGO,job_board,2,pending,,,Employer account required
+Việc Làm Tốt,classified_job_board,2,pending,,,Employer account and possible phone verification required
+Việc Làm Nhà Máy,industry_job_board,2,pending,,,Relevant industrial-workforce audience
+Viecoi,job_board,2,pending,,,Employer account required
+Vieclam24h,job_board,3,pending,,,Employer account required
+TopCV,job_board,3,pending,,,Employer account required
+CareerViet,job_board,3,pending,,,Employer account required
+VietnamWorks,job_board,3,pending,,,Employer account and paid package may be required
