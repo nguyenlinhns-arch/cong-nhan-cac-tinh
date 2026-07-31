@@ -1,6 +1,6 @@
 {
   "updated_at": "2026-07-31",
-  "source_scope": "Các tỉnh, thành từ Lâm Đồng trở ra theo hệ thống đơn vị hành chính cấp tỉnh năm 2026",
+  "source_scope": "Toàn bộ 34 tỉnh, thành theo hệ thống đơn vị hành chính cấp tỉnh hiện hành năm 2026",
   "provinces": [
     {
       "slug": "lam-dong",
@@ -190,6 +190,73 @@
       "name": "Lai Châu",
       "region": "Trung du & miền núi phía Bắc",
       "aliases": []
+    },
+    {
+      "slug": "ho-chi-minh",
+      "name": "Thành phố Hồ Chí Minh",
+      "region": "Đông Nam Bộ",
+      "aliases": [
+        "Bình Dương",
+        "Bà Rịa - Vũng Tàu"
+      ]
+    },
+    {
+      "slug": "dong-nai",
+      "name": "Đồng Nai",
+      "region": "Đông Nam Bộ",
+      "aliases": [
+        "Bình Phước"
+      ]
+    },
+    {
+      "slug": "tay-ninh",
+      "name": "Tây Ninh",
+      "region": "Đông Nam Bộ",
+      "aliases": [
+        "Long An"
+      ]
+    },
+    {
+      "slug": "can-tho",
+      "name": "Cần Thơ",
+      "region": "Đồng bằng sông Cửu Long",
+      "aliases": [
+        "Hậu Giang",
+        "Sóc Trăng"
+      ]
+    },
+    {
+      "slug": "vinh-long",
+      "name": "Vĩnh Long",
+      "region": "Đồng bằng sông Cửu Long",
+      "aliases": [
+        "Bến Tre",
+        "Trà Vinh"
+      ]
+    },
+    {
+      "slug": "dong-thap",
+      "name": "Đồng Tháp",
+      "region": "Đồng bằng sông Cửu Long",
+      "aliases": [
+        "Tiền Giang"
+      ]
+    },
+    {
+      "slug": "ca-mau",
+      "name": "Cà Mau",
+      "region": "Đồng bằng sông Cửu Long",
+      "aliases": [
+        "Bạc Liêu"
+      ]
+    },
+    {
+      "slug": "an-giang",
+      "name": "An Giang",
+      "region": "Đồng bằng sông Cửu Long",
+      "aliases": [
+        "Kiên Giang"
+      ]
     }
   ]
 }

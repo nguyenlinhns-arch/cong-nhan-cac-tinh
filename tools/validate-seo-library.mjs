@@ -9,6 +9,8 @@ const warnings = [];
 const feed = JSON.parse(fs.readFileSync(path.join(root,"feed.json"),"utf8"));
 const imageSources = JSON.parse(fs.readFileSync(path.join(root,"assets","articles","sources.json"),"utf8"));
 const searchIndex = JSON.parse(fs.readFileSync(path.join(root,"search-index.json"),"utf8"));
+const jobFeed = JSON.parse(fs.readFileSync(path.join(root,"jobs.json"),"utf8"));
+const provinceDirectory = JSON.parse(fs.readFileSync(path.join(root,"data","provinces-2026.json"),"utf8"));
 const articleImages = [];
 
 if (feed.items.length < 50) errors.push(`feed.json must contain at least 50 articles, got ${feed.items.length}`);
@@ -80,6 +82,39 @@ if (new Set(sourceUrls).size !== sourceUrls.length) errors.push("Image source re
 
 const sitemap = fs.readFileSync(path.join(root,"sitemap.xml"),"utf8");
 for (const item of feed.items) if (!sitemap.includes(item.url)) errors.push(`${item.url}: absent from sitemap`);
+const jobUrl = "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/";
+const jobFile = path.join(root,"viec-lam","cong-nhan-mo-ham-lo-quang-ninh","index.html");
+if (!fs.existsSync(jobFile)) errors.push("Missing canonical recruitment page");
+else {
+  const jobHtml = fs.readFileSync(jobFile,"utf8");
+  const scripts = [...jobHtml.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi)];
+  let jobPosting;
+  for (const script of scripts) {
+    try {
+      const parsed = JSON.parse(script[1]);
+      const nodes = parsed["@graph"] || [parsed];
+      jobPosting ||= nodes.find(node => node["@type"] === "JobPosting");
+    } catch (e) {
+      errors.push(`Recruitment page has invalid JSON-LD: ${e.message}`);
+    }
+  }
+  if (!jobPosting) errors.push("Recruitment page is missing JobPosting schema");
+  else {
+    for (const property of ["title","description","datePosted","validThrough","employmentType","hiringOrganization","jobLocation","baseSalary"]) {
+      if (!jobPosting[property]) errors.push(`JobPosting is missing ${property}`);
+    }
+  }
+  for (const phrase of ["2–3 tháng","7,5 triệu","18–35","1m56","48kg"]) {
+    if (!jobHtml.includes(phrase)) errors.push(`Recruitment page is missing ${phrase}`);
+  }
+}
+if (!sitemap.includes(jobUrl)) errors.push("Canonical recruitment page is absent from sitemap");
+if (!Array.isArray(jobFeed.jobs) || jobFeed.jobs.length < 1 || !jobFeed.jobs.some(job => job.url === jobUrl && job.status === "open")) errors.push("jobs.json has no open canonical job");
+if (provinceDirectory.provinces?.length !== 34) errors.push(`Expected 34 current provinces/cities, got ${provinceDirectory.provinces?.length || 0}`);
+for (const province of provinceDirectory.provinces || []) {
+  const file = path.join(root,"viec-lam-nganh-than",province.slug,"index.html");
+  if (!fs.existsSync(file)) errors.push(`Missing province page: ${province.slug}`);
+}
 const allHtml = collectHtml(root);
 for (const file of allHtml) {
   const html = fs.readFileSync(file,"utf8");
@@ -87,6 +122,7 @@ for (const file of allHtml) {
   if (!/<meta\s+name="viewport"\s+content="[^"]*width=device-width/i.test(html)) errors.push(`${rel}: missing responsive viewport`);
   if (!/<link\s+rel="stylesheet"\s+href="\/mobile-ux\.css\?v=1"/i.test(html)) errors.push(`${rel}: missing shared mobile stylesheet`);
   if (!/<script\s+src="\/mobile-ux\.js\?v=1"\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing shared mobile script`);
+  if (/18(?:–|-|\s+đến\s+)40|1m53|47\s*kg/i.test(html)) errors.push(`${rel}: contains superseded 2026 recruitment criteria`);
 }
 
 if (!Array.isArray(searchIndex.items) || searchIndex.items.length < 70) errors.push("Search index must contain at least 70 pages");
@@ -102,7 +138,7 @@ else {
   }
 }
 
-for (const required of ["tin-nganh-than/index.html","index.html","article-insights.css","mobile-ux.css","mobile-ux.js","search-index.json","feed.xml","llms.txt"]) {
+for (const required of ["tin-nganh-than/index.html","index.html","article-insights.css","mobile-ux.css","mobile-ux.js","search-index.json","feed.xml","jobs.json","jobs.xml","llms.txt"]) {
   if (!fs.existsSync(path.join(root,required))) errors.push(`Missing ${required}`);
 }
 

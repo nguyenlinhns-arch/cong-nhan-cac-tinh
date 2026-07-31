@@ -139,7 +139,10 @@
     ["hai-phong", "Hải Phòng"], ["bac-ninh", "Bắc Ninh"], ["ha-noi", "Hà Nội"],
     ["quang-ninh", "Quảng Ninh"], ["phu-tho", "Phú Thọ"], ["thai-nguyen", "Thái Nguyên"],
     ["tuyen-quang", "Tuyên Quang"], ["cao-bang", "Cao Bằng"], ["lang-son", "Lạng Sơn"],
-    ["lai-chau", "Lai Châu"]
+    ["lai-chau", "Lai Châu"], ["ho-chi-minh", "Thành phố Hồ Chí Minh"],
+    ["dong-nai", "Đồng Nai"], ["tay-ninh", "Tây Ninh"], ["can-tho", "Cần Thơ"],
+    ["vinh-long", "Vĩnh Long"], ["dong-thap", "Đồng Tháp"], ["ca-mau", "Cà Mau"],
+    ["an-giang", "An Giang"]
   ];
   genericProvinces.forEach(([key, name]) => {
     provinceData[key] = {
