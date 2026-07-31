@@ -399,7 +399,7 @@ input {
 }
 
 @media (max-width: 767px) {
-  body {
+  html.tl-mobile-ux-ready body {
     padding-bottom: 0 !important;
   }
 
@@ -426,8 +426,8 @@ input {
     font-size: 11px;
   }
 
-  .mobile-contact,
-  .article-contact {
+  html.tl-mobile-ux-ready .mobile-contact,
+  html.tl-mobile-ux-ready .article-contact {
     display: none !important;
   }
 

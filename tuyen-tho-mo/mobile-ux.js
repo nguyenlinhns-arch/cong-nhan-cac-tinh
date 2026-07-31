@@ -309,5 +309,6 @@
   }
 
   createContactButtons();
+  document.documentElement.classList.add("tl-mobile-ux-ready");
   setupSearch();
 })();
