@@ -27,7 +27,8 @@ jobs:
           enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          # Publish the recruitment portal at the custom-domain root.
+          path: ./tuyen-tho-mo
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

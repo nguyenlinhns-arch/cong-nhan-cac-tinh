@@ -60,7 +60,7 @@
       title: "Công nhân Hà Văn Phú – Mường Lát, thu nhập trên 300 triệu đồng/năm",
       salaryCount: 21,
       salaryImage: "https://lh3.googleusercontent.com/pw/AP1GczM-prI57BJCqkhQ3dNofLU1jx8x2u-yeyAGlvcUaDdn2-VJ4c5h3f6m_MdnDwcxMcPK8eTTa-GG2sxPa2mQcmdyvHLBKJqyeXfSyViKGhgxZsgeYOE",
-      album: "https://photos.app.goo.gl/gECC6hkaiEBumpwu9",
+      album: "anh-video-thuc-te/",
       page: "viec-lam-nganh-than/thanh-hoa/"
     },
     "nghe-an": {
@@ -68,7 +68,7 @@
       title: "Nguyễn Văn Thái – Anh Sơn, thu nhập bình quân 28 triệu đồng/tháng",
       salaryCount: 18,
       salaryImage: "https://lh3.googleusercontent.com/pw/AP1GczM63HYWZ7YcOorBXOZxZmXbOHHlzNJMilbrV9e5Q8cAg1F68aaHTdS0mhH2vrcTQgyl03FjeEGPtFuJOZIWBVrbIpoupXIDAVjaPG5GH7mEPXs6FOg",
-      album: "https://photos.app.goo.gl/GqAfcC4bTuGFH1z28",
+      album: "anh-video-thuc-te/",
       page: "viec-lam-nganh-than/nghe-an/"
     },
     "ha-tinh": {
@@ -76,7 +76,7 @@
       title: "Nguyễn Trịnh Anh – Hà Tĩnh, lương bình quân 28 triệu đồng/tháng",
       salaryCount: 6,
       salaryImage: "https://lh3.googleusercontent.com/pw/AP1GczMJ0rQGzDj5TkRQuAGUSnltAZNZtDmfYlvahVMwYkmBFcN53Y1r09Gp9AZCd-TbqQgC03MK7kbaS8YhcYAuKNPvSExHIe-DQkIG68zKrqgEMrmnP1Q",
-      album: "https://photos.app.goo.gl/Nvirn2YqLRktRQvZ6",
+      album: "anh-video-thuc-te/",
       page: "viec-lam-nganh-than/ha-tinh/"
     },
     "quang-tri": {
@@ -84,7 +84,7 @@
       title: "Hồ Văn Cương – Hướng Hóa, thu nhập bình quân 25–30 triệu đồng/tháng",
       salaryCount: 16,
       salaryImage: "https://lh3.googleusercontent.com/pw/AP1GczM8dPrLPhGdcX7XcklL2sukdGvluDLShhHtRPULB0IeUvuvB57uXK32blcwtumNNn7hyQWiUCkfa59NdM9GQQubjUQIObzlYDdOSx-XRRBFv2VuQiM",
-      album: "https://photos.app.goo.gl/7MtD8s6nXr2iGraP9",
+      album: "anh-video-thuc-te/",
       page: "viec-lam-nganh-than/quang-tri/"
     },
     "quang-ngai": {
@@ -92,7 +92,7 @@
       title: "Đinh Văn Ne – Quảng Ngãi, lương 23–25 triệu đồng/tháng",
       salaryCount: 21,
       salaryImage: "https://lh3.googleusercontent.com/pw/AP1GczM3TnwENaP4JLhQU9V_39Nx2D12Vb-sGGOmJ4dk0bw0KBnbRc5cbj8VnFrskGpL7o6aIFjRC7WjJXSYyf6UBJrWCbNLdc6uFh4xpHz_bCkSJbfMvKU",
-      album: "https://photos.app.goo.gl/vo4wZN8ta459mT9J8",
+      album: "anh-video-thuc-te/",
       page: "viec-lam-nganh-than/quang-ngai/"
     },
     "gia-lai": {
@@ -112,7 +112,7 @@
       title: "Lầu A Súa – Sơn La, thu nhập 28 triệu đồng/tháng tại Than Hạ Long",
       salaryCount: 17,
       salaryImage: "https://lh3.googleusercontent.com/pw/AP1GczM9u0Y0woSlJK7KaZ37LQlKKZwNqQ130WBLW2gZ9grMsqgbUdx5cppfPjXaQrIJLp49MnJ3SQABlE8vlEkM9mPE13F4weDOx_PPAY4gjJOy_rvYkA0",
-      album: "https://photos.app.goo.gl/6yMWDKJbGBY2JRMv7",
+      album: "anh-video-thuc-te/",
       page: "viec-lam-nganh-than/son-la/"
     },
     "dien-bien": {
@@ -120,7 +120,7 @@
       title: "Mùa A Vàng – Điện Biên, hành trình đổi đời tại vùng mỏ Quảng Ninh",
       salaryCount: 10,
       salaryImage: "https://lh3.googleusercontent.com/pw/AP1GczM37_ykNtbl5rCpMs7hGEYq0PwkKV6CWFWR2_a5pt3IYrGMAvnYQ3WU3pH_E-Vp6LcYGCWz8QpHYi9wevxBsLvpoOe72odH3NYIn9a-pkUW4R-NtJQ",
-      album: "https://photos.app.goo.gl/CetmP2cNQu8QmiK27",
+      album: "anh-video-thuc-te/",
       page: "viec-lam-nganh-than/dien-bien/"
     },
     "lao-cai": {
@@ -128,7 +128,7 @@
       title: "Vàng A Chinh – Lào Cai, lương bình quân 20–22 triệu đồng/tháng",
       salaryCount: 19,
       salaryImage: "https://lh3.googleusercontent.com/pw/AP1GczMYGl4Ib1loWt5hloK0NwEAoVF_nCOqOeZlekQa2Q0Wf8VD2o1FXBw-i74t05wh4arAKNa-rM-ybY3X_Hx-OiiksGw7VBaExnBpahMLk1BfD_zs2HM",
-      album: "https://photos.app.goo.gl/Csc8h5bGHGkpgfSb9",
+      album: "anh-video-thuc-te/",
       page: "viec-lam-nganh-than/lao-cai/"
     }
   };

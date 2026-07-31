@@ -10,7 +10,7 @@ Allow: /
 User-agent: GPTBot
 Allow: /
 
-Sitemap: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/sitemap.xml
+Sitemap: https://thaylinhtuyenthomo.vn/sitemap.xml
 
 # Nguồn cập nhật bài mới
-# RSS: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/feed.xml
+# RSS: https://thaylinhtuyenthomo.vn/feed.xml

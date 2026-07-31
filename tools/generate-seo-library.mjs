@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve("tuyen-tho-mo");
-const base = "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo";
+const base = "https://thaylinhtuyenthomo.vn";
 const published = "2026-07-30T10:30:00+07:00";
 const dateLabel = "30/07/2026";
 const imageSources = JSON.parse(

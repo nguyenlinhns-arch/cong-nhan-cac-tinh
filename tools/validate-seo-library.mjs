@@ -3,7 +3,7 @@ import path from "node:path";
 import {fileURLToPath} from "node:url";
 
 const root = path.resolve("tuyen-tho-mo");
-const base = "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo";
+const base = "https://thaylinhtuyenthomo.vn";
 const errors = [];
 const warnings = [];
 const feed = JSON.parse(fs.readFileSync(path.join(root,"feed.json"),"utf8"));

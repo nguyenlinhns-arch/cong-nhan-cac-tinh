@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-25",
-  "base_url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo",
+  "updated_at": "2026-07-31",
+  "base_url": "https://thaylinhtuyenthomo.vn",
   "provinces": [
     {
       "slug": "gia-lai",
@@ -36,7 +36,7 @@
       "region": "Bắc Trung Bộ",
       "intro": "Trang tư vấn dành cho lao động nam Thanh Hóa muốn học nghề mỏ, tìm hiểu môi trường làm việc và các câu chuyện công nhân đồng hương.",
       "local_note": "Có thể xem thêm thư viện video, bảng lương và câu chuyện thực tế của công nhân Thanh Hóa trên website hiện có.",
-      "story_url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/"
+      "story_url": "https://thaylinhtuyenthomo.vn/bai-viet/viec-lam-tho-mo-thanh-hoa/"
     },
     {
       "slug": "nghe-an",
@@ -44,7 +44,7 @@
       "region": "Bắc Trung Bộ",
       "intro": "Kênh kiểm tra điều kiện và hướng dẫn ban đầu cho lao động nam Nghệ An quan tâm học nghề mỏ và làm việc tại Quảng Ninh.",
       "local_note": "Trao đổi trực tiếp trước qua Zalo hoặc Messenger, sau đó mới hướng dẫn hồ sơ theo đợt tiếp nhận.",
-      "story_url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/nghe-an/"
+      "story_url": "https://thaylinhtuyenthomo.vn/bai-viet/viec-lam-tho-mo-nghe-an/"
     },
     {
       "slug": "ha-tinh",
@@ -52,7 +52,7 @@
       "region": "Bắc Trung Bộ",
       "intro": "Thông tin dành cho lao động nam Hà Tĩnh muốn tìm hiểu nghề mỏ, điều kiện sức khỏe và lộ trình học nghề trước khi làm việc tại Quảng Ninh.",
       "local_note": "Không cần vội chuẩn bị hồ sơ; hãy kiểm tra điều kiện cá nhân trước.",
-      "story_url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/ha-tinh/"
+      "story_url": "https://thaylinhtuyenthomo.vn/bai-viet/viec-lam-tho-mo-ha-tinh/"
     },
     {
       "slug": "dien-bien",
@@ -60,7 +60,7 @@
       "region": "Tây Bắc",
       "intro": "Trang tư vấn tuyển sinh nghề mỏ dành cho lao động nam Điện Biên cần một quy trình rõ ràng trước khi ra Quảng Ninh học tập.",
       "local_note": "Kiểm tra điều kiện từ xa trước, xác nhận đợt tiếp nhận và hướng dẫn hành trình sau.",
-      "story_url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/dien-bien/"
+      "story_url": "https://thaylinhtuyenthomo.vn/bai-viet/viec-lam-tho-mo-dien-bien/"
     },
     {
       "slug": "son-la",
@@ -68,7 +68,7 @@
       "region": "Tây Bắc",
       "intro": "Thông tin cho lao động nam Sơn La quan tâm học nghề mỏ, chế độ ăn ở trong thời gian học và cơ hội làm việc tại Quảng Ninh.",
       "local_note": "Nên gửi đủ ba thông tin cơ bản để được kiểm tra trước khi chuẩn bị giấy tờ.",
-      "story_url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/son-la/"
+      "story_url": "https://thaylinhtuyenthomo.vn/bai-viet/viec-lam-tho-mo-son-la/"
     },
     {
       "slug": "lao-cai",
@@ -76,7 +76,7 @@
       "region": "Tây Bắc",
       "intro": "Kênh tư vấn cho lao động nam Lào Cai muốn tìm hiểu chương trình học nghề mỏ và nơi làm việc thực tế tại Quảng Ninh.",
       "local_note": "Thu nhập thực tế phụ thuộc vị trí, ngày công, năng suất và đơn vị.",
-      "story_url": "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/lao-cai/"
+      "story_url": "https://thaylinhtuyenthomo.vn/bai-viet/viec-lam-tho-mo-lao-cai/"
     }
   ]
 }
