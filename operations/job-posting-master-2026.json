@@ -41,5 +41,9 @@
     "address": "Số 8 Chu Văn An, phường Hạ Long, Quảng Ninh"
   },
   "landing_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
+  "role_urls": [
+    "https://thaylinhtuyenthomo.vn/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/",
+    "https://thaylinhtuyenthomo.vn/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/"
+  ],
   "tracking_url_template": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source={channel}&utm_medium=job_board&utm_campaign=tuyen_tho_mo_2026"
 }
