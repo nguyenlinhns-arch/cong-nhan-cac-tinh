@@ -8,7 +8,7 @@ const errors = [];
 const warnings = [];
 const feed = JSON.parse(fs.readFileSync(path.join(root,"feed.json"),"utf8"));
 
-if (feed.items.length !== 50) errors.push(`feed.json must contain 50 articles, got ${feed.items.length}`);
+if (feed.items.length < 50) errors.push(`feed.json must contain at least 50 articles, got ${feed.items.length}`);
 const slugs = feed.items.map(item => item.url.split("/").filter(Boolean).at(-1));
 if (new Set(slugs).size !== slugs.length) errors.push("Duplicate article slugs");
 if (new Set(feed.items.map(x=>x.title)).size !== feed.items.length) errors.push("Duplicate article titles");
@@ -26,7 +26,10 @@ function attr(html, pattern, name) {
 }
 
 for (const [index,slug] of slugs.entries()) {
-  const file = path.join(root,"bai-viet",slug,"index.html");
+  const item = feed.items[index];
+  const relativeUrl = item.url.startsWith(`${base}/`) ? item.url.slice(base.length + 1) : "";
+  if (!relativeUrl) { errors.push(`${slug}: URL is outside the website`); continue; }
+  const file = path.join(root,relativeUrl,"index.html");
   if (!fs.existsSync(file)) { errors.push(`Missing ${file}`); continue; }
   const html = fs.readFileSync(file,"utf8");
   const prefix = `${slug}: `;
@@ -40,10 +43,10 @@ for (const [index,slug] of slugs.entries()) {
   if (h1Count !== 1) errors.push(`${prefix}expected one H1, got ${h1Count}`);
   if (title.length < 35 || title.length > 90) warnings.push(`${prefix}title length ${title.length}`);
   if (desc.length < 100 || desc.length > 160) errors.push(`${prefix}description length ${desc.length}`);
-  if (canonical !== `${base}/bai-viet/${slug}/`) errors.push(`${prefix}wrong canonical`);
+  if (canonical !== item.url) errors.push(`${prefix}wrong canonical`);
   if (!strip(html).toLocaleLowerCase("vi").includes(keyword.toLocaleLowerCase("vi"))) errors.push(`${prefix}primary keyword absent from body`);
   if (visibleWords < 1000) errors.push(`${prefix}only ${visibleWords} visible words`);
-  if (!/"@type":"Article"/.test(html) || !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing Article or FAQ schema`);
+  if (!/"@type":"(?:NewsArticle|Article|BlogPosting)"/.test(html) || !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing article or FAQ schema`);
   const imageFile = path.resolve(path.dirname(file),image);
   if (!fs.existsSync(imageFile)) errors.push(`${prefix}missing image ${image}`);
   const externalAnchors = [...html.matchAll(/<a\b[^>]*href="(https?:\/\/[^"]+)"/gi)].map(m=>m[1]).filter(url=>!url.startsWith(base) && !url.startsWith("https://zalo.me/") && !url.startsWith("https://m.me/"));
@@ -55,7 +58,7 @@ for (const [index,slug] of slugs.entries()) {
 }
 
 const sitemap = fs.readFileSync(path.join(root,"sitemap.xml"),"utf8");
-for (const slug of slugs) if (!sitemap.includes(`${base}/bai-viet/${slug}/`)) errors.push(`${slug}: absent from sitemap`);
+for (const item of feed.items) if (!sitemap.includes(item.url)) errors.push(`${item.url}: absent from sitemap`);
 for (const required of ["tin-nganh-than/index.html","index.html","article-insights.css","feed.xml","llms.txt"]) {
   if (!fs.existsSync(path.join(root,required))) errors.push(`Missing ${required}`);
 }
