@@ -185,7 +185,7 @@ function provincePage(province) {
   <footer class="site-footer"><div class="footer-brand"><span class="brand-mark">TL</span><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Tư vấn học nghề mỏ và việc làm ngành Than tại Quảng Ninh.</p></div></div><div class="footer-links"><a href="../../#theo-tinh">Tất cả tỉnh, thành</a><a href="../../#dieu-kien">Điều kiện tuyển</a><a href="../../tin-nganh-than/">Cẩm nang nghề mỏ</a><a href="../../quyen-rieng.html">Quyền riêng tư</a></div><p class="footer-note">Thông tin được xác nhận theo từng đợt tiếp nhận. Thu nhập thực tế phụ thuộc vị trí, ngày công, năng suất và đơn vị.</p></footer>
   <div class="mobile-contact" aria-label="Liên hệ nhanh"><a class="mobile-contact__zalo" href="https://zalo.me/0963048585" target="_blank" rel="noopener noreferrer" data-contact="zalo"><b>Z</b><span>Nhắn Zalo</span></a><a class="mobile-contact__messenger" href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener noreferrer" data-contact="messenger"><b>M</b><span>Messenger</span></a></div>
   <div class="toast" role="status" aria-live="polite" data-toast hidden></div>
-  <script src="../../app.js" defer></script>
+  <script src="../../app.js?v=2" defer></script>
   <script src="/mobile-ux.js?v=1" defer></script>
 </body>
 </html>
