@@ -180,6 +180,23 @@
     provinceButton.addEventListener("click", () => selectProvince(provinceButton.dataset.provinceKey));
   });
 
+  const readingProgress = document.querySelector("[data-reading-progress]");
+  if (readingProgress) {
+    let progressFrame = 0;
+    const updateReadingProgress = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+      readingProgress.style.transform = `scaleX(${progress})`;
+      progressFrame = 0;
+    };
+    const requestProgressUpdate = () => {
+      if (!progressFrame) progressFrame = window.requestAnimationFrame(updateReadingProgress);
+    };
+    window.addEventListener("scroll", requestProgressUpdate, { passive: true });
+    window.addEventListener("resize", requestProgressUpdate, { passive: true });
+    updateReadingProgress();
+  }
+
   const year = document.querySelector("[data-year]");
   if (year) year.textContent = new Date().getFullYear();
 })();
