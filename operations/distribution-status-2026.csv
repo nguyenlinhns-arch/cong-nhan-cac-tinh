@@ -1,7 +1,7 @@
 channel,channel_type,priority,status,last_attempt,public_url,notes
 Website tuyển dụng,owned_job_site,1,live,2026-07-31,https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/,Canonical job page live; 34 province pages and application form live
-Google Jobs,search_aggregator,1,eligible_schema_live,2026-07-31,https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/,JobPosting schema validated; indexing is controlled by Google
-IndexNow,search_aggregator,1,submitted_success,2026-07-31,https://github.com/nguyenlinhns-arch/cong-nhan-cac-tinh/actions/runs/30647699617,96 URLs submitted automatically after deployment; workflow succeeded
+Google Jobs,search_aggregator,1,eligible_schema_live,2026-07-31,https://thaylinhtuyenthomo.vn/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/,Two role-specific JobPosting schemas validated; indexing is controlled by Google
+IndexNow,search_aggregator,1,submitted_success,2026-07-31,https://github.com/nguyenlinhns-arch/cong-nhan-cac-tinh/actions/runs/30649586975,56 URLs submitted automatically after deployment; workflow succeeded
 Bing and IndexNow participants,search_aggregator,1,submitted_via_indexnow,2026-07-31,,Covered by the successful IndexNow submission
 JobOKO,job_board,1,awaiting_user_login,2026-07-31,https://em-vn.joboko.com/dang-nhap,Employer sign-in screen opened in Cloud Browser
 Sàn giao dịch việc làm quốc gia,government_job_board,1,requires_employer_verification,2026-07-31,https://vieclam.gov.vn/,Employer organization verification is required
