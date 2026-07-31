@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://i.ytimg.com">
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="landing-recruitment.css?v=13">
-  <link rel="stylesheet" href="publication-polish.css?v=2">
+  <link rel="stylesheet" href="publication-polish.css?v=3">
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -73,6 +73,7 @@
       </nav>
       <a class="header-cta" href="https://zalo.me/0963048585" target="_blank" rel="noopener" data-contact="zalo">Nhắn Zalo</a>
     </div>
+    <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
   </header>
 
   <main id="noi-dung">
@@ -90,7 +91,7 @@
             <a class="button button-zalo" href="https://zalo.me/0963048585" target="_blank" rel="noopener" data-contact="zalo">Nhắn Zalo 096 304 8585</a>
             <a class="button button-messenger" href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener" data-contact="messenger">Nhắn Messenger</a>
           </div>
-          <div class="hero-facts"><span>Miễn học phí theo chỉ tiêu</span><span>Hỗ trợ sinh hoạt 7,5 triệu</span><span>Ăn 3 bữa/ngày · Ký túc xá khép kín</span><span>Thời gian học: 2–3 hoặc 10 tháng</span></div>
+          <div class="hero-facts"><span>Miễn học phí theo chỉ tiêu</span><span>Hỗ trợ sinh hoạt 7,5 triệu</span><span>Ăn 3 bữa/ngày · Ký túc xá khép kín</span><span>Thời gian học: 2–3 tháng</span></div>
         </div>
         <aside class="hero-card">
           <p class="eyebrow">Tư vấn trực tiếp</p>
@@ -102,14 +103,19 @@
       </div>
     </section>
 
-    <section class="quick-contact" aria-labelledby="quick-title">
+    <section class="journey-intro" aria-labelledby="journey-title">
       <div class="container">
-        <div class="section-heading compact"><p class="eyebrow">Liên hệ nhanh</p><h2 id="quick-title">Chọn cách thuận tiện nhất với bạn</h2></div>
-        <div class="contact-grid">
-          <a class="contact-card zalo" href="https://zalo.me/0963048585" target="_blank" rel="noopener" data-contact="zalo"><span>Z</span><strong>Zalo<small>096 304 8585</small></strong></a>
-          <a class="contact-card messenger" href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener" data-contact="messenger"><span>M</span><strong>Messenger<small>Nhắn tin ngay</small></strong></a>
-          <a class="contact-card phone" href="tel:+84963048585" data-contact="phone"><span>☎</span><strong>Gọi trực tiếp<small>096 304 8585</small></strong></a>
+        <div class="journey-intro__head">
+          <div><p class="eyebrow">Xem nhanh trong 4 phút</p><h2 id="journey-title">Đi lần lượt để hiểu rõ trước khi đăng ký</h2></div>
+          <p>Mỗi mục trả lời một câu hỏi quan trọng. Xem điều kiện, chế độ, hình ảnh và câu chuyện thật; cuối trang gửi 3 thông tin để được kiểm tra trực tiếp.</p>
         </div>
+        <nav class="journey-list" aria-label="Lộ trình tìm hiểu nghề mỏ">
+          <a href="#dieu-kien"><small>01</small><strong>Điều kiện</strong><span>Tuổi, thể lực, sức khỏe</span></a>
+          <a href="#che-do-ho-so"><small>02</small><strong>Chế độ</strong><span>Ăn, ở, hỗ trợ, hồ sơ</span></a>
+          <a href="#video"><small>03</small><strong>Người thật</strong><span>Video và môi trường mỏ</span></a>
+          <a href="#theo-tinh"><small>04</small><strong>Theo tỉnh</strong><span>Đồng hương, bảng lương</span></a>
+          <a href="#lien-he"><small>05</small><strong>Gửi tin nhắn</strong><span>Zalo hoặc Facebook</span></a>
+        </nav>
       </div>
     </section>
 
@@ -147,8 +153,28 @@
         </div>
         <div class="conditions-grid">
           <article class="condition-card"><span>01</span><h3>Điều kiện cơ bản</h3><ul><li>Nam từ 18 đến 40 tuổi</li><li>Chiều cao từ 1m53</li><li>Cân nặng từ 47kg</li><li>Được kiểm tra sức khỏe theo yêu cầu</li></ul></article>
-          <article class="condition-card"><span>02</span><h3>Học nghề tại Quảng Ninh</h3><ul><li>Khai thác mỏ và xây dựng mỏ: 2–3 tháng</li><li>Cơ điện mỏ: 10 tháng</li><li>Bố trí ăn 3 bữa/ngày và ở ký túc xá</li><li>Lịch cụ thể xác nhận theo từng đợt</li></ul></article>
+          <article class="condition-card"><span>02</span><h3>Học nghề tại Quảng Ninh</h3><ul><li>Thời gian học: 2–3 tháng</li><li>Đào tạo nghề khai thác mỏ và xây dựng mỏ</li><li>Bố trí ăn 3 bữa/ngày và ở ký túc xá</li><li>Lịch cụ thể xác nhận theo từng đợt</li></ul></article>
           <article class="condition-card accent"><span>03</span><h3>Làm việc tại doanh nghiệp TKV</h3><p>Người tốt nghiệp đạt yêu cầu được doanh nghiệp thuộc Tập đoàn Công nghiệp Than – Khoáng sản Việt Nam cử đi học tiếp nhận làm việc.</p><p>Chế độ có thể gồm ăn ca miễn phí, xe đưa đón, chỗ ở tập thể, bảo hiểm và chăm sóc sức khỏe.</p><a href="bai-viet/luong-va-doi-song-tho-lo/">Tìm hiểu lương và đời sống →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section learning-story" aria-labelledby="learning-story-title">
+      <div class="container learning-story__grid">
+        <figure class="learning-story__media">
+          <img src="assets/vinacomin-dao-tao-tho-lo.webp" alt="Học sinh thực hành nghề mỏ trong môi trường đào tạo của TKV" loading="lazy" decoding="async" width="1200" height="800">
+          <figcaption>Học nghề và thực hành tại Quảng Ninh</figcaption>
+        </figure>
+        <div class="learning-story__copy">
+          <p class="eyebrow">Nhìn rõ hành trình</p>
+          <h2 id="learning-story-title">2–3 tháng học nghề để sẵn sàng bước vào công việc</h2>
+          <p>Người học được làm quen với kiến thức nghề, quy trình an toàn và kỹ năng thực hành trước khi được kiểm tra, hoàn thiện chương trình và tiếp nhận làm việc.</p>
+          <ol class="learning-story__steps">
+            <li><span>01</span><div><strong>Học kiến thức nền</strong><small>Nắm công việc, thiết bị và quy định an toàn.</small></div></li>
+            <li><span>02</span><div><strong>Thực hành kỹ năng</strong><small>Rèn thao tác nghề trong môi trường đào tạo.</small></div></li>
+            <li><span>03</span><div><strong>Hoàn thiện để nhận việc</strong><small>Đạt yêu cầu trước khi doanh nghiệp bố trí công việc.</small></div></li>
+          </ol>
+          <a class="story-next" href="#che-do-ho-so">Tiếp tục xem chế độ và hồ sơ <span aria-hidden="true">↓</span></a>
         </div>
       </div>
     </section>
@@ -188,8 +214,8 @@
           <article class="recruitment-panel" aria-label="Thời gian học nghề mỏ">
             <h3>Ngành nghề tuyển dụng</h3>
             <ul class="trade-list">
-              <li><strong>Khai thác mỏ và xây dựng mỏ</strong><span>2–3 tháng</span></li>
-              <li><strong>Cơ điện mỏ</strong><span>10 tháng</span></li>
+              <li><strong>Khai thác mỏ</strong><span>2–3 tháng</span></li>
+              <li><strong>Xây dựng mỏ</strong><span>2–3 tháng</span></li>
             </ul>
           </article>
 
@@ -226,6 +252,19 @@
       </div>
     </section>
 
+    <section class="section process-section" id="quy-trinh">
+      <div class="container">
+        <div class="section-heading"><p class="eyebrow">5 bước đơn giản</p><h2>Quy trình từ tư vấn đến nhập học</h2><p>Đã xem câu chuyện thực tế? Đây là các bước cụ thể để bạn biết mình cần làm gì tiếp theo.</p></div>
+        <ol class="process-grid">
+          <li><span>1</span><h3>Gửi thông tin</h3><p>Năm sinh, chiều cao, cân nặng và sức khỏe.</p></li>
+          <li><span>2</span><h3>Kiểm tra sơ bộ</h3><p>Đối chiếu điều kiện tuyển thợ lò hiện tại.</p></li>
+          <li><span>3</span><h3>Tư vấn trực tiếp</h3><p>Giải đáp về học nghề, chế độ và việc làm.</p></li>
+          <li><span>4</span><h3>Chuẩn bị hồ sơ</h3><p>Nhận danh sách giấy tờ và lịch tiếp nhận.</p></li>
+          <li><span>5</span><h3>Nhập học</h3><p>Hoàn thiện thủ tục theo hướng dẫn từng đợt.</p></li>
+        </ol>
+      </div>
+    </section>
+
     <section class="section gallery-section" id="hinh-anh">
       <div class="container">
         <div class="section-heading"><p class="eyebrow">Môi trường thực tế</p><h2>Hình ảnh ngành mỏ</h2><p>Khám phá công việc, con người và đời sống tại vùng Than Quảng Ninh.</p></div>
@@ -236,19 +275,6 @@
           <figure class="gallery-card"><img src="https://vinacomin.vn/Share/Media/2018/07/IMG_5192.jpg" alt="Hệ thống quan trắc nước thải tự động của đơn vị ngành Than" loading="lazy" decoding="async" width="960" height="640" referrerpolicy="no-referrer"><figcaption>Sản xuất gắn với bảo vệ môi trường</figcaption></figure>
           <figure class="gallery-card"><img src="https://vinacomin.vn/Share/Media/2018/07/IMG_8663.jpg" alt="Thanh niên ngành Than được biểu dương trong phong trào lao động" loading="lazy" decoding="async" width="960" height="640" referrerpolicy="no-referrer"><figcaption>Tuổi trẻ ngành Than</figcaption></figure>
         </div>
-      </div>
-    </section>
-
-    <section class="section process-section" id="quy-trinh">
-      <div class="container">
-        <div class="section-heading"><p class="eyebrow">5 bước đơn giản</p><h2>Quy trình tư vấn</h2><p>Từ kiểm tra ban đầu đến khi nhận hướng dẫn phù hợp với từng đợt tuyển sinh.</p></div>
-        <ol class="process-grid">
-          <li><span>1</span><h3>Gửi thông tin</h3><p>Năm sinh, chiều cao, cân nặng và sức khỏe.</p></li>
-          <li><span>2</span><h3>Kiểm tra sơ bộ</h3><p>Đối chiếu điều kiện tuyển thợ lò hiện tại.</p></li>
-          <li><span>3</span><h3>Tư vấn trực tiếp</h3><p>Giải đáp về học nghề, chế độ và việc làm.</p></li>
-          <li><span>4</span><h3>Chuẩn bị hồ sơ</h3><p>Nhận danh sách giấy tờ và lịch tiếp nhận.</p></li>
-          <li><span>5</span><h3>Nhập học</h3><p>Hoàn thiện thủ tục theo hướng dẫn từng đợt.</p></li>
-        </ol>
       </div>
     </section>
 
@@ -347,6 +373,20 @@
         </div>
       </div>
     </section>
+
+    <section class="final-conversion" id="lien-he" aria-labelledby="final-conversion-title">
+      <div class="container final-conversion__grid">
+        <div>
+          <p class="eyebrow">Đã xem đủ thông tin?</p>
+          <h2 id="final-conversion-title">Gửi tin nhắn để kiểm tra điều kiện của bạn</h2>
+          <p>Chỉ cần gửi 3 thông tin: <strong>năm sinh · chiều cao/cân nặng · sức khỏe hiện tại</strong>. Thầy Linh sẽ kiểm tra và hướng dẫn bước phù hợp.</p>
+        </div>
+        <div class="final-conversion__actions">
+          <a class="final-contact final-contact--zalo" href="https://zalo.me/0963048585" target="_blank" rel="noopener" data-contact="zalo" data-context="end-of-page"><span>Zalo</span><strong>Gửi tin nhắn Zalo</strong><small>096 304 8585</small></a>
+          <a class="final-contact final-contact--messenger" href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener" data-contact="messenger" data-context="end-of-page"><span>Facebook</span><strong>Gửi tin nhắn Messenger</strong><small>Thầy Linh – Tuyển Thợ Mỏ</small></a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -363,7 +403,7 @@
     <a href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener" data-contact="messenger"><strong>Messenger</strong><span>Nhắn ngay</span></a>
     <a href="tel:+84963048585" data-contact="phone"><strong>Gọi</strong><span>096 304 8585</span></a>
   </nav>
-  <script src="portal-official.js?v=7" defer></script>
+  <script src="portal-official.js?v=8" defer></script>
   <script src="/mobile-ux.js?v=1" defer></script>
 </body>
 </html>
