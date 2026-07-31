@@ -7,6 +7,8 @@ const base = "https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-m
 const errors = [];
 const warnings = [];
 const feed = JSON.parse(fs.readFileSync(path.join(root,"feed.json"),"utf8"));
+const imageSources = JSON.parse(fs.readFileSync(path.join(root,"assets","articles","sources.json"),"utf8"));
+const articleImages = [];
 
 if (feed.items.length < 50) errors.push(`feed.json must contain at least 50 articles, got ${feed.items.length}`);
 const slugs = feed.items.map(item => item.url.split("/").filter(Boolean).at(-1));
@@ -38,6 +40,7 @@ for (const [index,slug] of slugs.entries()) {
   const canonical = attr(html,/<link rel="canonical" href="([^"]+)"/i,`${prefix}canonical`);
   const keyword = attr(html,/<meta name="keywords" content="([^,"]+)/i,`${prefix}keyword`);
   const image = attr(html,/<section class="article-hero">[\s\S]*?<img src="([^"]+)"/i,`${prefix}hero image`);
+  const ogImage = attr(html,/<meta property="og:image" content="([^"]+)"/i,`${prefix}Open Graph image`);
   const h1Count = (html.match(/<h1(?:\s|>)/gi)||[]).length;
   const visibleWords = strip(html).split(/\s+/).filter(Boolean).length;
   if (h1Count !== 1) errors.push(`${prefix}expected one H1, got ${h1Count}`);
@@ -47,8 +50,10 @@ for (const [index,slug] of slugs.entries()) {
   if (!strip(html).toLocaleLowerCase("vi").includes(keyword.toLocaleLowerCase("vi"))) errors.push(`${prefix}primary keyword absent from body`);
   if (visibleWords < 1000) errors.push(`${prefix}only ${visibleWords} visible words`);
   if (!/"@type":"(?:NewsArticle|Article|BlogPosting)"/.test(html) || !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing article or FAQ schema`);
-  const imageFile = path.resolve(path.dirname(file),image);
-  if (!fs.existsSync(imageFile)) errors.push(`${prefix}missing image ${image}`);
+  if (!image.startsWith("https://vinacomin.vn/Share/Media/")) errors.push(`${prefix}image is not from the Vinacomin image library`);
+  if (ogImage !== image || item.image !== image) errors.push(`${prefix}hero, Open Graph and feed images must match`);
+  if (/class="highlight"|Cách đọc đúng:|Tóm tắt:/.test(html)) errors.push(`${prefix}contains a forbidden highlight summary block`);
+  articleImages.push(image);
   const externalAnchors = [...html.matchAll(/<a\b[^>]*href="(https?:\/\/[^"]+)"/gi)].map(m=>m[1]).filter(url=>!url.startsWith(base) && !url.startsWith("https://zalo.me/") && !url.startsWith("https://m.me/"));
   if (externalAnchors.length) errors.push(`${prefix}unexpected outbound anchors: ${externalAnchors.join(", ")}`);
   const jsonScripts = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi)];
@@ -56,6 +61,11 @@ for (const [index,slug] of slugs.entries()) {
     try { JSON.parse(m[1]); } catch (e) { errors.push(`${prefix}invalid JSON-LD ${j+1}: ${e.message}`); }
   }
 }
+
+if (new Set(articleImages).size !== articleImages.length) errors.push("Article images must be unique");
+const sourceUrls = Object.values(imageSources).map(source => source.source_url);
+if (sourceUrls.some(url => !url?.startsWith("https://vinacomin.vn/Share/Media/"))) errors.push("Image source registry contains a non-Vinacomin image");
+if (new Set(sourceUrls).size !== sourceUrls.length) errors.push("Image source registry contains duplicate images");
 
 const sitemap = fs.readFileSync(path.join(root,"sitemap.xml"),"utf8");
 for (const item of feed.items) if (!sitemap.includes(item.url)) errors.push(`${item.url}: absent from sitemap`);

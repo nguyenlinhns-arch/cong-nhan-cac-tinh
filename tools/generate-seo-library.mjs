@@ -117,10 +117,26 @@ const topics = [
   ["viec-lam-tho-mo-lao-cai","Việc làm thợ mỏ cho lao động Lào Cai tại Quảng Ninh","việc làm thợ mỏ Lào Cai","Người lao động Lào Cai nên đối chiếu điều kiện sức khỏe, chọn nghề và xác nhận lịch trước khi khởi hành.","province",["Tìm hiểu khai thác, xây dựng và cơ điện mỏ","Gửi thông tin sàng lọc trung thực","Chốt điểm đón và nơi ở","Chuẩn bị hồ sơ gọn, đúng yêu cầu","Giữ số tư vấn để xử lý tình huống"]],
 ].map(([slug,title,keyword,lead,cluster,points], index) => ({
   slug,title,keyword,lead,cluster,points,position:index,
-  image: `articles/${slug}.webp`,
+  image: imageSources[slug]?.source_url,
 }));
 
 if (topics.length !== 50) throw new Error(`Expected 50 topics, got ${topics.length}`);
+if (topics.some(topic => !topic.image?.startsWith("https://vinacomin.vn/Share/Media/"))) {
+  throw new Error("Every article must use a unique image from the Vinacomin image library");
+}
+if (new Set(topics.map(topic => topic.image)).size !== topics.length) {
+  throw new Error("Vinacomin article images must not be reused between articles");
+}
+
+const latestNews = {
+  title: "Tái cơ cấu TKV 2026: việc làm thợ mỏ thay đổi thế nào?",
+  lead: "Định hướng mới đặt an toàn, đời sống, tuyển dụng–đào tạo thợ lò và cơ giới hóa vào cùng một bài toán.",
+  href: "2026/07/31/tai-co-cau-tkv-2026-viec-lam-tho-mo/",
+  image: imageSources["tai-co-cau-tkv-2026-viec-lam-tho-mo"]?.source_url,
+};
+if (!latestNews.image?.startsWith("https://vinacomin.vn/Share/Media/") || topics.some(topic => topic.image === latestNews.image)) {
+  throw new Error("The latest news image must be a unique Vinacomin image library asset");
+}
 
 function esc(value) {
   return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
@@ -190,14 +206,14 @@ function faq(topic) {
 function articleHtml(topic, index) {
   const info = clusterInfo[topic.cluster];
   const url = `${base}/bai-viet/${topic.slug}/`;
-  const imageUrl = `${base}/assets/${topic.image}`;
+  const imageUrl = topic.image;
   const keywords = secondaryKeywords(topic);
   const faqs = faq(topic);
   const related = info.related.filter(slug => slug !== topic.slug).slice(0,2);
   const imageSource = imageSources[topic.slug];
   const sourceName = imageSource
-    ? `${imageSource.creator} / Wikimedia Commons (${imageSource.license})`
-    : "Tư liệu ngành Than";
+    ? `${imageSource.provider} · ${imageSource.album_title}`
+    : "Thư viện ảnh Vinacomin";
   const paragraphs = topic.points.map((p,i) => `<li><strong>${esc(p)}</strong><span>${esc(pointExpansion(p,i,topic))}</span></li>`).join("");
   const steps = info.steps.map((s,i) => `<li><time>${String(i+1).padStart(2,"0")}</time><div><strong>${esc(s)}</strong><span>${esc(topic.points[i] || topic.points[0])}.</span></div></li>`).join("");
   const warning = info.warnings.map(x => `<li>${esc(x)}</li>`).join("");
@@ -253,7 +269,7 @@ function articleHtml(topic, index) {
   <header class="site-header"><div class="container header-inner"><a class="brand" href="../../"><span class="brand-mark">TL</span><span><strong>Thầy Linh</strong><small>Tuyển Thợ Mỏ</small></span></a><a class="back-link" href="../../tin-nganh-than/">← Cẩm nang nghề mỏ</a></div></header>
   <main>
     <section class="article-hero">
-      <img src="../../assets/${topic.image}" alt="${esc(topic.keyword)}" fetchpriority="high">
+      <img src="${topic.image}" alt="${esc(topic.keyword)}" fetchpriority="high">
       <div class="container hero-inner">
         <nav class="breadcrumbs" aria-label="Đường dẫn"><a href="../../">Trang chủ</a><span>/</span><a href="../../tin-nganh-than/">Cẩm nang nghề mỏ</a><span>/</span><span>${esc(info.label)}</span></nav>
         <p class="eyebrow">${esc(info.label)} · Bài ${String(index+1).padStart(2,"0")}/50</p>
@@ -265,7 +281,6 @@ function articleHtml(topic, index) {
       <article class="article-body">
         <p class="article-meta"><time datetime="${published}">Cập nhật ${dateLabel}</time> · Biên soạn: <a rel="author" href="../../#gioi-thieu">Nguyễn Tử Linh</a> · Ảnh: ${sourceName}</p>
         <p><strong>${esc(topic.keyword)}</strong> là nội dung được nhiều người lao động và gia đình tìm hiểu trước khi quyết định học nghề, đi làm xa hoặc lựa chọn một hướng nghề nghiệp mới. Bài viết này tập trung vào thông tin có thể dùng ngay: điều cần kiểm tra, cách chuẩn bị và những điểm không nên hiểu máy móc.</p>
-        <div class="highlight"><p><strong>Tóm tắt:</strong> ${esc(topic.lead)} Trước khi đi, hãy xác nhận lại thông tin của đúng đợt tuyển và đúng đơn vị tiếp nhận.</p></div>
         <h2>${esc(topic.keyword)}: hiểu đúng trước khi quyết định</h2>
         <p>${esc(info.intro)}</p>
         <p>${esc(info.practice)}</p>
@@ -300,7 +315,7 @@ function articleHtml(topic, index) {
 
 function hubHtml() {
   const groups = Object.entries(clusterInfo).map(([key,info]) => {
-    const cards = topics.filter(t => t.cluster === key).map(t => `<a class="news-card" href="../bai-viet/${t.slug}/" data-cluster="${key}"><img src="../assets/${t.image}" alt="${esc(t.keyword)}" loading="lazy" decoding="async"><div class="news-card__body"><small>${esc(info.label)}</small><h2>${esc(t.title)}</h2><p>${esc(t.lead)}</p><span>Đọc bài →</span></div></a>`).join("");
+    const cards = topics.filter(t => t.cluster === key).map(t => `<a class="news-card" href="../bai-viet/${t.slug}/" data-cluster="${key}"><img src="${t.image}" alt="${esc(t.keyword)}" loading="lazy" decoding="async"><div class="news-card__body"><small>${esc(info.label)}</small><h2>${esc(t.title)}</h2><p>${esc(t.lead)}</p><span>Đọc bài →</span></div></a>`).join("");
     return `<section class="library-section" id="${key}"><div class="library-heading"><p class="eyebrow">${esc(info.label)}</p><h2>${topics.filter(t=>t.cluster===key).length} bài nên đọc</h2></div><div class="news-grid">${cards}</div></section>`;
   }).join("");
   const itemList = topics.map((t,i) => ({"@type":"ListItem","position":i+1,"url":`${base}/bai-viet/${t.slug}/`,"name":t.title}));
@@ -308,12 +323,12 @@ function hubHtml() {
 <html lang="vi">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#063c46">
-  <title>50 bài cẩm nang thợ mỏ, học nghề mỏ và việc làm ngành Than</title>
-  <meta name="description" content="Thư viện 50 bài SEO đầy đủ về điều kiện tuyển thợ lò, học nghề mỏ, thu nhập, an toàn, công nghệ và việc làm ngành Than tại Quảng Ninh.">
+  <title>Tin ngành Than mới và 50 bài cẩm nang thợ mỏ</title>
+  <meta name="description" content="Tin ngành Than mới cùng 50 bài về tuyển thợ lò, học nghề mỏ, thu nhập, an toàn, công nghệ và việc làm tại Quảng Ninh.">
   <meta name="robots" content="index,follow,max-image-preview:large"><meta name="author" content="Nguyễn Tử Linh">
   <link rel="canonical" href="${base}/tin-nganh-than/"><link rel="icon" href="../assets/favicon.svg?v=2" type="image/svg+xml"><link rel="manifest" href="../manifest.webmanifest">
   <link rel="alternate" type="application/rss+xml" title="Bài viết – Thầy Linh Tuyển Thợ Mỏ" href="${base}/feed.xml"><link rel="alternate" type="application/feed+json" title="Bài viết – Thầy Linh Tuyển Thợ Mỏ" href="${base}/feed.json">
-  <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="50 bài cẩm nang nghề mỏ và việc làm ngành Than"><meta property="og:description" content="Tìm hiểu điều kiện, học nghề, lương, phúc lợi, an toàn và công nghệ mỏ."><meta property="og:image" content="${base}/assets/og-cover-v2.webp">
+  <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="Tin ngành Than mới và 50 bài cẩm nang thợ mỏ"><meta property="og:description" content="Tin mới, điều kiện, học nghề, lương, phúc lợi, an toàn và công nghệ mỏ."><meta property="og:image" content="${latestNews.image}">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../article-insights.css?v=6">
   <script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"CollectionPage","name":"50 bài cẩm nang thợ mỏ và việc làm ngành Than","description":"Thư viện nội dung về tuyển thợ lò, học nghề mỏ, thu nhập, an toàn, công nghệ và việc làm theo tỉnh.","url":`${base}/tin-nganh-than/`,"inLanguage":"vi-VN","dateModified":published,"publisher":{"@type":"Organization","name":"Thầy Linh – Tuyển Thợ Mỏ","url":`${base}/`},"mainEntity":{"@type":"ItemList","numberOfItems":50,"itemListElement":itemList}})}</script>
@@ -323,7 +338,7 @@ function hubHtml() {
   <main>
     <section class="news-hero"><div class="container"><p class="eyebrow">Thư viện nội dung · 50 bài chuyên sâu</p><h1>Cẩm nang thợ mỏ và việc làm ngành Than</h1><p class="lead">Nội dung được chia theo nhu cầu tìm kiếm: điều kiện, hồ sơ, học nghề, công việc, thu nhập, phúc lợi, an toàn, công nghệ và hướng dẫn cho lao động từng tỉnh.</p><nav class="cluster-nav" aria-label="Nhóm bài viết">${Object.entries(clusterInfo).map(([k,v])=>`<a href="#${k}">${esc(v.label)}</a>`).join("")}</nav></div></section>
     <div class="container news-main">
-      <article class="news-feature"><img src="../assets/og-cover-v2.webp" alt="Cẩm nang nghề mỏ và công nghệ khai thác hầm lò"><div class="news-feature__body"><p class="news-kicker">Bắt đầu tại đây</p><h2>50 câu hỏi người muốn vào nghề mỏ thường quan tâm</h2><p>Mỗi bài giải quyết một nhu cầu tìm kiếm cụ thể, có hướng dẫn thực tế, câu hỏi thường gặp và liên kết sang nội dung liên quan.</p><a class="news-link" href="#entry">Xem theo chủ đề →</a></div></article>
+      <article class="news-feature"><img src="${latestNews.image}" alt="Tái cơ cấu TKV 2026 và việc làm thợ mỏ"><div class="news-feature__body"><p class="news-kicker">Bài mới · 31/07/2026</p><h2>${latestNews.title}</h2><p>${latestNews.lead}</p><a class="news-link" href="${latestNews.href}">Đọc bài mới →</a></div></article>
       ${groups}
     </div>
   </main>
@@ -363,7 +378,7 @@ const feedItems = topics.map(t => `  <item><title>${esc(t.title)}</title><link>$
 fs.writeFileSync(path.join(root,"feed.xml"),`<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>Thầy Linh – Cẩm nang nghề mỏ</title><link>${base}/tin-nganh-than/</link><description>Điều kiện, học nghề, việc làm, thu nhập và đời sống thợ mỏ.</description><language>vi</language><lastBuildDate>Thu, 30 Jul 2026 03:30:00 GMT</lastBuildDate>\n${feedItems}\n</channel></rss>\n`);
 fs.writeFileSync(path.join(root,"feed.json"),JSON.stringify({
   version:"https://jsonfeed.org/version/1.1",title:"Thầy Linh – Cẩm nang nghề mỏ",home_page_url:`${base}/`,feed_url:`${base}/feed.json`,language:"vi-VN",
-  items:topics.map(t=>({id:`${base}/bai-viet/${t.slug}/`,url:`${base}/bai-viet/${t.slug}/`,title:t.title,summary:t.lead,image:`${base}/assets/${t.image}`,date_published:published,tags:secondaryKeywords(t)}))
+  items:topics.map(t=>({id:`${base}/bai-viet/${t.slug}/`,url:`${base}/bai-viet/${t.slug}/`,title:t.title,summary:t.lead,image:t.image,date_published:published,tags:secondaryKeywords(t)}))
 },null,2)+"\n");
 
 const llms = `# Thầy Linh – Tuyển Thợ Mỏ\n\n> Website tư vấn học nghề mỏ và việc làm ngành Than tại Quảng Ninh do Nguyễn Tử Linh biên soạn.\n\n## Nội dung chính\n\n- Điều kiện tham khảo: Nam 18–40 tuổi, chiều cao từ 1m53, cân nặng từ 47kg và sức khỏe phù hợp.\n- Nghề khai thác mỏ và xây dựng mỏ: 2–3 tháng. Cơ điện mỏ: 10 tháng.\n- Hồ sơ hướng dẫn: căn cước công dân, giấy khai sinh, bằng cấp 2 hoặc cấp 3 nếu có.\n- Thu nhập thợ lò tham khảo: 20–25 triệu đồng/tháng, phụ thuộc vị trí, ngày công, năng suất và đơn vị.\n- Liên hệ tư vấn: Zalo 096 304 8585.\n\n## Thư viện 50 bài SEO\n\n${topics.map(t=>`- [${t.title}](${base}/bai-viet/${t.slug}/): ${t.lead}`).join("\n")}\n`;
