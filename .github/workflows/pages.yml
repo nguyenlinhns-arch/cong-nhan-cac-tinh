@@ -25,6 +25,10 @@ jobs:
       - uses: actions/configure-pages@v5
         with:
           enablement: true
+      - name: Build search index and validate website
+        run: |
+          node tools/build-search-index.mjs
+          node tools/validate-seo-library.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
           # Publish the recruitment portal at the custom-domain root.

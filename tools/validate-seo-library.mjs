@@ -8,6 +8,7 @@ const errors = [];
 const warnings = [];
 const feed = JSON.parse(fs.readFileSync(path.join(root,"feed.json"),"utf8"));
 const imageSources = JSON.parse(fs.readFileSync(path.join(root,"assets","articles","sources.json"),"utf8"));
+const searchIndex = JSON.parse(fs.readFileSync(path.join(root,"search-index.json"),"utf8"));
 const articleImages = [];
 
 if (feed.items.length < 50) errors.push(`feed.json must contain at least 50 articles, got ${feed.items.length}`);
@@ -25,6 +26,16 @@ const strip = html => html
 
 function attr(html, pattern, name) {
   return html.match(pattern)?.[1] || (errors.push(`Missing ${name}`),"");
+}
+
+function collectHtml(dir, out = []) {
+  for (const entry of fs.readdirSync(dir,{withFileTypes:true})) {
+    if (entry.name.startsWith(".")) continue;
+    const full = path.join(dir,entry.name);
+    if (entry.isDirectory()) collectHtml(full,out);
+    else if (entry.name.endsWith(".html")) out.push(full);
+  }
+  return out;
 }
 
 for (const [index,slug] of slugs.entries()) {
@@ -69,12 +80,36 @@ if (new Set(sourceUrls).size !== sourceUrls.length) errors.push("Image source re
 
 const sitemap = fs.readFileSync(path.join(root,"sitemap.xml"),"utf8");
 for (const item of feed.items) if (!sitemap.includes(item.url)) errors.push(`${item.url}: absent from sitemap`);
-for (const required of ["tin-nganh-than/index.html","index.html","article-insights.css","feed.xml","llms.txt"]) {
+const allHtml = collectHtml(root);
+for (const file of allHtml) {
+  const html = fs.readFileSync(file,"utf8");
+  const rel = path.relative(root,file);
+  if (!/<meta\s+name="viewport"\s+content="[^"]*width=device-width/i.test(html)) errors.push(`${rel}: missing responsive viewport`);
+  if (!/<link\s+rel="stylesheet"\s+href="\/mobile-ux\.css\?v=1"/i.test(html)) errors.push(`${rel}: missing shared mobile stylesheet`);
+  if (!/<script\s+src="\/mobile-ux\.js\?v=1"\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing shared mobile script`);
+}
+
+if (!Array.isArray(searchIndex.items) || searchIndex.items.length < 70) errors.push("Search index must contain at least 70 pages");
+else {
+  const searchUrls = searchIndex.items.map(item => item.url);
+  if (new Set(searchUrls).size !== searchUrls.length) errors.push("Search index contains duplicate URLs");
+  for (const item of searchIndex.items) {
+    if (!item.url?.startsWith("/") || !item.title || !item.description || !item.category) errors.push(`Invalid search entry: ${JSON.stringify(item)}`);
+  }
+  for (const item of feed.items) {
+    const relative = item.url.startsWith(base) ? item.url.slice(base.length) : item.url;
+    if (!searchUrls.includes(relative)) errors.push(`${relative}: absent from search index`);
+  }
+}
+
+for (const required of ["tin-nganh-than/index.html","index.html","article-insights.css","mobile-ux.css","mobile-ux.js","search-index.json","feed.xml","llms.txt"]) {
   if (!fs.existsSync(path.join(root,required))) errors.push(`Missing ${required}`);
 }
 
 console.log(JSON.stringify({
   articles:slugs.length,
+  pages:allHtml.length,
+  searchPages:searchIndex.items?.length || 0,
   errors:errors.length,
   warnings:warnings.length,
   sampleWarnings:warnings.slice(0,10),

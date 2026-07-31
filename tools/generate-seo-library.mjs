@@ -255,6 +255,7 @@ function articleHtml(topic, index) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../article-insights.css?v=6">
+  <link rel="stylesheet" href="/mobile-ux.css?v=1">
   <script type="application/ld+json">${JSON.stringify({
     "@context":"https://schema.org",
     "@graph":[
@@ -309,6 +310,7 @@ function articleHtml(topic, index) {
   </main>
   <footer class="site-footer"><div class="container footer-inner"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Tư vấn học nghề mỏ và việc làm ngành Than tại Quảng Ninh.</p></div><a href="../../tin-nganh-than/">Xem đủ 50 bài cẩm nang →</a></div></footer>
   <nav class="article-contact" aria-label="Liên hệ nhanh"><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Zalo · 096 304 8585</a><a href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener">Messenger</a></nav>
+  <script src="/mobile-ux.js?v=1" defer></script>
 </body>
 </html>`;
 }
@@ -331,6 +333,7 @@ function hubHtml() {
   <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="Tin ngành Than mới và 50 bài cẩm nang thợ mỏ"><meta property="og:description" content="Tin mới, điều kiện, học nghề, lương, phúc lợi, an toàn và công nghệ mỏ."><meta property="og:image" content="${latestNews.image}">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../article-insights.css?v=6">
+  <link rel="stylesheet" href="/mobile-ux.css?v=1">
   <script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"CollectionPage","name":"50 bài cẩm nang thợ mỏ và việc làm ngành Than","description":"Thư viện nội dung về tuyển thợ lò, học nghề mỏ, thu nhập, an toàn, công nghệ và việc làm theo tỉnh.","url":`${base}/tin-nganh-than/`,"inLanguage":"vi-VN","dateModified":published,"publisher":{"@type":"Organization","name":"Thầy Linh – Tuyển Thợ Mỏ","url":`${base}/`},"mainEntity":{"@type":"ItemList","numberOfItems":50,"itemListElement":itemList}})}</script>
 </head>
 <body>
@@ -344,6 +347,7 @@ function hubHtml() {
   </main>
   <footer class="site-footer"><div class="container footer-inner"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Cẩm nang học nghề mỏ và việc làm ngành Than tại Quảng Ninh.</p></div><a href="../#dang-ky">Kiểm tra điều kiện →</a></div></footer>
   <nav class="article-contact" aria-label="Liên hệ nhanh"><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Zalo · 096 304 8585</a><a href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener">Messenger</a></nav>
+  <script src="/mobile-ux.js?v=1" defer></script>
 </body></html>`;
 }
 
