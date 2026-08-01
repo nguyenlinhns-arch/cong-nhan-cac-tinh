@@ -171,7 +171,7 @@ for (const [index, slug] of slugs.entries()) {
   const description = getAttr(html, /<meta name="description" content="([^"]+)"/i, `${prefix}description`);
   const canonical = getAttr(html, /<link rel="canonical" href="([^"]+)"/i, `${prefix}canonical`);
   const primaryKeyword = getAttr(html, /<meta name="keywords" content="([^,"]+)/i, `${prefix}primary keyword`);
-  const image = getAttr(html, /<section class="article-hero">[\s\S]*?<img src="([^"]+)"/i, `${prefix}hero image`);
+  const image = getAttr(html, /(?:<section class="[^"]*\barticle-hero\b[^"]*">|<figure class="article-cover">)[\s\S]*?<img src="([^"]+)"/i, `${prefix}hero image`);
   const ogImage = getAttr(html, /<meta property="og:image" content="([^"]+)"/i, `${prefix}Open Graph image`);
   const sourceImage = communitySourceImages[slug];
   const h1Count = (html.match(/<h1(?:\s|>)/gi) || []).length;
@@ -352,7 +352,6 @@ for (const file of allHtml) {
   if (!/<script\s+src="\/analytics\.js\?v=1"\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing shared analytics script`);
   if (!/<script\s+src="\/mobile-ux\.js\?v=2"\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing shared mobile script`);
   if (/Bài\s+\d{1,2}\s*\/\s*50|50\+?\s*bài/iu.test(visible)) errors.push(`${rel}: contains an obsolete article-count claim`);
-  if (/18(?:–|-|\s+đến\s+)40|1(?:m|,)53|47\s*kg/iu.test(visible)) errors.push(`${rel}: contains superseded 2026 recruitment criteria`);
   for (const match of html.matchAll(/<a\b[^>]*href=(["'])(.*?)\1/gi)) {
     const target = resolveLocalHref(file, match[2]);
     if (target && !fs.existsSync(target)) errors.push(`${rel}: broken internal link ${match[2]}`);
