@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "updated_at": "2026-08-01T23:30:00+07:00",
   "effective_from": "2026-08-01",
   "source_notice": "Thông báo số 10/TB-CĐTKV ngày 02/04/2026 và nội dung tuyển tháng 8/2026 cập nhật ngày 01/08/2026",
@@ -9,6 +9,13 @@
   "hiring_organization": "Tập đoàn Công nghiệp Than - Khoáng sản Việt Nam (TKV)",
   "recruitment_coordinator": "Trường Cao đẳng Than - Khoáng sản Việt Nam",
   "work_location": "Quảng Ninh",
+  "job_location": {
+    "locality": "Quảng Ninh",
+    "region": "Quảng Ninh",
+    "postal_code": "01000",
+    "country": "VN",
+    "scope_note": "Bố trí tại các doanh nghiệp thuộc TKV trên địa bàn tỉnh Quảng Ninh; không dùng địa chỉ tư vấn hoặc địa điểm nhập học làm địa chỉ nơi làm việc"
+  },
   "candidate_scope": "Toàn quốc – 34 tỉnh, thành",
   "employment_type": "Toàn thời gian sau đào tạo",
   "occupations": [
