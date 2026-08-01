@@ -5,6 +5,8 @@ body{margin:0;color:var(--ink);background:var(--cream);font-family:"Be Vietnam P
 img{display:block;width:100%}
 a{color:inherit;text-decoration:none}
 a:focus-visible{outline:3px solid #ffb468;outline-offset:3px}
+.skip-link{position:fixed;z-index:200;left:12px;top:-80px;padding:10px 16px;border-radius:8px;background:#fff;color:var(--brand);font-weight:800;box-shadow:var(--shadow)}
+.skip-link:focus{top:12px}
 .container{width:min(1080px,calc(100% - 32px));margin-inline:auto}
 .site-header{position:sticky;z-index:20;top:0;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
 .header-inner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
