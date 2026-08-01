@@ -36,7 +36,7 @@ function publicUrl(file) {
 }
 
 function localFile(sourceFile, rawUrl) {
-  if (!rawUrl || /^(?:#|mailto:|tel:|javascript:|data:)/i.test(rawUrl)) return null;
+  if (!rawUrl || /^(?:#|mailto:|tel:|sms:|javascript:|data:)/i.test(rawUrl)) return null;
   let value = rawUrl;
   if (/^https?:\/\//i.test(value)) {
     if (!value.startsWith(`${base}/`) && value !== base) return null;

@@ -78,6 +78,31 @@ function renderChecklist(items) {
 
 function renderArticle(article) {
   const canonical = `${base}/${article.urlPath}/`;
+  const careerCta = {
+    "Thu nhập & việc làm": {
+      title: "Muốn tự xây thu nhập bằng tay nghề?",
+      text: "Hãy bắt đầu bằng việc kiểm tra điều kiện, hiểu rõ khóa học và chọn một lộ trình có thể theo đuổi lâu dài.",
+    },
+    "Công nghệ mỏ": {
+      title: "Muốn bước vào một ngành đang đổi mới?",
+      text: "Người mới được học từ nền tảng trước khi làm quen thiết bị, quy trình và nhịp sản xuất hiện đại.",
+    },
+    "Tay nghề & đào tạo": {
+      title: "Một người thợ giỏi cũng từng là người mới",
+      text: "Gửi thông tin ban đầu để xem bạn có phù hợp với khóa học nghề mỏ và lộ trình làm việc tại Quảng Ninh hay không.",
+    },
+    "Kết nối địa phương": {
+      title: "Bạn có thể là người tiếp theo từ địa phương mình",
+      text: "Hỏi rõ điều kiện, nghề đang tuyển và lịch tiếp nhận trước khi quyết định hành trình đến Quảng Ninh.",
+    },
+    "An sinh xã hội": {
+      title: "Muốn trở thành một phần của tập thể ấy?",
+      text: "Ngành Than được làm nên bởi tay nghề trong sản xuất và tinh thần đồng tâm ngoài cộng đồng. Hãy tìm hiểu con đường vào nghề.",
+    },
+  }[article.section] || {
+    title: "Muốn bắt đầu với nghề mỏ?",
+    text: "Gửi năm sinh, chiều cao, cân nặng và tình trạng sức khỏe để được kiểm tra điều kiện trước khi chuẩn bị hồ sơ.",
+  };
   const faqs = article.faq.map(([question, answer]) => ({
     "@type": "Question",
     name: question,
@@ -184,7 +209,7 @@ function renderArticle(article) {
         <nav class="article-nav" aria-label="Bài viết liên quan">${related}</nav>
       </article>
       <aside class="article-aside">
-        <div class="aside-card accent"><h2>Muốn bắt đầu với nghề mỏ?</h2><p>Gửi năm sinh, chiều cao, cân nặng và tình trạng sức khỏe để được kiểm tra điều kiện trước khi chuẩn bị hồ sơ.</p><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Trao đổi qua Zalo 096 304 8585</a></div>
+        <div class="aside-card accent"><h2>${esc(careerCta.title)}</h2><p>${esc(careerCta.text)}</p><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Trao đổi qua Zalo 096 304 8585</a></div>
         <div class="aside-card"><h2>Đọc tiếp về nghề mỏ</h2><p>Tìm hiểu đầy đủ điều kiện, chế độ học, công việc và đời sống tại Quảng Ninh trước khi đưa ra quyết định.</p><a class="aside-secondary-link" href="/tin-nganh-than/">Xem tất cả bài viết</a></div>
       </aside>
     </div>
@@ -223,6 +248,19 @@ const sectionIds = {
   "An sinh xã hội": "an-sinh-xa-hoi",
 };
 
+const sectionPresentation = {
+  "Hướng dẫn nhập nghề": ["Bắt đầu đúng để đi đường dài", "Điều kiện, hồ sơ và khóa học được giải thích bằng ngôn ngữ rõ ràng cho người lần đầu tìm hiểu nghề mỏ."],
+  "Thu nhập & việc làm": ["Tay nghề được trả công như thế nào?", "Những con số thu nhập có bối cảnh, những gương mặt đã đi từ lao động phổ thông tới công nhân lành nghề."],
+  "Công nghệ mỏ": ["Người thợ trong những mỏ ngày càng hiện đại", "Cơ giới hóa, tự động hóa và dữ liệu đang thay đổi thao tác nghề, môi trường làm việc và yêu cầu kỹ năng."],
+  "Tay nghề & đào tạo": ["Từ đôi tay vụng về đến bản lĩnh người thợ", "Lớp học, xưởng thực hành và từng lỗi được sửa là nơi một công nhân kỹ thuật bắt đầu trưởng thành."],
+  "An toàn & sức khỏe": ["An toàn là năng lực nghề nghiệp", "Bảo hộ, quy trình, phản xạ và tinh thần tổ đội được rèn trước khi người mới bước vào ca sản xuất."],
+  "Đời sống thợ mỏ": ["Sau ca làm là một cuộc sống cần được vun đắp", "Nhà ở, bữa ăn, sức khỏe và tình đồng đội góp phần giúp người lao động gắn bó với vùng mỏ."],
+  "Mỏ xanh & môi trường": ["Một ngành công nghiệp đang tự đổi mới", "Nước thải mỏ, bụi, đất đá và năng lượng được nhìn bằng công nghệ cùng trách nhiệm với môi trường."],
+  "Việc làm ngành Than": ["Nhịp sản xuất mở ra những vị trí việc làm thật", "Thông tin mới về nhu cầu nhân lực, thu nhập và chiến lược phát triển để người lao động cân nhắc bằng dữ kiện."],
+  "Kết nối địa phương": ["Những con đường từ quê nhà tới vùng mỏ", "Mỗi bài là một địa phương, một kết quả đã có và một lộ trình đang được Nhà trường, doanh nghiệp, chính quyền cùng mở rộng."],
+  "An sinh xã hội": ["Tinh thần người thợ đi xa hơn cửa lò", "Những công trình, mái nhà, học bổng và nguồn cứu trợ cho thấy văn hóa “Kỷ luật và Đồng tâm” trong đời sống cộng đồng."],
+};
+
 function card(article) {
   const href = article.urlPath.startsWith("bai-viet/")
     ? `../${article.urlPath}/`
@@ -235,7 +273,8 @@ function hubHtml() {
   const sections = sectionOrder.map((section) => {
     const items = allEditorial.filter((article) => article.section === section && article.slug !== feature.slug);
     if (!items.length) return "";
-    return `<section class="library-section" id="${sectionIds[section]}"><div class="library-heading"><div><p class="eyebrow">${esc(section)}</p><h2>${items.length === 1 ? "Bài viết nên đọc" : "Những bài viết nên đọc"}</h2></div></div><div class="news-grid">${items.map(card).join("")}</div></section>`;
+    const [heading, description] = sectionPresentation[section] || [items.length === 1 ? "Bài viết nên đọc" : "Những bài viết nên đọc", ""];
+    return `<section class="library-section" id="${sectionIds[section]}"><div class="library-heading"><div><p class="eyebrow">${esc(section)}</p><h2>${esc(heading)}</h2></div>${description ? `<p>${esc(description)}</p>` : ""}</div><div class="news-grid">${items.map(card).join("")}</div></section>`;
   }).join("");
   const itemList = allEditorial.map((article, index) => ({
     "@type": "ListItem",

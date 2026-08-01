@@ -5,36 +5,36 @@ const root = path.resolve("tuyen-tho-mo");
 const outputRoot = path.join(root, "viec-lam-nganh-than");
 
 export const provinces = [
-  { slug: "lam-dong", name: "Lâm Đồng", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Đắk Nông", "Bình Thuận"] },
-  { slug: "khanh-hoa", name: "Khánh Hòa", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Ninh Thuận"] },
-  { slug: "dak-lak", name: "Đắk Lắk", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Phú Yên"] },
-  { slug: "gia-lai", name: "Gia Lai", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Bình Định"], story: "Từ K’bang ra Quảng Ninh, anh Đặng Văn Hưng đã trở thành thợ lò giỏi với thu nhập hơn 30 triệu đồng/tháng.", storyLink: "../../bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/" },
+  { slug: "lam-dong", name: "Lâm Đồng", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Đắk Nông", "Bình Thuận"], reportage: { title: "Năm tỷ đồng từ TKV và câu chuyện những mái nhà an toàn", summary: "Hoạt động xóa nhà tạm tại Lâm Đồng cho thấy mối liên hệ của ngành Than với đời sống tại quê hương người lao động.", link: "../../tin-nganh-than/2026/08/01/tkv-ho-tro-5-ty-xoa-nha-tam-lam-dong/" } },
+  { slug: "khanh-hoa", name: "Khánh Hòa", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Ninh Thuận"], reportage: { title: "Khánh Hòa trong gói hỗ trợ 12 tỷ đồng sau mưa lũ", summary: "Một lát cắt về tinh thần sẻ chia của TKV với bốn tỉnh miền Trung – Tây Nguyên sau thiên tai.", link: "../../tin-nganh-than/2026/08/01/tkv-ho-tro-12-ty-tay-nguyen-khac-phuc-mua-lu/" } },
+  { slug: "dak-lak", name: "Đắk Lắk", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Phú Yên"], reportage: { title: "Đắk Lắk nhận thêm nguồn lực phục hồi sau mưa lũ", summary: "Từ khoản hỗ trợ 3 tỷ đồng, nhìn rộng hơn về trách nhiệm cộng đồng của một tập đoàn có người lao động đến từ nhiều tỉnh.", link: "../../tin-nganh-than/2026/08/01/tkv-ho-tro-12-ty-tay-nguyen-khac-phuc-mua-lu/" } },
+  { slug: "gia-lai", name: "Gia Lai", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Bình Định"], story: "Từ K’bang ra Quảng Ninh, anh Đặng Văn Hưng đã trở thành thợ lò giỏi với thu nhập hơn 30 triệu đồng/tháng.", storyLink: "../../bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/", reportage: { title: "Gia Lai trong vòng tay sẻ chia của người thợ mỏ", summary: "Bên cạnh câu chuyện lập nghiệp của anh Hưng là dấu ấn TKV hỗ trợ địa phương khắc phục hậu quả mưa lũ.", link: "../../tin-nganh-than/2026/08/01/tkv-ho-tro-12-ty-tay-nguyen-khac-phuc-mua-lu/" } },
   { slug: "quang-ngai", name: "Quảng Ngãi", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Kon Tum"], story: "Anh Đinh Văn Ne, người Quảng Ngãi, chia sẻ mức lương thực tế khoảng 23–25 triệu đồng/tháng trong nghề mỏ.", storyLink: "../../#theo-tinh" },
   { slug: "da-nang", name: "Đà Nẵng", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Quảng Nam"] },
   { slug: "hue", name: "Huế", region: "Bắc Trung Bộ", aliases: [] },
   { slug: "quang-tri", name: "Quảng Trị", region: "Bắc Trung Bộ", aliases: ["Quảng Bình"], story: "Anh Hồ Văn Cương, quê Hướng Hóa, chia sẻ mức thu nhập bình quân khoảng 25–30 triệu đồng/tháng.", storyLink: "../../#theo-tinh" },
   { slug: "ha-tinh", name: "Hà Tĩnh", region: "Bắc Trung Bộ", aliases: [], story: "Câu chuyện của anh Nguyễn Trịnh Anh cho thấy một người con Hà Tĩnh có thể tạo dựng mức lương bình quân khoảng 28 triệu đồng/tháng tại vùng mỏ.", storyLink: "../../#theo-tinh" },
   { slug: "nghe-an", name: "Nghệ An", region: "Bắc Trung Bộ", aliases: [], story: "Anh Nguyễn Văn Thái, quê Anh Sơn, đang có mức thu nhập bình quân khoảng 28 triệu đồng/tháng trong ngành Than.", storyLink: "../../#theo-tinh" },
-  { slug: "thanh-hoa", name: "Thanh Hóa", region: "Bắc Trung Bộ", aliases: [], story: "Anh Hà Văn Phú, quê Mường Lát, là một trong những công nhân đạt thu nhập trên 300 triệu đồng/năm.", storyLink: "../../#theo-tinh" },
+  { slug: "thanh-hoa", name: "Thanh Hóa", region: "Bắc Trung Bộ", aliases: [], story: "Anh Hà Văn Phú, quê Mường Lát, là một trong những công nhân đạt thu nhập trên 300 triệu đồng/năm.", storyLink: "../../#theo-tinh", reportage: { title: "Mường Lát, Lang Chánh: từ vài hồ sơ đến một tuyến học nghề rõ ràng", summary: "Số người nhập học tăng qua từng năm cho thấy khi thông tin đến đúng bản làng, nghề mỏ có thể trở thành lựa chọn lập nghiệp nghiêm túc của thanh niên miền núi.", link: "../../tin-nganh-than/2026/08/01/muong-lat-lang-chanh-hop-tac-viec-lam-tkv-2020/" } },
   { slug: "ninh-binh", name: "Ninh Bình", region: "Đồng bằng & Đông Bắc", aliases: ["Nam Định", "Hà Nam"] },
   { slug: "hung-yen", name: "Hưng Yên", region: "Đồng bằng & Đông Bắc", aliases: ["Thái Bình"] },
   { slug: "hai-phong", name: "Hải Phòng", region: "Đồng bằng & Đông Bắc", aliases: ["Hải Dương"] },
   { slug: "bac-ninh", name: "Bắc Ninh", region: "Đồng bằng & Đông Bắc", aliases: ["Bắc Giang"] },
   { slug: "ha-noi", name: "Hà Nội", region: "Đồng bằng & Đông Bắc", aliases: [] },
-  { slug: "quang-ninh", name: "Quảng Ninh", region: "Đồng bằng & Đông Bắc", aliases: [] },
+  { slug: "quang-ninh", name: "Quảng Ninh", region: "Đồng bằng & Đông Bắc", aliases: [], reportage: { title: "Bình Liêu: gần 90% người được tuyển đã đi hết khóa học", summary: "Dữ liệu 321 người được tuyển, 289 người tốt nghiệp cho thấy một tuyến học nghề – việc làm đã thành hình ngay trong tỉnh.", link: "../../tin-nganh-than/2026/08/01/binh-lieu-hop-tac-hoc-nghe-mo-viec-lam-tkv/" } },
   { slug: "phu-tho", name: "Phú Thọ", region: "Trung du & miền núi phía Bắc", aliases: ["Vĩnh Phúc", "Hòa Bình"] },
-  { slug: "thai-nguyen", name: "Thái Nguyên", region: "Trung du & miền núi phía Bắc", aliases: ["Bắc Kạn"] },
-  { slug: "tuyen-quang", name: "Tuyên Quang", region: "Trung du & miền núi phía Bắc", aliases: ["Hà Giang"] },
-  { slug: "lao-cai", name: "Lào Cai", region: "Trung du & miền núi phía Bắc", aliases: ["Yên Bái"], story: "Anh Vàng A Chinh, người Lào Cai, chia sẻ mức lương bình quân khoảng 20–22 triệu đồng/tháng trong nghề mỏ.", storyLink: "../../#theo-tinh" },
-  { slug: "cao-bang", name: "Cao Bằng", region: "Trung du & miền núi phía Bắc", aliases: [] },
+  { slug: "thai-nguyen", name: "Thái Nguyên", region: "Trung du & miền núi phía Bắc", aliases: ["Bắc Kạn"], reportage: { title: "Bằng Thành, Phúc Lộc đặt mục tiêu đưa thanh niên vào nghề mỏ", summary: "Kế hoạch tối thiểu 40 lao động mỗi xã mỗi năm biến tuyên truyền nghề nghiệp thành mục tiêu có thể theo dõi.", link: "../../tin-nganh-than/2026/08/01/bang-thanh-phuc-loc-hoc-nghe-tho-lo-tkv/" } },
+  { slug: "tuyen-quang", name: "Tuyên Quang", region: "Trung du & miền núi phía Bắc", aliases: ["Hà Giang"], reportage: { title: "Bốn xã cùng mở đường học nghề mỏ giai đoạn 2025–2030", summary: "Nhà trường, doanh nghiệp và địa phương nối tư vấn tại thôn bản với đào tạo, tiếp nhận việc làm tại TKV.", link: "../../tin-nganh-than/2026/08/01/tuyen-quang-phoi-hop-tuyen-sinh-nghe-mo-2025-2030/" } },
+  { slug: "lao-cai", name: "Lào Cai", region: "Trung du & miền núi phía Bắc", aliases: ["Yên Bái"], story: "Anh Vàng A Chinh, người Lào Cai, chia sẻ mức lương bình quân khoảng 20–22 triệu đồng/tháng trong nghề mỏ.", storyLink: "../../#theo-tinh", reportage: { title: "Bát Xát đưa cán bộ 10 xã tới tận nơi học và làm việc", summary: "Chuyến khảo sát từ năm 2017 cho thấy niềm tin vào nghề được xây bằng việc nhìn tận mắt khu học, nơi ở và doanh nghiệp tiếp nhận.", link: "../../tin-nganh-than/2026/08/01/bat-xat-lao-cai-hop-tac-dao-tao-nghe-mo-2017/" } },
+  { slug: "cao-bang", name: "Cao Bằng", region: "Trung du & miền núi phía Bắc", aliases: [], reportage: { title: "Bảo Lạc đưa tư vấn nghề mỏ về tới xã, thôn", summary: "Từ 144 lượt tư vấn, câu chuyện đặt ra một thước đo thiết thực: có bao nhiêu người đi hết hành trình tới lớp học và việc làm.", link: "../../tin-nganh-than/2026/08/01/bao-lac-cao-bang-tu-van-hoc-nghe-mo/" } },
   { slug: "lang-son", name: "Lạng Sơn", region: "Trung du & miền núi phía Bắc", aliases: [] },
-  { slug: "son-la", name: "Sơn La", region: "Trung du & miền núi phía Bắc", aliases: [], story: "Anh Lầu A Súa, người Sơn La, chia sẻ mức thu nhập khoảng 28 triệu đồng/tháng tại Than Hạ Long.", storyLink: "../../#theo-tinh" },
-  { slug: "dien-bien", name: "Điện Biên", region: "Trung du & miền núi phía Bắc", aliases: [], story: "Hành trình của anh Mùa A Vàng cho thấy người lao động Điện Biên có thể học nghề, trưởng thành và tạo dựng cuộc sống mới tại vùng mỏ.", storyLink: "../../#theo-tinh" },
-  { slug: "lai-chau", name: "Lai Châu", region: "Trung du & miền núi phía Bắc", aliases: [], story: "Anh Mùa A Sình, người Lai Châu, có thu nhập bình quân 25–27 triệu đồng/tháng; tháng cao điểm từng đạt khoảng 40 triệu đồng.", storyLink: "../../bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/" },
+  { slug: "son-la", name: "Sơn La", region: "Trung du & miền núi phía Bắc", aliases: [], story: "Anh Lầu A Súa, người Sơn La, chia sẻ mức thu nhập khoảng 28 triệu đồng/tháng tại Than Hạ Long.", storyLink: "../../#theo-tinh", reportage: { title: "Sông Mã: chuyến đi mở đường từ bảy xã tới vùng mỏ", summary: "Cán bộ địa phương đã đến tận cơ sở đào tạo, khu sinh hoạt và doanh nghiệp để câu chuyện học nghề được kể lại bằng những điều mắt thấy, tai nghe.", link: "../../tin-nganh-than/2026/08/01/song-ma-son-la-hop-tac-tuyen-sinh-nghe-mo-2016/" } },
+  { slug: "dien-bien", name: "Điện Biên", region: "Trung du & miền núi phía Bắc", aliases: [], story: "Hành trình của anh Mùa A Vàng cho thấy người lao động Điện Biên có thể học nghề, trưởng thành và tạo dựng cuộc sống mới tại vùng mỏ.", storyLink: "../../#theo-tinh", reportage: { title: "Tủa Chùa nối thanh niên vùng cao với lớp học nghề mỏ", summary: "Từ phối hợp ở cơ sở đến đón người học, câu chuyện cho thấy một quyết định đi xa sẽ vững vàng hơn khi có lộ trình và người đồng hành rõ ràng.", link: "../../tin-nganh-than/2026/08/01/tua-chua-dien-bien-phoi-hop-hoc-nghe-mo-2024/" } },
+  { slug: "lai-chau", name: "Lai Châu", region: "Trung du & miền núi phía Bắc", aliases: [], story: "Anh Mùa A Sình, người Lai Châu, có thu nhập bình quân 25–27 triệu đồng/tháng; tháng cao điểm từng đạt khoảng 40 triệu đồng.", storyLink: "../../bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/", reportage: { title: "Gần 1.500 thanh niên Lai Châu đã tốt nghiệp và làm việc tại TKV", summary: "Một cộng đồng người đi trước đang trở thành điểm tựa để lớp thanh niên mới hiểu nghề, học nghề và vững tin hơn khi đi xa.", link: "../../tin-nganh-than/2026/08/01/tinh-doan-lai-chau-ket-noi-viec-lam-tkv/" } },
 ];
 
 function provincePage(province) {
-  const { slug, name, region, aliases, story, storyLink } = province;
+  const { slug, name, region, aliases, story, storyLink, reportage } = province;
   const canonical = `https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/${slug}/`;
   const aliasNames = aliases.join(", ");
   const aliasPhrase = aliases.length
@@ -44,10 +44,22 @@ function provincePage(province) {
     ? `Từ ${name} và các địa danh quen thuộc như ${aliasNames}, nhiều lao động trẻ đang tìm một nghề có đào tạo bài bản, thu nhập rõ ràng và cơ hội gắn bó lâu dài tại Quảng Ninh.`
     : `Từ ${name}, người lao động có thể kiểm tra điều kiện từ xa, học nghề trong 2–3 tháng và chuẩn bị cho công việc tại Quảng Ninh theo một lộ trình rõ ràng.`;
   const description = `Tuyển thợ mỏ tại ${name}${aliasPhrase}: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.`;
-  const storySection = story
+  const localStories = [
+    story ? {
+      title: story,
+      summary: "Trường hợp thực tế cho thấy tay nghề, ngày công và sự bền bỉ có thể giúp người lao động tạo dựng vị trí vững vàng tại Quảng Ninh.",
+      link: storyLink,
+      action: "Xem câu chuyện người thật →",
+    } : null,
+    reportage ? {
+      ...reportage,
+      action: "Đọc bài báo từ địa phương →",
+    } : null,
+  ].filter(Boolean);
+  const storySection = localStories.length
     ? `<section class="section local-overview" aria-labelledby="local-story-title">
-      <div class="section-heading"><div><p class="eyebrow">NGƯỜI ${name.toLocaleUpperCase("vi")} TRONG NGÀNH THAN</p><h2 id="local-story-title">Một người đồng hương đã bắt đầu như thế nào?</h2></div><p>Mức thu nhập của mỗi người khác nhau, nhưng trường hợp thực tế cho thấy tay nghề, ngày công và sự bền bỉ có thể giúp người lao động tạo dựng vị trí vững vàng tại Quảng Ninh.</p></div>
-      <div class="story-link"><div><strong>${story}</strong><p>Đây là trường hợp thực tế để tham khảo; thu nhập được tạo nên từ vị trí công việc, ngày công, năng suất và đơn vị.</p></div><a class="button button--outline-dark" href="${storyLink}">Xem câu chuyện thực tế →</a></div>
+      <div class="section-heading"><div><p class="eyebrow">DẤU ẤN ${name.toLocaleUpperCase("vi")} TRONG NGÀNH THAN</p><h2 id="local-story-title">${localStories.length > 1 ? "Những câu chuyện giúp người lao động nhìn nghề rõ hơn" : "Một câu chuyện đã có dữ kiện và người đi trước"}</h2></div><p>Không chỉ là lời mời tuyển dụng, đây là những con người, kết quả hợp tác và hoạt động cộng đồng có thể kiểm chứng từ chính địa phương.</p></div>
+      <div class="local-story-list">${localStories.map((item) => `<div class="story-link"><div><strong>${item.title}</strong><p>${item.summary}</p></div><a class="button button--outline-dark" href="${item.link}">${item.action}</a></div>`).join("")}</div>
     </section>`
     : "";
   const keywords = [

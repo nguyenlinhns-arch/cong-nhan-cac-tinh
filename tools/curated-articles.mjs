@@ -2,9 +2,9 @@ export const curatedArticles = [
   {
     slug: "dieu-kien-tuyen-tho-lo-2026",
     section: "Hướng dẫn nhập nghề",
-    title: "Điều kiện tuyển thợ lò năm 2026: ai có thể bắt đầu?",
+    title: "Điều kiện tuyển thợ lò năm 2026: cánh cửa mở với ai?",
     description: "Điều kiện tuyển thợ lò 2026 gồm nam 18–35 tuổi, cao từ 1,56 m, nặng từ 48 kg và có sức khỏe tốt để học nghề tại Quảng Ninh.",
-    lead: "Không cần kinh nghiệm từ trước, nhưng người muốn theo nghề phải đáp ứng bốn yêu cầu ban đầu về tuổi, chiều cao, cân nặng và sức khỏe.",
+    lead: "Cánh cửa vào nghề không đòi hỏi kinh nghiệm sẵn có; nó bắt đầu bằng sức khỏe, thể lực và quyết tâm học một công việc có tay nghề.",
     keyword: "điều kiện tuyển thợ lò 2026",
     keywords: ["điều kiện tuyển thợ lò 2026", "tuyển thợ mỏ Quảng Ninh", "học nghề mỏ 2–3 tháng", "sức khỏe thợ lò"],
     image: "https://vinacomin.vn/Share/Media/2018/07/IMG_4207.jpg",
@@ -12,9 +12,9 @@ export const curatedArticles = [
     imageSource: "Thư viện ảnh Vinacomin · Lãnh đạo Công đoàn thăm công nhân Than Dương Huy",
     published: "2026-07-31T09:00:00+07:00",
     updated: "2026-08-01T21:00:00+07:00",
-    factsTitle: "Bốn điều kiện cần kiểm tra trước",
-    actionTitle: "Ba phút để biết mình nên đi tiếp thế nào",
-    conclusionTitle: "Sức khỏe là vốn quý nhất của người thợ",
+    factsTitle: "Bốn mốc mở đầu cho hành trình vào nghề",
+    actionTitle: "Ba phút để biết mình có thể bắt đầu từ đâu",
+    conclusionTitle: "Sức khỏe là hành trang đầu tiên của người thợ",
     facts: [
       ["18–35 tuổi", "Độ tuổi tiếp nhận ban đầu theo thông báo tuyển sinh năm 2026."],
       ["Từ 1,56 m", "Mốc chiều cao để đăng ký kiểm tra điều kiện."],
@@ -22,15 +22,15 @@ export const curatedArticles = [
       ["Sức khỏe tốt", "Được đánh giá trực tiếp trước khi bước vào chương trình học nghề."],
     ],
     intro: [
-      "Trước khi nghĩ đến hồ sơ hay ngày nhập học, người muốn xuống mỏ cần làm một việc rất cụ thể: đo lại chiều cao, cân nặng và nhìn thẳng vào tình trạng sức khỏe của mình. <strong>Điều kiện tuyển thợ lò 2026</strong> là bước sàng lọc đầu tiên cho một nghề đòi hỏi thể lực, sự tập trung và tinh thần đồng đội.",
-      "Theo Thông báo số 10/TB-CĐTKV ngày 02/04/2026 của Trường Cao đẳng Than - Khoáng sản Việt Nam, đợt tuyển hiện hành dành cho nam từ 18 đến 35 tuổi, cao từ 1,56 m, nặng từ 48 kg và có sức khỏe tốt. Sau phần trao đổi ban đầu, người đăng ký được hướng dẫn khám và hoàn thiện hồ sơ theo kế hoạch tiếp nhận.",
+      "Ở nhiều vùng quê, bước ngoặt nghề nghiệp có thể bắt đầu bằng những việc rất giản dị: đứng lên bàn cân, đo lại chiều cao và tự hỏi mình đã sẵn sàng cho một môi trường công nghiệp hay chưa. <strong>Điều kiện tuyển thợ lò 2026</strong> không dựng lên một cánh cửa khó hiểu; các mốc ban đầu đều cụ thể để người lao động tự đối chiếu trước khi đi xa.",
+      "Theo Thông báo số 10/TB-CĐTKV ngày 02/04/2026 của Trường Cao đẳng Than - Khoáng sản Việt Nam, đợt tuyển hiện hành dành cho nam từ 18 đến 35 tuổi, cao từ 1,56 m, nặng từ 48 kg và có sức khỏe tốt. Người phù hợp được hướng dẫn khám, hoàn thiện hồ sơ rồi bước vào lộ trình học nghề tại Quảng Ninh.",
     ],
     sections: [
       {
-        title: "Không chỉ là ba con số trên giấy",
+        title: "Sức khỏe là hành trang, không phải một dòng thủ tục",
         paragraphs: [
-          "Độ tuổi, chiều cao và cân nặng là các mốc dễ nhìn thấy, nhưng nghề thợ lò còn cần sức bền, thị lực, phản xạ và khả năng làm việc theo ca. Người thợ phải di chuyển, thao tác và phối hợp trong một môi trường công nghiệp đặc thù, nơi từng thành viên đều là một mắt xích của tổ sản xuất.",
-          "Sức khỏe tốt không có nghĩa là chưa từng ốm. Điều quan trọng là chia sẻ trung thực bệnh đang điều trị, thuốc đang sử dụng, tiền sử chấn thương, tình trạng tim mạch, huyết áp, hô hấp và mắt. Nhờ đó, người tư vấn có thể hướng người lao động tới lộ trình phù hợp và an toàn.",
+          "Tuổi, chiều cao và cân nặng là những mốc có thể nhìn thấy; phía sau chúng là sức bền, thị lực, phản xạ và khả năng thích nghi với ca kíp. Người thợ làm việc trong một dây chuyền nơi từng thao tác cá nhân đều góp vào năng suất và sự an toàn của cả tổ.",
+          "Một cuộc trao đổi trung thực về bệnh đang điều trị, tiền sử chấn thương, tim mạch, huyết áp, hô hấp và mắt giúp người lao động được hướng tới lộ trình phù hợp. Đó cũng là biểu hiện đầu tiên của tác phong nghề nghiệp: hiểu mình, tôn trọng quy trình và có trách nhiệm với đồng đội.",
         ],
         bullets: [
           "Đối chiếu tuổi theo ngày tháng năm sinh trên giấy tờ.",
@@ -40,17 +40,17 @@ export const curatedArticles = [
         ],
       },
       {
-        title: "Một nghề làm việc bằng sức mạnh của tổ đội",
+        title: "Tổ đội chỉ mạnh khi từng người đủ sức bền",
         paragraphs: [
-          "Trong hầm lò, người thợ làm việc theo tổ đội và quy trình chặt chẽ. Sức khỏe của mỗi người liên quan trực tiếp đến khả năng phối hợp của cả nhóm, vì vậy các tiêu chuẩn ban đầu chính là hàng rào bảo vệ người lao động ngay từ trước khi vào nghề.",
-          "Đạt các mốc tuổi, chiều cao và cân nặng là nền tảng để bước sang vòng tiếp theo. Kết quả khám sức khỏe, ý thức kỷ luật, khả năng học nghề và nhu cầu của doanh nghiệp tiếp nhận sẽ hoàn thiện bức tranh về mức độ phù hợp của từng người.",
+          "Dưới mỏ, người thợ không làm việc một mình. Họ nhận ca, kiểm tra điều kiện, phối hợp thao tác và bàn giao cho nhau theo quy trình. Thể lực tốt vì thế không chỉ giúp một người hoàn thành công việc, mà còn giúp cả tổ giữ được nhịp sản xuất chắc chắn.",
+          "Đạt các mốc ban đầu là nền tảng để bước sang khám sức khỏe và học nghề. Kỷ luật, khả năng tiếp thu kỹ thuật và tinh thần làm việc nhóm sẽ tiếp tục biến một lao động mới thành người công nhân có thể đứng vững trong dây chuyền.",
         ],
       },
       {
-        title: "Một tin nhắn đủ để bắt đầu",
+        title: "Một tin nhắn mở đầu cho một lộ trình rõ ràng",
         paragraphs: [
-          "Tin nhắn ban đầu chỉ cần năm sinh; chiều cao và cân nặng thực tế; tình trạng sức khỏe, thị lực và bệnh đang điều trị; cùng tỉnh đang sinh sống. Từ những dữ liệu này, Thầy Linh có thể trao đổi thẳng vào trường hợp cụ thể và hướng dẫn bước tiếp theo.",
-          "Nếu chưa đo lại hoặc đang chờ kết quả khám, hãy nói đúng tình trạng hiện tại. Sự trung thực ngay từ tin nhắn đầu tiên là dấu hiệu tốt của tác phong nghề nghiệp—một phẩm chất luôn được coi trọng trong môi trường mỏ.",
+          "Tin nhắn đầu tiên chỉ cần năm sinh, chiều cao, cân nặng, tình trạng sức khỏe và tỉnh đang sinh sống. Từ năm dữ kiện ấy, Thầy Linh có thể đối chiếu trường hợp cụ thể, giải thích nghề đang tuyển và chỉ dẫn bước tiếp theo.",
+          "Người chưa đo lại có thể làm ngay tại quê nhà; người đang chờ kết quả khám chỉ cần nói đúng tình trạng. Khi thông tin ban đầu rõ ràng, hành trình từ tư vấn tới lớp học cũng trở nên chủ động hơn cho cả người lao động và gia đình.",
         ],
       },
     ],
@@ -74,9 +74,9 @@ export const curatedArticles = [
   {
     slug: "ho-so-hoc-nghe-mo-can-gi",
     section: "Hướng dẫn nhập nghề",
-    title: "Hồ sơ học nghề mỏ năm 2026 gồm những giấy tờ gì?",
+    title: "Hồ sơ học nghề mỏ năm 2026: bốn giấy tờ cho một khởi đầu",
     description: "Hồ sơ học nghề mỏ gồm 02 bộ với sơ yếu lý lịch, giấy khai sinh, bằng tốt nghiệp văn hóa và căn cước công dân theo hướng dẫn năm 2026.",
-    lead: "Bốn loại giấy tờ, chuẩn bị thành 02 bộ: thủ tục dự tuyển nghề mỏ năm 2026 gọn hơn nhiều người lao động ở xa vẫn hình dung.",
+    lead: "Một túi hồ sơ gồm bốn loại giấy tờ, xếp thành 02 bộ, là phần chuẩn bị hành chính để người lao động chủ động ngày đến Quảng Ninh.",
     keyword: "hồ sơ học nghề mỏ cần gì",
     keywords: ["hồ sơ học nghề mỏ cần gì", "đăng ký học nghề mỏ", "tuyển thợ mỏ Quảng Ninh", "nhập học nghề mỏ"],
     image: "https://vinacomin.vn/Share/Media/2018/07/IMG_4110.jpg",
@@ -84,9 +84,9 @@ export const curatedArticles = [
     imageSource: "Thư viện ảnh Vinacomin · Lãnh đạo Công đoàn thăm công nhân Than Dương Huy",
     published: "2026-07-31T09:10:00+07:00",
     updated: "2026-08-01T21:05:00+07:00",
-    factsTitle: "Một bộ hồ sơ gồm những gì?",
-    actionTitle: "Xếp hồ sơ theo cách dễ kiểm tra nhất",
-    conclusionTitle: "Giấy tờ gọn, ngày nhập học chủ động",
+    factsTitle: "Bốn loại giấy tờ cần có trong mỗi bộ",
+    actionTitle: "Xếp hồ sơ gọn để ngày tiếp nhận nhẹ nhàng",
+    conclusionTitle: "Một bộ giấy tờ rõ ràng mở đường cho ngày nhập học",
     facts: [
       ["02 bộ", "Số lượng hồ sơ dự tuyển chuẩn bị sau bước kiểm tra điều kiện."],
       ["Sơ yếu lý lịch", "Mỗi bộ có 01 bản để ghi nhận thông tin cá nhân."],
@@ -94,12 +94,12 @@ export const curatedArticles = [
       ["Bằng và CCCD", "Mỗi bộ có bản công chứng bằng văn hóa và căn cước công dân."],
     ],
     intro: [
-      "Với nhiều lao động ở xa, câu hỏi <strong>hồ sơ học nghề mỏ cần gì</strong> thường khiến họ hình dung một tập giấy tờ phức tạp. Thực tế, Thông báo số 10/TB-CĐTKV của Trường Cao đẳng Than - Khoáng sản Việt Nam quy định 02 bộ hồ sơ; mỗi bộ có sơ yếu lý lịch, bản sao giấy khai sinh, bản công chứng bằng tốt nghiệp văn hóa và bản công chứng căn cước công dân.",
-      "Thầy Linh tiếp nhận thông tin ban đầu trước, đối chiếu điều kiện rồi mới hướng dẫn hoàn thiện hồ sơ. Nhờ vậy, người lao động có thể chuẩn bị từng bước ở quê nhà, chủ động ngày đi và mang đúng giấy tờ khi đến Quảng Ninh.",
+      "Với lao động ở xa, chuyến đi Quảng Ninh thường bắt đầu không phải ở bến xe mà bên chiếc bàn nhỏ trong gia đình, nơi từng giấy tờ được kiểm tra và xếp lại ngay ngắn. Câu hỏi <strong>hồ sơ học nghề mỏ cần gì</strong> có câu trả lời khá gọn: 02 bộ, mỗi bộ gồm bốn loại giấy tờ.",
+      "Theo Thông báo số 10/TB-CĐTKV của Trường Cao đẳng Than - Khoáng sản Việt Nam, đó là sơ yếu lý lịch, bản sao giấy khai sinh, bản công chứng bằng tốt nghiệp văn hóa và bản công chứng căn cước công dân. Người lao động được đối chiếu điều kiện trước, rồi mới nhận hướng dẫn để chuẩn bị đúng từ quê nhà.",
     ],
     sections: [
       {
-        title: "Bốn loại giấy tờ kể cùng một câu chuyện",
+        title: "Khi bốn giấy tờ cùng kể đúng một câu chuyện",
         paragraphs: [
           "Họ tên, ngày sinh và quê quán trên giấy khai sinh, căn cước, bằng văn hóa và sơ yếu lý lịch cần thống nhất. Nếu có sai lệch, báo sớm giúp người phụ trách hướng dẫn xử lý trước ngày nhập học, để thủ tục tiếp nhận diễn ra nhanh và nhẹ nhàng hơn.",
           "Một cách chuẩn bị hiệu quả là chụp rõ từng giấy tờ, lưu trong một thư mục riêng trên điện thoại và xếp bản giấy theo đúng thứ tự. Bản chụp hỗ trợ đối chiếu từ xa; bộ hồ sơ giấy được dùng khi làm thủ tục chính thức.",
@@ -112,14 +112,14 @@ export const curatedArticles = [
         ],
       },
       {
-        title: "Người ở xa cần chuẩn bị thêm cho chuyến đi",
+        title: "Chuẩn bị từ quê nhà để chuyến đi không bị động",
         paragraphs: [
           "Lớp chuẩn bị thứ nhất là 02 bộ giấy tờ, bản chụp dự phòng và túi đựng chống ướt. Lớp thứ hai là lịch xe, số điện thoại người hướng dẫn, địa chỉ tiếp nhận, khoản chi tiêu cá nhân và thông tin để gia đình liên lạc khi cần.",
           "Khi cả hai lớp đều rõ, chuyến đi từ quê nhà đến Quảng Ninh không còn là một quyết định mơ hồ. Người lao động biết mình gặp ai, đến đâu, mang gì và sẽ làm thủ tục nào trước.",
         ],
       },
       {
-        title: "Khi giấy tờ sẵn sàng, sức khỏe là bước tiếp theo",
+        title: "Hồ sơ hoàn tất, người học có thể tập trung cho nghề",
         paragraphs: [
           "Giấy tờ hoàn thiện phần hành chính; sức khỏe và kế hoạch tiếp nhận quyết định thời điểm nhập học. Khi nhận được hướng dẫn rõ, người lao động có thể sắp xếp công việc cũ, trao đổi với gia đình và chủ động hành trình đến trường.",
           "Một quy trình minh bạch luôn trả lời được năm câu hỏi: ai tiếp nhận, ở đâu, ngày nào, mang gì và bước tiếp theo là gì. Nắm chắc năm thông tin này giúp người đi học giữ tâm thế tự tin ngay từ ngày đầu tiên.",

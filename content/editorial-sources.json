@@ -4,7 +4,7 @@
   "articles": [
     {
       "slug": "dieu-kien-tuyen-tho-lo-2026",
-      "title": "Điều kiện tuyển thợ lò năm 2026: ai có thể bắt đầu?",
+      "title": "Điều kiện tuyển thợ lò năm 2026: cánh cửa mở với ai?",
       "sources": [
         {
           "publisher": "Trường Cao đẳng Than - Khoáng sản Việt Nam",
@@ -15,7 +15,7 @@
     },
     {
       "slug": "ho-so-hoc-nghe-mo-can-gi",
-      "title": "Hồ sơ học nghề mỏ năm 2026 gồm những giấy tờ gì?",
+      "title": "Hồ sơ học nghề mỏ năm 2026: bốn giấy tờ cho một khởi đầu",
       "sources": [
         {
           "publisher": "Trường Cao đẳng Than - Khoáng sản Việt Nam",
@@ -620,6 +620,138 @@
           "title": "Đoàn Thanh niên TKV triển khai các hoạt động ‘Thắp sáng ước mơ’ cho thiếu niên nhi đồng",
           "date": "28/07/2026",
           "url": "https://vinacomin.vn/news/slug/doan-thanh-nien-tkv-trien-khai-cac-hoat-dong-thap-sang-uoc-mo-cho-thieu-nien-nhi-dong"
+        }
+      ]
+    },
+    {
+      "slug": "song-ma-son-la-hop-tac-tuyen-sinh-nghe-mo-2016",
+      "title": "Sông Mã mở đường học nghề mỏ cho lao động Sơn La từ 2016",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Đoàn công tác huyện Sông Mã đến thăm và làm việc tại trường",
+          "date": "29/11/2016",
+          "url": "https://caodangtkv.edu.vn/doan-cong-tac-huyen-song-ma-den-tham-va-lam-viec-tai-truong/"
+        }
+      ]
+    },
+    {
+      "slug": "bat-xat-lao-cai-hop-tac-dao-tao-nghe-mo-2017",
+      "title": "Bát Xát kết nối 10 xã với chương trình học nghề mỏ năm 2017",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Tiếp và làm việc với đoàn công tác UBND huyện Bát Xát – Lào Cai",
+          "date": "14/09/2017",
+          "url": "https://caodangtkv.edu.vn/tiep-va-lam-viec-voi-doan-cong-tac-ubnd-huyen-bat-xat-lao-cai/"
+        }
+      ]
+    },
+    {
+      "slug": "cao-bang-phoi-hop-tuyen-lao-dong-nghe-mo-2018",
+      "title": "Ba huyện Cao Bằng phối hợp tuyển lao động nghề mỏ từ 2018",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Đảng ủy Trường Cao đẳng TKV làm việc với Huyện ủy các huyện tại tỉnh Cao Bằng",
+          "date": "02/04/2018",
+          "url": "https://caodangtkv.edu.vn/dang-uy-truong-cao-dang-than-khoang-san-viet-nam-lam-viec-voi-huyen-uy-cac-huyen-tai-tinh-cao-bang/"
+        }
+      ]
+    },
+    {
+      "slug": "muong-lat-lang-chanh-hop-tac-viec-lam-tkv-2020",
+      "title": "Mường Lát, Lang Chánh ký kết đào tạo việc làm TKV năm 2020",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Trường Cao đẳng TKV ký kết Quy chế phối hợp đào tạo nghề và giải quyết việc làm",
+          "date": "15/01/2020",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/16076/Truong-Cao-%C4%91ang-Than---Khoang-san-Viet-Nam-ky-ket-Quy-che-phoi-hop-%C4%91ao-tao-nghe-va-giai-quyet-viec-lam"
+        }
+      ]
+    },
+    {
+      "slug": "nguyen-binh-cao-bang-hieu-qua-viec-lam-tkv-2022",
+      "title": "Nguyên Bình tổng kết 158 lao động học và làm tại TKV năm 2022",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Trường Cao đẳng TKV tăng cường phối hợp đào tạo nghề và giải quyết việc làm",
+          "date": "04/07/2022",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/35767/Truong-Cao-%C4%91ang-Than---Khoang-san-Viet-Nam-tang-cuong-phoi-hop-%C4%91ao-tao-nghe-va-giai-quyet-viec-lam"
+        }
+      ]
+    },
+    {
+      "slug": "mu-cang-chai-hoc-nghe-mo-viec-lam-tkv-2024",
+      "title": "Mù Cang Chải đặt mục tiêu 60–100 người học nghề mỏ năm 2024",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Ký kết quy chế phối hợp đào tạo nghề và giải quyết việc làm cho lao động Mù Cang Chải giai đoạn 2024–2028",
+          "date": "19/04/2024",
+          "url": "https://caodangtkv.edu.vn/truong-cao-dang-than-khoang-san-viet-nam-ky-ket-quy-che-phoi-hop-ve-dao-tao-nghe-va-giai-quyet-viec-lam-cho-lao-dong-huyen-mu-cang-chai-tinh-yen-bai-giai-doan-2024-2028/"
+        }
+      ]
+    },
+    {
+      "slug": "tua-chua-dien-bien-phoi-hop-hoc-nghe-mo-2024",
+      "title": "Tủa Chùa ghi nhận 121 lao động vào học nghề TKV đến 2024",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Trường Cao đẳng TKV làm việc với đoàn công tác UBND huyện Tủa Chùa, tỉnh Điện Biên",
+          "date": "27/09/2024",
+          "url": "https://caodangtkv.edu.vn/truong-cao-dang-than-khoang-san-viet-nam-lam-viec-voi-doan-cong-tac-ubnd-huyen-tua-chua-tinh-dien-bien/"
+        }
+      ]
+    },
+    {
+      "slug": "muong-khuong-bat-xat-tuyen-lao-dong-tkv-2024",
+      "title": "Mường Khương, Bát Xát rà hiệu quả tuyển lao động TKV năm 2024",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Trường Cao đẳng TKV làm việc tại huyện Mường Khương và huyện Bát Xát",
+          "date": "11/10/2024",
+          "url": "https://caodangtkv.edu.vn/truong-cao-dang-than-khoang-san-viet-nam-lam-viec-tai-huyen-muong-khuong-va-huyen-bat-xat/"
+        }
+      ]
+    },
+    {
+      "slug": "quang-la-quang-ninh-tuyen-sinh-nghe-mo-2025",
+      "title": "Than Núi Béo kết nối 19 trưởng thôn Quảng La tuyển nghề mỏ",
+      "sources": [
+        {
+          "publisher": "Tập đoàn Công nghiệp Than – Khoáng sản Việt Nam",
+          "title": "Than Núi Béo tổ chức gặp mặt 19 trưởng thôn xã Quảng La để xúc tiến tuyển sinh nghề mỏ hầm lò",
+          "date": "02/11/2025",
+          "url": "https://vinacomin.vn/news/slug/than-nui-beo-to-chuc-gap-mat-19-truong-thon-xa-quang-la-de-xuc-tien-tuyen-sinh-nghe-mo-ham-lo"
+        }
+      ]
+    },
+    {
+      "slug": "than-nui-beo-cao-bang-phoi-hop-tuyen-sinh-2026",
+      "title": "Than Núi Béo ký phối hợp tuyển sinh với hai xã Cao Bằng",
+      "sources": [
+        {
+          "publisher": "Tập đoàn Công nghiệp Than – Khoáng sản Việt Nam",
+          "title": "Than Núi Béo ký kết quy chế phối hợp tuyển sinh với các xã thuộc tỉnh Cao Bằng",
+          "date": "02/03/2026",
+          "url": "https://vinacomin.vn/news/slug/than-nui-beo-ky-ket-quy-che-phoi-hop-tuyen-sinh-voi-cac-xa-thuoc-tinh-cao-bang"
+        }
+      ]
+    },
+    {
+      "slug": "dam-ha-than-thong-nhat-dao-tao-viec-lam-2026",
+      "title": "Đầm Hà hợp tác Than Thống Nhất đào tạo việc làm 2026–2030",
+      "sources": [
+        {
+          "publisher": "Công ty Than Thống Nhất – TKV",
+          "title": "Công ty Than Thống Nhất – TKV chung tay phát triển nguồn nhân lực tại xã Đầm Hà",
+          "date": "25/05/2026",
+          "url": "https://www.thanthongnhat.vn/tin-san-xuat/cong-ty-than-thong-nhat-tkv-chung-tay-phat-trien-nguon-nhan-luc-tai-xa-dam-ha-15571.html"
         }
       ]
     }

@@ -9,7 +9,12 @@
       "aliases": [
         "Đắk Nông",
         "Bình Thuận"
-      ]
+      ],
+      "reportage": {
+        "title": "Năm tỷ đồng từ TKV và câu chuyện những mái nhà an toàn",
+        "summary": "Hoạt động xóa nhà tạm tại Lâm Đồng cho thấy mối liên hệ của ngành Than với đời sống tại quê hương người lao động.",
+        "link": "../../tin-nganh-than/2026/08/01/tkv-ho-tro-5-ty-xoa-nha-tam-lam-dong/"
+      }
     },
     {
       "slug": "khanh-hoa",
@@ -17,7 +22,12 @@
       "region": "Tây Nguyên & Nam Trung Bộ",
       "aliases": [
         "Ninh Thuận"
-      ]
+      ],
+      "reportage": {
+        "title": "Khánh Hòa trong gói hỗ trợ 12 tỷ đồng sau mưa lũ",
+        "summary": "Một lát cắt về tinh thần sẻ chia của TKV với bốn tỉnh miền Trung – Tây Nguyên sau thiên tai.",
+        "link": "../../tin-nganh-than/2026/08/01/tkv-ho-tro-12-ty-tay-nguyen-khac-phuc-mua-lu/"
+      }
     },
     {
       "slug": "dak-lak",
@@ -25,7 +35,12 @@
       "region": "Tây Nguyên & Nam Trung Bộ",
       "aliases": [
         "Phú Yên"
-      ]
+      ],
+      "reportage": {
+        "title": "Đắk Lắk nhận thêm nguồn lực phục hồi sau mưa lũ",
+        "summary": "Từ khoản hỗ trợ 3 tỷ đồng, nhìn rộng hơn về trách nhiệm cộng đồng của một tập đoàn có người lao động đến từ nhiều tỉnh.",
+        "link": "../../tin-nganh-than/2026/08/01/tkv-ho-tro-12-ty-tay-nguyen-khac-phuc-mua-lu/"
+      }
     },
     {
       "slug": "gia-lai",
@@ -33,7 +48,12 @@
       "region": "Tây Nguyên & Nam Trung Bộ",
       "aliases": [
         "Bình Định"
-      ]
+      ],
+      "reportage": {
+        "title": "Gia Lai trong vòng tay sẻ chia của người thợ mỏ",
+        "summary": "Bên cạnh câu chuyện lập nghiệp của anh Hưng là dấu ấn TKV hỗ trợ địa phương khắc phục hậu quả mưa lũ.",
+        "link": "../../tin-nganh-than/2026/08/01/tkv-ho-tro-12-ty-tay-nguyen-khac-phuc-mua-lu/"
+      }
     },
     {
       "slug": "quang-ngai",
@@ -81,7 +101,12 @@
       "slug": "thanh-hoa",
       "name": "Thanh Hóa",
       "region": "Bắc Trung Bộ",
-      "aliases": []
+      "aliases": [],
+      "reportage": {
+        "title": "Mường Lát, Lang Chánh: từ vài hồ sơ đến một tuyến học nghề rõ ràng",
+        "summary": "Số người nhập học tăng qua từng năm cho thấy khi thông tin đến đúng bản làng, nghề mỏ có thể trở thành lựa chọn lập nghiệp nghiêm túc của thanh niên miền núi.",
+        "link": "../../tin-nganh-than/2026/08/01/muong-lat-lang-chanh-hop-tac-viec-lam-tkv-2020/"
+      }
     },
     {
       "slug": "ninh-binh",
@@ -126,7 +151,12 @@
       "slug": "quang-ninh",
       "name": "Quảng Ninh",
       "region": "Đồng bằng & Đông Bắc",
-      "aliases": []
+      "aliases": [],
+      "reportage": {
+        "title": "Bình Liêu: gần 90% người được tuyển đã đi hết khóa học",
+        "summary": "Dữ liệu 321 người được tuyển, 289 người tốt nghiệp cho thấy một tuyến học nghề – việc làm đã thành hình ngay trong tỉnh.",
+        "link": "../../tin-nganh-than/2026/08/01/binh-lieu-hop-tac-hoc-nghe-mo-viec-lam-tkv/"
+      }
     },
     {
       "slug": "phu-tho",
@@ -143,7 +173,12 @@
       "region": "Trung du & miền núi phía Bắc",
       "aliases": [
         "Bắc Kạn"
-      ]
+      ],
+      "reportage": {
+        "title": "Bằng Thành, Phúc Lộc đặt mục tiêu đưa thanh niên vào nghề mỏ",
+        "summary": "Kế hoạch tối thiểu 40 lao động mỗi xã mỗi năm biến tuyên truyền nghề nghiệp thành mục tiêu có thể theo dõi.",
+        "link": "../../tin-nganh-than/2026/08/01/bang-thanh-phuc-loc-hoc-nghe-tho-lo-tkv/"
+      }
     },
     {
       "slug": "tuyen-quang",
@@ -151,7 +186,12 @@
       "region": "Trung du & miền núi phía Bắc",
       "aliases": [
         "Hà Giang"
-      ]
+      ],
+      "reportage": {
+        "title": "Bốn xã cùng mở đường học nghề mỏ giai đoạn 2025–2030",
+        "summary": "Nhà trường, doanh nghiệp và địa phương nối tư vấn tại thôn bản với đào tạo, tiếp nhận việc làm tại TKV.",
+        "link": "../../tin-nganh-than/2026/08/01/tuyen-quang-phoi-hop-tuyen-sinh-nghe-mo-2025-2030/"
+      }
     },
     {
       "slug": "lao-cai",
@@ -159,13 +199,23 @@
       "region": "Trung du & miền núi phía Bắc",
       "aliases": [
         "Yên Bái"
-      ]
+      ],
+      "reportage": {
+        "title": "Bát Xát đưa cán bộ 10 xã tới tận nơi học và làm việc",
+        "summary": "Chuyến khảo sát từ năm 2017 cho thấy niềm tin vào nghề được xây bằng việc nhìn tận mắt khu học, nơi ở và doanh nghiệp tiếp nhận.",
+        "link": "../../tin-nganh-than/2026/08/01/bat-xat-lao-cai-hop-tac-dao-tao-nghe-mo-2017/"
+      }
     },
     {
       "slug": "cao-bang",
       "name": "Cao Bằng",
       "region": "Trung du & miền núi phía Bắc",
-      "aliases": []
+      "aliases": [],
+      "reportage": {
+        "title": "Bảo Lạc đưa tư vấn nghề mỏ về tới xã, thôn",
+        "summary": "Từ 144 lượt tư vấn, câu chuyện đặt ra một thước đo thiết thực: có bao nhiêu người đi hết hành trình tới lớp học và việc làm.",
+        "link": "../../tin-nganh-than/2026/08/01/bao-lac-cao-bang-tu-van-hoc-nghe-mo/"
+      }
     },
     {
       "slug": "lang-son",
@@ -177,19 +227,34 @@
       "slug": "son-la",
       "name": "Sơn La",
       "region": "Trung du & miền núi phía Bắc",
-      "aliases": []
+      "aliases": [],
+      "reportage": {
+        "title": "Sông Mã: chuyến đi mở đường từ bảy xã tới vùng mỏ",
+        "summary": "Cán bộ địa phương đã đến tận cơ sở đào tạo, khu sinh hoạt và doanh nghiệp để câu chuyện học nghề được kể lại bằng những điều mắt thấy, tai nghe.",
+        "link": "../../tin-nganh-than/2026/08/01/song-ma-son-la-hop-tac-tuyen-sinh-nghe-mo-2016/"
+      }
     },
     {
       "slug": "dien-bien",
       "name": "Điện Biên",
       "region": "Trung du & miền núi phía Bắc",
-      "aliases": []
+      "aliases": [],
+      "reportage": {
+        "title": "Tủa Chùa nối thanh niên vùng cao với lớp học nghề mỏ",
+        "summary": "Từ phối hợp ở cơ sở đến đón người học, câu chuyện cho thấy một quyết định đi xa sẽ vững vàng hơn khi có lộ trình và người đồng hành rõ ràng.",
+        "link": "../../tin-nganh-than/2026/08/01/tua-chua-dien-bien-phoi-hop-hoc-nghe-mo-2024/"
+      }
     },
     {
       "slug": "lai-chau",
       "name": "Lai Châu",
       "region": "Trung du & miền núi phía Bắc",
-      "aliases": []
+      "aliases": [],
+      "reportage": {
+        "title": "Gần 1.500 thanh niên Lai Châu đã tốt nghiệp và làm việc tại TKV",
+        "summary": "Một cộng đồng người đi trước đang trở thành điểm tựa để lớp thanh niên mới hiểu nghề, học nghề và vững tin hơn khi đi xa.",
+        "link": "../../tin-nganh-than/2026/08/01/tinh-doan-lai-chau-ket-noi-viec-lam-tkv/"
+      }
     }
   ]
 }

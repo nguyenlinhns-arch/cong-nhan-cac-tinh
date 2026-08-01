@@ -1,4 +1,5 @@
 import { communitySourceImages } from "./community-source-images.mjs";
+import { historicalLocalityStories } from "./historical-locality-articles.mjs";
 
 const publishedDay = "2026-08-01";
 
@@ -861,8 +862,8 @@ const localStoryFrames = [
     ],
     sections: [
       {title: "Một con đường đã có người đi trước", paragraphs: [`${item.opportunity} Người mới vì thế có thể tìm hiểu từ chính đồng hương: học những gì, những tháng đầu thích nghi ra sao và điều gì giúp họ đứng vững trong tổ đội.`, `Sự phối hợp của ${item.partners} nối bốn chặng vốn thường rời nhau: tư vấn, tuyển chọn, đào tạo và tiếp nhận. Khi từng chặng có người phụ trách, quyết định rời quê đến Quảng Ninh bớt mơ hồ và có thêm điểm tựa.`], bullets: item.bullets},
-      {title: "Học để làm được việc trong tổ đội", paragraphs: [`Nghề mỏ hấp dẫn ở chỗ thu nhập gắn trực tiếp với tay nghề, ngày công và năng suất. Lớp học là nơi người mới làm quen thiết bị, quy trình an toàn, tác phong ca kíp và cách phối hợp với đồng đội trước khi bước vào môi trường sản xuất.`, `Tại ${item.locality}, người đăng ký nên hỏi rõ nghề đang mở, đơn vị dự kiến bố trí và cách tính thu nhập của đúng vị trí. Một con số bình quân có ý nghĩa tham khảo; giá trị bền vững nằm ở năng lực mà người học tích lũy được sau từng ca làm.`]},
-      {title: "Gia đình cùng nhìn về một hướng", paragraphs: [`Trước khi làm hồ sơ, người lao động cần đo lại thể lực, kiểm tra thị lực, sức khỏe và trao đổi thẳng về việc học, ở ký túc xá rồi làm việc xa nhà. Sự đồng thuận của gia đình thường là nguồn động viên quan trọng trong giai đoạn đầu.`, `${item.caution} Thông tin này cần được hỏi lại ở buổi tư vấn hiện hành, cùng với thời gian học, chế độ sinh hoạt và lịch tiếp nhận. Chuẩn bị kỹ không làm cơ hội kém hấp dẫn; trái lại, nó giúp người chọn nghề bước đi vững vàng hơn.`]},
+      {title: "Học để làm được việc trong tổ đội", paragraphs: [`Với người trẻ ${item.locality}, nghề mỏ hấp dẫn ở chỗ thu nhập gắn trực tiếp với tay nghề, ngày công và năng suất. Lớp học là nơi người mới làm quen thiết bị, quy trình an toàn, tác phong ca kíp và cách phối hợp với đồng đội trước khi bước vào môi trường sản xuất.`, `Tại ${item.locality}, người đăng ký nên hỏi rõ nghề đang mở, đơn vị dự kiến bố trí và cách tính thu nhập của đúng vị trí. Một con số bình quân có ý nghĩa tham khảo; giá trị bền vững nằm ở năng lực mà người học tích lũy được sau từng ca làm.`]},
+      {title: "Gia đình cùng nhìn về một hướng", paragraphs: [`Trước khi làm hồ sơ, gia đình tại ${item.locality} nên cùng người lao động đo lại thể lực, kiểm tra thị lực, sức khỏe và trao đổi thẳng về việc học, ở ký túc xá rồi làm việc xa nhà. Sự đồng thuận ấy thường là nguồn động viên quan trọng trong giai đoạn đầu.`, `${item.caution} Thông tin này cần được hỏi lại ở buổi tư vấn hiện hành, cùng với thời gian học, chế độ sinh hoạt và lịch tiếp nhận. Chuẩn bị kỹ không làm cơ hội kém hấp dẫn; trái lại, nó giúp người chọn nghề bước đi vững vàng hơn.`]},
       {title: "Mục tiêu mới phải đi tới tận nơi làm việc", paragraphs: [`${item.target} Điều đáng chờ đợi không chỉ là số người ghi danh, mà là số người hoàn thành khóa học, nhận việc và trưởng thành thành công nhân có tay nghề.`, `Nếu địa phương tiếp tục giữ liên lạc với người học, Nhà trường theo sát quá trình đào tạo và ${item.enterprise} hỗ trợ người mới hòa nhập, mô hình tại ${item.locality} có thể trở thành một tuyến việc làm ổn định cho nhiều gia đình.`]},
     ],
     takeaway: `Từ ${item.locality} đến Quảng Ninh là một hành trình xa về địa lý nhưng ngày càng rõ về lộ trình. Có người đi trước, có nơi đào tạo và có doanh nghiệp đồng hành—phần còn lại là sức khỏe, kỷ luật và quyết tâm xây nghề của mỗi người.`,
@@ -921,9 +922,124 @@ const localStoryFrames = [
   }),
 ];
 
+const localSectionHeadings = {
+  "binh-lieu-hop-tac-hoc-nghe-mo-viec-lam-tkv": [
+    "Từ 321 người đi học đến một cộng đồng nghề ở Bình Liêu",
+    "Một nghề lớn lên cùng tay nghề và ngày công",
+    "Xa nhà nhưng không đơn độc trong những tháng đầu",
+    "Mục tiêu 60–70 người phải đi cùng chất lượng việc làm",
+  ],
+  "luc-hon-than-ha-long-dao-tao-nghe-giai-quyet-viec-lam": [
+    "Lục Hồn đã biến lựa chọn cá nhân thành hướng đi của cả xã",
+    "Điều gì giữ người trẻ ở lại với nghề?",
+    "Một cuộc trao đổi thẳng trước ngày rời quê",
+    "Giai đoạn mới được đo bằng người làm việc bền vững",
+  ],
+  "vi-xuyen-ha-giang-hoc-nghe-mo-viec-lam-tkv": [
+    "Từ Vị Xuyên đến những tổ đội ở Hà Lầm, Núi Béo",
+    "Nghề mỏ trả công cho năng lực được rèn mỗi ngày",
+    "Ba việc gia đình nên cùng chuẩn bị",
+    "Mục tiêu 60–80 người và bài toán bám nghề",
+  ],
+  "hoanh-mo-xay-lap-mo-dao-tao-nghe-viec-lam": [
+    "Ba bên cùng giữ một lời hứa về việc làm",
+    "Xây lắp mỏ mở thêm một lối nghề kỹ thuật",
+    "Chọn đúng nghề trước khi chuẩn bị hồ sơ",
+    "Từ 152 người có việc đến mục tiêu mới",
+  ],
+  "si-lo-lau-khun-ha-lai-chau-hoc-nghe-mo": [
+    "Từ bản làng Lai Châu đến lớp học nghề",
+    "Tay nghề là hành trang vượt qua khoảng cách",
+    "Những tháng đầu xa nhà cần chuẩn bị điều gì?",
+    "Giữ người sau tuyển sinh mới là thành công",
+  ],
+  "tinh-doan-lai-chau-ket-noi-viec-lam-tkv": [
+    "Ba tổ chức cùng mở rộng cánh cửa cho thanh niên",
+    "Từ người học nghề đến công nhân có đường tiến",
+    "Buổi tư vấn cần trả lời điều gì cho gia đình?",
+    "300–400 cơ hội chỉ có ý nghĩa khi người trẻ trưởng thành",
+  ],
+  "bao-lac-cao-bang-tu-van-hoc-nghe-mo": [
+    "Bảo Lạc đi tìm người học nghề từ từng xã, từng thôn",
+    "Tổ đội là nơi người mới học cách đứng vững",
+    "Gia đình là điểm tựa của hành trình xuống mỏ",
+    "Mục tiêu trên 60 người cần được theo đến ngày nhận việc",
+  ],
+  "luong-minh-quang-tan-ky-ket-dao-tao-viec-lam": [
+    "Hai xã cùng nối một đường từ hộ gia đình tới doanh nghiệp",
+    "Nghề mỏ hấp dẫn khi người trẻ nhìn thấy đường phát triển",
+    "Ba thông tin phải rõ trước ngày nộp hồ sơ",
+    "Thước đo sau ký kết là những công nhân bám nghề",
+  ],
+  "duong-thuong-tuyen-quang-than-quang-hanh-tuyen-nghe-mo": [
+    "Hai ngày đi qua 20 thôn để nói rõ ba nghề",
+    "Khai thác, đào lò, cơ điện: ba lối vào ngành Than",
+    "Chuẩn bị cho ca làm đầu tiên ngay từ quê nhà",
+    "Tuyển đúng người để doanh nghiệp giữ được người",
+  ],
+  "than-thong-nhat-tuyen-sinh-nghe-mo-lai-chau-2026": [
+    "Một tuần ở Lai Châu thay cho một lời mời trên mạng",
+    "Người trẻ cần nhìn thấy nghề trước khi chọn nghề",
+    "Bước đầu tiên là một cuộc tư vấn tại địa bàn",
+    "Từ nguồn tuyển mới đến lực lượng thợ có tay nghề",
+  ],
+};
+
+const localFrameIndexes = {
+  "binh-lieu-hop-tac-hoc-nghe-mo-viec-lam-tkv": 0,
+  "luc-hon-than-ha-long-dao-tao-nghe-giai-quyet-viec-lam": 1,
+  "vi-xuyen-ha-giang-hoc-nghe-mo-viec-lam-tkv": 2,
+  "hoanh-mo-xay-lap-mo-dao-tao-nghe-viec-lam": 3,
+  "si-lo-lau-khun-ha-lai-chau-hoc-nghe-mo": 4,
+  "tinh-doan-lai-chau-ket-noi-viec-lam-tkv": 0,
+  "bao-lac-cao-bang-tu-van-hoc-nghe-mo": 1,
+  "luong-minh-quang-tan-ky-ket-dao-tao-viec-lam": 2,
+  "duong-thuong-tuyen-quang-than-quang-hanh-tuyen-nghe-mo": 3,
+  "than-thong-nhat-tuyen-sinh-nghe-mo-lai-chau-2026": 4,
+};
+
+const localChecklistFrames = [
+  (item) => [
+    ["Tự đo lại thể lực", `Người ở ${item.locality} ghi chính xác năm sinh, chiều cao, cân nặng và tình trạng sức khỏe hiện tại.`],
+    ["Gặp đúng người phụ trách", `Hỏi địa phương hoặc ${item.enterprise} về lịch tư vấn và đợt đang tiếp nhận.`],
+    ["Nhìn rõ vị trí sẽ học", "Đối chiếu nghề đào tạo, nơi thực hành, đơn vị dự kiến bố trí và cách tính thu nhập."],
+    ["Bàn kỹ với gia đình", "Thống nhất thời gian học xa nhà, sinh hoạt tập thể và mục tiêu gắn bó sau tốt nghiệp."],
+  ],
+  (item) => [
+    ["Bắt đầu bằng dữ liệu thật", `Gửi thông tin thể lực của người đăng ký từ ${item.locality}, không ước lượng theo trí nhớ.`],
+    ["Hỏi thẳng doanh nghiệp", `Làm rõ với ${item.enterprise} về nghề, ca làm, phúc lợi và nơi tiếp nhận sau đào tạo.`],
+    ["Nghe người đi trước", "Tìm một công nhân đồng hương để hiểu nhịp học, đời sống tập thể và những tháng đầu vào nghề."],
+    ["Lập kế hoạch một năm", "Chuẩn bị cho khóa học, giai đoạn thực tập và thời gian làm quen công việc chính thức."],
+  ],
+  (item) => [
+    ["Kiểm tra từ quê nhà", `Người lao động ${item.locality} đối chiếu sức khỏe trước khi chốt ngày di chuyển.`],
+    ["Ghi đủ bốn mốc", "Lưu ngày tập trung, nơi học, thời gian thực tập và đơn vị dự kiến nhận việc."],
+    ["Chọn nghề bằng hiểu biết", `Hỏi ${item.enterprise} công việc hằng ngày cần thao tác, thiết bị và kỷ luật gì.`],
+    ["Giữ một đầu mối liên hệ", "Gia đình và người học cùng lưu người phụ trách để được hỗ trợ trong giai đoạn đầu."],
+  ],
+  (item) => [
+    ["Soi điều kiện ban đầu", `Đối chiếu tuổi, thể lực, thị lực và sức khỏe trước buổi tư vấn tại ${item.locality}.`],
+    ["Đọc đúng chính sách", "Hỏi chính sách của đợt hiện hành, không dùng lại lịch hoặc chế độ của một đợt cũ."],
+    ["Hình dung ca làm", `Trao đổi với ${item.enterprise} về vị trí, tổ đội, thời giờ và lộ trình nâng tay nghề.`],
+    ["Chuẩn bị tâm thế đường dài", "Xác định học để làm được việc và cho bản thân đủ thời gian thích nghi với môi trường mới."],
+  ],
+  (item) => [
+    ["Tìm câu trả lời tại địa bàn", `Dự buổi tư vấn ở ${item.locality} để hỏi đúng nghề đang mở và lịch đang áp dụng.`],
+    ["Mang theo thông tin sức khỏe", "Nêu trung thực thể lực, thị lực, bệnh đang điều trị và khả năng làm việc theo ca."],
+    ["Kiểm chứng bằng người thật", `Hỏi công nhân từng làm tại ${item.enterprise} về công việc, thu nhập và đời sống.`],
+    ["Chốt kế hoạch cùng gia đình", "Chỉ lên đường khi nơi học, người đón, chế độ sinh hoạt và bước tiếp theo đều đã rõ."],
+  ],
+];
+
 const makeLocalCooperationStory = (item) => {
   const source = item.sources[0];
-  const narrative = localStoryFrames[storyFrame(item.slug, localStoryFrames.length)](item, source);
+  const frameIndex = localFrameIndexes[item.slug] ?? storyFrame(item.slug, localStoryFrames.length);
+  const narrative = localStoryFrames[frameIndex](item, source);
+  const headings = localSectionHeadings[item.slug] || [];
+  const framedSections = narrative.sections.map((section, index) => ({
+    ...section,
+    title: headings[index] || section.title,
+  }));
   return {
     slug: item.slug,
     section: "Kết nối địa phương",
@@ -938,14 +1054,12 @@ const makeLocalCooperationStory = (item) => {
     facts: item.facts,
     intro: narrative.intro,
     sections: item.focus
-      ? [narrative.sections[0], {title: item.focusTitle, paragraphs: item.focus}, ...narrative.sections.slice(1)]
-      : narrative.sections,
-    checklist: [
-      ["Kiểm tra điều kiện", `Gửi năm sinh, thể lực và tình trạng sức khỏe để sàng lọc trước khi đi từ ${item.locality}.`],
-      ["Hỏi đúng đầu mối", `Đối chiếu lịch với địa phương, Nhà trường và ${item.enterprise}.`],
-      ["Hiểu nghề sẽ học", "Ghi rõ vị trí, thời gian đào tạo, chế độ sinh hoạt và nơi dự kiến tiếp nhận."],
-      ["Chuẩn bị cùng gia đình", "Thống nhất kế hoạch học xa nhà, ca làm và mục tiêu gắn bó sau tốt nghiệp."],
-    ],
+      ? [framedSections[0], {title: item.focusTitle, paragraphs: item.focus}, ...framedSections.slice(1)]
+      : framedSections,
+    factsTitle: `Những dữ kiện đáng chú ý tại ${item.locality}`,
+    actionTitle: `Bốn việc nên làm trước khi rời ${item.locality}`,
+    conclusionTitle: `Một con đường nghề nghiệp đã có điểm tựa tại ${item.locality}`,
+    checklist: localChecklistFrames[frameIndex](item),
     takeaway: narrative.takeaway,
     faq: [
       [`Người ngoài ${item.locality} có thể đăng ký không?`, `Có thể gửi thông tin để kiểm tra địa bàn và chỉ tiêu đang mở. Chương trình trong bài tập trung vào ${item.locality}, còn lịch nơi khác cần xác nhận riêng.`],
@@ -965,7 +1079,7 @@ const supportStoryFrames = [
     sections: [
       {title: "Sau con số là những nhu cầu rất cụ thể", paragraphs: [`${item.allocation} Mỗi khoản tiền chỉ có ý nghĩa khi được đặt đúng địa bàn, đúng thời điểm và đúng nhu cầu cấp thiết.`, `${item.delivery} Cách chuyển qua cơ quan tiếp nhận giúp địa phương rà soát từng trường hợp, đồng thời tạo một đầu mối để cộng đồng theo dõi tiến độ.`], bullets: item.bullets},
       {title: "Văn hóa thợ mỏ không dừng ở cửa lò", paragraphs: [`${item.impact} Tinh thần “Kỷ luật và Đồng tâm” vì thế không chỉ xuất hiện trong sản xuất, mà còn được thể hiện qua cách tập thể người lao động góp sức khi cộng đồng gặp khó.`, `Một ngành nghề trở nên đáng gắn bó khi người lao động nhìn thấy cả công việc, đồng đội và trách nhiệm xã hội. Những chương trình dành cho ${supportBeneficiary(item)} góp thêm một lý do để người mới hiểu ngành Than bằng góc nhìn đầy đặn hơn.`]},
-      {title: "Từ buổi trao đến thay đổi trong đời sống", paragraphs: [`${item.measurement} Kết quả cuối cần được nhìn ở mái nhà đã an toàn hơn, lớp học đủ điều kiện hơn hoặc gia đình có thể sớm trở lại nhịp sống thường ngày.`, `Công bố tiến độ và kết quả sử dụng nguồn lực giúp sự sẻ chia có sức thuyết phục lâu dài, thay vì chỉ để lại một con số lớn tại thời điểm phát động.`]},
+      {title: "Từ buổi trao đến thay đổi trong đời sống", paragraphs: [`${item.measurement} Kết quả cuối cần được nhìn ở mái nhà đã an toàn hơn, lớp học đủ điều kiện hơn hoặc gia đình có thể sớm trở lại nhịp sống thường ngày.`, `Công bố tiến độ và kết quả của ${supportProgram(item)} giúp sự sẻ chia có sức thuyết phục lâu dài, thay vì chỉ để lại một con số lớn tại thời điểm phát động.`]},
       {title: "Tiếp cận chương trình qua đầu mối chính thức", paragraphs: [`${item.safety} ${supportBeneficiary(item)} cần làm theo hướng dẫn của địa phương hoặc tổ chức tiếp nhận; không có chuyện nộp phí cho cá nhân để được đưa vào danh sách.`, `Thông tin rõ ràng vừa bảo vệ người dân trước giả mạo, vừa giữ trọn ý nghĩa của sự đóng góp từ doanh nghiệp và người thợ.`]},
     ],
   }),
@@ -974,8 +1088,8 @@ const supportStoryFrames = [
     sections: [
       {title: "Nguồn lực được đặt vào đâu?", paragraphs: [`${item.allocation} Bảng phân bổ hoặc phạm vi tiếp nhận giúp người đọc hiểu đúng chương trình, không cộng dồn với các hoạt động khác và không chia bình quân một cách máy móc.`, `${item.delivery} Đằng sau mỗi khoản hỗ trợ là việc khảo sát, lập danh sách và chọn nhu cầu ưu tiên—những phần việc quyết định nguồn lực có đến đúng nơi hay không.`], bullets: item.bullets},
       {title: "Một ngành công nghiệp và mối liên hệ với cộng đồng", paragraphs: [`TKV có công nhân đến từ nhiều tỉnh, thành; vì thế hoạt động dành cho ${supportBeneficiary(item)} cũng là cách doanh nghiệp gìn giữ mối liên hệ với quê hương của người lao động.`, `${item.impact} Khi sự hỗ trợ chạm tới nhà ở, trường học, sinh kế hoặc sự tri ân, hình ảnh người thợ mỏ hiện lên không chỉ qua sản lượng mà còn qua tinh thần tương trợ.`]},
-      {title: "Hiệu quả phải hiện ra sau lễ phát động", paragraphs: [`${item.measurement} Số tiền cho biết quy mô cam kết, còn chất lượng triển khai mới cho biết người dân đã nhận được thay đổi gì.`, `Theo dõi công trình, tiến độ và phản hồi của người thụ hưởng là cách để mỗi chương trình an sinh tạo thêm niềm tin cho lần vận động tiếp theo.`]},
-      {title: "Giữ sự tử tế khỏi những lời mời giả mạo", paragraphs: [`${item.safety} Người dân chỉ nên cung cấp hồ sơ theo yêu cầu của chính quyền hoặc tổ chức được giao nhiệm vụ.`, `Một nguyên tắc đơn giản có thể tránh nhiều rủi ro: chương trình hỗ trợ chính thức không yêu cầu người thụ hưởng gửi mã ngân hàng, mã xác thực hay nộp một khoản phí để nhận quyền lợi.`]},
+      {title: "Hiệu quả phải hiện ra sau lễ phát động", paragraphs: [`${item.measurement} Số tiền cho biết quy mô cam kết, còn chất lượng triển khai mới cho biết người dân đã nhận được thay đổi gì.`, `Theo dõi công trình, tiến độ và phản hồi của người thụ hưởng trong ${supportProgram(item)} là cách để chương trình tạo thêm niềm tin cho những lần đồng hành tiếp theo.`]},
+      {title: "Giữ sự tử tế khỏi những lời mời giả mạo", paragraphs: [`${item.safety} Người dân chỉ nên cung cấp hồ sơ theo yêu cầu của chính quyền hoặc tổ chức được giao nhiệm vụ.`, `Với ${supportBeneficiary(item)}, một nguyên tắc đơn giản có thể tránh nhiều rủi ro: chương trình chính thức không yêu cầu gửi mã ngân hàng, mã xác thực hay nộp một khoản phí để nhận quyền lợi.`]},
     ],
   }),
   (item, source) => ({
@@ -989,9 +1103,85 @@ const supportStoryFrames = [
   }),
 ];
 
+const supportSectionHeadings = {
+  "tkv-ho-tro-5-ty-xoa-nha-tam-lam-dong": [
+    "Năm tỷ đồng được kỳ vọng hóa thành những mái nhà an toàn",
+    "Tinh thần người thợ đi xa hơn vùng mỏ",
+    "Một căn nhà mới có thể thay đổi đời sống ra sao?",
+    "Đúng hộ, đúng nhu cầu, đúng tiến độ",
+  ],
+  "tkv-ung-ho-10-ty-khac-phuc-bao-bualoi": [
+    "Sau bão, tốc độ của nguồn hỗ trợ có ý nghĩa quyết định",
+    "Mười tỷ đồng và tinh thần sẻ chia của người thợ",
+    "Kết quả phải hiện ra ở mái nhà và sinh kế",
+    "Một đầu mối rõ để lòng tốt đến đúng nơi",
+  ],
+  "tkv-ho-tro-10-ty-mien-nui-phia-bac-mua-lu": [
+    "Bảng phân bổ 3–3–2–2 kể câu chuyện ưu tiên",
+    "Từ mỗi ca than đến sự sẻ chia với miền núi phía Bắc",
+    "Điều cần thấy sau ngày trao hỗ trợ",
+    "Minh bạch làm cho sự hỗ trợ bền lòng tin",
+  ],
+  "tkv-ung-ho-20-ty-cham-lo-nguoi-co-cong-2026": [
+    "Hai mươi tỷ đồng cho một chương trình tri ân toàn quốc",
+    "Truyền thống biết ơn trong văn hóa ngành Than",
+    "Sự chăm lo không dừng ở dịp 27/7",
+    "Đúng người, đúng nhu cầu mới là thước đo",
+  ],
+  "doan-thanh-nien-tkv-25-hoc-bong-thap-sang-uoc-mo": [
+    "Hai triệu đồng có thể giữ nhịp đến trường cho một em nhỏ",
+    "Tuổi trẻ TKV trao đi niềm tin vào nỗ lực học tập",
+    "Sau suất học bổng là một hành trình cần được tiếp sức",
+    "Minh bạch và đồng hành để ước mơ đi xa",
+  ],
+};
+
+const supportFrameIndexes = {
+  "tkv-ho-tro-5-ty-xoa-nha-tam-lam-dong": 0,
+  "tkv-ung-ho-10-ty-khac-phuc-bao-bualoi": 1,
+  "tkv-ho-tro-10-ty-mien-nui-phia-bac-mua-lu": 2,
+  "tkv-ung-ho-20-ty-cham-lo-nguoi-co-cong-2026": 0,
+  "doan-thanh-nien-tkv-25-hoc-bong-thap-sang-uoc-mo": 1,
+};
+
+const supportActionCards = {
+  "tkv-ho-tro-5-ty-xoa-nha-tam-lam-dong": [
+    ["Một mái nhà an toàn", "Nguồn lực chỉ thật sự có giá trị khi giúp gia đình chống chọi tốt hơn với nắng mưa."],
+    ["Đúng hộ cần hỗ trợ", "Địa phương rà soát công khai để ưu tiên gia đình có hoàn cảnh và nhu cầu cấp thiết."],
+    ["Chất lượng sau bàn giao", "Công trình cần được nhìn bằng độ bền, khả năng sử dụng và sự ổn định của người ở."],
+    ["Tình đồng bào", "Sự chung tay của TKV nối văn hóa người thợ với những gia đình còn khó khăn tại Lâm Đồng."],
+  ],
+  "tkv-ung-ho-10-ty-khac-phuc-bao-bualoi": [
+    ["Đến sớm sau thiên tai", "Nguồn hỗ trợ kịp thời giúp địa phương giải quyết chỗ ở, nhu yếu phẩm và hạ tầng thiết yếu."],
+    ["Đi qua đầu mối rõ", "Ủy ban Trung ương MTTQ Việt Nam tiếp nhận và điều phối tới những nơi thiệt hại nặng."],
+    ["Phục hồi sinh kế", "Sau cứu trợ khẩn cấp là hành trình giúp gia đình sửa nhà và trở lại lao động sản xuất."],
+    ["Đồng tâm trong gian khó", "Tập thể người thợ góp thêm sức mạnh để cộng đồng đứng dậy sau bão."],
+  ],
+  "tkv-ho-tro-10-ty-mien-nui-phia-bac-mua-lu": [
+    ["Phân bổ có địa chỉ", "Cao Bằng, Thái Nguyên, Lạng Sơn và Lào Cai đều có mức hỗ trợ được công bố rõ."],
+    ["Ưu tiên theo thiệt hại", "Nguồn lực khác nhau phản ánh nhu cầu và mức độ ảnh hưởng tại từng địa phương."],
+    ["Theo đến kết quả", "Nhà ở, trường học, giao thông và sinh kế được phục hồi mới là thước đo cuối cùng."],
+    ["Gắn vùng mỏ với quê hương", "Nhiều công nhân TKV đến từ miền núi phía Bắc; sự sẻ chia vì thế cũng là tình cảm với nơi họ sinh ra."],
+  ],
+  "tkv-ung-ho-20-ty-cham-lo-nguoi-co-cong-2026": [
+    ["Tri ân bằng hành động", "Cam kết 20 tỷ đồng đưa lòng biết ơn vào một chương trình có quy mô toàn quốc."],
+    ["Chăm lo đúng nhu cầu", "Mỗi gia đình chính sách có hoàn cảnh khác nhau và cần hình thức hỗ trợ phù hợp."],
+    ["Không dừng ở ngày 27/7", "Sự quan tâm bền vững được tạo nên bằng việc theo dõi và đồng hành trong cả năm."],
+    ["Giữ gìn truyền thống", "Văn hóa ngành Than được bồi đắp từ kỷ luật lao động và đạo lý nhớ nguồn."],
+  ],
+  "doan-thanh-nien-tkv-25-hoc-bong-thap-sang-uoc-mo": [
+    ["Giữ nhịp đến trường", "Một khoản hỗ trợ đúng lúc có thể giải quyết sách vở, đồng phục và chi phí đi lại."],
+    ["Ghi nhận nỗ lực", "Học bổng nói với các em rằng sự cố gắng trong hoàn cảnh khó khăn luôn được nhìn thấy."],
+    ["Tiếp sức dài hơn", "Kết nối nhà trường, gia đình và tổ chức Đoàn giúp sự đồng hành không dừng ở lễ trao."],
+    ["Lan tỏa ước mơ", "Tuổi trẻ TKV mang tinh thần người thợ đến gần hơn với thế hệ học sinh hôm nay."],
+  ],
+};
+
 const makeCommunitySupportStory = (item) => {
   const source = item.sources[0];
-  const narrative = supportStoryFrames[storyFrame(item.slug, supportStoryFrames.length)](item, source);
+  const frameIndex = supportFrameIndexes[item.slug] ?? storyFrame(item.slug, supportStoryFrames.length);
+  const narrative = supportStoryFrames[frameIndex](item, source);
+  const headings = supportSectionHeadings[item.slug] || [];
   return {
     slug: item.slug,
     section: "An sinh xã hội",
@@ -1006,12 +1196,15 @@ const makeCommunitySupportStory = (item) => {
     facts: item.facts,
     related: ["san-xuat-sach-hon-nganh-than", "an-toan-mua-mua-bao-2026"],
     intro: narrative.intro,
-    sections: narrative.sections,
-    checklist: [
-      ["Đọc đúng phạm vi", "Xác định tổng nguồn lực, địa bàn, nhóm thụ hưởng và thời điểm công bố."],
-      ["Tìm đúng đầu mối", `Liên hệ cơ quan phụ trách ${supportBeneficiary(item)}, không qua môi giới.`],
-      ["Theo dõi kết quả", "Quan tâm tiến độ thực hiện và thay đổi thực tế sau khi nguồn lực được trao."],
-      ["Cảnh giác giả mạo", "Không nộp phí, gửi mã xác thực hoặc chuyển tiền để được nhận hỗ trợ."],
+    sections: narrative.sections.map((section, index) => ({...section, title: headings[index] || section.title})),
+    factsTitle: "Quy mô chương trình trong những con số",
+    actionTitle: "Bốn giá trị phía sau một chương trình sẻ chia",
+    conclusionTitle: "Tinh thần “Kỷ luật và Đồng tâm” được viết bằng hành động",
+    checklist: supportActionCards[item.slug] || [
+      ["Đúng địa bàn", "Nguồn lực được xác định theo phạm vi và nhu cầu đã công bố."],
+      ["Đúng đối tượng", `Chương trình hướng tới ${supportBeneficiary(item)} qua đầu mối chính thức.`],
+      ["Đúng thời điểm", "Sự hỗ trợ đến sớm giúp cộng đồng rút ngắn thời gian phục hồi."],
+      ["Đến cùng kết quả", "Giá trị được nhìn bằng thay đổi thực tế trong đời sống người thụ hưởng."],
     ],
     takeaway: item.takeaway,
     faq: [
@@ -1416,4 +1609,4 @@ const expandedStories = [
   }),
 ];
 
-export const communityArticles = [...stories, ...expandedStories].map(makeArticle);
+export const communityArticles = [...stories, ...expandedStories, ...historicalLocalityStories].map(makeArticle);

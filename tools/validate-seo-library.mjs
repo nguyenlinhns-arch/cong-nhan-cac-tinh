@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { communitySourceImages } from "./community-source-images.mjs";
+import { curatedArticles } from "./curated-articles.mjs";
+import { communityArticles } from "./community-articles.mjs";
 
 const root = path.resolve("tuyen-tho-mo");
 const base = "https://thaylinhtuyenthomo.vn";
@@ -32,6 +34,43 @@ const normalize = (text) => strip(text)
   .replace(/\s+/g, " ")
   .trim();
 
+const editorialArticles = [...curatedArticles, ...communityArticles];
+const editorialSectionOwners = new Map();
+const narrativeShingleOwners = new Map();
+for (const article of editorialArticles) {
+  if (!Array.isArray(article.intro) || article.intro.length < 2) errors.push(`${article.slug}: bài báo cần ít nhất hai đoạn mở bài`);
+  if (!Array.isArray(article.sections) || article.sections.length < 3) errors.push(`${article.slug}: bài báo cần ít nhất ba phần nội dung`);
+
+  for (const section of article.sections || []) {
+    const key = normalize(section.title);
+    const owners = editorialSectionOwners.get(key) || [];
+    owners.push(article.slug);
+    editorialSectionOwners.set(key, owners);
+  }
+
+  const narrative = [
+    ...(article.intro || []),
+    ...(article.sections || []).flatMap((section) => section.paragraphs || []),
+  ].map(normalize).join(" ");
+  const words = narrative.split(/\s+/).filter(Boolean);
+  const localShingles = new Set();
+  for (let index = 0; index <= words.length - 14; index += 1) {
+    localShingles.add(words.slice(index, index + 14).join(" "));
+  }
+  for (const shingle of localShingles) {
+    const owners = narrativeShingleOwners.get(shingle) || new Set();
+    owners.add(article.slug);
+    narrativeShingleOwners.set(shingle, owners);
+  }
+}
+
+for (const [title, owners] of editorialSectionOwners) {
+  if (owners.length > 1) errors.push(`Trùng tiêu đề mục “${title}” ở các bài: ${owners.join(", ")}`);
+}
+for (const [shingle, owners] of narrativeShingleOwners) {
+  if (owners.size >= 3) errors.push(`Cụm văn mẫu lặp ở ${owners.size} bài: “${shingle}”`);
+}
+
 function getAttr(html, pattern, label) {
   const value = html.match(pattern)?.[1] || "";
   if (!value) errors.push(`Missing ${label}`);
@@ -55,7 +94,7 @@ function fileForUrl(url) {
 }
 
 function resolveLocalHref(sourceFile, rawHref) {
-  if (!rawHref || rawHref.startsWith("#") || /^(mailto:|tel:|javascript:|data:)/i.test(rawHref)) return null;
+  if (!rawHref || rawHref.startsWith("#") || /^(mailto:|tel:|sms:|javascript:|data:)/i.test(rawHref)) return null;
   let href = rawHref;
   if (/^https?:\/\//i.test(href)) {
     if (!href.startsWith(base)) return null;

@@ -1,4 +1,7 @@
+import { historicalSourceImages } from "./historical-source-images.mjs";
+
 export const communitySourceImages = Object.freeze({
+  ...historicalSourceImages,
   "tuyen-quang-phoi-hop-tuyen-sinh-nghe-mo-2025-2030": Object.freeze({
     sourceUrl: "https://caodangtkv.edu.vn/truong-cao-dang-than-khoang-san-viet-nam-ky-ket-quy-che-phoi-hop-tuyen-sinh-dao-tao-nghe-voi-cac-dia-phuong-giai-doan-2025-2030/",
     image: "https://caodangtkv.edu.vn/wp-content/uploads/2025/11/DSC07599-scaled.jpg",
