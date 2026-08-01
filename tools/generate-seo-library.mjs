@@ -128,13 +128,15 @@ function upgradeExistingSchema(html, article) {
     if (!articleNode) return full;
     const sourceWorks = (article.sources || []).map(sourceCreativeWork);
     const sourceUrls = (article.sources || []).map(sourceUrl).filter(Boolean);
+    articleNode.headline = article.title;
+    articleNode.description = article.schemaDescription || article.description;
     articleNode.author = {"@type": "Person", "@id": `${base}/tac-gia/nguyen-tu-linh/#person`, name: author, alternateName: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/tac-gia/nguyen-tu-linh/`};
     articleNode.publisher = {"@type": "Organization", "@id": organizationId, name: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/`, logo: {"@type": "ImageObject", "@id": `${base}/#logo`, url: `${base}/favicon-512x512.png`, width: 512, height: 512}, publishingPrinciples: editorialPolicyUrl};
     articleNode.publishingPrinciples = editorialPolicyUrl;
     articleNode.about = (article.keywords || []).map((keyword) => ({"@type": "Thing", name: keyword}));
     if (sourceUrls.length) articleNode.isBasedOn = sourceUrls;
     if (sourceWorks.length) articleNode.citation = sourceWorks;
-    if (webpageNode) Object.assign(webpageNode, {url: canonical, datePublished: article.published, dateModified: article.updated, inLanguage: "vi-VN", isPartOf: {"@id": websiteId}, author: {"@id": `${authorUrl}#person`}, publisher: {"@id": organizationId}, publishingPrinciples: editorialPolicyUrl, mainEntity: {"@id": `${canonical}#article`}});
+    if (webpageNode) Object.assign(webpageNode, {url: canonical, name: article.title, datePublished: article.published, dateModified: article.updated, inLanguage: "vi-VN", isPartOf: {"@id": websiteId}, author: {"@id": `${authorUrl}#person`}, publisher: {"@id": organizationId}, publishingPrinciples: editorialPolicyUrl, mainEntity: {"@id": `${canonical}#article`}});
     return `<script${before}type="application/ld+json"${after}>${JSON.stringify(schema)}</script>`;
   });
 }

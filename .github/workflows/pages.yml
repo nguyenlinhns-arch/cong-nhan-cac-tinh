@@ -3,6 +3,9 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: [main]
+  schedule:
+    # Refresh the 48-hour Google News sitemap every day (23:17 Asia/Bangkok).
+    - cron: "17 16 * * *"
   workflow_dispatch:
 
 permissions:
@@ -31,6 +34,7 @@ jobs:
           node tools/generate-job-board-pages.mjs
           node tools/generate-content-network.mjs
           node tools/generate-seo-library.mjs
+          node tools/generate-news-sitemap.mjs
           node tools/build-search-index.mjs
           node tools/validate-content-network.mjs
           node tools/validate-seo-library.mjs

@@ -11,6 +11,7 @@ User-agent: GPTBot
 Allow: /
 
 Sitemap: https://thaylinhtuyenthomo.vn/sitemap.xml
+Sitemap: https://thaylinhtuyenthomo.vn/news-sitemap.xml
 
 # Nguồn cập nhật bài mới
 # RSS: https://thaylinhtuyenthomo.vn/feed.xml

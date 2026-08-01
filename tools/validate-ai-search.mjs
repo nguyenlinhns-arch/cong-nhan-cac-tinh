@@ -48,27 +48,43 @@ function visibleText(html) {
 }
 
 function assertQualifiedIncome(text, label) {
-  const normalized = text.replace(/\s+/g, " ");
-  for (const match of normalized.matchAll(/20\s*[–-]\s*25\s*triệu/giu)) {
-    const start = Math.max(0, (match.index || 0) - 160);
-    const end = Math.min(normalized.length, (match.index || 0) + match[0].length + 280);
-    const context = normalized.slice(start, end);
-    if (!/(?:hoàn thành|đủ)\s+định mức(?:\s+lao động)?/iu.test(context)) {
-      errors.push(`${label}: mức 20–25 triệu thiếu điều kiện hoàn thành định mức`);
-    }
+  const normalized = String(text).replace(/\s+/g, " ").trim();
+  if (!/20\s*[–-]\s*25\s*triệu/iu.test(normalized)) return;
+  if (!/hoàn thành\s+định mức\s+lao động/iu.test(normalized)) {
+    errors.push(`${label}: chuỗi chứa mức 20–25 triệu nhưng không tự kèm điều kiện “hoàn thành định mức lao động”`);
+  }
+}
+
+function walkStrings(value, visit, pointer = "$") {
+  if (typeof value === "string") visit(value, pointer);
+  else if (Array.isArray(value)) value.forEach((item, index) => walkStrings(item, visit, `${pointer}[${index}]`));
+  else if (value && typeof value === "object") {
+    for (const [key, item] of Object.entries(value)) walkStrings(item, visit, `${pointer}.${key}`);
   }
 }
 
 function validateIncomeContexts(html, label) {
-  assertQualifiedIncome(visibleText(html), `${label} (nội dung)`);
-  const title = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] || "";
-  assertQualifiedIncome(title, `${label} (title)`);
-  for (const [index, match] of [...html.matchAll(/<meta\b[^>]*(?:name|property)=["'][^"']+["'][^>]*content=["']([^"']*)["'][^>]*>/gi)].entries()) {
-    assertQualifiedIncome(match[1], `${label} (meta ${index + 1})`);
+  const withoutScripts = html
+    .replace(/<script\b[\s\S]*?<\/script>/gi, "")
+    .replace(/<style\b[\s\S]*?<\/style>/gi, "");
+  let textIndex = 0;
+  for (const match of withoutScripts.matchAll(/(?:^|>)([^<]+)(?=<|$)/g)) {
+    const text = match[1].replace(/&nbsp;|&#160;/gi, " ").replace(/&amp;/gi, "&").trim();
+    if (!text) continue;
+    textIndex += 1;
+    assertQualifiedIncome(text, `${label} (nút văn bản ${textIndex})`);
   }
-  for (const [index, match] of [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)].entries()) {
-    assertQualifiedIncome(match[1], `${label} (JSON-LD ${index + 1})`);
+  let attributeIndex = 0;
+  for (const tag of withoutScripts.matchAll(/<[^>]+>/g)) {
+    for (const attribute of tag[0].matchAll(/\b([:\w-]+)=["']([^"']*)["']/g)) {
+      attributeIndex += 1;
+      assertQualifiedIncome(attribute[2], `${label} (thuộc tính ${attribute[1]} ${attributeIndex})`);
+    }
   }
+  const documents = parseJsonLd(html, `${label} income validation`);
+  documents.forEach((document, index) => walkStrings(document, (value, pointer) => {
+    assertQualifiedIncome(value, `${label} (JSON-LD ${index + 1} ${pointer})`);
+  }));
 }
 
 function publicUrlForFile(file) {
@@ -115,6 +131,27 @@ for (const agent of ["OAI-SearchBot", "ChatGPT-User"]) {
   if (group?.directives.some(([directive, value]) => directive === "disallow" && value === "/")) errors.push(`robots.txt: ${agent} is blocked at /`);
 }
 if (!robots.includes(`Sitemap: ${base}/sitemap.xml`)) errors.push("robots.txt: canonical sitemap is missing");
+if (!robots.includes(`Sitemap: ${base}/news-sitemap.xml`)) errors.push("robots.txt: Google News sitemap is missing");
+
+const newsSitemapPath = path.join(root, "news-sitemap.xml");
+if (!fs.existsSync(newsSitemapPath)) errors.push("Missing deploy-time Google News sitemap");
+else {
+  const newsSitemap = fs.readFileSync(newsSitemapPath, "utf8");
+  if (!newsSitemap.includes('xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"')) errors.push("Google News sitemap namespace is missing");
+  const feed = JSON.parse(fs.readFileSync(path.join(root, "feed.json"), "utf8"));
+  const now = Date.now();
+  const expected = (feed.items || []).filter((item) => {
+    const published = new Date(item.date_published).getTime();
+    try {
+      const url = new URL(item.url);
+      return url.origin === base && url.pathname.startsWith("/tin-nganh-than/") && published >= now - (48 * 60 * 60 * 1000) && published <= now + (5 * 60 * 1000);
+    } catch { return false; }
+  });
+  const actualUrls = [...newsSitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1].replaceAll("&amp;", "&"));
+  if (actualUrls.length !== expected.length) errors.push(`Google News sitemap expected ${expected.length} recent articles, got ${actualUrls.length}`);
+  for (const item of expected) if (!actualUrls.includes(item.url)) errors.push(`Google News sitemap is missing recent article: ${item.url}`);
+  for (const url of actualUrls) if (!/^https:\/\/thaylinhtuyenthomo\.vn\/tin-nganh-than\//.test(url)) errors.push(`Google News sitemap contains a non-news URL: ${url}`);
+}
 
 const factsPath = path.join(root, "thong-tin-tuyen-tho-mo", "index.html");
 if (!fs.existsSync(factsPath)) errors.push("Missing canonical current-facts page");
@@ -141,9 +178,12 @@ else {
   const faq = nodes.find((node) => node?.["@type"] === "FAQPage");
   if (!webpage) errors.push("Current-facts page is missing canonical WebPage schema");
   if (webpage?.dateModified !== master.effective_from) errors.push("Current-facts WebPage dateModified does not match the master policy");
+  if (webpage?.lastReviewed !== master.effective_from || webpage?.reviewedBy?.["@id"] !== authorId) errors.push("Current-facts review date or accountable reviewer is incomplete");
+  if (webpage?.citation?.name !== master.source_notice) errors.push("Current-facts WebPage citation does not match the master source notice");
   if (webpage?.publishingPrinciples !== policyUrl) errors.push("Current-facts page is not linked to the editorial policy");
   if (webpage?.author?.["@id"] !== authorId || webpage?.publisher?.["@id"] !== organizationId) errors.push("Current-facts page has incomplete author or publisher provenance");
   if ((faq?.mainEntity || []).length !== recruitmentAnswers.length) errors.push(`Current-facts FAQ schema must contain ${recruitmentAnswers.length} direct answers, got ${(faq?.mainEntity || []).length}`);
+  if (!visible.toLocaleLowerCase("vi").includes("dấu vết kiểm chứng") || !visible.includes(master.source_notice)) errors.push("Current-facts page is missing the visible verification trail");
   for (const answer of recruitmentAnswers) {
     if (!html.includes(`id="${answer.id}"`)) errors.push(`Current-facts page is missing answer anchor: ${answer.id}`);
     if (!visible.includes(answer.question) || !visible.includes(answer.answer)) errors.push(`Current-facts page is missing visible answer: ${answer.question}`);
@@ -179,6 +219,7 @@ if (homeOrganization?.publishingPrinciples !== policyUrl) errors.push("Home Orga
 if (homeOrganization?.founder?.["@id"] !== authorId) errors.push("Home Organization is not linked to the accountable Person");
 if (!homeOrganization?.address?.streetAddress || homeOrganization?.address?.addressRegion !== "Quảng Ninh") errors.push("Home Organization has incomplete contact-address provenance");
 if (homeWebPage?.author?.["@id"] !== authorId || homeWebPage?.publisher?.["@id"] !== organizationId || homeWebPage?.publishingPrinciples !== policyUrl) errors.push("Home WebPage has incomplete author, publisher, or editorial-policy provenance");
+if (homeWebPage?.lastReviewed !== master.effective_from || homeWebPage?.reviewedBy?.["@id"] !== authorId) errors.push("Home WebPage review date or accountable reviewer is incomplete");
 if (!home.includes('href="nguyen-tac-bien-tap/"')) errors.push("Home page does not visibly link to the editorial policy");
 
 const policyPath = path.join(root, "nguyen-tac-bien-tap", "index.html");
@@ -265,11 +306,15 @@ for (const slug of ["ky-thuat-khai-thac-mo-ham-lo-quang-ninh", "ky-thuat-xay-dun
   const webpage = nodes.find((node) => node?.["@type"] === "WebPage");
   if (!job?.["@id"] || job?.mainEntityOfPage?.["@id"] !== webpage?.["@id"] || webpage?.mainEntity?.["@id"] !== job?.["@id"]) errors.push(`${slug}: JobPosting and WebPage are not linked`);
   if (webpage?.author?.["@id"] !== authorId || webpage?.publisher?.["@id"] !== `${base}/#organization` || webpage?.publishingPrinciples !== policyUrl) errors.push(`${slug}: job-page entity provenance is incomplete`);
+  if (webpage?.lastReviewed !== master.effective_from || webpage?.reviewedBy?.["@id"] !== authorId) errors.push(`${slug}: job-page review date or accountable reviewer is incomplete`);
   if (!/href=["'](?:\.\.\/\.\.\/|\/)thong-tin-tuyen-tho-mo\//i.test(html)) errors.push(`${slug}: job page does not link to the canonical current-facts page`);
 }
 
 const campaignJob = fs.readFileSync(path.join(root, "viec-lam", "cong-nhan-mo-ham-lo-quang-ninh", "index.html"), "utf8");
 if (!/href=["'](?:\.\.\/\.\.\/|\/)thong-tin-tuyen-tho-mo\//i.test(campaignJob)) errors.push("Campaign job page does not link to the canonical current-facts page");
+const campaignNodes = graphNodes(parseJsonLd(campaignJob, "campaign job page"));
+const campaignWebPage = campaignNodes.find((node) => node?.["@type"] === "WebPage");
+if (campaignWebPage?.lastReviewed !== master.effective_from || campaignWebPage?.reviewedBy?.["@id"] !== authorId) errors.push("Campaign job page review date or accountable reviewer is incomplete");
 
 const analytics = fs.readFileSync(path.join(root, "analytics.js"), "utf8");
 for (const marker of ["ai_referral_visit", "chatgpt", "copilot", "perplexity", "gemini", "claude"]) {
@@ -277,6 +322,9 @@ for (const marker of ["ai_referral_visit", "chatgpt", "copilot", "perplexity", "
 }
 const indexNow = fs.readFileSync(path.resolve("tools/submit-indexnow.mjs"), "utf8");
 if (indexNow.includes("provinceData.provinces")) errors.push("IndexNow must not repeatedly submit noindex province templates outside the sitemap");
+if (indexNow.includes("sitemapUrls") || indexNow.includes('readFileSync(path.join(siteRoot, "sitemap.xml")')) errors.push("IndexNow must submit changed page URLs, not the entire sitemap on every deployment");
+const googleSitemapSubmitter = fs.readFileSync(path.resolve("tools/submit-google-sitemap.mjs"), "utf8");
+if (!googleSitemapSubmitter.includes("news-sitemap.xml")) errors.push("Search Console submission does not include the Google News sitemap");
 
 const indexableFiles = collectFiles(root, (file) => file.endsWith(".html") && !/^google/i.test(path.basename(file)));
 let internalLinksChecked = 0;
