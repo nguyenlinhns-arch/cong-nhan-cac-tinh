@@ -47,6 +47,8 @@ for (const [slug, expectedTitle] of roles) {
   if (job.jobLocation?.address?.addressRegion !== master.work_location) errors.push(`${slug}: work location must be Quảng Ninh`);
   if (job.jobLocation?.address?.streetAddress) errors.push(`${slug}: recruitment office address cannot be used as the worksite`);
   if (job.directApply !== true) errors.push(`${slug}: directApply must be true`);
+  if (job.experienceRequirements !== "no requirements") errors.push(`${slug}: experienceRequirements must use Google's no requirements value`);
+  if (job.educationRequirements !== "no requirements") errors.push(`${slug}: educationRequirements must use Google's no requirements value`);
   if (job.baseSalary) errors.push(`${slug}: baseSalary is not allowed for an unverified income reference`);
   if (new Date(job.validThrough).getTime() <= Date.now()) errors.push(`${slug}: validThrough is not in the future`);
   if (!html.includes("data-application-form") || !html.includes("data-application-submit")) errors.push(`${slug}: direct application form is missing`);
