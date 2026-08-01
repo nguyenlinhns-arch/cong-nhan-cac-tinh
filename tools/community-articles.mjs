@@ -47,14 +47,14 @@ const stories = [
     ],
     intro: [
       "<strong>Tuyển sinh nghề mỏ Tuyên Quang</strong> đang được triển khai theo một cách thực chất hơn: không chỉ phát thông báo tuyển người, mà đưa Nhà trường, doanh nghiệp và chính quyền địa phương vào cùng một quy trình. Trong các ngày 24–27/11/2025, Trường Cao đẳng Than – Khoáng sản Việt Nam phối hợp Công ty Than Hòn Gai – TKV, Công ty Xây lắp mỏ – TKV và bốn xã Ngọc Long, Đường Thượng, Thàng Tín, Trung Thịnh tổ chức chuỗi hội nghị ký quy chế phối hợp.",
-      "Điểm đáng chú ý là thông tin được chuyển đến cấp thôn và trường học, có sự tham gia của cán bộ cơ sở cùng những công nhân người địa phương đang làm tại doanh nghiệp TKV. Với thanh niên vùng cao, câu chuyện từ người đã đi học, đã làm việc và có thu nhập thường dễ kiểm chứng hơn một lời quảng cáo chung chung trên mạng.",
+      "Điểm đáng chú ý là thông tin được chuyển đến cấp thôn và trường học, có sự tham gia của cán bộ cơ sở cùng những công nhân người địa phương đang làm tại doanh nghiệp TKV. Với thanh niên vùng cao, câu chuyện từ người đã đi học và đang làm việc tại doanh nghiệp thường dễ kiểm chứng hơn một lời quảng cáo chung chung trên mạng.",
     ],
     sections: [
       {
         title: "Mô hình ba bên giải quyết điều gì?",
         paragraphs: [
           "Địa phương có lợi thế hiểu từng hộ gia đình, hoàn cảnh và nhu cầu việc làm. Nhà trường chịu trách nhiệm tư vấn đúng nghề, tổ chức đào tạo và rèn tác phong. Doanh nghiệp nói rõ nhu cầu sử dụng lao động, vị trí dự kiến, môi trường làm việc và quá trình tiếp nhận sau tốt nghiệp. Khi ba bên chia sẻ trách nhiệm, người học giảm nguy cơ nhận thông tin lệch hoặc phải tự tìm đường đến Quảng Ninh.",
-          "Quy chế còn đề cập ký túc xá, hỗ trợ tiền ăn trong thời gian học, chế độ thực tập và việc làm sau tốt nghiệp. Đây là các nội dung có giá trị với lao động ở xa, nhưng người đăng ký vẫn phải xác nhận chính sách đang áp dụng cho đúng đợt. Số liệu bình quân của giai đoạn trước không phải mức thu nhập cố định cho mọi cá nhân.",
+          "Quy chế còn đề cập ký túc xá, hỗ trợ tiền ăn trong thời gian học, chế độ thực tập và việc làm sau tốt nghiệp. Đây là các nội dung có giá trị với lao động ở xa, nhưng người đăng ký vẫn phải xác nhận chính sách đang áp dụng cho đúng đợt.",
         ],
         bullets: [
           "Tư vấn được tổ chức gần nơi người lao động sinh sống.",
@@ -71,10 +71,10 @@ const stories = [
         ],
       },
       {
-        title: "Thông tin thu nhập cần đọc thế nào?",
+        title: "Kết quả cũ cần được theo dõi tiếp ra sao?",
         paragraphs: [
-          "Bài gốc của Nhà trường nêu mức thu nhập bình quân 300–350 triệu đồng một năm trong nhóm lao động được báo cáo và mức 18–25 triệu đồng một tháng theo nội dung cam kết phối hợp. Những con số này cho thấy nghề có khả năng tạo thu nhập tốt, nhưng kết quả thực tế phụ thuộc đơn vị, vị trí, ngày công, năng suất và thời gian làm nghề.",
-          "Người tư vấn có trách nhiệm nói cả điều kiện để đạt thu nhập: hoàn thành đào tạo, đủ sức khỏe, chấp hành an toàn, duy trì ngày công và làm được việc trong tổ đội. Trường hợp thu nhập cao nhất cần được đặt đúng bối cảnh, không dùng làm lời hứa cho người mới.",
+          "Con số 636 lao động trong báo cáo phối hợp cho thấy chương trình đã hình thành một tuyến tuyển sinh có quy mô. Để đánh giá đầy đủ hơn, dữ liệu cần được tách theo số người nhập học, hoàn thành khóa, nhận việc và còn gắn bó sau năm đầu.",
+          "Cách theo dõi nhiều chặng giúp địa phương nhận ra khâu nào đang vận hành tốt và khâu nào cần hỗ trợ thêm. Một chương trình có trách nhiệm không dừng ở số hồ sơ, mà phải quan tâm tới sức khỏe, kết quả học tập và khả năng hòa nhập của từng người sau khi tới Quảng Ninh.",
         ],
       },
       {
@@ -95,7 +95,7 @@ const stories = [
     faq: [
       ["Người ngoài bốn xã có đăng ký học nghề mỏ được không?", "Có thể liên hệ để kiểm tra theo địa bàn phụ trách và chỉ tiêu từng đợt; quy chế trong bài tập trung vào bốn xã nêu trên."],
       ["Đi học có chắc chắn được bố trí việc làm không?", "Nguồn công bố nêu định hướng bố trí việc làm sau tốt nghiệp, nhưng mỗi người vẫn phải đủ sức khỏe, hoàn thành chương trình và đáp ứng yêu cầu tiếp nhận."],
-      ["Thu nhập 300–350 triệu đồng/năm có áp dụng ngay cho người mới?", "Chưa thể hiểu như vậy. Đây là số bình quân được báo cáo; thu nhập cá nhân phụ thuộc tay nghề, ngày công, năng suất, vị trí và doanh nghiệp."],
+      ["Gia đình có thể kiểm chứng chương trình bằng cách nào?", "Có thể hỏi cán bộ địa phương, Nhà trường, doanh nghiệp và những lao động cùng quê đã học hoặc đang làm việc trong ngành Than."],
     ],
     sources: [
       {publisher: "Trường Cao đẳng Than – Khoáng sản Việt Nam", title: "Ký kết quy chế phối hợp tuyển sinh – đào tạo nghề với các địa phương giai đoạn 2025–2030", date: "29/11/2025", url: "https://caodangtkv.edu.vn/truong-cao-dang-than-khoang-san-viet-nam-ky-ket-quy-che-phoi-hop-tuyen-sinh-dao-tao-nghe-voi-cac-dia-phuong-giai-doan-2025-2030/"},
