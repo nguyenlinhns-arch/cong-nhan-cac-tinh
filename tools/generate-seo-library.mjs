@@ -122,7 +122,7 @@ function renderArticle(article) {
         mainEntityOfPage: {"@id": `${canonical}#webpage`},
         image: [article.image],
         author: {"@type": "Person", name: author, alternateName: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/#gioi-thieu`},
-        publisher: {"@type": "Organization", name: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/`},
+        publisher: {"@type": "Organization", name: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/`, logo: {"@type": "ImageObject", url: `${base}/favicon-512x512.png`, width: 512, height: 512}},
         articleSection: article.section,
         keywords: article.keywords,
       },
@@ -156,7 +156,9 @@ function renderArticle(article) {
   <meta name="author" content="${author}">
   <meta name="keywords" content="${esc(article.keywords.join(", "))}">
   <link rel="canonical" href="${canonical}">
-  <link rel="icon" href="/assets/favicon.svg?v=2" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="alternate" type="application/rss+xml" title="Tin ngành Than – Thầy Linh" href="${base}/feed.xml">
   <meta property="og:type" content="article">
@@ -292,7 +294,7 @@ function hubHtml() {
     url: `${base}/tin-nganh-than/`,
     inLanguage: "vi-VN",
     dateModified: buildTime,
-    publisher: {"@type": "Organization", name: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/`},
+    publisher: {"@type": "Organization", name: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/`, logo: {"@type": "ImageObject", url: `${base}/favicon-512x512.png`, width: 512, height: 512}},
     mainEntity: {"@type": "ItemList", numberOfItems: allEditorial.length, itemListElement: itemList},
   };
   return `<!doctype html>
@@ -302,7 +304,11 @@ function hubHtml() {
   <title>Ngành Than & Người thợ | Chuyện nghề mỏ tại Quảng Ninh</title>
   <meta name="description" content="Bài viết chuyên sâu về nghề thợ mỏ, thu nhập, đời sống, tay nghề, công nghệ và cơ hội lập nghiệp trong ngành Than tại Quảng Ninh.">
   <meta name="robots" content="index,follow,max-image-preview:large"><meta name="author" content="${author}">
-  <link rel="canonical" href="${base}/tin-nganh-than/"><link rel="icon" href="../assets/favicon.svg?v=2" type="image/svg+xml"><link rel="manifest" href="../manifest.webmanifest">
+  <link rel="canonical" href="${base}/tin-nganh-than/">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+  <link rel="manifest" href="/manifest.webmanifest">
   <link rel="alternate" type="application/rss+xml" title="Tin ngành Than – Thầy Linh" href="${base}/feed.xml"><link rel="alternate" type="application/feed+json" title="Tin ngành Than – Thầy Linh" href="${base}/feed.json">
   <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="Ngành Than & Người thợ"><meta property="og:description" content="Những câu chuyện có thật, số liệu đáng tin cậy và góc nhìn nghề nghiệp dành cho người đang muốn vào ngành mỏ."><meta property="og:url" content="${base}/tin-nganh-than/"><meta property="og:image" content="${feature.image}">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Ngành Than & Người thợ"><meta name="twitter:description" content="Chuyện nghề mỏ và cơ hội lập nghiệp tại Quảng Ninh."><meta name="twitter:image" content="${feature.image}">
