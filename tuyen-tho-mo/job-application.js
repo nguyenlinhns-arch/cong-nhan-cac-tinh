@@ -1,5 +1,6 @@
 (() => {
   "use strict";
+
   const form = document.querySelector("[data-application-form]");
   if (!form) return;
 
@@ -8,24 +9,110 @@
   const error = document.querySelector("[data-form-error]");
   const birthDate = document.querySelector("[data-birth-date]");
   const copyButton = document.querySelector("[data-copy-application]");
-
-  const isoDate = date => [
-    date.getFullYear(),
-    String(date.getMonth() + 1).padStart(2, "0"),
-    String(date.getDate()).padStart(2, "0"),
-  ].join("-");
+  const statusOutput = document.querySelector("[data-application-status]");
+  const codeOutput = document.querySelector("[data-application-code]");
+  const smsLink = document.querySelector("[data-sms-application]");
+  const submitButton = document.querySelector("[data-application-submit]");
+  const deliveryOutput = document.querySelector("[data-application-delivery]");
+  const params = new URLSearchParams(location.search);
+  const recruitment = window.THAY_LINH_RECRUITMENT || {};
   const today = new Date();
-  const latestBirth = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
-  const earliestBirth = new Date(today.getFullYear() - 36, today.getMonth(), today.getDate() + 1);
-  birthDate.min = isoDate(earliestBirth);
-  birthDate.max = isoDate(latestBirth);
+  let started = false;
+
+  function isoDate(date) {
+    return [
+      date.getFullYear(),
+      String(date.getMonth() + 1).padStart(2, "0"),
+      String(date.getDate()).padStart(2, "0"),
+    ].join("-");
+  }
+
+  birthDate.min = "1950-01-01";
+  birthDate.max = isoDate(today);
 
   function calculateAge(value) {
     const born = new Date(`${value}T00:00:00`);
+    if (Number.isNaN(born.getTime())) return null;
     let age = today.getFullYear() - born.getFullYear();
     const month = today.getMonth() - born.getMonth();
     if (month < 0 || (month === 0 && today.getDate() < born.getDate())) age -= 1;
     return age;
+  }
+
+  function normalizePhone(value) {
+    let digits = String(value || "").replace(/\D/g, "");
+    if (digits.startsWith("84")) digits = `0${digits.slice(2)}`;
+    return /^0[35789]\d{8}$/.test(digits) ? digits : "";
+  }
+
+  function createApplicationCode() {
+    const date = isoDate(today).slice(2).replace(/-/g, "");
+    const bytes = new Uint8Array(4);
+    if (window.crypto?.getRandomValues) window.crypto.getRandomValues(bytes);
+    else for (let index = 0; index < bytes.length; index += 1) bytes[index] = Math.floor(Math.random() * 256);
+    const suffix = [...bytes]
+      .map(value => value.toString(36).toUpperCase().padStart(2, "0"))
+      .join("")
+      .slice(0, 5);
+    return `TL-${date}-${suffix}`;
+  }
+
+  function readAttribution() {
+    let stored = {};
+    try { stored = JSON.parse(localStorage.getItem("thaylinh_attribution") || "{}"); } catch (_) {}
+    return {
+      source: params.get("utm_source") || stored.utm_source || params.get("source") || "website",
+      medium: params.get("utm_medium") || stored.utm_medium || "owned",
+      campaign: params.get("utm_campaign") || stored.utm_campaign || "tuyen_tho_mo_2026",
+      content: params.get("utm_content") || stored.utm_content || "application_form",
+    };
+  }
+
+  function track(name, payload) {
+    if (typeof window.tlTrack === "function") window.tlTrack(name, payload);
+    else {
+      window.tlTrackingQueue = window.tlTrackingQueue || [];
+      window.tlTrackingQueue.push([name, payload]);
+    }
+  }
+
+  function prefillSelect(name, value) {
+    if (!value) return;
+    const select = form.elements.namedItem(name);
+    if (!select) return;
+    const normalize = input => input
+      .toLocaleLowerCase("vi")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/đ/g, "d")
+      .replace(/^thanh pho\s+/, "")
+      .replace(/[^a-z0-9]+/g, " ")
+      .trim();
+    const expected = normalize(value);
+    const option = [...select.options].find(item => normalize(item.value) === expected);
+    if (option) select.value = option.value;
+  }
+
+  function assess(values, age) {
+    if (age === null || age < 18 || age > 35 || Number(values.height) < 156 || Number(values.weight) < 48) {
+      return {
+        key: "not_eligible",
+        label: "Chưa phù hợp điều kiện sơ bộ",
+        guidance: "Anh chưa phù hợp ít nhất một mốc tuổi hoặc thể hình của đợt tuyển hiện tại. Vẫn có thể gửi tin nhắn để được kiểm tra lại.",
+      };
+    }
+    if (values.health !== "Sức khỏe tốt, sẵn sàng khám tuyển") {
+      return {
+        key: "needs_review",
+        label: "Cần trao đổi thêm trước khi khám tuyển",
+        guidance: "Thầy Linh sẽ trao đổi riêng và hướng dẫn bước đánh giá sức khỏe phù hợp. Không gửi thông tin bệnh chi tiết qua website.",
+      };
+    }
+    return {
+      key: "eligible",
+      label: "Đủ điều kiện sơ bộ",
+      guidance: "Kết quả này chưa thay thế khám tuyển. Hãy gửi mã đăng ký và nội dung bên dưới để được xác nhận lịch tiếp theo.",
+    };
   }
 
   async function copyText(value) {
@@ -39,10 +126,38 @@
     }
   }
 
-  function attribution() {
-    const params = new URLSearchParams(location.search);
-    return params.get("utm_source") || params.get("source") || document.referrer || "website";
+  async function deliverApplication(payload) {
+    const endpoint = String(recruitment.endpoint || "").trim();
+    if (!endpoint) return { saved: false, reason: "not_configured" };
+    const controller = typeof AbortController === "function" ? new AbortController() : null;
+    const timer = controller ? window.setTimeout(() => controller.abort(), Number(recruitment.timeoutMs) || 12000) : null;
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=UTF-8" },
+        body: JSON.stringify(payload),
+        redirect: "follow",
+        signal: controller?.signal,
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const reply = await response.json();
+      if (!reply?.ok || reply.code !== payload.code) throw new Error("Invalid response");
+      return { saved: true };
+    } catch (_) {
+      return { saved: false, reason: "delivery_failed" };
+    } finally {
+      if (timer) window.clearTimeout(timer);
+    }
   }
+
+  prefillSelect("province", params.get("province"));
+  prefillSelect("trade", params.get("trade"));
+
+  form.addEventListener("input", () => {
+    if (started) return;
+    started = true;
+    track("ApplicationStart", { action: "form_started", context: "central_application" });
+  }, { once: true });
 
   form.addEventListener("submit", async event => {
     event.preventDefault();
@@ -50,40 +165,106 @@
     if (!form.reportValidity()) return;
 
     const values = Object.fromEntries(new FormData(form).entries());
-    const age = calculateAge(values.birth_date);
-    if (age < 18 || age > 35) {
-      error.textContent = "Độ tuổi hiện tại cần từ đủ 18 đến 35 tuổi.";
+    const phone = normalizePhone(values.phone);
+    if (!phone) {
+      error.textContent = "Vui lòng nhập đúng số điện thoại di động Việt Nam gồm 10 chữ số.";
       error.hidden = false;
-      birthDate.focus();
+      form.elements.namedItem("phone")?.focus();
       return;
     }
 
+    const age = calculateAge(values.birth_date);
+    const assessment = assess(values, age);
+    const applicationCode = createApplicationCode();
+    const source = readAttribution();
     const message = [
       "ĐĂNG KÝ TUYỂN LAO ĐỘNG HỌC NGHỀ MỎ 2026",
-      `- Họ và tên: ${values.full_name}`,
-      `- Số điện thoại: ${values.phone}`,
-      `- Ngày sinh / tuổi: ${values.birth_date} / ${age}`,
+      `- Mã đăng ký: ${applicationCode}`,
+      `- Họ và tên: ${String(values.full_name).trim()}`,
+      `- Số điện thoại: ${phone}`,
+      `- Ngày sinh / tuổi: ${values.birth_date} / ${age ?? "chưa xác định"}`,
       `- Tỉnh, thành: ${values.province}`,
       `- Chiều cao / cân nặng: ${values.height} cm / ${values.weight} kg`,
       `- Trình độ: ${values.education}`,
       `- Nghề quan tâm: ${values.trade}`,
-      `- Sức khỏe hiện tại: ${values.health}`,
-      "- Thời gian học đã tìm hiểu: 2–3 tháng",
-      `- Nguồn: ${attribution()}`,
-      "Nhờ anh Nguyễn Tử Linh kiểm tra điều kiện và hướng dẫn bước tiếp theo."
+      `- Sức khỏe sơ bộ: ${values.health}`,
+      `- Kết quả tự kiểm tra: ${assessment.label}`,
+      `- Nguồn: ${source.source} / ${source.content}`,
+      "- Thời gian học đã tìm hiểu: 2–3 tháng; hỗ trợ trong thời gian học: 7,5 triệu đồng",
+      "Nhờ anh Nguyễn Tử Linh kiểm tra điều kiện và hướng dẫn bước tiếp theo.",
     ].join("\n");
 
+    const application = {
+      schema_version: 1,
+      code: applicationCode,
+      created_at: new Date().toISOString(),
+      full_name: String(values.full_name).trim(),
+      phone,
+      birth_date: values.birth_date,
+      age,
+      province: values.province,
+      height_cm: Number(values.height),
+      weight_kg: Number(values.weight),
+      education: values.education,
+      trade: values.trade,
+      health_screen: values.health,
+      eligibility: assessment.key,
+      source: source.source,
+      medium: source.medium,
+      campaign: source.campaign,
+      content: source.content,
+      page_url: location.href,
+      consent: values.consent === "on",
+    };
+
     output.value = message;
-    await copyText(message);
+    statusOutput.dataset.status = assessment.key;
+    statusOutput.textContent = assessment.label;
+    statusOutput.title = assessment.guidance;
+    codeOutput.textContent = applicationCode;
+    result.dataset.eligibility = assessment.key;
     result.hidden = false;
+    if (smsLink) smsLink.href = `sms:+84963048585?body=${encodeURIComponent(message)}`;
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Đang gửi đăng ký…";
+    }
+    const delivery = await deliverApplication(application);
+    if (deliveryOutput) {
+      deliveryOutput.dataset.state = delivery.saved ? "saved" : "fallback";
+      deliveryOutput.textContent = delivery.saved
+        ? "Đăng ký đã được tiếp nhận. Bộ phận tư vấn sẽ liên hệ theo số điện thoại bạn cung cấp."
+        : "Tin đăng ký đã được tạo và sao chép. Hãy mở Zalo, Messenger hoặc SMS bên dưới để gửi ngay cho Thầy Linh.";
+    }
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = "Gửi lại đăng ký";
+    }
+
+    try {
+      localStorage.setItem("thaylinh_last_application", JSON.stringify({
+        code: applicationCode,
+        created_at: new Date().toISOString(),
+        eligibility: assessment.key,
+        source: source.source,
+      }));
+    } catch (_) {}
+
+    await copyText(message);
+    track("Lead", {
+      action: delivery.saved ? "application_saved" : "application_message_created",
+      context: "central_application",
+      eligibility: assessment.key,
+      job_id: values.trade === "Kỹ thuật khai thác mỏ hầm lò" ? "khai_thac" : values.trade === "Kỹ thuật xây dựng mỏ hầm lò" ? "xay_dung" : "can_tu_van",
+    });
     result.scrollIntoView({ behavior: "smooth", block: "center" });
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: "application_message_created", province: values.province, trade: values.trade, source: attribution() });
   });
 
   copyButton?.addEventListener("click", async () => {
     await copyText(output.value);
     copyButton.textContent = "Đã sao chép tin nhắn";
+    track("ApplicationCopy", { action: "message_copied", context: "application_result" });
     window.setTimeout(() => { copyButton.textContent = "Sao chép lại tin nhắn"; }, 2500);
   });
 })();
