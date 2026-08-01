@@ -12,7 +12,7 @@ const requiredHeaders = [
 const requiredFunctions = [
   "setupRecruitmentCRM", "upgradeRecruitmentCRMV2", "doPost", "handleCandidateEdit",
   "checkFollowUpReminders", "sendDailyRecruitmentDigest", "setupDashboard_",
-  "installAutomationTriggers_", "sendNewLeadAlert_", "suggestedMessage_",
+  "dashboardFormulaSyntax_", "installAutomationTriggers_", "sendNewLeadAlert_", "suggestedMessage_",
 ];
 
 for (const header of requiredHeaders) if (!code.includes(`'${header}'`)) errors.push(`Missing CRM header: ${header}`);
@@ -25,6 +25,12 @@ for (const property of ["SPREADSHEET_ID", "ALERT_EMAILS", "DEFAULT_OWNER"]) {
 }
 for (const marker of ["[1, 2].includes(Number(data.schema_version))", "String(data.website || '').trim()", "findCode_", "ensureHeaders_", "MailApp.getRemainingDailyQuota()"] ) {
   if (!code.includes(marker)) errors.push(`Missing compatibility or safety marker: ${marker}`);
+}
+for (const marker of ["getSpreadsheetLocale()", "argumentSeparator", "arrayColumnSeparator", "usesVietnameseSeparators ? ';' : ','"]) {
+  if (!code.includes(marker)) errors.push(`Missing locale-safe dashboard formula marker: ${marker}`);
+}
+for (const marker of ["temporarily_unavailable", "Lỗi email cảnh báo không được phép", "return true;"]) {
+  if (!code.includes(marker)) errors.push(`Missing resilient lead-alert marker: ${marker}`);
 }
 if (/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(code)) errors.push("Code.gs must not contain a hard-coded email address");
 if (/UrlFetchApp|sms|zalo\.me|m\.me/i.test(code)) errors.push("CRM must not send unreviewed automatic applicant messages");
