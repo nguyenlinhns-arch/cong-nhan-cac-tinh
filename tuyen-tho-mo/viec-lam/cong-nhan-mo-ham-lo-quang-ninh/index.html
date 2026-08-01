@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../styles.css">
-  <link rel="stylesheet" href="../../jobs.css?v=4">
+  <link rel="stylesheet" href="../../jobs.css?v=5">
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -173,20 +173,21 @@
         <p>Website kiểm tra điều kiện ban đầu, tạo mã đăng ký và chuyển thông tin đến bộ phận tư vấn. Bạn vẫn có thể gửi lại qua Zalo, Messenger hoặc SMS để được hỗ trợ nhanh hơn.</p>
         <div class="apply-steps"><span><b>1</b>Điền thông tin</span><span><b>2</b>Nhận kết quả sơ bộ</span><span><b>3</b>Tạo mã đăng ký</span><span><b>4</b>Chờ tư vấn liên hệ</span></div>
       </div>
+      <noscript><p class="application-nojs">Biểu mẫu trực tuyến cần JavaScript. Bạn vẫn có thể <a href="tel:+84963048585">gọi 096 304 8585</a> hoặc <a href="https://zalo.me/0963048585" target="_blank" rel="noopener noreferrer">nhắn Zalo cho Thầy Linh</a>.</p></noscript>
       <form class="application-form" data-application-form data-form-context="central_application" novalidate>
         <div class="form-honeypot" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <div class="form-grid">
           <label>Họ và tên <input type="text" name="full_name" autocomplete="name" required maxlength="80" placeholder="Nguyễn Văn A"></label>
-          <label>Số điện thoại <input type="tel" name="phone" autocomplete="tel" inputmode="tel" required maxlength="18" placeholder="09xxxxxxxx" title="Nhập số điện thoại Việt Nam gồm 10 chữ số"></label>
-          <label>Ngày sinh <input type="date" name="birth_date" autocomplete="bday" required data-birth-date><small data-age-help>Từ đủ 18 đến 40 tuổi tại ngày đăng ký</small></label>
+          <label>Số điện thoại <input type="tel" name="phone" autocomplete="tel" inputmode="tel" required maxlength="18" placeholder="09xxxxxxxx" title="Nhập số điện thoại Việt Nam gồm 10 chữ số" aria-describedby="application-form-error"></label>
+          <label>Ngày sinh <input type="date" name="birth_date" autocomplete="bday" required data-birth-date aria-describedby="application-birth-help"><small id="application-birth-help" data-age-help>Từ đủ 18 đến 40 tuổi tại ngày đăng ký</small></label>
           <label>Tỉnh/thành đang sống
             <select name="province" required>
               <option value="">Chọn tỉnh/thành</option>
               <option>An Giang</option><option>Bắc Ninh</option><option>Cà Mau</option><option>Cần Thơ</option><option>Cao Bằng</option><option>Đà Nẵng</option><option>Đắk Lắk</option><option>Điện Biên</option><option>Đồng Nai</option><option>Đồng Tháp</option><option>Gia Lai</option><option>Hà Nội</option><option>Hà Tĩnh</option><option>Hải Phòng</option><option>Hồ Chí Minh</option><option>Huế</option><option>Hưng Yên</option><option>Khánh Hòa</option><option>Lai Châu</option><option>Lâm Đồng</option><option>Lạng Sơn</option><option>Lào Cai</option><option>Nghệ An</option><option>Ninh Bình</option><option>Phú Thọ</option><option>Quảng Ngãi</option><option>Quảng Ninh</option><option>Quảng Trị</option><option>Sơn La</option><option>Tây Ninh</option><option>Thái Nguyên</option><option>Thanh Hóa</option><option>Tuyên Quang</option><option>Vĩnh Long</option>
             </select>
           </label>
-          <label>Chiều cao (cm) <input type="number" name="height" inputmode="numeric" required min="130" max="220" placeholder="165"><small>Hệ thống tự đối chiếu mốc 153 cm</small></label>
-          <label>Cân nặng (kg) <input type="number" name="weight" inputmode="numeric" required min="30" max="200" placeholder="58"><small>Hệ thống tự đối chiếu mốc 47 kg</small></label>
+          <label>Chiều cao (cm) <input type="number" name="height" inputmode="numeric" required min="130" max="220" placeholder="165" aria-describedby="application-height-help"><small id="application-height-help">Hệ thống tự đối chiếu mốc 153 cm</small></label>
+          <label>Cân nặng (kg) <input type="number" name="weight" inputmode="numeric" required min="30" max="200" placeholder="58" aria-describedby="application-weight-help"><small id="application-weight-help">Hệ thống tự đối chiếu mốc 47 kg</small></label>
           <label>Trình độ văn hóa
             <select name="education" required><option value="">Chọn trình độ</option><option>Đọc và viết thành thạo</option><option>Tốt nghiệp THCS</option><option>Tốt nghiệp THPT</option><option>Trình độ khác</option></select>
           </label>
@@ -194,18 +195,18 @@
             <select name="trade" required><option value="">Chọn nghề</option><option>Kỹ thuật khai thác mỏ hầm lò</option><option>Kỹ thuật xây dựng mỏ hầm lò</option><option>Cần được tư vấn chọn nghề</option></select>
           </label>
           <label class="form-grid__wide">Tự đánh giá sức khỏe ban đầu
-            <select name="health" required><option value="">Chọn một phương án</option><option>Sức khỏe tốt, sẵn sàng khám tuyển</option><option>Cần trao đổi thêm trước khi khám</option></select>
-            <small>Không nhập tên bệnh hoặc thông tin y tế chi tiết trên website.</small>
+            <select name="health" required aria-describedby="application-health-help"><option value="">Chọn một phương án</option><option>Sức khỏe tốt, sẵn sàng khám tuyển</option><option>Cần trao đổi thêm trước khi khám</option></select>
+            <small id="application-health-help">Không nhập tên bệnh hoặc thông tin y tế chi tiết trên website.</small>
           </label>
         </div>
         <label class="consent"><input type="checkbox" name="consent" required><span>Tôi xác nhận thông tin trên là đúng, hiểu đây là kết quả sơ bộ và đồng ý để Nguyễn Tử Linh tiếp nhận, lưu và liên hệ tư vấn về chương trình học nghề mỏ. Xem <a href="../../quyen-rieng.html" target="_blank" rel="noopener">quyền riêng tư</a>.</span></label>
-        <p class="form-error" data-form-error role="alert" hidden></p>
+        <p class="form-error" id="application-form-error" data-form-error role="alert" hidden></p>
         <button class="button application-submit" type="submit" data-application-submit>Gửi đăng ký và kiểm tra điều kiện</button>
       </form>
-      <div class="application-result" data-application-result hidden aria-live="polite">
-        <p class="eyebrow">KẾT QUẢ SƠ BỘ</p>
+      <div class="application-result" data-application-result hidden role="region" aria-labelledby="application-result-title" tabindex="-1">
+        <p class="eyebrow" id="application-result-title">KẾT QUẢ SƠ BỘ</p>
         <div class="application-result__summary"><strong data-application-status></strong><span>Mã đăng ký: <b data-application-code></b></span></div>
-        <p class="application-delivery" data-application-delivery></p>
+        <p class="application-delivery" data-application-delivery role="status" aria-live="polite" aria-atomic="true"></p>
         <h3>Liên hệ ngay để được hỗ trợ nhanh hơn</h3>
         <textarea readonly rows="12" data-application-message aria-label="Nội dung tin nhắn đăng ký"></textarea>
         <div class="contact-pair"><a class="contact-button contact-button--zalo" href="https://zalo.me/0963048585" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="application-result"><span class="contact-icon contact-icon--text">Z</span><span><small>Mở cuộc trò chuyện</small><strong>Zalo 096 304 8585</strong></span></a><a class="contact-button contact-button--messenger" href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener noreferrer" data-contact="messenger" data-context="application-result"><span class="contact-icon contact-icon--text">M</span><span><small>Mở Fanpage</small><strong>Messenger</strong></span></a><a class="contact-button contact-button--sms" href="sms:+84963048585" data-sms-application data-contact="sms" data-context="application-result"><span class="contact-icon contact-icon--text">SMS</span><span><small>Điền sẵn nội dung</small><strong>Gửi tin nhắn SMS</strong></span></a></div>
@@ -230,7 +231,7 @@
   <div class="toast" role="status" aria-live="polite" data-toast hidden></div>
   <script src="../../app.js?v=4" defer></script>
   <script src="../../recruitment-config.js?v=2" defer></script>
-  <script src="../../job-application.js?v=7" defer></script>
+  <script src="../../job-application.js?v=8" defer></script>
   <script src="/analytics.js?v=4" defer></script>
   <script src="/mobile-ux.js?v=3" defer></script>
 </body>

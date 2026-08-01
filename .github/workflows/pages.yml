@@ -39,6 +39,7 @@ jobs:
           node tools/validate-content-network.mjs
           node tools/validate-seo-library.mjs
           node tools/audit-technical-seo.mjs
+          node tools/validate-accessibility.mjs
           node tools/validate-performance-budget.mjs
           node tools/validate-ai-search.mjs
           node tools/validate-job-postings.mjs

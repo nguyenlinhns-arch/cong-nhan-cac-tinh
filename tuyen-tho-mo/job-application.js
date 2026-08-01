@@ -8,6 +8,7 @@
   const output = document.querySelector("[data-application-message]");
   const error = document.querySelector("[data-form-error]");
   const birthDate = document.querySelector("[data-birth-date]");
+  const phoneInput = form.elements.namedItem("phone");
   const statusOutput = document.querySelector("[data-application-status]");
   const codeOutput = document.querySelector("[data-application-code]");
   const smsLink = document.querySelector("[data-sms-application]");
@@ -20,6 +21,8 @@
   const today = new Date();
   let started = false;
   let submitted = false;
+  let deliveryInFlight = false;
+  let retryState = null;
 
   function isoDate(date) {
     return [
@@ -164,19 +167,54 @@
     }
   }
 
+  function submissionFingerprint(values, phone) {
+    return JSON.stringify({
+      full_name: String(values.full_name).trim(),
+      phone,
+      birth_date: values.birth_date,
+      province: values.province,
+      height: String(values.height),
+      weight: String(values.weight),
+      education: values.education,
+      trade: values.trade,
+      health: values.health,
+      consent: values.consent === "on",
+    });
+  }
+
+  function revealResult() {
+    const firstReveal = result.hidden;
+    result.hidden = false;
+    if (!firstReveal) return;
+    const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    result.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "center" });
+    result.focus({ preventScroll: true });
+  }
+
   prefillSelect("province", params.get("province"));
   prefillSelect("trade", params.get("trade") || form.dataset.defaultTrade);
 
-  form.addEventListener("input", () => {
-    if (started) return;
-    started = true;
-    track("ApplicationStart", { action: "form_started", context: formContext });
-  }, { once: true });
+  form.addEventListener("input", event => {
+    if (!started) {
+      started = true;
+      track("ApplicationStart", { action: "form_started", context: formContext });
+    }
+    if (event?.target?.name === "phone") {
+      phoneInput?.removeAttribute("aria-invalid");
+      error.hidden = true;
+    }
+    if (retryState && !deliveryInFlight) {
+      retryState = null;
+      result.hidden = true;
+      if (submitButton) submitButton.textContent = "Gửi đăng ký và kiểm tra điều kiện";
+    }
+  });
 
   form.addEventListener("submit", async event => {
     event.preventDefault();
-    if (submitted) return;
+    if (submitted || deliveryInFlight) return;
     error.hidden = true;
+    phoneInput?.removeAttribute("aria-invalid");
     if (!form.reportValidity()) return;
 
     const values = Object.fromEntries(new FormData(form).entries());
@@ -184,13 +222,16 @@
     if (!phone) {
       error.textContent = "Vui lòng nhập đúng số điện thoại di động Việt Nam gồm 10 chữ số.";
       error.hidden = false;
-      form.elements.namedItem("phone")?.focus();
+      phoneInput?.setAttribute("aria-invalid", "true");
+      phoneInput?.focus();
       return;
     }
 
     const age = calculateAge(values.birth_date);
     const assessment = assess(values, age);
-    const applicationCode = createApplicationCode();
+    const fingerprint = submissionFingerprint(values, phone);
+    const previousAttempt = retryState?.fingerprint === fingerprint ? retryState : null;
+    const applicationCode = previousAttempt?.application.code || createApplicationCode();
     const source = readAttribution();
     const message = [
       "ĐĂNG KÝ TUYỂN LAO ĐỘNG HỌC NGHỀ MỎ 2026",
@@ -212,7 +253,7 @@
     const application = {
       schema_version: Number(recruitment.schemaVersion) || 2,
       code: applicationCode,
-      created_at: new Date().toISOString(),
+      created_at: previousAttempt?.application.created_at || new Date().toISOString(),
       full_name: String(values.full_name).trim(),
       phone,
       birth_date: values.birth_date,
@@ -233,6 +274,13 @@
       website: String(values.website || ""),
       consent: values.consent === "on",
     };
+    const attempt = {
+      fingerprint,
+      application,
+      message,
+      leadTracked: previousAttempt?.leadTracked || false,
+    };
+    retryState = attempt;
 
     output.value = message;
     statusOutput.dataset.status = assessment.key;
@@ -240,15 +288,24 @@
     statusOutput.title = assessment.guidance;
     codeOutput.textContent = applicationCode;
     result.dataset.eligibility = assessment.key;
-    result.hidden = false;
     if (smsLink) smsLink.href = `sms:+84963048585?body=${encodeURIComponent(message)}`;
+    if (deliveryOutput) {
+      deliveryOutput.dataset.state = "pending";
+      deliveryOutput.textContent = previousAttempt
+        ? "Đang thử chuyển lại mã đăng ký này đến bộ phận tư vấn…"
+        : "Đã tạo mã đăng ký. Đang chuyển thông tin đến bộ phận tư vấn…";
+    }
+    deliveryInFlight = true;
+    form.setAttribute("aria-busy", "true");
+    result.setAttribute("aria-busy", "true");
+    revealResult();
 
     if (submitButton) {
       submitButton.disabled = true;
-      submitButton.textContent = "Đang gửi đăng ký…";
+      submitButton.textContent = previousAttempt ? "Đang thử gửi lại…" : "Đang gửi đăng ký…";
     }
     track("ApplicationSubmit", {
-      action: "application_submitted",
+      action: previousAttempt ? "application_retry" : "application_submitted",
       context: formContext,
       eligibility: assessment.key,
       source: source.source,
@@ -257,39 +314,45 @@
       content: source.content,
     });
     const delivery = await deliverApplication(application);
+    deliveryInFlight = false;
+    form.removeAttribute("aria-busy");
+    result.removeAttribute("aria-busy");
     if (deliveryOutput) {
       deliveryOutput.dataset.state = delivery.saved ? "saved" : "fallback";
       deliveryOutput.textContent = delivery.saved
         ? "Đăng ký đã được tiếp nhận. Bộ phận tư vấn sẽ liên hệ theo số điện thoại bạn cung cấp."
-        : "Tin đăng ký đã được tạo. Hãy mở Zalo, Messenger hoặc SMS bên dưới để gửi ngay cho Thầy Linh.";
+        : "Chưa chuyển tự động được. Mã đăng ký được giữ nguyên; hãy thử gửi lại hoặc mở Zalo, Messenger, SMS bên dưới.";
     }
     if (submitButton) {
       submitted = delivery.saved;
       submitButton.disabled = delivery.saved;
-      submitButton.textContent = delivery.saved ? "Đăng ký đã được tiếp nhận" : "Gửi lại đăng ký";
+      submitButton.textContent = delivery.saved ? "Đăng ký đã được tiếp nhận" : "Thử gửi lại cùng mã";
     }
 
     try {
       localStorage.setItem("thaylinh_last_application", JSON.stringify({
         code: applicationCode,
-        created_at: new Date().toISOString(),
+        created_at: application.created_at,
         eligibility: assessment.key,
         source: source.source,
       }));
     } catch (_) {}
 
-    track("Lead", {
-      action: delivery.saved ? "application_saved" : "application_message_created",
-      context: formContext,
-      eligibility: assessment.key,
-      job_id: values.trade === "Kỹ thuật khai thác mỏ hầm lò" ? "khai_thac" : values.trade === "Kỹ thuật xây dựng mỏ hầm lò" ? "xay_dung" : "can_tu_van",
-      source: source.source,
-      medium: source.medium,
-      campaign: source.campaign,
-      content: source.content,
-    });
+    if (!attempt.leadTracked) {
+      track("Lead", {
+        action: delivery.saved ? "application_saved" : "application_message_created",
+        context: formContext,
+        eligibility: assessment.key,
+        job_id: values.trade === "Kỹ thuật khai thác mỏ hầm lò" ? "khai_thac" : values.trade === "Kỹ thuật xây dựng mỏ hầm lò" ? "xay_dung" : "can_tu_van",
+        source: source.source,
+        medium: source.medium,
+        campaign: source.campaign,
+        content: source.content,
+      });
+      attempt.leadTracked = true;
+    }
     if (!delivery.saved) track("ApplicationDeliveryFailure", { action: "crm_delivery_failed", context: formContext });
-    result.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (delivery.saved) retryState = null;
   });
 
 })();

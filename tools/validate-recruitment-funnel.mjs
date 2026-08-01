@@ -20,8 +20,11 @@ for (const hook of [
   "data-application-code",
   "data-sms-application",
   "data-form-context=\"central_application\"",
+  "application-result-title",
+  "application-birth-help",
+  "<noscript>",
   "recruitment-config.js?v=2",
-  "job-application.js?v=7",
+  "job-application.js?v=8",
   "analytics.js?v=4",
 ]) requireText(campaign, hook, "central application page");
 
@@ -45,6 +48,9 @@ for (const text of [
   "ApplicationStart",
   "ApplicationSubmit",
   "ApplicationDeliveryFailure",
+  "submissionFingerprint",
+  "application_retry",
+  "Thử gửi lại cùng mã",
 ]) requireText(application, text, "application logic");
 
 for (const marker of ["deliverApplication(application)", "Content-Type\": \"text/plain", "application_saved", "values.consent === \"on\"", "String(values.website || \"\")"]) {
@@ -61,7 +67,7 @@ requireText(config, "schemaVersion: 2", "recruitment configuration");
 
 for (const slug of ["ky-thuat-khai-thac-mo-ham-lo-quang-ninh", "ky-thuat-xay-dung-mo-ham-lo-quang-ninh"]) {
   const role = read(`viec-lam/${slug}/index.html`);
-  for (const marker of ["data-application-form", "data-form-context=\"job_", "directApply\":true", "job-application.js?v=7"]) {
+  for (const marker of ["data-application-form", "data-form-context=\"job_", "directApply\":true", "job-application.js?v=8", "application-result-title", "<noscript>"]) {
     requireText(role, marker, `${slug} direct application`);
   }
   if (role.includes("data-copy-application") || role.includes("Sao chép lại tin nhắn")) errors.push(`${slug}: removed copy-message control returned`);
