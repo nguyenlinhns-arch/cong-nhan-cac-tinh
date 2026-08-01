@@ -154,8 +154,10 @@ page = replaceBlock(page, "<!-- VINACOMIN_VIDEO_SCHEMA_START -->", "<!-- VINACOM
 page = replaceBlock(page, "<!-- VINACOMIN_VIDEO_LIST_START -->", "<!-- VINACOMIN_VIDEO_LIST_END -->", makeCards(videos));
 page = page.replace(/data-feed-date>[^<]*</, `data-feed-date>${formatDate(syncedAt)}<`);
 page = page.replace(/data-featured-title>[^<]*</, `data-featured-title>${escapeHtml(videos[0].title)}<`);
-page = page.replace(/(<iframe\b(?=[^>]*\bdata-featured-frame\b)[^>]*\bsrc=")[^"]*(")/, `$1https://www.youtube-nocookie.com/embed/${videos[0].id}?rel=0$2`);
-page = page.replace(/(<iframe\b(?=[^>]*\bdata-featured-frame\b)[^>]*\btitle=")[^"]*(")/, `$1${escapeHtml(videos[0].title)}$2`);
+page = page.replace(/(data-featured-video-id=")[^"]*(")/, `$1${videos[0].id}$2`);
+page = page.replace(/(data-featured-video-title=")[^"]*(")/, `$1${escapeHtml(videos[0].title)}$2`);
+page = page.replace(/(data-featured-facade[^>]*aria-label="Phát video: )[^"]*(")/, `$1${escapeHtml(videos[0].title)}$2`);
+page = page.replace(/(<img\b(?=[^>]*\bdata-featured-thumbnail\b)[^>]*\bsrc=")[^"]*(")/, `$1${videos[0].thumbnail}$2`);
 page = page.replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${videos[0].thumbnail}$2`);
 page = page.replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${videos[0].thumbnail}$2`);
 fs.writeFileSync(pageFile, page);
