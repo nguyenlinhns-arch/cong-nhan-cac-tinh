@@ -237,6 +237,19 @@ for (let left = 0; left < articleVocabulary.length; left += 1) {
 
 if (new Set(articleImages).size !== articleImages.length) errors.push("Editorial article images must be unique");
 
+const hubFile = path.join(root, "tin-nganh-than", "index.html");
+const hubHtml = fs.readFileSync(hubFile, "utf8");
+const hubSections = [...hubHtml.matchAll(/<section class="library-section" id="([^"]+)">([\s\S]*?)<\/section>/gi)];
+for (const [, sectionId, sectionHtml] of hubSections) {
+  const gridClasses = sectionHtml.match(/<div class="(news-grid[^"]*)"/i)?.[1] || "";
+  const cardCount = (sectionHtml.match(/class="news-card"/gi) || []).length;
+  const expectedLayout = cardCount === 1 ? "news-grid--single" : cardCount === 2 ? "news-grid--pair" : "news-grid--standard";
+  const expectedRemainder = `news-grid--remainder-${cardCount % 3}`;
+  if (!gridClasses.includes(expectedLayout)) errors.push(`${sectionId}: ${cardCount} bài nhưng thiếu lớp bố cục ${expectedLayout}`);
+  if (!gridClasses.includes(expectedRemainder)) errors.push(`${sectionId}: thiếu lớp cân hàng cuối ${expectedRemainder}`);
+}
+if (!hubSections.length) errors.push("Editorial hub has no article sections");
+
 const registrySlugs = Object.keys(imageSources).sort();
 if (registrySlugs.join("|") !== [...slugs].sort().join("|")) errors.push("Image registry must match the editorial feed exactly");
 const sourceUrls = Object.values(imageSources).map((source) => source.source_url);
