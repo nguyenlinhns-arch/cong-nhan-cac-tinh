@@ -19,7 +19,7 @@
 
 - Chỉ giữ bài có nguồn dữ kiện, giá trị thực tế và nội dung nguyên bản.
 - Phân biệt rõ số liệu, nhận định và thông tin cần xác nhận theo từng đợt.
-- Ảnh bài viết lấy từ Thư viện ảnh Vinacomin và không lặp giữa các bài trong kho biên tập.
+- Bài biên tập từ tin chính thống sử dụng đúng ảnh của bài nguồn tương ứng; các bài hướng dẫn nguyên bản sử dụng Thư viện ảnh Vinacomin.
 - Không đặt liên kết nguồn ra ngoài trong giao diện bài viết.
 
 ## Kho kiến thức ngành mỏ

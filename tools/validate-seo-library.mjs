@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { communitySourceImages } from "./community-source-images.mjs";
 
 const root = path.resolve("tuyen-tho-mo");
 const base = "https://thaylinhtuyenthomo.vn";
@@ -99,6 +100,7 @@ for (const [index, slug] of slugs.entries()) {
   const primaryKeyword = getAttr(html, /<meta name="keywords" content="([^,"]+)/i, `${prefix}primary keyword`);
   const image = getAttr(html, /<section class="article-hero">[\s\S]*?<img src="([^"]+)"/i, `${prefix}hero image`);
   const ogImage = getAttr(html, /<meta property="og:image" content="([^"]+)"/i, `${prefix}Open Graph image`);
+  const sourceImage = communitySourceImages[slug];
   const h1Count = (html.match(/<h1(?:\s|>)/gi) || []).length;
   const visibleWords = visible.split(/\s+/).filter(Boolean).length;
 
@@ -109,7 +111,11 @@ for (const [index, slug] of slugs.entries()) {
   if (!normalize(html).includes(normalize(primaryKeyword))) errors.push(`${prefix}primary keyword absent from visible body`);
   if (visibleWords < 650) errors.push(`${prefix}only ${visibleWords} visible words; expected at least 650`);
   if (!/"@type":"(?:NewsArticle|Article|BlogPosting)"/.test(html) || !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing article or FAQ schema`);
-  if (!image.startsWith("https://vinacomin.vn/Share/Media/")) errors.push(`${prefix}image is not from the Vinacomin image library`);
+  if (sourceImage) {
+    if (image !== sourceImage.image) errors.push(`${prefix}does not use the original image from its source article`);
+  } else if (!image.startsWith("https://vinacomin.vn/Share/Media/")) {
+    errors.push(`${prefix}original editorial image is not from the Vinacomin image library`);
+  }
   if (ogImage !== image || item.image !== image) errors.push(`${prefix}hero, Open Graph and feed images must match`);
   if (/editorial-sources|Nguồn dữ kiện đã đối chiếu|Bài viết do Nguyễn Tử Linh phân tích và biên soạn độc lập/iu.test(html)) {
     errors.push(`${prefix}contains a public editorial-source block`);
@@ -148,13 +154,24 @@ if (new Set(articleImages).size !== articleImages.length) errors.push("Editorial
 const registrySlugs = Object.keys(imageSources).sort();
 if (registrySlugs.join("|") !== [...slugs].sort().join("|")) errors.push("Image registry must match the editorial feed exactly");
 const sourceUrls = Object.values(imageSources).map((source) => source.source_url);
-if (sourceUrls.some((url) => !url?.startsWith("https://vinacomin.vn/Share/Media/"))) errors.push("Image registry contains a non-Vinacomin image");
 if (new Set(sourceUrls).size !== sourceUrls.length) errors.push("Image registry contains duplicate images");
+for (const slug of slugs) {
+  const imageRecord = imageSources[slug];
+  const sourceImage = communitySourceImages[slug];
+  if (sourceImage) {
+    if (imageRecord?.source_url !== sourceImage.image) errors.push(`${slug}: image registry does not match the source article image`);
+    if (imageRecord?.source_article_url !== sourceImage.sourceUrl) errors.push(`${slug}: image registry does not match the source article URL`);
+  } else if (!imageRecord?.source_url?.startsWith("https://vinacomin.vn/Share/Media/")) {
+    errors.push(`${slug}: original editorial image is not from the Vinacomin image library`);
+  }
+}
 
 const editorialBySlug = new Map((editorialSources.articles || []).map((article) => [article.slug, article]));
 for (const slug of slugs) {
   const record = editorialBySlug.get(slug);
   if (!record || !Array.isArray(record.sources) || !record.sources.length) errors.push(`${slug}: absent from internal editorial source registry`);
+  const sourceImage = communitySourceImages[slug];
+  if (sourceImage && record?.sources?.[0]?.url !== sourceImage.sourceUrl) errors.push(`${slug}: primary article source and original image source do not match`);
   for (const source of record?.sources || []) {
     if (source.url && !/^https:\/\//.test(source.url)) errors.push(`${slug}: invalid editorial source URL ${source.url}`);
   }

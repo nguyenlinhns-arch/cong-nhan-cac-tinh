@@ -1,13 +1,31 @@
+import { communitySourceImages } from "./community-source-images.mjs";
+
 const publishedDay = "2026-08-01";
 
-const makeArticle = (article, index) => ({
-  showSources: true,
-  updated: `${publishedDay}T${String(8 + Math.floor(index / 4)).padStart(2, "0")}:${String((index % 4) * 15).padStart(2, "0")}:00+07:00`,
-  published: `${publishedDay}T${String(8 + Math.floor(index / 4)).padStart(2, "0")}:${String((index % 4) * 15).padStart(2, "0")}:00+07:00`,
-  urlPath: `tin-nganh-than/2026/08/01/${article.slug}`,
-  related: article.related || ["dieu-kien-tuyen-tho-lo-2026", "hoc-nghe-khai-thac-mo-2-3-thang"],
-  ...article,
-});
+const makeArticle = (article, index) => {
+  const sourceImage = communitySourceImages[article.slug];
+  const primarySourceUrl = article.sources?.[0]?.url;
+
+  if (!sourceImage) {
+    throw new Error(`Bài ${article.slug} chưa có ảnh gốc từ bài nguồn.`);
+  }
+
+  if (primarySourceUrl !== sourceImage.sourceUrl) {
+    throw new Error(`Ảnh và nguồn chính của bài ${article.slug} không khớp nhau.`);
+  }
+
+  return {
+    showSources: true,
+    updated: `${publishedDay}T${String(8 + Math.floor(index / 4)).padStart(2, "0")}:${String((index % 4) * 15).padStart(2, "0")}:00+07:00`,
+    published: `${publishedDay}T${String(8 + Math.floor(index / 4)).padStart(2, "0")}:${String((index % 4) * 15).padStart(2, "0")}:00+07:00`,
+    urlPath: `tin-nganh-than/2026/08/01/${article.slug}`,
+    related: article.related || ["dieu-kien-tuyen-tho-lo-2026", "hoc-nghe-khai-thac-mo-2-3-thang"],
+    ...article,
+    image: sourceImage.image,
+    imageAlt: sourceImage.alt,
+    imageSource: sourceImage.credit,
+  };
+};
 
 const stories = [
   {
