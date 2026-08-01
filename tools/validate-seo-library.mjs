@@ -69,7 +69,8 @@ const lowIncomeFigure = (value) => {
   const annualLabel = /(?:thu nhập|lương|tiền lương)[^.!?]{0,40}\bnăm\b|\bnăm\b[^.!?]{0,40}(?:thu nhập|lương|tiền lương)/iu.test(text);
   return (monthlyLabel && minimum < 20) || (annualLabel && minimum < 240);
 };
-const formulaicEditorialPattern = /(?:không chỉ|đáng chú ý|không nằm ở|không dừng ở)/iu;
+const formulaicEditorialPattern = /(?:không chỉ|đáng chú ý|không nằm ở|không dừng ở|thay vì|với từ khóa|người đọc vì thế tìm thấy)/iu;
+const genericEditorialHeadingPattern = /^(?:kết quả phối hợp được ghi nhận tại|những con số ghi lại dấu mốc tại|nguồn lực dành cho|người lao động .+ cần chuẩn bị gì\?|từ .+ đến nơi học và nơi làm việc)$/iu;
 for (const article of editorialArticles) {
   if (!Array.isArray(article.intro) || article.intro.length < 2) errors.push(`${article.slug}: bài báo cần ít nhất hai đoạn mở bài`);
   if (!Array.isArray(article.sections) || article.sections.length < 3) errors.push(`${article.slug}: bài báo cần ít nhất ba phần nội dung`);
@@ -89,6 +90,9 @@ for (const article of editorialArticles) {
   ].filter(Boolean);
   for (const title of editorialHeadings) {
     const key = normalize(title);
+    if (genericEditorialHeadingPattern.test(strip(title))) {
+      errors.push(`${article.slug}: tiêu đề mục còn là khung văn mẫu “${strip(title)}”`);
+    }
     const owners = editorialSectionOwners.get(key) || [];
     owners.push(article.slug);
     editorialSectionOwners.set(key, owners);

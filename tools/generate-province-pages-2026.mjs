@@ -36,6 +36,35 @@ export const provinces = [
   { slug: "lai-chau", name: "Lai Châu", region: "Trung du & miền núi phía Bắc", aliases: [], story: "Anh Mùa A Sình, người Lai Châu, có thu nhập bình quân 25–27 triệu đồng/tháng; tháng cao điểm từng đạt khoảng 40 triệu đồng.", storyLink: "../../bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/", reportage: { title: "Gần 1.500 thanh niên Lai Châu đã tốt nghiệp và làm việc tại TKV", summary: "Một cộng đồng người đi trước đang trở thành điểm tựa để lớp thanh niên mới hiểu nghề, học nghề và vững tin hơn khi đi xa.", link: "../../tin-nganh-than/2026/08/01/tinh-doan-lai-chau-ket-noi-viec-lam-tkv/" } },
 ];
 
+const provinceEditorialAngles = {
+  "lam-dong": "Quãng đường từ Lâm Đồng tới Quảng Ninh khá dài, nên bước sàng lọc cần hoàn tất ngay tại quê nhà. Người lao động chỉ lên đường sau khi đã biết rõ nghề học, lịch tiếp nhận, nơi ở và đầu mối đón.",
+  "khanh-hoa": "Người ở Khánh Hòa có thể đối chiếu tuổi, thể lực và sức khỏe từ xa trước khi chuẩn bị giấy tờ. Cách làm này giúp gia đình cân nhắc đầy đủ thời gian học và cuộc sống tại Quảng Ninh.",
+  "dak-lak": "Với người lao động Đắk Lắk, quyết định đi xa cần bắt đầu bằng thông tin chắc chắn. Nghề đào tạo, chính sách trong khóa học và đơn vị dự kiến tiếp nhận phải được xác nhận trước ngày di chuyển.",
+  "gia-lai": "Từ Gia Lai tới vùng mỏ là hành trình đã có người đi trước và tạo dựng được vị trí bằng tay nghề. Người mới nên bắt đầu bằng một lần tự đánh giá trung thực về sức khỏe, kỷ luật và khả năng sống xa nhà.",
+  "quang-ngai": "Câu chuyện của lao động Quảng Ngãi đang làm trong ngành Than cho thấy cơ hội có thể kiểm chứng bằng người thật. Bước đầu vẫn là đối chiếu điều kiện và hiểu rõ công việc trước khi chọn nghề.",
+  "da-nang": "Người ở Đà Nẵng và khu vực Quảng Nam trước sắp xếp hành chính có thể hoàn tất bước kiểm tra ban đầu từ xa. Chuyến đi ra Quảng Ninh chỉ nên bắt đầu khi lịch học và địa chỉ tiếp nhận đã rõ.",
+  "hue": "Từ Huế, người tìm việc có thể chủ động hỏi nghề, thời gian học và điều kiện sinh hoạt trước khi quyết định. Một kế hoạch rõ ràng giúp cả người lao động lẫn gia đình chuẩn bị tốt cho quãng thời gian xa nhà.",
+  "quang-tri": "Quảng Trị đã có những người lao động tạo dựng thu nhập tốt tại vùng mỏ. Kinh nghiệm của người đi trước là nguồn tham khảo hữu ích, còn mỗi hồ sơ mới vẫn phải được đối chiếu riêng về sức khỏe và nghề phù hợp.",
+  "ha-tinh": "Người Hà Tĩnh có thể tìm hiểu nghề qua những trường hợp đã làm việc thực tế tại Quảng Ninh. Quyết định đăng ký cần dựa trên điều kiện sức khỏe, nội dung đào tạo và khả năng gắn bó với công việc theo ca.",
+  "nghe-an": "Từ Nghệ An, bước đầu là xác định mình có phù hợp trước khi chuẩn bị hồ sơ. Khi kết quả sàng lọc rõ, người lao động nhận hướng dẫn cụ thể về nghề và lịch nhập học.",
+  "thanh-hoa": "Thanh Hóa đã có cả câu chuyện người thợ thành công và những địa bàn phối hợp tuyển sinh nhiều năm. Dữ kiện ấy giúp người mới kiểm chứng cơ hội, đồng thời hiểu rằng tay nghề và kỷ luật mới quyết định chặng đường lâu dài.",
+  "ninh-binh": "Người ở Ninh Bình, Nam Định và Hà Nam trước sắp xếp hành chính có thể kiểm tra điều kiện ngay tại quê nhà. Mọi thông tin về lịch học, nơi ở và doanh nghiệp tiếp nhận cần được chốt trước ngày lên đường.",
+  "hung-yen": "Từ Hưng Yên và khu vực Thái Bình trước sắp xếp, người lao động có lợi thế di chuyển thuận tiện hơn nhiều địa bàn xa. Dù vậy, lựa chọn nghề vẫn cần dựa trên sức khỏe, kỷ luật và sự hiểu biết đầy đủ về ca làm.",
+  "hai-phong": "Người ở Hải Phòng và khu vực Hải Dương trước sắp xếp có thể tìm hiểu trực tiếp hơn về môi trường công nghiệp Quảng Ninh. Bước tư vấn ban đầu giúp xác định đúng nghề và tránh chuẩn bị giấy tờ khi chưa đủ điều kiện.",
+  "bac-ninh": "Từ Bắc Ninh và khu vực Bắc Giang trước sắp xếp, người lao động có thể trao đổi, sàng lọc và nhận lịch trước khi di chuyển. Một quyết định có dữ kiện luôn vững hơn lời rủ đi làm theo nhóm.",
+  "ha-noi": "Người lao động tại Hà Nội có thể hoàn tất bước kiểm tra điều kiện từ xa và chủ động khảo sát thông tin trước ngày nhập học. Điều cần làm rõ là nghề được đào tạo, đơn vị bố trí và yêu cầu thực tế của công việc.",
+  "quang-ninh": "Lao động Quảng Ninh có lợi thế ở gần cơ sở đào tạo và doanh nghiệp, thuận tiện gặp người đang làm nghề để tìm hiểu. Khoảng cách gần không làm giảm yêu cầu về sức khỏe, học tập và kỷ luật an toàn.",
+  "phu-tho": "Người ở Phú Thọ cùng các khu vực Vĩnh Phúc, Hòa Bình trước sắp xếp có thể sàng lọc ban đầu ngay tại địa bàn. Gia đình nên cùng nghe tư vấn để hiểu nơi học, nhịp sinh hoạt và kế hoạch làm việc tại Quảng Ninh.",
+  "thai-nguyen": "Thái Nguyên đã có những xã ký mục tiêu đào tạo, giải quyết việc làm cụ thể với Nhà trường và doanh nghiệp. Người đăng ký cần đi qua đúng đầu mối, đồng thời tự đối chiếu sức khỏe trước khi làm hồ sơ.",
+  "tuyen-quang": "Nhiều địa bàn Tuyên Quang đã đưa tư vấn nghề xuống xã, thôn và gắn với doanh nghiệp tiếp nhận. Người lao động nhờ đó có thêm nơi kiểm chứng thông tin trước khi quyết định học và làm việc xa nhà.",
+  "lao-cai": "Lào Cai có nhiều dấu mốc hợp tác tuyển sinh và một cộng đồng lao động đang làm việc trong ngành Than. Những trường hợp đi trước giúp người mới hình dung rõ hơn về lớp học, tổ đội và giai đoạn thích nghi.",
+  "cao-bang": "Tại Cao Bằng, tư vấn nghề mỏ đã được đưa về nhiều xã, huyện qua các chương trình phối hợp. Giá trị của mạng lưới này nằm ở khả năng trả lời cụ thể từng hồ sơ và theo người học tới ngày nhận việc.",
+  "lang-son": "Người lao động Lạng Sơn có thể bắt đầu bằng việc gửi đúng thông tin thể lực và sức khỏe. Sau bước sàng lọc, lịch học, địa điểm nhập học và nơi làm việc được chốt trước khi gia đình sắp xếp hành trình.",
+  "son-la": "Sơn La đã có lực lượng lao động làm việc trong ngành Than và những chuyến khảo sát từ địa phương tới Quảng Ninh. Người mới vì vậy có thể tìm người đồng hương để kiểm chứng đời sống học tập và công việc thực tế.",
+  "dien-bien": "Từ Điện Biên tới Quảng Ninh là một chặng đường dài, nhưng tuyến học nghề đã có người đi trước. Chuẩn bị tốt sức khỏe, thông tin và sự đồng thuận của gia đình giúp người học đứng vững hơn trong những tháng đầu.",
+  "lai-chau": "Gần 1.500 thanh niên Lai Châu đã tốt nghiệp và làm việc tại các đơn vị TKV theo nguồn được rà soát. Cộng đồng ấy là điểm tựa thực tế để người mới hỏi nghề, hiểu ca làm và chuẩn bị cho cuộc sống xa nhà.",
+};
+
 function provincePage(province) {
   const { slug, name, region, aliases, story, storyLink, reportage } = province;
   const canonical = `https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/${slug}/`;
@@ -44,9 +73,8 @@ function provincePage(province) {
   const aliasPhrase = aliases.length
     ? `, bao gồm khu vực ${aliasNames} trước sắp xếp đơn vị hành chính năm 2025`
     : "";
-  const localContext = aliases.length
-    ? `Từ ${name} và các địa danh quen thuộc như ${aliasNames}, nhiều lao động trẻ đang tìm một nghề có đào tạo bài bản, thu nhập rõ ràng và cơ hội gắn bó lâu dài tại Quảng Ninh.`
-    : `Từ ${name}, người lao động có thể kiểm tra điều kiện từ xa, học nghề trong 2–3 tháng và chuẩn bị cho công việc tại Quảng Ninh theo một lộ trình rõ ràng.`;
+  const localContext = provinceEditorialAngles[slug]
+    || `Từ ${name}, người lao động có thể kiểm tra điều kiện từ xa, học nghề trong 2–3 tháng và chuẩn bị cho công việc tại Quảng Ninh theo một lộ trình rõ ràng.`;
   const description = `Tuyển thợ mỏ tại ${name}${aliasPhrase}: học nghề 2–3 tháng, hỗ trợ ăn ở, cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động tại Quảng Ninh.`;
   const localStories = [
     story ? {

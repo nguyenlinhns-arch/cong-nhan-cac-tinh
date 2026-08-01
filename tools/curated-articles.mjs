@@ -18,8 +18,8 @@ export const curatedArticles = [
     imageSource: "Thư viện ảnh Vinacomin · Lãnh đạo Công đoàn thăm công nhân Than Dương Huy",
     published: "2026-07-31T09:00:00+07:00",
     updated: "2026-08-01T21:00:00+07:00",
-    factsTitle: "Bốn mốc mở đầu cho hành trình vào nghề",
-    actionTitle: "Ba phút để biết mình có thể bắt đầu từ đâu",
+    factsTitle: "Bốn tiêu chuẩn cần tự đối chiếu trước khi đăng ký",
+    actionTitle: "Bắt đầu bằng một lần khai thông tin trung thực",
     conclusionTitle: "Sức khỏe là hành trang đầu tiên của người thợ",
     facts: [
       [`${criteria.age_min}–${criteria.age_max} tuổi`, "Độ tuổi tiếp nhận theo thông tin tuyển sinh tháng 8/2026."],
@@ -33,7 +33,7 @@ export const curatedArticles = [
     ],
     sections: [
       {
-        title: "Sức khỏe là hành trang, không phải một dòng thủ tục",
+        title: "Sức khỏe quyết định khả năng theo nghề",
         paragraphs: [
           "Tuổi, chiều cao và cân nặng là những mốc có thể nhìn thấy; phía sau chúng là sức bền, thị lực, phản xạ và khả năng thích nghi với ca kíp. Người thợ làm việc trong một dây chuyền nơi từng thao tác cá nhân đều góp vào năng suất và sự an toàn của cả tổ.",
           "Một cuộc trao đổi trung thực về bệnh đang điều trị, tiền sử chấn thương, tim mạch, huyết áp, hô hấp và mắt giúp người lao động được hướng tới lộ trình phù hợp. Đó cũng là biểu hiện đầu tiên của tác phong nghề nghiệp: hiểu mình, tôn trọng quy trình và có trách nhiệm với đồng đội.",
@@ -53,7 +53,7 @@ export const curatedArticles = [
         ],
       },
       {
-        title: "Một tin nhắn mở đầu cho một lộ trình rõ ràng",
+        title: "Thông tin ban đầu mở ra bước tư vấn phù hợp",
         paragraphs: [
           "Tin nhắn đầu tiên chỉ cần năm sinh, chiều cao, cân nặng, tình trạng sức khỏe và tỉnh đang sinh sống. Từ năm dữ kiện ấy, Thầy Linh có thể đối chiếu trường hợp cụ thể, giải thích nghề đang tuyển và chỉ dẫn bước tiếp theo.",
           "Người chưa đo lại có thể làm ngay tại quê nhà; người đang chờ kết quả khám chỉ cần nói đúng tình trạng. Khi thông tin ban đầu rõ ràng, hành trình từ tư vấn tới lớp học cũng trở nên chủ động hơn cho cả người lao động và gia đình.",
@@ -93,7 +93,7 @@ export const curatedArticles = [
     updated: "2026-08-01T21:05:00+07:00",
     factsTitle: "Ba giấy tờ cần nhớ, một nguyên tắc cần giữ",
     actionTitle: "Kiểm tra điều kiện trước khi làm giấy tờ",
-    conclusionTitle: "Đúng giấy tờ, đúng lịch, không phải đi lại nhiều lần",
+    conclusionTitle: "Đúng giấy tờ, đúng lịch, giảm tối đa việc đi lại",
     facts: [
       ["Chưa cần nộp ngay", "Bước đăng ký ban đầu chỉ cần thông tin cá nhân và thể lực."],
       ["CCCD gốc", "Tự bảo quản và mang theo khi đến làm thủ tục nhập học."],
@@ -101,7 +101,7 @@ export const curatedArticles = [
       ["Bằng nếu có", "Mang bằng THCS hoặc THPT đang có; chưa có vẫn đăng ký tư vấn trước."],
     ],
     intro: [
-      "Với lao động ở xa, điều quan trọng nhất không phải làm thật nhiều giấy tờ từ sớm mà là biết mình có phù hợp và có lịch tiếp nhận rõ ràng. Câu hỏi <strong>hồ sơ học nghề mỏ cần gì</strong> vì thế được trả lời theo hai bước: đăng ký kiểm tra điều kiện trước, chuẩn bị giấy tờ sau.",
+      "Với lao động ở xa, hồ sơ chỉ nên được chuẩn bị sau khi điều kiện ban đầu và lịch tiếp nhận đã rõ. Câu hỏi <strong>hồ sơ học nghề mỏ cần gì</strong> vì thế được trả lời theo hai bước: đăng ký kiểm tra điều kiện trước, chuẩn bị giấy tờ sau.",
       "Khi được xác nhận lịch nhập học, người lao động mang CCCD gốc, giấy khai sinh và bằng THCS hoặc THPT nếu đang có. Chưa có bằng vẫn có thể đăng ký tư vấn để được đối chiếu theo hệ đào tạo; không gửi giấy tờ gốc qua bưu điện và không cần đăng ảnh giấy tờ lên biểu mẫu website.",
     ],
     sections: [
@@ -237,9 +237,9 @@ export const curatedArticles = [
     imagePolicy: "editorial-topic-override",
     published: "2026-07-31T09:30:00+07:00",
     updated: "2026-08-01T21:20:00+07:00",
-    factsTitle: "Khi thu nhập cao trở thành một mặt bằng rộng",
-    actionTitle: "Con đường từ người chưa có nghề đến thợ lò",
-    conclusionTitle: "Một nghề đáng để thay đổi cuộc sống",
+    factsTitle: "13.507 người đưa thu nhập cao thành kết quả có quy mô",
+    actionTitle: "Từ học nghề tới nhóm thợ có thu nhập cao",
+    conclusionTitle: "Thu nhập cao được xây bằng tay nghề và kỷ luật",
     facts: [
       ["13.507 người", "Số thợ lò đạt thu nhập trên 300 triệu đồng trong năm 2025."],
       ["57%", "Tỷ lệ thợ lò vượt mốc 300 triệu đồng theo số liệu TKV."],
@@ -247,14 +247,14 @@ export const curatedArticles = [
       ["Trên 700 triệu", "Mức thu nhập năm của 4 công nhân trong nhóm dẫn đầu."],
     ],
     intro: [
-      "Năm năm trước, anh Đặng Văn Hưng rời vùng đất đỏ bazan K’bang, Gia Lai, vượt hơn 1.000 km ra Quảng Ninh. Từ một người gần như chưa có nền tảng nghề, anh học tại Trường Cao đẳng Than - Khoáng sản Việt Nam, vào làm ở Than Quang Hanh và từng bước trở thành thợ lò giỏi với thu nhập hơn 30 triệu đồng mỗi tháng. Câu chuyện được Báo Quảng Ninh ghi lại không phải một phép màu; đó là kết quả của học nghề, làm đủ công, nâng tay nghề và làm chủ máy móc.",
+      "Năm năm trước, anh Đặng Văn Hưng rời vùng đất đỏ bazan K’bang, Gia Lai, vượt hơn 1.000 km ra Quảng Ninh. Từ một người gần như chưa có nền tảng nghề, anh học tại Trường Cao đẳng Than - Khoáng sản Việt Nam, vào làm ở Than Quang Hanh và từng bước trở thành thợ lò giỏi với thu nhập hơn 30 triệu đồng mỗi tháng. Báo Quảng Ninh ghi nhận kết quả ấy được tạo nên bằng học nghề, làm đủ công, nâng tay nghề và làm chủ máy móc.",
       "Phía sau câu chuyện của anh Hưng là một con số đủ lớn để cho thấy sức hút của nghề. TKV công bố năm 2025 có <strong>13.507 thợ lò thu nhập trên 300 triệu đồng/năm</strong>, chiếm 57% lực lượng thợ lò và tăng 16,5% so với năm trước. Trong nhóm dẫn đầu, 34 người đạt 600–700 triệu đồng, 4 công nhân vượt 700 triệu đồng một năm.",
     ],
     sections: [
       {
         title: "Từ con số 13.507 đến những gương mặt có thật",
         paragraphs: [
-          "Mốc 300 triệu đồng một năm tương đương bình quân trên 25 triệu đồng mỗi tháng. Theo số liệu TKV, 57% thợ lò đã vượt ngưỡng này. Tỷ lệ hơn một nửa lực lượng cho thấy nghề mỏ tạo thu nhập đáng kể ở quy mô rộng, thay vì chỉ xuất hiện ở vài trường hợp cá biệt.",
+          "Mốc 300 triệu đồng một năm tương đương bình quân trên 25 triệu đồng mỗi tháng. Theo số liệu TKV, 57% thợ lò đã vượt ngưỡng này. Tỷ lệ hơn một nửa lực lượng cho thấy thu nhập cao đã xuất hiện ở quy mô rộng trong đội ngũ thợ lò.",
           "Mùa A Sình, người Mông quê Lai Châu, là một ví dụ khác. Những ngày đầu sống tập trung và học nghề là thử thách, nhưng kiến thức, sự cần cù và kỷ luật đã giúp anh bắt nhịp tại Than Thống Nhất. Báo Quảng Ninh cho biết thu nhập bình quân của anh đạt 25–27 triệu đồng/tháng, có tháng lên 40 triệu đồng; gia đình ở quê thoát nghèo và em trai cũng được anh giới thiệu vào nghề.",
         ],
         bullets: [
@@ -292,7 +292,7 @@ export const curatedArticles = [
       ["Chuẩn bị nhập học", "Nhận hướng dẫn giấy tờ, thời gian và địa điểm cụ thể."],
       ["Học và nhận việc", "Hoàn thành 2–3 tháng đào tạo, đạt yêu cầu và vào doanh nghiệp làm việc."],
     ],
-    takeaway: "Từ Đặng Văn Hưng ở Gia Lai đến Mùa A Sình ở Lai Châu, điểm chung không phải xuất phát điểm thuận lợi mà là quyết định học một nghề, đi làm có kỷ luật và bền bỉ nâng tay nghề. Nếu đủ sức khỏe và đang muốn thay đổi thu nhập bằng lao động chân chính, nghề mỏ tại Quảng Ninh là một lựa chọn xứng đáng để bắt đầu ngay hôm nay.",
+    takeaway: "Từ Đặng Văn Hưng ở Gia Lai đến Mùa A Sình ở Lai Châu, điểm chung là quyết định học một nghề, đi làm có kỷ luật và bền bỉ nâng tay nghề. Với người đủ sức khỏe và muốn cải thiện thu nhập bằng lao động chân chính, nghề mỏ tại Quảng Ninh là một lựa chọn đáng cân nhắc nghiêm túc.",
     faq: [
       ["Học nghề mỏ 2–3 tháng có gắn với việc làm không?", "Người học do doanh nghiệp cử đi đào tạo; sau khi hoàn thành chương trình và đạt yêu cầu sẽ được doanh nghiệp tiếp nhận, ký hợp đồng và bố trí công việc."],
       ["Người mới có thể phấn đấu tới mức trên 300 triệu đồng/năm không?", "Có cơ sở để phấn đấu, nhưng cần thời gian tích lũy. Thu nhập tăng theo vị trí, ngày công, năng suất, tay nghề và đơn vị; số liệu 13.507 người cho thấy đây là kết quả của một lực lượng đông đảo."],
@@ -341,7 +341,7 @@ export const curatedArticles = [
         ],
         bullets: [
           "Đọc đúng hướng dẫn, tín hiệu và thông số cơ bản của thiết bị.",
-          "Thực hiện kiểm tra trước ca thay vì chỉ xử lý khi máy đã hỏng.",
+          "Kiểm tra thiết bị trước ca để phát hiện sớm sai lệch và nguy cơ hỏng hóc.",
           "Phân biệt lỗi có thể báo cáo với tình huống phải dừng ngay.",
           "Ghi nhận dữ liệu bàn giao rõ ràng giữa các ca và bộ phận.",
         ],
@@ -365,7 +365,7 @@ export const curatedArticles = [
       ["Nắm nghề", "Hiểu công đoạn, dụng cụ và phạm vi trách nhiệm."],
       ["Hiểu thiết bị", "Đọc cảnh báo, kiểm tra trước ca và dừng đúng lúc."],
       ["Ghi dữ liệu", "Bàn giao chính xác, không bỏ qua thông tin bất thường."],
-      ["Học liên tục", "Cập nhật công nghệ mới thay vì chỉ dựa vào kinh nghiệm cũ."],
+      ["Học liên tục", "Kết hợp kinh nghiệm hiện trường với kiến thức về công nghệ mới."],
     ],
     takeaway: "Cơ giới hóa đang đưa người thợ ra khỏi nhiều phần việc nặng nhọc và đặt họ vào vị trí làm chủ thiết bị. Với người trẻ chịu học, đây là cơ hội bước vào một nghề công nghiệp hiện đại, nơi sức khỏe vẫn quan trọng nhưng tay nghề, kỷ luật và khả năng học công nghệ mới là giá trị đi đường dài.",
     faq: [
@@ -478,7 +478,7 @@ export const curatedArticles = [
       [">2.500 người", "Công nhân kỹ thuật tham gia hội thi cấp cơ sở trước đó."],
     ],
     intro: [
-      "Tháng 7/2026, Hội thi thợ giỏi TKV quy tụ 501 thí sinh từ 29 đơn vị, tranh tài ở 27 nghề thuộc sáu nhóm nghề. Trước vòng cấp Tập đoàn, hơn 2.500 công nhân kỹ thuật đã dự thi ở cơ sở. Quy mô ấy cho thấy <strong>tay nghề thợ mỏ trong thời kỳ mỏ thông minh</strong> không phải một khái niệm trừu tượng; nó được rèn, đo và tôn vinh như tài sản của doanh nghiệp.",
+      "Tháng 7/2026, Hội thi thợ giỏi TKV quy tụ 501 thí sinh từ 29 đơn vị, tranh tài ở 27 nghề thuộc sáu nhóm nghề. Trước vòng cấp Tập đoàn, hơn 2.500 công nhân kỹ thuật đã dự thi ở cơ sở. Quy mô ấy cho thấy <strong>tay nghề thợ mỏ trong thời kỳ mỏ thông minh</strong> được rèn luyện, đánh giá và tôn vinh như một tài sản của doanh nghiệp.",
       "Đối với người mới bước vào khóa học 2–3 tháng, những người thợ giỏi là hình ảnh của một lộ trình dài hơn: bắt đầu từ thao tác cơ bản, làm đúng quy trình, tích lũy kinh nghiệm, học thiết bị mới rồi tiến tới nâng bậc và sáng kiến. Sức khỏe giúp vào nghề; tay nghề giúp người lao động đi xa trong nghề.",
     ],
     sections: [
@@ -486,7 +486,7 @@ export const curatedArticles = [
         title: "Thợ giỏi làm việc bằng cả đôi tay và tư duy",
         paragraphs: [
           "Một thao tác được đánh giá tốt phải đúng trình tự, đúng chất lượng và đúng thời gian trong điều kiện an toàn. Người thợ còn phải đọc bản hướng dẫn, nhận biết sai lệch, giữ dụng cụ và phối hợp với bộ phận liên quan. Khi thiết bị số xuất hiện, việc ghi nhận dữ liệu và bàn giao cũng trở thành một phần của tay nghề.",
-          "Hội thi năm 2026 chuẩn hóa nội dung đánh giá theo hướng tiệm cận tiêu chuẩn kỹ năng nghề quốc gia. Cách đánh giá này cho thấy doanh nghiệp cần năng lực có thể quan sát, kiểm chứng và tiếp tục đào tạo, thay cho kinh nghiệm “làm quen tay” đơn thuần.",
+          "Hội thi năm 2026 chuẩn hóa nội dung đánh giá theo hướng tiệm cận tiêu chuẩn kỹ năng nghề quốc gia. Doanh nghiệp vì vậy nhìn tay nghề qua năng lực có thể quan sát, kiểm chứng và tiếp tục đào tạo, đồng thời vẫn coi trọng kinh nghiệm hiện trường.",
         ],
         bullets: [
           "Hiểu nguyên lý để biết vì sao từng bước phải theo đúng trình tự.",
@@ -585,7 +585,7 @@ export const curatedArticles = [
       },
     ],
     checklist: [
-      ["Xem ngành", "Đọc dữ liệu sản xuất và định hướng đầu tư thay vì chỉ tin quảng cáo."],
+      ["Xem ngành", "Đọc dữ liệu sản xuất, nhu cầu nhân lực và định hướng đầu tư từ nguồn chính thức."],
       ["Xem đơn vị", "Hỏi hợp đồng, vị trí, ca làm, chỗ ở và các chế độ đi kèm."],
       ["Xem bản thân", "Đánh giá sức khỏe, kỷ luật và khả năng sống xa nhà."],
       ["Xem dài hạn", "Chọn hướng nghề có thể nâng bậc và thích nghi với công nghệ."],
@@ -728,7 +728,7 @@ export const curatedArticles = [
       {
         title: "Người mới học cách quan sát từ những dấu hiệu nhỏ",
         paragraphs: [
-          "Người chưa có kinh nghiệm thường nhìn nguy cơ qua hiện tượng rõ ràng. Trong thực tế, dấu hiệu ban đầu có thể rất nhỏ. Vì vậy, thái độ đúng là báo cáo điều bất thường thay vì cố giải thích một mình.",
+          "Người chưa có kinh nghiệm thường nhìn nguy cơ qua hiện tượng rõ ràng. Trong thực tế, dấu hiệu ban đầu có thể rất nhỏ. Thái độ đúng là báo ngay điều bất thường và chờ người có trách nhiệm đánh giá.",
           "An toàn mùa mưa còn liên quan sinh hoạt và di chuyển ngoài giờ làm: đường từ khu ở đến nơi làm việc, phương tiện đưa đón và cảnh báo địa phương. Người lao động cần giữ liên lạc, đi đúng tuyến được hướng dẫn và chủ động báo nếu không thể đến điểm tập trung an toàn.",
         ],
       },
