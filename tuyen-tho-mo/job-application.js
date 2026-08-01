@@ -16,8 +16,11 @@
   const deliveryOutput = document.querySelector("[data-application-delivery]");
   const params = new URLSearchParams(location.search);
   const recruitment = window.THAY_LINH_RECRUITMENT || {};
+  const criteria = recruitment.criteria || {};
+  const formContext = form.dataset.formContext || "central_application";
   const today = new Date();
   let started = false;
+  let submitted = false;
 
   function isoDate(date) {
     return [
@@ -60,9 +63,18 @@
   function readAttribution() {
     let stored = {};
     try { stored = JSON.parse(localStorage.getItem("thaylinh_attribution") || "{}"); } catch (_) {}
+    let referrer = "";
+    try { referrer = document.referrer ? new URL(document.referrer).hostname : ""; } catch (_) {}
+    const inferredSource = /(^|\.)google\./i.test(referrer)
+      ? "google"
+      : /(^|\.)facebook\.com$|(^|\.)fb\.com$/i.test(referrer)
+        ? "facebook"
+        : /(^|\.)tiktok\.com$/i.test(referrer)
+          ? "tiktok"
+          : "website";
     return {
-      source: params.get("utm_source") || stored.utm_source || params.get("source") || "website",
-      medium: params.get("utm_medium") || stored.utm_medium || "owned",
+      source: params.get("utm_source") || stored.utm_source || params.get("source") || inferredSource,
+      medium: params.get("utm_medium") || stored.utm_medium || (inferredSource === "website" ? "owned" : "referral"),
       campaign: params.get("utm_campaign") || stored.utm_campaign || "tuyen_tho_mo_2026",
       content: params.get("utm_content") || stored.utm_content || "application_form",
     };
@@ -94,7 +106,11 @@
   }
 
   function assess(values, age) {
-    if (age === null || age < 18 || age > 35 || Number(values.height) < 156 || Number(values.weight) < 48) {
+    const ageMin = Number(criteria.ageMin) || 18;
+    const ageMax = Number(criteria.ageMax) || 40;
+    const heightMinCm = Number(criteria.heightMinCm) || 153;
+    const weightMinKg = Number(criteria.weightMinKg) || 47;
+    if (age === null || age < ageMin || age > ageMax || Number(values.height) < heightMinCm || Number(values.weight) < weightMinKg) {
       return {
         key: "not_eligible",
         label: "Chưa phù hợp điều kiện sơ bộ",
@@ -151,16 +167,17 @@
   }
 
   prefillSelect("province", params.get("province"));
-  prefillSelect("trade", params.get("trade"));
+  prefillSelect("trade", params.get("trade") || form.dataset.defaultTrade);
 
   form.addEventListener("input", () => {
     if (started) return;
     started = true;
-    track("ApplicationStart", { action: "form_started", context: "central_application" });
+    track("ApplicationStart", { action: "form_started", context: formContext });
   }, { once: true });
 
   form.addEventListener("submit", async event => {
     event.preventDefault();
+    if (submitted) return;
     error.hidden = true;
     if (!form.reportValidity()) return;
 
@@ -195,7 +212,7 @@
     ].join("\n");
 
     const application = {
-      schema_version: 1,
+      schema_version: Number(recruitment.schemaVersion) || 2,
       code: applicationCode,
       created_at: new Date().toISOString(),
       full_name: String(values.full_name).trim(),
@@ -214,6 +231,8 @@
       campaign: source.campaign,
       content: source.content,
       page_url: location.href,
+      form_context: formContext,
+      website: String(values.website || ""),
       consent: values.consent === "on",
     };
 
@@ -230,6 +249,15 @@
       submitButton.disabled = true;
       submitButton.textContent = "Đang gửi đăng ký…";
     }
+    track("ApplicationSubmit", {
+      action: "application_submitted",
+      context: formContext,
+      eligibility: assessment.key,
+      source: source.source,
+      medium: source.medium,
+      campaign: source.campaign,
+      content: source.content,
+    });
     const delivery = await deliverApplication(application);
     if (deliveryOutput) {
       deliveryOutput.dataset.state = delivery.saved ? "saved" : "fallback";
@@ -238,8 +266,9 @@
         : "Tin đăng ký đã được tạo và sao chép. Hãy mở Zalo, Messenger hoặc SMS bên dưới để gửi ngay cho Thầy Linh.";
     }
     if (submitButton) {
-      submitButton.disabled = false;
-      submitButton.textContent = "Gửi lại đăng ký";
+      submitted = delivery.saved;
+      submitButton.disabled = delivery.saved;
+      submitButton.textContent = delivery.saved ? "Đăng ký đã được tiếp nhận" : "Gửi lại đăng ký";
     }
 
     try {
@@ -254,10 +283,15 @@
     await copyText(message);
     track("Lead", {
       action: delivery.saved ? "application_saved" : "application_message_created",
-      context: "central_application",
+      context: formContext,
       eligibility: assessment.key,
       job_id: values.trade === "Kỹ thuật khai thác mỏ hầm lò" ? "khai_thac" : values.trade === "Kỹ thuật xây dựng mỏ hầm lò" ? "xay_dung" : "can_tu_van",
+      source: source.source,
+      medium: source.medium,
+      campaign: source.campaign,
+      content: source.content,
     });
+    if (!delivery.saved) track("ApplicationDeliveryFailure", { action: "crm_delivery_failed", context: formContext });
     result.scrollIntoView({ behavior: "smooth", block: "center" });
   });
 

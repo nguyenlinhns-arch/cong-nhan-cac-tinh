@@ -7,6 +7,8 @@ import {communitySourceImages} from "./community-source-images.mjs";
 const root = path.resolve("tuyen-tho-mo");
 const base = "https://thaylinhtuyenthomo.vn";
 const author = "Nguyễn Tử Linh";
+const recruitment = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
+const criteria = recruitment.criteria;
 const buildTime = "2026-08-01T22:30:00+07:00";
 const allEditorial = [
   ...curatedArticles.map((article) => ({...article, urlPath: `bai-viet/${article.slug}`})),
@@ -218,7 +220,7 @@ function renderArticle(article) {
   </main>
   <footer class="site-footer"><div class="container footer-inner"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Câu chuyện nghề nghiệp, đời sống và cơ hội lập nghiệp trong ngành Than.</p></div><a href="/tin-nganh-than/">Đọc thêm chuyện nghề mỏ →</a></div></footer>
   <nav class="article-contact" aria-label="Liên hệ nhanh"><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Zalo · 096 304 8585</a><a href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener">Messenger</a></nav>
-  <script src="/analytics.js?v=1" defer></script>
+  <script src="/analytics.js?v=2" defer></script>
   <script src="/mobile-ux.js?v=2" defer></script>
 </body>
 </html>`;
@@ -327,7 +329,7 @@ function hubHtml() {
   </main>
   <footer class="site-footer"><div class="container footer-inner"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Đưa câu chuyện nghề mỏ đến gần hơn với người lao động trên cả nước.</p></div><a href="../viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky">Tìm hiểu cơ hội học nghề →</a></div></footer>
   <nav class="article-contact" aria-label="Liên hệ nhanh"><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Zalo · 096 304 8585</a><a href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener">Messenger</a></nav>
-  <script src="/analytics.js?v=1" defer></script>
+  <script src="/analytics.js?v=2" defer></script>
   <script src="/mobile-ux.js?v=2" defer></script>
 </body></html>`;
 }
@@ -383,7 +385,7 @@ fs.writeFileSync(path.join(root, "feed.json"), `${JSON.stringify({
   })),
 }, null, 2)}\n`);
 
-const llms = `# Thầy Linh – Tuyển Thợ Mỏ\n\n> Website viết về ngành Than và tư vấn học nghề mỏ tại Quảng Ninh do Nguyễn Tử Linh biên soạn.\n\n## Thông tin tuyển sinh đang áp dụng\n\n- Căn cứ: Thông báo số 10/TB-CĐTKV ngày 02/04/2026.\n- Thời gian học các nghề đang tuyển: 2–3 tháng.\n- Điều kiện: nam 18–40 tuổi, cao từ 1,53 m, nặng từ 47 kg và có sức khỏe tốt.\n- Hồ sơ dự tuyển gồm 02 bộ; mỗi bộ có sơ yếu lý lịch, bản sao giấy khai sinh, bản công chứng bằng tốt nghiệp văn hóa và bản công chứng căn cước công dân.\n- Quyền lợi khi học: miễn kinh phí đào tạo, miễn phí ba bữa/ngày và ký túc xá; giữ nguyên khoản hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển.\n- Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.\n- Tin tuyển dụng chuẩn: [Tuyển lao động học nghề mỏ hầm lò năm 2026](${base}/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/).\n- Vị trí 1: [Kỹ thuật khai thác mỏ hầm lò](${base}/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/).\n- Vị trí 2: [Kỹ thuật xây dựng mỏ hầm lò](${base}/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/).\n- Liên hệ tư vấn: Zalo 096 304 8585.\n\n## Nguyên tắc nội dung\n\n- Chỉ giữ bài có nguồn dữ kiện, giá trị thực tế và nội dung nguyên bản.\n- Phân biệt rõ số liệu, nhận định và thông tin cần xác nhận theo từng đợt.\n- Bài biên tập từ tin chính thống sử dụng đúng ảnh của bài nguồn tương ứng; các bài hướng dẫn nguyên bản sử dụng Thư viện ảnh Vinacomin.\n- Không đặt liên kết nguồn ra ngoài trong giao diện bài viết.\n\n## Kho kiến thức ngành mỏ\n\n${feedItems.map((article) => `- [${article.title}](${base}/${article.urlPath}/): ${article.lead}`).join("\n")}\n`;
+const llms = `# Thầy Linh – Tuyển Thợ Mỏ\n\n> Website viết về ngành Than và tư vấn học nghề mỏ tại Quảng Ninh do Nguyễn Tử Linh biên soạn.\n\n## Thông tin tuyển sinh đang áp dụng\n\n- Căn cứ: ${recruitment.source_notice}.\n- Thời gian học các nghề đang tuyển: ${recruitment.training_duration}.\n- Điều kiện: nam ${criteria.age_min}–${criteria.age_max} tuổi, cao từ 1,53 m, nặng từ ${criteria.weight_min_kg} kg, có sức khỏe tốt và đáp ứng yêu cầu khám tuyển.\n- Sức khỏe: không cận thị; không mắc bệnh tim mạch, huyết áp hoặc bệnh về mắt ảnh hưởng đến công việc.\n- Đăng ký ban đầu chưa cần nộp giấy tờ. Khi có lịch nhập học, mang CCCD gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; không gửi giấy tờ gốc qua bưu điện.\n- Quyền lợi khi học: miễn kinh phí đào tạo, bố trí ba bữa/ngày và ký túc xá; hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển.\n- Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.\n- Tin tuyển dụng chuẩn: [Tuyển lao động học nghề mỏ hầm lò năm 2026](${base}/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/).\n- Vị trí 1: [Kỹ thuật khai thác mỏ hầm lò](${base}/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/).\n- Vị trí 2: [Kỹ thuật xây dựng mỏ hầm lò](${base}/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/).\n- Liên hệ tư vấn: Zalo 096 304 8585.\n\n## Nguyên tắc nội dung\n\n- Chỉ giữ bài có nguồn dữ kiện, giá trị thực tế và nội dung nguyên bản.\n- Phân biệt rõ số liệu, nhận định và thông tin cần xác nhận theo từng đợt.\n- Bài biên tập từ tin chính thống sử dụng đúng ảnh của bài nguồn tương ứng; các bài hướng dẫn nguyên bản sử dụng Thư viện ảnh Vinacomin.\n- Không đặt liên kết nguồn ra ngoài trong giao diện bài viết.\n\n## Kho kiến thức ngành mỏ\n\n${feedItems.map((article) => `- [${article.title}](${base}/${article.urlPath}/): ${article.lead}`).join("\n")}\n`;
 fs.writeFileSync(path.join(root, "llms.txt"), llms);
 
 const imageRegistry = Object.fromEntries(feedItems.map((article) => {

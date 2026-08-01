@@ -1,9 +1,15 @@
+import fs from "node:fs";
+import path from "node:path";
+
+const recruitment = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
+const criteria = recruitment.criteria;
+
 export const curatedArticles = [
   {
     slug: "dieu-kien-tuyen-tho-lo-2026",
     section: "Hướng dẫn nhập nghề",
     title: "Điều kiện tuyển thợ lò năm 2026: cánh cửa mở với ai?",
-    description: "Điều kiện tuyển thợ lò 2026 gồm nam 18–40 tuổi, cao từ 1,53 m, nặng từ 47 kg và có sức khỏe tốt để học nghề tại Quảng Ninh.",
+    description: `Điều kiện tuyển thợ lò tháng 8/2026 gồm nam ${criteria.age_min}–${criteria.age_max} tuổi, cao từ 1,53 m, nặng từ ${criteria.weight_min_kg} kg và có sức khỏe tốt để học nghề tại Quảng Ninh.`,
     lead: "Cánh cửa vào nghề không đòi hỏi kinh nghiệm sẵn có; nó bắt đầu bằng sức khỏe, thể lực và quyết tâm học một công việc có tay nghề.",
     keyword: "điều kiện tuyển thợ lò 2026",
     keywords: ["điều kiện tuyển thợ lò 2026", "tuyển thợ mỏ Quảng Ninh", "học nghề mỏ 2–3 tháng", "sức khỏe thợ lò"],
@@ -16,14 +22,14 @@ export const curatedArticles = [
     actionTitle: "Ba phút để biết mình có thể bắt đầu từ đâu",
     conclusionTitle: "Sức khỏe là hành trang đầu tiên của người thợ",
     facts: [
-      ["18–40 tuổi", "Độ tuổi tiếp nhận ban đầu theo thông báo tuyển sinh năm 2026."],
+      [`${criteria.age_min}–${criteria.age_max} tuổi`, "Độ tuổi tiếp nhận theo thông tin tuyển sinh tháng 8/2026."],
       ["Từ 1,53 m", "Mốc chiều cao để đăng ký kiểm tra điều kiện."],
-      ["Từ 47 kg", "Mốc cân nặng tối thiểu ở bước sàng lọc ban đầu."],
+      [`Từ ${criteria.weight_min_kg} kg`, "Mốc cân nặng tối thiểu ở bước sàng lọc ban đầu."],
       ["Sức khỏe tốt", "Được đánh giá trực tiếp trước khi bước vào chương trình học nghề."],
     ],
     intro: [
       "Ở nhiều vùng quê, bước ngoặt nghề nghiệp có thể bắt đầu bằng những việc rất giản dị: đứng lên bàn cân, đo lại chiều cao và tự hỏi mình đã sẵn sàng cho một môi trường công nghiệp hay chưa. <strong>Điều kiện tuyển thợ lò 2026</strong> không dựng lên một cánh cửa khó hiểu; các mốc ban đầu đều cụ thể để người lao động tự đối chiếu trước khi đi xa.",
-      "Theo Thông báo số 10/TB-CĐTKV ngày 02/04/2026 của Trường Cao đẳng Than - Khoáng sản Việt Nam, đợt tuyển hiện hành dành cho nam từ 18 đến 40 tuổi, cao từ 1,53 m, nặng từ 47 kg và có sức khỏe tốt. Người phù hợp được hướng dẫn khám, hoàn thiện hồ sơ rồi bước vào lộ trình học nghề tại Quảng Ninh.",
+      `Theo ${recruitment.source_notice}, đợt tiếp nhận hiện hành dành cho nam từ ${criteria.age_min} đến ${criteria.age_max} tuổi, cao từ 1,53 m, nặng từ ${criteria.weight_min_kg} kg, có sức khỏe tốt và đáp ứng yêu cầu khám tuyển. Người phù hợp được hướng dẫn khám, hoàn thiện hồ sơ rồi bước vào lộ trình học nghề tại Quảng Ninh.`,
     ],
     sections: [
       {
@@ -60,23 +66,23 @@ export const curatedArticles = [
       ["Nhận hướng dẫn", "Trao đổi về nghề học, chính sách và lịch tiếp nhận phù hợp."],
       ["Khám theo lịch", "Hoàn thành bước kiểm tra trực tiếp trước khi nhập học."],
     ],
-    takeaway: "Nếu đang trong độ tuổi 18–40, đạt mốc thể lực và có sức khỏe tốt, bạn đã có nền tảng để tìm hiểu nghiêm túc về nghề mỏ. Một tin nhắn trung thực hôm nay có thể là bước mở đầu cho khóa học 2–3 tháng và một công việc có tay nghề tại Quảng Ninh.",
+    takeaway: `Nếu đang trong độ tuổi ${criteria.age_min}–${criteria.age_max}, đạt mốc thể lực và có sức khỏe tốt, bạn đã có nền tảng để tìm hiểu nghiêm túc về nghề mỏ. Một đăng ký trung thực hôm nay có thể là bước mở đầu cho khóa học 2–3 tháng và một công việc có tay nghề tại Quảng Ninh.`,
     faq: [
       ["Đủ chiều cao và cân nặng là có thể đăng ký ngay không?", "Có thể gửi thông tin để được kiểm tra ban đầu. Bước tiếp theo là khám sức khỏe, đối chiếu hồ sơ và lịch của đợt tiếp nhận."],
       ["Bị cận thị có thể học nghề mỏ không?", "Thị lực liên quan trực tiếp đến an toàn. Hãy nói rõ tình trạng mắt để được đánh giá theo yêu cầu của nghề và vị trí dự kiến."],
       ["Người ở tỉnh xa bắt đầu bằng cách nào?", "Gửi năm sinh, chiều cao, cân nặng, sức khỏe và tỉnh đang sinh sống. Khi phù hợp, bạn sẽ được hướng dẫn hồ sơ, lịch và địa điểm trước khi di chuyển."],
     ],
     sources: [
-      {publisher: "Trường Cao đẳng Than - Khoáng sản Việt Nam", title: "Thông báo số 10/TB-CĐTKV về tuyển sinh nghề mỏ năm 2026", date: "02/04/2026"},
+      {publisher: "Phòng Tuyển sinh Miền Trung", title: "Thông tin tuyển sinh nghề mỏ tháng 8/2026", date: "01/08/2026"},
     ],
     related: ["ho-so-hoc-nghe-mo-can-gi", "hoc-nghe-khai-thac-mo-2-3-thang"],
   },
   {
     slug: "ho-so-hoc-nghe-mo-can-gi",
     section: "Hướng dẫn nhập nghề",
-    title: "Hồ sơ học nghề mỏ năm 2026: bốn giấy tờ cho một khởi đầu",
-    description: "Hồ sơ học nghề mỏ gồm 02 bộ với sơ yếu lý lịch, giấy khai sinh, bằng tốt nghiệp văn hóa và căn cước công dân theo hướng dẫn năm 2026.",
-    lead: "Một túi hồ sơ gồm bốn loại giấy tờ, xếp thành 02 bộ, là phần chuẩn bị hành chính để người lao động chủ động ngày đến Quảng Ninh.",
+    title: "Hồ sơ học nghề mỏ năm 2026: đăng ký trước, chuẩn bị sau",
+    description: "Đăng ký học nghề mỏ chưa cần nộp hồ sơ ngay. Khi có lịch nhập học, mang CCCD gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có.",
+    lead: "Ứng viên được kiểm tra điều kiện trước; giấy tờ chỉ chuẩn bị sau khi có hướng dẫn và lịch tiếp nhận rõ ràng, nhờ đó tránh công chứng hoặc đi lại không cần thiết.",
     keyword: "hồ sơ học nghề mỏ cần gì",
     keywords: ["hồ sơ học nghề mỏ cần gì", "đăng ký học nghề mỏ", "tuyển thợ mỏ Quảng Ninh", "nhập học nghề mỏ"],
     image: "https://vinacomin.vn/Share/Media/2018/07/IMG_4062.jpg",
@@ -85,37 +91,37 @@ export const curatedArticles = [
     imagePolicy: "editorial-topic-override",
     published: "2026-07-31T09:10:00+07:00",
     updated: "2026-08-01T21:05:00+07:00",
-    factsTitle: "Bốn loại giấy tờ cần có trong mỗi bộ",
-    actionTitle: "Xếp hồ sơ gọn để ngày tiếp nhận nhẹ nhàng",
-    conclusionTitle: "Một bộ giấy tờ rõ ràng mở đường cho ngày nhập học",
+    factsTitle: "Ba giấy tờ cần nhớ, một nguyên tắc cần giữ",
+    actionTitle: "Kiểm tra điều kiện trước khi làm giấy tờ",
+    conclusionTitle: "Đúng giấy tờ, đúng lịch, không phải đi lại nhiều lần",
     facts: [
-      ["02 bộ", "Số lượng hồ sơ dự tuyển chuẩn bị sau bước kiểm tra điều kiện."],
-      ["Sơ yếu lý lịch", "Mỗi bộ có 01 bản để ghi nhận thông tin cá nhân."],
-      ["Giấy khai sinh", "Mỗi bộ có 01 bản sao để đối chiếu ngày sinh, quê quán."],
-      ["Bằng và CCCD", "Mỗi bộ có bản công chứng bằng văn hóa và căn cước công dân."],
+      ["Chưa cần nộp ngay", "Bước đăng ký ban đầu chỉ cần thông tin cá nhân và thể lực."],
+      ["CCCD gốc", "Tự bảo quản và mang theo khi đến làm thủ tục nhập học."],
+      ["Giấy khai sinh", "Chuẩn bị để đối chiếu họ tên, ngày sinh và quê quán."],
+      ["Bằng nếu có", "Mang bằng THCS hoặc THPT đang có; chưa có vẫn đăng ký tư vấn trước."],
     ],
     intro: [
-      "Với lao động ở xa, chuyến đi Quảng Ninh thường bắt đầu không phải ở bến xe mà bên chiếc bàn nhỏ trong gia đình, nơi từng giấy tờ được kiểm tra và xếp lại ngay ngắn. Câu hỏi <strong>hồ sơ học nghề mỏ cần gì</strong> có câu trả lời khá gọn: 02 bộ, mỗi bộ gồm bốn loại giấy tờ.",
-      "Theo Thông báo số 10/TB-CĐTKV của Trường Cao đẳng Than - Khoáng sản Việt Nam, đó là sơ yếu lý lịch, bản sao giấy khai sinh, bản công chứng bằng tốt nghiệp văn hóa và bản công chứng căn cước công dân. Người lao động được đối chiếu điều kiện trước, rồi mới nhận hướng dẫn để chuẩn bị đúng từ quê nhà.",
+      "Với lao động ở xa, điều quan trọng nhất không phải làm thật nhiều giấy tờ từ sớm mà là biết mình có phù hợp và có lịch tiếp nhận rõ ràng. Câu hỏi <strong>hồ sơ học nghề mỏ cần gì</strong> vì thế được trả lời theo hai bước: đăng ký kiểm tra điều kiện trước, chuẩn bị giấy tờ sau.",
+      "Khi được xác nhận lịch nhập học, người lao động mang CCCD gốc, giấy khai sinh và bằng THCS hoặc THPT nếu đang có. Chưa có bằng vẫn có thể đăng ký tư vấn để được đối chiếu theo hệ đào tạo; không gửi giấy tờ gốc qua bưu điện và không cần đăng ảnh giấy tờ lên biểu mẫu website.",
     ],
     sections: [
       {
-        title: "Khi bốn giấy tờ cùng kể đúng một câu chuyện",
+        title: "Giấy tờ cần thống nhất thông tin cơ bản",
         paragraphs: [
-          "Họ tên, ngày sinh và quê quán trên giấy khai sinh, căn cước, bằng văn hóa và sơ yếu lý lịch cần thống nhất. Nếu có sai lệch, báo sớm giúp người phụ trách hướng dẫn xử lý trước ngày nhập học, để thủ tục tiếp nhận diễn ra nhanh và nhẹ nhàng hơn.",
-          "Một cách chuẩn bị hiệu quả là chụp rõ từng giấy tờ, lưu trong một thư mục riêng trên điện thoại và xếp bản giấy theo đúng thứ tự. Bản chụp hỗ trợ đối chiếu từ xa; bộ hồ sơ giấy được dùng khi làm thủ tục chính thức.",
+          "Họ tên, ngày sinh và quê quán trên giấy khai sinh, căn cước và bằng văn hóa cần thống nhất. Nếu có sai lệch, báo sớm giúp người phụ trách hướng dẫn xử lý trước ngày nhập học để thủ tục tiếp nhận diễn ra nhẹ nhàng hơn.",
+          "Chỉ cung cấp bản chụp giấy tờ khi người phụ trách đã xác nhận mục đích và kênh tiếp nhận phù hợp. Bản gốc luôn do người lao động tự bảo quản và mang theo khi đến điểm tiếp nhận chính thức.",
         ],
         bullets: [
           "Đối chiếu họ tên, ngày sinh và quê quán giữa các giấy tờ.",
-          "Lưu ảnh chụp rõ nét của từng giấy tờ trong một thư mục riêng.",
-          "Giữ bản gốc bên mình và xuất trình tại điểm tiếp nhận có trách nhiệm.",
+          "Không đăng ảnh CCCD hoặc giấy tờ cá nhân lên biểu mẫu công khai.",
+          "Giữ bản gốc bên mình và chỉ xuất trình tại điểm tiếp nhận chính thức.",
           "Ghi lại người phụ trách, số điện thoại, ngày giờ và địa điểm tiếp nhận.",
         ],
       },
       {
         title: "Chuẩn bị từ quê nhà để chuyến đi không bị động",
         paragraphs: [
-          "Lớp chuẩn bị thứ nhất là 02 bộ giấy tờ, bản chụp dự phòng và túi đựng chống ướt. Lớp thứ hai là lịch xe, số điện thoại người hướng dẫn, địa chỉ tiếp nhận, khoản chi tiêu cá nhân và thông tin để gia đình liên lạc khi cần.",
+          "Lớp chuẩn bị thứ nhất là CCCD gốc, giấy khai sinh, bằng văn hóa nếu có và túi đựng chống ướt. Lớp thứ hai là lịch xe, số điện thoại người hướng dẫn, địa chỉ tiếp nhận, khoản chi tiêu cá nhân và thông tin để gia đình liên lạc khi cần.",
           "Khi cả hai lớp đều rõ, chuyến đi từ quê nhà đến Quảng Ninh không còn là một quyết định mơ hồ. Người lao động biết mình gặp ai, đến đâu, mang gì và sẽ làm thủ tục nào trước.",
         ],
       },
@@ -129,18 +135,18 @@ export const curatedArticles = [
     ],
     checklist: [
       ["Đối chiếu", "So họ tên, ngày sinh và quê quán trên từng giấy tờ."],
-      ["Chụp dự phòng", "Lưu ảnh rõ nét trong thư mục riêng trên điện thoại."],
-      ["Xếp thành 02 bộ", "Đặt giấy tờ theo cùng một thứ tự để kiểm tra nhanh."],
+      ["Giữ giấy tờ gốc", "Tự bảo quản CCCD và chỉ xuất trình tại nơi tiếp nhận."],
+      ["Chuẩn bị gọn", "CCCD, giấy khai sinh và bằng văn hóa nếu đang có."],
       ["Ghi lịch tiếp nhận", "Lưu người phụ trách, địa điểm và giờ có mặt."],
     ],
-    takeaway: "Sau bước kiểm tra điều kiện, 02 bộ giấy tờ được chuẩn bị đúng và một lịch tiếp nhận rõ ràng là đủ để người lao động chủ động ngày đi. Con đường từ quê nhà tới lớp học nghề tại Quảng Ninh vì thế trở nên cụ thể, dễ chuẩn bị và ít phát sinh hơn.",
+    takeaway: "Sau bước kiểm tra điều kiện, CCCD gốc, giấy khai sinh, bằng văn hóa nếu có và một lịch tiếp nhận rõ ràng là đủ để người lao động chủ động ngày đi. Hãy chờ hướng dẫn theo đợt trước khi công chứng thêm giấy tờ để tránh tốn thời gian và chi phí.",
     faq: [
-      ["Chưa có bằng tốt nghiệp văn hóa thì làm thế nào?", "Hãy báo đúng tình trạng giấy tờ để được đối chiếu theo hệ đào tạo và hướng dẫn của đợt tiếp nhận."],
-      ["Có cần gửi căn cước công dân gốc qua bưu điện không?", "Hồ sơ hiện yêu cầu bản công chứng căn cước công dân. Bản gốc nên được người lao động tự bảo quản và mang theo khi cần đối chiếu."],
+      ["Chưa có bằng tốt nghiệp văn hóa thì làm thế nào?", "Vẫn có thể đăng ký tư vấn trước. Hãy báo đúng tình trạng giấy tờ để được đối chiếu theo hệ đào tạo và hướng dẫn của đợt tiếp nhận."],
+      ["Có cần gửi căn cước công dân gốc qua bưu điện không?", "Không. Bản gốc phải do người lao động tự bảo quản và mang theo khi đến điểm tiếp nhận chính thức."],
       ["Khi nào nên bắt đầu làm hồ sơ?", "Sau khi gửi thông tin và được kiểm tra điều kiện ban đầu. Cách này giúp bạn chuẩn bị đúng giấy tờ và đúng lịch của đợt tiếp nhận."],
     ],
     sources: [
-      {publisher: "Trường Cao đẳng Than - Khoáng sản Việt Nam", title: "Thông báo số 10/TB-CĐTKV về hồ sơ dự tuyển nghề mỏ năm 2026", date: "02/04/2026"},
+      {publisher: "Phòng Tuyển sinh Miền Trung", title: "Hướng dẫn hồ sơ nhập học nghề mỏ tháng 8/2026", date: "01/08/2026"},
     ],
     related: ["dieu-kien-tuyen-tho-lo-2026", "hoc-nghe-khai-thac-mo-2-3-thang"],
   },
@@ -275,15 +281,15 @@ export const curatedArticles = [
       {
         title: "Ai có thể viết tiếp một câu chuyện như anh Hưng, anh Sình?",
         paragraphs: [
-          "Chương trình phù hợp với nam từ 18 đến 40 tuổi, cao từ 1,53 m, nặng từ 47 kg, có sức khỏe tốt và sẵn sàng học tập, làm việc tại Quảng Ninh. Người có mục tiêu rõ—muốn một nghề ổn định, chấp nhận môi trường công nghiệp, làm việc theo ca và tôn trọng kỷ luật—thường thích nghi tốt hơn.",
-          "Với người đang làm công việc thời vụ, thu nhập bấp bênh hoặc chưa có nghề chuyên môn, 2–3 tháng học nghề là một khoản đầu tư thời gian đáng cân nhắc. Bước đầu chỉ cần gửi năm sinh, chiều cao, cân nặng và tình trạng sức khỏe. Khi đủ điều kiện, người đăng ký được hướng dẫn 02 bộ hồ sơ, lịch nhập học và hành trình đến Quảng Ninh.",
+          `Chương trình phù hợp với nam từ ${criteria.age_min} đến ${criteria.age_max} tuổi, cao từ 1,53 m, nặng từ ${criteria.weight_min_kg} kg, có sức khỏe tốt và sẵn sàng học tập, làm việc tại Quảng Ninh. Người có mục tiêu rõ—muốn một nghề ổn định, chấp nhận môi trường công nghiệp, làm việc theo ca và tôn trọng kỷ luật—thường thích nghi tốt hơn.`,
+          "Với người đang làm công việc thời vụ, thu nhập bấp bênh hoặc chưa có nghề chuyên môn, 2–3 tháng học nghề là một khoản đầu tư thời gian đáng cân nhắc. Bước đầu chỉ cần gửi năm sinh, chiều cao, cân nặng và tình trạng sức khỏe. Khi đủ điều kiện, người đăng ký được hướng dẫn giấy tờ, lịch nhập học và hành trình đến Quảng Ninh.",
         ],
       },
     ],
     checklist: [
       ["Gửi thông tin", "Năm sinh, chiều cao/cân nặng và tình trạng sức khỏe hiện tại."],
       ["Kiểm tra điều kiện", "Đối chiếu độ tuổi, thể lực và sức khỏe trước khi chuẩn bị hồ sơ."],
-      ["Chuẩn bị nhập học", "Nhận hướng dẫn 02 bộ hồ sơ, thời gian và địa điểm cụ thể."],
+      ["Chuẩn bị nhập học", "Nhận hướng dẫn giấy tờ, thời gian và địa điểm cụ thể."],
       ["Học và nhận việc", "Hoàn thành 2–3 tháng đào tạo, đạt yêu cầu và vào doanh nghiệp làm việc."],
     ],
     takeaway: "Từ Đặng Văn Hưng ở Gia Lai đến Mùa A Sình ở Lai Châu, điểm chung không phải xuất phát điểm thuận lợi mà là quyết định học một nghề, đi làm có kỷ luật và bền bỉ nâng tay nghề. Nếu đủ sức khỏe và đang muốn thay đổi thu nhập bằng lao động chân chính, nghề mỏ tại Quảng Ninh là một lựa chọn xứng đáng để bắt đầu ngay hôm nay.",

@@ -55,8 +55,11 @@
       utm_source: params.get('utm_source'),
       utm_medium: params.get('utm_medium'),
       utm_campaign: params.get('utm_campaign'),
+      utm_content: params.get('utm_content'),
+      utm_term: params.get('utm_term'),
       province: document.documentElement.dataset.province || null,
       landing_path: location.pathname,
+      referrer_host: document.referrer ? new URL(document.referrer).hostname : null,
       first_seen_at: new Date().toISOString()
     };
     attribution = JSON.parse(localStorage.getItem('thaylinh_attribution') || '{}');
@@ -80,33 +83,4 @@
     });
   });
 
-  // Tải mô-đun bổ sung theo đường dẫn của chính app.js,
-  // để hoạt động đúng cả ở trang chủ và các trang con theo tỉnh.
-  try {
-    const scriptUrl = document.currentScript && document.currentScript.src
-      ? document.currentScript.src
-      : new URL('app.js', location.href).href;
-    const assetBase = new URL('.', scriptUrl);
-
-    const loadStyle = (href, marker) => {
-      if (document.querySelector(`link[${marker}]`)) return;
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = new URL(href, assetBase).href;
-      link.setAttribute(marker, 'true');
-      document.head.append(link);
-    };
-
-    const loadScript = (src, marker) => {
-      if (document.querySelector(`script[${marker}]`)) return;
-      const script = document.createElement('script');
-      script.src = new URL(src, assetBase).href;
-      script.defer = true;
-      script.setAttribute(marker, 'true');
-      document.head.append(script);
-    };
-
-    loadStyle('facebook-brand.css?v=2', 'data-facebook-brand-style');
-    loadScript('facebook-brand.js?v=2', 'data-facebook-brand-script');
-  } catch (_) {}
 })();

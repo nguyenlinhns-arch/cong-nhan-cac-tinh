@@ -59,10 +59,16 @@
       "utm_source",
       "utm_medium",
       "utm_campaign",
+      "utm_content",
       "province",
       "trade",
       "source",
+      "medium",
+      "campaign",
+      "content",
       "action",
+      "eligibility",
+      "job_id",
     ];
     return Object.fromEntries(
       allowed
@@ -110,6 +116,33 @@
       return;
     }
 
+    if (item.event === "ApplicationStart") {
+      window.gtag("event", "application_start", params);
+      window.fbq("trackCustom", "ApplicationStart", params);
+      return;
+    }
+
+    if (item.event === "ApplicationSubmit") {
+      window.gtag("event", "application_submit", params);
+      window.fbq("trackCustom", "ApplicationSubmit", params);
+      return;
+    }
+
+    if (item.event === "Lead") {
+      window.gtag("event", "generate_lead", params);
+      window.fbq("track", "Lead", {
+        content_name: params.job_id || "recruitment_application",
+        content_category: params.eligibility || "unknown",
+      });
+      return;
+    }
+
+    if (item.event === "ApplicationDeliveryFailure") {
+      window.gtag("event", "application_delivery_failed", params);
+      window.fbq("trackCustom", "ApplicationDeliveryFailure", params);
+      return;
+    }
+
     window.gtag("event", item.event, params);
   }
 
@@ -123,6 +156,9 @@
   loadGoogleAnalytics();
   loadMetaPixel();
   queuedEvents.forEach(sendMeasurement);
+  const queuedTracking = Array.isArray(window.tlTrackingQueue) ? window.tlTrackingQueue.splice(0) : [];
+  window.tlTrack = (name, payload = {}) => dataLayer.push({ event: name, ...payload });
+  queuedTracking.forEach(([name, payload]) => window.tlTrack(name, payload));
 
   let applicationFormOpened = false;
   function trackApplicationFormOpen(context) {

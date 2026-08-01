@@ -30,6 +30,10 @@ jobs:
           node tools/build-search-index.mjs
           node tools/validate-seo-library.mjs
           node tools/audit-technical-seo.mjs
+          node tools/validate-job-postings.mjs
+          node tools/validate-recruitment-funnel.mjs
+          node tools/test-recruitment-application.mjs
+          node tools/validate-crm-automation.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
           # Publish the recruitment portal at the custom-domain root.
