@@ -400,7 +400,7 @@ for (const role of roleJobs) {
     }
     if (jobPosting.title !== role.title) errors.push(`${role.slug}: JobPosting title must be a single role`);
     if (jobPosting.directApply !== true) errors.push(`${role.slug}: directApply must be true because the application is completed on the job page`);
-    if (jobPosting.baseSalary) errors.push(`${role.slug}: baseSalary must be omitted because the conditional 20–25 million commitment is not a verified base-salary field`);
+    if (jobPosting.baseSalary) errors.push(`${role.slug}: baseSalary must be omitted because the 20–25 million figure is a conditional income commitment, not a fixed base salary`);
     if (jobPosting.hiringOrganization?.name !== recruitment.hiring_organization) errors.push(`${role.slug}: hiringOrganization does not match the recruitment master`);
     if (jobPosting.jobLocation?.address?.addressRegion !== recruitment.work_location) errors.push(`${role.slug}: jobLocation must be the actual Quảng Ninh work location`);
     if (jobPosting.jobLocation?.address?.streetAddress) errors.push(`${role.slug}: recruitment office must not be represented as the worksite`);
@@ -434,7 +434,7 @@ for (const file of allHtml) {
   const visible = strip(html);
   if (!/<meta\s+name="viewport"\s+content="[^"]*width=device-width/i.test(html)) errors.push(`${rel}: missing responsive viewport`);
   if (!/<link\s+rel="stylesheet"\s+href="\/mobile-ux\.css\?v=3"/i.test(html)) errors.push(`${rel}: missing shared mobile stylesheet`);
-  if (!/<script\s+src="\/analytics\.js\?v=3"\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing current shared analytics script`);
+  if (!/<script\s+src="\/analytics\.js\?v=4"\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing current shared analytics script`);
   if (!/<script\s+src="\/mobile-ux\.js\?v=3"\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing shared mobile script`);
   if (/Bài\s+\d{1,2}\s*\/\s*50|50\+?\s*bài/iu.test(visible)) errors.push(`${rel}: contains an obsolete article-count claim`);
   if (/18(?:–|-|\s+đến\s+)35|1(?:m|,)56|1,56\s*m?|48\s*kg/iu.test(visible)) errors.push(`${rel}: contains superseded 2026 recruitment criteria`);

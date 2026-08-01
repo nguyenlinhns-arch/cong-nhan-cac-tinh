@@ -3,6 +3,11 @@ import path from "node:path";
 
 const root = path.resolve("tuyen-tho-mo");
 const outputRoot = path.join(root, "viec-lam-nganh-than");
+const base = "https://thaylinhtuyenthomo.vn";
+const personId = `${base}/tac-gia/nguyen-tu-linh/#person`;
+const organizationId = `${base}/#organization`;
+const websiteId = `${base}/#website`;
+const editorialPolicyUrl = `${base}/nguyen-tac-bien-tap/`;
 const recruitment = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
 const criteria = recruitment.criteria;
 const heightLabel = `${Math.floor(criteria.height_min_cm / 100)}m${String(criteria.height_min_cm % 100).padStart(2, "0")}`;
@@ -75,6 +80,7 @@ function provincePage(province) {
     : "";
   const localContext = provinceEditorialAngles[slug]
     || `Từ ${name}, người lao động có thể kiểm tra điều kiện từ xa, học nghề trong 2–3 tháng và chuẩn bị cho công việc tại Quảng Ninh theo một lộ trình rõ ràng.`;
+  const hasLocalEvidence = Boolean(story || reportage);
   const description = `Tuyển thợ mỏ tại ${name}${aliasPhrase}: học nghề 2–3 tháng, hỗ trợ ăn ở, cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động tại Quảng Ninh.`;
   const localStories = [
     story ? {
@@ -112,6 +118,11 @@ function provincePage(province) {
         description,
         inLanguage: "vi-VN",
         dateModified: "2026-08-01",
+        isPartOf: { "@id": websiteId },
+        author: { "@id": personId },
+        publisher: { "@id": organizationId },
+        publishingPrinciples: editorialPolicyUrl,
+        about: { "@id": `${base}/thong-tin-tuyen-tho-mo/#webpage` },
         breadcrumb: { "@id": `${canonical}#breadcrumb` },
       },
       {
@@ -150,7 +161,9 @@ function provincePage(province) {
   <title>Tuyển thợ mỏ tại ${name} | Học nghề 2–3 tháng – Thầy Linh</title>
   <meta name="description" content="${description}">
   <meta name="keywords" content="${keywords}">
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="robots" content="${hasLocalEvidence ? "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" : "noindex,follow"}">
+  <meta name="author" content="Nguyễn Tử Linh">
+  <link rel="author" href="/tac-gia/nguyen-tu-linh/">
   <link rel="canonical" href="${canonical}">
   <link rel="icon" href="/favicon.ico">
   <link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48">
@@ -194,7 +207,7 @@ function provincePage(province) {
           <a class="contact-button contact-button--messenger" href="https://zalo.me/0963048585" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="province-${slug}"><span class="contact-icon contact-icon--text">Z</span><span><small>Kênh dự phòng</small><strong>Zalo 096 304 8585</strong></span></a>
         </div>
       </div>
-      <aside class="local-check"><p class="eyebrow">BẮT ĐẦU TỪ HÔM NAY</p><h2>Gửi 3 thông tin</h2><ol><li><b>1</b><span>Năm sinh</span></li><li><b>2</b><span>Chiều cao – cân nặng</span></li><li><b>3</b><span>Tình trạng sức khỏe</span></li></ol><button class="copy-button copy-button--full" type="button" data-copy-template>Sao chép mẫu tin nhắn</button><p>Thầy Linh kiểm tra điều kiện trước, sau đó mới hướng dẫn hồ sơ và lịch tiếp nhận phù hợp.</p></aside>
+      <aside class="local-check"><p class="eyebrow">BẮT ĐẦU TỪ HÔM NAY</p><h2>Gửi 3 thông tin</h2><ol><li><b>1</b><span>Năm sinh</span></li><li><b>2</b><span>Chiều cao – cân nặng</span></li><li><b>3</b><span>Tình trạng sức khỏe</span></li></ol><a class="button button--outline-dark copy-button--full" href="https://zalo.me/0963048585" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="province-${slug}-check">Nộp hồ sơ qua Zalo</a><p>Thầy Linh kiểm tra điều kiện trước, sau đó mới hướng dẫn hồ sơ và lịch tiếp nhận phù hợp.</p></aside>
     </section>
 
     <section class="trust-strip trust-strip--local" aria-label="Thông tin chính"><span>✓ Nam ${criteria.age_min}–${criteria.age_max} tuổi</span><span>✓ Cao từ ${heightLabel}</span><span>✓ Nặng từ ${criteria.weight_min_kg}kg</span><span>✓ Sức khỏe tốt</span></section>
@@ -228,11 +241,11 @@ ${storySection}
   </main>
 
   <section class="final-cta" aria-labelledby="final-title"><div><p class="eyebrow eyebrow--light">TƯ VẤN TUYỂN THỢ MỎ TẠI ${name.toLocaleUpperCase("vi")}</p><h2 id="final-title">Gửi 3 thông tin để kiểm tra điều kiện</h2><p>Năm sinh · Chiều cao/cân nặng · Tình trạng sức khỏe hiện tại.</p></div><div class="contact-pair"><a class="contact-button contact-button--zalo" href="${applicationUrl}" data-contact="application"><span class="contact-icon contact-icon--text">✓</span><span><small>Biểu mẫu một phút</small><strong>Ứng tuyển nhanh</strong></span></a><a class="contact-button contact-button--messenger" href="https://zalo.me/0963048585" target="_blank" rel="noopener noreferrer" data-contact="zalo"><span class="contact-icon contact-icon--text">Z</span><span><small>Kênh dự phòng</small><strong>Zalo 096 304 8585</strong></span></a></div></section>
-  <footer class="site-footer"><div class="footer-brand"><img class="brand-mark" src="/assets/thay-linh-avatar.webp?v=3" alt="" width="45" height="45"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Tư vấn học nghề mỏ và việc làm ngành Than tại Quảng Ninh.</p></div></div><div class="footer-links"><a href="../../#theo-tinh">Tất cả tỉnh, thành</a><a href="../../#dieu-kien">Điều kiện tuyển</a><a href="../../tin-nganh-than/">Cẩm nang nghề mỏ</a><a href="../../quyen-rieng.html">Quyền riêng tư</a></div><p class="footer-note">Điều kiện cập nhật tháng 8/2026. Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.</p></footer>
+  <footer class="site-footer"><div class="footer-brand"><img class="brand-mark" src="/assets/thay-linh-avatar.webp?v=3" alt="" width="45" height="45"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Tư vấn học nghề mỏ và việc làm ngành Than tại Quảng Ninh.</p></div></div><div class="footer-links"><a href="../../#theo-tinh">Tất cả tỉnh, thành</a><a href="../../#dieu-kien">Điều kiện tuyển</a><a href="../../tin-nganh-than/">Cẩm nang nghề mỏ</a><a href="../../nguyen-tac-bien-tap/">Nguyên tắc biên tập</a><a href="../../quyen-rieng.html">Quyền riêng tư</a></div><p class="footer-note">Điều kiện cập nhật tháng 8/2026. Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.</p></footer>
   <div class="mobile-contact" aria-label="Liên hệ nhanh"><a class="mobile-contact__zalo" href="${applicationUrl}" data-contact="application"><b>✓</b><span>Ứng tuyển</span></a><a class="mobile-contact__messenger" href="https://zalo.me/0963048585" target="_blank" rel="noopener noreferrer" data-contact="zalo"><b>Z</b><span>Nhắn Zalo</span></a></div>
   <div class="toast" role="status" aria-live="polite" data-toast hidden></div>
   <script src="../../app.js?v=4" defer></script>
-  <script src="/analytics.js?v=3" defer></script>
+  <script src="/analytics.js?v=4" defer></script>
   <script src="/mobile-ux.js?v=3" defer></script>
 </body>
 </html>

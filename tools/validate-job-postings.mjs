@@ -56,7 +56,7 @@ for (const [slug, expectedTitle] of roles) {
   if (job.directApply !== true) errors.push(`${slug}: directApply must be true`);
   if (job.experienceRequirements !== "no requirements") errors.push(`${slug}: experienceRequirements must use Google's no requirements value`);
   if (job.educationRequirements !== "no requirements") errors.push(`${slug}: educationRequirements must use Google's no requirements value`);
-  if (job.baseSalary) errors.push(`${slug}: baseSalary is not allowed for an unverified income reference`);
+  if (job.baseSalary) errors.push(`${slug}: baseSalary is not allowed because the 20–25 million commitment depends on completing the labor norm and is not a fixed base salary`);
   if (new Date(job.validThrough).getTime() <= Date.now()) errors.push(`${slug}: validThrough is not in the future`);
   if (!html.includes("data-application-form") || !html.includes("data-application-submit")) errors.push(`${slug}: direct application form is missing`);
 

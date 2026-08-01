@@ -65,13 +65,23 @@
     try { stored = JSON.parse(localStorage.getItem("thaylinh_attribution") || "{}"); } catch (_) {}
     let referrer = "";
     try { referrer = document.referrer ? new URL(document.referrer).hostname : ""; } catch (_) {}
-    const inferredSource = /(^|\.)google\./i.test(referrer)
-      ? "google"
-      : /(^|\.)facebook\.com$|(^|\.)fb\.com$/i.test(referrer)
-        ? "facebook"
-        : /(^|\.)tiktok\.com$/i.test(referrer)
-          ? "tiktok"
-          : "website";
+    const inferredSource = /(^|\.)(?:chatgpt\.com|openai\.com)$/i.test(referrer)
+      ? "chatgpt"
+      : /(^|\.)(?:copilot\.microsoft\.com|microsoftcopilot\.com)$/i.test(referrer)
+        ? "copilot"
+        : /(^|\.)perplexity\.ai$/i.test(referrer)
+          ? "perplexity"
+          : /(^|\.)gemini\.google\.com$/i.test(referrer)
+            ? "gemini"
+            : /(^|\.)claude\.ai$/i.test(referrer)
+              ? "claude"
+              : /(^|\.)google\./i.test(referrer)
+                ? "google"
+                : /(^|\.)facebook\.com$|(^|\.)fb\.com$/i.test(referrer)
+                  ? "facebook"
+                  : /(^|\.)tiktok\.com$/i.test(referrer)
+                    ? "tiktok"
+                    : "website";
     return {
       source: params.get("utm_source") || stored.utm_source || params.get("source") || inferredSource,
       medium: params.get("utm_medium") || stored.utm_medium || (inferredSource === "website" ? "owned" : "referral"),

@@ -11,6 +11,7 @@
 - [Chuyện người thợ](https://thaylinhtuyenthomo.vn/chuyen-nguoi-tho/): câu chuyện có nguồn về ca làm và hành trình nghề nghiệp.
 - [Bộ chia sẻ thông tin](https://thaylinhtuyenthomo.vn/chia-se-thong-tin/): tạo nội dung có mã nguồn cho toàn quốc hoặc từng tỉnh.
 - [Người biên soạn Nguyễn Tử Linh](https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/).
+- [Nguyên tắc biên tập và kiểm chứng](https://thaylinhtuyenthomo.vn/nguyen-tac-bien-tap/): người chịu trách nhiệm, thứ tự ưu tiên nguồn, quy tắc cập nhật và đính chính.
 
 ## Trang thông tin hiện hành
 

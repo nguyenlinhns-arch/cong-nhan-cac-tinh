@@ -4,6 +4,13 @@
   "home_page_url": "https://thaylinhtuyenthomo.vn/",
   "feed_url": "https://thaylinhtuyenthomo.vn/feed.json",
   "language": "vi-VN",
+  "authors": [
+    {
+      "name": "Nguyễn Tử Linh",
+      "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+      "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+    }
+  ],
   "items": [
     {
       "id": "https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/dam-ha-than-thong-nhat-dao-tao-viec-lam-2026/",
@@ -13,6 +20,13 @@
       "image": "https://www.thanthongnhat.vn/uploads/news/2026_05/z1.jpg",
       "date_published": "2026-08-01T17:15:00+07:00",
       "date_modified": "2026-08-01T17:15:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "đào tạo nghề mỏ Đầm Hà 2026",
         "học nghề mỏ Đầm Hà, Quảng Ninh",
@@ -28,6 +42,13 @@
       "image": "https://vinacomin.vn/userfiles/thumbnail/3CD1ACDDBC195500420037F11052BB3AC2A43BA705A20BEC7AF921F56D4481D4.jpg",
       "date_published": "2026-08-01T17:00:00+07:00",
       "date_modified": "2026-08-01T17:00:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "Than Núi Béo tuyển sinh Cao Bằng 2026",
         "học nghề mỏ Khánh Xuân và Ca Thành, Cao Bằng",
@@ -43,6 +64,13 @@
       "image": "https://vinacomin.vn/userfiles/thumbnail/0DC64241602F874481C700BAB9C28C94B7C3FB036243DE0E5589A49E62E353DF.jpg",
       "date_published": "2026-08-01T16:45:00+07:00",
       "date_modified": "2026-08-01T16:45:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "tuyển sinh nghề mỏ Quảng La",
         "học nghề mỏ Quảng La, Quảng Ninh",
@@ -58,6 +86,13 @@
       "image": "https://caodangtkv.edu.vn/wp-content/uploads/2024/10/dsc09172-7283-3014-scaled.jpg",
       "date_published": "2026-08-01T16:30:00+07:00",
       "date_modified": "2026-08-01T16:30:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "tuyển lao động TKV Mường Khương Bát Xát",
         "học nghề mỏ Mường Khương và Bát Xát, Lào Cai",
@@ -73,6 +108,13 @@
       "image": "https://caodangtkv.edu.vn/wp-content/uploads/2024/09/DSC01197.jpg",
       "date_published": "2026-08-01T16:15:00+07:00",
       "date_modified": "2026-08-01T16:15:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "học nghề mỏ Tủa Chùa Điện Biên",
         "học nghề mỏ Tủa Chùa, Điện Biên",
@@ -88,6 +130,13 @@
       "image": "https://media.vietnamplus.vn/images/bc12065fef1dc485941a5ad9a9fec4718281d1c7559056f129a489bd35659341a76f4da8cfbfaf07fbec0742fb55d79e/mo20.jpg.avif",
       "date_published": "2026-08-01T16:12:00+07:00",
       "date_modified": "2026-08-01T16:12:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "hình ảnh người thợ mỏ Khe Chàm",
         "ảnh vùng than Quảng Ninh",
@@ -103,6 +152,13 @@
       "image": "https://thaylinhtuyenthomo.vn/assets/articles/mu-cang-chai-quy-che-2024.png",
       "date_published": "2026-08-01T16:00:00+07:00",
       "date_modified": "2026-08-01T16:00:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "học nghề mỏ Mù Cang Chải",
         "học nghề mỏ Mù Cang Chải, Yên Bái",
@@ -118,6 +174,13 @@
       "image": "https://media.baodautu.vn/Images/chicuong/2025/09/01/Duan.JPG",
       "date_published": "2026-08-01T16:00:00+07:00",
       "date_modified": "2026-08-01T16:00:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "Phạm Đình Duẩn cứu hộ thợ lò",
         "thợ mỏ Than Vàng Danh",
@@ -133,6 +196,13 @@
       "image": "https://congdoantkv.vn/data/images/news/04_07_2022_143427_173.jpg",
       "date_published": "2026-08-01T15:45:00+07:00",
       "date_modified": "2026-08-01T15:45:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "việc làm TKV Nguyên Bình Cao Bằng",
         "học nghề mỏ Nguyên Bình, Cao Bằng",
@@ -148,6 +218,13 @@
       "image": "https://media.baoquangninh.vn/dataimages/202008/original/images1413238_h__l_m_2.jpg",
       "date_published": "2026-08-01T15:36:00+07:00",
       "date_modified": "2026-08-01T15:36:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "thợ mỏ Hà Lầm Kỷ luật Đồng tâm",
         "Nguyễn Trọng Thái thợ lò",
@@ -163,6 +240,13 @@
       "image": "https://congdoantkv.vn/data/images/news/15_01_2020_025542_463.jpg",
       "date_published": "2026-08-01T15:30:00+07:00",
       "date_modified": "2026-08-01T15:30:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "việc làm TKV Mường Lát Lang Chánh",
         "học nghề mỏ Mường Lát và Lang Chánh, Thanh Hóa",
@@ -178,6 +262,13 @@
       "image": "https://cdn-i2.congthuong.vn/resize/th/upload/2026/03/05/z7591212612354937a4a9de82d8ccf87034eedfadda057-23581521.jpg",
       "date_published": "2026-08-01T15:24:00+07:00",
       "date_modified": "2026-08-01T15:24:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "người cha thợ lò Lý Văn Dỉ",
         "thợ mỏ Cao Bằng",
@@ -193,6 +284,13 @@
       "image": "https://clu.1cdn.vn/2023/08/06/congluan-cdn.congluan.vn-files-content-2023-08-06-_truong-cao-dang-than-khoang-san-viet-nam-dao-tao-du-nguon-nhan-luc-gop-phan-xay-dung-quang-ninh-giau-dep-191707413.jpg",
       "date_published": "2026-08-01T15:15:00+07:00",
       "date_modified": "2026-08-01T15:15:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "tuyển lao động nghề mỏ Cao Bằng 2018",
         "học nghề mỏ Nguyên Bình, Bảo Lạc và Bảo Lâm, Cao Bằng",
@@ -208,6 +306,13 @@
       "image": "https://cdn-images.vtv.vn/thumb_w/1200/2017/01-chuc-ban-vao-ca-an-toan-1512105262971.jpg",
       "date_published": "2026-08-01T15:12:00+07:00",
       "date_modified": "2026-08-01T15:12:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "hình ảnh thợ mỏ Vàng Danh",
         "phóng sự ảnh người thợ mỏ",
@@ -223,6 +328,13 @@
       "image": "https://caodangtkv.edu.vn/wp-content/uploads/2024/07/img_9978-scaled.jpg",
       "date_published": "2026-08-01T15:00:00+07:00",
       "date_modified": "2026-08-01T15:00:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "học nghề mỏ Bát Xát 2017",
         "học nghề mỏ Bát Xát, Lào Cai",
@@ -238,6 +350,13 @@
       "image": "https://cdn.tienphong.vn/images/6a0b4b6ff246e27ef4fad5296d98ff2e5a72795e1ab98e23ea91e2cf8efad463894d9664b9805f566d8c2a64a5841090714ef85a15986e12ec866c53661a093d/image001_BNOC.jpg",
       "date_published": "2026-08-01T15:00:00+07:00",
       "date_modified": "2026-08-01T15:00:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "người thợ lò giỏi Quảng Ninh",
         "Phan Văn Đạo thợ lò",
@@ -253,6 +372,13 @@
       "image": "https://clu.1cdn.vn/2023/08/06/congluan-cdn.congluan.vn-files-content-2023-08-06-_truong-cao-dang-than-khoang-san-viet-nam-dao-tao-du-nguon-nhan-luc-gop-phan-xay-dung-quang-ninh-giau-dep-191634707.jpg",
       "date_published": "2026-08-01T14:45:00+07:00",
       "date_modified": "2026-08-01T14:45:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "tuyển sinh nghề mỏ Sông Mã",
         "học nghề mỏ Sông Mã, Sơn La",
@@ -268,6 +394,13 @@
       "image": "https://cdnphoto.dantri.com.vn/h7fRAv-lMcNu1KFM8oQtwqcmGj4%3D/2020/10/25/ham-lo-duong-huy-15-1603637010632.jpg",
       "date_published": "2026-08-01T14:36:00+07:00",
       "date_modified": "2026-08-01T14:36:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "một ngày của thợ lò Dương Huy",
         "phóng sự ảnh thợ mỏ",
@@ -283,6 +416,13 @@
       "image": "https://vinacomin.vn/userfiles/thumbnail/7A24BA574912FA3F8E9249DF377A525FA83AD61F54C8AEFB129E2FE6E694EF47.jpeg",
       "date_published": "2026-08-01T14:30:00+07:00",
       "date_modified": "2026-08-01T14:30:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "chương trình học bổng “Thắp sáng ước mơ”",
         "Đoàn Thanh niên TKV trao 25 học bổng",
@@ -299,6 +439,13 @@
       "image": "https://static-images.vnncdn.net/files/publish/2023/9/25/w-z4695689093954-3eb49121769a737dc256b63157af5e8a-1-1543.jpg?s=_t631O9OhiSUqJtk9KO07w&width=0",
       "date_published": "2026-08-01T14:24:00+07:00",
       "date_modified": "2026-08-01T14:24:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "người lao động chọn nghề mỏ Quảng Ninh",
         "Bùi Văn Tuyên thợ lò",
@@ -314,6 +461,13 @@
       "image": "https://vinacomin.vn/userfiles/thumbnail/1892BB5EB03560C08306225FB075C68AA5DED91310D5ED0DB88BDDE6BC114E1C.jpeg",
       "date_published": "2026-08-01T14:15:00+07:00",
       "date_modified": "2026-08-01T14:15:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "chương trình chăm lo người có công năm 2026",
         "TKV ủng hộ người có công 20 tỷ đồng",
@@ -330,6 +484,13 @@
       "image": "https://media.vov.vn/sites/default/files/styles/large_watermark/public/2023-06/giadinh3thehethomo_6.jpg",
       "date_published": "2026-08-01T14:12:00+07:00",
       "date_modified": "2026-08-01T14:12:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "gia đình ba thế hệ thợ mỏ",
         "thợ lò Than Thống Nhất",
@@ -345,6 +506,13 @@
       "image": "https://vinacomin.vn/userfiles/thumbnail/062C2558567B1768481C30980FAFC2B701F3DD5F09590CB45F1BD8E1F1C5C3D9.png",
       "date_published": "2026-08-01T14:00:00+07:00",
       "date_modified": "2026-08-01T14:00:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "gói hỗ trợ bốn tỉnh miền núi phía Bắc",
         "TKV hỗ trợ miền núi phía Bắc 10 tỷ đồng",
@@ -361,6 +529,13 @@
       "image": "https://cdn.nhandan.vn/images/c3a00989bb29ee038827d8fd769da314f09f736d4307a35d8a856dfa1a1fea9e86110ea7c87546805ca841016976e1fb/7.jpg.avif",
       "date_published": "2026-08-01T14:00:00+07:00",
       "date_modified": "2026-08-01T14:00:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "ca làm việc của thợ mỏ Dương Huy",
         "chuyện thợ lò Quảng Ninh",
@@ -376,6 +551,13 @@
       "image": "https://vinacomin.vn/userfiles/thumbnail/DD83F080676E2733BB9A4C6C29FF9A30576E16803142E9054F5664CB0B21A45B.jpeg",
       "date_published": "2026-08-01T13:45:00+07:00",
       "date_modified": "2026-08-01T13:45:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "gói cứu trợ 10 tỷ đồng sau bão Bualoi",
         "TKV ủng hộ bão Bualoi 10 tỷ đồng",
@@ -392,6 +574,13 @@
       "image": "https://vinacomin.vn/userfiles/thumbnail/7FEAC87904D541F8F20FD9C152C3AE02D3811AAA9052A8D429711DF3410FE710.jpg",
       "date_published": "2026-08-01T13:30:00+07:00",
       "date_modified": "2026-08-01T13:30:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "gói hỗ trợ 5 tỷ đồng xóa nhà tạm tại Lâm Đồng",
         "TKV hỗ trợ xóa nhà tạm Lâm Đồng",
@@ -408,6 +597,13 @@
       "image": "https://vinacomin.vn/userfiles/thumbnail/D1F82C951855C469860FA4DD827D84DAFF35F7BA2DBBA33B3EA4E43617F57C59.jpg",
       "date_published": "2026-08-01T13:15:00+07:00",
       "date_modified": "2026-08-01T13:15:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "tuyển sinh nghề mỏ Lai Châu 2026",
         "học nghề mỏ Lai Châu",
@@ -423,6 +619,13 @@
       "image": "https://vinacomin.vn/userfiles/thumbnail/7BF922074FA7AE302EBF85BCCEFE23F4A9A7C73B108CEB332F0BA6DA2F9BB65D.jpg",
       "date_published": "2026-08-01T13:00:00+07:00",
       "date_modified": "2026-08-01T13:00:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "tuyển sinh nghề mỏ Đường Thượng",
         "học nghề mỏ Đường Thượng, Tuyên Quang",
@@ -438,6 +641,13 @@
       "image": "https://caodangtkv.edu.vn/wp-content/uploads/2026/01/DSC01850-scaled.jpg",
       "date_published": "2026-08-01T12:45:00+07:00",
       "date_modified": "2026-08-01T12:45:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "đào tạo nghề mỏ Lương Minh Quảng Tân",
         "học nghề mỏ Lương Minh và Quảng Tân",
@@ -453,6 +663,13 @@
       "image": "https://caodangtkv.edu.vn/wp-content/uploads/2025/04/00d53924abb118ef41a08.jpg",
       "date_published": "2026-08-01T12:30:00+07:00",
       "date_modified": "2026-08-01T12:30:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "học nghề mỏ Bảo Lạc",
         "học nghề mỏ Bảo Lạc, Cao Bằng",
@@ -468,6 +685,13 @@
       "image": "https://caodangtkv.edu.vn/wp-content/uploads/2025/05/DSC02825-scaled.jpg",
       "date_published": "2026-08-01T12:15:00+07:00",
       "date_modified": "2026-08-01T12:15:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "việc làm TKV cho thanh niên Lai Châu",
         "học nghề mỏ tỉnh Lai Châu",
@@ -483,6 +707,13 @@
       "image": "https://caodangtkv.edu.vn/wp-content/uploads/2025/09/DSC01786-scaled.jpg",
       "date_published": "2026-08-01T12:00:00+07:00",
       "date_modified": "2026-08-01T12:00:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "học nghề mỏ Lai Châu",
         "học nghề mỏ Sì Lở Lầu và Khun Há, Lai Châu",
@@ -498,6 +729,13 @@
       "image": "https://caodangtkv.edu.vn/wp-content/uploads/2025/12/DSC09936-scaled.jpg",
       "date_published": "2026-08-01T11:45:00+07:00",
       "date_modified": "2026-08-01T11:45:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "học nghề mỏ Hoành Mô",
         "học nghề mỏ Hoành Mô",
@@ -513,6 +751,13 @@
       "image": "https://caodangtkv.edu.vn/wp-content/uploads/2025/01/DSC09284-scaled.jpg",
       "date_published": "2026-08-01T11:30:00+07:00",
       "date_modified": "2026-08-01T11:30:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "học nghề mỏ Vị Xuyên",
         "học nghề mỏ Vị Xuyên, Hà Giang",
@@ -528,6 +773,13 @@
       "image": "https://caodangtkv.edu.vn/wp-content/uploads/2025/07/DSC09539-scaled.jpg",
       "date_published": "2026-08-01T11:15:00+07:00",
       "date_modified": "2026-08-01T11:15:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "học nghề mỏ Lục Hồn",
         "học nghề mỏ Lục Hồn",
@@ -543,6 +795,13 @@
       "image": "https://caodangtkv.edu.vn/wp-content/uploads/2025/11/DSC05741-scaled.jpg",
       "date_published": "2026-08-01T11:00:00+07:00",
       "date_modified": "2026-08-01T11:00:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "học nghề mỏ Bình Liêu",
         "học nghề mỏ Bình Liêu",
@@ -558,6 +817,13 @@
       "image": "https://vinacomin.vn/userfiles/thumbnail/5B15C55B8266903DBAB596E9B033B95963AFC9850E3A768D7480BFBD61BB5DB7.jpg",
       "date_published": "2026-08-01T10:45:00+07:00",
       "date_modified": "2026-08-01T10:45:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "TKV hỗ trợ Tây Nguyên 12 tỷ đồng",
         "ủng hộ đồng bào mưa lũ 2025",
@@ -573,6 +839,13 @@
       "image": "https://vinacomin.vn/userfiles/thumbnail/683A81CBA2520692EAD445AC4CAECCD19DFEEA9A7E5587513CA1E011492FFCBB.jpg",
       "date_published": "2026-08-01T10:30:00+07:00",
       "date_modified": "2026-08-01T10:30:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "TKV hỗ trợ nước sạch trường học Lai Châu",
         "giếng khoan Sơn Bình Tam Đường",
@@ -588,6 +861,13 @@
       "image": "https://vinacomin.vn/userfiles/thumbnail/1733450E24E5CE24BC5F98A7422EDE5FD2B7F8DB8865A1D3C731F0CBA3B9CDCC.jpg",
       "date_published": "2026-08-01T10:15:00+07:00",
       "date_modified": "2026-08-01T10:15:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "TKV hỗ trợ bão Yagi 70 tỷ đồng",
         "thợ mỏ ủng hộ đồng bào bão lũ",
@@ -603,6 +883,13 @@
       "image": "https://vinacomin.vn/userfiles/thumbnail/9E8F07C0BD7247F912DA6E279F8907B835B6D922569F9AD785BCE349C3C64CF6.jpg",
       "date_published": "2026-08-01T10:00:00+07:00",
       "date_modified": "2026-08-01T10:00:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "TKV xóa nhà tạm Tây Nguyên",
         "thợ mỏ ủng hộ đồng bào",
@@ -618,6 +905,13 @@
       "image": "https://vinacomin.vn/userfiles/thumbnail/2FFA478E5D97C2EEBA1AA11482658B769726295983364AE1F86CB0B0335AD85C.jpg",
       "date_published": "2026-08-01T09:45:00+07:00",
       "date_modified": "2026-08-01T09:45:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "tuyển sinh nghề mỏ Đồng Văn Hà Giang",
         "TKV hỗ trợ Hà Giang",
@@ -633,6 +927,13 @@
       "image": "https://vinacomin.vn/userfiles/thumbnail/184065E14CD3235E25A52BB416A4302939FF72D4744DF8FB24C779883F12BCA6.jpg",
       "date_published": "2026-08-01T09:30:00+07:00",
       "date_modified": "2026-08-01T09:30:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "tuyển sinh nghề mỏ Đường Hoa",
         "Than Dương Huy tuyển thợ mỏ",
@@ -648,6 +949,13 @@
       "image": "https://vinacomin.vn/userfiles/thumbnail/53EF3B111119D3F7FE5EFFA70FD53155A07AFAB230F6734AB2BFB86B4BE81BEF.jpg",
       "date_published": "2026-08-01T09:15:00+07:00",
       "date_modified": "2026-08-01T09:15:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "việc làm ngành Than Điền Xá",
         "Than Khe Chàm tuyển dụng",
@@ -663,6 +971,13 @@
       "image": "https://caodangtkv.edu.vn/wp-content/uploads/2026/05/DSC00844-1920.jpg",
       "date_published": "2026-08-01T09:00:00+07:00",
       "date_modified": "2026-08-01T09:00:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "tuyển sinh nghề mỏ Lương Minh",
         "học nghề thợ lò Quảng Ninh",
@@ -678,6 +993,13 @@
       "image": "https://caodangtkv.edu.vn/wp-content/uploads/2026/05/003.jpg",
       "date_published": "2026-08-01T08:45:00+07:00",
       "date_modified": "2026-08-01T08:45:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "học nghề mỏ Nam Tuấn Cao Bằng",
         "việc làm Than Khe Chàm",
@@ -693,6 +1015,13 @@
       "image": "https://caodangtkv.edu.vn/wp-content/uploads/2026/02/DSC03572-scaled.jpg",
       "date_published": "2026-08-01T08:30:00+07:00",
       "date_modified": "2026-08-01T08:30:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "học nghề thợ lò Thái Nguyên",
         "tuyển thợ mỏ Bằng Thành",
@@ -708,6 +1037,13 @@
       "image": "https://caodangtkv.edu.vn/wp-content/uploads/2026/01/DSC02548-scaled.jpg",
       "date_published": "2026-08-01T08:15:00+07:00",
       "date_modified": "2026-08-01T08:15:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "học nghề mỏ Hải Lạng",
         "việc làm Than Dương Huy",
@@ -723,6 +1059,13 @@
       "image": "https://thaylinhtuyenthomo.vn/assets/news/tuyen-tho-mo-thang-8-2026-og-1200x630.png",
       "date_published": "2026-08-01T08:09:00+07:00",
       "date_modified": "2026-08-01T13:00:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "tuyển thợ mỏ tháng 8/2026",
         "tuyển thợ lò",
@@ -739,6 +1082,13 @@
       "image": "https://caodangtkv.edu.vn/wp-content/uploads/2025/11/DSC07599-scaled.jpg",
       "date_published": "2026-08-01T08:00:00+07:00",
       "date_modified": "2026-08-01T08:00:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "tuyển sinh nghề mỏ Tuyên Quang",
         "việc làm TKV Tuyên Quang",
@@ -754,6 +1104,13 @@
       "image": "https://vinacomin.vn/Share/Media/2017/09/IMG_9910.jpg",
       "date_published": "2026-07-31T10:30:00+07:00",
       "date_modified": "2026-08-01T21:50:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "an toàn mỏ mùa mưa bão 2026",
         "phòng chống thiên tai ngành Than",
@@ -769,6 +1126,13 @@
       "image": "https://vinacomin.vn/Share/Media/2017/09/DSC01675.jpg",
       "date_published": "2026-07-31T10:20:00+07:00",
       "date_modified": "2026-08-01T21:45:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "sản xuất sạch hơn trong ngành Than",
         "môi trường mỏ Quảng Ninh",
@@ -784,6 +1148,13 @@
       "image": "https://vinacomin.vn/Share/Media/2018/07/IMG_8765.jpg",
       "date_published": "2026-07-31T10:10:00+07:00",
       "date_modified": "2026-08-01T21:40:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "nghề thợ lò có ổn định không",
         "việc làm ngành Than 2026",
@@ -799,6 +1170,13 @@
       "image": "https://vinacomin.vn/Share/Media/2018/07/IMG_8544.jpg",
       "date_published": "2026-07-31T10:00:00+07:00",
       "date_modified": "2026-08-01T21:35:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "tay nghề thợ mỏ trong thời kỳ mỏ thông minh",
         "hội thi thợ giỏi TKV 2026",
@@ -814,6 +1192,13 @@
       "image": "https://thaylinhtuyenthomo.vn/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp",
       "date_published": "2026-07-31T09:50:00+07:00",
       "date_modified": "2026-08-01T21:30:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "đào tạo an toàn trước khi vào lò",
         "an toàn lao động mỏ",
@@ -829,6 +1214,13 @@
       "image": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
       "date_published": "2026-07-31T09:40:00+07:00",
       "date_modified": "2026-08-01T21:25:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "cơ giới hóa khai thác hầm lò 2026–2030",
         "mỏ hầm lò thông minh",
@@ -844,6 +1236,13 @@
       "image": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-thao-a-bang.webp",
       "date_published": "2026-07-31T09:30:00+07:00",
       "date_modified": "2026-08-01T21:20:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "13.500 thợ lò thu nhập trên 300 triệu đồng/năm",
         "lương thợ lò 2025",
@@ -859,6 +1258,13 @@
       "image": "https://vinacomin.vn/Share/Media/2018/07/IMG_4075.jpg",
       "date_published": "2026-07-31T09:20:00+07:00",
       "date_modified": "2026-08-01T21:10:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "học nghề mỏ 2–3 tháng",
         "đào tạo thợ lò",
@@ -874,6 +1280,13 @@
       "image": "https://vinacomin.vn/Share/Media/2018/07/IMG_4062.jpg",
       "date_published": "2026-07-31T09:10:00+07:00",
       "date_modified": "2026-08-01T21:05:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "hồ sơ học nghề mỏ cần gì",
         "đăng ký học nghề mỏ",
@@ -889,6 +1302,13 @@
       "image": "https://vinacomin.vn/Share/Media/2018/07/IMG_4207.jpg",
       "date_published": "2026-07-31T09:00:00+07:00",
       "date_modified": "2026-08-01T21:00:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "điều kiện tuyển thợ lò 2026",
         "tuyển thợ mỏ Quảng Ninh",
@@ -904,6 +1324,13 @@
       "image": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-ham-lo-1200.webp",
       "date_published": "2026-07-31T08:10:00+07:00",
       "date_modified": "2026-08-01T21:55:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "tái cơ cấu TKV 2026",
         "việc làm ngành Than",
@@ -919,6 +1346,13 @@
       "image": "https://vinacomin.vn/Share/Media/2018/07/IMG_4110.jpg",
       "date_published": "2026-07-30T14:00:00+07:00",
       "date_modified": "2026-08-01T21:55:00+07:00",
+      "authors": [
+        {
+          "name": "Nguyễn Tử Linh",
+          "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/",
+          "avatar": "https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp"
+        }
+      ],
       "tags": [
         "phúc lợi thợ mỏ TKV 2026",
         "đời sống công nhân mỏ",

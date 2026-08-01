@@ -28,6 +28,7 @@ const hubs = [
   ["chuyen-nguoi-tho/index.html", "/chuyen-nguoi-tho/"],
   ["chia-se-thong-tin/index.html", "/chia-se-thong-tin/"],
   ["tac-gia/nguyen-tu-linh/index.html", "/tac-gia/nguyen-tu-linh/"],
+  ["nguyen-tac-bien-tap/index.html", "/nguyen-tac-bien-tap/"],
 ];
 
 for (const [file, url] of hubs) {
@@ -41,7 +42,7 @@ for (const [file, url] of hubs) {
     `<link rel="canonical" href="${base}${url}">`,
     'type="application/ld+json"',
     '/content-network.css?v=1',
-    '/analytics.js?v=3',
+    '/analytics.js?v=4',
     '/mobile-ux.js?v=3',
     'data-contact="application"',
   ];
@@ -59,6 +60,7 @@ for (const marker of ["data-share-builder", "data-share-province", "data-share-o
   if (!shareHtml.includes(marker)) fail(`Bộ chia sẻ: thiếu ${marker}`);
 }
 
+let noindexProvinces = 0;
 for (const province of provinces) {
   const file = `viec-lam-nganh-than/${province.slug}/index.html`;
   const full = path.join(root, file);
@@ -70,7 +72,13 @@ for (const province of provinces) {
   if (!html.includes(`utm_content=province_${province.slug}`)) fail(`${file}: thiếu UTM theo tỉnh`);
   if (!html.includes("province=")) fail(`${file}: đường ứng tuyển không giữ tỉnh`);
   if (!html.includes('data-contact="application"')) fail(`${file}: thiếu đánh dấu ứng tuyển`);
+  const noindex = /<meta\s+name="robots"\s+content="[^"]*noindex/i.test(html);
+  const hasLocalEvidence = html.includes('id="local-story-title"');
+  if (noindex) noindexProvinces += 1;
+  if (hasLocalEvidence === noindex) fail(`${file}: trạng thái lập chỉ mục không khớp bằng chứng địa phương`);
+  if (html.includes("Sao chép mẫu tin nhắn") || html.includes("data-copy-template")) fail(`${file}: nút sao chép mẫu tin nhắn đã bị loại bỏ nhưng xuất hiện lại`);
 }
+if (noindexProvinces !== 9) fail(`Trang tỉnh: cần noindex 9 trang chưa có dữ kiện riêng, nhận ${noindexProvinces}`);
 
 const feed = JSON.parse(read("feed.json"));
 const articles = Array.isArray(feed.items) ? feed.items : [];
@@ -91,18 +99,19 @@ for (const article of articles) {
 
 const htmlFiles = walk(root);
 const contentFiles = htmlFiles.filter((file) => !path.basename(file).startsWith("google"));
-if (htmlFiles.length !== 104) fail(`Website: cần 104 tệp HTML, nhận ${htmlFiles.length}`);
-if (contentFiles.length !== 103) fail(`Website: cần 103 trang nội dung, nhận ${contentFiles.length}`);
+if (htmlFiles.length !== 105) fail(`Website: cần 105 tệp HTML, nhận ${htmlFiles.length}`);
+if (contentFiles.length !== 104) fail(`Website: cần 104 trang nội dung, nhận ${contentFiles.length}`);
 for (const file of contentFiles) {
   const html = fs.readFileSync(file, "utf8");
   const relative = path.relative(root, file);
-  if (!html.includes('/analytics.js?v=3')) fail(`${relative}: chưa nạp analytics v3`);
+  if (!html.includes('/analytics.js?v=4')) fail(`${relative}: chưa nạp analytics v4`);
   if (!html.includes('/mobile-ux.js?v=3')) fail(`${relative}: chưa nạp mobile UX v3`);
 }
 
 const sitemap = read("sitemap.xml");
 const sitemapUrls = sitemap.match(/<loc>/g)?.length || 0;
-if (sitemapUrls !== 101) fail(`Sitemap: cần 101 URL, nhận ${sitemapUrls}`);
+const indexablePages = contentFiles.filter((file) => !/<meta\s+name="robots"\s+content="[^"]*noindex/i.test(fs.readFileSync(file, "utf8"))).length;
+if (sitemapUrls !== indexablePages) fail(`Sitemap: cần ${indexablePages} URL indexable, nhận ${sitemapUrls}`);
 for (const [, url] of hubs) if (!sitemap.includes(`<loc>${base}${url}</loc>`)) fail(`Sitemap: thiếu ${url}`);
 
 const analytics = read("analytics.js");
@@ -111,6 +120,7 @@ const portal = read("portal-official.js");
 const mobile = read("mobile-ux.js");
 const shareTools = read("share-tools.js");
 if (!analytics.includes('event: "contact_click"') || !analytics.includes('document.addEventListener("click"')) fail("Analytics: thiếu đo liên hệ ủy quyền");
+for (const marker of ["ai_referral_visit", "chatgpt", "copilot", "perplexity", "gemini", "claude"]) if (!analytics.includes(marker)) fail(`Analytics: thiếu đo nguồn AI ${marker}`);
 if (app.includes("contact_click") || portal.includes("contact_click")) fail("Analytics: contact_click còn bị khai báo lặp ở app/portal");
 if (!mobile.includes("tl-mobile-contact__application") || !mobile.includes('data-contact="application"')) fail("Mobile UX: thiếu nút Ứng tuyển");
 if (!shareTools.includes(`const CAMPAIGN = "${campaign}"`)) fail("Share tools: sai mã chiến dịch");

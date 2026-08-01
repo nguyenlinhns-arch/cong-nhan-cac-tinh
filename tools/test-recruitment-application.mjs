@@ -4,7 +4,7 @@ import { webcrypto } from "node:crypto";
 
 const source = fs.readFileSync("tuyen-tho-mo/job-application.js", "utf8");
 
-async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, expected }) {
+async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, expected, utmSource = "test_qa", referrer = "", expectedSource = utmSource || "website" }) {
   const listeners = {};
   const tracked = [];
   const delivered = [];
@@ -75,10 +75,11 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
     Uint8Array,
     encodeURIComponent,
     location: {
-      href: "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=test_qa",
-      search: "?province=Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh&trade=K%E1%BB%B9%20thu%E1%BA%ADt%20khai%20th%C3%A1c%20m%E1%BB%8F%20h%E1%BA%A7m%20l%C3%B2&utm_source=test_qa&utm_medium=owned&utm_campaign=tuyen_tho_mo_2026&utm_content=unit",
+      href: `https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/${utmSource ? `?utm_source=${encodeURIComponent(utmSource)}` : ""}`,
+      search: `?province=Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh&trade=K%E1%BB%B9%20thu%E1%BA%ADt%20khai%20th%C3%A1c%20m%E1%BB%8F%20h%E1%BA%A7m%20l%C3%B2${utmSource ? `&utm_source=${encodeURIComponent(utmSource)}` : ""}&utm_medium=owned&utm_campaign=tuyen_tho_mo_2026&utm_content=unit`,
     },
     document: {
+      referrer,
       querySelector: selector => selectors.get(selector) || null,
       execCommand: () => true,
     },
@@ -126,7 +127,7 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
   if (!/^TL-\d{6}-[A-Z0-9]{5}$/.test(code.textContent)) throw new Error(`Invalid application code: ${code.textContent}`);
   for (const expectedText of [
     "Số điện thoại: 0963048585",
-    "Nguồn: test_qa / unit",
+    `Nguồn: ${expectedSource} / unit`,
     "2–3 tháng",
     "7,5 triệu đồng",
   ]) if (!output.value.includes(expectedText)) throw new Error(`Message missing: ${expectedText}`);
@@ -160,4 +161,5 @@ results.push(await runCase({ height: 153, weight: 47, health: "Sức khỏe tố
 results.push(await runCase({ height: 165, weight: 58, health: "Cần trao đổi thêm trước khi khám", expected: "needs_review" }));
 results.push(await runCase({ height: 152, weight: 47, health: "Sức khỏe tốt, sẵn sàng khám tuyển", expected: "not_eligible" }));
 results.push(await runCase({ height: 165, weight: 58, birthDate: "1980-01-01", health: "Sức khỏe tốt, sẵn sàng khám tuyển", expected: "not_eligible" }));
+results.push(await runCase({ height: 165, weight: 58, health: "Sức khỏe tốt, sẵn sàng khám tuyển", expected: "eligible", utmSource: "", referrer: "https://chatgpt.com/", expectedSource: "chatgpt" }));
 console.log(JSON.stringify({ cases: results.length, results, errors: 0 }, null, 2));

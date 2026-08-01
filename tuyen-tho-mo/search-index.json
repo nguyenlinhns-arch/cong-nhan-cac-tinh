@@ -20,6 +20,16 @@
       "priority": 100
     },
     {
+      "url": "/thong-tin-tuyen-tho-mo/",
+      "title": "Thông tin tuyển thợ mỏ tháng 8/2026",
+      "description": "Thông tin tuyển thợ mỏ tháng 8/2026 đang áp dụng: nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg, học nghề 2–3 tháng và cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "keywords": [],
+      "category": "recruitment",
+      "categoryLabel": "Thông tin đang áp dụng",
+      "type": "Thông tin đang áp dụng",
+      "priority": 99
+    },
+    {
       "url": "/trung-tam-nghe-mo/",
       "title": "Trung tâm nghề mỏ",
       "description": "Trung tâm thông tin học nghề mỏ, việc làm ngành Than, 26 trang tỉnh, cẩm nang và câu chuyện người thợ; mọi đường dẫn quy về một biểu mẫu ứng tuyển rõ nguồn.",
@@ -114,6 +124,16 @@
       "categoryLabel": "Công cụ chia sẻ",
       "type": "Công cụ chia sẻ",
       "priority": 70
+    },
+    {
+      "url": "/nguyen-tac-bien-tap/",
+      "title": "Nguyên tắc biên tập và kiểm chứng thông tin",
+      "description": "Cách Thầy Linh – Tuyển Thợ Mỏ xác định nguồn, cập nhật điều kiện tuyển sinh, biên tập bài báo, sử dụng hình ảnh và tiếp nhận đính chính.",
+      "keywords": [],
+      "category": "guide",
+      "categoryLabel": "Nguồn và kiểm chứng",
+      "type": "Nguồn và kiểm chứng",
+      "priority": 65
     },
     {
       "url": "/tin-nganh-than/2026/08/01/cao-bang-phoi-hop-tuyen-lao-dong-nghe-mo-2018/",
@@ -1076,23 +1096,6 @@
       "priority": 50
     },
     {
-      "url": "/viec-lam-nganh-than/bac-ninh/",
-      "title": "Tuyển thợ mỏ tại Bắc Ninh | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Bắc Ninh, bao gồm khu vực Bắc Giang trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động tại Quảng Ninh.",
-      "keywords": [
-        "tuyển thợ mỏ Bắc Ninh",
-        "tuyển dụng ngành than Bắc Ninh",
-        "học nghề mỏ Bắc Ninh",
-        "việc làm thợ lò Bắc Ninh",
-        "tuyển thợ mỏ Bắc Giang",
-        "việc làm ngành than Bắc Giang"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
       "url": "/viec-lam-nganh-than/cao-bang/",
       "title": "Tuyển thợ mỏ tại Cao Bằng | Học nghề 2–3 tháng",
       "description": "Tuyển thợ mỏ tại Cao Bằng: học nghề 2–3 tháng, hỗ trợ ăn ở, cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động tại Quảng Ninh.",
@@ -1101,23 +1104,6 @@
         "tuyển dụng ngành than Cao Bằng",
         "học nghề mỏ Cao Bằng",
         "việc làm thợ lò Cao Bằng"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
-      "url": "/viec-lam-nganh-than/da-nang/",
-      "title": "Tuyển thợ mỏ tại Đà Nẵng | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Đà Nẵng, bao gồm khu vực Quảng Nam trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động tại Quảng Ninh.",
-      "keywords": [
-        "tuyển thợ mỏ Đà Nẵng",
-        "tuyển dụng ngành than Đà Nẵng",
-        "học nghề mỏ Đà Nẵng",
-        "việc làm thợ lò Đà Nẵng",
-        "tuyển thợ mỏ Quảng Nam",
-        "việc làm ngành than Quảng Nam"
       ],
       "category": "province",
       "categoryLabel": "Việc làm theo tỉnh",
@@ -1174,21 +1160,6 @@
       "priority": 45
     },
     {
-      "url": "/viec-lam-nganh-than/ha-noi/",
-      "title": "Tuyển thợ mỏ tại Hà Nội | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Hà Nội: học nghề 2–3 tháng, hỗ trợ ăn ở, cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động tại Quảng Ninh.",
-      "keywords": [
-        "tuyển thợ mỏ Hà Nội",
-        "tuyển dụng ngành than Hà Nội",
-        "học nghề mỏ Hà Nội",
-        "việc làm thợ lò Hà Nội"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
       "url": "/viec-lam-nganh-than/ha-tinh/",
       "title": "Tuyển thợ mỏ tại Hà Tĩnh | Học nghề 2–3 tháng",
       "description": "Tuyển thợ mỏ tại Hà Tĩnh: học nghề 2–3 tháng, hỗ trợ ăn ở, cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động tại Quảng Ninh.",
@@ -1197,55 +1168,6 @@
         "tuyển dụng ngành than Hà Tĩnh",
         "học nghề mỏ Hà Tĩnh",
         "việc làm thợ lò Hà Tĩnh"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
-      "url": "/viec-lam-nganh-than/hai-phong/",
-      "title": "Tuyển thợ mỏ tại Hải Phòng | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Hải Phòng, bao gồm khu vực Hải Dương trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động tại Quảng Ninh.",
-      "keywords": [
-        "tuyển thợ mỏ Hải Phòng",
-        "tuyển dụng ngành than Hải Phòng",
-        "học nghề mỏ Hải Phòng",
-        "việc làm thợ lò Hải Phòng",
-        "tuyển thợ mỏ Hải Dương",
-        "việc làm ngành than Hải Dương"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
-      "url": "/viec-lam-nganh-than/hue/",
-      "title": "Tuyển thợ mỏ tại Huế | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Huế: học nghề 2–3 tháng, hỗ trợ ăn ở, cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động tại Quảng Ninh.",
-      "keywords": [
-        "tuyển thợ mỏ Huế",
-        "tuyển dụng ngành than Huế",
-        "học nghề mỏ Huế",
-        "việc làm thợ lò Huế"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
-      "url": "/viec-lam-nganh-than/hung-yen/",
-      "title": "Tuyển thợ mỏ tại Hưng Yên | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Hưng Yên, bao gồm khu vực Thái Bình trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động tại Quảng Ninh.",
-      "keywords": [
-        "tuyển thợ mỏ Hưng Yên",
-        "tuyển dụng ngành than Hưng Yên",
-        "học nghề mỏ Hưng Yên",
-        "việc làm thợ lò Hưng Yên",
-        "tuyển thợ mỏ Thái Bình",
-        "việc làm ngành than Thái Bình"
       ],
       "category": "province",
       "categoryLabel": "Việc làm theo tỉnh",
@@ -1278,21 +1200,6 @@
         "tuyển dụng ngành than Lai Châu",
         "học nghề mỏ Lai Châu",
         "việc làm thợ lò Lai Châu"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
-      "url": "/viec-lam-nganh-than/lang-son/",
-      "title": "Tuyển thợ mỏ tại Lạng Sơn | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Lạng Sơn: học nghề 2–3 tháng, hỗ trợ ăn ở, cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động tại Quảng Ninh.",
-      "keywords": [
-        "tuyển thợ mỏ Lạng Sơn",
-        "tuyển dụng ngành than Lạng Sơn",
-        "học nghề mỏ Lạng Sơn",
-        "việc làm thợ lò Lạng Sơn"
       ],
       "category": "province",
       "categoryLabel": "Việc làm theo tỉnh",
@@ -1344,44 +1251,6 @@
         "tuyển dụng ngành than Nghệ An",
         "học nghề mỏ Nghệ An",
         "việc làm thợ lò Nghệ An"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
-      "url": "/viec-lam-nganh-than/ninh-binh/",
-      "title": "Tuyển thợ mỏ tại Ninh Bình | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Ninh Bình, bao gồm khu vực Nam Định, Hà Nam trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động tại Quảng Ninh.",
-      "keywords": [
-        "tuyển thợ mỏ Ninh Bình",
-        "tuyển dụng ngành than Ninh Bình",
-        "học nghề mỏ Ninh Bình",
-        "việc làm thợ lò Ninh Bình",
-        "tuyển thợ mỏ Nam Định",
-        "việc làm ngành than Nam Định",
-        "tuyển thợ mỏ Hà Nam",
-        "việc làm ngành than Hà Nam"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
-      "url": "/viec-lam-nganh-than/phu-tho/",
-      "title": "Tuyển thợ mỏ tại Phú Thọ | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Phú Thọ, bao gồm khu vực Vĩnh Phúc, Hòa Bình trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động tại Quảng Ninh.",
-      "keywords": [
-        "tuyển thợ mỏ Phú Thọ",
-        "tuyển dụng ngành than Phú Thọ",
-        "học nghề mỏ Phú Thọ",
-        "việc làm thợ lò Phú Thọ",
-        "tuyển thợ mỏ Vĩnh Phúc",
-        "việc làm ngành than Vĩnh Phúc",
-        "tuyển thợ mỏ Hòa Bình",
-        "việc làm ngành than Hòa Bình"
       ],
       "category": "province",
       "categoryLabel": "Việc làm theo tỉnh",
@@ -1515,16 +1384,6 @@
       "url": "/anh-video-thuc-te/",
       "title": "Ảnh & video thực tế tuyển thợ lò",
       "description": "Xem ảnh hoạt động, video tư vấn, Reels và nội dung thực tế từ fanpage Thầy Linh – Tuyển Thợ Mỏ; có link bài gốc để người lao động và gia đình đối chiếu.",
-      "keywords": [],
-      "category": "guide",
-      "categoryLabel": "Thông tin nghề mỏ",
-      "type": "Thông tin nghề mỏ",
-      "priority": 10
-    },
-    {
-      "url": "/thong-tin-tuyen-tho-mo/",
-      "title": "Thông tin tuyển thợ mỏ tháng 8/2026",
-      "description": "Thông tin tuyển thợ mỏ tháng 8/2026 đang áp dụng: nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg, học nghề 2–3 tháng và cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [],
       "category": "guide",
       "categoryLabel": "Thông tin nghề mỏ",

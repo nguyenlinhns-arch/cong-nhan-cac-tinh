@@ -36,12 +36,14 @@ function match(html, pattern) {
 
 function classify(url, title, keywords) {
   const haystack = `${url} ${title} ${keywords}`.toLocaleLowerCase("vi");
+  if (url === "/thong-tin-tuyen-tho-mo/") return ["recruitment", "Thông tin đang áp dụng"];
   if (url === "/trung-tam-nghe-mo/") return ["guide", "Trung tâm nghề mỏ"];
   if (url === "/viec-lam-nganh-than/") return ["recruitment", "Việc làm theo tỉnh"];
   if (url === "/cam-nang-nghe-mo/") return ["guide", "Cẩm nang nghề mỏ"];
   if (url === "/chuyen-nguoi-tho/") return ["news", "Chuyện người thợ"];
   if (url === "/chia-se-thong-tin/") return ["guide", "Công cụ chia sẻ"];
   if (url.startsWith("/tac-gia/")) return ["guide", "Người biên soạn"];
+  if (url === "/nguyen-tac-bien-tap/") return ["guide", "Nguồn và kiểm chứng"];
   if (url.includes("/viec-lam/")) return ["recruitment", "Tin tuyển dụng"];
   if (url.includes("/viec-lam-nganh-than/") || /việc làm thợ mỏ (thanh hóa|nghệ an|hà tĩnh|quảng trị|quảng ngãi|gia lai|đắk lắk|sơn la|điện biên|lai châu|lào cai|cao bằng|lạng sơn|bắc kạn|thái nguyên)/i.test(haystack)) {
     return ["province", "Việc làm theo tỉnh"];
@@ -71,6 +73,7 @@ const items = walk(root)
     const [category, categoryLabel] = classify(url, title, keywordText);
     let priority = 10;
     if (url === "/") priority = 100;
+    else if (url === "/thong-tin-tuyen-tho-mo/") priority = 99;
     else if (url === "/trung-tam-nghe-mo/") priority = 99;
     else if (url.includes("/viec-lam/")) priority = 95;
     else if (url === "/viec-lam-nganh-than/") priority = 92;
@@ -78,6 +81,7 @@ const items = walk(root)
     else if (url === "/cam-nang-nghe-mo/") priority = 88;
     else if (url === "/chuyen-nguoi-tho/") priority = 86;
     else if (url === "/chia-se-thong-tin/") priority = 70;
+    else if (url === "/nguyen-tac-bien-tap/") priority = 65;
     else if (url.startsWith("/tac-gia/")) priority = 35;
     else if (url.includes("/bai-viet/")) priority = 50;
     else if (url.includes("/viec-lam-nganh-than/")) priority = 45;

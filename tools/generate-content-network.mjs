@@ -14,6 +14,8 @@ const updatedDate = recruitment.effective_from;
 const personId = `${base}/tac-gia/nguyen-tu-linh/#person`;
 const organizationId = `${base}/#organization`;
 const websiteId = `${base}/#website`;
+const editorialPolicyPath = "/nguyen-tac-bien-tap/";
+const editorialPolicyUrl = `${base}${editorialPolicyPath}`;
 const officialProfiles = [
   "https://www.facebook.com/thaylinhtuyenthomo/",
   "https://www.youtube.com/@ThầyLinh-TuyểnThợMỏ",
@@ -64,6 +66,7 @@ function commonSchema({pathName, title, description, type = "CollectionPage", it
         isPartOf: {"@id": websiteId},
         author: {"@id": personId},
         publisher: {"@id": organizationId},
+        publishingPrinciples: editorialPolicyUrl,
         breadcrumb: {"@id": `${canonical}#breadcrumb`},
         ...(items.length ? {mainEntity: {"@id": `${canonical}#items`}} : {}),
       },
@@ -103,7 +106,7 @@ function footer() {
   return `<footer class="network-footer"><div class="network-wrap network-footer__inner">
     <div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Thông tin học nghề mỏ và việc làm ngành Than tại Quảng Ninh.</p></div>
     <div><a href="/thong-tin-tuyen-tho-mo/">Thông tin tuyển đang áp dụng</a><a href="/trung-tam-nghe-mo/">Trung tâm nghề mỏ</a><a href="/viec-lam-nganh-than/">Việc làm theo tỉnh</a><a href="/cam-nang-nghe-mo/">Cẩm nang nhập nghề</a></div>
-    <div><a href="/chia-se-thong-tin/">Tạo gói chia sẻ</a><a href="/tac-gia/nguyen-tu-linh/">Người biên soạn</a><a href="/quyen-rieng.html">Quyền riêng tư</a><a href="https://zalo.me/0963048585" target="_blank" rel="noopener" data-contact="zalo" data-context="network-footer">Zalo 096 304 8585</a></div>
+    <div><a href="/chia-se-thong-tin/">Tạo gói chia sẻ</a><a href="/tac-gia/nguyen-tu-linh/">Người biên soạn</a><a href="/nguyen-tac-bien-tap/">Nguyên tắc biên tập</a><a href="/quyen-rieng.html">Quyền riêng tư</a><a href="https://zalo.me/0963048585" target="_blank" rel="noopener" data-contact="zalo" data-context="network-footer">Zalo 096 304 8585</a></div>
   </div></footer>`;
 }
 
@@ -141,7 +144,7 @@ function page({pathName, title, description, eyebrow, heading, lead, body, schem
     ${body}
   </main>
   ${footer()}
-  <script src="/analytics.js?v=3" defer></script><script src="/mobile-ux.js?v=3" defer></script>${shareTools ? '<script src="/share-tools.js?v=1" defer></script>' : ""}
+  <script src="/analytics.js?v=4" defer></script><script src="/mobile-ux.js?v=3" defer></script>${shareTools ? '<script src="/share-tools.js?v=1" defer></script>' : ""}
 </body>
 </html>`;
 }
@@ -168,6 +171,7 @@ const branchCards = [
   ["Chuyện người thợ", "Mười câu chuyện được biên tập từ nguồn báo chí để người lao động nhìn nghề qua trải nghiệm thật.", "/chuyen-nguoi-tho/"],
   ["Kho tin ngành Than", "Sáu mươi mốt bài về nghề, công nghệ, an toàn, phúc lợi và kết nối địa phương.", "/tin-nganh-than/"],
   ["Bộ chia sẻ theo tỉnh", "Tạo sẵn nội dung và liên kết đo nguồn để địa phương, gia đình và người lao động lan tỏa đúng thông tin.", "/chia-se-thong-tin/"],
+  ["Nguyên tắc biên tập", "Công khai người chịu trách nhiệm, cách kiểm chứng nguồn, quy tắc cập nhật và cách tiếp nhận đính chính.", editorialPolicyPath],
 ];
 
 const centralDescription = "Trung tâm thông tin học nghề mỏ, việc làm ngành Than, 26 trang tỉnh, cẩm nang và câu chuyện người thợ; mọi đường dẫn quy về một biểu mẫu ứng tuyển rõ nguồn.";
@@ -211,6 +215,7 @@ const currentFactsSchema = {
       isPartOf: {"@id": websiteId},
       author: {"@id": personId},
       publisher: {"@id": organizationId},
+      publishingPrinciples: editorialPolicyUrl,
       mainEntity: {"@id": `${currentFactsCanonical}#faq`},
       breadcrumb: {"@id": `${currentFactsCanonical}#breadcrumb`},
       about: ["Tuyển thợ mỏ", "Học nghề mỏ", "Việc làm ngành Than", "Thợ lò Quảng Ninh"],
@@ -233,7 +238,7 @@ const currentFactsSchema = {
 const currentFactsBody = `<div class="network-wrap network-facts"><div><strong>${recruitment.criteria.age_min}–${recruitment.criteria.age_max}</strong><span>độ tuổi nam đang tiếp nhận</span></div><div><strong>1m53 · ${recruitment.criteria.weight_min_kg} kg</strong><span>mốc thể lực tối thiểu</span></div><div><strong>${recruitment.training_duration}</strong><span>thời gian học hai nghề</span></div><div><strong>20–25 triệu</strong><span>mỗi tháng khi hoàn thành định mức</span></div></div>
 <section class="network-section"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">CẬP NHẬT ${updatedDate.split("-").reverse().join("/")}</p><h2>Thông tin đang áp dụng trong tháng 8/2026</h2></div><p>Căn cứ ${esc(recruitment.source_notice)}. Trạng thái: đang tiếp nhận đăng ký trong năm 2026.</p></div><ul class="network-list"><li><b>1</b><div><strong>Đối tượng và sức khỏe</strong><span>Nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg; sức khỏe tốt, không cận thị, bệnh tim mạch, huyết áp hoặc bệnh về mắt ảnh hưởng đến công việc.</span></div></li><li><b>2</b><div><strong>Nghề học và nơi làm việc</strong><span>${esc(recruitment.occupations.join("; "))}. Học và làm việc tại Quảng Ninh; không yêu cầu kinh nghiệm.</span></div></li><li><b>3</b><div><strong>Chế độ trong khóa học</strong><span>Miễn kinh phí đào tạo theo chỉ tiêu; ba bữa/ngày, mức ăn 90.000 đồng/ngày; ký túc xá khép kín; hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển.</span></div></li><li><b>4</b><div><strong>Thu nhập sau đào tạo</strong><span>${esc(recruitment.income_commitment)}.</span></div></li></ul></div></section>
 <section class="network-section network-section--soft"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">TRẢ LỜI TRỰC TIẾP</p><h2>Tám câu hỏi người lao động thường cần biết</h2></div><p>Câu trả lời ngắn gọn giúp người đọc đối chiếu nhanh trước khi mở tin tuyển dụng đầy đủ hoặc gửi thông tin kiểm tra điều kiện.</p></div><div class="network-grid">${currentFactsFaq.map(([question, answer], index) => `<article class="network-card${index === 0 ? " network-card--accent" : ""}"><div class="network-card__body"><small>CÂU ${String(index + 1).padStart(2, "0")}</small><h2>${esc(question)}</h2><p>${esc(answer)}</p></div></article>`).join("")}</div></div></section>
-<section class="network-section"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">ĐỊA CHỈ CỤ THỂ</p><h2>Biết rõ nơi nhập học và đầu mối tiếp nhận</h2></div><p>Hãy xác nhận lịch trước khi di chuyển để được hướng dẫn đúng đợt.</p></div><ul class="network-list"><li><b>1</b><div><strong>Địa chỉ nhập học</strong><span>${esc(recruitment.contact.admission_address)}.</span></div></li><li><b>2</b><div><strong>Địa chỉ tiếp nhận thông tin</strong><span>${esc(recruitment.contact.address)}.</span></div></li><li><b>3</b><div><strong>Người hướng dẫn</strong><span>${esc(recruitment.contact.name)} – ${esc(recruitment.contact.title)} · Điện thoại/Zalo 096 304 8585.</span></div></li></ul><div class="network-actions"><a class="network-button" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/">Xem tin tuyển dụng đầy đủ</a><a class="network-button network-button--outline" href="/bai-viet/ho-so-hoc-nghe-mo-can-gi/">Xem hướng dẫn hồ sơ</a></div></div></section>`;
+<section class="network-section"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">ĐỊA CHỈ CỤ THỂ</p><h2>Biết rõ nơi nhập học và đầu mối tiếp nhận</h2></div><p>Hãy xác nhận lịch trước khi di chuyển để được hướng dẫn đúng đợt.</p></div><ul class="network-list"><li><b>1</b><div><strong>Địa chỉ nhập học</strong><span>${esc(recruitment.contact.admission_address)}.</span></div></li><li><b>2</b><div><strong>Địa chỉ tiếp nhận thông tin</strong><span>${esc(recruitment.contact.address)}.</span></div></li><li><b>3</b><div><strong>Người hướng dẫn</strong><span>${esc(recruitment.contact.name)} – ${esc(recruitment.contact.title)} · Điện thoại/Zalo 096 304 8585.</span></div></li></ul><div class="network-actions"><a class="network-button" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/">Xem tin tuyển dụng đầy đủ</a><a class="network-button network-button--outline" href="/bai-viet/ho-so-hoc-nghe-mo-can-gi/">Xem hướng dẫn hồ sơ</a><a class="network-button network-button--outline" href="${editorialPolicyPath}">Cách website kiểm chứng thông tin</a></div></div></section>`;
 writePage("thong-tin-tuyen-tho-mo", page({pathName: currentFactsPath, title: currentFactsTitle, description: currentFactsDescription, eyebrow: "THÔNG TIN CHÍNH THỨC ĐANG ÁP DỤNG", heading: "Tuyển thợ mỏ tháng 8/2026: điều kiện, học nghề và thu nhập", lead: "Nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg; học nghề mỏ 2–3 tháng tại Quảng Ninh và được cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.", body: currentFactsBody, schema: currentFactsSchema}));
 
 const jobsDescription = "Việc làm ngành Than tại Quảng Ninh, hai nghề mỏ hầm lò và 26 trang tư vấn theo tỉnh; nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg.";
@@ -261,17 +266,55 @@ const shareBody = `<section class="network-section"><div class="network-wrap"><d
 <section class="network-section network-section--soft"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">NGUYÊN TẮC LAN TỎA</p><h2>Đúng thông tin, đúng đối tượng, có thể kiểm chứng</h2></div><p>Không hứa thêm quyền lợi, không đăng số liệu ngoài nguồn đang áp dụng và không đưa giấy tờ cá nhân vào bài chia sẻ.</p></div><ul class="network-list"><li><b>1</b><div><strong>Gửi trang tỉnh cho người cần ngữ cảnh địa phương</strong><span>Người nhận vẫn có thể quay về Trung tâm nghề mỏ để kiểm chứng toàn bộ thông tin.</span></div></li><li><b>2</b><div><strong>Giữ nguyên đường dẫn có mã nguồn</strong><span>UTM giúp đo kênh nào tạo lượt đọc, liên hệ và hồ sơ đủ điều kiện.</span></div></li><li><b>3</b><div><strong>Chỉ gửi hồ sơ qua biểu mẫu chính thức</strong><span>Không yêu cầu ứng viên đăng CCCD, giấy khai sinh hoặc thông tin sức khỏe lên mạng xã hội.</span></div></li></ul></div></section>`;
 writePage("chia-se-thong-tin", page({pathName: "/chia-se-thong-tin/", title: "Bộ chia sẻ thông tin nghề mỏ", description: shareDescription, eyebrow: "CÔNG CỤ LAN TỎA THÔNG TIN", heading: "Tạo gói tuyển dụng theo từng tỉnh trong vài giây", lead: "Dành cho cán bộ địa phương, cộng tác viên, gia đình và người lao động muốn gửi thông tin chính xác mà không phải tự viết lại.", body: shareBody, schema: commonSchema({pathName: "/chia-se-thong-tin/", title: "Bộ chia sẻ thông tin nghề mỏ", description: shareDescription, type: "WebPage"}), shareTools: true}));
 
+const policyTitle = "Nguyên tắc biên tập và kiểm chứng thông tin";
+const policyDescription = "Cách Thầy Linh – Tuyển Thợ Mỏ xác định nguồn, cập nhật điều kiện tuyển sinh, biên tập bài báo, sử dụng hình ảnh và tiếp nhận đính chính.";
+const policyCanonical = editorialPolicyUrl;
+const policySchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${policyCanonical}#webpage`,
+      url: policyCanonical,
+      name: policyTitle,
+      description: policyDescription,
+      inLanguage: "vi-VN",
+      datePublished: updatedDate,
+      dateModified: updatedDate,
+      isPartOf: {"@id": websiteId},
+      author: {"@id": personId},
+      publisher: {"@id": organizationId},
+      breadcrumb: {"@id": `${policyCanonical}#breadcrumb`},
+      about: ["Quy trình biên tập", "Kiểm chứng nguồn", "Cập nhật tuyển sinh nghề mỏ", "Đính chính nội dung"],
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${policyCanonical}#breadcrumb`,
+      itemListElement: [
+        {"@type": "ListItem", position: 1, name: "Trang chủ", item: `${base}/`},
+        {"@type": "ListItem", position: 2, name: policyTitle, item: policyCanonical},
+      ],
+    },
+  ],
+};
+const policyBody = `<div class="network-wrap network-facts"><div><strong>Ai</strong><span>Nguyễn Tử Linh chịu trách nhiệm biên soạn</span></div><div><strong>Nguồn</strong><span>văn bản, đơn vị và báo chí được nêu rõ</span></div><div><strong>Cập nhật</strong><span>dữ kiện tuyển sinh dùng một nguồn thống nhất</span></div><div><strong>Đính chính</strong><span>sửa tại dữ liệu gốc rồi tái kiểm tra toàn site</span></div></div>
+<section class="network-section"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">NGƯỜI BIÊN SOẠN · CÁCH THỰC HIỆN · MỤC ĐÍCH</p><h2>Người đọc biết rõ ai chịu trách nhiệm cho từng thông tin</h2></div><p>Website do Nguyễn Tử Linh – Trưởng phòng Tuyển sinh Miền Trung – biên soạn và duy trì để người lao động kiểm tra điều kiện, hiểu chương trình học nghề và biết đúng đầu mối trước khi quyết định.</p></div><ul class="network-list"><li><b>1</b><div><strong>Ai chịu trách nhiệm</strong><span>Nguyễn Tử Linh chịu trách nhiệm nội dung tuyển sinh, hồ sơ, địa chỉ tiếp nhận và hướng dẫn liên hệ trên website.</span></div></li><li><b>2</b><div><strong>Nội dung được tạo như thế nào</strong><span>Dữ kiện hiện hành được đối chiếu với hồ sơ chính sách; bài báo được diễn đạt lại theo nguồn, giữ đúng nhân vật, số liệu, ngày tháng và bối cảnh.</span></div></li><li><b>3</b><div><strong>Vì sao nội dung được xuất bản</strong><span>Mục tiêu là giúp người lao động và gia đình ra quyết định bằng thông tin có thể kiểm chứng, không tạo bài chỉ để lặp từ khóa tìm kiếm.</span></div></li></ul></div></section>
+<section class="network-section network-section--soft"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">THỨ TỰ ƯU TIÊN NGUỒN</p><h2>Dữ kiện tuyển sinh và câu chuyện báo chí không được trộn lẫn</h2></div><p>Thông tin tuyển đang áp dụng luôn được tách khỏi số liệu lịch sử hoặc trường hợp cá nhân trong các bài báo.</p></div><ul class="network-list"><li><b>1</b><div><strong>Thông tin tuyển sinh hiện hành</strong><span>Ưu tiên thông báo, kế hoạch và dữ liệu vận hành của Trường Cao đẳng Than - Khoáng sản Việt Nam; trang “Thông tin tuyển thợ mỏ” là điểm đối chiếu duy nhất trên website.</span></div></li><li><b>2</b><div><strong>Tin ngành Than và địa phương</strong><span>Ưu tiên nguồn TKV, Nhà trường, cơ quan nhà nước địa phương và cơ quan báo chí; cuối mỗi bài nêu tên nguồn, tên bài và ngày đăng.</span></div></li><li><b>3</b><div><strong>Ảnh trong bài</strong><span>Bài lấy nguồn dùng đúng ảnh trong bài báo tương ứng; ảnh được đặt đúng mạch nội dung và ghi chú thích. Khi ảnh gốc không còn được phục vụ, chỉ dùng ảnh tư liệu đúng bối cảnh và ghi rõ.</span></div></li></ul></div></section>
+<section class="network-section"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">CẬP NHẬT VÀ ĐÍNH CHÍNH</p><h2>Sửa một dữ kiện phải sửa từ nguồn gốc, không vá riêng từng trang</h2></div><p>Điều kiện, quyền lợi, hồ sơ và địa chỉ được tạo từ một hồ sơ dữ liệu chung; thay đổi chỉ được xuất bản sau khi toàn bộ trang và dữ liệu có cấu trúc vượt qua kiểm tra tự động.</p></div><ul class="network-list"><li><b>1</b><div><strong>Ngày hiệu lực được công khai</strong><span>Trang thông tin hiện hành ghi ngày cập nhật và căn cứ đang dùng. Bài cũ không được tự đổi ngày để tạo cảm giác mới.</span></div></li><li><b>2</b><div><strong>Đính chính có đầu mối</strong><span>Nếu phát hiện sai tên, số liệu, ảnh hoặc điều kiện, liên hệ Nguyễn Tử Linh qua Zalo/điện thoại 096 304 8585 để kiểm tra lại nguồn.</span></div></li><li><b>3</b><div><strong>Giới hạn của website</strong><span>Nội dung hỗ trợ người đọc tìm hiểu và đăng ký ban đầu; kết quả tiếp nhận cuối cùng vẫn căn cứ hồ sơ, khám sức khỏe và kế hoạch của từng đợt.</span></div></li></ul><div class="network-actions"><a class="network-button" href="/thong-tin-tuyen-tho-mo/">Xem thông tin đang áp dụng</a><a class="network-button network-button--outline" href="/tac-gia/nguyen-tu-linh/">Xem người chịu trách nhiệm</a></div></div></section>`;
+writePage("nguyen-tac-bien-tap", page({pathName: editorialPolicyPath, title: policyTitle, description: policyDescription, eyebrow: "MINH BẠCH NGUỒN VÀ TRÁCH NHIỆM", heading: "Nội dung được kiểm chứng như thế nào trước khi xuất bản?", lead: "Công khai người biên soạn, thứ tự ưu tiên nguồn, cách cập nhật dữ kiện và quy trình tiếp nhận đính chính để người đọc lẫn công cụ tìm kiếm hiểu đúng website.", body: policyBody, schema: policySchema, current: ""}));
+
 const authorPath = "/tac-gia/nguyen-tu-linh/";
 const authorDescription = "Hồ sơ Nguyễn Tử Linh (Thầy Linh), người biên soạn Trung tâm nghề mỏ và đầu mối tư vấn học nghề, việc làm ngành Than tại Quảng Ninh.";
 const authorSchema = {
   "@context": "https://schema.org",
   "@graph": [
-    {"@type": "ProfilePage", "@id": `${base}${authorPath}#webpage`, url: `${base}${authorPath}`, name: "Nguyễn Tử Linh – Thầy Linh", description: authorDescription, inLanguage: "vi-VN", dateModified: updatedDate, isPartOf: {"@id": websiteId}, mainEntity: {"@id": personId}},
+    {"@type": "ProfilePage", "@id": `${base}${authorPath}#webpage`, url: `${base}${authorPath}`, name: "Nguyễn Tử Linh – Thầy Linh", description: authorDescription, inLanguage: "vi-VN", dateCreated: "2026-07-25", dateModified: updatedDate, isPartOf: {"@id": websiteId}, mainEntity: {"@id": personId}, publishingPrinciples: editorialPolicyUrl, hasPart: allArticles.slice().sort((a, b) => new Date(b.published) - new Date(a.published)).slice(0, 6).map((article) => ({"@type": "Article", name: article.title, url: `${base}/${article.urlPath}/`}))},
     {"@type": "Person", "@id": personId, name: "Nguyễn Tử Linh", alternateName: ["Thầy Linh", "Thầy Linh – Tuyển Thợ Mỏ"], url: `${base}${authorPath}`, image: `${base}/assets/thay-linh-avatar.webp`, jobTitle: "Trưởng phòng Tuyển sinh Miền Trung", worksFor: {"@type": "CollegeOrUniversity", name: "Trường Cao đẳng Than - Khoáng sản Việt Nam", url: "https://caodangtkv.edu.vn/"}, telephone: "+84963048585", sameAs: officialProfiles, knowsAbout: ["Tuyển sinh nghề mỏ", "Học nghề mỏ hầm lò", "Việc làm ngành Than", "Tư vấn người lao động", "Đào tạo nghề tại Quảng Ninh"]},
   ],
 };
 const authorBody = `<section class="network-section"><div class="network-wrap"><article class="profile"><img src="/assets/thay-linh-avatar.webp?v=3" alt="Nguyễn Tử Linh – Thầy Linh" width="220" height="220"><div><p class="network-eyebrow">NGƯỜI BIÊN SOẠN VÀ ĐẦU MỐI TƯ VẤN</p><h2>Nguyễn Tử Linh</h2><p><strong>Trưởng phòng Tuyển sinh Miền Trung</strong></p><p>Thầy Linh biên soạn và duy trì Trung tâm nghề mỏ để người lao động có một nơi đối chiếu điều kiện, chính sách học nghề, việc làm và câu chuyện ngành Than trước khi liên hệ. Nội dung tuyển sinh dùng chung nguồn dữ liệu vận hành; bài biên tập ghi rõ nguồn và không biến số liệu lịch sử thành cam kết hiện hành.</p><div class="network-actions"><a class="network-button" href="${trackedApply("author_profile")}" data-contact="application" data-context="author-profile">Kiểm tra điều kiện</a><a class="network-button network-button--outline" href="https://zalo.me/0963048585" target="_blank" rel="noopener" data-contact="zalo" data-context="author-profile">Zalo 096 304 8585</a></div></div></article></div></section>
-<section class="network-section network-section--soft"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">CAM KẾT BIÊN TẬP</p><h2>Thông tin phải giúp người lao động ra quyết định tốt hơn</h2></div><p>Mọi nội dung đều quay về ba câu hỏi: điều kiện có phù hợp, quyền lợi nào đang áp dụng và bước tiếp theo an toàn là gì.</p></div><ul class="network-list"><li><b>1</b><div><strong>Thống nhất dữ liệu tuyển sinh</strong><span>Tuổi, thể lực, sức khỏe, thời gian học và quyền lợi lấy từ cùng một hồ sơ chính sách.</span></div></li><li><b>2</b><div><strong>Ghi nguồn cho bài biên tập</strong><span>Câu chuyện báo chí được diễn giải nguyên bản, tách rõ dữ kiện nguồn và hướng dẫn của website.</span></div></li><li><b>3</b><div><strong>Bảo vệ dữ liệu ứng viên</strong><span>Đo nguồn liên hệ nhưng không đưa thông tin nhận dạng cá nhân vào GA4, Meta hoặc liên kết chia sẻ.</span></div></li></ul></div></section>`;
+<section class="network-section network-section--soft"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">CAM KẾT BIÊN TẬP</p><h2>Thông tin phải giúp người lao động ra quyết định tốt hơn</h2></div><p>Mọi nội dung đều quay về ba câu hỏi: điều kiện có phù hợp, quyền lợi nào đang áp dụng và bước tiếp theo an toàn là gì.</p></div><ul class="network-list"><li><b>1</b><div><strong>Thống nhất dữ liệu tuyển sinh</strong><span>Tuổi, thể lực, sức khỏe, thời gian học và quyền lợi lấy từ cùng một hồ sơ chính sách.</span></div></li><li><b>2</b><div><strong>Ghi nguồn cho bài biên tập</strong><span>Câu chuyện báo chí được diễn giải nguyên bản, tách rõ dữ kiện nguồn và hướng dẫn của website.</span></div></li><li><b>3</b><div><strong>Bảo vệ dữ liệu ứng viên</strong><span>Đo nguồn liên hệ nhưng không đưa thông tin nhận dạng cá nhân vào GA4, Meta hoặc liên kết chia sẻ.</span></div></li></ul><div class="network-actions"><a class="network-button network-button--outline" href="${editorialPolicyPath}">Đọc đầy đủ nguyên tắc biên tập</a></div></div></section>
+<section class="network-section"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">BÀI BIÊN SOẠN GẦN ĐÂY</p><h2>Nội dung mới do Nguyễn Tử Linh chịu trách nhiệm</h2></div><p>Mỗi bài dẫn về hồ sơ tác giả này và dùng chung nguyên tắc kiểm chứng nguồn của website.</p></div><div class="network-grid">${allArticles.slice().sort((a, b) => new Date(b.published) - new Date(a.published)).slice(0, 6).map((article) => card(article)).join("")}</div></div></section>`;
 writePage(path.join("tac-gia", "nguyen-tu-linh"), page({pathName: authorPath, title: "Nguyễn Tử Linh – Thầy Linh", description: authorDescription, eyebrow: "HỒ SƠ NGƯỜI BIÊN SOẠN", heading: "Một đầu mối chịu trách nhiệm cho toàn bộ hành trình thông tin", lead: "Từ nội dung trên website tới bước kiểm tra điều kiện, người lao động biết rõ ai biên soạn, ai tư vấn và kênh nào là chính thức.", body: authorBody, schema: authorSchema, current: ""}));
 
 function writePage(relativeDirectory, html) {
@@ -280,4 +323,4 @@ function writePage(relativeDirectory, html) {
   fs.writeFileSync(path.join(directory, "index.html"), `${html}\n`);
 }
 
-console.log(JSON.stringify({pages: 7, articles: allArticles.length, provinces: provinces.length, share_packages: options.length, campaign}));
+console.log(JSON.stringify({pages: 8, articles: allArticles.length, provinces: provinces.length, share_packages: options.length, campaign}));

@@ -21,8 +21,8 @@ for (const hook of [
   "data-sms-application",
   "data-form-context=\"central_application\"",
   "recruitment-config.js?v=2",
-  "job-application.js?v=5",
-  "analytics.js?v=3",
+  "job-application.js?v=6",
+  "analytics.js?v=4",
 ]) requireText(campaign, hook, "central application page");
 
 for (const field of ["full_name", "phone", "birth_date", "province", "height", "weight", "education", "trade", "health", "website", "consent"]) {
@@ -54,7 +54,7 @@ requireText(config, "schemaVersion: 2", "recruitment configuration");
 
 for (const slug of ["ky-thuat-khai-thac-mo-ham-lo-quang-ninh", "ky-thuat-xay-dung-mo-ham-lo-quang-ninh"]) {
   const role = read(`viec-lam/${slug}/index.html`);
-  for (const marker of ["data-application-form", "data-form-context=\"job_", "directApply\":true", "job-application.js?v=5"]) {
+  for (const marker of ["data-application-form", "data-form-context=\"job_", "directApply\":true", "job-application.js?v=6"]) {
     requireText(role, marker, `${slug} direct application`);
   }
 }

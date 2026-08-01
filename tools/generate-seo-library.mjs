@@ -13,6 +13,8 @@ const recruitment = JSON.parse(fs.readFileSync(path.resolve("operations/job-post
 const criteria = recruitment.criteria;
 const buildTime = recruitment.updated_at;
 const currentFactsUrl = `${base}/thong-tin-tuyen-tho-mo/`;
+const editorialPolicyUrl = `${base}/nguyen-tac-bien-tap/`;
+const authorUrl = `${base}/tac-gia/nguyen-tu-linh/`;
 const organizationId = `${base}/#organization`;
 const websiteId = `${base}/#website`;
 const allEditorial = [
@@ -85,12 +87,19 @@ function isoSourceDate(value = "") {
   return match ? `${match[3]}-${match[2]}-${match[1]}` : "";
 }
 
+function sourceUrl(source) {
+  if (source.url) return source.url;
+  if (["Phòng Tuyển sinh Miền Trung", "Trường Cao đẳng Than - Khoáng sản Việt Nam"].includes(source.publisher)) return currentFactsUrl;
+  return "";
+}
+
 function sourceCreativeWork(source) {
   const datePublished = isoSourceDate(source.date);
+  const url = sourceUrl(source);
   return {
     "@type": "CreativeWork",
     name: source.title || source.publisher,
-    ...(source.url ? {url: source.url} : {}),
+    ...(url ? {url} : {}),
     ...(datePublished ? {datePublished} : {}),
     publisher: {"@type": "Organization", name: source.publisher},
   };
@@ -116,13 +125,14 @@ function upgradeExistingSchema(html, article) {
     const webpageNode = graph.find((node) => node?.["@type"] === "WebPage");
     if (!articleNode) return full;
     const sourceWorks = (article.sources || []).map(sourceCreativeWork);
-    const sourceUrls = (article.sources || []).map((source) => source.url).filter(Boolean);
+    const sourceUrls = (article.sources || []).map(sourceUrl).filter(Boolean);
     articleNode.author = {"@type": "Person", "@id": `${base}/tac-gia/nguyen-tu-linh/#person`, name: author, alternateName: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/tac-gia/nguyen-tu-linh/`};
-    articleNode.publisher = {"@type": "Organization", "@id": organizationId, name: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/`, logo: {"@type": "ImageObject", "@id": `${base}/#logo`, url: `${base}/favicon-512x512.png`, width: 512, height: 512}};
+    articleNode.publisher = {"@type": "Organization", "@id": organizationId, name: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/`, logo: {"@type": "ImageObject", "@id": `${base}/#logo`, url: `${base}/favicon-512x512.png`, width: 512, height: 512}, publishingPrinciples: editorialPolicyUrl};
+    articleNode.publishingPrinciples = editorialPolicyUrl;
     articleNode.about = (article.keywords || []).map((keyword) => ({"@type": "Thing", name: keyword}));
     if (sourceUrls.length) articleNode.isBasedOn = sourceUrls;
     if (sourceWorks.length) articleNode.citation = sourceWorks;
-    if (webpageNode) Object.assign(webpageNode, {url: canonical, datePublished: article.published, dateModified: article.updated, inLanguage: "vi-VN", isPartOf: {"@id": websiteId}, author: {"@id": `${base}/tac-gia/nguyen-tu-linh/#person`}});
+    if (webpageNode) Object.assign(webpageNode, {url: canonical, datePublished: article.published, dateModified: article.updated, inLanguage: "vi-VN", isPartOf: {"@id": websiteId}, author: {"@id": `${authorUrl}#person`}, publishingPrinciples: editorialPolicyUrl});
     return `<script${before}type="application/ld+json"${after}>${JSON.stringify(schema)}</script>`;
   });
 }
@@ -200,7 +210,7 @@ function renderArticle(article) {
   const inlineImages = article.inlineMedia || articleInlineImages[article.slug] || [];
   const isPressLayout = article.sourceLayout || article.contentMode === "press_digest";
   const sourceWorks = (article.sources || []).map(sourceCreativeWork);
-  const sourceUrls = (article.sources || []).map((source) => source.url).filter(Boolean);
+  const sourceUrls = (article.sources || []).map(sourceUrl).filter(Boolean);
   const careerCta = {
     "Thu nhập & việc làm": {
       title: "Tìm hiểu nghề trước khi tính chuyện đường dài",
@@ -255,15 +265,16 @@ function renderArticle(article) {
         inLanguage: "vi-VN",
         mainEntityOfPage: {"@id": `${canonical}#webpage`},
         image: [article.image, ...inlineImages.map((media) => media.src)],
-        author: {"@type": "Person", "@id": `${base}/tac-gia/nguyen-tu-linh/#person`, name: author, alternateName: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/tac-gia/nguyen-tu-linh/`},
-        publisher: {"@type": "Organization", "@id": organizationId, name: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/`, logo: {"@type": "ImageObject", "@id": `${base}/#logo`, url: `${base}/favicon-512x512.png`, width: 512, height: 512}, sameAs: ["https://www.facebook.com/thaylinhtuyenthomo/", "https://www.youtube.com/@ThầyLinh-TuyểnThợMỏ", "https://www.tiktok.com/@thaylinhtuyenthomo"]},
+        author: {"@type": "Person", "@id": `${authorUrl}#person`, name: author, alternateName: "Thầy Linh – Tuyển Thợ Mỏ", url: authorUrl},
+        publisher: {"@type": "Organization", "@id": organizationId, name: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/`, logo: {"@type": "ImageObject", "@id": `${base}/#logo`, url: `${base}/favicon-512x512.png`, width: 512, height: 512}, sameAs: ["https://www.facebook.com/thaylinhtuyenthomo/", "https://www.youtube.com/@ThầyLinh-TuyểnThợMỏ", "https://www.tiktok.com/@thaylinhtuyenthomo"], publishingPrinciples: editorialPolicyUrl},
+        publishingPrinciples: editorialPolicyUrl,
         articleSection: article.section,
         keywords: article.keywords,
         about: article.keywords.map((keyword) => ({"@type": "Thing", name: keyword})),
         ...(sourceUrls.length ? {isBasedOn: sourceUrls} : {}),
         ...(sourceWorks.length ? {citation: sourceWorks} : {}),
       },
-      {"@type": "WebPage", "@id": `${canonical}#webpage`, url: canonical, name: article.title, datePublished: article.published, dateModified: article.updated, inLanguage: "vi-VN", isPartOf: {"@id": websiteId}, author: {"@id": `${base}/tac-gia/nguyen-tu-linh/#person`}, breadcrumb: {"@id": `${canonical}#breadcrumb`}},
+      {"@type": "WebPage", "@id": `${canonical}#webpage`, url: canonical, name: article.title, datePublished: article.published, dateModified: article.updated, inLanguage: "vi-VN", isPartOf: {"@id": websiteId}, author: {"@id": `${authorUrl}#person`}, publishingPrinciples: editorialPolicyUrl, breadcrumb: {"@id": `${canonical}#breadcrumb`}},
       {
         "@type": "BreadcrumbList",
         "@id": `${canonical}#breadcrumb`,
@@ -362,7 +373,7 @@ function renderArticle(article) {
   </main>
   <footer class="site-footer"><div class="container footer-inner"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Câu chuyện nghề nghiệp, đời sống và cơ hội lập nghiệp trong ngành Than.</p></div><a href="/tin-nganh-than/">Đọc thêm chuyện nghề mỏ →</a></div></footer>
   <nav class="article-contact" aria-label="Liên hệ nhanh"><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Zalo · 096 304 8585</a><a href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener">Messenger</a></nav>
-  <script src="/analytics.js?v=3" defer></script>
+  <script src="/analytics.js?v=4" defer></script>
   <script src="/mobile-ux.js?v=3" defer></script>
   <script src="/share-tools.js?v=1" defer></script>
 </body>
@@ -442,7 +453,8 @@ function hubHtml() {
     url: `${base}/tin-nganh-than/`,
     inLanguage: "vi-VN",
     dateModified: buildTime,
-    publisher: {"@type": "Organization", "@id": organizationId, name: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/`, logo: {"@type": "ImageObject", "@id": `${base}/#logo`, url: `${base}/favicon-512x512.png`, width: 512, height: 512}},
+    publisher: {"@type": "Organization", "@id": organizationId, name: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/`, logo: {"@type": "ImageObject", "@id": `${base}/#logo`, url: `${base}/favicon-512x512.png`, width: 512, height: 512}, publishingPrinciples: editorialPolicyUrl},
+    publishingPrinciples: editorialPolicyUrl,
     mainEntity: {"@type": "ItemList", numberOfItems: allEditorial.length, itemListElement: itemList},
   };
   return `<!doctype html>
@@ -475,7 +487,7 @@ function hubHtml() {
   </main>
   <footer class="site-footer"><div class="container footer-inner"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Đưa câu chuyện nghề mỏ đến gần hơn với người lao động trên cả nước.</p></div><a href="../viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky">Tìm hiểu cơ hội học nghề →</a></div></footer>
   <nav class="article-contact" aria-label="Liên hệ nhanh"><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Zalo · 096 304 8585</a><a href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener">Messenger</a></nav>
-  <script src="/analytics.js?v=3" defer></script>
+  <script src="/analytics.js?v=4" defer></script>
   <script src="/mobile-ux.js?v=3" defer></script>
 </body></html>`;
 }
@@ -502,7 +514,7 @@ for (const article of existingNews) {
   if (!html.includes('rel="author"')) html = html.replace(/(<link\s+rel="canonical"[^>]*>)/i, `$1\n  <link rel="author" href="/tac-gia/nguyen-tu-linh/">`);
   if (!html.includes('/content-network.css?v=1')) html = html.replace(/<\/head>/i, `  <link rel="stylesheet" href="/content-network.css?v=1">\n</head>`);
   html = html.replaceAll(`${base}/#gioi-thieu`, `${base}/tac-gia/nguyen-tu-linh/`);
-  html = html.replaceAll('/analytics.js?v=2', '/analytics.js?v=3').replaceAll('/mobile-ux.js?v=2', '/mobile-ux.js?v=3').replaceAll('/mobile-ux.css?v=1', '/mobile-ux.css?v=3');
+  html = html.replace(/\/analytics\.js\?v=\d+/g, '/analytics.js?v=4').replaceAll('/mobile-ux.js?v=2', '/mobile-ux.js?v=3').replaceAll('/mobile-ux.css?v=1', '/mobile-ux.css?v=3');
   if (!html.includes('/share-tools.js?v=1')) html = html.replace(/<\/body>/i, `  <script src="/share-tools.js?v=1" defer></script>\n</body>`);
   fs.writeFileSync(file, html);
 }
@@ -519,7 +531,10 @@ function collectIndexHtml(directory, output = []) {
   return output;
 }
 
-const urls = collectIndexHtml(root).map((file) => {
+const urls = collectIndexHtml(root).filter((file) => {
+  const html = fs.readFileSync(file, "utf8");
+  return !/<meta\s+name=["']robots["']\s+content=["'][^"']*noindex/i.test(html);
+}).map((file) => {
   const relative = path.relative(root, file).replaceAll(path.sep, "/").replace(/index\.html$/, "");
   return `${base}/${relative}`;
 }).sort((left, right) => left === `${base}/` ? -1 : right === `${base}/` ? 1 : left.localeCompare(right, "vi"));
@@ -534,14 +549,15 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://w
 fs.writeFileSync(path.join(root, "sitemap.xml"), sitemap);
 
 const feedItems = [...allEditorial].sort((left, right) => new Date(right.published) - new Date(left.published));
-const rssItems = feedItems.map((article) => `  <item><title>${xml(article.title)}</title><link>${base}/${article.urlPath}/</link><guid>${base}/${article.urlPath}/</guid><pubDate>${new Date(article.published).toUTCString()}</pubDate><description>${xml(article.lead)}</description></item>`).join("\n");
-fs.writeFileSync(path.join(root, "feed.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>Ngành Than &amp; Người thợ – Thầy Linh</title><link>${base}/tin-nganh-than/</link><description>Chuyện nghề mỏ, con người, thu nhập, an toàn, công nghệ, phúc lợi và môi trường.</description><language>vi</language><lastBuildDate>${new Date(buildTime).toUTCString()}</lastBuildDate>\n${rssItems}\n</channel></rss>\n`);
+const rssItems = feedItems.map((article) => `  <item><title>${xml(article.title)}</title><link>${base}/${article.urlPath}/</link><guid>${base}/${article.urlPath}/</guid><pubDate>${new Date(article.published).toUTCString()}</pubDate><dc:creator>${xml(author)}</dc:creator><description>${xml(article.lead)}</description></item>`).join("\n");
+fs.writeFileSync(path.join(root, "feed.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Ngành Than &amp; Người thợ – Thầy Linh</title><link>${base}/tin-nganh-than/</link><atom:link href="${base}/feed.xml" rel="self" type="application/rss+xml"/><description>Chuyện nghề mỏ, con người, thu nhập, an toàn, công nghệ, phúc lợi và môi trường.</description><language>vi</language><lastBuildDate>${new Date(buildTime).toUTCString()}</lastBuildDate>\n${rssItems}\n</channel></rss>\n`);
 fs.writeFileSync(path.join(root, "feed.json"), `${JSON.stringify({
   version: "https://jsonfeed.org/version/1.1",
   title: "Ngành Than & Người thợ – Thầy Linh",
   home_page_url: `${base}/`,
   feed_url: `${base}/feed.json`,
   language: "vi-VN",
+  authors: [{name: author, url: authorUrl, avatar: `${base}/assets/thay-linh-avatar.webp`}],
   items: feedItems.map((article) => ({
     id: `${base}/${article.urlPath}/`,
     url: `${base}/${article.urlPath}/`,
@@ -550,6 +566,7 @@ fs.writeFileSync(path.join(root, "feed.json"), `${JSON.stringify({
     image: article.image,
     date_published: article.published,
     date_modified: article.updated || article.published,
+    authors: [{name: author, url: authorUrl, avatar: `${base}/assets/thay-linh-avatar.webp`}],
     tags: article.keywords,
   })),
 }, null, 2)}\n`);
@@ -570,6 +587,7 @@ const llmsWithHubs = llmsCurrent.replace("## Trang thông tin hiện hành", `##
 - [Chuyện người thợ](${base}/chuyen-nguoi-tho/): câu chuyện có nguồn về ca làm và hành trình nghề nghiệp.
 - [Bộ chia sẻ thông tin](${base}/chia-se-thong-tin/): tạo nội dung có mã nguồn cho toàn quốc hoặc từng tỉnh.
 - [Người biên soạn Nguyễn Tử Linh](${base}/tac-gia/nguyen-tu-linh/).
+- [Nguyên tắc biên tập và kiểm chứng](${editorialPolicyUrl}): người chịu trách nhiệm, thứ tự ưu tiên nguồn, quy tắc cập nhật và đính chính.
 
 ## Trang thông tin hiện hành`);
 fs.writeFileSync(path.join(root, "llms.txt"), llmsWithHubs);

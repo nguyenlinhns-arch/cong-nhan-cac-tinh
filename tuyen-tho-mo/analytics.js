@@ -90,6 +90,31 @@
     }).filter(([, value]) => typeof value === "string" && value.trim()));
   }
 
+  function detectAiSource() {
+    const params = new URLSearchParams(location.search);
+    const campaignSource = String(params.get("utm_source") || "").toLowerCase();
+    let referrerHost = "";
+    try { referrerHost = document.referrer ? new URL(document.referrer).hostname.toLowerCase() : ""; } catch (_) {}
+    const signal = `${campaignSource} ${referrerHost}`;
+    if (/chatgpt|openai/.test(signal)) return "chatgpt";
+    if (/copilot|microsoftcopilot/.test(signal)) return "copilot";
+    if (/perplexity/.test(signal)) return "perplexity";
+    if (/gemini/.test(signal)) return "gemini";
+    if (/claude/.test(signal)) return "claude";
+    return "";
+  }
+
+  function trackAiReferral() {
+    const source = detectAiSource();
+    if (!source) return;
+    dataLayer.push({
+      event: "ai_referral_visit",
+      source,
+      page_path: location.pathname,
+      ...readAttribution(),
+    });
+  }
+
   function captureFirstAttribution() {
     try {
       const stored = JSON.parse(localStorage.getItem("thaylinh_attribution") || "{}");
@@ -197,6 +222,7 @@
   loadGoogleAnalytics();
   loadMetaPixel();
   captureFirstAttribution();
+  trackAiReferral();
   queuedEvents.forEach(sendMeasurement);
   const queuedTracking = Array.isArray(window.tlTrackingQueue) ? window.tlTrackingQueue.splice(0) : [];
   window.tlTrack = (name, payload = {}) => dataLayer.push({ event: name, ...payload });
