@@ -10,10 +10,10 @@
   "lang": "vi",
   "icons": [
     {
-      "src": "assets/favicon.svg?v=2",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "src": "assets/thay-linh-avatar.webp?v=3",
+      "sizes": "240x240",
+      "type": "image/webp",
+      "purpose": "any"
     }
   ]
 }
