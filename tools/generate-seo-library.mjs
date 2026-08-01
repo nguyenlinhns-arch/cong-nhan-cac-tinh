@@ -178,12 +178,12 @@ function renderArticle(article) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/article-insights.css?v=8">
+  <link rel="stylesheet" href="/article-insights.css?v=9">
   <link rel="stylesheet" href="/mobile-ux.css?v=1">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
 <body>
-  <header class="site-header"><div class="container header-inner"><a class="brand" href="/"><span class="brand-mark">TL</span><span><strong>Thầy Linh</strong><small>Tuyển Thợ Mỏ</small></span></a><a class="back-link" href="/tin-nganh-than/">← Tin ngành Than</a></div></header>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="/"><img class="brand-mark" src="/assets/thay-linh-avatar.webp?v=3" alt="" width="45" height="45"><span><strong>Thầy Linh</strong><small>Tuyển Thợ Mỏ</small></span></a><a class="back-link" href="/tin-nganh-than/">← Tin ngành Than</a></div></header>
   <main>
     <section class="article-hero">
       <img src="${article.image}" alt="${esc(article.imageAlt)}" fetchpriority="high" referrerpolicy="no-referrer">
@@ -274,7 +274,9 @@ function hubHtml() {
     const items = allEditorial.filter((article) => article.section === section && article.slug !== feature.slug);
     if (!items.length) return "";
     const [heading, description] = sectionPresentation[section] || [items.length === 1 ? "Bài viết nên đọc" : "Những bài viết nên đọc", ""];
-    return `<section class="library-section" id="${sectionIds[section]}"><div class="library-heading"><div><p class="eyebrow">${esc(section)}</p><h2>${esc(heading)}</h2></div>${description ? `<p>${esc(description)}</p>` : ""}</div><div class="news-grid">${items.map(card).join("")}</div></section>`;
+    const layout = items.length === 1 ? "single" : items.length === 2 ? "pair" : "standard";
+    const remainder = items.length % 3;
+    return `<section class="library-section" id="${sectionIds[section]}"><div class="library-heading"><div><p class="eyebrow">${esc(section)}</p><h2>${esc(heading)}</h2></div>${description ? `<p>${esc(description)}</p>` : ""}</div><div class="news-grid news-grid--${layout} news-grid--remainder-${remainder}">${items.map(card).join("")}</div></section>`;
   }).join("");
   const itemList = allEditorial.map((article, index) => ({
     "@type": "ListItem",
@@ -305,11 +307,11 @@ function hubHtml() {
   <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="Ngành Than & Người thợ"><meta property="og:description" content="Những câu chuyện có thật, số liệu đáng tin cậy và góc nhìn nghề nghiệp dành cho người đang muốn vào ngành mỏ."><meta property="og:url" content="${base}/tin-nganh-than/"><meta property="og:image" content="${feature.image}">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Ngành Than & Người thợ"><meta name="twitter:description" content="Chuyện nghề mỏ và cơ hội lập nghiệp tại Quảng Ninh."><meta name="twitter:image" content="${feature.image}">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../article-insights.css?v=8"><link rel="stylesheet" href="/mobile-ux.css?v=1">
+  <link rel="stylesheet" href="../article-insights.css?v=9"><link rel="stylesheet" href="/mobile-ux.css?v=1">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
 <body>
-  <header class="site-header"><div class="container header-inner"><a class="brand" href="../"><span class="brand-mark">TL</span><span><strong>Thầy Linh</strong><small>Tuyển Thợ Mỏ</small></span></a><a class="back-link" href="../">← Trang chủ</a></div></header>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../"><img class="brand-mark" src="/assets/thay-linh-avatar.webp?v=3" alt="" width="45" height="45"><span><strong>Thầy Linh</strong><small>Tuyển Thợ Mỏ</small></span></a><a class="back-link" href="../">← Trang chủ</a></div></header>
   <main>
     <section class="news-hero"><div class="container"><p class="eyebrow">Người thật · Việc thật · Dữ kiện thật</p><h1>Ngành Than & Người thợ</h1><p class="lead">Những câu chuyện từ hầm lò, lớp học nghề và khu tập thể công nhân—để người lao động nhìn thấy một nghề vất vả nhưng có tay nghề, thu nhập và niềm tự hào.</p><nav class="cluster-nav" aria-label="Nhóm bài viết">${sectionOrder.filter((section) => allEditorial.some((article) => article.section === section && article.slug !== feature.slug)).map((section) => `<a href="#${sectionIds[section]}">${esc(section)}</a>`).join("")}</nav></div></section>
     <div class="container news-main">
