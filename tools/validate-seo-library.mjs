@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { communitySourceImages } from "./community-source-images.mjs";
-import { curatedArticles } from "./curated-articles.mjs";
+import { curatedArticles, existingNews } from "./curated-articles.mjs";
 import { communityArticles } from "./community-articles.mjs";
 
 const root = path.resolve("tuyen-tho-mo");
@@ -35,6 +35,9 @@ const normalize = (text) => strip(text)
   .trim();
 
 const editorialArticles = [...curatedArticles, ...communityArticles];
+const editorialTopicImageOverrides = new Set(existingNews
+  .filter((article) => article.imagePolicy === "editorial-topic-override")
+  .map((article) => article.slug));
 const editorialSectionOwners = new Map();
 const narrativeShingleOwners = new Map();
 for (const article of editorialArticles) {
@@ -153,7 +156,8 @@ for (const [index, slug] of slugs.entries()) {
   if (!/"@type":"(?:NewsArticle|Article|BlogPosting)"/.test(html) || !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing article or FAQ schema`);
   if (sourceImage) {
     if (image !== sourceImage.image) errors.push(`${prefix}does not use the original image from its source article`);
-  } else if (!image.startsWith("https://vinacomin.vn/Share/Media/")
+  } else if (!editorialTopicImageOverrides.has(slug)
+    && !image.startsWith("https://vinacomin.vn/Share/Media/")
     && !(image.startsWith(`${base}/assets/`) && imageSources[slug]?.source_url?.startsWith("https://vinacomin.vn/Share/Media/"))) {
     errors.push(`${prefix}original editorial image is not from the Vinacomin image library or a verified local copy`);
   }
@@ -212,7 +216,8 @@ for (const slug of slugs) {
   if (sourceImage) {
     if (imageRecord?.source_url !== sourceImage.image) errors.push(`${slug}: image registry does not match the source article image`);
     if (imageRecord?.source_article_url !== sourceImage.sourceUrl) errors.push(`${slug}: image registry does not match the source article URL`);
-  } else if (!imageRecord?.source_url?.startsWith("https://vinacomin.vn/Share/Media/")) {
+  } else if (!editorialTopicImageOverrides.has(slug)
+    && !imageRecord?.source_url?.startsWith("https://vinacomin.vn/Share/Media/")) {
     errors.push(`${slug}: original editorial image is not from the Vinacomin image library`);
   }
 }

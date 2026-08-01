@@ -791,8 +791,11 @@ export const existingNews = [
     lead: "Tuyển dụng, đào tạo, giữ chân thợ lò và cơ giới hóa được đặt trong cùng một chiến lược—tín hiệu rõ về giá trị của người thợ có tay nghề trong giai đoạn 2026–2030.",
     keyword: "tái cơ cấu TKV 2026",
     keywords: ["tái cơ cấu TKV 2026", "việc làm ngành Than", "tuyển thợ lò", "cơ giới hóa khai thác"],
-    image: "https://vinacomin.vn/Share/Media/2018/07/IMG_5192.jpg",
-    imageSource: "Thư viện ảnh Vinacomin · Tập huấn quản lý trạm quan trắc môi trường tự động",
+    image: "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-ham-lo-1200.webp",
+    imageAlt: "Nhóm thợ lò TKV trao đổi phương án kỹ thuật trong hầm lò",
+    imageSource: "Ảnh thợ mỏ hầm lò · TKV/Vinacomin",
+    imageLocalFile: "../vinacomin-tho-mo-ham-lo-1200.webp",
+    imagePolicy: "editorial-topic-override",
     published: "2026-07-31T08:10:00+07:00",
     updated: "2026-08-01T21:55:00+07:00",
     sources: [

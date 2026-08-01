@@ -285,9 +285,10 @@
     "provider": "Thư viện ảnh Vinacomin"
   },
   "tai-co-cau-tkv-2026-viec-lam-tho-mo": {
-    "album_title": "Thư viện ảnh Vinacomin · Tập huấn quản lý trạm quan trắc môi trường tự động",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_5192.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
+    "album_title": "Ảnh thợ mỏ hầm lò · TKV/Vinacomin",
+    "source_url": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-ham-lo-1200.webp",
+    "provider": "Thư viện ảnh Vinacomin",
+    "local_file": "../vinacomin-tho-mo-ham-lo-1200.webp"
   },
   "phuc-loi-tho-mo-tkv-2026": {
     "album_title": "Thư viện ảnh Vinacomin · Lễ tuyên dương điển hình tiên tiến ngành Than",
