@@ -1,13 +1,20 @@
 import fs from "node:fs";
 import path from "node:path";
 import {curatedArticles, existingNews} from "./curated-articles.mjs";
+import {communityArticles} from "./community-articles.mjs";
 
 const root = path.resolve("tuyen-tho-mo");
 const base = "https://thaylinhtuyenthomo.vn";
 const author = "Nguyễn Tử Linh";
+const buildTime = "2026-08-01T22:30:00+07:00";
 const allEditorial = [
   ...curatedArticles.map((article) => ({...article, urlPath: `bai-viet/${article.slug}`})),
   ...existingNews,
+  ...communityArticles,
+];
+const generatedArticles = [
+  ...curatedArticles.map((article) => ({...article, urlPath: `bai-viet/${article.slug}`})),
+  ...communityArticles,
 ];
 
 const esc = (value = "") => String(value)
@@ -43,7 +50,7 @@ function renderChecklist(items) {
 }
 
 function renderArticle(article) {
-  const canonical = `${base}/bai-viet/${article.slug}/`;
+  const canonical = `${base}/${article.urlPath}/`;
   const faqs = article.faq.map(([question, answer]) => ({
     "@type": "Question",
     name: question,
@@ -80,11 +87,14 @@ function renderArticle(article) {
       {"@type": "FAQPage", mainEntity: faqs},
     ],
   };
-  const related = article.related.map((slug, index) => {
+  const related = (article.related || []).map((slug, index) => {
     const target = curatedArticles.find((item) => item.slug === slug);
     if (!target) return "";
-    return `<a href="../${target.slug}/"><small>${index ? "Đọc tiếp" : "Bài liên quan"}</small>${esc(target.title)} →</a>`;
+    return `<a href="/bai-viet/${target.slug}/"><small>${index ? "Đọc tiếp" : "Bài liên quan"}</small>${esc(target.title)} →</a>`;
   }).join("");
+  const sourceNote = article.showSources
+    ? `<section class="source-note" aria-labelledby="source-note-title"><h2 id="source-note-title">Nguồn tham khảo</h2>${article.sources.map((source) => `<p><strong>${esc(source.publisher)}</strong>: “${esc(source.title)}”, đăng ngày ${esc(source.date)}.</p>`).join("")}</section>`
+    : "";
 
   return `<!doctype html>
 <html lang="vi">
@@ -98,8 +108,8 @@ function renderArticle(article) {
   <meta name="author" content="${author}">
   <meta name="keywords" content="${esc(article.keywords.join(", "))}">
   <link rel="canonical" href="${canonical}">
-  <link rel="icon" href="../../assets/favicon.svg?v=2" type="image/svg+xml">
-  <link rel="manifest" href="../../manifest.webmanifest">
+  <link rel="icon" href="/assets/favicon.svg?v=2" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
   <link rel="alternate" type="application/rss+xml" title="Tin ngành Than – Thầy Linh" href="${base}/feed.xml">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="vi_VN">
@@ -120,17 +130,17 @@ function renderArticle(article) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../article-insights.css?v=8">
+  <link rel="stylesheet" href="/article-insights.css?v=8">
   <link rel="stylesheet" href="/mobile-ux.css?v=1">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
 <body>
-  <header class="site-header"><div class="container header-inner"><a class="brand" href="../../"><span class="brand-mark">TL</span><span><strong>Thầy Linh</strong><small>Tuyển Thợ Mỏ</small></span></a><a class="back-link" href="../../tin-nganh-than/">← Tin ngành Than</a></div></header>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="/"><span class="brand-mark">TL</span><span><strong>Thầy Linh</strong><small>Tuyển Thợ Mỏ</small></span></a><a class="back-link" href="/tin-nganh-than/">← Tin ngành Than</a></div></header>
   <main>
     <section class="article-hero">
       <img src="${article.image}" alt="${esc(article.imageAlt)}" fetchpriority="high" referrerpolicy="no-referrer">
       <div class="container hero-inner">
-        <nav class="breadcrumbs" aria-label="Đường dẫn"><a href="../../">Trang chủ</a><span>/</span><a href="../../tin-nganh-than/">Tin ngành Than</a><span>/</span><span>${esc(article.section)}</span></nav>
+        <nav class="breadcrumbs" aria-label="Đường dẫn"><a href="/">Trang chủ</a><span>/</span><a href="/tin-nganh-than/">Tin ngành Than</a><span>/</span><span>${esc(article.section)}</span></nav>
         <p class="eyebrow">${esc(article.section)} · ${displayDate(article.published)}</p>
         <h1>${esc(article.title)}</h1>
         <p class="lead">${esc(article.lead)}</p>
@@ -146,17 +156,18 @@ function renderArticle(article) {
         ${renderChecklist(article.checklist)}
         <h2>${esc(article.conclusionTitle || "Một lựa chọn đáng cân nhắc")}</h2>
         <p class="article-conclusion">${esc(article.takeaway)}</p>
+        ${sourceNote}
         <h2>Câu hỏi thường gặp</h2>
         <div class="faq-list">${article.faq.map(([question, answer]) => `<section class="faq-item"><h3>${esc(question)}</h3><p>${esc(answer)}</p></section>`).join("")}</div>
         <nav class="article-nav" aria-label="Bài viết liên quan">${related}</nav>
       </article>
       <aside class="article-aside">
         <div class="aside-card accent"><h2>Muốn biết mình có phù hợp?</h2><p>Chỉ cần gửi năm sinh, chiều cao, cân nặng và tình trạng sức khỏe. Thầy Linh sẽ kiểm tra ban đầu và hướng dẫn bước tiếp theo.</p><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Nhắn Zalo 096 304 8585</a></div>
-        <div class="aside-card"><h2>Đọc tiếp về nghề mỏ</h2><p>Tìm hiểu đầy đủ điều kiện, chế độ học, công việc và đời sống tại Quảng Ninh trước khi đưa ra quyết định.</p><a class="aside-secondary-link" href="../../tin-nganh-than/">Xem tất cả bài viết</a></div>
+        <div class="aside-card"><h2>Đọc tiếp về nghề mỏ</h2><p>Tìm hiểu đầy đủ điều kiện, chế độ học, công việc và đời sống tại Quảng Ninh trước khi đưa ra quyết định.</p><a class="aside-secondary-link" href="/tin-nganh-than/">Xem tất cả bài viết</a></div>
       </aside>
     </div>
   </main>
-  <footer class="site-footer"><div class="container footer-inner"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Câu chuyện nghề nghiệp, đời sống và cơ hội lập nghiệp trong ngành Than.</p></div><a href="../../tin-nganh-than/">Đọc thêm chuyện nghề mỏ →</a></div></footer>
+  <footer class="site-footer"><div class="container footer-inner"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Câu chuyện nghề nghiệp, đời sống và cơ hội lập nghiệp trong ngành Than.</p></div><a href="/tin-nganh-than/">Đọc thêm chuyện nghề mỏ →</a></div></footer>
   <nav class="article-contact" aria-label="Liên hệ nhanh"><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Zalo · 096 304 8585</a><a href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener">Messenger</a></nav>
   <script src="/analytics.js?v=1" defer></script>
   <script src="/mobile-ux.js?v=2" defer></script>
@@ -173,6 +184,8 @@ const sectionOrder = [
   "Đời sống thợ mỏ",
   "Mỏ xanh & môi trường",
   "Việc làm ngành Than",
+  "Kết nối địa phương",
+  "An sinh xã hội",
 ];
 
 const sectionIds = {
@@ -184,6 +197,8 @@ const sectionIds = {
   "Đời sống thợ mỏ": "doi-song-tho-mo",
   "Mỏ xanh & môi trường": "mo-xanh-moi-truong",
   "Việc làm ngành Than": "viec-lam-nganh-than",
+  "Kết nối địa phương": "ket-noi-dia-phuong",
+  "An sinh xã hội": "an-sinh-xa-hoi",
 };
 
 function card(article) {
@@ -213,7 +228,7 @@ function hubHtml() {
     description: "Những bài viết chuyên sâu về nghề thợ mỏ, thu nhập, đời sống, tay nghề, công nghệ và cơ hội việc làm tại Quảng Ninh.",
     url: `${base}/tin-nganh-than/`,
     inLanguage: "vi-VN",
-    dateModified: "2026-08-01T21:55:00+07:00",
+    dateModified: buildTime,
     publisher: {"@type": "Organization", name: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/`},
     mainEntity: {"@type": "ItemList", numberOfItems: allEditorial.length, itemListElement: itemList},
   };
@@ -248,8 +263,8 @@ function hubHtml() {
 </body></html>`;
 }
 
-for (const article of curatedArticles) {
-  const directory = path.join(root, "bai-viet", article.slug);
+for (const article of generatedArticles) {
+  const directory = path.join(root, article.urlPath);
   fs.mkdirSync(directory, {recursive: true});
   fs.writeFileSync(path.join(directory, "index.html"), renderArticle(article));
 }
@@ -280,7 +295,7 @@ fs.writeFileSync(path.join(root, "sitemap.xml"), sitemap);
 
 const feedItems = [...allEditorial].sort((left, right) => new Date(right.published) - new Date(left.published));
 const rssItems = feedItems.map((article) => `  <item><title>${xml(article.title)}</title><link>${base}/${article.urlPath}/</link><guid>${base}/${article.urlPath}/</guid><pubDate>${new Date(article.published).toUTCString()}</pubDate><description>${xml(article.lead)}</description></item>`).join("\n");
-fs.writeFileSync(path.join(root, "feed.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>Ngành Than &amp; Người thợ – Thầy Linh</title><link>${base}/tin-nganh-than/</link><description>Chuyện nghề mỏ, con người, thu nhập, an toàn, công nghệ, phúc lợi và môi trường.</description><language>vi</language><lastBuildDate>${new Date("2026-08-01T21:55:00+07:00").toUTCString()}</lastBuildDate>\n${rssItems}\n</channel></rss>\n`);
+fs.writeFileSync(path.join(root, "feed.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>Ngành Than &amp; Người thợ – Thầy Linh</title><link>${base}/tin-nganh-than/</link><description>Chuyện nghề mỏ, con người, thu nhập, an toàn, công nghệ, phúc lợi và môi trường.</description><language>vi</language><lastBuildDate>${new Date(buildTime).toUTCString()}</lastBuildDate>\n${rssItems}\n</channel></rss>\n`);
 fs.writeFileSync(path.join(root, "feed.json"), `${JSON.stringify({
   version: "https://jsonfeed.org/version/1.1",
   title: "Ngành Than & Người thợ – Thầy Linh",
@@ -311,9 +326,9 @@ fs.writeFileSync(path.join(root, "assets", "articles", "sources.json"), `${JSON.
 
 fs.mkdirSync(path.resolve("content"), {recursive: true});
 fs.writeFileSync(path.resolve("content", "editorial-sources.json"), `${JSON.stringify({
-  updated_at: "2026-08-01T21:55:00+07:00",
+  updated_at: buildTime,
   policy: "Nguồn URL chỉ dùng cho kiểm chứng nội bộ; bài công khai ghi tên nguồn bằng chữ và không đặt liên kết ra ngoài.",
   articles: allEditorial.map((article) => ({slug: article.slug, title: article.title, sources: article.sources})),
 }, null, 2)}\n`);
 
-console.log(`Generated ${curatedArticles.length} rewritten guides, ${allEditorial.length} editorial feed items and ${urls.length} sitemap URLs.`);
+console.log(`Generated ${generatedArticles.length} article pages, ${allEditorial.length} editorial feed items and ${urls.length} sitemap URLs.`);

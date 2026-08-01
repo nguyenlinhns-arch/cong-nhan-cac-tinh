@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-01T21:55:00+07:00",
+  "updated_at": "2026-08-01T22:30:00+07:00",
   "policy": "Nguồn URL chỉ dùng cho kiểm chứng nội bộ; bài công khai ghi tên nguồn bằng chữ và không đặt liên kết ra ngoài.",
   "articles": [
     {
@@ -230,6 +230,372 @@
           "title": "Cung cấp 22,77 triệu tấn than cho sản xuất điện trong 6 tháng đầu năm",
           "date": "03/07/2026",
           "url": "https://web.vinacomin.vn/news/slug/6-thang-dau-nam-tkv-cung-cap-2277-trieu-tan-than-cho-san-xuat-dien"
+        }
+      ]
+    },
+    {
+      "slug": "tuyen-quang-phoi-hop-tuyen-sinh-nghe-mo-2025-2030",
+      "title": "Bốn xã Tuyên Quang mở đường học nghề mỏ, việc làm TKV",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Ký kết quy chế phối hợp tuyển sinh – đào tạo nghề với các địa phương giai đoạn 2025–2030",
+          "date": "29/11/2025",
+          "url": "https://caodangtkv.edu.vn/truong-cao-dang-than-khoang-san-viet-nam-ky-ket-quy-che-phoi-hop-tuyen-sinh-dao-tao-nghe-voi-cac-dia-phuong-giai-doan-2025-2030/"
+        }
+      ]
+    },
+    {
+      "slug": "hai-lang-phoi-hop-dao-tao-viec-lam-nganh-than",
+      "title": "Hải Lạng kết nối học nghề mỏ với việc làm tại Than Dương Huy",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Hội nghị ký Quy chế phối hợp giữa Nhà trường, xã Hải Lạng và Công ty Than Dương Huy – TKV",
+          "date": "28/01/2026",
+          "url": "https://caodangtkv.edu.vn/hoi-nghi-ky-quy-che-phoi-hop-giua-truong-cao-dang-than-khoang-san-viet-nam-xa-hai-lang-va-cong-ty-than-duong-huy-tkv/"
+        }
+      ]
+    },
+    {
+      "slug": "bang-thanh-phuc-loc-hoc-nghe-tho-lo-tkv",
+      "title": "Bằng Thành, Phúc Lộc kết nối thanh niên với nghề thợ lò TKV",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Quyết tâm cao độ đẩy mạnh tuyển sinh, đào tạo thợ lò trong những ngày cận Tết",
+          "date": "13/02/2026",
+          "url": "https://caodangtkv.edu.vn/quyet-tam-cao-do-day-manh-tuyen-sinh-dao-tao-tho-lo-trong-nhung-ngay-can-tet/"
+        }
+      ]
+    },
+    {
+      "slug": "nam-tuan-cao-bang-dao-tao-nghe-mo-viec-lam",
+      "title": "Nam Tuấn liên kết ba bên đào tạo nghề mỏ, bố trí việc làm",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Hội nghị triển khai ký biên bản hợp tác 3 bên về đào tạo nghề và giải quyết việc làm giai đoạn 2026–2030",
+          "date": "04/05/2026",
+          "url": "https://caodangtkv.edu.vn/hoi-nghi-trien-khai-ky-bien-ban-hop-tac-3-ben-tao-dot-pha-trong-dao-tao-nghe-va-giai-quyet-viec-lam-cho-lao-dong-dia-phuong-giai-doan-2026-2030/"
+        }
+      ]
+    },
+    {
+      "slug": "luong-minh-hieu-qua-tuyen-sinh-dao-tao-viec-lam",
+      "title": "Lương Minh: từ 31 hội nghị tư vấn đến 37 học sinh nhập học",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Hội nghị sơ kết công tác tuyển sinh, đào tạo và giải quyết việc làm tại xã Lương Minh",
+          "date": "13/05/2026",
+          "url": "https://caodangtkv.edu.vn/hoi-nghi-so-ket-cong-tac-tuyen-sinh-dao-tao-va-giai-quyet-viec-lam-tai-xa-luong-minh/"
+        },
+        {
+          "publisher": "TKV",
+          "title": "Hội nghị sơ kết công tác tuyển sinh, đào tạo và giải quyết việc làm tại xã Lương Minh",
+          "date": "05/2026",
+          "url": "https://vinacomin.vn/news/slug/hoi-nghi-so-ket-cong-tac-tuyen-sinh-dao-tao-va-giai-quyet-viec-lam-tai-xa-luong-minh"
+        }
+      ]
+    },
+    {
+      "slug": "dien-xa-than-khe-cham-hop-tac-dao-tao-viec-lam",
+      "title": "Điền Xá hợp tác với Than Khe Chàm đào tạo nghề, tạo việc làm",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "Than Khe Chàm: Tăng cường phối hợp tuyển sinh, đào tạo nghề mỏ hầm lò",
+          "date": "28/05/2026",
+          "url": "https://vinacomin.vn/news/slug/than-khe-cham-tang-cuong-phoi-hop-tuyen-sinh-dao-tao-nghe-mo-ham-lo"
+        },
+        {
+          "publisher": "Công đoàn TKV",
+          "title": "Than Khe Chàm ký kết hợp tác đào tạo nghề và giải quyết việc làm tại xã Điền Xá giai đoạn 2026–2030",
+          "date": "27/05/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/45633/Than-Khe-Cham-Ky-ket-hop-tac-%C4%91ao-tao-nghe-va-giai-quyet-viec-lam-tai-xa-%C4%90ien-Xa-giai-%C4%91oan-2026---2030"
+        }
+      ]
+    },
+    {
+      "slug": "duong-hoa-than-duong-huy-tuyen-sinh-nghe-mo",
+      "title": "Than Dương Huy đưa tư vấn nghề mỏ tới hai thôn xã Đường Hoa",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "Than Dương Huy đẩy mạnh phối hợp tuyển sinh nghề mỏ hầm lò",
+          "date": "24/06/2026",
+          "url": "https://vinacomin.vn/news/slug/than-duong-huy-day-manh-phoi-hop-tuyen-sinh-nghe-mo-ham-lo"
+        },
+        {
+          "publisher": "Công ty Than Dương Huy – TKV",
+          "title": "Đẩy mạnh phối hợp tuyển sinh thợ mỏ",
+          "date": "21/06/2026",
+          "url": "https://thanduonghuy.com.vn/ls/tin-khac-c27"
+        }
+      ]
+    },
+    {
+      "slug": "dong-van-ha-giang-cong-trinh-phuc-loi-tuyen-sinh-nghe-mo",
+      "title": "TKV đồng hành Đồng Văn: công trình phúc lợi gắn với nghề mỏ",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "TKV làm việc với huyện Đồng Văn, Hà Giang về công trình phúc lợi và tuyển sinh nghề mỏ",
+          "date": "06/06/2025",
+          "url": "https://vinacomin.vn/news/slug/tkv-lam-viec-voi-huyen-dong-van-ha-giang-ve-cong-trinh-phuc-loi-va-tuyen-sinh-nghe-mo"
+        }
+      ]
+    },
+    {
+      "slug": "tho-mo-tkv-xoa-nha-tam-tay-nguyen",
+      "title": "Thợ mỏ TKV chung tay xóa nhà tạm cho đồng bào Tây Nguyên",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "Thợ mỏ TKV ủng hộ Chương trình xoá nhà tạm, nhà dột nát tại các tỉnh Tây Nguyên",
+          "date": "31/07/2025",
+          "url": "https://vinacomin.vn/news/slug/tho-mo-tkv-ung-ho-chuong-trinh-xoa-nha-tam-nha-dot-nat-tai-cac-tinh-tay-nguyen"
+        }
+      ]
+    },
+    {
+      "slug": "tkv-ho-tro-70-ty-khac-phuc-bao-yagi",
+      "title": "TKV hỗ trợ 70 tỷ đồng khắc phục hậu quả bão Yagi",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "TKV triển khai gói hỗ trợ 70 tỷ đồng khắc phục hậu quả bão số 3",
+          "date": "16/09/2024",
+          "url": "https://vinacomin.vn/news/slug/tkv-trien-khai-goi-ho-tro-70-ty-dong-khac-phuc-hau-qua-bao-so-3"
+        },
+        {
+          "publisher": "Tạp chí Công Thương",
+          "title": "TKV triển khai gói hỗ trợ 70 tỷ đồng khắc phục hậu quả bão số 3",
+          "date": "09/2024",
+          "url": "https://tapchicongthuong.vn/tkv-trien-khai-goi-ho-tro-70-ty-dong-khac-phuc-hau-qua-bao-so-3-126647.htm"
+        }
+      ]
+    },
+    {
+      "slug": "tkv-gieng-khoan-nuoc-sach-truong-hoc-lai-chau",
+      "title": "Tuổi trẻ TKV xây giếng nước sạch cho liên trường ở Lai Châu",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "Đoàn Thanh niên TKV hỗ trợ xây dựng công trình giếng khoan cấp nước sinh hoạt cho trường học",
+          "date": "06/09/2024",
+          "url": "https://vinacomin.vn/news/slug/doan-thanh-nien-tkv-ho-tro-xay-dung-cong-trinh-gieng-khoan-cap-nuoc-sinh-hoat-cho-truong-hoc"
+        }
+      ]
+    },
+    {
+      "slug": "tkv-ho-tro-12-ty-tay-nguyen-khac-phuc-mua-lu",
+      "title": "TKV hỗ trợ 12 tỷ đồng giúp bốn tỉnh khắc phục mưa lũ",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "TKV hỗ trợ 12 tỷ đồng giúp các tỉnh Tây Nguyên khắc phục hậu quả mưa lũ",
+          "date": "24/11/2025",
+          "url": "https://vinacomin.vn/news/slug/tkv-ho-tro-12-ty-dong-giup-cac-tinh-tay-nguyen-khac-phuc-hau-qua-mua-lu"
+        },
+        {
+          "publisher": "Tạp chí Công Thương",
+          "title": "TKV hỗ trợ 12 tỷ đồng giúp các tỉnh Tây Nguyên khắc phục hậu quả mưa lũ",
+          "date": "25/11/2025",
+          "url": "https://tapchicongthuong.vn/tkv-ho-tro-12-ty-dong-giup-cac-tinh-tay-nguyen-khac-phuc-hau-qua-mua-lu-328123.htm"
+        }
+      ]
+    },
+    {
+      "slug": "binh-lieu-hop-tac-hoc-nghe-mo-viec-lam-tkv",
+      "title": "Bình Liêu đặt mục tiêu 60–70 lao động học nghề mỏ mỗi năm",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Trường Cao đẳng TKV và xã Bình Liêu ký quy chế phối hợp giai đoạn 2025–2030",
+          "date": "07/11/2025",
+          "url": "https://caodangtkv.edu.vn/truong-cao-dang-than-khoang-san-viet-nam-va-xa-binh-lieu-ky-quy-che-phoi-hop-giai-doan-2025-2030/"
+        }
+      ]
+    },
+    {
+      "slug": "luc-hon-than-ha-long-dao-tao-nghe-giai-quyet-viec-lam",
+      "title": "Lục Hồn nối đào tạo nghề với việc làm tại Than Hạ Long",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Tăng cường phối hợp, mở rộng cơ hội việc làm cho lao động vùng cao tại xã Lục Hồn",
+          "date": "31/07/2025",
+          "url": "https://caodangtkv.edu.vn/tang-cuong-phoi-hop-mo-rong-co-hoi-viec-lam-cho-lao-dong-vung-cao-truong-cao-dang-than-khoang-san-viet-nam-ky-ket-quy-che-phoi-hop-voi-xa-luc-hon-va-cong-ty-than-ha-long-tkv/"
+        }
+      ]
+    },
+    {
+      "slug": "vi-xuyen-ha-giang-hoc-nghe-mo-viec-lam-tkv",
+      "title": "Vị Xuyên mở rộng tuyến học nghề mỏ, việc làm TKV 2025–2030",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Ký kết phối hợp đào tạo nghề và giải quyết việc làm cho lao động huyện Vị Xuyên giai đoạn 2025–2030",
+          "date": "20/01/2025",
+          "url": "https://caodangtkv.edu.vn/dang-uy-truong-cao-dang-than-khoang-san-viet-nam-ky-ket-quy-che-phoi-hop-ve-dao-tao-nghe-va-giai-quyet-viec-lam-cho-lao-dong-huyen-vi-xuyen-ha-giang-giai-doan-2025-2030/"
+        }
+      ]
+    },
+    {
+      "slug": "hoanh-mo-xay-lap-mo-dao-tao-nghe-viec-lam",
+      "title": "Hoành Mô đặt mục tiêu trên 40 lao động học nghề mỏ mỗi năm",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Hội nghị ký Quy chế phối hợp đào tạo nghề và giải quyết việc làm cho người lao động xã Hoành Mô",
+          "date": "25/12/2025",
+          "url": "https://caodangtkv.edu.vn/hoi-nghi-ky-quy-che-phoi-hop-dao-tao-nghe-va-giai-quyet-viec-lam-cho-nguoi-lao-dong-xa-hoanh-mo-giai-doan-2026-2030/"
+        }
+      ]
+    },
+    {
+      "slug": "si-lo-lau-khun-ha-lai-chau-hoc-nghe-mo",
+      "title": "Sì Lở Lầu, Khun Há kết nối thanh niên vùng cao với nghề mỏ",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Nâng tầm chất lượng nguồn nhân lực, thắp sáng tương lai lao động vùng cao Tây Bắc",
+          "date": "27/09/2025",
+          "url": "https://caodangtkv.edu.vn/nang-tam-chat-luong-nguon-nhan-luc-thap-sang-tuong-lai-lao-dong-vung-cao-tay-bac/"
+        }
+      ]
+    },
+    {
+      "slug": "tinh-doan-lai-chau-ket-noi-viec-lam-tkv",
+      "title": "Tỉnh Đoàn Lai Châu kết nối 300–400 thanh niên với nghề mỏ",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Thắt chặt phối hợp – Mở rộng cơ hội việc làm cho thanh niên Lai Châu",
+          "date": "25/05/2025",
+          "url": "https://caodangtkv.edu.vn/that-chat-phoi-hop-mo-rong-co-hoi-viec-lam-cho-thanh-nien-lai-chau/"
+        }
+      ]
+    },
+    {
+      "slug": "bao-lac-cao-bang-tu-van-hoc-nghe-mo",
+      "title": "Bảo Lạc đưa tư vấn học nghề mỏ đến từng xã, từng thôn",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Đoàn công tác UBND xã Hưng Đạo, huyện Bảo Lạc đến thăm và làm việc với Nhà trường",
+          "date": "21/04/2025",
+          "url": "https://caodangtkv.edu.vn/doan-cong-tac-ubnd-xa-hung-dao-huyen-bao-lac-tinh-cao-bang-den-tham-va-lam-viec-voi-truong-cao-dang-than-khoang-san-viet-nam/"
+        }
+      ]
+    },
+    {
+      "slug": "luong-minh-quang-tan-ky-ket-dao-tao-viec-lam",
+      "title": "Lương Minh, Quảng Tân ký phối hợp ba bên về nghề mỏ",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Ký kết Quy chế phối hợp ba bên: Gắn đào tạo nghề với giải quyết việc làm bền vững",
+          "date": "23/01/2026",
+          "url": "https://caodangtkv.edu.vn/ky-ket-quy-che-phoi-hop-ba-ben-gan-dao-tao-nghe-voi-giai-quyet-viec-lam-ben-vung-cho-lao-dong-dia-phuong/"
+        }
+      ]
+    },
+    {
+      "slug": "duong-thuong-tuyen-quang-than-quang-hanh-tuyen-nghe-mo",
+      "title": "Than Quang Hanh tư vấn nghề mỏ tại 20 thôn xã Đường Thượng",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "Công ty Than Quang Hanh – TKV phối hợp tuyển sinh nghề mỏ hầm lò tại xã Đường Thượng",
+          "date": "11/08/2025",
+          "url": "https://vinacomin.vn/news/slug/cong-ty-than-quang-hanh-tkv-phoi-hop-tuyen-sinh-nghe-mo-ham-lo-tai-xa-duong-thuong-tinh-tuyen-quang"
+        },
+        {
+          "publisher": "Công đoàn TKV",
+          "title": "Công ty Than Quang Hanh phối hợp tư vấn tuyển sinh nghề mỏ hầm lò tại xã Đường Thượng",
+          "date": "10/08/2025",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/44142/Cong-ty-than-Quang-Hanh-Phoi-hop-tu-van-tuyen-sinh-nghe-mo-ham-lo-tai-xa-%C4%90uong-Thuong-tinh-Tuyen-Quang"
+        }
+      ]
+    },
+    {
+      "slug": "than-thong-nhat-tuyen-sinh-nghe-mo-lai-chau-2026",
+      "title": "Than Thống Nhất mở đợt tư vấn nghề mỏ tại Lai Châu năm 2026",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "Than Thống Nhất phối hợp tư vấn tuyển sinh đào tạo nghề mỏ tại tỉnh Lai Châu",
+          "date": "04/03/2026",
+          "url": "https://vinacomin.vn/news/slug/than-thong-nhat-phoi-hop-tu-van-tuyen-sinh-dao-tao-nghe-mo-tai-tinh-lai-chau"
+        }
+      ]
+    },
+    {
+      "slug": "tkv-ho-tro-5-ty-xoa-nha-tam-lam-dong",
+      "title": "TKV hỗ trợ 5 tỷ đồng xóa nhà tạm, nhà dột nát tại Lâm Đồng",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "TKV ủng hộ Chương trình Xoá nhà tạm, nhà dột nát tại tỉnh Lâm Đồng",
+          "date": "26/08/2024",
+          "url": "https://vinacomin.vn/news/slug/tkv-ung-ho-chuong-trinh-xoa-nha-tam-nha-dot-nat-tai-tinh-lam-dong"
+        }
+      ]
+    },
+    {
+      "slug": "tkv-ung-ho-10-ty-khac-phuc-bao-bualoi",
+      "title": "TKV ủng hộ 10 tỷ đồng khắc phục hậu quả bão Bualoi",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "TKV ủng hộ 10 tỷ đồng khắc phục hậu quả bão số 10 (bão Bualoi)",
+          "date": "06/10/2025",
+          "url": "https://vinacomin.vn/news/slug/tkv-ung-ho-10-ty-dong-khac-phuc-hau-qua-bao-so-10-bao-bualoi"
+        }
+      ]
+    },
+    {
+      "slug": "tkv-ho-tro-10-ty-mien-nui-phia-bac-mua-lu",
+      "title": "TKV hỗ trợ 10 tỷ đồng cho bốn tỉnh miền núi phía Bắc",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "TKV ủng hộ 10 tỷ đồng hỗ trợ các tỉnh miền núi phía Bắc khắc phục hậu quả thiên tai",
+          "date": "10/10/2025",
+          "url": "https://vinacomin.vn/news/slug/tkv-ung-ho-10-ty-dong-ho-tro-cac-tinh-mien-nui-phia-bac-khac-phuc-hau-qua-thien-tai"
+        },
+        {
+          "publisher": "Báo Chính phủ",
+          "title": "TKV ủng hộ 10 tỷ đồng hỗ trợ các tỉnh miền núi phía Bắc khắc phục hậu quả sau mưa lũ",
+          "date": "10/10/2025",
+          "url": "https://baochinhphu.vn/tkv-ung-ho-10-ty-dong-ho-tro-cac-tinh-mien-nui-phia-bac-khac-phuc-hau-qua-sau-mua-lu-102251010153406903.htm"
+        }
+      ]
+    },
+    {
+      "slug": "tkv-ung-ho-20-ty-cham-lo-nguoi-co-cong-2026",
+      "title": "TKV dành 20 tỷ đồng chăm lo người có công năm 2026",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "TKV ủng hộ 20 tỷ đồng chung tay chăm lo người có công với cách mạng toàn quốc năm 2026",
+          "date": "23/07/2026",
+          "url": "https://vinacomin.vn/news/slug/tkv-ung-ho-20-ty-dong-chung-tay-cham-lo-nguoi-co-cong-voi-cach-mang-toan-quoc-nam-2026"
+        }
+      ]
+    },
+    {
+      "slug": "doan-thanh-nien-tkv-25-hoc-bong-thap-sang-uoc-mo",
+      "title": "Tuổi trẻ TKV trao 25 học bổng “Thắp sáng ước mơ”",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "Đoàn Thanh niên TKV triển khai các hoạt động ‘Thắp sáng ước mơ’ cho thiếu niên nhi đồng",
+          "date": "28/07/2026",
+          "url": "https://vinacomin.vn/news/slug/doan-thanh-nien-tkv-trien-khai-cac-hoat-dong-thap-sang-uoc-mo-cho-thieu-nien-nhi-dong"
         }
       ]
     }

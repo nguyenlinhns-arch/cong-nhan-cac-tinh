@@ -1,4 +1,139 @@
 {
+  "doan-thanh-nien-tkv-25-hoc-bong-thap-sang-uoc-mo": {
+    "album_title": "Thư viện ảnh Vinacomin · Tuyên dương điển hình",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/05/39A6690.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "tkv-ung-ho-20-ty-cham-lo-nguoi-co-cong-2026": {
+    "album_title": "Thư viện ảnh Vinacomin · Tuyên dương điển hình tiên tiến",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/05/39A6641.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "tkv-ho-tro-10-ty-mien-nui-phia-bac-mua-lu": {
+    "album_title": "Thư viện ảnh Vinacomin · Tuyên dương người lao động",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/05/39A6637.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "tkv-ung-ho-10-ty-khac-phuc-bao-bualoi": {
+    "album_title": "Thư viện ảnh Vinacomin · Người lao động TKV",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/05/39A6633.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "tkv-ho-tro-5-ty-xoa-nha-tam-lam-dong": {
+    "album_title": "Thư viện ảnh Vinacomin · Điển hình tiên tiến TKV",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/05/39A6632.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "than-thong-nhat-tuyen-sinh-nghe-mo-lai-chau-2026": {
+    "album_title": "Thư viện ảnh Vinacomin · Sản xuất và tự động hóa",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_5786.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "duong-thuong-tuyen-quang-than-quang-hanh-tuyen-nghe-mo": {
+    "album_title": "Thư viện ảnh Vinacomin · Quản lý sản xuất TKV",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_5778.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "luong-minh-quang-tan-ky-ket-dao-tao-viec-lam": {
+    "album_title": "Thư viện ảnh Vinacomin · Tự động hóa trong TKV",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_5769.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "bao-lac-cao-bang-tu-van-hoc-nghe-mo": {
+    "album_title": "Thư viện ảnh Vinacomin · Sản xuất và quản lý TKV",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_5759.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "tinh-doan-lai-chau-ket-noi-viec-lam-tkv": {
+    "album_title": "Thư viện ảnh Vinacomin · Công nghệ và nguồn nhân lực TKV",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_5755.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "si-lo-lau-khun-ha-lai-chau-hoc-nghe-mo": {
+    "album_title": "Thư viện ảnh Vinacomin · Ứng dụng công nghệ trong sản xuất",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_5727.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "hoanh-mo-xay-lap-mo-dao-tao-nghe-viec-lam": {
+    "album_title": "Thư viện ảnh Vinacomin · Chăm lo công nhân ngành Than",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4084.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "vi-xuyen-ha-giang-hoc-nghe-mo-viec-lam-tkv": {
+    "album_title": "Thư viện ảnh Vinacomin · Hoạt động ngành Than",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4062.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "luc-hon-than-ha-long-dao-tao-nghe-giai-quyet-viec-lam": {
+    "album_title": "Thư viện ảnh Vinacomin · Hợp tác đào tạo công nhân",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_2365.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "binh-lieu-hop-tac-hoc-nghe-mo-viec-lam-tkv": {
+    "album_title": "Thư viện ảnh Vinacomin · Đào tạo công nhân khai thác than",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_2360.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "tkv-ho-tro-12-ty-tay-nguyen-khac-phuc-mua-lu": {
+    "album_title": "Thư viện ảnh Vinacomin · Tuổi trẻ ngành Than",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_8663.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "tkv-gieng-khoan-nuoc-sach-truong-hoc-lai-chau": {
+    "album_title": "Thư viện ảnh Vinacomin · Công nhân trẻ ngành Than",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_8648.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "tkv-ho-tro-70-ty-khac-phuc-bao-yagi": {
+    "album_title": "Thư viện ảnh Vinacomin · Tuyên dương điển hình tiên tiến ngành Than",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/05/39A6766.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "tho-mo-tkv-xoa-nha-tam-tay-nguyen": {
+    "album_title": "Thư viện ảnh Vinacomin · Gặp mặt cơ quan báo chí ngành Than",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/QN2.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "dong-van-ha-giang-cong-trinh-phuc-loi-tuyen-sinh-nghe-mo": {
+    "album_title": "Thư viện ảnh Vinacomin · Hội nghị ứng dụng tự động hóa trong sản xuất",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_5803.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "duong-hoa-than-duong-huy-tuyen-sinh-nghe-mo": {
+    "album_title": "Thư viện ảnh Vinacomin · Hoạt động thi đua của TKV",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_1821.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "dien-xa-than-khe-cham-hop-tac-dao-tao-viec-lam": {
+    "album_title": "Thư viện ảnh Vinacomin · Hội nghị của Tập đoàn Công nghiệp Than – Khoáng sản Việt Nam",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_5917.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "luong-minh-hieu-qua-tuyen-sinh-dao-tao-viec-lam": {
+    "album_title": "Thư viện ảnh Vinacomin · Hội nghị giao ban TKV vùng Quảng Ninh",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_5958.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "nam-tuan-cao-bang-dao-tao-nghe-mo-viec-lam": {
+    "album_title": "Thư viện ảnh Vinacomin · Đại diện địa phương làm việc với TKV",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/DSC_0618.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "bang-thanh-phuc-loc-hoc-nghe-tho-lo-tkv": {
+    "album_title": "Thư viện ảnh Vinacomin · Thăm và tặng quà công nhân Than Dương Huy",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4274.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "hai-lang-phoi-hop-dao-tao-viec-lam-nganh-than": {
+    "album_title": "Thư viện ảnh Vinacomin · Ký kết dự án đào tạo công nhân khai thác than",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_2366.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "tuyen-quang-phoi-hop-tuyen-sinh-nghe-mo-2025-2030": {
+    "album_title": "Thư viện ảnh Vinacomin · TKV triển khai nhiệm vụ sản xuất",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_6198.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
   "an-toan-mua-mua-bao-2026": {
     "album_title": "Thư viện ảnh Vinacomin · Công trình Than Mạo Khê",
     "source_url": "https://vinacomin.vn/Share/Media/2017/09/IMG_9953.jpg",

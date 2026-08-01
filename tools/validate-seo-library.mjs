@@ -115,6 +115,9 @@ for (const [index, slug] of slugs.entries()) {
     errors.push(`${prefix}contains a public editorial-source block`);
   }
   if (/class="article-(?:meta|source-credit)"/i.test(html)) errors.push(`${prefix}contains visible author, image or source credits`);
+  if (item.url.includes("/tin-nganh-than/2026/08/01/") && (!html.includes('class="source-note"') || !visible.includes("Nguồn tham khảo"))) {
+    errors.push(`${prefix}missing visible source citation`);
+  }
   if (/Bài\s+\d{1,2}\s*\/\s*50|50\+?\s*bài|Cách đọc đúng:|Tóm tắt:/iu.test(visible)) errors.push(`${prefix}contains quota-driven or generic template wording`);
   if (/10\s*tháng/iu.test(visible)) errors.push(`${prefix}contains obsolete 10-month training information`);
 
