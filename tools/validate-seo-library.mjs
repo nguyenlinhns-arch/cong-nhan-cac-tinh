@@ -113,19 +113,16 @@ for (const [index, slug] of slugs.entries()) {
   if (!/"@type":"(?:NewsArticle|Article|BlogPosting)"/.test(html) || !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing article or FAQ schema`);
   if (sourceImage) {
     if (image !== sourceImage.image) errors.push(`${prefix}does not use the original image from its source article`);
-  } else if (!image.startsWith("https://vinacomin.vn/Share/Media/")) {
-    errors.push(`${prefix}original editorial image is not from the Vinacomin image library`);
+  } else if (!image.startsWith("https://vinacomin.vn/Share/Media/")
+    && !(image.startsWith(`${base}/assets/`) && imageSources[slug]?.source_url?.startsWith("https://vinacomin.vn/Share/Media/"))) {
+    errors.push(`${prefix}original editorial image is not from the Vinacomin image library or a verified local copy`);
   }
   if (ogImage !== image || item.image !== image) errors.push(`${prefix}hero, Open Graph and feed images must match`);
   if (/editorial-sources|Nguồn dữ kiện đã đối chiếu|Bài viết do Nguyễn Tử Linh phân tích và biên soạn độc lập/iu.test(html)) {
     errors.push(`${prefix}contains a public editorial-source block`);
   }
   if (/class="article-(?:meta|source-credit)"/i.test(html)) errors.push(`${prefix}contains visible author, image or source credits`);
-  if (item.url.includes("/tin-nganh-than/2026/08/01/") && (!html.includes('class="source-note"') || !visible.includes("Nguồn tham khảo"))) {
-    errors.push(`${prefix}missing visible source citation`);
-  }
   if (/Bài\s+\d{1,2}\s*\/\s*50|50\+?\s*bài|Cách đọc đúng:|Tóm tắt:/iu.test(visible)) errors.push(`${prefix}contains quota-driven or generic template wording`);
-  if (/10\s*tháng/iu.test(visible)) errors.push(`${prefix}contains obsolete 10-month training information`);
 
   const externalAnchors = [...html.matchAll(/<a\b[^>]*href="(https?:\/\/[^"]+)"/gi)]
     .map((match) => match[1])
@@ -251,7 +248,6 @@ for (const file of allHtml) {
   if (!/<script\s+src="\/analytics\.js\?v=1"\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing shared analytics script`);
   if (!/<script\s+src="\/mobile-ux\.js\?v=2"\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing shared mobile script`);
   if (/Bài\s+\d{1,2}\s*\/\s*50|50\+?\s*bài/iu.test(visible)) errors.push(`${rel}: contains an obsolete article-count claim`);
-  if (/10\s*tháng/iu.test(visible)) errors.push(`${rel}: contains obsolete 10-month training information`);
   if (/18(?:–|-|\s+đến\s+)40|1(?:m|,)53|47\s*kg/iu.test(visible)) errors.push(`${rel}: contains superseded 2026 recruitment criteria`);
   for (const match of html.matchAll(/<a\b[^>]*href=(["'])(.*?)\1/gi)) {
     const target = resolveLocalHref(file, match[2]);

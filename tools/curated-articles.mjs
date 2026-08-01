@@ -744,6 +744,25 @@ export const curatedArticles = [
 
 export const existingNews = [
   {
+    slug: "viec-lam-nganh-than-thang-8-2026",
+    urlPath: "tin-nganh-than/2026/08/01/viec-lam-nganh-than-thang-8-2026",
+    section: "Việc làm ngành Than",
+    title: "Việc làm ngành Than tháng 8/2026: lương và nhu cầu tuyển dụng",
+    description: "Sản xuất duy trì ổn định, lương bình quân toàn TKV ước 19,96 triệu đồng và công tác tuyển dụng tiếp tục được chú trọng.",
+    lead: "Sản xuất duy trì ổn định, thu nhập được bảo đảm và tuyển dụng tiếp tục được chú trọng—ba tín hiệu đáng chú ý với người đang cân nhắc học nghề mỏ.",
+    keyword: "việc làm ngành Than tháng 8/2026",
+    keywords: ["việc làm ngành Than tháng 8/2026", "tuyển thợ lò", "lương ngành Than 2026", "tuyển dụng TKV", "học nghề mỏ"],
+    image: "https://thaylinhtuyenthomo.vn/assets/news/viec-lam-nganh-than-thang-8-2026.webp",
+    imageSource: "Thư viện ảnh Vinacomin · Tổng Giám đốc TKV làm việc với Than Khe Chàm",
+    published: "2026-08-01T08:09:00+07:00",
+    updated: "2026-08-01T08:09:00+07:00",
+    sources: [
+      {publisher: "TKV", title: "TKV duy trì ổn định sản xuất kinh doanh, lợi nhuận 7 tháng đầu năm vượt kế hoạch", date: "31/07/2026", url: "https://vinacomin.vn/news/slug/tkv-duy-tri-on-dinh-san-xuat-kinh-doanh-loi-nhuan-7-thang-dau-nam-vuot-ke-hoach"},
+      {publisher: "Cục Công nghiệp", title: "Nửa đầu năm 2026, TKV cung cấp 22,77 triệu tấn than cho sản xuất điện", date: "04/07/2026", url: "https://via.gov.vn/tin-tuc/t13917/nua-dau-nam-2026-tkv-cung-cap-22-77-trieu-tan-than-cho-san-xuat-dien"},
+      {publisher: "Công đoàn TKV", title: "Phát huy truyền thống Kỷ luật và Đồng tâm, thực hiện thắng lợi Nghị quyết Hội nghị Người lao động TKV năm 2026", date: "05/02/2026", url: "https://congdoantkv.vn/tin-tuc/chi-tiet/45021/Phat-huy-truyen-thong-%E2%80%9CKy-luat-va-%C4%90ong-tam%E2%80%9D-thuc-hien-thang-loi-Nghi-quyet-Hoi-nghi-Nguoi-lao-%C4%91ong-TKV-nam-2026"},
+    ],
+  },
+  {
     slug: "phuc-loi-tho-mo-tkv-2026",
     urlPath: "tin-nganh-than/2026/07/30/phuc-loi-tho-mo-tkv-2026",
     section: "Đời sống thợ mỏ",
