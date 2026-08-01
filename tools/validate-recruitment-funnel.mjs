@@ -21,9 +21,13 @@ for (const hook of [
   "data-sms-application",
   "data-form-context=\"central_application\"",
   "recruitment-config.js?v=2",
-  "job-application.js?v=6",
+  "job-application.js?v=7",
   "analytics.js?v=4",
 ]) requireText(campaign, hook, "central application page");
+
+if (campaign.includes("data-copy-application") || campaign.includes("Sao chép lại tin nhắn")) {
+  errors.push("central application page: removed copy-message control returned");
+}
 
 for (const field of ["full_name", "phone", "birth_date", "province", "height", "weight", "education", "trade", "health", "website", "consent"]) {
   requireText(campaign, `name=\"${field}\"`, "central application form");
@@ -46,6 +50,9 @@ for (const text of [
 for (const marker of ["deliverApplication(application)", "Content-Type\": \"text/plain", "application_saved", "values.consent === \"on\"", "String(values.website || \"\")"]) {
   requireText(application, marker, "secure application delivery");
 }
+if (/navigator\.clipboard|document\.execCommand\(\"copy\"\)|ApplicationCopy/.test(application)) {
+  errors.push("application logic: clipboard behavior must not run after form submission");
+}
 
 for (const [key, value] of [["ageMin", master.criteria.age_min], ["ageMax", master.criteria.age_max], ["heightMinCm", master.criteria.height_min_cm], ["weightMinKg", master.criteria.weight_min_kg]]) {
   requireText(config, `${key}: ${value}`, "recruitment configuration");
@@ -54,9 +61,10 @@ requireText(config, "schemaVersion: 2", "recruitment configuration");
 
 for (const slug of ["ky-thuat-khai-thac-mo-ham-lo-quang-ninh", "ky-thuat-xay-dung-mo-ham-lo-quang-ninh"]) {
   const role = read(`viec-lam/${slug}/index.html`);
-  for (const marker of ["data-application-form", "data-form-context=\"job_", "directApply\":true", "job-application.js?v=6"]) {
+  for (const marker of ["data-application-form", "data-form-context=\"job_", "directApply\":true", "job-application.js?v=7"]) {
     requireText(role, marker, `${slug} direct application`);
   }
+  if (role.includes("data-copy-application") || role.includes("Sao chép lại tin nhắn")) errors.push(`${slug}: removed copy-message control returned`);
 }
 
 const trackingPayloads = [...application.matchAll(/track\("[^"]+",\s*\{([\s\S]*?)\}\);/g)].map(match => match[1]).join("\n");
