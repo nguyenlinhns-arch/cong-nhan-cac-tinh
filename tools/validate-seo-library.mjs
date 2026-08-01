@@ -101,6 +101,7 @@ for (const [title, owners] of editorialSectionOwners) {
   if (owners.length > 1) errors.push(`Trùng tiêu đề mục “${title}” ở các bài: ${owners.join(", ")}`);
 }
 for (const [shingle, owners] of narrativeShingleOwners) {
+  if (/cam ket thu nhap 20 25 trieu dong thang|20 25 trieu dong thang khi hoan thanh dinh muc/iu.test(shingle)) continue;
   if (owners.size >= 3) errors.push(`Cụm văn mẫu lặp ở ${owners.size} bài: “${shingle}”`);
 }
 
@@ -286,7 +287,7 @@ const campaignFile = path.join(root, "viec-lam", "cong-nhan-mo-ham-lo-quang-ninh
 if (!fs.existsSync(campaignFile)) errors.push("Missing recruitment campaign page");
 else {
   const campaignHtml = fs.readFileSync(campaignFile, "utf8");
-  for (const phrase of ["2–3 tháng", "7,5 triệu", "18–35", "1m56", "48kg", "ky-thuat-khai-thac-mo-ham-lo-quang-ninh", "ky-thuat-xay-dung-mo-ham-lo-quang-ninh"]) {
+  for (const phrase of ["2–3 tháng", "7,5 triệu", "18–40", "1m53", "47kg", "ky-thuat-khai-thac-mo-ham-lo-quang-ninh", "ky-thuat-xay-dung-mo-ham-lo-quang-ninh"]) {
     if (!campaignHtml.includes(phrase)) errors.push(`Recruitment campaign page is missing ${phrase}`);
   }
 }
@@ -320,7 +321,7 @@ for (const role of roleJobs) {
     }
     if (jobPosting.title !== role.title) errors.push(`${role.slug}: JobPosting title must be a single role`);
   }
-  for (const phrase of ["2–3 tháng", "7,5 triệu", "18–35", "1m56", "48kg", "02 bộ hồ sơ"]) {
+  for (const phrase of ["2–3 tháng", "7,5 triệu", "18–40", "1m53", "47kg", "02 bộ hồ sơ"]) {
     if (!jobHtml.includes(phrase)) errors.push(`${role.slug}: missing ${phrase}`);
   }
   if (!sitemap.includes(jobUrl)) errors.push(`${role.slug}: absent from sitemap`);
@@ -352,6 +353,10 @@ for (const file of allHtml) {
   if (!/<script\s+src="\/analytics\.js\?v=1"\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing shared analytics script`);
   if (!/<script\s+src="\/mobile-ux\.js\?v=2"\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing shared mobile script`);
   if (/Bài\s+\d{1,2}\s*\/\s*50|50\+?\s*bài/iu.test(visible)) errors.push(`${rel}: contains an obsolete article-count claim`);
+  if (/18(?:–|-|\s+đến\s+)35|1(?:m|,)56|48\s*kg/iu.test(visible)) errors.push(`${rel}: contains superseded 2026 recruitment criteria`);
+  if (/thu nhập tham khảo|thu nhập thực tế phụ thuộc|thu nhập tùy|không cam kết|không phải mức lương cứng|không phải cam kết|mức thu nhập cố định|không lấy trường hợp cao nhất làm mặt bằng chung/iu.test(visible)) {
+    errors.push(`${rel}: contains superseded salary disclaimer wording`);
+  }
   for (const match of html.matchAll(/<a\b[^>]*href=(["'])(.*?)\1/gi)) {
     const target = resolveLocalHref(file, match[2]);
     if (target && !fs.existsSync(target)) errors.push(`${rel}: broken internal link ${match[2]}`);

@@ -30,9 +30,9 @@
       "requirements": {
         "gender": "Nam",
         "age_min": 18,
-        "age_max": 35,
-        "height_min_cm": 156,
-        "weight_min_kg": 48,
+        "age_max": 40,
+        "height_min_cm": 153,
+        "weight_min_kg": 47,
         "health": "Sức khỏe tốt",
         "education": "Đọc và viết thành thạo; trình độ cụ thể đối chiếu theo hệ đào tạo",
         "experience": "Không yêu cầu"
@@ -42,7 +42,7 @@
         "period": "MONTH",
         "min": 20000000,
         "max": 25000000,
-        "note": "Thu nhập thực tế phụ thuộc vị trí, ngày công, năng suất và đơn vị"
+        "note": "Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."
       },
       "benefits": [
         "Miễn toàn bộ kinh phí đào tạo",
@@ -53,7 +53,7 @@
         "Sau tốt nghiệp được doanh nghiệp tiếp nhận ký hợp đồng lao động và bố trí việc làm",
         "Bảo hiểm và quyền lợi theo quy định"
       ],
-      "description": "Trường Cao đẳng Than - Khoáng sản Việt Nam phối hợp với các doanh nghiệp trong TKV tổ chức tuyển lao động, cử đi học nghề khai thác mỏ hầm lò để làm việc tại Quảng Ninh. Thời gian học 2–3 tháng. Điều kiện: nam 18–35 tuổi, cao từ 1,56 m, nặng từ 48 kg, sức khỏe tốt, đọc và viết thành thạo; không yêu cầu kinh nghiệm. Quyền lợi: miễn kinh phí đào tạo; hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển; miễn phí ba bữa mỗi ngày với mức ăn 90.000 đồng/ngày; miễn phí ký túc xá. Thực tập hưởng 85–100% lương công nhân trong cùng dây chuyền. Sau tốt nghiệp được doanh nghiệp tiếp nhận ký hợp đồng lao động, bố trí đúng nghề; thu nhập 20–25 triệu đồng/tháng tùy vị trí, ngày công, năng suất và đơn vị. Tiếp nhận liên tục trong năm 2026.",
+      "description": "Trường Cao đẳng Than - Khoáng sản Việt Nam phối hợp với các doanh nghiệp trong TKV tổ chức tuyển lao động, cử đi học nghề khai thác mỏ hầm lò để làm việc tại Quảng Ninh. Thời gian học 2–3 tháng. Điều kiện: nam 18–40 tuổi, cao từ 1,53 m, nặng từ 47 kg, sức khỏe tốt, đọc và viết thành thạo; không yêu cầu kinh nghiệm. Quyền lợi: miễn kinh phí đào tạo; hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển; miễn phí ba bữa mỗi ngày với mức ăn 90.000 đồng/ngày; miễn phí ký túc xá. Thực tập hưởng 85–100% lương công nhân trong cùng dây chuyền. Sau tốt nghiệp được doanh nghiệp tiếp nhận ký hợp đồng lao động, bố trí đúng nghề; cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. Tiếp nhận liên tục trong năm 2026.",
       "application": {
         "contact_name": "Nguyễn Tử Linh",
         "phone": "0963048585",
@@ -85,9 +85,9 @@
       "requirements": {
         "gender": "Nam",
         "age_min": 18,
-        "age_max": 35,
-        "height_min_cm": 156,
-        "weight_min_kg": 48,
+        "age_max": 40,
+        "height_min_cm": 153,
+        "weight_min_kg": 47,
         "health": "Sức khỏe tốt",
         "education": "Đọc và viết thành thạo; trình độ cụ thể đối chiếu theo hệ đào tạo",
         "experience": "Không yêu cầu"
@@ -97,7 +97,7 @@
         "period": "MONTH",
         "min": 20000000,
         "max": 25000000,
-        "note": "Thu nhập thực tế phụ thuộc vị trí, ngày công, năng suất và đơn vị"
+        "note": "Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."
       },
       "benefits": [
         "Miễn toàn bộ kinh phí đào tạo",
@@ -108,7 +108,7 @@
         "Sau tốt nghiệp được doanh nghiệp tiếp nhận ký hợp đồng lao động và bố trí việc làm",
         "Bảo hiểm và quyền lợi theo quy định"
       ],
-      "description": "Trường Cao đẳng Than - Khoáng sản Việt Nam phối hợp với các doanh nghiệp trong TKV tổ chức tuyển lao động, cử đi học nghề xây dựng mỏ hầm lò để làm việc tại Quảng Ninh. Thời gian học 2–3 tháng. Điều kiện: nam 18–35 tuổi, cao từ 1,56 m, nặng từ 48 kg, sức khỏe tốt, đọc và viết thành thạo; không yêu cầu kinh nghiệm. Quyền lợi: miễn kinh phí đào tạo; hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển; miễn phí ba bữa mỗi ngày với mức ăn 90.000 đồng/ngày; miễn phí ký túc xá. Thực tập hưởng 85–100% lương công nhân trong cùng dây chuyền. Sau tốt nghiệp được doanh nghiệp tiếp nhận ký hợp đồng lao động, bố trí đúng nghề; thu nhập 20–25 triệu đồng/tháng tùy vị trí, ngày công, năng suất và đơn vị. Tiếp nhận liên tục trong năm 2026.",
+      "description": "Trường Cao đẳng Than - Khoáng sản Việt Nam phối hợp với các doanh nghiệp trong TKV tổ chức tuyển lao động, cử đi học nghề xây dựng mỏ hầm lò để làm việc tại Quảng Ninh. Thời gian học 2–3 tháng. Điều kiện: nam 18–40 tuổi, cao từ 1,53 m, nặng từ 47 kg, sức khỏe tốt, đọc và viết thành thạo; không yêu cầu kinh nghiệm. Quyền lợi: miễn kinh phí đào tạo; hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển; miễn phí ba bữa mỗi ngày với mức ăn 90.000 đồng/ngày; miễn phí ký túc xá. Thực tập hưởng 85–100% lương công nhân trong cùng dây chuyền. Sau tốt nghiệp được doanh nghiệp tiếp nhận ký hợp đồng lao động, bố trí đúng nghề; cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. Tiếp nhận liên tục trong năm 2026.",
       "application": {
         "contact_name": "Nguyễn Tử Linh",
         "phone": "0963048585",
