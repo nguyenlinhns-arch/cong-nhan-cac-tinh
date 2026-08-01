@@ -538,11 +538,11 @@ export const curatedArticles = [
       ["19,7 triệu tấn", "Than sạch sản xuất ước đạt trong 6 tháng đầu năm 2026."],
       ["27,38 triệu tấn", "Than tiêu thụ trong nửa đầu năm."],
       ["22,77 triệu tấn", "Than cung cấp cho sản xuất điện."],
-      ["19,76 triệu đồng", "Tiền lương bình quân toàn TKV mỗi người mỗi tháng trong kỳ báo cáo."],
+      ["2026–2030", "Giai đoạn TKV tiếp tục đầu tư, cơ giới hóa và chuẩn bị nguồn nhân lực."],
     ],
     intro: [
       "Câu hỏi <strong>nghề thợ lò có ổn định không</strong> thường xuất hiện khi một người phải cân nhắc rời quê, học nghề và xây dựng cuộc sống mới tại Quảng Ninh. Câu trả lời rõ nhất nằm ở ba yếu tố: ngành có nhu cầu sản xuất, doanh nghiệp có kế hoạch nhân lực và người lao động có đủ sức khỏe, tay nghề để gắn bó.",
-      "Nửa đầu năm 2026, TKV công bố sản xuất khoảng 19,7 triệu tấn than sạch, tiêu thụ 27,38 triệu tấn và cung cấp 22,77 triệu tấn cho sản xuất điện. Tiền lương bình quân toàn Tập đoàn đạt khoảng 19,76 triệu đồng/người/tháng. Đây là nền sản xuất lớn, liên tục và cần một lực lượng kỹ thuật trực tiếp được đào tạo bài bản.",
+      "Nửa đầu năm 2026, TKV công bố sản xuất khoảng 19,7 triệu tấn than sạch, tiêu thụ 27,38 triệu tấn và cung cấp 22,77 triệu tấn cho sản xuất điện. Quy mô sản xuất lớn, liên tục ấy cần một lực lượng kỹ thuật trực tiếp được đào tạo bài bản.",
     ],
     sections: [
       {
@@ -555,7 +555,7 @@ export const curatedArticles = [
           "Khai thác, xây dựng mỏ, cơ điện và an toàn đều cần người có nghề.",
           "Cơ giới hóa làm tăng nhu cầu vận hành, bảo dưỡng và kiểm soát thiết bị.",
           "Hợp đồng, vị trí và chính sách cụ thể tạo nên sự ổn định ở từng đơn vị.",
-          "Sức khỏe, ngày công và tay nghề giúp người lao động giữ vững thu nhập.",
+          "Sức khỏe, ngày công và tay nghề giúp người lao động giữ vững vị trí trong tổ đội.",
         ],
       },
       {
@@ -568,21 +568,21 @@ export const curatedArticles = [
       {
         title: "Người có tay nghề tự tạo thêm sự ổn định cho mình",
         paragraphs: [
-          "Người giữ được ngày công, sức khỏe và kỷ luật có vị thế ổn định hơn người thường xuyên vi phạm hoặc không theo kịp thiết bị. Tay nghề giúp tăng khả năng chuyển sang công đoạn phù hợp khi công nghệ thay đổi; sức khỏe giúp duy trì ca làm và thu nhập.",
+          "Người giữ được ngày công, sức khỏe và kỷ luật có vị thế ổn định hơn người thường xuyên vi phạm hoặc không theo kịp thiết bị. Tay nghề giúp tăng khả năng chuyển sang công đoạn phù hợp khi công nghệ thay đổi; sức khỏe giúp duy trì nhịp ca và khả năng gắn bó.",
           "Trước khi vào nghề, mỗi người cần nhìn thẳng vào sức khỏe, khả năng sống xa gia đình, làm việc theo ca và tinh thần học liên tục. Khi những yếu tố ấy phù hợp, ngành Than có thể mang lại một lộ trình nghề nghiệp rõ hơn nhiều công việc thời vụ thiếu hợp đồng và thiếu cơ hội nâng bậc.",
         ],
       },
     ],
     checklist: [
       ["Xem ngành", "Đọc dữ liệu sản xuất và định hướng đầu tư, không chỉ tin quảng cáo."],
-      ["Xem đơn vị", "Hỏi hợp đồng, vị trí, ca làm, chỗ ở và cách tính thu nhập."],
+      ["Xem đơn vị", "Hỏi hợp đồng, vị trí, ca làm, chỗ ở và các chế độ đi kèm."],
       ["Xem bản thân", "Đánh giá sức khỏe, kỷ luật và khả năng sống xa nhà."],
       ["Xem dài hạn", "Chọn hướng nghề có thể nâng bậc và thích nghi với công nghệ."],
     ],
     takeaway: "Nghề thợ lò có nền sản xuất thật, nhu cầu nhân lực thật và một lộ trình tăng giá trị bằng tay nghề. Sự ổn định bền nhất xuất hiện khi người lao động chọn đúng vị trí, giữ sức khỏe, đi làm có kỷ luật và tiếp tục học cùng công nghệ của doanh nghiệp.",
     faq: [
       ["Sản lượng than lớn mang lại ý nghĩa gì cho người tìm việc?", "Nó cho thấy quy mô sản xuất và nhu cầu nhân lực kỹ thuật hiện hữu; chỉ tiêu cụ thể vẫn được tổ chức theo kế hoạch của từng đơn vị."],
-      ["Mức 19,76 triệu đồng nên được hiểu thế nào?", "Đây là tiền lương bình quân toàn TKV trong kỳ báo cáo. Thu nhập thợ lò được hình thành theo vị trí, ngày công, năng suất, tay nghề và đơn vị."],
+      ["Người lao động nên kiểm tra điều gì ở đơn vị tiếp nhận?", "Cần hỏi rõ vị trí, hợp đồng, ca làm, chỗ ở, phương tiện đưa đón, phúc lợi và lộ trình hướng dẫn người mới."],
       ["Cơ giới hóa tạo cơ hội nào cho người trẻ?", "Công việc chuyển dần sang vận hành, bảo dưỡng và kiểm soát thiết bị. Người có tay nghề và kỷ luật an toàn sẽ thích nghi tốt hơn và mở rộng cơ hội phát triển."],
     ],
     sources: [
@@ -747,18 +747,18 @@ export const existingNews = [
     slug: "viec-lam-nganh-than-thang-8-2026",
     urlPath: "tin-nganh-than/2026/08/01/viec-lam-nganh-than-thang-8-2026",
     section: "Việc làm ngành Than",
-    title: "Việc làm ngành Than tháng 8/2026: lương và nhu cầu tuyển dụng",
-    description: "Sản xuất duy trì ổn định, lương bình quân toàn TKV ước 19,96 triệu đồng và công tác tuyển dụng tiếp tục được chú trọng.",
-    lead: "Sản xuất duy trì ổn định, thu nhập được bảo đảm và tuyển dụng tiếp tục được chú trọng—ba tín hiệu đáng chú ý với người đang cân nhắc học nghề mỏ.",
+    title: "Việc làm ngành Than tháng 8/2026: sản xuất và nhu cầu tuyển dụng",
+    description: "Sản xuất ngành Than duy trì ổn định trong 7 tháng đầu năm 2026, trong khi tuyển dụng, đào tạo và giữ chân thợ lò tiếp tục được chú trọng.",
+    lead: "Sản xuất duy trì ổn định, nhu cầu nhân lực còn hiện hữu và đào tạo tiếp tục được chú trọng—ba tín hiệu đáng quan tâm với người đang cân nhắc học nghề mỏ.",
     keyword: "việc làm ngành Than tháng 8/2026",
-    keywords: ["việc làm ngành Than tháng 8/2026", "tuyển thợ lò", "lương ngành Than 2026", "tuyển dụng TKV", "học nghề mỏ"],
+    keywords: ["việc làm ngành Than tháng 8/2026", "tuyển thợ lò", "nhu cầu nhân lực ngành Than", "tuyển dụng TKV", "học nghề mỏ"],
     image: "https://thaylinhtuyenthomo.vn/assets/news/viec-lam-nganh-than-thang-8-2026.webp",
     imageSource: "Thư viện ảnh Vinacomin · Tổng Giám đốc TKV làm việc với Than Khe Chàm",
     imageAlbumId: "3065",
     imageOriginal: "https://vinacomin.vn/Share/Media/2018/07/IMG_8660.jpg",
     imageLocalFile: "../news/viec-lam-nganh-than-thang-8-2026.webp",
     published: "2026-08-01T08:09:00+07:00",
-    updated: "2026-08-01T08:09:00+07:00",
+    updated: "2026-08-01T10:25:00+07:00",
     sources: [
       {publisher: "TKV", title: "TKV duy trì ổn định sản xuất kinh doanh, lợi nhuận 7 tháng đầu năm vượt kế hoạch", date: "31/07/2026", url: "https://vinacomin.vn/news/slug/tkv-duy-tri-on-dinh-san-xuat-kinh-doanh-loi-nhuan-7-thang-dau-nam-vuot-ke-hoach"},
       {publisher: "Cục Công nghiệp", title: "Nửa đầu năm 2026, TKV cung cấp 22,77 triệu tấn than cho sản xuất điện", date: "04/07/2026", url: "https://via.gov.vn/tin-tuc/t13917/nua-dau-nam-2026-tkv-cung-cap-22-77-trieu-tan-than-cho-san-xuat-dien"},
