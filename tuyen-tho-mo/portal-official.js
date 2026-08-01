@@ -21,15 +21,66 @@
     });
   }
 
-  const featuredVideo = document.querySelector("[data-featured-video]");
+  function mountYouTubePlayer(host, id, title, context) {
+    if (!host || !id) return;
+    const frame = document.createElement("iframe");
+    frame.src = `https://www.youtube-nocookie.com/embed/${id}?rel=0&autoplay=1`;
+    frame.title = title;
+    frame.loading = "eager";
+    frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    frame.setAttribute("allowfullscreen", "");
+    host.replaceChildren(frame);
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "video_play", video_id: id, context, page_path: location.pathname });
+  }
+
+  function renderVideoFacade(host, id, title, kind) {
+    if (!host || !id) return;
+    const facade = document.createElement("button");
+    facade.type = "button";
+    facade.className = "home-video-facade";
+    facade.dataset.videoId = id;
+    facade.dataset.videoTitle = title;
+    facade.setAttribute(kind === "province" ? "data-province-video-facade" : "data-featured-video-facade", "");
+    facade.setAttribute("aria-label", `Phát video ${title}`);
+
+    const thumbnail = document.createElement("img");
+    thumbnail.src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+    thumbnail.alt = "";
+    thumbnail.loading = "lazy";
+    thumbnail.decoding = "async";
+    thumbnail.width = 480;
+    thumbnail.height = 360;
+
+    const play = document.createElement("span");
+    play.className = "home-video-facade__play";
+    play.setAttribute("aria-hidden", "true");
+    play.textContent = "▶";
+
+    const label = document.createElement("span");
+    label.className = "home-video-facade__label";
+    label.textContent = "Bấm để xem video";
+    facade.append(thumbnail, play, label);
+    host.replaceChildren(facade);
+  }
+
+  function activateFacade(host, selector, context) {
+    host?.addEventListener("click", event => {
+      const facade = event.target.closest(selector);
+      if (!facade) return;
+      mountYouTubePlayer(host, facade.dataset.videoId, facade.dataset.videoTitle, context);
+    });
+  }
+
+  const featuredVideoHost = document.querySelector("[data-featured-video-host]");
   const videoLabel = document.querySelector("[data-video-label]");
   const videoHeading = document.querySelector("[data-video-heading]");
-  const videoButtons = document.querySelectorAll("[data-video-id]");
-  if (featuredVideo && videoLabel && videoHeading) {
+  const videoButtons = document.querySelectorAll(".video-item[data-video-id]");
+  activateFacade(featuredVideoHost, "[data-featured-video-facade]", "home_featured");
+  if (featuredVideoHost && videoLabel && videoHeading) {
     videoButtons.forEach(videoButton => {
       videoButton.addEventListener("click", () => {
-        featuredVideo.src = `https://www.youtube-nocookie.com/embed/${videoButton.dataset.videoId}?rel=0&autoplay=1`;
-        featuredVideo.title = videoButton.dataset.videoTitle;
+        mountYouTubePlayer(featuredVideoHost, videoButton.dataset.videoId, videoButton.dataset.videoTitle, "home_story_list");
         videoLabel.textContent = videoButton.dataset.videoLabel;
         videoHeading.textContent = videoButton.dataset.videoTitle;
         videoButtons.forEach(item => item.setAttribute("aria-current", String(item === videoButton)));
@@ -144,7 +195,7 @@
   });
 
   const provinceButtons = document.querySelectorAll("[data-province-key]");
-  const provinceVideo = document.querySelector("[data-province-video]");
+  const provinceVideoHost = document.querySelector("[data-province-video-host]");
   const provinceName = document.querySelector("[data-province-name]");
   const provinceTitle = document.querySelector("[data-province-title]");
   const provinceCount = document.querySelector("[data-province-count]");
@@ -157,10 +208,9 @@
 
   function selectProvince(key) {
     const province = provinceData[key];
-    if (!province || !provinceVideo) return;
+    if (!province || !provinceVideoHost) return;
     provinceButtons.forEach(item => item.setAttribute("aria-selected", String(item.dataset.provinceKey === key)));
-    provinceVideo.src = `https://www.youtube-nocookie.com/embed/${province.videoId}?rel=0`;
-    provinceVideo.title = `${province.title} – video công nhân ${province.name}`;
+    renderVideoFacade(provinceVideoHost, province.videoId, `${province.title} – video công nhân ${province.name}`, "province");
     provinceName.textContent = province.name;
     provinceTitle.textContent = province.title;
     provincePage.href = province.page;
@@ -193,6 +243,7 @@
       selectProvince(provinceButton.dataset.provinceKey);
     });
   });
+  activateFacade(provinceVideoHost, "[data-province-video-facade]", "province_evidence");
 
   const readingProgress = document.querySelector("[data-reading-progress]");
   if (readingProgress) {

@@ -7,6 +7,7 @@ const read = relative => fs.readFileSync(path.join(root, relative), "utf8");
 const campaign = read("viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html");
 const application = read("job-application.js");
 const config = read("recruitment-config.js");
+const privacy = read("quyen-rieng.html");
 const master = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
 
 function requireText(content, expected, label) {
@@ -22,9 +23,11 @@ for (const hook of [
   "data-form-context=\"central_application\"",
   "application-result-title",
   "application-birth-help",
+  "data-application-draft-status",
+  "autocomplete=\"address-level1\"",
   "<noscript>",
   "recruitment-config.js?v=2",
-  "job-application.js?v=8",
+  "job-application.js?v=9",
   "analytics.js?v=4",
 ]) requireText(campaign, hook, "central application page");
 
@@ -51,10 +54,21 @@ for (const text of [
   "submissionFingerprint",
   "application_retry",
   "Thử gửi lại cùng mã",
+  "thaylinh_application_draft_v1",
+  "ApplicationDraftRestore",
+  "DRAFT_TTL_MS",
+  "clearDraft",
 ]) requireText(application, text, "application logic");
 
 for (const marker of ["deliverApplication(application)", "Content-Type\": \"text/plain", "application_saved", "values.consent === \"on\"", "String(values.website || \"\")"]) {
   requireText(application, marker, "secure application delivery");
+}
+const draftFields = application.match(/const DRAFT_FIELDS = \[([^\]]+)\]/)?.[1] || "";
+for (const safeField of ["province", "height", "weight", "education", "trade"]) {
+  if (!draftFields.includes(`"${safeField}"`)) errors.push(`application draft: missing safe field ${safeField}`);
+}
+for (const excludedField of ["full_name", "phone", "birth_date", "health", "consent", "website"]) {
+  if (draftFields.includes(`"${excludedField}"`)) errors.push(`application draft stores excluded field ${excludedField}`);
 }
 if (/navigator\.clipboard|document\.execCommand\(\"copy\"\)|ApplicationCopy/.test(application)) {
   errors.push("application logic: clipboard behavior must not run after form submission");
@@ -64,10 +78,13 @@ for (const [key, value] of [["ageMin", master.criteria.age_min], ["ageMax", mast
   requireText(config, `${key}: ${value}`, "recruitment configuration");
 }
 requireText(config, "schemaVersion: 2", "recruitment configuration");
+for (const marker of ["Bản nháp trên thiết bị", "tối đa 24 giờ", "không chứa họ tên, số điện thoại, ngày sinh, lựa chọn sức khỏe hoặc ô đồng ý"]) {
+  requireText(privacy, marker, "privacy notice");
+}
 
 for (const slug of ["ky-thuat-khai-thac-mo-ham-lo-quang-ninh", "ky-thuat-xay-dung-mo-ham-lo-quang-ninh"]) {
   const role = read(`viec-lam/${slug}/index.html`);
-  for (const marker of ["data-application-form", "data-form-context=\"job_", "directApply\":true", "job-application.js?v=8", "application-result-title", "<noscript>"]) {
+  for (const marker of ["data-application-form", "data-form-context=\"job_", "directApply\":true", "job-application.js?v=9", "data-application-draft-status", "application-result-title", "<noscript>"]) {
     requireText(role, marker, `${slug} direct application`);
   }
   if (role.includes("data-copy-application") || role.includes("Sao chép lại tin nhắn")) errors.push(`${slug}: removed copy-message control returned`);
