@@ -24,6 +24,7 @@ jobs:
       - name: Rebuild search and validate the website
         run: |
           node tools/build-search-index.mjs
+          node tools/validate-content-network.mjs
           node tools/validate-seo-library.mjs
       - name: Publish new video metadata when the channel changes
         shell: bash

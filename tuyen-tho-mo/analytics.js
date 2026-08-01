@@ -77,6 +77,45 @@
     );
   }
 
+  function readAttribution() {
+    let stored = {};
+    try { stored = JSON.parse(localStorage.getItem("thaylinh_attribution") || "{}"); } catch (_) {}
+    const params = new URLSearchParams(location.search);
+    return Object.fromEntries(Object.entries({
+      utm_source: params.get("utm_source") || stored.utm_source,
+      utm_medium: params.get("utm_medium") || stored.utm_medium,
+      utm_campaign: params.get("utm_campaign") || stored.utm_campaign,
+      utm_content: params.get("utm_content") || stored.utm_content,
+      province: params.get("province") || document.documentElement.dataset.province || stored.province,
+    }).filter(([, value]) => typeof value === "string" && value.trim()));
+  }
+
+  function captureFirstAttribution() {
+    try {
+      const stored = JSON.parse(localStorage.getItem("thaylinh_attribution") || "{}");
+      if (stored.first_seen_at) return;
+      const params = new URLSearchParams(location.search);
+      const firstTouch = Object.fromEntries(Object.entries({
+        utm_source: params.get("utm_source"),
+        utm_medium: params.get("utm_medium"),
+        utm_campaign: params.get("utm_campaign"),
+        utm_content: params.get("utm_content"),
+        province: params.get("province") || document.documentElement.dataset.province,
+        landing_path: location.pathname,
+        referrer_host: document.referrer ? new URL(document.referrer).hostname : "",
+        first_seen_at: new Date().toISOString(),
+      }).filter(([, value]) => value));
+      localStorage.setItem("thaylinh_attribution", JSON.stringify(firstTouch));
+    } catch (_) {}
+  }
+
+  function contactChannel(link) {
+    const declared = String(link?.dataset?.contact || "").trim();
+    if (declared) return declared;
+    const href = String(link?.getAttribute?.("href") || "");
+    return href.includes("#dang-ky") ? "application" : "";
+  }
+
   function sendMeasurement(item) {
     if (!item || Object.prototype.toString.call(item) !== "[object Object]" || !item.event) return;
     const params = eventParameters(item);
@@ -89,9 +128,11 @@
         page_path: params.page_path || location.pathname,
       });
       const metaEvent = {
+        application: "ApplicationClick",
         zalo: "ZaloClick",
         messenger: "MessengerClick",
         phone: "PhoneClick",
+        sms: "SmsClick",
       }[channel];
       if (metaEvent) window.fbq("trackCustom", metaEvent, params);
       return;
@@ -155,6 +196,7 @@
 
   loadGoogleAnalytics();
   loadMetaPixel();
+  captureFirstAttribution();
   queuedEvents.forEach(sendMeasurement);
   const queuedTracking = Array.isArray(window.tlTrackingQueue) ? window.tlTrackingQueue.splice(0) : [];
   window.tlTrack = (name, payload = {}) => dataLayer.push({ event: name, ...payload });
@@ -170,6 +212,19 @@
       page_path: location.pathname,
     });
   }
+
+  document.addEventListener("click", event => {
+    const link = event.target.closest?.("a");
+    const channel = contactChannel(link);
+    if (!link || !channel) return;
+    dataLayer.push({
+      event: "contact_click",
+      channel,
+      context: link.dataset.context || "site_link",
+      page_path: location.pathname,
+      ...readAttribution(),
+    });
+  }, { capture: true });
 
   document.addEventListener("click", event => {
     if (event.target.closest?.('a[href*="#dang-ky"]')) {

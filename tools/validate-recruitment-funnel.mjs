@@ -22,7 +22,7 @@ for (const hook of [
   "data-form-context=\"central_application\"",
   "recruitment-config.js?v=2",
   "job-application.js?v=5",
-  "analytics.js?v=2",
+  "analytics.js?v=3",
 ]) requireText(campaign, hook, "central application page");
 
 for (const field of ["full_name", "phone", "birth_date", "province", "height", "weight", "education", "trade", "health", "website", "consent"]) {

@@ -432,34 +432,58 @@ input {
   }
 
   .site-footer {
-    padding-bottom: calc(150px + env(safe-area-inset-bottom)) !important;
+    padding-bottom: calc(104px + env(safe-area-inset-bottom)) !important;
   }
 
   .tl-mobile-contact {
     position: fixed;
     z-index: 90;
-    right: max(14px, env(safe-area-inset-right));
-    bottom: calc(15px + env(safe-area-inset-bottom));
-    display: flex;
-    flex-direction: column;
-    gap: 11px;
-    pointer-events: none;
+    left: max(10px, env(safe-area-inset-left));
+    right: max(10px, env(safe-area-inset-right));
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 1fr;
+    gap: 7px;
+    padding: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    border-radius: 19px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 14px 38px rgba(0, 29, 43, 0.26);
+    backdrop-filter: blur(14px);
   }
 
   .tl-mobile-contact a {
     position: relative;
-    width: 56px;
-    height: 56px;
-    display: grid;
-    place-items: center;
+    min-width: 0;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 7px;
     overflow: hidden;
-    border: 2px solid rgba(255, 255, 255, 0.96);
-    border-radius: 50%;
+    border-radius: 13px;
     color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1;
     text-decoration: none;
-    box-shadow: 0 10px 28px rgba(0, 29, 43, 0.28);
-    pointer-events: auto;
+    white-space: nowrap;
     transform: translateZ(0);
+  }
+
+  .tl-mobile-contact__application {
+    background: linear-gradient(145deg, #e77812, #c95608);
+  }
+
+  .tl-mobile-contact__application b {
+    display: grid;
+    width: 21px;
+    height: 21px;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 13px;
   }
 
   .tl-mobile-contact__zalo {
@@ -468,9 +492,8 @@ input {
 
   .tl-mobile-contact__zalo b {
     font-family: Arial, sans-serif;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 800;
-    letter-spacing: -0.02em;
   }
 
   .tl-mobile-contact__messenger {
@@ -478,8 +501,8 @@ input {
   }
 
   .tl-mobile-contact__messenger svg {
-    width: 28px;
-    height: 28px;
+    width: 20px;
+    height: 20px;
     fill: currentColor;
   }
 
@@ -539,13 +562,16 @@ input {
   }
 
   .tl-mobile-contact {
-    right: max(10px, env(safe-area-inset-right));
-    gap: 9px;
+    left: max(6px, env(safe-area-inset-left));
+    right: max(6px, env(safe-area-inset-right));
+    gap: 5px;
+    padding: 5px;
   }
 
   .tl-mobile-contact a {
-    width: 52px;
-    height: 52px;
+    min-height: 50px;
+    padding-inline: 5px;
+    font-size: 10px;
   }
 }
 

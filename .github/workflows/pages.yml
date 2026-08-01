@@ -25,15 +25,21 @@ jobs:
       - uses: actions/configure-pages@v5
         with:
           enablement: true
-      - name: Build search index and validate website
+      - name: Rebuild content network and validate website
         run: |
+          node tools/generate-province-pages-2026.mjs
+          node tools/generate-job-board-pages.mjs
+          node tools/generate-content-network.mjs
+          node tools/generate-seo-library.mjs
           node tools/build-search-index.mjs
+          node tools/validate-content-network.mjs
           node tools/validate-seo-library.mjs
           node tools/audit-technical-seo.mjs
           node tools/validate-job-postings.mjs
           node tools/validate-recruitment-funnel.mjs
           node tools/test-recruitment-application.mjs
           node tools/validate-crm-automation.mjs
+          git diff --exit-code
       - uses: actions/upload-pages-artifact@v3
         with:
           # Publish the recruitment portal at the custom-domain root.

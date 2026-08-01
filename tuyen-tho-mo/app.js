@@ -48,39 +48,4 @@
     });
   });
 
-  let attribution = {};
-  try {
-    const params = new URLSearchParams(location.search);
-    const current = {
-      utm_source: params.get('utm_source'),
-      utm_medium: params.get('utm_medium'),
-      utm_campaign: params.get('utm_campaign'),
-      utm_content: params.get('utm_content'),
-      utm_term: params.get('utm_term'),
-      province: document.documentElement.dataset.province || null,
-      landing_path: location.pathname,
-      referrer_host: document.referrer ? new URL(document.referrer).hostname : null,
-      first_seen_at: new Date().toISOString()
-    };
-    attribution = JSON.parse(localStorage.getItem('thaylinh_attribution') || '{}');
-    if (!attribution.first_seen_at) {
-      attribution = Object.fromEntries(Object.entries(current).filter(([, value]) => value));
-      localStorage.setItem('thaylinh_attribution', JSON.stringify(attribution));
-    }
-  } catch (_) {}
-
-  $$('[data-contact]').forEach(link => {
-    link.addEventListener('click', () => {
-      const event = {
-        event: 'contact_click',
-        channel: link.dataset.contact,
-        context: link.dataset.context || 'unknown',
-        page_path: location.pathname,
-        ...attribution
-      };
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push(event);
-    });
-  });
-
 })();
