@@ -5,53 +5,51 @@ const root = path.resolve("tuyen-tho-mo");
 const outputRoot = path.join(root, "viec-lam-nganh-than");
 
 export const provinces = [
-  { slug: "lam-dong", name: "Lâm Đồng", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Đắk Nông", "Bình Thuận"], create: true },
-  { slug: "khanh-hoa", name: "Khánh Hòa", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Ninh Thuận"], create: true },
+  { slug: "lam-dong", name: "Lâm Đồng", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Đắk Nông", "Bình Thuận"] },
+  { slug: "khanh-hoa", name: "Khánh Hòa", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Ninh Thuận"] },
   { slug: "dak-lak", name: "Đắk Lắk", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Phú Yên"] },
-  { slug: "gia-lai", name: "Gia Lai", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Bình Định"] },
-  { slug: "quang-ngai", name: "Quảng Ngãi", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Kon Tum"] },
-  { slug: "da-nang", name: "Đà Nẵng", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Quảng Nam"], create: true },
-  { slug: "hue", name: "Huế", region: "Bắc Trung Bộ", aliases: [], create: true },
-  { slug: "quang-tri", name: "Quảng Trị", region: "Bắc Trung Bộ", aliases: ["Quảng Bình"] },
-  { slug: "ha-tinh", name: "Hà Tĩnh", region: "Bắc Trung Bộ", aliases: [] },
-  { slug: "nghe-an", name: "Nghệ An", region: "Bắc Trung Bộ", aliases: [] },
-  { slug: "thanh-hoa", name: "Thanh Hóa", region: "Bắc Trung Bộ", aliases: [] },
-  { slug: "ninh-binh", name: "Ninh Bình", region: "Đồng bằng & Đông Bắc", aliases: ["Nam Định", "Hà Nam"], create: true },
-  { slug: "hung-yen", name: "Hưng Yên", region: "Đồng bằng & Đông Bắc", aliases: ["Thái Bình"], create: true },
-  { slug: "hai-phong", name: "Hải Phòng", region: "Đồng bằng & Đông Bắc", aliases: ["Hải Dương"], create: true },
-  { slug: "bac-ninh", name: "Bắc Ninh", region: "Đồng bằng & Đông Bắc", aliases: ["Bắc Giang"], create: true },
-  { slug: "ha-noi", name: "Hà Nội", region: "Đồng bằng & Đông Bắc", aliases: [], create: true },
-  { slug: "quang-ninh", name: "Quảng Ninh", region: "Đồng bằng & Đông Bắc", aliases: [], create: true },
-  { slug: "phu-tho", name: "Phú Thọ", region: "Trung du & miền núi phía Bắc", aliases: ["Vĩnh Phúc", "Hòa Bình"], create: true },
-  { slug: "thai-nguyen", name: "Thái Nguyên", region: "Trung du & miền núi phía Bắc", aliases: ["Bắc Kạn"], create: true },
-  { slug: "tuyen-quang", name: "Tuyên Quang", region: "Trung du & miền núi phía Bắc", aliases: ["Hà Giang"], create: true },
-  { slug: "lao-cai", name: "Lào Cai", region: "Trung du & miền núi phía Bắc", aliases: ["Yên Bái"] },
-  { slug: "cao-bang", name: "Cao Bằng", region: "Trung du & miền núi phía Bắc", aliases: [], create: true },
-  { slug: "lang-son", name: "Lạng Sơn", region: "Trung du & miền núi phía Bắc", aliases: [], create: true },
-  { slug: "son-la", name: "Sơn La", region: "Trung du & miền núi phía Bắc", aliases: [] },
-  { slug: "dien-bien", name: "Điện Biên", region: "Trung du & miền núi phía Bắc", aliases: [] },
-  { slug: "lai-chau", name: "Lai Châu", region: "Trung du & miền núi phía Bắc", aliases: [], create: true },
-  { slug: "ho-chi-minh", name: "Thành phố Hồ Chí Minh", region: "Đông Nam Bộ", aliases: ["Bình Dương", "Bà Rịa - Vũng Tàu"], create: true },
-  { slug: "dong-nai", name: "Đồng Nai", region: "Đông Nam Bộ", aliases: ["Bình Phước"], create: true },
-  { slug: "tay-ninh", name: "Tây Ninh", region: "Đông Nam Bộ", aliases: ["Long An"], create: true },
-  { slug: "can-tho", name: "Cần Thơ", region: "Đồng bằng sông Cửu Long", aliases: ["Hậu Giang", "Sóc Trăng"], create: true },
-  { slug: "vinh-long", name: "Vĩnh Long", region: "Đồng bằng sông Cửu Long", aliases: ["Bến Tre", "Trà Vinh"], create: true },
-  { slug: "dong-thap", name: "Đồng Tháp", region: "Đồng bằng sông Cửu Long", aliases: ["Tiền Giang"], create: true },
-  { slug: "ca-mau", name: "Cà Mau", region: "Đồng bằng sông Cửu Long", aliases: ["Bạc Liêu"], create: true },
-  { slug: "an-giang", name: "An Giang", region: "Đồng bằng sông Cửu Long", aliases: ["Kiên Giang"], create: true },
+  { slug: "gia-lai", name: "Gia Lai", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Bình Định"], story: "Từ K’bang ra Quảng Ninh, anh Đặng Văn Hưng đã trở thành thợ lò giỏi với thu nhập hơn 30 triệu đồng/tháng.", storyLink: "../../bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/" },
+  { slug: "quang-ngai", name: "Quảng Ngãi", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Kon Tum"], story: "Anh Đinh Văn Ne, người Quảng Ngãi, chia sẻ mức lương thực tế khoảng 23–25 triệu đồng/tháng trong nghề mỏ.", storyLink: "../../#theo-tinh" },
+  { slug: "da-nang", name: "Đà Nẵng", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Quảng Nam"] },
+  { slug: "hue", name: "Huế", region: "Bắc Trung Bộ", aliases: [] },
+  { slug: "quang-tri", name: "Quảng Trị", region: "Bắc Trung Bộ", aliases: ["Quảng Bình"], story: "Anh Hồ Văn Cương, quê Hướng Hóa, chia sẻ mức thu nhập bình quân khoảng 25–30 triệu đồng/tháng.", storyLink: "../../#theo-tinh" },
+  { slug: "ha-tinh", name: "Hà Tĩnh", region: "Bắc Trung Bộ", aliases: [], story: "Câu chuyện của anh Nguyễn Trịnh Anh cho thấy một người con Hà Tĩnh có thể tạo dựng mức lương bình quân khoảng 28 triệu đồng/tháng tại vùng mỏ.", storyLink: "../../#theo-tinh" },
+  { slug: "nghe-an", name: "Nghệ An", region: "Bắc Trung Bộ", aliases: [], story: "Anh Nguyễn Văn Thái, quê Anh Sơn, đang có mức thu nhập bình quân khoảng 28 triệu đồng/tháng trong ngành Than.", storyLink: "../../#theo-tinh" },
+  { slug: "thanh-hoa", name: "Thanh Hóa", region: "Bắc Trung Bộ", aliases: [], story: "Anh Hà Văn Phú, quê Mường Lát, là một trong những công nhân đạt thu nhập trên 300 triệu đồng/năm.", storyLink: "../../#theo-tinh" },
+  { slug: "ninh-binh", name: "Ninh Bình", region: "Đồng bằng & Đông Bắc", aliases: ["Nam Định", "Hà Nam"] },
+  { slug: "hung-yen", name: "Hưng Yên", region: "Đồng bằng & Đông Bắc", aliases: ["Thái Bình"] },
+  { slug: "hai-phong", name: "Hải Phòng", region: "Đồng bằng & Đông Bắc", aliases: ["Hải Dương"] },
+  { slug: "bac-ninh", name: "Bắc Ninh", region: "Đồng bằng & Đông Bắc", aliases: ["Bắc Giang"] },
+  { slug: "ha-noi", name: "Hà Nội", region: "Đồng bằng & Đông Bắc", aliases: [] },
+  { slug: "quang-ninh", name: "Quảng Ninh", region: "Đồng bằng & Đông Bắc", aliases: [] },
+  { slug: "phu-tho", name: "Phú Thọ", region: "Trung du & miền núi phía Bắc", aliases: ["Vĩnh Phúc", "Hòa Bình"] },
+  { slug: "thai-nguyen", name: "Thái Nguyên", region: "Trung du & miền núi phía Bắc", aliases: ["Bắc Kạn"] },
+  { slug: "tuyen-quang", name: "Tuyên Quang", region: "Trung du & miền núi phía Bắc", aliases: ["Hà Giang"] },
+  { slug: "lao-cai", name: "Lào Cai", region: "Trung du & miền núi phía Bắc", aliases: ["Yên Bái"], story: "Anh Vàng A Chinh, người Lào Cai, chia sẻ mức lương bình quân khoảng 20–22 triệu đồng/tháng trong nghề mỏ.", storyLink: "../../#theo-tinh" },
+  { slug: "cao-bang", name: "Cao Bằng", region: "Trung du & miền núi phía Bắc", aliases: [] },
+  { slug: "lang-son", name: "Lạng Sơn", region: "Trung du & miền núi phía Bắc", aliases: [] },
+  { slug: "son-la", name: "Sơn La", region: "Trung du & miền núi phía Bắc", aliases: [], story: "Anh Lầu A Súa, người Sơn La, chia sẻ mức thu nhập khoảng 28 triệu đồng/tháng tại Than Hạ Long.", storyLink: "../../#theo-tinh" },
+  { slug: "dien-bien", name: "Điện Biên", region: "Trung du & miền núi phía Bắc", aliases: [], story: "Hành trình của anh Mùa A Vàng cho thấy người lao động Điện Biên có thể học nghề, trưởng thành và tạo dựng cuộc sống mới tại vùng mỏ.", storyLink: "../../#theo-tinh" },
+  { slug: "lai-chau", name: "Lai Châu", region: "Trung du & miền núi phía Bắc", aliases: [], story: "Anh Mùa A Sình, người Lai Châu, có thu nhập bình quân 25–27 triệu đồng/tháng; tháng cao điểm từng đạt khoảng 40 triệu đồng.", storyLink: "../../bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/" },
 ];
 
 function provincePage(province) {
-  const { slug, name, region, aliases } = province;
+  const { slug, name, region, aliases, story, storyLink } = province;
   const canonical = `https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/${slug}/`;
   const aliasNames = aliases.join(", ");
   const aliasPhrase = aliases.length
     ? `, bao gồm khu vực ${aliasNames} trước sắp xếp đơn vị hành chính năm 2025`
     : "";
   const localContext = aliases.length
-    ? `Trang tư vấn này dành cho người lao động trên địa bàn ${name} hiện nay, đồng thời giúp người tìm kiếm theo tên địa phương quen thuộc như ${aliasNames} tiếp cận đúng thông tin.`
-    : `Trang tư vấn này dành riêng cho người lao động đang sinh sống tại ${name} và muốn kiểm tra điều kiện trước khi đi học nghề ở Quảng Ninh.`;
-  const description = `Tuyển thợ mỏ tại ${name}${aliasPhrase}: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.`;
+    ? `Từ ${name} và các địa danh quen thuộc như ${aliasNames}, nhiều lao động trẻ đang tìm một nghề có đào tạo bài bản, thu nhập rõ ràng và cơ hội gắn bó lâu dài tại Quảng Ninh.`
+    : `Từ ${name}, người lao động có thể bắt đầu hành trình nghề mỏ bằng một khóa học ngắn, được hỗ trợ trong thời gian học và có cơ hội nhận việc tại Quảng Ninh.`;
+  const description = `Tuyển thợ mỏ tại ${name}${aliasPhrase}: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.`;
+  const storySection = story
+    ? `<section class="section local-overview" aria-labelledby="local-story-title">
+      <div class="section-heading"><div><p class="eyebrow">NGƯỜI ${name.toLocaleUpperCase("vi")} TRONG NGÀNH THAN</p><h2 id="local-story-title">Một câu chuyện đồng hương đáng để lắng nghe</h2></div><p>Mức thu nhập của mỗi người khác nhau, nhưng câu chuyện thật cho thấy tay nghề và sự bền bỉ có thể đưa người lao động từ quê nhà đến một vị trí vững vàng tại Quảng Ninh.</p></div>
+      <div class="story-link"><div><strong>${story}</strong><p>Đây là trường hợp thực tế để tham khảo; thu nhập được tạo nên từ vị trí công việc, ngày công, năng suất và đơn vị.</p></div><a class="button button--outline-dark" href="${storyLink}">Xem câu chuyện thực tế →</a></div>
+    </section>`
+    : "";
   const keywords = [
     `tuyển thợ mỏ ${name}`,
     `tuyển dụng ngành than ${name}`,
@@ -69,7 +67,7 @@ function provincePage(province) {
         name: `Tuyển thợ mỏ tại ${name} – học nghề 2–3 tháng`,
         description,
         inLanguage: "vi-VN",
-        dateModified: "2026-07-31",
+        dateModified: "2026-08-01",
         breadcrumb: { "@id": `${canonical}#breadcrumb` },
       },
       {
@@ -129,7 +127,7 @@ function provincePage(province) {
 </head>
 <body>
   <a class="skip-link" href="#noi-dung">Bỏ qua menu</a>
-  <div class="notice-bar"><span>✓</span> Kênh tư vấn của <strong>Thầy Linh – Tuyển Thợ Mỏ</strong> · Kiểm tra điều kiện trước khi hướng dẫn hồ sơ</div>
+  <div class="notice-bar"><span>✓</span> Học nghề 2–3 tháng · Hỗ trợ ăn ở · Cơ hội làm việc lâu dài tại Quảng Ninh</div>
   <header class="site-header" data-header>
     <a class="brand" href="../../" aria-label="Trang chủ Thầy Linh Tuyển Thợ Mỏ"><span class="brand-mark">TL</span><span class="brand-copy"><strong>Thầy Linh</strong><small>Tuyển Thợ Mỏ</small></span></a>
     <button class="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false" data-menu-toggle><span></span><span></span><span></span></button>
@@ -142,36 +140,38 @@ function provincePage(province) {
     <section class="local-hero" aria-labelledby="local-title">
       <div class="local-hero__copy">
         <p class="eyebrow">TUYỂN THỢ MỎ TẠI ${name.toLocaleUpperCase("vi")}</p>
-        <h1 id="local-title">Học nghề 2–3 tháng<br><em>làm việc tại Quảng Ninh</em></h1>
-        <p class="local-hero__lead">Thông tin dành cho lao động nam tại ${name}${aliasPhrase} đang tìm hiểu nghề mỏ, chế độ học và cơ hội làm việc lâu dài.</p>
+        <h1 id="local-title">Từ ${name} đến Quảng Ninh:<br><em>học một nghề, dựng một tương lai</em></h1>
+        <p class="local-hero__lead">Chỉ sau 2–3 tháng đào tạo, người phù hợp có thể bước vào nghề mỏ với tay nghề thực tế, chế độ hỗ trợ trong khóa học và cơ hội thu nhập tham khảo 20–25 triệu đồng/tháng.</p>
         <div class="location-clarity"><div><small>NƠI TUYỂN NGUỒN</small><strong>${name}</strong></div><span>→</span><div><small>NƠI HỌC & LÀM VIỆC</small><strong>Quảng Ninh</strong></div></div>
         <div class="contact-pair">
           <a class="contact-button contact-button--zalo" href="https://zalo.me/0963048585" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="province-${slug}"><span class="contact-icon contact-icon--text">Z</span><span><small>Nhắn trực tiếp</small><strong>Zalo 096 304 8585</strong></span></a>
           <a class="contact-button contact-button--messenger" href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener noreferrer" data-contact="messenger" data-context="province-${slug}"><span class="contact-icon contact-icon--text">M</span><span><small>Nhắn Fanpage</small><strong>Messenger</strong></span></a>
         </div>
       </div>
-      <aside class="local-check"><p class="eyebrow">KIỂM TRA NHANH</p><h2>Gửi 3 thông tin</h2><ol><li><b>1</b><span>Năm sinh</span></li><li><b>2</b><span>Chiều cao – cân nặng</span></li><li><b>3</b><span>Tình trạng sức khỏe</span></li></ol><button class="copy-button copy-button--full" type="button" data-copy-template>Sao chép mẫu tin nhắn</button><p>Chỉ chuẩn bị hồ sơ và di chuyển sau khi được kiểm tra điều kiện, xác nhận lịch tiếp nhận.</p></aside>
+      <aside class="local-check"><p class="eyebrow">BẮT ĐẦU TỪ HÔM NAY</p><h2>Gửi 3 thông tin</h2><ol><li><b>1</b><span>Năm sinh</span></li><li><b>2</b><span>Chiều cao – cân nặng</span></li><li><b>3</b><span>Tình trạng sức khỏe</span></li></ol><button class="copy-button copy-button--full" type="button" data-copy-template>Sao chép mẫu tin nhắn</button><p>Thầy Linh kiểm tra điều kiện trước, sau đó mới hướng dẫn hồ sơ và lịch tiếp nhận phù hợp.</p></aside>
     </section>
 
     <section class="trust-strip trust-strip--local" aria-label="Thông tin chính"><span>✓ Nam 18–35 tuổi</span><span>✓ Cao từ 1m56</span><span>✓ Nặng từ 48kg</span><span>✓ Sức khỏe tốt</span></section>
 
     <section class="section local-overview" aria-labelledby="overview-title">
-      <div class="section-heading"><div><p class="eyebrow">THÔNG TIN DÀNH CHO ${name.toLocaleUpperCase("vi")}</p><h2 id="overview-title">Tuyển thợ mỏ tại ${name}: cần biết gì trước?</h2></div><p>${localContext}</p></div>
+      <div class="section-heading"><div><p class="eyebrow">CƠ HỘI CHO LAO ĐỘNG ${name.toLocaleUpperCase("vi")}</p><h2 id="overview-title">Một lộ trình nghề nghiệp có điểm đến rõ ràng</h2></div><p>${localContext}</p></div>
       <div class="overview-grid">
-        <article><span>01</span><h3>Kiểm tra điều kiện</h3><p>Nam 18–35 tuổi, cao từ 1m56, nặng từ 48kg và có sức khỏe tốt.</p></article>
-        <article><span>02</span><h3>Xác nhận chế độ</h3><p>Đối chiếu học phí, ăn ở, hỗ trợ 7,5 triệu và kế hoạch tiếp nhận của từng đợt.</p></article>
-        <article><span>03</span><h3>Học nghề 2–3 tháng</h3><p>Áp dụng với nghề khai thác mỏ và xây dựng mỏ; lịch cụ thể được xác nhận trước.</p></article>
-        <article><span>04</span><h3>Nhận việc tại Quảng Ninh</h3><p>Người đạt yêu cầu được bố trí công việc theo nghề đào tạo và nhu cầu doanh nghiệp.</p></article>
+        <article><span>01</span><h3>Mở cửa cho người chưa có nghề</h3><p>Nam 18–35 tuổi, cao từ 1m56, nặng từ 48kg và có sức khỏe tốt có thể đăng ký kiểm tra ban đầu.</p></article>
+        <article><span>02</span><h3>Yên tâm học nghề</h3><p>Miễn kinh phí đào tạo, bố trí ba bữa ăn mỗi ngày, ký túc xá và hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển.</p></article>
+        <article><span>03</span><h3>Rèn tay nghề trong 2–3 tháng</h3><p>Học kiến thức, an toàn và kỹ năng thực hành của nghề khai thác mỏ hoặc xây dựng mỏ hầm lò.</p></article>
+        <article><span>04</span><h3>Bước vào công việc có tương lai</h3><p>Người tốt nghiệp đạt yêu cầu được doanh nghiệp tiếp nhận, bố trí công việc đúng nghề tại Quảng Ninh.</p></article>
       </div>
     </section>
 
+${storySection}
+
     <section class="section section--dark local-benefits" aria-labelledby="benefits-title">
-      <div class="section-heading section-heading--light"><div><p class="eyebrow eyebrow--light">LỘ TRÌNH RÕ RÀNG</p><h2 id="benefits-title">Từ ${name} đến nghề mỏ tại Quảng Ninh</h2></div><p>Không cần đi xa để hỏi thông tin ban đầu. Mọi trường hợp đều được kiểm tra từ xa trước.</p></div>
-      <div class="benefit-grid benefit-grid--four"><article><small>01</small><strong>Tư vấn trực tiếp</strong><p>Trao đổi đúng nhu cầu và hoàn cảnh cá nhân.</p></article><article><small>02</small><strong>Hướng dẫn hồ sơ</strong><p>Chỉ chuẩn bị giấy tờ sau khi đủ điều kiện.</p></article><article><small>03</small><strong>Ăn ở trong khóa học</strong><p>Ba bữa mỗi ngày và ký túc xá theo bố trí.</p></article><article class="benefit-grid__accent"><small>04</small><strong>Cơ hội thu nhập ổn định</strong><p>Phụ thuộc vị trí, ngày công, năng suất và đơn vị.</p></article></div>
+      <div class="section-heading section-heading--light"><div><p class="eyebrow eyebrow--light">TỪ QUÊ NHÀ ĐẾN VÙNG MỎ</p><h2 id="benefits-title">Một quyết định ngắn hôm nay, một nghề dài cho ngày mai</h2></div><p>Người lao động chưa cần đi xa để hỏi thông tin. Bước đầu chỉ cần trò chuyện trực tiếp và kiểm tra điều kiện từ xa.</p></div>
+      <div class="benefit-grid benefit-grid--four"><article><small>01</small><strong>Được lắng nghe</strong><p>Trao đổi thẳng về hoàn cảnh, mong muốn và khả năng theo nghề.</p></article><article><small>02</small><strong>Được hướng dẫn</strong><p>Biết rõ giấy tờ, thời gian và nơi tiếp nhận trước khi lên đường.</p></article><article><small>03</small><strong>Được hỗ trợ khi học</strong><p>Có ăn ở, ký túc xá và chính sách hỗ trợ để tập trung rèn nghề.</p></article><article class="benefit-grid__accent"><small>04</small><strong>Có cơ hội đổi đời bằng tay nghề</strong><p>Thu nhập tham khảo 20–25 triệu đồng/tháng, tùy vị trí, ngày công, năng suất và đơn vị.</p></article></div>
     </section>
 
     <section class="section local-overview" aria-labelledby="read-more-title">
-      <div class="section-heading"><div><p class="eyebrow">ĐỌC TRƯỚC KHI ĐĂNG KÝ</p><h2 id="read-more-title">Bốn nội dung quan trọng</h2></div><p>Tìm hiểu đầy đủ giúp người lao động và gia đình chủ động hơn trước khi quyết định.</p></div>
+      <div class="section-heading"><div><p class="eyebrow">HIỂU NGHỀ ĐỂ VỮNG TIN</p><h2 id="read-more-title">Bốn câu hỏi người lao động thường quan tâm nhất</h2></div><p>Mỗi bài viết đi thẳng vào một vấn đề thực tế, giúp người lao động và gia đình nhìn rõ hành trình trước khi quyết định.</p></div>
       <div class="overview-grid"><article><h3>Điều kiện tuyển thợ lò</h3><p>Tuổi, chiều cao, cân nặng và yêu cầu sức khỏe.</p><a href="../../bai-viet/dieu-kien-tuyen-tho-lo-2026/">Đọc điều kiện →</a></article><article><h3>Hồ sơ dự tuyển</h3><p>Sơ yếu lý lịch, giấy khai sinh, bằng văn hóa và căn cước công dân.</p><a href="../../bai-viet/ho-so-hoc-nghe-mo-can-gi/">Xem hồ sơ →</a></article><article><h3>Khóa học 2–3 tháng</h3><p>Nội dung học nghề khai thác mỏ trước khi nhận việc.</p><a href="../../bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/">Xem khóa học →</a></article><article><h3>Tin tuyển dụng 2026</h3><p>Xem đầy đủ quyền lợi, thu nhập và tạo tin nhắn đăng ký.</p><a href="../../viec-lam/cong-nhan-mo-ham-lo-quang-ninh/">Ứng tuyển ngay →</a></article></div>
     </section>
 
@@ -193,16 +193,16 @@ function provincePage(province) {
 `;
 }
 
-for (const province of provinces.filter((item) => item.create)) {
+for (const province of provinces) {
   const dir = path.join(outputRoot, province.slug);
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, "index.html"), provincePage(province));
 }
 
 const data = {
-  updated_at: "2026-07-31",
-  source_scope: "Toàn bộ 34 tỉnh, thành theo hệ thống đơn vị hành chính cấp tỉnh hiện hành năm 2026",
-  provinces: provinces.map(({ create, ...province }) => province),
+  updated_at: "2026-08-01",
+  source_scope: "26 tỉnh, thành từ Lâm Đồng trở ra phía Bắc theo phạm vi tuyển sinh ưu tiên của website",
+  provinces: provinces.map(({story, storyLink, ...province}) => province),
 };
 fs.writeFileSync(path.join(root, "data", "provinces-2026.json"), `${JSON.stringify(data, null, 2)}\n`);
-console.log(`Generated ${provinces.filter((item) => item.create).length} new province pages; directory contains ${provinces.length} provinces/cities.`);
+console.log(`Generated ${provinces.length} province pages from Lâm Đồng northward.`);

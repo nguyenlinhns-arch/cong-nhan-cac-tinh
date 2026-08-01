@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-07-31T10:30:00+07:00",
+  "updated_at": "2026-08-01T21:55:00+07:00",
   "policy": "Nguồn URL chỉ dùng cho kiểm chứng nội bộ; bài công khai ghi tên nguồn bằng chữ và không đặt liên kết ra ngoài.",
   "articles": [
     {
       "slug": "dieu-kien-tuyen-tho-lo-2026",
-      "title": "Điều kiện tuyển thợ lò 2026: kiểm tra đúng trước khi đăng ký",
+      "title": "Điều kiện tuyển thợ lò 2026: cánh cửa đầu tiên vào nghề mỏ",
       "sources": [
         {
           "publisher": "Trường Cao đẳng Than - Khoáng sản Việt Nam",
@@ -15,7 +15,7 @@
     },
     {
       "slug": "ho-so-hoc-nghe-mo-can-gi",
-      "title": "Hồ sơ học nghề mỏ cần gì? Danh sách gọn và cách chuẩn bị đúng",
+      "title": "Hồ sơ học nghề mỏ: 02 bộ giấy tờ cho một hành trình mới",
       "sources": [
         {
           "publisher": "Trường Cao đẳng Than - Khoáng sản Việt Nam",
@@ -26,11 +26,11 @@
     },
     {
       "slug": "hoc-nghe-khai-thac-mo-2-3-thang",
-      "title": "Học nghề mỏ 2–3 tháng: ngắn nhưng không phải học cho xong",
+      "title": "Học nghề mỏ 2–3 tháng: bước khởi đầu ngắn, cơ hội dài lâu",
       "sources": [
         {
-          "publisher": "Thầy Linh – Phòng Tuyển sinh Miền Trung",
-          "title": "Thông tin chương trình đào tạo nghề mỏ chính đang tư vấn",
+          "publisher": "Trường Cao đẳng Than - Khoáng sản Việt Nam",
+          "title": "Thông tin chương trình đào tạo nghề mỏ năm 2026",
           "date": "31/07/2026"
         },
         {
@@ -43,7 +43,7 @@
     },
     {
       "slug": "13500-tho-lo-thu-nhap-tren-300-trieu-2025",
-      "title": "Hơn 13.500 thợ lò thu nhập trên 300 triệu đồng/năm: cơ hội từ nghề mỏ",
+      "title": "Hơn 13.500 thợ lò thu nhập trên 300 triệu đồng/năm",
       "sources": [
         {
           "publisher": "TKV",
@@ -56,12 +56,18 @@
           "title": "TKV có hơn 13.000 thợ lò thu nhập trên 300 triệu đồng/người năm 2025",
           "date": "06/02/2026",
           "url": "https://laodong.vn/cong-doan/tkv-co-hon-13000-tho-lo-thu-nhap-tren-300-trieu-dongnguoi-nam-2025-1652193.ldo"
+        },
+        {
+          "publisher": "Báo Quảng Ninh",
+          "title": "Những thợ mỏ thu nhập cao",
+          "date": "13/03/2026",
+          "url": "https://baoquangninh.vn/nhung-tho-mo-thu-nhap-cao-cua-tkv-3399380.html"
         }
       ]
     },
     {
       "slug": "co-gioi-hoa-khai-thac-ham-lo",
-      "title": "Cơ giới hóa khai thác hầm lò 2026–2030: nghề thợ mỏ đổi ra sao?",
+      "title": "Mỏ hầm lò bước vào thời đại cơ giới hóa: người thợ trẻ cần gì?",
       "sources": [
         {
           "publisher": "TKV",
@@ -79,7 +85,7 @@
     },
     {
       "slug": "dao-tao-an-toan-truoc-khi-vao-lo",
-      "title": "Đào tạo an toàn trước khi vào lò: điều người mới phải hiểu",
+      "title": "An toàn hầm lò được đào tạo thế nào trước ca sản xuất đầu tiên?",
       "sources": [
         {
           "publisher": "Nhân Dân",
@@ -103,7 +109,7 @@
     },
     {
       "slug": "hoc-thuc-hanh-nghe-mo-ham-lo",
-      "title": "Tay nghề thợ mỏ trong thời kỳ mỏ thông minh được rèn thế nào?",
+      "title": "Từ học viên đến thợ giỏi: tay nghề trong thời kỳ mỏ thông minh",
       "sources": [
         {
           "publisher": "TKV",
@@ -127,7 +133,7 @@
     },
     {
       "slug": "nghe-tho-lo-co-on-dinh-khong",
-      "title": "Nghề thợ lò có ổn định không? Nhìn từ dữ liệu ngành Than 2026",
+      "title": "Nghề thợ lò có ổn định không? Câu trả lời từ ngành Than 2026",
       "sources": [
         {
           "publisher": "TKV",
@@ -151,7 +157,7 @@
     },
     {
       "slug": "san-xuat-sach-hon-nganh-than",
-      "title": "Sản xuất sạch hơn trong ngành Than: thay đổi thật nằm ở đâu?",
+      "title": "Ngành Than xanh hơn từ những thay đổi dưới mỏ",
       "sources": [
         {
           "publisher": "Bộ Công Thương",
@@ -175,7 +181,7 @@
     },
     {
       "slug": "an-toan-mua-mua-bao-2026",
-      "title": "An toàn mỏ mùa mưa bão 2026: vì sao mọi khâu phải siết chặt?",
+      "title": "Giữ nhịp sản xuất an toàn trong mùa mưa bão 2026",
       "sources": [
         {
           "publisher": "TKV",
@@ -199,7 +205,7 @@
     },
     {
       "slug": "phuc-loi-tho-mo-tkv-2026",
-      "title": "Phúc lợi thợ mỏ TKV 2026: nhà ở, sức khỏe và bữa ăn",
+      "title": "Sau ca làm: đời sống thợ mỏ được chăm lo ra sao?",
       "sources": [
         {
           "publisher": "Công đoàn TKV",
@@ -211,7 +217,7 @@
     },
     {
       "slug": "tai-co-cau-tkv-2026-viec-lam-tho-mo",
-      "title": "Tái cơ cấu TKV 2026: việc làm thợ mỏ thay đổi thế nào?",
+      "title": "TKV bước vào giai đoạn mới: cơ hội nào cho người thợ trẻ?",
       "sources": [
         {
           "publisher": "TKV",

@@ -3,8 +3,8 @@
   "items": [
     {
       "url": "/",
-      "title": "Tuyển thợ lò TKV | Học nghề mỏ tại Quảng Ninh",
-      "description": "Thông tin tuyển sinh nghề mỏ 2026 tại Quảng Ninh: điều kiện, chế độ học và thực tập, hồ sơ đăng ký, hỗ trợ học nghề và cơ hội làm việc tại doanh nghiệp TKV.",
+      "title": "Học nghề mỏ 2–3 tháng, việc làm TKV Quảng Ninh",
+      "description": "Học nghề mỏ 2–3 tháng tại Quảng Ninh: miễn kinh phí đào tạo, hỗ trợ ăn ở, cơ hội việc làm TKV và thu nhập tham khảo 20–25 triệu đồng/tháng.",
       "keywords": [
         "tuyển sinh nghề mỏ 2026",
         "tuyển thợ lò",
@@ -57,8 +57,8 @@
     },
     {
       "url": "/tin-nganh-than/",
-      "title": "Kho kiến thức ngành mỏ: tin chọn lọc và phân tích chuyên sâu",
-      "description": "Kho bài viết chọn lọc về ngành Than, nghề thợ mỏ, thu nhập, an toàn, công nghệ, tay nghề, phúc lợi và môi trường khai thác.",
+      "title": "Ngành Than & Người thợ | Chuyện nghề mỏ tại Quảng Ninh",
+      "description": "Bài viết chuyên sâu về nghề thợ mỏ, thu nhập, đời sống, tay nghề, công nghệ và cơ hội lập nghiệp trong ngành Than tại Quảng Ninh.",
       "keywords": [],
       "category": "news",
       "categoryLabel": "Tin ngành Than",
@@ -67,8 +67,8 @@
     },
     {
       "url": "/tin-nganh-than/2026/07/30/phuc-loi-tho-mo-tkv-2026/",
-      "title": "Phúc lợi thợ mỏ TKV 2026: nhà ở, sức khỏe, bữa ăn",
-      "description": "Phúc lợi thợ mỏ TKV 6 tháng đầu năm 2026: hỗ trợ nhà ở, khám sức khỏe, nghỉ dưỡng, bữa ăn và đối thoại với người lao động.",
+      "title": "Sau ca làm: đời sống thợ mỏ được chăm lo ra sao?",
+      "description": "Từ 108 mái ấm, hơn 71.000 lượt khám sức khỏe đến bữa cơm công đoàn: bức tranh đời sống và phúc lợi thợ mỏ TKV trong năm 2026.",
       "keywords": [
         "phúc lợi thợ mỏ TKV 2026",
         "đời sống công nhân mỏ",
@@ -83,8 +83,8 @@
     },
     {
       "url": "/tin-nganh-than/2026/07/31/tai-co-cau-tkv-2026-viec-lam-tho-mo/",
-      "title": "Tái cơ cấu TKV 2026: việc làm thợ mỏ thay đổi thế nào?",
-      "description": "Tái cơ cấu TKV 2026 đặt an toàn, đời sống thợ mỏ, cơ giới hóa và đào tạo ở vị trí trọng tâm. Người muốn vào nghề cần chuẩn bị gì?",
+      "title": "TKV bước vào giai đoạn mới: cơ hội nào cho người thợ trẻ?",
+      "description": "Giai đoạn 2026–2030, TKV đặt tuyển dụng, đào tạo, giữ chân thợ lò và cơ giới hóa trong cùng chiến lược phát triển hiện đại.",
       "keywords": [
         "tái cơ cấu TKV 2026",
         "việc làm ngành Than",
@@ -100,38 +100,8 @@
       "priority": 60
     },
     {
-      "url": "/bai-viet/an-toan-mua-mua-bao-2026/",
-      "title": "An toàn mỏ mùa mưa bão 2026: vì sao mọi khâu phải siết chặt?",
-      "description": "Mưa lớn và giông lốc tác động trực tiếp đến khai trường, bãi thải, thoát nước và vận tải. Những nguyên tắc người lao động cần hiểu năm 2026.",
-      "keywords": [
-        "an toàn mỏ mùa mưa bão 2026",
-        "phòng chống thiên tai ngành Than",
-        "an toàn bãi thải mỏ",
-        "sản xuất than tháng 7 2026"
-      ],
-      "category": "technology",
-      "categoryLabel": "An toàn & công nghệ",
-      "type": "An toàn & công nghệ",
-      "priority": 50
-    },
-    {
-      "url": "/bai-viet/co-gioi-hoa-khai-thac-ham-lo/",
-      "title": "Cơ giới hóa khai thác hầm lò 2026–2030: nghề thợ mỏ đổi ra sao?",
-      "description": "TKV đặt mục tiêu tăng tỷ trọng than khai thác cơ giới hóa lên 34,4% năm 2030. Phân tích công việc, kỹ năng và cơ hội của người thợ mỏ.",
-      "keywords": [
-        "cơ giới hóa khai thác hầm lò 2026–2030",
-        "mỏ hầm lò thông minh",
-        "tự động hóa ngành Than",
-        "kỹ năng thợ mỏ"
-      ],
-      "category": "technology",
-      "categoryLabel": "An toàn & công nghệ",
-      "type": "An toàn & công nghệ",
-      "priority": 50
-    },
-    {
       "url": "/bai-viet/dao-tao-an-toan-truoc-khi-vao-lo/",
-      "title": "Đào tạo an toàn trước khi vào lò: điều người mới phải hiểu",
+      "title": "An toàn hầm lò được đào tạo thế nào trước ca sản xuất đầu tiên?",
       "description": "Đào tạo an toàn trước khi vào lò gồm nhận diện nguy cơ, thông gió, khí mỏ, bục nước, bảo hộ và kỷ luật báo cáo trong sản xuất.",
       "keywords": [
         "đào tạo an toàn trước khi vào lò",
@@ -146,13 +116,13 @@
     },
     {
       "url": "/bai-viet/dieu-kien-tuyen-tho-lo-2026/",
-      "title": "Điều kiện tuyển thợ lò 2026: kiểm tra đúng trước khi đăng ký",
-      "description": "Điều kiện tuyển thợ lò 2026 gồm độ tuổi, chiều cao, cân nặng và sức khỏe. Hướng dẫn tự kiểm tra trước khi chuẩn bị hồ sơ.",
+      "title": "Điều kiện tuyển thợ lò 2026: cánh cửa đầu tiên vào nghề mỏ",
+      "description": "Điều kiện tuyển thợ lò 2026 gồm nam 18–35 tuổi, cao từ 1,56 m, nặng từ 48 kg và có sức khỏe tốt để học nghề tại Quảng Ninh.",
       "keywords": [
         "điều kiện tuyển thợ lò 2026",
         "tuyển thợ mỏ Quảng Ninh",
         "học nghề mỏ 2–3 tháng",
-        "kiểm tra sức khỏe thợ lò"
+        "sức khỏe thợ lò"
       ],
       "category": "training",
       "categoryLabel": "Học nghề",
@@ -160,9 +130,24 @@
       "priority": 50
     },
     {
+      "url": "/bai-viet/an-toan-mua-mua-bao-2026/",
+      "title": "Giữ nhịp sản xuất an toàn trong mùa mưa bão 2026",
+      "description": "Mưa lớn và giông lốc tác động trực tiếp đến khai trường, bãi thải, thoát nước và vận tải. Những nguyên tắc người lao động cần hiểu năm 2026.",
+      "keywords": [
+        "an toàn mỏ mùa mưa bão 2026",
+        "phòng chống thiên tai ngành Than",
+        "an toàn bãi thải mỏ",
+        "sản xuất than tháng 7 2026"
+      ],
+      "category": "technology",
+      "categoryLabel": "An toàn & công nghệ",
+      "type": "An toàn & công nghệ",
+      "priority": 50
+    },
+    {
       "url": "/bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/",
-      "title": "Học nghề mỏ 2–3 tháng: ngắn nhưng không phải học cho xong",
-      "description": "Học nghề mỏ 2–3 tháng tập trung vào kiến thức nghề, thực hành và an toàn. Những gì người học cần chuẩn bị để theo kịp khóa học.",
+      "title": "Học nghề mỏ 2–3 tháng: bước khởi đầu ngắn, cơ hội dài lâu",
+      "description": "Học nghề mỏ 2–3 tháng kết hợp kiến thức nghề, thực hành, an toàn và tác phong tổ đội trước khi làm việc tại doanh nghiệp ở Quảng Ninh.",
       "keywords": [
         "học nghề mỏ 2–3 tháng",
         "đào tạo thợ lò",
@@ -176,7 +161,7 @@
     },
     {
       "url": "/bai-viet/ho-so-hoc-nghe-mo-can-gi/",
-      "title": "Hồ sơ học nghề mỏ cần gì? Danh sách gọn và cách chuẩn bị đúng",
+      "title": "Hồ sơ học nghề mỏ: 02 bộ giấy tờ cho một hành trình mới",
       "description": "Hồ sơ học nghề mỏ gồm 02 bộ với sơ yếu lý lịch, giấy khai sinh, bằng tốt nghiệp văn hóa và căn cước công dân theo hướng dẫn năm 2026.",
       "keywords": [
         "hồ sơ học nghề mỏ cần gì",
@@ -191,8 +176,8 @@
     },
     {
       "url": "/bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/",
-      "title": "Hơn 13.500 thợ lò thu nhập trên 300 triệu đồng/năm: cơ hội từ nghề mỏ",
-      "description": "Hơn 13.500 thợ lò TKV đạt thu nhập trên 300 triệu đồng/năm 2025. Xem cơ hội việc làm, lộ trình học nghề mỏ 2–3 tháng và cách đăng ký.",
+      "title": "Hơn 13.500 thợ lò thu nhập trên 300 triệu đồng/năm",
+      "description": "Năm 2025, 13.507 thợ lò TKV đạt thu nhập trên 300 triệu đồng. Những câu chuyện từ Gia Lai, Lai Châu cho thấy con đường lập nghiệp tại Quảng Ninh.",
       "keywords": [
         "13.500 thợ lò thu nhập trên 300 triệu đồng/năm",
         "lương thợ lò 2025",
@@ -205,23 +190,23 @@
       "priority": 50
     },
     {
-      "url": "/bai-viet/nghe-tho-lo-co-on-dinh-khong/",
-      "title": "Nghề thợ lò có ổn định không? Nhìn từ dữ liệu ngành Than 2026",
-      "description": "Nửa đầu năm 2026 TKV sản xuất khoảng 19,7 triệu tấn than sạch và giao điện 22,77 triệu tấn. Phân tích độ ổn định của nghề thợ lò.",
+      "url": "/bai-viet/co-gioi-hoa-khai-thac-ham-lo/",
+      "title": "Mỏ hầm lò bước vào thời đại cơ giới hóa: người thợ trẻ cần gì?",
+      "description": "TKV đặt mục tiêu tăng tỷ trọng than khai thác cơ giới hóa lên 34,4% năm 2030. Phân tích công việc, kỹ năng và cơ hội của người thợ mỏ.",
       "keywords": [
-        "nghề thợ lò có ổn định không",
-        "việc làm ngành Than 2026",
-        "TKV 6 tháng đầu năm 2026",
-        "tuyển thợ mỏ Quảng Ninh"
+        "cơ giới hóa khai thác hầm lò 2026–2030",
+        "mỏ hầm lò thông minh",
+        "tự động hóa ngành Than",
+        "kỹ năng thợ mỏ"
       ],
-      "category": "guide",
-      "categoryLabel": "Thông tin nghề mỏ",
-      "type": "Thông tin nghề mỏ",
+      "category": "technology",
+      "categoryLabel": "An toàn & công nghệ",
+      "type": "An toàn & công nghệ",
       "priority": 50
     },
     {
       "url": "/bai-viet/san-xuat-sach-hon-nganh-than/",
-      "title": "Sản xuất sạch hơn trong ngành Than: thay đổi thật nằm ở đâu?",
+      "title": "Ngành Than xanh hơn từ những thay đổi dưới mỏ",
       "description": "Ngành Than đầu tư xử lý nước, giảm bụi, cơ giới hóa và tái sử dụng đất đá thải. Phân tích các chỉ số cho thấy thay đổi môi trường thực tế.",
       "keywords": [
         "sản xuất sạch hơn trong ngành Than",
@@ -235,8 +220,23 @@
       "priority": 50
     },
     {
+      "url": "/bai-viet/nghe-tho-lo-co-on-dinh-khong/",
+      "title": "Nghề thợ lò có ổn định không? Câu trả lời từ ngành Than 2026",
+      "description": "Nửa đầu năm 2026 TKV sản xuất khoảng 19,7 triệu tấn than sạch và giao điện 22,77 triệu tấn. Phân tích độ ổn định của nghề thợ lò.",
+      "keywords": [
+        "nghề thợ lò có ổn định không",
+        "việc làm ngành Than 2026",
+        "TKV 6 tháng đầu năm 2026",
+        "tuyển thợ mỏ Quảng Ninh"
+      ],
+      "category": "guide",
+      "categoryLabel": "Thông tin nghề mỏ",
+      "type": "Thông tin nghề mỏ",
+      "priority": 50
+    },
+    {
       "url": "/bai-viet/hoc-thuc-hanh-nghe-mo-ham-lo/",
-      "title": "Tay nghề thợ mỏ trong thời kỳ mỏ thông minh được rèn thế nào?",
+      "title": "Từ học viên đến thợ giỏi: tay nghề trong thời kỳ mỏ thông minh",
       "description": "Hội thi thợ giỏi TKV 2026 có 501 thí sinh, 27 nghề. Phân tích vai trò thực hành, kỷ luật và học công nghệ với người mới vào nghề.",
       "keywords": [
         "tay nghề thợ mỏ trong thời kỳ mỏ thông minh",
@@ -250,126 +250,9 @@
       "priority": 50
     },
     {
-      "url": "/viec-lam-nganh-than/dak-lak/",
-      "title": "Tuyển người lao động tại Đắk Lắk học nghề mỏ",
-      "description": "Thông tin dành cho lao động nam tại Đắk Lắk có nhu cầu học nghề mỏ và làm việc tại các đơn vị ngành Than ở Quảng Ninh. Kiểm tra điều kiện qua Zalo 0963048585 hoặc Messenger Thầy Linh Tuyển Thợ Mỏ.",
-      "keywords": [],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
-      "url": "/viec-lam-nganh-than/dien-bien/",
-      "title": "Tuyển người lao động tại Điện Biên học nghề mỏ",
-      "description": "Trang tư vấn tuyển sinh nghề mỏ dành cho lao động nam Điện Biên cần một quy trình rõ ràng trước khi ra Quảng Ninh học tập. Kiểm tra điều kiện qua Zalo 0963048585 hoặc Messenger Thầy Linh Tuyển Thợ Mỏ.",
-      "keywords": [],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
-      "url": "/viec-lam-nganh-than/gia-lai/",
-      "title": "Tuyển người lao động tại Gia Lai học nghề mỏ",
-      "description": "Dành cho lao động nam tại Gia Lai đang tìm một hướng học nghề rõ ràng, có nơi đào tạo và cơ hội làm việc lâu dài tại Quảng Ninh. Kiểm tra điều kiện qua Zalo 0963048585 hoặc Messenger Thầy Linh Tuyển Thợ Mỏ.",
-      "keywords": [],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
-      "url": "/viec-lam-nganh-than/ha-tinh/",
-      "title": "Tuyển người lao động tại Hà Tĩnh học nghề mỏ",
-      "description": "Thông tin dành cho lao động nam Hà Tĩnh muốn tìm hiểu nghề mỏ, điều kiện sức khỏe và lộ trình học nghề trước khi làm việc tại Quảng Ninh. Kiểm tra điều kiện qua Zalo 0963048585 hoặc Messenger Thầy Linh Tuyển Thợ Mỏ.",
-      "keywords": [],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
-      "url": "/viec-lam-nganh-than/lao-cai/",
-      "title": "Tuyển người lao động tại Lào Cai học nghề mỏ",
-      "description": "Kênh tư vấn cho lao động nam Lào Cai muốn tìm hiểu chương trình học nghề mỏ và nơi làm việc thực tế tại Quảng Ninh. Kiểm tra điều kiện qua Zalo 0963048585 hoặc Messenger Thầy Linh Tuyển Thợ Mỏ.",
-      "keywords": [],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
-      "url": "/viec-lam-nganh-than/nghe-an/",
-      "title": "Tuyển người lao động tại Nghệ An học nghề mỏ",
-      "description": "Kênh kiểm tra điều kiện và hướng dẫn ban đầu cho lao động nam Nghệ An quan tâm học nghề mỏ và làm việc tại Quảng Ninh. Kiểm tra điều kiện qua Zalo 0963048585 hoặc Messenger Thầy Linh Tuyển Thợ Mỏ.",
-      "keywords": [],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
-      "url": "/viec-lam-nganh-than/quang-ngai/",
-      "title": "Tuyển người lao động tại Quảng Ngãi học nghề mỏ",
-      "description": "Kênh tư vấn cho lao động nam tại Quảng Ngãi muốn tìm hiểu chương trình học nghề mỏ, chế độ trong thời gian học và công việc sau đào tạo. Kiểm tra điều kiện qua Zalo 0963048585 hoặc Messenger Thầy Linh Tuyển Thợ Mỏ.",
-      "keywords": [],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
-      "url": "/viec-lam-nganh-than/quang-tri/",
-      "title": "Tuyển người lao động tại Quảng Trị học nghề mỏ",
-      "description": "Thông tin tuyển sinh nghề mỏ dành cho lao động nam tại Quảng Trị, với lộ trình kiểm tra điều kiện, học nghề và làm việc tại Quảng Ninh. Kiểm tra điều kiện qua Zalo 0963048585 hoặc Messenger Thầy Linh Tuyển Thợ Mỏ.",
-      "keywords": [],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
-      "url": "/viec-lam-nganh-than/son-la/",
-      "title": "Tuyển người lao động tại Sơn La học nghề mỏ",
-      "description": "Thông tin cho lao động nam Sơn La quan tâm học nghề mỏ, chế độ ăn ở trong thời gian học và cơ hội làm việc tại Quảng Ninh. Kiểm tra điều kiện qua Zalo 0963048585 hoặc Messenger Thầy Linh Tuyển Thợ Mỏ.",
-      "keywords": [],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
-      "url": "/viec-lam-nganh-than/thanh-hoa/",
-      "title": "Tuyển người lao động tại Thanh Hóa học nghề mỏ",
-      "description": "Trang tư vấn dành cho lao động nam Thanh Hóa muốn học nghề mỏ, tìm hiểu môi trường làm việc và các câu chuyện công nhân đồng hương. Kiểm tra điều kiện qua Zalo 0963048585 hoặc Messenger Thầy Linh Tuyển Thợ Mỏ.",
-      "keywords": [],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
-      "url": "/viec-lam-nganh-than/an-giang/",
-      "title": "Tuyển thợ mỏ tại An Giang | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại An Giang, bao gồm khu vực Kiên Giang trước sắp xếp đơn vị hành chính năm 2025: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
-      "keywords": [
-        "tuyển thợ mỏ An Giang",
-        "tuyển dụng ngành than An Giang",
-        "học nghề mỏ An Giang",
-        "việc làm thợ lò An Giang",
-        "tuyển thợ mỏ Kiên Giang",
-        "việc làm ngành than Kiên Giang"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
       "url": "/viec-lam-nganh-than/bac-ninh/",
       "title": "Tuyển thợ mỏ tại Bắc Ninh | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Bắc Ninh, bao gồm khu vực Bắc Giang trước sắp xếp đơn vị hành chính năm 2025: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "description": "Tuyển thợ mỏ tại Bắc Ninh, bao gồm khu vực Bắc Giang trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
         "tuyển thợ mỏ Bắc Ninh",
         "tuyển dụng ngành than Bắc Ninh",
@@ -384,26 +267,9 @@
       "priority": 45
     },
     {
-      "url": "/viec-lam-nganh-than/ca-mau/",
-      "title": "Tuyển thợ mỏ tại Cà Mau | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Cà Mau, bao gồm khu vực Bạc Liêu trước sắp xếp đơn vị hành chính năm 2025: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
-      "keywords": [
-        "tuyển thợ mỏ Cà Mau",
-        "tuyển dụng ngành than Cà Mau",
-        "học nghề mỏ Cà Mau",
-        "việc làm thợ lò Cà Mau",
-        "tuyển thợ mỏ Bạc Liêu",
-        "việc làm ngành than Bạc Liêu"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
       "url": "/viec-lam-nganh-than/cao-bang/",
       "title": "Tuyển thợ mỏ tại Cao Bằng | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Cao Bằng: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "description": "Tuyển thợ mỏ tại Cao Bằng: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
         "tuyển thợ mỏ Cao Bằng",
         "tuyển dụng ngành than Cao Bằng",
@@ -416,28 +282,9 @@
       "priority": 45
     },
     {
-      "url": "/viec-lam-nganh-than/can-tho/",
-      "title": "Tuyển thợ mỏ tại Cần Thơ | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Cần Thơ, bao gồm khu vực Hậu Giang, Sóc Trăng trước sắp xếp đơn vị hành chính năm 2025: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
-      "keywords": [
-        "tuyển thợ mỏ Cần Thơ",
-        "tuyển dụng ngành than Cần Thơ",
-        "học nghề mỏ Cần Thơ",
-        "việc làm thợ lò Cần Thơ",
-        "tuyển thợ mỏ Hậu Giang",
-        "việc làm ngành than Hậu Giang",
-        "tuyển thợ mỏ Sóc Trăng",
-        "việc làm ngành than Sóc Trăng"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
       "url": "/viec-lam-nganh-than/da-nang/",
       "title": "Tuyển thợ mỏ tại Đà Nẵng | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Đà Nẵng, bao gồm khu vực Quảng Nam trước sắp xếp đơn vị hành chính năm 2025: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "description": "Tuyển thợ mỏ tại Đà Nẵng, bao gồm khu vực Quảng Nam trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
         "tuyển thợ mỏ Đà Nẵng",
         "tuyển dụng ngành than Đà Nẵng",
@@ -452,16 +299,16 @@
       "priority": 45
     },
     {
-      "url": "/viec-lam-nganh-than/dong-nai/",
-      "title": "Tuyển thợ mỏ tại Đồng Nai | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Đồng Nai, bao gồm khu vực Bình Phước trước sắp xếp đơn vị hành chính năm 2025: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "url": "/viec-lam-nganh-than/dak-lak/",
+      "title": "Tuyển thợ mỏ tại Đắk Lắk | Học nghề 2–3 tháng",
+      "description": "Tuyển thợ mỏ tại Đắk Lắk, bao gồm khu vực Phú Yên trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
-        "tuyển thợ mỏ Đồng Nai",
-        "tuyển dụng ngành than Đồng Nai",
-        "học nghề mỏ Đồng Nai",
-        "việc làm thợ lò Đồng Nai",
-        "tuyển thợ mỏ Bình Phước",
-        "việc làm ngành than Bình Phước"
+        "tuyển thợ mỏ Đắk Lắk",
+        "tuyển dụng ngành than Đắk Lắk",
+        "học nghề mỏ Đắk Lắk",
+        "việc làm thợ lò Đắk Lắk",
+        "tuyển thợ mỏ Phú Yên",
+        "việc làm ngành than Phú Yên"
       ],
       "category": "province",
       "categoryLabel": "Việc làm theo tỉnh",
@@ -469,16 +316,31 @@
       "priority": 45
     },
     {
-      "url": "/viec-lam-nganh-than/dong-thap/",
-      "title": "Tuyển thợ mỏ tại Đồng Tháp | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Đồng Tháp, bao gồm khu vực Tiền Giang trước sắp xếp đơn vị hành chính năm 2025: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "url": "/viec-lam-nganh-than/dien-bien/",
+      "title": "Tuyển thợ mỏ tại Điện Biên | Học nghề 2–3 tháng",
+      "description": "Tuyển thợ mỏ tại Điện Biên: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
-        "tuyển thợ mỏ Đồng Tháp",
-        "tuyển dụng ngành than Đồng Tháp",
-        "học nghề mỏ Đồng Tháp",
-        "việc làm thợ lò Đồng Tháp",
-        "tuyển thợ mỏ Tiền Giang",
-        "việc làm ngành than Tiền Giang"
+        "tuyển thợ mỏ Điện Biên",
+        "tuyển dụng ngành than Điện Biên",
+        "học nghề mỏ Điện Biên",
+        "việc làm thợ lò Điện Biên"
+      ],
+      "category": "province",
+      "categoryLabel": "Việc làm theo tỉnh",
+      "type": "Việc làm theo tỉnh",
+      "priority": 45
+    },
+    {
+      "url": "/viec-lam-nganh-than/gia-lai/",
+      "title": "Tuyển thợ mỏ tại Gia Lai | Học nghề 2–3 tháng",
+      "description": "Tuyển thợ mỏ tại Gia Lai, bao gồm khu vực Bình Định trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
+      "keywords": [
+        "tuyển thợ mỏ Gia Lai",
+        "tuyển dụng ngành than Gia Lai",
+        "học nghề mỏ Gia Lai",
+        "việc làm thợ lò Gia Lai",
+        "tuyển thợ mỏ Bình Định",
+        "việc làm ngành than Bình Định"
       ],
       "category": "province",
       "categoryLabel": "Việc làm theo tỉnh",
@@ -488,7 +350,7 @@
     {
       "url": "/viec-lam-nganh-than/ha-noi/",
       "title": "Tuyển thợ mỏ tại Hà Nội | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Hà Nội: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "description": "Tuyển thợ mỏ tại Hà Nội: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
         "tuyển thợ mỏ Hà Nội",
         "tuyển dụng ngành than Hà Nội",
@@ -501,9 +363,24 @@
       "priority": 45
     },
     {
+      "url": "/viec-lam-nganh-than/ha-tinh/",
+      "title": "Tuyển thợ mỏ tại Hà Tĩnh | Học nghề 2–3 tháng",
+      "description": "Tuyển thợ mỏ tại Hà Tĩnh: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
+      "keywords": [
+        "tuyển thợ mỏ Hà Tĩnh",
+        "tuyển dụng ngành than Hà Tĩnh",
+        "học nghề mỏ Hà Tĩnh",
+        "việc làm thợ lò Hà Tĩnh"
+      ],
+      "category": "province",
+      "categoryLabel": "Việc làm theo tỉnh",
+      "type": "Việc làm theo tỉnh",
+      "priority": 45
+    },
+    {
       "url": "/viec-lam-nganh-than/hai-phong/",
       "title": "Tuyển thợ mỏ tại Hải Phòng | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Hải Phòng, bao gồm khu vực Hải Dương trước sắp xếp đơn vị hành chính năm 2025: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "description": "Tuyển thợ mỏ tại Hải Phòng, bao gồm khu vực Hải Dương trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
         "tuyển thợ mỏ Hải Phòng",
         "tuyển dụng ngành than Hải Phòng",
@@ -520,7 +397,7 @@
     {
       "url": "/viec-lam-nganh-than/hue/",
       "title": "Tuyển thợ mỏ tại Huế | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Huế: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "description": "Tuyển thợ mỏ tại Huế: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
         "tuyển thợ mỏ Huế",
         "tuyển dụng ngành than Huế",
@@ -535,7 +412,7 @@
     {
       "url": "/viec-lam-nganh-than/hung-yen/",
       "title": "Tuyển thợ mỏ tại Hưng Yên | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Hưng Yên, bao gồm khu vực Thái Bình trước sắp xếp đơn vị hành chính năm 2025: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "description": "Tuyển thợ mỏ tại Hưng Yên, bao gồm khu vực Thái Bình trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
         "tuyển thợ mỏ Hưng Yên",
         "tuyển dụng ngành than Hưng Yên",
@@ -552,7 +429,7 @@
     {
       "url": "/viec-lam-nganh-than/khanh-hoa/",
       "title": "Tuyển thợ mỏ tại Khánh Hòa | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Khánh Hòa, bao gồm khu vực Ninh Thuận trước sắp xếp đơn vị hành chính năm 2025: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "description": "Tuyển thợ mỏ tại Khánh Hòa, bao gồm khu vực Ninh Thuận trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
         "tuyển thợ mỏ Khánh Hòa",
         "tuyển dụng ngành than Khánh Hòa",
@@ -569,7 +446,7 @@
     {
       "url": "/viec-lam-nganh-than/lai-chau/",
       "title": "Tuyển thợ mỏ tại Lai Châu | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Lai Châu: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "description": "Tuyển thợ mỏ tại Lai Châu: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
         "tuyển thợ mỏ Lai Châu",
         "tuyển dụng ngành than Lai Châu",
@@ -584,7 +461,7 @@
     {
       "url": "/viec-lam-nganh-than/lang-son/",
       "title": "Tuyển thợ mỏ tại Lạng Sơn | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Lạng Sơn: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "description": "Tuyển thợ mỏ tại Lạng Sơn: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
         "tuyển thợ mỏ Lạng Sơn",
         "tuyển dụng ngành than Lạng Sơn",
@@ -597,9 +474,26 @@
       "priority": 45
     },
     {
+      "url": "/viec-lam-nganh-than/lao-cai/",
+      "title": "Tuyển thợ mỏ tại Lào Cai | Học nghề 2–3 tháng",
+      "description": "Tuyển thợ mỏ tại Lào Cai, bao gồm khu vực Yên Bái trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
+      "keywords": [
+        "tuyển thợ mỏ Lào Cai",
+        "tuyển dụng ngành than Lào Cai",
+        "học nghề mỏ Lào Cai",
+        "việc làm thợ lò Lào Cai",
+        "tuyển thợ mỏ Yên Bái",
+        "việc làm ngành than Yên Bái"
+      ],
+      "category": "province",
+      "categoryLabel": "Việc làm theo tỉnh",
+      "type": "Việc làm theo tỉnh",
+      "priority": 45
+    },
+    {
       "url": "/viec-lam-nganh-than/lam-dong/",
       "title": "Tuyển thợ mỏ tại Lâm Đồng | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Lâm Đồng, bao gồm khu vực Đắk Nông, Bình Thuận trước sắp xếp đơn vị hành chính năm 2025: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "description": "Tuyển thợ mỏ tại Lâm Đồng, bao gồm khu vực Đắk Nông, Bình Thuận trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
         "tuyển thợ mỏ Lâm Đồng",
         "tuyển dụng ngành than Lâm Đồng",
@@ -616,9 +510,24 @@
       "priority": 45
     },
     {
+      "url": "/viec-lam-nganh-than/nghe-an/",
+      "title": "Tuyển thợ mỏ tại Nghệ An | Học nghề 2–3 tháng",
+      "description": "Tuyển thợ mỏ tại Nghệ An: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
+      "keywords": [
+        "tuyển thợ mỏ Nghệ An",
+        "tuyển dụng ngành than Nghệ An",
+        "học nghề mỏ Nghệ An",
+        "việc làm thợ lò Nghệ An"
+      ],
+      "category": "province",
+      "categoryLabel": "Việc làm theo tỉnh",
+      "type": "Việc làm theo tỉnh",
+      "priority": 45
+    },
+    {
       "url": "/viec-lam-nganh-than/ninh-binh/",
       "title": "Tuyển thợ mỏ tại Ninh Bình | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Ninh Bình, bao gồm khu vực Nam Định, Hà Nam trước sắp xếp đơn vị hành chính năm 2025: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "description": "Tuyển thợ mỏ tại Ninh Bình, bao gồm khu vực Nam Định, Hà Nam trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
         "tuyển thợ mỏ Ninh Bình",
         "tuyển dụng ngành than Ninh Bình",
@@ -637,7 +546,7 @@
     {
       "url": "/viec-lam-nganh-than/phu-tho/",
       "title": "Tuyển thợ mỏ tại Phú Thọ | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Phú Thọ, bao gồm khu vực Vĩnh Phúc, Hòa Bình trước sắp xếp đơn vị hành chính năm 2025: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "description": "Tuyển thợ mỏ tại Phú Thọ, bao gồm khu vực Vĩnh Phúc, Hòa Bình trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
         "tuyển thợ mỏ Phú Thọ",
         "tuyển dụng ngành than Phú Thọ",
@@ -654,9 +563,26 @@
       "priority": 45
     },
     {
+      "url": "/viec-lam-nganh-than/quang-ngai/",
+      "title": "Tuyển thợ mỏ tại Quảng Ngãi | Học nghề 2–3 tháng",
+      "description": "Tuyển thợ mỏ tại Quảng Ngãi, bao gồm khu vực Kon Tum trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
+      "keywords": [
+        "tuyển thợ mỏ Quảng Ngãi",
+        "tuyển dụng ngành than Quảng Ngãi",
+        "học nghề mỏ Quảng Ngãi",
+        "việc làm thợ lò Quảng Ngãi",
+        "tuyển thợ mỏ Kon Tum",
+        "việc làm ngành than Kon Tum"
+      ],
+      "category": "province",
+      "categoryLabel": "Việc làm theo tỉnh",
+      "type": "Việc làm theo tỉnh",
+      "priority": 45
+    },
+    {
       "url": "/viec-lam-nganh-than/quang-ninh/",
       "title": "Tuyển thợ mỏ tại Quảng Ninh | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Quảng Ninh: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "description": "Tuyển thợ mỏ tại Quảng Ninh: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
         "tuyển thợ mỏ Quảng Ninh",
         "tuyển dụng ngành than Quảng Ninh",
@@ -669,16 +595,31 @@
       "priority": 45
     },
     {
-      "url": "/viec-lam-nganh-than/tay-ninh/",
-      "title": "Tuyển thợ mỏ tại Tây Ninh | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Tây Ninh, bao gồm khu vực Long An trước sắp xếp đơn vị hành chính năm 2025: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "url": "/viec-lam-nganh-than/quang-tri/",
+      "title": "Tuyển thợ mỏ tại Quảng Trị | Học nghề 2–3 tháng",
+      "description": "Tuyển thợ mỏ tại Quảng Trị, bao gồm khu vực Quảng Bình trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
-        "tuyển thợ mỏ Tây Ninh",
-        "tuyển dụng ngành than Tây Ninh",
-        "học nghề mỏ Tây Ninh",
-        "việc làm thợ lò Tây Ninh",
-        "tuyển thợ mỏ Long An",
-        "việc làm ngành than Long An"
+        "tuyển thợ mỏ Quảng Trị",
+        "tuyển dụng ngành than Quảng Trị",
+        "học nghề mỏ Quảng Trị",
+        "việc làm thợ lò Quảng Trị",
+        "tuyển thợ mỏ Quảng Bình",
+        "việc làm ngành than Quảng Bình"
+      ],
+      "category": "province",
+      "categoryLabel": "Việc làm theo tỉnh",
+      "type": "Việc làm theo tỉnh",
+      "priority": 45
+    },
+    {
+      "url": "/viec-lam-nganh-than/son-la/",
+      "title": "Tuyển thợ mỏ tại Sơn La | Học nghề 2–3 tháng",
+      "description": "Tuyển thợ mỏ tại Sơn La: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
+      "keywords": [
+        "tuyển thợ mỏ Sơn La",
+        "tuyển dụng ngành than Sơn La",
+        "học nghề mỏ Sơn La",
+        "việc làm thợ lò Sơn La"
       ],
       "category": "province",
       "categoryLabel": "Việc làm theo tỉnh",
@@ -688,7 +629,7 @@
     {
       "url": "/viec-lam-nganh-than/thai-nguyen/",
       "title": "Tuyển thợ mỏ tại Thái Nguyên | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Thái Nguyên, bao gồm khu vực Bắc Kạn trước sắp xếp đơn vị hành chính năm 2025: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "description": "Tuyển thợ mỏ tại Thái Nguyên, bao gồm khu vực Bắc Kạn trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
         "tuyển thợ mỏ Thái Nguyên",
         "tuyển dụng ngành than Thái Nguyên",
@@ -703,18 +644,14 @@
       "priority": 45
     },
     {
-      "url": "/viec-lam-nganh-than/ho-chi-minh/",
-      "title": "Tuyển thợ mỏ tại Thành phố Hồ Chí Minh | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Thành phố Hồ Chí Minh, bao gồm khu vực Bình Dương, Bà Rịa - Vũng Tàu trước sắp xếp đơn vị hành chính năm 2025: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "url": "/viec-lam-nganh-than/thanh-hoa/",
+      "title": "Tuyển thợ mỏ tại Thanh Hóa | Học nghề 2–3 tháng",
+      "description": "Tuyển thợ mỏ tại Thanh Hóa: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
-        "tuyển thợ mỏ Thành phố Hồ Chí Minh",
-        "tuyển dụng ngành than Thành phố Hồ Chí Minh",
-        "học nghề mỏ Thành phố Hồ Chí Minh",
-        "việc làm thợ lò Thành phố Hồ Chí Minh",
-        "tuyển thợ mỏ Bình Dương",
-        "việc làm ngành than Bình Dương",
-        "tuyển thợ mỏ Bà Rịa - Vũng Tàu",
-        "việc làm ngành than Bà Rịa - Vũng Tàu"
+        "tuyển thợ mỏ Thanh Hóa",
+        "tuyển dụng ngành than Thanh Hóa",
+        "học nghề mỏ Thanh Hóa",
+        "việc làm thợ lò Thanh Hóa"
       ],
       "category": "province",
       "categoryLabel": "Việc làm theo tỉnh",
@@ -724,7 +661,7 @@
     {
       "url": "/viec-lam-nganh-than/tuyen-quang/",
       "title": "Tuyển thợ mỏ tại Tuyên Quang | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Tuyên Quang, bao gồm khu vực Hà Giang trước sắp xếp đơn vị hành chính năm 2025: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
+      "description": "Tuyển thợ mỏ tại Tuyên Quang, bao gồm khu vực Hà Giang trước sắp xếp đơn vị hành chính năm 2025: học nghề 2–3 tháng, hỗ trợ ăn ở, cơ hội thu nhập 20–25 triệu đồng/tháng tại Quảng Ninh.",
       "keywords": [
         "tuyển thợ mỏ Tuyên Quang",
         "tuyển dụng ngành than Tuyên Quang",
@@ -732,25 +669,6 @@
         "việc làm thợ lò Tuyên Quang",
         "tuyển thợ mỏ Hà Giang",
         "việc làm ngành than Hà Giang"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45
-    },
-    {
-      "url": "/viec-lam-nganh-than/vinh-long/",
-      "title": "Tuyển thợ mỏ tại Vĩnh Long | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Vĩnh Long, bao gồm khu vực Bến Tre, Trà Vinh trước sắp xếp đơn vị hành chính năm 2025: kiểm tra điều kiện, học nghề 2–3 tháng, chế độ ăn ở và cơ hội làm việc tại Quảng Ninh.",
-      "keywords": [
-        "tuyển thợ mỏ Vĩnh Long",
-        "tuyển dụng ngành than Vĩnh Long",
-        "học nghề mỏ Vĩnh Long",
-        "việc làm thợ lò Vĩnh Long",
-        "tuyển thợ mỏ Bến Tre",
-        "việc làm ngành than Bến Tre",
-        "tuyển thợ mỏ Trà Vinh",
-        "việc làm ngành than Trà Vinh"
       ],
       "category": "province",
       "categoryLabel": "Việc làm theo tỉnh",

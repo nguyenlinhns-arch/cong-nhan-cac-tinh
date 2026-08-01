@@ -1,6 +1,6 @@
 {
   "version": "https://jsonfeed.org/version/1.1",
-  "title": "Thầy Linh – Tin ngành Than có kiểm chứng",
+  "title": "Ngành Than & Người thợ – Thầy Linh",
   "home_page_url": "https://thaylinhtuyenthomo.vn/",
   "feed_url": "https://thaylinhtuyenthomo.vn/feed.json",
   "language": "vi-VN",
@@ -8,10 +8,11 @@
     {
       "id": "https://thaylinhtuyenthomo.vn/bai-viet/an-toan-mua-mua-bao-2026/",
       "url": "https://thaylinhtuyenthomo.vn/bai-viet/an-toan-mua-mua-bao-2026/",
-      "title": "An toàn mỏ mùa mưa bão 2026: vì sao mọi khâu phải siết chặt?",
-      "summary": "Mùa mưa bão không chỉ ảnh hưởng khai thác lộ thiên; nước, giao thông, điện và chuỗi vận tải có thể tạo rủi ro liên hoàn cho toàn hệ thống.",
+      "title": "Giữ nhịp sản xuất an toàn trong mùa mưa bão 2026",
+      "summary": "Giữa những trận mưa lớn, hàng triệu tấn than và hàng chục nghìn mét lò vẫn được tổ chức theo một nguyên tắc: chỉ sản xuất khi toàn chuỗi nằm trong trạng thái kiểm soát.",
       "image": "https://vinacomin.vn/Share/Media/2017/09/IMG_9953.jpg",
       "date_published": "2026-07-31T10:30:00+07:00",
+      "date_modified": "2026-08-01T21:50:00+07:00",
       "tags": [
         "an toàn mỏ mùa mưa bão 2026",
         "phòng chống thiên tai ngành Than",
@@ -22,10 +23,11 @@
     {
       "id": "https://thaylinhtuyenthomo.vn/bai-viet/san-xuat-sach-hon-nganh-than/",
       "url": "https://thaylinhtuyenthomo.vn/bai-viet/san-xuat-sach-hon-nganh-than/",
-      "title": "Sản xuất sạch hơn trong ngành Than: thay đổi thật nằm ở đâu?",
-      "summary": "Khai thác mỏ không thể được gọi là không tác động môi trường; giá trị nằm ở việc đo, giảm, xử lý và tái sử dụng ngày càng nhiều hơn.",
+      "title": "Ngành Than xanh hơn từ những thay đổi dưới mỏ",
+      "summary": "Từ nước thải mỏ được xử lý, bụi được dập tại nguồn đến đất đá thải được tìm đường tái sử dụng, một ngành công nghiệp lâu đời đang đổi mới bằng công nghệ.",
       "image": "https://vinacomin.vn/Share/Media/2017/09/DSC01675.jpg",
       "date_published": "2026-07-31T10:20:00+07:00",
+      "date_modified": "2026-08-01T21:45:00+07:00",
       "tags": [
         "sản xuất sạch hơn trong ngành Than",
         "môi trường mỏ Quảng Ninh",
@@ -36,10 +38,11 @@
     {
       "id": "https://thaylinhtuyenthomo.vn/bai-viet/nghe-tho-lo-co-on-dinh-khong/",
       "url": "https://thaylinhtuyenthomo.vn/bai-viet/nghe-tho-lo-co-on-dinh-khong/",
-      "title": "Nghề thợ lò có ổn định không? Nhìn từ dữ liệu ngành Than 2026",
-      "summary": "Nhu cầu than và quy mô sản xuất tạo nền cho việc làm, nhưng sự ổn định của từng người vẫn phụ thuộc sức khỏe, tay nghề, kỷ luật và đơn vị tiếp nhận.",
+      "title": "Nghề thợ lò có ổn định không? Câu trả lời từ ngành Than 2026",
+      "summary": "Gần 20 triệu tấn than sạch trong nửa năm, 22,77 triệu tấn than cấp cho điện và yêu cầu tiếp tục tuyển, đào tạo, giữ chân thợ lò cho thấy một thị trường việc làm có nền sản xuất thật.",
       "image": "https://vinacomin.vn/Share/Media/2018/07/IMG_8765.jpg",
       "date_published": "2026-07-31T10:10:00+07:00",
+      "date_modified": "2026-08-01T21:40:00+07:00",
       "tags": [
         "nghề thợ lò có ổn định không",
         "việc làm ngành Than 2026",
@@ -50,10 +53,11 @@
     {
       "id": "https://thaylinhtuyenthomo.vn/bai-viet/hoc-thuc-hanh-nghe-mo-ham-lo/",
       "url": "https://thaylinhtuyenthomo.vn/bai-viet/hoc-thuc-hanh-nghe-mo-ham-lo/",
-      "title": "Tay nghề thợ mỏ trong thời kỳ mỏ thông minh được rèn thế nào?",
-      "summary": "Tay nghề không chỉ là thao tác nhanh; đó là khả năng làm đúng chuẩn, giữ an toàn, xử lý tình huống và tiếp tục học khi công nghệ thay đổi.",
+      "title": "Từ học viên đến thợ giỏi: tay nghề trong thời kỳ mỏ thông minh",
+      "summary": "Hơn 2.500 công nhân bước qua vòng thi cơ sở để 501 người tranh tài ở cấp Tập đoàn—một bức tranh sống động về giá trị của tay nghề trong ngành Than.",
       "image": "https://vinacomin.vn/Share/Media/2018/07/IMG_2357.jpg",
       "date_published": "2026-07-31T10:00:00+07:00",
+      "date_modified": "2026-08-01T21:35:00+07:00",
       "tags": [
         "tay nghề thợ mỏ trong thời kỳ mỏ thông minh",
         "hội thi thợ giỏi TKV 2026",
@@ -64,10 +68,11 @@
     {
       "id": "https://thaylinhtuyenthomo.vn/bai-viet/dao-tao-an-toan-truoc-khi-vao-lo/",
       "url": "https://thaylinhtuyenthomo.vn/bai-viet/dao-tao-an-toan-truoc-khi-vao-lo/",
-      "title": "Đào tạo an toàn trước khi vào lò: điều người mới phải hiểu",
-      "summary": "An toàn hầm lò không nằm ở một buổi phổ biến nội quy; đó là năng lực nhận biết, dừng đúng lúc và phối hợp đúng quy trình trong từng ca.",
+      "title": "An toàn hầm lò được đào tạo thế nào trước ca sản xuất đầu tiên?",
+      "summary": "Trước khi có ca sản xuất đầu tiên, người học được rèn từ cách mặc bảo hộ, nhận tín hiệu đến phản xạ phối hợp với tổ đội khi điều kiện thay đổi.",
       "image": "https://vinacomin.vn/Share/Media/2017/09/IMG_8117.jpg",
       "date_published": "2026-07-31T09:50:00+07:00",
+      "date_modified": "2026-08-01T21:30:00+07:00",
       "tags": [
         "đào tạo an toàn trước khi vào lò",
         "an toàn lao động mỏ",
@@ -78,10 +83,11 @@
     {
       "id": "https://thaylinhtuyenthomo.vn/bai-viet/co-gioi-hoa-khai-thac-ham-lo/",
       "url": "https://thaylinhtuyenthomo.vn/bai-viet/co-gioi-hoa-khai-thac-ham-lo/",
-      "title": "Cơ giới hóa khai thác hầm lò 2026–2030: nghề thợ mỏ đổi ra sao?",
-      "summary": "Máy móc không xóa vai trò người thợ; chúng chuyển trọng tâm từ sức lực đơn thuần sang vận hành, bảo dưỡng, đọc dữ liệu và xử lý tình huống an toàn.",
+      "title": "Mỏ hầm lò bước vào thời đại cơ giới hóa: người thợ trẻ cần gì?",
+      "summary": "Sau những cỗ máy lớn và màn hình điều khiển vẫn là người thợ—nhưng đó là người thợ biết vận hành, đọc tín hiệu, bảo dưỡng và làm chủ công nghệ.",
       "image": "https://vinacomin.vn/Share/Media/2017/09/U39A0357.jpg",
       "date_published": "2026-07-31T09:40:00+07:00",
+      "date_modified": "2026-08-01T21:25:00+07:00",
       "tags": [
         "cơ giới hóa khai thác hầm lò 2026–2030",
         "mỏ hầm lò thông minh",
@@ -92,10 +98,11 @@
     {
       "id": "https://thaylinhtuyenthomo.vn/bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/",
       "url": "https://thaylinhtuyenthomo.vn/bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/",
-      "title": "Hơn 13.500 thợ lò thu nhập trên 300 triệu đồng/năm: cơ hội từ nghề mỏ",
-      "summary": "Nếu đang cần một nghề học nhanh, có việc làm tại Quảng Ninh và khả năng tạo thu nhập tốt, số liệu mới của TKV là lý do thực tế để cân nhắc nghề thợ lò.",
+      "title": "Hơn 13.500 thợ lò thu nhập trên 300 triệu đồng/năm",
+      "summary": "Từ nương rẫy Gia Lai và bản làng Lai Châu, những người thợ đã đến Quảng Ninh học nghề, làm chủ thiết bị và xây dựng mức thu nhập từng là điều rất xa vời ở quê nhà.",
       "image": "https://vinacomin.vn/Share/Media/2017/09/images1311883_KEN_6710.jpg",
       "date_published": "2026-07-31T09:30:00+07:00",
+      "date_modified": "2026-08-01T21:20:00+07:00",
       "tags": [
         "13.500 thợ lò thu nhập trên 300 triệu đồng/năm",
         "lương thợ lò 2025",
@@ -106,10 +113,11 @@
     {
       "id": "https://thaylinhtuyenthomo.vn/bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/",
       "url": "https://thaylinhtuyenthomo.vn/bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/",
-      "title": "Học nghề mỏ 2–3 tháng: ngắn nhưng không phải học cho xong",
-      "summary": "Thời gian đào tạo ngắn chỉ hiệu quả khi người học đi đủ buổi, thực hành nghiêm túc và hình thành kỷ luật an toàn trước khi vào doanh nghiệp.",
+      "title": "Học nghề mỏ 2–3 tháng: bước khởi đầu ngắn, cơ hội dài lâu",
+      "summary": "Từ một người chưa biết nghề, học viên được làm quen kỹ thuật, thực hành, an toàn và tác phong tổ đội trước khi bước vào dây chuyền sản xuất hầm lò.",
       "image": "https://vinacomin.vn/Share/Media/2018/07/IMG_4075.jpg",
       "date_published": "2026-07-31T09:20:00+07:00",
+      "date_modified": "2026-08-01T21:10:00+07:00",
       "tags": [
         "học nghề mỏ 2–3 tháng",
         "đào tạo thợ lò",
@@ -120,10 +128,11 @@
     {
       "id": "https://thaylinhtuyenthomo.vn/bai-viet/ho-so-hoc-nghe-mo-can-gi/",
       "url": "https://thaylinhtuyenthomo.vn/bai-viet/ho-so-hoc-nghe-mo-can-gi/",
-      "title": "Hồ sơ học nghề mỏ cần gì? Danh sách gọn và cách chuẩn bị đúng",
-      "summary": "Chưa cần nộp giấy tờ ở bước kiểm tra nhanh; sau khi đủ điều kiện, người đăng ký chuẩn bị đúng 02 bộ để tránh thiếu hồ sơ hoặc đi lại nhiều lần.",
+      "title": "Hồ sơ học nghề mỏ: 02 bộ giấy tờ cho một hành trình mới",
+      "summary": "Bốn loại giấy tờ, chuẩn bị thành 02 bộ: phần thủ tục cho hành trình từ quê nhà đến lớp học nghề và công việc tại Quảng Ninh thực ra gọn hơn nhiều người nghĩ.",
       "image": "https://vinacomin.vn/Share/Media/2018/07/IMG_4110.jpg",
       "date_published": "2026-07-31T09:10:00+07:00",
+      "date_modified": "2026-08-01T21:05:00+07:00",
       "tags": [
         "hồ sơ học nghề mỏ cần gì",
         "đăng ký học nghề mỏ",
@@ -134,24 +143,26 @@
     {
       "id": "https://thaylinhtuyenthomo.vn/bai-viet/dieu-kien-tuyen-tho-lo-2026/",
       "url": "https://thaylinhtuyenthomo.vn/bai-viet/dieu-kien-tuyen-tho-lo-2026/",
-      "title": "Điều kiện tuyển thợ lò 2026: kiểm tra đúng trước khi đăng ký",
-      "summary": "Một cuộc trao đổi rõ ràng về năm sinh, thể lực và sức khỏe có thể giúp người lao động tránh đi xa, chuẩn bị hồ sơ rồi mới phát hiện mình chưa phù hợp.",
+      "title": "Điều kiện tuyển thợ lò 2026: cánh cửa đầu tiên vào nghề mỏ",
+      "summary": "Với người có sức khỏe, ý chí và mong muốn xây dựng một nghề nghiệp ổn định, bốn điều kiện ban đầu có thể mở ra hành trình học nghề và làm việc tại Quảng Ninh.",
       "image": "https://vinacomin.vn/Share/Media/2018/07/IMG_4207.jpg",
       "date_published": "2026-07-31T09:00:00+07:00",
+      "date_modified": "2026-08-01T21:00:00+07:00",
       "tags": [
         "điều kiện tuyển thợ lò 2026",
         "tuyển thợ mỏ Quảng Ninh",
         "học nghề mỏ 2–3 tháng",
-        "kiểm tra sức khỏe thợ lò"
+        "sức khỏe thợ lò"
       ]
     },
     {
       "id": "https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/07/31/tai-co-cau-tkv-2026-viec-lam-tho-mo/",
       "url": "https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/07/31/tai-co-cau-tkv-2026-viec-lam-tho-mo/",
-      "title": "Tái cơ cấu TKV 2026: việc làm thợ mỏ thay đổi thế nào?",
-      "summary": "Định hướng mới đặt tuyển dụng, đào tạo, giữ chân thợ lò và hiện đại hóa vào cùng một bài toán.",
+      "title": "TKV bước vào giai đoạn mới: cơ hội nào cho người thợ trẻ?",
+      "summary": "Tuyển dụng, đào tạo, giữ chân thợ lò và cơ giới hóa được đặt trong cùng một chiến lược—tín hiệu rõ về giá trị của người thợ có tay nghề trong giai đoạn 2026–2030.",
       "image": "https://vinacomin.vn/Share/Media/2018/07/IMG_5192.jpg",
       "date_published": "2026-07-31T08:10:00+07:00",
+      "date_modified": "2026-08-01T21:55:00+07:00",
       "tags": [
         "tái cơ cấu TKV 2026",
         "việc làm ngành Than",
@@ -162,10 +173,11 @@
     {
       "id": "https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/07/30/phuc-loi-tho-mo-tkv-2026/",
       "url": "https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/07/30/phuc-loi-tho-mo-tkv-2026/",
-      "title": "Phúc lợi thợ mỏ TKV 2026: nhà ở, sức khỏe và bữa ăn",
-      "summary": "Nhà ở, sức khỏe, bữa ăn và tiếng nói tại nơi làm việc là những phần phải đọc cùng với mức lương.",
+      "title": "Sau ca làm: đời sống thợ mỏ được chăm lo ra sao?",
+      "summary": "Từ 108 mái ấm, hơn 71.000 lượt khám sức khỏe đến những bữa cơm công đoàn, đời sống người thợ được xây dựng cả trong và ngoài ca sản xuất.",
       "image": "https://vinacomin.vn/Share/Media/2018/05/39A6643.jpg",
       "date_published": "2026-07-30T14:00:00+07:00",
+      "date_modified": "2026-08-01T21:55:00+07:00",
       "tags": [
         "phúc lợi thợ mỏ TKV 2026",
         "đời sống công nhân mỏ",

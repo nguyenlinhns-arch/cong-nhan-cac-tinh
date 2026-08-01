@@ -208,10 +208,17 @@ for (const role of roleJobs) {
 }
 if (!sitemap.includes(`<loc>${campaignUrl}</loc>`)) errors.push("Recruitment campaign page is absent from sitemap");
 if (!Array.isArray(jobFeed.jobs) || jobFeed.jobs.length !== roleJobs.length) errors.push("jobs.json must contain exactly two role-specific jobs");
-if (provinceDirectory.provinces?.length !== 34) errors.push(`Expected 34 current provinces/cities, got ${provinceDirectory.provinces?.length || 0}`);
+if (provinceDirectory.provinces?.length !== 26) errors.push(`Expected 26 province pages from Lâm Đồng northward, got ${provinceDirectory.provinces?.length || 0}`);
 for (const province of provinceDirectory.provinces || []) {
   const file = path.join(root, "viec-lam-nganh-than", province.slug, "index.html");
   if (!fs.existsSync(file)) errors.push(`Missing province page: ${province.slug}`);
+}
+const excludedSouthernProvinceSlugs = ["ho-chi-minh", "dong-nai", "tay-ninh", "can-tho", "vinh-long", "dong-thap", "ca-mau", "an-giang"];
+for (const slug of excludedSouthernProvinceSlugs) {
+  const url = `${base}/viec-lam-nganh-than/${slug}/`;
+  const file = path.join(root, "viec-lam-nganh-than", slug, "index.html");
+  if (fs.existsSync(file)) errors.push(`Province page outside the approved Lâm Đồng-north scope still exists: ${slug}`);
+  if (sitemap.includes(url)) errors.push(`Province URL outside the approved scope remains in sitemap: ${slug}`);
 }
 
 const allHtml = collectHtml(root);
