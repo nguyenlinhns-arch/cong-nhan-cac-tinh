@@ -227,7 +227,7 @@ const stories = [
         title: "Cơ hội thoát việc làm bấp bênh",
         paragraphs: [
           "Đối với lao động trẻ chưa có nghề, công việc thời vụ thường dễ vào nhưng khó tạo lộ trình tăng tay nghề và thu nhập. Học nghề mỏ mở ra một hướng khác: được đào tạo trước khi vào sản xuất, có môi trường công nghiệp và cơ hội tích lũy kỹ năng theo thời gian.",
-          "Đổi lại, người lao động phải chấp nhận tiêu chuẩn cao hơn về sức khỏe và kỷ luật. Đây không phải con đường làm giàu nhanh, mà là lựa chọn nghề nghiệp dành cho người muốn xây dựng thu nhập bằng ngày công, tay nghề và khả năng gắn bó lâu dài.",
+          "Người lao động cần đáp ứng tiêu chuẩn sức khỏe, tuân thủ kỷ luật và hoàn thành định mức lao động. Chính sách đang áp dụng cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức.",
         ],
       },
     ],
@@ -286,7 +286,7 @@ const stories = [
         title: "Chuyến tham quan trước đó tạo niềm tin thế nào?",
         paragraphs: [
           "Trước hội nghị ký kết, đoàn công tác xã Nam Tuấn đã khảo sát Công ty Than Khe Chàm và cơ sở đào tạo của Nhà trường. Việc tận mắt xem nơi học, điều kiện sinh hoạt và môi trường sản xuất có giá trị hơn nhiều tài liệu quảng bá, bởi đại diện địa phương có thể trả lời người dân bằng trải nghiệm thực tế.",
-          "Mô hình này nên tiếp tục với phụ huynh và người đăng ký tiềm năng khi điều kiện cho phép. Sự minh bạch về công việc giúp thu hút đúng người: người sẵn sàng học nghề và làm theo quy trình, không phải người chỉ bị hấp dẫn bởi một con số thu nhập.",
+          "Mô hình này nên tiếp tục với phụ huynh và người đăng ký tiềm năng khi điều kiện cho phép. Sự minh bạch về công việc giúp người lao động hiểu rõ chương trình học nghề, định mức lao động và cam kết thu nhập trước khi đăng ký.",
         ],
       },
       {
@@ -862,7 +862,7 @@ const localStoryFrames = [
     ],
     sections: [
       {title: "Một con đường đã có người đi trước", paragraphs: [`${item.opportunity} Người mới vì thế có thể tìm hiểu từ chính đồng hương: học những gì, những tháng đầu thích nghi ra sao và điều gì giúp họ đứng vững trong tổ đội.`, `Sự phối hợp của ${item.partners} nối bốn chặng vốn thường rời nhau: tư vấn, tuyển chọn, đào tạo và tiếp nhận. Khi từng chặng có người phụ trách, quyết định rời quê đến Quảng Ninh bớt mơ hồ và có thêm điểm tựa.`], bullets: item.bullets},
-      {title: "Học để làm được việc trong tổ đội", paragraphs: [`Với người trẻ ${item.locality}, nghề mỏ hấp dẫn ở chỗ thu nhập gắn trực tiếp với tay nghề, ngày công và năng suất. Lớp học là nơi người mới làm quen thiết bị, quy trình an toàn, tác phong ca kíp và cách phối hợp với đồng đội trước khi bước vào môi trường sản xuất.`, `Tại ${item.locality}, người đăng ký nên hỏi rõ nghề đang mở, đơn vị dự kiến bố trí và cách tính thu nhập của đúng vị trí. Một con số bình quân có ý nghĩa tham khảo; giá trị bền vững nằm ở năng lực mà người học tích lũy được sau từng ca làm.`]},
+      {title: "Học để làm được việc trong tổ đội", paragraphs: [`Với người trẻ ${item.locality}, nghề mỏ mở ra cơ hội việc làm có tay nghề và cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. Lớp học là nơi người mới làm quen thiết bị, quy trình an toàn, tác phong ca kíp và cách phối hợp với đồng đội trước khi bước vào môi trường sản xuất.`, `Tại ${item.locality}, người đăng ký nên hỏi rõ nghề đang mở, đơn vị dự kiến bố trí, yêu cầu định mức lao động và lịch tiếp nhận. Nội dung này được tư vấn rõ trước khi nhập học.`]},
       {title: "Gia đình cùng nhìn về một hướng", paragraphs: [`Trước khi làm hồ sơ, gia đình tại ${item.locality} nên cùng người lao động đo lại thể lực, kiểm tra thị lực, sức khỏe và trao đổi thẳng về việc học, ở ký túc xá rồi làm việc xa nhà. Sự đồng thuận ấy thường là nguồn động viên quan trọng trong giai đoạn đầu.`, `${item.caution} Thông tin này cần được hỏi lại ở buổi tư vấn hiện hành, cùng với thời gian học, chế độ sinh hoạt và lịch tiếp nhận. Chuẩn bị kỹ không làm cơ hội kém hấp dẫn; trái lại, nó giúp người chọn nghề bước đi vững vàng hơn.`]},
       {title: "Mục tiêu mới phải đi tới tận nơi làm việc", paragraphs: [`${item.target} Điều đáng chờ đợi không chỉ là số người ghi danh, mà là số người hoàn thành khóa học, nhận việc và trưởng thành thành công nhân có tay nghề.`, `Nếu địa phương tiếp tục giữ liên lạc với người học, Nhà trường theo sát quá trình đào tạo và ${item.enterprise} hỗ trợ người mới hòa nhập, mô hình tại ${item.locality} có thể trở thành một tuyến việc làm ổn định cho nhiều gia đình.`]},
     ],
@@ -1362,7 +1362,7 @@ const expandedStories = [
     resultSummary: "Giai đoạn 2021–2025, Phong Thổ tuyển 297 lao động, đạt 123% chỉ tiêu; Tam Đường có 168 học sinh nhập học, đạt 112% chỉ tiêu.",
     evidence: "Riêng Sì Lở Lầu được báo cáo có 165 học viên theo học, còn Khun Há nhận bằng khen và phần thưởng 25 triệu đồng vì kết quả phối hợp.",
     opportunity: "Thanh niên dân tộc thiểu số được tiếp cận thông tin ngay tại xã và có thể nghe kinh nghiệm từ người địa phương đã đi học, đi làm.",
-    caution: "Mức ăn 90.000 đồng/ngày và khoảng thu nhập 20–25 triệu đồng/tháng là thông tin của thời điểm bài nguồn; cần xác nhận lại theo đợt hiện hành.",
+    caution: "Chính sách đang áp dụng miễn phí ba bữa/ngày với mức ăn 90.000 đồng/ngày và cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
     target: "Quy chế mới hướng tới duy trì nguồn học nghề và việc làm ổn định, nhưng bài nguồn không nêu một chỉ tiêu năm chung cho cả hai xã.",
     focusTitle: "165 học viên từ một xã vùng cao",
     focus: [
