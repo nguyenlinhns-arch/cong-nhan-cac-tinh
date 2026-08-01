@@ -76,8 +76,11 @@ function page(role) {
         validThrough: master.valid_through,
         employmentType: "FULL_TIME",
         industry: "Khai thác than hầm lò",
-        experienceRequirements: criteria.experience,
-        educationRequirements: criteria.education,
+        // Google expects the literal `no requirements` when a posting does not
+        // require prior experience or a formal education credential. The
+        // Vietnamese literacy/health conditions remain visible in qualifications.
+        experienceRequirements: "no requirements",
+        educationRequirements: "no requirements",
         qualifications: master.requirements.join("; "),
         skills: "Kỷ luật, tinh thần đồng đội, tuân thủ quy trình an toàn và sẵn sàng học nghề",
         jobBenefits: master.benefits.join("; "),
