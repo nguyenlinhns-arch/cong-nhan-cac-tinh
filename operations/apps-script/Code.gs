@@ -63,8 +63,18 @@ function doPost(event) {
     } finally {
       lock.releaseLock();
     }
-    if (!duplicate) sendNewLeadAlert_(data, rowNumber);
-    return json_({ ok: true, code: data.code, duplicate: duplicate });
+    let alertStatus = duplicate ? 'skipped_duplicate' : 'not_sent';
+    if (!duplicate) {
+      try {
+        alertStatus = sendNewLeadAlert_(data, rowNumber) ? 'sent' : 'not_configured';
+      } catch (alertError) {
+        // Hồ sơ đã được ghi thành công. Lỗi email cảnh báo không được phép khiến
+        // website báo thất bại và khuyến khích ứng viên gửi lại biểu mẫu.
+        console.error('Không gửi được email cảnh báo hồ sơ ' + data.code + ': ' + alertError);
+        alertStatus = 'temporarily_unavailable';
+      }
+    }
+    return json_({ ok: true, code: data.code, duplicate: duplicate, alert: alertStatus });
   } catch (error) {
     console.error(error);
     return json_({ ok: false, error: String(error.message || error).slice(0, 160) });
@@ -210,18 +220,29 @@ function setupDashboard_(spreadsheet, candidateSheet) {
   const statusCol = columnLetter_(headers['Trạng thái']);
   const deadlineCol = columnLetter_(headers['Hạn phản hồi']);
   const sourceCol = columnLetter_(headers['Nguồn']);
+  const formulaSyntax = dashboardFormulaSyntax_(spreadsheet);
+  const separator = formulaSyntax.argumentSeparator;
   dashboard.getRange('A1:F1').merge().setValue('BẢNG ĐIỀU HÀNH TUYỂN DỤNG').setFontSize(16).setFontWeight('bold').setBackground('#0b4f46').setFontColor('#ffffff').setHorizontalAlignment('center');
   dashboard.getRange('A3:A7').setValues([['Hồ sơ mới'], ['Quá hạn chăm sóc'], ['Đủ điều kiện'], ['Đã nộp hồ sơ'], ['Đã nhập học']]).setFontWeight('bold');
-  dashboard.getRange('B3').setFormula("=COUNTIF('" + SHEET_NAME + "'!" + statusCol + "2:" + statusCol + ",\"Mới\")");
-  dashboard.getRange('B4').setFormula("=COUNTIFS('" + SHEET_NAME + "'!" + deadlineCol + "2:" + deadlineCol + ",\"<\"&NOW(),'" + SHEET_NAME + "'!" + deadlineCol + "2:" + deadlineCol + ",\"<>\",'" + SHEET_NAME + "'!" + statusCol + "2:" + statusCol + ",\"<>Nhập học\",'" + SHEET_NAME + "'!" + statusCol + "2:" + statusCol + ",\"<>Không phù hợp\")");
-  dashboard.getRange('B5').setFormula("=COUNTIF('" + SHEET_NAME + "'!" + statusCol + "2:" + statusCol + ",\"Đủ điều kiện\")");
-  dashboard.getRange('B6').setFormula("=COUNTIF('" + SHEET_NAME + "'!" + statusCol + "2:" + statusCol + ",\"Nộp hồ sơ\")");
-  dashboard.getRange('B7').setFormula("=COUNTIF('" + SHEET_NAME + "'!" + statusCol + "2:" + statusCol + ",\"Nhập học\")");
+  dashboard.getRange('B3').setFormula("=COUNTIF('" + SHEET_NAME + "'!" + statusCol + "2:" + statusCol + separator + "\"Mới\")");
+  dashboard.getRange('B4').setFormula("=COUNTIFS('" + SHEET_NAME + "'!" + deadlineCol + "2:" + deadlineCol + separator + "\"<\"&NOW()" + separator + "'" + SHEET_NAME + "'!" + deadlineCol + "2:" + deadlineCol + separator + "\"<>\"" + separator + "'" + SHEET_NAME + "'!" + statusCol + "2:" + statusCol + separator + "\"<>Nhập học\"" + separator + "'" + SHEET_NAME + "'!" + statusCol + "2:" + statusCol + separator + "\"<>Không phù hợp\")");
+  dashboard.getRange('B5').setFormula("=COUNTIF('" + SHEET_NAME + "'!" + statusCol + "2:" + statusCol + separator + "\"Đủ điều kiện\")");
+  dashboard.getRange('B6').setFormula("=COUNTIF('" + SHEET_NAME + "'!" + statusCol + "2:" + statusCol + separator + "\"Nộp hồ sơ\")");
+  dashboard.getRange('B7').setFormula("=COUNTIF('" + SHEET_NAME + "'!" + statusCol + "2:" + statusCol + separator + "\"Nhập học\")");
   dashboard.getRange('D3').setValue('Kết quả theo nguồn và trạng thái').setFontWeight('bold');
-  dashboard.getRange('D4').setFormula("=QUERY({'" + SHEET_NAME + "'!" + sourceCol + "2:" + sourceCol + ",'" + SHEET_NAME + "'!" + statusCol + "2:" + statusCol + "},\"select Col1,count(Col1) where Col1 is not null group by Col1 pivot Col2 label Col1 'Nguồn'\",0)");
+  dashboard.getRange('D4').setFormula("=QUERY({'" + SHEET_NAME + "'!" + sourceCol + "2:" + sourceCol + formulaSyntax.arrayColumnSeparator + "'" + SHEET_NAME + "'!" + statusCol + "2:" + statusCol + "}" + separator + "\"select Col1,count(Col1) where Col1 is not null group by Col1 pivot Col2 label Col1 'Nguồn'\"" + separator + "0)");
   dashboard.getRange('A9').setValue('Cập nhật tự động khi trạng thái hồ sơ thay đổi. Chỉ số chính cần theo dõi: hồ sơ mới → đủ điều kiện → nộp hồ sơ → nhập học.').setWrap(true);
   dashboard.setFrozenRows(1);
   dashboard.setColumnWidths(1, 6, 150);
+}
+
+function dashboardFormulaSyntax_(spreadsheet) {
+  const locale = String(spreadsheet.getSpreadsheetLocale() || '').toLowerCase();
+  const usesVietnameseSeparators = locale === 'vi' || locale.indexOf('vi_') === 0;
+  return {
+    argumentSeparator: usesVietnameseSeparators ? ';' : ',',
+    arrayColumnSeparator: usesVietnameseSeparators ? '\\' : ','
+  };
 }
 
 function installAutomationTriggers_(spreadsheetId) {
@@ -282,7 +303,7 @@ function toRow_(data, headers) {
 
 function sendNewLeadAlert_(data, rowNumber) {
   const recipients = alertRecipients_();
-  if (!recipients || MailApp.getRemainingDailyQuota() < 1) return;
+  if (!recipients || MailApp.getRemainingDailyQuota() < 1) return false;
   const spreadsheet = getSpreadsheet_();
   MailApp.sendEmail({
     to: recipients,
@@ -297,6 +318,7 @@ function sendNewLeadAlert_(data, rowNumber) {
       '<p><a href="' + spreadsheet.getUrl() + '#gid=' + getCandidateSheet_().getSheetId() + '&range=A' + rowNumber + '">Mở hồ sơ trong CRM</a></p>',
     name: 'Thầy Linh – Tuyển Thợ Mỏ'
   });
+  return true;
 }
 
 function sendReminderAlert_(alerts) {
