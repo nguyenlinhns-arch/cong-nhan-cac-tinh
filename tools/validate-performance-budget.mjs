@@ -97,6 +97,18 @@ try {
 }
 
 const home = read("index.html");
+const homeScript = read("portal-official.js");
+const homeStyles = read("landing-recruitment.css");
+const homeVideoFacades = (home.match(/data-(?:featured|province)-video-facade/g) || []).length;
+if (homeVideoFacades !== 2) fail(`Trang chủ: dự kiến 2 lớp xem trước video, thực tế ${homeVideoFacades}`);
+if (/<iframe\b/i.test(home)) fail("Trang chủ: còn tạo trình phát YouTube trước khi người dùng bấm xem");
+if (/rel=["']preconnect["'][^>]+youtube-nocookie\.com/i.test(home)) fail("Trang chủ: còn mở sớm kết nối trình phát YouTube");
+for (const marker of ["mountYouTubePlayer", "renderVideoFacade", "activateFacade", "host.replaceChildren(frame)"]) {
+  if (!homeScript.includes(marker)) fail(`Trang chủ: thiếu hành vi video ${marker}`);
+}
+for (const marker of ["home-video-facade", "home-video-facade__play", "focus-visible"]) {
+  if (!homeStyles.includes(marker)) fail(`Trang chủ: thiếu kiểu lớp xem trước ${marker}`);
+}
 const optimizedHomeImages = [
   ["https://vinacomin.vn/Share/Media/2017/09/images1311883_KEN_6710.jpg", "960", "640"],
   ["https://vinacomin.vn/Share/Media/2018/07/IMG_4207.jpg", "1200", "675"],
@@ -208,6 +220,8 @@ const budgets = {
   "fonts.css": 9_000,
   "mobile-ux.js": 42_000,
   "job-application.js": 32_000,
+  "portal-official.js": 20_000,
+  "landing-recruitment.css": 36_000,
   "index.html": 90_000,
 };
 for (const [relative, limit] of Object.entries(budgets)) {
@@ -226,6 +240,7 @@ console.log(JSON.stringify({
   html: htmlFiles.length,
   deferred_vendors: appendedScripts.length,
   optimized_home_images: optimizedHomeImages.length,
+  home_video_facades: homeVideoFacades,
   blocking_scripts: blockingScripts,
   eager_third_party_frames: eagerThirdPartyFrames,
   external_stylesheets: externalStylesheets,

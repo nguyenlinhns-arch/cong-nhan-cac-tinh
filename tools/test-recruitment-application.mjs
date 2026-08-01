@@ -4,19 +4,20 @@ import { webcrypto } from "node:crypto";
 
 const source = fs.readFileSync("tuyen-tho-mo/job-application.js", "utf8");
 
-async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, expected, utmSource = "test_qa", referrer = "", expectedSource = utmSource || "website", deliverySequence = ["saved"] }) {
+async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, expected, utmSource = "test_qa", referrer = "", expectedSource = utmSource || "website", deliverySequence = ["saved"], draftSeed = null, blankSafeFields = false }) {
   const listeners = {};
   const tracked = [];
   const delivered = [];
   const stored = new Map();
+  if (draftSeed) stored.set("thaylinh_application_draft_v1", JSON.stringify({ saved_at: new Date().toISOString(), values: draftSeed }));
   const values = {
     full_name: "Nguyễn Văn Kiểm Thử",
     phone: "+84 963 048 585",
     birth_date: birthDate,
     province: "",
-    height: String(height),
-    weight: String(weight),
-    education: "Tốt nghiệp THPT",
+    height: blankSafeFields ? "" : String(height),
+    weight: blankSafeFields ? "" : String(weight),
+    education: blankSafeFields ? "" : "Tốt nghiệp THPT",
     trade: "",
     health,
     website: "",
@@ -57,6 +58,7 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
   const sms = makeElement();
   const submit = makeElement();
   const delivery = makeElement();
+  const draftStatus = makeElement();
   const selectors = new Map([
     ["[data-application-form]", form],
     ["[data-application-result]", result],
@@ -68,6 +70,7 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
     ["[data-sms-application]", sms],
     ["[data-application-submit]", submit],
     ["[data-application-delivery]", delivery],
+    ["[data-application-draft-status]", draftStatus],
   ]);
 
   const context = {
@@ -89,6 +92,7 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
     localStorage: {
       getItem: key => stored.get(key) || null,
       setItem: (key, value) => stored.set(key, value),
+      removeItem: key => stored.delete(key),
     },
     FormData: class FormData {
       entries() {
@@ -123,6 +127,11 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
   vm.runInNewContext(source, context, { filename: "job-application.js" });
   if (fields.province.value !== "Hồ Chí Minh") throw new Error(`Province prefill failed: ${fields.province.value}`);
   if (fields.trade.value !== "Kỹ thuật khai thác mỏ hầm lò") throw new Error(`Trade prefill failed: ${fields.trade.value}`);
+  if (draftSeed) {
+    if (fields.height.value !== String(draftSeed.height) || fields.weight.value !== String(draftSeed.weight) || fields.education.value !== draftSeed.education) throw new Error("Safe draft fields were not restored");
+    if (draftStatus.dataset.restored !== "true") throw new Error("Draft restoration was not disclosed to the applicant");
+    if (!tracked.some(([name]) => name === "ApplicationDraftRestore")) throw new Error("Draft restoration was not measured");
+  }
 
   await listeners.input({ target: fields.full_name });
   await listeners.submit({ preventDefault() {} });
@@ -131,6 +140,10 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
   if (deliverySequence[0] === "failed") {
     if (delivery.dataset.state !== "fallback") throw new Error(`Expected fallback delivery, got ${delivery.dataset.state}`);
     if (submit.disabled || submit.textContent !== "Thử gửi lại cùng mã") throw new Error("Failed delivery did not offer a stable-code retry");
+    const safeDraft = stored.get("thaylinh_application_draft_v1") || "";
+    for (const pii of ["Nguyễn Văn Kiểm Thử", "0963048585", birthDate, health, "consent"]) {
+      if (safeDraft.includes(pii)) throw new Error(`Draft contains excluded personal data: ${pii}`);
+    }
     await listeners.submit({ preventDefault() {} });
     if (code.textContent !== firstCode) throw new Error("Retry generated a different application code");
     if (delivered.length !== 2 || delivered[0].code !== delivered[1].code) throw new Error("Retry payload was not idempotent");
@@ -174,6 +187,7 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
   for (const pii of ["Nguyễn Văn Kiểm Thử", "0963048585", "2000-01-01", "Hồ Chí Minh"]) {
     if (storedApplication.includes(pii)) throw new Error(`Local metadata contains personal data: ${pii}`);
   }
+  if (stored.has("thaylinh_application_draft_v1")) throw new Error("Successful delivery did not clear the local draft");
 
   return { expected, code: code.textContent, delivery: delivery.dataset.state, events: tracked.map(([name]) => name) };
 }
@@ -186,4 +200,12 @@ results.push(await runCase({ height: 152, weight: 47, health: "Sức khỏe tố
 results.push(await runCase({ height: 165, weight: 58, birthDate: "1980-01-01", health: "Sức khỏe tốt, sẵn sàng khám tuyển", expected: "not_eligible" }));
 results.push(await runCase({ height: 165, weight: 58, health: "Sức khỏe tốt, sẵn sàng khám tuyển", expected: "eligible", utmSource: "", referrer: "https://chatgpt.com/", expectedSource: "chatgpt" }));
 results.push(await runCase({ height: 165, weight: 58, health: "Sức khỏe tốt, sẵn sàng khám tuyển", expected: "eligible", deliverySequence: ["failed", "saved"] }));
+results.push(await runCase({
+  height: 165,
+  weight: 58,
+  health: "Sức khỏe tốt, sẵn sàng khám tuyển",
+  expected: "eligible",
+  blankSafeFields: true,
+  draftSeed: { province: "An Giang", height: "165", weight: "58", education: "Tốt nghiệp THPT", trade: "Kỹ thuật xây dựng mỏ hầm lò" },
+}));
 console.log(JSON.stringify({ cases: results.length, results, errors: 0 }, null, 2));

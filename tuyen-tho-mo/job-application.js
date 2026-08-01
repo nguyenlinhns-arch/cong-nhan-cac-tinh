@@ -14,6 +14,7 @@
   const smsLink = document.querySelector("[data-sms-application]");
   const submitButton = document.querySelector("[data-application-submit]");
   const deliveryOutput = document.querySelector("[data-application-delivery]");
+  const draftStatus = document.querySelector("[data-application-draft-status]");
   const params = new URLSearchParams(location.search);
   const recruitment = window.THAY_LINH_RECRUITMENT || {};
   const criteria = recruitment.criteria || {};
@@ -23,6 +24,9 @@
   let submitted = false;
   let deliveryInFlight = false;
   let retryState = null;
+  const DRAFT_KEY = "thaylinh_application_draft_v1";
+  const DRAFT_TTL_MS = 24 * 60 * 60 * 1000;
+  const DRAFT_FIELDS = ["province", "height", "weight", "education", "trade"];
 
   function isoDate(date) {
     return [
@@ -191,8 +195,54 @@
     result.focus({ preventScroll: true });
   }
 
+  function clearDraft() {
+    try { localStorage.removeItem(DRAFT_KEY); } catch (_) {}
+  }
+
+  function saveDraft() {
+    const values = {};
+    for (const name of DRAFT_FIELDS) {
+      const field = form.elements.namedItem(name);
+      if (field?.value) values[name] = String(field.value);
+    }
+    try {
+      if (!Object.keys(values).length) clearDraft();
+      else localStorage.setItem(DRAFT_KEY, JSON.stringify({ saved_at: new Date().toISOString(), values }));
+    } catch (_) {}
+  }
+
+  function restoreDraft() {
+    try {
+      const stored = JSON.parse(localStorage.getItem(DRAFT_KEY) || "null");
+      const savedAt = Date.parse(stored?.saved_at || "");
+      if (!stored?.values || !Number.isFinite(savedAt) || Date.now() - savedAt > DRAFT_TTL_MS || savedAt > Date.now() + 60_000) {
+        clearDraft();
+        return 0;
+      }
+      let restored = 0;
+      for (const name of DRAFT_FIELDS) {
+        const field = form.elements.namedItem(name);
+        const value = String(stored.values[name] || "");
+        if (!field || field.value || !value) continue;
+        if (field.options && ![...field.options].some(option => option.value === value)) continue;
+        field.value = value;
+        restored += 1;
+      }
+      return restored;
+    } catch (_) {
+      clearDraft();
+      return 0;
+    }
+  }
+
+  const restoredDraftFields = restoreDraft();
   prefillSelect("province", params.get("province"));
   prefillSelect("trade", params.get("trade") || form.dataset.defaultTrade);
+  if (restoredDraftFields && draftStatus) {
+    draftStatus.dataset.restored = "true";
+    draftStatus.textContent = `Đã khôi phục ${restoredDraftFields} mục không nhạy cảm từ lần điền gần nhất. Bản nháp tự hết hạn sau 24 giờ.`;
+    track("ApplicationDraftRestore", { action: "draft_restored", context: formContext, fields: restoredDraftFields });
+  }
 
   form.addEventListener("input", event => {
     if (!started) {
@@ -208,6 +258,10 @@
       result.hidden = true;
       if (submitButton) submitButton.textContent = "Gửi đăng ký và kiểm tra điều kiện";
     }
+  });
+
+  form.addEventListener("change", event => {
+    if (DRAFT_FIELDS.includes(event?.target?.name)) saveDraft();
   });
 
   form.addEventListener("submit", async event => {
@@ -281,6 +335,7 @@
       leadTracked: previousAttempt?.leadTracked || false,
     };
     retryState = attempt;
+    saveDraft();
 
     output.value = message;
     statusOutput.dataset.status = assessment.key;
@@ -352,7 +407,10 @@
       attempt.leadTracked = true;
     }
     if (!delivery.saved) track("ApplicationDeliveryFailure", { action: "crm_delivery_failed", context: formContext });
-    if (delivery.saved) retryState = null;
+    if (delivery.saved) {
+      clearDraft();
+      retryState = null;
+    }
   });
 
 })();

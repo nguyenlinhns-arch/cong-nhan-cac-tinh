@@ -98,9 +98,11 @@ for (const relative of applicationPages) {
     "application-height-help",
     "application-weight-help",
     "application-health-help",
+    "data-application-draft-status",
+    'autocomplete="address-level1"',
     'role="region" aria-labelledby="application-result-title" tabindex="-1"',
     'data-application-delivery role="status" aria-live="polite" aria-atomic="true"',
-    "job-application.js?v=8",
+    "job-application.js?v=9",
   ];
   for (const marker of required) if (!html.includes(marker)) errors.push(`${relative}: missing ${marker}`);
   if (/data-application-result[^>]*aria-live=/i.test(html)) errors.push(`${relative}: long result region must not be a live region`);
@@ -116,6 +118,9 @@ for (const marker of [
   'form.setAttribute("aria-busy", "true")',
   "attempt.leadTracked",
   "Thử gửi lại cùng mã",
+  "restoreDraft",
+  "DRAFT_TTL_MS",
+  "ApplicationDraftRestore",
 ]) if (!applicationScript.includes(marker)) errors.push(`job-application.js: missing ${marker}`);
 
 console.log(JSON.stringify({

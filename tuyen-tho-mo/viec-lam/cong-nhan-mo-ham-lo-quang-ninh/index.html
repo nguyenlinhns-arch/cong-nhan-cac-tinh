@@ -31,7 +31,7 @@
   <meta name="twitter:description" content="Nam 18–40 tuổi; miễn học phí, hỗ trợ 7,5 triệu đồng; cam kết thu nhập 20–25 triệu/tháng khi hoàn thành định mức lao động.">
   <meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-v2.webp">
   <link rel="stylesheet" href="../../styles.css">
-  <link rel="stylesheet" href="../../jobs.css?v=5">
+  <link rel="stylesheet" href="../../jobs.css?v=6">
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -179,24 +179,25 @@
           <label>Số điện thoại <input type="tel" name="phone" autocomplete="tel" inputmode="tel" required maxlength="18" placeholder="09xxxxxxxx" title="Nhập số điện thoại Việt Nam gồm 10 chữ số" aria-describedby="application-form-error"></label>
           <label>Ngày sinh <input type="date" name="birth_date" autocomplete="bday" required data-birth-date aria-describedby="application-birth-help"><small id="application-birth-help" data-age-help>Từ đủ 18 đến 40 tuổi tại ngày đăng ký</small></label>
           <label>Tỉnh/thành đang sống
-            <select name="province" required>
+            <select name="province" autocomplete="address-level1" required>
               <option value="">Chọn tỉnh/thành</option>
               <option>An Giang</option><option>Bắc Ninh</option><option>Cà Mau</option><option>Cần Thơ</option><option>Cao Bằng</option><option>Đà Nẵng</option><option>Đắk Lắk</option><option>Điện Biên</option><option>Đồng Nai</option><option>Đồng Tháp</option><option>Gia Lai</option><option>Hà Nội</option><option>Hà Tĩnh</option><option>Hải Phòng</option><option>Hồ Chí Minh</option><option>Huế</option><option>Hưng Yên</option><option>Khánh Hòa</option><option>Lai Châu</option><option>Lâm Đồng</option><option>Lạng Sơn</option><option>Lào Cai</option><option>Nghệ An</option><option>Ninh Bình</option><option>Phú Thọ</option><option>Quảng Ngãi</option><option>Quảng Ninh</option><option>Quảng Trị</option><option>Sơn La</option><option>Tây Ninh</option><option>Thái Nguyên</option><option>Thanh Hóa</option><option>Tuyên Quang</option><option>Vĩnh Long</option>
             </select>
           </label>
-          <label>Chiều cao (cm) <input type="number" name="height" inputmode="numeric" required min="130" max="220" placeholder="165" aria-describedby="application-height-help"><small id="application-height-help">Hệ thống tự đối chiếu mốc 153 cm</small></label>
-          <label>Cân nặng (kg) <input type="number" name="weight" inputmode="numeric" required min="30" max="200" placeholder="58" aria-describedby="application-weight-help"><small id="application-weight-help">Hệ thống tự đối chiếu mốc 47 kg</small></label>
+          <label>Chiều cao (cm) <input type="number" name="height" inputmode="numeric" autocomplete="off" required min="130" max="220" placeholder="165" aria-describedby="application-height-help"><small id="application-height-help">Hệ thống tự đối chiếu mốc 153 cm</small></label>
+          <label>Cân nặng (kg) <input type="number" name="weight" inputmode="numeric" autocomplete="off" required min="30" max="200" placeholder="58" aria-describedby="application-weight-help"><small id="application-weight-help">Hệ thống tự đối chiếu mốc 47 kg</small></label>
           <label>Trình độ văn hóa
-            <select name="education" required><option value="">Chọn trình độ</option><option>Đọc và viết thành thạo</option><option>Tốt nghiệp THCS</option><option>Tốt nghiệp THPT</option><option>Trình độ khác</option></select>
+            <select name="education" autocomplete="off" required><option value="">Chọn trình độ</option><option>Đọc và viết thành thạo</option><option>Tốt nghiệp THCS</option><option>Tốt nghiệp THPT</option><option>Trình độ khác</option></select>
           </label>
           <label>Nghề quan tâm
-            <select name="trade" required><option value="">Chọn nghề</option><option>Kỹ thuật khai thác mỏ hầm lò</option><option>Kỹ thuật xây dựng mỏ hầm lò</option><option>Cần được tư vấn chọn nghề</option></select>
+            <select name="trade" autocomplete="off" required><option value="">Chọn nghề</option><option>Kỹ thuật khai thác mỏ hầm lò</option><option>Kỹ thuật xây dựng mỏ hầm lò</option><option>Cần được tư vấn chọn nghề</option></select>
           </label>
           <label class="form-grid__wide">Tự đánh giá sức khỏe ban đầu
-            <select name="health" required aria-describedby="application-health-help"><option value="">Chọn một phương án</option><option>Sức khỏe tốt, sẵn sàng khám tuyển</option><option>Cần trao đổi thêm trước khi khám</option></select>
+            <select name="health" autocomplete="off" required aria-describedby="application-health-help"><option value="">Chọn một phương án</option><option>Sức khỏe tốt, sẵn sàng khám tuyển</option><option>Cần trao đổi thêm trước khi khám</option></select>
             <small id="application-health-help">Không nhập tên bệnh hoặc thông tin y tế chi tiết trên website.</small>
           </label>
         </div>
+        <p class="application-draft-note" data-application-draft-status><strong>Tự lưu an toàn:</strong> chỉ lưu tạm 24 giờ tỉnh/thành, chiều cao, cân nặng, trình độ và nghề quan tâm trên thiết bị này; không lưu họ tên, số điện thoại, ngày sinh, sức khỏe hoặc ô đồng ý.</p>
         <label class="consent"><input type="checkbox" name="consent" required><span>Tôi xác nhận thông tin trên là đúng, hiểu đây là kết quả sơ bộ và đồng ý để Nguyễn Tử Linh tiếp nhận, lưu và liên hệ tư vấn về chương trình học nghề mỏ. Xem <a href="../../quyen-rieng.html" target="_blank" rel="noopener">quyền riêng tư</a>.</span></label>
         <p class="form-error" id="application-form-error" data-form-error role="alert" hidden></p>
         <button class="button application-submit" type="submit" data-application-submit>Gửi đăng ký và kiểm tra điều kiện</button>
@@ -229,7 +230,7 @@
   <div class="toast" role="status" aria-live="polite" data-toast hidden></div>
   <script src="../../app.js?v=4" defer></script>
   <script src="../../recruitment-config.js?v=2" defer></script>
-  <script src="../../job-application.js?v=8" defer></script>
+  <script src="../../job-application.js?v=9" defer></script>
   <script src="/analytics.js?v=4" defer></script>
   <script src="/mobile-ux.js?v=3" defer></script>
 </body>
