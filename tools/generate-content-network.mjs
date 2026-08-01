@@ -9,6 +9,7 @@ const base = "https://thaylinhtuyenthomo.vn";
 const campaign = "lan_toa_nghe_mo_2026";
 const provinces = JSON.parse(fs.readFileSync(path.join(root, "data", "provinces-2026.json"), "utf8")).provinces;
 const recruitment = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
+const dossier = recruitment.dossier;
 const updatedDate = recruitment.effective_from;
 const personId = `${base}/tac-gia/nguyen-tu-linh/#person`;
 const organizationId = `${base}/#organization`;
@@ -189,7 +190,7 @@ const currentFactsFaq = [
   ["Đang tuyển những nghề nào?", `Hai nghề đang tiếp nhận là ${recruitment.occupations[0].toLocaleLowerCase("vi")} và ${recruitment.occupations[1].toLocaleLowerCase("vi")}. Không yêu cầu kinh nghiệm vì người phù hợp được đào tạo trước khi nhận việc.`],
   ["Học nghề mỏ bao lâu và ở đâu?", `Thời gian học ${recruitment.training_duration} tại Quảng Ninh theo lịch tiếp nhận. Địa chỉ nhập học là ${recruitment.contact.admission_address}.`],
   ["Trong thời gian học được hưởng những gì?", "Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ba bữa mỗi ngày với mức ăn 90.000 đồng/ngày, ở ký túc xá khép kín và được hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển."],
-  ["Hồ sơ học nghề mỏ cần những gì?", `${recruitment.initial_registration}. Khi có lịch nhập học, mang ${recruitment.admission_documents.join(", ")}. Không gửi giấy tờ gốc qua bưu điện.`],
+  ["Hồ sơ học nghề mỏ cần những gì?", `${dossier.initial_application}. Khi có lịch nhập học, mang ${dossier.admission_documents.join(", ")}. ${dossier.missing_diploma}. ${dossier.safety}.`],
   ["Thu nhập thợ lò được cam kết như thế nào?", `${recruitment.income_commitment}.`],
   ["Học xong làm việc ở đâu?", "Người hoàn thành chương trình và đạt yêu cầu được doanh nghiệp tiếp nhận, ký hợp đồng và bố trí việc làm tại Quảng Ninh."],
   ["Liên hệ ai để kiểm tra điều kiện?", `Liên hệ ${recruitment.contact.name} – ${recruitment.contact.title}, điện thoại/Zalo 096 304 8585; địa chỉ tiếp nhận thông tin: ${recruitment.contact.address}.`],
