@@ -20,7 +20,7 @@
 
 - Chỉ giữ bài có nguồn dữ kiện, giá trị thực tế và nội dung nguyên bản.
 - Phân biệt rõ số liệu, nhận định và thông tin cần xác nhận theo từng đợt.
-- Bài biên tập từ tin chính thống sử dụng đúng ảnh của bài nguồn tương ứng; các bài hướng dẫn nguyên bản sử dụng Thư viện ảnh Vinacomin.
+- Bài biên tập từ tin chính thống ưu tiên đúng ảnh của bài nguồn; nếu máy chủ đã gỡ ảnh, chỉ dùng ảnh tư liệu đúng bối cảnh và ghi rõ nguồn ảnh. Các bài hướng dẫn nguyên bản sử dụng Thư viện ảnh Vinacomin.
 - Không đặt liên kết nguồn ra ngoài trong giao diện bài viết.
 
 ## Kho kiến thức ngành mỏ
@@ -44,7 +44,7 @@
 - [Sông Mã mở đường học nghề mỏ cho lao động Sơn La từ 2016](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/song-ma-son-la-hop-tac-tuyen-sinh-nghe-mo-2016/): Chuyến làm việc của huyện Sông Mã tại Quảng Ninh ghi lại một mô hình tuyển sinh từ cơ sở đã hình thành gần một thập niên trước.
 - [Một ngày trong lò than sâu của người thợ Dương Huy](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/mot-ngay-trong-lo-than-duong-huy/): Từ cửa lò tới gương than là một hành trình của xe chở người, những quãng đi bộ, luồng gió nhân tạo, ánh đèn mũ và tiếng máy vang trong lòng đất.
 - [Tuổi trẻ TKV trao 25 học bổng “Thắp sáng ước mơ”](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/doan-thanh-nien-tkv-25-hoc-bong-thap-sang-uoc-mo/): Mỗi suất học bổng vừa hỗ trợ chi phí học tập, vừa ghi nhận nỗ lực của học sinh khó khăn và tạo động lực tiếp tục đến trường.
-- [Ma Khắc Huỳnh: người mở đường trong lòng đất](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/ma-khac-huynh-nguoi-mo-duong-trong-long-dat/): Khi nhiều gia đình chuẩn bị đi ngủ, Ma Khắc Huỳnh khoác đồ bảo hộ để vào ca ba, tiếp tục phần việc mở những đường lò mới dưới lòng đất.
+- [Bỏ việc cơ quan, người đàn ông chọn làm việc ở mỏ than](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/ma-khac-huynh-nguoi-mo-duong-trong-long-dat/): Một người rời công việc tại quê để tìm hướng đi mới cho gia đình; một người chọn học nghề mỏ từ cuối phổ thông. Cả hai gặp nhau ở quyết định gắn bó với công việc dưới lòng đất.
 - [TKV dành 20 tỷ đồng chăm lo người có công năm 2026](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/tkv-ung-ho-20-ty-cham-lo-nguoi-co-cong-2026/): Chương trình tri ân quy mô toàn quốc đưa trách nhiệm xã hội của doanh nghiệp tới nhóm người có công và gia đình chính sách.
 - [Ba thế hệ giữ lửa nghề mỏ trong một gia đình](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/gia-dinh-ba-the-he-tho-mo-thong-nhat/): Chiếc bánh mì mỏ cha mang về sau ca ba đã trở thành ký ức tuổi thơ, rồi âm thầm dẫn người con bước tiếp con đường của ông và bố.
 - [TKV hỗ trợ 10 tỷ đồng cho bốn tỉnh miền núi phía Bắc](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/tkv-ho-tro-10-ty-mien-nui-phia-bac-mua-lu/): Bảng phân bổ theo từng tỉnh giúp người đọc nhìn rõ quy mô hỗ trợ và tránh nhầm gói 10 tỷ đồng này với các chương trình cứu trợ khác của TKV.

@@ -4,6 +4,7 @@ import { communitySourceImages } from "./community-source-images.mjs";
 import { curatedArticles, existingNews } from "./curated-articles.mjs";
 import { communityArticles } from "./community-articles.mjs";
 import { pressStoryArticles } from "./press-story-articles.mjs";
+import { articleInlineImages } from "./article-inline-images.mjs";
 
 const root = path.resolve("tuyen-tho-mo");
 const base = "https://thaylinhtuyenthomo.vn";
@@ -27,6 +28,12 @@ const strip = (html) => html
   .replace(/&[a-z0-9#]+;/gi, " ")
   .replace(/\s+/g, " ")
   .trim();
+
+const decodeAttribute = (value = "") => value
+  .replaceAll("&amp;", "&")
+  .replaceAll("&#038;", "&")
+  .replaceAll("&#38;", "&")
+  .replaceAll("&quot;", '"');
 
 const normalize = (text) => strip(text)
   .toLocaleLowerCase("vi")
@@ -191,22 +198,40 @@ for (const [index, slug] of slugs.entries()) {
   const description = getAttr(html, /<meta name="description" content="([^"]+)"/i, `${prefix}description`);
   const canonical = getAttr(html, /<link rel="canonical" href="([^"]+)"/i, `${prefix}canonical`);
   const primaryKeyword = getAttr(html, /<meta name="keywords" content="([^,"]+)/i, `${prefix}primary keyword`);
-  const image = getAttr(html, /(?:<section\b[^>]*class="[^"]*\barticle-hero\b[^"]*"[^>]*>|<figure class="article-cover">)[\s\S]*?<img src="([^"]+)"/i, `${prefix}hero image`);
-  const ogImage = getAttr(html, /<meta property="og:image" content="([^"]+)"/i, `${prefix}Open Graph image`);
+  const articleBody = html.match(/<article class="article-body(?:\s[^"]*)?">([\s\S]*?)<\/article>/i)?.[1] || "";
+  const articleHero = html.match(/<section\b[^>]*class="[^"]*\barticle-hero\b[^"]*"[^>]*>([\s\S]*?)<\/section>/i)?.[1] || "";
+  const coverFigures = [...articleBody.matchAll(/<figure\b[^>]*class="[^"]*\barticle-cover\b[^"]*"[^>]*>([\s\S]*?)<\/figure>/gi)];
+  const image = decodeAttribute(coverFigures[0]?.[1].match(/<img\b[^>]*src="([^"]+)"/i)?.[1]
+    || getAttr(html, /<section\b[^>]*class="[^"]*\barticle-hero\b[^"]*"[^>]*>[\s\S]*?<img\b[^>]*src="([^"]+)"/i, `${prefix}article image`));
+  const ogImage = decodeAttribute(getAttr(html, /<meta property="og:image" content="([^"]+)"/i, `${prefix}Open Graph image`));
   const sourceImage = communitySourceImages[slug];
   const pressStory = pressStoriesBySlug.get(slug);
   const h1Count = (html.match(/<h1(?:\s|>)/gi) || []).length;
   const visibleWords = visible.split(/\s+/).filter(Boolean).length;
 
   if (h1Count !== 1) errors.push(`${prefix}expected one H1, got ${h1Count}`);
+  if (/<img\b/i.test(articleHero)) errors.push(`${prefix}hero must stay text-only; the source image belongs in the article body`);
+  if (coverFigures.length !== 1) errors.push(`${prefix}expected one editorial cover inside the article body, got ${coverFigures.length}`);
+  if (!/<figcaption>[\s\S]*?\S[\s\S]*?<\/figcaption>/i.test(coverFigures[0]?.[1] || "")) errors.push(`${prefix}editorial cover is missing a caption`);
   if (title.length < 35 || title.length > 90) warnings.push(`${prefix}title length ${title.length}`);
   if (description.length < 100 || description.length > 165) errors.push(`${prefix}description length ${description.length}`);
   if (canonical !== item.url) errors.push(`${prefix}wrong canonical`);
   if (!normalize(html).includes(normalize(primaryKeyword))) errors.push(`${prefix}primary keyword absent from visible body`);
   if (visibleWords < 650) errors.push(`${prefix}only ${visibleWords} visible words; expected at least 650`);
-  if (!/"@type":"(?:NewsArticle|Article|BlogPosting)"/.test(html) || !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing article or FAQ schema`);
+  if (!/"@type":"(?:NewsArticle|Article|BlogPosting)"/.test(html)) errors.push(`${prefix}missing article schema`);
+  if (!pressStory && !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing FAQ schema`);
   if (pressStory) {
     if (image !== pressStory.imageOriginal) errors.push(`${prefix}does not use the original image from its press source`);
+    if (!/class="[^"]*\barticle-layout\b[^"]*\barticle-layout--source\b[^"]*"/i.test(html)
+      || !/class="[^"]*\barticle-body\b[^"]*\barticle-body--source\b[^"]*"/i.test(html)) {
+      errors.push(`${prefix}press story must use the source-style article layout`);
+    }
+    if (/class="(?:fact-grid|timeline|faq-list|source-facts|article-aside)"/i.test(html)) {
+      errors.push(`${prefix}press story contains a custom card, timeline, FAQ or sidebar block`);
+    }
+    if (!/class="article-cover article-cover--editorial"[\s\S]*?class="article-media-credit"/i.test(articleBody)) {
+      errors.push(`${prefix}press-story cover is missing its visible photo credit`);
+    }
   } else if (sourceImage) {
     if (image !== sourceImage.image) errors.push(`${prefix}does not use the original image from its source article`);
   } else if (!editorialTopicImageOverrides.has(slug)
@@ -215,6 +240,24 @@ for (const [index, slug] of slugs.entries()) {
     errors.push(`${prefix}original editorial image is not from the Vinacomin image library or a verified local copy`);
   }
   if (ogImage !== image || item.image !== image) errors.push(`${prefix}hero, Open Graph and feed images must match`);
+  const expectedInlineImages = articleInlineImages[slug] || [];
+  const inlineFigures = [...articleBody.matchAll(/<figure\b[^>]*class="[^"]*\barticle-inline-media\b[^"]*"[^>]*>([\s\S]*?)<\/figure>/gi)];
+  if (inlineFigures.length !== expectedInlineImages.length) {
+    errors.push(`${prefix}expected ${expectedInlineImages.length} inline source images, got ${inlineFigures.length}`);
+  }
+  const inlineImageUrls = inlineFigures.map((figure) => decodeAttribute(figure[1].match(/<img\b[^>]*src="([^"]+)"/i)?.[1] || ""));
+  for (const [mediaIndex, media] of expectedInlineImages.entries()) {
+    const figure = inlineFigures[mediaIndex]?.[1] || "";
+    const inlineAlt = figure.match(/<img\b[^>]*alt="([^"]*)"/i)?.[1] || "";
+    if (inlineImageUrls[mediaIndex] !== media.src) errors.push(`${prefix}inline image ${mediaIndex + 1} does not match the verified source image`);
+    if (normalize(inlineAlt) !== normalize(media.alt)) errors.push(`${prefix}inline image ${mediaIndex + 1} has the wrong alt text`);
+    if (!/<figcaption>[\s\S]*?\S[\s\S]*?<\/figcaption>/i.test(figure)) errors.push(`${prefix}inline image ${mediaIndex + 1} is missing a caption`);
+    if (pressStory && (!media.credit || !/class="article-media-credit"/i.test(figure))) {
+      errors.push(`${prefix}inline source image ${mediaIndex + 1} is missing its visible photo credit`);
+    }
+  }
+  const bodyImageUrls = [...articleBody.matchAll(/<img\b[^>]*src="([^"]+)"/gi)].map((match) => decodeAttribute(match[1]));
+  if (new Set(bodyImageUrls).size !== bodyImageUrls.length) errors.push(`${prefix}repeats an image inside the article body`);
   if (!/<div class="article-source-footer">[\s\S]*?<strong>Nguồn:<\/strong>/i.test(html)) errors.push(`${prefix}missing the public source line`);
   if (!/<p class="article-seo-line">[^<]+<\/p>/i.test(html)) errors.push(`${prefix}missing the final SEO sentence`);
   if (/editorial-sources|Nguồn dữ kiện đã đối chiếu|Bài viết do Nguyễn Tử Linh phân tích và biên soạn độc lập/iu.test(html)) {
@@ -239,7 +282,7 @@ for (const [index, slug] of slugs.entries()) {
     try { JSON.parse(match[1]); } catch (error) { errors.push(`${prefix}invalid JSON-LD ${jsonIndex + 1}: ${error.message}`); }
   }
 
-  const body = html.match(/<article class="article-body">([\s\S]*?)<\/article>/i)?.[1] || "";
+  const body = articleBody;
   articleVocabulary.push({slug, words: new Set(normalize(body).split(/\s+/).filter((word) => word.length > 2))});
   for (const match of body.matchAll(/<p(?:\s[^>]*)?>([\s\S]*?)<\/p>/gi)) {
     const paragraph = strip(match[1]);
@@ -265,6 +308,9 @@ for (let left = 0; left < articleVocabulary.length; left += 1) {
 }
 
 if (new Set(articleImages).size !== articleImages.length) errors.push("Editorial article images must be unique");
+for (const slug of Object.keys(articleInlineImages)) {
+  if (!slugs.includes(slug)) errors.push(`${slug}: inline image registry points to an article absent from the feed`);
+}
 
 const hubFile = path.join(root, "tin-nganh-than", "index.html");
 const hubHtml = fs.readFileSync(hubFile, "utf8");
@@ -292,7 +338,8 @@ for (const slug of slugs) {
     if (imageRecord?.source_article_url !== pressStory.sources?.[0]?.url) errors.push(`${slug}: image registry does not match the press-source article URL`);
   } else if (sourceImage) {
     if (imageRecord?.source_url !== sourceImage.image) errors.push(`${slug}: image registry does not match the source article image`);
-    if (imageRecord?.source_article_url !== sourceImage.sourceUrl) errors.push(`${slug}: image registry does not match the source article URL`);
+    if (imageRecord?.source_article_url !== (sourceImage.imageSourceUrl || sourceImage.sourceUrl)) errors.push(`${slug}: image registry does not match the source article URL`);
+    if ((imageRecord?.original_source_url || undefined) !== (sourceImage.originalImage || undefined)) errors.push(`${slug}: image registry does not preserve the original image URL`);
   } else if (!editorialTopicImageOverrides.has(slug)
     && !imageRecord?.source_url?.startsWith("https://vinacomin.vn/Share/Media/")) {
     errors.push(`${slug}: original editorial image is not from the Vinacomin image library`);

@@ -32,18 +32,22 @@
   "anh-tho-mo-khe-cham-qua-ong-kinh-ttxvn": {
     "album_title": "Ảnh trong bộ Phát huy truyền thống vùng mỏ Quảng Ninh anh hùng · VietnamPlus/TTXVN",
     "source_url": "https://media.vietnamplus.vn/images/bc12065fef1dc485941a5ad9a9fec4718281d1c7559056f129a489bd35659341a76f4da8cfbfaf07fbec0742fb55d79e/mo20.jpg.avif",
+    "original_source_url": "https://media.vietnamplus.vn/images/bc12065fef1dc485941a5ad9a9fec4718281d1c7559056f129a489bd35659341a76f4da8cfbfaf07fbec0742fb55d79e/mo20.jpg.avif",
     "provider": "VietnamPlus/TTXVN",
     "source_article_url": "https://www.vietnamplus.vn/photo-phat-huy-truyen-thong-vung-mo-quang-ninh-anh-hung-post606797.vnp"
   },
   "mu-cang-chai-hoc-nghe-mo-viec-lam-tkv-2024": {
     "album_title": "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
-    "source_url": "https://caodangtkv.edu.vn/data/images/news/Ky%20quy%20che.jpg",
+    "source_url": "https://thaylinhtuyenthomo.vn/assets/articles/mu-cang-chai-quy-che-2024.png",
+    "original_source_url": "https://caodangtkv.edu.vn/data/images/news/Ky%20quy%20che.jpg",
     "provider": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
-    "source_article_url": "https://caodangtkv.edu.vn/truong-cao-dang-than-khoang-san-viet-nam-ky-ket-quy-che-phoi-hop-ve-dao-tao-nghe-va-giai-quyet-viec-lam-cho-lao-dong-huyen-mu-cang-chai-tinh-yen-bai-giai-doan-2024-2028/"
+    "source_article_url": "https://caodangtkv.edu.vn/truong-cao-dang-than-khoang-san-viet-nam-ky-ket-quy-che-phoi-hop-ve-dao-tao-nghe-va-giai-quyet-viec-lam-cho-lao-dong-huyen-mu-cang-chai-tinh-yen-bai-giai-doan-2024-2028/",
+    "local_file": "assets/articles/mu-cang-chai-quy-che-2024.png"
   },
   "pham-dinh-duan-to-cuu-ho-vang-danh": {
     "album_title": "Ảnh trong bài Người thợ mỏ có trái tim vàng đen lấp lánh · Báo Đầu tư",
     "source_url": "https://media.baodautu.vn/Images/chicuong/2025/09/01/Duan.JPG",
+    "original_source_url": "https://media.baodautu.vn/Images/chicuong/2025/09/01/Duan.JPG",
     "provider": "Báo Đầu tư",
     "source_article_url": "https://baodautu.vn/nguoi-tho-mo-co-trai-tim-vang-den-lap-lanh-d376810.html"
   },
@@ -56,6 +60,7 @@
   "ky-luat-dong-tam-tho-mo-ha-lam": {
     "album_title": "Ảnh trong bài Thợ mỏ Hà Lầm – Những câu chuyện về Kỷ luật và Đồng tâm · Báo Quảng Ninh",
     "source_url": "https://media.baoquangninh.vn/dataimages/202008/original/images1413238_h__l_m_2.jpg",
+    "original_source_url": "https://media.baoquangninh.vn/dataimages/202008/original/images1413238_h__l_m_2.jpg",
     "provider": "Báo Quảng Ninh",
     "source_article_url": "https://baoquangninh.vn/tho-mo-ha-lam-nhung-cau-chuyen-ve-ky-luat-va-dong-tam-2495602.html"
   },
@@ -68,18 +73,21 @@
   "ly-van-di-nguoi-cha-tho-lo": {
     "album_title": "Ảnh trong bài Người thợ lò gánh trọn hai vai vì tương lai con trẻ · Báo Công Thương",
     "source_url": "https://cdn-i2.congthuong.vn/resize/th/upload/2026/03/05/z7591212612354937a4a9de82d8ccf87034eedfadda057-23581521.jpg",
+    "original_source_url": "https://cdn-i2.congthuong.vn/resize/th/upload/2026/03/05/z7591212612354937a4a9de82d8ccf87034eedfadda057-23581521.jpg",
     "provider": "Báo Công Thương",
     "source_article_url": "https://congthuong.vn/nguoi-tho-lo-ganh-tron-hai-vai-vi-tuong-lai-con-tre-445582.html"
   },
   "cao-bang-phoi-hop-tuyen-lao-dong-nghe-mo-2018": {
-    "album_title": "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
-    "source_url": "https://caodangtkv.edu.vn/userfiles/l%C3%A0m%20v%E1%BB%87c%20v%E1%BB%9Bi%20hu%E1%BB%87n%20%E1%BB%A7y%20huy%E1%BB%87n%20B%E1%BA%A3o%20L%C3%A2m.JPG",
-    "provider": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
-    "source_article_url": "https://caodangtkv.edu.vn/dang-uy-truong-cao-dang-than-khoang-san-viet-nam-lam-viec-voi-huyen-uy-cac-huyen-tai-tinh-cao-bang/"
+    "album_title": "Báo Nhà báo & Công luận",
+    "source_url": "https://clu.1cdn.vn/2023/08/06/congluan-cdn.congluan.vn-files-content-2023-08-06-_truong-cao-dang-than-khoang-san-viet-nam-dao-tao-du-nguon-nhan-luc-gop-phan-xay-dung-quang-ninh-giau-dep-191707413.jpg",
+    "original_source_url": "https://caodangtkv.edu.vn/userfiles/l%C3%A0m%20v%E1%BB%87c%20v%E1%BB%9Bi%20hu%E1%BB%87n%20%E1%BB%A7y%20huy%E1%BB%87n%20B%E1%BA%A3o%20L%C3%A2m.JPG",
+    "provider": "Báo Nhà báo & Công luận",
+    "source_article_url": "https://congluan.vn/truong-cao-dang-than-khoang-san-viet-nam-dao-tao-du-nguon-nhan-luc-gop-phan-xay-dung-quang-ninh-giau-dep-10219738.html"
   },
   "khoanh-khac-tho-mo-vang-danh": {
     "album_title": "Ảnh trong bộ Khoảnh khắc chân thật về cuộc sống người thợ mỏ · VTV",
     "source_url": "https://cdn-images.vtv.vn/thumb_w/1200/2017/01-chuc-ban-vao-ca-an-toan-1512105262971.jpg",
+    "original_source_url": "https://cdn-images.vtv.vn/thumb_w/1200/2017/01-chuc-ban-vao-ca-an-toan-1512105262971.jpg",
     "provider": "VTV",
     "source_article_url": "https://vtv.vn/doi-song/khoanh-khac-chan-that-ve-cuoc-song-cua-nhung-nguoi-tho-mo-o-quang-ninh-20171201121533814.htm"
   },
@@ -92,18 +100,21 @@
   "nhung-nguoi-tho-lo-gieo-no-luc": {
     "album_title": "Ảnh trong bài Những người thợ lò gieo nỗ lực, gặt thành công · Tiền Phong",
     "source_url": "https://cdn.tienphong.vn/images/6a0b4b6ff246e27ef4fad5296d98ff2e5a72795e1ab98e23ea91e2cf8efad463894d9664b9805f566d8c2a64a5841090714ef85a15986e12ec866c53661a093d/image001_BNOC.jpg",
+    "original_source_url": "https://cdn.tienphong.vn/images/6a0b4b6ff246e27ef4fad5296d98ff2e5a72795e1ab98e23ea91e2cf8efad463894d9664b9805f566d8c2a64a5841090714ef85a15986e12ec866c53661a093d/image001_BNOC.jpg",
     "provider": "Tiền Phong",
     "source_article_url": "https://tienphong.vn/nhung-nguoi-tho-lo-gieo-no-luc-gat-thanh-cong-post1026817.tpo"
   },
   "song-ma-son-la-hop-tac-tuyen-sinh-nghe-mo-2016": {
-    "album_title": "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
-    "source_url": "https://caodangtkv.edu.vn/userfiles/13%20-%20Copy.JPG",
-    "provider": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
-    "source_article_url": "https://caodangtkv.edu.vn/doan-cong-tac-huyen-song-ma-den-tham-va-lam-viec-tai-truong/"
+    "album_title": "Báo Nhà báo & Công luận",
+    "source_url": "https://clu.1cdn.vn/2023/08/06/congluan-cdn.congluan.vn-files-content-2023-08-06-_truong-cao-dang-than-khoang-san-viet-nam-dao-tao-du-nguon-nhan-luc-gop-phan-xay-dung-quang-ninh-giau-dep-191634707.jpg",
+    "original_source_url": "https://caodangtkv.edu.vn/userfiles/13%20-%20Copy.JPG",
+    "provider": "Báo Nhà báo & Công luận",
+    "source_article_url": "https://congluan.vn/truong-cao-dang-than-khoang-san-viet-nam-dao-tao-du-nguon-nhan-luc-gop-phan-xay-dung-quang-ninh-giau-dep-10219738.html"
   },
   "mot-ngay-trong-lo-than-duong-huy": {
     "album_title": "Ảnh trong bài Một ngày của người thợ làm việc dưới lòng đất · Dân trí",
     "source_url": "https://cdnphoto.dantri.com.vn/h7fRAv-lMcNu1KFM8oQtwqcmGj4%3D/2020/10/25/ham-lo-duong-huy-15-1603637010632.jpg",
+    "original_source_url": "https://cdnphoto.dantri.com.vn/h7fRAv-lMcNu1KFM8oQtwqcmGj4%3D/2020/10/25/ham-lo-duong-huy-15-1603637010632.jpg",
     "provider": "Dân trí",
     "source_article_url": "https://dantri.com.vn/thoi-su/mot-ngay-cua-nguoi-tho-an-com-duong-gian-lam-viec-am-phu-20201025220908377.htm"
   },
@@ -116,6 +127,7 @@
   "ma-khac-huynh-nguoi-mo-duong-trong-long-dat": {
     "album_title": "Ảnh trong bài Bỏ việc cơ quan, người đàn ông chọn làm việc ở mỏ than · VietNamNet",
     "source_url": "https://static-images.vnncdn.net/files/publish/2023/9/25/w-z4695689093954-3eb49121769a737dc256b63157af5e8a-1-1543.jpg?s=_t631O9OhiSUqJtk9KO07w&width=0",
+    "original_source_url": "https://static-images.vnncdn.net/files/publish/2023/9/25/w-z4695689093954-3eb49121769a737dc256b63157af5e8a-1-1543.jpg?s=_t631O9OhiSUqJtk9KO07w&width=0",
     "provider": "VietNamNet",
     "source_article_url": "https://vietnamnet.vn/bo-viec-co-quan-nguoi-dan-ong-chon-lam-viec-o-mo-than-2190156.html"
   },
@@ -127,7 +139,8 @@
   },
   "gia-dinh-ba-the-he-tho-mo-thong-nhat": {
     "album_title": "Ảnh trong bài Giữ lửa trong gia đình 3 thế hệ thợ mỏ · VOV",
-    "source_url": "https://media.vov.vn/sites/default/files/styles/large_watermark/public/2023-06/giadinh3thehethomo_7.jpg",
+    "source_url": "https://media.vov.vn/sites/default/files/styles/large_watermark/public/2023-06/giadinh3thehethomo_6.jpg",
+    "original_source_url": "https://media.vov.vn/sites/default/files/styles/large_watermark/public/2023-06/giadinh3thehethomo_6.jpg",
     "provider": "VOV",
     "source_article_url": "https://vov.vn/xa-hoi/giu-lua-trong-gia-dinh-3-the-he-tho-mo-post1028861.vov"
   },
@@ -140,6 +153,7 @@
   "tho-mo-vao-ca-duong-huy": {
     "album_title": "Ảnh trong bài Thợ mỏ vào ca · Báo Nhân Dân",
     "source_url": "https://cdn.nhandan.vn/images/c3a00989bb29ee038827d8fd769da314f09f736d4307a35d8a856dfa1a1fea9e86110ea7c87546805ca841016976e1fb/7.jpg.avif",
+    "original_source_url": "https://cdn.nhandan.vn/images/c3a00989bb29ee038827d8fd769da314f09f736d4307a35d8a856dfa1a1fea9e86110ea7c87546805ca841016976e1fb/7.jpg.avif",
     "provider": "Báo Nhân Dân",
     "source_article_url": "https://nhandan.vn/tho-mo-vao-ca-post334767.html"
   },
@@ -283,7 +297,8 @@
   },
   "viec-lam-nganh-than-thang-8-2026": {
     "album_title": "Ảnh bài Cách làm mới trong công tác đào tạo nghề mỏ hầm lò – Vinacomin",
-    "source_url": "https://vinacomin.vn/userfiles/thumbnail/1801E31082CB40098A13ECF1DD64BD38E04A2392E6D5F90F15BA1EF962A6D4E6.jpg",
+    "source_url": "https://thaylinhtuyenthomo.vn/assets/news/tuyen-tho-mo-thang-8-2026-og-1200x630.png",
+    "original_source_url": "https://vinacomin.vn/userfiles/thumbnail/1801E31082CB40098A13ECF1DD64BD38E04A2392E6D5F90F15BA1EF962A6D4E6.jpg",
     "provider": "Thư viện ảnh Vinacomin",
     "local_file": "../news/tuyen-tho-mo-thang-8-2026-og-1200x630.png"
   },

@@ -1,9 +1,13 @@
 export const historicalSourceImages = Object.freeze({
   "song-ma-son-la-hop-tac-tuyen-sinh-nghe-mo-2016": Object.freeze({
     sourceUrl: "https://caodangtkv.edu.vn/doan-cong-tac-huyen-song-ma-den-tham-va-lam-viec-tai-truong/",
-    image: "https://caodangtkv.edu.vn/userfiles/13%20-%20Copy.JPG",
-    alt: "Đoàn công tác huyện Sông Mã làm việc với Trường Cao đẳng TKV năm 2016",
-    credit: "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    imageSourceUrl: "https://congluan.vn/truong-cao-dang-than-khoang-san-viet-nam-dao-tao-du-nguon-nhan-luc-gop-phan-xay-dung-quang-ninh-giau-dep-10219738.html",
+    imagePublisher: "Báo Nhà báo & Công luận",
+    image: "https://clu.1cdn.vn/2023/08/06/congluan-cdn.congluan.vn-files-content-2023-08-06-_truong-cao-dang-than-khoang-san-viet-nam-dao-tao-du-nguon-nhan-luc-gop-phan-xay-dung-quang-ninh-giau-dep-191634707.jpg",
+    originalImage: "https://caodangtkv.edu.vn/userfiles/13%20-%20Copy.JPG",
+    alt: "Hội nghị tư vấn tuyển sinh của Trường Cao đẳng TKV tại một huyện vùng cao",
+    caption: "Ảnh tư liệu về hoạt động tư vấn tuyển sinh tại địa bàn vùng cao; ảnh gốc của bài năm 2016 không còn được máy chủ nguồn cung cấp.",
+    credit: "Báo Nhà báo & Công luận",
   }),
   "bat-xat-lao-cai-hop-tac-dao-tao-nghe-mo-2017": Object.freeze({
     sourceUrl: "https://caodangtkv.edu.vn/tiep-va-lam-viec-voi-doan-cong-tac-ubnd-huyen-bat-xat-lao-cai/",
@@ -13,9 +17,13 @@ export const historicalSourceImages = Object.freeze({
   }),
   "cao-bang-phoi-hop-tuyen-lao-dong-nghe-mo-2018": Object.freeze({
     sourceUrl: "https://caodangtkv.edu.vn/dang-uy-truong-cao-dang-than-khoang-san-viet-nam-lam-viec-voi-huyen-uy-cac-huyen-tai-tinh-cao-bang/",
-    image: "https://caodangtkv.edu.vn/userfiles/l%C3%A0m%20v%E1%BB%87c%20v%E1%BB%9Bi%20hu%E1%BB%87n%20%E1%BB%A7y%20huy%E1%BB%87n%20B%E1%BA%A3o%20L%C3%A2m.JPG",
-    alt: "Trường Cao đẳng TKV làm việc với các huyện Nguyên Bình, Bảo Lạc và Bảo Lâm năm 2018",
-    credit: "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    imageSourceUrl: "https://congluan.vn/truong-cao-dang-than-khoang-san-viet-nam-dao-tao-du-nguon-nhan-luc-gop-phan-xay-dung-quang-ninh-giau-dep-10219738.html",
+    imagePublisher: "Báo Nhà báo & Công luận",
+    image: "https://clu.1cdn.vn/2023/08/06/congluan-cdn.congluan.vn-files-content-2023-08-06-_truong-cao-dang-than-khoang-san-viet-nam-dao-tao-du-nguon-nhan-luc-gop-phan-xay-dung-quang-ninh-giau-dep-191707413.jpg",
+    originalImage: "https://caodangtkv.edu.vn/userfiles/l%C3%A0m%20v%E1%BB%87c%20v%E1%BB%9Bi%20hu%E1%BB%87n%20%E1%BB%A7y%20huy%E1%BB%87n%20B%E1%BA%A3o%20L%C3%A2m.JPG",
+    alt: "Hội nghị sơ kết phối hợp đào tạo nghề giữa Trường Cao đẳng TKV với các huyện Hà Giang và Cao Bằng",
+    caption: "Ảnh tư liệu về chương trình phối hợp tại Cao Bằng; ảnh gốc của bài năm 2018 không còn được máy chủ nguồn cung cấp.",
+    credit: "Báo Nhà báo & Công luận",
   }),
   "muong-lat-lang-chanh-hop-tac-viec-lam-tkv-2020": Object.freeze({
     sourceUrl: "https://congdoantkv.vn/tin-tuc/chi-tiet/16076/Truong-Cao-%C4%91ang-Than---Khoang-san-Viet-Nam-ky-ket-Quy-che-phoi-hop-%C4%91ao-tao-nghe-va-giai-quyet-viec-lam",
@@ -31,8 +39,13 @@ export const historicalSourceImages = Object.freeze({
   }),
   "mu-cang-chai-hoc-nghe-mo-viec-lam-tkv-2024": Object.freeze({
     sourceUrl: "https://caodangtkv.edu.vn/truong-cao-dang-than-khoang-san-viet-nam-ky-ket-quy-che-phoi-hop-ve-dao-tao-nghe-va-giai-quyet-viec-lam-cho-lao-dong-huyen-mu-cang-chai-tinh-yen-bai-giai-doan-2024-2028/",
-    image: "https://caodangtkv.edu.vn/data/images/news/Ky%20quy%20che.jpg",
-    alt: "Ký quy chế phối hợp đào tạo nghề cho lao động Mù Cang Chải giai đoạn 2024–2028",
+    imageSourceUrl: "https://caodangtkv.edu.vn/truong-cao-dang-than-khoang-san-viet-nam-ky-ket-quy-che-phoi-hop-ve-dao-tao-nghe-va-giai-quyet-viec-lam-cho-lao-dong-huyen-mu-cang-chai-tinh-yen-bai-giai-doan-2024-2028/",
+    imagePublisher: "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    image: "https://thaylinhtuyenthomo.vn/assets/articles/mu-cang-chai-quy-che-2024.png",
+    originalImage: "https://caodangtkv.edu.vn/data/images/news/Ky%20quy%20che.jpg",
+    localFile: "assets/articles/mu-cang-chai-quy-che-2024.png",
+    alt: "Hội nghị ký quy chế phối hợp đào tạo nghề cho lao động Mù Cang Chải giai đoạn 2024–2028",
+    caption: "Hội nghị ký quy chế phối hợp đào tạo nghề và giải quyết việc làm cho lao động Mù Cang Chải giai đoạn 2024–2028.",
     credit: "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
   }),
   "tua-chua-dien-bien-phoi-hop-hoc-nghe-mo-2024": Object.freeze({

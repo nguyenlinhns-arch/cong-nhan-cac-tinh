@@ -1,3 +1,5 @@
+import {pressStoryInlineMedia} from "./press-story-inline-media.mjs";
+
 const publishedDay = "2026-08-01";
 
 const stories = [
@@ -73,9 +75,9 @@ const stories = [
     lead: "Chiếc bánh mì mỏ cha mang về sau ca ba đã trở thành ký ức tuổi thơ, rồi âm thầm dẫn người con bước tiếp con đường của ông và bố.",
     keyword: "gia đình ba thế hệ thợ mỏ",
     keywords: ["gia đình ba thế hệ thợ mỏ", "thợ lò Than Thống Nhất", "người thợ mỏ Quảng Ninh", "truyền thống ngành Than"],
-    image: "https://media.vov.vn/sites/default/files/styles/large_watermark/public/2023-06/giadinh3thehethomo_7.jpg",
-    imageOriginal: "https://media.vov.vn/sites/default/files/styles/large_watermark/public/2023-06/giadinh3thehethomo_7.jpg",
-    imageAlt: "Gia đình ba thế hệ thợ mỏ tại Cẩm Phả",
+    image: "https://media.vov.vn/sites/default/files/styles/large_watermark/public/2023-06/giadinh3thehethomo_6.jpg",
+    imageOriginal: "https://media.vov.vn/sites/default/files/styles/large_watermark/public/2023-06/giadinh3thehethomo_6.jpg",
+    imageAlt: "Thợ lò Nguyễn Hồng Cẩm và con trai tại vùng mỏ Quảng Ninh",
     imageSource: "Ảnh trong bài Giữ lửa trong gia đình 3 thế hệ thợ mỏ · VOV",
     imageCredit: "VOV",
     factsTitle: "Từ năm 1965 đến người thợ trẻ hôm nay",
@@ -132,49 +134,52 @@ const stories = [
   {
     slug: "ma-khac-huynh-nguoi-mo-duong-trong-long-dat",
     section: "Chuyện người thợ mỏ",
-    title: "Ma Khắc Huỳnh: người mở đường trong lòng đất",
-    description: "Từ Thái Nguyên đến Quảng Ninh học nghề, Ma Khắc Huỳnh gắn bó với công việc đào đường lò, mở lối cho các tổ khai thác than.",
-    lead: "Khi nhiều gia đình chuẩn bị đi ngủ, Ma Khắc Huỳnh khoác đồ bảo hộ để vào ca ba, tiếp tục phần việc mở những đường lò mới dưới lòng đất.",
-    keyword: "thợ đào lò Ma Khắc Huỳnh",
-    keywords: ["thợ đào lò Ma Khắc Huỳnh", "người thợ mỏ Thái Nguyên", "đào đường lò Quảng Ninh", "ca ba thợ lò"],
+    title: "Bỏ việc cơ quan, người đàn ông chọn làm việc ở mỏ than",
+    description: "Bùi Văn Tuyên và Ma Khắc Huỳnh đến với vùng mỏ từ hai hoàn cảnh khác nhau, rồi cùng trưởng thành trong nhịp ca và tổ đội của Than Hòn Gai.",
+    lead: "Một người rời công việc tại quê để tìm hướng đi mới cho gia đình; một người chọn học nghề mỏ từ cuối phổ thông. Cả hai gặp nhau ở quyết định gắn bó với công việc dưới lòng đất.",
+    keyword: "người lao động chọn nghề mỏ Quảng Ninh",
+    keywords: ["người lao động chọn nghề mỏ Quảng Ninh", "Bùi Văn Tuyên thợ lò", "thợ đào lò Ma Khắc Huỳnh", "Than Hòn Gai"],
     image: "https://static-images.vnncdn.net/files/publish/2023/9/25/w-z4695689093954-3eb49121769a737dc256b63157af5e8a-1-1543.jpg?s=_t631O9OhiSUqJtk9KO07w&width=0",
     imageOriginal: "https://static-images.vnncdn.net/files/publish/2023/9/25/w-z4695689093954-3eb49121769a737dc256b63157af5e8a-1-1543.jpg?s=_t631O9OhiSUqJtk9KO07w&width=0",
     imageAlt: "Thợ đào lò Ma Khắc Huỳnh tại khu vực làm việc",
     imageSource: "Ảnh trong bài Bỏ việc cơ quan, người đàn ông chọn làm việc ở mỏ than · VietNamNet",
     imageCredit: "VietNamNet",
-    factsTitle: "Tám năm ở tuyến đầu của đường lò",
-    actionTitle: "Con đường từ lớp 12 tới ca ba",
-    conclusionTitle: "Mỗi mét lò mở thêm là phần việc của một tập thể",
+    factsTitle: "Hai con đường cùng dẫn tới vùng mỏ",
+    actionTitle: "Từ quyết định đổi nghề đến một vị trí trong tổ đội",
+    conclusionTitle: "Lựa chọn chỉ bền khi được kiểm chứng qua từng ca làm",
     facts: [
-      ["30 tuổi", "Tuổi của Ma Khắc Huỳnh tại thời điểm bài báo được đăng."],
-      ["Hơn 8 năm", "Quãng thời gian anh đã làm công nhân mỏ."],
-      ["Năm 2015", "Thời điểm anh vào làm tại Công ty Than Hòn Gai."],
-      ["3 ca", "Nhịp sản xuất mà tổ đào lò luân phiên thực hiện."],
+      ["9 năm", "Quãng thời gian Bùi Văn Tuyên làm việc tại quê trước khi đổi nghề."],
+      ["Gần 5 năm", "Thời gian anh Tuyên gắn bó với mỏ khi bài báo được đăng."],
+      ["Hơn 8 năm", "Quãng thời gian Ma Khắc Huỳnh làm công việc đào lò."],
+      ["3 ca", "Nhịp sản xuất luân phiên của lực lượng công nhân dưới mỏ."],
     ],
     intro: [
-      "Ma Khắc Huỳnh xác định hướng đi từ năm lớp 12, theo học chuyên ngành mỏ rồi vào Công ty Than Hòn Gai năm 2015. Hơn tám năm sau, <strong>thợ đào lò Ma Khắc Huỳnh</strong> đã quen với nhịp ca ba và những tuyến đường sâu hàng trăm mét.",
-      "Bài viết của VietNamNet kể về công việc mở đường cho các tổ khai thác. Tổ đào lò thường đi trước, xử lý đất đá, tạo không gian và bàn giao tuyến đủ điều kiện để dây chuyền phía sau tiếp tục vận hành.",
+      "Bài viết của VietNamNet mở đầu ngày làm việc của Bùi Văn Tuyên từ lúc chuông báo thức vang lên lúc sáng sớm. Trước khi rời nơi ở công nhân, anh gọi về nhà, kiểm tra trang bị rồi chuẩn bị vào ca tại Công ty Than Hòn Gai.",
+      "Phía sau nhịp sinh hoạt ấy là một quyết định lớn. Sau nhiều năm làm việc ở quê, anh Tuyên chọn rời vùng an toàn để học và làm một nghề mới tại Quảng Ninh. Qua hai nhân vật, bài viết cho thấy cách <strong>người lao động chọn nghề mỏ Quảng Ninh</strong> sau khi cân nhắc hoàn cảnh gia đình, quá trình học nghề và công việc thực tế. Câu chuyện tiếp tục với Ma Khắc Huỳnh, người đã xác định hướng học mỏ từ năm lớp 12 và làm công việc đào đường lò từ năm 2015.",
     ],
     sections: [
       {
-        title: "Đào lò là công việc của những người đi trước",
+        title: "Bùi Văn Tuyên bước ra khỏi công việc quen thuộc ở quê nhà",
         paragraphs: [
-          "Khi gặp đất đá chặt, tổ công nhân phải thực hiện khoan và nổ mìn theo biện pháp được phê duyệt; với phần mềm hơn, thao tác thủ công vẫn giữ vai trò đáng kể. Mỗi mét tiến gương cần đúng tiết diện, đúng hướng và đủ điều kiện chống giữ.",
-          "Vị trí đi đầu mang theo nhiều trách nhiệm. Người thợ phải quan sát địa chất, phối hợp thiết bị, nghe hiệu lệnh và dừng lại khi xuất hiện dấu hiệu khác thường. Tốc độ chỉ có ý nghĩa khi tuyến lò được bàn giao an toàn.",
+          "Chín năm làm công việc tại xã cho anh Tuyên sự ổn định quen thuộc, nhưng chưa mở ra con đường kinh tế mà gia đình cần. Sau khi kiểm tra kỹ thông tin tuyển dụng, anh quyết định tới Quảng Ninh, bắt đầu từ học nghề và những ngày làm quen với đường lò.",
+          "Lần đầu xuống sâu, chiều dài đường lò, các ngã rẽ và nhịp vận hành của một hệ thống sản xuất dưới đất khiến anh vừa háo hức vừa lo lắng. Thử thách ban đầu chỉ dịu lại khi anh hiểu quy trình, quen đồng đội và hình thành phản xạ an toàn trong từng thao tác.",
+          "Sau gần năm năm, kết quả dễ nhìn thấy nhất là cuộc sống gia đình có thêm nền tảng và căn nhà mới ở quê. Tuy nhiên, bài báo cũng cho thấy lựa chọn ấy đi cùng việc xa nhà, chủ động liên lạc với vợ con và giữ sức khỏe để theo ca đều đặn.",
         ],
       },
       {
-        title: "Ca ba đảo nhịp sống nhưng không đảo quy trình",
+        title: "Ma Khắc Huỳnh chọn nghề từ khi còn ngồi trên ghế phổ thông",
         paragraphs: [
-          "Thời điểm người thân chuẩn bị nghỉ cũng là lúc anh Huỳnh lên xe tới mỏ. Làm việc ban đêm đòi hỏi người thợ chủ động giấc ngủ, bữa ăn và sức khỏe để bước vào ca với trạng thái tỉnh táo.",
-          "Dưới lò không có khoảng trống cho sự tùy tiện. Giao ca, kiểm tra thiết bị, phân công vị trí và bàn giao cuối ca vẫn diễn ra theo cùng một chuẩn, bất kể bên ngoài đang là ngày hay đêm.",
+          "Khác với anh Tuyên, Ma Khắc Huỳnh chuẩn bị cho nghề mỏ từ sớm. Sau phổ thông, anh theo học chuyên ngành mỏ rồi vào Than Hòn Gai năm 2015, nhận nhiệm vụ tại tổ đào lò—lực lượng mở đường cho các công đoạn khai thác phía sau.",
+          "Khi gặp lớp đất đá chặt, tổ công nhân thực hiện khoan, nổ mìn và chống giữ theo biện pháp kỹ thuật; phần mềm hơn vẫn cần nhiều thao tác trực tiếp. Mỗi mét tiến gương chỉ được bàn giao khi đúng hướng, đúng tiết diện và bảo đảm điều kiện an toàn.",
+          "Ca ba khiến giờ đi làm của anh bắt đầu khi nhiều gia đình đã nghỉ. Những bữa ăn muộn, thời gian giải lao ngắn và quãng đường xa mặt đất trở thành một phần đời sống mà người thợ phải chủ động sắp xếp.",
         ],
       },
       {
-        title: "Một quyết định nghề nghiệp được kiểm chứng bằng thời gian",
+        title: "Trước khi xuống lò, mọi người cùng trở về một quy trình chung",
         paragraphs: [
-          "Từ lựa chọn sau phổ thông đến hơn tám năm bám nghề là một quãng đủ dài để sự háo hức ban đầu trở thành kinh nghiệm. Anh hiểu rõ công việc nặng, những giờ ăn muộn và trách nhiệm của tổ mở đường.",
-          "Câu chuyện có sức nặng bởi nhân vật không được dựng như một hình mẫu hoàn hảo. Anh hiện lên bằng nhịp sống thật: đi ca, làm cùng tổ, nhớ gia đình và tiếp tục hoàn thành phần đường lò của mình.",
+          "Dù đến nghề bằng hai con đường khác nhau, người lao động đều phải học, thực hành và đáp ứng kiểm tra trước khi được bố trí vào dây chuyền. Mỗi ca bắt đầu bằng giao việc, phổ biến điều kiện hiện trường, kiểm tra trang bị và nhắc lại yêu cầu an toàn.",
+          "Tổ đội là nơi kinh nghiệm cá nhân được đặt trong một trật tự chung. Người mới quan sát người cũ, người phụ trách kiểm tra từng vị trí; mọi bất thường đều phải được báo lại, người thợ không tự xử lý theo cảm tính.",
+          "Bởi vậy, quyết định đổi nghề không kết thúc ở ngày ký hồ sơ. Nó được kiểm chứng qua khả năng chịu học, thích nghi với ca kíp, giữ kỷ luật và làm tròn phần việc của mình trong nhiều năm.",
         ],
       },
     ],
@@ -184,13 +189,13 @@ const stories = [
       ["Vào tổ sản xuất", "Rèn thao tác, phản xạ và khả năng phối hợp ở tuyến đầu."],
       ["Bám nghề", "Tích lũy kinh nghiệm qua từng ca và từng mét đường lò."],
     ],
-    takeaway: "Ma Khắc Huỳnh đại diện cho lớp thợ trẻ đến từ tỉnh ngoài, học nghề rồi trưởng thành trong tổ đội. Công việc của anh ít khi xuất hiện trên mặt đất, nhưng mọi lò chợ đều cần những đường lò được mở đúng kỹ thuật từ trước.",
+    takeaway: "Câu chuyện của Bùi Văn Tuyên và Ma Khắc Huỳnh cho thấy nghề mỏ có thể đón người từ nhiều điểm xuất phát. Điều giữ họ lại không phải một lời hứa ngắn hạn, mà là tay nghề, kỷ luật, sự chia sẻ của tổ đội và những thay đổi tích lũy trong cuộc sống gia đình.",
     faq: [
-      ["Ma Khắc Huỳnh quê ở đâu?", "Nguồn cho biết anh quê Thái Nguyên."],
-      ["Công việc chính của anh là gì?", "Anh cùng tổ đào đường hầm, mở lối cho các công đoạn khai thác tiếp theo."],
-      ["Thợ đào lò khác thợ khai thác ở điểm nào?", "Tổ đào lò mở và củng cố các đường hầm để chuẩn bị không gian, đường vận tải và điều kiện cho công đoạn khai thác tiếp theo."],
+      ["Bài báo kể về những ai?", "Hai nhân vật chính là Bùi Văn Tuyên, quê Hòa Bình, và Ma Khắc Huỳnh, quê Thái Nguyên."],
+      ["Ma Khắc Huỳnh làm công việc gì?", "Anh cùng tổ đào đường lò, mở và củng cố tuyến phục vụ các công đoạn khai thác tiếp theo."],
+      ["Điểm chung trong quá trình vào nghề là gì?", "Cả hai đều phải học nghề, làm quen điều kiện hầm lò và tuân thủ quy trình an toàn của tổ đội."],
     ],
-    seoLine: "Tìm hiểu nghề đào lò, ca làm việc của thợ mỏ và hành trình học nghề mỏ để làm việc tại Quảng Ninh.",
+    seoLine: "Tìm hiểu hành trình đổi nghề, học nghề mỏ và công việc thợ lò tại các doanh nghiệp Than ở Quảng Ninh.",
     sources: [{publisher: "VietNamNet", title: "Bỏ việc cơ quan, người đàn ông chọn làm việc ở mỏ than", date: "26/09/2023", url: "https://vietnamnet.vn/bo-viec-co-quan-nguoi-dan-ong-chon-lam-viec-o-mo-than-2190156.html"}],
   },
   {
@@ -410,6 +415,7 @@ const stories = [
     intro: [
       "Lý Văn Dỉ rời quê Cao Bằng xuống Quảng Ninh học nghề khai thác hầm lò. Sau năm năm tại Công trường Khai thác 2, Than Núi Béo, anh có một nhịp sống đặc biệt: hoàn thành ca sản xuất ở mỏ và giữ vai trò điểm tựa cho ba con nhỏ ở quê.",
       "Câu chuyện về <strong>người cha thợ lò Lý Văn Dỉ</strong> được Báo Công Thương kể qua những chi tiết rất gần: cuộc gọi sau ca, chuyến xe về nhà, căn nhà sàn cũ và chiếc camera nhỏ giúp anh nhìn thấy các con khi phải ở xa.",
+      "Hơn ba năm qua, anh trực tiếp gánh phần lớn trách nhiệm chăm lo cho hai con gái và một con trai đang tuổi đến trường. Khoảng cách giữa Quảng Ninh và Cao Bằng khiến sự hiện diện của người cha được chia thành từng cuộc gọi, từng kỳ nghỉ và những chuyến trở về sau khi hoàn thành đủ ngày công.",
     ],
     sections: [
       {
@@ -424,6 +430,7 @@ const stories = [
         paragraphs: [
           "Tan ca, việc đầu tiên của anh là hỏi chuyện học và sức khỏe của con. Khi hoàn thành lịch làm việc trong tháng, anh thu xếp trở về Cao Bằng để trực tiếp chăm sóc gia đình.",
           "Anh thuê chỗ ở riêng tại Quảng Ninh để có thể đón các con xuống trong kỳ nghỉ. Quyết định ấy cho thấy người lao động xa quê luôn phải tổ chức song song hai không gian sống: nơi làm việc và mái nhà mình hướng tới.",
+          "Sự sắp xếp ấy đòi hỏi anh tính kỹ thời gian, chi tiêu và lịch học của các con. Công việc theo ca vẫn phải hoàn thành đều, trong khi mọi quyết định ở quê—từ sức khỏe tới chuyện trường lớp—đều cần người cha theo dõi từ xa.",
         ],
       },
       {
@@ -538,6 +545,7 @@ const stories = [
     intro: [
       "Phạm Đình Duẩn đến Than Vàng Danh năm 2005 và trưởng thành qua nhiều vị trí trực tiếp dưới lò. Bài viết của Báo Đầu tư chọn một lát cắt đặc biệt: cuộc cứu hộ sau sự cố sụt lò ngày 15/4/2023.",
       "Khi hai công nhân bị vùi lấp, nhiều tổ cứu hộ được thành lập. Anh Duẩn phụ trách một tổ, cùng lực lượng tại chỗ chạy đua với thời gian. Câu chuyện <strong>Phạm Đình Duẩn cứu hộ thợ lò</strong> cho thấy kinh nghiệm sản xuất có thể trở thành năng lực bảo vệ sinh mạng trong giờ phút khẩn cấp.",
+      "Người thợ quê Thái Bình đến vùng mỏ từ lời kể của những lớp công nhân đi trước. Hai thập niên bám lò đưa anh từ vị trí công nhân tới lò trưởng rồi tổ trưởng sản xuất; mỗi nấc nghề nghiệp đều được tạo nên trong hiện trường, bên thiết bị và đồng đội.",
     ],
     sections: [
       {
@@ -559,6 +567,7 @@ const stories = [
         paragraphs: [
           "Trước sự cố, anh Duẩn đã có nhiều giải pháp cải tiến tại đơn vị và sáng kiến cấp công ty. Khả năng quan sát hiện trường, nhận ra điểm bất hợp lý rồi đề xuất cách xử lý là nền tảng chung của cả cải tiến sản xuất lẫn ứng phó sự cố.",
           "Một người thợ giỏi vì thế cần nhiều hơn sức khỏe. Anh phải hiểu thiết bị, địa chất, con người trong tổ và giới hạn an toàn của từng phương án trước khi quyết định hành động.",
+          "Kinh nghiệm của anh còn được truyền lại qua việc kèm công nhân mới, học sinh thực tập và thợ chuẩn bị nâng bậc. Khi lớp người sau có thể tự nhận việc khó và giữ đúng chuẩn an toàn, tri thức của người thợ lâu năm mới thực sự trở thành năng lực của cả tổ.",
         ],
       },
     ],
@@ -645,6 +654,8 @@ const stories = [
 
 export const pressStoryArticles = stories.map((article, index) => ({
   contentMode: "press_digest",
+  sourceLayout: true,
+  inlineMedia: pressStoryInlineMedia[article.slug] || [],
   published: `${publishedDay}T${String(14 + Math.floor(index / 4)).padStart(2, "0")}:${String((index % 4) * 12).padStart(2, "0")}:00+07:00`,
   updated: `${publishedDay}T${String(14 + Math.floor(index / 4)).padStart(2, "0")}:${String((index % 4) * 12).padStart(2, "0")}:00+07:00`,
   urlPath: `tin-nganh-than/2026/08/01/${article.slug}`,

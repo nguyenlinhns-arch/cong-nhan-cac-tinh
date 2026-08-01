@@ -88,6 +88,10 @@ const makeArticle = (article, index) => {
     image: sourceImage.image,
     imageAlt: sourceImage.alt,
     imageSource: sourceImage.credit,
+    imageCaption: sourceImage.caption,
+    imageOriginal: sourceImage.originalImage,
+    imageLocalFile: sourceImage.localFile,
+    imageReferrerPolicy: sourceImage.referrerPolicy,
   };
 };
 
