@@ -1,5 +1,5 @@
 {
-  "version": "3.0",
+  "version": "4.0",
   "publisher": {
     "name": "Thầy Linh – Tuyển Thợ Mỏ",
     "contact_name": "Nguyễn Tử Linh",
@@ -24,6 +24,7 @@
       "location": {
         "locality": "Quảng Ninh",
         "region": "Quảng Ninh",
+        "postal_code": "01000",
         "country": "VN"
       },
       "candidate_sources": "Toàn quốc – 34 tỉnh, thành",
@@ -92,6 +93,7 @@
       "location": {
         "locality": "Quảng Ninh",
         "region": "Quảng Ninh",
+        "postal_code": "01000",
         "country": "VN"
       },
       "candidate_sources": "Toàn quốc – 34 tỉnh, thành",

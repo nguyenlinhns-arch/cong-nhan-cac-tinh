@@ -51,7 +51,6 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
   const status = makeElement();
   const code = makeElement();
   const sms = makeElement();
-  const copy = makeElement();
   const submit = makeElement();
   const delivery = makeElement();
   const selectors = new Map([
@@ -60,7 +59,6 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
     ["[data-application-message]", output],
     ["[data-form-error]", error],
     ["[data-birth-date]", fields.birth_date],
-    ["[data-copy-application]", copy],
     ["[data-application-status]", status],
     ["[data-application-code]", code],
     ["[data-sms-application]", sms],
@@ -83,7 +81,7 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
       querySelector: selector => selectors.get(selector) || null,
       execCommand: () => true,
     },
-    navigator: { clipboard: { writeText: async () => {} } },
+    navigator: {},
     localStorage: {
       getItem: key => stored.get(key) || null,
       setItem: (key, value) => stored.set(key, value),
@@ -157,6 +155,7 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
 }
 
 const results = [];
+if (/navigator\.clipboard|data-copy-application|ApplicationCopy/.test(source)) throw new Error("Application flow must not copy to the clipboard");
 results.push(await runCase({ height: 153, weight: 47, health: "Sức khỏe tốt, sẵn sàng khám tuyển", expected: "eligible" }));
 results.push(await runCase({ height: 165, weight: 58, health: "Cần trao đổi thêm trước khi khám", expected: "needs_review" }));
 results.push(await runCase({ height: 152, weight: 47, health: "Sức khỏe tốt, sẵn sàng khám tuyển", expected: "not_eligible" }));

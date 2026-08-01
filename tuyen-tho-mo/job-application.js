@@ -8,7 +8,6 @@
   const output = document.querySelector("[data-application-message]");
   const error = document.querySelector("[data-form-error]");
   const birthDate = document.querySelector("[data-birth-date]");
-  const copyButton = document.querySelector("[data-copy-application]");
   const statusOutput = document.querySelector("[data-application-status]");
   const codeOutput = document.querySelector("[data-application-code]");
   const smsLink = document.querySelector("[data-sms-application]");
@@ -141,17 +140,6 @@
     };
   }
 
-  async function copyText(value) {
-    try {
-      await navigator.clipboard.writeText(value);
-    } catch (_) {
-      output.hidden = false;
-      output.focus();
-      output.select();
-      document.execCommand("copy");
-    }
-  }
-
   async function deliverApplication(payload) {
     const endpoint = String(recruitment.endpoint || "").trim();
     if (!endpoint) return { saved: false, reason: "not_configured" };
@@ -273,7 +261,7 @@
       deliveryOutput.dataset.state = delivery.saved ? "saved" : "fallback";
       deliveryOutput.textContent = delivery.saved
         ? "Đăng ký đã được tiếp nhận. Bộ phận tư vấn sẽ liên hệ theo số điện thoại bạn cung cấp."
-        : "Tin đăng ký đã được tạo và sao chép. Hãy mở Zalo, Messenger hoặc SMS bên dưới để gửi ngay cho Thầy Linh.";
+        : "Tin đăng ký đã được tạo. Hãy mở Zalo, Messenger hoặc SMS bên dưới để gửi ngay cho Thầy Linh.";
     }
     if (submitButton) {
       submitted = delivery.saved;
@@ -290,7 +278,6 @@
       }));
     } catch (_) {}
 
-    await copyText(message);
     track("Lead", {
       action: delivery.saved ? "application_saved" : "application_message_created",
       context: formContext,
@@ -305,10 +292,4 @@
     result.scrollIntoView({ behavior: "smooth", block: "center" });
   });
 
-  copyButton?.addEventListener("click", async () => {
-    await copyText(output.value);
-    copyButton.textContent = "Đã sao chép tin nhắn";
-    track("ApplicationCopy", { action: "message_copied", context: "application_result" });
-    window.setTimeout(() => { copyButton.textContent = "Sao chép lại tin nhắn"; }, 2500);
-  });
 })();

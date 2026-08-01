@@ -11,10 +11,13 @@ const roles = [
 ];
 const dossierDocuments = master.dossier?.admission_documents || [];
 
-if (master.version < 3) errors.push("Recruitment master must use synchronized dossier/address schema v3");
+if (master.version < 4) errors.push("Recruitment master must use Google Jobs compatible schema v4");
 if (dossierDocuments.length !== 3) errors.push(`Recruitment master must define exactly three admission documents, found ${dossierDocuments.length}`);
 for (const field of ["address", "admission_address"]) {
   if (!master.contact?.[field]) errors.push(`Recruitment master is missing contact.${field}`);
+}
+for (const field of ["locality", "region", "postal_code", "country"]) {
+  if (!master.job_location?.[field]) errors.push(`Recruitment master is missing job_location.${field}`);
 }
 
 const visibleText = html => html
@@ -51,11 +54,19 @@ for (const [slug, expectedTitle] of roles) {
   }
   if (job.title !== expectedTitle) errors.push(`${slug}: title does not describe the single visible role`);
   if (job.hiringOrganization?.name !== master.hiring_organization) errors.push(`${slug}: wrong hiring organization`);
-  if (job.jobLocation?.address?.addressRegion !== master.work_location) errors.push(`${slug}: work location must be Quảng Ninh`);
+  if (job.jobLocation?.address?.addressRegion !== master.job_location.region) errors.push(`${slug}: work location must be Quảng Ninh`);
+  if (job.jobLocation?.address?.addressLocality !== master.job_location.locality) errors.push(`${slug}: wrong work locality`);
+  if (job.jobLocation?.address?.postalCode !== master.job_location.postal_code) errors.push(`${slug}: missing or wrong work postalCode`);
+  if (job.jobLocation?.address?.addressCountry !== master.job_location.country) errors.push(`${slug}: wrong work country`);
   if (job.jobLocation?.address?.streetAddress) errors.push(`${slug}: recruitment office address cannot be used as the worksite`);
   if (job.directApply !== true) errors.push(`${slug}: directApply must be true`);
-  if (job.experienceRequirements !== "no requirements") errors.push(`${slug}: experienceRequirements must use Google's no requirements value`);
-  if (job.educationRequirements !== "no requirements") errors.push(`${slug}: educationRequirements must use Google's no requirements value`);
+  if (job.experienceRequirements?.["@type"] !== "OccupationalExperienceRequirements" || job.experienceRequirements?.monthsOfExperience !== 0) {
+    errors.push(`${slug}: experienceRequirements must declare zero months as a typed object`);
+  }
+  if (Object.hasOwn(job, "educationRequirements")) errors.push(`${slug}: educationRequirements must be omitted when no formal credential is compulsory`);
+  if (job.responsibilities !== (expectedTitle.startsWith("Kỹ thuật khai thác")
+    ? "Vận hành theo quy trình khai thác, phối hợp thiết bị và tổ đội trong dây chuyền sản xuất hầm lò sau khi hoàn thành chương trình đào tạo."
+    : "Tham gia đào, chống giữ, gia cố và duy trì đường lò phục vụ sản xuất sau khi hoàn thành chương trình đào tạo.")) errors.push(`${slug}: responsibilities are missing or inconsistent`);
   if (job.baseSalary) errors.push(`${slug}: baseSalary is not allowed because the 20–25 million commitment depends on completing the labor norm and is not a fixed base salary`);
   if (new Date(job.validThrough).getTime() <= Date.now()) errors.push(`${slug}: validThrough is not in the future`);
   if (!html.includes("data-application-form") || !html.includes("data-application-submit")) errors.push(`${slug}: direct application form is missing`);
@@ -75,7 +86,10 @@ for (const [slug, expectedTitle] of roles) {
   if (feedJob?.application?.contact_address !== master.contact.address) errors.push(`${slug}: jobs.json has the wrong contact address`);
   if (feedJob?.application?.admission_address !== master.contact.admission_address) errors.push(`${slug}: jobs.json has the wrong admission address`);
   if (JSON.stringify(feedJob?.dossier) !== JSON.stringify(master.dossier)) errors.push(`${slug}: jobs.json dossier is not synchronized with the master`);
+  if (feedJob?.location?.postal_code !== master.job_location.postal_code) errors.push(`${slug}: jobs.json is missing the synchronized postal code`);
 }
+
+if (feed.version !== "4.0") errors.push(`jobs.json must use schema version 4.0, found ${feed.version}`);
 
 const campaign = fs.readFileSync(path.join(root, "viec-lam", "cong-nhan-mo-ham-lo-quang-ninh", "index.html"), "utf8");
 if (/"@type"\s*:\s*"JobPosting"/.test(campaign)) errors.push("Recruitment list page must not contain JobPosting markup");
