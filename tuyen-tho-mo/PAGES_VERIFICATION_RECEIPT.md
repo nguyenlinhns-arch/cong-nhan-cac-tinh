@@ -1,11 +1,11 @@
 # GitHub Pages verification receipt
 
 - Website: Thầy Linh – Tuyển Thợ Mỏ
-- Home URL: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/
+- Home URL: https://thaylinhtuyenthomo.vn/
 - Home HTTP: 200
-- Province URL: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/viec-lam-nganh-than/gia-lai/
+- Province URL: https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/gia-lai/
 - Province HTTP: 200
-- Existing root URL: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/
+- Existing root URL: https://thaylinhtuyenthomo.vn/
 - Existing root HTTP: 200
 - OG image HTTP: 200
 - Zalo CTA: VERIFIED

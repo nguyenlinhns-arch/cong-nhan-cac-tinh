@@ -3,32 +3,8 @@
   "policy": "Nguồn URL chỉ dùng cho kiểm chứng nội bộ; bài công khai ghi tên nguồn bằng chữ và không đặt liên kết ra ngoài.",
   "articles": [
     {
-      "slug": "viec-lam-nganh-than-thang-8-2026",
-      "title": "Việc làm ngành Than tháng 8/2026: lương và nhu cầu tuyển dụng",
-      "sources": [
-        {
-          "publisher": "TKV",
-          "title": "TKV duy trì ổn định sản xuất kinh doanh, lợi nhuận 7 tháng đầu năm vượt kế hoạch",
-          "date": "31/07/2026",
-          "url": "https://vinacomin.vn/news/slug/tkv-duy-tri-on-dinh-san-xuat-kinh-doanh-loi-nhuan-7-thang-dau-nam-vuot-ke-hoach"
-        },
-        {
-          "publisher": "Cục Công nghiệp",
-          "title": "Nửa đầu năm 2026, TKV cung cấp 22,77 triệu tấn than cho sản xuất điện",
-          "date": "04/07/2026",
-          "url": "https://via.gov.vn/tin-tuc/t13917/nua-dau-nam-2026-tkv-cung-cap-22-77-trieu-tan-than-cho-san-xuat-dien"
-        },
-        {
-          "publisher": "Công đoàn TKV",
-          "title": "Phát huy truyền thống Kỷ luật và Đồng tâm, thực hiện thắng lợi Nghị quyết Hội nghị Người lao động TKV năm 2026",
-          "date": "05/02/2026",
-          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/45021/Phat-huy-truyen-thong-%E2%80%9CKy-luat-va-%C4%90ong-tam%E2%80%9D-thuc-hien-thang-loi-Nghi-quyet-Hoi-nghi-Nguoi-lao-%C4%91ong-TKV-nam-2026"
-        }
-      ]
-    },
-    {
       "slug": "dieu-kien-tuyen-tho-lo-2026",
-      "title": "Điều kiện tuyển thợ lò 2026: cánh cửa đầu tiên vào nghề mỏ",
+      "title": "Điều kiện tuyển thợ lò năm 2026: ai có thể bắt đầu?",
       "sources": [
         {
           "publisher": "Trường Cao đẳng Than - Khoáng sản Việt Nam",
@@ -39,7 +15,7 @@
     },
     {
       "slug": "ho-so-hoc-nghe-mo-can-gi",
-      "title": "Hồ sơ học nghề mỏ: 02 bộ giấy tờ cho một hành trình mới",
+      "title": "Hồ sơ học nghề mỏ năm 2026 gồm những giấy tờ gì?",
       "sources": [
         {
           "publisher": "Trường Cao đẳng Than - Khoáng sản Việt Nam",
@@ -50,7 +26,7 @@
     },
     {
       "slug": "hoc-nghe-khai-thac-mo-2-3-thang",
-      "title": "Học nghề mỏ 2–3 tháng: bước khởi đầu ngắn, cơ hội dài lâu",
+      "title": "2–3 tháng học nghề mỏ: người mới được chuẩn bị ra sao?",
       "sources": [
         {
           "publisher": "Trường Cao đẳng Than - Khoáng sản Việt Nam",
@@ -224,6 +200,30 @@
           "title": "Tăng tốc tiến độ dự án băng tải nhưng phải bảo đảm an toàn",
           "date": "13/07/2026",
           "url": "https://nhandan.vn/tang-toc-tien-do-phan-dau-hoan-thanh-du-an-bang-tai-van-chuyen-than-trong-thang-8-post975334.html"
+        }
+      ]
+    },
+    {
+      "slug": "viec-lam-nganh-than-thang-8-2026",
+      "title": "Việc làm ngành Than tháng 8/2026: lương và nhu cầu tuyển dụng",
+      "sources": [
+        {
+          "publisher": "TKV",
+          "title": "TKV duy trì ổn định sản xuất kinh doanh, lợi nhuận 7 tháng đầu năm vượt kế hoạch",
+          "date": "31/07/2026",
+          "url": "https://vinacomin.vn/news/slug/tkv-duy-tri-on-dinh-san-xuat-kinh-doanh-loi-nhuan-7-thang-dau-nam-vuot-ke-hoach"
+        },
+        {
+          "publisher": "Cục Công nghiệp",
+          "title": "Nửa đầu năm 2026, TKV cung cấp 22,77 triệu tấn than cho sản xuất điện",
+          "date": "04/07/2026",
+          "url": "https://via.gov.vn/tin-tuc/t13917/nua-dau-nam-2026-tkv-cung-cap-22-77-trieu-tan-than-cho-san-xuat-dien"
+        },
+        {
+          "publisher": "Công đoàn TKV",
+          "title": "Phát huy truyền thống Kỷ luật và Đồng tâm, thực hiện thắng lợi Nghị quyết Hội nghị Người lao động TKV năm 2026",
+          "date": "05/02/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/45021/Phat-huy-truyen-thong-%E2%80%9CKy-luat-va-%C4%90ong-tam%E2%80%9D-thuc-hien-thang-loi-Nghi-quyet-Hoi-nghi-Nguoi-lao-%C4%91ong-TKV-nam-2026"
         }
       ]
     },

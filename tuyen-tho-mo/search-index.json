@@ -365,6 +365,7 @@
       "title": "TKV dành 20 tỷ đồng chăm lo người có công năm 2026",
       "description": "TKV ủng hộ 20 tỷ đồng cho chương trình chăm lo người có công với cách mạng trên toàn quốc năm 2026, nhân dịp kỷ niệm Ngày 27/7.",
       "keywords": [
+        "chương trình chăm lo người có công năm 2026",
         "TKV ủng hộ người có công 20 tỷ đồng",
         "TKV an sinh xã hội",
         "TKV hỗ trợ cộng đồng",
@@ -395,6 +396,7 @@
       "title": "TKV hỗ trợ 10 tỷ đồng cho bốn tỉnh miền núi phía Bắc",
       "description": "TKV hỗ trợ Cao Bằng, Thái Nguyên mỗi tỉnh 3 tỷ đồng; Lạng Sơn, Lào Cai mỗi tỉnh 2 tỷ đồng để khắc phục hậu quả thiên tai năm 2025.",
       "keywords": [
+        "gói hỗ trợ bốn tỉnh miền núi phía Bắc",
         "TKV hỗ trợ miền núi phía Bắc 10 tỷ đồng",
         "TKV an sinh xã hội",
         "TKV hỗ trợ cộng đồng",
@@ -427,6 +429,7 @@
       "title": "TKV hỗ trợ 5 tỷ đồng xóa nhà tạm, nhà dột nát tại Lâm Đồng",
       "description": "TKV hỗ trợ 5 tỷ đồng cho chương trình xóa nhà tạm, nhà dột nát tại Lâm Đồng, góp phần giúp hộ khó khăn ổn định chỗ ở và cuộc sống.",
       "keywords": [
+        "gói hỗ trợ 5 tỷ đồng xóa nhà tạm tại Lâm Đồng",
         "TKV hỗ trợ xóa nhà tạm Lâm Đồng",
         "TKV an sinh xã hội",
         "TKV hỗ trợ cộng đồng",
@@ -457,6 +460,7 @@
       "title": "TKV ủng hộ 10 tỷ đồng khắc phục hậu quả bão Bualoi",
       "description": "TKV trao 10 tỷ đồng qua Ủy ban Trung ương MTTQ Việt Nam để hỗ trợ các địa phương bị ảnh hưởng nặng bởi bão số 10 Bualoi năm 2025.",
       "keywords": [
+        "gói cứu trợ 10 tỷ đồng sau bão Bualoi",
         "TKV ủng hộ bão Bualoi 10 tỷ đồng",
         "TKV an sinh xã hội",
         "TKV hỗ trợ cộng đồng",
@@ -472,6 +476,7 @@
       "title": "Tuổi trẻ TKV trao 25 học bổng “Thắp sáng ước mơ”",
       "description": "Đoàn Thanh niên TKV trao 25 suất học bổng tổng trị giá 50 triệu đồng cho học sinh hoàn cảnh khó khăn, tiếp sức các em trong năm học 2025–2026.",
       "keywords": [
+        "chương trình học bổng “Thắp sáng ước mơ”",
         "Đoàn Thanh niên TKV trao 25 học bổng",
         "TKV an sinh xã hội",
         "TKV hỗ trợ cộng đồng",
@@ -533,6 +538,21 @@
       "priority": 60
     },
     {
+      "url": "/bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/",
+      "title": "2–3 tháng học nghề mỏ: người mới được chuẩn bị ra sao?",
+      "description": "Học nghề mỏ 2–3 tháng kết hợp kiến thức nghề, thực hành, an toàn và tác phong tổ đội trước khi làm việc tại doanh nghiệp ở Quảng Ninh.",
+      "keywords": [
+        "học nghề mỏ 2–3 tháng",
+        "đào tạo thợ lò",
+        "học khai thác mỏ",
+        "việc làm ngành Than"
+      ],
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Học nghề",
+      "priority": 50
+    },
+    {
       "url": "/bai-viet/dao-tao-an-toan-truoc-khi-vao-lo/",
       "title": "An toàn hầm lò được đào tạo thế nào trước ca sản xuất đầu tiên?",
       "description": "Đào tạo an toàn trước khi vào lò gồm nhận diện nguy cơ, thông gió, khí mỏ, bục nước, bảo hộ và kỷ luật báo cáo trong sản xuất.",
@@ -549,7 +569,7 @@
     },
     {
       "url": "/bai-viet/dieu-kien-tuyen-tho-lo-2026/",
-      "title": "Điều kiện tuyển thợ lò 2026: cánh cửa đầu tiên vào nghề mỏ",
+      "title": "Điều kiện tuyển thợ lò năm 2026: ai có thể bắt đầu?",
       "description": "Điều kiện tuyển thợ lò 2026 gồm nam 18–35 tuổi, cao từ 1,56 m, nặng từ 48 kg và có sức khỏe tốt để học nghề tại Quảng Ninh.",
       "keywords": [
         "điều kiện tuyển thợ lò 2026",
@@ -578,23 +598,8 @@
       "priority": 50
     },
     {
-      "url": "/bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/",
-      "title": "Học nghề mỏ 2–3 tháng: bước khởi đầu ngắn, cơ hội dài lâu",
-      "description": "Học nghề mỏ 2–3 tháng kết hợp kiến thức nghề, thực hành, an toàn và tác phong tổ đội trước khi làm việc tại doanh nghiệp ở Quảng Ninh.",
-      "keywords": [
-        "học nghề mỏ 2–3 tháng",
-        "đào tạo thợ lò",
-        "học khai thác mỏ",
-        "việc làm ngành Than"
-      ],
-      "category": "training",
-      "categoryLabel": "Học nghề",
-      "type": "Học nghề",
-      "priority": 50
-    },
-    {
       "url": "/bai-viet/ho-so-hoc-nghe-mo-can-gi/",
-      "title": "Hồ sơ học nghề mỏ: 02 bộ giấy tờ cho một hành trình mới",
+      "title": "Hồ sơ học nghề mỏ năm 2026 gồm những giấy tờ gì?",
       "description": "Hồ sơ học nghề mỏ gồm 02 bộ với sơ yếu lý lịch, giấy khai sinh, bằng tốt nghiệp văn hóa và căn cước công dân theo hướng dẫn năm 2026.",
       "keywords": [
         "hồ sơ học nghề mỏ cần gì",
@@ -625,7 +630,7 @@
     {
       "url": "/bai-viet/co-gioi-hoa-khai-thac-ham-lo/",
       "title": "Mỏ hầm lò bước vào thời đại cơ giới hóa: người thợ trẻ cần gì?",
-      "description": "TKV đặt mục tiêu tăng tỷ trọng than khai thác cơ giới hóa lên 34,4% năm 2030. Phân tích công việc, kỹ năng và cơ hội của người thợ mỏ.",
+      "description": "TKV đặt mục tiêu tăng tỷ trọng than khai thác cơ giới hóa lên 34,4% năm 2030. Công việc và kỹ năng của người thợ đang thay đổi ra sao?",
       "keywords": [
         "cơ giới hóa khai thác hầm lò 2026–2030",
         "mỏ hầm lò thông minh",
@@ -640,7 +645,7 @@
     {
       "url": "/bai-viet/san-xuat-sach-hon-nganh-than/",
       "title": "Ngành Than xanh hơn từ những thay đổi dưới mỏ",
-      "description": "Ngành Than đầu tư xử lý nước, giảm bụi, cơ giới hóa và tái sử dụng đất đá thải. Phân tích các chỉ số cho thấy thay đổi môi trường thực tế.",
+      "description": "Ngành Than đầu tư xử lý nước, giảm bụi, cơ giới hóa và tái sử dụng đất đá thải; nhiều chỉ số cho thấy thay đổi môi trường đang diễn ra.",
       "keywords": [
         "sản xuất sạch hơn trong ngành Than",
         "môi trường mỏ Quảng Ninh",
@@ -655,7 +660,7 @@
     {
       "url": "/bai-viet/nghe-tho-lo-co-on-dinh-khong/",
       "title": "Nghề thợ lò có ổn định không? Câu trả lời từ ngành Than 2026",
-      "description": "Nửa đầu năm 2026 TKV sản xuất khoảng 19,7 triệu tấn than sạch và giao điện 22,77 triệu tấn. Phân tích độ ổn định của nghề thợ lò.",
+      "description": "Nửa đầu năm 2026 TKV sản xuất khoảng 19,7 triệu tấn than sạch và cấp 22,77 triệu tấn cho điện. Những con số nói gì về việc làm thợ lò?",
       "keywords": [
         "nghề thợ lò có ổn định không",
         "việc làm ngành Than 2026",
@@ -670,7 +675,7 @@
     {
       "url": "/bai-viet/hoc-thuc-hanh-nghe-mo-ham-lo/",
       "title": "Từ học viên đến thợ giỏi: tay nghề trong thời kỳ mỏ thông minh",
-      "description": "Hội thi thợ giỏi TKV 2026 có 501 thí sinh, 27 nghề. Phân tích vai trò thực hành, kỷ luật và học công nghệ với người mới vào nghề.",
+      "description": "Hội thi thợ giỏi TKV 2026 có 501 thí sinh ở 27 nghề, cho thấy giá trị của thực hành, kỷ luật và khả năng làm chủ công nghệ.",
       "keywords": [
         "tay nghề thợ mỏ trong thời kỳ mỏ thông minh",
         "hội thi thợ giỏi TKV 2026",

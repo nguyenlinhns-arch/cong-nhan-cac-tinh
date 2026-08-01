@@ -84,6 +84,7 @@ if (new Set(items.map((item) => item.url)).size !== items.length) errors.push("D
 
 const articleImages = [];
 const paragraphOwners = new Map();
+const articleVocabulary = [];
 for (const [index, slug] of slugs.entries()) {
   const item = items[index];
   const prefix = `${slug}: `;
@@ -122,6 +123,7 @@ for (const [index, slug] of slugs.entries()) {
     errors.push(`${prefix}contains a public editorial-source block`);
   }
   if (/class="article-(?:meta|source-credit)"/i.test(html)) errors.push(`${prefix}contains visible author, image or source credits`);
+  if (/class="source-note"|<h2[^>]*>\s*Nguồn tham khảo\s*<\/h2>/iu.test(html)) errors.push(`${prefix}contains a visible source block`);
   if (/Bài\s+\d{1,2}\s*\/\s*50|50\+?\s*bài|Cách đọc đúng:|Tóm tắt:/iu.test(visible)) errors.push(`${prefix}contains quota-driven or generic template wording`);
 
   const externalAnchors = [...html.matchAll(/<a\b[^>]*href="(https?:\/\/[^"]+)"/gi)]
@@ -135,6 +137,7 @@ for (const [index, slug] of slugs.entries()) {
   }
 
   const body = html.match(/<article class="article-body">([\s\S]*?)<\/article>/i)?.[1] || "";
+  articleVocabulary.push({slug, words: new Set(normalize(body).split(/\s+/).filter((word) => word.length > 2))});
   for (const match of body.matchAll(/<p(?:\s[^>]*)?>([\s\S]*?)<\/p>/gi)) {
     const paragraph = strip(match[1]);
     if (paragraph.split(/\s+/).length < 30 || paragraph.startsWith("Bài viết do Nguyễn Tử Linh")) continue;
@@ -144,6 +147,18 @@ for (const [index, slug] of slugs.entries()) {
     else paragraphOwners.set(key, slug);
   }
   articleImages.push(image);
+}
+
+for (let left = 0; left < articleVocabulary.length; left += 1) {
+  for (let right = left + 1; right < articleVocabulary.length; right += 1) {
+    const first = articleVocabulary[left];
+    const second = articleVocabulary[right];
+    let shared = 0;
+    for (const word of first.words) if (second.words.has(word)) shared += 1;
+    const union = first.words.size + second.words.size - shared;
+    const similarity = union ? shared / union : 0;
+    if (similarity > 0.85) errors.push(`${first.slug} and ${second.slug}: vocabulary similarity ${(similarity * 100).toFixed(1)}% suggests templated writing`);
+  }
 }
 
 if (new Set(articleImages).size !== articleImages.length) errors.push("Editorial article images must be unique");
@@ -242,6 +257,7 @@ const allHtml = collectHtml(root);
 for (const file of allHtml) {
   const html = fs.readFileSync(file, "utf8");
   const rel = path.relative(root, file);
+  if (/^google[a-z0-9]+\.html$/i.test(rel)) continue;
   const visible = strip(html);
   if (!/<meta\s+name="viewport"\s+content="[^"]*width=device-width/i.test(html)) errors.push(`${rel}: missing responsive viewport`);
   if (!/<link\s+rel="stylesheet"\s+href="\/mobile-ux\.css\?v=1"/i.test(html)) errors.push(`${rel}: missing shared mobile stylesheet`);

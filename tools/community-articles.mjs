@@ -15,7 +15,6 @@ const makeArticle = (article, index) => {
   }
 
   return {
-    showSources: true,
     updated: `${publishedDay}T${String(8 + Math.floor(index / 4)).padStart(2, "0")}:${String((index % 4) * 15).padStart(2, "0")}:00+07:00`,
     published: `${publishedDay}T${String(8 + Math.floor(index / 4)).padStart(2, "0")}:${String((index % 4) * 15).padStart(2, "0")}:00+07:00`,
     urlPath: `tin-nganh-than/2026/08/01/${article.slug}`,
@@ -74,13 +73,13 @@ const stories = [
         title: "Thông tin thu nhập cần đọc thế nào?",
         paragraphs: [
           "Bài gốc của Nhà trường nêu mức thu nhập bình quân 300–350 triệu đồng một năm trong nhóm lao động được báo cáo và mức 18–25 triệu đồng một tháng theo nội dung cam kết phối hợp. Những con số này cho thấy nghề có khả năng tạo thu nhập tốt, nhưng kết quả thực tế phụ thuộc đơn vị, vị trí, ngày công, năng suất và thời gian làm nghề.",
-          "Người tư vấn có trách nhiệm nói cả điều kiện để đạt thu nhập: hoàn thành đào tạo, đủ sức khỏe, chấp hành an toàn, duy trì ngày công và làm được việc trong tổ đội. Không nên dùng trường hợp thu nhập cao nhất để hứa chắc cho người mới bắt đầu.",
+          "Người tư vấn có trách nhiệm nói cả điều kiện để đạt thu nhập: hoàn thành đào tạo, đủ sức khỏe, chấp hành an toàn, duy trì ngày công và làm được việc trong tổ đội. Trường hợp thu nhập cao nhất cần được đặt đúng bối cảnh, không dùng làm lời hứa cho người mới.",
         ],
       },
       {
         title: "Người muốn đăng ký nên đi theo đường chính thức",
         paragraphs: [
-          "Thanh niên tại bốn xã có thể bắt đầu bằng việc kiểm tra năm sinh, chiều cao, cân nặng, thị lực và tình trạng sức khỏe. Sau bước sàng lọc, cần nhận lịch, địa điểm, danh mục hồ sơ và người phụ trách cụ thể. Không nên mua vé hoặc nghỉ công việc hiện tại chỉ vì xem một video hay đọc một bài đăng chưa xác minh.",
+          "Thanh niên tại bốn xã có thể bắt đầu bằng việc kiểm tra năm sinh, chiều cao, cân nặng, thị lực và tình trạng sức khỏe. Sau bước sàng lọc, cần nhận lịch, địa điểm, danh mục hồ sơ và người phụ trách cụ thể rồi mới sắp xếp di chuyển hoặc bàn giao công việc hiện tại.",
           "Gia đình nên cùng tham gia buổi tư vấn để hiểu thời gian học, nơi ở, việc thực tập và đơn vị có thể tiếp nhận. Quyết định đi học bền vững hơn khi người lao động biết rõ mình sẽ học gì, phải tuân thủ điều gì và cách liên hệ khi phát sinh khó khăn.",
         ],
       },
@@ -95,7 +94,7 @@ const stories = [
     faq: [
       ["Người ngoài bốn xã có đăng ký học nghề mỏ được không?", "Có thể liên hệ để kiểm tra theo địa bàn phụ trách và chỉ tiêu từng đợt; quy chế trong bài tập trung vào bốn xã nêu trên."],
       ["Đi học có chắc chắn được bố trí việc làm không?", "Nguồn công bố nêu định hướng bố trí việc làm sau tốt nghiệp, nhưng mỗi người vẫn phải đủ sức khỏe, hoàn thành chương trình và đáp ứng yêu cầu tiếp nhận."],
-      ["Thu nhập 300–350 triệu đồng/năm có áp dụng ngay cho người mới?", "Không nên hiểu như vậy. Đây là số bình quân được báo cáo; thu nhập cá nhân phụ thuộc tay nghề, ngày công, năng suất, vị trí và doanh nghiệp."],
+      ["Thu nhập 300–350 triệu đồng/năm có áp dụng ngay cho người mới?", "Chưa thể hiểu như vậy. Đây là số bình quân được báo cáo; thu nhập cá nhân phụ thuộc tay nghề, ngày công, năng suất, vị trí và doanh nghiệp."],
     ],
     sources: [
       {publisher: "Trường Cao đẳng Than – Khoáng sản Việt Nam", title: "Ký kết quy chế phối hợp tuyển sinh – đào tạo nghề với các địa phương giai đoạn 2025–2030", date: "29/11/2025", url: "https://caodangtkv.edu.vn/truong-cao-dang-than-khoang-san-viet-nam-ky-ket-quy-che-phoi-hop-tuyen-sinh-dao-tao-nghe-voi-cac-dia-phuong-giai-doan-2025-2030/"},
@@ -273,7 +272,7 @@ const stories = [
         title: "Đào tạo theo địa chỉ khác gì tuyển sinh thông thường?",
         paragraphs: [
           "Đào tạo theo địa chỉ bắt đầu từ nhu cầu nhân lực của doanh nghiệp. Nhà trường biết nhóm nghề, năng lực và tác phong cần hình thành; doanh nghiệp có thể tham gia định hướng thực hành, tiếp nhận thực tập và đánh giá đầu ra. Cách làm này thu hẹp khoảng cách giữa bài học và công việc.",
-          "Người học cũng nhìn thấy mục tiêu nghề nghiệp rõ hơn, nhưng không nên hiểu là bỏ qua đánh giá. Nếu sức khỏe không phù hợp, vi phạm kỷ luật hoặc không hoàn thành chương trình, khả năng tiếp nhận sẽ bị ảnh hưởng. Đường đi rõ ràng luôn đi cùng tiêu chuẩn rõ ràng.",
+          "Người học cũng nhìn thấy mục tiêu nghề nghiệp rõ hơn, còn tiêu chuẩn đầu vào và kết quả đào tạo vẫn được giữ nguyên. Sức khỏe phù hợp, kỷ luật tốt và việc hoàn thành chương trình là ba điều kiện để con đường tới doanh nghiệp diễn ra thuận lợi.",
         ],
         bullets: [
           "Địa phương rà soát và giới thiệu đúng nhóm lao động có nhu cầu.",
@@ -412,7 +411,7 @@ const stories = [
         title: "Liên kết gần địa bàn tạo thuận lợi gì?",
         paragraphs: [
           "Người Điền Xá ở trong tỉnh Quảng Ninh nên quãng đường tới cơ sở đào tạo và doanh nghiệp ngắn hơn nhiều nguồn tuyển ngoài tỉnh. Gia đình dễ tham quan, kiểm tra thông tin và hỗ trợ người học khi mới làm quen kỷ luật. Doanh nghiệp cũng thuận lợi tổ chức tư vấn, trải nghiệm và theo dõi người học.",
-          "Lợi thế khoảng cách chỉ phát huy khi thông tin được cung cấp đầy đủ. Các bên cần công khai đầu mối, lịch tiếp nhận, tiêu chuẩn sức khỏe và chính sách từng đợt. Người lao động không nên suy đoán rằng ở gần mỏ là tự động đủ điều kiện vào học hoặc đi làm.",
+          "Lợi thế khoảng cách chỉ phát huy khi thông tin được cung cấp đầy đủ. Các bên cần công khai đầu mối, lịch tiếp nhận, tiêu chuẩn sức khỏe và chính sách từng đợt. Ở gần mỏ thuận tiện cho việc tìm hiểu; điều kiện vào học và đi làm vẫn được xét theo tiêu chuẩn chung.",
         ],
         bullets: [
           "Dễ tổ chức tư vấn trực tiếp cho người lao động và gia đình.",
@@ -497,7 +496,7 @@ const stories = [
         title: "Cách biến một buổi tư vấn thành quyết định nghề nghiệp",
         paragraphs: [
           "Sau chương trình, người quan tâm nên ghi lại ba nhóm thông tin: mình có đủ điều kiện ban đầu hay không; đợt học bắt đầu khi nào và cần hồ sơ gì; sau đào tạo có những đơn vị, vị trí nào dự kiến tiếp nhận. Nếu còn câu chưa rõ, cần hỏi lại trước khi ký hoặc nộp giấy tờ.",
-          "Không nên quyết định chỉ vì bạn bè cùng đi. Nghề mỏ đòi hỏi cam kết cá nhân về sức khỏe, kỷ luật và khả năng làm theo ca. Người lựa chọn có hiểu biết thường bền bỉ hơn, học nghiêm túc hơn và có khả năng đạt mức thu nhập tốt hơn sau khi tích lũy tay nghề.",
+          "Quyết định vào nghề cần xuất phát từ sự phù hợp của chính mỗi người, không chỉ vì bạn bè cùng đi. Nghề mỏ đòi hỏi cam kết về sức khỏe, kỷ luật và khả năng làm theo ca; người hiểu rõ lựa chọn của mình thường học nghiêm túc và bền nghề hơn.",
         ],
       },
     ],
@@ -629,7 +628,7 @@ const stories = [
         title: "Cần minh bạch để lòng tốt đến đúng nơi",
         paragraphs: [
           "Các con số an sinh lớn chỉ có ý nghĩa khi được phân bổ đúng đối tượng, sử dụng đúng mục đích và có kết quả kiểm chứng. Bài báo ghi nhận chủ trương và quy mô chung; danh sách hộ, mức hỗ trợ, thiết kế công trình thuộc trách nhiệm công khai của đơn vị triển khai và địa phương.",
-          "Người dân không nên tin cá nhân tự nhận có thể xin suất hỗ trợ để thu phí. Chương trình xóa nhà tạm phải đi qua quy trình rà soát chính thức. Khi cần xác minh, hãy làm việc với chính quyền cơ sở, Ủy ban MTTQ hoặc cơ quan được giao thực hiện.",
+          "Chương trình chính thức không thu phí qua cá nhân tự nhận có thể xin suất hỗ trợ. Việc xóa nhà tạm đi qua quy trình rà soát của địa phương; người dân có thể xác minh với chính quyền cơ sở, Ủy ban MTTQ hoặc cơ quan được giao thực hiện.",
         ],
       },
     ],
@@ -641,7 +640,7 @@ const stories = [
     ],
     takeaway: "Xóa nhà tạm là an sinh có tính nền móng: giúp một gia đình đứng vững trước rủi ro và có điều kiện nghĩ đến tương lai. Giá trị của đóng góp TKV sẽ lớn nhất khi được thực hiện minh bạch, đúng người và nối tiếp bằng cơ hội học nghề, việc làm.",
     faq: [
-      ["123 tỷ đồng có phải đều dành cho ba tỉnh trong hội nghị?", "Không. Đây là số TKV công bố cho hoạt động xóa nhà tạm, nhà dột nát trong giai đoạn báo cáo; không nên quy toàn bộ cho một sự kiện."],
+      ["123 tỷ đồng có phải đều dành cho ba tỉnh trong hội nghị?", "Không. Đây là số TKV công bố cho hoạt động xóa nhà tạm, nhà dột nát trong cả giai đoạn báo cáo, không phải toàn bộ kinh phí của riêng một sự kiện."],
       ["Người dân có thể đăng ký trực tiếp với TKV không?", "Việc rà soát đối tượng thường thực hiện qua chính quyền và cơ quan được giao tại địa phương; cần theo thông báo chính thức."],
       ["Hoạt động này liên quan gì đến tuyển sinh nghề mỏ?", "An sinh và việc làm đều là các hướng TKV phối hợp với địa phương; mỗi chương trình có tiêu chí riêng và không tự động chuyển đổi quyền lợi."],
     ],
@@ -776,7 +775,7 @@ const stories = [
     faq: [
       ["Công trình phục vụ trường nào?", "Nguồn công bố nêu Liên trường Mầm non, Tiểu học và THCS Sơn Bình, huyện Tam Đường, tỉnh Lai Châu."],
       ["TKV có công bố số tiền xây giếng không?", "Thông tin nguồn được rà soát cho bài này không nêu con số đủ rõ để trích dẫn, nên bài không suy đoán kinh phí."],
-      ["Nước giếng có thể dùng uống trực tiếp không?", "Phải căn cứ kết quả kiểm nghiệm và hệ thống xử lý; không nên mặc định nước giếng khoan luôn đạt tiêu chuẩn uống trực tiếp."],
+      ["Nước giếng có thể dùng uống trực tiếp không?", "Việc sử dụng phải căn cứ kết quả kiểm nghiệm và hệ thống xử lý; nước giếng khoan chỉ dùng uống trực tiếp khi đạt tiêu chuẩn phù hợp."],
     ],
     sources: [
       {publisher: "TKV", title: "Đoàn Thanh niên TKV hỗ trợ xây dựng công trình giếng khoan cấp nước sinh hoạt cho trường học", date: "06/09/2024", url: "https://vinacomin.vn/news/slug/doan-thanh-nien-tkv-ho-tro-xay-dung-cong-trinh-gieng-khoan-cap-nuoc-sinh-hoat-cho-truong-hoc"},
@@ -809,7 +808,7 @@ const stories = [
         title: "Bảng phân bổ nói lên ưu tiên cứu trợ",
         paragraphs: [
           "Lâm Đồng nhận mức cao nhất 5 tỷ đồng; Đắk Lắk nhận 3 tỷ; Khánh Hòa và Gia Lai mỗi tỉnh 2 tỷ. Tại các buổi tiếp nhận, đại diện Ủy ban MTTQ địa phương cho biết nguồn lực sẽ ưu tiên hộ chịu thiệt hại nặng, giúp người dân khắc phục khó khăn sau thiên tai.",
-          "Khoản hỗ trợ có thể góp vào sửa nhà, khôi phục sinh hoạt, hỗ trợ nhu yếu phẩm hoặc sản xuất theo phương án của địa phương. Bài nguồn không công bố bảng chi đến từng hộ, vì vậy không nên tự quy đổi tổng số tiền thành mức mà mỗi gia đình sẽ nhận.",
+          "Khoản hỗ trợ có thể góp vào sửa nhà, khôi phục sinh hoạt, hỗ trợ nhu yếu phẩm hoặc sản xuất theo phương án của địa phương. Bài nguồn chưa công bố bảng chi đến từng hộ; mức của mỗi gia đình sẽ phụ thuộc kết quả rà soát và phương án phân bổ.",
         ],
         bullets: [
           "Lâm Đồng: 5 tỷ đồng.",
@@ -851,130 +850,178 @@ const stories = [
   },
 ];
 
-const makeLocalCooperationStory = (item) => ({
-  slug: item.slug,
-  section: "Kết nối địa phương",
-  title: item.title,
-  description: item.description,
-  lead: item.lead,
-  keyword: item.keyword,
-  keywords: [item.keyword, `học nghề mỏ ${item.locality}`, `việc làm TKV ${item.locality}`, "Trường Cao đẳng TKV"],
-  image: item.image,
-  imageAlt: item.imageAlt,
-  imageSource: item.imageSource,
-  facts: item.facts,
-  intro: [
-    `Chương trình <strong>${item.keyword}</strong> cho thấy tuyển sinh nghề mỏ chỉ bền vững khi thông tin được đưa đến đúng địa bàn và có người chịu trách nhiệm ở từng khâu. ${item.eventSummary} Sự hiện diện đồng thời của ${item.partners} giúp người lao động không phải tự ghép nối những thông tin rời rạc về nơi học, nghề đào tạo và doanh nghiệp sử dụng lao động.`,
-    `Với ${item.locality}, giá trị lớn nhất của hoạt động này là tạo ra một tuyến đi có thể kiểm chứng: hỏi tại địa phương, sàng lọc điều kiện, tham gia đào tạo và đối chiếu nơi làm việc dự kiến. ${item.resultSummary} Những dữ kiện của giai đoạn đã công bố là căn cứ tham khảo, không phải lời hứa rằng mọi hồ sơ mới đều được tiếp nhận hoặc có cùng một mức thu nhập.`,
-  ],
-  sections: [
-    {
-      title: `Điểm đáng chú ý trong mô hình tại ${item.locality}`,
-      paragraphs: [
-        `${item.evidence} Khi kết quả được nêu bằng số hội nghị, số người được tư vấn, số người nhập học hoặc số lao động đã có việc làm, gia đình có thể đánh giá chương trình cụ thể hơn một thông báo tuyển dụng chung chung. Các bên cũng có cơ sở nhìn ra khâu nào đang tốt và khâu nào cần tiếp tục hỗ trợ.`,
-        `Mô hình tại ${item.locality} phân vai khá rõ. Chính quyền và đoàn thể nắm địa bàn, hỗ trợ tuyên truyền tới thôn bản; Nhà trường tư vấn nghề, tổ chức đào tạo và rèn tác phong; ${item.enterprise} cung cấp nhu cầu sử dụng lao động, điều kiện thực tế và đầu ra sau đào tạo. Cấu trúc này làm giảm khoảng trống trách nhiệm trong hành trình vào nghề.`,
-      ],
-      bullets: item.bullets,
-    },
-    {
-      title: `Cơ hội việc làm TKV đối với lao động ${item.locality}`,
-      paragraphs: [
-        `${item.opportunity} Với người chưa có nghề ổn định, đào tạo gắn với doanh nghiệp là một lựa chọn đáng cân nhắc vì mục tiêu học tập và vị trí việc làm được đặt trong cùng kế hoạch. Người học vẫn cần hiểu rằng nghề mỏ hầm lò đòi hỏi sức khỏe, khả năng làm theo ca, kỷ luật an toàn và sự thích nghi khi làm việc xa nhà.`,
-        `Thu nhập được nêu trong các hội nghị thường là mức bình quân hoặc khoảng tham khảo của người đã đi làm. Tại ${item.locality}, người đăng ký nên hỏi rõ vị trí, đơn vị, cách tính ngày công, thời gian thử việc và các khoản phúc lợi của đúng đợt tuyển. Không nên biến một trường hợp điển hình thành cam kết thu nhập cho người mới.`,
-      ],
-    },
-    {
-      title: `Gia đình nên kiểm chứng những gì trước khi đăng ký?`,
-      paragraphs: [
-        `Một hồ sơ tại ${item.locality} nên bắt đầu bằng sàng lọc năm sinh, chiều cao, cân nặng, thị lực và tiền sử sức khỏe. Sau đó, người lao động cần nhận rõ lịch tuyển, địa điểm khám hoặc nhập học, danh mục giấy tờ và đầu mối phụ trách. Việc này giúp tránh mua vé, nghỉ việc hoặc giao giấy tờ cho người không có thẩm quyền.`,
-        `${item.caution} Gia đình nên cùng nghe tư vấn để hiểu thời gian học, nơi ở, chế độ trong giai đoạn đào tạo, yêu cầu thực tập và khả năng bố trí việc làm. Một quyết định được chuẩn bị đầy đủ thường bền vững hơn quyết định chỉ dựa trên mức lương được nhắc đến trên mạng xã hội.`,
-      ],
-    },
-    {
-      title: `Điều gì quyết định hiệu quả giai đoạn tiếp theo?`,
-      paragraphs: [
-        `${item.target} Tuy nhiên, chỉ tiêu chỉ có ý nghĩa khi người được tuyển phù hợp, hoàn thành đào tạo và có thể duy trì công việc. Vì vậy, các bên tại ${item.locality} cần theo dõi cả tỷ lệ nhập học, tốt nghiệp, nhận việc và gắn bó sau tuyển, thay vì dừng ở số hồ sơ phát ra.`,
-        `Thông tin cũng cần được cập nhật theo từng đợt vì chính sách hỗ trợ, chỉ tiêu doanh nghiệp và tiêu chuẩn tuyển sinh có thể thay đổi. Công khai đầu mối, phản hồi sớm cho hồ sơ chưa phù hợp và tiếp tục hỗ trợ người học trong những tháng đầu là ba việc giúp chương trình tại ${item.locality} giữ được niềm tin lâu dài.`,
-      ],
-    },
-  ],
-  checklist: [
-    ["Sàng lọc ban đầu", `Kiểm tra thể lực và sức khỏe trước khi chuẩn bị hồ sơ từ ${item.locality}.`],
-    ["Đối chiếu ba bên", `Xác nhận thông tin với địa phương, Nhà trường và ${item.enterprise}.`],
-    ["Hỏi đúng đợt", "Ghi rõ lịch, chính sách hỗ trợ, nghề học và đơn vị dự kiến tiếp nhận."],
-    ["Chuẩn bị đi xa", "Trao đổi với gia đình về thời gian học, nơi ở, ca làm và kỷ luật nghề."],
-  ],
-  takeaway: `Bài học từ ${item.locality} là tuyển sinh hiệu quả không nằm ở việc nói nhiều về cơ hội, mà ở khả năng tạo một chuỗi trách nhiệm có địa chỉ. Người lao động cần được tư vấn đúng, học đúng nghề và biết nơi mình có thể làm việc sau khi hoàn thành chương trình.`,
-  faq: [
-    [`Người ngoài ${item.locality} có thể đăng ký không?`, `Có thể đề nghị kiểm tra theo địa bàn và chỉ tiêu đang mở. Bài nguồn tập trung vào ${item.locality}, còn lịch tiếp nhận nơi khác cần được xác nhận riêng.`],
-    ["Học xong có chắc chắn được nhận việc không?", `Chương trình tại ${item.locality} gắn đào tạo với nhu cầu doanh nghiệp, nhưng từng người vẫn phải đủ sức khỏe, hoàn thành chương trình và đáp ứng yêu cầu tiếp nhận.`],
-    ["Có nên dựa vào mức thu nhập được nêu tại hội nghị?", `Nên coi đó là dữ liệu tham khảo của ${item.locality}. Thu nhập thực tế còn phụ thuộc nghề, vị trí, đơn vị, ngày công, năng suất và thời gian làm việc.`],
-  ],
-  sources: item.sources,
-});
+const storyFrame = (slug, count) => [...slug].reduce((total, character) => total + character.codePointAt(0), 0) % count;
+const lowerInitial = (text) => text.charAt(0).toLocaleLowerCase("vi") + text.slice(1);
 
-const makeCommunitySupportStory = (item) => ({
-  slug: item.slug,
-  section: "An sinh xã hội",
-  title: item.title,
-  description: item.description,
-  lead: item.lead,
-  keyword: item.keyword,
-  keywords: [item.keyword, "TKV an sinh xã hội", "TKV hỗ trợ cộng đồng", item.beneficiaryKeyword],
-  image: item.image,
-  imageAlt: item.imageAlt,
-  imageSource: item.imageSource,
-  facts: item.facts,
-  related: ["san-xuat-sach-hon-nganh-than", "an-toan-mua-mua-bao-2026"],
-  intro: [
-    `<strong>${item.keyword}</strong> là một hoạt động hỗ trợ cộng đồng có số liệu và đối tượng thụ hưởng được công bố rõ. ${item.eventSummary} Việc tách đúng tổng nguồn lực, địa bàn và mục đích hỗ trợ giúp người đọc hiểu quy mô thực tế, tránh cộng dồn nhầm những chương trình khác nhau của Tập đoàn.`,
-    `${item.context} Khoản hỗ trợ không thể tự giải quyết toàn bộ khó khăn, nhưng có thể tạo thêm nguồn lực đúng lúc cho cơ quan tiếp nhận và người dân. Giá trị của chương trình cần được nhìn ở khả năng ổn định đời sống, phục hồi sinh kế hoặc cải thiện điều kiện học tập sau khi lễ trao kết thúc.`,
-  ],
-  sections: [
-    {
-      title: "Nguồn lực được công bố và đối tượng hướng tới",
-      paragraphs: [
-        `${item.allocation} Những con số này nên được đọc theo đúng phạm vi của bài nguồn. Nếu nguồn chỉ nêu tổng mức hoặc cơ quan tiếp nhận, không thể tự suy ra mỗi hộ, mỗi học sinh hay mỗi địa phương sẽ nhận một khoản bằng nhau.`,
-        `${item.delivery} Cơ chế qua cơ quan có thẩm quyền giúp việc rà soát nhu cầu và phân bổ bám sát thực tế địa bàn hơn. Đồng thời, người dân cần tìm thông tin tại chính quyền hoặc tổ chức tiếp nhận, không làm hồ sơ và không chuyển phí cho cá nhân tự xưng là đại diện chương trình.`
-      ],
-      bullets: item.bullets,
-    },
-    {
-      title: "Tác động xã hội cần được nhìn dài hơn lễ trao",
-      paragraphs: [
-        `${item.impact} Một chương trình an sinh tốt cần xử lý nhu cầu trước mắt nhưng cũng tạo điều kiện để gia đình hoặc cộng đồng phục hồi lâu dài. Với thiên tai, đó là chỗ ở, nước sạch, trường học và sinh kế; với chương trình tri ân, đó là sự chăm lo có hệ thống và đúng đối tượng.`,
-        `TKV có mạng lưới đơn vị tại nhiều địa phương, vì vậy hoạt động dành cho ${item.beneficiaryKeyword} còn mang ý nghĩa kết nối doanh nghiệp với cộng đồng nơi có lao động, tài nguyên và hạ tầng. Trách nhiệm xã hội chỉ thuyết phục khi số liệu được công bố đúng phạm vi, quá trình thực hiện có đầu mối và kết quả có thể kiểm chứng.`,
-      ],
-    },
-    {
-      title: "Người dân nên tiếp cận thông tin thế nào?",
-      paragraphs: [
-        `Người thuộc nhóm ${item.beneficiaryKeyword} nên hỏi cơ quan địa phương hoặc tổ chức được nêu trong thông báo chính thức về tiêu chí, danh sách và thời gian thực hiện. Không nên lấy một bài báo làm căn cứ duy nhất để cho rằng mình chắc chắn được nhận hỗ trợ, bởi việc xác định đối tượng còn phụ thuộc rà soát thực tế.`,
-        `${item.safety} Sau thiên tai hoặc trong các chương trình xã hội lớn thường xuất hiện lời kêu gọi giả mạo. Cách an toàn là kiểm tra tên cơ quan, văn bản, tài khoản tiếp nhận và tuyệt đối không cung cấp mã ngân hàng, mã xác thực hoặc nộp lệ phí để được đưa vào danh sách.`,
-      ],
-    },
-    {
-      title: "Cách đánh giá hiệu quả chương trình",
-      paragraphs: [
-        `${item.measurement} Bên cạnh số tiền hoặc số suất hỗ trợ, cần theo dõi tiến độ giải ngân, công trình đã sử dụng được chưa và người thụ hưởng có khắc phục được khó khăn trọng yếu hay không. Đây là các chỉ dấu gần với đời sống hơn hình ảnh tại buổi trao.`,
-        `Minh bạch về ${item.keyword} bảo vệ uy tín của cả TKV, cơ quan tiếp nhận và người được hỗ trợ. Khi thông tin được cập nhật đầy đủ, cộng đồng có thể nhìn đúng đóng góp của doanh nghiệp, còn những chương trình sau có thêm dữ liệu để lựa chọn địa bàn và hình thức hỗ trợ hiệu quả hơn.`,
-      ],
-    },
-  ],
-  checklist: [
-    ["Đọc đúng phạm vi", "Tách tổng nguồn lực, địa bàn, nhóm thụ hưởng và thời điểm công bố."],
-    ["Hỏi đúng đầu mối", `Liên hệ cơ quan phụ trách nhóm ${item.beneficiaryKeyword}, không qua môi giới.`],
-    ["Lưu bằng chứng", "Giữ biên bản, giấy tờ hoặc xác nhận thiệt hại theo hướng dẫn địa phương."],
-    ["Cảnh giác giả mạo", "Không nộp phí, gửi mã xác thực hoặc chuyển tiền để được nhận hỗ trợ."],
-  ],
-  takeaway: item.takeaway,
-  faq: [
-    ["Khoản hỗ trợ có được chia đều cho từng người không?", `Không. Nguồn về ${item.keyword} nêu quy mô và đối tượng chung; mức đến từng trường hợp phụ thuộc phương án rà soát, phân bổ của cơ quan tiếp nhận.`],
-    ["Người dân có gửi hồ sơ trực tiếp cho TKV không?", `Nhóm ${item.beneficiaryKeyword} cần làm theo hướng dẫn của địa phương hoặc tổ chức được giao tiếp nhận. Không gửi giấy tờ cá nhân cho tài khoản mạng xã hội không được xác minh.`],
-    ["Có thể dùng số tiền trong bài để suy ra kết quả cuối cùng không?", `Không nên. Số tiền cho biết quy mô cam kết; hiệu quả còn phải nhìn vào tiến độ thực hiện và mức độ khó khăn được giải quyết cho ${item.beneficiaryKeyword}.`],
-  ],
-  sources: item.sources,
-});
+const localStoryFrames = [
+  (item, source) => ({
+    intro: [
+      `${item.eventSummary} Với thanh niên ${item.locality}, sự kiện ấy mở ra một lối đi cụ thể hơn lời mời tuyển dụng thông thường: biết nơi học, doanh nghiệp đồng hành và đầu mối có thể hỏi ngay tại quê nhà.`,
+      `Theo thông tin ${source.publisher} công bố, ${lowerInitial(item.resultSummary)} ${item.evidence} Những con số đã có người thật, việc thật phía sau giúp câu chuyện <strong>${item.keyword}</strong> trở nên gần gũi với cả người lao động lẫn gia đình.`,
+    ],
+    sections: [
+      {title: "Một con đường đã có người đi trước", paragraphs: [`${item.opportunity} Người mới vì thế có thể tìm hiểu từ chính đồng hương: học những gì, những tháng đầu thích nghi ra sao và điều gì giúp họ đứng vững trong tổ đội.`, `Sự phối hợp của ${item.partners} nối bốn chặng vốn thường rời nhau: tư vấn, tuyển chọn, đào tạo và tiếp nhận. Khi từng chặng có người phụ trách, quyết định rời quê đến Quảng Ninh bớt mơ hồ và có thêm điểm tựa.`], bullets: item.bullets},
+      {title: "Học để làm được việc trong tổ đội", paragraphs: [`Nghề mỏ hấp dẫn ở chỗ thu nhập gắn trực tiếp với tay nghề, ngày công và năng suất. Lớp học là nơi người mới làm quen thiết bị, quy trình an toàn, tác phong ca kíp và cách phối hợp với đồng đội trước khi bước vào môi trường sản xuất.`, `Tại ${item.locality}, người đăng ký nên hỏi rõ nghề đang mở, đơn vị dự kiến bố trí và cách tính thu nhập của đúng vị trí. Một con số bình quân có ý nghĩa tham khảo; giá trị bền vững nằm ở năng lực mà người học tích lũy được sau từng ca làm.`]},
+      {title: "Gia đình cùng nhìn về một hướng", paragraphs: [`Trước khi làm hồ sơ, người lao động cần đo lại thể lực, kiểm tra thị lực, sức khỏe và trao đổi thẳng về việc học, ở ký túc xá rồi làm việc xa nhà. Sự đồng thuận của gia đình thường là nguồn động viên quan trọng trong giai đoạn đầu.`, `${item.caution} Thông tin này cần được hỏi lại ở buổi tư vấn hiện hành, cùng với thời gian học, chế độ sinh hoạt và lịch tiếp nhận. Chuẩn bị kỹ không làm cơ hội kém hấp dẫn; trái lại, nó giúp người chọn nghề bước đi vững vàng hơn.`]},
+      {title: "Mục tiêu mới phải đi tới tận nơi làm việc", paragraphs: [`${item.target} Điều đáng chờ đợi không chỉ là số người ghi danh, mà là số người hoàn thành khóa học, nhận việc và trưởng thành thành công nhân có tay nghề.`, `Nếu địa phương tiếp tục giữ liên lạc với người học, Nhà trường theo sát quá trình đào tạo và ${item.enterprise} hỗ trợ người mới hòa nhập, mô hình tại ${item.locality} có thể trở thành một tuyến việc làm ổn định cho nhiều gia đình.`]},
+    ],
+    takeaway: `Từ ${item.locality} đến Quảng Ninh là một hành trình xa về địa lý nhưng ngày càng rõ về lộ trình. Có người đi trước, có nơi đào tạo và có doanh nghiệp đồng hành—phần còn lại là sức khỏe, kỷ luật và quyết tâm xây nghề của mỗi người.`,
+  }),
+  (item, source) => ({
+    intro: [
+      `${item.evidence} Đó là chi tiết khiến câu chuyện <strong>${item.keyword}</strong> đáng chú ý: hiệu quả được nhìn qua người nhập học và người có việc, không dừng ở số ghế kín trong một buổi tư vấn.`,
+      `${item.eventSummary} ${source.publisher} cho biết: ${lowerInitial(item.resultSummary)} Với nhiều gia đình ${item.locality}, đây là bằng chứng gần gũi rằng học nghề mỏ có thể trở thành một hướng lập nghiệp nghiêm túc.`,
+    ],
+    sections: [
+      {title: "Từ hội trường tới công trường", paragraphs: [`${item.partners} cùng tham gia để biến thông tin thành một quy trình có đầu cuối. Địa phương tìm đúng người có nhu cầu; Nhà trường chuẩn bị nghề và tác phong; ${item.enterprise} cho người học thấy nơi kỹ năng ấy sẽ được sử dụng.`, `${item.opportunity} Những câu chuyện của người đã vào nghề giúp ứng viên hình dung rõ hơn nhịp ca, khu ở, sinh hoạt tập thể và cảm giác nhận tháng lương đầu tiên bằng chính tay nghề của mình.`], bullets: item.bullets},
+      {title: "Điểm hấp dẫn nằm ở một nghề có thể lớn lên", paragraphs: [`Người thợ mới từ ${item.locality} không đứng yên ở ngày đầu vào mỏ. Từ thao tác cơ bản, họ học cách đọc tín hiệu, vận hành thiết bị, giữ an toàn cho đồng đội và nâng năng suất của cả tổ. Tay nghề càng chắc, cơ hội đảm nhận công việc quan trọng và cải thiện thu nhập càng rõ.`, `Vì vậy, các mức thu nhập xuất hiện trong hội nghị nên được hiểu như kết quả của quá trình rèn nghề. Người ở ${item.locality} cần hỏi mức của vị trí dự tuyển, chế độ ca kíp và các khoản phúc lợi để xây một kế hoạch thực tế cho năm đầu.`]},
+      {title: "Ba câu hỏi trước ngày nộp hồ sơ", paragraphs: [`Ứng viên ${item.locality} cần biết mình có đạt điều kiện sức khỏe hay không, khóa nào đang tiếp nhận và doanh nghiệp nào dự kiến bố trí sau đào tạo. Ba câu trả lời ấy quan trọng hơn mọi lời giới thiệu chung trên mạng.`, `${item.caution} Khi cùng dự buổi tư vấn, gia đình còn có thể hỏi về ký túc xá, bữa ăn, thời gian thực tập và cách liên hệ nếu người học gặp khó khăn trong những tuần đầu.`]},
+      {title: "Thành công được tính bằng người bám nghề", paragraphs: [`${item.target} Nhưng một chương trình tốt chỉ thực sự hoàn thành khi người học đi hết khóa, vào đúng vị trí và duy trì công việc.`, `Theo dõi người mới sau nhận việc là phần việc âm thầm nhưng quan trọng. Chính những công nhân trưởng thành từ chương trình hôm nay sẽ trở về kể câu chuyện đáng tin nhất cho lớp thanh niên ${item.locality} ngày mai.`]},
+    ],
+    takeaway: `${item.locality} đang có lợi thế quý: một con đường nghề nghiệp được nối thẳng từ địa phương tới doanh nghiệp. Với người trẻ đủ sức khỏe và sẵn sàng rèn kỷ luật, đây là cơ hội để biến vài tháng học nghề thành nền móng cho nhiều năm làm việc.`,
+  }),
+  (item, source) => ({
+    intro: [
+      `Không phải ai ở ${item.locality} cũng từng nhìn thấy một mỏ than, nhưng ngày càng nhiều người có thể gặp công nhân đồng hương đã học nghề và đang làm việc tại Quảng Ninh. ${item.resultSummary}`,
+      `${item.eventSummary} Trong công bố của ${source.publisher}, ${lowerInitial(item.evidence)} Dữ kiện ấy đặt <strong>${item.keyword}</strong> vào một bức tranh lớn hơn: đưa thanh niên từ nơi ít việc làm ổn định tới một ngành công nghiệp cần sức khỏe, tay nghề và tính kỷ luật.`,
+    ],
+    sections: [
+      {title: "Con đường từ bản làng tới lớp học nghề", paragraphs: [`${item.opportunity} Khi người đi trước kể bằng trải nghiệm của chính mình, gia đình dễ hình dung hơn chuyện di chuyển, học tập và sinh hoạt xa nhà.`, `${item.partners} tạo thành ba điểm tựa cho hành trình ấy. Người lao động biết hỏi ai ở quê, học ở đâu và doanh nghiệp nào đang cần nghề mình được đào tạo.`], bullets: item.bullets},
+      {title: "Tay nghề là vốn liếng mang theo lâu dài", paragraphs: [`Với người trẻ ${item.locality}, một khóa học nghề mỏ không chỉ dạy cách thực hiện một thao tác. Người học còn được rèn thói quen kiểm tra thiết bị, nghe lệnh sản xuất, nhận diện nguy cơ và phối hợp trong tổ—những năng lực làm nên giá trị của một công nhân công nghiệp.`, `Thu nhập tốt là điều nhiều người quan tâm, nhưng sự tự tin khi làm được việc mới là nền tảng để giữ thu nhập. Tại ${item.locality}, ứng viên nên tìm hiểu vị trí cụ thể ở ${item.enterprise} và con đường nâng bậc sau khi vào làm.`]},
+      {title: "Chuẩn bị cho những tháng đầu xa nhà", paragraphs: [`Với người rời ${item.locality}, sức khỏe, giờ giấc và khả năng sống tập thể là ba thử thách dễ thấy nhất. Tập vận động, điều chỉnh sinh hoạt và chuẩn bị tâm lý trước ngày nhập học sẽ giúp quá trình thích nghi nhẹ nhàng hơn.`, `${item.caution} Cùng với đó, gia đình cần ghi rõ lịch, địa điểm, chế độ hỗ trợ và người phụ trách để mỗi quyết định đều dựa trên thông tin của đợt đang tuyển.`]},
+      {title: "Khi mục tiêu tuyển người trở thành mục tiêu giữ người", paragraphs: [`${item.target} Con số ấy sẽ có ý nghĩa nhất khi đi cùng tỷ lệ tốt nghiệp và số công nhân còn gắn bó sau năm đầu.`, `Địa phương, Nhà trường và ${item.enterprise} có thể làm được điều đó bằng cách nói đúng về nghề, chọn đúng người và không để người mới tự xoay xở khi bắt đầu cuộc sống tại Quảng Ninh.`]},
+    ],
+    takeaway: `Nghề mỏ không hứa một con đường dễ, nhưng mở ra một con đường rõ: học nghề, làm việc trong tổ đội và trưởng thành bằng năng lực. Với thanh niên ${item.locality}, sự kết nối hiện nay giúp bước khởi đầu ấy gần hơn trước.`,
+  }),
+  (item, source) => ({
+    intro: [
+      `${item.eventSummary} Điều đáng nói không chỉ là một bản ký kết, mà là việc ${item.partners} cùng đứng tên cho con đường từ tuyển sinh tới việc làm.`,
+      `${source.publisher} ghi nhận: ${item.resultSummary} ${item.evidence} Với từ khóa <strong>${item.keyword}</strong>, người đọc vì thế tìm thấy một kết quả đã diễn ra, thay vì chỉ gặp lời kêu gọi đăng ký.`,
+    ],
+    sections: [
+      {title: "Ba mắt xích cùng chịu trách nhiệm", paragraphs: [`Ở ${item.locality}, chính quyền và đoàn thể có thể tìm tới từng thôn, từng gia đình; Nhà trường đánh giá đầu vào và tổ chức đào tạo; ${item.enterprise} đưa nhu cầu nhân lực và thực tế sản xuất vào cuộc tư vấn.`, `Cách làm này đặc biệt quan trọng với lao động ${item.locality} ở xa Quảng Ninh. Họ không phải tự đoán nghề nào phù hợp hay tìm một địa chỉ việc làm sau khi học, mà có thể kiểm tra từng bước qua những đầu mối công khai.`], bullets: item.bullets},
+      {title: "Một công việc có kỷ luật và có đường tiến", paragraphs: [`${item.opportunity} Sau khi vào nghề, người lao động tiếp tục học qua từng ca: từ tuân thủ quy trình tới xử lý thiết bị và phối hợp an toàn với đồng đội.`, `Thu nhập phản ánh vị trí, ngày công, năng suất và trình độ làm việc. Thay vì nhìn nghề mỏ qua một mức lương duy nhất, ứng viên ${item.locality} có thể nhìn vào cả lộ trình nâng tay nghề và những phúc lợi của ${item.enterprise}.`]},
+      {title: "Quyết định nghề nghiệp cần một buổi nói chuyện thật", paragraphs: [`Trước ngày đăng ký từ ${item.locality}, gia đình nên ngồi lại với người lao động để bàn rõ chuyện sức khỏe, học xa nhà, giờ ca và mục tiêu làm việc ít nhất trong vài năm. Khi lý do vào nghề đủ vững, người học thường chủ động hơn trong cả lớp học lẫn nơi sản xuất.`, `${item.caution} Đây là nội dung cần xác nhận trực tiếp, cùng danh mục hồ sơ và thời điểm khám sức khỏe, để không lấy chính sách của đợt cũ áp vào hồ sơ mới.`]},
+      {title: "Đếm số người trưởng thành, không chỉ số hồ sơ", paragraphs: [`${item.target} Tuy vậy, thành quả có sức thuyết phục nhất sẽ là những người hoàn thành đào tạo, được nhận vào tổ đội và có thể gửi về gia đình khoản thu nhập ổn định.`, `Khi những trường hợp ấy trở thành người tư vấn cho thế hệ sau, chương trình tại ${item.locality} sẽ hình thành một vòng tròn tích cực: người đi trước mở đường, người đi sau có thêm niềm tin.`]},
+    ],
+    takeaway: `Bản ký kết chỉ là điểm xuất phát. Giá trị thật nằm ở từng thanh niên ${item.locality} có nghề trong tay, làm việc an toàn và tự xây được tương lai từ sức lao động của mình.`,
+  }),
+  (item, source) => ({
+    intro: [
+      `${item.resultSummary} Đằng sau dữ kiện ấy là những chuyến đi từ ${item.locality} tới Quảng Ninh, những ngày đầu trong lớp thực hành và những người đã đứng vững trong tổ sản xuất.`,
+      `${item.eventSummary} Theo ${source.publisher}, ${lowerInitial(item.evidence)} Sự tiếp nối này khiến <strong>${item.keyword}</strong> mang dáng dấp của một tuyến phát triển nhân lực lâu dài hơn là một đợt tuyển người ngắn hạn.`,
+    ],
+    sections: [
+      {title: "Từ một lựa chọn cá nhân tới cơ hội của địa phương", paragraphs: [`${item.opportunity} Mỗi người thành công không chỉ cải thiện đời sống gia đình mà còn đem về một câu chuyện nghề nghiệp cụ thể cho cộng đồng.`, `${item.partners} đang tạo điều kiện để câu chuyện đó lặp lại với quy trình rõ hơn: tìm người phù hợp, chuẩn bị nghề, đưa tới doanh nghiệp và hỗ trợ giai đoạn đầu.`], bullets: item.bullets},
+      {title: "Vì sao nghề mỏ đáng để người trẻ tìm hiểu?", paragraphs: [`Với thanh niên ${item.locality}, đây là nghề đòi hỏi thể lực và kỷ luật, nhưng cũng trả công cho kỹ năng, sự bền bỉ và khả năng làm việc nhóm. Trong một tổ đội, mỗi thao tác đúng góp phần bảo vệ đồng đội và giữ nhịp sản xuất của cả dây chuyền.`, `Tại ${item.locality}, người quan tâm có thể hỏi ${item.enterprise} về vị trí dự kiến, ca làm, phúc lợi và lộ trình nâng bậc. Càng hiểu rõ công việc, họ càng có cơ sở để chọn nghề bằng sự chủ động thay vì đi theo phong trào.`]},
+      {title: "Bước khởi đầu diễn ra ngay tại quê nhà", paragraphs: [`Tại ${item.locality}, việc đầu tiên là kiểm tra độ tuổi, chiều cao, cân nặng, thị lực và sức khỏe. Tiếp theo là nhận lịch tuyển, chuẩn bị đúng hồ sơ và trao đổi với gia đình về thời gian học cũng như cuộc sống xa nhà.`, `${item.caution} Khi thông tin được đối chiếu tại buổi tư vấn, người lao động có thể lập kế hoạch di chuyển và tài chính mà không bị động.`]},
+      {title: "Một giai đoạn mới với thước đo rõ ràng", paragraphs: [`${item.target} Thước đo quan trọng hơn vẫn là tỷ lệ người học xong, nhận việc và tiến bộ sau từng quý làm việc.`, `Nếu ${item.locality} tiếp tục kết nối người đi trước với người mới, còn Nhà trường và ${item.enterprise} theo sát quá trình hòa nhập, mục tiêu tuyển sinh sẽ chuyển thành giá trị bền vững cho cả doanh nghiệp lẫn địa phương.`]},
+    ],
+    takeaway: `Người trẻ ${item.locality} không cần tin vào một khẩu hiệu. Họ có thể gặp người đã đi, xem kết quả đã có và tự đánh giá mình có sẵn sàng học nghề, giữ kỷ luật để bước vào ngành Than hay không.`,
+  }),
+];
+
+const makeLocalCooperationStory = (item) => {
+  const source = item.sources[0];
+  const narrative = localStoryFrames[storyFrame(item.slug, localStoryFrames.length)](item, source);
+  return {
+    slug: item.slug,
+    section: "Kết nối địa phương",
+    title: item.title,
+    description: item.description,
+    lead: item.lead,
+    keyword: item.keyword,
+    keywords: [item.keyword, `học nghề mỏ ${item.locality}`, `việc làm TKV ${item.locality}`, "Trường Cao đẳng TKV"],
+    image: item.image,
+    imageAlt: item.imageAlt,
+    imageSource: item.imageSource,
+    facts: item.facts,
+    intro: narrative.intro,
+    sections: item.focus
+      ? [narrative.sections[0], {title: item.focusTitle, paragraphs: item.focus}, ...narrative.sections.slice(1)]
+      : narrative.sections,
+    checklist: [
+      ["Kiểm tra điều kiện", `Gửi năm sinh, thể lực và tình trạng sức khỏe để sàng lọc trước khi đi từ ${item.locality}.`],
+      ["Hỏi đúng đầu mối", `Đối chiếu lịch với địa phương, Nhà trường và ${item.enterprise}.`],
+      ["Hiểu nghề sẽ học", "Ghi rõ vị trí, thời gian đào tạo, chế độ sinh hoạt và nơi dự kiến tiếp nhận."],
+      ["Chuẩn bị cùng gia đình", "Thống nhất kế hoạch học xa nhà, ca làm và mục tiêu gắn bó sau tốt nghiệp."],
+    ],
+    takeaway: narrative.takeaway,
+    faq: [
+      [`Người ngoài ${item.locality} có thể đăng ký không?`, `Có thể gửi thông tin để kiểm tra địa bàn và chỉ tiêu đang mở. Chương trình trong bài tập trung vào ${item.locality}, còn lịch nơi khác cần xác nhận riêng.`],
+      ["Học xong được bố trí công việc thế nào?", `Đào tạo được kết nối với nhu cầu của doanh nghiệp, nhưng từng người vẫn cần đủ sức khỏe, hoàn thành chương trình và đạt yêu cầu tiếp nhận.`],
+      ["Thu nhập của người mới được tính ra sao?", `Người đăng ký từ ${item.locality} cần đối chiếu nghề, vị trí, đơn vị, ngày công, năng suất và thời gian làm việc. Con số nên hỏi là mức của đúng vị trí và đợt tuyển.`],
+    ],
+    sources: item.sources,
+  };
+};
+
+const supportProgram = (item) => item.programLabel || item.keyword;
+const supportBeneficiary = (item) => item.beneficiaryLabel || item.beneficiaryKeyword;
+
+const supportStoryFrames = [
+  (item, source) => ({
+    intro: [`${item.eventSummary} Theo ${source.publisher}, chương trình hướng nguồn lực tới ${supportBeneficiary(item)} qua đầu mối được công bố.`, `${item.context} Với người đang tìm hiểu ngành Than, đây là một lát cắt đáng chú ý: phía sau những ca sản xuất còn có một cộng đồng thợ mỏ cùng chia sẻ trách nhiệm với nơi doanh nghiệp hoạt động và nơi người lao động sinh ra.`],
+    sections: [
+      {title: "Sau con số là những nhu cầu rất cụ thể", paragraphs: [`${item.allocation} Mỗi khoản tiền chỉ có ý nghĩa khi được đặt đúng địa bàn, đúng thời điểm và đúng nhu cầu cấp thiết.`, `${item.delivery} Cách chuyển qua cơ quan tiếp nhận giúp địa phương rà soát từng trường hợp, đồng thời tạo một đầu mối để cộng đồng theo dõi tiến độ.`], bullets: item.bullets},
+      {title: "Văn hóa thợ mỏ không dừng ở cửa lò", paragraphs: [`${item.impact} Tinh thần “Kỷ luật và Đồng tâm” vì thế không chỉ xuất hiện trong sản xuất, mà còn được thể hiện qua cách tập thể người lao động góp sức khi cộng đồng gặp khó.`, `Một ngành nghề trở nên đáng gắn bó khi người lao động nhìn thấy cả công việc, đồng đội và trách nhiệm xã hội. Những chương trình dành cho ${supportBeneficiary(item)} góp thêm một lý do để người mới hiểu ngành Than bằng góc nhìn đầy đặn hơn.`]},
+      {title: "Từ buổi trao đến thay đổi trong đời sống", paragraphs: [`${item.measurement} Kết quả cuối cần được nhìn ở mái nhà đã an toàn hơn, lớp học đủ điều kiện hơn hoặc gia đình có thể sớm trở lại nhịp sống thường ngày.`, `Công bố tiến độ và kết quả sử dụng nguồn lực giúp sự sẻ chia có sức thuyết phục lâu dài, thay vì chỉ để lại một con số lớn tại thời điểm phát động.`]},
+      {title: "Tiếp cận chương trình qua đầu mối chính thức", paragraphs: [`${item.safety} ${supportBeneficiary(item)} cần làm theo hướng dẫn của địa phương hoặc tổ chức tiếp nhận; không có chuyện nộp phí cho cá nhân để được đưa vào danh sách.`, `Thông tin rõ ràng vừa bảo vệ người dân trước giả mạo, vừa giữ trọn ý nghĩa của sự đóng góp từ doanh nghiệp và người thợ.`]},
+    ],
+  }),
+  (item, source) => ({
+    intro: [`${item.context} ${item.eventSummary}`, `Trong thông tin về <strong>${supportProgram(item)}</strong>, ${source.publisher} công bố rõ quy mô và đối tượng. Chương trình cho thấy doanh nghiệp ngành Than đang nối trách nhiệm sản xuất với trách nhiệm đối với cộng đồng.`],
+    sections: [
+      {title: "Nguồn lực được đặt vào đâu?", paragraphs: [`${item.allocation} Bảng phân bổ hoặc phạm vi tiếp nhận giúp người đọc hiểu đúng chương trình, không cộng dồn với các hoạt động khác và không chia bình quân một cách máy móc.`, `${item.delivery} Đằng sau mỗi khoản hỗ trợ là việc khảo sát, lập danh sách và chọn nhu cầu ưu tiên—những phần việc quyết định nguồn lực có đến đúng nơi hay không.`], bullets: item.bullets},
+      {title: "Một ngành công nghiệp và mối liên hệ với cộng đồng", paragraphs: [`TKV có công nhân đến từ nhiều tỉnh, thành; vì thế hoạt động dành cho ${supportBeneficiary(item)} cũng là cách doanh nghiệp gìn giữ mối liên hệ với quê hương của người lao động.`, `${item.impact} Khi sự hỗ trợ chạm tới nhà ở, trường học, sinh kế hoặc sự tri ân, hình ảnh người thợ mỏ hiện lên không chỉ qua sản lượng mà còn qua tinh thần tương trợ.`]},
+      {title: "Hiệu quả phải hiện ra sau lễ phát động", paragraphs: [`${item.measurement} Số tiền cho biết quy mô cam kết, còn chất lượng triển khai mới cho biết người dân đã nhận được thay đổi gì.`, `Theo dõi công trình, tiến độ và phản hồi của người thụ hưởng là cách để mỗi chương trình an sinh tạo thêm niềm tin cho lần vận động tiếp theo.`]},
+      {title: "Giữ sự tử tế khỏi những lời mời giả mạo", paragraphs: [`${item.safety} Người dân chỉ nên cung cấp hồ sơ theo yêu cầu của chính quyền hoặc tổ chức được giao nhiệm vụ.`, `Một nguyên tắc đơn giản có thể tránh nhiều rủi ro: chương trình hỗ trợ chính thức không yêu cầu người thụ hưởng gửi mã ngân hàng, mã xác thực hay nộp một khoản phí để nhận quyền lợi.`]},
+    ],
+  }),
+  (item, source) => ({
+    intro: [`${item.eventSummary} Theo ${source.publisher}, <strong>${supportProgram(item)}</strong> hướng tới ${supportBeneficiary(item)}.`, `${item.context} Trong những thời điểm như vậy, một nguồn lực đến sớm có thể giúp gia đình giữ được chỗ ở, việc học hoặc nhịp sinh kế—những điều nhỏ hơn con số trên văn bản nhưng lớn hơn trong đời sống.`],
+    sections: [
+      {title: "Cam kết được đo bằng cách phân bổ", paragraphs: [`${item.allocation} Phạm vi này là căn cứ để hiểu đúng quy mô; tổng nguồn lực không đồng nghĩa mỗi người hay mỗi địa phương nhận phần bằng nhau.`, `${item.delivery} Khi địa phương chịu trách nhiệm rà soát, khoản hỗ trợ có cơ hội bám sát hoàn cảnh hơn và tránh bỏ sót nhóm khó tiếp cận thông tin.`], bullets: item.bullets},
+      {title: "Người thợ mỏ góp sức ngoài giờ sản xuất", paragraphs: [`${item.impact} Đóng góp ấy làm rõ một nét văn hóa của ngành Than: đồng đội trong mỏ và đồng bào ngoài cộng đồng đều được nhìn bằng tinh thần sẻ chia.`, `Với người đang tìm hiểu nghề mỏ, hoạt động dành cho ${supportBeneficiary(item)} cho thấy một giá trị không thể hiện hết trong bảng lương—cảm giác thuộc về một tập thể có truyền thống, kỷ luật và trách nhiệm.`]},
+      {title: "Điều còn lại sau những bức ảnh trao nhận", paragraphs: [`${item.measurement} Một mái nhà bàn giao đúng tiến độ, một học sinh tiếp tục đến lớp hay một gia đình khôi phục sinh kế là những kết quả cụ thể nhất.`, `Cập nhật công khai kết quả của ${supportProgram(item)} giúp cộng đồng nhìn thấy hành trình của nguồn lực từ doanh nghiệp đến đời sống, đồng thời làm cho hoạt động an sinh lần sau chính xác hơn.`]},
+      {title: "Thông tin đúng là lớp bảo vệ đầu tiên", paragraphs: [`${item.safety} ${supportBeneficiary(item)} cần hỏi đúng cơ quan được nêu trong chương trình và giữ lại giấy tờ theo hướng dẫn.`, `Sự thận trọng này không làm giảm ý nghĩa của chương trình; nó bảo đảm lòng tốt không bị lợi dụng và nguồn hỗ trợ đến được đúng người.`]},
+    ],
+  }),
+];
+
+const makeCommunitySupportStory = (item) => {
+  const source = item.sources[0];
+  const narrative = supportStoryFrames[storyFrame(item.slug, supportStoryFrames.length)](item, source);
+  return {
+    slug: item.slug,
+    section: "An sinh xã hội",
+    title: item.title,
+    description: item.description,
+    lead: item.lead,
+    keyword: supportProgram(item),
+    keywords: [supportProgram(item), item.keyword, "TKV an sinh xã hội", "TKV hỗ trợ cộng đồng", item.beneficiaryKeyword],
+    image: item.image,
+    imageAlt: item.imageAlt,
+    imageSource: item.imageSource,
+    facts: item.facts,
+    related: ["san-xuat-sach-hon-nganh-than", "an-toan-mua-mua-bao-2026"],
+    intro: narrative.intro,
+    sections: narrative.sections,
+    checklist: [
+      ["Đọc đúng phạm vi", "Xác định tổng nguồn lực, địa bàn, nhóm thụ hưởng và thời điểm công bố."],
+      ["Tìm đúng đầu mối", `Liên hệ cơ quan phụ trách ${supportBeneficiary(item)}, không qua môi giới.`],
+      ["Theo dõi kết quả", "Quan tâm tiến độ thực hiện và thay đổi thực tế sau khi nguồn lực được trao."],
+      ["Cảnh giác giả mạo", "Không nộp phí, gửi mã xác thực hoặc chuyển tiền để được nhận hỗ trợ."],
+    ],
+    takeaway: item.takeaway,
+    faq: [
+      ["Khoản hỗ trợ có được chia đều cho từng người không?", `Không. Thông tin về ${supportProgram(item)} nêu quy mô và đối tượng chung; mức đến từng trường hợp phụ thuộc phương án rà soát, phân bổ.`],
+      ["Người dân liên hệ ở đâu để hỏi chương trình?", `${supportBeneficiary(item)} cần làm theo hướng dẫn của địa phương hoặc tổ chức được giao tiếp nhận, không gửi giấy tờ cho tài khoản mạng xã hội chưa xác minh.`],
+      ["Thước đo quan trọng nhất của chương trình là gì?", `Ngoài số tiền cam kết, cần nhìn tiến độ triển khai và mức độ khó khăn thực tế đã được giải quyết cho ${supportBeneficiary(item)}.`],
+    ],
+    sources: item.sources,
+  };
+};
 
 const expandedStories = [
   makeLocalCooperationStory({
@@ -992,6 +1039,11 @@ const expandedStories = [
     opportunity: "Khoảng cách trong cùng tỉnh Quảng Ninh và cộng đồng người đi trước tạo điều kiện để thanh niên Bình Liêu kiểm chứng công việc thực tế.",
     caution: "Đề xuất về xe đưa đón, phúc lợi và chăm lo lao động xa nhà tại hội nghị là nội dung cần được xác nhận theo chính sách đang áp dụng.",
     target: "Giai đoạn mới đặt mục tiêu mỗi năm tuyển 60–70 lao động Bình Liêu học nghề và làm việc tại các đơn vị TKV.",
+    focusTitle: "Gần 90% số người được tuyển đã đi hết khóa",
+    focus: [
+      "Trong 321 người được tuyển giai đoạn 2020–2025, có 289 người tốt nghiệp—tỷ lệ xấp xỉ 90%. Nguồn công bố cho biết toàn bộ số tốt nghiệp đã có việc làm ổn định; đây là dữ kiện mạnh hơn nhiều so với việc chỉ nêu số hồ sơ ban đầu.",
+      "Bình Liêu còn có gần 300 lao động đang làm tại TKV. Một cộng đồng đủ lớn như vậy giúp người mới dễ tìm người để hỏi về doanh nghiệp, nhịp ca, khu ở và cách vượt qua thời gian đầu khi chưa quen môi trường công nghiệp.",
+    ],
     facts: [["321 người", "Được tuyển học nghề trong giai đoạn 2020–2025."], ["289 người", "Đã tốt nghiệp theo báo cáo tại hội nghị."], ["60–70/năm", "Mục tiêu tuyển trong giai đoạn 2025–2030."], ["300–350 triệu", "Thu nhập bình quân năm của nhóm lao động được báo cáo."]],
     bullets: ["Tư vấn tiếp tục đưa tới thôn bản.", "Than Khe Chàm tham gia từ khâu phối hợp đến tiếp nhận.", "Người học được yêu cầu đáp ứng sức khỏe và chương trình đào tạo.", "Phúc lợi phải được xác nhận theo từng đợt."],
     image: "https://vinacomin.vn/Share/Media/2018/07/IMG_2360.jpg",
@@ -1012,8 +1064,13 @@ const expandedStories = [
     resultSummary: "Giai đoạn 2020–2025, 321 lao động Lục Hồn được tuyển chọn, đào tạo và bố trí làm việc trong ngành Than.",
     evidence: "Một số thôn như Phiêng Sáp, Ngàn Vàng Trên và Bản Pạt được nêu là các địa bàn vượt chỉ tiêu, cho thấy hiệu quả không chỉ nằm ở cấp xã.",
     opportunity: "Người lao động Lục Hồn có thể hỏi trực tiếp những công nhân địa phương đang làm tại Than Hạ Long về ca làm, sinh hoạt và khả năng gắn bó.",
-    caution: "Kết quả 321 người của giai đoạn trước phản ánh cả quá trình nhiều năm, không nên dùng như chỉ tiêu chắc chắn cho từng thôn ở giai đoạn mới.",
+    caution: "Kết quả 321 người phản ánh cả quá trình nhiều năm; chỉ tiêu của từng thôn trong giai đoạn mới cần theo kế hoạch đang áp dụng.",
     target: "Kế hoạch mới phấn đấu mỗi năm giới thiệu 60–70 người Lục Hồn đi học và làm việc tại TKV.",
+    focusTitle: "Ba thôn vượt chỉ tiêu và sức lan tỏa từ người đi trước",
+    focus: [
+      "Phiêng Sáp, Ngàn Vàng Trên và Bản Pạt được nêu tên trong báo cáo vì kết quả vượt chỉ tiêu. Khi thành quả hiện ra tới từng thôn, câu chuyện học nghề không còn xa lạ: người trẻ có thể gặp ngay người hàng xóm đã đi trước để hỏi điều kiện sống và làm việc.",
+      "321 lao động Lục Hồn chiếm hơn một phần ba nguồn lao động được báo cáo của huyện Bình Liêu. Quy mô ấy cho thấy tuyển sinh hiệu quả thường lan theo mạng lưới tin cậy trong cộng đồng, từ một công nhân làm tốt tới anh em, bạn bè và lớp thanh niên kế tiếp.",
+    ],
     facts: [["321 lao động", "Được đào tạo và bố trí việc làm giai đoạn 2020–2025."], ["Hơn 1/3", "Tỷ trọng trong nguồn lao động toàn huyện Bình Liêu được báo cáo."], ["2025–2030", "Giai đoạn thực hiện quy chế mới."], ["60–70/năm", "Mục tiêu giới thiệu lao động mỗi năm."]],
     bullets: ["Kết quả được ghi nhận tới cấp thôn.", "Người lao động đi trước tham gia chia sẻ thực tế.", "Ba bên ký cả quy chế và kế hoạch liên tịch.", "Hiệu quả cần đo tới bước nhận việc."],
     image: "https://vinacomin.vn/Share/Media/2018/07/IMG_2365.jpg",
@@ -1033,9 +1090,14 @@ const expandedStories = [
     eventSummary: "Hai bên ký quy chế ngày 18/01/2025, xác lập giai đoạn hợp tác 2025–2030.",
     resultSummary: "Từ năm 2020 đến hết 2024, huyện Vị Xuyên có 211 lao động thuộc nhóm đã tốt nghiệp, đang học hoặc đang làm việc theo thống kê của Nhà trường.",
     evidence: "Nguồn công bố đồng thời nêu 2.046 lao động trên phạm vi tỉnh Hà Giang và mức thu nhập 250 đến trên 300 triệu đồng/năm ở các trường hợp được báo cáo.",
-    opportunity: "Các gương công nhân Vị Xuyên tại Than Hà Lầm và Than Núi Béo là nguồn tham khảo thực tế về con đường từ học nghề tới tổ đội sản xuất.",
-    caution: "Số liệu 2.046 là quy mô rộng của tỉnh Hà Giang, trong khi Vị Xuyên là 211; hai phạm vi không được đánh đồng khi truyền thông.",
+    opportunity: "Các gương công nhân Vị Xuyên tại Than Hà Lầm và Than Núi Béo là điểm tựa kiểm chứng về con đường từ học nghề tới tổ đội sản xuất.",
+    caution: "Số liệu 2.046 thuộc phạm vi toàn tỉnh Hà Giang, còn Vị Xuyên là 211; hai con số cần được trình bày theo đúng địa bàn.",
     target: "Quy chế đặt mục tiêu mỗi năm tuyển 60–80 lao động Vị Xuyên đi học nghề và làm việc tại TKV.",
+    focusTitle: "211 người của Vị Xuyên trong bức tranh 2.046 lao động Hà Giang",
+    focus: [
+      "Báo cáo tách rõ hai phạm vi: 211 lao động thuộc Vị Xuyên và 2.046 người trên toàn tỉnh Hà Giang. Đọc đúng hai lớp số liệu giúp gia đình thấy quy mô của phong trào nhưng vẫn biết kết quả cụ thể tại chính địa phương mình.",
+      "Những công nhân Vị Xuyên đang làm tại Than Hà Lầm, Than Núi Béo là cầu nối đáng giá. Họ có thể kể chi tiết hơn bất kỳ tờ quảng cáo nào về công việc trong tổ đội, khoản thu nhập theo ngày công và sự thay đổi của bản thân sau vài năm giữ nghề.",
+    ],
     facts: [["211 lao động", "Quy mô Vị Xuyên được báo cáo giai đoạn 2020–2024."], ["2.046 người", "Số liệu trên phạm vi tỉnh Hà Giang trong cùng báo cáo."], ["60–80/năm", "Mục tiêu tuyển của huyện trong giai đoạn mới."], ["2025–2030", "Thời hạn quy chế phối hợp."]],
     bullets: ["Số liệu được tách theo huyện và toàn tỉnh.", "Công nhân điển hình được nêu làm trường hợp kiểm chứng.", "Đào tạo gắn với doanh nghiệp TKV.", "Thu nhập không phải mức cố định cho mọi người."],
     image: "https://vinacomin.vn/Share/Media/2018/07/IMG_4062.jpg",
@@ -1058,6 +1120,11 @@ const expandedStories = [
     opportunity: "Sự tham gia của Công ty Xây lắp mỏ mở thêm góc nhìn về nghề xây dựng mỏ bên cạnh khai thác hầm lò truyền thống.",
     caution: "Người đăng ký Hoành Mô cần hỏi rõ nghề nào đang mở và đơn vị nào tiếp nhận, vì học nghề mỏ không đồng nghĩa mọi người làm cùng một công việc.",
     target: "Giai đoạn 2026–2030 phấn đấu tuyển từ 40 lao động Hoành Mô trở lên mỗi năm.",
+    focusTitle: "152 người đã đi từ buổi tư vấn tới việc làm",
+    focus: [
+      "Hoành Mô có một chuỗi số liệu khá đầy đủ: 33 hội nghị thu hút gần 1.000 lượt người, 165 người vào học và 152 người tốt nghiệp, được bố trí việc làm. Khoảng cách từ người nhập học tới người hoàn thành khóa vì thế có thể nhìn thấy rõ.",
+      "Sự tham gia của Công ty Xây lắp mỏ còn mở ra cách hiểu rộng hơn về ngành. Bên cạnh khai thác than, doanh nghiệp cần những người làm công việc đào, xây dựng và chuẩn bị hạ tầng mỏ—mỗi vị trí có yêu cầu kỹ thuật và lộ trình tay nghề riêng.",
+    ],
     facts: [["33 hội nghị", "Được tổ chức trong giai đoạn 2020–2025."], ["165 người", "Đã tham gia học nghề tại Nhà trường."], ["152 người", "Tốt nghiệp và được bố trí việc làm."], ["Từ 40/năm", "Mục tiêu của giai đoạn mới."]],
     bullets: ["Đo được cả tư vấn, nhập học và tốt nghiệp.", "Doanh nghiệp xây lắp mỏ tham gia ký ba bên.", "Mục tiêu mới bắt đầu từ năm 2026.", "Người học cần xác nhận đúng nghề và vị trí."],
     image: "https://vinacomin.vn/Share/Media/2018/07/IMG_4084.jpg",
@@ -1080,6 +1147,11 @@ const expandedStories = [
     opportunity: "Thanh niên dân tộc thiểu số được tiếp cận thông tin ngay tại xã và có thể nghe kinh nghiệm từ người địa phương đã đi học, đi làm.",
     caution: "Mức ăn 90.000 đồng/ngày và khoảng thu nhập 20–25 triệu đồng/tháng là thông tin của thời điểm bài nguồn; cần xác nhận lại theo đợt hiện hành.",
     target: "Quy chế mới hướng tới duy trì nguồn học nghề và việc làm ổn định, nhưng bài nguồn không nêu một chỉ tiêu năm chung cho cả hai xã.",
+    focusTitle: "165 học viên từ một xã vùng cao",
+    focus: [
+      "Riêng Sì Lở Lầu được báo cáo có 165 học viên theo học; ở quy mô huyện, Phong Thổ đạt 297 lao động, tương đương 123% chỉ tiêu. Những con số ấy cho thấy khoảng cách địa lý không ngăn được một cộng đồng hình thành quanh con đường học nghề mỏ.",
+      "Khun Há được ghi nhận bằng khen cùng phần thưởng 25 triệu đồng vì kết quả phối hợp. Sự ghi nhận dành cho địa phương nhấn mạnh một thực tế: để người trẻ vùng cao đi học và bám nghề, cần cả cán bộ cơ sở, gia đình và người lao động đi trước cùng tham gia.",
+    ],
     facts: [["297 lao động", "Kết quả tuyển tại Phong Thổ giai đoạn 2021–2025."], ["123%", "Tỷ lệ hoàn thành chỉ tiêu của Phong Thổ."], ["168 học sinh", "Số nhập học được báo cáo tại Tam Đường."], ["165 học viên", "Quy mô riêng của xã Sì Lở Lầu."]],
     bullets: ["Hai xã ký quy chế cùng doanh nghiệp sử dụng lao động.", "Kết quả được đối chiếu theo huyện và theo xã.", "Có người lao động điển hình chia sẻ.", "Chính sách cần xác nhận lại theo thời điểm đăng ký."],
     image: "https://vinacomin.vn/Share/Media/2018/07/IMG_5727.jpg",
@@ -1100,8 +1172,13 @@ const expandedStories = [
     resultSummary: "Từ năm 2015 đến thời điểm bài đăng, gần 1.500 thanh niên Lai Châu đã tốt nghiệp đào tạo nghề và vào làm việc tại các đơn vị TKV.",
     evidence: "Kế hoạch năm 2025 của Nhà trường dành ưu tiên tuyển 300–400 thanh niên Lai Châu trong tổng quy mô đào tạo nghề được giao.",
     opportunity: "Mạng lưới Đoàn có khả năng đưa thông tin tới thanh niên chưa có việc làm ở vùng sâu, đồng thời hỗ trợ theo dõi quá trình chuẩn bị đi học xa.",
-    caution: "Con số 300–400 là ưu tiên của kế hoạch năm 2025, không được dùng như chỉ tiêu còn hiệu lực cho các năm sau nếu chưa có thông báo mới.",
+    caution: "Con số 300–400 thuộc kế hoạch năm 2025; chỉ tiêu của các năm sau cần theo thông báo mới nhất.",
     target: "Ba bên thống nhất tăng tuyên truyền, bảo đảm chất lượng đào tạo, đời sống học viên và môi trường việc làm an toàn.",
+    focusTitle: "Gần 1.500 thanh niên Lai Châu đã tạo nên một cộng đồng nghề",
+    focus: [
+      "Thống kê từ năm 2015 đến thời điểm công bố ghi nhận gần 1.500 thanh niên Lai Châu đã tốt nghiệp và làm việc tại TKV. Đây không còn là vài trường hợp riêng lẻ, mà là một cộng đồng đủ lớn để người sau kiểm chứng nghề bằng trải nghiệm của người trước.",
+      "Mục tiêu ưu tiên 300–400 người thuộc kế hoạch năm 2025 cho thấy nhu cầu từng được đặt ở quy mô đáng kể. Vai trò của Tỉnh Đoàn là đưa thông tin tới thanh niên vùng sâu và tiếp tục đồng hành ở giai đoạn chuẩn bị, thay vì chỉ dừng ở một bài đăng tuyển sinh.",
+    ],
     facts: [["Gần 1.500", "Thanh niên Lai Châu đã tốt nghiệp và làm việc tại TKV từ 2015."], ["300–400", "Nguồn tuyển được ưu tiên trong kế hoạch năm 2025."], ["3 bên", "Tỉnh Đoàn, Đoàn TKV và Nhà trường cùng phối hợp."], ["Từ 2015", "Mốc thống kê kết quả được bài nguồn sử dụng."]],
     bullets: ["Hệ thống Đoàn tham gia vận động thanh niên.", "Nhà trường phụ trách đào tạo và đời sống học viên.", "Doanh nghiệp chịu trách nhiệm về môi trường làm việc.", "Chỉ tiêu cũ không thay thế thông báo tuyển mới."],
     image: "https://vinacomin.vn/Share/Media/2018/07/IMG_5755.jpg",
@@ -1124,6 +1201,11 @@ const expandedStories = [
     opportunity: "Đưa cán bộ tuyển sinh trở lại xã, thôn theo yêu cầu là cách phù hợp với địa bàn miền núi, nơi chi phí di chuyển và khoảng cách thông tin còn lớn.",
     caution: "Chỉ tiêu tối thiểu 3 người mỗi xã hoặc thị trấn là mục tiêu vận động của năm 2025, không phải quy định bắt buộc hay bảo đảm trúng tuyển.",
     target: "Kế hoạch năm 2025 phấn đấu toàn huyện Bảo Lạc có trên 60 học sinh đi học và làm việc tại TKV.",
+    focusTitle: "Khoảng cách từ 144 lượt tư vấn tới 4 người đang học",
+    focus: [
+      "Quý I/2025 có 144 lượt người được tư vấn, 9 bộ hồ sơ được phát và 4 người đang học. Chuỗi số liệu nhỏ nhưng trung thực này cho thấy mỗi bước chuyển đổi đều cần thời gian: quan tâm chưa đồng nghĩa sẵn sàng rời quê đi học.",
+      "Với Bảo Lạc, giải pháp đáng chú ý là đưa cán bộ trở lại xã, thôn khi người dân cần hỏi thêm. Một cuộc trò chuyện tại cơ sở có thể tháo gỡ những băn khoăn rất đời thường về sức khỏe, chi phí đi lại, nơi ở và việc làm sau khóa học.",
+    ],
     facts: [["144 lượt", "Được tư vấn trong quý I/2025."], ["9 hồ sơ", "Được phát cho lao động đăng ký trực tiếp."], ["4 người", "Đang học tại Nhà trường ở thời điểm báo cáo."], ["Trên 60", "Mục tiêu học sinh toàn huyện trong năm 2025."]],
     bullets: ["Theo dõi chuyển đổi từ tư vấn đến nhập học.", "Cán bộ có thể trở lại thôn khi có yêu cầu.", "Mỗi xã được khuyến khích giới thiệu nguồn phù hợp.", "Chỉ tiêu năm 2025 không thay thế kế hoạch hiện hành."],
     image: "https://vinacomin.vn/Share/Media/2018/07/IMG_5759.jpg",
@@ -1146,6 +1228,11 @@ const expandedStories = [
     opportunity: "Hai doanh nghiệp tham gia giúp người lao động có thêm thông tin về thực hành, vị trí dự kiến và môi trường sản xuất khác nhau.",
     caution: "Các cụm 'gần 1.000' và 'hàng trăm' là cách báo cáo theo từng địa phương nhưng chưa có bảng chi tiết; bài viết không tự suy diễn con số chính xác.",
     target: "Giai đoạn 2026–2030 đặt trọng tâm đưa thông tin tới từng hộ, rèn tác phong công nghiệp và bố trí việc làm sau đào tạo.",
+    focusTitle: "Hợp tác đi xa hơn một đợt tuyển người",
+    focus: [
+      "Các công trình như trung tâm học tập cộng đồng và trung tâm văn hóa thể thao được nhắc cùng hoạt động tuyển sinh. Chi tiết ấy cho thấy quan hệ giữa ngành Than với Lương Minh, Quảng Tân còn được xây bằng những giá trị cộng đồng, không chỉ bằng số người rời địa phương đi làm.",
+      "Than Hòn Gai và Than Quang Hanh cùng tham gia giúp người lao động tiếp cận hai môi trường doanh nghiệp ngay từ khâu tư vấn. Việc so sánh nghề thực hành, nơi dự kiến bố trí và chế độ của từng đơn vị sẽ giúp lựa chọn phù hợp hơn.",
+    ],
     facts: [["2 xã", "Lương Minh và Quảng Tân cùng ký trong tháng 01/2026."], ["Trên 30", "Số hội nghị từng tổ chức tại mỗi địa phương."], ["Gần 1.000 lượt", "Quy mô người được tư vấn tại mỗi nơi theo nguồn."], ["2026–2030", "Giai đoạn phối hợp mới."]],
     bullets: ["Nhà trường là trung tâm đào tạo.", "Địa phương vận động tới hộ gia đình.", "Doanh nghiệp tham gia thực hành và tiếp nhận.", "Số liệu khái quát không bị làm tròn thành con số giả."],
     image: "https://vinacomin.vn/Share/Media/2018/07/IMG_5769.jpg",
@@ -1166,8 +1253,13 @@ const expandedStories = [
     resultSummary: "Chương trình giới thiệu ba nhóm nghề khai thác hầm lò, đào lò và cơ điện hầm lò, đồng thời trao đổi trực tiếp với lãnh đạo thôn và người dân.",
     evidence: "Nguồn liệt kê cả các thôn tiếp tục được tư vấn, cho thấy hoạt động được tổ chức thành một hành trình cơ sở thay vì chỉ một hội nghị tập trung.",
     opportunity: "Người lao động Đường Thượng có thể so sánh ba nhóm nghề để chọn hướng phù hợp hơn với sức khỏe, khả năng học kỹ thuật và nhu cầu doanh nghiệp.",
-    caution: "Khoảng thu nhập 20–30 triệu đồng/tháng trong nguồn tùy vị trí; không được hiểu là mức khởi điểm hoặc cam kết cố định cho mọi hồ sơ.",
+    caution: "Khoảng thu nhập 20–30 triệu đồng/tháng trong nguồn thay đổi theo vị trí; mức của người mới cần đối chiếu đúng nghề và đợt tuyển.",
     target: "Mục tiêu của chuỗi tư vấn là mở rộng tiếp cận việc làm bền vững và giúp thanh niên xác định nghề nghiệp trước khi đăng ký.",
+    focusTitle: "Ba nhóm nghề để người trẻ lựa chọn",
+    focus: [
+      "Đợt tư vấn giới thiệu khai thác hầm lò, đào lò và cơ điện hầm lò. Ba nhóm nghề cho người lao động một điểm xuất phát rõ: người có sức bền, người thích công việc tạo đường lò và người có thiên hướng máy móc có thể đặt những câu hỏi khác nhau.",
+      "Việc đi qua 20 thôn trong hai ngày đưa cuộc tư vấn đến gần từng gia đình. Ở đó, câu chuyện nghề có thể bắt đầu bằng những điều rất cụ thể—một ca kéo dài ra sao, công việc dùng thiết bị gì và người mới được kèm cặp thế nào.",
+    ],
     facts: [["20 thôn", "Phạm vi chương trình tư vấn tại xã Đường Thượng."], ["2 ngày", "Thời gian đoàn triển khai đợt làm việc."], ["3 nhóm nghề", "Khai thác, đào lò và cơ điện hầm lò."], ["20–30 triệu", "Khoảng thu nhập theo vị trí được bài nguồn nêu."]],
     bullets: ["Tư vấn tới tận thôn bản.", "Giới thiệu cụ thể ba nhóm nghề.", "Doanh nghiệp nói rõ điều kiện làm việc và phúc lợi.", "Thu nhập phải đọc cùng vị trí và ngày công."],
     image: "https://vinacomin.vn/Share/Media/2018/07/IMG_5778.jpg",
@@ -1190,6 +1282,11 @@ const expandedStories = [
     opportunity: "Lai Châu đã có cộng đồng lao động làm việc trong TKV, vì vậy người đăng ký có thể tìm hiểu thêm từ trường hợp thực tế trước khi chọn nghề.",
     caution: "Bài nguồn không cung cấp đầy đủ chỉ tiêu và kết quả từng điểm tư vấn; bài viết chỉ sử dụng dữ kiện đã xác minh, không tự bổ sung số hồ sơ.",
     target: "Đợt tư vấn hướng tới bổ sung nguồn nhân lực nghề mỏ cho Than Thống Nhất và mở thêm cơ hội việc làm cho lao động địa phương.",
+    focusTitle: "Vì sao một tuần làm việc tại địa bàn có ý nghĩa?",
+    focus: [
+      "Từ ngày 22 đến 28/02/2026, đoàn công tác dành trọn một tuần tại Lai Châu. Khoảng thời gian ấy cho phép doanh nghiệp và Nhà trường tiếp cận nhiều nhóm lao động, nghe câu hỏi trực tiếp và giải thích kỹ hơn so với một thông báo phát trên mạng.",
+      "Nguồn công bố chưa nêu chỉ tiêu hay số hồ sơ tại từng điểm, vì vậy giá trị rõ nhất của đợt làm việc nằm ở chất lượng tiếp xúc. Người đăng ký có cơ hội hỏi về nghề, đào tạo và nơi làm việc trước khi quyết định chuẩn bị hồ sơ.",
+    ],
     facts: [["7 ngày", "Thời gian triển khai từ 22 đến 28/02/2026."], ["3 bên", "Địa phương, Nhà trường và doanh nghiệp cùng tham gia."], ["Năm 2026", "Đợt tư vấn mới nhất được rà soát."], ["Lai Châu", "Địa bàn trọng tâm của chương trình."]],
     bullets: ["Doanh nghiệp trực tiếp tham gia tư vấn.", "Thông tin học nghề gắn với vị trí việc làm.", "Người dân có thời gian hỏi và đối chiếu.", "Không suy diễn chỉ tiêu khi nguồn chưa công bố."],
     image: "https://vinacomin.vn/Share/Media/2018/07/IMG_5786.jpg",
@@ -1204,6 +1301,8 @@ const expandedStories = [
     lead: "Nguồn lực được trao qua chương trình cấp tỉnh, hướng tới biến hỗ trợ một lần thành mái nhà an toàn và nền tảng ổn định cho gia đình khó khăn.",
     keyword: "TKV hỗ trợ xóa nhà tạm Lâm Đồng",
     beneficiaryKeyword: "hộ khó khăn về nhà ở tại Lâm Đồng",
+    programLabel: "gói hỗ trợ 5 tỷ đồng xóa nhà tạm tại Lâm Đồng",
+    beneficiaryLabel: "các hộ khó khăn về nhà ở tại Lâm Đồng",
     eventSummary: "Ngày 25/08/2024, tại chương trình phát động của tỉnh Lâm Đồng, TKV công bố mức hỗ trợ 5 tỷ đồng.",
     context: "Nhà ở xuống cấp làm tăng rủi ro trong mùa mưa và kéo theo khó khăn về sức khỏe, học tập, sinh kế của cả gia đình.",
     allocation: "Nguồn chính thức nêu khoản 5 tỷ đồng dành cho chương trình xóa nhà tạm, nhà dột nát của tỉnh Lâm Đồng.",
@@ -1226,6 +1325,8 @@ const expandedStories = [
     lead: "Khoản hỗ trợ tập trung qua đầu mối quốc gia để kịp thời chuyển tới các địa phương bị thiệt hại nặng, giúp người dân sớm ổn định đời sống.",
     keyword: "TKV ủng hộ bão Bualoi 10 tỷ đồng",
     beneficiaryKeyword: "đồng bào bị ảnh hưởng bởi bão Bualoi",
+    programLabel: "gói cứu trợ 10 tỷ đồng sau bão Bualoi",
+    beneficiaryLabel: "đồng bào tại vùng bị ảnh hưởng bởi bão Bualoi",
     eventSummary: "Sáng 06/10/2025, TKV trao 10 tỷ đồng tại trụ sở Ủy ban Trung ương MTTQ Việt Nam.",
     context: "Bão số 10 gây thiệt hại tại nhiều địa phương, đặt ra nhu cầu khẩn cấp về chỗ ở, nhu yếu phẩm, hạ tầng và khôi phục sinh kế.",
     allocation: "Khoản 10 tỷ đồng là một gói hỗ trợ tập trung; bài nguồn không chia sẵn thành mức cho từng tỉnh hoặc từng hộ.",
@@ -1248,6 +1349,8 @@ const expandedStories = [
     lead: "Bảng phân bổ theo từng tỉnh giúp người đọc nhìn rõ quy mô hỗ trợ và tránh nhầm gói 10 tỷ đồng này với các chương trình cứu trợ khác của TKV.",
     keyword: "TKV hỗ trợ miền núi phía Bắc 10 tỷ đồng",
     beneficiaryKeyword: "người dân Cao Bằng, Thái Nguyên, Lạng Sơn và Lào Cai bị thiên tai",
+    programLabel: "gói hỗ trợ bốn tỉnh miền núi phía Bắc",
+    beneficiaryLabel: "người dân bốn tỉnh bị thiệt hại do mưa lũ",
     eventSummary: "Ngày 10/10/2025, lãnh đạo TKV trực tiếp trao tổng cộng 10 tỷ đồng tại bốn tỉnh miền núi phía Bắc.",
     context: "Mưa lũ gây thiệt hại về nhà ở, hạ tầng và sản xuất, trong khi nhiều khu vực miền núi gặp thêm khó khăn về giao thông và tiếp cận cứu trợ.",
     allocation: "Cao Bằng và Thái Nguyên mỗi tỉnh nhận 3 tỷ đồng; Lạng Sơn và Lào Cai mỗi tỉnh nhận 2 tỷ đồng, cộng đúng 10 tỷ đồng.",
@@ -1270,6 +1373,8 @@ const expandedStories = [
     lead: "Chương trình tri ân quy mô toàn quốc đưa trách nhiệm xã hội của doanh nghiệp tới nhóm người có công và gia đình chính sách.",
     keyword: "TKV ủng hộ người có công 20 tỷ đồng",
     beneficiaryKeyword: "người có công với cách mạng và gia đình chính sách",
+    programLabel: "chương trình chăm lo người có công năm 2026",
+    beneficiaryLabel: "người có công và gia đình chính sách",
     eventSummary: "Ngày 23/07/2026, TKV công bố khoản 20 tỷ đồng tham gia chương trình chăm lo trên phạm vi toàn quốc.",
     context: "Hoạt động diễn ra trong dịp kỷ niệm Ngày Thương binh – Liệt sĩ 27/7, khi nhiều địa phương tổ chức thăm hỏi và rà soát nhu cầu của gia đình chính sách.",
     allocation: "Nguồn được rà soát nêu tổng mức 20 tỷ đồng cho chương trình toàn quốc; không công bố trong bài một bảng chia cố định cho từng tỉnh.",
@@ -1292,6 +1397,8 @@ const expandedStories = [
     lead: "Mỗi suất học bổng vừa hỗ trợ chi phí học tập, vừa ghi nhận nỗ lực của học sinh khó khăn và tạo động lực tiếp tục đến trường.",
     keyword: "Đoàn Thanh niên TKV trao 25 học bổng",
     beneficiaryKeyword: "học sinh có hoàn cảnh khó khăn",
+    programLabel: "chương trình học bổng “Thắp sáng ước mơ”",
+    beneficiaryLabel: "học sinh có hoàn cảnh khó khăn",
     eventSummary: "Chương trình “Thắp sáng ước mơ” trao 25 suất với tổng kinh phí 50 triệu đồng cho các em đã nỗ lực trong học tập.",
     context: "Với gia đình khó khăn, chi phí sách vở, đồng phục, đi lại và sinh hoạt có thể ảnh hưởng trực tiếp tới khả năng duy trì việc học.",
     allocation: "Tổng kinh phí 50 triệu đồng cho 25 suất tương đương 2 triệu đồng mỗi suất nếu phân bổ bằng nhau, nhưng bài viết chỉ dùng phép tính này để đọc quy mô, không thay thế thông báo trao thực tế.",

@@ -1,6 +1,6 @@
 # Thầy Linh – Tuyển Thợ Mỏ
 
-> Website phân tích ngành Than và tư vấn học nghề mỏ tại Quảng Ninh do Nguyễn Tử Linh biên soạn.
+> Website viết về ngành Than và tư vấn học nghề mỏ tại Quảng Ninh do Nguyễn Tử Linh biên soạn.
 
 ## Thông tin tuyển sinh đang áp dụng
 
@@ -50,6 +50,7 @@
 - [Nam Tuấn liên kết ba bên đào tạo nghề mỏ, bố trí việc làm](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/nam-tuan-cao-bang-dao-tao-nghe-mo-viec-lam/): Thanh niên Nam Tuấn có thêm một tuyến đi rõ ràng từ tư vấn tại địa phương, học nghề tại Trường Cao đẳng TKV đến cơ hội làm việc ở Than Khe Chàm.
 - [Bằng Thành, Phúc Lộc kết nối thanh niên với nghề thợ lò TKV](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/bang-thanh-phuc-loc-hoc-nghe-tho-lo-tkv/): Mục tiêu tối thiểu 40 lao động mỗi xã mỗi năm cho thấy hợp tác đã đi từ tuyên truyền chung sang kế hoạch có trách nhiệm và đầu mối thực hiện.
 - [Hải Lạng kết nối học nghề mỏ với việc làm tại Than Dương Huy](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/hai-lang-phoi-hop-dao-tao-viec-lam-nganh-than/): Từ 272 học sinh đã được tuyển trong 5 năm, Hải Lạng bước vào giai đoạn hợp tác mới với mục tiêu đưa thêm lao động địa phương học nghề và làm việc trong ngành Than.
+- [Việc làm ngành Than tháng 8/2026: lương và nhu cầu tuyển dụng](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/viec-lam-nganh-than-thang-8-2026/): Sản xuất duy trì ổn định, thu nhập được bảo đảm và tuyển dụng tiếp tục được chú trọng—ba tín hiệu đáng chú ý với người đang cân nhắc học nghề mỏ.
 - [Bốn xã Tuyên Quang mở đường học nghề mỏ, việc làm TKV](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/tuyen-quang-phoi-hop-tuyen-sinh-nghe-mo-2025-2030/): Một chuỗi hợp tác đưa thông tin học nghề, điều kiện sinh hoạt và nơi làm việc đến tận thôn bản, giúp thanh niên Tuyên Quang nhìn rõ con đường vào ngành Than.
 - [Giữ nhịp sản xuất an toàn trong mùa mưa bão 2026](https://thaylinhtuyenthomo.vn/bai-viet/an-toan-mua-mua-bao-2026/): Giữa những trận mưa lớn, hàng triệu tấn than và hàng chục nghìn mét lò vẫn được tổ chức theo một nguyên tắc: chỉ sản xuất khi toàn chuỗi nằm trong trạng thái kiểm soát.
 - [Ngành Than xanh hơn từ những thay đổi dưới mỏ](https://thaylinhtuyenthomo.vn/bai-viet/san-xuat-sach-hon-nganh-than/): Từ nước thải mỏ được xử lý, bụi được dập tại nguồn đến đất đá thải được tìm đường tái sử dụng, một ngành công nghiệp lâu đời đang đổi mới bằng công nghệ.
@@ -58,8 +59,8 @@
 - [An toàn hầm lò được đào tạo thế nào trước ca sản xuất đầu tiên?](https://thaylinhtuyenthomo.vn/bai-viet/dao-tao-an-toan-truoc-khi-vao-lo/): Trước khi có ca sản xuất đầu tiên, người học được rèn từ cách mặc bảo hộ, nhận tín hiệu đến phản xạ phối hợp với tổ đội khi điều kiện thay đổi.
 - [Mỏ hầm lò bước vào thời đại cơ giới hóa: người thợ trẻ cần gì?](https://thaylinhtuyenthomo.vn/bai-viet/co-gioi-hoa-khai-thac-ham-lo/): Sau những cỗ máy lớn và màn hình điều khiển vẫn là người thợ—nhưng đó là người thợ biết vận hành, đọc tín hiệu, bảo dưỡng và làm chủ công nghệ.
 - [Hơn 13.500 thợ lò thu nhập trên 300 triệu đồng/năm](https://thaylinhtuyenthomo.vn/bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/): Từ nương rẫy Gia Lai và bản làng Lai Châu, những người thợ đã đến Quảng Ninh học nghề, làm chủ thiết bị và xây dựng mức thu nhập từng là điều rất xa vời ở quê nhà.
-- [Học nghề mỏ 2–3 tháng: bước khởi đầu ngắn, cơ hội dài lâu](https://thaylinhtuyenthomo.vn/bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/): Từ một người chưa biết nghề, học viên được làm quen kỹ thuật, thực hành, an toàn và tác phong tổ đội trước khi bước vào dây chuyền sản xuất hầm lò.
-- [Hồ sơ học nghề mỏ: 02 bộ giấy tờ cho một hành trình mới](https://thaylinhtuyenthomo.vn/bai-viet/ho-so-hoc-nghe-mo-can-gi/): Bốn loại giấy tờ, chuẩn bị thành 02 bộ: phần thủ tục cho hành trình từ quê nhà đến lớp học nghề và công việc tại Quảng Ninh thực ra gọn hơn nhiều người nghĩ.
-- [Điều kiện tuyển thợ lò 2026: cánh cửa đầu tiên vào nghề mỏ](https://thaylinhtuyenthomo.vn/bai-viet/dieu-kien-tuyen-tho-lo-2026/): Với người có sức khỏe, ý chí và mong muốn xây dựng một nghề nghiệp ổn định, bốn điều kiện ban đầu có thể mở ra hành trình học nghề và làm việc tại Quảng Ninh.
+- [2–3 tháng học nghề mỏ: người mới được chuẩn bị ra sao?](https://thaylinhtuyenthomo.vn/bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/): Từ một người chưa biết nghề, học viên được làm quen kỹ thuật, thực hành, an toàn và tác phong tổ đội trước khi bước vào dây chuyền sản xuất hầm lò.
+- [Hồ sơ học nghề mỏ năm 2026 gồm những giấy tờ gì?](https://thaylinhtuyenthomo.vn/bai-viet/ho-so-hoc-nghe-mo-can-gi/): Bốn loại giấy tờ, chuẩn bị thành 02 bộ: thủ tục dự tuyển nghề mỏ năm 2026 gọn hơn nhiều người lao động ở xa vẫn hình dung.
+- [Điều kiện tuyển thợ lò năm 2026: ai có thể bắt đầu?](https://thaylinhtuyenthomo.vn/bai-viet/dieu-kien-tuyen-tho-lo-2026/): Không cần kinh nghiệm từ trước, nhưng người muốn theo nghề phải đáp ứng bốn yêu cầu ban đầu về tuổi, chiều cao, cân nặng và sức khỏe.
 - [TKV bước vào giai đoạn mới: cơ hội nào cho người thợ trẻ?](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/07/31/tai-co-cau-tkv-2026-viec-lam-tho-mo/): Tuyển dụng, đào tạo, giữ chân thợ lò và cơ giới hóa được đặt trong cùng một chiến lược—tín hiệu rõ về giá trị của người thợ có tay nghề trong giai đoạn 2026–2030.
 - [Sau ca làm: đời sống thợ mỏ được chăm lo ra sao?](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/07/30/phuc-loi-tho-mo-tkv-2026/): Từ 108 mái ấm, hơn 71.000 lượt khám sức khỏe đến những bữa cơm công đoàn, đời sống người thợ được xây dựng cả trong và ngoài ca sản xuất.

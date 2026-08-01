@@ -6,22 +6,6 @@
   "language": "vi-VN",
   "items": [
     {
-      "id": "https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/viec-lam-nganh-than-thang-8-2026/",
-      "url": "https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/viec-lam-nganh-than-thang-8-2026/",
-      "title": "Việc làm ngành Than tháng 8/2026: lương và nhu cầu tuyển dụng",
-      "summary": "Sản xuất duy trì ổn định, lương bình quân toàn TKV ước 19,96 triệu đồng và công tác tuyển dụng tiếp tục được chú trọng.",
-      "date_published": "2026-08-01T08:09:00+07:00",
-      "image": "https://thaylinhtuyenthomo.vn/assets/news/viec-lam-nganh-than-thang-8-2026.webp",
-      "banner_image": "https://thaylinhtuyenthomo.vn/assets/news/viec-lam-nganh-than-thang-8-2026.webp",
-      "tags": [
-        "việc làm ngành Than tháng 8/2026",
-        "tuyển thợ lò",
-        "lương ngành Than 2026",
-        "tuyển dụng TKV",
-        "học nghề mỏ"
-      ]
-    },
-    {
       "id": "https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/doan-thanh-nien-tkv-25-hoc-bong-thap-sang-uoc-mo/",
       "url": "https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/doan-thanh-nien-tkv-25-hoc-bong-thap-sang-uoc-mo/",
       "title": "Tuổi trẻ TKV trao 25 học bổng “Thắp sáng ước mơ”",
@@ -30,6 +14,7 @@
       "date_published": "2026-08-01T14:30:00+07:00",
       "date_modified": "2026-08-01T14:30:00+07:00",
       "tags": [
+        "chương trình học bổng “Thắp sáng ước mơ”",
         "Đoàn Thanh niên TKV trao 25 học bổng",
         "TKV an sinh xã hội",
         "TKV hỗ trợ cộng đồng",
@@ -45,6 +30,7 @@
       "date_published": "2026-08-01T14:15:00+07:00",
       "date_modified": "2026-08-01T14:15:00+07:00",
       "tags": [
+        "chương trình chăm lo người có công năm 2026",
         "TKV ủng hộ người có công 20 tỷ đồng",
         "TKV an sinh xã hội",
         "TKV hỗ trợ cộng đồng",
@@ -60,6 +46,7 @@
       "date_published": "2026-08-01T14:00:00+07:00",
       "date_modified": "2026-08-01T14:00:00+07:00",
       "tags": [
+        "gói hỗ trợ bốn tỉnh miền núi phía Bắc",
         "TKV hỗ trợ miền núi phía Bắc 10 tỷ đồng",
         "TKV an sinh xã hội",
         "TKV hỗ trợ cộng đồng",
@@ -75,6 +62,7 @@
       "date_published": "2026-08-01T13:45:00+07:00",
       "date_modified": "2026-08-01T13:45:00+07:00",
       "tags": [
+        "gói cứu trợ 10 tỷ đồng sau bão Bualoi",
         "TKV ủng hộ bão Bualoi 10 tỷ đồng",
         "TKV an sinh xã hội",
         "TKV hỗ trợ cộng đồng",
@@ -90,6 +78,7 @@
       "date_published": "2026-08-01T13:30:00+07:00",
       "date_modified": "2026-08-01T13:30:00+07:00",
       "tags": [
+        "gói hỗ trợ 5 tỷ đồng xóa nhà tạm tại Lâm Đồng",
         "TKV hỗ trợ xóa nhà tạm Lâm Đồng",
         "TKV an sinh xã hội",
         "TKV hỗ trợ cộng đồng",
@@ -412,6 +401,22 @@
       ]
     },
     {
+      "id": "https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/viec-lam-nganh-than-thang-8-2026/",
+      "url": "https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/viec-lam-nganh-than-thang-8-2026/",
+      "title": "Việc làm ngành Than tháng 8/2026: lương và nhu cầu tuyển dụng",
+      "summary": "Sản xuất duy trì ổn định, thu nhập được bảo đảm và tuyển dụng tiếp tục được chú trọng—ba tín hiệu đáng chú ý với người đang cân nhắc học nghề mỏ.",
+      "image": "https://thaylinhtuyenthomo.vn/assets/news/viec-lam-nganh-than-thang-8-2026.webp",
+      "date_published": "2026-08-01T08:09:00+07:00",
+      "date_modified": "2026-08-01T08:09:00+07:00",
+      "tags": [
+        "việc làm ngành Than tháng 8/2026",
+        "tuyển thợ lò",
+        "lương ngành Than 2026",
+        "tuyển dụng TKV",
+        "học nghề mỏ"
+      ]
+    },
+    {
       "id": "https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/tuyen-quang-phoi-hop-tuyen-sinh-nghe-mo-2025-2030/",
       "url": "https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/tuyen-quang-phoi-hop-tuyen-sinh-nghe-mo-2025-2030/",
       "title": "Bốn xã Tuyên Quang mở đường học nghề mỏ, việc làm TKV",
@@ -534,7 +539,7 @@
     {
       "id": "https://thaylinhtuyenthomo.vn/bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/",
       "url": "https://thaylinhtuyenthomo.vn/bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/",
-      "title": "Học nghề mỏ 2–3 tháng: bước khởi đầu ngắn, cơ hội dài lâu",
+      "title": "2–3 tháng học nghề mỏ: người mới được chuẩn bị ra sao?",
       "summary": "Từ một người chưa biết nghề, học viên được làm quen kỹ thuật, thực hành, an toàn và tác phong tổ đội trước khi bước vào dây chuyền sản xuất hầm lò.",
       "image": "https://vinacomin.vn/Share/Media/2018/07/IMG_4075.jpg",
       "date_published": "2026-07-31T09:20:00+07:00",
@@ -549,8 +554,8 @@
     {
       "id": "https://thaylinhtuyenthomo.vn/bai-viet/ho-so-hoc-nghe-mo-can-gi/",
       "url": "https://thaylinhtuyenthomo.vn/bai-viet/ho-so-hoc-nghe-mo-can-gi/",
-      "title": "Hồ sơ học nghề mỏ: 02 bộ giấy tờ cho một hành trình mới",
-      "summary": "Bốn loại giấy tờ, chuẩn bị thành 02 bộ: phần thủ tục cho hành trình từ quê nhà đến lớp học nghề và công việc tại Quảng Ninh thực ra gọn hơn nhiều người nghĩ.",
+      "title": "Hồ sơ học nghề mỏ năm 2026 gồm những giấy tờ gì?",
+      "summary": "Bốn loại giấy tờ, chuẩn bị thành 02 bộ: thủ tục dự tuyển nghề mỏ năm 2026 gọn hơn nhiều người lao động ở xa vẫn hình dung.",
       "image": "https://vinacomin.vn/Share/Media/2018/07/IMG_4110.jpg",
       "date_published": "2026-07-31T09:10:00+07:00",
       "date_modified": "2026-08-01T21:05:00+07:00",
@@ -564,8 +569,8 @@
     {
       "id": "https://thaylinhtuyenthomo.vn/bai-viet/dieu-kien-tuyen-tho-lo-2026/",
       "url": "https://thaylinhtuyenthomo.vn/bai-viet/dieu-kien-tuyen-tho-lo-2026/",
-      "title": "Điều kiện tuyển thợ lò 2026: cánh cửa đầu tiên vào nghề mỏ",
-      "summary": "Với người có sức khỏe, ý chí và mong muốn xây dựng một nghề nghiệp ổn định, bốn điều kiện ban đầu có thể mở ra hành trình học nghề và làm việc tại Quảng Ninh.",
+      "title": "Điều kiện tuyển thợ lò năm 2026: ai có thể bắt đầu?",
+      "summary": "Không cần kinh nghiệm từ trước, nhưng người muốn theo nghề phải đáp ứng bốn yêu cầu ban đầu về tuổi, chiều cao, cân nặng và sức khỏe.",
       "image": "https://vinacomin.vn/Share/Media/2018/07/IMG_4207.jpg",
       "date_published": "2026-07-31T09:00:00+07:00",
       "date_modified": "2026-08-01T21:00:00+07:00",

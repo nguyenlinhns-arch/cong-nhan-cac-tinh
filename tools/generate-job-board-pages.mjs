@@ -82,7 +82,8 @@ function page(role) {
   <meta name="description" content="Tuyển ${role.title.toLocaleLowerCase("vi")}: học nghề 2–3 tháng, hỗ trợ 7,5 triệu, thu nhập sau đào tạo 20–25 triệu/tháng.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="${url}">
-  <meta property="og:type" content="website"><meta property="og:title" content="${role.title} tại Quảng Ninh"><meta property="og:description" content="Học nghề 2–3 tháng; hỗ trợ 7,5 triệu; thu nhập 20–25 triệu/tháng."><meta property="og:url" content="${url}"><meta property="og:locale" content="vi_VN">
+  <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="${role.title} tại Quảng Ninh"><meta property="og:description" content="Học nghề 2–3 tháng; hỗ trợ 7,5 triệu; thu nhập 20–25 triệu/tháng."><meta property="og:url" content="${url}"><meta property="og:image" content="${base}/assets/og-cover-v2.webp"><meta property="og:image:alt" content="Thầy Linh – Học nghề mỏ, làm việc tại Quảng Ninh">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${role.title} tại Quảng Ninh"><meta name="twitter:description" content="Học nghề 2–3 tháng; hỗ trợ 7,5 triệu; thu nhập 20–25 triệu/tháng."><meta name="twitter:image" content="${base}/assets/og-cover-v2.webp">
   <link rel="stylesheet" href="../../styles.css?v=15"><link rel="stylesheet" href="../../jobs.css?v=1"><link rel="stylesheet" href="/mobile-ux.css?v=1">
   <script type="application/ld+json">${JSON.stringify(jobPosting)}</script>
 </head>

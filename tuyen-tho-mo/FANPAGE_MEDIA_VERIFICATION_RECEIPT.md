@@ -2,9 +2,9 @@
 
 - Status: VERIFIED_SUCCESS
 - Feature: Public Fanpage photos, videos and Reels integration
-- Home URL: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/
+- Home URL: https://thaylinhtuyenthomo.vn/
 - Home HTTP: 200
-- Media page URL: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/anh-video-thuc-te/
+- Media page URL: https://thaylinhtuyenthomo.vn/anh-video-thuc-te/
 - Media page HTTP: 200
 - App loader HTTP: 200
 - Fanpage module HTTP: 200

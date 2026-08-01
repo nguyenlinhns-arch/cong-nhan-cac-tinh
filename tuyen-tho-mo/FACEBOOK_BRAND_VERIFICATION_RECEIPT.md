@@ -2,7 +2,7 @@
 
 - Status: VERIFIED_SUCCESS
 - Feature: Facebook cover and avatar website synchronization
-- Home URL: https://nguyenlinhns-arch.github.io/cong-nhan-cac-tinh/tuyen-tho-mo/
+- Home URL: https://thaylinhtuyenthomo.vn/
 - Home HTTP: 200
 - App loader HTTP: 200
 - Facebook brand JS HTTP: 200

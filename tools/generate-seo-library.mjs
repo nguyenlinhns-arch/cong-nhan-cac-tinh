@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import {curatedArticles, existingNews} from "./curated-articles.mjs";
 import {communityArticles} from "./community-articles.mjs";
+import {communitySourceImages} from "./community-source-images.mjs";
 
 const root = path.resolve("tuyen-tho-mo");
 const base = "https://thaylinhtuyenthomo.vn";
@@ -27,6 +28,32 @@ const xml = esc;
 const displayDate = (iso) => new Intl.DateTimeFormat("vi-VN", {
   day: "2-digit", month: "2-digit", year: "numeric", timeZone: "Asia/Bangkok",
 }).format(new Date(iso));
+
+const actionHeadings = {
+  "Hướng dẫn nhập nghề": "Bốn bước để bắt đầu đúng",
+  "Thu nhập & việc làm": "Bắt đầu xây con đường nghề nghiệp",
+  "Công nghệ mỏ": "Người mới cần chuẩn bị gì?",
+  "Tay nghề & đào tạo": "Từ lớp học tới tổ sản xuất",
+  "An toàn & sức khỏe": "Chuẩn bị để làm việc an toàn",
+  "Đời sống thợ mỏ": "Tìm hiểu trước khi vào nghề",
+  "Mỏ xanh & môi trường": "Người lao động tham gia thế nào?",
+  "Việc làm ngành Than": "Bước tiếp theo dành cho người quan tâm",
+  "Kết nối địa phương": "Từ địa phương tới lớp học nghề",
+  "An sinh xã hội": "Theo dõi chương trình qua đầu mối nào?",
+};
+
+const conclusionHeadings = {
+  "Hướng dẫn nhập nghề": "Một khởi đầu rõ ràng",
+  "Thu nhập & việc làm": "Tay nghề là nền tảng của thu nhập",
+  "Công nghệ mỏ": "Công nghệ mở thêm giá trị cho người thợ",
+  "Tay nghề & đào tạo": "Người thợ trưởng thành qua thực hành",
+  "An toàn & sức khỏe": "An toàn làm nên một ca sản xuất trọn vẹn",
+  "Đời sống thợ mỏ": "Một nghề cần cả bản lĩnh và sự chuẩn bị",
+  "Mỏ xanh & môi trường": "Sản xuất hiện đại đi cùng trách nhiệm",
+  "Việc làm ngành Than": "Cơ hội dành cho người sẵn sàng học nghề",
+  "Kết nối địa phương": "Con đường đã rõ hơn từ quê nhà",
+  "An sinh xã hội": "Giá trị còn lại sau những con số",
+};
 
 function renderFacts(facts) {
   return `<div class="fact-grid">${facts.map(([value, label]) => `<div class="fact-card"><strong>${esc(value)}</strong><span>${esc(label)}</span></div>`).join("")}</div>`;
@@ -92,10 +119,6 @@ function renderArticle(article) {
     if (!target) return "";
     return `<a href="/bai-viet/${target.slug}/"><small>${index ? "Đọc tiếp" : "Bài liên quan"}</small>${esc(target.title)} →</a>`;
   }).join("");
-  const sourceNote = article.showSources
-    ? `<section class="source-note" aria-labelledby="source-note-title"><h2 id="source-note-title">Nguồn tham khảo</h2>${article.sources.map((source) => `<p><strong>${esc(source.publisher)}</strong>: “${esc(source.title)}”, đăng ngày ${esc(source.date)}.</p>`).join("")}</section>`
-    : "";
-
   return `<!doctype html>
 <html lang="vi">
 <head>
@@ -152,17 +175,16 @@ function renderArticle(article) {
         <h2>${esc(article.factsTitle || "Những con số đáng chú ý")}</h2>
         ${renderFacts(article.facts)}
         ${renderSections(article.sections)}
-        <h2>${esc(article.actionTitle || "Bắt đầu hành trình nghề nghiệp từ đâu?")}</h2>
+        <h2>${esc(article.actionTitle || actionHeadings[article.section] || "Bắt đầu từ đâu?")}</h2>
         ${renderChecklist(article.checklist)}
-        <h2>${esc(article.conclusionTitle || "Một lựa chọn đáng cân nhắc")}</h2>
+        <h2>${esc(article.conclusionTitle || conclusionHeadings[article.section] || "Điều đọng lại")}</h2>
         <p class="article-conclusion">${esc(article.takeaway)}</p>
-        ${sourceNote}
         <h2>Câu hỏi thường gặp</h2>
         <div class="faq-list">${article.faq.map(([question, answer]) => `<section class="faq-item"><h3>${esc(question)}</h3><p>${esc(answer)}</p></section>`).join("")}</div>
         <nav class="article-nav" aria-label="Bài viết liên quan">${related}</nav>
       </article>
       <aside class="article-aside">
-        <div class="aside-card accent"><h2>Muốn biết mình có phù hợp?</h2><p>Chỉ cần gửi năm sinh, chiều cao, cân nặng và tình trạng sức khỏe. Thầy Linh sẽ kiểm tra ban đầu và hướng dẫn bước tiếp theo.</p><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Nhắn Zalo 096 304 8585</a></div>
+        <div class="aside-card accent"><h2>Muốn bắt đầu với nghề mỏ?</h2><p>Gửi năm sinh, chiều cao, cân nặng và tình trạng sức khỏe để được kiểm tra điều kiện trước khi chuẩn bị hồ sơ.</p><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Trao đổi qua Zalo 096 304 8585</a></div>
         <div class="aside-card"><h2>Đọc tiếp về nghề mỏ</h2><p>Tìm hiểu đầy đủ điều kiện, chế độ học, công việc và đời sống tại Quảng Ninh trước khi đưa ra quyết định.</p><a class="aside-secondary-link" href="/tin-nganh-than/">Xem tất cả bài viết</a></div>
       </aside>
     </div>
@@ -205,7 +227,7 @@ function card(article) {
   const href = article.urlPath.startsWith("bai-viet/")
     ? `../${article.urlPath}/`
     : `./${article.urlPath.replace(/^tin-nganh-than\//, "")}/`;
-  return `<a class="news-card" href="${href}" data-cluster="${esc(article.section)}"><img src="${article.image}" alt="${esc(article.title)}" loading="lazy" decoding="async" referrerpolicy="no-referrer"><div class="news-card__body"><small>${esc(article.section)}</small><h2>${esc(article.title)}</h2><p>${esc(article.lead)}</p><span>Đọc phân tích →</span></div></a>`;
+  return `<a class="news-card" href="${href}" data-cluster="${esc(article.section)}"><img src="${article.image}" alt="${esc(article.title)}" loading="lazy" decoding="async" referrerpolicy="no-referrer"><div class="news-card__body"><small>${esc(article.section)}</small><h2>${esc(article.title)}</h2><p>${esc(article.lead)}</p><span>Đọc bài viết →</span></div></a>`;
 }
 
 function hubHtml() {
@@ -213,7 +235,7 @@ function hubHtml() {
   const sections = sectionOrder.map((section) => {
     const items = allEditorial.filter((article) => article.section === section && article.slug !== feature.slug);
     if (!items.length) return "";
-    return `<section class="library-section" id="${sectionIds[section]}"><div class="library-heading"><div><p class="eyebrow">${esc(section)}</p><h2>${items.length === 1 ? "Bài phân tích nên đọc" : "Các bài phân tích nên đọc"}</h2></div></div><div class="news-grid">${items.map(card).join("")}</div></section>`;
+    return `<section class="library-section" id="${sectionIds[section]}"><div class="library-heading"><div><p class="eyebrow">${esc(section)}</p><h2>${items.length === 1 ? "Bài viết nên đọc" : "Những bài viết nên đọc"}</h2></div></div><div class="news-grid">${items.map(card).join("")}</div></section>`;
   }).join("");
   const itemList = allEditorial.map((article, index) => ({
     "@type": "ListItem",
@@ -241,7 +263,7 @@ function hubHtml() {
   <meta name="robots" content="index,follow,max-image-preview:large"><meta name="author" content="${author}">
   <link rel="canonical" href="${base}/tin-nganh-than/"><link rel="icon" href="../assets/favicon.svg?v=2" type="image/svg+xml"><link rel="manifest" href="../manifest.webmanifest">
   <link rel="alternate" type="application/rss+xml" title="Tin ngành Than – Thầy Linh" href="${base}/feed.xml"><link rel="alternate" type="application/feed+json" title="Tin ngành Than – Thầy Linh" href="${base}/feed.json">
-  <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="Ngành Than & Người thợ"><meta property="og:description" content="Những câu chuyện có thật, số liệu đáng tin cậy và góc nhìn nghề nghiệp dành cho người đang muốn vào ngành mỏ."><meta property="og:image" content="${feature.image}">
+  <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="Ngành Than & Người thợ"><meta property="og:description" content="Những câu chuyện có thật, số liệu đáng tin cậy và góc nhìn nghề nghiệp dành cho người đang muốn vào ngành mỏ."><meta property="og:url" content="${base}/tin-nganh-than/"><meta property="og:image" content="${feature.image}">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Ngành Than & Người thợ"><meta name="twitter:description" content="Chuyện nghề mỏ và cơ hội lập nghiệp tại Quảng Ninh."><meta name="twitter:image" content="${feature.image}">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../article-insights.css?v=8"><link rel="stylesheet" href="/mobile-ux.css?v=1">
@@ -252,7 +274,7 @@ function hubHtml() {
   <main>
     <section class="news-hero"><div class="container"><p class="eyebrow">Người thật · Việc thật · Dữ kiện thật</p><h1>Ngành Than & Người thợ</h1><p class="lead">Những câu chuyện từ hầm lò, lớp học nghề và khu tập thể công nhân—để người lao động nhìn thấy một nghề vất vả nhưng có tay nghề, thu nhập và niềm tự hào.</p><nav class="cluster-nav" aria-label="Nhóm bài viết">${sectionOrder.filter((section) => allEditorial.some((article) => article.section === section && article.slug !== feature.slug)).map((section) => `<a href="#${sectionIds[section]}">${esc(section)}</a>`).join("")}</nav></div></section>
     <div class="container news-main">
-      <article class="news-feature"><img src="${feature.image}" alt="${esc(feature.title)}" referrerpolicy="no-referrer"><div class="news-feature__body"><p class="news-kicker">Phân tích mới · ${displayDate(feature.published)}</p><h2>${esc(feature.title)}</h2><p>${esc(feature.lead)}</p><a class="news-link" href="./${feature.urlPath.replace(/^tin-nganh-than\//, "")}/">Đọc bài phân tích →</a></div></article>
+      <article class="news-feature"><img src="${feature.image}" alt="${esc(feature.title)}" referrerpolicy="no-referrer"><div class="news-feature__body"><p class="news-kicker">Bài mới · ${displayDate(feature.published)}</p><h2>${esc(feature.title)}</h2><p>${esc(feature.lead)}</p><a class="news-link" href="./${feature.urlPath.replace(/^tin-nganh-than\//, "")}/">Đọc bài viết →</a></div></article>
       ${sections}
     </div>
   </main>
@@ -314,18 +336,20 @@ fs.writeFileSync(path.join(root, "feed.json"), `${JSON.stringify({
   })),
 }, null, 2)}\n`);
 
-const llms = `# Thầy Linh – Tuyển Thợ Mỏ\n\n> Website phân tích ngành Than và tư vấn học nghề mỏ tại Quảng Ninh do Nguyễn Tử Linh biên soạn.\n\n## Thông tin tuyển sinh đang áp dụng\n\n- Căn cứ: Thông báo số 10/TB-CĐTKV ngày 02/04/2026.\n- Thời gian học các nghề đang tuyển: 2–3 tháng.\n- Điều kiện: nam 18–35 tuổi, cao từ 1,56 m, nặng từ 48 kg và có sức khỏe tốt.\n- Hồ sơ dự tuyển gồm 02 bộ; mỗi bộ có sơ yếu lý lịch, bản sao giấy khai sinh, bản công chứng bằng tốt nghiệp văn hóa và bản công chứng căn cước công dân.\n- Quyền lợi khi học: miễn kinh phí đào tạo, miễn phí ba bữa/ngày và ký túc xá; giữ nguyên khoản hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển.\n- Thu nhập phải được hiểu theo vị trí, ngày công, năng suất và đơn vị; website không cam kết một mức cố định cho mọi người.\n- Tin tuyển dụng chuẩn: [Tuyển lao động học nghề mỏ hầm lò năm 2026](${base}/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/).\n- Vị trí 1: [Kỹ thuật khai thác mỏ hầm lò](${base}/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/).\n- Vị trí 2: [Kỹ thuật xây dựng mỏ hầm lò](${base}/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/).\n- Liên hệ tư vấn: Zalo 096 304 8585.\n\n## Nguyên tắc nội dung\n\n- Chỉ giữ bài có nguồn dữ kiện, giá trị thực tế và nội dung nguyên bản.\n- Phân biệt rõ số liệu, nhận định và thông tin cần xác nhận theo từng đợt.\n- Ảnh bài viết lấy từ Thư viện ảnh Vinacomin và không lặp giữa các bài trong kho biên tập.\n- Không đặt liên kết nguồn ra ngoài trong giao diện bài viết.\n\n## Kho kiến thức ngành mỏ\n\n${feedItems.map((article) => `- [${article.title}](${base}/${article.urlPath}/): ${article.lead}`).join("\n")}\n`;
-fs.writeFileSync(path.join(root, "llms.txt"), llms.replace(
-  "- Ảnh bài viết lấy từ Thư viện ảnh Vinacomin và không lặp giữa các bài trong kho biên tập.",
-  "- Bài biên tập từ tin chính thống sử dụng đúng ảnh của bài nguồn tương ứng; các bài hướng dẫn nguyên bản sử dụng Thư viện ảnh Vinacomin.",
-));
+const llms = `# Thầy Linh – Tuyển Thợ Mỏ\n\n> Website viết về ngành Than và tư vấn học nghề mỏ tại Quảng Ninh do Nguyễn Tử Linh biên soạn.\n\n## Thông tin tuyển sinh đang áp dụng\n\n- Căn cứ: Thông báo số 10/TB-CĐTKV ngày 02/04/2026.\n- Thời gian học các nghề đang tuyển: 2–3 tháng.\n- Điều kiện: nam 18–35 tuổi, cao từ 1,56 m, nặng từ 48 kg và có sức khỏe tốt.\n- Hồ sơ dự tuyển gồm 02 bộ; mỗi bộ có sơ yếu lý lịch, bản sao giấy khai sinh, bản công chứng bằng tốt nghiệp văn hóa và bản công chứng căn cước công dân.\n- Quyền lợi khi học: miễn kinh phí đào tạo, miễn phí ba bữa/ngày và ký túc xá; giữ nguyên khoản hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển.\n- Thu nhập phải được hiểu theo vị trí, ngày công, năng suất và đơn vị; website không cam kết một mức cố định cho mọi người.\n- Tin tuyển dụng chuẩn: [Tuyển lao động học nghề mỏ hầm lò năm 2026](${base}/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/).\n- Vị trí 1: [Kỹ thuật khai thác mỏ hầm lò](${base}/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/).\n- Vị trí 2: [Kỹ thuật xây dựng mỏ hầm lò](${base}/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/).\n- Liên hệ tư vấn: Zalo 096 304 8585.\n\n## Nguyên tắc nội dung\n\n- Chỉ giữ bài có nguồn dữ kiện, giá trị thực tế và nội dung nguyên bản.\n- Phân biệt rõ số liệu, nhận định và thông tin cần xác nhận theo từng đợt.\n- Bài biên tập từ tin chính thống sử dụng đúng ảnh của bài nguồn tương ứng; các bài hướng dẫn nguyên bản sử dụng Thư viện ảnh Vinacomin.\n- Không đặt liên kết nguồn ra ngoài trong giao diện bài viết.\n\n## Kho kiến thức ngành mỏ\n\n${feedItems.map((article) => `- [${article.title}](${base}/${article.urlPath}/): ${article.lead}`).join("\n")}\n`;
+fs.writeFileSync(path.join(root, "llms.txt"), llms);
 
-const imageRegistry = Object.fromEntries(feedItems.map((article) => [article.slug, {
-  album_title: article.imageSource,
-  source_url: article.image,
-  provider: article.showSources ? article.sources?.[0]?.publisher : "Thư viện ảnh Vinacomin",
-  source_article_url: article.showSources ? article.sources?.[0]?.url : undefined,
-}]));
+const imageRegistry = Object.fromEntries(feedItems.map((article) => {
+  const sourceImage = communitySourceImages[article.slug];
+  return [article.slug, {
+    album_id: article.imageAlbumId,
+    album_title: article.imageSource,
+    source_url: article.imageOriginal || article.image,
+    provider: sourceImage ? article.sources?.[0]?.publisher : "Thư viện ảnh Vinacomin",
+    source_article_url: sourceImage?.sourceUrl,
+    local_file: article.imageLocalFile,
+  }];
+}));
 fs.writeFileSync(path.join(root, "assets", "articles", "sources.json"), `${JSON.stringify(imageRegistry, null, 2)}\n`);
 
 fs.mkdirSync(path.resolve("content"), {recursive: true});
