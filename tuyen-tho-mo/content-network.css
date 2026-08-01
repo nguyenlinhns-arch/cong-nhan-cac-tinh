@@ -73,6 +73,7 @@ button, select, textarea { font: inherit; }
 
 .network-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .network-card { min-width: 0; overflow: hidden; border: 1px solid var(--network-line); border-radius: 20px; background: #fff; box-shadow: 0 10px 30px rgba(5, 47, 56, .06); }
+.network-card[id] { scroll-margin-top: 108px; }
 .network-card > img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
 .network-card__body { padding: 23px; }
 .network-card small { color: var(--network-orange); font-size: 11px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
@@ -92,6 +93,7 @@ button, select, textarea { font: inherit; }
 .province-groups { display: grid; gap: 28px; }
 .province-group { padding: 24px; border: 1px solid var(--network-line); border-radius: 19px; background: #fff; }
 .province-group h2 { margin: 0 0 15px; font-size: 21px; }
+.network-answer-index { margin-bottom: 24px; }
 .province-links { display: flex; flex-wrap: wrap; gap: 8px; }
 .province-links a { min-height: 42px; display: inline-flex; align-items: center; padding: 8px 13px; border: 1px solid var(--network-line); border-radius: 999px; background: #f8fbfa; color: var(--network-brand); font-size: 12px; font-weight: 800; text-decoration: none; }
 .province-links a:hover { border-color: #91bab6; background: var(--network-soft); }

@@ -3,13 +3,13 @@ import path from "node:path";
 import {curatedArticles, existingNews} from "./curated-articles.mjs";
 import {communityArticles} from "./community-articles.mjs";
 import {pressStoryArticles} from "./press-story-articles.mjs";
+import {buildRecruitmentAnswers} from "./recruitment-answers.mjs";
 
 const root = path.resolve("tuyen-tho-mo");
 const base = "https://thaylinhtuyenthomo.vn";
 const campaign = "lan_toa_nghe_mo_2026";
 const provinces = JSON.parse(fs.readFileSync(path.join(root, "data", "provinces-2026.json"), "utf8")).provinces;
 const recruitment = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
-const dossier = recruitment.dossier;
 const updatedDate = recruitment.effective_from;
 const personId = `${base}/tac-gia/nguyen-tu-linh/#person`;
 const organizationId = `${base}/#organization`;
@@ -128,6 +128,8 @@ function page({pathName, title, description, eyebrow, heading, lead, body, schem
   <link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Tin ngành Than – Thầy Linh" href="${base}/feed.xml">
+  <link rel="alternate" type="application/feed+json" title="Tin ngành Than – Thầy Linh" href="${base}/feed.json">
   <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ">
   <meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${canonical}">
   <meta property="og:image" content="${base}/assets/og-cover-v2.webp"><meta property="og:image:alt" content="Trung tâm thông tin học nghề mỏ và việc làm ngành Than">
@@ -164,7 +166,7 @@ function provinceGroups() {
 }
 
 const branchCards = [
-  ["Thông tin tuyển đang áp dụng", "Một trang trả lời trực tiếp về điều kiện, học nghề, hỗ trợ, hồ sơ, địa chỉ và thu nhập tháng 8/2026.", "/thong-tin-tuyen-tho-mo/"],
+  ["Thông tin tuyển đang áp dụng", "Mười lăm câu trả lời trực tiếp về điều kiện, học nghề, hỗ trợ, hồ sơ, địa chỉ và thu nhập tháng 8/2026.", "/thong-tin-tuyen-tho-mo/"],
   ["Việc làm đang tuyển", "Hai nghề mỏ hầm lò, điều kiện và quyền lợi được trình bày theo một nguồn dữ liệu thống nhất.", "/viec-lam-nganh-than/"],
   ["Thông tin theo 26 tỉnh", "Mỗi tỉnh có đường ứng tuyển giữ sẵn địa phương để tư vấn đúng bối cảnh.", "/viec-lam-nganh-than/#theo-tinh"],
   ["Cẩm nang nhập nghề", "Bắt đầu từ điều kiện, sức khỏe, khóa học, hồ sơ và đời sống tại Quảng Ninh.", "/cam-nang-nghe-mo/"],
@@ -187,18 +189,9 @@ const centralBody = `<div class="network-wrap network-facts"><div><strong>${allA
 writePage("trung-tam-nghe-mo", page({pathName: "/trung-tam-nghe-mo/", title: "Trung tâm nghề mỏ", description: centralDescription, eyebrow: "TRUNG TÂM THÔNG TIN NGHỀ MỎ", heading: "Từ tìm hiểu nghề đến ứng tuyển trong một mạng thông tin thống nhất", lead: "Tra cứu việc làm, điều kiện, 26 tỉnh, câu chuyện người thợ và nội dung chia sẻ — tất cả dẫn về một đầu mối rõ ràng, có thể đo được nguồn liên hệ.", body: centralBody, schema: centralSchema}));
 
 const currentFactsPath = "/thong-tin-tuyen-tho-mo/";
-const currentFactsTitle = "Thông tin tuyển thợ mỏ tháng 8/2026";
+const currentFactsTitle = "Tuyển thợ mỏ tháng 8/2026: 15 câu hỏi";
 const currentFactsDescription = "Thông tin tuyển thợ mỏ tháng 8/2026 đang áp dụng: nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg, học nghề 2–3 tháng và cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.";
-const currentFactsFaq = [
-  ["Ai có thể đăng ký học nghề mỏ tháng 8/2026?", `Nam từ ${recruitment.criteria.age_min} đến ${recruitment.criteria.age_max} tuổi, cao từ 1,53 m, nặng từ ${recruitment.criteria.weight_min_kg} kg, có sức khỏe tốt và đáp ứng yêu cầu khám tuyển. Người đăng ký không được cận thị hoặc mắc bệnh tim mạch, huyết áp hay bệnh về mắt ảnh hưởng đến công việc.`],
-  ["Đang tuyển những nghề nào?", `Hai nghề đang tiếp nhận là ${recruitment.occupations[0].toLocaleLowerCase("vi")} và ${recruitment.occupations[1].toLocaleLowerCase("vi")}. Không yêu cầu kinh nghiệm vì người phù hợp được đào tạo trước khi nhận việc.`],
-  ["Học nghề mỏ bao lâu và ở đâu?", `Thời gian học ${recruitment.training_duration} tại Quảng Ninh theo lịch tiếp nhận. Địa chỉ nhập học là ${recruitment.contact.admission_address}.`],
-  ["Trong thời gian học được hưởng những gì?", "Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ba bữa mỗi ngày với mức ăn 90.000 đồng/ngày, ở ký túc xá khép kín và được hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển."],
-  ["Hồ sơ học nghề mỏ cần những gì?", `${dossier.initial_application}. Khi có lịch nhập học, mang ${dossier.admission_documents.join(", ")}. ${dossier.missing_diploma}. ${dossier.safety}.`],
-  ["Thu nhập thợ lò được cam kết như thế nào?", `${recruitment.income_commitment}.`],
-  ["Học xong làm việc ở đâu?", "Người hoàn thành chương trình và đạt yêu cầu được doanh nghiệp tiếp nhận, ký hợp đồng và bố trí việc làm tại Quảng Ninh."],
-  ["Liên hệ ai để kiểm tra điều kiện?", `Liên hệ ${recruitment.contact.name} – ${recruitment.contact.title}, điện thoại/Zalo 096 304 8585; địa chỉ tiếp nhận thông tin: ${recruitment.contact.address}.`],
-];
+const currentFactsFaq = buildRecruitmentAnswers(recruitment);
 const currentFactsCanonical = `${base}${currentFactsPath}`;
 const currentFactsSchema = {
   "@context": "https://schema.org",
@@ -223,7 +216,7 @@ const currentFactsSchema = {
     {
       "@type": "FAQPage",
       "@id": `${currentFactsCanonical}#faq`,
-      mainEntity: currentFactsFaq.map(([question, answer]) => ({"@type": "Question", name: question, acceptedAnswer: {"@type": "Answer", text: answer}})),
+      mainEntity: currentFactsFaq.map(({question, answer}) => ({"@type": "Question", name: question, acceptedAnswer: {"@type": "Answer", text: answer}})),
     },
     {
       "@type": "BreadcrumbList",
@@ -236,10 +229,10 @@ const currentFactsSchema = {
   ],
 };
 const currentFactsBody = `<div class="network-wrap network-facts"><div><strong>${recruitment.criteria.age_min}–${recruitment.criteria.age_max}</strong><span>độ tuổi nam đang tiếp nhận</span></div><div><strong>1m53 · ${recruitment.criteria.weight_min_kg} kg</strong><span>mốc thể lực tối thiểu</span></div><div><strong>${recruitment.training_duration}</strong><span>thời gian học hai nghề</span></div><div><strong>20–25 triệu</strong><span>mỗi tháng khi hoàn thành định mức</span></div></div>
-<section class="network-section"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">CẬP NHẬT ${updatedDate.split("-").reverse().join("/")}</p><h2>Thông tin đang áp dụng trong tháng 8/2026</h2></div><p>Căn cứ ${esc(recruitment.source_notice)}. Trạng thái: đang tiếp nhận đăng ký trong năm 2026.</p></div><ul class="network-list"><li><b>1</b><div><strong>Đối tượng và sức khỏe</strong><span>Nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg; sức khỏe tốt, không cận thị, bệnh tim mạch, huyết áp hoặc bệnh về mắt ảnh hưởng đến công việc.</span></div></li><li><b>2</b><div><strong>Nghề học và nơi làm việc</strong><span>${esc(recruitment.occupations.join("; "))}. Học và làm việc tại Quảng Ninh; không yêu cầu kinh nghiệm.</span></div></li><li><b>3</b><div><strong>Chế độ trong khóa học</strong><span>Miễn kinh phí đào tạo theo chỉ tiêu; ba bữa/ngày, mức ăn 90.000 đồng/ngày; ký túc xá khép kín; hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển.</span></div></li><li><b>4</b><div><strong>Thu nhập sau đào tạo</strong><span>${esc(recruitment.income_commitment)}.</span></div></li></ul></div></section>
-<section class="network-section network-section--soft"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">TRẢ LỜI TRỰC TIẾP</p><h2>Tám câu hỏi người lao động thường cần biết</h2></div><p>Câu trả lời ngắn gọn giúp người đọc đối chiếu nhanh trước khi mở tin tuyển dụng đầy đủ hoặc gửi thông tin kiểm tra điều kiện.</p></div><div class="network-grid">${currentFactsFaq.map(([question, answer], index) => `<article class="network-card${index === 0 ? " network-card--accent" : ""}"><div class="network-card__body"><small>CÂU ${String(index + 1).padStart(2, "0")}</small><h2>${esc(question)}</h2><p>${esc(answer)}</p></div></article>`).join("")}</div></div></section>
+<section class="network-section"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">CẬP NHẬT ${updatedDate.split("-").reverse().join("/")}</p><h2>Thông tin đang áp dụng trong tháng 8/2026</h2></div><p>Căn cứ ${esc(recruitment.source_notice)}. Biên soạn và cập nhật bởi <a href="/tac-gia/nguyen-tu-linh/">Nguyễn Tử Linh</a>; trạng thái đang tiếp nhận đăng ký trong năm 2026.</p></div><ul class="network-list"><li><b>1</b><div><strong>Đối tượng và sức khỏe</strong><span>Nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg; sức khỏe tốt, không cận thị, bệnh tim mạch, huyết áp hoặc bệnh về mắt ảnh hưởng đến công việc.</span></div></li><li><b>2</b><div><strong>Nghề học và nơi làm việc</strong><span>${esc(recruitment.occupations.join("; "))}. Học và làm việc tại Quảng Ninh; không yêu cầu kinh nghiệm.</span></div></li><li><b>3</b><div><strong>Chế độ trong khóa học</strong><span>Miễn kinh phí đào tạo theo chỉ tiêu; ba bữa/ngày, mức ăn 90.000 đồng/ngày; ký túc xá khép kín; hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển.</span></div></li><li><b>4</b><div><strong>Thu nhập sau đào tạo</strong><span>${esc(recruitment.income_commitment)}.</span></div></li></ul></div></section>
+<section class="network-section network-section--soft"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">TRẢ LỜI TRỰC TIẾP</p><h2>Mười lăm câu hỏi người lao động thường cần biết</h2></div><p>Mỗi câu trả lời có địa chỉ riêng để công cụ tìm kiếm và người đọc đi thẳng tới đúng nội dung, sau đó mở trang chi tiết khi cần.</p></div><nav class="province-group network-answer-index" aria-label="Mục lục 15 câu hỏi"><h2>Chọn câu hỏi cần tra cứu</h2><div class="province-links">${currentFactsFaq.map(({id, question}) => `<a href="#${id}">${esc(question)}</a>`).join("")}</div></nav><div class="network-grid">${currentFactsFaq.map(({id, question, answer, href, linkLabel}, index) => `<article id="${id}" class="network-card${index === 0 ? " network-card--accent" : ""}"><div class="network-card__body"><small>CÂU ${String(index + 1).padStart(2, "0")}</small><h2>${esc(question)}</h2><p>${esc(answer)}</p><a href="${href}">${esc(linkLabel)} →</a></div></article>`).join("")}</div></div></section>
 <section class="network-section"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">ĐỊA CHỈ CỤ THỂ</p><h2>Biết rõ nơi nhập học và đầu mối tiếp nhận</h2></div><p>Hãy xác nhận lịch trước khi di chuyển để được hướng dẫn đúng đợt.</p></div><ul class="network-list"><li><b>1</b><div><strong>Địa chỉ nhập học</strong><span>${esc(recruitment.contact.admission_address)}.</span></div></li><li><b>2</b><div><strong>Địa chỉ tiếp nhận thông tin</strong><span>${esc(recruitment.contact.address)}.</span></div></li><li><b>3</b><div><strong>Người hướng dẫn</strong><span>${esc(recruitment.contact.name)} – ${esc(recruitment.contact.title)} · Điện thoại/Zalo 096 304 8585.</span></div></li></ul><div class="network-actions"><a class="network-button" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/">Xem tin tuyển dụng đầy đủ</a><a class="network-button network-button--outline" href="/bai-viet/ho-so-hoc-nghe-mo-can-gi/">Xem hướng dẫn hồ sơ</a><a class="network-button network-button--outline" href="${editorialPolicyPath}">Cách website kiểm chứng thông tin</a></div></div></section>`;
-writePage("thong-tin-tuyen-tho-mo", page({pathName: currentFactsPath, title: currentFactsTitle, description: currentFactsDescription, eyebrow: "THÔNG TIN CHÍNH THỨC ĐANG ÁP DỤNG", heading: "Tuyển thợ mỏ tháng 8/2026: điều kiện, học nghề và thu nhập", lead: "Nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg; học nghề mỏ 2–3 tháng tại Quảng Ninh và được cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.", body: currentFactsBody, schema: currentFactsSchema}));
+writePage("thong-tin-tuyen-tho-mo", page({pathName: currentFactsPath, title: currentFactsTitle, description: currentFactsDescription, eyebrow: "THÔNG TIN CHÍNH THỨC ĐANG ÁP DỤNG", heading: "Tuyển thợ mỏ tháng 8/2026: trả lời 15 câu hỏi", lead: "Nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg; học nghề mỏ 2–3 tháng tại Quảng Ninh và được cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.", body: currentFactsBody, schema: currentFactsSchema}));
 
 const jobsDescription = "Việc làm ngành Than tại Quảng Ninh, hai nghề mỏ hầm lò và 26 trang tư vấn theo tỉnh; nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg.";
 const jobItems = [

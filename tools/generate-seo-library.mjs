@@ -5,12 +5,14 @@ import {communityArticles} from "./community-articles.mjs";
 import {communitySourceImages} from "./community-source-images.mjs";
 import {pressStoryArticles} from "./press-story-articles.mjs";
 import {articleInlineImages} from "./article-inline-images.mjs";
+import {buildRecruitmentAnswers} from "./recruitment-answers.mjs";
 
 const root = path.resolve("tuyen-tho-mo");
 const base = "https://thaylinhtuyenthomo.vn";
 const author = "Nguyễn Tử Linh";
 const recruitment = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
 const criteria = recruitment.criteria;
+const recruitmentAnswers = buildRecruitmentAnswers(recruitment);
 const buildTime = recruitment.updated_at;
 const currentFactsUrl = `${base}/thong-tin-tuyen-tho-mo/`;
 const editorialPolicyUrl = `${base}/nguyen-tac-bien-tap/`;
@@ -113,7 +115,7 @@ function seoText(article) {
 }
 
 function renderSourceFooter(article) {
-  return `<div class="article-source-footer"><p><strong>Nguồn:</strong> ${esc(sourceText(article))}</p><p class="article-seo-line">${esc(seoText(article))}</p></div>`;
+  return `<div class="article-source-footer"><p class="article-current-facts"><a href="/thong-tin-tuyen-tho-mo/">Đối chiếu 15 câu hỏi về điều kiện, học nghề, hồ sơ và thu nhập đang áp dụng →</a></p><p><strong>Nguồn:</strong> ${esc(sourceText(article))}</p><p class="article-seo-line">${esc(seoText(article))}</p></div>`;
 }
 
 function upgradeExistingSchema(html, article) {
@@ -132,7 +134,7 @@ function upgradeExistingSchema(html, article) {
     articleNode.about = (article.keywords || []).map((keyword) => ({"@type": "Thing", name: keyword}));
     if (sourceUrls.length) articleNode.isBasedOn = sourceUrls;
     if (sourceWorks.length) articleNode.citation = sourceWorks;
-    if (webpageNode) Object.assign(webpageNode, {url: canonical, datePublished: article.published, dateModified: article.updated, inLanguage: "vi-VN", isPartOf: {"@id": websiteId}, author: {"@id": `${authorUrl}#person`}, publishingPrinciples: editorialPolicyUrl});
+    if (webpageNode) Object.assign(webpageNode, {url: canonical, datePublished: article.published, dateModified: article.updated, inLanguage: "vi-VN", isPartOf: {"@id": websiteId}, author: {"@id": `${authorUrl}#person`}, publisher: {"@id": organizationId}, publishingPrinciples: editorialPolicyUrl, mainEntity: {"@id": `${canonical}#article`}});
     return `<script${before}type="application/ld+json"${after}>${JSON.stringify(schema)}</script>`;
   });
 }
@@ -274,7 +276,7 @@ function renderArticle(article) {
         ...(sourceUrls.length ? {isBasedOn: sourceUrls} : {}),
         ...(sourceWorks.length ? {citation: sourceWorks} : {}),
       },
-      {"@type": "WebPage", "@id": `${canonical}#webpage`, url: canonical, name: article.title, datePublished: article.published, dateModified: article.updated, inLanguage: "vi-VN", isPartOf: {"@id": websiteId}, author: {"@id": `${authorUrl}#person`}, publishingPrinciples: editorialPolicyUrl, breadcrumb: {"@id": `${canonical}#breadcrumb`}},
+      {"@type": "WebPage", "@id": `${canonical}#webpage`, url: canonical, name: article.title, datePublished: article.published, dateModified: article.updated, inLanguage: "vi-VN", isPartOf: {"@id": websiteId}, author: {"@id": `${authorUrl}#person`}, publisher: {"@id": organizationId}, publishingPrinciples: editorialPolicyUrl, mainEntity: {"@id": `${canonical}#article`}, breadcrumb: {"@id": `${canonical}#breadcrumb`}},
       {
         "@type": "BreadcrumbList",
         "@id": `${canonical}#breadcrumb`,
@@ -503,6 +505,7 @@ for (const article of existingNews) {
   if (!fs.existsSync(file)) throw new Error(`Missing existing article page: ${article.slug}`);
   let html = fs.readFileSync(file, "utf8");
   html = upgradeExistingSchema(html, article);
+  if (article.seoTitle) html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${esc(article.seoTitle)}</title>`);
   html = html.replace(/\s*<div class="article-source-footer">[\s\S]*?<\/div>\s*/g, "\n");
   html = html.replace(/\s*<section class="article-share-panel"[\s\S]*?<\/section>\s*/g, "\n");
   if (/^([ \t]*)<nav class="article-nav"/im.test(html)) {
@@ -574,8 +577,12 @@ fs.writeFileSync(path.join(root, "feed.json"), `${JSON.stringify({
 const llms = `# Thầy Linh – Tuyển Thợ Mỏ\n\n> Website viết về ngành Than và tư vấn học nghề mỏ tại Quảng Ninh do Nguyễn Tử Linh biên soạn.\n\n## Thông tin tuyển sinh đang áp dụng\n\n- Căn cứ: ${recruitment.source_notice}.\n- Thời gian học các nghề đang tuyển: ${recruitment.training_duration}.\n- Điều kiện: nam ${criteria.age_min}–${criteria.age_max} tuổi, cao từ 1,53 m, nặng từ ${criteria.weight_min_kg} kg, có sức khỏe tốt và đáp ứng yêu cầu khám tuyển.\n- Sức khỏe: không cận thị; không mắc bệnh tim mạch, huyết áp hoặc bệnh về mắt ảnh hưởng đến công việc.\n- Đăng ký ban đầu chưa cần nộp giấy tờ. Khi có lịch nhập học, mang CCCD gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Chưa có bằng vẫn có thể đăng ký để được hướng dẫn đối chiếu theo hệ đào tạo; không gửi giấy tờ gốc qua bưu điện.\n- Địa chỉ liên hệ, tư vấn: ${recruitment.contact.address}.\n- Địa điểm nhập học: ${recruitment.contact.admission_address}; chỉ đến sau khi được xác nhận lịch.\n- Quyền lợi khi học: miễn kinh phí đào tạo, bố trí ba bữa/ngày và ký túc xá; hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển.\n- Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.\n- Tin tuyển dụng chuẩn: [Tuyển lao động học nghề mỏ hầm lò năm 2026](${base}/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/).\n- Vị trí 1: [Kỹ thuật khai thác mỏ hầm lò](${base}/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/).\n- Vị trí 2: [Kỹ thuật xây dựng mỏ hầm lò](${base}/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/).\n- Liên hệ tư vấn: Zalo 096 304 8585.\n\n## Nguyên tắc nội dung\n\n- Chỉ giữ bài có nguồn dữ kiện, giá trị thực tế và nội dung nguyên bản.\n- Phân biệt rõ số liệu, nhận định và thông tin cần xác nhận theo từng đợt.\n- Bài biên tập từ tin chính thống ưu tiên đúng ảnh của bài nguồn; nếu máy chủ đã gỡ ảnh, chỉ dùng ảnh tư liệu đúng bối cảnh và ghi rõ nguồn ảnh. Các bài hướng dẫn nguyên bản sử dụng Thư viện ảnh Vinacomin.\n- Không đặt liên kết nguồn ra ngoài trong giao diện bài viết.\n\n## Kho kiến thức ngành mỏ\n\n${feedItems.map((article) => `- [${article.title}](${base}/${article.urlPath}/): ${article.lead}`).join("\n")}\n`;
 const llmsCurrent = llms.replace("## Thông tin tuyển sinh đang áp dụng", `## Trang thông tin hiện hành
 
-- [Thông tin tuyển thợ mỏ tháng 8/2026](${currentFactsUrl}): trang chuẩn để đối chiếu điều kiện, thời gian học, chế độ, hồ sơ, địa chỉ và thu nhập đang áp dụng.
+- [Tuyển thợ mỏ tháng 8/2026: 15 câu hỏi](${currentFactsUrl}): trang chuẩn để đối chiếu điều kiện, thời gian học, chế độ, hồ sơ, địa chỉ và thu nhập đang áp dụng.
 - Ngày cập nhật: ${recruitment.effective_from.split("-").reverse().join("/")}.
+
+## Trả lời trực tiếp theo câu hỏi
+
+${recruitmentAnswers.map(({id, question, answer}) => `- [${question}](${currentFactsUrl}#${id}): ${answer}`).join("\n")}
 
 ## Thông tin tuyển sinh đang áp dụng`)
 const llmsWithHubs = llmsCurrent.replace("## Trang thông tin hiện hành", `## Các điểm vào trung tâm

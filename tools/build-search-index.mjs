@@ -69,8 +69,14 @@ const items = walk(root)
     const relative = path.relative(root, file).replaceAll(path.sep, "/").replace(/index\.html$/, "");
     const url = canonical.startsWith(base) ? canonical.slice(base.length) || "/" : `/${relative}`;
     const keywordText = match(html, /<meta\s+name="keywords"\s+content="([^"]+)"/i);
-    const keywords = keywordText.split(",").map((item) => item.trim()).filter(Boolean);
-    const [category, categoryLabel] = classify(url, title, keywordText);
+    const headingKeywords = [...html.matchAll(/<h[1-3]\b[^>]*>([\s\S]*?)<\/h[1-3]>/gi)]
+      .map((heading) => strip(heading[1]))
+      .filter(Boolean);
+    const keywords = [...new Set([
+      ...keywordText.split(",").map((item) => item.trim()).filter(Boolean),
+      ...headingKeywords,
+    ])].slice(0, 60);
+    const [category, categoryLabel] = classify(url, title, `${keywordText} ${headingKeywords.join(" ")}`);
     let priority = 10;
     if (url === "/") priority = 100;
     else if (url === "/thong-tin-tuyen-tho-mo/") priority = 99;

@@ -1,12 +1,15 @@
 import fs from "node:fs";
 import path from "node:path";
+import {buildRecruitmentAnswers} from "./recruitment-answers.mjs";
 
 const root = path.resolve("tuyen-tho-mo");
 const base = "https://thaylinhtuyenthomo.vn";
 const factsUrl = `${base}/thong-tin-tuyen-tho-mo/`;
 const authorId = `${base}/tac-gia/nguyen-tu-linh/#person`;
+const organizationId = `${base}/#organization`;
 const policyUrl = `${base}/nguyen-tac-bien-tap/`;
 const master = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
+const recruitmentAnswers = buildRecruitmentAnswers(master);
 const editorial = JSON.parse(fs.readFileSync(path.resolve("content/editorial-sources.json"), "utf8"));
 const errors = [];
 
@@ -42,6 +45,45 @@ function visibleText(html) {
     .replace(/&amp;/gi, "&")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+function assertQualifiedIncome(text, label) {
+  const normalized = text.replace(/\s+/g, " ");
+  for (const match of normalized.matchAll(/20\s*[–-]\s*25\s*triệu/giu)) {
+    const start = Math.max(0, (match.index || 0) - 160);
+    const end = Math.min(normalized.length, (match.index || 0) + match[0].length + 280);
+    const context = normalized.slice(start, end);
+    if (!/(?:hoàn thành|đủ)\s+định mức(?:\s+lao động)?/iu.test(context)) {
+      errors.push(`${label}: mức 20–25 triệu thiếu điều kiện hoàn thành định mức`);
+    }
+  }
+}
+
+function validateIncomeContexts(html, label) {
+  assertQualifiedIncome(visibleText(html), `${label} (nội dung)`);
+  const title = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] || "";
+  assertQualifiedIncome(title, `${label} (title)`);
+  for (const [index, match] of [...html.matchAll(/<meta\b[^>]*(?:name|property)=["'][^"']+["'][^>]*content=["']([^"']*)["'][^>]*>/gi)].entries()) {
+    assertQualifiedIncome(match[1], `${label} (meta ${index + 1})`);
+  }
+  for (const [index, match] of [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)].entries()) {
+    assertQualifiedIncome(match[1], `${label} (JSON-LD ${index + 1})`);
+  }
+}
+
+function publicUrlForFile(file) {
+  const relative = path.relative(root, file).replaceAll(path.sep, "/");
+  if (relative === "index.html") return "/";
+  return `/${relative.replace(/index\.html$/, "")}`;
+}
+
+function localTargetForPathname(pathname) {
+  const decoded = decodeURIComponent(pathname);
+  const relative = decoded.replace(/^\/+/, "");
+  if (!relative || decoded.endsWith("/")) return path.join(root, relative, "index.html");
+  const exact = path.join(root, relative);
+  if (fs.existsSync(exact)) return exact;
+  return path.join(root, relative, "index.html");
 }
 
 function robotsGroup(text, agent) {
@@ -100,7 +142,13 @@ else {
   if (!webpage) errors.push("Current-facts page is missing canonical WebPage schema");
   if (webpage?.dateModified !== master.effective_from) errors.push("Current-facts WebPage dateModified does not match the master policy");
   if (webpage?.publishingPrinciples !== policyUrl) errors.push("Current-facts page is not linked to the editorial policy");
-  if ((faq?.mainEntity || []).length !== 8) errors.push(`Current-facts FAQ schema must contain 8 direct answers, got ${(faq?.mainEntity || []).length}`);
+  if (webpage?.author?.["@id"] !== authorId || webpage?.publisher?.["@id"] !== organizationId) errors.push("Current-facts page has incomplete author or publisher provenance");
+  if ((faq?.mainEntity || []).length !== recruitmentAnswers.length) errors.push(`Current-facts FAQ schema must contain ${recruitmentAnswers.length} direct answers, got ${(faq?.mainEntity || []).length}`);
+  for (const answer of recruitmentAnswers) {
+    if (!html.includes(`id="${answer.id}"`)) errors.push(`Current-facts page is missing answer anchor: ${answer.id}`);
+    if (!visible.includes(answer.question) || !visible.includes(answer.answer)) errors.push(`Current-facts page is missing visible answer: ${answer.question}`);
+    if (!html.includes(`href="${answer.href}"`)) errors.push(`Current-facts page is missing supporting link for: ${answer.id}`);
+  }
 }
 
 const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
@@ -126,9 +174,11 @@ for (const expected of [`${base}/#website`, `${base}/#organization`, `${base}/th
 }
 if (!home.includes('href="thong-tin-tuyen-tho-mo/"')) errors.push("Home page does not link to the canonical current-facts page");
 const homeOrganization = homeNodes.find((node) => node?.["@id"] === `${base}/#organization`);
+const homeWebPage = homeNodes.find((node) => node?.["@id"] === `${base}/#webpage`);
 if (homeOrganization?.publishingPrinciples !== policyUrl) errors.push("Home Organization is not linked to the editorial policy");
 if (homeOrganization?.founder?.["@id"] !== authorId) errors.push("Home Organization is not linked to the accountable Person");
 if (!homeOrganization?.address?.streetAddress || homeOrganization?.address?.addressRegion !== "Quảng Ninh") errors.push("Home Organization has incomplete contact-address provenance");
+if (homeWebPage?.author?.["@id"] !== authorId || homeWebPage?.publisher?.["@id"] !== organizationId || homeWebPage?.publishingPrinciples !== policyUrl) errors.push("Home WebPage has incomplete author, publisher, or editorial-policy provenance");
 if (!home.includes('href="nguyen-tac-bien-tap/"')) errors.push("Home page does not visibly link to the editorial policy");
 
 const policyPath = path.join(root, "nguyen-tac-bien-tap", "index.html");
@@ -176,6 +226,8 @@ for (const file of articleFiles) {
   if (!article.datePublished || !article.dateModified || !article.mainEntityOfPage) errors.push(`${slug}: article dates or mainEntityOfPage are incomplete`);
   if (article.publishingPrinciples !== policyUrl || article.publisher?.publishingPrinciples !== policyUrl) errors.push(`${slug}: article is not linked to publishing principles`);
   if (!webpage?.datePublished || !webpage?.dateModified || webpage?.isPartOf?.["@id"] !== `${base}/#website`) errors.push(`${slug}: WebPage provenance is incomplete`);
+  if (webpage?.publisher?.["@id"] !== organizationId || webpage?.mainEntity?.["@id"] !== article?.["@id"]) errors.push(`${slug}: WebPage is not linked to its publisher and Article entity`);
+  if (!html.includes('href="/thong-tin-tuyen-tho-mo/"')) errors.push(`${slug}: article does not link to the canonical current-facts page`);
   const expectedUrls = (registry?.sources || []).map((source) => source.url || (["Phòng Tuyển sinh Miền Trung", "Trường Cao đẳng Than - Khoáng sản Việt Nam"].includes(source.publisher) ? factsUrl : "")).filter(Boolean);
   if (expectedUrls.length) {
     sourcedArticles += 1;
@@ -201,6 +253,7 @@ for (const file of provinceFiles) {
   if (hasLocalEvidence === noindex) errors.push(`${slug}: province indexability does not match unique local evidence`);
   if (webpage?.author?.["@id"] !== authorId || webpage?.publisher?.["@id"] !== `${base}/#organization` || webpage?.publishingPrinciples !== policyUrl) errors.push(`${slug}: province entity provenance is incomplete`);
   if (!html.includes('rel="author" href="/tac-gia/nguyen-tu-linh/"')) errors.push(`${slug}: province page is missing author discovery`);
+  if (!/href=["'](?:\.\.\/\.\.\/|\/)thong-tin-tuyen-tho-mo\//i.test(html)) errors.push(`${slug}: province page does not link to the canonical current-facts page`);
   if (html.includes("Sao chép mẫu tin nhắn") || html.includes("data-copy-template")) errors.push(`${slug}: removed copy-message control returned`);
 }
 if (provinceFiles.length !== 26 || noindexProvinces !== 9) errors.push(`Province quality gate expected 26 pages with 9 noindex templates, got ${provinceFiles.length}/${noindexProvinces}`);
@@ -212,7 +265,11 @@ for (const slug of ["ky-thuat-khai-thac-mo-ham-lo-quang-ninh", "ky-thuat-xay-dun
   const webpage = nodes.find((node) => node?.["@type"] === "WebPage");
   if (!job?.["@id"] || job?.mainEntityOfPage?.["@id"] !== webpage?.["@id"] || webpage?.mainEntity?.["@id"] !== job?.["@id"]) errors.push(`${slug}: JobPosting and WebPage are not linked`);
   if (webpage?.author?.["@id"] !== authorId || webpage?.publisher?.["@id"] !== `${base}/#organization` || webpage?.publishingPrinciples !== policyUrl) errors.push(`${slug}: job-page entity provenance is incomplete`);
+  if (!/href=["'](?:\.\.\/\.\.\/|\/)thong-tin-tuyen-tho-mo\//i.test(html)) errors.push(`${slug}: job page does not link to the canonical current-facts page`);
 }
+
+const campaignJob = fs.readFileSync(path.join(root, "viec-lam", "cong-nhan-mo-ham-lo-quang-ninh", "index.html"), "utf8");
+if (!/href=["'](?:\.\.\/\.\.\/|\/)thong-tin-tuyen-tho-mo\//i.test(campaignJob)) errors.push("Campaign job page does not link to the canonical current-facts page");
 
 const analytics = fs.readFileSync(path.join(root, "analytics.js"), "utf8");
 for (const marker of ["ai_referral_visit", "chatgpt", "copilot", "perplexity", "gemini", "claude"]) {
@@ -222,12 +279,34 @@ const indexNow = fs.readFileSync(path.resolve("tools/submit-indexnow.mjs"), "utf
 if (indexNow.includes("provinceData.provinces")) errors.push("IndexNow must not repeatedly submit noindex province templates outside the sitemap");
 
 const indexableFiles = collectFiles(root, (file) => file.endsWith(".html") && !/^google/i.test(path.basename(file)));
+let internalLinksChecked = 0;
 for (const file of indexableFiles) {
   const html = fs.readFileSync(file, "utf8");
   const relative = path.relative(root, file).replaceAll(path.sep, "/");
   const robotsMeta = html.match(/<meta\b[^>]*name=["']robots["'][^>]*content=["']([^"']+)["']/i)?.[1] || "";
   if (!robotsMeta.includes("noindex") && !robotsMeta.includes("max-snippet:-1")) errors.push(`${relative}: indexable page does not allow full snippets`);
   if (/18(?:–|-|\s+đến\s+)35|1(?:m|,)56|48\s*kg/iu.test(visibleText(html))) errors.push(`${relative}: visible text contains superseded recruitment criteria`);
+  validateIncomeContexts(html, relative);
+  for (const match of html.matchAll(/\bhref=["']([^"']+)["']/gi)) {
+    const href = match[1].replaceAll("&amp;", "&");
+    let targetUrl;
+    try { targetUrl = new URL(href, `${base}${publicUrlForFile(file)}`); }
+    catch { continue; }
+    if (!['http:', 'https:'].includes(targetUrl.protocol) || targetUrl.origin !== base) continue;
+    internalLinksChecked += 1;
+    const targetFile = localTargetForPathname(targetUrl.pathname);
+    if (!fs.existsSync(targetFile)) {
+      errors.push(`${relative}: internal link target is missing: ${targetUrl.pathname}`);
+      continue;
+    }
+    if (targetUrl.hash && targetFile.endsWith(".html")) {
+      const fragment = decodeURIComponent(targetUrl.hash.slice(1));
+      const targetHtml = fs.readFileSync(targetFile, "utf8");
+      if (!targetHtml.includes(`id="${fragment}"`) && !targetHtml.includes(`id='${fragment}'`) && !targetHtml.includes(`name="${fragment}"`) && !targetHtml.includes(`name='${fragment}'`)) {
+        errors.push(`${relative}: internal fragment is missing: ${targetUrl.pathname}${targetUrl.hash}`);
+      }
+    }
+  }
 }
 
 console.log(JSON.stringify({
@@ -235,6 +314,7 @@ console.log(JSON.stringify({
   articlePages: articleFiles.length,
   sourcedArticles,
   indexableChecks: indexableFiles.length,
+  internalLinksChecked,
   oaiSearchBotAllowed: Boolean(robotsGroup(robots, "OAI-SearchBot")),
   errors: errors.length,
 }, null, 2));

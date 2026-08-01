@@ -44,6 +44,8 @@ for (const [file, url] of hubs) {
     '/content-network.css?v=1',
     '/analytics.js?v=4',
     '/mobile-ux.js?v=3',
+    '/feed.xml"',
+    '/feed.json"',
     'data-contact="application"',
   ];
   for (const marker of required) if (!html.includes(marker)) fail(`${file}: thiếu ${marker}`);
@@ -72,6 +74,7 @@ for (const province of provinces) {
   if (!html.includes(`utm_content=province_${province.slug}`)) fail(`${file}: thiếu UTM theo tỉnh`);
   if (!html.includes("province=")) fail(`${file}: đường ứng tuyển không giữ tỉnh`);
   if (!html.includes('data-contact="application"')) fail(`${file}: thiếu đánh dấu ứng tuyển`);
+  if (!/href=["'](?:\.\.\/\.\.\/|\/)thong-tin-tuyen-tho-mo\//i.test(html)) fail(`${file}: thiếu liên kết tới thông tin tuyển đang áp dụng`);
   const noindex = /<meta\s+name="robots"\s+content="[^"]*noindex/i.test(html);
   const hasLocalEvidence = html.includes('id="local-story-title"');
   if (noindex) noindexProvinces += 1;
@@ -92,7 +95,7 @@ for (const article of articles) {
     continue;
   }
   const html = fs.readFileSync(full, "utf8");
-  for (const marker of ["article-share-panel", `utm_campaign=${campaign}`, "/share-tools.js?v=1", "/content-network.css?v=1", 'rel="author" href="/tac-gia/nguyen-tu-linh/"']) {
+  for (const marker of ["article-share-panel", `utm_campaign=${campaign}`, "/share-tools.js?v=1", "/content-network.css?v=1", 'rel="author" href="/tac-gia/nguyen-tu-linh/"', 'href="/thong-tin-tuyen-tho-mo/"']) {
     if (!html.includes(marker)) fail(`${relative}: thiếu ${marker}`);
   }
 }
