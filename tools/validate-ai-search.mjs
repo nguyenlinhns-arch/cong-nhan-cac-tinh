@@ -83,6 +83,9 @@ else {
     "2–3 tháng",
     "20–25 triệu đồng/tháng",
     "hoàn thành định mức lao động",
+    ...master.dossier.admission_documents,
+    master.dossier.missing_diploma,
+    master.dossier.safety,
     master.contact.admission_address,
     master.contact.address,
     "096 304 8585",
@@ -107,6 +110,9 @@ const home = fs.readFileSync(path.join(root, "index.html"), "utf8");
 const homeSchema = JSON.stringify(parseJsonLd(home, "home page"));
 for (const phrase of ["Hồ sơ dự tuyển gồm 2 bộ", "mỗi bộ có sơ yếu lý lịch", "18–35", "1m56", "48kg"]) {
   if (homeSchema.includes(phrase)) errors.push(`Home structured data contains superseded information: ${phrase}`);
+}
+for (const phrase of [master.income_commitment, ...master.dossier.admission_documents, master.dossier.missing_diploma, master.contact.address, master.contact.admission_address]) {
+  if (!homeSchema.toLocaleLowerCase("vi").includes(phrase.toLocaleLowerCase("vi"))) errors.push(`Home structured data is missing synchronized recruitment information: ${phrase}`);
 }
 for (const expected of [`${base}/#website`, `${base}/#organization`, `${base}/thong-tin-tuyen-tho-mo/#webpage`, "https://www.tiktok.com/@thaylinhtuyenthomo"]) {
   if (!homeSchema.includes(expected)) errors.push(`Home entity graph is missing: ${expected}`);

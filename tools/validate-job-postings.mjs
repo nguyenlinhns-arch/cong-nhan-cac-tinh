@@ -9,6 +9,13 @@ const roles = [
   ["ky-thuat-khai-thac-mo-ham-lo-quang-ninh", "Kỹ thuật khai thác mỏ hầm lò"],
   ["ky-thuat-xay-dung-mo-ham-lo-quang-ninh", "Kỹ thuật xây dựng mỏ hầm lò"],
 ];
+const dossierDocuments = master.dossier?.admission_documents || [];
+
+if (master.version < 3) errors.push("Recruitment master must use synchronized dossier/address schema v3");
+if (dossierDocuments.length !== 3) errors.push(`Recruitment master must define exactly three admission documents, found ${dossierDocuments.length}`);
+for (const field of ["address", "admission_address"]) {
+  if (!master.contact?.[field]) errors.push(`Recruitment master is missing contact.${field}`);
+}
 
 const visibleText = html => html
   .replace(/<script[\s\S]*?<\/script>/gi, " ")
@@ -53,11 +60,11 @@ for (const [slug, expectedTitle] of roles) {
   if (new Date(job.validThrough).getTime() <= Date.now()) errors.push(`${slug}: validThrough is not in the future`);
   if (!html.includes("data-application-form") || !html.includes("data-application-submit")) errors.push(`${slug}: direct application form is missing`);
 
-  for (const phrase of [expectedTitle, "18–40", "1m53", "47 kg", "2–3 tháng", "7,5 triệu"]) {
+  for (const phrase of [expectedTitle, "18–40", "1m53", "47 kg", "2–3 tháng", "7,5 triệu", master.income_commitment, ...dossierDocuments, master.contact.address, master.contact.admission_address]) {
     if (!visible.includes(phrase)) errors.push(`${slug}: visible page is missing ${phrase}`);
   }
-  for (const phrase of ["18–40", "1m53", "47 kg", "2–3 tháng", "7,5 triệu"]) {
-    if (!job.description.includes(phrase)) errors.push(`${slug}: JobPosting description is missing ${phrase}`);
+  for (const phrase of ["18–40", "1m53", "47 kg", "2–3 tháng", "7,5 triệu", master.income_commitment, ...dossierDocuments, master.contact.address, master.contact.admission_address]) {
+    if (!job.description.toLocaleLowerCase("vi").includes(phrase.toLocaleLowerCase("vi"))) errors.push(`${slug}: JobPosting description is missing ${phrase}`);
   }
 
   const canonical = `https://thaylinhtuyenthomo.vn/viec-lam/${slug}/`;
@@ -65,10 +72,30 @@ for (const [slug, expectedTitle] of roles) {
   if (!feedJob || feedJob.title !== expectedTitle || feedJob.status !== "open" || feedJob.application?.direct_apply !== true) {
     errors.push(`${slug}: jobs.json is not synchronized with the page`);
   }
+  if (feedJob?.application?.contact_address !== master.contact.address) errors.push(`${slug}: jobs.json has the wrong contact address`);
+  if (feedJob?.application?.admission_address !== master.contact.admission_address) errors.push(`${slug}: jobs.json has the wrong admission address`);
+  if (JSON.stringify(feedJob?.dossier) !== JSON.stringify(master.dossier)) errors.push(`${slug}: jobs.json dossier is not synchronized with the master`);
 }
 
 const campaign = fs.readFileSync(path.join(root, "viec-lam", "cong-nhan-mo-ham-lo-quang-ninh", "index.html"), "utf8");
 if (/"@type"\s*:\s*"JobPosting"/.test(campaign)) errors.push("Recruitment list page must not contain JobPosting markup");
+const campaignVisible = visibleText(campaign);
+const campaignNormalized = `${campaign}\n${campaignVisible}`.toLocaleLowerCase("vi");
+for (const phrase of [master.income_commitment, ...dossierDocuments, master.dossier.missing_diploma, master.contact.address, master.contact.admission_address]) {
+  if (!campaignNormalized.includes(phrase.toLocaleLowerCase("vi"))) errors.push(`Recruitment list page is missing ${phrase}`);
+}
+for (const forbidden of ["Chỉ cần căn cước công dân gốc", "Hồ sơ dự tuyển gồm 2 bộ", "Thu nhập phổ biến từ 20 đến 25 triệu đồng"]) {
+  if (campaign.includes(forbidden)) errors.push(`Recruitment list page contains outdated wording: ${forbidden}`);
+}
+
+const home = fs.readFileSync(path.join(root, "index.html"), "utf8");
+const homeNormalized = home.toLocaleLowerCase("vi");
+for (const phrase of [master.income_commitment, ...dossierDocuments, master.dossier.missing_diploma, master.contact.address, master.contact.admission_address]) {
+  if (!homeNormalized.includes(phrase.toLocaleLowerCase("vi"))) errors.push(`Homepage is missing synchronized recruitment phrase: ${phrase}`);
+}
+for (const forbidden of ["Hồ sơ dự tuyển gồm 2 bộ", "Thu nhập phổ biến từ 20 đến 25 triệu đồng", "Thu nhập thực tế phụ thuộc"]) {
+  if (home.includes(forbidden)) errors.push(`Homepage contains outdated wording: ${forbidden}`);
+}
 
 console.log(JSON.stringify({ jobPages: roles.length, errors: errors.length, sampleErrors: errors.slice(0, 20) }, null, 2));
 if (errors.length) {

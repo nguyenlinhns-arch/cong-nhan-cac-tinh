@@ -54,15 +54,26 @@
         "Sau tốt nghiệp được doanh nghiệp tiếp nhận ký hợp đồng lao động và bố trí việc làm",
         "Bảo hiểm và quyền lợi theo quy định"
       ],
-      "description": "Trường Cao đẳng Than - Khoáng sản Việt Nam phối hợp tuyển lao động nam học nghề khai thác mỏ hầm lò để làm việc tại các doanh nghiệp thuộc TKV ở Quảng Ninh. Vận hành theo quy trình khai thác, phối hợp thiết bị và tổ đội trong dây chuyền sản xuất hầm lò sau khi hoàn thành chương trình đào tạo. Thời gian học 2–3 tháng. Điều kiện: nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg, sức khỏe tốt, không cận thị và không mắc bệnh tim mạch, huyết áp hoặc bệnh về mắt ảnh hưởng đến công việc; không yêu cầu kinh nghiệm. Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ba bữa/ngày với mức ăn 90.000 đồng/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển. Sau tốt nghiệp đạt yêu cầu, người lao động được doanh nghiệp tiếp nhận ký hợp đồng và bố trí việc làm. Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "description": "Trường Cao đẳng Than - Khoáng sản Việt Nam phối hợp tuyển lao động nam học nghề khai thác mỏ hầm lò để làm việc tại các doanh nghiệp thuộc TKV ở Quảng Ninh. Vận hành theo quy trình khai thác, phối hợp thiết bị và tổ đội trong dây chuyền sản xuất hầm lò sau khi hoàn thành chương trình đào tạo. Thời gian học 2–3 tháng. Điều kiện: nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg, sức khỏe tốt, không cận thị và không mắc bệnh tim mạch, huyết áp hoặc bệnh về mắt ảnh hưởng đến công việc; không yêu cầu kinh nghiệm. Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ba bữa/ngày với mức ăn 90.000 đồng/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển. Sau tốt nghiệp đạt yêu cầu, người lao động được doanh nghiệp tiếp nhận ký hợp đồng và bố trí việc làm. Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. Đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ. Khi có lịch nhập học, mang căn cước công dân bản gốc, giấy khai sinh, bằng thcs hoặc thpt nếu có. Chưa có bằng vẫn có thể đăng ký để được hướng dẫn đối chiếu theo hệ đào tạo. Địa điểm nhập học: Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh. Địa chỉ liên hệ, tư vấn: Số 8 Chu Văn An, phường Hạ Long, Quảng Ninh.",
       "application": {
         "contact_name": "Nguyễn Tử Linh",
         "phone": "0963048585",
         "zalo": "https://zalo.me/0963048585",
         "messenger": "https://m.me/thaylinhtuyenthomo",
-        "address": "Số 8 Chu Văn An, phường Hạ Long, Quảng Ninh",
+        "contact_address": "Số 8 Chu Văn An, phường Hạ Long, Quảng Ninh",
+        "admission_address": "Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh",
         "apply_url": "https://thaylinhtuyenthomo.vn/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/#dang-ky",
         "direct_apply": true
+      },
+      "dossier": {
+        "initial_application": "Đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ",
+        "admission_documents": [
+          "Căn cước công dân bản gốc",
+          "Giấy khai sinh",
+          "Bằng THCS hoặc THPT nếu có"
+        ],
+        "missing_diploma": "Chưa có bằng vẫn có thể đăng ký để được hướng dẫn đối chiếu theo hệ đào tạo",
+        "safety": "Không gửi giấy tờ gốc qua bưu điện; chỉ đến nhập học sau khi được xác nhận lịch"
       },
       "source_notice": "Thông báo số 10/TB-CĐTKV ngày 02/04/2026 và nội dung tuyển tháng 8/2026 cập nhật ngày 01/08/2026"
     },
@@ -111,15 +122,26 @@
         "Sau tốt nghiệp được doanh nghiệp tiếp nhận ký hợp đồng lao động và bố trí việc làm",
         "Bảo hiểm và quyền lợi theo quy định"
       ],
-      "description": "Trường Cao đẳng Than - Khoáng sản Việt Nam phối hợp tuyển lao động nam học nghề xây dựng mỏ hầm lò để làm việc tại các doanh nghiệp thuộc TKV ở Quảng Ninh. Tham gia đào, chống giữ, gia cố và duy trì đường lò phục vụ sản xuất sau khi hoàn thành chương trình đào tạo. Thời gian học 2–3 tháng. Điều kiện: nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg, sức khỏe tốt, không cận thị và không mắc bệnh tim mạch, huyết áp hoặc bệnh về mắt ảnh hưởng đến công việc; không yêu cầu kinh nghiệm. Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ba bữa/ngày với mức ăn 90.000 đồng/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển. Sau tốt nghiệp đạt yêu cầu, người lao động được doanh nghiệp tiếp nhận ký hợp đồng và bố trí việc làm. Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "description": "Trường Cao đẳng Than - Khoáng sản Việt Nam phối hợp tuyển lao động nam học nghề xây dựng mỏ hầm lò để làm việc tại các doanh nghiệp thuộc TKV ở Quảng Ninh. Tham gia đào, chống giữ, gia cố và duy trì đường lò phục vụ sản xuất sau khi hoàn thành chương trình đào tạo. Thời gian học 2–3 tháng. Điều kiện: nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg, sức khỏe tốt, không cận thị và không mắc bệnh tim mạch, huyết áp hoặc bệnh về mắt ảnh hưởng đến công việc; không yêu cầu kinh nghiệm. Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ba bữa/ngày với mức ăn 90.000 đồng/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển. Sau tốt nghiệp đạt yêu cầu, người lao động được doanh nghiệp tiếp nhận ký hợp đồng và bố trí việc làm. Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. Đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ. Khi có lịch nhập học, mang căn cước công dân bản gốc, giấy khai sinh, bằng thcs hoặc thpt nếu có. Chưa có bằng vẫn có thể đăng ký để được hướng dẫn đối chiếu theo hệ đào tạo. Địa điểm nhập học: Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh. Địa chỉ liên hệ, tư vấn: Số 8 Chu Văn An, phường Hạ Long, Quảng Ninh.",
       "application": {
         "contact_name": "Nguyễn Tử Linh",
         "phone": "0963048585",
         "zalo": "https://zalo.me/0963048585",
         "messenger": "https://m.me/thaylinhtuyenthomo",
-        "address": "Số 8 Chu Văn An, phường Hạ Long, Quảng Ninh",
+        "contact_address": "Số 8 Chu Văn An, phường Hạ Long, Quảng Ninh",
+        "admission_address": "Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh",
         "apply_url": "https://thaylinhtuyenthomo.vn/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/#dang-ky",
         "direct_apply": true
+      },
+      "dossier": {
+        "initial_application": "Đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ",
+        "admission_documents": [
+          "Căn cước công dân bản gốc",
+          "Giấy khai sinh",
+          "Bằng THCS hoặc THPT nếu có"
+        ],
+        "missing_diploma": "Chưa có bằng vẫn có thể đăng ký để được hướng dẫn đối chiếu theo hệ đào tạo",
+        "safety": "Không gửi giấy tờ gốc qua bưu điện; chỉ đến nhập học sau khi được xác nhận lịch"
       },
       "source_notice": "Thông báo số 10/TB-CĐTKV ngày 02/04/2026 và nội dung tuyển tháng 8/2026 cập nhật ngày 01/08/2026"
     }
