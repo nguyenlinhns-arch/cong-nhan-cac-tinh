@@ -1122,6 +1122,23 @@
       "categoryLabel": "Thông tin nghề mỏ",
       "type": "Thông tin nghề mỏ",
       "priority": 10
+    },
+    {
+      "url": "/video-tkv/",
+      "title": "Video TKV mới nhất | Kênh Vinacomin chính thức",
+      "description": "Xem video TKV chính thức về sản xuất, an toàn lao động, tuyển sinh nghề mỏ, việc làm và đời sống công nhân ngành Than tại Quảng Ninh.",
+      "keywords": [
+        "video TKV",
+        "video Vinacomin",
+        "công nhân ngành Than",
+        "tuyển sinh nghề mỏ",
+        "việc làm TKV",
+        "an toàn hầm lò"
+      ],
+      "category": "technology",
+      "categoryLabel": "An toàn & công nghệ",
+      "type": "An toàn & công nghệ",
+      "priority": 10
     }
   ]
 }

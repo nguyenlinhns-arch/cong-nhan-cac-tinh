@@ -104,6 +104,9 @@
 }
 .fanpage-media-card__visual--reel{background:linear-gradient(145deg,#1b2948,#0866ff)}
 .fanpage-media-card__visual--reel span{border-radius:18px;border-color:rgba(255,255,255,.42)}
+.fanpage-media-card__visual--youtube{background:linear-gradient(145deg,#33100e,#c42218)}
+.fanpage-media-card__visual--youtube b:before{content:"";position:absolute;left:18px;top:13px;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:15px solid #c42218}
+.fanpage-page .fanpage-media-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 .fanpage-media-card__body{padding:20px;display:flex;flex:1;flex-direction:column}
 .fanpage-media-card__body small{
   color:#0866ff;font-size:9px;font-weight:950;letter-spacing:.16em
@@ -239,7 +242,7 @@
 }
 @media(max-width:760px){
   .fanpage-media-left{padding:18px}
-  .fanpage-media-grid{grid-template-columns:1fr}
+  .fanpage-media-grid,.fanpage-page .fanpage-media-grid{grid-template-columns:1fr}
   .fanpage-media-card{min-height:250px;display:grid;grid-template-columns:132px 1fr}
   .fanpage-media-card__visual{min-height:100%}
   .fanpage-media-card__body{padding:17px}
