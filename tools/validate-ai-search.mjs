@@ -218,6 +218,8 @@ const analytics = fs.readFileSync(path.join(root, "analytics.js"), "utf8");
 for (const marker of ["ai_referral_visit", "chatgpt", "copilot", "perplexity", "gemini", "claude"]) {
   if (!analytics.includes(marker)) errors.push(`AI referral measurement is missing: ${marker}`);
 }
+const indexNow = fs.readFileSync(path.resolve("tools/submit-indexnow.mjs"), "utf8");
+if (indexNow.includes("provinceData.provinces")) errors.push("IndexNow must not repeatedly submit noindex province templates outside the sitemap");
 
 const indexableFiles = collectFiles(root, (file) => file.endsWith(".html") && !/^google/i.test(path.basename(file)));
 for (const file of indexableFiles) {
