@@ -11,6 +11,7 @@ const root = path.resolve("tuyen-tho-mo");
 const base = "https://thaylinhtuyenthomo.vn";
 const author = "Nguyễn Tử Linh";
 const recruitment = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
+const imageDimensions = JSON.parse(fs.readFileSync(path.resolve("content/article-image-dimensions.json"), "utf8"));
 const criteria = recruitment.criteria;
 const recruitmentAnswers = buildRecruitmentAnswers(recruitment);
 const buildTime = recruitment.updated_at;
@@ -38,6 +39,34 @@ const esc = (value = "") => String(value)
   .replaceAll('"', "&quot;");
 
 const xml = esc;
+
+function publicPageUrl(file) {
+  const relative = path.relative(root, file).replaceAll(path.sep, "/");
+  if (relative === "index.html") return base + "/";
+  return base + "/" + relative.replace(/index\.html$/, "");
+}
+
+function normalizePageAssets(html, file) {
+  const hadRemoteFonts = /https:\/\/fonts\.(?:googleapis|gstatic)\.com/i.test(html);
+  let output = html.replace(/\s*<link\b[^>]*href=["']https:\/\/fonts\.(?:googleapis|gstatic)\.com[^"']*["'][^>]*>/gi, "");
+  if (hadRemoteFonts && !output.includes('href="/fonts.css')) {
+    output = output.replace(/<\/head>/i, '  <link rel="stylesheet" href="/fonts.css?v=1">\n</head>');
+  }
+  return output.replace(/<img\b[^>]*>/gi, (tag) => {
+    const source = tag.match(/\bsrc=(["'])(.*?)\1/i)?.[2];
+    if (!source) return tag;
+    let key;
+    try { key = new URL(source.replaceAll("&amp;", "&"), publicPageUrl(file)).href; }
+    catch { return tag; }
+    const dimensions = imageDimensions[key];
+    if (!dimensions) return tag;
+    const missing = [];
+    if (!/\bwidth=["']\d+["']/i.test(tag)) missing.push('width="' + dimensions[0] + '"');
+    if (!/\bheight=["']\d+["']/i.test(tag)) missing.push('height="' + dimensions[1] + '"');
+    return missing.length ? tag.replace(/>$/, " " + missing.join(" ") + ">") : tag;
+  });
+}
+
 const displayDate = (iso) => new Intl.DateTimeFormat("vi-VN", {
   day: "2-digit", month: "2-digit", year: "numeric", timeZone: "Asia/Bangkok",
 }).format(new Date(iso));
@@ -345,9 +374,7 @@ function renderArticle(article) {
   <meta name="twitter:title" content="${esc(article.title)}">
   <meta name="twitter:description" content="${esc(article.lead)}">
   <meta name="twitter:image" content="${article.image}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/fonts.css?v=1">
   <link rel="stylesheet" href="/article-insights.css?v=10">
   <link rel="stylesheet" href="/content-network.css?v=1">
   <link rel="stylesheet" href="/mobile-ux.css?v=3">
@@ -477,7 +504,7 @@ function hubHtml() {
   <link rel="alternate" type="application/rss+xml" title="Tin ngành Than – Thầy Linh" href="${base}/feed.xml"><link rel="alternate" type="application/feed+json" title="Tin ngành Than – Thầy Linh" href="${base}/feed.json">
   <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="Ngành Than & Người thợ"><meta property="og:description" content="Những câu chuyện có thật, số liệu đáng tin cậy và góc nhìn nghề nghiệp dành cho người đang muốn vào ngành mỏ."><meta property="og:url" content="${base}/tin-nganh-than/"><meta property="og:image" content="${feature.image}">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Ngành Than & Người thợ"><meta name="twitter:description" content="Chuyện nghề mỏ và cơ hội lập nghiệp tại Quảng Ninh."><meta name="twitter:image" content="${feature.image}">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/fonts.css?v=1">
   <link rel="stylesheet" href="../article-insights.css?v=10"><link rel="stylesheet" href="/mobile-ux.css?v=3">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
@@ -538,6 +565,22 @@ function collectIndexHtml(directory, output = []) {
     else if (entry.name === "index.html") output.push(full);
   }
   return output;
+}
+
+function collectAllHtml(directory, output = []) {
+  for (const entry of fs.readdirSync(directory, {withFileTypes: true})) {
+    if (entry.name.startsWith(".")) continue;
+    const full = path.join(directory, entry.name);
+    if (entry.isDirectory()) collectAllHtml(full, output);
+    else if (entry.name.endsWith(".html")) output.push(full);
+  }
+  return output;
+}
+
+for (const file of collectAllHtml(root)) {
+  const before = fs.readFileSync(file, "utf8");
+  const after = normalizePageAssets(before, file);
+  if (after !== before) fs.writeFileSync(file, after);
 }
 
 const urls = collectIndexHtml(root).filter((file) => {

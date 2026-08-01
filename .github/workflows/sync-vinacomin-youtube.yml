@@ -23,9 +23,13 @@ jobs:
         run: node tools/sync-vinacomin-youtube.mjs
       - name: Rebuild search and validate the website
         run: |
+          node tools/generate-news-sitemap.mjs
           node tools/build-search-index.mjs
           node tools/validate-content-network.mjs
           node tools/validate-seo-library.mjs
+          node tools/audit-technical-seo.mjs
+          node tools/validate-performance-budget.mjs
+          node tools/validate-workflow-safety.mjs
           node tools/validate-ai-search.mjs
       - name: Publish new video metadata when the channel changes
         shell: bash

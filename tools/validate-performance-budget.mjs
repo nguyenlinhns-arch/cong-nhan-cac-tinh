@@ -3,6 +3,8 @@ import path from "node:path";
 import vm from "node:vm";
 
 const root = path.resolve("tuyen-tho-mo");
+const base = "https://thaylinhtuyenthomo.vn";
+const imageDimensions = JSON.parse(fs.readFileSync(path.resolve("content/article-image-dimensions.json"), "utf8"));
 const errors = [];
 const warnings = [];
 const read = (relative) => fs.readFileSync(path.join(root, relative), "utf8");
@@ -16,6 +18,19 @@ function walk(directory) {
 
 function fail(message) {
   errors.push(message);
+}
+
+function pageUrl(file) {
+  const relative = path.relative(root, file).replaceAll(path.sep, "/");
+  if (relative === "index.html") return base + "/";
+  return base + "/" + relative.replace(/index\.html$/, "");
+}
+
+function knownImage(tag, file) {
+  const source = tag.match(/\bsrc=(["'])(.*?)\1/i)?.[2];
+  if (!source) return "";
+  try { return new URL(source.replaceAll("&amp;", "&"), pageUrl(file)).href; }
+  catch { return ""; }
 }
 
 const analytics = read("analytics.js");
@@ -114,12 +129,44 @@ for (const marker of ["data-featured-video-id", "data-featured-video-title", "da
   if (!videoSync.includes(marker)) fail(`Đồng bộ video TKV: thiếu cập nhật ${marker}`);
 }
 
+const fontCss = read("fonts.css");
+const fontWeights = [400, 500, 600, 700, 800, 900];
+let localFontFiles = 0;
+for (const weight of fontWeights) {
+  for (const subset of ["latin", "vietnamese"]) {
+    const name = `be-vietnam-pro-${subset}-${weight}-normal.woff2`;
+    const file = path.join(root, "assets", "fonts", name);
+    if (!fs.existsSync(file)) {
+      fail(`Font: thiếu ${name}`);
+      continue;
+    }
+    localFontFiles += 1;
+    const bytes = fs.statSync(file).size;
+    if (bytes < 8_000 || bytes > 30_000) fail(`Font: ${name} có kích thước bất thường ${bytes} byte`);
+    if (!fontCss.includes("/assets/fonts/" + name)) fail(`Font: fonts.css chưa khai báo ${name}`);
+  }
+}
+if ((fontCss.match(/font-display:swap/g) || []).length !== 12) fail("Font: 12 tập con phải dùng font-display:swap");
+if (!fs.existsSync(path.join(root, "assets", "fonts", "OFL-1.1.txt"))) fail("Font: thiếu giấy phép SIL OFL 1.1");
+
 const htmlFiles = walk(root).filter((file) => file.endsWith(".html") && !path.basename(file).startsWith("google"));
 let blockingScripts = 0;
 let eagerThirdPartyFrames = 0;
+let externalStylesheets = 0;
+let localFontPages = 0;
+let knownImageTags = 0;
+let knownImagesMissingDimensions = 0;
+let articleCovers = 0;
+let articleCoversMissingDimensions = 0;
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, "utf8");
   const relative = path.relative(root, file);
+  if (html.includes('href="/fonts.css?v=1"')) localFontPages += 1;
+  if (/fonts\.(?:googleapis|gstatic)\.com/i.test(html)) fail(`${relative}: còn gọi Google Fonts bên ngoài`);
+  for (const match of html.matchAll(/<link\b[^>]*rel=["'][^"']*stylesheet[^"']*["'][^>]*href=["'](https?:\/\/[^"']+)["'][^>]*>/gi)) {
+    externalStylesheets += 1;
+    fail(`${relative}: stylesheet bên ngoài chặn hiển thị ${match[1]}`);
+  }
   for (const match of html.matchAll(/<script\b[^>]*\bsrc=["'][^"']+["'][^>]*>/gi)) {
     if (!/\b(?:defer|async)\b/i.test(match[0]) && !/\btype=["']module["']/i.test(match[0])) {
       blockingScripts += 1;
@@ -132,11 +179,33 @@ for (const file of htmlFiles) {
       fail(`${relative}: iframe bên thứ ba chưa nạp chậm`);
     }
   }
+  for (const match of html.matchAll(/<img\b[^>]*>/gi)) {
+    const key = knownImage(match[0], file);
+    if (!imageDimensions[key]) continue;
+    knownImageTags += 1;
+    if (!/\bwidth=["']\d+["']/i.test(match[0]) || !/\bheight=["']\d+["']/i.test(match[0])) {
+      knownImagesMissingDimensions += 1;
+      fail(`${relative}: ảnh bài viết chưa có width/height ${key}`);
+    }
+  }
+  for (const match of html.matchAll(/<figure\b[^>]*class=["'][^"']*\barticle-cover\b[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi)) {
+    articleCovers += 1;
+    const tag = match[0].match(/<img\b[^>]*>/i)?.[0] || "";
+    if (!/\bwidth=["']\d+["']/i.test(tag) || !/\bheight=["']\d+["']/i.test(tag)) {
+      articleCoversMissingDimensions += 1;
+      fail(`${relative}: ảnh bìa bài viết chưa giữ chỗ bố cục`);
+    }
+  }
   if (/googletagmanager\.com|connect\.facebook\.net/i.test(html)) fail(`${relative}: nhúng trực tiếp nhà cung cấp đo lường trong HTML`);
 }
 
+if (!localFontPages) fail("Font: không có trang nào dùng fonts.css cục bộ");
+if (articleCovers !== 61) fail(`Ảnh bìa: dự kiến 61 bài, thực tế ${articleCovers}`);
+if (knownImagesMissingDimensions || articleCoversMissingDimensions) fail("Ảnh bài viết: còn ảnh có nguy cơ xô lệch bố cục");
+
 const budgets = {
   "analytics.js": 16_000,
+  "fonts.css": 9_000,
   "mobile-ux.js": 42_000,
   "job-application.js": 32_000,
   "index.html": 90_000,
@@ -146,12 +215,26 @@ for (const [relative, limit] of Object.entries(budgets)) {
   if (bytes > limit) fail(`${relative}: ${bytes} byte vượt ngân sách ${limit} byte`);
 }
 
+const optimizedSourceImage = path.join(root, "assets", "articles", "mu-cang-chai-quy-che-2024.webp");
+if (!fs.existsSync(optimizedSourceImage)) fail("Ảnh nguồn Mù Cang Chải: thiếu bản WebP lossless");
+else if (fs.statSync(optimizedSourceImage).size > 700_000) fail("Ảnh nguồn Mù Cang Chải: bản WebP vượt 700 KB");
+if (fs.readFileSync(path.resolve("tools/historical-source-images.mjs"), "utf8").includes("mu-cang-chai-quy-che-2024.png")) {
+  fail("Ảnh nguồn Mù Cang Chải: bộ sinh trang vẫn dùng PNG 1,57 MB");
+}
+
 console.log(JSON.stringify({
   html: htmlFiles.length,
   deferred_vendors: appendedScripts.length,
   optimized_home_images: optimizedHomeImages.length,
   blocking_scripts: blockingScripts,
   eager_third_party_frames: eagerThirdPartyFrames,
+  external_stylesheets: externalStylesheets,
+  local_font_pages: localFontPages,
+  local_font_files: localFontFiles,
+  known_image_tags: knownImageTags,
+  known_images_missing_dimensions: knownImagesMissingDimensions,
+  article_covers: articleCovers,
+  article_covers_missing_dimensions: articleCoversMissingDimensions,
   errors,
   warnings,
 }, null, 2));
