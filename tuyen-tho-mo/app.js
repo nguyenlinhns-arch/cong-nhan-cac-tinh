@@ -108,7 +108,5 @@
 
     loadStyle('facebook-brand.css?v=2', 'data-facebook-brand-style');
     loadScript('facebook-brand.js?v=2', 'data-facebook-brand-script');
-    loadStyle('fanpage-media.css', 'data-fanpage-media-style');
-    loadScript('fanpage-media.js', 'data-fanpage-media-script');
   } catch (_) {}
 })();
