@@ -759,6 +759,7 @@ export const existingNews = [
     keyword: "tuyển thợ mỏ tháng 8/2026",
     keywords: ["tuyển thợ mỏ tháng 8/2026", "tuyển thợ lò", "học nghề mỏ", "thu nhập 20–25 triệu/tháng", "việc làm TKV Quảng Ninh"],
     image: "https://thaylinhtuyenthomo.vn/assets/news/tuyen-tho-mo-thang-8-2026-cam-ket.png",
+    imageAlt: "Tuyển thợ mỏ tháng 8/2026 với cam kết thu nhập 20–25 triệu đồng mỗi tháng khi hoàn thành định mức lao động",
     imageSource: "Ảnh bài Cách làm mới trong công tác đào tạo nghề mỏ hầm lò – Vinacomin",
     imageOriginal: "https://vinacomin.vn/userfiles/thumbnail/1801E31082CB40098A13ECF1DD64BD38E04A2392E6D5F90F15BA1EF962A6D4E6.jpg",
     imageLocalFile: "../news/tuyen-tho-mo-thang-8-2026-cam-ket.png",

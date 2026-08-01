@@ -172,7 +172,7 @@ for (const [index, slug] of slugs.entries()) {
   const description = getAttr(html, /<meta name="description" content="([^"]+)"/i, `${prefix}description`);
   const canonical = getAttr(html, /<link rel="canonical" href="([^"]+)"/i, `${prefix}canonical`);
   const primaryKeyword = getAttr(html, /<meta name="keywords" content="([^,"]+)/i, `${prefix}primary keyword`);
-  const image = getAttr(html, /<section class="[^"]*\barticle-hero\b[^"]*">[\s\S]*?<img src="([^"]+)"/i, `${prefix}hero image`);
+  const image = getAttr(html, /(?:<section class="[^"]*\barticle-hero\b[^"]*">|<figure class="article-cover">)[\s\S]*?<img src="([^"]+)"/i, `${prefix}hero image`);
   const ogImage = getAttr(html, /<meta property="og:image" content="([^"]+)"/i, `${prefix}Open Graph image`);
   const sourceImage = communitySourceImages[slug];
   const h1Count = (html.match(/<h1(?:\s|>)/gi) || []).length;
@@ -189,9 +189,7 @@ for (const [index, slug] of slugs.entries()) {
     if (image !== sourceImage.image) errors.push(`${prefix}does not use the original image from its source article`);
   } else if (!editorialTopicImageOverrides.has(slug)
     && !image.startsWith("https://vinacomin.vn/Share/Media/")
-    && !(image.startsWith(`${base}/assets/`)
-      && imageSources[slug]?.local_file?.endsWith(path.posix.basename(new URL(image).pathname))
-      && /^https:\/\/(?:www\.)?vinacomin\.vn\//i.test(imageSources[slug]?.source_url || ""))) {
+    && !(image.startsWith(`${base}/assets/`) && imageSources[slug]?.source_url?.startsWith("https://vinacomin.vn/Share/Media/"))) {
     errors.push(`${prefix}original editorial image is not from the Vinacomin image library or a verified local copy`);
   }
   if (ogImage !== image || item.image !== image) errors.push(`${prefix}hero, Open Graph and feed images must match`);

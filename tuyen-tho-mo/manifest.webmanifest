@@ -2,17 +2,23 @@
   "name": "Thầy Linh – Tuyển Thợ Mỏ",
   "short_name": "Thầy Linh",
   "description": "Thông tin tuyển sinh nghề mỏ và tư vấn trực tiếp.",
-  "start_url": "./",
-  "scope": "./",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#f7f5ef",
   "theme_color": "#0b222b",
   "lang": "vi",
   "icons": [
     {
-      "src": "assets/thay-linh-avatar.webp?v=3",
-      "sizes": "240x240",
-      "type": "image/webp",
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
       "purpose": "any"
     }
   ]

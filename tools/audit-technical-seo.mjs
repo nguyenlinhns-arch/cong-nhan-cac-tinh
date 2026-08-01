@@ -53,12 +53,58 @@ function localFile(sourceFile, rawUrl) {
   return target;
 }
 
+function pngDimensions(file) {
+  const data = fs.readFileSync(file);
+  const signature = "89504e470d0a1a0a";
+  if (data.length < 24 || data.subarray(0, 8).toString("hex") !== signature) return null;
+  return [data.readUInt32BE(16), data.readUInt32BE(20)];
+}
+
 const cname = fs.readFileSync(path.join(root, "CNAME"), "utf8").trim();
 if (cname !== "thaylinhtuyenthomo.vn") errors.push(`CNAME must remain thaylinhtuyenthomo.vn, got ${cname || "empty"}`);
 
 const robots = fs.readFileSync(path.join(root, "robots.txt"), "utf8");
 if (!robots.includes(`Sitemap: ${base}/sitemap.xml`)) errors.push("robots.txt does not advertise the canonical sitemap URL");
 if (/Disallow:\s*\//i.test(robots)) errors.push("robots.txt blocks the whole website");
+
+const faviconSpecs = new Map([
+  ["favicon-48x48.png", [48, 48]],
+  ["favicon-192x192.png", [192, 192]],
+  ["favicon-512x512.png", [512, 512]],
+  ["apple-touch-icon.png", [180, 180]],
+]);
+for (const [name, expected] of faviconSpecs) {
+  const file = path.join(root, name);
+  if (!fs.existsSync(file)) {
+    errors.push(`Missing favicon asset: ${name}`);
+    continue;
+  }
+  const actual = pngDimensions(file);
+  if (!actual || actual[0] !== expected[0] || actual[1] !== expected[1]) {
+    errors.push(`${name}: expected ${expected.join("x")} PNG, got ${actual ? actual.join("x") : "invalid PNG"}`);
+  }
+}
+
+const icoFile = path.join(root, "favicon.ico");
+if (!fs.existsSync(icoFile)) {
+  errors.push("Missing root favicon.ico");
+} else {
+  const ico = fs.readFileSync(icoFile);
+  if (ico.length < 6 || ico.readUInt16LE(0) !== 0 || ico.readUInt16LE(2) !== 1 || ico.readUInt16LE(4) < 1) {
+    errors.push("favicon.ico is not a valid multi-size icon container");
+  }
+}
+
+try {
+  const manifest = JSON.parse(fs.readFileSync(path.join(root, "manifest.webmanifest"), "utf8"));
+  const manifestIcons = new Map((manifest.icons || []).map((item) => [item.src, item]));
+  for (const [src, sizes] of [["/favicon-192x192.png", "192x192"], ["/favicon-512x512.png", "512x512"]]) {
+    const icon = manifestIcons.get(src);
+    if (!icon || icon.sizes !== sizes || icon.type !== "image/png") errors.push(`manifest.webmanifest is missing ${src} (${sizes}, image/png)`);
+  }
+} catch (error) {
+  errors.push(`Invalid manifest.webmanifest: ${error.message}`);
+}
 
 const sitemapText = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
 const sitemapUrls = [...sitemapText.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
@@ -94,11 +140,18 @@ for (const file of htmlFiles) {
   const twitterDescription = meta(html, "name", "twitter:description");
   const twitterImage = meta(html, "name", "twitter:image");
   const jsonScripts = [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];
+  const linkTags = tags(html, "link");
+  const faviconHrefs = new Set(linkTags.filter((item) => item.rel?.split(/\s+/).includes("icon")).map((item) => item.href));
+  const appleIcon = linkTags.find((item) => item.rel === "apple-touch-icon")?.href || "";
 
   if (!pageTitle) errors.push(`${relative}: missing title`);
   if (!description) errors.push(`${relative}: missing meta description`);
   if (canonicalLinks.length !== 1) errors.push(`${relative}: expected exactly one canonical, got ${canonicalLinks.length}`);
   if (canonical !== expected) errors.push(`${relative}: canonical ${canonical || "missing"} must be ${expected}`);
+  if (!faviconHrefs.has("/favicon.ico")) errors.push(`${relative}: missing stable /favicon.ico declaration`);
+  if (!faviconHrefs.has("/favicon-48x48.png")) errors.push(`${relative}: missing 48x48 PNG favicon declaration`);
+  if (appleIcon !== "/apple-touch-icon.png") errors.push(`${relative}: missing apple-touch-icon declaration`);
+  if ([...faviconHrefs].some((href) => href?.startsWith("//"))) errors.push(`${relative}: protocol-relative favicon URL is not allowed`);
 
   if (indexable) {
     indexableUrls.add(expected);
