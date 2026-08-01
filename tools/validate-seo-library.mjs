@@ -40,9 +40,39 @@ const editorialTopicImageOverrides = new Set(existingNews
   .map((article) => article.slug));
 const editorialSectionOwners = new Map();
 const narrativeShingleOwners = new Map();
+const collectTextFragments = (value, fragments = []) => {
+  if (typeof value === "string") fragments.push(value);
+  else if (Array.isArray(value)) {
+    if (value.length === 2 && value.every((item) => typeof item === "string")) fragments.push(value.join(" "));
+    for (const item of value) collectTextFragments(item, fragments);
+  } else if (value && typeof value === "object") {
+    for (const item of Object.values(value)) collectTextFragments(item, fragments);
+  }
+  return fragments;
+};
+const lowIncomeFigure = (value) => {
+  const text = strip(value).replaceAll(",", ".");
+  if (!/(?:thu nhập|lương|tiền lương|triệu\s*đồng)/iu.test(text)) return false;
+  const directAmounts = [...text.matchAll(/\b(\d+(?:\.\d+)?)\s*(?:(?:–|—|-)\s*\d+(?:\.\d+)?|(?:đến|tới)\s*(?:trên\s*)?\d+(?:\.\d+)?)?\s*triệu(?:\s*đồng)?\s*(?:\/\s*(?:người\s*\/\s*)?(tháng|năm)|(?:mỗi|một)\s+(tháng|năm))/giu)];
+  for (const amount of directAmounts) {
+    const minimum = Number(amount[1]);
+    const unit = amount[2] || amount[3];
+    if ((unit === "tháng" && minimum < 20) || (unit === "năm" && minimum < 240)) return true;
+  }
+  if (directAmounts.length) return false;
+  const standaloneAmount = text.match(/\b(\d+(?:\.\d+)?)\s*(?:(?:–|—|-)\s*\d+(?:\.\d+)?|(?:đến|tới)\s*(?:trên\s*)?\d+(?:\.\d+)?)?\s*triệu/iu);
+  if (!standaloneAmount) return false;
+  const minimum = Number(standaloneAmount[1]);
+  const monthlyLabel = /(?:thu nhập|lương|tiền lương)[^.!?]{0,40}\btháng\b|\btháng\b[^.!?]{0,40}(?:thu nhập|lương|tiền lương)/iu.test(text);
+  const annualLabel = /(?:thu nhập|lương|tiền lương)[^.!?]{0,40}\bnăm\b|\bnăm\b[^.!?]{0,40}(?:thu nhập|lương|tiền lương)/iu.test(text);
+  return (monthlyLabel && minimum < 20) || (annualLabel && minimum < 240);
+};
 for (const article of editorialArticles) {
   if (!Array.isArray(article.intro) || article.intro.length < 2) errors.push(`${article.slug}: bài báo cần ít nhất hai đoạn mở bài`);
   if (!Array.isArray(article.sections) || article.sections.length < 3) errors.push(`${article.slug}: bài báo cần ít nhất ba phần nội dung`);
+  if (collectTextFragments(article).some(lowIncomeFigure)) {
+    errors.push(`${article.slug}: bài nguồn có mức thu nhập thấp hơn 20 triệu đồng/tháng; phải bỏ toàn bộ mục và con số thu nhập`);
+  }
 
   for (const section of article.sections || []) {
     const key = normalize(section.title);
@@ -168,6 +198,7 @@ for (const [index, slug] of slugs.entries()) {
   if (/class="article-(?:meta|source-credit)"/i.test(html)) errors.push(`${prefix}contains visible author, image or source credits`);
   if (/class="source-note"|<h2[^>]*>\s*Nguồn tham khảo\s*<\/h2>/iu.test(html)) errors.push(`${prefix}contains a visible source block`);
   if (/Bài\s+\d{1,2}\s*\/\s*50|50\+?\s*bài|Cách đọc đúng:|Tóm tắt:/iu.test(visible)) errors.push(`${prefix}contains quota-driven or generic template wording`);
+  if (visible.split(/(?<=[.!?])\s+/u).some(lowIncomeFigure)) errors.push(`${prefix}publishes an income figure below 20 million VND per month`);
 
   const externalAnchors = [...html.matchAll(/<a\b[^>]*href="(https?:\/\/[^"]+)"/gi)]
     .map((match) => match[1])
