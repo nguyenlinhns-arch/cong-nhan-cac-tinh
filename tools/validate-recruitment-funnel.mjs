@@ -28,7 +28,7 @@ for (const hook of [
   "<noscript>",
   "recruitment-config.js?v=2",
   "job-application.js?v=9",
-  "analytics.js?v=4",
+  "analytics.js?v=5",
 ]) requireText(campaign, hook, "central application page");
 
 if (campaign.includes("data-copy-application") || campaign.includes("Sao chép lại tin nhắn")) {
@@ -49,6 +49,8 @@ for (const text of [
   "schema_version",
   "form_context",
   "ApplicationStart",
+  "ApplicationProgress",
+  "ApplicationValidationError",
   "ApplicationSubmit",
   "ApplicationDeliveryFailure",
   "submissionFingerprint",

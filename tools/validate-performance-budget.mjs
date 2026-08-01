@@ -34,19 +34,25 @@ function knownImage(tag, file) {
 }
 
 const analytics = read("analytics.js");
-for (const marker of ["installMetaQueue", "ensureVendors", "scheduleVendors", "requestIdleCallback", "timeout: 2500"]) {
+for (const marker of ["installMetaQueue", "ensureVendors", "scheduleVendors", "requestIdleCallback", "timeout: 2500", "CONSENT_KEY", "createConsentBanner", "WEB_VITALS_VERSION", "registerWebVitals", "metric_value"]) {
   if (!analytics.includes(marker)) fail(`Analytics: thiếu cơ chế nạp chậm ${marker}`);
+}
+const privacy = read("quyen-rieng.html");
+for (const marker of ["data-open-consent", "LCP, INP, CLS", "Mặc định Google Analytics 4 và Meta Pixel chưa được nạp", "Chỉ cần thiết"]) {
+  if (!privacy.includes(marker)) fail(`Quyền riêng tư: thiếu cam kết ${marker}`);
 }
 
 const appendedScripts = [];
 const idleCallbacks = [];
 const interactionListeners = new Map();
-const localStore = new Map();
+const localStore = new Map([["thaylinh_measurement_consent_v1", "granted"]]);
 const documentStub = {
   referrer: "",
+  cookie: "",
   documentElement: { dataset: {} },
   head: { append: (node) => appendedScripts.push(node) },
   querySelector: () => null,
+  querySelectorAll: () => [],
   createElement: () => ({ async: false, src: "", dataset: {} }),
   addEventListener: () => {},
 };
@@ -68,6 +74,7 @@ const sandbox = {
   localStorage: {
     getItem: (key) => localStore.get(key) || null,
     setItem: (key, value) => localStore.set(key, String(value)),
+    removeItem: (key) => localStore.delete(key),
   },
   URL,
   URLSearchParams,
@@ -88,12 +95,83 @@ try {
   }
   idleCallbacks[0]?.callback();
   const vendorSources = appendedScripts.map((script) => script.src).sort();
-  if (vendorSources.length !== 2 || !vendorSources.some((src) => src.includes("googletagmanager.com/gtag/js")) || !vendorSources.some((src) => src.includes("connect.facebook.net/en_US/fbevents.js"))) {
-    fail("Analytics: GA4 và Meta Pixel không được nạp đúng sau thời điểm nhàn rỗi");
+  if (vendorSources.length !== 3 || !vendorSources.some((src) => src === "/assets/vendor/web-vitals-6.0.1.iife.js") || !vendorSources.some((src) => src.includes("googletagmanager.com/gtag/js")) || !vendorSources.some((src) => src.includes("connect.facebook.net/en_US/fbevents.js"))) {
+    fail("Analytics: Web Vitals, GA4 và Meta Pixel không được nạp đúng sau thời điểm nhàn rỗi");
   }
   if (!windowStub.fbq?.queue?.some((entry) => entry[0] === "track" && entry[1] === "PageView")) fail("Analytics: Meta PageView không được giữ trong hàng đợi");
+  const vitalCallbacks = {};
+  windowStub.webVitals = {
+    onCLS: callback => { vitalCallbacks.CLS = callback; },
+    onINP: callback => { vitalCallbacks.INP = callback; },
+    onLCP: callback => { vitalCallbacks.LCP = callback; },
+  };
+  appendedScripts.find((script) => script.src === "/assets/vendor/web-vitals-6.0.1.iife.js")?.onload?.();
+  vitalCallbacks.LCP?.({ name: "LCP", id: "v6-test", value: 1234.5, delta: 1234.5, rating: "good", navigationType: "navigate", navigationURL: "https://thaylinhtuyenthomo.vn/", entries: [{ startTime: 1234.5 }] });
+  const commands = windowStub.dataLayer.filter(item => Object.prototype.toString.call(item) === "[object Arguments]").map(item => Array.from(item));
+  const lcpEvent = commands.find(item => item[0] === "event" && item[1] === "LCP");
+  if (!lcpEvent || lcpEvent[2]?.metric_id !== "v6-test" || lcpEvent[2]?.metric_value !== 1234.5 || lcpEvent[2]?.page_group !== "home") {
+    fail("Analytics: dữ liệu LCP ẩn danh không được chuyển đúng sang GA4");
+  }
+  if (windowStub.fbq?.queue?.some((entry) => entry[1] === "LCP")) fail("Analytics: Web Vitals không được gửi sang Meta Pixel");
 } catch (error) {
   fail(`Analytics: không chạy được kiểm thử nạp chậm (${error.message})`);
+}
+
+try {
+  const blockedScripts = [];
+  const consentBanners = [];
+  const choiceStore = new Map();
+  const blockedWindow = {
+    dataLayer: [],
+    requestIdleCallback: () => { throw new Error("Không được lên lịch nhà cung cấp trước khi đồng ý"); },
+    setTimeout: () => 1,
+    clearTimeout: () => {},
+    addEventListener: () => {},
+  };
+  blockedWindow.window = blockedWindow;
+  const blockedDocument = {
+    referrer: "",
+    cookie: "",
+    documentElement: { dataset: {} },
+    head: { append: node => blockedScripts.push(node) },
+    body: { append: node => consentBanners.push(node) },
+    querySelector: () => null,
+    querySelectorAll: () => [],
+    createElement: () => ({
+      dataset: {},
+      setAttribute() {},
+      removeAttribute() {},
+      querySelectorAll: () => [],
+    }),
+    addEventListener: () => {},
+  };
+  vm.runInNewContext(analytics, {
+    window: blockedWindow,
+    document: blockedDocument,
+    location: { search: "", pathname: "/", href: "https://thaylinhtuyenthomo.vn/" },
+    localStorage: {
+      getItem: key => choiceStore.get(key) || null,
+      setItem: (key, value) => choiceStore.set(key, String(value)),
+      removeItem: key => choiceStore.delete(key),
+    },
+    URL,
+    URLSearchParams,
+    Date,
+    Object,
+    Array,
+    String,
+    Number,
+    RegExp,
+  }, { filename: "analytics-consent.js" });
+  if (blockedScripts.length) fail("Consent: nạp script đo lường trước khi có lựa chọn");
+  if (consentBanners.length !== 1) fail("Consent: lần truy cập đầu không hiển thị lựa chọn đo lường");
+  blockedWindow.thayLinhAnalytics.track({ event: "contact_click", channel: "zalo" });
+  blockedWindow.thayLinhAnalytics.consent("denied");
+  if (blockedScripts.length || blockedWindow.thayLinhAnalytics.consentState() !== "denied" || choiceStore.get("thaylinh_measurement_consent_v1") !== "denied") {
+    fail("Consent: lựa chọn Chỉ cần thiết vẫn kích hoạt đo lường hoặc không được lưu");
+  }
+} catch (error) {
+  fail(`Consent: không chạy được kiểm thử mặc định từ chối (${error.message})`);
 }
 
 const home = read("index.html");
@@ -216,12 +294,14 @@ if (articleCovers !== 61) fail(`Ảnh bìa: dự kiến 61 bài, thực tế ${a
 if (knownImagesMissingDimensions || articleCoversMissingDimensions) fail("Ảnh bài viết: còn ảnh có nguy cơ xô lệch bố cục");
 
 const budgets = {
-  "analytics.js": 16_000,
+  "analytics.js": 19_000,
   "fonts.css": 9_000,
+  "mobile-ux.css": 16_000,
   "mobile-ux.js": 42_000,
   "job-application.js": 32_000,
   "portal-official.js": 20_000,
   "landing-recruitment.css": 36_000,
+  "assets/vendor/web-vitals-6.0.1.iife.js": 10_000,
   "index.html": 90_000,
 };
 for (const [relative, limit] of Object.entries(budgets)) {
@@ -235,10 +315,15 @@ else if (fs.statSync(optimizedSourceImage).size > 700_000) fail("Ảnh nguồn M
 if (fs.readFileSync(path.resolve("tools/historical-source-images.mjs"), "utf8").includes("mu-cang-chai-quy-che-2024.png")) {
   fail("Ảnh nguồn Mù Cang Chải: bộ sinh trang vẫn dùng PNG 1,57 MB");
 }
+const webVitalsBundle = path.join(root, "assets", "vendor", "web-vitals-6.0.1.iife.js");
+const webVitalsLicense = path.join(root, "assets", "vendor", "web-vitals-LICENSE.txt");
+if (!fs.existsSync(webVitalsBundle) || !fs.readFileSync(webVitalsBundle, "utf8").startsWith("/*! web-vitals v6.0.1")) fail("Web Vitals: thiếu bundle cục bộ có phiên bản");
+if (!fs.existsSync(webVitalsLicense) || !fs.readFileSync(webVitalsLicense, "utf8").includes("Apache License")) fail("Web Vitals: thiếu giấy phép Apache 2.0");
 
 console.log(JSON.stringify({
   html: htmlFiles.length,
-  deferred_vendors: appendedScripts.length,
+  deferred_scripts: appendedScripts.length,
+  web_vitals_version: "6.0.1",
   optimized_home_images: optimizedHomeImages.length,
   home_video_facades: homeVideoFacades,
   blocking_scripts: blockingScripts,

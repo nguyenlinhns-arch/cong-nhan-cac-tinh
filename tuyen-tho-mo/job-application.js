@@ -27,6 +27,19 @@
   const DRAFT_KEY = "thaylinh_application_draft_v1";
   const DRAFT_TTL_MS = 24 * 60 * 60 * 1000;
   const DRAFT_FIELDS = ["province", "height", "weight", "education", "trade"];
+  const progressSeen = new Set();
+  const progressSteps = Object.freeze({
+    full_name: "01_identity",
+    phone: "02_contact",
+    birth_date: "03_age",
+    province: "04_location",
+    height: "05_physical",
+    weight: "05_physical",
+    education: "06_education",
+    trade: "07_trade",
+    health: "08_health",
+    consent: "09_consent",
+  });
 
   function isoDate(date) {
     return [
@@ -102,6 +115,22 @@
       window.tlTrackingQueue = window.tlTrackingQueue || [];
       window.tlTrackingQueue.push([name, payload]);
     }
+  }
+
+  function fieldGroup(field) {
+    return progressSteps[String(field?.name || "")] || "required_field";
+  }
+
+  function trackProgress(field) {
+    const step = fieldGroup(field);
+    if (step === "required_field" || progressSeen.has(step)) return;
+    progressSeen.add(step);
+    track("ApplicationProgress", {
+      action: "step_reached",
+      context: formContext,
+      step,
+      field_group: step.replace(/^\d+_/, ""),
+    });
   }
 
   function prefillSelect(name, value) {
@@ -249,6 +278,7 @@
       started = true;
       track("ApplicationStart", { action: "form_started", context: formContext });
     }
+    trackProgress(event?.target);
     if (event?.target?.name === "phone") {
       phoneInput?.removeAttribute("aria-invalid");
       error.hidden = true;
@@ -264,12 +294,24 @@
     if (DRAFT_FIELDS.includes(event?.target?.name)) saveDraft();
   });
 
+  form.addEventListener("focusin", event => trackProgress(event?.target));
+
   form.addEventListener("submit", async event => {
     event.preventDefault();
     if (submitted || deliveryInFlight) return;
     error.hidden = true;
     phoneInput?.removeAttribute("aria-invalid");
-    if (!form.reportValidity()) return;
+    if (!form.reportValidity()) {
+      const invalidField = form.querySelector?.(":invalid");
+      const step = fieldGroup(invalidField);
+      track("ApplicationValidationError", {
+        action: "native_validation",
+        context: formContext,
+        step,
+        field_group: step.replace(/^\d+_/, ""),
+      });
+      return;
+    }
 
     const values = Object.fromEntries(new FormData(form).entries());
     const phone = normalizePhone(values.phone);
@@ -278,6 +320,12 @@
       error.hidden = false;
       phoneInput?.setAttribute("aria-invalid", "true");
       phoneInput?.focus();
+      track("ApplicationValidationError", {
+        action: "invalid_phone",
+        context: formContext,
+        step: "02_contact",
+        field_group: "contact",
+      });
       return;
     }
 

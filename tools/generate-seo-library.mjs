@@ -377,7 +377,7 @@ function renderArticle(article) {
   <link rel="stylesheet" href="/fonts.css?v=1">
   <link rel="stylesheet" href="/article-insights.css?v=10">
   <link rel="stylesheet" href="/content-network.css?v=1">
-  <link rel="stylesheet" href="/mobile-ux.css?v=3">
+  <link rel="stylesheet" href="/mobile-ux.css?v=4">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
 <body>
@@ -405,7 +405,7 @@ function renderArticle(article) {
   </main>
   <footer class="site-footer"><div class="container footer-inner"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Câu chuyện nghề nghiệp, đời sống và cơ hội lập nghiệp trong ngành Than.</p></div><a href="/tin-nganh-than/">Đọc thêm chuyện nghề mỏ →</a></div></footer>
   <nav class="article-contact" aria-label="Liên hệ nhanh"><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Zalo · 096 304 8585</a><a href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener">Messenger</a></nav>
-  <script src="/analytics.js?v=4" defer></script>
+  <script src="/analytics.js?v=5" defer></script>
   <script src="/mobile-ux.js?v=3" defer></script>
   <script src="/share-tools.js?v=1" defer></script>
 </body>
@@ -505,7 +505,7 @@ function hubHtml() {
   <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="Ngành Than & Người thợ"><meta property="og:description" content="Những câu chuyện có thật, số liệu đáng tin cậy và góc nhìn nghề nghiệp dành cho người đang muốn vào ngành mỏ."><meta property="og:url" content="${base}/tin-nganh-than/"><meta property="og:image" content="${feature.image}">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Ngành Than & Người thợ"><meta name="twitter:description" content="Chuyện nghề mỏ và cơ hội lập nghiệp tại Quảng Ninh."><meta name="twitter:image" content="${feature.image}">
   <link rel="stylesheet" href="/fonts.css?v=1">
-  <link rel="stylesheet" href="../article-insights.css?v=10"><link rel="stylesheet" href="/mobile-ux.css?v=3">
+  <link rel="stylesheet" href="../article-insights.css?v=10"><link rel="stylesheet" href="/mobile-ux.css?v=4">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
 <body>
@@ -520,7 +520,7 @@ function hubHtml() {
   </main>
   <footer class="site-footer"><div class="container footer-inner"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Đưa câu chuyện nghề mỏ đến gần hơn với người lao động trên cả nước.</p></div><a href="../viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky">Tìm hiểu cơ hội học nghề →</a></div></footer>
   <nav class="article-contact" aria-label="Liên hệ nhanh"><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Zalo · 096 304 8585</a><a href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener">Messenger</a></nav>
-  <script src="/analytics.js?v=4" defer></script>
+  <script src="/analytics.js?v=5" defer></script>
   <script src="/mobile-ux.js?v=3" defer></script>
 </body></html>`;
 }
@@ -550,7 +550,7 @@ for (const article of existingNews) {
   html = html.replaceAll(`${base}/#gioi-thieu`, `${base}/tac-gia/nguyen-tu-linh/`);
   if (!/<main\b[^>]*\bid=["']noi-dung["']/i.test(html)) html = html.replace(/<main\b/i, '<main id="noi-dung"');
   if (!/class=["'][^"']*\bskip-link\b/i.test(html)) html = html.replace(/<body>/i, '<body>\n  <a class="skip-link" href="#noi-dung">Đến nội dung chính</a>');
-  html = html.replace(/\/analytics\.js\?v=\d+/g, '/analytics.js?v=4').replaceAll('/mobile-ux.js?v=2', '/mobile-ux.js?v=3').replaceAll('/mobile-ux.css?v=1', '/mobile-ux.css?v=3');
+  html = html.replace(/\/analytics\.js\?v=\d+/g, '/analytics.js?v=5').replaceAll('/mobile-ux.js?v=2', '/mobile-ux.js?v=3').replace(/\/mobile-ux\.css\?v=\d+/g, '/mobile-ux.css?v=4').replace(/\/job-application\.js\?v=\d+/g, '/job-application.js?v=9');
   if (!html.includes('/share-tools.js?v=1')) html = html.replace(/<\/body>/i, `  <script src="/share-tools.js?v=1" defer></script>\n</body>`);
   fs.writeFileSync(file, html);
 }

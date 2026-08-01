@@ -41,7 +41,7 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
     getAttribute(name) { return this.attributes[name] ?? null; },
     ...extra,
   });
-  const fields = Object.fromEntries(Object.keys(values).map(name => [name, makeElement({ value: values[name] })]));
+  const fields = Object.fromEntries(Object.keys(values).map(name => [name, makeElement({ name, value: values[name] })]));
   fields.province.options = [{ value: "" }, { value: "Hồ Chí Minh" }, { value: "An Giang" }];
   fields.trade.options = [{ value: "" }, { value: "Kỹ thuật khai thác mỏ hầm lò" }, { value: "Kỹ thuật xây dựng mỏ hầm lò" }];
 
@@ -168,9 +168,11 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
   if (form.getAttribute("aria-busy") !== null || result.getAttribute("aria-busy") !== null) throw new Error("Busy state remained after delivery");
   if (result.focusCount !== 1 || result.scrollCount !== 1) throw new Error("Result was not revealed and focused exactly once");
 
-  for (const event of ["ApplicationStart", "ApplicationSubmit", "Lead"]) {
+  for (const event of ["ApplicationStart", "ApplicationProgress", "ApplicationSubmit", "Lead"]) {
     if (!tracked.some(([name]) => name === event)) throw new Error(`Missing analytics event: ${event}`);
   }
+  const progress = tracked.find(([name]) => name === "ApplicationProgress")?.[1];
+  if (progress?.step !== "01_identity" || progress?.field_group !== "identity") throw new Error("Anonymous application progress was not measured correctly");
   if (deliverySequence[0] !== "failed" && tracked.some(([name]) => name === "ApplicationDeliveryFailure")) throw new Error("Failure event fired for a successful delivery");
 
   if (deliverySequence[0] === "failed") {

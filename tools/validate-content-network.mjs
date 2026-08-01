@@ -42,7 +42,7 @@ for (const [file, url] of hubs) {
     `<link rel="canonical" href="${base}${url}">`,
     'type="application/ld+json"',
     '/content-network.css?v=1',
-    '/analytics.js?v=4',
+    '/analytics.js?v=5',
     '/mobile-ux.js?v=3',
     '/feed.xml"',
     '/feed.json"',
@@ -107,7 +107,7 @@ if (contentFiles.length !== 104) fail(`Website: cần 104 trang nội dung, nh�
 for (const file of contentFiles) {
   const html = fs.readFileSync(file, "utf8");
   const relative = path.relative(root, file);
-  if (!html.includes('/analytics.js?v=4')) fail(`${relative}: chưa nạp analytics v4`);
+  if (!html.includes('/analytics.js?v=5')) fail(`${relative}: chưa nạp analytics v5`);
   if (!html.includes('/mobile-ux.js?v=3')) fail(`${relative}: chưa nạp mobile UX v3`);
 }
 

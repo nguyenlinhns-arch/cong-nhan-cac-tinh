@@ -184,7 +184,7 @@ function provincePage(province) {
   <meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-v2.webp">
   <link rel="stylesheet" href="../../styles.css">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
-  <link rel="stylesheet" href="/mobile-ux.css?v=3">
+  <link rel="stylesheet" href="/mobile-ux.css?v=4">
 </head>
 <body>
   <a class="skip-link" href="#noi-dung">Bỏ qua menu</a>
@@ -247,7 +247,7 @@ ${storySection}
   <div class="mobile-contact" aria-label="Liên hệ nhanh"><a class="mobile-contact__zalo" href="${applicationUrl}" data-contact="application"><b>✓</b><span>Ứng tuyển</span></a><a class="mobile-contact__messenger" href="https://zalo.me/0963048585" target="_blank" rel="noopener noreferrer" data-contact="zalo"><b>Z</b><span>Nhắn Zalo</span></a></div>
   <div class="toast" role="status" aria-live="polite" data-toast hidden></div>
   <script src="../../app.js?v=4" defer></script>
-  <script src="/analytics.js?v=4" defer></script>
+  <script src="/analytics.js?v=5" defer></script>
   <script src="/mobile-ux.js?v=3" defer></script>
 </body>
 </html>
