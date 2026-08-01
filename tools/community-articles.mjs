@@ -1031,6 +1031,34 @@ const localChecklistFrames = [
   ],
 ];
 
+const localFaqFrames = [
+  (item) => [
+    [`${item.locality} đã có người học và làm trong ngành Than chưa?`, `${item.resultSummary} Đây là nhóm người đi trước để ứng viên và gia đình tìm hiểu thêm bằng trải nghiệm thực tế.`],
+    ["Người chưa có nghề có thể bắt đầu không?", "Có thể. Chương trình đào tạo giúp người mới hình thành kỹ năng, tác phong và kiến thức an toàn trước khi bước vào sản xuất."],
+    ["Thu nhập tăng theo yếu tố nào?", "Vị trí, ngày công, năng suất, kỹ năng và thâm niên cùng quyết định thu nhập; tay nghề vững là nền tảng quan trọng nhất."],
+  ],
+  (item) => [
+    [`Buổi tư vấn tại ${item.locality} nên hỏi điều gì trước tiên?`, `Hãy hỏi đúng nghề đang mở, ${item.enterprise} có phải đơn vị dự kiến tiếp nhận hay không, lịch học và cách tính thu nhập của vị trí.`],
+    ["Gia đình có nên cùng tham dự không?", "Nên. Gia đình sẽ hiểu rõ nơi học, sinh hoạt, việc xa nhà và có thể trở thành điểm tựa cho người học trong giai đoạn đầu."],
+    ["Sau khóa học, người lao động được đánh giá thế nào?", "Người học cần hoàn thành chương trình, đạt sức khỏe và đáp ứng yêu cầu tiếp nhận của công việc được đào tạo."],
+  ],
+  (item) => [
+    [`Vì sao mô hình phối hợp tại ${item.locality} đáng chú ý?`, `${item.partners} cùng nối các bước tư vấn, tuyển chọn, đào tạo và bố trí việc làm, giúp người lao động không phải tự tìm từng đầu mối rời rạc.`],
+    ["Nếu chưa chắc sức khỏe, nên làm gì?", "Nên gửi đúng chiều cao, cân nặng, thị lực và tình trạng bệnh để được hướng dẫn sàng lọc trước khi di chuyển."],
+    ["Chế độ của bài viết có áp dụng cho mọi khóa không?", "Mỗi đợt có thể khác về lịch, nghề và đơn vị đồng hành; thông tin cụ thể sẽ được đối chiếu ở thời điểm đăng ký."],
+  ],
+  (item) => [
+    [`Làm sao nhận biết chương trình tại ${item.locality} có lộ trình rõ?`, `Thông tin cần nêu được người phụ trách, nơi học, nghề đào tạo, ${item.enterprise} và các bước từ khám sức khỏe đến tiếp nhận.`],
+    ["Có cần nộp tiền cho người giữ chỗ không?", "Không nên chuyển tiền chỉ dựa trên lời hứa. Hồ sơ và các khoản liên quan cần đi qua đầu mối được công khai."],
+    ["Ký kết phối hợp có đồng nghĩa mọi hồ sơ đều được nhận?", "Không. Mỗi người vẫn phải đáp ứng điều kiện đầu vào, hoàn thành đào tạo và đạt yêu cầu của vị trí."],
+  ],
+  (item) => [
+    [`Bằng chứng gần gũi nhất với người ${item.locality} là gì?`, `${item.evidence} Người đã đi trước có thể kể rõ hơn về học tập, tổ đội, thu nhập và những tháng đầu thích nghi.`],
+    ["Người mới nên chuẩn bị gì trước khóa học?", "Sức khỏe, giấy tờ, nếp sinh hoạt đúng giờ và sự đồng thuận của gia đình là bốn nền tảng quan trọng."],
+    ["Bước đầu tiên để tìm hiểu là gì?", `Gửi thông tin cá nhân và thể lực, sau đó hỏi lịch tư vấn đang mở tại ${item.locality} hoặc đầu mối của ${item.enterprise}.`],
+  ],
+];
+
 const makeLocalCooperationStory = (item) => {
   const source = item.sources[0];
   const frameIndex = localFrameIndexes[item.slug] ?? storyFrame(item.slug, localStoryFrames.length);
@@ -1061,11 +1089,7 @@ const makeLocalCooperationStory = (item) => {
     conclusionTitle: `Một con đường nghề nghiệp đã có điểm tựa tại ${item.locality}`,
     checklist: localChecklistFrames[frameIndex](item),
     takeaway: narrative.takeaway,
-    faq: [
-      [`Người ngoài ${item.locality} có thể đăng ký không?`, `Có thể gửi thông tin để kiểm tra địa bàn và chỉ tiêu đang mở. Chương trình trong bài tập trung vào ${item.locality}, còn lịch nơi khác cần xác nhận riêng.`],
-      ["Học xong được bố trí công việc thế nào?", `Đào tạo được kết nối với nhu cầu của doanh nghiệp, nhưng từng người vẫn cần đủ sức khỏe, hoàn thành chương trình và đạt yêu cầu tiếp nhận.`],
-      ["Thu nhập của người mới được tính ra sao?", `Người đăng ký từ ${item.locality} cần đối chiếu nghề, vị trí, đơn vị, ngày công, năng suất và thời gian làm việc. Con số nên hỏi là mức của đúng vị trí và đợt tuyển.`],
-    ],
+    faq: localFaqFrames[frameIndex](item),
     sources: item.sources,
   };
 };
