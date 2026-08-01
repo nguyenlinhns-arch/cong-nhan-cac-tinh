@@ -5,12 +5,28 @@
   const META_PIXEL_ID = "1382247304000287";
   const dataLayer = window.dataLayer = window.dataLayer || [];
   const nativePush = dataLayer.push.bind(dataLayer);
+  let vendorsLoaded = false;
+  let vendorTimer = 0;
 
   function gtag() {
     nativePush(arguments);
   }
 
   window.gtag = window.gtag || gtag;
+
+  function installMetaQueue() {
+    if (window.fbq) return;
+    const fbq = function () {
+      if (fbq.callMethod) fbq.callMethod.apply(fbq, arguments);
+      else fbq.queue.push(arguments);
+    };
+    window.fbq = fbq;
+    if (!window._fbq) window._fbq = fbq;
+    fbq.push = fbq;
+    fbq.loaded = true;
+    fbq.version = "2.0";
+    fbq.queue = [];
+  }
 
   function loadGoogleAnalytics() {
     if (document.querySelector(`script[data-ga4-id="${GA4_ID}"]`)) return;
@@ -28,18 +44,8 @@
   }
 
   function loadMetaPixel() {
-    if (window.fbq) return;
-
-    const fbq = function () {
-      if (fbq.callMethod) fbq.callMethod.apply(fbq, arguments);
-      else fbq.queue.push(arguments);
-    };
-    window.fbq = fbq;
-    if (!window._fbq) window._fbq = fbq;
-    fbq.push = fbq;
-    fbq.loaded = true;
-    fbq.version = "2.0";
-    fbq.queue = [];
+    if (document.querySelector(`script[data-meta-pixel-id="${META_PIXEL_ID}"]`)) return;
+    installMetaQueue();
 
     const script = document.createElement("script");
     script.async = true;
@@ -49,6 +55,22 @@
 
     window.fbq("init", META_PIXEL_ID);
     window.fbq("track", "PageView");
+  }
+
+  function ensureVendors() {
+    if (vendorsLoaded) return;
+    vendorsLoaded = true;
+    if (vendorTimer) window.clearTimeout(vendorTimer);
+    loadGoogleAnalytics();
+    loadMetaPixel();
+  }
+
+  function scheduleVendors() {
+    if (typeof window.requestIdleCallback === "function") {
+      window.requestIdleCallback(ensureVendors, { timeout: 2500 });
+      return;
+    }
+    vendorTimer = window.setTimeout(ensureVendors, 1800);
   }
 
   function eventParameters(item) {
@@ -219,14 +241,17 @@
     return result;
   };
 
-  loadGoogleAnalytics();
-  loadMetaPixel();
+  installMetaQueue();
   captureFirstAttribution();
   trackAiReferral();
   queuedEvents.forEach(sendMeasurement);
   const queuedTracking = Array.isArray(window.tlTrackingQueue) ? window.tlTrackingQueue.splice(0) : [];
   window.tlTrack = (name, payload = {}) => dataLayer.push({ event: name, ...payload });
   queuedTracking.forEach(([name, payload]) => window.tlTrack(name, payload));
+  scheduleVendors();
+  for (const eventName of ["pointerdown", "touchstart", "keydown"]) {
+    window.addEventListener(eventName, ensureVendors, { once: true, passive: true });
+  }
 
   let applicationFormOpened = false;
   function trackApplicationFormOpen(context) {
@@ -268,5 +293,6 @@
     ga4Id: GA4_ID,
     metaPixelId: META_PIXEL_ID,
     track: event => dataLayer.push(event),
+    load: ensureVendors,
   });
 })();
