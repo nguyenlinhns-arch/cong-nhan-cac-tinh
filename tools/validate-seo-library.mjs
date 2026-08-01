@@ -35,7 +35,7 @@ const normalize = (text) => strip(text)
   .trim();
 
 const editorialArticles = [...curatedArticles, ...communityArticles];
-const editorialTopicImageOverrides = new Set(existingNews
+const editorialTopicImageOverrides = new Set([...curatedArticles, ...existingNews]
   .filter((article) => article.imagePolicy === "editorial-topic-override")
   .map((article) => article.slug));
 const editorialSectionOwners = new Map();
