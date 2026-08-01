@@ -35,6 +35,7 @@ jobs:
           node tools/validate-content-network.mjs
           node tools/validate-seo-library.mjs
           node tools/audit-technical-seo.mjs
+          node tools/validate-ai-search.mjs
           node tools/validate-job-postings.mjs
           node tools/validate-recruitment-funnel.mjs
           node tools/test-recruitment-application.mjs

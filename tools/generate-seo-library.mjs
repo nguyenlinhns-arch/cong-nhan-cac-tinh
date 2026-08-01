@@ -11,7 +11,10 @@ const base = "https://thaylinhtuyenthomo.vn";
 const author = "Nguyễn Tử Linh";
 const recruitment = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
 const criteria = recruitment.criteria;
-const buildTime = "2026-08-01T16:30:00+07:00";
+const buildTime = recruitment.updated_at;
+const currentFactsUrl = `${base}/thong-tin-tuyen-tho-mo/`;
+const organizationId = `${base}/#organization`;
+const websiteId = `${base}/#website`;
 const allEditorial = [
   ...curatedArticles.map((article) => ({...article, urlPath: `bai-viet/${article.slug}`})),
   ...existingNews,
@@ -77,6 +80,22 @@ function sourceText(article) {
   }).join("; ");
 }
 
+function isoSourceDate(value = "") {
+  const match = String(value).trim().match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+  return match ? `${match[3]}-${match[2]}-${match[1]}` : "";
+}
+
+function sourceCreativeWork(source) {
+  const datePublished = isoSourceDate(source.date);
+  return {
+    "@type": "CreativeWork",
+    name: source.title || source.publisher,
+    ...(source.url ? {url: source.url} : {}),
+    ...(datePublished ? {datePublished} : {}),
+    publisher: {"@type": "Organization", name: source.publisher},
+  };
+}
+
 function seoText(article) {
   if (article.seoLine) return article.seoLine;
   const keywords = (article.keywords || []).slice(0, 4).filter(Boolean);
@@ -86,6 +105,26 @@ function seoText(article) {
 
 function renderSourceFooter(article) {
   return `<div class="article-source-footer"><p><strong>Nguồn:</strong> ${esc(sourceText(article))}</p><p class="article-seo-line">${esc(seoText(article))}</p></div>`;
+}
+
+function upgradeExistingSchema(html, article) {
+  const canonical = `${base}/${article.urlPath}/`;
+  return html.replace(/<script\b([^>]*)type=["']application\/ld\+json["']([^>]*)>([\s\S]*?)<\/script>/i, (full, before, after, payload) => {
+    const schema = JSON.parse(payload);
+    const graph = Array.isArray(schema["@graph"]) ? schema["@graph"] : [schema];
+    const articleNode = graph.find((node) => ["Article", "NewsArticle"].includes(node?.["@type"]));
+    const webpageNode = graph.find((node) => node?.["@type"] === "WebPage");
+    if (!articleNode) return full;
+    const sourceWorks = (article.sources || []).map(sourceCreativeWork);
+    const sourceUrls = (article.sources || []).map((source) => source.url).filter(Boolean);
+    articleNode.author = {"@type": "Person", "@id": `${base}/tac-gia/nguyen-tu-linh/#person`, name: author, alternateName: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/tac-gia/nguyen-tu-linh/`};
+    articleNode.publisher = {"@type": "Organization", "@id": organizationId, name: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/`, logo: {"@type": "ImageObject", "@id": `${base}/#logo`, url: `${base}/favicon-512x512.png`, width: 512, height: 512}};
+    articleNode.about = (article.keywords || []).map((keyword) => ({"@type": "Thing", name: keyword}));
+    if (sourceUrls.length) articleNode.isBasedOn = sourceUrls;
+    if (sourceWorks.length) articleNode.citation = sourceWorks;
+    if (webpageNode) Object.assign(webpageNode, {url: canonical, datePublished: article.published, dateModified: article.updated, inLanguage: "vi-VN", isPartOf: {"@id": websiteId}, author: {"@id": `${base}/tac-gia/nguyen-tu-linh/#person`}});
+    return `<script${before}type="application/ld+json"${after}>${JSON.stringify(schema)}</script>`;
+  });
 }
 
 function renderArticleShare(article) {
@@ -160,6 +199,8 @@ function renderArticle(article) {
   const canonical = `${base}/${article.urlPath}/`;
   const inlineImages = article.inlineMedia || articleInlineImages[article.slug] || [];
   const isPressLayout = article.sourceLayout || article.contentMode === "press_digest";
+  const sourceWorks = (article.sources || []).map(sourceCreativeWork);
+  const sourceUrls = (article.sources || []).map((source) => source.url).filter(Boolean);
   const careerCta = {
     "Thu nhập & việc làm": {
       title: "Tìm hiểu nghề trước khi tính chuyện đường dài",
@@ -215,13 +256,14 @@ function renderArticle(article) {
         mainEntityOfPage: {"@id": `${canonical}#webpage`},
         image: [article.image, ...inlineImages.map((media) => media.src)],
         author: {"@type": "Person", "@id": `${base}/tac-gia/nguyen-tu-linh/#person`, name: author, alternateName: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/tac-gia/nguyen-tu-linh/`},
-        publisher: {"@type": "Organization", name: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/`, logo: {"@type": "ImageObject", url: `${base}/favicon-512x512.png`, width: 512, height: 512}},
+        publisher: {"@type": "Organization", "@id": organizationId, name: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/`, logo: {"@type": "ImageObject", "@id": `${base}/#logo`, url: `${base}/favicon-512x512.png`, width: 512, height: 512}, sameAs: ["https://www.facebook.com/thaylinhtuyenthomo/", "https://www.youtube.com/@ThầyLinh-TuyểnThợMỏ", "https://www.tiktok.com/@thaylinhtuyenthomo"]},
         articleSection: article.section,
         keywords: article.keywords,
-        ...(article.sources?.[0]?.url ? {isBasedOn: article.sources[0].url} : {}),
-        ...(article.sources?.length ? {citation: article.sources.map((source) => [source.publisher, source.title, source.date].filter(Boolean).join(" · "))} : {}),
+        about: article.keywords.map((keyword) => ({"@type": "Thing", name: keyword})),
+        ...(sourceUrls.length ? {isBasedOn: sourceUrls} : {}),
+        ...(sourceWorks.length ? {citation: sourceWorks} : {}),
       },
-      {"@type": "WebPage", "@id": `${canonical}#webpage`, url: canonical, name: article.title, breadcrumb: {"@id": `${canonical}#breadcrumb`}},
+      {"@type": "WebPage", "@id": `${canonical}#webpage`, url: canonical, name: article.title, datePublished: article.published, dateModified: article.updated, inLanguage: "vi-VN", isPartOf: {"@id": websiteId}, author: {"@id": `${base}/tac-gia/nguyen-tu-linh/#person`}, breadcrumb: {"@id": `${canonical}#breadcrumb`}},
       {
         "@type": "BreadcrumbList",
         "@id": `${canonical}#breadcrumb`,
@@ -400,7 +442,7 @@ function hubHtml() {
     url: `${base}/tin-nganh-than/`,
     inLanguage: "vi-VN",
     dateModified: buildTime,
-    publisher: {"@type": "Organization", name: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/`, logo: {"@type": "ImageObject", url: `${base}/favicon-512x512.png`, width: 512, height: 512}},
+    publisher: {"@type": "Organization", "@id": organizationId, name: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/`, logo: {"@type": "ImageObject", "@id": `${base}/#logo`, url: `${base}/favicon-512x512.png`, width: 512, height: 512}},
     mainEntity: {"@type": "ItemList", numberOfItems: allEditorial.length, itemListElement: itemList},
   };
   return `<!doctype html>
@@ -409,7 +451,7 @@ function hubHtml() {
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#063c46">
   <title>Ngành Than & Người thợ | Chuyện nghề mỏ tại Quảng Ninh</title>
   <meta name="description" content="Bài viết chuyên sâu về nghề thợ mỏ, thu nhập, đời sống, tay nghề, công nghệ và cơ hội lập nghiệp trong ngành Than tại Quảng Ninh.">
-  <meta name="robots" content="index,follow,max-image-preview:large"><meta name="author" content="${author}">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><meta name="author" content="${author}">
   <link rel="canonical" href="${base}/tin-nganh-than/">
   <link rel="icon" href="/favicon.ico">
   <link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48">
@@ -448,6 +490,7 @@ for (const article of existingNews) {
   const file = path.join(root, article.urlPath, "index.html");
   if (!fs.existsSync(file)) throw new Error(`Missing existing article page: ${article.slug}`);
   let html = fs.readFileSync(file, "utf8");
+  html = upgradeExistingSchema(html, article);
   html = html.replace(/\s*<div class="article-source-footer">[\s\S]*?<\/div>\s*/g, "\n");
   html = html.replace(/\s*<section class="article-share-panel"[\s\S]*?<\/section>\s*/g, "\n");
   if (/^([ \t]*)<nav class="article-nav"/im.test(html)) {
@@ -484,7 +527,7 @@ const urls = collectIndexHtml(root).map((file) => {
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((url) => {
   const priority = url === `${base}/` ? "1.0" : url.endsWith("/tin-nganh-than/") ? "0.9" : url.includes("/bai-viet/") || url.includes("/tin-nganh-than/2026/") ? "0.8" : "0.7";
   const frequency = url.includes("/bai-viet/") || url.includes("/tin-nganh-than/2026/") ? "monthly" : "weekly";
-  return `  <url><loc>${xml(url)}</loc><lastmod>2026-08-01</lastmod><changefreq>${frequency}</changefreq><priority>${priority}</priority></url>`;
+  return `  <url><loc>${xml(url)}</loc><lastmod>${recruitment.effective_from}</lastmod><changefreq>${frequency}</changefreq><priority>${priority}</priority></url>`;
 }).join("\n")}\n</urlset>\n`;
 fs.writeFileSync(path.join(root, "sitemap.xml"), sitemap);
 
@@ -510,8 +553,18 @@ fs.writeFileSync(path.join(root, "feed.json"), `${JSON.stringify({
 }, null, 2)}\n`);
 
 const llms = `# Thầy Linh – Tuyển Thợ Mỏ\n\n> Website viết về ngành Than và tư vấn học nghề mỏ tại Quảng Ninh do Nguyễn Tử Linh biên soạn.\n\n## Thông tin tuyển sinh đang áp dụng\n\n- Căn cứ: ${recruitment.source_notice}.\n- Thời gian học các nghề đang tuyển: ${recruitment.training_duration}.\n- Điều kiện: nam ${criteria.age_min}–${criteria.age_max} tuổi, cao từ 1,53 m, nặng từ ${criteria.weight_min_kg} kg, có sức khỏe tốt và đáp ứng yêu cầu khám tuyển.\n- Sức khỏe: không cận thị; không mắc bệnh tim mạch, huyết áp hoặc bệnh về mắt ảnh hưởng đến công việc.\n- Đăng ký ban đầu chưa cần nộp giấy tờ. Khi có lịch nhập học, mang CCCD gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; không gửi giấy tờ gốc qua bưu điện.\n- Quyền lợi khi học: miễn kinh phí đào tạo, bố trí ba bữa/ngày và ký túc xá; hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển.\n- Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.\n- Tin tuyển dụng chuẩn: [Tuyển lao động học nghề mỏ hầm lò năm 2026](${base}/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/).\n- Vị trí 1: [Kỹ thuật khai thác mỏ hầm lò](${base}/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/).\n- Vị trí 2: [Kỹ thuật xây dựng mỏ hầm lò](${base}/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/).\n- Liên hệ tư vấn: Zalo 096 304 8585.\n\n## Nguyên tắc nội dung\n\n- Chỉ giữ bài có nguồn dữ kiện, giá trị thực tế và nội dung nguyên bản.\n- Phân biệt rõ số liệu, nhận định và thông tin cần xác nhận theo từng đợt.\n- Bài biên tập từ tin chính thống ưu tiên đúng ảnh của bài nguồn; nếu máy chủ đã gỡ ảnh, chỉ dùng ảnh tư liệu đúng bối cảnh và ghi rõ nguồn ảnh. Các bài hướng dẫn nguyên bản sử dụng Thư viện ảnh Vinacomin.\n- Không đặt liên kết nguồn ra ngoài trong giao diện bài viết.\n\n## Kho kiến thức ngành mỏ\n\n${feedItems.map((article) => `- [${article.title}](${base}/${article.urlPath}/): ${article.lead}`).join("\n")}\n`;
-const llmsWithHubs = llms.replace("## Thông tin tuyển sinh đang áp dụng", `## Các điểm vào trung tâm
+const llmsCurrent = llms
+  .replace("## Thông tin tuyển sinh đang áp dụng", `## Trang thông tin hiện hành
 
+- [Thông tin tuyển thợ mỏ tháng 8/2026](${currentFactsUrl}): trang chuẩn để đối chiếu điều kiện, thời gian học, chế độ, hồ sơ, địa chỉ và thu nhập đang áp dụng.
+- Ngày cập nhật: ${recruitment.effective_from.split("-").reverse().join("/")}.
+
+## Thông tin tuyển sinh đang áp dụng`)
+  .replace("- Đăng ký ban đầu chưa cần nộp giấy tờ.", `- ${recruitment.initial_registration}.`)
+  .replace("- Quyền lợi khi học:", `- Địa chỉ nhập học: ${recruitment.contact.admission_address}.\n- Quyền lợi khi học:`);
+const llmsWithHubs = llmsCurrent.replace("## Trang thông tin hiện hành", `## Các điểm vào trung tâm
+
+- [Thông tin tuyển đang áp dụng](${currentFactsUrl}): điều kiện, học nghề, hồ sơ, địa chỉ và thu nhập tháng 8/2026.
 - [Trung tâm nghề mỏ](${base}/trung-tam-nghe-mo/): bản đồ toàn bộ nội dung và đường ứng tuyển.
 - [Việc làm ngành Than theo tỉnh](${base}/viec-lam-nganh-than/): hai nghề đang tuyển và 26 trang địa phương.
 - [Cẩm nang nghề mỏ](${base}/cam-nang-nghe-mo/): điều kiện, khóa học, hồ sơ, an toàn và đời sống.
@@ -519,7 +572,7 @@ const llmsWithHubs = llms.replace("## Thông tin tuyển sinh đang áp dụng",
 - [Bộ chia sẻ thông tin](${base}/chia-se-thong-tin/): tạo nội dung có mã nguồn cho toàn quốc hoặc từng tỉnh.
 - [Người biên soạn Nguyễn Tử Linh](${base}/tac-gia/nguyen-tu-linh/).
 
-## Thông tin tuyển sinh đang áp dụng`);
+## Trang thông tin hiện hành`);
 fs.writeFileSync(path.join(root, "llms.txt"), llmsWithHubs);
 
 const imageRegistry = Object.fromEntries(feedItems.map((article) => {

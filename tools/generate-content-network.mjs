@@ -9,6 +9,15 @@ const base = "https://thaylinhtuyenthomo.vn";
 const campaign = "lan_toa_nghe_mo_2026";
 const provinces = JSON.parse(fs.readFileSync(path.join(root, "data", "provinces-2026.json"), "utf8")).provinces;
 const recruitment = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
+const updatedDate = recruitment.effective_from;
+const personId = `${base}/tac-gia/nguyen-tu-linh/#person`;
+const organizationId = `${base}/#organization`;
+const websiteId = `${base}/#website`;
+const officialProfiles = [
+  "https://www.facebook.com/thaylinhtuyenthomo/",
+  "https://www.youtube.com/@ThầyLinh-TuyểnThợMỏ",
+  "https://www.tiktok.com/@thaylinhtuyenthomo",
+];
 const allArticles = [
   ...curatedArticles.map((article) => ({...article, urlPath: `bai-viet/${article.slug}`})),
   ...existingNews,
@@ -24,12 +33,18 @@ const esc = (value = "") => String(value)
 
 const trackedApply = (content) => `/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&amp;utm_medium=internal&amp;utm_campaign=${campaign}&amp;utm_content=${content}#dang-ky`;
 
+function absoluteItemUrl(value = "") {
+  const [pathname, fragment] = String(value).split("#", 2);
+  const normalized = pathname.replace(/^\/+|\/+$/g, "");
+  return `${base}/${normalized ? `${normalized}/` : ""}${fragment ? `#${fragment}` : ""}`;
+}
+
 const navItems = [
-  ["/trung-tam-nghe-mo/", "Trung tâm"],
+  ["/thong-tin-tuyen-tho-mo/", "Thông tin chuẩn"],
   ["/viec-lam-nganh-than/", "Việc làm"],
   ["/cam-nang-nghe-mo/", "Cẩm nang"],
   ["/chuyen-nguoi-tho/", "Người thợ"],
-  ["/chia-se-thong-tin/", "Chia sẻ"],
+  ["/trung-tam-nghe-mo/", "Trung tâm"],
 ];
 
 function commonSchema({pathName, title, description, type = "CollectionPage", items = []}) {
@@ -44,8 +59,10 @@ function commonSchema({pathName, title, description, type = "CollectionPage", it
         name: title,
         description,
         inLanguage: "vi-VN",
-        dateModified: "2026-08-01",
-        author: {"@id": `${base}/tac-gia/nguyen-tu-linh/#person`},
+        dateModified: updatedDate,
+        isPartOf: {"@id": websiteId},
+        author: {"@id": personId},
+        publisher: {"@id": organizationId},
         breadcrumb: {"@id": `${canonical}#breadcrumb`},
         ...(items.length ? {mainEntity: {"@id": `${canonical}#items`}} : {}),
       },
@@ -65,7 +82,7 @@ function commonSchema({pathName, title, description, type = "CollectionPage", it
           "@type": "ListItem",
           position: index + 1,
           name: item.title,
-          url: `${base}/${item.urlPath.replace(/^\/+|\/+$/g, "")}/`,
+          url: absoluteItemUrl(item.urlPath),
         })),
       }] : []),
     ],
@@ -84,7 +101,7 @@ function header(current) {
 function footer() {
   return `<footer class="network-footer"><div class="network-wrap network-footer__inner">
     <div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Thông tin học nghề mỏ và việc làm ngành Than tại Quảng Ninh.</p></div>
-    <div><a href="/trung-tam-nghe-mo/">Trung tâm nghề mỏ</a><a href="/viec-lam-nganh-than/">Việc làm theo tỉnh</a><a href="/cam-nang-nghe-mo/">Cẩm nang nhập nghề</a><a href="/chuyen-nguoi-tho/">Chuyện người thợ</a></div>
+    <div><a href="/thong-tin-tuyen-tho-mo/">Thông tin tuyển đang áp dụng</a><a href="/trung-tam-nghe-mo/">Trung tâm nghề mỏ</a><a href="/viec-lam-nganh-than/">Việc làm theo tỉnh</a><a href="/cam-nang-nghe-mo/">Cẩm nang nhập nghề</a></div>
     <div><a href="/chia-se-thong-tin/">Tạo gói chia sẻ</a><a href="/tac-gia/nguyen-tu-linh/">Người biên soạn</a><a href="/quyen-rieng.html">Quyền riêng tư</a><a href="https://zalo.me/0963048585" target="_blank" rel="noopener" data-contact="zalo" data-context="network-footer">Zalo 096 304 8585</a></div>
   </div></footer>`;
 }
@@ -143,6 +160,7 @@ function provinceGroups() {
 }
 
 const branchCards = [
+  ["Thông tin tuyển đang áp dụng", "Một trang trả lời trực tiếp về điều kiện, học nghề, hỗ trợ, hồ sơ, địa chỉ và thu nhập tháng 8/2026.", "/thong-tin-tuyen-tho-mo/"],
   ["Việc làm đang tuyển", "Hai nghề mỏ hầm lò, điều kiện và quyền lợi được trình bày theo một nguồn dữ liệu thống nhất.", "/viec-lam-nganh-than/"],
   ["Thông tin theo 26 tỉnh", "Mỗi tỉnh có đường ứng tuyển giữ sẵn địa phương để tư vấn đúng bối cảnh.", "/viec-lam-nganh-than/#theo-tinh"],
   ["Cẩm nang nhập nghề", "Bắt đầu từ điều kiện, sức khỏe, khóa học, hồ sơ và đời sống tại Quảng Ninh.", "/cam-nang-nghe-mo/"],
@@ -162,6 +180,60 @@ const centralBody = `<div class="network-wrap network-facts"><div><strong>${allA
 <section class="network-section"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">MỘT TRUNG TÂM, NHIỀU ĐƯỜNG TIẾP CẬN</p><h2>Tìm đúng thông tin theo nhu cầu của từng người lao động</h2></div><p>Mỗi nhánh giải quyết một câu hỏi riêng nhưng dùng chung điều kiện, quyền lợi, đầu mối và hệ đo nguồn.</p></div><div class="network-grid">${branchCards.map(([title, text, href], index) => `<article class="network-card${index === 0 ? " network-card--accent" : ""}"><div class="network-card__body"><small>NHÁNH ${String(index + 1).padStart(2, "0")}</small><h2>${esc(title)}</h2><p>${esc(text)}</p><a href="${href}">Mở nhánh →</a></div></article>`).join("")}</div></div></section>
 <section class="network-section network-section--soft"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">THÔNG TIN MỚI</p><h2>Những nội dung nên đọc trước khi đăng ký</h2></div><p>Ưu tiên dữ kiện giúp người lao động tự đối chiếu điều kiện, hiểu quá trình học và hình dung công việc.</p></div><div class="network-grid">${allArticles.slice().sort((a, b) => new Date(b.published) - new Date(a.published)).slice(0, 6).map((article) => card(article)).join("")}</div></div></section>`;
 writePage("trung-tam-nghe-mo", page({pathName: "/trung-tam-nghe-mo/", title: "Trung tâm nghề mỏ", description: centralDescription, eyebrow: "TRUNG TÂM THÔNG TIN NGHỀ MỎ", heading: "Từ tìm hiểu nghề đến ứng tuyển trong một mạng thông tin thống nhất", lead: "Tra cứu việc làm, điều kiện, 26 tỉnh, câu chuyện người thợ và nội dung chia sẻ — tất cả dẫn về một đầu mối rõ ràng, có thể đo được nguồn liên hệ.", body: centralBody, schema: centralSchema}));
+
+const currentFactsPath = "/thong-tin-tuyen-tho-mo/";
+const currentFactsTitle = "Thông tin tuyển thợ mỏ tháng 8/2026";
+const currentFactsDescription = "Thông tin tuyển thợ mỏ tháng 8/2026 đang áp dụng: nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg, học nghề 2–3 tháng và cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.";
+const currentFactsFaq = [
+  ["Ai có thể đăng ký học nghề mỏ tháng 8/2026?", `Nam từ ${recruitment.criteria.age_min} đến ${recruitment.criteria.age_max} tuổi, cao từ 1,53 m, nặng từ ${recruitment.criteria.weight_min_kg} kg, có sức khỏe tốt và đáp ứng yêu cầu khám tuyển. Người đăng ký không được cận thị hoặc mắc bệnh tim mạch, huyết áp hay bệnh về mắt ảnh hưởng đến công việc.`],
+  ["Đang tuyển những nghề nào?", `Hai nghề đang tiếp nhận là ${recruitment.occupations[0].toLocaleLowerCase("vi")} và ${recruitment.occupations[1].toLocaleLowerCase("vi")}. Không yêu cầu kinh nghiệm vì người phù hợp được đào tạo trước khi nhận việc.`],
+  ["Học nghề mỏ bao lâu và ở đâu?", `Thời gian học ${recruitment.training_duration} tại Quảng Ninh theo lịch tiếp nhận. Địa chỉ nhập học là ${recruitment.contact.admission_address}.`],
+  ["Trong thời gian học được hưởng những gì?", "Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ba bữa mỗi ngày với mức ăn 90.000 đồng/ngày, ở ký túc xá khép kín và được hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển."],
+  ["Hồ sơ học nghề mỏ cần những gì?", `${recruitment.initial_registration}. Khi có lịch nhập học, mang ${recruitment.admission_documents.join(", ")}. Không gửi giấy tờ gốc qua bưu điện.`],
+  ["Thu nhập thợ lò được cam kết như thế nào?", `${recruitment.income_commitment}.`],
+  ["Học xong làm việc ở đâu?", "Người hoàn thành chương trình và đạt yêu cầu được doanh nghiệp tiếp nhận, ký hợp đồng và bố trí việc làm tại Quảng Ninh."],
+  ["Liên hệ ai để kiểm tra điều kiện?", `Liên hệ ${recruitment.contact.name} – ${recruitment.contact.title}, điện thoại/Zalo 096 304 8585; địa chỉ tiếp nhận thông tin: ${recruitment.contact.address}.`],
+];
+const currentFactsCanonical = `${base}${currentFactsPath}`;
+const currentFactsSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${currentFactsCanonical}#webpage`,
+      url: currentFactsCanonical,
+      name: currentFactsTitle,
+      description: currentFactsDescription,
+      inLanguage: "vi-VN",
+      datePublished: updatedDate,
+      dateModified: updatedDate,
+      isPartOf: {"@id": websiteId},
+      author: {"@id": personId},
+      publisher: {"@id": organizationId},
+      mainEntity: {"@id": `${currentFactsCanonical}#faq`},
+      breadcrumb: {"@id": `${currentFactsCanonical}#breadcrumb`},
+      about: ["Tuyển thợ mỏ", "Học nghề mỏ", "Việc làm ngành Than", "Thợ lò Quảng Ninh"],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${currentFactsCanonical}#faq`,
+      mainEntity: currentFactsFaq.map(([question, answer]) => ({"@type": "Question", name: question, acceptedAnswer: {"@type": "Answer", text: answer}})),
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${currentFactsCanonical}#breadcrumb`,
+      itemListElement: [
+        {"@type": "ListItem", position: 1, name: "Trang chủ", item: `${base}/`},
+        {"@type": "ListItem", position: 2, name: currentFactsTitle, item: currentFactsCanonical},
+      ],
+    },
+  ],
+};
+const currentFactsBody = `<div class="network-wrap network-facts"><div><strong>${recruitment.criteria.age_min}–${recruitment.criteria.age_max}</strong><span>độ tuổi nam đang tiếp nhận</span></div><div><strong>1m53 · ${recruitment.criteria.weight_min_kg} kg</strong><span>mốc thể lực tối thiểu</span></div><div><strong>${recruitment.training_duration}</strong><span>thời gian học hai nghề</span></div><div><strong>20–25 triệu</strong><span>mỗi tháng khi hoàn thành định mức</span></div></div>
+<section class="network-section"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">CẬP NHẬT ${updatedDate.split("-").reverse().join("/")}</p><h2>Thông tin đang áp dụng trong tháng 8/2026</h2></div><p>Căn cứ ${esc(recruitment.source_notice)}. Trạng thái: đang tiếp nhận đăng ký trong năm 2026.</p></div><ul class="network-list"><li><b>1</b><div><strong>Đối tượng và sức khỏe</strong><span>Nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg; sức khỏe tốt, không cận thị, bệnh tim mạch, huyết áp hoặc bệnh về mắt ảnh hưởng đến công việc.</span></div></li><li><b>2</b><div><strong>Nghề học và nơi làm việc</strong><span>${esc(recruitment.occupations.join("; "))}. Học và làm việc tại Quảng Ninh; không yêu cầu kinh nghiệm.</span></div></li><li><b>3</b><div><strong>Chế độ trong khóa học</strong><span>Miễn kinh phí đào tạo theo chỉ tiêu; ba bữa/ngày, mức ăn 90.000 đồng/ngày; ký túc xá khép kín; hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển.</span></div></li><li><b>4</b><div><strong>Thu nhập sau đào tạo</strong><span>${esc(recruitment.income_commitment)}.</span></div></li></ul></div></section>
+<section class="network-section network-section--soft"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">TRẢ LỜI TRỰC TIẾP</p><h2>Tám câu hỏi người lao động thường cần biết</h2></div><p>Câu trả lời ngắn gọn giúp người đọc đối chiếu nhanh trước khi mở tin tuyển dụng đầy đủ hoặc gửi thông tin kiểm tra điều kiện.</p></div><div class="network-grid">${currentFactsFaq.map(([question, answer], index) => `<article class="network-card${index === 0 ? " network-card--accent" : ""}"><div class="network-card__body"><small>CÂU ${String(index + 1).padStart(2, "0")}</small><h2>${esc(question)}</h2><p>${esc(answer)}</p></div></article>`).join("")}</div></div></section>
+<section class="network-section"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">ĐỊA CHỈ CỤ THỂ</p><h2>Biết rõ nơi nhập học và đầu mối tiếp nhận</h2></div><p>Hãy xác nhận lịch trước khi di chuyển để được hướng dẫn đúng đợt.</p></div><ul class="network-list"><li><b>1</b><div><strong>Địa chỉ nhập học</strong><span>${esc(recruitment.contact.admission_address)}.</span></div></li><li><b>2</b><div><strong>Địa chỉ tiếp nhận thông tin</strong><span>${esc(recruitment.contact.address)}.</span></div></li><li><b>3</b><div><strong>Người hướng dẫn</strong><span>${esc(recruitment.contact.name)} – ${esc(recruitment.contact.title)} · Điện thoại/Zalo 096 304 8585.</span></div></li></ul><div class="network-actions"><a class="network-button" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/">Xem tin tuyển dụng đầy đủ</a><a class="network-button network-button--outline" href="/bai-viet/ho-so-hoc-nghe-mo-can-gi/">Xem hướng dẫn hồ sơ</a></div></div></section>`;
+writePage("thong-tin-tuyen-tho-mo", page({pathName: currentFactsPath, title: currentFactsTitle, description: currentFactsDescription, eyebrow: "THÔNG TIN CHÍNH THỨC ĐANG ÁP DỤNG", heading: "Tuyển thợ mỏ tháng 8/2026: điều kiện, học nghề và thu nhập", lead: "Nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg; học nghề mỏ 2–3 tháng tại Quảng Ninh và được cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.", body: currentFactsBody, schema: currentFactsSchema}));
 
 const jobsDescription = "Việc làm ngành Than tại Quảng Ninh, hai nghề mỏ hầm lò và 26 trang tư vấn theo tỉnh; nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg.";
 const jobItems = [
@@ -193,8 +265,8 @@ const authorDescription = "Hồ sơ Nguyễn Tử Linh (Thầy Linh), người b
 const authorSchema = {
   "@context": "https://schema.org",
   "@graph": [
-    {"@type": "ProfilePage", "@id": `${base}${authorPath}#webpage`, url: `${base}${authorPath}`, name: "Nguyễn Tử Linh – Thầy Linh", description: authorDescription, inLanguage: "vi-VN", dateModified: "2026-08-01", mainEntity: {"@id": `${base}${authorPath}#person`}},
-    {"@type": "Person", "@id": `${base}${authorPath}#person`, name: "Nguyễn Tử Linh", alternateName: "Thầy Linh", url: `${base}${authorPath}`, image: `${base}/assets/thay-linh-avatar.webp`, jobTitle: "Trưởng phòng Tuyển sinh Miền Trung", worksFor: {"@type": "CollegeOrUniversity", name: "Trường Cao đẳng Than - Khoáng sản Việt Nam"}, telephone: "+84963048585", knowsAbout: ["Tuyển sinh nghề mỏ", "Việc làm ngành Than", "Tư vấn người lao động"]},
+    {"@type": "ProfilePage", "@id": `${base}${authorPath}#webpage`, url: `${base}${authorPath}`, name: "Nguyễn Tử Linh – Thầy Linh", description: authorDescription, inLanguage: "vi-VN", dateModified: updatedDate, isPartOf: {"@id": websiteId}, mainEntity: {"@id": personId}},
+    {"@type": "Person", "@id": personId, name: "Nguyễn Tử Linh", alternateName: ["Thầy Linh", "Thầy Linh – Tuyển Thợ Mỏ"], url: `${base}${authorPath}`, image: `${base}/assets/thay-linh-avatar.webp`, jobTitle: "Trưởng phòng Tuyển sinh Miền Trung", worksFor: {"@type": "CollegeOrUniversity", name: "Trường Cao đẳng Than - Khoáng sản Việt Nam", url: "https://caodangtkv.edu.vn/"}, telephone: "+84963048585", sameAs: officialProfiles, knowsAbout: ["Tuyển sinh nghề mỏ", "Học nghề mỏ hầm lò", "Việc làm ngành Than", "Tư vấn người lao động", "Đào tạo nghề tại Quảng Ninh"]},
   ],
 };
 const authorBody = `<section class="network-section"><div class="network-wrap"><article class="profile"><img src="/assets/thay-linh-avatar.webp?v=3" alt="Nguyễn Tử Linh – Thầy Linh" width="220" height="220"><div><p class="network-eyebrow">NGƯỜI BIÊN SOẠN VÀ ĐẦU MỐI TƯ VẤN</p><h2>Nguyễn Tử Linh</h2><p><strong>Trưởng phòng Tuyển sinh Miền Trung</strong></p><p>Thầy Linh biên soạn và duy trì Trung tâm nghề mỏ để người lao động có một nơi đối chiếu điều kiện, chính sách học nghề, việc làm và câu chuyện ngành Than trước khi liên hệ. Nội dung tuyển sinh dùng chung nguồn dữ liệu vận hành; bài biên tập ghi rõ nguồn và không biến số liệu lịch sử thành cam kết hiện hành.</p><div class="network-actions"><a class="network-button" href="${trackedApply("author_profile")}" data-contact="application" data-context="author-profile">Kiểm tra điều kiện</a><a class="network-button network-button--outline" href="https://zalo.me/0963048585" target="_blank" rel="noopener" data-contact="zalo" data-context="author-profile">Zalo 096 304 8585</a></div></div></article></div></section>
@@ -207,4 +279,4 @@ function writePage(relativeDirectory, html) {
   fs.writeFileSync(path.join(directory, "index.html"), `${html}\n`);
 }
 
-console.log(JSON.stringify({pages: 6, articles: allArticles.length, provinces: provinces.length, share_packages: options.length, campaign}));
+console.log(JSON.stringify({pages: 7, articles: allArticles.length, provinces: provinces.length, share_packages: options.length, campaign}));

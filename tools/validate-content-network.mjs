@@ -21,6 +21,7 @@ function walk(directory, output = []) {
 }
 
 const hubs = [
+  ["thong-tin-tuyen-tho-mo/index.html", "/thong-tin-tuyen-tho-mo/"],
   ["trung-tam-nghe-mo/index.html", "/trung-tam-nghe-mo/"],
   ["viec-lam-nganh-than/index.html", "/viec-lam-nganh-than/"],
   ["cam-nang-nghe-mo/index.html", "/cam-nang-nghe-mo/"],
@@ -90,8 +91,8 @@ for (const article of articles) {
 
 const htmlFiles = walk(root);
 const contentFiles = htmlFiles.filter((file) => !path.basename(file).startsWith("google"));
-if (htmlFiles.length !== 103) fail(`Website: cần 103 tệp HTML, nhận ${htmlFiles.length}`);
-if (contentFiles.length !== 102) fail(`Website: cần 102 trang nội dung, nhận ${contentFiles.length}`);
+if (htmlFiles.length !== 104) fail(`Website: cần 104 tệp HTML, nhận ${htmlFiles.length}`);
+if (contentFiles.length !== 103) fail(`Website: cần 103 trang nội dung, nhận ${contentFiles.length}`);
 for (const file of contentFiles) {
   const html = fs.readFileSync(file, "utf8");
   const relative = path.relative(root, file);
@@ -101,7 +102,7 @@ for (const file of contentFiles) {
 
 const sitemap = read("sitemap.xml");
 const sitemapUrls = sitemap.match(/<loc>/g)?.length || 0;
-if (sitemapUrls !== 100) fail(`Sitemap: cần 100 URL, nhận ${sitemapUrls}`);
+if (sitemapUrls !== 101) fail(`Sitemap: cần 101 URL, nhận ${sitemapUrls}`);
 for (const [, url] of hubs) if (!sitemap.includes(`<loc>${base}${url}</loc>`)) fail(`Sitemap: thiếu ${url}`);
 
 const analytics = read("analytics.js");

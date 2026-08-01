@@ -46,14 +46,15 @@
   {
     "@context":"https://schema.org",
     "@graph":[
-      {"@type":"WebSite","url":"https://thaylinhtuyenthomo.vn/","name":"Thầy Linh – Tuyển Thợ Mỏ","inLanguage":"vi-VN","description":"Tư vấn tuyển thợ lò, học nghề mỏ và việc làm ngành Than tại Quảng Ninh.","publisher":{"@id":"https://thaylinhtuyenthomo.vn/#organization"}},
-      {"@type":"Organization","@id":"https://thaylinhtuyenthomo.vn/#organization","name":"Thầy Linh – Tuyển Thợ Mỏ","url":"https://thaylinhtuyenthomo.vn/","logo":{"@type":"ImageObject","url":"https://thaylinhtuyenthomo.vn/favicon-512x512.png","width":512,"height":512}},
-      {"@type":"Person","@id":"https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/#person","name":"Nguyễn Tử Linh","alternateName":"Thầy Linh – Tuyển Thợ Mỏ","url":"https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/","image":"https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp","telephone":"+84963048585","jobTitle":"Trưởng phòng Tuyển sinh Miền Trung","worksFor":{"@type":"CollegeOrUniversity","name":"Trường Cao đẳng Than - Khoáng sản Việt Nam"},"sameAs":["https://www.facebook.com/thaylinhtuyenthomo/","https://m.me/thaylinhtuyenthomo","https://www.youtube.com/channel/UCjQmG8ShxuD_qf_o6YGWz8w"]},
-      {"@type":"FAQPage","mainEntity":[
+      {"@type":"WebSite","@id":"https://thaylinhtuyenthomo.vn/#website","url":"https://thaylinhtuyenthomo.vn/","name":"Thầy Linh – Tuyển Thợ Mỏ","inLanguage":"vi-VN","description":"Tư vấn tuyển thợ lò, học nghề mỏ và việc làm ngành Than tại Quảng Ninh.","publisher":{"@id":"https://thaylinhtuyenthomo.vn/#organization"}},
+      {"@type":"Organization","@id":"https://thaylinhtuyenthomo.vn/#organization","name":"Thầy Linh – Tuyển Thợ Mỏ","url":"https://thaylinhtuyenthomo.vn/","logo":{"@type":"ImageObject","@id":"https://thaylinhtuyenthomo.vn/#logo","url":"https://thaylinhtuyenthomo.vn/favicon-512x512.png","width":512,"height":512},"contactPoint":{"@type":"ContactPoint","telephone":"+84963048585","contactType":"Tư vấn tuyển sinh nghề mỏ","areaServed":"VN","availableLanguage":"vi"},"sameAs":["https://www.facebook.com/thaylinhtuyenthomo/","https://www.youtube.com/@ThầyLinh-TuyểnThợMỏ","https://www.tiktok.com/@thaylinhtuyenthomo"]},
+      {"@type":"Person","@id":"https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/#person","name":"Nguyễn Tử Linh","alternateName":["Thầy Linh","Thầy Linh – Tuyển Thợ Mỏ"],"url":"https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/","image":"https://thaylinhtuyenthomo.vn/assets/thay-linh-avatar.webp","telephone":"+84963048585","jobTitle":"Trưởng phòng Tuyển sinh Miền Trung","worksFor":{"@type":"CollegeOrUniversity","name":"Trường Cao đẳng Than - Khoáng sản Việt Nam","url":"https://caodangtkv.edu.vn/"},"sameAs":["https://www.facebook.com/thaylinhtuyenthomo/","https://www.youtube.com/@ThầyLinh-TuyểnThợMỏ","https://www.tiktok.com/@thaylinhtuyenthomo"],"knowsAbout":["Tuyển sinh nghề mỏ","Học nghề mỏ hầm lò","Việc làm ngành Than","Đào tạo nghề tại Quảng Ninh"]},
+      {"@type":"WebPage","@id":"https://thaylinhtuyenthomo.vn/#webpage","url":"https://thaylinhtuyenthomo.vn/","name":"Học nghề mỏ 2–3 tháng, việc làm TKV Quảng Ninh","dateModified":"2026-08-01","isPartOf":{"@id":"https://thaylinhtuyenthomo.vn/#website"},"about":{"@id":"https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/#webpage"},"mainEntity":{"@id":"https://thaylinhtuyenthomo.vn/#faq"}},
+      {"@type":"FAQPage","@id":"https://thaylinhtuyenthomo.vn/#faq","mainEntity":[
         {"@type":"Question","name":"Điều kiện cơ bản để học nghề mỏ là gì?","acceptedAnswer":{"@type":"Answer","text":"Nam từ 18 đến 40 tuổi, cao từ 1,53 m, nặng từ 47 kg và có sức khỏe tốt. Điều kiện cụ thể được kiểm tra trước khi hướng dẫn hồ sơ."}},
         {"@type":"Question","name":"Học và làm việc ở đâu?","acceptedAnswer":{"@type":"Answer","text":"Người lao động học nghề và làm việc tại Quảng Ninh theo kế hoạch tiếp nhận từng đợt."}},
         {"@type":"Question","name":"Trong thời gian thực tập tại doanh nghiệp được hưởng gì?","acceptedAnswer":{"@type":"Answer","text":"Chính sách tuyển năm 2026 nêu mức hưởng từ 85% đến 100% tiền lương công nhân trong dây chuyền tương ứng, kèm bảo hộ lao động, ăn định lượng, xe đưa đón và chỗ ở."}},
-        {"@type":"Question","name":"Hồ sơ học nghề mỏ cần chuẩn bị gì?","acceptedAnswer":{"@type":"Answer","text":"Hồ sơ dự tuyển gồm 2 bộ; mỗi bộ có sơ yếu lý lịch, bản sao giấy khai sinh, bản công chứng bằng tốt nghiệp văn hóa và bản công chứng căn cước công dân."}},
+        {"@type":"Question","name":"Hồ sơ học nghề mỏ cần chuẩn bị gì?","acceptedAnswer":{"@type":"Answer","text":"Bước đăng ký ban đầu chưa cần nộp hồ sơ. Khi có lịch nhập học, mang CCCD gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; chưa có bằng vẫn có thể đăng ký tư vấn trước."}},
         {"@type":"Question","name":"Trong thời gian học được hỗ trợ gì?","acceptedAnswer":{"@type":"Answer","text":"Người học được miễn kinh phí đào tạo, phục vụ miễn phí 3 bữa mỗi ngày với mức ăn 90.000 đồng/ngày, ở ký túc xá miễn phí và được hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển."}},
         {"@type":"Question","name":"Thu nhập thợ lò được tính thế nào?","acceptedAnswer":{"@type":"Answer","text":"Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."}}
       ]}
@@ -72,6 +73,7 @@
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-button><span></span><span></span><span></span><span class="sr-only">Mở menu</span></button>
       <nav class="main-nav" id="main-nav" data-nav aria-label="Điều hướng chính">
+        <a href="thong-tin-tuyen-tho-mo/">Thông tin tháng 8/2026</a>
         <a href="#dieu-kien">Điều kiện</a>
         <a href="#che-do-ho-so">Chế độ & hồ sơ</a>
         <a href="viec-lam/cong-nhan-mo-ham-lo-quang-ninh/">Ứng tuyển</a>
@@ -404,7 +406,7 @@
     <div class="container footer-grid">
       <div><a class="brand brand-light" href="./"><img class="brand-mark" src="/assets/thay-linh-avatar.webp?v=3" alt="" width="45" height="45"><span><strong>Thầy Linh</strong><small>Tuyển Thợ Mỏ</small></span></a><p>Tư vấn học nghề mỏ và việc làm ngành Than tại Quảng Ninh.</p></div>
       <div><h2>Liên hệ</h2><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Zalo: 096 304 8585</a><a href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener">Messenger Thầy Linh</a><a href="tel:+84963048585">Gọi: 096 304 8585</a></div>
-      <div><h2>Kênh thông tin</h2><a href="trung-tam-nghe-mo/">Trung tâm nghề mỏ</a><a href="viec-lam-nganh-than/">Việc làm theo tỉnh</a><a href="chia-se-thong-tin/">Bộ chia sẻ thông tin</a><a href="tac-gia/nguyen-tu-linh/">Người biên soạn</a><a href="quyen-rieng.html">Quyền riêng tư</a></div>
+      <div><h2>Kênh thông tin</h2><a href="thong-tin-tuyen-tho-mo/">Thông tin tuyển tháng 8/2026</a><a href="trung-tam-nghe-mo/">Trung tâm nghề mỏ</a><a href="viec-lam-nganh-than/">Việc làm theo tỉnh</a><a href="chia-se-thong-tin/">Bộ chia sẻ thông tin</a><a href="tac-gia/nguyen-tu-linh/">Người biên soạn</a><a href="quyen-rieng.html">Quyền riêng tư</a></div>
     </div>
     <div class="container footer-bottom">© <span data-year></span> Thầy Linh – Tuyển Thợ Mỏ</div>
   </footer>
