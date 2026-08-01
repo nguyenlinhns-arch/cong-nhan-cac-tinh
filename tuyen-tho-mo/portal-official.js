@@ -21,17 +21,6 @@
     });
   }
 
-  document.querySelectorAll("[data-contact]").forEach(link => {
-    link.addEventListener("click", () => {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: "contact_click",
-        channel: link.dataset.contact,
-        page_path: location.pathname
-      });
-    });
-  });
-
   const featuredVideo = document.querySelector("[data-featured-video]");
   const videoLabel = document.querySelector("[data-video-label]");
   const videoHeading = document.querySelector("[data-video-heading]");

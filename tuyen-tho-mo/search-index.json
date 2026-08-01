@@ -20,6 +20,16 @@
       "priority": 100
     },
     {
+      "url": "/trung-tam-nghe-mo/",
+      "title": "Trung tâm nghề mỏ",
+      "description": "Trung tâm thông tin học nghề mỏ, việc làm ngành Than, 26 trang tỉnh, cẩm nang và câu chuyện người thợ; mọi đường dẫn quy về một biểu mẫu ứng tuyển rõ nguồn.",
+      "keywords": [],
+      "category": "guide",
+      "categoryLabel": "Trung tâm nghề mỏ",
+      "type": "Trung tâm nghề mỏ",
+      "priority": 99
+    },
+    {
       "url": "/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/",
       "title": "Kỹ thuật khai thác mỏ hầm lò tại Quảng Ninh | Tuyển dụng 2026",
       "description": "Tuyển kỹ thuật khai thác mỏ hầm lò: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ 7,5 triệu và làm việc tại Quảng Ninh.",
@@ -56,6 +66,16 @@
       "priority": 95
     },
     {
+      "url": "/viec-lam-nganh-than/",
+      "title": "Việc làm ngành Than theo tỉnh",
+      "description": "Việc làm ngành Than tại Quảng Ninh, hai nghề mỏ hầm lò và 26 trang tư vấn theo tỉnh; nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg.",
+      "keywords": [],
+      "category": "recruitment",
+      "categoryLabel": "Việc làm theo tỉnh",
+      "type": "Việc làm theo tỉnh",
+      "priority": 92
+    },
+    {
       "url": "/tin-nganh-than/",
       "title": "Ngành Than & Người thợ | Chuyện nghề mỏ tại Quảng Ninh",
       "description": "Bài viết chuyên sâu về nghề thợ mỏ, thu nhập, đời sống, tay nghề, công nghệ và cơ hội lập nghiệp trong ngành Than tại Quảng Ninh.",
@@ -64,6 +84,36 @@
       "categoryLabel": "Tin ngành Than",
       "type": "Tin ngành Than",
       "priority": 90
+    },
+    {
+      "url": "/cam-nang-nghe-mo/",
+      "title": "Cẩm nang nghề mỏ",
+      "description": "Cẩm nang học nghề mỏ: điều kiện 18–40 tuổi, sức khỏe, hồ sơ, khóa học 2–3 tháng, an toàn, thu nhập và đời sống tại Quảng Ninh.",
+      "keywords": [],
+      "category": "guide",
+      "categoryLabel": "Cẩm nang nghề mỏ",
+      "type": "Cẩm nang nghề mỏ",
+      "priority": 88
+    },
+    {
+      "url": "/chuyen-nguoi-tho/",
+      "title": "Chuyện người thợ mỏ",
+      "description": "Mười câu chuyện người thợ mỏ được biên tập từ nguồn báo chí, phản ánh ca làm, tay nghề, an toàn, đời sống và hành trình trưởng thành trong ngành Than.",
+      "keywords": [],
+      "category": "news",
+      "categoryLabel": "Chuyện người thợ",
+      "type": "Chuyện người thợ",
+      "priority": 86
+    },
+    {
+      "url": "/chia-se-thong-tin/",
+      "title": "Bộ chia sẻ thông tin nghề mỏ",
+      "description": "Công cụ tạo nội dung tuyển học nghề mỏ theo 26 tỉnh và toàn quốc, kèm liên kết UTM để cộng tác viên chia sẻ đúng thông tin và đo nguồn liên hệ.",
+      "keywords": [],
+      "category": "guide",
+      "categoryLabel": "Công cụ chia sẻ",
+      "type": "Công cụ chia sẻ",
+      "priority": 70
     },
     {
       "url": "/tin-nganh-than/2026/08/01/cao-bang-phoi-hop-tuyen-lao-dong-nghe-mo-2018/",
@@ -1450,6 +1500,16 @@
       "categoryLabel": "Việc làm theo tỉnh",
       "type": "Việc làm theo tỉnh",
       "priority": 45
+    },
+    {
+      "url": "/tac-gia/nguyen-tu-linh/",
+      "title": "Nguyễn Tử Linh",
+      "description": "Hồ sơ Nguyễn Tử Linh (Thầy Linh), người biên soạn Trung tâm nghề mỏ và đầu mối tư vấn học nghề, việc làm ngành Than tại Quảng Ninh.",
+      "keywords": [],
+      "category": "guide",
+      "categoryLabel": "Người biên soạn",
+      "type": "Người biên soạn",
+      "priority": 35
     },
     {
       "url": "/anh-video-thuc-te/",

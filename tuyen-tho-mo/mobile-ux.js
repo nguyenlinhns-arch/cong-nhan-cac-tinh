@@ -2,6 +2,7 @@
   "use strict";
 
   const ROOT = "https://thaylinhtuyenthomo.vn";
+  const APPLICATION_URL = "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky";
   const ZALO_URL = "https://zalo.me/0963048585";
   const MESSENGER_URL = "https://m.me/thaylinhtuyenthomo";
   const SEARCH_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>';
@@ -86,15 +87,26 @@
 
   function createContactButtons() {
     if (document.querySelector(".tl-mobile-contact")) return;
+    const pageApplication = document.querySelector('.mobile-contact a[data-contact="application"], a[href*="#dang-ky"]');
+    let applicationUrl = APPLICATION_URL;
+    if (pageApplication) {
+      try {
+        const resolved = new URL(pageApplication.getAttribute("href"), location.href);
+        if (resolved.origin === location.origin) applicationUrl = `${resolved.pathname}${resolved.search}${resolved.hash}`;
+      } catch (_) {}
+    }
     const nav = document.createElement("nav");
     nav.className = "tl-mobile-contact";
-    nav.setAttribute("aria-label", "Nhắn tin trực tiếp");
+    nav.setAttribute("aria-label", "Ứng tuyển và liên hệ nhanh");
     nav.innerHTML = `
-      <a class="tl-mobile-contact__messenger" href="${MESSENGER_URL}" target="_blank" rel="noopener noreferrer" aria-label="Nhắn Messenger cho Thầy Linh" data-contact="messenger" data-context="mobile-floating">
-        ${MESSENGER_ICON}<span class="tl-visually-hidden">Messenger</span>
+      <a class="tl-mobile-contact__application" href="${applicationUrl}" aria-label="Ứng tuyển và kiểm tra điều kiện" data-contact="application" data-context="mobile-floating">
+        <b aria-hidden="true">✓</b><span>Ứng tuyển</span>
       </a>
       <a class="tl-mobile-contact__zalo" href="${ZALO_URL}" target="_blank" rel="noopener noreferrer" aria-label="Nhắn Zalo cho Thầy Linh theo số 096 304 8585" data-contact="zalo" data-context="mobile-floating">
-        <b aria-hidden="true">Zalo</b><span class="tl-visually-hidden">Zalo 096 304 8585</span>
+        <b aria-hidden="true">Z</b><span>Zalo</span>
+      </a>
+      <a class="tl-mobile-contact__messenger" href="${MESSENGER_URL}" target="_blank" rel="noopener noreferrer" aria-label="Nhắn Messenger cho Thầy Linh" data-contact="messenger" data-context="mobile-floating">
+        ${MESSENGER_ICON}<span>Messenger</span>
       </a>`;
     document.body.append(nav);
   }
