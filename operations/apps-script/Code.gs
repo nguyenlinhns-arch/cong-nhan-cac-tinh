@@ -14,13 +14,14 @@ function setupRecruitmentCRM() {
   if (sheet.getLastRow() === 0) sheet.appendRow(HEADERS);
   sheet.setFrozenRows(1);
   sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold').setBackground('#0b4f46').setFontColor('#ffffff');
-  sheet.getRange('B:B').setNumberFormat('dd/mm/yyyy hh:mm');
-  sheet.getRange('E:E').setNumberFormat('dd/mm/yyyy');
-  sheet.getRange('U:V').setNumberFormat('dd/mm/yyyy hh:mm');
+  const dataRows = Math.max(sheet.getMaxRows() - 1, 1);
+  sheet.getRange(2, 2, dataRows, 1).setNumberFormat('dd/mm/yyyy hh:mm');
+  sheet.getRange(2, 5, dataRows, 1).setNumberFormat('dd/mm/yyyy');
+  sheet.getRange(2, 21, dataRows, 2).setNumberFormat('dd/mm/yyyy hh:mm');
   const statusRule = SpreadsheetApp.newDataValidation()
     .requireValueInList(['Mới', 'Đã gọi', 'Quan tâm', 'Hẹn khám', 'Đủ điều kiện', 'Nộp hồ sơ', 'Nhập học', 'Không phù hợp', 'Không liên lạc được'], true)
     .setAllowInvalid(false).build();
-  sheet.getRange(2, 19, Math.max(sheet.getMaxRows() - 1, 1), 1).setDataValidation(statusRule);
+  sheet.getRange(2, 19, dataRows, 1).setDataValidation(statusRule);
   return { ok: true, spreadsheet: spreadsheet.getUrl(), sheet: SHEET_NAME };
 }
 
