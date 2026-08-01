@@ -124,6 +124,7 @@ for (const file of htmlFiles) {
   const relative = path.relative(root, file).split(path.sep).join("/");
   if (/^google[a-z0-9_-]+\.html$/i.test(relative)) continue;
   const html = fs.readFileSync(file, "utf8");
+  if (/\bNaN\b|NaNmNaN/u.test(html)) errors.push(`${relative}: contains an invalid numeric placeholder`);
   const expected = publicUrl(file);
   const robotsMeta = meta(html, "name", "robots").toLowerCase();
   const indexable = !robotsMeta.includes("noindex");

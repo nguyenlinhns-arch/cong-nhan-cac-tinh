@@ -5,7 +5,7 @@ const root = path.resolve("tuyen-tho-mo");
 const outputRoot = path.join(root, "viec-lam-nganh-than");
 const recruitment = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
 const criteria = recruitment.criteria;
-const heightLabel = `${Math.floor(criteria.height_cm_min / 100)}m${String(criteria.height_cm_min % 100).padStart(2, "0")}`;
+const heightLabel = `${Math.floor(criteria.height_min_cm / 100)}m${String(criteria.height_min_cm % 100).padStart(2, "0")}`;
 
 export const provinces = [
   { slug: "lam-dong", name: "Lâm Đồng", region: "Tây Nguyên & Nam Trung Bộ", aliases: ["Đắk Nông", "Bình Thuận"], reportage: { title: "Năm tỷ đồng từ TKV và câu chuyện những mái nhà an toàn", summary: "Hoạt động xóa nhà tạm tại Lâm Đồng cho thấy mối liên hệ của ngành Than với đời sống tại quê hương người lao động.", link: "../../tin-nganh-than/2026/08/01/tkv-ho-tro-5-ty-xoa-nha-tam-lam-dong/" } },

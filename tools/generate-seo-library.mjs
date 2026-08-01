@@ -3,21 +3,24 @@ import path from "node:path";
 import {curatedArticles, existingNews} from "./curated-articles.mjs";
 import {communityArticles} from "./community-articles.mjs";
 import {communitySourceImages} from "./community-source-images.mjs";
+import {pressStoryArticles} from "./press-story-articles.mjs";
 
 const root = path.resolve("tuyen-tho-mo");
 const base = "https://thaylinhtuyenthomo.vn";
 const author = "Nguyễn Tử Linh";
 const recruitment = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
 const criteria = recruitment.criteria;
-const buildTime = "2026-08-01T22:30:00+07:00";
+const buildTime = "2026-08-01T16:30:00+07:00";
 const allEditorial = [
   ...curatedArticles.map((article) => ({...article, urlPath: `bai-viet/${article.slug}`})),
   ...existingNews,
   ...communityArticles,
+  ...pressStoryArticles,
 ];
 const generatedArticles = [
   ...curatedArticles.map((article) => ({...article, urlPath: `bai-viet/${article.slug}`})),
   ...communityArticles,
+  ...pressStoryArticles,
 ];
 
 const esc = (value = "") => String(value)
@@ -42,6 +45,7 @@ const actionHeadings = {
   "Việc làm ngành Than": "Thông tin cần kiểm tra trước khi đăng ký",
   "Kết nối địa phương": "Người lao động tại địa phương cần chuẩn bị gì?",
   "An sinh xã hội": "Theo dõi chương trình qua đầu mối chính thức",
+  "Chuyện người thợ mỏ": "Những chi tiết làm nên câu chuyện",
 };
 
 const conclusionHeadings = {
@@ -55,7 +59,29 @@ const conclusionHeadings = {
   "Việc làm ngành Than": "Một lựa chọn nghề nghiệp cần được cân nhắc kỹ",
   "Kết nối địa phương": "Từ quê nhà đến lớp học và nơi làm việc",
   "An sinh xã hội": "Hiệu quả được nhìn từ thay đổi trong đời sống",
+  "Chuyện người thợ mỏ": "Điều còn lại sau câu chuyện",
 };
+
+function sourceText(article) {
+  const sources = Array.isArray(article.sources) ? article.sources : [];
+  if (!sources.length) return "Thầy Linh – Tuyển Thợ Mỏ";
+  return sources.map((source) => [
+    source.publisher,
+    source.title ? `“${source.title}”` : "",
+    source.date || "",
+  ].filter(Boolean).join(", ")).join("; ");
+}
+
+function seoText(article) {
+  if (article.seoLine) return article.seoLine;
+  const keywords = (article.keywords || []).slice(0, 4).filter(Boolean);
+  if (!keywords.length) return "Tìm hiểu nghề thợ lò, học nghề mỏ và việc làm ngành Than tại Quảng Ninh cùng Thầy Linh.";
+  return `Tìm hiểu thêm về ${keywords.join(", ")} trên Thầy Linh – Tuyển Thợ Mỏ.`;
+}
+
+function renderSourceFooter(article) {
+  return `<div class="article-source-footer"><p><strong>Nguồn:</strong> ${esc(sourceText(article))}</p><p class="article-seo-line">${esc(seoText(article))}</p></div>`;
+}
 
 function renderFacts(facts) {
   return `<div class="fact-grid">${facts.map(([value, label]) => `<div class="fact-card"><strong>${esc(value)}</strong><span>${esc(label)}</span></div>`).join("")}</div>`;
@@ -106,6 +132,11 @@ function renderArticle(article) {
       text: "Những chương trình cộng đồng cho thấy tinh thần đồng tâm của người thợ được gìn giữ cả trong và ngoài sản xuất.",
       button: "Đọc thêm chuyện nghề mỏ",
     },
+    "Chuyện người thợ mỏ": {
+      title: "Hiểu nghề qua những người đang làm nghề",
+      text: "Câu chuyện có nguồn giúp người đọc nhìn rõ nhịp ca, tay nghề, an toàn, đồng đội và đời sống phía sau gương than.",
+      button: "Tìm hiểu chương trình học nghề",
+    },
   }[article.section] || {
     title: "Tìm hiểu nghề mỏ bằng thông tin rõ ràng",
     text: "Gửi năm sinh, chiều cao, cân nặng và tình trạng sức khỏe để được kiểm tra điều kiện trước khi chuẩn bị hồ sơ.",
@@ -133,6 +164,8 @@ function renderArticle(article) {
         publisher: {"@type": "Organization", name: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/`, logo: {"@type": "ImageObject", url: `${base}/favicon-512x512.png`, width: 512, height: 512}},
         articleSection: article.section,
         keywords: article.keywords,
+        ...(article.sources?.[0]?.url ? {isBasedOn: article.sources[0].url} : {}),
+        ...(article.sources?.length ? {citation: article.sources.map((source) => [source.publisher, source.title, source.date].filter(Boolean).join(" · "))} : {}),
       },
       {"@type": "WebPage", "@id": `${canonical}#webpage`, url: canonical, name: article.title, breadcrumb: {"@id": `${canonical}#breadcrumb`}},
       {
@@ -216,6 +249,7 @@ function renderArticle(article) {
         <p class="article-conclusion">${esc(article.takeaway)}</p>
         <h2>Câu hỏi thường gặp</h2>
         <div class="faq-list">${article.faq.map(([question, answer]) => `<section class="faq-item"><h3>${esc(question)}</h3><p>${esc(answer)}</p></section>`).join("")}</div>
+        ${renderSourceFooter(article)}
         <nav class="article-nav" aria-label="Bài viết liên quan">${related}</nav>
       </article>
       <aside class="article-aside">
@@ -243,6 +277,7 @@ const sectionOrder = [
   "Việc làm ngành Than",
   "Kết nối địa phương",
   "An sinh xã hội",
+  "Chuyện người thợ mỏ",
 ];
 
 const sectionIds = {
@@ -256,6 +291,7 @@ const sectionIds = {
   "Việc làm ngành Than": "viec-lam-nganh-than",
   "Kết nối địa phương": "ket-noi-dia-phuong",
   "An sinh xã hội": "an-sinh-xa-hoi",
+  "Chuyện người thợ mỏ": "chuyen-nguoi-tho-mo",
 };
 
 const sectionPresentation = {
@@ -269,6 +305,7 @@ const sectionPresentation = {
   "Việc làm ngành Than": ["Việc làm nhìn từ nhịp sản xuất", "Nhu cầu nhân lực, chính sách hiện hành và định hướng phát triển được đặt trong cùng một bức tranh dữ kiện."],
   "Kết nối địa phương": ["Từ quê nhà đến vùng mỏ", "Mỗi bài ghi lại một địa phương, kết quả đã có và cách Nhà trường, doanh nghiệp, chính quyền cùng đưa thông tin nghề đến người lao động."],
   "An sinh xã hội": ["Tinh thần đồng tâm trong cộng đồng", "Công trình, mái nhà, học bổng và nguồn cứu trợ cho thấy trách nhiệm xã hội của ngành Than trong đời sống thường ngày."],
+  "Chuyện người thợ mỏ": ["Những cuộc đời làm nên vùng mỏ", "Câu chuyện có nguồn từ báo chí giúp người đọc gặp người thợ trong ca sản xuất, gia đình, tổ đội và những thời điểm thử thách."],
 };
 
 function card(article) {
@@ -346,6 +383,19 @@ for (const article of generatedArticles) {
   fs.writeFileSync(path.join(directory, "index.html"), renderArticle(article));
 }
 
+for (const article of existingNews) {
+  const file = path.join(root, article.urlPath, "index.html");
+  if (!fs.existsSync(file)) throw new Error(`Missing existing article page: ${article.slug}`);
+  let html = fs.readFileSync(file, "utf8");
+  html = html.replace(/\s*<div class="article-source-footer">[\s\S]*?<\/div>\s*/g, "\n");
+  if (/^([ \t]*)<nav class="article-nav"/im.test(html)) {
+    html = html.replace(/^([ \t]*)<nav class="article-nav"/im, `$1${renderSourceFooter(article)}\n$1<nav class="article-nav"`);
+  } else {
+    html = html.replace(/^([ \t]*)<\/article>/im, `$1  ${renderSourceFooter(article)}\n$1</article>`);
+  }
+  fs.writeFileSync(file, html);
+}
+
 fs.writeFileSync(path.join(root, "tin-nganh-than", "index.html"), hubHtml());
 
 function collectIndexHtml(directory, output = []) {
@@ -400,8 +450,8 @@ const imageRegistry = Object.fromEntries(feedItems.map((article) => {
     album_id: article.imageAlbumId,
     album_title: article.imageSource,
     source_url: article.imageOriginal || article.image,
-    provider: sourceImage ? article.sources?.[0]?.publisher : "Thư viện ảnh Vinacomin",
-    source_article_url: sourceImage?.sourceUrl,
+    provider: article.contentMode === "press_digest" ? article.sources?.[0]?.publisher : sourceImage ? article.sources?.[0]?.publisher : "Thư viện ảnh Vinacomin",
+    source_article_url: article.contentMode === "press_digest" ? article.sources?.[0]?.url : sourceImage?.sourceUrl,
     local_file: article.imageLocalFile,
   }];
 }));
@@ -410,7 +460,7 @@ fs.writeFileSync(path.join(root, "assets", "articles", "sources.json"), `${JSON.
 fs.mkdirSync(path.resolve("content"), {recursive: true});
 fs.writeFileSync(path.resolve("content", "editorial-sources.json"), `${JSON.stringify({
   updated_at: buildTime,
-  policy: "Nguồn URL chỉ dùng cho kiểm chứng nội bộ; bài công khai ghi tên nguồn bằng chữ và không đặt liên kết ra ngoài.",
+  policy: "Mỗi bài công khai ghi một dòng Nguồn bằng chữ và một câu SEO ở cuối bài; URL chỉ dùng cho kiểm chứng nội bộ, không đặt liên kết ra ngoài.",
   articles: allEditorial.map((article) => ({slug: article.slug, title: article.title, sources: article.sources})),
 }, null, 2)}\n`);
 

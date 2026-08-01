@@ -3,6 +3,7 @@ import path from "node:path";
 import { communitySourceImages } from "./community-source-images.mjs";
 import { curatedArticles, existingNews } from "./curated-articles.mjs";
 import { communityArticles } from "./community-articles.mjs";
+import { pressStoryArticles } from "./press-story-articles.mjs";
 
 const root = path.resolve("tuyen-tho-mo");
 const base = "https://thaylinhtuyenthomo.vn";
@@ -36,7 +37,8 @@ const normalize = (text) => strip(text)
   .replace(/\s+/g, " ")
   .trim();
 
-const editorialArticles = [...curatedArticles, ...communityArticles];
+const editorialArticles = [...curatedArticles, ...communityArticles, ...pressStoryArticles];
+const pressStoriesBySlug = new Map(pressStoryArticles.map((article) => [article.slug, article]));
 const editorialTopicImageOverrides = new Set([...curatedArticles, ...existingNews]
   .filter((article) => article.imagePolicy === "editorial-topic-override")
   .map((article) => article.slug));
@@ -192,6 +194,7 @@ for (const [index, slug] of slugs.entries()) {
   const image = getAttr(html, /(?:<section\b[^>]*class="[^"]*\barticle-hero\b[^"]*"[^>]*>|<figure class="article-cover">)[\s\S]*?<img src="([^"]+)"/i, `${prefix}hero image`);
   const ogImage = getAttr(html, /<meta property="og:image" content="([^"]+)"/i, `${prefix}Open Graph image`);
   const sourceImage = communitySourceImages[slug];
+  const pressStory = pressStoriesBySlug.get(slug);
   const h1Count = (html.match(/<h1(?:\s|>)/gi) || []).length;
   const visibleWords = visible.split(/\s+/).filter(Boolean).length;
 
@@ -202,7 +205,9 @@ for (const [index, slug] of slugs.entries()) {
   if (!normalize(html).includes(normalize(primaryKeyword))) errors.push(`${prefix}primary keyword absent from visible body`);
   if (visibleWords < 650) errors.push(`${prefix}only ${visibleWords} visible words; expected at least 650`);
   if (!/"@type":"(?:NewsArticle|Article|BlogPosting)"/.test(html) || !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing article or FAQ schema`);
-  if (sourceImage) {
+  if (pressStory) {
+    if (image !== pressStory.imageOriginal) errors.push(`${prefix}does not use the original image from its press source`);
+  } else if (sourceImage) {
     if (image !== sourceImage.image) errors.push(`${prefix}does not use the original image from its source article`);
   } else if (!editorialTopicImageOverrides.has(slug)
     && !image.startsWith("https://vinacomin.vn/Share/Media/")
@@ -210,6 +215,8 @@ for (const [index, slug] of slugs.entries()) {
     errors.push(`${prefix}original editorial image is not from the Vinacomin image library or a verified local copy`);
   }
   if (ogImage !== image || item.image !== image) errors.push(`${prefix}hero, Open Graph and feed images must match`);
+  if (!/<div class="article-source-footer">[\s\S]*?<strong>Nguồn:<\/strong>/i.test(html)) errors.push(`${prefix}missing the public source line`);
+  if (!/<p class="article-seo-line">[^<]+<\/p>/i.test(html)) errors.push(`${prefix}missing the final SEO sentence`);
   if (/editorial-sources|Nguồn dữ kiện đã đối chiếu|Bài viết do Nguyễn Tử Linh phân tích và biên soạn độc lập/iu.test(html)) {
     errors.push(`${prefix}contains a public editorial-source block`);
   }
@@ -279,7 +286,11 @@ if (new Set(sourceUrls).size !== sourceUrls.length) errors.push("Image registry 
 for (const slug of slugs) {
   const imageRecord = imageSources[slug];
   const sourceImage = communitySourceImages[slug];
-  if (sourceImage) {
+  const pressStory = pressStoriesBySlug.get(slug);
+  if (pressStory) {
+    if (imageRecord?.source_url !== pressStory.imageOriginal) errors.push(`${slug}: image registry does not match the press-source image`);
+    if (imageRecord?.source_article_url !== pressStory.sources?.[0]?.url) errors.push(`${slug}: image registry does not match the press-source article URL`);
+  } else if (sourceImage) {
     if (imageRecord?.source_url !== sourceImage.image) errors.push(`${slug}: image registry does not match the source article image`);
     if (imageRecord?.source_article_url !== sourceImage.sourceUrl) errors.push(`${slug}: image registry does not match the source article URL`);
   } else if (!editorialTopicImageOverrides.has(slug)

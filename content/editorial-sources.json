@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-01T22:30:00+07:00",
-  "policy": "Nguồn URL chỉ dùng cho kiểm chứng nội bộ; bài công khai ghi tên nguồn bằng chữ và không đặt liên kết ra ngoài.",
+  "updated_at": "2026-08-01T16:30:00+07:00",
+  "policy": "Mỗi bài công khai ghi một dòng Nguồn bằng chữ và một câu SEO ở cuối bài; URL chỉ dùng cho kiểm chứng nội bộ, không đặt liên kết ra ngoài.",
   "articles": [
     {
       "slug": "dieu-kien-tuyen-tho-lo-2026",
@@ -744,6 +744,126 @@
           "title": "Công ty Than Thống Nhất – TKV chung tay phát triển nguồn nhân lực tại xã Đầm Hà",
           "date": "25/05/2026",
           "url": "https://www.thanthongnhat.vn/tin-san-xuat/cong-ty-than-thong-nhat-tkv-chung-tay-phat-trien-nguon-nhan-luc-tai-xa-dam-ha-15571.html"
+        }
+      ]
+    },
+    {
+      "slug": "tho-mo-vao-ca-duong-huy",
+      "title": "Theo chân một ca thợ mỏ ở Dương Huy",
+      "sources": [
+        {
+          "publisher": "Báo Nhân Dân",
+          "title": "Thợ mỏ vào ca",
+          "date": "10/09/2018",
+          "url": "https://nhandan.vn/tho-mo-vao-ca-post334767.html"
+        }
+      ]
+    },
+    {
+      "slug": "gia-dinh-ba-the-he-tho-mo-thong-nhat",
+      "title": "Ba thế hệ giữ lửa nghề mỏ trong một gia đình",
+      "sources": [
+        {
+          "publisher": "VOV",
+          "title": "“Giữ lửa” trong gia đình 3 thế hệ thợ mỏ",
+          "date": "28/06/2023",
+          "url": "https://vov.vn/xa-hoi/giu-lua-trong-gia-dinh-3-the-he-tho-mo-post1028861.vov"
+        }
+      ]
+    },
+    {
+      "slug": "ma-khac-huynh-nguoi-mo-duong-trong-long-dat",
+      "title": "Ma Khắc Huỳnh: người mở đường trong lòng đất",
+      "sources": [
+        {
+          "publisher": "VietNamNet",
+          "title": "Bỏ việc cơ quan, người đàn ông chọn làm việc ở mỏ than",
+          "date": "26/09/2023",
+          "url": "https://vietnamnet.vn/bo-viec-co-quan-nguoi-dan-ong-chon-lam-viec-o-mo-than-2190156.html"
+        }
+      ]
+    },
+    {
+      "slug": "mot-ngay-trong-lo-than-duong-huy",
+      "title": "Một ngày trong lò than sâu của người thợ Dương Huy",
+      "sources": [
+        {
+          "publisher": "Dân trí",
+          "title": "Một ngày của người thợ “ăn cơm dương gian, làm việc âm phủ”",
+          "date": "04/11/2020",
+          "url": "https://dantri.com.vn/thoi-su/mot-ngay-cua-nguoi-tho-an-com-duong-gian-lam-viec-am-phu-20201025220908377.htm"
+        }
+      ]
+    },
+    {
+      "slug": "nhung-nguoi-tho-lo-gieo-no-luc",
+      "title": "Ba người thợ lò và ba cách làm nên uy tín nghề nghiệp",
+      "sources": [
+        {
+          "publisher": "Tiền Phong",
+          "title": "Những người thợ lò ‘gieo nỗ lực, gặt thành công’",
+          "date": "04/05/2018",
+          "url": "https://tienphong.vn/nhung-nguoi-tho-lo-gieo-no-luc-gat-thanh-cong-post1026817.tpo"
+        }
+      ]
+    },
+    {
+      "slug": "khoanh-khac-tho-mo-vang-danh",
+      "title": "Hai mươi bảy khoảnh khắc kể chuyện thợ mỏ Vàng Danh",
+      "sources": [
+        {
+          "publisher": "VTV",
+          "title": "Khoảnh khắc chân thật về cuộc sống của những người thợ mỏ ở Quảng Ninh",
+          "date": "01/12/2017",
+          "url": "https://vtv.vn/doi-song/khoanh-khac-chan-that-ve-cuoc-song-cua-nhung-nguoi-tho-mo-o-quang-ninh-20171201121533814.htm"
+        }
+      ]
+    },
+    {
+      "slug": "ly-van-di-nguoi-cha-tho-lo",
+      "title": "Lý Văn Dỉ: hết ca lò lại trở về làm cha của ba con nhỏ",
+      "sources": [
+        {
+          "publisher": "Báo Công Thương",
+          "title": "Người thợ lò gánh trọn hai vai vì tương lai con trẻ",
+          "date": "06/03/2026",
+          "url": "https://congthuong.vn/nguoi-tho-lo-ganh-tron-hai-vai-vi-tuong-lai-con-tre-445582.html"
+        }
+      ]
+    },
+    {
+      "slug": "ky-luat-dong-tam-tho-mo-ha-lam",
+      "title": "Những người giữ tinh thần Kỷ luật – Đồng tâm ở mỏ Hà Lầm",
+      "sources": [
+        {
+          "publisher": "Báo Quảng Ninh",
+          "title": "Thợ mỏ Hà Lầm – Những câu chuyện về ‘Kỷ luật và Đồng tâm’",
+          "date": "12/08/2020",
+          "url": "https://baoquangninh.vn/tho-mo-ha-lam-nhung-cau-chuyen-ve-ky-luat-va-dong-tam-2495602.html"
+        }
+      ]
+    },
+    {
+      "slug": "pham-dinh-duan-to-cuu-ho-vang-danh",
+      "title": "Phạm Đình Duẩn và mười lăm giờ cứu đồng đội dưới lò",
+      "sources": [
+        {
+          "publisher": "Báo Đầu tư",
+          "title": "Người thợ mỏ có trái tim vàng đen lấp lánh",
+          "date": "06/09/2025",
+          "url": "https://baodautu.vn/nguoi-tho-mo-co-trai-tim-vang-den-lap-lanh-d376810.html"
+        }
+      ]
+    },
+    {
+      "slug": "anh-tho-mo-khe-cham-qua-ong-kinh-ttxvn",
+      "title": "Vùng than và người thợ qua ống kính TTXVN",
+      "sources": [
+        {
+          "publisher": "VietnamPlus/TTXVN",
+          "title": "[Photo] Phát huy truyền thống vùng mỏ Quảng Ninh anh hùng",
+          "date": "12/11/2019",
+          "url": "https://www.vietnamplus.vn/photo-phat-huy-truyen-thong-vung-mo-quang-ninh-anh-hung-post606797.vnp"
         }
       ]
     }
