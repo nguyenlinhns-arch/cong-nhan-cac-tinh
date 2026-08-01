@@ -39,7 +39,7 @@ function getAttr(html, pattern, label) {
 
 function collectHtml(directory, output = []) {
   for (const entry of fs.readdirSync(directory, {withFileTypes: true})) {
-    if (entry.name.startsWith(".")) continue;
+    if (entry.name.startsWith(".") || /^google[a-z0-9_-]+\.html$/i.test(entry.name)) continue;
     const full = path.join(directory, entry.name);
     if (entry.isDirectory()) collectHtml(full, output);
     else if (entry.name.endsWith(".html")) output.push(full);
