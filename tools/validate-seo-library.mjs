@@ -67,15 +67,26 @@ const lowIncomeFigure = (value) => {
   const annualLabel = /(?:thu nhập|lương|tiền lương)[^.!?]{0,40}\bnăm\b|\bnăm\b[^.!?]{0,40}(?:thu nhập|lương|tiền lương)/iu.test(text);
   return (monthlyLabel && minimum < 20) || (annualLabel && minimum < 240);
 };
+const formulaicEditorialPattern = /(?:không chỉ|đáng chú ý|không nằm ở|không dừng ở)/iu;
 for (const article of editorialArticles) {
   if (!Array.isArray(article.intro) || article.intro.length < 2) errors.push(`${article.slug}: bài báo cần ít nhất hai đoạn mở bài`);
   if (!Array.isArray(article.sections) || article.sections.length < 3) errors.push(`${article.slug}: bài báo cần ít nhất ba phần nội dung`);
-  if (collectTextFragments(article).some(lowIncomeFigure)) {
+  const fragments = collectTextFragments(article);
+  if (fragments.some(lowIncomeFigure)) {
     errors.push(`${article.slug}: bài nguồn có mức thu nhập thấp hơn 20 triệu đồng/tháng; phải bỏ toàn bộ mục và con số thu nhập`);
   }
+  if (fragments.some((fragment) => formulaicEditorialPattern.test(strip(fragment)))) {
+    errors.push(`${article.slug}: còn cấu trúc văn mẫu; cần viết lại bằng câu chủ động, trực tiếp`);
+  }
 
-  for (const section of article.sections || []) {
-    const key = normalize(section.title);
+  const editorialHeadings = [
+    ...(article.sections || []).map((section) => section.title),
+    article.factsTitle,
+    article.actionTitle,
+    article.conclusionTitle,
+  ].filter(Boolean);
+  for (const title of editorialHeadings) {
+    const key = normalize(title);
     const owners = editorialSectionOwners.get(key) || [];
     owners.push(article.slug);
     editorialSectionOwners.set(key, owners);
@@ -199,6 +210,10 @@ for (const [index, slug] of slugs.entries()) {
   if (/class="article-(?:meta|source-credit)"/i.test(html)) errors.push(`${prefix}contains visible author, image or source credits`);
   if (/class="source-note"|<h2[^>]*>\s*Nguồn tham khảo\s*<\/h2>/iu.test(html)) errors.push(`${prefix}contains a visible source block`);
   if (/Bài\s+\d{1,2}\s*\/\s*50|50\+?\s*bài|Cách đọc đúng:|Tóm tắt:/iu.test(visible)) errors.push(`${prefix}contains quota-driven or generic template wording`);
+  if (formulaicEditorialPattern.test(visible)) errors.push(`${prefix}contains formulaic editorial wording`);
+  if (/Một lộ trình nghề nghiệp có thể nhìn thấy từ ngày đầu|Không đưa người chưa có nghề thẳng vào sản xuất|Muốn trở thành một phần của tập thể ấy/iu.test(visible)) {
+    errors.push(`${prefix}contains an outdated stiff or promotional heading`);
+  }
   if (visible.split(/(?<=[.!?])\s+/u).some(lowIncomeFigure)) errors.push(`${prefix}publishes an income figure below 20 million VND per month`);
 
   const externalAnchors = [...html.matchAll(/<a\b[^>]*href="(https?:\/\/[^"]+)"/gi)]

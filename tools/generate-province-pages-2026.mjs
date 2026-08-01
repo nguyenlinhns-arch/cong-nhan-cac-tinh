@@ -58,7 +58,7 @@ function provincePage(province) {
   ].filter(Boolean);
   const storySection = localStories.length
     ? `<section class="section local-overview" aria-labelledby="local-story-title">
-      <div class="section-heading"><div><p class="eyebrow">DẤU ẤN ${name.toLocaleUpperCase("vi")} TRONG NGÀNH THAN</p><h2 id="local-story-title">${localStories.length > 1 ? "Những câu chuyện giúp người lao động nhìn nghề rõ hơn" : "Một câu chuyện đã có dữ kiện và người đi trước"}</h2></div><p>Không chỉ là lời mời tuyển dụng, đây là những con người, kết quả hợp tác và hoạt động cộng đồng có thể kiểm chứng từ chính địa phương.</p></div>
+      <div class="section-heading"><div><p class="eyebrow">DẤU ẤN ${name.toLocaleUpperCase("vi")} TRONG NGÀNH THAN</p><h2 id="local-story-title">${localStories.length > 1 ? "Những câu chuyện giúp người lao động nhìn nghề rõ hơn" : "Một câu chuyện đã có dữ kiện và người đi trước"}</h2></div><p>Những con người, kết quả hợp tác và hoạt động cộng đồng có thể kiểm chứng tại địa phương giúp người lao động hiểu nghề qua các dữ kiện thực tế.</p></div>
       <div class="local-story-list">${localStories.map((item) => `<div class="story-link"><div><strong>${item.title}</strong><p>${item.summary}</p></div><a class="button button--outline-dark" href="${item.link}">${item.action}</a></div>`).join("")}</div>
     </section>`
     : "";

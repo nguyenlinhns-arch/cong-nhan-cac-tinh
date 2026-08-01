@@ -42,7 +42,7 @@ export const curatedArticles = [
       {
         title: "Tổ đội chỉ mạnh khi từng người đủ sức bền",
         paragraphs: [
-          "Dưới mỏ, người thợ không làm việc một mình. Họ nhận ca, kiểm tra điều kiện, phối hợp thao tác và bàn giao cho nhau theo quy trình. Thể lực tốt vì thế không chỉ giúp một người hoàn thành công việc, mà còn giúp cả tổ giữ được nhịp sản xuất chắc chắn.",
+          "Dưới mỏ, người thợ không làm việc một mình. Họ nhận ca, kiểm tra điều kiện, phối hợp thao tác và bàn giao cho nhau theo quy trình. Thể lực tốt giúp mỗi người hoàn thành phần việc, đồng thời giữ nhịp sản xuất chắc chắn cho cả tổ.",
           "Đạt các mốc ban đầu là nền tảng để bước sang khám sức khỏe và học nghề. Kỷ luật, khả năng tiếp thu kỹ thuật và tinh thần làm việc nhóm sẽ tiếp tục biến một lao động mới thành người công nhân có thể đứng vững trong dây chuyền.",
         ],
       },
@@ -188,7 +188,7 @@ export const curatedArticles = [
         title: "Kỷ luật học tập là bài kiểm tra nghề nghiệp đầu tiên",
         paragraphs: [
           "Các buổi thực hành được sắp theo trình tự, bài trước làm nền cho bài sau. Đi học đúng giờ, mang đủ trang bị, ghi chép và hỏi lại khi chưa hiểu chính là cách người học chứng minh mình có thể theo đuổi một nghề yêu cầu kỷ luật lâu dài.",
-          "Doanh nghiệp cần người không chỉ hoàn thành một bài kiểm tra, mà còn duy trì tác phong qua từng ca sản xuất. Vì vậy, những thói quen nhỏ trong lớp học—đúng giờ, nghe lệnh, kiểm tra dụng cụ—sẽ theo người thợ xuống tận hầm lò.",
+          "Doanh nghiệp cần người hoàn thành bài kiểm tra và duy trì tác phong qua từng ca sản xuất. Vì vậy, những thói quen nhỏ trong lớp học—đúng giờ, nghe lệnh, kiểm tra dụng cụ—sẽ theo người thợ xuống tận hầm lò.",
         ],
       },
       {
@@ -248,7 +248,7 @@ export const curatedArticles = [
       {
         title: "Từ con số 13.507 đến những gương mặt có thật",
         paragraphs: [
-          "Mốc 300 triệu đồng một năm tương đương bình quân trên 25 triệu đồng mỗi tháng. Điều đáng chú ý là đây không phải thành tích của một vài cá nhân hiếm hoi: 57% thợ lò trong số liệu TKV đã vượt ngưỡng này. Khi hơn một nửa lực lượng cùng đạt mức thu nhập đáng kể, nghề mỏ cho thấy khả năng tạo sinh kế ở quy mô lớn.",
+          "Mốc 300 triệu đồng một năm tương đương bình quân trên 25 triệu đồng mỗi tháng. Theo số liệu TKV, 57% thợ lò đã vượt ngưỡng này. Tỷ lệ hơn một nửa lực lượng cho thấy nghề mỏ tạo thu nhập đáng kể ở quy mô rộng, thay vì chỉ xuất hiện ở vài trường hợp cá biệt.",
           "Mùa A Sình, người Mông quê Lai Châu, là một ví dụ khác. Những ngày đầu sống tập trung và học nghề là thử thách, nhưng kiến thức, sự cần cù và kỷ luật đã giúp anh bắt nhịp tại Than Thống Nhất. Báo Quảng Ninh cho biết thu nhập bình quân của anh đạt 25–27 triệu đồng/tháng, có tháng lên 40 triệu đồng; gia đình ở quê thoát nghèo và em trai cũng được anh giới thiệu vào nghề.",
         ],
         bullets: [
@@ -289,7 +289,7 @@ export const curatedArticles = [
     takeaway: "Từ Đặng Văn Hưng ở Gia Lai đến Mùa A Sình ở Lai Châu, điểm chung không phải xuất phát điểm thuận lợi mà là quyết định học một nghề, đi làm có kỷ luật và bền bỉ nâng tay nghề. Nếu đủ sức khỏe và đang muốn thay đổi thu nhập bằng lao động chân chính, nghề mỏ tại Quảng Ninh là một lựa chọn xứng đáng để bắt đầu ngay hôm nay.",
     faq: [
       ["Học nghề mỏ 2–3 tháng có gắn với việc làm không?", "Người học do doanh nghiệp cử đi đào tạo; sau khi hoàn thành chương trình và đạt yêu cầu sẽ được doanh nghiệp tiếp nhận, ký hợp đồng và bố trí công việc."],
-      ["Người mới có thể phấn đấu tới mức trên 300 triệu đồng/năm không?", "Có cơ sở để phấn đấu, nhưng cần thời gian tích lũy. Thu nhập tăng theo vị trí, ngày công, năng suất, tay nghề và đơn vị; số liệu 13.507 người cho thấy đây là một mặt bằng rộng chứ không chỉ vài trường hợp cá biệt."],
+      ["Người mới có thể phấn đấu tới mức trên 300 triệu đồng/năm không?", "Có cơ sở để phấn đấu, nhưng cần thời gian tích lũy. Thu nhập tăng theo vị trí, ngày công, năng suất, tay nghề và đơn vị; số liệu 13.507 người cho thấy đây là kết quả của một lực lượng đông đảo."],
       ["Tôi ở tỉnh xa thì đăng ký bằng cách nào?", "Bước đầu chỉ cần nhắn năm sinh, chiều cao/cân nặng và sức khỏe qua Zalo hoặc Messenger. Sau khi phù hợp điều kiện, bạn sẽ được hướng dẫn hồ sơ, lịch học và di chuyển đến Quảng Ninh."],
     ],
     sources: [
@@ -323,7 +323,7 @@ export const curatedArticles = [
       ["15 lò chợ", "Định hướng số lò chợ điều khiển thông minh, tự động hóa vào năm 2030."],
     ],
     intro: [
-      "Dưới lòng đất, diện mạo hầm lò đang thay đổi. Máy khấu, giàn chống, băng tải, cảm biến và hệ thống điều hành tập trung ngày càng đảm nhận nhiều phần việc từng dựa nặng vào sức người. Kế hoạch <strong>cơ giới hóa khai thác hầm lò 2026–2030</strong> vì thế không chỉ là câu chuyện đầu tư máy móc; đó là cuộc chuyển mình của chính nghề thợ mỏ.",
+      "Dưới lòng đất, diện mạo hầm lò đang thay đổi. Máy khấu, giàn chống, băng tải, cảm biến và hệ thống điều hành tập trung ngày càng đảm nhận nhiều phần việc từng dựa nặng vào sức người. Kế hoạch <strong>cơ giới hóa khai thác hầm lò 2026–2030</strong> vừa là đầu tư máy móc, vừa là cuộc chuyển mình của chính nghề thợ mỏ.",
       "Theo TKV, sản lượng khai thác bằng công nghệ cơ giới hóa đã tăng từ 3 triệu tấn năm 2020 lên 4,6 triệu tấn năm 2025. Mục tiêu đến năm 2030 là 11,08 triệu tấn, tương đương 34,4% sản lượng than hầm lò, cùng 15 lò chợ được điều khiển thông minh hoặc tự động hóa.",
     ],
     sections: [
@@ -480,7 +480,7 @@ export const curatedArticles = [
         title: "Thợ giỏi làm việc bằng cả đôi tay và tư duy",
         paragraphs: [
           "Một thao tác được đánh giá tốt phải đúng trình tự, đúng chất lượng và đúng thời gian trong điều kiện an toàn. Người thợ còn phải đọc bản hướng dẫn, nhận biết sai lệch, giữ dụng cụ và phối hợp với bộ phận liên quan. Khi thiết bị số xuất hiện, việc ghi nhận dữ liệu và bàn giao cũng trở thành một phần của tay nghề.",
-          "Hội thi năm 2026 chuẩn hóa nội dung đánh giá theo hướng tiệm cận tiêu chuẩn kỹ năng nghề quốc gia. Điều này đáng chú ý vì doanh nghiệp không chỉ cần người “làm quen tay”, mà cần năng lực có thể quan sát, kiểm chứng và đào tạo tiếp.",
+          "Hội thi năm 2026 chuẩn hóa nội dung đánh giá theo hướng tiệm cận tiêu chuẩn kỹ năng nghề quốc gia. Cách đánh giá này cho thấy doanh nghiệp cần năng lực có thể quan sát, kiểm chứng và tiếp tục đào tạo, thay cho kinh nghiệm “làm quen tay” đơn thuần.",
         ],
         bullets: [
           "Hiểu nguyên lý để biết vì sao từng bước phải theo đúng trình tự.",
@@ -579,7 +579,7 @@ export const curatedArticles = [
       },
     ],
     checklist: [
-      ["Xem ngành", "Đọc dữ liệu sản xuất và định hướng đầu tư, không chỉ tin quảng cáo."],
+      ["Xem ngành", "Đọc dữ liệu sản xuất và định hướng đầu tư thay vì chỉ tin quảng cáo."],
       ["Xem đơn vị", "Hỏi hợp đồng, vị trí, ca làm, chỗ ở và các chế độ đi kèm."],
       ["Xem bản thân", "Đánh giá sức khỏe, kỷ luật và khả năng sống xa nhà."],
       ["Xem dài hạn", "Chọn hướng nghề có thể nâng bậc và thích nghi với công nghệ."],
@@ -658,7 +658,7 @@ export const curatedArticles = [
       ["Tái sử dụng", "Đưa nước, đất đá và vật liệu trở lại vòng sản xuất phù hợp."],
       ["Giám sát lâu dài", "Duy trì quan trắc, bảo dưỡng và trách nhiệm với cộng đồng."],
     ],
-    takeaway: "Ngành Than xanh hơn khi từng tấn tài nguyên được thu hồi tốt hơn, nước và bụi được kiểm soát, chất thải có đường đi rõ ràng và công nghệ được vận hành ổn định. Người lao động bước vào nghề hôm nay không chỉ khai thác than; họ còn tham gia một quá trình hiện đại hóa để mỏ an toàn, hiệu quả và có trách nhiệm hơn với cộng đồng.",
+    takeaway: "Ngành Than xanh hơn khi từng tấn tài nguyên được thu hồi tốt hơn, nước và bụi được kiểm soát, chất thải có đường đi rõ ràng và công nghệ được vận hành ổn định. Người lao động bước vào nghề hôm nay tham gia cả khai thác và quá trình hiện đại hóa để mỏ an toàn, hiệu quả, có trách nhiệm hơn với cộng đồng.",
     faq: [
       ["Sản xuất sạch hơn trong ngành Than được đo bằng gì?", "Bằng tỷ lệ thu hồi tài nguyên, tổn thất, chất lượng nước sau xử lý, lượng bụi, mức tiêu hao năng lượng, tỷ lệ tái sử dụng và kết quả phục hồi môi trường."],
       ["Nước thải mỏ sau xử lý được dùng vào việc gì?", "Một phần có thể quay lại sàng tuyển, phun sương dập bụi, vệ sinh thiết bị và công việc phụ trợ khi đáp ứng yêu cầu kỹ thuật tương ứng."],
@@ -695,7 +695,7 @@ export const curatedArticles = [
       ["4,66 triệu tấn", "Kế hoạch than tiêu thụ trong tháng."],
     ],
     intro: [
-      "Tháng 7/2026, khi Quảng Ninh bước vào cao điểm nắng nóng, giông lốc và mưa lớn, TKV vẫn đặt kế hoạch sản xuất hàng triệu tấn than, bốc xúc 7,75 triệu m³ đất đá và đào mới hơn 24 km đường lò. <strong>An toàn mỏ mùa mưa bão 2026</strong> vì thế là một năng lực tổ chức sản xuất, không chỉ là phương án ứng cứu khi sự cố đã xảy ra.",
+      "Tháng 7/2026, khi Quảng Ninh bước vào cao điểm nắng nóng, giông lốc và mưa lớn, TKV vẫn đặt kế hoạch sản xuất hàng triệu tấn than, bốc xúc 7,75 triệu m³ đất đá và đào mới hơn 24 km đường lò. <strong>An toàn mỏ mùa mưa bão 2026</strong> vì thế là năng lực tổ chức thường trực, bao gồm cả phòng ngừa và ứng cứu khi có tình huống bất thường.",
       "Mỗi điểm thoát nước, tuyến vận tải, bãi thải, công trình điện và khu vực hầm lò đều nằm trong cùng một chuỗi. Công tác dự báo, kiểm tra, ứng trực và bàn giao thông tin giúp hàng nghìn người lao động biết khi nào có thể tiếp tục công việc, khi nào cần dừng và đâu là tuyến di chuyển an toàn.",
     ],
     sections: [
@@ -753,9 +753,9 @@ export const existingNews = [
     slug: "viec-lam-nganh-than-thang-8-2026",
     urlPath: "tin-nganh-than/2026/08/01/viec-lam-nganh-than-thang-8-2026",
     section: "Tuyển dụng thợ mỏ",
-    title: "Tuyển thợ mỏ tháng 8/2026: cam kết thu nhập 20–25 triệu/tháng",
-    description: "Nam 18–40 tuổi; học nghề 2–3 tháng, miễn học phí, ăn ở, hỗ trợ 7,5 triệu đồng và cam kết thu nhập 20–25 triệu/tháng khi hoàn thành định mức lao động.",
-    lead: "Từ một người chưa có nghề, ứng viên phù hợp có thể học nghề 2–3 tháng, được hỗ trợ ăn ở, bố trí việc làm và cam kết thu nhập 20–25 triệu/tháng khi hoàn thành định mức lao động.",
+    title: "Tuyển thợ mỏ tháng 8/2026: học nghề bài bản, việc làm rõ ràng",
+    description: "Nam 18–40 tuổi có thể học nghề mỏ 2–3 tháng, được hỗ trợ trong thời gian học, bố trí việc làm và cam kết thu nhập 20–25 triệu/tháng khi hoàn thành định mức.",
+    lead: "Từ lớp học nghề đến vị trí sản xuất tại Quảng Ninh, người lao động được chuẩn bị từng bước về kỹ năng, an toàn, chỗ ở và công việc sau đào tạo.",
     keyword: "tuyển thợ mỏ tháng 8/2026",
     keywords: ["tuyển thợ mỏ tháng 8/2026", "tuyển thợ lò", "học nghề mỏ", "thu nhập 20–25 triệu/tháng", "việc làm TKV Quảng Ninh"],
     image: "https://thaylinhtuyenthomo.vn/assets/news/tuyen-tho-mo-thang-8-2026-og-1200x630.png",
@@ -765,11 +765,10 @@ export const existingNews = [
     imageLocalFile: "../news/tuyen-tho-mo-thang-8-2026-og-1200x630.png",
     imagePolicy: "editorial-topic-override",
     published: "2026-08-01T08:09:00+07:00",
-    updated: "2026-08-01T12:03:23+07:00",
+    updated: "2026-08-01T13:00:00+07:00",
     sources: [
-      {publisher: "TKV", title: "TKV duy trì ổn định sản xuất kinh doanh, lợi nhuận 7 tháng đầu năm vượt kế hoạch", date: "31/07/2026", url: "https://vinacomin.vn/news/slug/tkv-duy-tri-on-dinh-san-xuat-kinh-doanh-loi-nhuan-7-thang-dau-nam-vuot-ke-hoach"},
-      {publisher: "Cục Công nghiệp", title: "Nửa đầu năm 2026, TKV cung cấp 22,77 triệu tấn than cho sản xuất điện", date: "04/07/2026", url: "https://via.gov.vn/tin-tuc/t13917/nua-dau-nam-2026-tkv-cung-cap-22-77-trieu-tan-than-cho-san-xuat-dien"},
-      {publisher: "Công đoàn TKV", title: "Phát huy truyền thống Kỷ luật và Đồng tâm, thực hiện thắng lợi Nghị quyết Hội nghị Người lao động TKV năm 2026", date: "05/02/2026", url: "https://congdoantkv.vn/tin-tuc/chi-tiet/45021/Phat-huy-truyen-thong-%E2%80%9CKy-luat-va-%C4%90ong-tam%E2%80%9D-thuc-hien-thang-loi-Nghi-quyet-Hoi-nghi-Nguoi-lao-%C4%91ong-TKV-nam-2026"},
+      {publisher: "Trường Cao đẳng Than - Khoáng sản Việt Nam", title: "Thông báo số 10/TB-CĐTKV về tuyển sinh nghề mỏ năm 2026", date: "02/04/2026"},
+      {publisher: "Phòng Tuyển sinh Miền Trung", title: "Thông tin tuyển sinh, hỗ trợ học nghề và cam kết thu nhập tháng 8/2026", date: "01/08/2026"},
     ],
   },
   {

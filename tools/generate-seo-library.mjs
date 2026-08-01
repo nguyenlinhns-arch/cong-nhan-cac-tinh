@@ -30,29 +30,29 @@ const displayDate = (iso) => new Intl.DateTimeFormat("vi-VN", {
 }).format(new Date(iso));
 
 const actionHeadings = {
-  "Hướng dẫn nhập nghề": "Bốn bước để bắt đầu đúng",
-  "Thu nhập & việc làm": "Bắt đầu xây con đường nghề nghiệp",
+  "Hướng dẫn nhập nghề": "Những việc cần chuẩn bị",
+  "Thu nhập & việc làm": "Bắt đầu từ tay nghề và kỷ luật",
   "Công nghệ mỏ": "Người mới cần chuẩn bị gì?",
-  "Tay nghề & đào tạo": "Từ lớp học tới tổ sản xuất",
-  "An toàn & sức khỏe": "Chuẩn bị để làm việc an toàn",
-  "Đời sống thợ mỏ": "Tìm hiểu trước khi vào nghề",
-  "Mỏ xanh & môi trường": "Người lao động tham gia thế nào?",
-  "Việc làm ngành Than": "Bước tiếp theo dành cho người quan tâm",
-  "Kết nối địa phương": "Từ địa phương tới lớp học nghề",
-  "An sinh xã hội": "Theo dõi chương trình qua đầu mối nào?",
+  "Tay nghề & đào tạo": "Từ lớp học đến nơi làm việc",
+  "An toàn & sức khỏe": "Chuẩn bị cho một ca làm an toàn",
+  "Đời sống thợ mỏ": "Thông tin nên biết trước khi vào nghề",
+  "Mỏ xanh & môi trường": "Vai trò của người thợ trong mỏ hiện đại",
+  "Việc làm ngành Than": "Thông tin cần kiểm tra trước khi đăng ký",
+  "Kết nối địa phương": "Người lao động tại địa phương cần chuẩn bị gì?",
+  "An sinh xã hội": "Theo dõi chương trình qua đầu mối chính thức",
 };
 
 const conclusionHeadings = {
-  "Hướng dẫn nhập nghề": "Một khởi đầu rõ ràng",
-  "Thu nhập & việc làm": "Tay nghề là nền tảng của thu nhập",
-  "Công nghệ mỏ": "Công nghệ mở thêm giá trị cho người thợ",
-  "Tay nghề & đào tạo": "Người thợ trưởng thành qua thực hành",
-  "An toàn & sức khỏe": "An toàn làm nên một ca sản xuất trọn vẹn",
-  "Đời sống thợ mỏ": "Một nghề cần cả bản lĩnh và sự chuẩn bị",
-  "Mỏ xanh & môi trường": "Sản xuất hiện đại đi cùng trách nhiệm",
-  "Việc làm ngành Than": "Cơ hội dành cho người sẵn sàng học nghề",
-  "Kết nối địa phương": "Con đường đã rõ hơn từ quê nhà",
-  "An sinh xã hội": "Giá trị còn lại sau những con số",
+  "Hướng dẫn nhập nghề": "Chuẩn bị đúng để ngày nhập học thuận lợi",
+  "Thu nhập & việc làm": "Thu nhập được xây từ năng lực làm việc",
+  "Công nghệ mỏ": "Tay nghề lớn lên cùng công nghệ",
+  "Tay nghề & đào tạo": "Thực hành tạo nên người thợ vững nghề",
+  "An toàn & sức khỏe": "An toàn bắt đầu từ từng thao tác đúng",
+  "Đời sống thợ mỏ": "Sự gắn bó được tạo nên trong và ngoài ca làm",
+  "Mỏ xanh & môi trường": "Hiện đại hóa đi cùng trách nhiệm",
+  "Việc làm ngành Than": "Một lựa chọn nghề nghiệp cần được cân nhắc kỹ",
+  "Kết nối địa phương": "Từ quê nhà đến lớp học và nơi làm việc",
+  "An sinh xã hội": "Hiệu quả được nhìn từ thay đổi trong đời sống",
 };
 
 function renderFacts(facts) {
@@ -80,28 +80,34 @@ function renderArticle(article) {
   const canonical = `${base}/${article.urlPath}/`;
   const careerCta = {
     "Thu nhập & việc làm": {
-      title: "Muốn tự xây thu nhập bằng tay nghề?",
-      text: "Hãy bắt đầu bằng việc kiểm tra điều kiện, hiểu rõ khóa học và chọn một lộ trình có thể theo đuổi lâu dài.",
+      title: "Tìm hiểu nghề trước khi tính chuyện đường dài",
+      text: "Kiểm tra điều kiện, nội dung đào tạo và công việc sau khóa học để lựa chọn bằng thông tin rõ ràng.",
+      button: "Trao đổi với Thầy Linh",
     },
     "Công nghệ mỏ": {
-      title: "Muốn bước vào một ngành đang đổi mới?",
+      title: "Nghề mỏ đang thay đổi cùng công nghệ",
       text: "Người mới được học từ nền tảng trước khi làm quen thiết bị, quy trình và nhịp sản xuất hiện đại.",
+      button: "Hỏi về chương trình học nghề",
     },
     "Tay nghề & đào tạo": {
-      title: "Một người thợ giỏi cũng từng là người mới",
-      text: "Gửi thông tin ban đầu để xem bạn có phù hợp với khóa học nghề mỏ và lộ trình làm việc tại Quảng Ninh hay không.",
+      title: "Tay nghề bắt đầu từ những buổi học đầu tiên",
+      text: "Gửi thông tin ban đầu để kiểm tra sự phù hợp với chương trình học nghề và công việc tại Quảng Ninh.",
+      button: "Kiểm tra điều kiện học nghề",
     },
     "Kết nối địa phương": {
-      title: "Bạn có thể là người tiếp theo từ địa phương mình",
-      text: "Hỏi rõ điều kiện, nghề đang tuyển và lịch tiếp nhận trước khi quyết định hành trình đến Quảng Ninh.",
+      title: "Kiểm tra thông tin đang áp dụng tại địa phương bạn",
+      text: "Hỏi rõ điều kiện, nghề đang tuyển và lịch tiếp nhận trước khi sắp xếp hành trình đến Quảng Ninh.",
+      button: "Hỏi lịch tư vấn hiện hành",
     },
     "An sinh xã hội": {
-      title: "Muốn trở thành một phần của tập thể ấy?",
-      text: "Ngành Than được làm nên bởi tay nghề trong sản xuất và tinh thần đồng tâm ngoài cộng đồng. Hãy tìm hiểu con đường vào nghề.",
+      title: "Hiểu thêm về con người ngành Than",
+      text: "Những chương trình cộng đồng cho thấy tinh thần đồng tâm của người thợ được gìn giữ cả trong và ngoài sản xuất.",
+      button: "Đọc thêm chuyện nghề mỏ",
     },
   }[article.section] || {
-    title: "Muốn bắt đầu với nghề mỏ?",
+    title: "Tìm hiểu nghề mỏ bằng thông tin rõ ràng",
     text: "Gửi năm sinh, chiều cao, cân nặng và tình trạng sức khỏe để được kiểm tra điều kiện trước khi chuẩn bị hồ sơ.",
+    button: "Trao đổi với Thầy Linh",
   };
   const faqs = article.faq.map(([question, answer]) => ({
     "@type": "Question",
@@ -199,7 +205,7 @@ function renderArticle(article) {
     <div class="container article-layout">
       <article class="article-body">
         ${article.intro.map((paragraph) => `<p>${paragraph}</p>`).join("")}
-        <h2>${esc(article.factsTitle || "Những con số đáng chú ý")}</h2>
+        <h2>${esc(article.factsTitle || "Các dữ kiện chính")}</h2>
         ${renderFacts(article.facts)}
         ${renderSections(article.sections)}
         <h2>${esc(article.actionTitle || actionHeadings[article.section] || "Bắt đầu từ đâu?")}</h2>
@@ -211,8 +217,8 @@ function renderArticle(article) {
         <nav class="article-nav" aria-label="Bài viết liên quan">${related}</nav>
       </article>
       <aside class="article-aside">
-        <div class="aside-card accent"><h2>${esc(careerCta.title)}</h2><p>${esc(careerCta.text)}</p><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Trao đổi qua Zalo 096 304 8585</a></div>
-        <div class="aside-card"><h2>Đọc tiếp về nghề mỏ</h2><p>Tìm hiểu đầy đủ điều kiện, chế độ học, công việc và đời sống tại Quảng Ninh trước khi đưa ra quyết định.</p><a class="aside-secondary-link" href="/tin-nganh-than/">Xem tất cả bài viết</a></div>
+        <div class="aside-card accent"><h2>${esc(careerCta.title)}</h2><p>${esc(careerCta.text)}</p><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">${esc(careerCta.button)}</a></div>
+        <div class="aside-card"><h2>Thông tin cần biết trước khi đăng ký</h2><p>Điều kiện, chính sách học, công việc và đời sống tại Quảng Ninh được trình bày theo từng nhóm nội dung.</p><a class="aside-secondary-link" href="/tin-nganh-than/">Xem tất cả bài viết</a></div>
       </aside>
     </div>
   </main>
@@ -251,16 +257,16 @@ const sectionIds = {
 };
 
 const sectionPresentation = {
-  "Hướng dẫn nhập nghề": ["Bắt đầu đúng để đi đường dài", "Điều kiện, hồ sơ và khóa học được giải thích bằng ngôn ngữ rõ ràng cho người lần đầu tìm hiểu nghề mỏ."],
-  "Thu nhập & việc làm": ["Tay nghề được trả công như thế nào?", "Những con số thu nhập có bối cảnh, những gương mặt đã đi từ lao động phổ thông tới công nhân lành nghề."],
-  "Công nghệ mỏ": ["Người thợ trong những mỏ ngày càng hiện đại", "Cơ giới hóa, tự động hóa và dữ liệu đang thay đổi thao tác nghề, môi trường làm việc và yêu cầu kỹ năng."],
-  "Tay nghề & đào tạo": ["Từ đôi tay vụng về đến bản lĩnh người thợ", "Lớp học, xưởng thực hành và từng lỗi được sửa là nơi một công nhân kỹ thuật bắt đầu trưởng thành."],
-  "An toàn & sức khỏe": ["An toàn là năng lực nghề nghiệp", "Bảo hộ, quy trình, phản xạ và tinh thần tổ đội được rèn trước khi người mới bước vào ca sản xuất."],
-  "Đời sống thợ mỏ": ["Sau ca làm là một cuộc sống cần được vun đắp", "Nhà ở, bữa ăn, sức khỏe và tình đồng đội góp phần giúp người lao động gắn bó với vùng mỏ."],
-  "Mỏ xanh & môi trường": ["Một ngành công nghiệp đang tự đổi mới", "Nước thải mỏ, bụi, đất đá và năng lượng được nhìn bằng công nghệ cùng trách nhiệm với môi trường."],
-  "Việc làm ngành Than": ["Nhịp sản xuất mở ra những vị trí việc làm thật", "Thông tin mới về nhu cầu nhân lực, thu nhập và chiến lược phát triển để người lao động cân nhắc bằng dữ kiện."],
-  "Kết nối địa phương": ["Những con đường từ quê nhà tới vùng mỏ", "Mỗi bài là một địa phương, một kết quả đã có và một lộ trình đang được Nhà trường, doanh nghiệp, chính quyền cùng mở rộng."],
-  "An sinh xã hội": ["Tinh thần người thợ đi xa hơn cửa lò", "Những công trình, mái nhà, học bổng và nguồn cứu trợ cho thấy văn hóa “Kỷ luật và Đồng tâm” trong đời sống cộng đồng."],
+  "Hướng dẫn nhập nghề": ["Bắt đầu từ điều kiện rõ ràng", "Điều kiện, hồ sơ và khóa học được trình bày theo đúng thứ tự người lao động cần chuẩn bị."],
+  "Thu nhập & việc làm": ["Thu nhập được tạo nên từ đâu?", "Số liệu có bối cảnh và câu chuyện người thật giúp người đọc hiểu mối liên hệ giữa tay nghề, ngày công và kết quả lao động."],
+  "Công nghệ mỏ": ["Người thợ trong mỏ hiện đại", "Cơ giới hóa, tự động hóa và dữ liệu đang thay đổi thao tác nghề, môi trường làm việc và yêu cầu kỹ năng."],
+  "Tay nghề & đào tạo": ["Tay nghề được rèn như thế nào?", "Lớp học, xưởng thực hành và quá trình sửa từng thao tác là nơi một công nhân kỹ thuật bắt đầu trưởng thành."],
+  "An toàn & sức khỏe": ["An toàn là một phần của tay nghề", "Bảo hộ, quy trình, phản xạ và tinh thần tổ đội được rèn trước khi người mới bước vào ca sản xuất."],
+  "Đời sống thợ mỏ": ["Cuộc sống phía sau mỗi ca làm", "Nhà ở, bữa ăn, sức khỏe và tình đồng đội góp phần giúp người lao động gắn bó với vùng mỏ."],
+  "Mỏ xanh & môi trường": ["Công nghệ thay đổi cách làm mỏ", "Nước thải, bụi, đất đá và năng lượng được quản lý bằng công nghệ cùng trách nhiệm với môi trường."],
+  "Việc làm ngành Than": ["Việc làm nhìn từ nhịp sản xuất", "Nhu cầu nhân lực, chính sách hiện hành và định hướng phát triển được đặt trong cùng một bức tranh dữ kiện."],
+  "Kết nối địa phương": ["Từ quê nhà đến vùng mỏ", "Mỗi bài ghi lại một địa phương, kết quả đã có và cách Nhà trường, doanh nghiệp, chính quyền cùng đưa thông tin nghề đến người lao động."],
+  "An sinh xã hội": ["Tinh thần đồng tâm trong cộng đồng", "Công trình, mái nhà, học bổng và nguồn cứu trợ cho thấy trách nhiệm xã hội của ngành Than trong đời sống thường ngày."],
 };
 
 function card(article) {
@@ -319,7 +325,7 @@ function hubHtml() {
 <body>
   <header class="site-header"><div class="container header-inner"><a class="brand" href="../"><img class="brand-mark" src="/assets/thay-linh-avatar.webp?v=3" alt="" width="45" height="45"><span><strong>Thầy Linh</strong><small>Tuyển Thợ Mỏ</small></span></a><a class="back-link" href="../">← Trang chủ</a></div></header>
   <main>
-    <section class="news-hero"><div class="container"><p class="eyebrow">Người thật · Việc thật · Dữ kiện thật</p><h1>Ngành Than & Người thợ</h1><p class="lead">Những câu chuyện từ hầm lò, lớp học nghề và khu tập thể công nhân—để người lao động nhìn thấy một nghề vất vả nhưng có tay nghề, thu nhập và niềm tự hào.</p><nav class="cluster-nav" aria-label="Nhóm bài viết">${sectionOrder.filter((section) => allEditorial.some((article) => article.section === section && article.slug !== feature.slug)).map((section) => `<a href="#${sectionIds[section]}">${esc(section)}</a>`).join("")}</nav></div></section>
+    <section class="news-hero"><div class="container"><p class="eyebrow">Người thật · Việc thật · Dữ kiện thật</p><h1>Ngành Than & Người thợ</h1><p class="lead">Những câu chuyện từ hầm lò, lớp học nghề và khu tập thể công nhân giúp người đọc hiểu nghề qua con người, công nghệ, thu nhập và nhịp sống vùng mỏ.</p><nav class="cluster-nav" aria-label="Nhóm bài viết">${sectionOrder.filter((section) => allEditorial.some((article) => article.section === section && article.slug !== feature.slug)).map((section) => `<a href="#${sectionIds[section]}">${esc(section)}</a>`).join("")}</nav></div></section>
     <div class="container news-main">
       <article class="news-feature"><img src="${feature.image}" alt="${esc(feature.title)}" referrerpolicy="no-referrer"><div class="news-feature__body"><p class="news-kicker">Bài mới · ${displayDate(feature.published)}</p><h2>${esc(feature.title)}</h2><p>${esc(feature.lead)}</p><a class="news-link" href="./${feature.urlPath.replace(/^tin-nganh-than\//, "")}/">Đọc bài viết →</a></div></article>
       ${sections}
