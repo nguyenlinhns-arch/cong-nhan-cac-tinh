@@ -9,8 +9,10 @@ const beforeBytes = Buffer.byteLength(source);
 const beforeSha256 = crypto.createHash("sha256").update(source).digest("hex");
 const markers = [
   'const PHONE_URL = "tel:+84963048585"',
+  'const MESSENGER_URL = "https://m.me/thaylinhtuyenthomo"',
   "const PHONE_ICON =",
   'class="tl-mobile-contact__call"',
+  'class="tl-mobile-contact__messenger"',
   'data-worker-brief-action="phone"',
   'data-worker-shortcut="empty_phone"',
   'answer.href === "/#dang-ky"',
@@ -92,10 +94,6 @@ const contactCall = `    actions.append(primary);
 source = replaceOnce(source, primaryMarker, contactCall, "Contact-answer call action");
 
 for (const marker of markers) if (!source.includes(marker)) throw new Error(`Direct-call help is missing ${marker}`);
-for (const obsolete of ["MESSENGER_URL", "MESSENGER_ICON", "tl-mobile-contact__messenger", ">Messenger<"]) {
-  if (source.includes(obsolete)) throw new Error(`Direct-call help still contains ${obsolete}`);
-}
-
 const phoneReferences = (source.match(/PHONE_URL/g) || []).length;
 if (phoneReferences < 5) throw new Error(`Direct-call help expected at least 5 phone references, got ${phoneReferences}`);
 const afterBytes = Buffer.byteLength(source);
