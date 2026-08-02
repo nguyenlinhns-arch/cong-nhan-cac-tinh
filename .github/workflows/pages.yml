@@ -43,6 +43,7 @@ jobs:
           node tools/enhance-answer-first-search.mjs
           node tools/enhance-worker-brief.mjs
           node tools/enhance-voice-loader.mjs
+          node tools/enhance-search-answer-read-aloud.mjs
           node tools/validate-natural-language-search.mjs
           node tools/validate-answer-first-search.mjs
           node tools/validate-worker-brief.mjs
@@ -62,7 +63,7 @@ jobs:
           node tools/validate-recruitment-funnel.mjs
           node tools/test-recruitment-application.mjs
           node tools/validate-crm-automation.mjs
-          git diff --exit-code -- . ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/mobile-ux.js'
+          git diff --exit-code -- . ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/mobile-ux.js' ':(exclude)tuyen-tho-mo/voice-assist.js'
       - uses: actions/upload-pages-artifact@v3
         with:
           # Publish the recruitment portal at the custom-domain root.
@@ -111,23 +112,26 @@ jobs:
                 && grep -Fq 'Tuyển thợ mỏ trong 30 giây' "$ux_file" \
                 && grep -Fq 'brief_to_application_2026' "$ux_file" \
                 && grep -Fq 'function loadVoiceAssist()' "$ux_file" \
-                && grep -Fq '/voice-assist.js?v=1' "$ux_file" \
+                && grep -Fq '/voice-assist.js?v=2' "$ux_file" \
                 && grep -Fq 'Gõ cả câu, ví dụ: lương bao nhiêu?' "$ux_file" \
                 && grep -Fq 'function setupVoiceSearch(dialog)' "$voice_file" \
                 && grep -Fq 'window.SpeechRecognition || window.webkitSpeechRecognition' "$voice_file" \
                 && grep -Fq 'function setupBriefReadAloud(dialog)' "$voice_file" \
+                && grep -Fq 'function setupSearchAnswerReadAloud(dialog)' "$voice_file" \
+                && grep -Fq '[data-answer-read-aloud]' "$voice_file" \
+                && grep -Fq '🔊 Nghe câu trả lời' "$voice_file" \
                 && grep -Fq 'Trình duyệt xử lý giọng nói; website không lưu âm thanh hay câu hỏi.' "$voice_file" \
                 && grep -Fq 'window.ThayLinhVoiceAssist = Object.freeze({ init })' "$voice_file" \
                 && grep -Fq '"version": 3' "$search_file" \
                 && grep -Fq '"title": "Học xong làm việc ở đâu?"' "$search_file" \
                 && grep -Fq '.tl-worker-compass{' "$css_file"; then
-                echo "Live worker-first homepage, voice-assisted search, read-aloud brief and answer-first navigation verified on attempt $attempt."
+                echo "Live worker-first homepage, voice search, spoken direct answers, read-aloud brief and answer-first navigation verified on attempt $attempt."
                 exit 0
               fi
             fi
             sleep 5
           done
-          echo "The custom domain did not expose the expected worker-first homepage, voice assistance, 30-second brief and answer-first search."
+          echo "The custom domain did not expose the expected worker-first homepage, spoken answers, voice assistance, 30-second brief and answer-first search."
           exit 1
       - name: Record deployment receipt
         if: success() && github.event_name != 'schedule'
@@ -136,5 +140,5 @@ jobs:
           DEPLOYMENT_URL: ${{ steps.deployment.outputs.page_url }}
         run: |
           deployed_at="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-          body="$(printf '✅ **Triển khai và xác minh tên miền thành công**\n\n- Commit: `%s`\n- Workflow run: `%s`\n- URL triển khai: %s\n- Tên miền đã kiểm tra: https://thaylinhtuyenthomo.vn/\n- Thời điểm UTC: `%s`\n- Kết quả: trang thật có luồng worker-first, tìm kiếm bằng giọng nói khi trình duyệt hỗ trợ, nghe tóm tắt 30 giây, tìm kiếm câu hỏi tự nhiên và trả lời ngay, bộ chọn tỉnh, tự kiểm tra điều kiện và cam kết thu nhập.\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$DEPLOYMENT_URL" "$deployed_at")"
+          body="$(printf '✅ **Triển khai và xác minh tên miền thành công**\n\n- Commit: `%s`\n- Workflow run: `%s`\n- URL triển khai: %s\n- Tên miền đã kiểm tra: https://thaylinhtuyenthomo.vn/\n- Thời điểm UTC: `%s`\n- Kết quả: trang thật có luồng worker-first, tìm kiếm bằng giọng nói khi trình duyệt hỗ trợ, nghe trực tiếp câu trả lời tìm kiếm và tóm tắt 30 giây, tìm kiếm câu hỏi tự nhiên, bộ chọn tỉnh, tự kiểm tra điều kiện và cam kết thu nhập.\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$DEPLOYMENT_URL" "$deployed_at")"
           gh issue comment 42 --repo "$GITHUB_REPOSITORY" --body "$body"
