@@ -166,7 +166,7 @@
 
   function insertSearchButton(openSearch) {
     const header = document.querySelector(".site-header .header-inner") || document.querySelector(".site-header");
-    if (!header || header.querySelector(".tl-site-search-button")) return;
+    if (!header || header.querySelector(".tl-site-search-button, [data-open-site-search]")) return;
     const button = document.createElement("button");
     button.type = "button";
     button.className = "tl-site-search-button";
