@@ -318,6 +318,7 @@
     const ensureBrief = () => {
       if (dialog) return dialog;
       dialog = createWorkerBriefDialog();
+      void loadVoiceAssist();
       dialog.querySelector(".tl-search-dialog__close").addEventListener("click", closeBrief);
       dialog.addEventListener("cancel", (event) => {
         event.preventDefault();
@@ -789,6 +790,7 @@
     const ensureSearchDialog = () => {
       if (dialog) return dialog;
       dialog = createSearchDialog();
+      void loadVoiceAssist();
       input = dialog.querySelector("input[type='search']");
       dialog.querySelector(".tl-search-dialog__close").addEventListener("click", closeSearch);
       dialog.addEventListener("cancel", (event) => {
@@ -830,6 +832,29 @@
 
     insertSearchButton(openSearch);
     document.querySelectorAll("[data-open-site-search]").forEach((button) => button.addEventListener("click", openSearch));
+  }
+
+
+  let voiceAssistPromise = null;
+  function loadVoiceAssist() {
+    if (window.ThayLinhVoiceAssist?.init) {
+      window.ThayLinhVoiceAssist.init();
+      return Promise.resolve(window.ThayLinhVoiceAssist);
+    }
+    if (!voiceAssistPromise) {
+      voiceAssistPromise = new Promise((resolve) => {
+        const script = document.createElement("script");
+        script.src = "/voice-assist.js?v=1";
+        script.async = true;
+        script.onload = () => {
+          window.ThayLinhVoiceAssist?.init?.();
+          resolve(window.ThayLinhVoiceAssist || null);
+        };
+        script.onerror = () => resolve(null);
+        document.head.append(script);
+      });
+    }
+    return voiceAssistPromise;
   }
 
   function compactMobileConsentBanner() {

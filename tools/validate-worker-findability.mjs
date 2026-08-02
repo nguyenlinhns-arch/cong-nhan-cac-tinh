@@ -27,6 +27,7 @@ if (!home.includes('class="worker-header-search"') || !home.includes('aria-label
 if (!home.includes('class="worker-find__search"') || !home.includes("Tìm trong toàn bộ website")) fail("Khối tìm nhanh: thiếu ô tìm kiếm hiển thị rõ");
 if (!home.includes('href="#tu-kiem-tra">Tự kiểm tra điều kiện</a>')) fail("Hero: nút tự kiểm tra chưa đi đúng công cụ");
 if (!home.includes("Đăng ký – chưa cần hồ sơ")) fail("Hero: nút đăng ký chưa nói rõ bước đầu không cần hồ sơ");
+if (count(home, "data-open-worker-brief") !== 1 || !home.includes("Tóm tắt 30 giây")) fail("Hero: thiếu nút tóm tắt 30 giây cho người mới vào trang");
 if (!home.includes('href="#tu-kiem-tra"><b>01</b>')) fail("Điều hướng nhanh: mục điều kiện chưa đi đúng công cụ");
 
 const quickNavigationIndex = home.indexOf('class="worker-quick__grid"');
@@ -34,8 +35,11 @@ const finderIndex = home.indexOf('class="worker-find"');
 const summaryIndex = home.indexOf('class="worker-summary"');
 const selfCheckIndex = home.indexOf('class="worker-self-check"');
 const processIndex = home.indexOf('class="section process-section"');
+const recommendedIndex = home.indexOf('class="worker-recommended"');
+const moreIndex = home.indexOf('class="worker-more"');
 if (!(quickNavigationIndex >= 0 && quickNavigationIndex < finderIndex)) fail("Luồng đọc: 6 câu hỏi phổ biến phải đứng trước công cụ tìm kiếm và chọn tỉnh");
 if (!(summaryIndex >= 0 && summaryIndex < selfCheckIndex && selfCheckIndex < processIndex)) fail("Luồng đọc: bản tóm tắt phải đứng trước công cụ tự kiểm tra, và công cụ phải đứng trước quy trình");
+if (!(processIndex >= 0 && processIndex < recommendedIndex && recommendedIndex < moreIndex)) fail("Luồng đọc: bài nên đọc phải đứng sau quy trình và trước khối nội dung mở rộng");
 for (const anchor of ["thoi-gian-hoc", "ho-tro-hoc-nghe", "noi-lam-viec"]) {
   if (count(home, `id="${anchor}"`) !== 1) fail(`Trả lời nhanh: thiếu neo #${anchor}`);
 }
@@ -94,6 +98,16 @@ for (const marker of [
   "khám tuyển là căn cứ xác nhận cuối cùng",
 ]) if (!home.includes(marker)) fail(`Tự kiểm tra: thiếu ${marker}`);
 
+const recommendedBlock = recommendedIndex >= 0 && moreIndex > recommendedIndex ? home.slice(recommendedIndex, moreIndex) : "";
+const recommendedSlugs = [...recommendedBlock.matchAll(/data-home-recommended="([^"]+)"/g)].map((match) => match[1]);
+const expectedRecommended = [
+  "than-thong-nhat-tuyen-sinh-nghe-mo-lai-chau-2026",
+  "hai-lang-phoi-hop-dao-tao-viec-lam-nganh-than",
+  "dam-ha-than-thong-nhat-dao-tao-viec-lam-2026",
+];
+if (JSON.stringify(recommendedSlugs) !== JSON.stringify(expectedRecommended)) fail("Bài nên đọc: phải ưu tiên đúng 3 bài tuyển sinh, đào tạo và việc làm");
+if (recommendedBlock.includes("than-thong-nhat-do-dau-cuu-thanh-nien-xung-phong")) fail("Bài nên đọc: tin an sinh mới nhất không được chiếm trang chủ tuyển dụng");
+
 const optionSlugs = [...home.matchAll(/data-province-slug="([^"]+)"/g)].map((match) => match[1]);
 const expectedSlugs = provinces.map((province) => province.slug);
 if (provinces.length !== 26) fail(`Dữ liệu tỉnh: cần 26, nhận ${provinces.length}`);
@@ -118,7 +132,7 @@ for (const marker of [
 for (const prohibited of ["localStorage", "sessionStorage", "fetch(", "XMLHttpRequest", "sendBeacon", "FormData", "document.cookie"]) {
   if (script.includes(prohibited)) fail(`Tự kiểm tra không được lưu hoặc gửi dữ liệu: ${prohibited}`);
 }
-for (const marker of ["focus-visible", "@media(max-width:900px)", "@media(max-width:720px)", "worker-check__result", "worker-check__back", "worker-find__province-row", "tl-consent-banner"]) {
+for (const marker of ["focus-visible", "@media(max-width:900px)", "@media(max-width:720px)", "worker-check__result", "worker-check__back", "worker-find__province-row", "tl-consent-banner", "worker-recommended__grid", "worker-recommended__card--lead"]) {
   if (!css.includes(marker)) fail(`Giao diện tìm thông tin: thiếu ${marker}`);
 }
 if (css.includes("scroll-margin-top:82px")) fail("Tự kiểm tra: không được cộng hai lần khoảng tránh header");

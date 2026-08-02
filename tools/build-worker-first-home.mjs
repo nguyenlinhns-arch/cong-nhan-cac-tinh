@@ -155,6 +155,7 @@ const trackedApplicationLinks = [
 
 const searchIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>';
 const headerSearch = `<button class="worker-header-search" type="button" data-open-site-search data-worker-search data-context="header" aria-haspopup="dialog" aria-label="Tìm thông tin trên website">${searchIcon}<span class="sr-only">Tìm thông tin</span></button>`;
+const heroBriefButton = '<button class="button button-brief" type="button" data-open-worker-brief data-worker-shortcut="brief" aria-haspopup="dialog">Tóm tắt 30 giây</button>';
 const finder = `      <div class="worker-find" aria-label="Công cụ tìm thông tin nhanh">
         <button class="worker-find__search" type="button" data-open-site-search data-worker-search data-context="quick-finder" aria-haspopup="dialog">
           <span class="worker-find__search-icon">${searchIcon}</span>
@@ -191,21 +192,37 @@ const selfCheck = `    <section class="worker-self-check" id="tu-kiem-tra" aria-
 
 `;
 
-const latestArticle = [...communityArticles].sort((left, right) => new Date(right.published) - new Date(left.published))[0];
-if (!latestArticle) throw new Error("Worker-first homepage requires at least one community article");
-const latestPublished = new Date(latestArticle.published);
-const latestDate = new Intl.DateTimeFormat("vi-VN", {
+const homeRecommendedSlugs = [
+  "than-thong-nhat-tuyen-sinh-nghe-mo-lai-chau-2026",
+  "hai-lang-phoi-hop-dao-tao-viec-lam-nganh-than",
+  "dam-ha-than-thong-nhat-dao-tao-viec-lam-2026",
+];
+const homeRecommendedArticles = homeRecommendedSlugs.map((slug) => communityArticles.find((article) => article.slug === slug));
+const missingRecommended = homeRecommendedSlugs.filter((slug, index) => !homeRecommendedArticles[index]);
+if (missingRecommended.length) throw new Error(`Worker-first homepage is missing recommended articles: ${missingRecommended.join(", ")}`);
+
+const displayDate = (published) => new Intl.DateTimeFormat("vi-VN", {
   day: "2-digit",
   month: "2-digit",
   year: "numeric",
   timeZone: "Asia/Bangkok",
-}).format(latestPublished);
-const latestArticleBlock = `    <section class="worker-latest" aria-labelledby="worker-latest-title">
+}).format(new Date(published));
+const recommendedCards = homeRecommendedArticles.map((article, index) => {
+  const primary = index === 0;
+  return `          <a class="worker-recommended__card${primary ? " worker-recommended__card--lead" : ""}" href="/${esc(article.urlPath)}/" data-home-recommended="${esc(article.slug)}">
+            <img src="${esc(article.image)}" alt="${esc(article.imageAlt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="${primary ? 800 : 320}" height="${primary ? 450 : 210}">
+            <span class="worker-recommended__body"><small>${primary ? "Nên đọc trước" : `Tư liệu · ${esc(displayDate(article.published))}`}</small><strong>${esc(article.title)}</strong><span>${esc(article.lead)}</span><b>Đọc bài viết →</b></span>
+          </a>`;
+}).join("\n");
+const recommendedArticleBlock = `    <section class="worker-recommended" aria-labelledby="worker-recommended-title">
       <div class="container">
-        <a class="worker-latest__card" href="/${esc(latestArticle.urlPath)}/">
-          <img src="${esc(latestArticle.image)}" alt="${esc(latestArticle.imageAlt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="800" height="368">
-          <span class="worker-latest__body"><small>Bài mới · ${esc(latestDate)}</small><strong id="worker-latest-title">${esc(latestArticle.title)}</strong><span>${esc(latestArticle.lead)}</span><b>Đọc bài viết →</b></span>
-        </a>
+        <div class="worker-recommended__head">
+          <div><p class="eyebrow">Đọc thêm để tin nghề hơn</p><h2 id="worker-recommended-title">Ba bài nên xem trước khi quyết định đi học nghề mỏ</h2></div>
+          <p>Ưu tiên các bài có liên quan trực tiếp tới tư vấn tuyển sinh, đào tạo và việc làm; tin an sinh mới vẫn nằm trong chuyên mục Tin ngành Than.</p>
+        </div>
+        <div class="worker-recommended__grid">
+${recommendedCards}
+        </div>
       </div>
     </section>
 
@@ -224,6 +241,7 @@ html = html.replace(structuredDataBlocks[0][0], structuredDataMarkup);
 html = replaceOnce(html, "</head>", '  <link rel="stylesheet" href="/worker-info-finder.css?v=2">\n</head>', "Worker information finder stylesheet");
 html = replaceOnce(html, '<button class="menu-toggle" type="button"', `${headerSearch}\n      <button class="menu-toggle" type="button"`, "Header search button");
 html = replaceOnce(html, 'href="#dieu-kien">Tự kiểm tra điều kiện</a>', 'href="#tu-kiem-tra">Tự kiểm tra điều kiện</a>', "Hero self-check link");
+html = replaceOnce(html, '<a class="button button-zalo" href="#tu-kiem-tra">Tự kiểm tra điều kiện</a>', `<a class="button button-zalo" href="#tu-kiem-tra">Tự kiểm tra điều kiện</a>\n            ${heroBriefButton}`, "Hero 30-second brief button");
 html = replaceOnce(html, '<span data-application-resume-label>Đăng ký nhanh</span>', '<span data-application-resume-label>Đăng ký – chưa cần hồ sơ</span>', "Hero application reassurance");
 html = replaceOnce(html, 'href="#dieu-kien"><b>01</b>', 'href="#tu-kiem-tra"><b>01</b>', "Quick self-check link");
 const quickNavigation = html.match(/<nav class="worker-quick__grid"[\s\S]*?<\/nav>/i);
@@ -235,13 +253,13 @@ html = replaceOnce(html, '<article class="worker-fact" id="thoi-gian-hoc"><span>
 html = replaceOnce(html, '<article class="worker-fact"><span>04</span><h3>Hỗ trợ trong thời gian học</h3>', '<article class="worker-fact" id="ho-tro-hoc-nghe"><span>04</span><h3>Hỗ trợ trong thời gian học</h3>', "Training support anchor");
 html = replaceOnce(html, '<article class="worker-fact"><span>06</span><h3>Việc làm sau đào tạo</h3>', '<article class="worker-fact" id="noi-lam-viec"><span>06</span><h3>Việc làm sau đào tạo</h3>', "Workplace anchor");
 html = replaceOnce(html, '    <section class="section process-section" id="quy-trinh">', `${selfCheck}    <section class="section process-section" id="quy-trinh">`, "Self-check after essential summary");
-html = replaceOnce(html, '    <section class="worker-more" aria-labelledby="worker-more-title">', `${latestArticleBlock}    <section class="worker-more" aria-labelledby="worker-more-title">`, "Latest community article");
+html = replaceOnce(html, '    <section class="worker-more" aria-labelledby="worker-more-title">', `${recommendedArticleBlock}    <section class="worker-more" aria-labelledby="worker-more-title">`, "Recommended worker-read articles");
 html = replaceOnce(html, '<section class="worker-more" aria-labelledby="worker-more-title">', '<section class="worker-more" aria-labelledby="worker-more-title"><span id="theo-tinh" aria-hidden="true"></span>', "Province compatibility anchor");
 html = replaceOnce(html, 'href="/mobile-ux.css?v=5"', 'href="/mobile-ux.css?v=6"', "Homepage mobile UX stylesheet version");
 html = replaceOnce(html, 'src="/mobile-ux.js?v=4"', 'src="/mobile-ux.js?v=8"', "Homepage mobile UX version");
 html = replaceOnce(html, "</body>", '  <script src="/worker-info-finder.js?v=2" defer></script>\n</body>', "Worker information finder script");
 
-for (const required of ['id="tu-kiem-tra"', "data-open-site-search", "data-worker-province-select", "data-worker-check-form", 'id="che-do-ho-so"', 'id="thoi-gian-hoc"', 'id="ho-tro-hoc-nghe"', 'id="noi-lam-viec"', 'id="theo-tinh"', 'class="worker-latest__card"']) {
+for (const required of ['id="tu-kiem-tra"', "data-open-site-search", "data-worker-province-select", "data-worker-check-form", "data-open-worker-brief", 'id="che-do-ho-so"', 'id="thoi-gian-hoc"', 'id="ho-tro-hoc-nghe"', 'id="noi-lam-viec"', 'id="theo-tinh"', 'class="worker-recommended__grid"', 'data-home-recommended="than-thong-nhat-tuyen-sinh-nghe-mo-lai-chau-2026"']) {
   if (!html.includes(required)) throw new Error(`Worker-first homepage is missing generated feature: ${required}`);
 }
 
@@ -267,6 +285,6 @@ console.log(JSON.stringify({
   searchEntryPoints: 2,
   selfCheckQuestions: 4,
   provinceOptions: provinces.length,
-  latestArticle: latestArticle.slug,
+  recommendedArticles: homeRecommendedArticles.map((article) => article.slug),
   trackedApplicationLinks: trackedApplicationLinks.length,
 }, null, 2));
