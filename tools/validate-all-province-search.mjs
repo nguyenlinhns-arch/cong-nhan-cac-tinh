@@ -82,6 +82,31 @@ for (const province of provinces) {
   }
 }
 
+const localityCases = [
+  ["Mường Lát", "thanh-hoa"],
+  ["Lang Chánh", "thanh-hoa"],
+  ["Anh Sơn", "nghe-an"],
+  ["Hướng Hóa", "quang-tri"],
+  ["K'Bang", "gia-lai"],
+  ["Bình Liêu", "quang-ninh"],
+  ["Bằng Thành", "thai-nguyen"],
+  ["Phúc Lộc", "thai-nguyen"],
+  ["Bát Xát", "lao-cai"],
+  ["Bảo Lạc", "cao-bang"],
+  ["Sông Mã", "son-la"],
+  ["Tủa Chùa", "dien-bien"],
+];
+const localityResults = [];
+for (const [locality, slug] of localityCases) {
+  const expectedUrl = `/viec-lam-nganh-than/${slug}/`;
+  const query = `tôi ở ${locality}`;
+  const actualUrl = rank(query)[0]?.item?.url || null;
+  localityResults.push({ query, expected_url: expectedUrl, actual_url: actualUrl });
+  if (actualUrl !== expectedUrl) errors.push(`${query}: cần ${expectedUrl}, nhận ${actualUrl || "không có kết quả"}`);
+  const item = searchIndex.items.find((candidate) => candidate.url === expectedUrl);
+  if (!item || Number(item.localityEvidenceCount || 0) < 1) errors.push(`${locality}: trang ${slug} chưa có dấu vết địa phương trong chỉ mục`);
+}
+
 const provinceItems = searchIndex.items.filter((item) => item.category === "province");
 if (provinceItems.length !== provinces.length) errors.push(`Chỉ mục cần ${provinces.length} trang tỉnh, nhận ${provinceItems.length}`);
 if (publicProvinces + internalProvinces !== provinces.length) {
@@ -100,8 +125,11 @@ console.log(JSON.stringify({
   province_items: provinceItems.length,
   public_provinces: publicProvinces,
   internal_provinces: internalProvinces,
-  location_queries: locationQueries,
-  sample_queries: queryResults.filter((_, index) => index < 12),
+  province_and_alias_queries: locationQueries,
+  locality_queries: localityCases.length,
+  locality_evidence_phrases: provinceItems.reduce((total, item) => total + Number(item.localityEvidenceCount || 0), 0),
+  sample_province_queries: queryResults.filter((_, index) => index < 8),
+  locality_results: localityResults,
   search_index_bytes: Buffer.byteLength(JSON.stringify(searchIndex)),
   errors,
 }, null, 2));
