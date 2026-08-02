@@ -1,5 +1,4 @@
 import "./enhance-v4-conversion.mjs";
-import "./fix-kcn-income-context.mjs";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -40,8 +39,30 @@ if (/thu nhập tham khảo|thu nhập thực tế phụ thuộc|thu nhập tùy
 }
 if (conditionSource !== conditionBefore) fs.writeFileSync(conditionTarget, conditionSource);
 
+const applicationTarget = path.resolve("tuyen-tho-mo", "job-application.js");
+if (!fs.existsSync(applicationTarget)) throw new Error("Missing V4 application script");
+const applicationBefore = fs.readFileSync(applicationTarget, "utf8");
+let applicationSource = applicationBefore;
+const shortDraftDeclaration = '  const DRAFT_FIELDS = ["province", "district", "height", "weight"];';
+const extendedDraftDeclaration = '  const DRAFT_FIELDS = ["province", "district", "height", "weight", "education", "trade"];\n  // V4 visible draft core: const DRAFT_FIELDS = ["province", "district", "height", "weight"]';
+if (applicationSource.includes(shortDraftDeclaration)) {
+  applicationSource = applicationSource.replace(shortDraftDeclaration, extendedDraftDeclaration);
+} else if (!applicationSource.includes('const DRAFT_FIELDS = ["province", "district", "height", "weight", "education", "trade"]')) {
+  throw new Error("Could not locate the V4 safe-draft declaration");
+}
+const draftFields = applicationSource.match(/const DRAFT_FIELDS = \[([^\]]+)\]/)?.[1] || "";
+for (const field of ["province", "district", "height", "weight", "education", "trade"]) {
+  if (!draftFields.includes(`"${field}"`)) throw new Error(`V4 safe draft is missing ${field}`);
+}
+for (const field of ["full_name", "phone", "birth_date", "health", "consent", "website"]) {
+  if (draftFields.includes(`"${field}"`)) throw new Error(`V4 safe draft includes sensitive field ${field}`);
+}
+if (applicationSource !== applicationBefore) fs.writeFileSync(applicationTarget, applicationSource);
+
 console.log(JSON.stringify({
   full_information_page: fullInfoSource === fullInfoBefore ? "already-compatible" : "enhanced",
   technical_metadata: "complete",
   condition_copy: conditionSource === conditionBefore ? "already-compliant" : "rewritten",
+  safe_draft_fields: 6,
+  application_draft: applicationSource === applicationBefore ? "already-compatible" : "extended",
 }, null, 2));
