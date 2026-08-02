@@ -36,7 +36,7 @@ const newFunction = `  function applicationContext() {
     };
     read(location.href);
     const path = new URL(APPLICATION_URL, ROOT).pathname;
-    document.querySelectorAll(\`a[href*=\"\${path}\"]\`).forEach((link) => read(link.href));
+    document.querySelectorAll?.(\`a[href*=\"\${path}\"]\`)?.forEach((link) => read(link.href));
     return values;
   }
 
