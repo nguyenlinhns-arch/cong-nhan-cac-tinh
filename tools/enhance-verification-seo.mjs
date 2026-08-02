@@ -55,6 +55,17 @@ function moveLoaderToAnalytics() {
   return Buffer.byteLength(analytics);
 }
 
+function normalizeStorySearchCategory() {
+  const target = path.join(root, "search-index.json");
+  const data = JSON.parse(fs.readFileSync(target, "utf8"));
+  const story = data.items?.find(item => item.url === "/cau-chuyen-cong-nhan/");
+  if (!story) throw new Error("Search index is missing the worker-story hub");
+  story.category = "work";
+  story.categoryLabel = "Công việc & lương";
+  fs.writeFileSync(target, `${JSON.stringify(data, null, 2)}\n`);
+  return story.category;
+}
+
 function enhanceSitemap() {
   const target = path.join(root, "sitemap.xml");
   let xml = fs.readFileSync(target, "utf8");
@@ -77,5 +88,6 @@ function enhanceSitemap() {
 
 slugs.forEach(enhancePage);
 const analyticsBytes = moveLoaderToAnalytics();
+const storyCategory = normalizeStorySearchCategory();
 const sitemapPages = enhanceSitemap();
-console.log(JSON.stringify({ status: "enhanced", pages: slugs.length, analytics_bytes: analyticsBytes, sitemap_pages_added: sitemapPages }, null, 2));
+console.log(JSON.stringify({ status: "enhanced", pages: slugs.length, analytics_bytes: analyticsBytes, story_category: storyCategory, sitemap_pages_added: sitemapPages }, null, 2));
