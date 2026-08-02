@@ -25,8 +25,24 @@ function decode(value = "") {
     .trim();
 }
 
+function strip(value = "") {
+  return decode(String(value).replace(/<[^>]*>/g, " "));
+}
+
 function match(html, pattern) {
   return decode(html.match(pattern)?.[1] || "");
+}
+
+function localEvidencePhrases(html, province) {
+  const phrases = [];
+  const storyBlock = html.match(/<div\b[^>]*class=["'][^"']*\blocal-story-list\b[^"']*["'][^>]*>([\s\S]*?)<\/section>/i)?.[1] || "";
+  for (const result of storyBlock.matchAll(/<strong\b[^>]*>([\s\S]*?)<\/strong>/gi)) {
+    const phrase = strip(result[1]);
+    if (phrase) phrases.push(phrase);
+  }
+  if (province.reportage?.title) phrases.push(String(province.reportage.title));
+  if (province.reportage?.summary) phrases.push(String(province.reportage.summary));
+  return [...new Set(phrases.map(decode).filter(Boolean))];
 }
 
 function provinceItem(province) {
@@ -41,10 +57,12 @@ function provinceItem(province) {
     .map((item) => item.trim())
     .filter(Boolean);
   const aliases = Array.isArray(province.aliases) ? province.aliases : [];
+  const localEvidence = localEvidencePhrases(html, province);
   const keywords = [...new Set([
     ...metaKeywords,
     province.name,
     ...aliases,
+    ...localEvidence,
     `tuyển thợ mỏ ${province.name}`,
     `việc làm ngành than ${province.name}`,
     ...aliases.flatMap((alias) => [`tuyển thợ mỏ ${alias}`, `việc làm ngành than ${alias}`]),
@@ -59,15 +77,18 @@ function provinceItem(province) {
     type: "Việc làm theo tỉnh",
     priority: 45,
     searchScope: noindex ? "internal" : "public",
+    localityEvidenceCount: localEvidence.length,
   };
 }
 
 let added = 0;
 let refreshed = 0;
 let expectedInternal = 0;
+let localityEvidencePhrases = 0;
 for (const province of provinces) {
   const item = provinceItem(province);
   if (item.searchScope === "internal") expectedInternal += 1;
+  localityEvidencePhrases += Number(item.localityEvidenceCount || 0);
   const index = searchIndex.items.findIndex((candidate) => candidate.url === item.url);
   if (index < 0) {
     searchIndex.items.push(item);
@@ -102,6 +123,7 @@ console.log(JSON.stringify({
   provinces: provinceItems.length,
   public_provinces: provinceItems.length - internalItems.length,
   internal_provinces: internalItems.length,
+  locality_evidence_phrases: localityEvidencePhrases,
   added,
   refreshed,
 }, null, 2));
