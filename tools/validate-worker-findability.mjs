@@ -30,19 +30,30 @@ if (!home.includes("Đăng ký – chưa cần hồ sơ")) fail("Hero: nút đă
 if (count(home, "data-open-worker-brief") !== 1 || !home.includes("Tóm tắt 30 giây")) fail("Hero: thiếu nút tóm tắt 30 giây cho người mới vào trang");
 if (!home.includes('href="#tu-kiem-tra"><b>01</b>')) fail("Điều hướng nhanh: mục điều kiện chưa đi đúng công cụ");
 
+const journeyIndex = home.indexOf('class="journey-intro"');
 const quickNavigationIndex = home.indexOf('class="worker-quick__grid"');
 const finderIndex = home.indexOf('class="worker-find"');
 const summaryIndex = home.indexOf('class="worker-summary"');
 const selfCheckIndex = home.indexOf('class="worker-self-check"');
+const learningStoryIndex = home.indexOf('class="learning-story section"');
 const processIndex = home.indexOf('class="section process-section"');
 const recommendedIndex = home.indexOf('class="worker-recommended"');
 const moreIndex = home.indexOf('class="worker-more"');
-if (!(quickNavigationIndex >= 0 && quickNavigationIndex < finderIndex)) fail("Luồng đọc: 6 câu hỏi phổ biến phải đứng trước công cụ tìm kiếm và chọn tỉnh");
-if (!(summaryIndex >= 0 && summaryIndex < selfCheckIndex && selfCheckIndex < processIndex)) fail("Luồng đọc: bản tóm tắt phải đứng trước công cụ tự kiểm tra, và công cụ phải đứng trước quy trình");
+if (!(journeyIndex >= 0 && journeyIndex < quickNavigationIndex && quickNavigationIndex < finderIndex)) fail("Luồng đọc: hành trình 5 chặng phải đứng trước câu hỏi phổ biến và công cụ tìm kiếm");
+if (!(summaryIndex >= 0 && summaryIndex < selfCheckIndex && selfCheckIndex < learningStoryIndex && learningStoryIndex < processIndex)) fail("Luồng đọc: bản tóm tắt, tự kiểm tra và câu chuyện học nghề phải dẫn tuần tự tới quy trình");
 if (!(processIndex >= 0 && processIndex < recommendedIndex && recommendedIndex < moreIndex)) fail("Luồng đọc: bài nên đọc phải đứng sau quy trình và trước khối nội dung mở rộng");
 for (const anchor of ["thoi-gian-hoc", "ho-tro-hoc-nghe", "noi-lam-viec"]) {
   if (count(home, `id="${anchor}"`) !== 1) fail(`Trả lời nhanh: thiếu neo #${anchor}`);
 }
+for (const marker of [
+  'id="home-journey-title"',
+  'id="learning-story-title"',
+  'href="/hoc-nghe-mo-tai-quang-ninh/"',
+  'href="/ho-so-nhap-hoc/"',
+  'href="/thu-nhap-an-o-ho-tro/"',
+  'href="/cau-chuyen-cong-nhan/"',
+  '/assets/vinacomin-dao-tao-tho-lo.webp',
+]) if (!home.includes(marker)) fail(`Hành trình người lao động: thiếu ${marker}`);
 if (!home.includes("Khai thác mỏ và xây dựng mỏ: 2–3 tháng") || !home.includes("Cơ điện mỏ: 10 tháng")) {
   fail("Thời gian học: chưa tách rõ 2–3 tháng và 10 tháng theo từng nghề");
 }

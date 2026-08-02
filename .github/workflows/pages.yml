@@ -49,6 +49,7 @@ jobs:
           node tools/enhance-direct-call.mjs
           node tools/enhance-application-context.mjs
           node tools/enhance-application-prefill-note.mjs
+          node tools/enhance-top-block-hotfix.mjs
           node tools/validate-natural-language-search.mjs
           node tools/validate-all-province-search.mjs
           node tools/validate-answer-first-search.mjs
@@ -58,6 +59,7 @@ jobs:
           node tools/validate-home-copy-actions.mjs
           node tools/validate-application-context.mjs
           node tools/validate-worker-findability.mjs
+          node tools/validate-top-block-hotfix.mjs
           node tools/validate-universal-worker-compass.mjs
           node tools/validate-content-network.mjs
           node tools/validate-article-ctas.mjs
@@ -101,6 +103,9 @@ jobs:
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}worker-info-finder.js?run=${GITHUB_SHA}" -o "$finder_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}job-application.js?run=${GITHUB_SHA}" -o "$application_file"; then
               if grep -Fq 'id="worker-quick-title"' "$html_file" \
+                && grep -Fq 'id="home-journey-title"' "$html_file" \
+                && grep -Fq 'id="learning-story-title"' "$html_file" \
+                && grep -Fq '/site-shell-20260803.css?v=3' "$html_file" \
                 && grep -Fq 'id="tu-kiem-tra"' "$html_file" \
                 && grep -Fq 'data-open-site-search' "$html_file" \
                 && grep -Fq 'data-worker-province-select' "$html_file" \

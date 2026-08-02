@@ -116,8 +116,8 @@ for (const currentFact of ["18–40 tuổi", "1m53", "47kg", "20–25 triệu/th
 for (const staleFact of ["18–35", "1m56", "48kg", "thu nhập tham khảo"]) {
   if (homeDescription.includes(staleFact)) fail(`Đoạn mô tả trang chủ: còn dữ kiện cũ ${staleFact}`);
 }
-if (!home.includes('"dateModified":"2026-08-02"')) fail("Trang chủ: ngày sửa đổi chưa phản ánh bản hiện tại");
-if (!sitemap.includes("<loc>https://thaylinhtuyenthomo.vn/</loc><lastmod>2026-08-02</lastmod>")) fail("Sitemap: trang chủ chưa có ngày cập nhật mới");
+if (!home.includes('"dateModified":"2026-08-03"')) fail("Trang chủ: ngày sửa đổi chưa phản ánh bản hiện tại");
+if (!sitemap.includes("<loc>https://thaylinhtuyenthomo.vn/</loc><lastmod>2026-08-03</lastmod>")) fail("Sitemap: trang chủ chưa có ngày cập nhật mới");
 
 console.log(JSON.stringify({
   articles: articles.length,

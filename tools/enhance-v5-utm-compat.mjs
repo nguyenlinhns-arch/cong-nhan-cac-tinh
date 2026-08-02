@@ -77,7 +77,7 @@ for (const target of walk(root)) {
 }
 
 if (bareRemaining) throw new Error(`V5 still has ${bareRemaining} bare condition links`);
-if (linksUpdated < 100) throw new Error(`V5 expected at least 100 condition links to update, got ${linksUpdated}`);
+if (attributedLinks < 100) throw new Error(`V5 expected at least 100 attributed condition links, got ${attributedLinks}`);
 
 console.log(JSON.stringify({
   target: "V5 condition links",

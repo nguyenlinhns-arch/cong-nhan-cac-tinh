@@ -22,7 +22,6 @@
     ".worker-shortcuts",
     ".page-shortcuts",
     ".verification-shortcuts",
-    ".article-nav",
     ".article-tabs",
     ".article-quick-nav",
     ".content-tabs",
@@ -69,6 +68,12 @@
     searchButtons.slice(1).forEach(node => node.remove());
   }
 
+  function cleanArticleHero() {
+    const hero = document.querySelector(".article-hero");
+    if (!hero) return;
+    hero.querySelectorAll(":scope > .journey-fast-facts, :scope > .journey-assurance, :scope > .v4-fast-answer, :scope > .v4-hero-actions, :scope > .v4-direct-note").forEach(node => node.remove());
+  }
+
   function disableConsentPrompt() {
     if (consentLocked) return;
     consentLocked = true;
@@ -82,8 +87,9 @@
     removeKnownBlocks();
     removeRowsBetweenHeaderAndMain();
     simplifyHeader();
+    cleanArticleHero();
     disableConsentPrompt();
-    document.documentElement.dataset.siteShell = "20260803-v2";
+    document.documentElement.dataset.siteShell = "20260803-v3";
   }
 
   function scheduleClean() {

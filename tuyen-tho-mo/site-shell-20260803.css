@@ -15,6 +15,16 @@
 .v5-intent-hub,
 .v5-return-prompt{display:none!important}
 
+/* News hero: keep one editorial column and one clear next action. */
+.article-hero>.journey-fast-facts,
+.article-hero>.journey-assurance,
+.article-hero>.v4-fast-answer,
+.article-hero>.v4-hero-actions,
+.article-hero>.v4-direct-note{display:none!important}
+.article-hero .hero-inner{max-width:900px!important;padding-top:58px!important;padding-bottom:54px!important}
+.article-hero h1{max-width:850px!important;font-size:clamp(38px,4.4vw,58px)!important;line-height:1.1!important;letter-spacing:-.035em!important}
+.article-hero .lead{max-width:760px!important;font-size:18px!important;line-height:1.6!important}
+
 @media(max-width:900px){
   html,body{max-width:100%;overflow-x:hidden}
 
@@ -48,7 +58,6 @@
   .worker-shortcuts,
   .page-shortcuts,
   .verification-shortcuts,
-  .article-nav,
   .article-tabs,
   .article-quick-nav,
   .content-tabs,

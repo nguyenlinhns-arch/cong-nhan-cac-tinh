@@ -23,10 +23,12 @@
   let started = false;
   let submitted = false;
   let deliveryInFlight = false;
+  let conditionPassTracked = false;
   let retryState = null;
   const DRAFT_KEY = "thaylinh_application_draft_v1";
   const DRAFT_TTL_MS = 24 * 60 * 60 * 1000;
-  const DRAFT_FIELDS = ["province", "height", "weight", "education", "trade"];
+  const DRAFT_FIELDS = ["province", "district", "height", "weight", "education", "trade"];
+  // V4 visible draft core: const DRAFT_FIELDS = ["province", "district", "height", "weight"]
   const progressSeen = new Set();
   const progressSteps = Object.freeze({
     full_name: "01_identity",
@@ -106,6 +108,26 @@
       medium: params.get("utm_medium") || stored.utm_medium || (inferredSource === "website" ? "owned" : "referral"),
       campaign: params.get("utm_campaign") || stored.utm_campaign || "tuyen_tho_mo_2026",
       content: params.get("utm_content") || stored.utm_content || "application_form",
+    };
+  }
+
+  function readJourneyContext() {
+    try {
+      const value = window.ThayLinhJourney?.context?.();
+      if (value && typeof value === "object") return value;
+    } catch (_) {}
+    return {
+      schema_version: 3,
+      entry_page: location.pathname,
+      entry_intent: "application",
+      journey_pages: "application",
+      journey_page_count: 1,
+      last_web_action: "form_start",
+      seconds_to_action: 0,
+      journey_score: 0,
+      journey_score_bucket: "new",
+      three_info_complete: false,
+      crm_context: "v3;i=app;e=app;p=app;a=form;n=1;s=0;t=0",
     };
   }
 
@@ -205,7 +227,8 @@
       full_name: String(values.full_name).trim(),
       phone,
       birth_date: values.birth_date,
-      province: values.province,
+      province: [values.province, values.district].filter(Boolean).join(" - "),
+      district: String(values.district || "").trim(),
       height: String(values.height),
       weight: String(values.weight),
       education: values.education,
@@ -273,6 +296,18 @@
     track("ApplicationDraftRestore", { action: "draft_restored", context: formContext, fields: restoredDraftFields });
   }
 
+  const prefilledContext = [];
+  for (const [name, label] of [["province", "tỉnh/thành"], ["trade", "nghề"]]) {
+    const requested = params.get(name);
+    const field = form.elements.namedItem(name);
+    if (requested && field?.value) prefilledContext.push(`${label} ${field.value}`);
+  }
+  if (prefilledContext.length && draftStatus) {
+    draftStatus.dataset.contextPrefilled = "true";
+    draftStatus.textContent = `Đã chọn sẵn ${prefilledContext.join(" và ")} từ trang bạn vừa xem. Bạn có thể đổi nếu cần. ${draftStatus.textContent}`;
+    track("ApplicationContextPrefill", { action: "context_prefilled", context: formContext, fields: prefilledContext.length });
+  }
+
   form.addEventListener("input", event => {
     if (!started) {
       started = true;
@@ -331,6 +366,21 @@
 
     const age = calculateAge(values.birth_date);
     const assessment = assess(values, age);
+    if (assessment.key === "eligible" && !conditionPassTracked) {
+      conditionPassTracked = true;
+      const passJourney = readJourneyContext();
+      track("condition_pass", {
+        action: "application_condition_pass",
+        context: formContext,
+        eligibility: "eligible",
+        entry_intent: passJourney.entry_intent,
+        journey_stage: "condition_pass",
+        journey_score_bucket: passJourney.journey_score_bucket,
+        journey_score: passJourney.journey_score,
+        page_count: passJourney.journey_page_count,
+        seconds_to_action: passJourney.seconds_to_action,
+      });
+    }
     const fingerprint = submissionFingerprint(values, phone);
     const previousAttempt = retryState?.fingerprint === fingerprint ? retryState : null;
     const applicationCode = previousAttempt?.application.code || createApplicationCode();
@@ -341,7 +391,7 @@
       `- Họ và tên: ${String(values.full_name).trim()}`,
       `- Số điện thoại: ${phone}`,
       `- Ngày sinh / tuổi: ${values.birth_date} / ${age ?? "chưa xác định"}`,
-      `- Tỉnh, thành: ${values.province}`,
+      `- Tỉnh/huyện: ${[values.province, values.district].filter(Boolean).join(" - ")}`,
       `- Chiều cao / cân nặng: ${values.height} cm / ${values.weight} kg`,
       `- Trình độ: ${values.education}`,
       `- Nghề quan tâm: ${values.trade}`,
@@ -352,15 +402,17 @@
       "Nhờ anh Nguyễn Tử Linh kiểm tra điều kiện và hướng dẫn bước tiếp theo.",
     ].join("\n");
 
+    const journey = readJourneyContext();
     const application = {
-      schema_version: Number(recruitment.schemaVersion) || 2,
+      schema_version: Math.max(3, Number(recruitment.schemaVersion) || 2),
       code: applicationCode,
       created_at: previousAttempt?.application.created_at || new Date().toISOString(),
       full_name: String(values.full_name).trim(),
       phone,
       birth_date: values.birth_date,
       age,
-      province: values.province,
+      province: [values.province, values.district].filter(Boolean).join(" - "),
+      district: String(values.district || "").trim(),
       height_cm: Number(values.height),
       weight_kg: Number(values.weight),
       education: values.education,
@@ -372,7 +424,16 @@
       campaign: source.campaign,
       content: source.content,
       page_url: location.href,
-      form_context: formContext,
+      form_context: [formContext, journey.crm_context].filter(Boolean).join("|").slice(0, 100),
+      entry_page: journey.entry_page,
+      entry_intent: journey.entry_intent,
+      journey_pages: journey.journey_pages,
+      journey_page_count: journey.journey_page_count,
+      last_web_action: journey.last_web_action,
+      seconds_to_action: journey.seconds_to_action,
+      journey_score: journey.journey_score,
+      journey_score_bucket: journey.journey_score_bucket,
+      three_info_complete: journey.three_info_complete,
       website: String(values.website || ""),
       consent: values.consent === "on",
     };
@@ -415,6 +476,12 @@
       medium: source.medium,
       campaign: source.campaign,
       content: source.content,
+      entry_intent: journey.entry_intent,
+      journey_stage: "form_submit",
+      journey_score_bucket: journey.journey_score_bucket,
+      journey_score: journey.journey_score,
+      page_count: journey.journey_page_count,
+      seconds_to_action: journey.seconds_to_action,
     });
     const delivery = await deliverApplication(application);
     deliveryInFlight = false;
@@ -423,7 +490,7 @@
     if (deliveryOutput) {
       deliveryOutput.dataset.state = delivery.saved ? "saved" : "fallback";
       deliveryOutput.textContent = delivery.saved
-        ? "Đăng ký đã được tiếp nhận. Bộ phận tư vấn sẽ liên hệ theo số điện thoại bạn cung cấp."
+        ? "Thầy Linh đã nhận thông tin. Anh giữ điện thoại/Zalo; bộ phận tư vấn sẽ kiểm tra điều kiện và hướng dẫn hồ sơ, nơi học, thời gian nhập học."
         : "Chưa chuyển tự động được. Mã đăng ký được giữ nguyên; hãy thử gửi lại hoặc mở Zalo, Messenger, SMS bên dưới.";
     }
     if (submitButton) {
