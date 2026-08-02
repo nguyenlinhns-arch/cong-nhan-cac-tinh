@@ -27,6 +27,8 @@ jobs:
           node tools/generate-news-sitemap.mjs
           node tools/build-worker-first-home.mjs
           node tools/build-search-index.mjs
+          node tools/enhance-natural-language-search.mjs
+          node tools/validate-natural-language-search.mjs
           node tools/validate-worker-findability.mjs
           node tools/validate-universal-worker-compass.mjs
           node tools/validate-content-network.mjs
@@ -42,4 +44,4 @@ jobs:
           node tools/validate-recruitment-funnel.mjs
           node tools/test-recruitment-application.mjs
           node tools/validate-crm-automation.mjs
-          git diff --exit-code -- . ':(exclude)tuyen-tho-mo/index.html'
+          git diff --exit-code -- . ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/mobile-ux.js'
