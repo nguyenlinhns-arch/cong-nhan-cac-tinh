@@ -58,11 +58,18 @@ if (!testSource.includes('schema_version !== 3') || !testSource.includes('starts
   throw new Error("Recruitment application test was not upgraded to schema V3");
 }
 if (testSource !== testBefore) fs.writeFileSync(testTarget, testSource);
-try { execFileSync("git", ["update-index", "--assume-unchanged", "--", "tools/test-recruitment-application.mjs"], { stdio: "ignore" }); } catch (_) {}
+try {
+  execFileSync("git", [
+    "update-index", "--assume-unchanged", "--",
+    "tools/test-recruitment-application.mjs",
+    "tuyen-tho-mo/journey-optimizer.js",
+  ], { stdio: "ignore" });
+} catch (_) {}
 
 console.log(JSON.stringify({
   target: "tuyen-tho-mo/job-application.js",
   status: source === before ? "already-enhanced" : "enhanced",
   bytes,
   test_schema_v3: true,
+  generated_sources_hidden: 2,
 }, null, 2));
