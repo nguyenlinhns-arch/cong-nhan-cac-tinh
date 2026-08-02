@@ -673,25 +673,7 @@ input {
   outline-offset: 2px;
 }
 
-@media (max-width: 720px) {
-  .tl-consent-banner {
-    bottom: calc(76px + env(safe-area-inset-bottom));
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 14px;
-    border-radius: 14px;
-  }
-
-  .tl-consent-banner__actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .tl-consent-banner button {
-    width: 100%;
-    padding-inline: 8px;
-  }
-}
+@media(max-width:720px){.tl-consent-banner{bottom:calc(74px + env(safe-area-inset-bottom));grid-template-columns:1fr;gap:7px;padding:10px 11px}.tl-consent-banner__copy strong{font-size:14px}.tl-consent-banner__copy span{font-size:11.5px;line-height:1.35}.tl-consent-banner__actions{display:grid;grid-template-columns:1fr 1fr;gap:6px}.tl-consent-banner button{min-height:38px;padding:6px 8px;font-size:11.5px}}
 
 @supports (content-visibility: auto) {
   main > section:not(:first-child):not(#dang-ky),

@@ -184,7 +184,7 @@ function provincePage(province) {
   <meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-v2.webp">
   <link rel="stylesheet" href="../../styles.css">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
-  <link rel="stylesheet" href="/mobile-ux.css?v=5">
+  <link rel="stylesheet" href="/mobile-ux.css?v=6">
 </head>
 <body>
   <a class="skip-link" href="#noi-dung">Bỏ qua menu</a>
@@ -248,7 +248,7 @@ ${storySection}
   <div class="toast" role="status" aria-live="polite" data-toast hidden></div>
   <script src="../../app.js?v=4" defer></script>
   <script src="/analytics.js?v=5" defer></script>
-  <script src="/mobile-ux.js?v=7" defer></script>
+  <script src="/mobile-ux.js?v=8" defer></script>
 </body>
 </html>
 `;

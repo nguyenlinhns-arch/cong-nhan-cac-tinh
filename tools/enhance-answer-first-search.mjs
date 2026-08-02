@@ -7,9 +7,11 @@ let source = fs.readFileSync(target, "utf8");
 const beforeBytes = Buffer.byteLength(source);
 const beforeSha256 = crypto.createHash("sha256").update(source).digest("hex");
 const markers = [
+  "const RECRUITMENT_YEAR = 2026",
   "function parseWorkerMeasurements(value)",
   "function buildSearchAnswer(value, matches)",
   "function appendSearchAnswer(grid, answer)",
+  "function compactMobileConsentBanner()",
   "panel.dataset.searchAnswer = answer.kind",
   "Câu trả lời ngay và",
 ];

@@ -135,7 +135,7 @@ function page({pathName, title, description, eyebrow, heading, lead, body, schem
   <meta property="og:image" content="${base}/assets/og-cover-v2.webp"><meta property="og:image:alt" content="Trung tâm thông tin học nghề mỏ và việc làm ngành Than">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(title)}"><meta name="twitter:description" content="${esc(description)}"><meta name="twitter:image" content="${base}/assets/og-cover-v2.webp">
   <link rel="stylesheet" href="/fonts.css?v=1">
-  <link rel="stylesheet" href="/content-network.css?v=1"><link rel="stylesheet" href="/mobile-ux.css?v=5">
+  <link rel="stylesheet" href="/content-network.css?v=1"><link rel="stylesheet" href="/mobile-ux.css?v=6">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
 <body>
@@ -145,7 +145,7 @@ function page({pathName, title, description, eyebrow, heading, lead, body, schem
     ${body}
   </main>
   ${footer()}
-  <script src="/analytics.js?v=5" defer></script><script src="/mobile-ux.js?v=7" defer></script>${shareTools ? '<script src="/share-tools.js?v=1" defer></script>' : ""}
+  <script src="/analytics.js?v=5" defer></script><script src="/mobile-ux.js?v=8" defer></script>${shareTools ? '<script src="/share-tools.js?v=1" defer></script>' : ""}
 </body>
 </html>`;
 }

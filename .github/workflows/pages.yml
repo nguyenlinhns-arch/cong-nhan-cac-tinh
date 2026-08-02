@@ -89,7 +89,8 @@ jobs:
                 && grep -Fq 'id="theo-tinh"' "$html_file" \
                 && grep -Fq 'id="noi-lam-viec"' "$html_file" \
                 && grep -Fq 'Cơ điện mỏ: 10 tháng' "$html_file" \
-                && grep -Fq '/mobile-ux.js?v=7' "$html_file" \
+                && grep -Fq '/mobile-ux.js?v=8' "$html_file" \
+                && grep -Fq '/mobile-ux.css?v=6' "$html_file" \
                 && grep -Fq '20–25 triệu/tháng khi hoàn thành định mức lao động' "$html_file" \
                 && grep -Fq 'function createWorkerCompass()' "$ux_file" \
                 && grep -Fq 'tl-search-shortcuts' "$ux_file" \
@@ -97,6 +98,8 @@ jobs:
                 && grep -Fq 'function meaningfulQueryTerms' "$ux_file" \
                 && grep -Fq 'function oneEditApart(left, right)' "$ux_file" \
                 && grep -Fq 'function buildSearchAnswer(value, matches)' "$ux_file" \
+                && grep -Fq 'const RECRUITMENT_YEAR = 2026' "$ux_file" \
+                && grep -Fq 'function compactMobileConsentBanner()' "$ux_file" \
                 && grep -Fq 'panel.dataset.searchAnswer = answer.kind' "$ux_file" \
                 && grep -Fq 'Câu trả lời ngay và' "$ux_file" \
                 && grep -Fq 'function createWorkerBriefDialog()' "$ux_file" \

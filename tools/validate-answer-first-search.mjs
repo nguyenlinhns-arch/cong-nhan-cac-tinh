@@ -29,9 +29,11 @@ if (searchIndex.version !== 3 || !Array.isArray(searchIndex.items)) {
 }
 
 for (const marker of [
+  "const RECRUITMENT_YEAR = 2026",
   "function parseWorkerMeasurements(value)",
   "function buildSearchAnswer(value, matches)",
   "function appendSearchAnswer(grid, answer)",
+  "function compactMobileConsentBanner()",
   "panel.dataset.searchAnswer = answer.kind",
   "Câu trả lời ngay và",
   "matches = matches.slice(0, 4)",
@@ -93,6 +95,31 @@ const cases = [
     expected: { kind: "screening", state: "pass", href: "/#tu-kiem-tra" },
     phrases: ["39 tuổi: đạt", "1m54: đạt", "50kg: đạt"],
   },
+  {
+    query: "sinh năm 1986 cao 1m60 nặng 55kg",
+    expected: { kind: "screening", state: "pass", href: "/#tu-kiem-tra" },
+    phrases: ["Sinh năm 1986: khoảng 39–40 tuổi", "đạt mốc 18–40 tuổi", "1m60: đạt", "55kg: đạt"],
+  },
+  {
+    query: "sinh năm 1985 cao 1m60 nặng 55kg",
+    expected: { kind: "screening", state: "review", href: "/#dieu-kien" },
+    phrases: ["Sinh năm 1985: khoảng 40–41 tuổi", "cần ngày tháng sinh cụ thể"],
+  },
+  {
+    query: "sinh năm 2009 cao 1m60 nặng 55kg",
+    expected: { kind: "screening", state: "review", href: "/#dieu-kien" },
+    phrases: ["Sinh năm 2009: khoảng 16–17 tuổi", "chưa đạt mốc 18–40 tuổi"],
+  },
+  {
+    query: "cao 1,53m nặng 50 kí",
+    expected: { kind: "screening", state: "pass", href: "/#tu-kiem-tra" },
+    phrases: ["1m53: đạt mốc từ 1m53", "50kg: đạt mốc từ 47kg"],
+  },
+  {
+    query: "cao 153 nặng 50",
+    expected: { kind: "screening", state: "pass", href: "/#tu-kiem-tra" },
+    phrases: ["1m53: đạt mốc từ 1m53", "50kg: đạt mốc từ 47kg"],
+  },
 ];
 
 const results = [];
@@ -123,12 +150,22 @@ if (provinceAnswer?.kind !== "province" || provinceAnswer?.href !== "/viec-lam-n
   errors.push(`Câu hỏi Quảng Bình chưa đi đúng trang Quảng Trị: ${provinceAnswer?.href || "không có"}`);
 }
 
+const femaleAnswer = api.buildSearchAnswer("nữ có đăng ký được không", rank("nữ có đăng ký được không"));
+if (femaleAnswer?.kind !== "eligibility" || femaleAnswer?.state !== "review" || femaleAnswer?.href !== "/#dieu-kien" || !femaleAnswer?.text.includes("Lao động nữ không thuộc chỉ tiêu tuyển này")) {
+  errors.push(`Câu hỏi lao động nữ chưa được trả lời trực tiếp, rõ ràng: ${JSON.stringify(femaleAnswer)}`);
+}
+
 const unknownAnswer = api.buildSearchAnswer("hình xăm trường hợp riêng", []);
 if (unknownAnswer !== null) errors.push("Câu hỏi ngoài dữ kiện không được tự suy diễn câu trả lời");
 
 const measurements = api.parseWorkerMeasurements("39 tuổi cao 1m54 nặng 50 cân");
 if (measurements.age !== 39 || measurements.heightCm !== 154 || measurements.weightKg !== 50) {
   errors.push(`Đọc sai số đo: ${JSON.stringify(measurements)}`);
+}
+
+const everydayMeasurements = api.parseWorkerMeasurements("sinh năm 1986, cao 1,53m, nặng 50 kí");
+if (everydayMeasurements.birthYear !== 1986 || everydayMeasurements.heightCm !== 153 || everydayMeasurements.weightKg !== 50) {
+  errors.push(`Đọc sai năm sinh hoặc cách ghi số đo đời thường: ${JSON.stringify(everydayMeasurements)}`);
 }
 
 if (Buffer.byteLength(script) > 42_000) errors.push(`mobile-ux.js vượt 42 KB: ${Buffer.byteLength(script)}`);
@@ -138,7 +175,9 @@ console.log(JSON.stringify({
   results,
   dossier_answer: dossierAnswer,
   province_answer: provinceAnswer,
+  female_answer: femaleAnswer,
   measurements,
+  everyday_measurements: everydayMeasurements,
   js_bytes: Buffer.byteLength(script),
   errors,
 }, null, 2));
