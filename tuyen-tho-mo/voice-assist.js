@@ -17,7 +17,8 @@
       .tl-voice-search-button[aria-pressed="true"],.tl-voice-read-button[aria-pressed="true"]{border-color:var(--tl-brand,#075b66);background:var(--tl-brand,#075b66);color:#fff}
       .tl-voice-status{min-width:180px;flex:1;color:var(--tl-muted,#5c7075);font-size:11px;line-height:1.45}
       .tl-voice-read-wrap{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:0 24px 12px}
-      @media(max-width:520px){.tl-voice-controls,.tl-voice-read-wrap{align-items:stretch}.tl-voice-search-button,.tl-voice-read-button{width:100%}.tl-voice-status{min-width:0;text-align:center}}
+      .tl-voice-answer-wrap{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:12px;padding-top:11px;border-top:1px solid var(--tl-line,#dbe7e5)}
+      @media(max-width:520px){.tl-voice-controls,.tl-voice-read-wrap,.tl-voice-answer-wrap{align-items:stretch}.tl-voice-search-button,.tl-voice-read-button{width:100%}.tl-voice-status{min-width:0;text-align:center}}
     `;
     document.head.append(style);
   }
@@ -131,6 +132,103 @@
     return ["Tóm tắt tuyển thợ mỏ.", ...facts, "Bạn có thể tự kiểm tra điều kiện, đăng ký ngay hoặc hỏi qua Zalo."].join(" ");
   }
 
+
+  function answerSpeechText(panel) {
+    const title = panel.querySelector("strong")?.textContent?.trim() || "";
+    const text = [...panel.children].find((element) => element.tagName === "SPAN")?.textContent?.trim() || "";
+    return [title, text].filter(Boolean).join(". ");
+  }
+
+  function setupSearchAnswerReadAloud(dialog) {
+    if (dialog.dataset.searchAnswerReadAloudReady) return;
+    const synth = window.speechSynthesis;
+    const Utterance = window.SpeechSynthesisUtterance;
+    const grid = dialog.querySelector(".tl-search-results__grid");
+    if (!synth || typeof Utterance !== "function" || !grid) {
+      dialog.dataset.searchAnswerReadAloudReady = "unsupported";
+      return;
+    }
+
+    injectStyles();
+    dialog.dataset.searchAnswerReadAloudReady = "true";
+    let activeButton = null;
+    let activeLive = null;
+
+    const reset = (message = "Có thể nghe câu trả lời mà không cần đọc.") => {
+      if (activeButton) setButtonState(activeButton, false, "🔊 Nghe câu trả lời");
+      if (activeLive) activeLive.textContent = message;
+      activeButton = null;
+      activeLive = null;
+      activeSpeech = null;
+    };
+
+    const stop = (message = "Đã dừng giọng đọc.") => {
+      synth.cancel();
+      reset(message);
+    };
+
+    const attach = () => {
+      if (activeButton && !activeButton.isConnected) stop("Câu trả lời đã thay đổi.");
+      grid.querySelectorAll("[data-search-answer]").forEach((panel) => {
+        if (panel.querySelector("[data-answer-read-aloud]")) return;
+        const wrap = document.createElement("div");
+        wrap.className = "tl-voice-answer-wrap";
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "tl-voice-read-button";
+        button.dataset.answerReadAloud = "true";
+        button.setAttribute("aria-pressed", "false");
+        button.setAttribute("aria-label", "Nghe câu trả lời đang hiển thị");
+        button.textContent = "🔊 Nghe câu trả lời";
+        const live = document.createElement("span");
+        live.className = "tl-voice-status";
+        live.setAttribute("role", "status");
+        live.setAttribute("aria-live", "polite");
+        live.textContent = "Có thể nghe câu trả lời mà không cần đọc.";
+        wrap.append(button, live);
+        const actions = panel.querySelector(".tl-search-empty__actions");
+        panel.insertBefore(wrap, actions || null);
+
+        button.addEventListener("click", () => {
+          if (button.getAttribute("aria-pressed") === "true") {
+            stop();
+            return;
+          }
+          synth.cancel();
+          reset();
+          const text = answerSpeechText(panel);
+          if (!text) {
+            live.textContent = "Chưa có câu trả lời để đọc.";
+            return;
+          }
+          const utterance = new Utterance(text);
+          utterance.lang = VOICE_LANG;
+          utterance.rate = 0.94;
+          utterance.pitch = 1;
+          const vietnameseVoice = synth.getVoices().find((voice) => String(voice.lang || "").toLowerCase().startsWith("vi"));
+          if (vietnameseVoice) utterance.voice = vietnameseVoice;
+          activeButton = button;
+          activeLive = live;
+          activeSpeech = utterance;
+          utterance.onstart = () => {
+            if (activeSpeech !== utterance) return;
+            setButtonState(button, true, "■ Dừng nghe");
+            live.textContent = "Đang đọc câu trả lời…";
+          };
+          utterance.onend = () => { if (activeSpeech === utterance) reset("Đã đọc xong câu trả lời."); };
+          utterance.onerror = () => { if (activeSpeech === utterance) reset("Thiết bị chưa phát được giọng đọc. Câu trả lời vẫn hiển thị phía trên."); };
+          synth.speak(utterance);
+        });
+      });
+    };
+
+    attach();
+    new MutationObserver(attach).observe(grid, { childList: true, subtree: true });
+    dialog.addEventListener("close", () => {
+      if (activeButton) stop();
+    });
+  }
+
   function setupBriefReadAloud(dialog) {
     if (dialog.dataset.briefReadAloudReady) return;
     const synth = window.speechSynthesis;
@@ -200,7 +298,10 @@
   function init(root = document) {
     root.querySelectorAll?.("dialog.tl-search-dialog").forEach((dialog) => {
       if (dialog.classList.contains("tl-worker-brief-dialog")) setupBriefReadAloud(dialog);
-      else setupVoiceSearch(dialog);
+      else {
+        setupVoiceSearch(dialog);
+        setupSearchAnswerReadAloud(dialog);
+      }
     });
   }
 

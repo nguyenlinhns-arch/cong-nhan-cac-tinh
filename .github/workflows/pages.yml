@@ -53,6 +53,7 @@ jobs:
           node tools/validate-worker-findability.mjs
           node tools/validate-universal-worker-compass.mjs
           node tools/validate-content-network.mjs
+          node tools/validate-article-ctas.mjs
           node tools/validate-seo-library.mjs
           node tools/audit-technical-seo.mjs
           node tools/validate-accessibility.mjs

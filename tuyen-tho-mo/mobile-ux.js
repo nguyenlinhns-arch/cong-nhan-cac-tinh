@@ -844,7 +844,7 @@
     if (!voiceAssistPromise) {
       voiceAssistPromise = new Promise((resolve) => {
         const script = document.createElement("script");
-        script.src = "/voice-assist.js?v=1";
+        script.src = "/voice-assist.js?v=2";
         script.async = true;
         script.onload = () => {
           window.ThayLinhVoiceAssist?.init?.();
