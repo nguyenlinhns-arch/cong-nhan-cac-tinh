@@ -1,4 +1,4 @@
-import "./enhance-v5-search-compat.mjs";
+import "./enhance-v5-ranking-compat.mjs";
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
