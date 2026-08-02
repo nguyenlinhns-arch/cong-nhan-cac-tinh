@@ -1,4 +1,4 @@
-import "./validate-v5-search-compat.mjs";
+import "./validate-top-block-hotfix.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
