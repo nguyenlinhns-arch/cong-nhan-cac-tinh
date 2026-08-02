@@ -1,0 +1,54 @@
+{
+  "version": 3,
+  "updated_at": "2026-08-02",
+  "rules": {
+    "utm_source": "meta",
+    "utm_medium": "paid",
+    "campaigns": ["camp1_kcn_mo", "camp2_phongsu"],
+    "content_pattern": "tinh_loai-video_so"
+  },
+  "landing_pages": [
+    {
+      "campaign": "camp1_kcn_mo",
+      "content": "chon_kcn_hay_mo_01",
+      "intent": "comparison",
+      "destination": "https://thaylinhtuyenthomo.vn/chon-kcn-hay-lam-mo/?utm_source=meta&utm_medium=paid&utm_campaign=camp1_kcn_mo&utm_content=chon_kcn_hay_mo_01"
+    },
+    {
+      "campaign": "camp2_phongsu",
+      "content": "nghean_congnhan_01",
+      "province": "Nghệ An",
+      "destination": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/nghe-an/?utm_source=meta&utm_medium=paid&utm_campaign=camp2_phongsu&utm_content=nghean_congnhan_01"
+    },
+    {
+      "campaign": "camp2_phongsu",
+      "content": "hatinh_luong_doisong_01",
+      "province": "Hà Tĩnh",
+      "destination": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/ha-tinh/?utm_source=meta&utm_medium=paid&utm_campaign=camp2_phongsu&utm_content=hatinh_luong_doisong_01"
+    },
+    {
+      "campaign": "camp2_phongsu",
+      "content": "quangtri_hanhtrinh_01",
+      "province": "Quảng Trị",
+      "destination": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/quang-tri/?utm_source=meta&utm_medium=paid&utm_campaign=camp2_phongsu&utm_content=quangtri_hanhtrinh_01"
+    },
+    {
+      "campaign": "camp2_phongsu",
+      "content": "quangngai_congnhan_01",
+      "province": "Quảng Ngãi",
+      "destination": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/quang-ngai/?utm_source=meta&utm_medium=paid&utm_campaign=camp2_phongsu&utm_content=quangngai_congnhan_01"
+    },
+    {
+      "campaign": "camp2_phongsu",
+      "content": "gialai_congnhan_01",
+      "province": "Gia Lai",
+      "destination": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/gia-lai/?utm_source=meta&utm_medium=paid&utm_campaign=camp2_phongsu&utm_content=gialai_congnhan_01"
+    },
+    {
+      "campaign": "camp2_phongsu",
+      "content": "daklak_congnhan_01",
+      "province": "Đắk Lắk",
+      "destination": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dak-lak/?utm_source=meta&utm_medium=paid&utm_campaign=camp2_phongsu&utm_content=daklak_congnhan_01"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "version": 3,
+  "events": {
+    "journey_view": "Mở một trang và ghi nhận vị trí trong hành trình ẩn danh",
+    "engaged_30s": "Ở lại trang ít nhất 30 giây",
+    "content_depth": "Đọc tới 50% hoặc 75% trang",
+    "journey_action": "Bấm kiểm tra điều kiện, Zalo, gọi điện hoặc mở biểu mẫu",
+    "form_start": "Bắt đầu điền biểu mẫu",
+    "three_info_complete": "Đã điền đủ nhóm năm sinh, chiều cao/cân nặng và sức khỏe",
+    "condition_pass": "Đạt điều kiện sơ bộ trên công cụ hoặc biểu mẫu",
+    "form_submit": "Gửi biểu mẫu hợp lệ",
+    "enrollment_booked": "Đã hẹn nhập học, cập nhật từ CRM/offline conversion",
+    "enrolled": "Đã nhập học, KPI cuối cập nhật từ CRM/offline conversion"
+  },
+  "dimensions": [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_content",
+    "entry_page",
+    "entry_intent",
+    "page_group",
+    "journey_stage",
+    "journey_score_bucket",
+    "seconds_to_action"
+  ],
+  "privacy": "Không gửi họ tên, số điện thoại, ngày sinh, chiều cao, cân nặng hoặc câu trả lời sức khỏe sang GA4/Meta."
+}

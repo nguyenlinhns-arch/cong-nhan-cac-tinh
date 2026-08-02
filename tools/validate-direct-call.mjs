@@ -1,4 +1,4 @@
-import "./validate-verification-portal.mjs";
+import "./validate-application-condition-pass-v3.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
