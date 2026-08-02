@@ -69,10 +69,11 @@
 
     const pass = values.every((value) => value === "yes");
     const status = pass ? "pass" : "review";
+    const backLink = '<a class="worker-check__back" href="#worker-quick-title">Xem các mục cần biết</a>';
     checkResult.dataset.state = status;
     checkResult.innerHTML = pass
-      ? `<strong>Bạn phù hợp sơ bộ với điều kiện đang tuyển.</strong><span>Tiếp tục đăng ký để được xác nhận thông tin và hướng dẫn lịch khám tuyển. Kết luận cuối cùng căn cứ kết quả khám tuyển.</span><a href="${resultLink(status)}" data-contact="application" data-context="worker-self-check">Tiếp tục đăng ký</a>`
-      : `<strong>Có ít nhất một điều kiện bạn chưa đạt hoặc chưa chắc chắn.</strong><span>Đây chưa phải kết luận cuối cùng. Hãy trao đổi trực tiếp để được kiểm tra đúng trường hợp trước khi chuẩn bị hồ sơ.</span><a href="${resultLink(status)}" target="_blank" rel="noopener" data-contact="zalo" data-context="worker-self-check">Nhắn Zalo để hỏi</a>`;
+      ? `<strong>Bạn phù hợp sơ bộ với điều kiện đang tuyển.</strong><span>Tiếp tục đăng ký để được xác nhận thông tin và hướng dẫn lịch khám tuyển. Kết luận cuối cùng căn cứ kết quả khám tuyển.</span><a href="${resultLink(status)}" data-contact="application" data-context="worker-self-check">Tiếp tục đăng ký</a>${backLink}`
+      : `<strong>Có ít nhất một điều kiện bạn chưa đạt hoặc chưa chắc chắn.</strong><span>Đây chưa phải kết luận cuối cùng. Hãy trao đổi trực tiếp để được kiểm tra đúng trường hợp trước khi chuẩn bị hồ sơ.</span><a href="${resultLink(status)}" target="_blank" rel="noopener" data-contact="zalo" data-context="worker-self-check">Nhắn Zalo để hỏi</a>${backLink}`;
     checkResult.focus({ preventScroll: true });
     checkResult.scrollIntoView({ behavior: "smooth", block: "nearest" });
     track("worker_self_check_complete", { result: status });

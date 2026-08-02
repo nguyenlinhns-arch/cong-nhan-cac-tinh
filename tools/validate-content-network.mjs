@@ -111,7 +111,8 @@ for (const file of contentFiles) {
   const relative = path.relative(root, file);
   if (!html.includes('/analytics.js?v=5')) fail(`${relative}: chưa nạp analytics v5`);
   if (!html.includes('/mobile-ux.css?v=5')) fail(`${relative}: chưa nạp mobile UX CSS v5`);
-  if (!html.includes('/mobile-ux.js?v=4')) fail(`${relative}: chưa nạp mobile UX v4`);
+  const mobileUxVersion = relative === "index.html" ? "/mobile-ux.js?v=5" : "/mobile-ux.js?v=4";
+  if (!html.includes(mobileUxVersion)) fail(`${relative}: chưa nạp ${mobileUxVersion}`);
 }
 
 const sitemap = read("sitemap.xml");
