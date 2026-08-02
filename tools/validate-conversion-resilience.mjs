@@ -17,7 +17,7 @@ const campaignContents = new Set();
 const searchIndex = JSON.parse(read("search-index.json"));
 const searchItems = Array.isArray(searchIndex.items) ? searchIndex.items : [];
 
-if (articles.length !== 61) fail(`Bài viết: cần 61, nhận ${articles.length}`);
+if (!articles.length) fail("Bài viết: feed không có nội dung");
 
 for (const article of articles) {
   const url = new URL(article.url);

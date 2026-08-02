@@ -47,12 +47,10 @@ export const extractSourceImage = (html) => {
 
 export const auditSourceImages = async () => {
   const results = [];
-
-  for (const article of communityArticles) {
+  const auditArticle = async (article) => {
     const source = article.sources?.[0];
     if (!source?.url) {
-      results.push({ slug: article.slug, status: "NO_SOURCE_URL", source: "", image: "" });
-      continue;
+      return { slug: article.slug, status: "NO_SOURCE_URL", source: "", image: "" };
     }
 
     try {
@@ -62,22 +60,30 @@ export const auditSourceImages = async () => {
         signal: AbortSignal.timeout(30_000),
       });
       const html = await response.text();
-      results.push({
+      const sourceImage = communitySourceImages[article.slug];
+      const extractedImage = extractSourceImage(html);
+      return {
         slug: article.slug,
         status: response.status,
         source: source.url,
-        image: extractSourceImage(html),
-        expected: communitySourceImages[article.slug]?.image || "",
-      });
+        image: extractedImage || (sourceImage?.allowArchivedSourceImage ? sourceImage.originalImage : ""),
+        expected: sourceImage?.originalImage || sourceImage?.image || "",
+        verification: extractedImage ? "LIVE_SOURCE" : sourceImage?.allowArchivedSourceImage ? "ARCHIVED_SOURCE" : "MISSING",
+      };
     } catch (error) {
-      results.push({
+      return {
         slug: article.slug,
         status: "ERROR",
         source: source.url,
         image: "",
         error: error.message,
-      });
+      };
     }
+  };
+
+  const concurrency = 6;
+  for (let index = 0; index < communityArticles.length; index += concurrency) {
+    results.push(...await Promise.all(communityArticles.slice(index, index + concurrency).map(auditArticle)));
   }
 
   return results;

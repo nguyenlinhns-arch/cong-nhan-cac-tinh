@@ -156,8 +156,8 @@ function upgradeExistingSchema(html, article) {
     const articleNode = graph.find((node) => ["Article", "NewsArticle"].includes(node?.["@type"]));
     const webpageNode = graph.find((node) => node?.["@type"] === "WebPage");
     if (!articleNode) return full;
-    const sourceWorks = (article.sources || []).map(sourceCreativeWork);
-    const sourceUrls = (article.sources || []).map(sourceUrl).filter(Boolean);
+    const sourceWorks = article.hideSourceUrlsInSchema ? [] : (article.sources || []).map(sourceCreativeWork);
+    const sourceUrls = article.hideSourceUrlsInSchema ? [] : (article.sources || []).map(sourceUrl).filter(Boolean);
     articleNode.headline = article.title;
     articleNode.description = article.schemaDescription || article.description;
     articleNode.author = {"@type": "Person", "@id": `${base}/tac-gia/nguyen-tu-linh/#person`, name: author, alternateName: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/tac-gia/nguyen-tu-linh/`};
@@ -211,7 +211,7 @@ function renderFacts(facts) {
 
 function renderFigure(media, className = "article-inline-media", eager = false) {
   const rawCredit = String(media.credit || "").trim();
-  const visibleCredit = /^Ảnh(?:\s|:)/iu.test(rawCredit) ? rawCredit : `Ảnh: ${rawCredit}`;
+  const visibleCredit = media.suppressLabel || /^Ảnh(?:\s|:)/iu.test(rawCredit) ? rawCredit : `Ảnh: ${rawCredit}`;
   const credit = rawCredit ? `<span class="article-media-credit">${esc(visibleCredit)}</span>` : "";
   const referrerPolicy = media.referrerPolicy || "no-referrer";
   return `<figure class="${className}"><img src="${esc(media.src)}" alt="${esc(media.alt)}" ${eager ? "fetchpriority=\"high\"" : "loading=\"lazy\""} decoding="async" referrerpolicy="${esc(referrerPolicy)}"><figcaption><span>${esc(media.caption || media.alt)}</span>${credit}</figcaption></figure>`;
@@ -224,6 +224,7 @@ function renderArticleCover(article) {
     caption: article.imageCaption || article.imageAlt,
     credit: article.imageCredit || article.imageSource,
     referrerPolicy: article.imageReferrerPolicy,
+    suppressLabel: article.suppressImageLabel,
   }, "article-cover article-cover--editorial", true);
 }
 
@@ -264,8 +265,8 @@ function renderArticle(article) {
   const canonical = `${base}/${article.urlPath}/`;
   const inlineImages = article.inlineMedia || articleInlineImages[article.slug] || [];
   const isPressLayout = article.sourceLayout || article.contentMode === "press_digest";
-  const sourceWorks = (article.sources || []).map(sourceCreativeWork);
-  const sourceUrls = (article.sources || []).map(sourceUrl).filter(Boolean);
+  const sourceWorks = article.hideSourceUrlsInSchema ? [] : (article.sources || []).map(sourceCreativeWork);
+  const sourceUrls = article.hideSourceUrlsInSchema ? [] : (article.sources || []).map(sourceUrl).filter(Boolean);
   const careerCta = {
     "Thu nhập & việc làm": {
       title: "Tìm hiểu nghề trước khi tính chuyện đường dài",
@@ -311,7 +312,7 @@ function renderArticle(article) {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Article",
+        "@type": article.schemaType || "Article",
         "@id": `${canonical}#article`,
         headline: article.title,
         description: article.description,
@@ -616,10 +617,14 @@ const urls = collectIndexHtml(root).filter((file) => {
 }).sort((left, right) => left === `${base}/` ? -1 : right === `${base}/` ? 1 : left.localeCompare(right, "vi"));
 
 const freshRecruitmentUrls = new Set([`${base}/`, currentFactsUrl, recruitment.landing_url, ...(recruitment.role_urls || [])]);
+const editorialLastmods = new Map(allEditorial.map((article) => [
+  `${base}/${article.urlPath}/`,
+  String(article.updated || article.published).slice(0, 10),
+]));
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((url) => {
   const priority = url === `${base}/` ? "1.0" : url.endsWith("/tin-nganh-than/") ? "0.9" : url.includes("/bai-viet/") || url.includes("/tin-nganh-than/2026/") ? "0.8" : "0.7";
   const frequency = url.includes("/bai-viet/") || url.includes("/tin-nganh-than/2026/") ? "monthly" : "weekly";
-  const lastmod = url === `${base}/` ? homepageModified : freshRecruitmentUrls.has(url) ? recruitment.updated_at : "2026-08-01";
+  const lastmod = url === `${base}/` ? homepageModified : freshRecruitmentUrls.has(url) ? recruitment.updated_at : editorialLastmods.get(url) || "2026-08-01";
   return `  <url><loc>${xml(url)}</loc><lastmod>${xml(lastmod)}</lastmod><changefreq>${frequency}</changefreq><priority>${priority}</priority></url>`;
 }).join("\n")}\n</urlset>\n`;
 fs.writeFileSync(path.join(root, "sitemap.xml"), sitemap);
@@ -690,7 +695,12 @@ fs.mkdirSync(path.resolve("content"), {recursive: true});
 fs.writeFileSync(path.resolve("content", "editorial-sources.json"), `${JSON.stringify({
   updated_at: buildTime,
   policy: "Mỗi bài công khai ghi một dòng Nguồn bằng chữ và một câu SEO ở cuối bài; URL chỉ dùng cho kiểm chứng nội bộ, không đặt liên kết ra ngoài.",
-  articles: allEditorial.map((article) => ({slug: article.slug, title: article.title, sources: article.sources})),
+  articles: allEditorial.map((article) => ({
+    slug: article.slug,
+    title: article.title,
+    sources: article.sources,
+    ...(article.hideSourceUrlsInSchema ? {public_source_urls: false} : {}),
+  })),
 }, null, 2)}\n`);
 
 console.log(`Generated ${generatedArticles.length} article pages, ${allEditorial.length} editorial feed items and ${urls.length} sitemap URLs.`);

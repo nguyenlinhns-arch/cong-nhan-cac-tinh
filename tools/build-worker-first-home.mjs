@@ -1,6 +1,7 @@
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
+import { communityArticles } from "./community-articles.mjs";
 
 const sourceDir = path.resolve("content", "home-worker-first");
 const siteRoot = path.resolve("tuyen-tho-mo");
@@ -100,6 +101,26 @@ const selfCheck = `    <section class="worker-self-check" id="tu-kiem-tra" aria-
 
 `;
 
+const latestArticle = [...communityArticles].sort((left, right) => new Date(right.published) - new Date(left.published))[0];
+if (!latestArticle) throw new Error("Worker-first homepage requires at least one community article");
+const latestPublished = new Date(latestArticle.published);
+const latestDate = new Intl.DateTimeFormat("vi-VN", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+  timeZone: "Asia/Bangkok",
+}).format(latestPublished);
+const latestArticleBlock = `    <section class="worker-latest" aria-labelledby="worker-latest-title">
+      <div class="container">
+        <a class="worker-latest__card" href="/${esc(latestArticle.urlPath)}/">
+          <img src="${esc(latestArticle.image)}" alt="${esc(latestArticle.imageAlt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="800" height="368">
+          <span class="worker-latest__body"><small>Bài mới · ${esc(latestDate)}</small><strong id="worker-latest-title">${esc(latestArticle.title)}</strong><span>${esc(latestArticle.lead)}</span><b>Đọc bài viết →</b></span>
+        </a>
+      </div>
+    </section>
+
+`;
+
 function replaceOnce(text, marker, replacement, label) {
   const occurrences = text.split(marker).length - 1;
   if (occurrences !== 1) throw new Error(`${label}: expected one marker, got ${occurrences}`);
@@ -114,11 +135,12 @@ html = replaceOnce(html, '<span data-application-resume-label>Đăng ký nhanh</
 html = replaceOnce(html, 'href="#dieu-kien"><b>01</b>', 'href="#tu-kiem-tra"><b>01</b>', "Quick self-check link");
 html = replaceOnce(html, '      <nav class="worker-quick__grid" aria-label="Thông tin nhanh cho người lao động">', `${finder}      <nav class="worker-quick__grid" aria-label="Thông tin nhanh cho người lao động">`, "Worker finder block");
 html = replaceOnce(html, '    <section class="worker-summary" id="dieu-kien">', `${selfCheck}    <section class="worker-summary" id="dieu-kien"><span id="che-do-ho-so" aria-hidden="true"></span>`, "Self-check and compatibility anchor");
+html = replaceOnce(html, '    <section class="worker-more" aria-labelledby="worker-more-title">', `${latestArticleBlock}    <section class="worker-more" aria-labelledby="worker-more-title">`, "Latest community article");
 html = replaceOnce(html, '<section class="worker-more" aria-labelledby="worker-more-title">', '<section class="worker-more" aria-labelledby="worker-more-title"><span id="theo-tinh" aria-hidden="true"></span>', "Province compatibility anchor");
 html = replaceOnce(html, 'src="/mobile-ux.js?v=4"', 'src="/mobile-ux.js?v=5"', "Homepage mobile UX version");
 html = replaceOnce(html, "</body>", '  <script src="/worker-info-finder.js?v=2" defer></script>\n</body>', "Worker information finder script");
 
-for (const required of ['id="tu-kiem-tra"', "data-open-site-search", "data-worker-province-select", "data-worker-check-form", 'id="che-do-ho-so"', 'id="theo-tinh"']) {
+for (const required of ['id="tu-kiem-tra"', "data-open-site-search", "data-worker-province-select", "data-worker-check-form", 'id="che-do-ho-so"', 'id="theo-tinh"', 'class="worker-latest__card"']) {
   if (!html.includes(required)) throw new Error(`Worker-first homepage is missing generated feature: ${required}`);
 }
 
@@ -144,5 +166,6 @@ console.log(JSON.stringify({
   searchEntryPoints: 2,
   selfCheckQuestions: 4,
   provinceOptions: provinces.length,
+  latestArticle: latestArticle.slug,
   trackedApplicationLinks: trackedApplicationLinks.length,
 }, null, 2));

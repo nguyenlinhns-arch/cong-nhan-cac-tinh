@@ -164,4 +164,10 @@ export const communitySourceImages = Object.freeze({
     alt: "Ảnh bài gốc: Đoàn Thanh niên TKV triển khai các hoạt động ‘Thắp sáng ước mơ’ cho thiếu niên nhi đồng",
     credit: "Ảnh bài gốc · TKV",
   }),
+  "than-thong-nhat-do-dau-cuu-thanh-nien-xung-phong": Object.freeze({
+    sourceUrl: "https://www.thanthongnhat.vn/dang-doan-the/tiep-nhan-do-dau-cuu-thanh-nien-xung-phong-co-hoan-canh-kho-khan-15693.html",
+    image: "https://www.thanthongnhat.vn/uploads/news/2026_07/1785233493309_8368402457751477522_8368402457751477522_8eaf52b2957a4ca191b34eeec66355f2.jpg",
+    alt: "Than Thống Nhất đỡ đầu cựu thanh niên xung phong Nguyễn Thị Lan tại Cẩm Phả",
+    credit: "Công ty Than Thống Nhất – TKV",
+  }),
 });

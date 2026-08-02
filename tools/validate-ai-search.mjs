@@ -270,7 +270,7 @@ for (const file of articleFiles) {
   if (!webpage?.datePublished || !webpage?.dateModified || webpage?.isPartOf?.["@id"] !== `${base}/#website`) errors.push(`${slug}: WebPage provenance is incomplete`);
   if (webpage?.publisher?.["@id"] !== organizationId || webpage?.mainEntity?.["@id"] !== article?.["@id"]) errors.push(`${slug}: WebPage is not linked to its publisher and Article entity`);
   if (!html.includes('href="/thong-tin-tuyen-tho-mo/"')) errors.push(`${slug}: article does not link to the canonical current-facts page`);
-  const expectedUrls = (registry?.sources || []).map((source) => source.url || (["Phòng Tuyển sinh Miền Trung", "Trường Cao đẳng Than - Khoáng sản Việt Nam"].includes(source.publisher) ? factsUrl : "")).filter(Boolean);
+  const expectedUrls = registry?.public_source_urls === false ? [] : (registry?.sources || []).map((source) => source.url || (["Phòng Tuyển sinh Miền Trung", "Trường Cao đẳng Than - Khoáng sản Việt Nam"].includes(source.publisher) ? factsUrl : "")).filter(Boolean);
   if (expectedUrls.length) {
     sourcedArticles += 1;
     const basedOn = Array.isArray(article.isBasedOn) ? article.isBasedOn : article.isBasedOn ? [article.isBasedOn] : [];

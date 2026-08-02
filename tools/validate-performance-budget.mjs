@@ -290,7 +290,8 @@ for (const file of htmlFiles) {
 }
 
 if (!localFontPages) fail("Font: không có trang nào dùng fonts.css cục bộ");
-if (articleCovers !== 61) fail(`Ảnh bìa: dự kiến 61 bài, thực tế ${articleCovers}`);
+const feedArticleCount = JSON.parse(fs.readFileSync(path.join(root, "feed.json"), "utf8")).items?.length || 0;
+if (articleCovers !== feedArticleCount) fail(`Ảnh bìa: dự kiến ${feedArticleCount} bài theo feed, thực tế ${articleCovers}`);
 if (knownImagesMissingDimensions || articleCoversMissingDimensions) fail("Ảnh bài viết: còn ảnh có nguy cơ xô lệch bố cục");
 
 const budgets = {

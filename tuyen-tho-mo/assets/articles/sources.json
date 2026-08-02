@@ -1,4 +1,10 @@
 {
+  "than-thong-nhat-do-dau-cuu-thanh-nien-xung-phong": {
+    "album_title": "Công ty Than Thống Nhất – TKV",
+    "source_url": "https://www.thanthongnhat.vn/uploads/news/2026_07/1785233493309_8368402457751477522_8368402457751477522_8eaf52b2957a4ca191b34eeec66355f2.jpg",
+    "provider": "Công ty Than Thống Nhất – TKV",
+    "source_article_url": "https://www.thanthongnhat.vn/dang-doan-the/tiep-nhan-do-dau-cuu-thanh-nien-xung-phong-co-hoan-canh-kho-khan-15693.html"
+  },
   "dam-ha-than-thong-nhat-dao-tao-viec-lam-2026": {
     "album_title": "Ảnh bài gốc · Công ty Than Thống Nhất – TKV",
     "source_url": "https://www.thanthongnhat.vn/uploads/news/2026_05/z1.jpg",
@@ -20,6 +26,7 @@
   "muong-khuong-bat-xat-tuyen-lao-dong-tkv-2024": {
     "album_title": "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
     "source_url": "https://caodangtkv.edu.vn/wp-content/uploads/2024/10/dsc09172-7283-3014-scaled.jpg",
+    "original_source_url": "https://cdn.baolaocai.vn/images/143503276ab88d52cd8f7a57440e0549e6c2878db14e4bf8f9c1e3f4e9b6a8161570f56052bcca880b76ca3c65d7803d/dsc09172-7283-3014.jpg",
     "provider": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
     "source_article_url": "https://caodangtkv.edu.vn/truong-cao-dang-than-khoang-san-viet-nam-lam-viec-tai-huyen-muong-khuong-va-huyen-bat-xat/"
   },
@@ -94,6 +101,7 @@
   "bat-xat-lao-cai-hop-tac-dao-tao-nghe-mo-2017": {
     "album_title": "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
     "source_url": "https://caodangtkv.edu.vn/wp-content/uploads/2024/07/img_9978-scaled.jpg",
+    "original_source_url": "https://caodangtkv.edu.vn/userfiles/Untitled.png",
     "provider": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
     "source_article_url": "https://caodangtkv.edu.vn/tiep-va-lam-viec-voi-doan-cong-tac-ubnd-huyen-bat-xat-lao-cai/"
   },

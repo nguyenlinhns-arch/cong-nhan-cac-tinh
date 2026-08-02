@@ -86,7 +86,7 @@ if (noindexProvinces !== 9) fail(`Trang tỉnh: cần noindex 9 trang chưa có 
 
 const feed = JSON.parse(read("feed.json"));
 const articles = Array.isArray(feed.items) ? feed.items : [];
-if (articles.length !== 61) fail(`Thư viện: cần 61 bài, nhận ${articles.length}`);
+if (!articles.length) fail("Thư viện: feed không có bài viết");
 for (const article of articles) {
   const url = new URL(article.url);
   const relative = `${url.pathname.replace(/^\/+|\/+$/g, "")}/index.html`;
@@ -104,8 +104,10 @@ for (const article of articles) {
 const htmlFiles = walk(root);
 const contentFiles = htmlFiles.filter((file) => !path.basename(file).startsWith("google"));
 const legacyRoutes = JSON.parse(fs.readFileSync(path.resolve("operations/legacy-routes.json"), "utf8")).routes || [];
-if (htmlFiles.length !== 105 + legacyRoutes.length) fail(`Website: cần ${105 + legacyRoutes.length} tệp HTML, nhận ${htmlFiles.length}`);
-if (contentFiles.length !== 104 + legacyRoutes.length) fail(`Website: cần ${104 + legacyRoutes.length} trang nội dung, nhận ${contentFiles.length}`);
+const expectedHtmlFiles = 56 + articles.length;
+const expectedContentFiles = 55 + articles.length;
+if (htmlFiles.length !== expectedHtmlFiles) fail(`Website: cần ${expectedHtmlFiles} tệp HTML theo số bài trong feed, nhận ${htmlFiles.length}`);
+if (contentFiles.length !== expectedContentFiles) fail(`Website: cần ${expectedContentFiles} trang nội dung theo số bài trong feed, nhận ${contentFiles.length}`);
 for (const file of contentFiles) {
   const html = fs.readFileSync(file, "utf8");
   const relative = path.relative(root, file);

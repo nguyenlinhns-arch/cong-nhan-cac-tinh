@@ -12,6 +12,7 @@ export const historicalSourceImages = Object.freeze({
   "bat-xat-lao-cai-hop-tac-dao-tao-nghe-mo-2017": Object.freeze({
     sourceUrl: "https://caodangtkv.edu.vn/tiep-va-lam-viec-voi-doan-cong-tac-ubnd-huyen-bat-xat-lao-cai/",
     image: "https://caodangtkv.edu.vn/wp-content/uploads/2024/07/img_9978-scaled.jpg",
+    originalImage: "https://caodangtkv.edu.vn/userfiles/Untitled.png",
     alt: "Đoàn huyện Bát Xát làm việc tại Trường Cao đẳng TKV năm 2017",
     credit: "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
   }),
@@ -43,6 +44,7 @@ export const historicalSourceImages = Object.freeze({
     imagePublisher: "Trường Cao đẳng Than – Khoáng sản Việt Nam",
     image: "https://thaylinhtuyenthomo.vn/assets/articles/mu-cang-chai-quy-che-2024.webp",
     originalImage: "https://caodangtkv.edu.vn/data/images/news/Ky%20quy%20che.jpg",
+    allowArchivedSourceImage: true,
     localFile: "assets/articles/mu-cang-chai-quy-che-2024.webp",
     alt: "Hội nghị ký quy chế phối hợp đào tạo nghề cho lao động Mù Cang Chải giai đoạn 2024–2028",
     caption: "Hội nghị ký quy chế phối hợp đào tạo nghề và giải quyết việc làm cho lao động Mù Cang Chải giai đoạn 2024–2028.",
@@ -57,6 +59,7 @@ export const historicalSourceImages = Object.freeze({
   "muong-khuong-bat-xat-tuyen-lao-dong-tkv-2024": Object.freeze({
     sourceUrl: "https://caodangtkv.edu.vn/truong-cao-dang-than-khoang-san-viet-nam-lam-viec-tai-huyen-muong-khuong-va-huyen-bat-xat/",
     image: "https://caodangtkv.edu.vn/wp-content/uploads/2024/10/dsc09172-7283-3014-scaled.jpg",
+    originalImage: "https://cdn.baolaocai.vn/images/143503276ab88d52cd8f7a57440e0549e6c2878db14e4bf8f9c1e3f4e9b6a8161570f56052bcca880b76ca3c65d7803d/dsc09172-7283-3014.jpg",
     alt: "Buổi làm việc của Trường Cao đẳng TKV tại Mường Khương và Bát Xát năm 2024",
     credit: "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
   }),

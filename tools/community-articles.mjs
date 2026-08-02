@@ -1377,25 +1377,32 @@ const makeCommunitySupportStory = (item) => {
     imageAlt: item.imageAlt,
     imageSource: item.imageSource,
     facts: item.facts,
-    related: ["san-xuat-sach-hon-nganh-than", "an-toan-mua-mua-bao-2026"],
-    intro: narrative.intro,
-    sections: narrative.sections.map((section, index) => ({...section, title: headings[index] || section.title})),
-    factsTitle: labels.facts,
-    actionTitle: labels.action,
-    conclusionTitle: labels.conclusion,
-    checklist: supportActionCards[item.slug] || [
+    related: item.related || ["san-xuat-sach-hon-nganh-than", "an-toan-mua-mua-bao-2026"],
+    intro: item.intro || narrative.intro,
+    sections: item.sections || narrative.sections.map((section, index) => ({...section, title: headings[index] || section.title})),
+    factsTitle: item.factsTitle || labels.facts,
+    actionTitle: item.actionTitle || labels.action,
+    conclusionTitle: item.conclusionTitle || labels.conclusion,
+    checklist: item.checklist || supportActionCards[item.slug] || [
       ["Đúng địa bàn", "Nguồn lực được xác định theo phạm vi và nhu cầu đã công bố."],
       ["Đúng đối tượng", `Chương trình hướng tới ${supportBeneficiary(item)} qua đầu mối chính thức.`],
       ["Đúng thời điểm", "Sự hỗ trợ đến sớm giúp cộng đồng rút ngắn thời gian phục hồi."],
       ["Đến cùng kết quả", "Giá trị được nhìn bằng thay đổi thực tế trong đời sống người thụ hưởng."],
     ],
     takeaway: item.takeaway,
-    faq: [
+    faq: item.faq || [
       ["Khoản hỗ trợ có được chia đều cho từng người không?", `Không. Thông tin về ${supportProgram(item)} nêu quy mô và đối tượng chung; mức đến từng trường hợp phụ thuộc phương án rà soát, phân bổ.`],
       ["Người dân liên hệ ở đâu để hỏi chương trình?", `${supportBeneficiary(item)} cần làm theo hướng dẫn của địa phương hoặc tổ chức được giao tiếp nhận, không gửi giấy tờ cho tài khoản mạng xã hội chưa xác minh.`],
       ["Thước đo quan trọng nhất của chương trình là gì?", `Ngoài số tiền cam kết, cần nhìn tiến độ triển khai và mức độ khó khăn thực tế đã được giải quyết cho ${supportBeneficiary(item)}.`],
     ],
     sources: item.sources,
+    ...(item.published ? {published: item.published} : {}),
+    ...(item.updated ? {updated: item.updated} : {}),
+    ...(item.urlPath ? {urlPath: item.urlPath} : {}),
+    ...(item.schemaType ? {schemaType: item.schemaType} : {}),
+    ...(item.hideSourceUrlsInSchema ? {hideSourceUrlsInSchema: true} : {}),
+    ...(item.suppressImageLabel ? {suppressImageLabel: true} : {}),
+    ...(item.seoLine ? {seoLine: item.seoLine} : {}),
   };
 };
 
@@ -1790,6 +1797,96 @@ const expandedStories = [
     imageSource: "Thư viện ảnh Vinacomin · Tuyên dương điển hình",
     sources: [{publisher: "TKV", title: "Đoàn Thanh niên TKV triển khai các hoạt động ‘Thắp sáng ước mơ’ cho thiếu niên nhi đồng", date: "28/07/2026", url: "https://vinacomin.vn/news/slug/doan-thanh-nien-tkv-trien-khai-cac-hoat-dong-thap-sang-uoc-mo-cho-thieu-nien-nhi-dong"}],
   }),
+  makeCommunitySupportStory({
+    slug: "than-thong-nhat-do-dau-cuu-thanh-nien-xung-phong",
+    title: "Than Thống Nhất đỡ đầu cựu thanh niên xung phong tại Cẩm Phả",
+    description: "Than Thống Nhất – TKV nhận đỡ đầu bà Nguyễn Thị Lan, cựu thanh niên xung phong khó khăn tại Cẩm Phả, với hỗ trợ quý III/2026 và quà trị giá 4 triệu đồng.",
+    lead: "Một trường hợp được nhận đỡ đầu cụ thể cho thấy hoạt động an sinh của doanh nghiệp ngành Than có thể đi từ chủ trương tri ân tới sự chăm lo thường xuyên, có địa chỉ và có đầu mối phối hợp.",
+    keyword: "hỗ trợ cựu thanh niên xung phong Cẩm Phả 2026",
+    beneficiaryKeyword: "cựu thanh niên xung phong có hoàn cảnh khó khăn tại Cẩm Phả",
+    programLabel: "Than Thống Nhất đỡ đầu cựu thanh niên xung phong",
+    beneficiaryLabel: "bà Nguyễn Thị Lan tại phường Cẩm Phả",
+    eventSummary: "Ngày 26/07/2026, Đảng ủy Công ty Than Thống Nhất – TKV tiếp nhận trách nhiệm đỡ đầu bà Nguyễn Thị Lan tại chương trình do Bộ Chỉ huy Quân sự tỉnh Quảng Ninh phối hợp tổ chức.",
+    context: "Hoạt động được triển khai theo Công văn số 646-CV/ĐU ngày 24/07/2026 của Đảng ủy Than Quảng Ninh về việc nhận đỡ đầu cựu thanh niên xung phong có hoàn cảnh khó khăn.",
+    allocation: "Công ty trao khoản hỗ trợ thường xuyên của quý III/2026 và một túi quà, tổng trị giá 4 triệu đồng; bài gốc không tách riêng giá trị của từng phần.",
+    delivery: "Trách nhiệm đỡ đầu được bàn giao tại Bộ Chỉ huy Quân sự tỉnh Quảng Ninh, với sự phối hợp giữa hệ thống chính trị ngành Than và cơ quan quân sự địa phương.",
+    impact: "Việc xác định một người thụ hưởng và một đơn vị nhận trách nhiệm tạo cơ sở để sự chăm lo tiếp tục sau lần thăm hỏi đầu tiên.",
+    safety: "Đây là trường hợp được cơ quan có thẩm quyền rà soát và bàn giao, không phải thông báo tiếp nhận hồ sơ công khai hoặc lời mời đăng ký nhận hỗ trợ trên mạng.",
+    measurement: "Hiệu quả của hoạt động nên được nhìn qua sự duy trì trách nhiệm đỡ đầu, nhu cầu thiết thực được giải quyết và sự phối hợp lâu dài với địa phương.",
+    published: "2026-08-02T09:20:00+07:00",
+    updated: "2026-08-02T09:20:00+07:00",
+    urlPath: "tin-nganh-than/2026/08/02/than-thong-nhat-do-dau-cuu-thanh-nien-xung-phong",
+    schemaType: "NewsArticle",
+    hideSourceUrlsInSchema: true,
+    suppressImageLabel: true,
+    related: ["san-xuat-sach-hon-nganh-than", "an-toan-mua-mua-bao-2026", "nghe-tho-lo-co-on-dinh-khong"],
+    factsTitle: "Bốn dữ kiện chính của hoạt động đỡ đầu",
+    actionTitle: "Trách nhiệm được xác định bằng những việc cụ thể",
+    conclusionTitle: "Đỡ đầu có ý nghĩa khi sự đồng hành được duy trì",
+    seoLine: "Bài viết giúp người đọc hiểu hoạt động an sinh xã hội của TKV tại Cẩm Phả và cách doanh nghiệp vùng mỏ thực hiện trách nhiệm cộng đồng.",
+    checklist: [
+      ["Đúng người thụ hưởng", "Bà Nguyễn Thị Lan là trường hợp đã được cơ quan có thẩm quyền rà soát và bàn giao."],
+      ["Rõ đơn vị đồng hành", "Công ty Than Thống Nhất – TKV tiếp nhận trách nhiệm đỡ đầu."],
+      ["Không suy diễn mức hỗ trợ", "Bốn triệu đồng là tổng giá trị hỗ trợ quý III/2026 và một túi quà; nguồn không công bố mức theo tháng."],
+      ["Theo dõi sự đồng hành", "Giá trị lâu dài nằm ở việc duy trì liên hệ và hỗ trợ sát nhu cầu thực tế."],
+    ],
+    takeaway: "Khoản 4 triệu đồng được trao trong quý III/2026 giải quyết một phần nhu cầu trước mắt. Trách nhiệm đỡ đầu được giao rõ cho doanh nghiệp mở ra khả năng đồng hành lâu dài với một cựu thanh niên xung phong có hoàn cảnh khó khăn tại Cẩm Phả.",
+    facts: [["1 trường hợp", "Bà Nguyễn Thị Lan được Công ty Than Thống Nhất – TKV nhận đỡ đầu."], ["4 triệu đồng", "Tổng giá trị hỗ trợ quý III/2026 và một túi quà."], ["1976–1979", "Thời gian bà Lan tham gia lực lượng thanh niên xung phong."], ["26/07/2026", "Ngày tổ chức tiếp nhận trách nhiệm đỡ đầu tại Quảng Ninh."]],
+    bullets: ["Một người thụ hưởng được xác định rõ.", "Một doanh nghiệp chịu trách nhiệm đỡ đầu.", "Có sự phối hợp với cơ quan quân sự địa phương.", "Nguồn công bố không nêu mức hỗ trợ hằng tháng."],
+    image: "https://www.thanthongnhat.vn/uploads/news/2026_07/1785233493309_8368402457751477522_8368402457751477522_8eaf52b2957a4ca191b34eeec66355f2.jpg",
+    imageAlt: "Than Thống Nhất đỡ đầu cựu thanh niên xung phong Nguyễn Thị Lan tại Cẩm Phả",
+    imageSource: "Công ty Than Thống Nhất – TKV",
+    intro: [
+      "Ngày 26/07/2026, tại Bộ Chỉ huy Quân sự tỉnh Quảng Ninh, Đảng ủy Công ty Than Thống Nhất – TKV đã tiếp nhận trách nhiệm đỡ đầu bà Nguyễn Thị Lan, một cựu thanh niên xung phong có hoàn cảnh khó khăn đang sống tại phường Cẩm Phả. Hoạt động được Công ty công bố ngày 28/07/2026 và là một phần trong chương trình phối hợp chăm lo người có công trên địa bàn.",
+      "Việc Than Thống Nhất đỡ đầu cựu thanh niên xung phong mang ý nghĩa lớn hơn một phần quà tri ân. Một cá nhân được xác định rõ, một đơn vị nhận trách nhiệm rõ và một đầu mối địa phương cùng phối hợp là ba yếu tố giúp sự hỗ trợ có khả năng đi tiếp sau buổi bàn giao. Với người lao động ngành Than, câu chuyện cũng cho thấy tinh thần “Kỷ luật và Đồng tâm” được nối từ nơi sản xuất ra cộng đồng vùng mỏ.",
+    ],
+    sections: [
+      {
+        title: "Than Thống Nhất đỡ đầu cựu thanh niên xung phong theo địa chỉ cụ thể",
+        paragraphs: [
+          "Theo thông tin do Công ty Than Thống Nhất – TKV công bố, hoạt động được triển khai theo Công văn số 646-CV/ĐU ngày 24/07/2026 của Đảng ủy Than Quảng Ninh. Đảng ủy Tập đoàn, Đảng ủy Than Quảng Ninh và Bộ Chỉ huy Quân sự tỉnh Quảng Ninh cùng phối hợp để giao doanh nghiệp nhận đỡ đầu trường hợp đã được rà soát.",
+          "Người được hỗ trợ là bà Nguyễn Thị Lan, sinh năm 1959, cư trú tại tổ 1, khu Dốc Thông, phường Cẩm Phả, tỉnh Quảng Ninh. Bà tham gia lực lượng thanh niên xung phong từ tháng 4/1976 đến năm 1979, thuộc C11, F719. Bài gốc cho biết bà không có lương hưu hoặc khoản lương thường xuyên, sức khỏe yếu và đời sống còn nhiều khó khăn.",
+          "Những thông tin cụ thể này rất quan trọng. Chúng cho phép người đọc hiểu đây là một trường hợp đỡ đầu đã được xác minh, không phải một cuộc vận động chung chung và cũng không phải thông báo mở đơn đăng ký hỗ trợ. Cách làm có địa chỉ giúp trách nhiệm của đơn vị đồng hành trở nên rõ ràng hơn trong quá trình thực hiện.",
+        ],
+      },
+      {
+        title: "Bốn triệu đồng gồm hỗ trợ quý III/2026 và một phần quà",
+        paragraphs: [
+          "Tại buổi tiếp nhận, Công ty Than Thống Nhất – TKV trao khoản hỗ trợ thường xuyên của quý III/2026 cùng một túi quà, tổng trị giá 4 triệu đồng. Nguồn công bố không nêu phần tiền được chia cụ thể như thế nào giữa hỗ trợ định kỳ và quà tặng, vì vậy không thể suy ra mức hỗ trợ theo tháng hoặc coi toàn bộ số tiền là một khoản trợ cấp cố định.",
+          "Đọc đúng cấu trúc của khoản 4 triệu đồng giúp tránh hai cách hiểu sai thường gặp: phóng đại một phần quà thành chính sách đại trà, hoặc xem giá trị vật chất là toàn bộ ý nghĩa của việc đỡ đầu. Trong trường hợp bà Lan, doanh nghiệp đã nhận trách nhiệm đồng hành với một người có hoàn cảnh cụ thể, còn khoản trao trong quý III là dấu mốc đầu tiên được công bố.",
+          "Với người cao tuổi, sức khỏe yếu và không có nguồn lương ổn định, một khoản hỗ trợ đúng thời điểm có thể góp phần giải quyết chi phí sinh hoạt trước mắt. Tuy nhiên, nhu cầu thực tế có thể thay đổi theo sức khỏe và đời sống; vì vậy, đầu mối phối hợp tại địa phương vẫn giữ vai trò quan trọng trong việc nhận biết điều cần ưu tiên ở từng thời điểm.",
+        ],
+      },
+      {
+        title: "Giá trị của sự chăm lo thường xuyên với người có công",
+        paragraphs: [
+          "Một chương trình tri ân có chiều sâu cần phân biệt rõ giữa thăm hỏi theo dịp và đỡ đầu lâu dài. Thăm hỏi tạo sự động viên trong một thời điểm, còn đỡ đầu đặt ra yêu cầu duy trì liên hệ, theo dõi hoàn cảnh và phối hợp khi người được hỗ trợ phát sinh nhu cầu thiết thực. Việc giao trách nhiệm cho một doanh nghiệp cụ thể tạo nền tảng để quá trình ấy không bị đứt đoạn.",
+          "Bà Lan đã có những năm tuổi trẻ phục vụ trong lực lượng thanh niên xung phong. Khi sức khỏe suy giảm và không có lương hưu, sự quan tâm của cộng đồng mang cả ý nghĩa vật chất lẫn tinh thần. Người được đỡ đầu biết có một tập thể đang nhớ đến đóng góp của mình; doanh nghiệp cũng có cơ hội biến truyền thống tri ân thành những hành động đo được bằng sự hiện diện và tính đều đặn.",
+          "Hiệu quả sau buổi bàn giao cần được nhìn cả ở số tiền đã trao và quá trình đồng hành. Những dấu hiệu quan trọng là trách nhiệm đỡ đầu có được duy trì, việc thăm hỏi có sát hoàn cảnh và những nhu cầu cần thiết có được chuyển tới đúng đầu mối xử lý hay không. Đây cũng là cách để hoạt động an sinh xã hội TKV tạo niềm tin bền vững trong cộng đồng.",
+        ],
+      },
+      {
+        title: "Từ truyền thống tri ân đến trách nhiệm của doanh nghiệp vùng mỏ",
+        paragraphs: [
+          "Cẩm Phả là địa bàn gắn chặt với lịch sử phát triển của ngành Than. Doanh nghiệp mỏ hoạt động tại đây vừa tạo việc làm, tổ chức sản xuất, vừa là một phần của đời sống xã hội địa phương. Khi Công ty Than Thống Nhất tham gia đỡ đầu người có công, mối quan hệ ấy được thể hiện bằng một trách nhiệm gần gũi với khu dân cư nơi doanh nghiệp đứng chân.",
+          "Đối với người đang tìm hiểu việc làm ngành Than, một sự kiện an sinh không phải là cam kết về tuyển dụng, lương hoặc phúc lợi cá nhân. Dù vậy, nó cung cấp thêm một góc nhìn về văn hóa tổ chức: tập thể người thợ và doanh nghiệp quan tâm tới truyền thống, đồng đội và cộng đồng xung quanh. Đó là phần giá trị cần được nhìn cùng với điều kiện nghề, kỷ luật an toàn và yêu cầu tay nghề khi cân nhắc gắn bó lâu dài.",
+          "Trường hợp bà Nguyễn Thị Lan cũng nhắc người đọc thận trọng với các lời mời nhận hỗ trợ trên mạng. Bài nguồn chỉ nói về một trường hợp đã được cơ quan có thẩm quyền rà soát và bàn giao; không công bố đường dây tiếp nhận hồ sơ rộng rãi, không yêu cầu người dân nộp phí và không đưa ra quyền lợi cho người đăng ký. Mọi thông tin liên quan cần được xác minh qua chính quyền hoặc tổ chức được giao nhiệm vụ.",
+        ],
+      },
+    ],
+    faq: [
+      ["Ai được Than Thống Nhất – TKV nhận đỡ đầu?", "Đó là bà Nguyễn Thị Lan, sinh năm 1959, cựu thanh niên xung phong giai đoạn 1976–1979, hiện sống tại phường Cẩm Phả và có hoàn cảnh khó khăn."],
+      ["Khoản 4 triệu đồng gồm những gì?", "Theo bài gốc, tổng giá trị gồm hỗ trợ thường xuyên của quý III/2026 và một túi quà. Nguồn không tách riêng giá trị từng phần và không nêu mức hỗ trợ hằng tháng."],
+      ["Người dân có thể đăng ký chương trình đỡ đầu này không?", "Không có thông tin về một đợt nhận hồ sơ công khai. Đây là trường hợp đã được cơ quan có thẩm quyền rà soát, phối hợp và bàn giao cho doanh nghiệp nhận đỡ đầu."],
+      ["Hoạt động này có phải thông báo tuyển dụng ngành Than không?", "Không. Đây là hoạt động tri ân và an sinh xã hội. Người tìm việc cần xem thông báo tuyển sinh nghề mỏ hoặc tuyển dụng đang áp dụng tại các kênh riêng."],
+    ],
+    sources: [{publisher: "Công ty Than Thống Nhất – TKV", title: "Tiếp nhận đỡ đầu cựu thanh niên xung phong có hoàn cảnh khó khăn", date: "28/07/2026", url: "https://www.thanthongnhat.vn/dang-doan-the/tiep-nhan-do-dau-cuu-thanh-nien-xung-phong-co-hoan-canh-kho-khan-15693.html"}],
+  }),
 ];
 
-export const communityArticles = [...stories, ...expandedStories, ...historicalLocalityStories].map(makeArticle);
+const dailyArticleSlugs = new Set(["than-thong-nhat-do-dau-cuu-thanh-nien-xung-phong"]);
+const stableStories = [...stories, ...expandedStories, ...historicalLocalityStories]
+  .filter((article) => !dailyArticleSlugs.has(article.slug));
+const dailyStories = expandedStories.filter((article) => dailyArticleSlugs.has(article.slug));
+
+export const communityArticles = [...stableStories, ...dailyStories].map(makeArticle);

@@ -6,3 +6,19 @@
 @media(max-width:720px){.worker-header-search{width:42px;height:42px;margin-left:auto}.worker-find{gap:10px}.worker-find__search,.worker-find__province{min-height:0}.worker-find__search{padding:16px}.worker-find__search-icon{width:43px;height:43px}.worker-find__province{padding:15px}.worker-find__province-row{grid-template-columns:1fr}.worker-find__province-go{width:100%}.worker-self-check{padding:48px 0}.worker-check{padding:13px;border-radius:18px}.worker-check fieldset{padding:13px}.worker-check__choices{grid-template-columns:1fr 1fr}.worker-check__footer{display:grid}.worker-check__submit{width:100%}.worker-check__result a{width:100%;justify-content:center}.worker-check__result .worker-check__back{margin-left:0}.tl-consent-banner{gap:7px;padding:10px 12px}.tl-consent-banner__copy{gap:1px}.tl-consent-banner__copy strong{font-size:14px;line-height:1.25}.tl-consent-banner__copy span{font-size:11.5px;line-height:1.35}.tl-consent-banner__actions{gap:6px}.tl-consent-banner button{min-height:38px;padding:6px 8px;font-size:11.5px}}
 @media(min-width:721px){.worker-header-search{order:2}.main-nav{order:3}.header-cta{order:4}}
 @media print{.worker-header-search,.worker-find__search,.worker-find__province-go,.worker-check__submit{display:none!important}.worker-self-check{background:#fff}}
+.worker-latest{padding:64px 0;background:#edf6f5}
+.worker-latest__card{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);overflow:hidden;border:1px solid #c8dedb;border-radius:24px;background:#fff;box-shadow:0 14px 36px rgba(6,60,70,.09);color:#063c46}
+.worker-latest__card>img{width:100%;height:100%;min-height:300px;object-fit:cover}
+.worker-latest__body{display:flex;justify-content:center;padding:34px;flex-direction:column}
+.worker-latest__body small{color:#f18724;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.worker-latest__body strong{margin-top:8px;font-size:clamp(24px,3vw,32px);line-height:1.25}
+.worker-latest__body>span{margin-top:12px;color:#50666b;line-height:1.65}
+.worker-latest__body b{margin-top:18px;color:#075b66}
+
+@media(max-width:760px){
+  .worker-latest{padding:46px 0}
+  .worker-latest__card{grid-template-columns:1fr;border-radius:18px}
+  .worker-latest__card>img{height:auto;min-height:0;aspect-ratio:16/9}
+  .worker-latest__body{padding:24px 20px}
+  .worker-latest__body strong{font-size:23px}
+}

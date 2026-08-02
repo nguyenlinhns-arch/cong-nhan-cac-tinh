@@ -86,20 +86,26 @@ async function checkImage(use) {
   if (use.referrerPolicy && use.referrerPolicy !== "no-referrer") {
     headers.referer = "https://thaylinhtuyenthomo.vn/";
   }
-  for (let attempt = 1; attempt <= 2; attempt += 1) {
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
     try {
-      const response = await fetch(use.url, {
+      const requestUrl = new URL(use.url);
+      if (attempt > 1) requestUrl.searchParams.set("image_audit_retry", String(attempt));
+      const response = await fetch(requestUrl, {
         redirect: "follow",
         headers,
         signal: AbortSignal.timeout(25_000),
       });
       const contentType = response.headers.get("content-type") || "";
       await response.body?.cancel();
-      if (response.status === 200 || attempt === 2 || response.status < 500) {
+      if (response.status === 429 && attempt < 3) {
+        await new Promise((resolve) => setTimeout(resolve, attempt * 3_000));
+        continue;
+      }
+      if (response.status === 200 || attempt === 3 || response.status < 500) {
         return {url: use.url, status: response.status, contentType};
       }
     } catch (error) {
-      if (attempt === 2) return {url: use.url, status: "ERROR", contentType: "", error: error.message};
+      if (attempt === 3) return {url: use.url, status: "ERROR", contentType: "", error: error.message};
     }
     await new Promise((resolve) => setTimeout(resolve, 1_000));
   }
@@ -115,8 +121,10 @@ for (const url of uniqueUrls) {
 }
 
 async function auditOrigin(urls) {
-  for (const url of urls) {
-    results.push(await checkImage(usesByUrl.get(url)[0]));
+  const concurrency = 4;
+  for (let index = 0; index < urls.length; index += concurrency) {
+    const batch = urls.slice(index, index + concurrency);
+    results.push(...await Promise.all(batch.map((url) => checkImage(usesByUrl.get(url)[0]))));
   }
 }
 
