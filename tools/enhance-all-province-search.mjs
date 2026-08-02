@@ -64,8 +64,10 @@ function provinceItem(province) {
 
 let added = 0;
 let refreshed = 0;
+let expectedInternal = 0;
 for (const province of provinces) {
   const item = provinceItem(province);
+  if (item.searchScope === "internal") expectedInternal += 1;
   const index = searchIndex.items.findIndex((candidate) => candidate.url === item.url);
   if (index < 0) {
     searchIndex.items.push(item);
@@ -90,7 +92,9 @@ const internalItems = provinceItems.filter((item) => item.searchScope === "inter
 if (provinceItems.length !== provinces.length) {
   throw new Error(`All-province search produced ${provinceItems.length}/${provinces.length} province items`);
 }
-if (internalItems.length !== 9) throw new Error(`All-province search expected 9 internal-only province pages, got ${internalItems.length}`);
+if (internalItems.length !== expectedInternal) {
+  throw new Error(`All-province search expected ${expectedInternal} internal-only province pages, got ${internalItems.length}`);
+}
 
 fs.writeFileSync(indexPath, `${JSON.stringify(searchIndex, null, 2)}\n`);
 console.log(JSON.stringify({
