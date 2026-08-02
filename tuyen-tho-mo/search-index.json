@@ -1,16 +1,20 @@
 {
-  "version": 2,
+  "version": 3,
   "items": [
     {
       "url": "/#dang-ky",
-      "title": "Đăng ký học nghề mỏ ngay",
-      "description": "Đăng ký ban đầu chưa cần nộp hồ sơ; gửi năm sinh, chiều cao, cân nặng, sức khỏe và tỉnh đang sinh sống để kiểm tra trước.",
+      "title": "Đăng ký hoặc liên hệ học nghề mỏ ngay",
+      "description": "Đăng ký ban đầu chưa cần nộp hồ sơ; gửi năm sinh, chiều cao, cân nặng, sức khỏe và tỉnh đang sinh sống, hoặc liên hệ Zalo 096 304 8585.",
       "keywords": [
         "đăng ký",
         "ứng tuyển",
         "nộp hồ sơ",
         "gửi thông tin",
-        "nhắn Zalo"
+        "nhắn Zalo",
+        "số điện thoại",
+        "SĐT",
+        "liên hệ",
+        "096 304 8585"
       ],
       "category": "recruitment",
       "categoryLabel": "Thông tin đang áp dụng",
@@ -51,16 +55,40 @@
       "priority": 200
     },
     {
+      "url": "/#noi-lam-viec",
+      "title": "Học xong làm việc ở đâu?",
+      "description": "Người tốt nghiệp đạt yêu cầu được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng và bố trí công việc tại Quảng Ninh.",
+      "keywords": [
+        "làm ở đâu",
+        "nơi làm việc",
+        "công ty nào",
+        "doanh nghiệp TKV",
+        "làm việc tại Quảng Ninh",
+        "sau đào tạo"
+      ],
+      "category": "work",
+      "categoryLabel": "Công việc & lương",
+      "type": "Trả lời nhanh",
+      "priority": 200
+    },
+    {
       "url": "/#ho-so",
       "title": "Hồ sơ nhập học cần những gì?",
       "description": "Khi nhập học mang căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; chưa có bằng vẫn đăng ký được.",
       "keywords": [
         "hồ sơ",
+        "hồ sơ gồm gì",
         "giấy tờ",
         "căn cước",
         "CCCD",
         "giấy khai sinh",
-        "bằng cấp"
+        "bằng cấp",
+        "bằng tiểu học",
+        "bằng cấp 2",
+        "THCS",
+        "THPT",
+        "không có bằng",
+        "mất bằng"
       ],
       "category": "entry",
       "categoryLabel": "Điều kiện & hồ sơ",
@@ -74,8 +102,11 @@
       "keywords": [
         "quy trình",
         "đăng ký thế nào",
+        "đăng ký như nào",
         "các bước",
-        "lịch nhập học"
+        "lịch nhập học",
+        "khi nào nhập học",
+        "bao giờ nhập học"
       ],
       "category": "entry",
       "categoryLabel": "Điều kiện & hồ sơ",
@@ -85,11 +116,16 @@
     {
       "url": "/#thoi-gian-hoc",
       "title": "Thời gian học nghề mỏ là bao lâu?",
-      "description": "Nghề khai thác mỏ và xây dựng mỏ được đào tạo khoảng 2–3 tháng; người chưa có kinh nghiệm được học từ nền tảng.",
+      "description": "Khai thác mỏ và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng. Người chưa có kinh nghiệm được đào tạo từ nền tảng.",
       "keywords": [
         "thời gian học",
         "học bao lâu",
+        "học mấy tháng",
         "2 3 tháng",
+        "10 tháng",
+        "khai thác mỏ",
+        "xây dựng mỏ",
+        "cơ điện mỏ",
         "đào tạo nghề mỏ"
       ],
       "category": "training",
@@ -120,8 +156,12 @@
       "keywords": [
         "hỗ trợ",
         "miễn học phí",
+        "học có mất tiền không",
+        "đóng tiền",
         "ăn ở",
+        "3 bữa",
         "ký túc xá",
+        "KTX",
         "7,5 triệu",
         "7.5 triệu"
       ],

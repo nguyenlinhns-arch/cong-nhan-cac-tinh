@@ -44,7 +44,7 @@ for (const [file, url] of hubs) {
     '/content-network.css?v=1',
     '/analytics.js?v=5',
     '/mobile-ux.css?v=5',
-    '/mobile-ux.js?v=4',
+    '/mobile-ux.js?v=6',
     '/feed.xml"',
     '/feed.json"',
     'data-contact="application"',
@@ -113,7 +113,7 @@ for (const file of contentFiles) {
   const relative = path.relative(root, file);
   if (!html.includes('/analytics.js?v=5')) fail(`${relative}: chưa nạp analytics v5`);
   if (!html.includes('/mobile-ux.css?v=5')) fail(`${relative}: chưa nạp mobile UX CSS v5`);
-  const mobileUxVersion = relative === "index.html" ? "/mobile-ux.js?v=5" : "/mobile-ux.js?v=4";
+  const mobileUxVersion = "/mobile-ux.js?v=6";
   if (!html.includes(mobileUxVersion)) fail(`${relative}: chưa nạp ${mobileUxVersion}`);
 }
 

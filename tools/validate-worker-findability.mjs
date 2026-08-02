@@ -19,7 +19,7 @@ const provinces = Array.isArray(provinceData.provinces) ? provinceData.provinces
 
 if (count(home, 'href="/worker-info-finder.css?v=2"') !== 1) fail("Trang chủ: stylesheet tìm thông tin phải được nạp đúng một lần");
 if (count(home, 'src="/worker-info-finder.js?v=2"') !== 1) fail("Trang chủ: script tìm thông tin phải được nạp đúng một lần");
-if (count(home, 'src="/mobile-ux.js?v=5"') !== 1) fail("Trang chủ: mobile UX mới phải được nạp đúng một lần");
+if (count(home, 'src="/mobile-ux.js?v=6"') !== 1) fail("Trang chủ: mobile UX mới phải được nạp đúng một lần");
 if (count(home, "data-open-site-search") !== 2) fail("Trang chủ: cần hai điểm mở tìm kiếm rõ ràng");
 if (count(home, "data-worker-search") !== 2) fail("Trang chủ: hai điểm tìm kiếm phải có đo lường thống nhất");
 if (!home.includes('class="worker-header-search"') || !home.includes('aria-label="Tìm thông tin trên website"')) fail("Header: thiếu nút tìm kiếm có nhãn truy cập");
@@ -35,8 +35,11 @@ const selfCheckIndex = home.indexOf('class="worker-self-check"');
 const processIndex = home.indexOf('class="section process-section"');
 if (!(quickNavigationIndex >= 0 && quickNavigationIndex < finderIndex)) fail("Luồng đọc: 6 câu hỏi phổ biến phải đứng trước công cụ tìm kiếm và chọn tỉnh");
 if (!(summaryIndex >= 0 && summaryIndex < selfCheckIndex && selfCheckIndex < processIndex)) fail("Luồng đọc: bản tóm tắt phải đứng trước công cụ tự kiểm tra, và công cụ phải đứng trước quy trình");
-for (const anchor of ["thoi-gian-hoc", "ho-tro-hoc-nghe"]) {
+for (const anchor of ["thoi-gian-hoc", "ho-tro-hoc-nghe", "noi-lam-viec"]) {
   if (count(home, `id="${anchor}"`) !== 1) fail(`Trả lời nhanh: thiếu neo #${anchor}`);
+}
+if (!home.includes("Khai thác mỏ và xây dựng mỏ: 2–3 tháng") || !home.includes("Cơ điện mỏ: 10 tháng")) {
+  fail("Thời gian học: chưa tách rõ 2–3 tháng và 10 tháng theo từng nghề");
 }
 
 const directAnswerExpectations = [
@@ -46,10 +49,11 @@ const directAnswerExpectations = [
   ["/#ho-tro-hoc-nghe", "Trong thời gian học được hỗ trợ gì"],
   ["/#ho-so", "Hồ sơ nhập học"],
   ["/#dia-diem", "Địa chỉ nhập học"],
+  ["/#noi-lam-viec", "Học xong làm việc ở đâu"],
   ["/#quy-trinh", "Quy trình đăng ký"],
-  ["/#dang-ky", "Đăng ký học nghề mỏ ngay"],
+  ["/#dang-ky", "Đăng ký hoặc liên hệ học nghề mỏ ngay"],
 ];
-if (searchIndex.version !== 2) fail(`Tìm kiếm: cần chỉ mục trả lời nhanh phiên bản 2, nhận ${searchIndex.version}`);
+if (searchIndex.version !== 3) fail(`Tìm kiếm: cần chỉ mục trả lời tự nhiên phiên bản 3, nhận ${searchIndex.version}`);
 for (const [url, titleFragment] of directAnswerExpectations) {
   const item = searchItems.find((candidate) => candidate.url === url);
   if (!item) fail(`Tìm kiếm: thiếu câu trả lời trực tiếp ${url}`);
@@ -118,6 +122,15 @@ for (const marker of ["focus-visible", "@media(max-width:900px)", "@media(max-wi
 }
 if (css.includes("scroll-margin-top:82px")) fail("Tự kiểm tra: không được cộng hai lần khoảng tránh header");
 if (!mobileUx.includes('header.querySelector(".tl-site-search-button, [data-open-site-search]")')) fail("Header: mobile UX chưa chặn nút tìm kiếm trùng");
+for (const marker of [
+  "SEARCH_STOP_WORDS",
+  "SEARCH_INTENTS",
+  "meaningfulQueryTerms",
+  "queryIntentScores",
+  "Gõ cả câu, ví dụ: lương bao nhiêu?",
+  "4 lối đi nhanh gần nhất",
+  'cache: "no-cache"',
+]) if (!mobileUx.includes(marker)) fail(`Tìm kiếm tự nhiên: thiếu ${marker}`);
 if (Buffer.byteLength(css) > 9_000) fail(`worker-info-finder.css vượt ngân sách 9 KB: ${Buffer.byteLength(css)}`);
 if (Buffer.byteLength(script) > 8_000) fail(`worker-info-finder.js vượt ngân sách 8 KB: ${Buffer.byteLength(script)}`);
 if (Buffer.byteLength(home) > 90_000) fail(`Trang chủ vượt ngân sách 90 KB: ${Buffer.byteLength(home)}`);

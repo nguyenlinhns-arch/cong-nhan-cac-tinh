@@ -231,14 +231,16 @@ if (!quickNavigation || html.match(/<nav class="worker-quick__grid"/gi)?.length 
 html = html.replace(quickNavigation[0], `${quickNavigation[0]}\n${finder.trimEnd()}`);
 html = replaceOnce(html, '    <section class="worker-summary" id="dieu-kien">', '    <section class="worker-summary" id="dieu-kien"><span id="che-do-ho-so" aria-hidden="true"></span>', "Summary compatibility anchor");
 html = replaceOnce(html, '<article class="worker-fact"><span>03</span><h3>Thời gian học nghề</h3>', '<article class="worker-fact" id="thoi-gian-hoc"><span>03</span><h3>Thời gian học nghề</h3>', "Training duration anchor");
+html = replaceOnce(html, '<article class="worker-fact" id="thoi-gian-hoc"><span>03</span><h3>Thời gian học nghề</h3><p>Nghề khai thác mỏ và xây dựng mỏ được đào tạo trong khoảng 2–3 tháng. Người chưa có kinh nghiệm được học từ nền tảng.</p></article>', '<article class="worker-fact" id="thoi-gian-hoc"><span>03</span><h3>Thời gian học nghề</h3><ul><li>Khai thác mỏ và xây dựng mỏ: 2–3 tháng</li><li>Cơ điện mỏ: 10 tháng</li></ul><p>Người chưa có kinh nghiệm được đào tạo từ nền tảng.</p></article>', "Training duration by trade");
 html = replaceOnce(html, '<article class="worker-fact"><span>04</span><h3>Hỗ trợ trong thời gian học</h3>', '<article class="worker-fact" id="ho-tro-hoc-nghe"><span>04</span><h3>Hỗ trợ trong thời gian học</h3>', "Training support anchor");
+html = replaceOnce(html, '<article class="worker-fact"><span>06</span><h3>Việc làm sau đào tạo</h3>', '<article class="worker-fact" id="noi-lam-viec"><span>06</span><h3>Việc làm sau đào tạo</h3>', "Workplace anchor");
 html = replaceOnce(html, '    <section class="section process-section" id="quy-trinh">', `${selfCheck}    <section class="section process-section" id="quy-trinh">`, "Self-check after essential summary");
 html = replaceOnce(html, '    <section class="worker-more" aria-labelledby="worker-more-title">', `${latestArticleBlock}    <section class="worker-more" aria-labelledby="worker-more-title">`, "Latest community article");
 html = replaceOnce(html, '<section class="worker-more" aria-labelledby="worker-more-title">', '<section class="worker-more" aria-labelledby="worker-more-title"><span id="theo-tinh" aria-hidden="true"></span>', "Province compatibility anchor");
-html = replaceOnce(html, 'src="/mobile-ux.js?v=4"', 'src="/mobile-ux.js?v=5"', "Homepage mobile UX version");
+html = replaceOnce(html, 'src="/mobile-ux.js?v=4"', 'src="/mobile-ux.js?v=6"', "Homepage mobile UX version");
 html = replaceOnce(html, "</body>", '  <script src="/worker-info-finder.js?v=2" defer></script>\n</body>', "Worker information finder script");
 
-for (const required of ['id="tu-kiem-tra"', "data-open-site-search", "data-worker-province-select", "data-worker-check-form", 'id="che-do-ho-so"', 'id="thoi-gian-hoc"', 'id="ho-tro-hoc-nghe"', 'id="theo-tinh"', 'class="worker-latest__card"']) {
+for (const required of ['id="tu-kiem-tra"', "data-open-site-search", "data-worker-province-select", "data-worker-check-form", 'id="che-do-ho-so"', 'id="thoi-gian-hoc"', 'id="ho-tro-hoc-nghe"', 'id="noi-lam-viec"', 'id="theo-tinh"', 'class="worker-latest__card"']) {
   if (!html.includes(required)) throw new Error(`Worker-first homepage is missing generated feature: ${required}`);
 }
 

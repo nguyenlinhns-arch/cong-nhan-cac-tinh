@@ -53,6 +53,7 @@ function normalizePageAssets(html, file) {
   if (hadRemoteFonts && !output.includes('href="/fonts.css')) {
     output = output.replace(/<\/head>/i, '  <link rel="stylesheet" href="/fonts.css?v=1">\n</head>');
   }
+  output = output.replace(/\/mobile-ux\.js\?v=\d+/g, "/mobile-ux.js?v=6");
   return output.replace(/<img\b[^>]*>/gi, (tag) => {
     const source = tag.match(/\bsrc=(["'])(.*?)\1/i)?.[2];
     if (!source) return tag;
@@ -430,7 +431,7 @@ function renderArticle(article) {
   <footer class="site-footer"><div class="container footer-inner"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Câu chuyện nghề nghiệp, đời sống và cơ hội lập nghiệp trong ngành Than.</p></div><a href="/tin-nganh-than/">Đọc thêm chuyện nghề mỏ →</a></div></footer>
   <nav class="article-contact" aria-label="Liên hệ nhanh"><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Zalo · 096 304 8585</a><a href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener">Messenger</a></nav>
   <script src="/analytics.js?v=5" defer></script>
-  <script src="/mobile-ux.js?v=4" defer></script>
+  <script src="/mobile-ux.js?v=6" defer></script>
   <script src="/share-tools.js?v=1" defer></script>
 </body>
 </html>`;
@@ -545,7 +546,7 @@ function hubHtml() {
   <footer class="site-footer"><div class="container footer-inner"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Đưa câu chuyện nghề mỏ đến gần hơn với người lao động trên cả nước.</p></div><a href="../viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&amp;utm_medium=internal&amp;utm_campaign=news_to_application_2026&amp;utm_content=news_index_footer#dang-ky" data-contact="application" data-context="news-index-footer">Tìm hiểu cơ hội học nghề →</a></div></footer>
   <nav class="article-contact" aria-label="Liên hệ nhanh"><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Zalo · 096 304 8585</a><a href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener">Messenger</a></nav>
   <script src="/analytics.js?v=5" defer></script>
-  <script src="/mobile-ux.js?v=4" defer></script>
+  <script src="/mobile-ux.js?v=6" defer></script>
 </body></html>`;
 }
 
@@ -575,7 +576,7 @@ for (const article of existingNews) {
   html = html.replaceAll(`${base}/#gioi-thieu`, `${base}/tac-gia/nguyen-tu-linh/`);
   if (!/<main\b[^>]*\bid=["']noi-dung["']/i.test(html)) html = html.replace(/<main\b/i, '<main id="noi-dung"');
   if (!/class=["'][^"']*\bskip-link\b/i.test(html)) html = html.replace(/<body>/i, '<body>\n  <a class="skip-link" href="#noi-dung">Đến nội dung chính</a>');
-  html = html.replace(/\/analytics\.js\?v=\d+/g, '/analytics.js?v=5').replace(/\/mobile-ux\.js\?v=\d+/g, '/mobile-ux.js?v=4').replace(/\/mobile-ux\.css\?v=\d+/g, '/mobile-ux.css?v=5').replace(/\/job-application\.js\?v=\d+/g, '/job-application.js?v=9');
+  html = html.replace(/\/analytics\.js\?v=\d+/g, '/analytics.js?v=5').replace(/\/mobile-ux\.js\?v=\d+/g, '/mobile-ux.js?v=6').replace(/\/mobile-ux\.css\?v=\d+/g, '/mobile-ux.css?v=5').replace(/\/job-application\.js\?v=\d+/g, '/job-application.js?v=9');
   if (!html.includes('/share-tools.js?v=1')) html = html.replace(/<\/body>/i, `  <script src="/share-tools.js?v=1" defer></script>\n</body>`);
   fs.writeFileSync(file, html);
 }
