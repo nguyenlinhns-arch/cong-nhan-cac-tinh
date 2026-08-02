@@ -26,6 +26,7 @@ const css = read("verification-portal.css");
 const js = read("verification-portal.js");
 const home = read("index.html");
 const searchRaw = read("search-index.json");
+const sitemap = read("sitemap.xml");
 
 try {
   new vm.Script(js, { filename: "verification-portal.js" });
@@ -79,6 +80,10 @@ for (const slug of slugs) {
   for (const label of [">Zalo<", ">Gọi điện<", ">Kiểm tra<"]) {
     if (!html.includes(label)) errors.push(`${file} thiếu nút ${label}`);
   }
+  for (const marker of ["/favicon.ico", "/favicon-48x48.png", "twitter:card", "twitter:title", "twitter:description", "twitter:image"]) {
+    if (!html.includes(marker)) errors.push(`${file} thiếu ${marker}`);
+  }
+  if (!sitemap.includes(`https://thaylinhtuyenthomo.vn/${slug}/`)) errors.push(`Sitemap thiếu /${slug}/`);
 }
 
 const conditionPage = read("kiem-tra-dieu-kien/index.html");
