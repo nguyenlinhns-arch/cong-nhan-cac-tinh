@@ -106,7 +106,7 @@ export function buildRecruitmentAnswers(recruitment) {
       id: "lien-he-dang-ky",
       question: "Đăng ký bằng cách nào và liên hệ ai?",
       answer: `Bước đầu chỉ cần gửi năm sinh, chiều cao, cân nặng và tình trạng sức khỏe để kiểm tra điều kiện. Liên hệ ${contact.name} – ${contact.title}, điện thoại/Zalo 096 304 8585; địa chỉ tư vấn: ${contact.address}.`,
-      href: "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky",
+      href: "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&amp;utm_medium=internal&amp;utm_campaign=facts_to_application_2026&amp;utm_content=facts_question_15#dang-ky",
       linkLabel: "Kiểm tra điều kiện ngay",
     },
   ];

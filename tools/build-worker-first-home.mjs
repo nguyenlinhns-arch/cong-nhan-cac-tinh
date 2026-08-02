@@ -39,10 +39,24 @@ const insertions = [
   },
 ];
 
+const trackedApplicationLinks = [
+  ["home-header", "header"],
+  ["home-hero", "hero"],
+  ["home-register", "register"],
+  ["home-mobile", "mobile"],
+];
+
 let html = sourceHtml;
 for (const {marker, replacement} of insertions) {
   if (!html.includes(marker)) throw new Error(`Worker-first homepage is missing compatibility marker: ${marker}`);
   html = html.replace(marker, replacement);
+}
+
+for (const [context, content] of trackedApplicationLinks) {
+  const marker = `href="viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" data-contact="application" data-context="${context}"`;
+  const trackedHref = `href="viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&amp;utm_medium=internal&amp;utm_campaign=home_to_application_2026&amp;utm_content=home_${content}#dang-ky" data-contact="application" data-context="${context}"`;
+  if (!html.includes(marker)) throw new Error(`Worker-first homepage is missing tracked application link: ${context}`);
+  html = html.replace(marker, trackedHref);
 }
 
 const outputBytes = Buffer.byteLength(html);
@@ -56,4 +70,5 @@ console.log(JSON.stringify({
   outputBytes,
   outputSha256,
   compatibilityAnchors: insertions.length,
+  trackedApplicationLinks: trackedApplicationLinks.length,
 }, null, 2));

@@ -99,9 +99,36 @@ for (const personalField of ["full_name", "phone", "birth_date", "age", "provinc
   }
 }
 
+const htmlFiles = [];
+function collectHtmlFiles(directory) {
+  for (const entry of fs.readdirSync(directory, {withFileTypes: true})) {
+    const absolute = path.join(directory, entry.name);
+    if (entry.isDirectory()) collectHtmlFiles(absolute);
+    else if (entry.name.endsWith(".html")) htmlFiles.push(absolute);
+  }
+}
+collectHtmlFiles(root);
+
+let attributedCrossPageApplications = 0;
+for (const file of htmlFiles) {
+  const html = fs.readFileSync(file, "utf8");
+  for (const match of html.matchAll(/<a\b[^>]*href=["']([^"']*#dang-ky)["'][^>]*>/gi)) {
+    const [, rawHref] = match;
+    if (rawHref.startsWith("#")) continue;
+    const href = rawHref.replaceAll("&amp;", "&");
+    const url = new URL(href, "https://thaylinhtuyenthomo.vn/");
+    const relative = path.relative(root, file);
+    for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content"]) {
+      if (!url.searchParams.get(key)) errors.push(`${relative}: cross-page application link is missing ${key}`);
+    }
+    attributedCrossPageApplications += 1;
+  }
+}
+
 console.log(JSON.stringify({
   applicationPage: "viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html",
   directPersonalDataTracking: 0,
+  attributedCrossPageApplications,
   errors: errors.length,
   sampleErrors: errors.slice(0, 20),
 }, null, 2));
