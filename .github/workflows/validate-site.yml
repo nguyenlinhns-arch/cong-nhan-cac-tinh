@@ -46,4 +46,4 @@ jobs:
           node tools/validate-recruitment-funnel.mjs
           node tools/test-recruitment-application.mjs
           node tools/validate-crm-automation.mjs
-          git diff --exit-code -- . ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/mobile-ux.js'
+          git diff --exit-code -- . ':(exclude)tuyen-tho-mo/index.html'

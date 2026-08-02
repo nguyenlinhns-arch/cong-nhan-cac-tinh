@@ -178,7 +178,7 @@ const jobs = roles.map((role) => ({
 for (const role of roles) {
   const directory = path.join(root, "viec-lam", role.slug);
   fs.mkdirSync(directory, { recursive: true });
-  fs.writeFileSync(path.join(directory, "index.html"), page(role).replace("/mobile-ux.js?v=4", "/mobile-ux.js?v=6"));
+  fs.writeFileSync(path.join(directory, "index.html"), page(role).replace("/mobile-ux.js?v=4", "/mobile-ux.js?v=7"));
 }
 
 fs.writeFileSync(path.join(root, "jobs.json"), `${JSON.stringify({ version: "4.0", publisher: { name: "Thầy Linh – Tuyển Thợ Mỏ", contact_name: contact.name, contact_title: contact.title, phone: "+84963048585", website: `${base}/` }, updated_at: master.updated_at, jobs }, null, 2)}\n`);

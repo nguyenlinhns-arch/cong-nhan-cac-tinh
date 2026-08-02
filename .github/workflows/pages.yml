@@ -58,7 +58,7 @@ jobs:
           node tools/validate-recruitment-funnel.mjs
           node tools/test-recruitment-application.mjs
           node tools/validate-crm-automation.mjs
-          git diff --exit-code -- . ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/mobile-ux.js'
+          git diff --exit-code -- . ':(exclude)tuyen-tho-mo/index.html'
       - uses: actions/upload-pages-artifact@v3
         with:
           # Publish the recruitment portal at the custom-domain root.
@@ -86,8 +86,8 @@ jobs:
                 && grep -Fq 'id="che-do-ho-so"' "$html_file" \
                 && grep -Fq 'id="theo-tinh"' "$html_file" \
                 && grep -Fq 'id="noi-lam-viec"' "$html_file" \
-                && grep -Fq 'Cơ điện mỏ: <strong>10 tháng</strong>' "$html_file" \
-                && grep -Fq '/mobile-ux.js?v=6' "$html_file" \
+                && grep -Fq 'Cơ điện mỏ: 10 tháng' "$html_file" \
+                && grep -Fq '/mobile-ux.js?v=7' "$html_file" \
                 && grep -Fq '20–25 triệu/tháng khi hoàn thành định mức lao động' "$html_file" \
                 && grep -Fq 'function createWorkerCompass()' "$ux_file" \
                 && grep -Fq 'tl-search-shortcuts' "$ux_file" \
@@ -99,7 +99,7 @@ jobs:
                 && grep -Fq 'Câu trả lời ngay và' "$ux_file" \
                 && grep -Fq 'Gõ cả câu, ví dụ: lương bao nhiêu?' "$ux_file" \
                 && grep -Fq '"version": 3' "$search_file" \
-                && grep -Fq 'Nơi làm việc sau đào tạo' "$search_file" \
+                && grep -Fq '"title": "Học xong làm việc ở đâu?"' "$search_file" \
                 && grep -Fq '.tl-worker-compass{' "$css_file"; then
                 echo "Live worker-first homepage, answer-first natural-language search, universal compass and information finder verified on attempt $attempt."
                 exit 0
