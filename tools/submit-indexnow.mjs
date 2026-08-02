@@ -4,14 +4,27 @@ const host = "thaylinhtuyenthomo.vn";
 const base = `https://${host}`;
 const key = "bf1717c52d36ed87c6b5f5cd57ffcb81";
 const keyLocation = `${base}/${key}.txt`;
+const homepageSources = [
+  "content/home-worker-first/",
+  "tools/build-worker-first-home.mjs",
+  "tuyen-tho-mo/mobile-ux.js",
+  "tuyen-tho-mo/search-index.json",
+  "tuyen-tho-mo/worker-info-finder.css",
+  "tuyen-tho-mo/worker-info-finder.js",
+];
 
-function urlForChangedFile(file) {
+function urlsForChangedFile(file) {
+  const urls = [];
+  if (homepageSources.some((source) => source.endsWith("/") ? file.startsWith(source) : file === source)) {
+    urls.push(`${base}/`);
+  }
   const prefix = "tuyen-tho-mo/";
-  if (!file.startsWith(prefix) || !file.endsWith(".html")) return "";
+  if (!file.startsWith(prefix) || !file.endsWith(".html")) return urls;
   const relative = file.slice(prefix.length);
-  if (relative === "index.html") return `${base}/`;
-  if (relative.endsWith("/index.html")) return `${base}/${relative.slice(0, -"index.html".length)}`;
-  return `${base}/${relative}`;
+  if (relative === "index.html") urls.push(`${base}/`);
+  else if (relative.endsWith("/index.html")) urls.push(`${base}/${relative.slice(0, -"index.html".length)}`);
+  else urls.push(`${base}/${relative}`);
+  return urls;
 }
 
 function changedFiles() {
@@ -27,7 +40,7 @@ function changedFiles() {
 }
 
 const files = changedFiles();
-const urls = new Set(files.map(urlForChangedFile).filter(Boolean));
+const urls = new Set(files.flatMap(urlsForChangedFile));
 if (!urls.size) {
   console.log(JSON.stringify({status: "skipped", reason: "No changed public HTML URLs", changedFiles: files.length}));
   process.exit(0);

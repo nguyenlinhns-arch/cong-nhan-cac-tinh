@@ -134,6 +134,7 @@ const outputSha256 = crypto.createHash("sha256").update(html).digest("hex");
 fs.writeFileSync(target, html);
 console.log(JSON.stringify({
   target: "tuyen-tho-mo/index.html",
+  publicUrl: "/",
   parts: actualParts.length,
   sourceBytes,
   sourceSha256,
