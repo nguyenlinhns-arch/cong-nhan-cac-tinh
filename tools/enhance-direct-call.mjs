@@ -16,7 +16,9 @@ const markers = [
 ];
 
 if (markers.every((marker) => source.includes(marker))) {
-  console.log(JSON.stringify({ target: "tuyen-tho-mo/mobile-ux.js", status: "already-enhanced", beforeBytes, beforeSha256 }, null, 2));
+  const phoneReferences = (source.match(/PHONE_URL/g) || []).length;
+  if (phoneReferences < 5) throw new Error(`Direct-call help expected at least 5 phone references, got ${phoneReferences}`);
+  console.log(JSON.stringify({ target: "tuyen-tho-mo/mobile-ux.js", status: "already-enhanced", phoneReferences, beforeBytes, beforeSha256 }, null, 2));
   process.exit(0);
 }
 if (markers.some((marker) => source.includes(marker))) throw new Error("Direct-call help is only partially present");
@@ -93,8 +95,8 @@ for (const obsolete of ["MESSENGER_URL", "MESSENGER_ICON", "tl-mobile-contact__m
   if (source.includes(obsolete)) throw new Error(`Direct-call help still contains ${obsolete}`);
 }
 
-const phoneLinks = (source.match(/tel:\+84963048585/g) || []).length;
-if (phoneLinks < 4) throw new Error(`Direct-call help expected at least 4 phone entry points, got ${phoneLinks}`);
+const phoneReferences = (source.match(/PHONE_URL/g) || []).length;
+if (phoneReferences < 5) throw new Error(`Direct-call help expected at least 5 phone references, got ${phoneReferences}`);
 const afterBytes = Buffer.byteLength(source);
 if (afterBytes > 42_000) throw new Error(`Direct-call mobile-ux.js exceeds 42 KB: ${afterBytes}`);
 const afterSha256 = crypto.createHash("sha256").update(source).digest("hex");
@@ -102,7 +104,7 @@ fs.writeFileSync(target, source);
 console.log(JSON.stringify({
   target: "tuyen-tho-mo/mobile-ux.js",
   status: "enhanced",
-  phoneEntryPoints: phoneLinks,
+  phoneReferences,
   beforeBytes,
   afterBytes,
   beforeSha256,
