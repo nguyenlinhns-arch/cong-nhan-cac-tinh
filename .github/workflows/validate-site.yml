@@ -1,0 +1,43 @@
+name: Validate website changes
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-site-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild and validate website
+        run: |
+          node tools/generate-province-pages-2026.mjs
+          node tools/generate-legacy-redirects.mjs
+          node tools/generate-job-board-pages.mjs
+          node tools/generate-content-network.mjs
+          node tools/generate-seo-library.mjs
+          node tools/generate-news-sitemap.mjs
+          node tools/build-search-index.mjs
+          node tools/build-worker-first-home.mjs
+          node tools/validate-content-network.mjs
+          node tools/validate-seo-library.mjs
+          node tools/audit-technical-seo.mjs
+          node tools/validate-accessibility.mjs
+          node tools/validate-performance-budget.mjs
+          node tools/validate-conversion-resilience.mjs
+          node tools/test-home-video-facades.mjs
+          node tools/validate-workflow-safety.mjs
+          node tools/validate-ai-search.mjs
+          node tools/validate-job-postings.mjs
+          node tools/validate-recruitment-funnel.mjs
+          node tools/test-recruitment-application.mjs
+          node tools/validate-crm-automation.mjs
+          git diff --exit-code -- . ':(exclude)tuyen-tho-mo/index.html'
