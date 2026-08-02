@@ -6,18 +6,41 @@ const target = path.resolve("tuyen-tho-mo", "mobile-ux.js");
 let source = fs.readFileSync(target, "utf8");
 const beforeBytes = Buffer.byteLength(source);
 const beforeSha256 = crypto.createHash("sha256").update(source).digest("hex");
-const markers = [
+const coreMarkers = [
   "let voiceAssistPromise = null",
   "function loadVoiceAssist()",
-  "/voice-assist.js?v=2",
   "void loadVoiceAssist();",
 ];
+const currentPath = "/voice-assist.js?v=2";
+const legacyPath = "/voice-assist.js?v=1";
+const loadCalls = () => (source.match(/void loadVoiceAssist\(\);/g) || []).length;
+const hasCore = () => coreMarkers.every((marker) => source.includes(marker)) && loadCalls() === 2;
 
-if (markers.every((marker) => source.includes(marker)) && (source.match(/void loadVoiceAssist\(\);/g) || []).length === 2) {
+if (hasCore() && source.includes(currentPath)) {
   console.log(JSON.stringify({ target: "tuyen-tho-mo/mobile-ux.js", status: "already-enhanced", beforeBytes, beforeSha256 }, null, 2));
   process.exit(0);
 }
-if (markers.some((marker) => source.includes(marker))) throw new Error("Voice assist loader is only partially present");
+
+if (hasCore() && source.includes(legacyPath) && !source.includes(currentPath)) {
+  source = source.replaceAll(legacyPath, currentPath);
+  const afterBytes = Buffer.byteLength(source);
+  const afterSha256 = crypto.createHash("sha256").update(source).digest("hex");
+  fs.writeFileSync(target, source);
+  console.log(JSON.stringify({
+    target: "tuyen-tho-mo/mobile-ux.js",
+    status: "upgraded-v1-to-v2",
+    lazyEntryPoints: loadCalls(),
+    beforeBytes,
+    afterBytes,
+    beforeSha256,
+    afterSha256,
+  }, null, 2));
+  process.exit(0);
+}
+
+if ([...coreMarkers, currentPath, legacyPath].some((marker) => source.includes(marker))) {
+  throw new Error("Voice assist loader is only partially present");
+}
 for (const required of [
   "function createWorkerBriefDialog()",
   "function createSearchDialog()",
@@ -61,8 +84,8 @@ const searchMarker = "      dialog = createSearchDialog();\n";
 if (!source.includes(searchMarker)) throw new Error("Could not locate search lazy-load point");
 source = source.replace(searchMarker, searchMarker + "      void loadVoiceAssist();\n");
 
-for (const marker of markers) if (!source.includes(marker)) throw new Error(`Voice assist loader is missing ${marker}`);
-if ((source.match(/void loadVoiceAssist\(\);/g) || []).length !== 2) throw new Error("Voice assist must load from search and 30-second brief only");
+for (const marker of [...coreMarkers, currentPath]) if (!source.includes(marker)) throw new Error(`Voice assist loader is missing ${marker}`);
+if (loadCalls() !== 2) throw new Error("Voice assist must load from search and 30-second brief only");
 const afterBytes = Buffer.byteLength(source);
 if (afterBytes > 42_000) throw new Error(`Voice-assisted mobile-ux.js exceeds 42 KB: ${afterBytes}`);
 const afterSha256 = crypto.createHash("sha256").update(source).digest("hex");
@@ -70,7 +93,7 @@ fs.writeFileSync(target, source);
 console.log(JSON.stringify({
   target: "tuyen-tho-mo/mobile-ux.js",
   status: "enhanced",
-  lazyEntryPoints: 2,
+  lazyEntryPoints: loadCalls(),
   beforeBytes,
   afterBytes,
   beforeSha256,
