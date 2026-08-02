@@ -28,8 +28,9 @@ for (const obsolete of [
 
 const phoneReferences = (mobile.match(/PHONE_URL/g) || []).length;
 if (phoneReferences < 5) errors.push(`Cần ít nhất 5 tham chiếu gọi điện, nhận ${phoneReferences}`);
-const phoneContactMarkers = (mobile.match(/data-contact=\\?"phone\\?"/g) || []).length;
-if (phoneContactMarkers < 4) errors.push(`Cần ít nhất 4 nút gọi được gắn nguồn, nhận ${phoneContactMarkers}`);
+const staticPhoneContacts = (mobile.match(/data-contact=\\?"phone\\?"/g) || []).length;
+if (staticPhoneContacts < 3) errors.push(`Cần ít nhất 3 nút gọi tĩnh được gắn nguồn, nhận ${staticPhoneContacts}`);
+if (!mobile.includes('phone.dataset.contact = "phone"')) errors.push("Nút gọi động trong câu trả lời chưa được gắn nguồn");
 
 const mobileStart = mobile.indexOf('nav.className = "tl-mobile-contact"');
 const mobileEnd = mobile.indexOf("document.body.append(nav);", mobileStart);
@@ -38,7 +39,8 @@ if (!mobileBlock) errors.push("Không tìm thấy khối liên hệ cố định
 else {
   const linkCount = (mobileBlock.match(/<a\b/g) || []).length;
   if (linkCount !== 3) errors.push(`Thanh liên hệ điện thoại phải có đúng 3 hành động, nhận ${linkCount}`);
-  for (const label of [">Ứng tuyển<", ">Zalo<", ">Gọi<"]) if (!mobileBlock.includes(label)) errors.push(`Thanh liên hệ thiếu ${label}`);
+  for (const marker of ["data-application-resume-label", ">Zalo<", ">Gọi<"]) if (!mobileBlock.includes(marker)) errors.push(`Thanh liên hệ thiếu ${marker}`);
+  if (!mobileBlock.includes('? "Tiếp tục" : "Ứng tuyển"')) errors.push("Nút ứng tuyển không giữ nhãn động Tiếp tục/Ứng tuyển");
   if (/tl-mobile-contact__call[^>]*target=/i.test(mobileBlock)) errors.push("Nút gọi điện không được mở tab mới");
 }
 
@@ -61,7 +63,8 @@ try {
 
 console.log(JSON.stringify({
   phone_references: phoneReferences,
-  phone_contact_markers: phoneContactMarkers,
+  static_phone_contacts: staticPhoneContacts,
+  dynamic_phone_contact: mobile.includes('phone.dataset.contact = "phone"'),
   mobile_actions: (mobileBlock.match(/<a\b/g) || []).length,
   brief_call: briefActions.includes('data-worker-brief-action="phone"'),
   search_empty_call: emptySearchIndex >= 0,
