@@ -190,8 +190,22 @@
       "metric_rating",
       "navigation_type",
       "measurement_version",
+      "entry_intent",
+      "entry_page",
+      "journey_stage",
+      "journey_score_bucket",
+      "last_action",
+      "page_sequence",
+      "cta_variant",
+      "time_bucket",
+      "content_type",
+      "conversion_version",
+      "lead_stage",
+      "landing_type",
+      "contact_preference",
+      "three_info_status",
     ];
-    const numericAllowed = ["value", "metric_value", "metric_delta", "metric_start_time"];
+    const numericAllowed = ["value", "metric_value", "metric_delta", "metric_start_time", "journey_score", "page_count", "seconds_to_action", "scroll_depth"];
     const params = Object.fromEntries(stringAllowed
       .filter(key => typeof item[key] === "string" && item[key].trim())
       .map(key => [key, item[key].trim().slice(0, key === "page_location" ? 500 : 160)]));
@@ -319,6 +333,36 @@
         province: params.province,
         trade: params.trade,
       });
+      return;
+    }
+
+    if (item.event === "lead_3_info") {
+      window.gtag("event", "lead_3_info", params);
+      window.fbq("trackCustom", "ThreeInfoComplete", params);
+      return;
+    }
+
+    if (item.event === "qualified_lead" || item.event === "condition_pass") {
+      window.gtag("event", item.event, params);
+      window.fbq("trackCustom", item.event === "qualified_lead" ? "QualifiedLead" : "ConditionPass", params);
+      return;
+    }
+
+    if (item.event === "form_submit") {
+      window.gtag("event", "form_submit", params);
+      window.fbq("track", "Lead", { content_name: "v4_condition_form", content_category: params.eligibility || "unknown" });
+      return;
+    }
+
+    if (item.event === "v4_primary_action") {
+      window.gtag("event", "v4_primary_action", params);
+      window.fbq("trackCustom", "PrimaryAction", params);
+      return;
+    }
+
+    if (item.event === "form_start") {
+      window.gtag("event", "form_start", params);
+      window.fbq("trackCustom", "form_start", params);
       return;
     }
 
@@ -484,3 +528,6 @@
     openConsent: createConsentBanner,
   });
 })();
+
+/* verification-portal-loader */
+document.addEventListener("DOMContentLoaded",()=>{for(const [t,a,u] of [["link","href","/verification-portal.css?v=1"],["script","src","/verification-portal.js?v=1"]])if(!document.querySelector(`${t}[${a}^="/verification-portal."]`)){const e=document.createElement(t);e[a]=u;if(t==="link")e.rel="stylesheet";else e.async=true;document.head.append(e)}},{once:true});

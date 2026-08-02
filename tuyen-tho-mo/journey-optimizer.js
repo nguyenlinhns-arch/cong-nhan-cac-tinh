@@ -251,10 +251,14 @@
   });
 
   function visibleHero() {
-    return document.querySelector(".verification-page__hero .container, .job-hero__copy, .local-hero__copy, .hero-copy, .article-hero, .article-header, main > header");
+    return document.querySelector(".verification-page__hero .container, .job-hero__copy, .local-hero__copy, .hero-copy, .article-hero .hero-inner, .article-header, main > header");
   }
 
   function ensureFastFacts() {
+    // Article templates already present verified facts in the editorial body.
+    // Injecting another fact row into the hero made cards escape the content
+    // column and created the full-width blocks seen on news pages.
+    if (currentGroup === "article") return;
     const host = visibleHero();
     const config = intentConfig[currentGroup] || intentConfig[state.entry_intent] || intentConfig.article;
     if (!host || !config) return;
@@ -372,7 +376,7 @@
       const completed = requiredNames.filter(name => {
         const field = form.elements.namedItem(name);
         if (!field) return false;
-        if (field instanceof RadioNodeList) return Boolean(field.value);
+        if (typeof RadioNodeList !== "undefined" && field instanceof RadioNodeList) return Boolean(field.value);
         if (field.type === "checkbox") return field.checked;
         return Boolean(String(field.value || "").trim());
       }).length;
@@ -483,19 +487,6 @@
     window.addEventListener("scroll", updateDepth, { passive: true });
   }
 
-  function createDesktopNudge() {
-    if (window.matchMedia?.("(max-width: 900px)")?.matches || currentGroup === "application") return;
-    const box = document.createElement("aside");
-    box.className = "journey-desktop-nudge";
-    box.hidden = true;
-    box.innerHTML = `<button type="button" aria-label="Đóng">×</button><strong>Muốn biết mình có phù hợp?</strong><p>Gửi năm sinh, chiều cao/cân nặng và sức khỏe để Thầy Linh kiểm tra trước.</p><div><a href="${conditionHref()}" data-journey-action="condition">Kiểm tra ngay</a><a href="${PHONE_URL}" data-contact="phone" data-context="desktop-nudge">Gọi điện</a></div>`;
-    box.querySelector("button").addEventListener("click", () => { box.hidden = true; });
-    document.body.append(box);
-    window.setTimeout(() => {
-      if (!state.first_action_at && document.visibilityState === "visible") box.hidden = false;
-    }, 35_000);
-  }
-
   function init() {
     ensureFastFacts();
     normalizeHeroActions();
@@ -504,7 +495,6 @@
     createFormProgress();
     observeDataLayer();
     engagementSignals();
-    createDesktopNudge();
     track("journey_view", {
       action: "page_view",
       entry_page: safePath(state.entry_path),

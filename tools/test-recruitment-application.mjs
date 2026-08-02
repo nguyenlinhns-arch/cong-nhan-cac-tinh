@@ -160,8 +160,9 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
   ]) if (!output.value.includes(expectedText)) throw new Error(`Message missing: ${expectedText}`);
   if (!sms.href.startsWith("sms:+84963048585?body=")) throw new Error(`Invalid SMS link: ${sms.href}`);
   if (delivered.length !== deliverySequence.length || delivered[0].phone !== "0963048585") throw new Error("Application was not delivered as expected");
-  if (delivered[0].schema_version !== 2) throw new Error(`Unexpected schema version: ${delivered[0].schema_version}`);
-  if (delivered[0].form_context !== "central_application") throw new Error(`Unexpected form context: ${delivered[0].form_context}`);
+  if (delivered[0].schema_version !== 3) throw new Error(`Unexpected schema version: ${delivered[0].schema_version}`);
+  if (!String(delivered[0].form_context || "").startsWith("central_application|v3;")) throw new Error(`Unexpected form context: ${delivered[0].form_context}`);
+  if (delivered[0].entry_intent !== "application" || delivered[0].journey_page_count !== 1) throw new Error("Journey context was not delivered");
   if (delivered[0].website !== "") throw new Error("Honeypot value must remain empty");
   if (delivery.dataset.state !== "saved") throw new Error(`Unexpected delivery state: ${delivery.dataset.state}`);
   if (!submit.disabled || submit.textContent !== "Đăng ký đã được tiếp nhận") throw new Error("Successful form was not locked after delivery");

@@ -104,9 +104,10 @@ const structuredData = {
       "@type": "WebPage",
       "@id": `${base}/#webpage`,
       url: `${base}/`,
-      name: "Tuyển thợ mỏ tháng 8/2026: điều kiện, quyền lợi và hồ sơ",
-      description: "Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. Căn cước công dân bản gốc; Giấy khai sinh; Bằng THCS hoặc THPT nếu có. Chưa có bằng vẫn có thể đăng ký để được hướng dẫn đối chiếu theo hệ đào tạo. Địa chỉ liên hệ: Số 8 Chu Văn An, phường Hạ Long, Quảng Ninh. Địa điểm nhập học: Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh.",
-      dateModified: "2026-08-02",
+      name: "Tuyển thợ mỏ tháng 8/2026: hành trình học nghề đến nhận việc",
+      description: "Hành trình tuyển thợ mỏ tháng 8/2026 từ kiểm tra điều kiện, học nghề tại Quang Hanh đến nhận việc ngành Than ở Quảng Ninh; cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      abstract: "Đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ. Khi nhập học mang căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Chưa có bằng vẫn có thể đăng ký để được hướng dẫn đối chiếu theo hệ đào tạo. Địa chỉ tư vấn: Số 8 Chu Văn An, phường Hạ Long, Quảng Ninh.",
+      dateModified: "2026-08-03",
       lastReviewed: "2026-08-01",
       reviewedBy: {"@id": authorId},
       isPartOf: {"@id": `${base}/#website`},
@@ -171,6 +172,23 @@ const finder = `      <div class="worker-find" aria-label="Công cụ tìm thôn
         </div>
       </div>
 `;
+const journeyRoadmap = `    <section class="journey-intro" aria-labelledby="home-journey-title">
+      <div class="container">
+        <div class="journey-intro__head">
+          <div><p class="eyebrow">Hành trình của người lao động</p><h2 id="home-journey-title">Từ một cuộc gọi ở quê nhà đến ngày nhận việc tại Quảng Ninh</h2></div>
+          <p>Mỗi chặng đều có thông tin để kiểm chứng và người hướng dẫn. Bấm vào chặng mình đang quan tâm để xem ngay, không phải tự tìm giữa hàng chục bài viết.</p>
+        </div>
+        <nav class="journey-list" aria-label="Năm chặng từ đăng ký đến nhận việc">
+          <a href="#tu-kiem-tra"><small>CHẶNG 01</small><strong>Kiểm tra mình có phù hợp</strong><span>Tuổi, chiều cao, cân nặng và sức khỏe.</span></a>
+          <a href="/hoc-nghe-mo-tai-quang-ninh/"><small>CHẶNG 02</small><strong>Chọn nghề và hiểu nơi học</strong><span>Khai thác mỏ, xây dựng mỏ hoặc cơ điện mỏ.</span></a>
+          <a href="/ho-so-nhap-hoc/"><small>CHẶNG 03</small><strong>Chuẩn bị hồ sơ, lịch nhập học</strong><span>Chỉ lên đường sau khi đã được xác nhận lịch.</span></a>
+          <a href="/thu-nhap-an-o-ho-tro/"><small>CHẶNG 04</small><strong>Học nghề và ổn định ăn ở</strong><span>Miễn kinh phí đào tạo, ăn ở và hỗ trợ trong thời gian học.</span></a>
+          <a href="/cau-chuyen-cong-nhan/"><small>CHẶNG 05</small><strong>Nhận việc, sống bằng tay nghề</strong><span>Xem người thật, công việc thật và con đường phát triển trong ngành Than.</span></a>
+        </nav>
+      </div>
+    </section>
+
+`;
 const selfCheck = `    <section class="worker-self-check" id="tu-kiem-tra" aria-labelledby="worker-self-check-title">
       <div class="container">
         <div class="worker-self-check__head">
@@ -187,6 +205,28 @@ const selfCheck = `    <section class="worker-self-check" id="tu-kiem-tra" aria-
           <div class="worker-check__footer"><p><strong>Không lưu câu trả lời.</strong> Đăng ký ban đầu vẫn chưa cần nộp hồ sơ.</p><button class="worker-check__submit" type="submit">Xem kết quả sơ bộ</button></div>
           <div class="worker-check__result" data-worker-check-result role="status" aria-live="polite" tabindex="-1" hidden></div>
         </form>
+      </div>
+    </section>
+
+`;
+const learningStory = `    <section class="learning-story section" aria-labelledby="learning-story-title">
+      <div class="container learning-story__grid">
+        <figure class="learning-story__media">
+          <img src="/assets/vinacomin-dao-tao-tho-lo.webp" alt="Học viên nghề mỏ thực hành kỹ năng trước khi vào làm việc" loading="lazy" decoding="async" width="960" height="640">
+          <figcaption>Học nghề gắn với thực hành và kỷ luật an toàn trước khi vào sản xuất.</figcaption>
+        </figure>
+        <div class="learning-story__copy">
+          <p class="eyebrow">Không phải tự xoay xở khi rời quê</p>
+          <h2 id="learning-story-title">Có một lộ trình để người mới từng bước trở thành thợ mỏ</h2>
+          <p>Người chưa biết nghề được đào tạo từ nền tảng. Từ ngày nhập học đến khi doanh nghiệp tiếp nhận, từng bước đều có quy trình và đầu mối hướng dẫn rõ ràng.</p>
+          <ol class="learning-story__steps">
+            <li><span>01</span><div><strong>Đến đúng lịch, đúng nơi tiếp nhận</strong><small>Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh.</small></div></li>
+            <li><span>02</span><div><strong>Học lý thuyết, thực hành và an toàn</strong><small>Người mới được chuẩn bị kỹ năng trước khi vào môi trường sản xuất.</small></div></li>
+            <li><span>03</span><div><strong>Ổn định ăn ở trong thời gian học</strong><small>Ba bữa mỗi ngày, ký túc xá và hỗ trợ 7,5 triệu đồng theo chính sách.</small></div></li>
+            <li><span>04</span><div><strong>Tốt nghiệp, được tiếp nhận vào làm việc</strong><small>Làm việc tại doanh nghiệp ngành Than ở Quảng Ninh và phát triển bằng tay nghề.</small></div></li>
+          </ol>
+          <a class="story-next" href="#quy-trinh"><span>↓</span>Xem 5 bước đăng ký và nhập học</a>
+        </div>
       </div>
     </section>
 
@@ -238,12 +278,22 @@ let html = sourceHtml;
 const structuredDataBlocks = [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi)];
 if (structuredDataBlocks.length !== 1) throw new Error(`Worker-first homepage expected one JSON-LD block, got ${structuredDataBlocks.length}`);
 html = html.replace(structuredDataBlocks[0][0], structuredDataMarkup);
+html = replaceOnce(html, "<title>Tuyển thợ mỏ tháng 8/2026 | Điều kiện, quyền lợi, hồ sơ</title>", "<title>Tuyển thợ mỏ tháng 8/2026: học nghề đến nhận việc | Thầy Linh</title>", "Homepage title");
+html = replaceOnce(html, '<meta name="description" content="Nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg: xem nhanh điều kiện, hồ sơ, nơi học, chế độ ăn ở và cam kết 20–25 triệu/tháng khi hoàn thành định mức lao động.">', '<meta name="description" content="Tuyển thợ mỏ tháng 8/2026: nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg; học nghề tại Quảng Ninh, nhận việc, thu nhập 20–25 triệu/tháng khi hoàn thành định mức lao động.">', "Homepage description");
+html = replaceOnce(html, '<meta property="og:title" content="Tuyển thợ mỏ tháng 8/2026 – xem đủ thông tin trong 2 phút">', '<meta property="og:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', "Homepage Open Graph title");
+html = replaceOnce(html, '<meta property="og:description" content="Điều kiện, quyền lợi, hồ sơ, địa điểm nhập học và cách đăng ký được trình bày ngắn gọn cho người lao động.">', '<meta property="og:description" content="Một hành trình rõ ràng từ kiểm tra điều kiện, học nghề tại Quang Hanh đến nhận việc ngành Than ở Quảng Ninh.">', "Homepage Open Graph description");
+html = replaceOnce(html, '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – thông tin dành cho người lao động">', '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', "Homepage Twitter title");
+html = replaceOnce(html, '<meta name="twitter:description" content="Xem nhanh điều kiện, quyền lợi, hồ sơ, địa điểm và cách đăng ký học nghề mỏ tại Quảng Ninh.">', '<meta name="twitter:description" content="Xem hành trình học nghề mỏ tại Quang Hanh, quyền lợi, hồ sơ và việc làm ngành Than tại Quảng Ninh.">', "Homepage Twitter description");
+html = replaceOnce(html, '<p class="eyebrow">Tuyển thợ mỏ tháng 8/2026 · Quảng Ninh</p>', '<p class="eyebrow">Tuyển thợ mỏ tháng 8/2026 · Học và làm việc tại Quảng Ninh</p>', "Homepage hero eyebrow");
+html = replaceOnce(html, '<h1>Xem đủ thông tin để đăng ký trong 2 phút</h1>', '<h1>Học nghề mỏ, nhận việc tại Quảng Ninh: xem trọn hành trình trước khi đăng ký</h1>', "Homepage hero heading");
+html = replaceOnce(html, '<p class="hero-lead">Nam từ 18–40 tuổi, cao từ 1m53, nặng từ 47kg và có sức khỏe tốt. Người chưa có nghề được đào tạo trước khi vào làm việc.</p>', '<p class="hero-lead">Từ kiểm tra điều kiện, học nghề tại Quang Hanh đến ngày doanh nghiệp tiếp nhận: mọi thông tin quan trọng được trình bày theo đúng bước người lao động sẽ trải qua.</p>', "Homepage hero lead");
 html = replaceOnce(html, "</head>", '  <link rel="stylesheet" href="/worker-info-finder.css?v=2">\n</head>', "Worker information finder stylesheet");
 html = replaceOnce(html, '<button class="menu-toggle" type="button"', `${headerSearch}\n      <button class="menu-toggle" type="button"`, "Header search button");
 html = replaceOnce(html, 'href="#dieu-kien">Tự kiểm tra điều kiện</a>', 'href="#tu-kiem-tra">Tự kiểm tra điều kiện</a>', "Hero self-check link");
 html = replaceOnce(html, '<a class="button button-zalo" href="#tu-kiem-tra">Tự kiểm tra điều kiện</a>', `<a class="button button-zalo" href="#tu-kiem-tra">Tự kiểm tra điều kiện</a>\n            ${heroBriefButton}`, "Hero 30-second brief button");
 html = replaceOnce(html, '<span data-application-resume-label>Đăng ký nhanh</span>', '<span data-application-resume-label>Đăng ký – chưa cần hồ sơ</span>', "Hero application reassurance");
 html = replaceOnce(html, 'href="#dieu-kien"><b>01</b>', 'href="#tu-kiem-tra"><b>01</b>', "Quick self-check link");
+html = replaceOnce(html, '    <section class="worker-quick" aria-labelledby="worker-quick-title">', `${journeyRoadmap}    <section class="worker-quick" aria-labelledby="worker-quick-title">`, "Worker journey roadmap");
 const quickNavigation = html.match(/<nav class="worker-quick__grid"[\s\S]*?<\/nav>/i);
 if (!quickNavigation || html.match(/<nav class="worker-quick__grid"/gi)?.length !== 1) throw new Error("Worker-first homepage expected one quick navigation block");
 html = html.replace(quickNavigation[0], `${quickNavigation[0]}\n${finder.trimEnd()}`);
@@ -252,14 +302,14 @@ html = replaceOnce(html, '<article class="worker-fact"><span>03</span><h3>Thời
 html = replaceOnce(html, '<article class="worker-fact" id="thoi-gian-hoc"><span>03</span><h3>Thời gian học nghề</h3><p>Nghề khai thác mỏ và xây dựng mỏ được đào tạo trong khoảng 2–3 tháng. Người chưa có kinh nghiệm được học từ nền tảng.</p></article>', '<article class="worker-fact" id="thoi-gian-hoc"><span>03</span><h3>Thời gian học nghề</h3><ul><li>Khai thác mỏ và xây dựng mỏ: 2–3 tháng</li><li>Cơ điện mỏ: 10 tháng</li></ul><p>Người chưa có kinh nghiệm được đào tạo từ nền tảng.</p></article>', "Training duration by trade");
 html = replaceOnce(html, '<article class="worker-fact"><span>04</span><h3>Hỗ trợ trong thời gian học</h3>', '<article class="worker-fact" id="ho-tro-hoc-nghe"><span>04</span><h3>Hỗ trợ trong thời gian học</h3>', "Training support anchor");
 html = replaceOnce(html, '<article class="worker-fact"><span>06</span><h3>Việc làm sau đào tạo</h3>', '<article class="worker-fact" id="noi-lam-viec"><span>06</span><h3>Việc làm sau đào tạo</h3>', "Workplace anchor");
-html = replaceOnce(html, '    <section class="section process-section" id="quy-trinh">', `${selfCheck}    <section class="section process-section" id="quy-trinh">`, "Self-check after essential summary");
+html = replaceOnce(html, '    <section class="section process-section" id="quy-trinh">', `${selfCheck}${learningStory}    <section class="section process-section" id="quy-trinh">`, "Self-check and learning journey after essential summary");
 html = replaceOnce(html, '    <section class="worker-more" aria-labelledby="worker-more-title">', `${recommendedArticleBlock}    <section class="worker-more" aria-labelledby="worker-more-title">`, "Recommended worker-read articles");
 html = replaceOnce(html, '<section class="worker-more" aria-labelledby="worker-more-title">', '<section class="worker-more" aria-labelledby="worker-more-title"><span id="theo-tinh" aria-hidden="true"></span>', "Province compatibility anchor");
 html = replaceOnce(html, 'href="/mobile-ux.css?v=5"', 'href="/mobile-ux.css?v=6"', "Homepage mobile UX stylesheet version");
 html = replaceOnce(html, 'src="/mobile-ux.js?v=4"', 'src="/mobile-ux.js?v=8"', "Homepage mobile UX version");
 html = replaceOnce(html, "</body>", '  <script src="/worker-info-finder.js?v=2" defer></script>\n</body>', "Worker information finder script");
 
-for (const required of ['id="tu-kiem-tra"', "data-open-site-search", "data-worker-province-select", "data-worker-check-form", "data-open-worker-brief", 'id="che-do-ho-so"', 'id="thoi-gian-hoc"', 'id="ho-tro-hoc-nghe"', 'id="noi-lam-viec"', 'id="theo-tinh"', 'class="worker-recommended__grid"', 'data-home-recommended="than-thong-nhat-tuyen-sinh-nghe-mo-lai-chau-2026"']) {
+for (const required of ['id="home-journey-title"', 'class="journey-list"', 'id="learning-story-title"', 'id="tu-kiem-tra"', "data-open-site-search", "data-worker-province-select", "data-worker-check-form", "data-open-worker-brief", 'id="che-do-ho-so"', 'id="thoi-gian-hoc"', 'id="ho-tro-hoc-nghe"', 'id="noi-lam-viec"', 'id="theo-tinh"', 'class="worker-recommended__grid"', 'data-home-recommended="than-thong-nhat-tuyen-sinh-nghe-mo-lai-chau-2026"']) {
   if (!html.includes(required)) throw new Error(`Worker-first homepage is missing generated feature: ${required}`);
 }
 

@@ -234,8 +234,22 @@
     return segment.replace(/[^a-z0-9-]/gi, "").slice(0, 32) || "other";
   }
 
+  function applicationContext() {
+    const values = {}, read = (href) => {
+      try {
+        const url = new URL(href, location.href);
+        for (const key of ["province", "trade"]) values[key] ||= url.searchParams.get(key)?.slice(0, 80);
+      } catch (_) {}
+    };
+    read(location.href);
+    const path = new URL(APPLICATION_URL, ROOT).pathname;
+    document.querySelectorAll?.(`a[href*="${path}"]`)?.forEach((link) => read(link.href));
+    return values;
+  }
+
   function trackedApplicationUrl(campaign, content) {
     const url = new URL(APPLICATION_URL, ROOT);
+    for (const [key, value] of Object.entries(applicationContext())) if (value) url.searchParams.set(key, value);
     url.searchParams.set("utm_source", "website");
     url.searchParams.set("utm_medium", "internal");
     url.searchParams.set("utm_campaign", campaign);
@@ -887,5 +901,10 @@
   compactMobileConsentBanner();
   document.documentElement.classList.add("tl-mobile-ux-ready");
   setupSearch();
+
+
+
+
+
 
 })();
