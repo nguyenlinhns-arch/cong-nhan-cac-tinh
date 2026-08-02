@@ -1,4 +1,4 @@
-import "./enhance-v5-v4-compat.mjs";
+import "./enhance-v5-utm-compat.mjs";
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
