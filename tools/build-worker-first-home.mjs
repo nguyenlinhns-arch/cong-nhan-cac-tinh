@@ -16,17 +16,44 @@ if (JSON.stringify(actualParts) !== JSON.stringify(expectedParts)) {
 const encoded = actualParts
   .map((name) => fs.readFileSync(path.join(sourceDir, name), "utf8").replace(/\s+/g, ""))
   .join("");
-const html = Buffer.from(encoded, "base64").toString("utf8");
-const bytes = Buffer.byteLength(html);
-const sha256 = crypto.createHash("sha256").update(html).digest("hex");
+const sourceHtml = Buffer.from(encoded, "base64").toString("utf8");
+const sourceBytes = Buffer.byteLength(sourceHtml);
+const sourceSha256 = crypto.createHash("sha256").update(sourceHtml).digest("hex");
 
-if (!html.startsWith("<!doctype html>")) throw new Error("Worker-first homepage is not valid HTML");
-if (!html.includes('id="noi-dung"') || !html.includes('id="dieu-kien"') || !html.includes('id="dang-ky"')) {
+if (!sourceHtml.startsWith("<!doctype html>")) throw new Error("Worker-first homepage is not valid HTML");
+if (!sourceHtml.includes('id="noi-dung"') || !sourceHtml.includes('id="dieu-kien"') || !sourceHtml.includes('id="dang-ky"')) {
   throw new Error("Worker-first homepage is missing required navigation anchors");
 }
-if (bytes !== 32653 || sha256 !== "915d085bff4a83c44e1c7bfe6ec8d0962b87fe173493f140af05e0b472cd9f84") {
-  throw new Error(`Worker-first homepage source checksum mismatch: ${bytes} bytes, ${sha256}`);
+if (sourceBytes !== 32653 || sourceSha256 !== "915d085bff4a83c44e1c7bfe6ec8d0962b87fe173493f140af05e0b472cd9f84") {
+  throw new Error(`Worker-first homepage source checksum mismatch: ${sourceBytes} bytes, ${sourceSha256}`);
 }
 
+const insertions = [
+  {
+    marker: '<section class="worker-summary" id="dieu-kien">',
+    replacement: '<section class="worker-summary" id="dieu-kien"><span id="che-do-ho-so" aria-hidden="true"></span>',
+  },
+  {
+    marker: '<section class="worker-more" aria-labelledby="worker-more-title">',
+    replacement: '<section class="worker-more" aria-labelledby="worker-more-title"><span id="theo-tinh" aria-hidden="true"></span>',
+  },
+];
+
+let html = sourceHtml;
+for (const {marker, replacement} of insertions) {
+  if (!html.includes(marker)) throw new Error(`Worker-first homepage is missing compatibility marker: ${marker}`);
+  html = html.replace(marker, replacement);
+}
+
+const outputBytes = Buffer.byteLength(html);
+const outputSha256 = crypto.createHash("sha256").update(html).digest("hex");
 fs.writeFileSync(target, html);
-console.log(JSON.stringify({target: "tuyen-tho-mo/index.html", parts: actualParts.length, bytes, sha256}, null, 2));
+console.log(JSON.stringify({
+  target: "tuyen-tho-mo/index.html",
+  parts: actualParts.length,
+  sourceBytes,
+  sourceSha256,
+  outputBytes,
+  outputSha256,
+  compatibilityAnchors: insertions.length,
+}, null, 2));
