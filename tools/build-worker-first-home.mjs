@@ -75,7 +75,7 @@ const finder = `      <div class="worker-find" aria-label="Công cụ tìm thôn
             <select id="worker-province-select" data-worker-province-select>${provinceOptions}</select>
             <a class="worker-find__province-go" href="/viec-lam-nganh-than/" data-worker-province-go>Xem danh sách tỉnh</a>
           </div>
-          <p>Không thấy tỉnh phù hợp? <a href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky">Đăng ký theo biểu mẫu chung</a>.</p>
+          <p>Không thấy tỉnh phù hợp? <a href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&amp;utm_medium=internal&amp;utm_campaign=worker_find_2026&amp;utm_content=province_other#dang-ky" data-contact="application" data-context="worker-province-other">Đăng ký theo biểu mẫu chung</a>.</p>
         </div>
       </div>
 `;
