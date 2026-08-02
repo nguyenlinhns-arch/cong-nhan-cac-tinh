@@ -38,6 +38,7 @@ jobs:
           node tools/generate-seo-library.mjs
           node tools/generate-news-sitemap.mjs
           node tools/build-worker-first-home.mjs
+          node tools/enhance-home-copy-actions.mjs
           node tools/build-search-index.mjs
           node tools/enhance-natural-language-search.mjs
           node tools/enhance-answer-first-search.mjs
@@ -50,6 +51,7 @@ jobs:
           node tools/validate-worker-brief.mjs
           node tools/validate-voice-assist.mjs
           node tools/validate-direct-call.mjs
+          node tools/validate-home-copy-actions.mjs
           node tools/validate-worker-findability.mjs
           node tools/validate-universal-worker-compass.mjs
           node tools/validate-content-network.mjs
@@ -83,16 +85,21 @@ jobs:
           css_file="$(mktemp)"
           search_file="$(mktemp)"
           voice_file="$(mktemp)"
+          finder_file="$(mktemp)"
           for attempt in $(seq 1 18); do
             if curl --fail --silent --show-error --location --max-time 20 "$LIVE_URL" -o "$html_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}mobile-ux.js?run=${GITHUB_SHA}" -o "$ux_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}mobile-ux.css?run=${GITHUB_SHA}" -o "$css_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}search-index.json?run=${GITHUB_SHA}" -o "$search_file" \
-              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}voice-assist.js?run=${GITHUB_SHA}" -o "$voice_file"; then
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}voice-assist.js?run=${GITHUB_SHA}" -o "$voice_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}worker-info-finder.js?run=${GITHUB_SHA}" -o "$finder_file"; then
               if grep -Fq 'id="worker-quick-title"' "$html_file" \
                 && grep -Fq 'id="tu-kiem-tra"' "$html_file" \
                 && grep -Fq 'data-open-site-search' "$html_file" \
                 && grep -Fq 'data-worker-province-select' "$html_file" \
+                && grep -Fq 'data-worker-copy="admission_address"' "$html_file" \
+                && grep -Fq 'data-worker-copy="application_message"' "$html_file" \
+                && grep -Fq '/worker-info-finder.js?v=3' "$html_file" \
                 && grep -Fq 'id="che-do-ho-so"' "$html_file" \
                 && grep -Fq 'id="theo-tinh"' "$html_file" \
                 && grep -Fq 'id="noi-lam-viec"' "$html_file" \
@@ -131,16 +138,20 @@ jobs:
                 && grep -Fq '🔊 Nghe câu trả lời' "$voice_file" \
                 && grep -Fq 'Trình duyệt xử lý giọng nói; website không lưu âm thanh hay câu hỏi.' "$voice_file" \
                 && grep -Fq 'window.ThayLinhVoiceAssist = Object.freeze({ init })' "$voice_file" \
+                && grep -Fq 'const COPY_VALUES = Object.freeze({' "$finder_file" \
+                && grep -Fq 'navigator.clipboard.writeText(value)' "$finder_file" \
+                && grep -Fq 'document.execCommand("copy")' "$finder_file" \
+                && grep -Fq 'track("worker_copy", { item: key, result: copied ? "success" : "failure" })' "$finder_file" \
                 && grep -Fq '"version": 3' "$search_file" \
                 && grep -Fq '"title": "Học xong làm việc ở đâu?"' "$search_file" \
                 && grep -Fq '.tl-worker-compass{' "$css_file"; then
-                echo "Live worker-first homepage, one-tap phone help, spoken answers, voice search and answer-first navigation verified on attempt $attempt."
+                echo "Live worker-first homepage, one-tap copy, phone help, spoken answers and answer-first navigation verified on attempt $attempt."
                 exit 0
               fi
             fi
             sleep 5
           done
-          echo "The custom domain did not expose the expected one-tap phone help, worker-first homepage, spoken answers and answer-first search."
+          echo "The custom domain did not expose the expected one-tap copy actions, phone help, worker-first homepage and spoken answer-first search."
           exit 1
       - name: Record deployment receipt
         if: success() && github.event_name != 'schedule'
@@ -149,5 +160,5 @@ jobs:
           DEPLOYMENT_URL: ${{ steps.deployment.outputs.page_url }}
         run: |
           deployed_at="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-          body="$(printf '✅ **Triển khai và xác minh tên miền thành công**\n\n- Commit: `%s`\n- Workflow run: `%s`\n- URL triển khai: %s\n- Tên miền đã kiểm tra: https://thaylinhtuyenthomo.vn/\n- Thời điểm UTC: `%s`\n- Kết quả: trang thật ưu tiên Ứng tuyển – Zalo – Gọi trên điện thoại; có gọi tư vấn trong tóm tắt, câu trả lời liên hệ và khi tìm kiếm chưa khớp; đồng thời giữ tìm kiếm giọng nói, nghe câu trả lời, chọn tỉnh và tự kiểm tra điều kiện.\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$DEPLOYMENT_URL" "$deployed_at")"
+          body="$(printf '✅ **Triển khai và xác minh tên miền thành công**\n\n- Commit: `%s`\n- Workflow run: `%s`\n- URL triển khai: %s\n- Tên miền đã kiểm tra: https://thaylinhtuyenthomo.vn/\n- Thời điểm UTC: `%s`\n- Kết quả: trang thật cho phép sao chép địa chỉ nhập học và mẫu đăng ký bằng một chạm; đồng thời giữ Ứng tuyển – Zalo – Gọi, tìm kiếm giọng nói, nghe câu trả lời, chọn tỉnh và tự kiểm tra điều kiện.\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$DEPLOYMENT_URL" "$deployed_at")"
           gh issue comment 42 --repo "$GITHUB_REPOSITORY" --body "$body"

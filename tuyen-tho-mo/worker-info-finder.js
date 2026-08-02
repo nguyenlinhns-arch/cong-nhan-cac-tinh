@@ -6,6 +6,73 @@
     window.dataLayer.push({ event, page_path: location.pathname, ...payload });
   };
 
+  const COPY_VALUES = Object.freeze({
+    admission_address: "Khu C – Phân hiệu Đào tạo Cẩm Phả, Trường Cao đẳng Than – Khoáng sản Việt Nam, phường Quang Hanh, tỉnh Quảng Ninh.",
+    application_message: [
+      "Tôi muốn đăng ký học nghề mỏ.",
+      "Năm sinh: …",
+      "Chiều cao / cân nặng: …",
+      "Sức khỏe hiện tại: …",
+      "Tỉnh đang sinh sống: …",
+    ].join("\n"),
+  });
+  const copyResetTimers = new WeakMap();
+
+  function fallbackCopy(value) {
+    const field = document.createElement("textarea");
+    field.value = value;
+    field.readOnly = true;
+    field.tabIndex = -1;
+    field.setAttribute("aria-hidden", "true");
+    field.style.position = "fixed";
+    field.style.top = "-9999px";
+    field.style.opacity = "0";
+    document.body.append(field);
+    field.select();
+    field.setSelectionRange(0, field.value.length);
+    let copied = false;
+    try {
+      copied = document.execCommand("copy");
+    } catch (_) {
+      copied = false;
+    }
+    field.remove();
+    return copied;
+  }
+
+  async function copyWorkerText(value) {
+    if (navigator.clipboard?.writeText && window.isSecureContext) {
+      try {
+        await navigator.clipboard.writeText(value);
+        return true;
+      } catch (_) {}
+    }
+    return fallbackCopy(value);
+  }
+
+  document.querySelectorAll("[data-worker-copy]").forEach((button) => {
+    const originalLabel = button.textContent.trim();
+    const originalAriaLabel = button.getAttribute("aria-label");
+    button.addEventListener("click", async () => {
+      const key = button.dataset.workerCopy || "";
+      const value = COPY_VALUES[key];
+      if (!value || button.disabled) return;
+      button.disabled = true;
+      const copied = await copyWorkerText(value);
+      button.disabled = false;
+      button.textContent = copied ? "Đã sao chép ✓" : "Chưa sao chép được";
+      button.setAttribute("aria-label", copied ? `${originalLabel}: đã sao chép` : `${originalLabel}: chưa sao chép được`);
+      track("worker_copy", { item: key, result: copied ? "success" : "failure" });
+      clearTimeout(copyResetTimers.get(button));
+      copyResetTimers.set(button, setTimeout(() => {
+        if (!button.isConnected) return;
+        button.textContent = originalLabel;
+        if (originalAriaLabel === null) button.removeAttribute("aria-label");
+        else button.setAttribute("aria-label", originalAriaLabel);
+      }, 2600));
+    });
+  });
+
   document.querySelectorAll("[data-worker-search]").forEach((button) => {
     button.addEventListener("click", () => track("worker_search_open", { context: button.dataset.context || "home" }));
   });
