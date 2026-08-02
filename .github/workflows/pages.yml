@@ -31,6 +31,7 @@ jobs:
       - name: Rebuild content network and validate website
         run: |
           node tools/generate-province-pages-2026.mjs
+          node tools/generate-legacy-redirects.mjs
           node tools/generate-job-board-pages.mjs
           node tools/generate-content-network.mjs
           node tools/generate-seo-library.mjs

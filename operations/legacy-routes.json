@@ -1,0 +1,16 @@
+{
+  "routes": [
+    { "from": "/bac-kan-thai-nguyen/", "to": "/viec-lam-nganh-than/thai-nguyen/", "label": "Bắc Kạn – Thái Nguyên" },
+    { "from": "/cao-bang/", "to": "/viec-lam-nganh-than/cao-bang/", "label": "Cao Bằng" },
+    { "from": "/dien-bien/", "to": "/viec-lam-nganh-than/dien-bien/", "label": "Điện Biên" },
+    { "from": "/ha-tinh/", "to": "/viec-lam-nganh-than/ha-tinh/", "label": "Hà Tĩnh" },
+    { "from": "/lai-chau/", "to": "/viec-lam-nganh-than/lai-chau/", "label": "Lai Châu" },
+    { "from": "/lang-son/", "to": "/viec-lam-nganh-than/lang-son/", "label": "Lạng Sơn", "targetIndexable": false },
+    { "from": "/lao-cai/", "to": "/viec-lam-nganh-than/lao-cai/", "label": "Lào Cai" },
+    { "from": "/nghe-an/", "to": "/viec-lam-nganh-than/nghe-an/", "label": "Nghệ An" },
+    { "from": "/quang-ngai/", "to": "/viec-lam-nganh-than/quang-ngai/", "label": "Quảng Ngãi" },
+    { "from": "/quang-tri/", "to": "/viec-lam-nganh-than/quang-tri/", "label": "Quảng Trị" },
+    { "from": "/son-la/", "to": "/viec-lam-nganh-than/son-la/", "label": "Sơn La" },
+    { "from": "/tuyen-quang-ha-giang/", "to": "/viec-lam-nganh-than/tuyen-quang/", "label": "Tuyên Quang – Hà Giang" }
+  ]
+}

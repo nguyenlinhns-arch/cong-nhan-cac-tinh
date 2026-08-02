@@ -103,8 +103,9 @@ for (const article of articles) {
 
 const htmlFiles = walk(root);
 const contentFiles = htmlFiles.filter((file) => !path.basename(file).startsWith("google"));
-if (htmlFiles.length !== 105) fail(`Website: cần 105 tệp HTML, nhận ${htmlFiles.length}`);
-if (contentFiles.length !== 104) fail(`Website: cần 104 trang nội dung, nhận ${contentFiles.length}`);
+const legacyRoutes = JSON.parse(fs.readFileSync(path.resolve("operations/legacy-routes.json"), "utf8")).routes || [];
+if (htmlFiles.length !== 105 + legacyRoutes.length) fail(`Website: cần ${105 + legacyRoutes.length} tệp HTML, nhận ${htmlFiles.length}`);
+if (contentFiles.length !== 104 + legacyRoutes.length) fail(`Website: cần ${104 + legacyRoutes.length} trang nội dung, nhận ${contentFiles.length}`);
 for (const file of contentFiles) {
   const html = fs.readFileSync(file, "utf8");
   const relative = path.relative(root, file);
@@ -117,6 +118,22 @@ const sitemap = read("sitemap.xml");
 const sitemapUrls = sitemap.match(/<loc>/g)?.length || 0;
 const indexablePages = contentFiles.filter((file) => !/<meta\s+name="robots"\s+content="[^"]*noindex/i.test(fs.readFileSync(file, "utf8"))).length;
 if (sitemapUrls !== indexablePages) fail(`Sitemap: cần ${indexablePages} URL indexable, nhận ${sitemapUrls}`);
+for (const route of legacyRoutes) {
+  const relative = `${route.from.replace(/^\/+|\/+$/g, "")}/index.html`;
+  const html = read(relative);
+  if (!html.includes('data-legacy-redirect') || !html.includes('content="noindex,follow"')) fail(`${relative}: thiếu dấu chuyển hướng noindex`);
+  if (!html.includes(`<link rel="canonical" href="${base}${route.to}">`)) fail(`${relative}: canonical không trỏ tới trang tỉnh hiện hành`);
+  if (sitemap.includes(`<loc>${base}${route.from}</loc>`)) fail(`${relative}: URL cũ không được vào sitemap`);
+  const targetRelative = `${route.to.replace(/^\/+|\/+$/g, "")}/index.html`;
+  const targetHtml = read(targetRelative);
+  const targetInSitemap = sitemap.includes(`<loc>${base}${route.to}</loc>`);
+  const targetNoindex = /<meta\s+name="robots"\s+content="[^"]*noindex/i.test(targetHtml);
+  if (route.targetIndexable === false) {
+    if (targetInSitemap || !targetNoindex) fail(`${relative}: trang đích phải giữ noindex cho tới khi có bằng chứng địa phương`);
+  } else if (!targetInSitemap || targetNoindex) {
+    fail(`${relative}: trang đích hiện hành phải có trong sitemap`);
+  }
+}
 for (const [, url] of hubs) if (!sitemap.includes(`<loc>${base}${url}</loc>`)) fail(`Sitemap: thiếu ${url}`);
 
 const analytics = read("analytics.js");

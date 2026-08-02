@@ -23,6 +23,7 @@ jobs:
         run: node tools/sync-vinacomin-youtube.mjs
       - name: Rebuild search and validate the website
         run: |
+          node tools/generate-legacy-redirects.mjs
           node tools/generate-news-sitemap.mjs
           node tools/build-search-index.mjs
           node tools/validate-content-network.mjs

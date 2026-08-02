@@ -4,6 +4,11 @@ import path from "node:path";
 const root = path.resolve("tuyen-tho-mo");
 const base = "https://thaylinhtuyenthomo.vn";
 const errors = [];
+const legacyRoutes = JSON.parse(fs.readFileSync(path.resolve("operations/legacy-routes.json"), "utf8")).routes || [];
+const legacyRouteByFile = new Map(legacyRoutes.map((route) => [
+  `${route.from.replace(/^\/+|\/+$/g, "")}/index.html`,
+  route,
+]));
 
 function collectFiles(directory, predicate, output = []) {
   for (const entry of fs.readdirSync(directory, {withFileTypes: true})) {
@@ -126,6 +131,8 @@ for (const file of htmlFiles) {
   const html = fs.readFileSync(file, "utf8");
   if (/\bNaN\b|NaNmNaN/u.test(html)) errors.push(`${relative}: contains an invalid numeric placeholder`);
   const expected = publicUrl(file);
+  const legacyRoute = legacyRouteByFile.get(relative);
+  const expectedCanonical = legacyRoute ? `${base}${legacyRoute.to}` : expected;
   const robotsMeta = meta(html, "name", "robots").toLowerCase();
   const indexable = !robotsMeta.includes("noindex");
   const pageTitle = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1]?.trim() || "";
@@ -148,7 +155,7 @@ for (const file of htmlFiles) {
   if (!pageTitle) errors.push(`${relative}: missing title`);
   if (!description) errors.push(`${relative}: missing meta description`);
   if (canonicalLinks.length !== 1) errors.push(`${relative}: expected exactly one canonical, got ${canonicalLinks.length}`);
-  if (canonical !== expected) errors.push(`${relative}: canonical ${canonical || "missing"} must be ${expected}`);
+  if (canonical !== expectedCanonical) errors.push(`${relative}: canonical ${canonical || "missing"} must be ${expectedCanonical}`);
   if (!faviconHrefs.has("/favicon.ico")) errors.push(`${relative}: missing stable /favicon.ico declaration`);
   if (!faviconHrefs.has("/favicon-48x48.png")) errors.push(`${relative}: missing 48x48 PNG favicon declaration`);
   if (appleIcon !== "/apple-touch-icon.png") errors.push(`${relative}: missing apple-touch-icon declaration`);
@@ -163,6 +170,24 @@ for (const file of htmlFiles) {
     if (twitterCard !== "summary_large_image" || !twitterTitle || !twitterDescription || !twitterImage) errors.push(`${relative}: incomplete Twitter/X metadata`);
     if (!twitterImage.startsWith("https://")) errors.push(`${relative}: twitter:image must use HTTPS`);
     if (!jsonScripts.length) errors.push(`${relative}: missing JSON-LD`);
+  }
+
+  if (legacyRoute) {
+    const refresh = tags(html, "meta").find((item) => item["http-equiv"]?.toLowerCase() === "refresh")?.content || "";
+    if (indexable) errors.push(`${relative}: legacy compatibility page must be noindex`);
+    if (!html.includes("data-legacy-redirect")) errors.push(`${relative}: missing legacy redirect marker`);
+    if (!refresh.includes(`url=${legacyRoute.to}`)) errors.push(`${relative}: meta refresh must point to ${legacyRoute.to}`);
+    if (sitemapSet.has(expected)) errors.push(`${relative}: legacy URL must stay out of sitemap`);
+    const targetFile = localFile(file, legacyRoute.to);
+    const targetHtml = targetFile && fs.existsSync(targetFile) ? fs.readFileSync(targetFile, "utf8") : "";
+    const targetNoindex = meta(targetHtml, "name", "robots").toLowerCase().includes("noindex");
+    const targetInSitemap = sitemapSet.has(`${base}${legacyRoute.to}`);
+    if (!targetFile || !targetHtml) errors.push(`${relative}: canonical target file is missing`);
+    if (legacyRoute.targetIndexable === false) {
+      if (targetInSitemap || !targetNoindex) errors.push(`${relative}: target must remain noindex until it has unique local evidence`);
+    } else if (!targetInSitemap || targetNoindex) {
+      errors.push(`${relative}: canonical target is missing from sitemap or unexpectedly noindex`);
+    }
   }
 
   for (const [index, script] of jsonScripts.entries()) {
