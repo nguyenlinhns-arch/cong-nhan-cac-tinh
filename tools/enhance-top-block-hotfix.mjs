@@ -21,7 +21,7 @@ function walk(directory, output = []) {
 for (const target of walk(root)) {
   const relative = path.relative(root, target).replace(/\\/g, "/");
   const before = fs.readFileSync(target, "utf8");
-  if (before.includes("data-legacy-redirect")) continue;
+  if (before.includes("data-legacy-redirect") || /^google[a-z0-9_-]+\.html$/i.test(relative)) continue;
   checked += 1;
   if (before.includes(tag)) continue;
   const html = before.replace("</head>", `${tag}\n</head>`);
