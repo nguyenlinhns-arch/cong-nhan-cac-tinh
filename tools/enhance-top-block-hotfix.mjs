@@ -8,7 +8,6 @@ const STYLE_TAG = '<link rel="stylesheet" href="/site-shell-20260803.css?v=1">';
 const SCRIPT_TAG = '<script src="/site-shell-20260803.js?v=1" defer></script>';
 let checked = 0;
 let changed = 0;
-let strippedNavigation = 0;
 let withShell = 0;
 
 function walk(directory, output = []) {
@@ -28,23 +27,13 @@ function stripOldShellAssets(html) {
     .replace(/\s*<script\s+src=["']\/site-shell-[^"']+\.js(?:\?[^"']*)?["'][^>]*><\/script>/gi, "");
 }
 
-function stripNavigationRows(html) {
-  const before = html;
-  let source = html
-    .replace(/\s*<nav\b[^>]*\bclass=["'][^"']*\bv4-primary-nav\b[^"']*["'][^>]*>[\s\S]*?<\/nav>/gi, "")
-    .replace(/\s*<nav\b[^>]*\bclass=["'][^"']*\btl-worker-compass\b[^"']*["'][^>]*>[\s\S]*?<\/nav>/gi, "")
-    .replace(/(<\/header>)\s*(?:<nav\b[\s\S]*?<\/nav>\s*)+(?=<main\b)/gi, "$1");
-  if (source !== before) strippedNavigation += 1;
-  return source;
-}
-
 for (const target of walk(root)) {
   const relative = path.relative(root, target).replace(/\\/g, "/");
   const before = fs.readFileSync(target, "utf8");
   if (before.includes("data-legacy-redirect") || /^google[a-z0-9_-]+\.html$/i.test(relative)) continue;
   checked += 1;
 
-  let html = stripNavigationRows(stripOldShellAssets(before));
+  let html = stripOldShellAssets(before);
   if (!html.includes("</head>") || !html.includes("</body>")) throw new Error(`${relative}: thiếu thẻ đóng head/body`);
   html = html.replace("</head>", `${STYLE_TAG}\n</head>`);
   html = html.replace("</body>", `${SCRIPT_TAG}\n</body>`);
@@ -65,6 +54,6 @@ console.log(JSON.stringify({
   shell: "site-shell-20260803",
   html_checked: checked,
   html_changed: changed,
-  navigation_rows_stripped: strippedNavigation,
+  navigation_cleanup: "css-and-runtime",
   html_with_shell: withShell,
 }, null, 2));
