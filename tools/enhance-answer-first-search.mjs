@@ -77,7 +77,7 @@ const helperBlock = String.raw`
 
     if (checks.length) {
       const failed = checks.filter((check) => !check.pass);
-      const text = checks.map((check) => `${check.label}: ${check.pass ? "đạt" : "chưa đạt"} mốc ${check.requirement}`).join("; ")
+      const text = checks.map((check) => check.label + ": " + (check.pass ? "đạt" : "chưa đạt") + " mốc " + check.requirement).join("; ")
         + ". Đây là kiểm tra sơ bộ theo thông tin bạn nhập; sức khỏe và kết quả khám tuyển là căn cứ xác nhận cuối cùng.";
       return {
         kind: "screening",
@@ -133,7 +133,7 @@ const helperBlock = String.raw`
     const primary = document.createElement("a");
     primary.href = safeUrl(answer.href);
     primary.textContent = answer.actionLabel;
-    primary.dataset.workerShortcut = `answer_${answer.kind}`;
+    primary.dataset.workerShortcut = "answer_" + answer.kind;
     actions.append(primary);
 
     if (answer.secondaryHref) {
@@ -144,7 +144,7 @@ const helperBlock = String.raw`
       secondary.textContent = answer.secondaryLabel || "Hỏi qua Zalo";
       secondary.dataset.contact = "zalo";
       secondary.dataset.context = "search-answer";
-      secondary.dataset.workerShortcut = `answer_${answer.kind}_zalo`;
+      secondary.dataset.workerShortcut = "answer_" + answer.kind + "_zalo";
       actions.append(secondary);
     }
 
