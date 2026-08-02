@@ -11,6 +11,7 @@
 [data-measurement-consent],
 .v4-primary-nav,
 .tl-worker-compass,
+.journey-short-nav,
 .v5-intent-hub,
 .v5-return-prompt{display:none!important}
 
@@ -40,6 +41,7 @@
 
   .v4-primary-nav,
   .tl-worker-compass,
+  .journey-short-nav,
   .journey-quick-nav,
   .journey-nav,
   .journey-route,
