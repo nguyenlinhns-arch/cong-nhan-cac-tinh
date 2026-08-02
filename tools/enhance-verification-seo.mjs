@@ -1,4 +1,4 @@
-import "./rewrite-kcn-comparison.mjs";
+import "./fix-kcn-income-context.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
