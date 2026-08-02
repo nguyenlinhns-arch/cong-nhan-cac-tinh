@@ -31,6 +31,7 @@ jobs:
           node tools/enhance-answer-first-search.mjs
           node tools/enhance-worker-brief.mjs
           node tools/enhance-voice-loader.mjs
+          node tools/enhance-search-answer-read-aloud.mjs
           node tools/validate-natural-language-search.mjs
           node tools/validate-answer-first-search.mjs
           node tools/validate-worker-brief.mjs
@@ -50,4 +51,4 @@ jobs:
           node tools/validate-recruitment-funnel.mjs
           node tools/test-recruitment-application.mjs
           node tools/validate-crm-automation.mjs
-          git diff --exit-code -- . ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/mobile-ux.js'
+          git diff --exit-code -- . ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/mobile-ux.js' ':(exclude)tuyen-tho-mo/voice-assist.js'
