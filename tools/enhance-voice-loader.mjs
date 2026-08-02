@@ -9,7 +9,7 @@ const beforeSha256 = crypto.createHash("sha256").update(source).digest("hex");
 const markers = [
   "let voiceAssistPromise = null",
   "function loadVoiceAssist()",
-  "/voice-assist.js?v=1",
+  "/voice-assist.js?v=2",
   "void loadVoiceAssist();",
 ];
 
@@ -36,7 +36,7 @@ const loader = `
     if (!voiceAssistPromise) {
       voiceAssistPromise = new Promise((resolve) => {
         const script = document.createElement("script");
-        script.src = "/voice-assist.js?v=1";
+        script.src = "/voice-assist.js?v=2";
         script.async = true;
         script.onload = () => {
           window.ThayLinhVoiceAssist?.init?.();
