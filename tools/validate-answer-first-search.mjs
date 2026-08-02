@@ -113,7 +113,8 @@ for (const testCase of cases) {
 }
 
 const dossierAnswer = api.buildSearchAnswer("không có bằng", rank("không có bằng"));
-if (dossierAnswer?.kind !== "direct" || dossierAnswer?.href !== "/#ho-so" || !dossierAnswer.text.includes("Chưa có bằng")) {
+const dossierText = String(dossierAnswer?.text || "").toLocaleLowerCase("vi");
+if (dossierAnswer?.kind !== "direct" || dossierAnswer?.href !== "/#ho-so" || !dossierText.includes("chưa có bằng")) {
   errors.push("Câu hỏi không có bằng chưa được trả lời trực tiếp đúng mục hồ sơ");
 }
 
