@@ -41,6 +41,96 @@ const esc = (value = "") => String(value)
   .replaceAll(">", "&gt;")
   .replaceAll('"', "&quot;");
 
+const base = "https://thaylinhtuyenthomo.vn";
+const authorId = `${base}/tac-gia/nguyen-tu-linh/#person`;
+const organizationId = `${base}/#organization`;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${base}/#website`,
+      url: `${base}/`,
+      name: "Thầy Linh – Tuyển Thợ Mỏ",
+      inLanguage: "vi-VN",
+      description: "Thông tin tuyển thợ mỏ, học nghề mỏ và việc làm ngành Than tại Quảng Ninh.",
+      publisher: {"@id": organizationId},
+    },
+    {
+      "@type": "Organization",
+      "@id": organizationId,
+      name: "Thầy Linh – Tuyển Thợ Mỏ",
+      url: `${base}/`,
+      logo: {"@type": "ImageObject", url: `${base}/favicon-512x512.png`, width: 512, height: 512},
+      founder: {"@id": authorId},
+      publishingPrinciples: `${base}/nguyen-tac-bien-tap/`,
+      sameAs: [
+        "https://www.facebook.com/thaylinhtuyenthomo/",
+        "https://www.youtube.com/@ThầyLinh-TuyểnThợMỏ",
+        "https://www.tiktok.com/@thaylinhtuyenthomo",
+      ],
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Số 8 Chu Văn An",
+        addressLocality: "phường Hạ Long",
+        addressRegion: "Quảng Ninh",
+        addressCountry: "VN",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+84963048585",
+        contactType: "Tư vấn tuyển sinh nghề mỏ",
+        areaServed: "VN",
+        availableLanguage: "vi",
+      },
+    },
+    {
+      "@type": "Person",
+      "@id": authorId,
+      name: "Nguyễn Tử Linh",
+      alternateName: ["Thầy Linh", "Thầy Linh – Tuyển Thợ Mỏ"],
+      url: `${base}/tac-gia/nguyen-tu-linh/`,
+      image: `${base}/assets/thay-linh-avatar.webp`,
+      telephone: "+84963048585",
+      jobTitle: "Trưởng phòng Tuyển sinh Miền Trung",
+      worksFor: {"@type": "CollegeOrUniversity", name: "Trường Cao đẳng Than - Khoáng sản Việt Nam"},
+      sameAs: [
+        "https://www.facebook.com/thaylinhtuyenthomo/",
+        "https://www.youtube.com/@ThầyLinh-TuyểnThợMỏ",
+        "https://www.tiktok.com/@thaylinhtuyenthomo",
+      ],
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${base}/#webpage`,
+      url: `${base}/`,
+      name: "Tuyển thợ mỏ tháng 8/2026: điều kiện, quyền lợi và hồ sơ",
+      description: "Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. Căn cước công dân bản gốc; Giấy khai sinh; Bằng THCS hoặc THPT nếu có. Chưa có bằng vẫn có thể đăng ký để được hướng dẫn đối chiếu theo hệ đào tạo. Địa chỉ liên hệ: Số 8 Chu Văn An, phường Hạ Long, Quảng Ninh. Địa điểm nhập học: Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh.",
+      dateModified: "2026-08-02",
+      lastReviewed: "2026-08-01",
+      reviewedBy: {"@id": authorId},
+      isPartOf: {"@id": `${base}/#website`},
+      author: {"@id": authorId},
+      publisher: {"@id": organizationId},
+      publishingPrinciples: `${base}/nguyen-tac-bien-tap/`,
+      about: {"@id": `${base}/thong-tin-tuyen-tho-mo/#webpage`},
+      mainEntity: {"@id": `${base}/#faq`},
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${base}/#faq`,
+      mainEntity: [
+        ["Điều kiện đăng ký học nghề mỏ là gì?", "Nam từ 18 đến 40 tuổi, cao từ 1,53 m, nặng từ 47 kg và có sức khỏe tốt. Không cận thị, không mắc bệnh tim mạch, huyết áp hoặc bệnh về mắt."],
+        ["Thu nhập thợ lò là bao nhiêu?", "Cam kết thu nhập 20–25 triệu đồng mỗi tháng khi hoàn thành định mức lao động."],
+        ["Hồ sơ nhập học gồm những gì?", "Khi nhập học cần mang căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Chưa có bằng vẫn có thể đăng ký để được hướng dẫn."],
+        ["Học nghề mỏ và nhập học ở đâu?", "Địa điểm nhập học là Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh. Chỉ đến sau khi được xác nhận lịch tiếp nhận."],
+        ["Trong thời gian học được hỗ trợ gì?", "Người học được miễn kinh phí đào tạo, phục vụ 3 bữa mỗi ngày, bố trí ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học."],
+      ].map(([name, text]) => ({"@type": "Question", name, acceptedAnswer: {"@type": "Answer", text}})),
+    },
+  ],
+};
+const structuredDataMarkup = `  <script type="application/ld+json">\n  ${JSON.stringify(structuredData)}\n  </script>`;
+
 const regions = [...new Set(provinces.map((province) => province.region))];
 const provinceOptions = [
   '<option value="">Chọn tỉnh đang sinh sống</option>',
@@ -128,19 +218,27 @@ function replaceOnce(text, marker, replacement, label) {
 }
 
 let html = sourceHtml;
+const structuredDataBlocks = [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi)];
+if (structuredDataBlocks.length !== 1) throw new Error(`Worker-first homepage expected one JSON-LD block, got ${structuredDataBlocks.length}`);
+html = html.replace(structuredDataBlocks[0][0], structuredDataMarkup);
 html = replaceOnce(html, "</head>", '  <link rel="stylesheet" href="/worker-info-finder.css?v=2">\n</head>', "Worker information finder stylesheet");
 html = replaceOnce(html, '<button class="menu-toggle" type="button"', `${headerSearch}\n      <button class="menu-toggle" type="button"`, "Header search button");
 html = replaceOnce(html, 'href="#dieu-kien">Tự kiểm tra điều kiện</a>', 'href="#tu-kiem-tra">Tự kiểm tra điều kiện</a>', "Hero self-check link");
 html = replaceOnce(html, '<span data-application-resume-label>Đăng ký nhanh</span>', '<span data-application-resume-label>Đăng ký – chưa cần hồ sơ</span>', "Hero application reassurance");
 html = replaceOnce(html, 'href="#dieu-kien"><b>01</b>', 'href="#tu-kiem-tra"><b>01</b>', "Quick self-check link");
-html = replaceOnce(html, '      <nav class="worker-quick__grid" aria-label="Thông tin nhanh cho người lao động">', `${finder}      <nav class="worker-quick__grid" aria-label="Thông tin nhanh cho người lao động">`, "Worker finder block");
-html = replaceOnce(html, '    <section class="worker-summary" id="dieu-kien">', `${selfCheck}    <section class="worker-summary" id="dieu-kien"><span id="che-do-ho-so" aria-hidden="true"></span>`, "Self-check and compatibility anchor");
+const quickNavigation = html.match(/<nav class="worker-quick__grid"[\s\S]*?<\/nav>/i);
+if (!quickNavigation || html.match(/<nav class="worker-quick__grid"/gi)?.length !== 1) throw new Error("Worker-first homepage expected one quick navigation block");
+html = html.replace(quickNavigation[0], `${quickNavigation[0]}\n${finder.trimEnd()}`);
+html = replaceOnce(html, '    <section class="worker-summary" id="dieu-kien">', '    <section class="worker-summary" id="dieu-kien"><span id="che-do-ho-so" aria-hidden="true"></span>', "Summary compatibility anchor");
+html = replaceOnce(html, '<article class="worker-fact"><span>03</span><h3>Thời gian học nghề</h3>', '<article class="worker-fact" id="thoi-gian-hoc"><span>03</span><h3>Thời gian học nghề</h3>', "Training duration anchor");
+html = replaceOnce(html, '<article class="worker-fact"><span>04</span><h3>Hỗ trợ trong thời gian học</h3>', '<article class="worker-fact" id="ho-tro-hoc-nghe"><span>04</span><h3>Hỗ trợ trong thời gian học</h3>', "Training support anchor");
+html = replaceOnce(html, '    <section class="section process-section" id="quy-trinh">', `${selfCheck}    <section class="section process-section" id="quy-trinh">`, "Self-check after essential summary");
 html = replaceOnce(html, '    <section class="worker-more" aria-labelledby="worker-more-title">', `${latestArticleBlock}    <section class="worker-more" aria-labelledby="worker-more-title">`, "Latest community article");
 html = replaceOnce(html, '<section class="worker-more" aria-labelledby="worker-more-title">', '<section class="worker-more" aria-labelledby="worker-more-title"><span id="theo-tinh" aria-hidden="true"></span>', "Province compatibility anchor");
 html = replaceOnce(html, 'src="/mobile-ux.js?v=4"', 'src="/mobile-ux.js?v=5"', "Homepage mobile UX version");
 html = replaceOnce(html, "</body>", '  <script src="/worker-info-finder.js?v=2" defer></script>\n</body>', "Worker information finder script");
 
-for (const required of ['id="tu-kiem-tra"', "data-open-site-search", "data-worker-province-select", "data-worker-check-form", 'id="che-do-ho-so"', 'id="theo-tinh"', 'class="worker-latest__card"']) {
+for (const required of ['id="tu-kiem-tra"', "data-open-site-search", "data-worker-province-select", "data-worker-check-form", 'id="che-do-ho-so"', 'id="thoi-gian-hoc"', 'id="ho-tro-hoc-nghe"', 'id="theo-tinh"', 'class="worker-latest__card"']) {
   if (!html.includes(required)) throw new Error(`Worker-first homepage is missing generated feature: ${required}`);
 }
 

@@ -42,6 +42,7 @@ function removeInterfaceHeadings(html) {
 
 function classify(url, title, keywords) {
   const haystack = `${url} ${title} ${keywords}`.toLocaleLowerCase("vi");
+  if (url === "/") return ["recruitment", "Thông tin tuyển tháng 8/2026"];
   if (url === "/thong-tin-tuyen-tho-mo/") return ["recruitment", "Thông tin đang áp dụng"];
   if (url === "/trung-tam-nghe-mo/") return ["guide", "Trung tâm nghề mỏ"];
   if (url === "/viec-lam-nganh-than/") return ["recruitment", "Việc làm theo tỉnh"];
@@ -64,7 +65,74 @@ function classify(url, title, keywords) {
   return ["guide", "Thông tin nghề mỏ"];
 }
 
-const items = walk(root)
+const directAnswers = [
+  {
+    url: "/#dieu-kien",
+    title: "Điều kiện đăng ký học nghề mỏ là gì?",
+    description: "Nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg, sức khỏe tốt; không cận thị, bệnh tim mạch, huyết áp hoặc bệnh về mắt.",
+    keywords: ["điều kiện", "bao nhiêu tuổi", "chiều cao", "cân nặng", "sức khỏe", "cận thị"],
+    category: "entry",
+    categoryLabel: "Điều kiện & hồ sơ",
+  },
+  {
+    url: "/#quyen-loi",
+    title: "Thu nhập và quyền lợi của thợ mỏ",
+    description: "Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động; người lao động được đào tạo nghề trước khi bố trí việc làm.",
+    keywords: ["thu nhập", "lương", "quyền lợi", "20 25 triệu", "định mức lao động"],
+    category: "work",
+    categoryLabel: "Công việc & lương",
+  },
+  {
+    url: "/#thoi-gian-hoc",
+    title: "Thời gian học nghề mỏ là bao lâu?",
+    description: "Nghề khai thác mỏ và xây dựng mỏ được đào tạo khoảng 2–3 tháng; người chưa có kinh nghiệm được học từ nền tảng.",
+    keywords: ["thời gian học", "học bao lâu", "2 3 tháng", "đào tạo nghề mỏ"],
+    category: "training",
+    categoryLabel: "Học nghề",
+  },
+  {
+    url: "/#ho-tro-hoc-nghe",
+    title: "Trong thời gian học được hỗ trợ gì?",
+    description: "Miễn kinh phí đào tạo, ăn 3 bữa/ngày, ở ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học.",
+    keywords: ["hỗ trợ", "miễn học phí", "ăn ở", "ký túc xá", "7,5 triệu", "7.5 triệu"],
+    category: "welfare",
+    categoryLabel: "Đời sống & phúc lợi",
+  },
+  {
+    url: "/#ho-so",
+    title: "Hồ sơ nhập học cần những gì?",
+    description: "Khi nhập học mang căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; chưa có bằng vẫn đăng ký được.",
+    keywords: ["hồ sơ", "giấy tờ", "căn cước", "CCCD", "giấy khai sinh", "bằng cấp"],
+    category: "entry",
+    categoryLabel: "Điều kiện & hồ sơ",
+  },
+  {
+    url: "/#dia-diem",
+    title: "Địa chỉ nhập học nghề mỏ ở đâu?",
+    description: "Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh; chỉ đến sau khi được xác nhận lịch tiếp nhận.",
+    keywords: ["địa chỉ nhập học", "nơi học", "Quang Hanh", "Khu C", "Phân hiệu Đào tạo Cẩm Phả"],
+    category: "entry",
+    categoryLabel: "Điều kiện & hồ sơ",
+  },
+  {
+    url: "/#quy-trinh",
+    title: "Quy trình đăng ký học nghề mỏ",
+    description: "Gửi thông tin, kiểm tra sơ bộ, nhận tư vấn, chuẩn bị hồ sơ sau khi có lịch và đến nhập học tại Quang Hanh.",
+    keywords: ["quy trình", "đăng ký thế nào", "các bước", "lịch nhập học"],
+    category: "entry",
+    categoryLabel: "Điều kiện & hồ sơ",
+  },
+  {
+    url: "/#dang-ky",
+    title: "Đăng ký học nghề mỏ ngay",
+    description: "Đăng ký ban đầu chưa cần nộp hồ sơ; gửi năm sinh, chiều cao, cân nặng, sức khỏe và tỉnh đang sinh sống để kiểm tra trước.",
+    keywords: ["đăng ký", "ứng tuyển", "nộp hồ sơ", "gửi thông tin", "nhắn Zalo"],
+    category: "recruitment",
+    categoryLabel: "Thông tin đang áp dụng",
+  },
+].map((item) => ({...item, type: "Trả lời nhanh", priority: 200}));
+
+const pageItems = walk(root)
   .map((file) => {
     const html = fs.readFileSync(file, "utf8");
     if (/<meta\s+name="robots"\s+content="[^"]*noindex/i.test(html)) return null;
@@ -110,9 +178,11 @@ const items = walk(root)
       priority,
     };
   })
-  .filter(Boolean)
+  .filter(Boolean);
+
+const items = [...directAnswers, ...pageItems]
   .filter((item, index, all) => all.findIndex((candidate) => candidate.url === item.url) === index)
   .sort((a, b) => b.priority - a.priority || a.title.localeCompare(b.title, "vi"));
 
-fs.writeFileSync(path.join(root, "search-index.json"), `${JSON.stringify({ version: 1, items }, null, 2)}\n`);
+fs.writeFileSync(path.join(root, "search-index.json"), `${JSON.stringify({ version: 2, items }, null, 2)}\n`);
 console.log(`Built search index with ${items.length} pages.`);

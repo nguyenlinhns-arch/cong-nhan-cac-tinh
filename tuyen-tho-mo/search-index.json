@@ -1,6 +1,135 @@
 {
-  "version": 1,
+  "version": 2,
   "items": [
+    {
+      "url": "/#dang-ky",
+      "title": "Đăng ký học nghề mỏ ngay",
+      "description": "Đăng ký ban đầu chưa cần nộp hồ sơ; gửi năm sinh, chiều cao, cân nặng, sức khỏe và tỉnh đang sinh sống để kiểm tra trước.",
+      "keywords": [
+        "đăng ký",
+        "ứng tuyển",
+        "nộp hồ sơ",
+        "gửi thông tin",
+        "nhắn Zalo"
+      ],
+      "category": "recruitment",
+      "categoryLabel": "Thông tin đang áp dụng",
+      "type": "Trả lời nhanh",
+      "priority": 200
+    },
+    {
+      "url": "/#dia-diem",
+      "title": "Địa chỉ nhập học nghề mỏ ở đâu?",
+      "description": "Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh; chỉ đến sau khi được xác nhận lịch tiếp nhận.",
+      "keywords": [
+        "địa chỉ nhập học",
+        "nơi học",
+        "Quang Hanh",
+        "Khu C",
+        "Phân hiệu Đào tạo Cẩm Phả"
+      ],
+      "category": "entry",
+      "categoryLabel": "Điều kiện & hồ sơ",
+      "type": "Trả lời nhanh",
+      "priority": 200
+    },
+    {
+      "url": "/#dieu-kien",
+      "title": "Điều kiện đăng ký học nghề mỏ là gì?",
+      "description": "Nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg, sức khỏe tốt; không cận thị, bệnh tim mạch, huyết áp hoặc bệnh về mắt.",
+      "keywords": [
+        "điều kiện",
+        "bao nhiêu tuổi",
+        "chiều cao",
+        "cân nặng",
+        "sức khỏe",
+        "cận thị"
+      ],
+      "category": "entry",
+      "categoryLabel": "Điều kiện & hồ sơ",
+      "type": "Trả lời nhanh",
+      "priority": 200
+    },
+    {
+      "url": "/#ho-so",
+      "title": "Hồ sơ nhập học cần những gì?",
+      "description": "Khi nhập học mang căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; chưa có bằng vẫn đăng ký được.",
+      "keywords": [
+        "hồ sơ",
+        "giấy tờ",
+        "căn cước",
+        "CCCD",
+        "giấy khai sinh",
+        "bằng cấp"
+      ],
+      "category": "entry",
+      "categoryLabel": "Điều kiện & hồ sơ",
+      "type": "Trả lời nhanh",
+      "priority": 200
+    },
+    {
+      "url": "/#quy-trinh",
+      "title": "Quy trình đăng ký học nghề mỏ",
+      "description": "Gửi thông tin, kiểm tra sơ bộ, nhận tư vấn, chuẩn bị hồ sơ sau khi có lịch và đến nhập học tại Quang Hanh.",
+      "keywords": [
+        "quy trình",
+        "đăng ký thế nào",
+        "các bước",
+        "lịch nhập học"
+      ],
+      "category": "entry",
+      "categoryLabel": "Điều kiện & hồ sơ",
+      "type": "Trả lời nhanh",
+      "priority": 200
+    },
+    {
+      "url": "/#thoi-gian-hoc",
+      "title": "Thời gian học nghề mỏ là bao lâu?",
+      "description": "Nghề khai thác mỏ và xây dựng mỏ được đào tạo khoảng 2–3 tháng; người chưa có kinh nghiệm được học từ nền tảng.",
+      "keywords": [
+        "thời gian học",
+        "học bao lâu",
+        "2 3 tháng",
+        "đào tạo nghề mỏ"
+      ],
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Trả lời nhanh",
+      "priority": 200
+    },
+    {
+      "url": "/#quyen-loi",
+      "title": "Thu nhập và quyền lợi của thợ mỏ",
+      "description": "Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động; người lao động được đào tạo nghề trước khi bố trí việc làm.",
+      "keywords": [
+        "thu nhập",
+        "lương",
+        "quyền lợi",
+        "20 25 triệu",
+        "định mức lao động"
+      ],
+      "category": "work",
+      "categoryLabel": "Công việc & lương",
+      "type": "Trả lời nhanh",
+      "priority": 200
+    },
+    {
+      "url": "/#ho-tro-hoc-nghe",
+      "title": "Trong thời gian học được hỗ trợ gì?",
+      "description": "Miễn kinh phí đào tạo, ăn 3 bữa/ngày, ở ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học.",
+      "keywords": [
+        "hỗ trợ",
+        "miễn học phí",
+        "ăn ở",
+        "ký túc xá",
+        "7,5 triệu",
+        "7.5 triệu"
+      ],
+      "category": "welfare",
+      "categoryLabel": "Đời sống & phúc lợi",
+      "type": "Trả lời nhanh",
+      "priority": 200
+    },
     {
       "url": "/",
       "title": "Tuyển thợ mỏ tháng 8/2026 | Điều kiện, quyền lợi, hồ sơ",
@@ -15,7 +144,6 @@
         "Xem đủ thông tin để đăng ký trong 2 phút",
         "Chỉ cần gửi 3 thông tin",
         "Bạn đang cần biết điều gì?",
-        "Tự kiểm tra điều kiện sơ bộ",
         "6 điều người lao động cần biết trước khi đăng ký",
         "Điều kiện cơ bản",
         "Cam kết thu nhập",
@@ -23,6 +151,7 @@
         "Hỗ trợ trong thời gian học",
         "Giấy tờ khi nhập học",
         "Việc làm sau đào tạo",
+        "Tự kiểm tra điều kiện sơ bộ",
         "Từ một tin nhắn đến ngày nhập học",
         "Gửi thông tin",
         "Kiểm tra sơ bộ",
@@ -38,9 +167,9 @@
         "Liên hệ",
         "Thông tin cần thiết"
       ],
-      "category": "welfare",
-      "categoryLabel": "Đời sống & phúc lợi",
-      "type": "Đời sống & phúc lợi",
+      "category": "recruitment",
+      "categoryLabel": "Thông tin tuyển tháng 8/2026",
+      "type": "Thông tin tuyển tháng 8/2026",
       "priority": 100
     },
     {
