@@ -28,6 +28,7 @@ jobs:
           node tools/build-worker-first-home.mjs
           node tools/enhance-home-copy-actions.mjs
           node tools/build-search-index.mjs
+          node tools/enhance-all-province-search.mjs
           node tools/enhance-natural-language-search.mjs
           node tools/enhance-answer-first-search.mjs
           node tools/enhance-worker-brief.mjs
@@ -37,6 +38,7 @@ jobs:
           node tools/enhance-application-context.mjs
           node tools/enhance-application-prefill-note.mjs
           node tools/validate-natural-language-search.mjs
+          node tools/validate-all-province-search.mjs
           node tools/validate-answer-first-search.mjs
           node tools/validate-worker-brief.mjs
           node tools/validate-voice-assist.mjs
@@ -59,4 +61,4 @@ jobs:
           node tools/validate-recruitment-funnel.mjs
           node tools/test-recruitment-application.mjs
           node tools/validate-crm-automation.mjs
-          git diff --exit-code -- . ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/mobile-ux.js' ':(exclude)tuyen-tho-mo/voice-assist.js' ':(exclude)tuyen-tho-mo/job-application.js'
+          git diff --exit-code -- . ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/mobile-ux.js' ':(exclude)tuyen-tho-mo/voice-assist.js' ':(exclude)tuyen-tho-mo/job-application.js' ':(exclude)tuyen-tho-mo/search-index.json'
