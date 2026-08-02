@@ -80,6 +80,7 @@
     const href = String(link?.getAttribute?.("href") || "");
     if (link?.dataset?.v5PrimaryCta === "condition" || href.includes("/kiem-tra-dieu-kien") || href === "#dang-ky") return "condition";
     if (link?.dataset?.contact === "zalo" || href.includes("zalo.me")) return "zalo";
+    if (link?.dataset?.contact === "messenger" || href.includes("m.me")) return "messenger";
     if (link?.dataset?.contact === "phone" || href.startsWith("tel:")) return "phone";
     return "";
   }
