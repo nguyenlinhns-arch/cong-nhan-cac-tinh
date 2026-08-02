@@ -85,8 +85,8 @@ const directAnswers = [
   {
     url: "/#thoi-gian-hoc",
     title: "Thời gian học nghề mỏ là bao lâu?",
-    description: "Nghề khai thác mỏ và xây dựng mỏ được đào tạo khoảng 2–3 tháng; người chưa có kinh nghiệm được học từ nền tảng.",
-    keywords: ["thời gian học", "học bao lâu", "2 3 tháng", "đào tạo nghề mỏ"],
+    description: "Khai thác mỏ và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng. Người chưa có kinh nghiệm được đào tạo từ nền tảng.",
+    keywords: ["thời gian học", "học bao lâu", "học mấy tháng", "2 3 tháng", "10 tháng", "khai thác mỏ", "xây dựng mỏ", "cơ điện mỏ", "đào tạo nghề mỏ"],
     category: "training",
     categoryLabel: "Học nghề",
   },
@@ -94,7 +94,7 @@ const directAnswers = [
     url: "/#ho-tro-hoc-nghe",
     title: "Trong thời gian học được hỗ trợ gì?",
     description: "Miễn kinh phí đào tạo, ăn 3 bữa/ngày, ở ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học.",
-    keywords: ["hỗ trợ", "miễn học phí", "ăn ở", "ký túc xá", "7,5 triệu", "7.5 triệu"],
+    keywords: ["hỗ trợ", "miễn học phí", "học có mất tiền không", "đóng tiền", "ăn ở", "3 bữa", "ký túc xá", "KTX", "7,5 triệu", "7.5 triệu"],
     category: "welfare",
     categoryLabel: "Đời sống & phúc lợi",
   },
@@ -102,9 +102,17 @@ const directAnswers = [
     url: "/#ho-so",
     title: "Hồ sơ nhập học cần những gì?",
     description: "Khi nhập học mang căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; chưa có bằng vẫn đăng ký được.",
-    keywords: ["hồ sơ", "giấy tờ", "căn cước", "CCCD", "giấy khai sinh", "bằng cấp"],
+    keywords: ["hồ sơ", "hồ sơ gồm gì", "giấy tờ", "căn cước", "CCCD", "giấy khai sinh", "bằng cấp", "bằng tiểu học", "bằng cấp 2", "THCS", "THPT", "không có bằng", "mất bằng"],
     category: "entry",
     categoryLabel: "Điều kiện & hồ sơ",
+  },
+  {
+    url: "/#noi-lam-viec",
+    title: "Học xong làm việc ở đâu?",
+    description: "Người tốt nghiệp đạt yêu cầu được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng và bố trí công việc tại Quảng Ninh.",
+    keywords: ["làm ở đâu", "nơi làm việc", "công ty nào", "doanh nghiệp TKV", "làm việc tại Quảng Ninh", "sau đào tạo"],
+    category: "work",
+    categoryLabel: "Công việc & lương",
   },
   {
     url: "/#dia-diem",
@@ -118,15 +126,15 @@ const directAnswers = [
     url: "/#quy-trinh",
     title: "Quy trình đăng ký học nghề mỏ",
     description: "Gửi thông tin, kiểm tra sơ bộ, nhận tư vấn, chuẩn bị hồ sơ sau khi có lịch và đến nhập học tại Quang Hanh.",
-    keywords: ["quy trình", "đăng ký thế nào", "các bước", "lịch nhập học"],
+    keywords: ["quy trình", "đăng ký thế nào", "đăng ký như nào", "các bước", "lịch nhập học", "khi nào nhập học", "bao giờ nhập học"],
     category: "entry",
     categoryLabel: "Điều kiện & hồ sơ",
   },
   {
     url: "/#dang-ky",
-    title: "Đăng ký học nghề mỏ ngay",
-    description: "Đăng ký ban đầu chưa cần nộp hồ sơ; gửi năm sinh, chiều cao, cân nặng, sức khỏe và tỉnh đang sinh sống để kiểm tra trước.",
-    keywords: ["đăng ký", "ứng tuyển", "nộp hồ sơ", "gửi thông tin", "nhắn Zalo"],
+    title: "Đăng ký hoặc liên hệ học nghề mỏ ngay",
+    description: "Đăng ký ban đầu chưa cần nộp hồ sơ; gửi năm sinh, chiều cao, cân nặng, sức khỏe và tỉnh đang sinh sống, hoặc liên hệ Zalo 096 304 8585.",
+    keywords: ["đăng ký", "ứng tuyển", "nộp hồ sơ", "gửi thông tin", "nhắn Zalo", "số điện thoại", "SĐT", "liên hệ", "096 304 8585"],
     category: "recruitment",
     categoryLabel: "Thông tin đang áp dụng",
   },
@@ -184,5 +192,5 @@ const items = [...directAnswers, ...pageItems]
   .filter((item, index, all) => all.findIndex((candidate) => candidate.url === item.url) === index)
   .sort((a, b) => b.priority - a.priority || a.title.localeCompare(b.title, "vi"));
 
-fs.writeFileSync(path.join(root, "search-index.json"), `${JSON.stringify({ version: 2, items }, null, 2)}\n`);
+fs.writeFileSync(path.join(root, "search-index.json"), `${JSON.stringify({ version: 3, items }, null, 2)}\n`);
 console.log(`Built search index with ${items.length} pages.`);

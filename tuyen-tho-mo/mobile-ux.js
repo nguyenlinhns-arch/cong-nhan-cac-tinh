@@ -87,12 +87,93 @@
     .replace(/\s+/g, " ")
     .trim();
 
-  const normalizePhrase = (value) => String(value || "")
-    .toLocaleLowerCase("vi")
-    .normalize("NFC")
-    .replace(/[^\p{L}\p{N}\s-]/gu, " ")
-    .replace(/\s+/g, " ")
-    .trim();
+  const SEARCH_STOP_WORDS = new Set([
+    "a", "anh", "bao", "bi", "can", "chi", "cho", "chua", "co", "cua", "dau", "de", "di", "duoc",
+    "em", "gi", "gom", "hay", "hoac", "hoi", "k", "khong", "ko", "la", "lam", "may", "minh", "muon",
+    "nao", "neu", "nhe", "nhieu", "nhu", "o", "oi", "phai", "que", "roi", "the", "thi", "toi", "va",
+    "van", "vay", "viec",
+  ]);
+
+  const SEARCH_INTENTS = [
+    {
+      url: "/#dieu-kien",
+      bonus: 360,
+      patterns: [
+        /\b(dieu kien|bao nhieu tuoi|nam sinh|gioi tinh|nu|con gai|chieu cao|can nang|suc khoe|bi can|can thi|thi luc|benh mat|benh tim|tim mach|huyet ap)\b/,
+        /\b\d{2}\s*tuoi\b/,
+        /\b\d(?:[.,]?m|m)\d{1,2}\b/,
+        /\b\d{2,3}\s*(?:kg|can)\b/,
+      ],
+    },
+    {
+      url: "/#quyen-loi",
+      bonus: 360,
+      patterns: [/\b(luong+|thu nhap|muc luong|luong bn|bao nhieu tien|dinh muc|quyen loi)\b/],
+    },
+    {
+      url: "/#thoi-gian-hoc",
+      bonus: 360,
+      patterns: [/\b(hoc bao lau|hoc may thang|thoi gian hoc|2 3 thang|10 thang|co dien mo|khai thac mo|xay dung mo)\b/],
+    },
+    {
+      url: "/#ho-tro-hoc-nghe",
+      bonus: 360,
+      patterns: [/\b(hoc phi|mien hoc phi|mat tien|dong tien|an o|ky tuc xa|ktx|ho tro|7 5 trieu|ba bua|3 bua)\b/],
+    },
+    {
+      url: "/#ho-so",
+      bonus: 360,
+      patterns: [/\b(ho so|hs|hso|giay to|cccd|can cuoc|khai sinh|bang cap|tieu hoc|cap 2|thcs|cap 3|thpt|mat bang|khong co bang|chua co bang)\b/],
+    },
+    {
+      url: "/#dia-diem",
+      bonus: 380,
+      patterns: [/\b(dia chi|noi hoc|hoc o dau|nhap hoc o dau|quang hanh|khu c|truong o dau)\b/],
+    },
+    {
+      url: "/#noi-lam-viec",
+      bonus: 380,
+      patterns: [/\b(lam o dau|noi lam viec|cong ty nao|doanh nghiep nao|lam tai dau)\b/],
+    },
+    {
+      url: "/#quy-trinh",
+      bonus: 380,
+      patterns: [/\b(quy trinh|dang ky the nao|dang ky nhu nao|cac buoc|lich nhap hoc|bao gio nhap hoc|khi nao nhap hoc|bao gio di hoc|khi nao di hoc)\b/],
+    },
+    {
+      url: "/#dang-ky",
+      bonus: 320,
+      patterns: [/\b(dang ky|ung tuyen|nop ho so|gui thong tin|sdt|so dien thoai|zalo|lien he|goi dien)\b/],
+    },
+  ];
+
+  function meaningfulQueryTerms(value) {
+    return normalize(value)
+      .split(" ")
+      .filter((word) => word && !SEARCH_STOP_WORDS.has(word));
+  }
+
+  function queryIntentScores(value) {
+    const query = normalize(value);
+    const scores = new Map();
+    for (const intent of SEARCH_INTENTS) {
+      const hits = intent.patterns.filter((pattern) => pattern.test(query)).length;
+      if (hits) scores.set(intent.url, intent.bonus + (hits - 1) * 20);
+    }
+    return scores;
+  }
+
+  function provinceAliases(item) {
+    if (item?.category !== "province") return [];
+    const aliases = [];
+    const titleMatch = String(item.title || "").match(/tại\s+(.+?)(?:\s*\||$)/i);
+    if (titleMatch?.[1]) aliases.push(normalize(titleMatch[1]));
+    for (const keyword of Array.isArray(item.keywords) ? item.keywords : []) {
+      const match = String(keyword).match(/(?:tuyển thợ mỏ|tuyển dụng ngành than|học nghề mỏ|việc làm thợ lò|việc làm ngành than)\s+(.+)$/i);
+      if (match?.[1]) aliases.push(normalize(match[1]));
+    }
+    return [...new Set(aliases.filter((alias) => alias.length >= 3))];
+  }
 
   function pageGroup() {
     const segment = location.pathname.split("/").filter(Boolean)[0] || "home";
@@ -200,7 +281,7 @@
         <label class="tl-search-input-wrap">
           ${SEARCH_ICON}
           <span class="tl-visually-hidden">Từ khóa tìm kiếm</span>
-          <input type="search" inputmode="search" autocomplete="off" enterkeyhint="search" placeholder="Ví dụ: điều kiện, hồ sơ, lương, Nghệ An…">
+          <input type="search" inputmode="search" autocomplete="off" enterkeyhint="search" placeholder="Gõ cả câu, ví dụ: lương bao nhiêu?">
         </label>
       </form>
       <nav class="tl-search-shortcuts" aria-label="Câu hỏi được tìm nhiều">
@@ -253,56 +334,84 @@
     return item._searchText;
   }
 
-  function itemPhraseText(item) {
-    if (!item._phraseText) {
-      item._phraseText = normalizePhrase([
-        item.title,
-        item.description,
-        ...(Array.isArray(item.keywords) ? item.keywords : []),
-      ].join(" "));
+  function oneEditApart(left, right) {
+    if (left === right) return true;
+    if (Math.min(left.length, right.length) < 4 || Math.abs(left.length - right.length) > 1) return false;
+    let leftIndex = 0;
+    let rightIndex = 0;
+    let edits = 0;
+    while (leftIndex < left.length && rightIndex < right.length) {
+      if (left[leftIndex] === right[rightIndex]) {
+        leftIndex += 1;
+        rightIndex += 1;
+        continue;
+      }
+      edits += 1;
+      if (edits > 1) return false;
+      if (left.length > right.length) leftIndex += 1;
+      else if (right.length > left.length) rightIndex += 1;
+      else {
+        leftIndex += 1;
+        rightIndex += 1;
+      }
     }
-    return item._phraseText;
+    return edits + Number(leftIndex < left.length || rightIndex < right.length) <= 1;
   }
 
-  function scoreItem(item, query) {
+  function scoreItem(item, rawQuery) {
+    const query = normalize(rawQuery);
     if (!query) return Number(item.priority || 0);
     const title = normalize(item.title);
     const keywords = normalize((item.keywords || []).join(" "));
     const description = normalize(item.description);
-    const words = query.split(" ").filter(Boolean);
+    const words = meaningfulQueryTerms(query);
+    const intentBonus = queryIntentScores(query).get(item.url) || 0;
+    const provinceExactBonus = provinceAliases(item).some((alias) => ` ${query} `.includes(` ${alias} `)) ? 700 : 0;
     const indexedWords = itemSearchText(item).split(" ");
-    const hasWord = (word) => indexedWords.some((candidate) => candidate === word || (word.length >= 3 && candidate.startsWith(word)));
-    if (!words.every(hasWord)) return -1;
-    let score = Number(item.priority || 0);
+    const hasWord = (word) => indexedWords.some((candidate) => candidate === word
+      || (word.length >= 4 && candidate.startsWith(word))
+      || oneEditApart(candidate, word));
+    const matchedWords = words.filter(hasWord);
+    const coverage = words.length ? matchedWords.length / words.length : 0;
+    if (!intentBonus && !provinceExactBonus && (!matchedWords.length || (words.length > 1 && coverage < 0.6))) return -1;
+    let score = Number(item.priority || 0) + intentBonus + provinceExactBonus + Math.round(coverage * 30);
     if (title === query) score += 80;
     if (title.startsWith(query)) score += 40;
     if (title.includes(query)) score += 24;
     if (keywords.includes(query)) score += 14;
     if (description.includes(query)) score += 6;
-    score += words.filter((word) => title.includes(word)).length * 7;
+    score += matchedWords.filter((word) => title.includes(word)).length * 7;
+    if (item.category === "province" && words.length && words.every((word) => title.includes(word) || keywords.includes(word))) score += 120;
     return score;
+  }
+
+  if (typeof document === "undefined" && typeof process !== "undefined" && process?.env?.TL_SEARCH_TEST_ONLY === "1") {
+    window.__TL_SEARCH_INTERNALS__ = { normalize, meaningfulQueryTerms, queryIntentScores, provinceAliases, oneEditApart, scoreItem };
+    return;
   }
 
   function renderResults(dialog) {
     const input = dialog.querySelector("input[type='search']");
     const status = dialog.querySelector(".tl-search-status");
     const grid = dialog.querySelector(".tl-search-results__grid");
-    const query = normalize(input.value);
-    const phraseQuery = normalizePhrase(input.value);
+    const rawQuery = input.value;
+    const query = normalize(rawQuery);
     const source = searchIndex || popular;
     let candidates = source.filter((item) => activeCategory === "all" || item.category === activeCategory);
-    if (phraseQuery.includes(" ")) {
-      const phraseMatches = candidates.filter((item) => itemPhraseText(item).includes(phraseQuery));
-      if (phraseMatches.length) candidates = phraseMatches;
-    }
-    const matches = candidates
-      .map((item) => ({ item, score: scoreItem(item, query) }))
+    let matches = candidates
+      .map((item) => ({ item, score: scoreItem(item, rawQuery) }))
       .filter(({ score }) => score >= 0)
       .sort((a, b) => b.score - a.score || a.item.title.localeCompare(b.item.title, "vi"))
       .slice(0, 12)
       .map(({ item }) => item);
 
     grid.replaceChildren();
+    let showingFallback = false;
+    if (!matches.length && query) {
+      const fallbackUrls = ["/#dieu-kien", "/#ho-so", "/#dia-diem", "/#dang-ky"];
+      matches = fallbackUrls.map((url) => source.find((item) => item.url === url)).filter(Boolean);
+      showingFallback = matches.length > 0;
+    }
     if (!matches.length) {
       const empty = document.createElement("div");
       empty.className = "tl-search-empty";
@@ -310,6 +419,14 @@
       grid.append(empty);
       status.textContent = "Không có kết quả";
       return;
+    }
+
+    if (showingFallback) {
+      const empty = document.createElement("div");
+      empty.className = "tl-search-empty";
+      empty.style.gridColumn = "1 / -1";
+      empty.innerHTML = "<strong>Chưa khớp chính xác câu hỏi này</strong><span>Chọn một trong 4 mục gần nhất dưới đây để xem ngay.</span>";
+      grid.append(empty);
     }
 
     for (const item of matches) {
@@ -325,15 +442,17 @@
       link.append(type, title, description);
       grid.append(link);
     }
-    status.textContent = query || activeCategory !== "all"
-      ? `${matches.length} nội dung phù hợp`
-      : "Các nội dung được xem nhiều";
+    status.textContent = showingFallback
+      ? "4 lối đi nhanh gần nhất"
+      : query || activeCategory !== "all"
+        ? `${matches.length} nội dung phù hợp`
+        : "Các nội dung được xem nhiều";
   }
 
   async function loadSearchIndex(dialog) {
     if (searchIndex) return;
     if (!searchPromise) {
-      searchPromise = fetch("/search-index.json", { credentials: "same-origin" })
+      searchPromise = fetch("/search-index.json", { credentials: "same-origin", cache: "no-cache" })
         .then((response) => {
           if (!response.ok) throw new Error(`HTTP ${response.status}`);
           return response.json();
