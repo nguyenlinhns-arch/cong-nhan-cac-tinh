@@ -12,7 +12,7 @@ const errors = [];
 for (const marker of [
   "let voiceAssistPromise = null",
   "function loadVoiceAssist()",
-  'script.src = "/voice-assist.js?v=1"',
+  'script.src = "/voice-assist.js?v=2"',
   "window.ThayLinhVoiceAssist?.init?.()",
 ]) if (!mobile.includes(marker)) errors.push(`mobile-ux.js thiếu ${marker}`);
 
@@ -28,10 +28,16 @@ for (const marker of [
   "function setupVoiceSearch(dialog)",
   "function briefSpeechText(dialog)",
   "function setupBriefReadAloud(dialog)",
+  "function answerSpeechText(panel)",
+  "function setupSearchAnswerReadAloud(dialog)",
+  "setupSearchAnswerReadAloud(dialog);",
+  "new MutationObserver(attach)",
+  "[data-answer-read-aloud]",
   "window.SpeechSynthesisUtterance",
   'utterance.lang = VOICE_LANG',
   "🎙 Nói để tìm",
   "🔊 Nghe tóm tắt",
+  "🔊 Nghe câu trả lời",
   "Trình duyệt xử lý giọng nói; website không lưu âm thanh hay câu hỏi.",
   "window.ThayLinhVoiceAssist = Object.freeze({ init })",
 ]) if (!voice.includes(marker)) errors.push(`voice-assist.js thiếu ${marker}`);
@@ -49,7 +55,7 @@ for (const forbidden of [
 ]) if (voice.includes(forbidden)) errors.push(`Voice assist không được dùng ${forbidden}`);
 
 const voiceBytes = Buffer.byteLength(voice);
-if (voiceBytes > 10_000) errors.push(`voice-assist.js vượt 10 KB: ${voiceBytes}`);
+if (voiceBytes > 14_000) errors.push(`voice-assist.js vượt 14 KB: ${voiceBytes}`);
 
 try {
   new vm.Script(voice, { filename: "voice-assist.js" });
@@ -77,7 +83,8 @@ console.log(JSON.stringify({
   mobile_js_bytes: Buffer.byteLength(mobile),
   voice_js_bytes: voiceBytes,
   recognition_fallback: voice.includes('dialog.dataset.voiceSearchReady = "unsupported"'),
-  read_aloud_fallback: voice.includes('dialog.dataset.briefReadAloudReady = "unsupported"'),
+  brief_read_aloud_fallback: voice.includes('dialog.dataset.briefReadAloudReady = "unsupported"'),
+  answer_read_aloud_fallback: voice.includes('dialog.dataset.searchAnswerReadAloudReady = "unsupported"'),
   errors,
 }, null, 2));
 
