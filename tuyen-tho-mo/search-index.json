@@ -2769,6 +2769,99 @@
       "categoryLabel": "An toàn & công nghệ",
       "type": "An toàn & công nghệ",
       "priority": 10
+    },
+    {
+      "url": "/chon-kcn-hay-lam-mo/",
+      "title": "Chọn làm khu công nghiệp hay học nghề mỏ",
+      "description": "So sánh thẳng thắn công việc khu công nghiệp và nghề mỏ về điều kiện, đào tạo, thu nhập, ăn ở, kỷ luật và mức độ phù hợp.",
+      "keywords": [
+        "chọn KCN hay làm mỏ",
+        "khu công nghiệp",
+        "so sánh nghề",
+        "nên làm mỏ không"
+      ],
+      "category": "work",
+      "categoryLabel": "Công việc & lương",
+      "type": "Cổng kiểm chứng nghề mỏ",
+      "priority": 178
+    },
+    {
+      "url": "/cau-chuyen-cong-nhan/",
+      "title": "Câu chuyện công nhân ngành mỏ theo tỉnh",
+      "description": "Xem video, câu chuyện và tư liệu công nhân ngành mỏ theo đúng tỉnh để kiểm chứng công việc, thu nhập và hành trình học nghề.",
+      "keywords": [
+        "câu chuyện công nhân",
+        "video công nhân theo tỉnh",
+        "người thật việc thật",
+        "phỏng vấn thợ mỏ"
+      ],
+      "category": "work",
+      "categoryLabel": "Công việc & lương",
+      "type": "Cổng kiểm chứng nghề mỏ",
+      "priority": 177
+    },
+    {
+      "url": "/kiem-tra-dieu-kien/",
+      "title": "Kiểm tra điều kiện học nghề mỏ",
+      "description": "Tự kiểm tra sơ bộ độ tuổi, chiều cao, cân nặng và sức khỏe trước khi đăng ký học nghề mỏ; website không lưu câu trả lời.",
+      "keywords": [
+        "kiểm tra điều kiện",
+        "đủ điều kiện làm mỏ",
+        "tuổi chiều cao cân nặng",
+        "sức khỏe thợ mỏ"
+      ],
+      "category": "entry",
+      "categoryLabel": "Điều kiện & hồ sơ",
+      "type": "Cổng kiểm chứng nghề mỏ",
+      "priority": 176
+    },
+    {
+      "url": "/ho-so-nhap-hoc/",
+      "title": "Hồ sơ nhập học nghề mỏ",
+      "description": "Danh sách giấy tờ cần mang khi nhập học nghề mỏ, thời điểm chuẩn bị và địa chỉ Khu C – Phân hiệu Đào tạo Cẩm Phả, Quang Hanh.",
+      "keywords": [
+        "hồ sơ nhập học",
+        "CCCD",
+        "giấy khai sinh",
+        "bằng THCS THPT",
+        "địa chỉ nhập học"
+      ],
+      "category": "entry",
+      "categoryLabel": "Điều kiện & hồ sơ",
+      "type": "Cổng kiểm chứng nghề mỏ",
+      "priority": 175
+    },
+    {
+      "url": "/thu-nhap-an-o-ho-tro/",
+      "title": "Thu nhập, ăn ở và hỗ trợ khi học nghề mỏ",
+      "description": "Kiểm chứng mức thu nhập, kinh phí đào tạo, ba bữa ăn, ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học nghề mỏ.",
+      "keywords": [
+        "thu nhập thợ mỏ",
+        "ăn ở khi học",
+        "hỗ trợ 7,5 triệu",
+        "ký túc xá",
+        "miễn kinh phí đào tạo"
+      ],
+      "category": "welfare",
+      "categoryLabel": "Đời sống & phúc lợi",
+      "type": "Cổng kiểm chứng nghề mỏ",
+      "priority": 174
+    },
+    {
+      "url": "/an-toan-ky-luat-moi-truong/",
+      "title": "An toàn, kỷ luật và môi trường làm việc nghề mỏ",
+      "description": "Tìm hiểu môi trường mỏ hầm lò, đào tạo an toàn, bảo hộ lao động, kỷ luật ca kíp và tinh thần tổ đội trước khi đăng ký.",
+      "keywords": [
+        "an toàn nghề mỏ",
+        "môi trường hầm lò",
+        "kỷ luật thợ mỏ",
+        "bảo hộ lao động",
+        "ca kíp"
+      ],
+      "category": "technology",
+      "categoryLabel": "An toàn & công nghệ",
+      "type": "Cổng kiểm chứng nghề mỏ",
+      "priority": 173
     }
   ]
 }

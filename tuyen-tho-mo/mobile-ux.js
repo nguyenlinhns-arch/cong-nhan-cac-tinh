@@ -4,12 +4,12 @@
   const ROOT = "https://thaylinhtuyenthomo.vn";
   const APPLICATION_URL = "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky";
   const ZALO_URL = "https://zalo.me/0963048585";
-  const MESSENGER_URL = "https://m.me/thaylinhtuyenthomo";
+  const PHONE_URL = "tel:+84963048585";
   const DRAFT_KEY = "thaylinh_application_draft_v1";
   const DRAFT_TTL_MS = 24 * 60 * 60 * 1000;
   const RECRUITMENT_YEAR = 2026;
   const SEARCH_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>';
-  const MESSENGER_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.5 2 2 6.14 2 11.25c0 2.91 1.46 5.5 3.74 7.2V22l3.42-1.88c.9.25 1.86.38 2.84.38 5.5 0 10-4.14 10-9.25S17.5 2 12 2Zm1 12.45-2.55-2.72-4.98 2.72 5.48-5.82 2.61 2.72 4.93-2.72L13 14.45Z"></path></svg>';
+  const PHONE_ICON = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor"><path d="M6.7 2.8 9.3 2a1.3 1.3 0 0 1 1.5.7l1.2 2.8a1.3 1.3 0 0 1-.3 1.4L10.2 8.4a14.7 14.7 0 0 0 5.4 5.4l1.5-1.5a1.3 1.3 0 0 1 1.4-.3l2.8 1.2a1.3 1.3 0 0 1 .7 1.5l-.8 2.6a3.2 3.2 0 0 1-3.1 2.3C10.5 19.6 4.4 13.5 4.4 5.9a3.2 3.2 0 0 1 2.3-3.1Z"></path></svg>';
   const WORKER_SHORTCUTS = [
     { key: "conditions", label: "Điều kiện", question: "Tôi có đủ điều kiện?", href: "/#dieu-kien" },
     { key: "benefits", label: "Quyền lợi", question: "Được hỗ trợ những gì?", href: "/#quyen-loi" },
@@ -294,6 +294,7 @@
             <a href="/#tu-kiem-tra" data-worker-brief-action="self_check">Tự kiểm tra điều kiện</a>
             <a href="${trackedApplicationUrl("brief_to_application_2026", `brief_${pageGroup()}`)}" data-contact="application" data-context="worker-brief" data-worker-brief-action="application">Đăng ký ngay</a>
             <a href="${ZALO_URL}" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="worker-brief" data-worker-brief-action="zalo">Hỏi qua Zalo</a>
+            <a href="${PHONE_URL}" data-contact="phone" data-context="worker-brief" data-worker-brief-action="phone">Gọi tư vấn</a>
           </div>
         </div>
       </div>`;
@@ -395,8 +396,8 @@
       <a class="tl-mobile-contact__zalo" href="${ZALO_URL}" target="_blank" rel="noopener noreferrer" aria-label="Nhắn Zalo cho Thầy Linh theo số 096 304 8585" data-contact="zalo" data-context="mobile-floating">
         <b aria-hidden="true">Z</b><span>Zalo</span>
       </a>
-      <a class="tl-mobile-contact__messenger" href="${MESSENGER_URL}" target="_blank" rel="noopener noreferrer" aria-label="Nhắn Messenger cho Thầy Linh" data-contact="messenger" data-context="mobile-floating">
-        ${MESSENGER_ICON}<span>Messenger</span>
+      <a class="tl-mobile-contact__call" href="${PHONE_URL}" style="background:linear-gradient(145deg,#0b7a55,#075b66)" aria-label="Gọi Thầy Linh theo số 096 304 8585" data-contact="phone" data-context="mobile-floating">
+        ${PHONE_ICON}<span>Gọi</span>
       </a>`;
     document.body.append(nav);
     updateApplicationResumeLabels(activeDraft);
@@ -666,6 +667,16 @@
     primary.dataset.workerShortcut = "answer_" + answer.kind;
     actions.append(primary);
 
+    if (answer.href === "/#dang-ky") {
+      const phone = document.createElement("a");
+      phone.href = PHONE_URL;
+      phone.textContent = "Gọi 096 304 8585";
+      phone.dataset.contact = "phone";
+      phone.dataset.context = "search-answer";
+      phone.dataset.workerShortcut = "answer_phone";
+      actions.append(phone);
+    }
+
     if (answer.secondaryHref) {
       const secondary = document.createElement("a");
       secondary.href = answer.secondaryHref;
@@ -712,7 +723,7 @@
     if (!matches.length) {
       const empty = document.createElement("div");
       empty.className = "tl-search-empty";
-      empty.innerHTML = `<strong>Chưa tìm thấy nội dung phù hợp</strong><span>Chọn một mục bên dưới hoặc nhắn trực tiếp để được hướng dẫn.</span><div class="tl-search-empty__actions"><a href="/#dieu-kien" data-worker-shortcut="empty_conditions">Điều kiện</a><a href="/#ho-so" data-worker-shortcut="empty_dossier">Hồ sơ</a><a href="/#dia-diem" data-worker-shortcut="empty_address">Nơi học</a><a href="${ZALO_URL}" target="_blank" rel="noopener" data-contact="zalo" data-context="search-empty" data-worker-shortcut="empty_zalo">Hỏi qua Zalo</a></div>`;
+      empty.innerHTML = `<strong>Chưa tìm thấy nội dung phù hợp</strong><span>Chọn một mục bên dưới hoặc nhắn trực tiếp để được hướng dẫn.</span><div class="tl-search-empty__actions"><a href="/#dieu-kien" data-worker-shortcut="empty_conditions">Điều kiện</a><a href="/#ho-so" data-worker-shortcut="empty_dossier">Hồ sơ</a><a href="/#dia-diem" data-worker-shortcut="empty_address">Nơi học</a><a href="${ZALO_URL}" target="_blank" rel="noopener" data-contact="zalo" data-context="search-empty" data-worker-shortcut="empty_zalo">Hỏi qua Zalo</a><a href="${PHONE_URL}" data-contact="phone" data-context="search-empty" data-worker-shortcut="empty_phone">Gọi tư vấn</a></div>`;
       grid.append(empty);
       status.textContent = "Không có kết quả";
       return;
@@ -876,4 +887,5 @@
   compactMobileConsentBanner();
   document.documentElement.classList.add("tl-mobile-ux-ready");
   setupSearch();
+
 })();
