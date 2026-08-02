@@ -40,6 +40,7 @@ jobs:
           node tools/build-worker-first-home.mjs
           node tools/enhance-home-copy-actions.mjs
           node tools/build-search-index.mjs
+          node tools/enhance-all-province-search.mjs
           node tools/enhance-natural-language-search.mjs
           node tools/enhance-answer-first-search.mjs
           node tools/enhance-worker-brief.mjs
@@ -49,6 +50,7 @@ jobs:
           node tools/enhance-application-context.mjs
           node tools/enhance-application-prefill-note.mjs
           node tools/validate-natural-language-search.mjs
+          node tools/validate-all-province-search.mjs
           node tools/validate-answer-first-search.mjs
           node tools/validate-worker-brief.mjs
           node tools/validate-voice-assist.mjs
@@ -71,7 +73,7 @@ jobs:
           node tools/validate-recruitment-funnel.mjs
           node tools/test-recruitment-application.mjs
           node tools/validate-crm-automation.mjs
-          git diff --exit-code -- . ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/mobile-ux.js' ':(exclude)tuyen-tho-mo/voice-assist.js' ':(exclude)tuyen-tho-mo/job-application.js'
+          git diff --exit-code -- . ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/mobile-ux.js' ':(exclude)tuyen-tho-mo/voice-assist.js' ':(exclude)tuyen-tho-mo/job-application.js' ':(exclude)tuyen-tho-mo/search-index.json'
       - uses: actions/upload-pages-artifact@v3
         with:
           # Publish the recruitment portal at the custom-domain root.
@@ -154,14 +156,18 @@ jobs:
                 && grep -Fq 'track("ApplicationContextPrefill"' "$application_file" \
                 && grep -Fq '"version": 3' "$search_file" \
                 && grep -Fq '"title": "Học xong làm việc ở đâu?"' "$search_file" \
+                && [ "$(grep -Fc '"category": "province"' "$search_file")" -eq 26 ] \
+                && grep -Fq '"url": "/viec-lam-nganh-than/ha-noi/"' "$search_file" \
+                && grep -Fq '"url": "/viec-lam-nganh-than/lang-son/"' "$search_file" \
+                && grep -Fq '"searchScope": "internal"' "$search_file" \
                 && grep -Fq '.tl-worker-compass{' "$css_file"; then
-                echo "Live worker-first homepage, province-preserving application links, one-tap copy, phone help and spoken answers verified on attempt $attempt."
+                echo "Live worker-first homepage, all-province internal search, province-preserving application links and spoken answers verified on attempt $attempt."
                 exit 0
               fi
             fi
             sleep 5
           done
-          echo "The custom domain did not preserve province context through the worker-first application flow."
+          echo "The custom domain did not expose all 26 province pages through internal search while preserving the worker-first flow."
           exit 1
       - name: Record deployment receipt
         if: success() && github.event_name != 'schedule'
@@ -170,5 +176,5 @@ jobs:
           DEPLOYMENT_URL: ${{ steps.deployment.outputs.page_url }}
         run: |
           deployed_at="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-          body="$(printf '✅ **Triển khai và xác minh tên miền thành công**\n\n- Commit: `%s`\n- Workflow run: `%s`\n- URL triển khai: %s\n- Tên miền đã kiểm tra: https://thaylinhtuyenthomo.vn/\n- Thời điểm UTC: `%s`\n- Kết quả: tỉnh và nghề được giữ qua các nút Tóm tắt, Tìm kiếm và Ứng tuyển; biểu mẫu xác nhận mục đã chọn sẵn, không truyền dữ liệu sức khỏe hay thông tin cá nhân trong URL. Các chức năng sao chép, gọi, Zalo, giọng nói và tự kiểm tra vẫn hoạt động.\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$DEPLOYMENT_URL" "$deployed_at")"
+          body="$(printf '✅ **Triển khai và xác minh tên miền thành công**\n\n- Commit: `%s`\n- Workflow run: `%s`\n- URL triển khai: %s\n- Tên miền đã kiểm tra: https://thaylinhtuyenthomo.vn/\n- Thời điểm UTC: `%s`\n- Kết quả: tìm kiếm nội bộ đã nhận đủ 26 tỉnh, thành và các địa danh cũ; những trang chưa có tư liệu riêng vẫn giữ noindex trên công cụ tìm kiếm bên ngoài. Luồng giữ tỉnh/nghề, sao chép, gọi, Zalo, giọng nói và tự kiểm tra tiếp tục hoạt động.\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$DEPLOYMENT_URL" "$deployed_at")"
           gh issue comment 42 --repo "$GITHUB_REPOSITORY" --body "$body"
