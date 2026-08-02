@@ -26,6 +26,7 @@ jobs:
           node tools/generate-seo-library.mjs
           node tools/generate-news-sitemap.mjs
           node tools/build-worker-first-home.mjs
+          node tools/enhance-home-copy-actions.mjs
           node tools/build-search-index.mjs
           node tools/enhance-natural-language-search.mjs
           node tools/enhance-answer-first-search.mjs
@@ -38,6 +39,7 @@ jobs:
           node tools/validate-worker-brief.mjs
           node tools/validate-voice-assist.mjs
           node tools/validate-direct-call.mjs
+          node tools/validate-home-copy-actions.mjs
           node tools/validate-worker-findability.mjs
           node tools/validate-universal-worker-compass.mjs
           node tools/validate-content-network.mjs
