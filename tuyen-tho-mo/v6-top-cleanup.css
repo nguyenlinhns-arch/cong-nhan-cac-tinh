@@ -1,0 +1,25 @@
+/* V6 top cleanup: one clear above-the-fold path */
+.v6-top-clean{--v6-ink:#073b44;--v6-muted:#536b70;--v6-line:#d7e5e3;--v6-soft:#f3f8f7}
+.v6-top-clean .v5-return-prompt{margin:22px auto 0;max-width:min(1120px,calc(100% - 32px));border:1px solid var(--v6-line);border-radius:16px;background:#fff;box-shadow:none}
+.v6-top-clean .v6-top-resume{order:20}
+.v6-top-clean .v4-fast-answer{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:18px 0 16px}
+.v6-top-clean .v4-fast-answer span{display:flex;align-items:center;min-height:48px;padding:10px 12px;border:1px solid rgba(255,255,255,.28);border-radius:12px;background:rgba(255,255,255,.1);font-size:13px;line-height:1.35}
+.v6-top-clean .v4-hero-actions{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:10px;margin-top:16px}
+.v6-top-clean .v4-hero-actions a{display:flex;align-items:center;justify-content:center;min-height:48px;padding:11px 14px;border-radius:12px;text-align:center;font-weight:800}
+.v6-top-clean .v4-direct-note{margin:10px 0 0;font-size:13px;opacity:.88}
+.v6-top-clean .v6-hidden-top-extra{display:none!important}
+.v6-top-clean .v6-hero-compact>p:not(.v4-direct-note):not(.eyebrow):not(.hero-kicker):not(.verification-page__eyebrow){max-width:760px}
+.v6-top-clean .v6-hero-compact .worker-find{margin-top:22px}
+.v6-top-clean .v6-hero-compact .worker-find__province{display:none}
+.v6-top-clean .v6-hero-compact [data-open-worker-brief]{display:none!important}
+.v6-top-clean .v6-hero-compact .worker-find__search{min-height:58px}
+@media(max-width:760px){
+  .v6-top-clean .v4-fast-answer{grid-template-columns:1fr;margin:14px 0 12px}
+  .v6-top-clean .v4-fast-answer span{min-height:0;padding:9px 11px;font-size:12px}
+  .v6-top-clean .v4-hero-actions{grid-template-columns:1fr 1fr;margin-top:12px}
+  .v6-top-clean .v4-hero-actions a:first-child{grid-column:1/-1}
+  .v6-top-clean .v4-hero-actions a{min-height:46px;padding:10px 8px;font-size:14px}
+  .v6-top-clean .v4-direct-note{font-size:12px}
+  .v6-top-clean .v5-return-prompt{margin:14px 12px 0;max-width:none}
+  .v6-top-clean .v6-hero-compact .worker-find{margin-top:16px}
+}
