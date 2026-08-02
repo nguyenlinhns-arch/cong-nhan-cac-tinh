@@ -28,18 +28,18 @@ if (!home.includes('class="worker-find__search"') || !home.includes("Tìm trong 
 if (!home.includes('href="#tu-kiem-tra">Tự kiểm tra điều kiện</a>')) fail("Hero: nút tự kiểm tra chưa đi đúng công cụ");
 if (!home.includes("Đăng ký – chưa cần hồ sơ")) fail("Hero: nút đăng ký chưa nói rõ bước đầu không cần hồ sơ");
 if (count(home, "data-open-worker-brief") !== 1 || !home.includes("Tóm tắt 30 giây")) fail("Hero: thiếu nút tóm tắt 30 giây cho người mới vào trang");
-if (!home.includes('href="#tu-kiem-tra"><b>01</b>')) fail("Điều hướng nhanh: mục điều kiện chưa đi đúng công cụ");
+if (!home.includes('class="worker-find"') || !home.includes("Tìm đúng thông tin mình cần")) fail("Khối tìm nhanh: chưa thay điều hướng chữ bằng công cụ tìm kiếm trực tiếp");
 
+const mediaProofIndex = home.indexOf('class="home-proof"');
 const journeyIndex = home.indexOf('class="journey-intro"');
-const quickNavigationIndex = home.indexOf('class="worker-quick__grid"');
 const finderIndex = home.indexOf('class="worker-find"');
 const summaryIndex = home.indexOf('class="worker-summary"');
 const selfCheckIndex = home.indexOf('class="worker-self-check"');
 const learningStoryIndex = home.indexOf('class="learning-story section"');
 const processIndex = home.indexOf('class="section process-section"');
 const recommendedIndex = home.indexOf('class="worker-recommended"');
-const moreIndex = home.indexOf('class="worker-more"');
-if (!(journeyIndex >= 0 && journeyIndex < quickNavigationIndex && quickNavigationIndex < finderIndex)) fail("Luồng đọc: hành trình 5 chặng phải đứng trước câu hỏi phổ biến và công cụ tìm kiếm");
+const moreIndex = home.indexOf('class="home-gallery"');
+if (!(mediaProofIndex >= 0 && mediaProofIndex < journeyIndex && journeyIndex < finderIndex)) fail("Luồng đọc: video thực tế phải mở đường cho hành trình 5 chặng và công cụ tìm kiếm");
 if (!(summaryIndex >= 0 && summaryIndex < selfCheckIndex && selfCheckIndex < learningStoryIndex && learningStoryIndex < processIndex)) fail("Luồng đọc: bản tóm tắt, tự kiểm tra và câu chuyện học nghề phải dẫn tuần tự tới quy trình");
 if (!(processIndex >= 0 && processIndex < recommendedIndex && recommendedIndex < moreIndex)) fail("Luồng đọc: bài nên đọc phải đứng sau quy trình và trước khối nội dung mở rộng");
 for (const anchor of ["thoi-gian-hoc", "ho-tro-hoc-nghe", "noi-lam-viec"]) {
@@ -52,8 +52,9 @@ for (const marker of [
   'href="/ho-so-nhap-hoc/"',
   'href="/thu-nhap-an-o-ho-tro/"',
   'href="/cau-chuyen-cong-nhan/"',
-  '/assets/vinacomin-dao-tao-tho-lo.webp',
+  '/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp',
 ]) if (!home.includes(marker)) fail(`Hành trình người lao động: thiếu ${marker}`);
+if (home.includes('/assets/vinacomin-dao-tao-tho-lo.webp')) fail("Hành trình người lao động: còn dùng ảnh cán bộ phát biểu sai ngữ cảnh đào tạo");
 if (!home.includes("Khai thác mỏ và xây dựng mỏ: 2–3 tháng") || !home.includes("Cơ điện mỏ: 10 tháng")) {
   fail("Thời gian học: chưa tách rõ 2–3 tháng và 10 tháng theo từng nghề");
 }
