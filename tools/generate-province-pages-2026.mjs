@@ -248,7 +248,7 @@ ${storySection}
   <div class="toast" role="status" aria-live="polite" data-toast hidden></div>
   <script src="../../app.js?v=4" defer></script>
   <script src="/analytics.js?v=5" defer></script>
-  <script src="/mobile-ux.js?v=6" defer></script>
+  <script src="/mobile-ux.js?v=7" defer></script>
 </body>
 </html>
 `;

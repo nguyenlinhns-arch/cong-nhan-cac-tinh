@@ -145,7 +145,7 @@ function page({pathName, title, description, eyebrow, heading, lead, body, schem
     ${body}
   </main>
   ${footer()}
-  <script src="/analytics.js?v=5" defer></script><script src="/mobile-ux.js?v=6" defer></script>${shareTools ? '<script src="/share-tools.js?v=1" defer></script>' : ""}
+  <script src="/analytics.js?v=5" defer></script><script src="/mobile-ux.js?v=7" defer></script>${shareTools ? '<script src="/share-tools.js?v=1" defer></script>' : ""}
 </body>
 </html>`;
 }

@@ -19,7 +19,7 @@ const provinces = Array.isArray(provinceData.provinces) ? provinceData.provinces
 
 if (count(home, 'href="/worker-info-finder.css?v=2"') !== 1) fail("Trang chủ: stylesheet tìm thông tin phải được nạp đúng một lần");
 if (count(home, 'src="/worker-info-finder.js?v=2"') !== 1) fail("Trang chủ: script tìm thông tin phải được nạp đúng một lần");
-if (count(home, 'src="/mobile-ux.js?v=6"') !== 1) fail("Trang chủ: mobile UX mới phải được nạp đúng một lần");
+if (count(home, 'src="/mobile-ux.js?v=7"') !== 1) fail("Trang chủ: mobile UX mới phải được nạp đúng một lần");
 if (count(home, "data-open-site-search") !== 2) fail("Trang chủ: cần hai điểm mở tìm kiếm rõ ràng");
 if (count(home, "data-worker-search") !== 2) fail("Trang chủ: hai điểm tìm kiếm phải có đo lường thống nhất");
 if (!home.includes('class="worker-header-search"') || !home.includes('aria-label="Tìm thông tin trên website"')) fail("Header: thiếu nút tìm kiếm có nhãn truy cập");

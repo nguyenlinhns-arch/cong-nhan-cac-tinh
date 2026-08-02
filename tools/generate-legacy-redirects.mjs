@@ -47,7 +47,7 @@ function render(route) {
   </main>
   <script>location.replace(${JSON.stringify(route.to)} + location.search + location.hash);</script>
   <script src="/analytics.js?v=5" defer></script>
-  <script src="/mobile-ux.js?v=6" defer></script>
+  <script src="/mobile-ux.js?v=7" defer></script>
 </body>
 </html>
 `;
