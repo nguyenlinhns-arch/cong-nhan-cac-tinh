@@ -24,7 +24,7 @@ if (!html.startsWith("<!doctype html>")) throw new Error("Worker-first homepage 
 if (!html.includes('id="noi-dung"') || !html.includes('id="dieu-kien"') || !html.includes('id="dang-ky"')) {
   throw new Error("Worker-first homepage is missing required navigation anchors");
 }
-if (bytes !== 31759 || sha256 !== "5ea82c7e259159f580100163be39be2a041fe40f7909e9e3f9493ae322b8194d") {
+if (bytes !== 32653 || sha256 !== "915d085bff4a83c44e1c7bfe6ec8d0962b87fe173493f140af05e0b472cd9f84") {
   throw new Error(`Worker-first homepage source checksum mismatch: ${bytes} bytes, ${sha256}`);
 }
 
