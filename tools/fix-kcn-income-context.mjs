@@ -1,0 +1,32 @@
+import "./rewrite-kcn-comparison.mjs";
+import fs from "node:fs";
+import path from "node:path";
+
+const target = path.resolve("tuyen-tho-mo/chon-kcn-hay-lam-mo/index.html");
+let html = fs.readFileSync(target, "utf8");
+
+const replacements = [
+  [
+    "Nghề mỏ không dành cho người chỉ nhìn thấy mức 20–25 triệu đồng",
+    "Nghề mỏ không dành cho người chỉ nhìn thấy mức 20–25 triệu đồng/tháng khi hoàn thành định mức lao động",
+  ],
+  [
+    "Nghề mỏ có cam kết thu nhập 20–25 triệu đồng/tháng không?",
+    "Nghề mỏ có cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động không?",
+  ],
+];
+
+for (const [before, after] of replacements) {
+  if (!html.includes(before)) throw new Error(`Missing KCN income text: ${before}`);
+  html = html.replace(before, after);
+}
+
+for (const forbidden of [
+  ">Nghề mỏ không dành cho người chỉ nhìn thấy mức 20–25 triệu đồng<",
+  ">Nghề mỏ có cam kết thu nhập 20–25 triệu đồng/tháng không?<",
+]) {
+  if (html.includes(forbidden)) throw new Error(`Incomplete income context remains: ${forbidden}`);
+}
+
+fs.writeFileSync(target, html);
+console.log(JSON.stringify({ status: "income-context-fixed", page: "/chon-kcn-hay-lam-mo/", replacements: replacements.length }, null, 2));
