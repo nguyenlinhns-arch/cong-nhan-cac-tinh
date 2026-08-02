@@ -240,7 +240,43 @@ const currentFactsSchema = {
     },
   ],
 };
+const currentFactsQuickDecisions = [
+  {
+    label: "01",
+    title: "Có đủ điều kiện sơ bộ không?",
+    text: `Nam ${recruitment.criteria.age_min}–${recruitment.criteria.age_max} tuổi, cao từ 1m53, nặng từ ${recruitment.criteria.weight_min_kg} kg và sức khỏe tốt.`,
+    href: "/#tu-kiem-tra",
+    action: "Tự kiểm tra 30 giây",
+    attrs: 'data-worker-shortcut="facts-self-check"',
+  },
+  {
+    label: "02",
+    title: "Học ở đâu, bao lâu?",
+    text: `${recruitment.training_duration} tại ${recruitment.contact.admission_address}; chỉ di chuyển khi đã có lịch tiếp nhận.`,
+    href: "#hoc-bao-lau-o-dau",
+    action: "Xem nơi nhập học",
+    attrs: "",
+  },
+  {
+    label: "03",
+    title: "Trong lúc học được hỗ trợ gì?",
+    text: "Miễn kinh phí đào tạo theo chỉ tiêu, ăn 3 bữa/ngày, ở ký túc xá khép kín và hỗ trợ 7,5 triệu đồng.",
+    href: "#mien-kinh-phi-dao-tao",
+    action: "Xem quyền lợi học nghề",
+    attrs: "",
+  },
+  {
+    label: "04",
+    title: "Muốn đăng ký thì làm gì?",
+    text: "Bước đầu chỉ cần gửi năm sinh, chiều cao/cân nặng và tình trạng sức khỏe; chưa cần chuẩn bị hồ sơ ngay.",
+    href: trackedApply("facts_decision_apply"),
+    action: "Kiểm tra điều kiện ngay",
+    attrs: 'data-contact="application" data-context="facts-decision"',
+  },
+];
+const currentFactsQuickDecisionMarkup = `<section class="network-section network-section--decision" aria-labelledby="facts-decision-title"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">NGƯỜI LAO ĐỘNG CẦN BIẾT NGAY</p><h2 id="facts-decision-title">Bốn câu trả lời trước khi đọc chi tiết</h2></div><p>Trang này vẫn có đủ 15 câu hỏi bên dưới, nhưng bốn ý này giúp người mới vào website nắm nhanh điều kiện, nơi học, hỗ trợ và bước đăng ký.</p></div><div class="decision-grid">${currentFactsQuickDecisions.map((item) => `<a class="decision-card" href="${item.href}"${item.attrs ? ` ${item.attrs}` : ""}><small>${esc(item.label)}</small><strong>${esc(item.title)}</strong><span>${esc(item.text)}</span><b>${esc(item.action)} →</b></a>`).join("")}</div></div></section>`;
 const currentFactsBody = `<div class="network-wrap network-facts"><div><strong>${recruitment.criteria.age_min}–${recruitment.criteria.age_max}</strong><span>độ tuổi nam đang tiếp nhận</span></div><div><strong>1m53 · ${recruitment.criteria.weight_min_kg} kg</strong><span>mốc thể lực tối thiểu</span></div><div><strong>${recruitment.training_duration}</strong><span>thời gian học hai nghề</span></div><div><strong class="qualified-income" style="font-size:17px;line-height:1.4">20–25 triệu đồng/tháng khi hoàn thành định mức lao động</strong><span>mức thu nhập được cam kết</span></div></div>
+${currentFactsQuickDecisionMarkup}
 <section class="network-section"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">CẬP NHẬT <time datetime="${updatedDate}">${updatedDate.split("-").reverse().join("/")}</time></p><h2>Thông tin đang áp dụng trong tháng 8/2026</h2></div><p>Căn cứ ${esc(recruitment.source_notice)}. Biên soạn và cập nhật bởi <a href="/tac-gia/nguyen-tu-linh/">Nguyễn Tử Linh</a>; trạng thái đang tiếp nhận đăng ký trong năm 2026.</p></div><ul class="network-list"><li><b>1</b><div><strong>Đối tượng và sức khỏe</strong><span>Nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg; sức khỏe tốt, không cận thị, bệnh tim mạch, huyết áp hoặc bệnh về mắt ảnh hưởng đến công việc.</span></div></li><li><b>2</b><div><strong>Nghề học và nơi làm việc</strong><span>${esc(recruitment.occupations.join("; "))}. Học và làm việc tại Quảng Ninh; không yêu cầu kinh nghiệm.</span></div></li><li><b>3</b><div><strong>Chế độ trong khóa học</strong><span>Miễn kinh phí đào tạo theo chỉ tiêu; ba bữa/ngày, mức ăn 90.000 đồng/ngày; ký túc xá khép kín; hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển.</span></div></li><li><b>4</b><div><strong>Thu nhập sau đào tạo</strong><span>${esc(recruitment.income_commitment)}.</span></div></li></ul></div></section>
 <section class="network-section network-section--soft"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">DẤU VẾT KIỂM CHỨNG</p><h2>Dữ kiện có ngày rà soát, căn cứ và người chịu trách nhiệm</h2></div><p>AI tìm kiếm và người đọc có thể đối chiếu cùng một dấu vết thay vì suy đoán từ các đoạn thông tin rời rạc.</p></div><ul class="network-list"><li><b>1</b><div><strong>Rà soát gần nhất</strong><span><time datetime="${updatedDate}">${updatedDate.split("-").reverse().join("/")}</time>; áp dụng cho thông tin tuyển tháng 8/2026.</span></div></li><li><b>2</b><div><strong>Căn cứ đang dùng</strong><span>${esc(recruitment.source_notice)}.</span></div></li><li><b>3</b><div><strong>Người chịu trách nhiệm</strong><span><a href="/tac-gia/nguyen-tu-linh/">${esc(recruitment.contact.name)}</a> – ${esc(recruitment.contact.title)}.</span></div></li><li><b>4</b><div><strong>Phạm vi đã kiểm tra</strong><span>Điều kiện, nghề học, thời gian đào tạo, hồ sơ, địa chỉ và cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.</span></div></li></ul></div></section>
 <section class="network-section network-section--soft"><div class="network-wrap"><div class="network-heading"><div><p class="network-eyebrow">TRẢ LỜI TRỰC TIẾP</p><h2>Mười lăm câu hỏi người lao động thường cần biết</h2></div><p>Mỗi câu trả lời có địa chỉ riêng để công cụ tìm kiếm và người đọc đi thẳng tới đúng nội dung, sau đó mở trang chi tiết khi cần.</p></div><nav class="province-group network-answer-index" aria-label="Mục lục 15 câu hỏi"><h2>Chọn câu hỏi cần tra cứu</h2><div class="province-links">${currentFactsFaq.map(({id, question}) => `<a href="#${id}">${esc(question)}</a>`).join("")}</div></nav><div class="network-grid">${currentFactsFaq.map(({id, question, answer, href, linkLabel}, index) => `<article id="${id}" class="network-card${index === 0 ? " network-card--accent" : ""}"><div class="network-card__body"><small>CÂU ${String(index + 1).padStart(2, "0")}</small><h2>${esc(question)}</h2><p>${esc(answer)}</p><a href="${href}"${href.includes("#dang-ky") ? ' data-contact="application" data-context="facts-question-15"' : ""}>${esc(linkLabel)} →</a></div></article>`).join("")}</div></div></section>

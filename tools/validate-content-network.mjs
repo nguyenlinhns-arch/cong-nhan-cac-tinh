@@ -63,6 +63,22 @@ for (const marker of ["data-share-builder", "data-share-province", "data-share-o
   if (!shareHtml.includes(marker)) fail(`Bộ chia sẻ: thiếu ${marker}`);
 }
 
+const currentFactsHtml = read("thong-tin-tuyen-tho-mo/index.html");
+if (!currentFactsHtml.includes('id="facts-decision-title"')) fail("Thông tin chuẩn: thiếu khối bốn câu trả lời nhanh");
+if ((currentFactsHtml.match(/class="decision-card"/g) || []).length !== 4) fail("Thông tin chuẩn: khối trả lời nhanh phải có đúng 4 thẻ");
+for (const marker of [
+  "Bốn câu trả lời trước khi đọc chi tiết",
+  'href="/#tu-kiem-tra"',
+  'href="#hoc-bao-lau-o-dau"',
+  'href="#mien-kinh-phi-dao-tao"',
+  "utm_content=facts_decision_apply#dang-ky",
+  'data-context="facts-decision"',
+  "chưa cần chuẩn bị hồ sơ ngay",
+  "20–25 triệu đồng/tháng khi hoàn thành định mức lao động",
+]) {
+  if (!currentFactsHtml.includes(marker)) fail(`Thông tin chuẩn: thiếu ${marker}`);
+}
+
 let noindexProvinces = 0;
 for (const province of provinces) {
   const file = `viec-lam-nganh-than/${province.slug}/index.html`;
