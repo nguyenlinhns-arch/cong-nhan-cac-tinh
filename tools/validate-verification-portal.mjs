@@ -114,6 +114,8 @@ if (searchIndex) {
   for (const slug of slugs) {
     if (!searchIndex.items?.some(item => item.url === `/${slug}/`)) errors.push(`Search index thiếu /${slug}/`);
   }
+  const workerStories = searchIndex.items?.find(item => item.url === "/cau-chuyen-cong-nhan/");
+  if (workerStories?.category === "province") errors.push("Trang tổng hợp câu chuyện không được tính thành tỉnh thứ 27");
 }
 
 const policyPath = path.resolve("docs", "EMPLOYMENT_ADS_POLICY.md");
