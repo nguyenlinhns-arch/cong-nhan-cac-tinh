@@ -31,6 +31,15 @@ const hubs = [
   ["nguyen-tac-bien-tap/index.html", "/nguyen-tac-bien-tap/"],
 ];
 
+const verificationPages = [
+  ["chon-kcn-hay-lam-mo/index.html", "/chon-kcn-hay-lam-mo/"],
+  ["cau-chuyen-cong-nhan/index.html", "/cau-chuyen-cong-nhan/"],
+  ["kiem-tra-dieu-kien/index.html", "/kiem-tra-dieu-kien/"],
+  ["ho-so-nhap-hoc/index.html", "/ho-so-nhap-hoc/"],
+  ["thu-nhap-an-o-ho-tro/index.html", "/thu-nhap-an-o-ho-tro/"],
+  ["an-toan-ky-luat-moi-truong/index.html", "/an-toan-ky-luat-moi-truong/"],
+];
+
 for (const [file, url] of hubs) {
   const full = path.join(root, file);
   if (!fs.existsSync(full)) {
@@ -50,6 +59,24 @@ for (const [file, url] of hubs) {
     'data-contact="application"',
   ];
   for (const marker of required) if (!html.includes(marker)) fail(`${file}: thiếu ${marker}`);
+}
+
+for (const [file, url] of verificationPages) {
+  const full = path.join(root, file);
+  if (!fs.existsSync(full)) {
+    fail(`${file}: thiếu trang kiểm chứng`);
+    continue;
+  }
+  const html = fs.readFileSync(full, "utf8");
+  for (const marker of [
+    `<link rel="canonical" href="${base}${url}">`,
+    '/verification-portal.css?v=1',
+    '/verification-portal.js?v=1',
+    '/analytics.js?v=5',
+    '/mobile-ux.css?v=6',
+    '/mobile-ux.js?v=8',
+    'data-verification-mobile-contact',
+  ]) if (!html.includes(marker)) fail(`${file}: thiếu ${marker}`);
 }
 
 const provinceData = JSON.parse(read("data/provinces-2026.json"));
@@ -120,10 +147,10 @@ for (const article of articles) {
 const htmlFiles = walk(root);
 const contentFiles = htmlFiles.filter((file) => !path.basename(file).startsWith("google"));
 const legacyRoutes = JSON.parse(fs.readFileSync(path.resolve("operations/legacy-routes.json"), "utf8")).routes || [];
-const expectedHtmlFiles = 56 + articles.length;
-const expectedContentFiles = 55 + articles.length;
-if (htmlFiles.length !== expectedHtmlFiles) fail(`Website: cần ${expectedHtmlFiles} tệp HTML theo số bài trong feed, nhận ${htmlFiles.length}`);
-if (contentFiles.length !== expectedContentFiles) fail(`Website: cần ${expectedContentFiles} trang nội dung theo số bài trong feed, nhận ${contentFiles.length}`);
+const expectedHtmlFiles = 56 + articles.length + verificationPages.length;
+const expectedContentFiles = 55 + articles.length + verificationPages.length;
+if (htmlFiles.length !== expectedHtmlFiles) fail(`Website: cần ${expectedHtmlFiles} tệp HTML theo số bài trong feed và trang kiểm chứng, nhận ${htmlFiles.length}`);
+if (contentFiles.length !== expectedContentFiles) fail(`Website: cần ${expectedContentFiles} trang nội dung theo số bài trong feed và trang kiểm chứng, nhận ${contentFiles.length}`);
 for (const file of contentFiles) {
   const html = fs.readFileSync(file, "utf8");
   const relative = path.relative(root, file);
@@ -154,6 +181,7 @@ for (const route of legacyRoutes) {
   }
 }
 for (const [, url] of hubs) if (!sitemap.includes(`<loc>${base}${url}</loc>`)) fail(`Sitemap: thiếu ${url}`);
+for (const [, url] of verificationPages) if (!sitemap.includes(`<loc>${base}${url}</loc>`)) fail(`Sitemap: thiếu ${url}`);
 
 const analytics = read("analytics.js");
 const app = read("app.js");
@@ -174,6 +202,7 @@ const output = {
   content_pages: contentFiles.length,
   sitemap_urls: sitemapUrls,
   hubs: hubs.length,
+  verification_pages: verificationPages.length,
   provinces: provinces.length,
   share_packages: shareOptions,
   articles: articles.length,
