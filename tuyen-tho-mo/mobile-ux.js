@@ -4,12 +4,13 @@
   const ROOT = "https://thaylinhtuyenthomo.vn";
   const APPLICATION_URL = "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky";
   const ZALO_URL = "https://zalo.me/0963048585";
+  const MESSENGER_URL = "https://m.me/thaylinhtuyenthomo";
   const PHONE_URL = "tel:+84963048585";
   const DRAFT_KEY = "thaylinh_application_draft_v1";
   const DRAFT_TTL_MS = 24 * 60 * 60 * 1000;
   const RECRUITMENT_YEAR = 2026;
   const SEARCH_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>';
-  const PHONE_ICON = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor"><path d="M6.7 2.8 9.3 2a1.3 1.3 0 0 1 1.5.7l1.2 2.8a1.3 1.3 0 0 1-.3 1.4L10.2 8.4a14.7 14.7 0 0 0 5.4 5.4l1.5-1.5a1.3 1.3 0 0 1 1.4-.3l2.8 1.2a1.3 1.3 0 0 1 .7 1.5l-.8 2.6a3.2 3.2 0 0 1-3.1 2.3C10.5 19.6 4.4 13.5 4.4 5.9a3.2 3.2 0 0 1 2.3-3.1Z"></path></svg>';
+  const PHONE_ICON = '<b aria-hidden="true">☎</b>';
   const WORKER_SHORTCUTS = [
     { key: "conditions", label: "Điều kiện", question: "Tôi có đủ điều kiện?", href: "/#dieu-kien" },
     { key: "benefits", label: "Quyền lợi", question: "Được hỗ trợ những gì?", href: "/#quyen-loi" },
@@ -409,6 +410,9 @@
       </a>
       <a class="tl-mobile-contact__zalo" href="${ZALO_URL}" target="_blank" rel="noopener noreferrer" aria-label="Nhắn Zalo cho Thầy Linh theo số 096 304 8585" data-contact="zalo" data-context="mobile-floating">
         <b aria-hidden="true">Z</b><span>Zalo</span>
+      </a>
+      <a class="tl-mobile-contact__messenger" href="${MESSENGER_URL}" target="_blank" rel="noopener noreferrer" aria-label="Nhắn Messenger cho Thầy Linh" data-contact="messenger" data-context="mobile-floating">
+        <b aria-hidden="true">M</b><span>Messenger</span>
       </a>
       <a class="tl-mobile-contact__call" href="${PHONE_URL}" style="background:linear-gradient(145deg,#0b7a55,#075b66)" aria-label="Gọi Thầy Linh theo số 096 304 8585" data-contact="phone" data-context="mobile-floating">
         ${PHONE_ICON}<span>Gọi</span>
@@ -901,6 +905,11 @@
   compactMobileConsentBanner();
   document.documentElement.classList.add("tl-mobile-ux-ready");
   setupSearch();
+
+
+
+
+
 
 
 
