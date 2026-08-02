@@ -18,7 +18,7 @@ const provinceData = JSON.parse(read("data/provinces-2026.json"));
 const provinces = Array.isArray(provinceData.provinces) ? provinceData.provinces : [];
 
 if (count(home, 'href="/worker-info-finder.css?v=2"') !== 1) fail("Trang chủ: stylesheet tìm thông tin phải được nạp đúng một lần");
-if (count(home, 'src="/worker-info-finder.js?v=2"') !== 1) fail("Trang chủ: script tìm thông tin phải được nạp đúng một lần");
+if (count(home, 'src="/worker-info-finder.js?v=3"') !== 1) fail("Trang chủ: script tìm thông tin phiên bản 3 phải được nạp đúng một lần");
 if (count(home, 'href="/mobile-ux.css?v=6"') !== 1) fail("Trang chủ: mobile UX CSS mới phải được nạp đúng một lần");
 if (count(home, 'src="/mobile-ux.js?v=8"') !== 1) fail("Trang chủ: mobile UX mới phải được nạp đúng một lần");
 if (count(home, "data-open-site-search") !== 2) fail("Trang chủ: cần hai điểm mở tìm kiếm rõ ràng");
