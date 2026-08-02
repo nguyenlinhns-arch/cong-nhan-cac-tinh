@@ -28,25 +28,21 @@ const oldFunction = `  function trackedApplicationUrl(campaign, content) {
 `;
 
 const newFunction = `  function applicationContext() {
-    const values = {};
-    const read = (href) => {
+    const values = {}, read = (href) => {
       try {
         const url = new URL(href, location.href);
-        for (const key of ["province", "trade"]) {
-          const value = url.searchParams.get(key);
-          if (!values[key] && value) values[key] = value.slice(0, 80);
-        }
+        for (const key of ["province", "trade"]) values[key] ||= url.searchParams.get(key)?.slice(0, 80);
       } catch (_) {}
     };
     read(location.href);
     const path = new URL(APPLICATION_URL, ROOT).pathname;
-    document.querySelectorAll(\`a[href*=\"\${path}\"]\`).forEach((link) => read(link.getAttribute("href") || link.href));
+    document.querySelectorAll(\`a[href*=\"\${path}\"]\`).forEach((link) => read(link.href));
     return values;
   }
 
   function trackedApplicationUrl(campaign, content) {
     const url = new URL(APPLICATION_URL, ROOT);
-    for (const [key, value] of Object.entries(applicationContext())) url.searchParams.set(key, value);
+    for (const [key, value] of Object.entries(applicationContext())) if (value) url.searchParams.set(key, value);
     url.searchParams.set("utm_source", "website");
     url.searchParams.set("utm_medium", "internal");
     url.searchParams.set("utm_campaign", campaign);
