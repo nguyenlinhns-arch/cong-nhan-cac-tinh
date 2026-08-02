@@ -1,0 +1,16 @@
+/* Emergency hotfix: remove the cluttered/blank block below the mobile header. */
+.v5-intent-hub,.v5-return-prompt{display:none!important}
+@media(max-width:900px){
+  .site-header{height:auto!important;min-height:0!important;padding:0!important;margin:0!important}
+  .site-header .header-inner{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px!important;height:60px!important;min-height:60px!important;padding:7px 16px!important;margin:0!important}
+  .site-header .brand{margin-right:auto!important;min-width:0!important}
+  .site-header .brand small{display:none!important}
+  .site-header .brand-mark{width:42px!important;height:42px!important}
+  .site-header .main-nav,.site-header .v4-primary-nav,.site-header [data-nav]{display:none!important;position:static!important;visibility:hidden!important;width:0!important;height:0!important;min-height:0!important;max-height:0!important;padding:0!important;margin:0!important;border:0!important;overflow:hidden!important}
+  .site-header .menu-toggle,.site-header [data-menu-button]{display:none!important;width:0!important;height:0!important;padding:0!important;margin:0!important;overflow:hidden!important}
+  .site-header .worker-header-search{display:inline-grid!important;place-items:center!important;width:38px!important;height:38px!important;min-width:38px!important;flex:0 0 38px!important;margin-left:auto!important;padding:0!important}
+  .site-header .header-cta{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:38px!important;padding:8px 11px!important;margin:0!important;border-radius:10px!important;white-space:nowrap!important;font-size:13px!important;line-height:1!important}
+  .site-header .reading-progress{position:absolute!important;left:0!important;right:0!important;bottom:0!important;height:2px!important;margin:0!important}
+  main{margin-top:0!important;padding-top:0!important}
+  main>section:first-child,.hero,.article-hero,.verification-page__hero,.job-hero,.local-hero{margin-top:0!important}
+}
