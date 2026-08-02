@@ -1,0 +1,96 @@
+name: Publish KCN comparison hotfix
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/pages-hotfix-kcn.yml'
+      - 'tools/rewrite-kcn-comparison.mjs'
+      - 'tuyen-tho-mo/chon-kcn-hay-lam-mo/**'
+      - 'tuyen-tho-mo/kcn-comparison.css'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-kcn-hotfix
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Rebuild website with the new comparison article
+        run: |
+          set -euo pipefail
+          node tools/generate-province-pages-2026.mjs
+          node tools/generate-legacy-redirects.mjs
+          node tools/generate-job-board-pages.mjs
+          node tools/generate-content-network.mjs
+          node tools/generate-seo-library.mjs
+          node tools/generate-news-sitemap.mjs
+          node tools/build-worker-first-home.mjs
+          node tools/enhance-home-copy-actions.mjs
+          node tools/build-search-index.mjs
+          node tools/enhance-all-province-search.mjs
+          node tools/enhance-natural-language-search.mjs
+          node tools/enhance-answer-first-search.mjs
+          node tools/enhance-worker-brief.mjs
+          node tools/enhance-voice-loader.mjs
+          node tools/enhance-search-answer-read-aloud.mjs
+          node tools/enhance-direct-call.mjs
+          node tools/enhance-application-context.mjs
+          node tools/enhance-application-prefill-note.mjs
+          node tools/validate-verification-portal.mjs
+          node tools/validate-worker-journey-v3.mjs
+          node tools/validate-direct-call.mjs
+          test -f tuyen-tho-mo/chon-kcn-hay-lam-mo/index.html
+          grep -Fq 'đừng chỉ hỏi lương bao nhiêu, hãy hỏi mỗi tháng còn lại bao nhiêu' tuyen-tho-mo/chon-kcn-hay-lam-mo/index.html
+          grep -Fq '1145886217664123' tuyen-tho-mo/chon-kcn-hay-lam-mo/index.html
+          grep -Fq 'Bài toán 30 ngày' tuyen-tho-mo/chon-kcn-hay-lam-mo/index.html
+          grep -Fq '20–25 triệu đồng/tháng khi hoàn thành định mức lao động' tuyen-tho-mo/chon-kcn-hay-lam-mo/index.html
+
+      - name: Upload website artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./tuyen-tho-mo
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Verify the replacement article is live
+        env:
+          LIVE_URL: https://thaylinhtuyenthomo.vn/chon-kcn-hay-lam-mo/
+        run: |
+          set -euo pipefail
+          html_file="$(mktemp)"
+          for attempt in $(seq 1 24); do
+            if curl --fail --silent --show-error --location --max-time 25 "${LIVE_URL}?release=${GITHUB_SHA}" -o "$html_file"; then
+              if grep -Fq 'đừng chỉ hỏi lương bao nhiêu, hãy hỏi mỗi tháng còn lại bao nhiêu' "$html_file" \
+                && grep -Fq '1145886217664123' "$html_file" \
+                && grep -Fq 'Bài toán 30 ngày' "$html_file" \
+                && grep -Fq '/kcn-comparison.css?v=1' "$html_file"; then
+                echo "Replacement article verified live on attempt $attempt."
+                exit 0
+              fi
+            fi
+            sleep 5
+          done
+          echo "The replacement article was deployed but the custom domain did not expose the new version in time."
+          exit 1
