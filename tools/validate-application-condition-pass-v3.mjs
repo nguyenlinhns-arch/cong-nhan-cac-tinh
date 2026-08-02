@@ -1,4 +1,4 @@
-import "./validate-worker-journey-v3.mjs";
+import "./validate-utm-map-v3.mjs";
 import fs from "node:fs";
 
 const application = fs.readFileSync("tuyen-tho-mo/job-application.js", "utf8");
