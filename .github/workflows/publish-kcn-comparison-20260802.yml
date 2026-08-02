@@ -1,0 +1,59 @@
+name: Publish KCN comparison article
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/publish-kcn-comparison-20260802.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-kcn-comparison-20260802
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build complete website
+        run: node tools/enhance-direct-call.mjs
+
+      - name: Validate website
+        run: node tools/validate-direct-call.mjs
+
+      - name: Verify rewritten article
+        shell: bash
+        run: |
+          set -euo pipefail
+          PAGE='tuyen-tho-mo/chon-kcn-hay-lam-mo/index.html'
+          test -f "$PAGE"
+          grep -Fq 'đừng chỉ hỏi lương bao nhiêu' "$PAGE"
+          grep -Fq '1145886217664123' "$PAGE"
+          grep -Fq 'Bài toán 30 ngày' "$PAGE"
+          grep -Fq '20–25 triệu đồng/tháng khi hoàn thành định mức lao động' "$PAGE"
+          test -f tuyen-tho-mo/kcn-comparison.css
+
+      - name: Commit generated website
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f tuyen-tho-mo/chon-kcn-hay-lam-mo/index.html tuyen-tho-mo/kcn-comparison.css
+          git add tuyen-tho-mo
+          if git diff --cached --quiet; then
+            echo 'Website already up to date.'
+            exit 0
+          fi
+          git commit -m 'publish: replace old KCN comparison article [skip ci]'
+          git push origin HEAD:main
