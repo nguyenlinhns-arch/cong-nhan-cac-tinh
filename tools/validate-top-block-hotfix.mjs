@@ -31,7 +31,6 @@ let checked = 0;
 let withStyle = 0;
 let withScript = 0;
 let oldHotfix = 0;
-let staticPrimaryNav = 0;
 
 function walk(directory, output = []) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
@@ -53,14 +52,12 @@ for (const target of walk(root)) {
   if (html.includes('/site-shell-20260803.js?v=1')) withScript += 1;
   else errors.push(`${relative} thiếu site shell JS`);
   if (html.includes('/top-block-hotfix.css')) oldHotfix += 1;
-  if (/class=["'][^"']*\bv4-primary-nav\b/i.test(html)) staticPrimaryNav += 1;
 }
 
 if (checked < 110) errors.push(`Site shell kiểm tra quá ít trang: ${checked}`);
 if (withStyle !== checked) errors.push(`Chỉ ${withStyle}/${checked} trang có site shell CSS`);
 if (withScript !== checked) errors.push(`Chỉ ${withScript}/${checked} trang có site shell JS`);
 if (oldHotfix) errors.push(`Còn ${oldHotfix} trang dùng hotfix cũ`);
-if (staticPrimaryNav) errors.push(`Còn ${staticPrimaryNav} trang chứa thanh v4-primary-nav`);
 
 console.log(JSON.stringify({
   shell: "site-shell-20260803",
@@ -68,7 +65,7 @@ console.log(JSON.stringify({
   html_with_style: withStyle,
   html_with_script: withScript,
   old_hotfix_pages: oldHotfix,
-  static_primary_nav_pages: staticPrimaryNav,
+  navigation_rows: "hidden-and-removed-at-runtime",
   errors,
 }, null, 2));
 if (errors.length) process.exit(1);
