@@ -14,6 +14,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  issues: write
 
 concurrency:
   group: pages-kcn-hotfix
@@ -94,3 +95,26 @@ jobs:
           done
           echo "The replacement article was deployed but the custom domain did not expose the new version in time."
           exit 1
+
+      - name: Record successful KCN article deployment
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment 42 --repo "$GITHUB_REPOSITORY" --body "✅ **Bài Chọn KCN hay làm mỏ đã được thay thế và xác minh trên website**
+
+- Commit: \`$GITHUB_SHA\`
+- Workflow run: \`$GITHUB_RUN_ID\`
+- Trang: https://thaylinhtuyenthomo.vn/chon-kcn-hay-lam-mo/
+- Đã kiểm tra: tiêu đề mới, video Facebook, mục Bài toán 30 ngày và giao diện riêng."
+
+      - name: Record failed KCN article deployment
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment 42 --repo "$GITHUB_REPOSITORY" --body "❌ **Triển khai bài Chọn KCN hay làm mỏ chưa hoàn tất**
+
+- Commit: \`$GITHUB_SHA\`
+- Workflow run: \`$GITHUB_RUN_ID\`
+- Cần kiểm tra log workflow Publish KCN comparison hotfix."
