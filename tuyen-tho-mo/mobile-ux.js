@@ -7,6 +7,7 @@
   const MESSENGER_URL = "https://m.me/thaylinhtuyenthomo";
   const DRAFT_KEY = "thaylinh_application_draft_v1";
   const DRAFT_TTL_MS = 24 * 60 * 60 * 1000;
+  const RECRUITMENT_YEAR = 2026;
   const SEARCH_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>';
   const MESSENGER_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.5 2 2 6.14 2 11.25c0 2.91 1.46 5.5 3.74 7.2V22l3.42-1.88c.9.25 1.86.38 2.84.38 5.5 0 10-4.14 10-9.25S17.5 2 12 2Zm1 12.45-2.55-2.72-4.98 2.72 5.48-5.82 2.61 2.72 4.93-2.72L13 14.45Z"></path></svg>';
   const WORKER_SHORTCUTS = [
@@ -15,6 +16,52 @@
     { key: "dossier", label: "Hồ sơ", question: "Hồ sơ gồm giấy tờ gì?", href: "/#ho-so" },
     { key: "address", label: "Nơi học", question: "Học và nhập học ở đâu?", href: "/#dia-diem" },
     { key: "province", label: "Theo tỉnh", question: "Xem thông tin tỉnh tôi", href: "/viec-lam-nganh-than/" },
+  ];
+
+
+  const WORKER_BRIEF_FACTS = [
+    {
+      key: "conditions",
+      type: "Điều kiện",
+      title: "Nam 18–40 tuổi",
+      description: "Cao từ 1m53, nặng từ 47kg; sức khỏe tốt, không cận thị, bệnh tim mạch, huyết áp hoặc bệnh về mắt ảnh hưởng công việc.",
+      href: "/#dieu-kien",
+    },
+    {
+      key: "training",
+      type: "Thời gian học",
+      title: "Nghề chính học 2–3 tháng",
+      description: "Khai thác mỏ và xây dựng mỏ học khoảng 2–3 tháng; cơ điện mỏ học 10 tháng.",
+      href: "/#thoi-gian-hoc",
+    },
+    {
+      key: "support",
+      type: "Hỗ trợ khi học",
+      title: "Miễn kinh phí đào tạo, có ăn ở",
+      description: "Ăn 3 bữa/ngày, ở ký túc xá và được hỗ trợ 7,5 triệu đồng trong thời gian học.",
+      href: "/#ho-tro-hoc-nghe",
+    },
+    {
+      key: "work",
+      type: "Việc làm và thu nhập",
+      title: "Làm việc tại Quảng Ninh",
+      description: "Được bố trí việc làm sau đào tạo; cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      href: "/#noi-lam-viec",
+    },
+    {
+      key: "dossier",
+      type: "Hồ sơ",
+      title: "Chuẩn bị 3 nhóm giấy tờ",
+      description: "Căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; chưa có bằng vẫn đăng ký được.",
+      href: "/#ho-so",
+    },
+    {
+      key: "address",
+      type: "Nơi nhập học",
+      title: "Khu C – Quang Hanh, Quảng Ninh",
+      description: "Phân hiệu Đào tạo Cẩm Phả; chỉ đến sau khi được xác nhận lịch tiếp nhận.",
+      href: "/#dia-diem",
+    },
   ];
 
   const categories = [
@@ -99,10 +146,14 @@
       url: "/#dieu-kien",
       bonus: 360,
       patterns: [
-        /\b(dieu kien|bao nhieu tuoi|nam sinh|gioi tinh|nu|con gai|chieu cao|can nang|suc khoe|bi can|can thi|thi luc|benh mat|benh tim|tim mach|huyet ap)\b/,
+        /\b(dieu kien|bao nhieu tuoi|nam sinh|sinh nam|gioi tinh|nu|con gai|phu nu|chieu cao|can nang|suc khoe|bi can|can thi|thi luc|benh mat|benh tim|tim mach|huyet ap)\b/,
+        /\b(?:sinh(?:\s+nam)?|sn)\s*(?:19|20)\d{2}\b/,
         /\b\d{2}\s*tuoi\b/,
         /\b\d(?:[.,]?m|m)\d{1,2}\b/,
-        /\b\d{2,3}\s*(?:kg|can)\b/,
+        /\b1\s+\d{1,2}\s*m\b/,
+        /\bcao\s+(?:1[3-9]\d|2[0-2]\d)\b/,
+        /\b\d{2,3}\s*(?:kg|can|ki|ky|kilo)\b/,
+        /\b(?:nang|can nang)\s+\d{2,3}\b/,
       ],
     },
     {
@@ -207,13 +258,95 @@
     const nav = document.createElement("nav");
     nav.className = "tl-worker-compass";
     nav.setAttribute("aria-label", "Tìm nhanh thông tin tuyển thợ mỏ");
-    nav.innerHTML = `<div class="tl-worker-compass__inner"><strong>Cần xem:</strong><div>${WORKER_SHORTCUTS.map(({ key, label, href }) => `<a href="${href}" data-worker-shortcut="${key}">${label}</a>`).join("")}<button type="button" data-open-site-search data-worker-shortcut="search" aria-haspopup="dialog">${SEARCH_ICON}<span>Tìm kiếm</span></button><a class="tl-worker-compass__apply" href="${trackedApplicationUrl("worker_compass_2026", `compass_${group}`)}" data-contact="application" data-context="worker-compass" data-worker-shortcut="application">Ứng tuyển</a></div></div>`;
+    nav.innerHTML = `<div class="tl-worker-compass__inner"><strong>Cần xem:</strong><div><button type="button" data-open-worker-brief data-worker-shortcut="brief" aria-haspopup="dialog">Tóm tắt 30 giây</button>${WORKER_SHORTCUTS.map(({ key, label, href }) => `<a href="${href}" data-worker-shortcut="${key}">${label}</a>`).join("")}<button type="button" data-open-site-search data-worker-shortcut="search" aria-haspopup="dialog">${SEARCH_ICON}<span>Tìm kiếm</span></button><a class="tl-worker-compass__apply" href="${trackedApplicationUrl("worker_compass_2026", `compass_${group}`)}" data-contact="application" data-context="worker-compass" data-worker-shortcut="application">Ứng tuyển</a></div></div>`;
     nav.addEventListener("click", (event) => {
       const target = event.target.closest?.("[data-worker-shortcut]");
       if (target) trackUi("worker_compass_click", { destination: target.dataset.workerShortcut || "unknown", page_group: group });
     });
     if (header?.insertAdjacentElement) header.insertAdjacentElement("afterend", nav);
     else main.parentNode?.insertBefore(nav, main);
+  }
+
+
+  function createWorkerBriefDialog() {
+    const dialog = document.createElement("dialog");
+    dialog.className = "tl-search-dialog tl-worker-brief-dialog";
+    dialog.dataset.workerBrief = "30-second-summary";
+    dialog.setAttribute("aria-labelledby", "tl-worker-brief-title");
+    const facts = WORKER_BRIEF_FACTS.map((fact) => `
+      <a class="tl-search-result" href="${fact.href}" data-worker-brief-action="${fact.key}">
+        <small>${fact.type}</small>
+        <strong>${fact.title}</strong>
+        <span>${fact.description}</span>
+      </a>`).join("");
+    dialog.innerHTML = `
+      <div class="tl-search-dialog__header">
+        <div><span class="tl-search-dialog__eyebrow">Thông tin đang áp dụng</span><h2 id="tl-worker-brief-title">Tuyển thợ mỏ trong 30 giây</h2></div>
+        <button class="tl-search-dialog__close" type="button" aria-label="Đóng tóm tắt">×</button>
+      </div>
+      <p class="tl-search-status">6 thông tin quan trọng — không cần đọc hết bài hiện tại.</p>
+      <div class="tl-search-results" tabindex="-1">
+        <div class="tl-search-results__grid">${facts}</div>
+        <div class="tl-search-empty">
+          <strong>Bước tiếp theo</strong>
+          <span>Tự kiểm tra trước, đăng ký khi phù hợp hoặc hỏi trực tiếp trường hợp của bạn.</span>
+          <div class="tl-search-empty__actions">
+            <a href="/#tu-kiem-tra" data-worker-brief-action="self_check">Tự kiểm tra điều kiện</a>
+            <a href="${trackedApplicationUrl("brief_to_application_2026", `brief_${pageGroup()}`)}" data-contact="application" data-context="worker-brief" data-worker-brief-action="application">Đăng ký ngay</a>
+            <a href="${ZALO_URL}" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="worker-brief" data-worker-brief-action="zalo">Hỏi qua Zalo</a>
+          </div>
+        </div>
+      </div>`;
+    document.body.append(dialog);
+    return dialog;
+  }
+
+  function setupWorkerBrief() {
+    const triggers = document.querySelectorAll("[data-open-worker-brief]");
+    if (!triggers.length) return;
+    let dialog = null;
+    let lastBriefFocus = null;
+
+    const closeBrief = () => {
+      if (!dialog) return;
+      if (typeof dialog.close === "function" && dialog.open) dialog.close();
+      else dialog.removeAttribute("open");
+      document.documentElement.classList.remove("tl-search-open");
+      if (lastBriefFocus instanceof HTMLElement) lastBriefFocus.focus({ preventScroll: true });
+    };
+
+    const ensureBrief = () => {
+      if (dialog) return dialog;
+      dialog = createWorkerBriefDialog();
+      dialog.querySelector(".tl-search-dialog__close").addEventListener("click", closeBrief);
+      dialog.addEventListener("cancel", (event) => {
+        event.preventDefault();
+        closeBrief();
+      });
+      dialog.addEventListener("click", (event) => {
+        const action = event.target.closest?.("[data-worker-brief-action]");
+        if (action) trackUi("worker_brief_click", { destination: action.dataset.workerBriefAction || "unknown", page_group: pageGroup() });
+        const rect = dialog.getBoundingClientRect();
+        const outside = event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
+        if (outside) closeBrief();
+      });
+      return dialog;
+    };
+
+    const openBrief = (event) => {
+      const activeDialog = ensureBrief();
+      lastBriefFocus = event?.currentTarget instanceof HTMLElement ? event.currentTarget : document.activeElement;
+      document.querySelectorAll("dialog.tl-search-dialog[open]").forEach((openDialog) => {
+        if (openDialog !== activeDialog && typeof openDialog.close === "function") openDialog.close();
+      });
+      if (typeof activeDialog.showModal === "function") activeDialog.showModal();
+      else activeDialog.setAttribute("open", "");
+      document.documentElement.classList.add("tl-search-open");
+      trackUi("worker_brief_open", { page_group: pageGroup() });
+      requestAnimationFrame(() => activeDialog.querySelector(".tl-search-dialog__close")?.focus({ preventScroll: true }));
+    };
+
+    triggers.forEach((button) => button.addEventListener("click", openBrief));
   }
 
   function hasActiveApplicationDraft() {
@@ -389,53 +522,99 @@
   function parseWorkerMeasurements(value) {
     const query = normalize(value);
     const ageMatch = query.match(/\b(1[5-9]|[2-6]\d)\s*tuoi\b/);
+    const birthYearMatch = query.match(/\b(?:sinh(?:\s+nam)?|sn)\s*((?:19|20)\d{2})\b/);
     const heightMMatch = query.match(/\b1m(\d{1,2})\b/);
+    const heightDecimalMatch = query.match(/\b1\s+(\d{1,2})\s*m\b/);
     const heightCmMatch = query.match(/\b(1[3-9]\d|2[0-2]\d)\s*cm\b/);
-    const weightMatch = query.match(/\b(\d{2,3})\s*(?:kg|can)\b/);
-    const heightSuffix = heightMMatch ? Number(heightMMatch[1]) : null;
+    const heightContextMatch = query.match(/\bcao\s+(1[3-9]\d|2[0-2]\d)\b/);
+    const weightUnitMatch = query.match(/\b(\d{2,3})\s*(?:kg|can|ki|ky|kilo)\b/);
+    const weightContextMatch = query.match(/\b(?:nang|can nang)\s+(\d{2,3})\b/);
+    const birthYear = birthYearMatch ? Number(birthYearMatch[1]) : null;
+    const heightSuffix = heightMMatch
+      ? Number(heightMMatch[1])
+      : heightDecimalMatch
+        ? Number(heightDecimalMatch[1])
+        : null;
     const heightCm = heightCmMatch
       ? Number(heightCmMatch[1])
       : heightSuffix !== null
         ? 100 + (heightSuffix < 10 ? heightSuffix * 10 : heightSuffix)
+        : heightContextMatch
+          ? Number(heightContextMatch[1])
+          : null;
+    const weightKg = weightUnitMatch
+      ? Number(weightUnitMatch[1])
+      : weightContextMatch
+        ? Number(weightContextMatch[1])
         : null;
-    const weightKg = weightMatch ? Number(weightMatch[1]) : null;
     return {
       age: ageMatch ? Number(ageMatch[1]) : null,
+      birthYear: Number.isFinite(birthYear) && birthYear >= 1900 && birthYear <= RECRUITMENT_YEAR ? birthYear : null,
       heightCm: Number.isFinite(heightCm) && heightCm >= 130 && heightCm <= 220 ? heightCm : null,
       weightKg: Number.isFinite(weightKg) && weightKg >= 30 && weightKg <= 200 ? weightKg : null,
     };
   }
 
   function buildSearchAnswer(value, matches) {
+    const query = normalize(value);
+    if (/\b(?:nu|con gai|phu nu)\b/.test(query)) {
+      return {
+        kind: "eligibility",
+        state: "review",
+        title: "Đợt tuyển hiện tại áp dụng cho lao động nam",
+        text: "Chỉ tiêu đang công bố trên website dành cho nam từ 18 đến 40 tuổi. Lao động nữ không thuộc chỉ tiêu tuyển này; nếu cần hỏi chương trình khác, hãy trao đổi trực tiếp với Thầy Linh.",
+        href: "/#dieu-kien",
+        actionLabel: "Xem điều kiện đang tuyển",
+        secondaryHref: ZALO_URL,
+        secondaryLabel: "Hỏi chương trình khác",
+      };
+    }
+
     const measurements = parseWorkerMeasurements(value);
     const checks = [];
     if (measurements.age !== null) checks.push({
       label: measurements.age + " tuổi",
       requirement: "18–40 tuổi",
-      pass: measurements.age >= 18 && measurements.age <= 40,
+      state: measurements.age >= 18 && measurements.age <= 40 ? "pass" : "review",
     });
+    else if (measurements.birthYear !== null) {
+      const youngestAge = RECRUITMENT_YEAR - measurements.birthYear - 1;
+      const oldestAge = RECRUITMENT_YEAR - measurements.birthYear;
+      const fullyInRange = youngestAge >= 18 && oldestAge <= 40;
+      const fullyOutOfRange = oldestAge < 18 || youngestAge > 40;
+      checks.push({
+        label: "Sinh năm " + measurements.birthYear,
+        requirement: "18–40 tuổi",
+        state: fullyInRange ? "pass" : "review",
+        detail: fullyInRange
+          ? `Sinh năm ${measurements.birthYear}: khoảng ${youngestAge}–${oldestAge} tuổi trong năm ${RECRUITMENT_YEAR}, đạt mốc 18–40 tuổi`
+          : fullyOutOfRange
+            ? `Sinh năm ${measurements.birthYear}: khoảng ${youngestAge}–${oldestAge} tuổi trong năm ${RECRUITMENT_YEAR}, chưa đạt mốc 18–40 tuổi`
+            : `Sinh năm ${measurements.birthYear}: khoảng ${youngestAge}–${oldestAge} tuổi trong năm ${RECRUITMENT_YEAR}; cần ngày tháng sinh cụ thể để kiểm tra mốc 18–40 tuổi`,
+      });
+    }
     if (measurements.heightCm !== null) checks.push({
       label: Math.floor(measurements.heightCm / 100) + "m" + String(measurements.heightCm % 100).padStart(2, "0"),
       requirement: "từ 1m53",
-      pass: measurements.heightCm >= 153,
+      state: measurements.heightCm >= 153 ? "pass" : "review",
     });
     if (measurements.weightKg !== null) checks.push({
       label: measurements.weightKg + "kg",
       requirement: "từ 47kg",
-      pass: measurements.weightKg >= 47,
+      state: measurements.weightKg >= 47 ? "pass" : "review",
     });
 
     if (checks.length) {
-      const failed = checks.filter((check) => !check.pass);
-      const text = checks.map((check) => check.label + ": " + (check.pass ? "đạt" : "chưa đạt") + " mốc " + check.requirement).join("; ")
+      const needsReview = checks.filter((check) => check.state !== "pass");
+      const text = checks.map((check) => check.detail || (check.label + ": " + (check.state === "pass" ? "đạt" : "chưa đạt") + " mốc " + check.requirement)).join("; ")
         + ". Đây là kiểm tra sơ bộ theo thông tin bạn nhập; sức khỏe và kết quả khám tuyển là căn cứ xác nhận cuối cùng.";
       return {
         kind: "screening",
-        state: failed.length ? "review" : "pass",
-        title: failed.length ? "Kết quả sơ bộ: có mốc cần kiểm tra lại" : "Kết quả sơ bộ: các mốc đã nhập đều đạt",
+        state: needsReview.length ? "review" : "pass",
+        title: needsReview.length ? "Kết quả sơ bộ: có mốc cần kiểm tra lại" : "Kết quả sơ bộ: các mốc đã nhập đều đạt",
         text,
-        href: failed.length ? "/#dieu-kien" : "/#tu-kiem-tra",
-        actionLabel: failed.length ? "Xem điều kiện đầy đủ" : "Kiểm tra đủ 4 điều kiện",
+        href: needsReview.length ? "/#dieu-kien" : "/#tu-kiem-tra",
+        actionLabel: needsReview.length ? "Xem điều kiện đầy đủ" : "Kiểm tra đủ 4 điều kiện",
         secondaryHref: ZALO_URL,
         secondaryLabel: "Hỏi trường hợp của tôi",
       };
@@ -503,7 +682,7 @@
   }
 
   if (typeof document === "undefined" && typeof process !== "undefined" && process?.env?.TL_SEARCH_TEST_ONLY === "1") {
-    window.__TL_SEARCH_INTERNALS__ = { normalize, meaningfulQueryTerms, queryIntentScores, provinceAliases, oneEditApart, scoreItem, parseWorkerMeasurements, buildSearchAnswer };
+    window.__TL_SEARCH_INTERNALS__ = { normalize, meaningfulQueryTerms, queryIntentScores, provinceAliases, oneEditApart, scoreItem, parseWorkerMeasurements, buildSearchAnswer, workerBriefFacts: WORKER_BRIEF_FACTS, createWorkerBriefDialog };
     return;
   }
 
@@ -653,8 +832,23 @@
     document.querySelectorAll("[data-open-site-search]").forEach((button) => button.addEventListener("click", openSearch));
   }
 
+  function compactMobileConsentBanner() {
+    if (!window.matchMedia?.("(max-width: 720px)").matches) return;
+    const banner = document.querySelector("[data-consent-banner]");
+    const title = banner?.querySelector(".tl-consent-banner__copy strong");
+    const copy = banner?.querySelector(".tl-consent-banner__copy span");
+    if (!banner || !title || !copy) return;
+    const link = document.createElement("a");
+    link.href = "/quyen-rieng.html";
+    link.textContent = "Chi tiết";
+    title.textContent = "Đo lường ẩn danh";
+    copy.replaceChildren(document.createTextNode("Giúp cải thiện website; không gửi tên, số điện thoại hoặc sức khỏe. "), link);
+  }
+
   createWorkerCompass();
+  setupWorkerBrief();
   createContactButtons();
+  compactMobileConsentBanner();
   document.documentElement.classList.add("tl-mobile-ux-ready");
   setupSearch();
 })();
