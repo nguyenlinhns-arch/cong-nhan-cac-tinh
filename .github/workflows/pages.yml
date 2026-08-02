@@ -39,6 +39,7 @@ jobs:
           node tools/generate-news-sitemap.mjs
           node tools/build-search-index.mjs
           node tools/build-worker-first-home.mjs
+          node tools/validate-worker-findability.mjs
           node tools/validate-content-network.mjs
           node tools/validate-seo-library.mjs
           node tools/audit-technical-seo.mjs
@@ -68,16 +69,19 @@ jobs:
           for attempt in $(seq 1 18); do
             if curl --fail --silent --show-error --location --max-time 20 "$LIVE_URL" -o "$html_file"; then
               if grep -Fq 'id="worker-quick-title"' "$html_file" \
+                && grep -Fq 'id="tu-kiem-tra"' "$html_file" \
+                && grep -Fq 'data-open-site-search' "$html_file" \
+                && grep -Fq 'data-worker-province-select' "$html_file" \
                 && grep -Fq 'id="che-do-ho-so"' "$html_file" \
                 && grep -Fq 'id="theo-tinh"' "$html_file" \
                 && grep -Fq '20–25 triệu/tháng khi hoàn thành định mức lao động' "$html_file"; then
-                echo "Live worker-first homepage verified on attempt $attempt."
+                echo "Live worker-first homepage and information finder verified on attempt $attempt."
                 exit 0
               fi
             fi
             sleep 5
           done
-          echo "The custom domain did not expose the expected worker-first homepage."
+          echo "The custom domain did not expose the expected worker-first homepage and information finder."
           exit 1
       - name: Record deployment receipt
         if: success() && github.event_name != 'schedule'
@@ -86,5 +90,5 @@ jobs:
           DEPLOYMENT_URL: ${{ steps.deployment.outputs.page_url }}
         run: |
           deployed_at="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-          body="$(printf '✅ **Triển khai và xác minh tên miền thành công**\n\n- Commit: `%s`\n- Workflow run: `%s`\n- URL triển khai: %s\n- Tên miền đã kiểm tra: https://thaylinhtuyenthomo.vn/\n- Thời điểm UTC: `%s`\n- Kết quả: trang thật có luồng worker-first, cam kết thu nhập và các neo liên kết tương thích.\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$DEPLOYMENT_URL" "$deployed_at")"
+          body="$(printf '✅ **Triển khai và xác minh tên miền thành công**\n\n- Commit: `%s`\n- Workflow run: `%s`\n- URL triển khai: %s\n- Tên miền đã kiểm tra: https://thaylinhtuyenthomo.vn/\n- Thời điểm UTC: `%s`\n- Kết quả: trang thật có luồng worker-first, tìm kiếm toàn website, bộ chọn tỉnh, tự kiểm tra điều kiện, cam kết thu nhập và các neo liên kết tương thích.\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$DEPLOYMENT_URL" "$deployed_at")"
           gh issue comment 42 --repo "$GITHUB_REPOSITORY" --body "$body"
