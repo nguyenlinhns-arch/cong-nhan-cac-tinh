@@ -81,7 +81,7 @@ jobs:
           set -euo pipefail
           html_file="$(mktemp)"
           for attempt in $(seq 1 24); do
-            if curl --fail --silent --show-error --location --max-time 25 "${LIVE_URL}?release=${GITHUB_SHA}" -o "$html_file"; then
+            if curl --fail --silent --show-error --location --max-time 25 "${LIVE_URL}?release=${GITHUB_SHA}-${attempt}" -o "$html_file"; then
               if grep -Fq 'đừng chỉ hỏi lương bao nhiêu, hãy hỏi mỗi tháng còn lại bao nhiêu' "$html_file" \
                 && grep -Fq '1145886217664123' "$html_file" \
                 && grep -Fq 'Bài toán 30 ngày' "$html_file" \
