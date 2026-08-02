@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import {execFileSync} from "node:child_process";
 import {buildRecruitmentAnswers} from "./recruitment-answers.mjs";
 
 const root = path.resolve("tuyen-tho-mo");
@@ -323,6 +324,30 @@ for (const marker of ["ai_referral_visit", "chatgpt", "copilot", "perplexity", "
 const indexNow = fs.readFileSync(path.resolve("tools/submit-indexnow.mjs"), "utf8");
 if (indexNow.includes("provinceData.provinces")) errors.push("IndexNow must not repeatedly submit noindex province templates outside the sitemap");
 if (indexNow.includes("sitemapUrls") || indexNow.includes('readFileSync(path.join(siteRoot, "sitemap.xml")')) errors.push("IndexNow must submit changed page URLs, not the entire sitemap on every deployment");
+let indexNowHomepageRouting = false;
+try {
+  const indexNowDryRun = JSON.parse(execFileSync(process.execPath, [path.resolve("tools/submit-indexnow.mjs")], {
+    encoding: "utf8",
+    env: {
+      ...process.env,
+      INDEXNOW_DRY_RUN: "1",
+      INDEXNOW_CHANGED_FILES: [
+        "tools/build-worker-first-home.mjs",
+        "tuyen-tho-mo/bai-viet/dieu-kien-tuyen-tho-lo-2026/index.html",
+        "tools/unrelated.mjs",
+      ].join("\n"),
+    },
+  }));
+  const expectedUrls = [
+    `${base}/`,
+    `${base}/bai-viet/dieu-kien-tuyen-tho-lo-2026/`,
+  ];
+  indexNowHomepageRouting = indexNowDryRun.status === "dry-run"
+    && JSON.stringify(indexNowDryRun.urls) === JSON.stringify(expectedUrls);
+  if (!indexNowHomepageRouting) errors.push(`IndexNow source routing mismatch: ${JSON.stringify(indexNowDryRun.urls || [])}`);
+} catch (error) {
+  errors.push(`IndexNow source routing test failed: ${error.message}`);
+}
 const googleSitemapSubmitter = fs.readFileSync(path.resolve("tools/submit-google-sitemap.mjs"), "utf8");
 if (!googleSitemapSubmitter.includes("news-sitemap.xml")) errors.push("Search Console submission does not include the Google News sitemap");
 
@@ -363,6 +388,7 @@ console.log(JSON.stringify({
   sourcedArticles,
   indexableChecks: indexableFiles.length,
   internalLinksChecked,
+  indexNowHomepageRouting,
   oaiSearchBotAllowed: Boolean(robotsGroup(robots, "OAI-SearchBot")),
   errors: errors.length,
 }, null, 2));
