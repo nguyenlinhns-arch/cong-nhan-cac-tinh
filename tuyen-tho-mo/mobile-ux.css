@@ -691,7 +691,42 @@ input {
   }
 }
 
+@supports (content-visibility: auto) {
+  main > section:not(:first-child):not(#dang-ky),
+  .library-section,
+  .province-region,
+  .article-body > .editorial-section,
+  .article-body > .article-inline-gallery,
+  .article-body > .source-story-ending,
+  .article-body > .article-source-footer,
+  .article-body > .article-nav,
+  .article-body > .article-apply,
+  .article-body > .article-share-panel {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 480px;
+  }
+
+  .library-section,
+  .province-region {
+    contain-intrinsic-size: auto 900px;
+  }
+}
+
 @media print {
+  main > section,
+  .library-section,
+  .province-region,
+  .article-body > .editorial-section,
+  .article-body > .article-inline-gallery,
+  .article-body > .source-story-ending,
+  .article-body > .article-source-footer,
+  .article-body > .article-nav,
+  .article-body > .article-apply,
+  .article-body > .article-share-panel {
+    content-visibility: visible !important;
+    contain-intrinsic-size: none !important;
+  }
+
   .tl-site-search-button,
   .tl-mobile-contact,
   .tl-search-dialog,

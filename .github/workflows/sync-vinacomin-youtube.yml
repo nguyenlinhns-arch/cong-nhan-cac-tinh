@@ -29,6 +29,7 @@ jobs:
           node tools/validate-seo-library.mjs
           node tools/audit-technical-seo.mjs
           node tools/validate-performance-budget.mjs
+          node tools/validate-conversion-resilience.mjs
           node tools/validate-workflow-safety.mjs
           node tools/validate-ai-search.mjs
       - name: Publish new video metadata when the channel changes

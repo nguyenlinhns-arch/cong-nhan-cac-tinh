@@ -15,6 +15,7 @@ const imageDimensions = JSON.parse(fs.readFileSync(path.resolve("content/article
 const criteria = recruitment.criteria;
 const recruitmentAnswers = buildRecruitmentAnswers(recruitment);
 const buildTime = recruitment.updated_at;
+const homepageModified = "2026-08-02";
 const currentFactsUrl = `${base}/thong-tin-tuyen-tho-mo/`;
 const editorialPolicyUrl = `${base}/nguyen-tac-bien-tap/`;
 const authorUrl = `${base}/tac-gia/nguyen-tu-linh/`;
@@ -180,6 +181,27 @@ function renderArticleShare(article) {
           <p>Liên kết chia sẻ có mã đo nguồn nhưng không chứa thông tin cá nhân của người đọc hoặc ứng viên.</p>
           <div class="article-share-panel__actions"><button type="button" data-share-native>Chia sẻ trên thiết bị</button><button type="button" data-share-copy>Sao chép liên kết</button><a href="${tracked}" data-share-link>Mở liên kết có mã nguồn</a><a href="/chia-se-thong-tin/?article=${encodeURIComponent(article.slug)}">Tạo gói theo tỉnh</a></div>
           <p class="share-status" data-share-status role="status" aria-live="polite"></p>
+        </section>`;
+}
+
+function renderArticleApply(article) {
+  const recruitmentArticle = article.slug === "viec-lam-nganh-than-thang-8-2026";
+  const content = `article_${article.slug}`;
+  const applicationUrl = `/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&amp;utm_medium=internal&amp;utm_campaign=article_to_application_2026&amp;utm_content=${content}#dang-ky`;
+  const eyebrow = recruitmentArticle ? "ĐĂNG KÝ TUYỂN THỢ MỎ THÁNG 8/2026" : "KIỂM TRA TRƯỚC KHI CHUẨN BỊ HỒ SƠ";
+  const title = recruitmentArticle ? "Gửi thông tin để được kiểm tra điều kiện" : "Muốn biết mình có phù hợp nghề mỏ?";
+  const text = recruitmentArticle
+    ? "Biểu mẫu khoảng một phút giúp đối chiếu tuổi, thể hình và sức khỏe ban đầu. Lần đăng ký đầu chưa cần nộp hoặc gửi ảnh giấy tờ."
+    : "Biểu mẫu khoảng một phút giúp đối chiếu điều kiện ban đầu và chuyển thông tin đến Thầy Linh. Lần đăng ký đầu chưa cần nộp hoặc gửi ảnh giấy tờ.";
+  const button = recruitmentArticle ? "Kiểm tra điều kiện ngay" : "Kiểm tra điều kiện trong một phút";
+  return `<section class="article-apply" aria-labelledby="article-apply-title-${esc(article.slug)}">
+          <small>${eyebrow}</small>
+          <h2 id="article-apply-title-${esc(article.slug)}">${title}</h2>
+          <p>${text}</p>
+          <div class="article-apply__actions">
+            <a href="${applicationUrl}" data-contact="application" data-context="article-apply" data-application-resume-label>${button}</a>
+            <a class="article-apply__secondary" href="https://zalo.me/0963048585" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="article-apply">Trao đổi qua Zalo</a>
+          </div>
         </section>`;
 }
 
@@ -377,7 +399,7 @@ function renderArticle(article) {
   <link rel="stylesheet" href="/fonts.css?v=1">
   <link rel="stylesheet" href="/article-insights.css?v=10">
   <link rel="stylesheet" href="/content-network.css?v=1">
-  <link rel="stylesheet" href="/mobile-ux.css?v=4">
+  <link rel="stylesheet" href="/mobile-ux.css?v=5">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
 <body>
@@ -395,6 +417,7 @@ function renderArticle(article) {
     <div class="container article-layout${isPressLayout ? " article-layout--source" : ""}">
       <article class="article-body${isPressLayout ? " article-body--source" : ""}">
         ${articleContent}
+        ${renderArticleApply(article)}
         ${renderArticleShare(article)}
       </article>${isPressLayout ? "" : `
       <aside class="article-aside">
@@ -406,7 +429,7 @@ function renderArticle(article) {
   <footer class="site-footer"><div class="container footer-inner"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Câu chuyện nghề nghiệp, đời sống và cơ hội lập nghiệp trong ngành Than.</p></div><a href="/tin-nganh-than/">Đọc thêm chuyện nghề mỏ →</a></div></footer>
   <nav class="article-contact" aria-label="Liên hệ nhanh"><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Zalo · 096 304 8585</a><a href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener">Messenger</a></nav>
   <script src="/analytics.js?v=5" defer></script>
-  <script src="/mobile-ux.js?v=3" defer></script>
+  <script src="/mobile-ux.js?v=4" defer></script>
   <script src="/share-tools.js?v=1" defer></script>
 </body>
 </html>`;
@@ -505,7 +528,7 @@ function hubHtml() {
   <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="Ngành Than & Người thợ"><meta property="og:description" content="Những câu chuyện có thật, số liệu đáng tin cậy và góc nhìn nghề nghiệp dành cho người đang muốn vào ngành mỏ."><meta property="og:url" content="${base}/tin-nganh-than/"><meta property="og:image" content="${feature.image}">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Ngành Than & Người thợ"><meta name="twitter:description" content="Chuyện nghề mỏ và cơ hội lập nghiệp tại Quảng Ninh."><meta name="twitter:image" content="${feature.image}">
   <link rel="stylesheet" href="/fonts.css?v=1">
-  <link rel="stylesheet" href="../article-insights.css?v=10"><link rel="stylesheet" href="/mobile-ux.css?v=4">
+  <link rel="stylesheet" href="../article-insights.css?v=10"><link rel="stylesheet" href="/mobile-ux.css?v=5">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
 <body>
@@ -521,7 +544,7 @@ function hubHtml() {
   <footer class="site-footer"><div class="container footer-inner"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Đưa câu chuyện nghề mỏ đến gần hơn với người lao động trên cả nước.</p></div><a href="../viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky">Tìm hiểu cơ hội học nghề →</a></div></footer>
   <nav class="article-contact" aria-label="Liên hệ nhanh"><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Zalo · 096 304 8585</a><a href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener">Messenger</a></nav>
   <script src="/analytics.js?v=5" defer></script>
-  <script src="/mobile-ux.js?v=3" defer></script>
+  <script src="/mobile-ux.js?v=4" defer></script>
 </body></html>`;
 }
 
@@ -538,19 +561,20 @@ for (const article of existingNews) {
   html = upgradeExistingSchema(html, article);
   if (article.seoTitle) html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${esc(article.seoTitle)}</title>`);
   html = html.replace(/\s*<div class="article-source-footer">[\s\S]*?<\/div>\s*/g, "\n");
+  html = html.replace(/\s*<section class="article-apply"[\s\S]*?<\/section>\s*/g, "\n");
   html = html.replace(/\s*<section class="article-share-panel"[\s\S]*?<\/section>\s*/g, "\n");
   if (/^([ \t]*)<nav class="article-nav"/im.test(html)) {
     html = html.replace(/^([ \t]*)<nav class="article-nav"/im, `$1${renderSourceFooter(article)}\n$1<nav class="article-nav"`);
   } else {
     html = html.replace(/^([ \t]*)<\/article>/im, `$1  ${renderSourceFooter(article)}\n$1</article>`);
   }
-  html = html.replace(/^([ \t]*)<\/article>/im, `$1  ${renderArticleShare(article)}\n$1</article>`);
+  html = html.replace(/^([ \t]*)<\/article>/im, `$1  ${renderArticleApply(article)}\n$1  ${renderArticleShare(article)}\n$1</article>`);
   if (!html.includes('rel="author"')) html = html.replace(/(<link\s+rel="canonical"[^>]*>)/i, `$1\n  <link rel="author" href="/tac-gia/nguyen-tu-linh/">`);
   if (!html.includes('/content-network.css?v=1')) html = html.replace(/<\/head>/i, `  <link rel="stylesheet" href="/content-network.css?v=1">\n</head>`);
   html = html.replaceAll(`${base}/#gioi-thieu`, `${base}/tac-gia/nguyen-tu-linh/`);
   if (!/<main\b[^>]*\bid=["']noi-dung["']/i.test(html)) html = html.replace(/<main\b/i, '<main id="noi-dung"');
   if (!/class=["'][^"']*\bskip-link\b/i.test(html)) html = html.replace(/<body>/i, '<body>\n  <a class="skip-link" href="#noi-dung">Đến nội dung chính</a>');
-  html = html.replace(/\/analytics\.js\?v=\d+/g, '/analytics.js?v=5').replaceAll('/mobile-ux.js?v=2', '/mobile-ux.js?v=3').replace(/\/mobile-ux\.css\?v=\d+/g, '/mobile-ux.css?v=4').replace(/\/job-application\.js\?v=\d+/g, '/job-application.js?v=9');
+  html = html.replace(/\/analytics\.js\?v=\d+/g, '/analytics.js?v=5').replace(/\/mobile-ux\.js\?v=\d+/g, '/mobile-ux.js?v=4').replace(/\/mobile-ux\.css\?v=\d+/g, '/mobile-ux.css?v=5').replace(/\/job-application\.js\?v=\d+/g, '/job-application.js?v=9');
   if (!html.includes('/share-tools.js?v=1')) html = html.replace(/<\/body>/i, `  <script src="/share-tools.js?v=1" defer></script>\n</body>`);
   fs.writeFileSync(file, html);
 }
@@ -595,7 +619,7 @@ const freshRecruitmentUrls = new Set([`${base}/`, currentFactsUrl, recruitment.l
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((url) => {
   const priority = url === `${base}/` ? "1.0" : url.endsWith("/tin-nganh-than/") ? "0.9" : url.includes("/bai-viet/") || url.includes("/tin-nganh-than/2026/") ? "0.8" : "0.7";
   const frequency = url.includes("/bai-viet/") || url.includes("/tin-nganh-than/2026/") ? "monthly" : "weekly";
-  const lastmod = freshRecruitmentUrls.has(url) ? recruitment.updated_at : "2026-08-01";
+  const lastmod = url === `${base}/` ? homepageModified : freshRecruitmentUrls.has(url) ? recruitment.updated_at : "2026-08-01";
   return `  <url><loc>${xml(url)}</loc><lastmod>${xml(lastmod)}</lastmod><changefreq>${frequency}</changefreq><priority>${priority}</priority></url>`;
 }).join("\n")}\n</urlset>\n`;
 fs.writeFileSync(path.join(root, "sitemap.xml"), sitemap);

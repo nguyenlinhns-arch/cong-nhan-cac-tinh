@@ -43,7 +43,8 @@ for (const [file, url] of hubs) {
     'type="application/ld+json"',
     '/content-network.css?v=1',
     '/analytics.js?v=5',
-    '/mobile-ux.js?v=3',
+    '/mobile-ux.css?v=5',
+    '/mobile-ux.js?v=4',
     '/feed.xml"',
     '/feed.json"',
     'data-contact="application"',
@@ -108,7 +109,8 @@ for (const file of contentFiles) {
   const html = fs.readFileSync(file, "utf8");
   const relative = path.relative(root, file);
   if (!html.includes('/analytics.js?v=5')) fail(`${relative}: chưa nạp analytics v5`);
-  if (!html.includes('/mobile-ux.js?v=3')) fail(`${relative}: chưa nạp mobile UX v3`);
+  if (!html.includes('/mobile-ux.css?v=5')) fail(`${relative}: chưa nạp mobile UX CSS v5`);
+  if (!html.includes('/mobile-ux.js?v=4')) fail(`${relative}: chưa nạp mobile UX v4`);
 }
 
 const sitemap = read("sitemap.xml");
