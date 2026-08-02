@@ -9,6 +9,13 @@
   const DRAFT_TTL_MS = 24 * 60 * 60 * 1000;
   const SEARCH_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>';
   const MESSENGER_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.5 2 2 6.14 2 11.25c0 2.91 1.46 5.5 3.74 7.2V22l3.42-1.88c.9.25 1.86.38 2.84.38 5.5 0 10-4.14 10-9.25S17.5 2 12 2Zm1 12.45-2.55-2.72-4.98 2.72 5.48-5.82 2.61 2.72 4.93-2.72L13 14.45Z"></path></svg>';
+  const WORKER_SHORTCUTS = [
+    { key: "conditions", label: "Điều kiện", question: "Tôi có đủ điều kiện?", href: "/#dieu-kien" },
+    { key: "benefits", label: "Quyền lợi", question: "Được hỗ trợ những gì?", href: "/#quyen-loi" },
+    { key: "dossier", label: "Hồ sơ", question: "Hồ sơ gồm giấy tờ gì?", href: "/#ho-so" },
+    { key: "address", label: "Nơi học", question: "Học và nhập học ở đâu?", href: "/#dia-diem" },
+    { key: "province", label: "Theo tỉnh", question: "Xem thông tin tỉnh tôi", href: "/viec-lam-nganh-than/" },
+  ];
 
   const categories = [
     ["all", "Tất cả"],
@@ -87,6 +94,47 @@
     .replace(/\s+/g, " ")
     .trim();
 
+  function pageGroup() {
+    const segment = location.pathname.split("/").filter(Boolean)[0] || "home";
+    if (["bai-viet", "tin-nganh-than"].includes(segment)) return "article";
+    if (segment === "viec-lam-nganh-than") return "province";
+    if (segment === "viec-lam") return "job";
+    return segment.replace(/[^a-z0-9-]/gi, "").slice(0, 32) || "other";
+  }
+
+  function trackedApplicationUrl(campaign, content) {
+    const url = new URL(APPLICATION_URL, ROOT);
+    url.searchParams.set("utm_source", "website");
+    url.searchParams.set("utm_medium", "internal");
+    url.searchParams.set("utm_campaign", campaign);
+    url.searchParams.set("utm_content", content);
+    return `${url.pathname}${url.search}${url.hash}`;
+  }
+
+  function trackUi(event, payload = {}) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event, page_path: location.pathname, ...payload });
+  }
+
+  function createWorkerCompass() {
+    const pathname = location.pathname.replace(/\/index\.html$/i, "/");
+    if (pathname === "/" || document.querySelector(".tl-worker-compass")) return;
+    const header = document.querySelector("header");
+    const main = document.querySelector("main");
+    if (!main) return;
+    const group = pageGroup();
+    const nav = document.createElement("nav");
+    nav.className = "tl-worker-compass";
+    nav.setAttribute("aria-label", "Tìm nhanh thông tin tuyển thợ mỏ");
+    nav.innerHTML = `<div class="tl-worker-compass__inner"><strong>Cần xem:</strong><div>${WORKER_SHORTCUTS.map(({ key, label, href }) => `<a href="${href}" data-worker-shortcut="${key}">${label}</a>`).join("")}<button type="button" data-open-site-search data-worker-shortcut="search" aria-haspopup="dialog">${SEARCH_ICON}<span>Tìm kiếm</span></button><a class="tl-worker-compass__apply" href="${trackedApplicationUrl("worker_compass_2026", `compass_${group}`)}" data-contact="application" data-context="worker-compass" data-worker-shortcut="application">Ứng tuyển</a></div></div>`;
+    nav.addEventListener("click", (event) => {
+      const target = event.target.closest?.("[data-worker-shortcut]");
+      if (target) trackUi("worker_compass_click", { destination: target.dataset.workerShortcut || "unknown", page_group: group });
+    });
+    if (header?.insertAdjacentElement) header.insertAdjacentElement("afterend", nav);
+    else main.parentNode?.insertBefore(nav, main);
+  }
+
   function hasActiveApplicationDraft() {
     try {
       const stored = JSON.parse(localStorage.getItem(DRAFT_KEY) || "null");
@@ -155,6 +203,10 @@
           <input type="search" inputmode="search" autocomplete="off" enterkeyhint="search" placeholder="Ví dụ: điều kiện, hồ sơ, lương, Nghệ An…">
         </label>
       </form>
+      <nav class="tl-search-shortcuts" aria-label="Câu hỏi được tìm nhiều">
+        ${WORKER_SHORTCUTS.map(({ key, question, href }) => `<a href="${href}" data-worker-shortcut="search_${key}">${question}</a>`).join("")}
+        <a class="tl-search-shortcuts__apply" href="${trackedApplicationUrl("search_to_application_2026", `search_${pageGroup()}`)}" data-contact="application" data-context="search-shortcut" data-worker-shortcut="search_application">Đăng ký ngay</a>
+      </nav>
       <div class="tl-search-categories" role="group" aria-label="Lọc theo chủ đề">
         ${categories.map(([key, label]) => `<button type="button" data-search-category="${key}" aria-pressed="${key === "all"}">${label}</button>`).join("")}
       </div>
@@ -254,7 +306,7 @@
     if (!matches.length) {
       const empty = document.createElement("div");
       empty.className = "tl-search-empty";
-      empty.innerHTML = "<strong>Chưa tìm thấy nội dung phù hợp</strong><span>Thử từ khóa ngắn hơn như “hồ sơ”, “lương”, “an toàn” hoặc tên tỉnh.</span>";
+      empty.innerHTML = `<strong>Chưa tìm thấy nội dung phù hợp</strong><span>Chọn một mục bên dưới hoặc nhắn trực tiếp để được hướng dẫn.</span><div class="tl-search-empty__actions"><a href="/#dieu-kien" data-worker-shortcut="empty_conditions">Điều kiện</a><a href="/#ho-so" data-worker-shortcut="empty_dossier">Hồ sơ</a><a href="/#dia-diem" data-worker-shortcut="empty_address">Nơi học</a><a href="${ZALO_URL}" target="_blank" rel="noopener" data-contact="zalo" data-context="search-empty" data-worker-shortcut="empty_zalo">Hỏi qua Zalo</a></div>`;
       grid.append(empty);
       status.textContent = "Không có kết quả";
       return;
@@ -322,6 +374,8 @@
         closeSearch();
       });
       dialog.addEventListener("click", (event) => {
+        const shortcut = event.target.closest?.("[data-worker-shortcut]");
+        if (shortcut) trackUi("worker_search_shortcut", { destination: shortcut.dataset.workerShortcut || "unknown" });
         const rect = dialog.getBoundingClientRect();
         const outside = event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
         if (outside) closeSearch();
@@ -356,6 +410,7 @@
     document.querySelectorAll("[data-open-site-search]").forEach((button) => button.addEventListener("click", openSearch));
   }
 
+  createWorkerCompass();
   createContactButtons();
   document.documentElement.classList.add("tl-mobile-ux-ready");
   setupSearch();
