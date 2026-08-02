@@ -13,7 +13,7 @@ for (const marker of [
   "function applicationContext()",
   'for (const key of ["province", "trade"])',
   "Object.entries(applicationContext())",
-  'document.querySelectorAll(`a[href*="${path}"]`)',
+  'document.querySelectorAll?.(`a[href*="${path}"]`)',
 ]) if (!mobile.includes(marker)) errors.push(`mobile-ux.js thiếu ${marker}`);
 
 const contextStart = mobile.indexOf("function applicationContext()");
