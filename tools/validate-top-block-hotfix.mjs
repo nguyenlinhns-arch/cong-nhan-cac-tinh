@@ -3,19 +3,36 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve("tuyen-tho-mo");
-const cssPath = path.join(root, "top-block-hotfix.css");
+const cssPath = path.join(root, "site-shell-20260803.css");
+const jsPath = path.join(root, "site-shell-20260803.js");
 const errors = [];
 const css = fs.existsSync(cssPath) ? fs.readFileSync(cssPath, "utf8") : "";
+const js = fs.existsSync(jsPath) ? fs.readFileSync(jsPath, "utf8") : "";
+
 for (const marker of [
-  ".v5-intent-hub,.v5-return-prompt{display:none!important}",
+  "[data-consent-banner]",
+  ".v4-primary-nav",
+  ".tl-worker-compass",
   ".site-header .main-nav",
-  ".site-header .menu-toggle",
-  "height:60px!important",
-  "main{margin-top:0!important",
-]) if (!css.includes(marker)) errors.push(`Hotfix CSS thiếu ${marker}`);
+  "height:64px!important",
+  ".mobile-contact,.tl-mobile-contact",
+]) if (!css.includes(marker)) errors.push(`Site shell CSS thiếu ${marker}`);
+
+for (const marker of [
+  "removeRowsBetweenHeaderAndMain",
+  "header.nextElementSibling",
+  "node !== main",
+  "window.thayLinhAnalytics?.consent?.(\"denied\")",
+  "MutationObserver",
+  "document.documentElement.dataset.siteShell = \"20260803\"",
+]) if (!js.includes(marker)) errors.push(`Site shell JS thiếu ${marker}`);
 
 let checked = 0;
-let withHotfix = 0;
+let withStyle = 0;
+let withScript = 0;
+let oldHotfix = 0;
+let staticPrimaryNav = 0;
+
 function walk(directory, output = []) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
     if (entry.name.startsWith(".")) continue;
@@ -25,16 +42,33 @@ function walk(directory, output = []) {
   }
   return output;
 }
+
 for (const target of walk(root)) {
   const relative = path.relative(root, target).replace(/\\/g, "/");
   const html = fs.readFileSync(target, "utf8");
   if (html.includes("data-legacy-redirect") || /^google[a-z0-9_-]+\.html$/i.test(relative)) continue;
   checked += 1;
-  if (html.includes('/top-block-hotfix.css?v=1')) withHotfix += 1;
-  else errors.push(`${relative} thiếu top-block hotfix`);
+  if (html.includes('/site-shell-20260803.css?v=1')) withStyle += 1;
+  else errors.push(`${relative} thiếu site shell CSS`);
+  if (html.includes('/site-shell-20260803.js?v=1')) withScript += 1;
+  else errors.push(`${relative} thiếu site shell JS`);
+  if (html.includes('/top-block-hotfix.css')) oldHotfix += 1;
+  if (/class=["'][^"']*\bv4-primary-nav\b/i.test(html)) staticPrimaryNav += 1;
 }
-if (checked < 110) errors.push(`Hotfix kiểm tra quá ít trang: ${checked}`);
-if (withHotfix !== checked) errors.push(`Chỉ ${withHotfix}/${checked} trang có hotfix`);
 
-console.log(JSON.stringify({ hotfix: "top-block-clean", html_checked: checked, html_with_hotfix: withHotfix, errors }, null, 2));
+if (checked < 110) errors.push(`Site shell kiểm tra quá ít trang: ${checked}`);
+if (withStyle !== checked) errors.push(`Chỉ ${withStyle}/${checked} trang có site shell CSS`);
+if (withScript !== checked) errors.push(`Chỉ ${withScript}/${checked} trang có site shell JS`);
+if (oldHotfix) errors.push(`Còn ${oldHotfix} trang dùng hotfix cũ`);
+if (staticPrimaryNav) errors.push(`Còn ${staticPrimaryNav} trang chứa thanh v4-primary-nav`);
+
+console.log(JSON.stringify({
+  shell: "site-shell-20260803",
+  html_checked: checked,
+  html_with_style: withStyle,
+  html_with_script: withScript,
+  old_hotfix_pages: oldHotfix,
+  static_primary_nav_pages: staticPrimaryNav,
+  errors,
+}, null, 2));
 if (errors.length) process.exit(1);
