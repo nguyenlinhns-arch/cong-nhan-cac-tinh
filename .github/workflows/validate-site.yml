@@ -34,12 +34,15 @@ jobs:
           node tools/enhance-voice-loader.mjs
           node tools/enhance-search-answer-read-aloud.mjs
           node tools/enhance-direct-call.mjs
+          node tools/enhance-application-context.mjs
+          node tools/enhance-application-prefill-note.mjs
           node tools/validate-natural-language-search.mjs
           node tools/validate-answer-first-search.mjs
           node tools/validate-worker-brief.mjs
           node tools/validate-voice-assist.mjs
           node tools/validate-direct-call.mjs
           node tools/validate-home-copy-actions.mjs
+          node tools/validate-application-context.mjs
           node tools/validate-worker-findability.mjs
           node tools/validate-universal-worker-compass.mjs
           node tools/validate-content-network.mjs
@@ -56,4 +59,4 @@ jobs:
           node tools/validate-recruitment-funnel.mjs
           node tools/test-recruitment-application.mjs
           node tools/validate-crm-automation.mjs
-          git diff --exit-code -- . ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/mobile-ux.js' ':(exclude)tuyen-tho-mo/voice-assist.js'
+          git diff --exit-code -- . ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/mobile-ux.js' ':(exclude)tuyen-tho-mo/voice-assist.js' ':(exclude)tuyen-tho-mo/job-application.js'
