@@ -189,6 +189,38 @@ const journeyRoadmap = `    <section class="journey-intro" aria-labelledby="home
     </section>
 
 `;
+const homeProof = `    <section class="home-proof" id="cong-kiem-chung-nghe-mo" aria-labelledby="home-proof-title"><span id="nguoi-that-viec-that" aria-hidden="true"></span>
+      <div class="container">
+        <div class="home-proof__head">
+          <div><p class="eyebrow">Người thật · việc thật · xem trước khi chọn</p><h2 id="home-proof-title">Đừng chỉ đọc thông tin tuyển sinh — hãy nhìn nghề mỏ qua hình ảnh thực tế</h2></div>
+          <p>Video, hình ảnh đào tạo và câu chuyện người thợ giúp người lao động hình dung rõ mình sẽ học gì, làm việc ở đâu và trưởng thành bằng tay nghề như thế nào.</p>
+        </div>
+        <div class="home-proof__grid">
+          <article class="home-proof__video">
+            <div class="video-frame" data-featured-video-host>
+              <button class="home-video-facade" type="button" data-featured-video-facade data-video-id="ts41cqu7r9c" data-video-title="Hành trình lập nghiệp cùng nghề mỏ" aria-label="Phát video hành trình lập nghiệp cùng nghề mỏ">
+                <img src="https://i.ytimg.com/vi/ts41cqu7r9c/hqdefault.jpg" alt="Hình xem trước video câu chuyện công nhân ngành Than" loading="lazy" decoding="async" width="480" height="360">
+                <span class="home-video-facade__play" aria-hidden="true">▶</span><span class="home-video-facade__label">Bấm để xem phóng sự</span>
+              </button>
+            </div>
+            <div class="home-proof__video-copy"><small>PHÓNG SỰ CÔNG NHÂN</small><h3>Hành trình lập nghiệp cùng nghề mỏ</h3><p>Nghe người lao động nói về công việc, cuộc sống và lựa chọn gắn bó với vùng mỏ Quảng Ninh.</p></div>
+          </article>
+          <div class="home-proof__stories" aria-label="Hai lát cắt trên hành trình học nghề và nhận việc">
+            <a class="home-proof__story" href="/an-toan-ky-luat-moi-truong/">
+              <img src="/assets/vinacomin-tho-mo-ham-lo-1200.webp" alt="Nhóm thợ mỏ TKV trao đổi phương án công việc trong hầm lò" loading="lazy" decoding="async" width="1200" height="800">
+              <span><small>CHẶNG LÀM QUEN VỚI NGHỀ</small><strong>Làm nghề bằng kỹ năng và phối hợp tổ đội</strong><em>Người thợ không làm việc một mình; mỗi ca đều có phân công, trao đổi và phối hợp rõ ràng.</em><b>Xem công việc thực tế →</b></span>
+            </a>
+            <article class="home-proof__story home-proof__story--video">
+              <div class="home-proof__story-media" data-province-video-host><button class="home-video-facade" type="button" data-province-video-facade data-video-id="TIDiY-Nuo_4" data-video-title="Đời sống công nhân tại Quảng Ninh" aria-label="Phát video đời sống công nhân tại Quảng Ninh"><img src="https://i.ytimg.com/vi/TIDiY-Nuo_4/hqdefault.jpg" alt="Hình xem trước video đời sống công nhân tại Quảng Ninh" loading="lazy" decoding="async" width="480" height="360"><span class="home-video-facade__play" aria-hidden="true">▶</span><span class="sr-only">Bấm để xem video</span></button></div>
+              <span><small>CHẶNG SỐNG VÀ LÀM VIỆC</small><strong>Đời sống công nhân tại vùng mỏ Quảng Ninh</strong><em>Xem nơi làm việc, nhịp sống và cách người lao động ổn định cuộc sống khi rời quê.</em><a href="/cau-chuyen-cong-nhan/">Xem thêm theo tỉnh →</a></span>
+            </article>
+          </div>
+        </div>
+        <div class="home-proof__links"><a href="/cau-chuyen-cong-nhan/">Xem câu chuyện công nhân theo tỉnh</a><a href="/chon-kcn-hay-lam-mo/">So sánh KCN và nghề mỏ</a></div>
+      </div>
+    </section>
+
+`;
 const selfCheck = `    <section class="worker-self-check" id="tu-kiem-tra" aria-labelledby="worker-self-check-title">
       <div class="container">
         <div class="worker-self-check__head">
@@ -212,8 +244,8 @@ const selfCheck = `    <section class="worker-self-check" id="tu-kiem-tra" aria-
 const learningStory = `    <section class="learning-story section" aria-labelledby="learning-story-title">
       <div class="container learning-story__grid">
         <figure class="learning-story__media">
-          <img src="/assets/vinacomin-dao-tao-tho-lo.webp" alt="Học viên nghề mỏ thực hành kỹ năng trước khi vào làm việc" loading="lazy" decoding="async" width="960" height="640">
-          <figcaption>Học nghề gắn với thực hành và kỷ luật an toàn trước khi vào sản xuất.</figcaption>
+          <img src="/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp" alt="Học viên nghề mỏ mặc bảo hộ quan sát thiết bị trong hầm lò dưới sự hướng dẫn" loading="lazy" decoding="async" width="1200" height="673">
+          <figcaption>Học viên quan sát thiết bị và điều kiện làm việc thực tế trước khi bước vào sản xuất.</figcaption>
         </figure>
         <div class="learning-story__copy">
           <p class="eyebrow">Không phải tự xoay xở khi rời quê</p>
@@ -227,6 +259,20 @@ const learningStory = `    <section class="learning-story section" aria-labelled
           </ol>
           <a class="story-next" href="#quy-trinh"><span>↓</span>Xem 5 bước đăng ký và nhập học</a>
         </div>
+      </div>
+    </section>
+
+`;
+const homeGallery = `    <section class="home-gallery" aria-labelledby="worker-more-title"><span id="theo-tinh" aria-hidden="true"></span>
+      <div class="container">
+        <div class="home-gallery__head"><div><p class="eyebrow">Những lát cắt từ vùng mỏ</p><h2 id="worker-more-title">Công việc được nhìn thấy bằng con người, thiết bị và tinh thần tổ đội</h2></div><p>Ảnh tư liệu Vinacomin giúp người đọc hình dung rõ hơn về bảo hộ, công nghệ, phối hợp trong ca làm và môi trường nghề nghiệp.</p></div>
+        <div class="home-gallery__grid">
+          <figure class="home-gallery__wide"><img src="https://vinacomin.vn/Share/Media/2017/09/images1311883_KEN_6710.jpg" alt="Công nhân ngành Than trong ca sản xuất" loading="lazy" decoding="async" width="960" height="640" referrerpolicy="no-referrer"><figcaption><strong>Trưởng thành bằng tay nghề</strong><span>Mỗi vị trí đều cần kỹ năng, ngày công và kỷ luật lao động.</span></figcaption></figure>
+          <figure><img src="https://vinacomin.vn/Share/Media/2018/07/IMG_4207.jpg" alt="Đội ngũ thợ mỏ trong trang phục bảo hộ" loading="lazy" decoding="async" width="1200" height="675" referrerpolicy="no-referrer"><figcaption><strong>Chuẩn bị trước ca</strong><span>Trang bị bảo hộ là một phần không tách rời của công việc.</span></figcaption></figure>
+          <figure><img src="https://vinacomin.vn/Share/Media/2017/09/U39A0357.jpg" alt="Thiết bị cơ giới hóa trong khai thác hầm lò" loading="lazy" decoding="async" width="1200" height="675" referrerpolicy="no-referrer"><figcaption><strong>Làm chủ thiết bị</strong><span>Công nghệ hỗ trợ người thợ trong dây chuyền sản xuất.</span></figcaption></figure>
+          <figure class="home-gallery__wide"><img src="https://vinacomin.vn/Share/Media/2018/07/IMG_2357.jpg" alt="Công nhân mỏ phối hợp trong tổ đội" loading="lazy" decoding="async" width="1200" height="675" referrerpolicy="no-referrer"><figcaption><strong>Kỷ luật và đồng đội</strong><span>Người thợ làm việc trong một tổ đội có phân công và phối hợp rõ ràng.</span></figcaption></figure>
+        </div>
+        <div class="home-gallery__actions"><a class="button button-outline" href="/cau-chuyen-cong-nhan/">Xem câu chuyện theo tỉnh</a><a class="button button-outline" href="/tin-nganh-than/">Đọc cẩm nang nghề mỏ</a></div>
       </div>
     </section>
 
@@ -287,31 +333,34 @@ html = replaceOnce(html, '<meta name="twitter:description" content="Xem nhanh đ
 html = replaceOnce(html, '<p class="eyebrow">Tuyển thợ mỏ tháng 8/2026 · Quảng Ninh</p>', '<p class="eyebrow">Tuyển thợ mỏ tháng 8/2026 · Học và làm việc tại Quảng Ninh</p>', "Homepage hero eyebrow");
 html = replaceOnce(html, '<h1>Xem đủ thông tin để đăng ký trong 2 phút</h1>', '<h1>Học nghề mỏ, nhận việc tại Quảng Ninh: xem trọn hành trình trước khi đăng ký</h1>', "Homepage hero heading");
 html = replaceOnce(html, '<p class="hero-lead">Nam từ 18–40 tuổi, cao từ 1m53, nặng từ 47kg và có sức khỏe tốt. Người chưa có nghề được đào tạo trước khi vào làm việc.</p>', '<p class="hero-lead">Từ kiểm tra điều kiện, học nghề tại Quang Hanh đến ngày doanh nghiệp tiếp nhận: mọi thông tin quan trọng được trình bày theo đúng bước người lao động sẽ trải qua.</p>', "Homepage hero lead");
-html = replaceOnce(html, "</head>", '  <link rel="stylesheet" href="/worker-info-finder.css?v=2">\n</head>', "Worker information finder stylesheet");
+html = replaceOnce(html, "</head>", '  <link rel="stylesheet" href="/worker-info-finder.css?v=2">\n  <link rel="stylesheet" href="/home-rich-media.css?v=1">\n</head>', "Worker information finder and rich media stylesheets");
 html = replaceOnce(html, '<button class="menu-toggle" type="button"', `${headerSearch}\n      <button class="menu-toggle" type="button"`, "Header search button");
 html = replaceOnce(html, 'href="#dieu-kien">Tự kiểm tra điều kiện</a>', 'href="#tu-kiem-tra">Tự kiểm tra điều kiện</a>', "Hero self-check link");
 html = replaceOnce(html, '<a class="button button-zalo" href="#tu-kiem-tra">Tự kiểm tra điều kiện</a>', `<a class="button button-zalo" href="#tu-kiem-tra">Tự kiểm tra điều kiện</a>\n            ${heroBriefButton}`, "Hero 30-second brief button");
 html = replaceOnce(html, '<span data-application-resume-label>Đăng ký nhanh</span>', '<span data-application-resume-label>Đăng ký – chưa cần hồ sơ</span>', "Hero application reassurance");
 html = replaceOnce(html, 'href="#dieu-kien"><b>01</b>', 'href="#tu-kiem-tra"><b>01</b>', "Quick self-check link");
-html = replaceOnce(html, '    <section class="worker-quick" aria-labelledby="worker-quick-title">', `${journeyRoadmap}    <section class="worker-quick" aria-labelledby="worker-quick-title">`, "Worker journey roadmap");
+html = replaceOnce(html, '    <section class="worker-quick" aria-labelledby="worker-quick-title">', `${homeProof}${journeyRoadmap}    <section class="worker-quick" aria-labelledby="worker-quick-title">`, "Media proof and worker journey roadmap");
+html = replaceOnce(html, '<div class="worker-quick__head"><div><p class="eyebrow">Chọn đúng nội dung cần xem</p><h2 id="worker-quick-title">Bạn đang cần biết điều gì?</h2></div><p>Bấm một mục để đi thẳng đến câu trả lời, không phải đọc toàn bộ trang.</p></div>', '<div class="worker-quick__head"><div><p class="eyebrow">Không cần đọc cả trang</p><h2 id="worker-quick-title">Tìm đúng thông tin mình cần</h2></div><p>Gõ câu hỏi hoặc chọn tỉnh đang sinh sống để đi thẳng đến nội dung phù hợp.</p></div>', "Compact worker finder heading");
 const quickNavigation = html.match(/<nav class="worker-quick__grid"[\s\S]*?<\/nav>/i);
 if (!quickNavigation || html.match(/<nav class="worker-quick__grid"/gi)?.length !== 1) throw new Error("Worker-first homepage expected one quick navigation block");
-html = html.replace(quickNavigation[0], `${quickNavigation[0]}\n${finder.trimEnd()}`);
+html = html.replace(quickNavigation[0], finder.trimEnd());
 html = replaceOnce(html, '    <section class="worker-summary" id="dieu-kien">', '    <section class="worker-summary" id="dieu-kien"><span id="che-do-ho-so" aria-hidden="true"></span>', "Summary compatibility anchor");
 html = replaceOnce(html, '<article class="worker-fact"><span>03</span><h3>Thời gian học nghề</h3>', '<article class="worker-fact" id="thoi-gian-hoc"><span>03</span><h3>Thời gian học nghề</h3>', "Training duration anchor");
 html = replaceOnce(html, '<article class="worker-fact" id="thoi-gian-hoc"><span>03</span><h3>Thời gian học nghề</h3><p>Nghề khai thác mỏ và xây dựng mỏ được đào tạo trong khoảng 2–3 tháng. Người chưa có kinh nghiệm được học từ nền tảng.</p></article>', '<article class="worker-fact" id="thoi-gian-hoc"><span>03</span><h3>Thời gian học nghề</h3><ul><li>Khai thác mỏ và xây dựng mỏ: 2–3 tháng</li><li>Cơ điện mỏ: 10 tháng</li></ul><p>Người chưa có kinh nghiệm được đào tạo từ nền tảng.</p></article>', "Training duration by trade");
 html = replaceOnce(html, '<article class="worker-fact"><span>04</span><h3>Hỗ trợ trong thời gian học</h3>', '<article class="worker-fact" id="ho-tro-hoc-nghe"><span>04</span><h3>Hỗ trợ trong thời gian học</h3>', "Training support anchor");
 html = replaceOnce(html, '<article class="worker-fact"><span>06</span><h3>Việc làm sau đào tạo</h3>', '<article class="worker-fact" id="noi-lam-viec"><span>06</span><h3>Việc làm sau đào tạo</h3>', "Workplace anchor");
 html = replaceOnce(html, '    <section class="section process-section" id="quy-trinh">', `${selfCheck}${learningStory}    <section class="section process-section" id="quy-trinh">`, "Self-check and learning journey after essential summary");
-html = replaceOnce(html, '    <section class="worker-more" aria-labelledby="worker-more-title">', `${recommendedArticleBlock}    <section class="worker-more" aria-labelledby="worker-more-title">`, "Recommended worker-read articles");
-html = replaceOnce(html, '<section class="worker-more" aria-labelledby="worker-more-title">', '<section class="worker-more" aria-labelledby="worker-more-title"><span id="theo-tinh" aria-hidden="true"></span>', "Province compatibility anchor");
+const workerMore = html.match(/\s*<section class="worker-more"[\s\S]*?<\/section>/i);
+if (!workerMore || html.match(/<section class="worker-more"/gi)?.length !== 1) throw new Error("Worker-first homepage expected one legacy hidden media block");
+html = html.replace(workerMore[0], `\n${recommendedArticleBlock}${homeGallery.trimEnd()}`);
 html = replaceOnce(html, 'href="/mobile-ux.css?v=5"', 'href="/mobile-ux.css?v=6"', "Homepage mobile UX stylesheet version");
 html = replaceOnce(html, 'src="/mobile-ux.js?v=4"', 'src="/mobile-ux.js?v=8"', "Homepage mobile UX version");
 html = replaceOnce(html, "</body>", '  <script src="/worker-info-finder.js?v=2" defer></script>\n</body>', "Worker information finder script");
 
-for (const required of ['id="home-journey-title"', 'class="journey-list"', 'id="learning-story-title"', 'id="tu-kiem-tra"', "data-open-site-search", "data-worker-province-select", "data-worker-check-form", "data-open-worker-brief", 'id="che-do-ho-so"', 'id="thoi-gian-hoc"', 'id="ho-tro-hoc-nghe"', 'id="noi-lam-viec"', 'id="theo-tinh"', 'class="worker-recommended__grid"', 'data-home-recommended="than-thong-nhat-tuyen-sinh-nghe-mo-lai-chau-2026"']) {
+for (const required of ['id="cong-kiem-chung-nghe-mo"', 'class="home-proof"', 'data-featured-video-facade', 'data-province-video-facade', 'id="home-journey-title"', 'class="journey-list"', 'id="learning-story-title"', '/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp', 'id="tu-kiem-tra"', "data-open-site-search", "data-worker-province-select", "data-worker-check-form", "data-open-worker-brief", 'id="che-do-ho-so"', 'id="thoi-gian-hoc"', 'id="ho-tro-hoc-nghe"', 'id="noi-lam-viec"', 'id="theo-tinh"', 'class="home-gallery"', 'class="worker-recommended__grid"', 'data-home-recommended="than-thong-nhat-tuyen-sinh-nghe-mo-lai-chau-2026"']) {
   if (!html.includes(required)) throw new Error(`Worker-first homepage is missing generated feature: ${required}`);
 }
+if (html.includes('/assets/vinacomin-dao-tao-tho-lo.webp')) throw new Error("Worker-first homepage still contains the rejected podium image");
 
 for (const [context, content] of trackedApplicationLinks) {
   const marker = `href="viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" data-contact="application" data-context="${context}"`;
