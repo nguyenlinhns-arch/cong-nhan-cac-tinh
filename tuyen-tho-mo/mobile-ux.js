@@ -5,6 +5,8 @@
   const APPLICATION_URL = "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky";
   const ZALO_URL = "https://zalo.me/0963048585";
   const MESSENGER_URL = "https://m.me/thaylinhtuyenthomo";
+  const DRAFT_KEY = "thaylinh_application_draft_v1";
+  const DRAFT_TTL_MS = 24 * 60 * 60 * 1000;
   const SEARCH_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>';
   const MESSENGER_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.5 2 2 6.14 2 11.25c0 2.91 1.46 5.5 3.74 7.2V22l3.42-1.88c.9.25 1.86.38 2.84.38 5.5 0 10-4.14 10-9.25S17.5 2 12 2Zm1 12.45-2.55-2.72-4.98 2.72 5.48-5.82 2.61 2.72 4.93-2.72L13 14.45Z"></path></svg>';
 
@@ -85,8 +87,33 @@
     .replace(/\s+/g, " ")
     .trim();
 
+  function hasActiveApplicationDraft() {
+    try {
+      const stored = JSON.parse(localStorage.getItem(DRAFT_KEY) || "null");
+      const savedAt = Date.parse(stored?.saved_at || "");
+      const active = Boolean(stored?.values && typeof stored.values === "object")
+        && Number.isFinite(savedAt)
+        && Date.now() - savedAt <= DRAFT_TTL_MS
+        && savedAt <= Date.now() + 60_000;
+      if (!active) localStorage.removeItem(DRAFT_KEY);
+      return active;
+    } catch (_) {
+      try { localStorage.removeItem(DRAFT_KEY); } catch (_) {}
+      return false;
+    }
+  }
+
+  function updateApplicationResumeLabels(activeDraft) {
+    if (!activeDraft) return;
+    document.querySelectorAll("[data-application-resume-label]").forEach((label) => {
+      label.textContent = "Tiếp tục hồ sơ";
+      if (label.matches("a, button")) label.setAttribute("aria-label", "Tiếp tục hồ sơ ứng tuyển đã lưu");
+    });
+  }
+
   function createContactButtons() {
     if (document.querySelector(".tl-mobile-contact")) return;
+    const activeDraft = hasActiveApplicationDraft();
     const pageApplication = document.querySelector('.mobile-contact a[data-contact="application"], a[href*="#dang-ky"]');
     let applicationUrl = APPLICATION_URL;
     if (pageApplication) {
@@ -99,8 +126,8 @@
     nav.className = "tl-mobile-contact";
     nav.setAttribute("aria-label", "Ứng tuyển và liên hệ nhanh");
     nav.innerHTML = `
-      <a class="tl-mobile-contact__application" href="${applicationUrl}" aria-label="Ứng tuyển và kiểm tra điều kiện" data-contact="application" data-context="mobile-floating">
-        <b aria-hidden="true">✓</b><span>Ứng tuyển</span>
+      <a class="tl-mobile-contact__application" href="${applicationUrl}" aria-label="${activeDraft ? "Tiếp tục hồ sơ ứng tuyển đã lưu" : "Ứng tuyển và kiểm tra điều kiện"}" data-contact="application" data-context="mobile-floating">
+        <b aria-hidden="true">✓</b><span data-application-resume-label>${activeDraft ? "Tiếp tục" : "Ứng tuyển"}</span>
       </a>
       <a class="tl-mobile-contact__zalo" href="${ZALO_URL}" target="_blank" rel="noopener noreferrer" aria-label="Nhắn Zalo cho Thầy Linh theo số 096 304 8585" data-contact="zalo" data-context="mobile-floating">
         <b aria-hidden="true">Z</b><span>Zalo</span>
@@ -109,6 +136,7 @@
         ${MESSENGER_ICON}<span>Messenger</span>
       </a>`;
     document.body.append(nav);
+    updateApplicationResumeLabels(activeDraft);
   }
 
   function createSearchDialog() {
@@ -273,51 +301,59 @@
   }
 
   function setupSearch() {
-    const dialog = createSearchDialog();
-    const input = dialog.querySelector("input[type='search']");
-    const close = dialog.querySelector(".tl-search-dialog__close");
+    let dialog = null;
+    let input = null;
 
     const closeSearch = () => {
+      if (!dialog) return;
       if (typeof dialog.close === "function" && dialog.open) dialog.close();
       else dialog.removeAttribute("open");
       document.documentElement.classList.remove("tl-search-open");
       if (lastFocused instanceof HTMLElement) lastFocused.focus({ preventScroll: true });
     };
 
+    const ensureSearchDialog = () => {
+      if (dialog) return dialog;
+      dialog = createSearchDialog();
+      input = dialog.querySelector("input[type='search']");
+      dialog.querySelector(".tl-search-dialog__close").addEventListener("click", closeSearch);
+      dialog.addEventListener("cancel", (event) => {
+        event.preventDefault();
+        closeSearch();
+      });
+      dialog.addEventListener("click", (event) => {
+        const rect = dialog.getBoundingClientRect();
+        const outside = event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
+        if (outside) closeSearch();
+      });
+      input.addEventListener("input", () => renderResults(dialog));
+      dialog.querySelector("form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        renderResults(dialog);
+      });
+      dialog.querySelectorAll("[data-search-category]").forEach((button) => {
+        button.addEventListener("click", () => {
+          activeCategory = button.dataset.searchCategory;
+          dialog.querySelectorAll("[data-search-category]").forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+          renderResults(dialog);
+        });
+      });
+      return dialog;
+    };
+
     const openSearch = (event) => {
+      const activeDialog = ensureSearchDialog();
       lastFocused = event?.currentTarget instanceof HTMLElement ? event.currentTarget : document.activeElement;
-      if (typeof dialog.showModal === "function") dialog.showModal();
-      else dialog.setAttribute("open", "");
+      if (typeof activeDialog.showModal === "function") activeDialog.showModal();
+      else activeDialog.setAttribute("open", "");
       document.documentElement.classList.add("tl-search-open");
-      renderResults(dialog);
-      loadSearchIndex(dialog);
-      requestAnimationFrame(() => input.focus({ preventScroll: true }));
+      renderResults(activeDialog);
+      loadSearchIndex(activeDialog);
+      requestAnimationFrame(() => input?.focus({ preventScroll: true }));
     };
 
     insertSearchButton(openSearch);
     document.querySelectorAll("[data-open-site-search]").forEach((button) => button.addEventListener("click", openSearch));
-    close.addEventListener("click", closeSearch);
-    dialog.addEventListener("cancel", (event) => {
-      event.preventDefault();
-      closeSearch();
-    });
-    dialog.addEventListener("click", (event) => {
-      const rect = dialog.getBoundingClientRect();
-      const outside = event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
-      if (outside) closeSearch();
-    });
-    input.addEventListener("input", () => renderResults(dialog));
-    dialog.querySelector("form").addEventListener("submit", (event) => {
-      event.preventDefault();
-      renderResults(dialog);
-    });
-    dialog.querySelectorAll("[data-search-category]").forEach((button) => {
-      button.addEventListener("click", () => {
-        activeCategory = button.dataset.searchCategory;
-        dialog.querySelectorAll("[data-search-category]").forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
-        renderResults(dialog);
-      });
-    });
   }
 
   createContactButtons();

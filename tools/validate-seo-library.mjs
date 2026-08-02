@@ -29,6 +29,10 @@ const strip = (html) => html
   .replace(/\s+/g, " ")
   .trim();
 
+const removeArticleInterface = (html) => html
+  .replace(/<section\b[^>]*class=["'][^"']*\barticle-(?:apply|share-panel)\b[^"']*["'][^>]*>[\s\S]*?<\/section>/gi, " ")
+  .replace(/<aside\b[^>]*class=["'][^"']*\barticle-aside\b[^"']*["'][^>]*>[\s\S]*?<\/aside>/gi, " ");
+
 const decodeAttribute = (value = "") => value
   .replaceAll("&amp;", "&")
   .replaceAll("&#038;", "&")
@@ -199,6 +203,7 @@ for (const [index, slug] of slugs.entries()) {
   const canonical = getAttr(html, /<link rel="canonical" href="([^"]+)"/i, `${prefix}canonical`);
   const primaryKeyword = getAttr(html, /<meta name="keywords" content="([^,"]+)/i, `${prefix}primary keyword`);
   const articleBody = html.match(/<article class="article-body(?:\s[^"]*)?">([\s\S]*?)<\/article>/i)?.[1] || "";
+  const editorialBody = removeArticleInterface(articleBody);
   const articleHero = html.match(/<section\b[^>]*class="[^"]*\barticle-hero\b[^"]*"[^>]*>([\s\S]*?)<\/section>/i)?.[1] || "";
   const coverFigures = [...articleBody.matchAll(/<figure\b[^>]*class="[^"]*\barticle-cover\b[^"]*"[^>]*>([\s\S]*?)<\/figure>/gi)];
   const image = decodeAttribute(coverFigures[0]?.[1].match(/<img\b[^>]*src="([^"]+)"/i)?.[1]
@@ -282,7 +287,7 @@ for (const [index, slug] of slugs.entries()) {
     try { JSON.parse(match[1]); } catch (error) { errors.push(`${prefix}invalid JSON-LD ${jsonIndex + 1}: ${error.message}`); }
   }
 
-  const body = articleBody;
+  const body = editorialBody;
   articleVocabulary.push({slug, words: new Set(normalize(body).split(/\s+/).filter((word) => word.length > 2))});
   for (const match of body.matchAll(/<p(?:\s[^>]*)?>([\s\S]*?)<\/p>/gi)) {
     const paragraph = strip(match[1]);
@@ -433,9 +438,9 @@ for (const file of allHtml) {
   if (/^google[a-z0-9]+\.html$/i.test(rel)) continue;
   const visible = strip(html);
   if (!/<meta\s+name="viewport"\s+content="[^"]*width=device-width/i.test(html)) errors.push(`${rel}: missing responsive viewport`);
-  if (!/<link\s+rel="stylesheet"\s+href="\/mobile-ux\.css\?v=4"/i.test(html)) errors.push(`${rel}: missing shared mobile stylesheet`);
+  if (!/<link\s+rel="stylesheet"\s+href="\/mobile-ux\.css\?v=5"/i.test(html)) errors.push(`${rel}: missing shared mobile stylesheet`);
   if (!/<script\s+src="\/analytics\.js\?v=5"\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing current shared analytics script`);
-  if (!/<script\s+src="\/mobile-ux\.js\?v=3"\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing shared mobile script`);
+  if (!/<script\s+src="\/mobile-ux\.js\?v=4"\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing shared mobile script`);
   if (/Bài\s+\d{1,2}\s*\/\s*50|50\+?\s*bài/iu.test(visible)) errors.push(`${rel}: contains an obsolete article-count claim`);
   if (/18(?:–|-|\s+đến\s+)35|1(?:m|,)56|1,56\s*m?|48\s*kg/iu.test(visible)) errors.push(`${rel}: contains superseded 2026 recruitment criteria`);
   if (/thu nhập tham khảo|thu nhập thực tế phụ thuộc|thu nhập tùy|không cam kết|không phải mức lương cứng|không phải cam kết|mức thu nhập cố định|không lấy trường hợp cao nhất làm mặt bằng chung/iu.test(visible)) {

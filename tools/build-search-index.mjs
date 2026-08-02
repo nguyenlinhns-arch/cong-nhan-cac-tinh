@@ -34,6 +34,12 @@ function match(html, pattern) {
   return decode(html.match(pattern)?.[1] || "");
 }
 
+function removeInterfaceHeadings(html) {
+  return html
+    .replace(/<section\b[^>]*class=["'][^"']*\barticle-(?:apply|share-panel)\b[^"']*["'][^>]*>[\s\S]*?<\/section>/gi, " ")
+    .replace(/<aside\b[^>]*class=["'][^"']*\barticle-aside\b[^"']*["'][^>]*>[\s\S]*?<\/aside>/gi, " ");
+}
+
 function classify(url, title, keywords) {
   const haystack = `${url} ${title} ${keywords}`.toLocaleLowerCase("vi");
   if (url === "/thong-tin-tuyen-tho-mo/") return ["recruitment", "Thông tin đang áp dụng"];
@@ -69,7 +75,8 @@ const items = walk(root)
     const relative = path.relative(root, file).replaceAll(path.sep, "/").replace(/index\.html$/, "");
     const url = canonical.startsWith(base) ? canonical.slice(base.length) || "/" : `/${relative}`;
     const keywordText = match(html, /<meta\s+name="keywords"\s+content="([^"]+)"/i);
-    const headingKeywords = [...html.matchAll(/<h[1-3]\b[^>]*>([\s\S]*?)<\/h[1-3]>/gi)]
+    const searchableHtml = removeInterfaceHeadings(html);
+    const headingKeywords = [...searchableHtml.matchAll(/<h[1-3]\b[^>]*>([\s\S]*?)<\/h[1-3]>/gi)]
       .map((heading) => strip(heading[1]))
       .filter(Boolean);
     const keywords = [...new Set([
