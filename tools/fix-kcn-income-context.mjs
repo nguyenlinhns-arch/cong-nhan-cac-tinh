@@ -28,5 +28,18 @@ for (const forbidden of [
   if (html.includes(forbidden)) throw new Error(`Incomplete income context remains: ${forbidden}`);
 }
 
+const incomeNodes = [...html.matchAll(/>([^<>]*20[–-]25\s*triệu[^<>]*)</giu)]
+  .map(match => match[1].replace(/\s+/g, " ").trim());
+const invalidIncomeNodes = incomeNodes.filter(text => !/hoàn thành định mức lao động/iu.test(text));
+if (invalidIncomeNodes.length) {
+  throw new Error(`KCN page has income text without labor-norm condition: ${invalidIncomeNodes.join(" | ")}`);
+}
+
 fs.writeFileSync(target, html);
-console.log(JSON.stringify({ status: "income-context-fixed", page: "/chon-kcn-hay-lam-mo/", replacements: replacements.length }, null, 2));
+console.log(JSON.stringify({
+  status: "income-context-fixed",
+  page: "/chon-kcn-hay-lam-mo/",
+  replacements: replacements.length,
+  income_nodes: incomeNodes.length,
+  invalid_income_nodes: invalidIncomeNodes.length,
+}, null, 2));
