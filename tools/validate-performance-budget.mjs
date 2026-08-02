@@ -190,11 +190,8 @@ for (const marker of ["home-video-facade", "home-video-facade__play", "focus-vis
 const optimizedHomeImages = [
   ["https://vinacomin.vn/Share/Media/2017/09/images1311883_KEN_6710.jpg", "960", "640"],
   ["https://vinacomin.vn/Share/Media/2018/07/IMG_4207.jpg", "1200", "675"],
-  ["https://vinacomin.vn/Share/Media/2018/07/IMG_4075.jpg", "1200", "675"],
   ["https://vinacomin.vn/Share/Media/2017/09/U39A0357.jpg", "1200", "675"],
-  ["https://vinacomin.vn/Share/Media/2017/09/IMG_8117.jpg", "1200", "675"],
   ["https://vinacomin.vn/Share/Media/2018/07/IMG_2357.jpg", "1200", "675"],
-  ["https://vinacomin.vn/Share/Media/2017/09/DSC01675.jpg", "1200", "675"],
 ];
 for (const [source, width, height] of optimizedHomeImages) {
   const escaped = source.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
