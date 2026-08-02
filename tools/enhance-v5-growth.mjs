@@ -69,7 +69,7 @@ function addCommonEnhancements(target) {
   if (!html.includes('name="author"')) html = html.replace("</head>", '<meta name="author" content="Nguyễn Tử Linh">\n</head>');
   if (!html.includes(STYLE_TAG)) html = html.replace("</head>", `${STYLE_TAG}\n</head>`);
   if (!html.includes(SCRIPT_TAG)) html = html.replace("</body>", `${SCRIPT_TAG}\n</body>`);
-  if (!html.includes("data-v5-intent-hub")) {
+  if (!html.includes('class="home-funnel"') && !html.includes("data-v5-intent-hub")) {
     const hub = intentHub();
     const finalIndex = html.indexOf('<section class="v4-final-conversion"');
     if (finalIndex >= 0) html = `${html.slice(0, finalIndex)}${hub}${html.slice(finalIndex)}`;

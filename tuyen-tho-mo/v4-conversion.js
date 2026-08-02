@@ -2,6 +2,7 @@
   "use strict";
 
   const ZALO_URL = "https://zalo.me/0963048585";
+  const MESSENGER_URL = "https://m.me/thaylinhtuyenthomo";
   const PHONE_URL = "tel:+84963048585";
   const CONDITION_PATH = "/kiem-tra-dieu-kien/";
   const APPLICATION_PATH = "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky";
@@ -69,6 +70,7 @@
   function ensureHeroConversion() {
     const host = heroHost();
     if (!host || host.querySelector(".v4-hero-actions")) return;
+    if (document.querySelector(".home-funnel")) return;
     const oldActions = host.querySelector(".verification-page__actions, .contact-pair, .button-row");
     if (oldActions) oldActions.hidden = true;
 
@@ -87,7 +89,7 @@
 
     const actions = document.createElement("div");
     actions.className = "v4-hero-actions";
-    actions.innerHTML = `<a href="${conditionHref()}" data-v4-action="condition">Kiểm tra điều kiện</a><a href="${ZALO_URL}" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="v4-hero">Nhắn Zalo</a><a href="${PHONE_URL}" data-contact="phone" data-context="v4-hero">Gọi Thầy Linh</a>`;
+    actions.innerHTML = `<a href="${conditionHref()}" data-v4-action="condition">Kiểm tra điều kiện</a><a href="${ZALO_URL}" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="v4-hero">Nhắn Zalo</a><a href="${MESSENGER_URL}" target="_blank" rel="noopener noreferrer" data-contact="messenger" data-context="v4-hero">Messenger</a><a href="${PHONE_URL}" data-contact="phone" data-context="v4-hero">Gọi Thầy Linh</a>`;
     host.append(actions);
 
     if (!host.querySelector(".v4-direct-note")) {
@@ -181,7 +183,7 @@
     const bar = document.createElement("nav");
     bar.className = "v4-mobile-bar";
     bar.setAttribute("aria-label", "Hành động chính");
-    bar.innerHTML = `<a href="${conditionHref()}" data-v4-action="condition">Kiểm tra</a><a href="${ZALO_URL}" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="v4-mobile">Zalo</a><a href="${PHONE_URL}" data-contact="phone" data-context="v4-mobile">Gọi</a>`;
+    bar.innerHTML = `<a href="${conditionHref()}" data-v4-action="condition">Kiểm tra</a><a href="${ZALO_URL}" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="v4-mobile">Zalo</a><a href="${MESSENGER_URL}" target="_blank" rel="noopener noreferrer" data-contact="messenger" data-context="v4-mobile">Messenger</a><a href="${PHONE_URL}" data-contact="phone" data-context="v4-mobile">Gọi</a>`;
     document.body.append(bar);
   }
 
@@ -206,6 +208,9 @@
       } else if (href.includes("zalo.me") || link.dataset.contact === "zalo") {
         action = "send_message";
         preference = "zalo";
+      } else if (href.includes("m.me") || link.dataset.contact === "messenger") {
+        action = "send_message";
+        preference = "messenger";
       } else if (href.startsWith("tel:") || link.dataset.contact === "phone") {
         action = "call";
         preference = "phone";

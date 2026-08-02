@@ -30,7 +30,7 @@ function primaryNav() {
 }
 
 function finalCta(context = "site-final") {
-  return `<section class="v4-final-conversion" aria-label="Kiểm tra điều kiện học nghề mỏ"><div class="v4-final-conversion__grid"><div><small>Bước tiếp theo duy nhất</small><h2>Gửi 3 thông tin để Thầy Linh kiểm tra trước</h2><p>Chưa cần đi lại hoặc gửi ảnh hồ sơ. Kiểm tra trước để biết mình có phù hợp học nghề mỏ tại Quảng Ninh không.</p><div class="v4-three-info">Năm sinh · Chiều cao/cân nặng · Sức khỏe mắt, huyết áp, tim mạch và bệnh khác</div></div><div class="v4-final-conversion__actions"><a href="/kiem-tra-dieu-kien/" data-v4-action="condition">Kiểm tra điều kiện</a><a href="https://zalo.me/0963048585" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="${escapeHtml(context)}">Nhắn Zalo</a><a href="tel:+84963048585" data-contact="phone" data-context="${escapeHtml(context)}">Gọi 096 304 8585</a></div></div></section>`;
+  return `<section class="v4-final-conversion" aria-label="Kiểm tra điều kiện học nghề mỏ"><div class="v4-final-conversion__grid"><div><small>Bước tiếp theo duy nhất</small><h2>Gửi thông tin để Thầy Linh kiểm tra trước</h2><p>Chưa cần đi lại hoặc gửi ảnh hồ sơ. Kiểm tra trước để biết mình có phù hợp học nghề mỏ tại Quảng Ninh không.</p><div class="v4-three-info">Năm sinh · Chiều cao/cân nặng · Sức khỏe mắt, huyết áp, tim mạch và bệnh khác</div></div><div class="v4-final-conversion__actions"><a href="/kiem-tra-dieu-kien/" data-v4-action="condition">Điền biểu mẫu</a><a href="https://zalo.me/0963048585" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="${escapeHtml(context)}">Nhắn Zalo</a><a href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener noreferrer" data-contact="messenger" data-context="${escapeHtml(context)}">Messenger</a><a href="tel:+84963048585" data-contact="phone" data-context="${escapeHtml(context)}">Gọi 096 304 8585</a></div></div></section>`;
 }
 
 function quickForm() {
@@ -192,6 +192,7 @@ function injectV4() {
     const before = fs.readFileSync(target, "utf8");
     if (before.includes("data-legacy-redirect")) continue;
     checked += 1;
+    if (relative === "index.html" && before.includes('class="home-funnel"')) continue;
     let source = before;
     if (!source.includes("/v4-conversion.css?v=1")) source = source.replace("</head>", `${STYLE_TAG}</head>`);
     if (!source.includes("/v4-conversion.js?v=1")) source = source.replace("</body>", `${SCRIPT_TAG}</body>`);

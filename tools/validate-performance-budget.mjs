@@ -177,8 +177,8 @@ try {
 const home = read("index.html");
 const homeScript = read("portal-official.js");
 const homeStyles = read("landing-recruitment.css");
-const homeVideoFacades = (home.match(/data-(?:featured|province)-video-facade/g) || []).length;
-if (homeVideoFacades !== 2) fail(`Trang chủ: dự kiến 2 lớp xem trước video, thực tế ${homeVideoFacades}`);
+const homeVideoFacades = (home.match(/data-featured-video-facade/g) || []).length;
+if (homeVideoFacades !== 1) fail(`Trang chủ đơn giản: dự kiến 1 lớp xem trước video, thực tế ${homeVideoFacades}`);
 if (/<iframe\b/i.test(home)) fail("Trang chủ: còn tạo trình phát YouTube trước khi người dùng bấm xem");
 if (/rel=["']preconnect["'][^>]+youtube-nocookie\.com/i.test(home)) fail("Trang chủ: còn mở sớm kết nối trình phát YouTube");
 for (const marker of ["mountYouTubePlayer", "renderVideoFacade", "activateFacade", "host.replaceChildren(frame)"]) {
@@ -188,19 +188,14 @@ for (const marker of ["home-video-facade", "home-video-facade__play", "focus-vis
   if (!homeStyles.includes(marker)) fail(`Trang chủ: thiếu kiểu lớp xem trước ${marker}`);
 }
 const optimizedHomeImages = [
-  ["https://vinacomin.vn/Share/Media/2017/09/images1311883_KEN_6710.jpg", "960", "640"],
-  ["https://vinacomin.vn/Share/Media/2018/07/IMG_4207.jpg", "1200", "675"],
-  ["https://vinacomin.vn/Share/Media/2018/07/IMG_4075.jpg", "1200", "675"],
-  ["https://vinacomin.vn/Share/Media/2017/09/U39A0357.jpg", "1200", "675"],
-  ["https://vinacomin.vn/Share/Media/2017/09/IMG_8117.jpg", "1200", "675"],
-  ["https://vinacomin.vn/Share/Media/2018/07/IMG_2357.jpg", "1200", "675"],
-  ["https://vinacomin.vn/Share/Media/2017/09/DSC01675.jpg", "1200", "675"],
+  ["/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp", "1200", "673"],
+  ["/assets/vinacomin-tho-mo-ham-lo-1200.webp", "1200", "800"],
 ];
 for (const [source, width, height] of optimizedHomeImages) {
   const escaped = source.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const tag = home.match(new RegExp(`<img\\b[^>]*src=["']${escaped}["'][^>]*>`, "i"))?.[0] || "";
   if (!tag) fail(`Trang chủ: thiếu ảnh Vinacomin ${source}`);
-  else if (!["loading=\"lazy\"", "decoding=\"async\"", `width=\"${width}\"`, `height=\"${height}\"`, "referrerpolicy=\"no-referrer\""].every((marker) => tag.includes(marker))) fail(`Trang chủ: ảnh ${source} chưa đủ thuộc tính chống dịch chuyển bố cục`);
+  else if (!["loading=\"lazy\"", "decoding=\"async\"", `width=\"${width}\"`, `height=\"${height}\"`].every((marker) => tag.includes(marker))) fail(`Trang chủ: ảnh ${source} chưa đủ thuộc tính chống dịch chuyển bố cục`);
 }
 
 const videoPage = read("video-tkv/index.html");
