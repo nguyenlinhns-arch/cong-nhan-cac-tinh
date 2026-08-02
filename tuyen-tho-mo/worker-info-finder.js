@@ -18,7 +18,7 @@
     if (!provinceSelect || !provinceGo) return;
     const option = provinceSelect.selectedOptions[0];
     const slug = option?.dataset.provinceSlug || "";
-    const name = option?.textContent?.trim() || "";
+    const name = option?.dataset.provinceName || option?.textContent?.trim() || "";
     if (!slug) {
       provinceGo.href = provinceBase;
       provinceGo.textContent = "Xem danh sách tỉnh";
