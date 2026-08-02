@@ -13,6 +13,7 @@ for (const marker of [
   "[data-consent-banner]",
   ".v4-primary-nav",
   ".tl-worker-compass",
+  ".journey-short-nav",
   ".site-header .main-nav",
   "height:64px!important",
   ".mobile-contact,.tl-mobile-contact",
@@ -22,9 +23,10 @@ for (const marker of [
   "removeRowsBetweenHeaderAndMain",
   "header.nextElementSibling",
   "node !== main",
+  ".journey-short-nav",
   "window.thayLinhAnalytics?.consent?.(\"denied\")",
   "MutationObserver",
-  "document.documentElement.dataset.siteShell = \"20260803\"",
+  "document.documentElement.dataset.siteShell = \"20260803-v2\"",
 ]) if (!js.includes(marker)) errors.push(`Site shell JS thiếu ${marker}`);
 
 let checked = 0;
@@ -47,20 +49,20 @@ for (const target of walk(root)) {
   const html = fs.readFileSync(target, "utf8");
   if (html.includes("data-legacy-redirect") || /^google[a-z0-9_-]+\.html$/i.test(relative)) continue;
   checked += 1;
-  if (html.includes('/site-shell-20260803.css?v=1')) withStyle += 1;
-  else errors.push(`${relative} thiếu site shell CSS`);
-  if (html.includes('/site-shell-20260803.js?v=1')) withScript += 1;
-  else errors.push(`${relative} thiếu site shell JS`);
+  if (html.includes('/site-shell-20260803.css?v=2')) withStyle += 1;
+  else errors.push(`${relative} thiếu site shell CSS v2`);
+  if (html.includes('/site-shell-20260803.js?v=2')) withScript += 1;
+  else errors.push(`${relative} thiếu site shell JS v2`);
   if (html.includes('/top-block-hotfix.css')) oldHotfix += 1;
 }
 
 if (checked < 110) errors.push(`Site shell kiểm tra quá ít trang: ${checked}`);
-if (withStyle !== checked) errors.push(`Chỉ ${withStyle}/${checked} trang có site shell CSS`);
-if (withScript !== checked) errors.push(`Chỉ ${withScript}/${checked} trang có site shell JS`);
+if (withStyle !== checked) errors.push(`Chỉ ${withStyle}/${checked} trang có site shell CSS v2`);
+if (withScript !== checked) errors.push(`Chỉ ${withScript}/${checked} trang có site shell JS v2`);
 if (oldHotfix) errors.push(`Còn ${oldHotfix} trang dùng hotfix cũ`);
 
 console.log(JSON.stringify({
-  shell: "site-shell-20260803",
+  shell: "site-shell-20260803-v2",
   html_checked: checked,
   html_with_style: withStyle,
   html_with_script: withScript,
