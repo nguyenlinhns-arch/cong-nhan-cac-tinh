@@ -15,6 +15,7 @@
     "[data-measurement-consent]",
     ".v4-primary-nav",
     ".tl-worker-compass",
+    ".journey-short-nav",
     ".journey-quick-nav",
     ".journey-nav",
     ".journey-route",
@@ -52,7 +53,7 @@
     let node = header.nextElementSibling;
     while (node && node !== main) {
       const next = node.nextElementSibling;
-      const isNavigationRow = node.matches("nav, [role='navigation'], .v4-primary-nav, .tl-worker-compass")
+      const isNavigationRow = node.matches("nav, [role='navigation'], .v4-primary-nav, .tl-worker-compass, .journey-short-nav")
         || node.querySelector?.(":scope > nav, :scope > [role='navigation']");
       if (isNavigationRow) node.remove();
       node = next;
@@ -82,7 +83,7 @@
     removeRowsBetweenHeaderAndMain();
     simplifyHeader();
     disableConsentPrompt();
-    document.documentElement.dataset.siteShell = "20260803";
+    document.documentElement.dataset.siteShell = "20260803-v2";
   }
 
   function scheduleClean() {
