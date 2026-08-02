@@ -12,6 +12,8 @@ const home = read("index.html");
 const css = read("worker-info-finder.css");
 const script = read("worker-info-finder.js");
 const mobileUx = read("mobile-ux.js");
+const searchIndex = JSON.parse(read("search-index.json"));
+const searchItems = Array.isArray(searchIndex.items) ? searchIndex.items : [];
 const provinceData = JSON.parse(read("data/provinces-2026.json"));
 const provinces = Array.isArray(provinceData.provinces) ? provinceData.provinces : [];
 
@@ -25,6 +27,55 @@ if (!home.includes('class="worker-find__search"') || !home.includes("Tìm trong 
 if (!home.includes('href="#tu-kiem-tra">Tự kiểm tra điều kiện</a>')) fail("Hero: nút tự kiểm tra chưa đi đúng công cụ");
 if (!home.includes("Đăng ký – chưa cần hồ sơ")) fail("Hero: nút đăng ký chưa nói rõ bước đầu không cần hồ sơ");
 if (!home.includes('href="#tu-kiem-tra"><b>01</b>')) fail("Điều hướng nhanh: mục điều kiện chưa đi đúng công cụ");
+
+const quickNavigationIndex = home.indexOf('class="worker-quick__grid"');
+const finderIndex = home.indexOf('class="worker-find"');
+const summaryIndex = home.indexOf('class="worker-summary"');
+const selfCheckIndex = home.indexOf('class="worker-self-check"');
+const processIndex = home.indexOf('class="section process-section"');
+if (!(quickNavigationIndex >= 0 && quickNavigationIndex < finderIndex)) fail("Luồng đọc: 6 câu hỏi phổ biến phải đứng trước công cụ tìm kiếm và chọn tỉnh");
+if (!(summaryIndex >= 0 && summaryIndex < selfCheckIndex && selfCheckIndex < processIndex)) fail("Luồng đọc: bản tóm tắt phải đứng trước công cụ tự kiểm tra, và công cụ phải đứng trước quy trình");
+for (const anchor of ["thoi-gian-hoc", "ho-tro-hoc-nghe"]) {
+  if (count(home, `id="${anchor}"`) !== 1) fail(`Trả lời nhanh: thiếu neo #${anchor}`);
+}
+
+const directAnswerExpectations = [
+  ["/#dieu-kien", "Điều kiện đăng ký"],
+  ["/#quyen-loi", "Thu nhập và quyền lợi"],
+  ["/#thoi-gian-hoc", "Thời gian học nghề mỏ là bao lâu"],
+  ["/#ho-tro-hoc-nghe", "Trong thời gian học được hỗ trợ gì"],
+  ["/#ho-so", "Hồ sơ nhập học"],
+  ["/#dia-diem", "Địa chỉ nhập học"],
+  ["/#quy-trinh", "Quy trình đăng ký"],
+  ["/#dang-ky", "Đăng ký học nghề mỏ ngay"],
+];
+if (searchIndex.version !== 2) fail(`Tìm kiếm: cần chỉ mục trả lời nhanh phiên bản 2, nhận ${searchIndex.version}`);
+for (const [url, titleFragment] of directAnswerExpectations) {
+  const item = searchItems.find((candidate) => candidate.url === url);
+  if (!item) fail(`Tìm kiếm: thiếu câu trả lời trực tiếp ${url}`);
+  else {
+    if (!item.title.includes(titleFragment)) fail(`Tìm kiếm: ${url} chưa có tiêu đề trực tiếp`);
+    if (item.type !== "Trả lời nhanh" || Number(item.priority) < 200) fail(`Tìm kiếm: ${url} chưa được ưu tiên như câu trả lời nhanh`);
+  }
+}
+const homeSearchItem = searchItems.find((item) => item.url === "/");
+if (homeSearchItem?.category !== "recruitment" || homeSearchItem?.categoryLabel !== "Thông tin tuyển tháng 8/2026") fail("Tìm kiếm: trang chủ đang bị phân loại sai chủ đề");
+
+try {
+  const structuredBlocks = [...home.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];
+  if (structuredBlocks.length !== 1) fail(`Dữ liệu cấu trúc trang chủ: cần một khối, nhận ${structuredBlocks.length}`);
+  else {
+    const graph = JSON.parse(structuredBlocks[0][1])["@graph"] || [];
+    const people = graph.filter((node) => node?.["@type"] === "Person");
+    const organizations = graph.filter((node) => node?.["@type"] === "Organization");
+    if (people.length !== 1 || people[0]?.jobTitle !== "Trưởng phòng Tuyển sinh Miền Trung") fail("Dữ liệu cấu trúc trang chủ: người tư vấn bị trùng hoặc sai chức danh");
+    if (organizations.length !== 1 || organizations[0]?.contactPoint?.contactType !== "Tư vấn tuyển sinh nghề mỏ") fail("Dữ liệu cấu trúc trang chủ: đơn vị hoặc đầu mối tư vấn chưa chính xác");
+    const serialized = JSON.stringify(graph);
+    for (const corruptText of ["TƠ vấn", "Trưởng phồnthomo.vn"]) if (serialized.includes(corruptText)) fail(`Dữ liệu cấu trúc trang chủ: còn chuỗi hỏng ${corruptText}`);
+  }
+} catch (error) {
+  fail(`Dữ liệu cấu trúc trang chủ không hợp lệ: ${error.message}`);
+}
 
 if (count(home, 'id="tu-kiem-tra"') !== 1 || count(home, "data-worker-check-form") !== 1) fail("Tự kiểm tra: cần đúng một công cụ trên trang chủ");
 for (const name of ["age_range", "height_range", "weight_range", "health_screen"]) {
