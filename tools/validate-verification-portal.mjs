@@ -57,8 +57,10 @@ if (Buffer.byteLength(css) > 16_000) errors.push(`verification-portal.css quá l
 if (!css.includes("grid-template-columns:repeat(3")) errors.push("CSS chưa khóa thanh mobile thành 3 nút");
 if (!home.includes('id="cong-kiem-chung-nghe-mo"')) errors.push("Trang chủ thiếu cổng kiểm chứng nghề mỏ");
 const mobileUx = read("mobile-ux.js");
-for (const marker of ["function loadVerificationPortalAssets()", "/verification-portal.css?v=1", "/verification-portal.js?v=1"]) {
-  if (!mobileUx.includes(marker)) errors.push(`mobile-ux.js thiếu ${marker}`);
+if (mobileUx.includes("function loadVerificationPortalAssets()")) errors.push("Bộ nạp cổng kiểm chứng không được làm tăng mobile-ux.js");
+const analytics = read("analytics.js");
+for (const marker of ["verification-portal-loader", "/verification-portal.css?v=1", "/verification-portal.js?v=1", "DOMContentLoaded"]) {
+  if (!analytics.includes(marker)) errors.push(`analytics.js thiếu ${marker}`);
 }
 
 const pageResults = [];
