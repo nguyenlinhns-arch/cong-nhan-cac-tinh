@@ -89,4 +89,6 @@
   a,button{min-height:44px}
 
   .mobile-contact,.tl-mobile-contact{z-index:1000!important}
+  .v4-mobile-bar{grid-template-columns:1.15fr 1fr 1fr .85fr!important}
+  .v4-mobile-bar a:nth-child(4){background:#e8f3f1!important;color:#063f48!important}
 }
