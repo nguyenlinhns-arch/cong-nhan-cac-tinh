@@ -206,6 +206,74 @@ function renderArticleApply(article) {
         </section>`;
 }
 
+function asideApplicationUrl(article) {
+  return `/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&amp;utm_medium=internal&amp;utm_campaign=article_aside_to_application_2026&amp;utm_content=aside_${article.slug}#dang-ky`;
+}
+
+function articleAsideCta(article) {
+  const applicationUrl = asideApplicationUrl(article);
+  return {
+    "Thu nhập & việc làm": {
+      title: "Tìm hiểu nghề trước khi tính chuyện đường dài",
+      text: "Kiểm tra điều kiện, nội dung đào tạo và công việc sau khóa học để lựa chọn bằng thông tin rõ ràng.",
+      button: "Kiểm tra điều kiện học nghề",
+      href: applicationUrl,
+      contact: "application",
+    },
+    "Công nghệ mỏ": {
+      title: "Nghề mỏ đang thay đổi cùng công nghệ",
+      text: "Người mới được học từ nền tảng trước khi làm quen thiết bị, quy trình và nhịp sản xuất hiện đại.",
+      button: "Xem lộ trình học nghề",
+      href: "/bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/",
+    },
+    "Tay nghề & đào tạo": {
+      title: "Tay nghề bắt đầu từ những buổi học đầu tiên",
+      text: "Gửi thông tin ban đầu để kiểm tra sự phù hợp với chương trình học nghề và công việc tại Quảng Ninh.",
+      button: "Kiểm tra điều kiện học nghề",
+      href: applicationUrl,
+      contact: "application",
+    },
+    "Kết nối địa phương": {
+      title: "Kiểm tra thông tin đang áp dụng tại địa phương bạn",
+      text: "Nếu bài viết nhắc tới địa bàn của bạn, bước tiếp theo là gửi 3 thông tin để đối chiếu điều kiện trước khi chuẩn bị hồ sơ.",
+      button: "Kiểm tra điều kiện theo mẫu chung",
+      href: applicationUrl,
+      contact: "application",
+    },
+    "An sinh xã hội": {
+      title: "Hiểu thêm về con người ngành Than",
+      text: "Những chương trình cộng đồng cho thấy tinh thần đồng tâm của người thợ được gìn giữ cả trong và ngoài sản xuất.",
+      button: "Đọc thêm chuyện nghề mỏ",
+      href: "/tin-nganh-than/#an-sinh-xa-hoi",
+    },
+    "Chuyện người thợ mỏ": {
+      title: "Hiểu nghề qua những người đang làm nghề",
+      text: "Câu chuyện có nguồn giúp người đọc nhìn rõ nhịp ca, tay nghề, an toàn, đồng đội và đời sống phía sau gương than.",
+      button: "Xem lộ trình học nghề",
+      href: "/bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/",
+    },
+  }[article.section] || {
+    title: "Tìm hiểu nghề mỏ bằng thông tin rõ ràng",
+    text: "Gửi năm sinh, chiều cao, cân nặng và tình trạng sức khỏe để được kiểm tra điều kiện trước khi chuẩn bị hồ sơ.",
+    button: "Trao đổi với Thầy Linh",
+    href: "https://zalo.me/0963048585",
+    contact: "zalo",
+    external: true,
+  };
+}
+
+function renderArticleAsideCta(article) {
+  const cta = articleAsideCta(article);
+  const attrs = [
+    `href="${cta.href}"`,
+    cta.external ? 'target="_blank" rel="noopener noreferrer"' : "",
+    cta.contact ? `data-contact="${cta.contact}"` : "",
+    'data-context="article-aside"',
+    `data-article-aside-action="${cta.contact || "read"}"`,
+  ].filter(Boolean).join(" ");
+  return `<div class="aside-card accent"><h2>${esc(cta.title)}</h2><p>${esc(cta.text)}</p><a ${attrs}>${esc(cta.button)}</a></div>`;
+}
+
 function renderFacts(facts) {
   return `<div class="fact-grid">${facts.map(([value, label]) => `<div class="fact-card"><strong>${esc(value)}</strong><span>${esc(label)}</span></div>`).join("")}</div>`;
 }
@@ -268,42 +336,6 @@ function renderArticle(article) {
   const isPressLayout = article.sourceLayout || article.contentMode === "press_digest";
   const sourceWorks = article.hideSourceUrlsInSchema ? [] : (article.sources || []).map(sourceCreativeWork);
   const sourceUrls = article.hideSourceUrlsInSchema ? [] : (article.sources || []).map(sourceUrl).filter(Boolean);
-  const careerCta = {
-    "Thu nhập & việc làm": {
-      title: "Tìm hiểu nghề trước khi tính chuyện đường dài",
-      text: "Kiểm tra điều kiện, nội dung đào tạo và công việc sau khóa học để lựa chọn bằng thông tin rõ ràng.",
-      button: "Trao đổi với Thầy Linh",
-    },
-    "Công nghệ mỏ": {
-      title: "Nghề mỏ đang thay đổi cùng công nghệ",
-      text: "Người mới được học từ nền tảng trước khi làm quen thiết bị, quy trình và nhịp sản xuất hiện đại.",
-      button: "Hỏi về chương trình học nghề",
-    },
-    "Tay nghề & đào tạo": {
-      title: "Tay nghề bắt đầu từ những buổi học đầu tiên",
-      text: "Gửi thông tin ban đầu để kiểm tra sự phù hợp với chương trình học nghề và công việc tại Quảng Ninh.",
-      button: "Kiểm tra điều kiện học nghề",
-    },
-    "Kết nối địa phương": {
-      title: "Kiểm tra thông tin đang áp dụng tại địa phương bạn",
-      text: "Hỏi rõ điều kiện, nghề đang tuyển và lịch tiếp nhận trước khi sắp xếp hành trình đến Quảng Ninh.",
-      button: "Hỏi lịch tư vấn hiện hành",
-    },
-    "An sinh xã hội": {
-      title: "Hiểu thêm về con người ngành Than",
-      text: "Những chương trình cộng đồng cho thấy tinh thần đồng tâm của người thợ được gìn giữ cả trong và ngoài sản xuất.",
-      button: "Đọc thêm chuyện nghề mỏ",
-    },
-    "Chuyện người thợ mỏ": {
-      title: "Hiểu nghề qua những người đang làm nghề",
-      text: "Câu chuyện có nguồn giúp người đọc nhìn rõ nhịp ca, tay nghề, an toàn, đồng đội và đời sống phía sau gương than.",
-      button: "Tìm hiểu chương trình học nghề",
-    },
-  }[article.section] || {
-    title: "Tìm hiểu nghề mỏ bằng thông tin rõ ràng",
-    text: "Gửi năm sinh, chiều cao, cân nặng và tình trạng sức khỏe để được kiểm tra điều kiện trước khi chuẩn bị hồ sơ.",
-    button: "Trao đổi với Thầy Linh",
-  };
   const faqs = (article.faq || []).map(([question, answer]) => ({
     "@type": "Question",
     name: question,
@@ -423,7 +455,7 @@ function renderArticle(article) {
         ${renderArticleShare(article)}
       </article>${isPressLayout ? "" : `
       <aside class="article-aside">
-        <div class="aside-card accent"><h2>${esc(careerCta.title)}</h2><p>${esc(careerCta.text)}</p><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">${esc(careerCta.button)}</a></div>
+        ${renderArticleAsideCta(article)}
         <div class="aside-card"><h2>Thông tin cần biết trước khi đăng ký</h2><p>Điều kiện, chính sách học, công việc và đời sống tại Quảng Ninh được trình bày theo từng nhóm nội dung.</p><a class="aside-secondary-link" href="/tin-nganh-than/">Xem tất cả bài viết</a></div>
       </aside>`}
     </div>
@@ -571,6 +603,7 @@ for (const article of existingNews) {
     html = html.replace(/^([ \t]*)<\/article>/im, `$1  ${renderSourceFooter(article)}\n$1</article>`);
   }
   html = html.replace(/^([ \t]*)<\/article>/im, `$1  ${renderArticleApply(article)}\n$1  ${renderArticleShare(article)}\n$1</article>`);
+  html = html.replace(/<div class="aside-card accent">[\s\S]*?<\/div>/, renderArticleAsideCta(article));
   if (!html.includes('rel="author"')) html = html.replace(/(<link\s+rel="canonical"[^>]*>)/i, `$1\n  <link rel="author" href="/tac-gia/nguyen-tu-linh/">`);
   if (!html.includes('/content-network.css?v=1')) html = html.replace(/<\/head>/i, `  <link rel="stylesheet" href="/content-network.css?v=1">\n</head>`);
   html = html.replaceAll(`${base}/#gioi-thieu`, `${base}/tac-gia/nguyen-tu-linh/`);

@@ -10,6 +10,7 @@ const base = "https://thaylinhtuyenthomo.vn";
 const campaign = "lan_toa_nghe_mo_2026";
 const provinces = JSON.parse(fs.readFileSync(path.join(root, "data", "provinces-2026.json"), "utf8")).provinces;
 const recruitment = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
+const imageDimensions = JSON.parse(fs.readFileSync(path.resolve("content/article-image-dimensions.json"), "utf8"));
 const updatedDate = recruitment.effective_from;
 const personId = `${base}/tac-gia/nguyen-tu-linh/#person`;
 const organizationId = `${base}/#organization`;
@@ -40,6 +41,14 @@ function absoluteItemUrl(value = "") {
   const [pathname, fragment] = String(value).split("#", 2);
   const normalized = pathname.replace(/^\/+|\/+$/g, "");
   return `${base}/${normalized ? `${normalized}/` : ""}${fragment ? `#${fragment}` : ""}`;
+}
+
+function imageDimensionAttrs(source = "") {
+  let key = "";
+  try { key = new URL(String(source).replaceAll("&amp;", "&"), base).href; }
+  catch { return ""; }
+  const dimensions = imageDimensions[key];
+  return dimensions ? ` width="${dimensions[0]}" height="${dimensions[1]}"` : "";
 }
 
 const navItems = [
@@ -151,7 +160,8 @@ function page({pathName, title, description, eyebrow, heading, lead, body, schem
 }
 
 function card(item, label = item.section) {
-  return `<article class="network-card"><img src="${esc(item.image || "/assets/og-cover-v2.webp")}" alt="${esc(item.imageAlt || item.title)}" loading="lazy" decoding="async" referrerpolicy="no-referrer"><div class="network-card__body"><small>${esc(label || "Thông tin nghề mỏ")}</small><h2>${esc(item.title)}</h2><p>${esc(item.lead || item.description)}</p><a href="/${item.urlPath}/">Đọc thông tin →</a></div></article>`;
+  const image = item.image || "/assets/og-cover-v2.webp";
+  return `<article class="network-card"><img src="${esc(image)}" alt="${esc(item.imageAlt || item.title)}" loading="lazy" decoding="async" referrerpolicy="no-referrer"${imageDimensionAttrs(image)}><div class="network-card__body"><small>${esc(label || "Thông tin nghề mỏ")}</small><h2>${esc(item.title)}</h2><p>${esc(item.lead || item.description)}</p><a href="/${item.urlPath}/">Đọc thông tin →</a></div></article>`;
 }
 
 function provinceGroups() {
