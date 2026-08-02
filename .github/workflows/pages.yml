@@ -46,12 +46,15 @@ jobs:
           node tools/enhance-voice-loader.mjs
           node tools/enhance-search-answer-read-aloud.mjs
           node tools/enhance-direct-call.mjs
+          node tools/enhance-application-context.mjs
+          node tools/enhance-application-prefill-note.mjs
           node tools/validate-natural-language-search.mjs
           node tools/validate-answer-first-search.mjs
           node tools/validate-worker-brief.mjs
           node tools/validate-voice-assist.mjs
           node tools/validate-direct-call.mjs
           node tools/validate-home-copy-actions.mjs
+          node tools/validate-application-context.mjs
           node tools/validate-worker-findability.mjs
           node tools/validate-universal-worker-compass.mjs
           node tools/validate-content-network.mjs
@@ -68,7 +71,7 @@ jobs:
           node tools/validate-recruitment-funnel.mjs
           node tools/test-recruitment-application.mjs
           node tools/validate-crm-automation.mjs
-          git diff --exit-code -- . ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/mobile-ux.js' ':(exclude)tuyen-tho-mo/voice-assist.js'
+          git diff --exit-code -- . ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/mobile-ux.js' ':(exclude)tuyen-tho-mo/voice-assist.js' ':(exclude)tuyen-tho-mo/job-application.js'
       - uses: actions/upload-pages-artifact@v3
         with:
           # Publish the recruitment portal at the custom-domain root.
@@ -86,13 +89,15 @@ jobs:
           search_file="$(mktemp)"
           voice_file="$(mktemp)"
           finder_file="$(mktemp)"
+          application_file="$(mktemp)"
           for attempt in $(seq 1 18); do
             if curl --fail --silent --show-error --location --max-time 20 "$LIVE_URL" -o "$html_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}mobile-ux.js?run=${GITHUB_SHA}" -o "$ux_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}mobile-ux.css?run=${GITHUB_SHA}" -o "$css_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}search-index.json?run=${GITHUB_SHA}" -o "$search_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}voice-assist.js?run=${GITHUB_SHA}" -o "$voice_file" \
-              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}worker-info-finder.js?run=${GITHUB_SHA}" -o "$finder_file"; then
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}worker-info-finder.js?run=${GITHUB_SHA}" -o "$finder_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}job-application.js?run=${GITHUB_SHA}" -o "$application_file"; then
               if grep -Fq 'id="worker-quick-title"' "$html_file" \
                 && grep -Fq 'id="tu-kiem-tra"' "$html_file" \
                 && grep -Fq 'data-open-site-search' "$html_file" \
@@ -128,6 +133,8 @@ jobs:
                 && grep -Fq 'data-worker-brief-action="phone"' "$ux_file" \
                 && grep -Fq 'data-worker-shortcut="empty_phone"' "$ux_file" \
                 && grep -Fq 'phone.dataset.context = "search-answer"' "$ux_file" \
+                && grep -Fq 'function applicationContext()' "$ux_file" \
+                && grep -Fq 'Object.entries(applicationContext())' "$ux_file" \
                 && ! grep -Fq 'MESSENGER_URL' "$ux_file" \
                 && grep -Fq 'Gõ cả câu, ví dụ: lương bao nhiêu?' "$ux_file" \
                 && grep -Fq 'function setupVoiceSearch(dialog)' "$voice_file" \
@@ -142,16 +149,19 @@ jobs:
                 && grep -Fq 'navigator.clipboard.writeText(value)' "$finder_file" \
                 && grep -Fq 'document.execCommand("copy")' "$finder_file" \
                 && grep -Fq 'track("worker_copy", { item: key, result: copied ? "success" : "failure" })' "$finder_file" \
+                && grep -Fq 'const prefilledContext = []' "$application_file" \
+                && grep -Fq 'draftStatus.dataset.contextPrefilled = "true"' "$application_file" \
+                && grep -Fq 'track("ApplicationContextPrefill"' "$application_file" \
                 && grep -Fq '"version": 3' "$search_file" \
                 && grep -Fq '"title": "Học xong làm việc ở đâu?"' "$search_file" \
                 && grep -Fq '.tl-worker-compass{' "$css_file"; then
-                echo "Live worker-first homepage, one-tap copy, phone help, spoken answers and answer-first navigation verified on attempt $attempt."
+                echo "Live worker-first homepage, province-preserving application links, one-tap copy, phone help and spoken answers verified on attempt $attempt."
                 exit 0
               fi
             fi
             sleep 5
           done
-          echo "The custom domain did not expose the expected one-tap copy actions, phone help, worker-first homepage and spoken answer-first search."
+          echo "The custom domain did not preserve province context through the worker-first application flow."
           exit 1
       - name: Record deployment receipt
         if: success() && github.event_name != 'schedule'
@@ -160,5 +170,5 @@ jobs:
           DEPLOYMENT_URL: ${{ steps.deployment.outputs.page_url }}
         run: |
           deployed_at="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-          body="$(printf '✅ **Triển khai và xác minh tên miền thành công**\n\n- Commit: `%s`\n- Workflow run: `%s`\n- URL triển khai: %s\n- Tên miền đã kiểm tra: https://thaylinhtuyenthomo.vn/\n- Thời điểm UTC: `%s`\n- Kết quả: trang thật cho phép sao chép địa chỉ nhập học và mẫu đăng ký bằng một chạm; đồng thời giữ Ứng tuyển – Zalo – Gọi, tìm kiếm giọng nói, nghe câu trả lời, chọn tỉnh và tự kiểm tra điều kiện.\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$DEPLOYMENT_URL" "$deployed_at")"
+          body="$(printf '✅ **Triển khai và xác minh tên miền thành công**\n\n- Commit: `%s`\n- Workflow run: `%s`\n- URL triển khai: %s\n- Tên miền đã kiểm tra: https://thaylinhtuyenthomo.vn/\n- Thời điểm UTC: `%s`\n- Kết quả: tỉnh và nghề được giữ qua các nút Tóm tắt, Tìm kiếm và Ứng tuyển; biểu mẫu xác nhận mục đã chọn sẵn, không truyền dữ liệu sức khỏe hay thông tin cá nhân trong URL. Các chức năng sao chép, gọi, Zalo, giọng nói và tự kiểm tra vẫn hoạt động.\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$DEPLOYMENT_URL" "$deployed_at")"
           gh issue comment 42 --repo "$GITHUB_REPOSITORY" --body "$body"
