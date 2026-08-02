@@ -4,8 +4,8 @@ import path from "node:path";
 import { execFileSync } from "node:child_process";
 
 const root = path.resolve("tuyen-tho-mo");
-const STYLE_TAG = '<link rel="stylesheet" href="/site-shell-20260803.css?v=1">';
-const SCRIPT_TAG = '<script src="/site-shell-20260803.js?v=1" defer></script>';
+const STYLE_TAG = '<link rel="stylesheet" href="/site-shell-20260803.css?v=2">';
+const SCRIPT_TAG = '<script src="/site-shell-20260803.js?v=2" defer></script>';
 let checked = 0;
 let changed = 0;
 let withShell = 0;
@@ -51,7 +51,7 @@ if (withShell !== checked) throw new Error(`Site shell chỉ có trên ${withShe
 
 console.log(JSON.stringify({
   status: "enhanced",
-  shell: "site-shell-20260803",
+  shell: "site-shell-20260803-v2",
   html_checked: checked,
   html_changed: changed,
   navigation_cleanup: "css-and-runtime",
