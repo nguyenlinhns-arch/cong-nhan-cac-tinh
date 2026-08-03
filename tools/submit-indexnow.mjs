@@ -7,16 +7,33 @@ const keyLocation = `${base}/${key}.txt`;
 const homepageSources = [
   "content/home-worker-first/",
   "tools/build-worker-first-home.mjs",
-  "tuyen-tho-mo/mobile-ux.js",
+  "tuyen-tho-mo/home-worker-journey.css",
+  "tuyen-tho-mo/mobile-core.js",
+  "tuyen-tho-mo/mobile-polish-20260803.css",
+  "tuyen-tho-mo/site-shell-20260803.js",
   "tuyen-tho-mo/search-index.json",
   "tuyen-tho-mo/worker-info-finder.css",
   "tuyen-tho-mo/worker-info-finder.js",
 ];
+const discoverySources = [
+  "tools/polish-discovery-output.mjs",
+  "tuyen-tho-mo/robots.txt",
+  "tuyen-tho-mo/llms.txt",
+  "tuyen-tho-mo/sitemap.xml",
+  "tuyen-tho-mo/news-sitemap.xml",
+];
+
+function matchesSource(file, source) {
+  return source.endsWith("/") ? file.startsWith(source) : file === source;
+}
 
 function urlsForChangedFile(file) {
   const urls = [];
-  if (homepageSources.some((source) => source.endsWith("/") ? file.startsWith(source) : file === source)) {
+  if (homepageSources.some((source) => matchesSource(file, source))) {
     urls.push(`${base}/`);
+  }
+  if (discoverySources.some((source) => matchesSource(file, source))) {
+    urls.push(`${base}/`, `${base}/thong-tin-tuyen-tho-mo/`);
   }
   const prefix = "tuyen-tho-mo/";
   if (!file.startsWith(prefix) || !file.endsWith(".html")) return urls;
@@ -42,7 +59,7 @@ function changedFiles() {
 const files = changedFiles();
 const urls = new Set(files.flatMap(urlsForChangedFile));
 if (!urls.size) {
-  console.log(JSON.stringify({status: "skipped", reason: "No changed public HTML URLs", changedFiles: files.length}));
+  console.log(JSON.stringify({status: "skipped", reason: "No changed public or discovery URLs", changedFiles: files.length}));
   process.exit(0);
 }
 if (process.env.INDEXNOW_DRY_RUN === "1") {
