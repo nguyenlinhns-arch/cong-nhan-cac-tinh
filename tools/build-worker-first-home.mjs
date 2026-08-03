@@ -203,7 +203,7 @@ ${selfCheck}
         <div class="home-proof__head"><p class="eyebrow">Người thật · việc thật</p><h2 id="home-proof-title">Xem nghề qua video và câu chuyện người thợ</h2></div>
         <div class="home-proof__grid home-proof__grid--simple">
           <article class="home-proof__video">
-            <div class="video-frame" data-featured-video-host><button class="home-video-facade" type="button" data-featured-video-facade data-video-id="ts41cqu7r9c" data-video-title="Hành trình lập nghiệp cùng nghề mỏ" aria-label="Phát video hành trình lập nghiệp cùng nghề mỏ"><img src="https://i.ytimg.com/vi/ts41cqu7r9c/hqdefault.jpg" alt="Hình xem trước video câu chuyện công nhân ngành Than" loading="lazy" decoding="async" width="480" height="360"><span class="home-video-facade__play" aria-hidden="true">▶</span><span class="home-video-facade__label">Bấm để xem phóng sự</span></button></div>
+            <div class="video-frame" data-featured-video-host><button class="home-video-facade" type="button" data-featured-video-facade data-video-id="ts41cqu7r9c" data-video-title="Hành trình lập nghiệp cùng nghề mỏ" aria-label="Phát video hành trình lập nghiệp cùng nghề mỏ"><img src="/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" alt="Người thợ mỏ chuẩn bị thiết bị trước ca làm việc" loading="lazy" decoding="async" width="1200" height="736"><span class="home-video-facade__play" aria-hidden="true">▶</span><span class="home-video-facade__label">Bấm để xem phóng sự</span></button></div>
             <div class="home-proof__video-copy"><small>VIDEO NGƯỜI LAO ĐỘNG</small><h3>Hành trình lập nghiệp cùng nghề mỏ</h3></div>
           </article>
           <a class="home-proof__story" href="/cau-chuyen-cong-nhan/">
