@@ -26,7 +26,7 @@ function enhancePage(slug) {
   if (!html.includes('name="twitter:card"')) {
     const title = html.match(/<meta property="og:title" content="([^"]*)">/)?.[1] || "Thầy Linh – Tuyển Thợ Mỏ";
     const description = html.match(/<meta property="og:description" content="([^"]*)">/)?.[1] || "Cổng kiểm chứng nghề mỏ";
-    const twitter = `  <meta name="twitter:card" content="summary_large_image">\n  <meta name="twitter:title" content="${title}">\n  <meta name="twitter:description" content="${description}">\n  <meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-v2.webp">\n`;
+    const twitter = `  <meta name="twitter:card" content="summary_large_image">\n  <meta name="twitter:title" content="${title}">\n  <meta name="twitter:description" content="${description}">\n  <meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">\n`;
     html = html.replace('  <link rel="stylesheet" href="/landing-recruitment.css?v=17">', `${twitter}  <link rel="stylesheet" href="/landing-recruitment.css?v=17">`);
   }
   fs.writeFileSync(target, html);

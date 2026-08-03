@@ -175,11 +175,11 @@ function provincePage(province) {
   <meta property="og:title" content="Tuyển thợ mỏ tại ${name} – học nghề 2–3 tháng">
   <meta property="og:description" content="${description}">
   <meta property="og:url" content="${canonical}">
-  <meta property="og:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-v2.webp">
+  <meta property="og:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Tuyển thợ mỏ tại ${name} – học nghề 2–3 tháng">
   <meta name="twitter:description" content="${description}">
-  <meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-v2.webp">
+  <meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">
   <link rel="stylesheet" href="../../styles.css">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
   <link rel="stylesheet" href="/mobile-ux.css?v=8">

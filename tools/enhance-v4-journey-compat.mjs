@@ -10,7 +10,7 @@ if (!fullInfoSource.includes('/favicon-48x48.png')) {
   fullInfoSource = fullInfoSource.replace('<link rel="icon" href="/favicon.ico">', '<link rel="icon" href="/favicon.ico"><link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48">');
 }
 if (!fullInfoSource.includes('name="twitter:card"')) {
-  const twitter = '<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Học nghề mỏ tại Quảng Ninh"><meta name="twitter:description" content="Điều kiện, nơi học, thời gian, ăn ở, hỗ trợ, hồ sơ và việc làm sau đào tạo nghề mỏ tại Quảng Ninh."><meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-v2.webp">';
+  const twitter = '<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Học nghề mỏ tại Quảng Ninh"><meta name="twitter:description" content="Điều kiện, nơi học, thời gian, ăn ở, hỗ trợ, hồ sơ và việc làm sau đào tạo nghề mỏ tại Quảng Ninh."><meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">';
   fullInfoSource = fullInfoSource.replace('<link rel="stylesheet" href="/landing-recruitment.css?v=17">', `${twitter}<link rel="stylesheet" href="/landing-recruitment.css?v=17">`);
 }
 if (!fullInfoSource.includes("/journey-optimizer.css?v=1")) fullInfoSource = fullInfoSource.replace("</head>", '<link rel="stylesheet" href="/journey-optimizer.css?v=1"></head>');
@@ -20,7 +20,7 @@ for (const marker of [
   'name="twitter:card" content="summary_large_image"',
   'name="twitter:title"',
   'name="twitter:description"',
-  'name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-v2.webp"',
+  'name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg"',
   "/journey-optimizer.css?v=1",
   "/journey-optimizer.js?v=1",
   "/v4-conversion.js?v=1",

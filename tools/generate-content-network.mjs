@@ -141,8 +141,8 @@ function page({pathName, title, description, eyebrow, heading, lead, body, schem
   <link rel="alternate" type="application/feed+json" title="Tin ngành Than – Thầy Linh" href="${base}/feed.json">
   <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ">
   <meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${canonical}">
-  <meta property="og:image" content="${base}/assets/og-cover-v2.webp"><meta property="og:image:alt" content="Trung tâm thông tin học nghề mỏ và việc làm ngành Than">
-  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(title)}"><meta name="twitter:description" content="${esc(description)}"><meta name="twitter:image" content="${base}/assets/og-cover-v2.webp">
+  <meta property="og:image" content="${base}/assets/og-cover-luong-25-trieu-v4.jpg"><meta property="og:image:alt" content="Trung tâm thông tin học nghề mỏ và việc làm ngành Than">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(title)}"><meta name="twitter:description" content="${esc(description)}"><meta name="twitter:image" content="${base}/assets/og-cover-luong-25-trieu-v4.jpg">
   <link rel="stylesheet" href="/fonts.css?v=1">
   <link rel="stylesheet" href="/content-network.css?v=1"><link rel="stylesheet" href="/mobile-ux.css?v=8">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
@@ -160,7 +160,7 @@ function page({pathName, title, description, eyebrow, heading, lead, body, schem
 }
 
 function card(item, label = item.section) {
-  const image = item.image || "/assets/og-cover-v2.webp";
+  const image = item.image || "/assets/og-cover-luong-25-trieu-v4.jpg";
   return `<article class="network-card"><img src="${esc(image)}" alt="${esc(item.imageAlt || item.title)}" loading="lazy" decoding="async" referrerpolicy="no-referrer"${imageDimensionAttrs(image)}><div class="network-card__body"><small>${esc(label || "Thông tin nghề mỏ")}</small><h2>${esc(item.title)}</h2><p>${esc(item.lead || item.description)}</p><a href="/${item.urlPath}/">Đọc thông tin →</a></div></article>`;
 }
 

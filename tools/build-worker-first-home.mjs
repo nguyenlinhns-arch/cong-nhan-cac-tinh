@@ -49,8 +49,12 @@ html = replaceOnce(html, '<meta name="description" content="Tuyển thợ mỏ t
 html = replaceOnce(html, '<meta name="keywords" content="tuyển thợ mỏ tháng 8 2026, tuyển thợ lò, học nghề mỏ, việc làm TKV Quảng Ninh, hồ sơ học nghề mỏ, lương thợ lò">', '<meta name="keywords" content="tuyển thợ mỏ, tuyển thợ lò Quảng Ninh, học nghề mỏ Quang Hanh, việc làm ngành Than, việc làm TKV, hồ sơ học nghề mỏ">', "SEO keyword map");
 html = replaceOnce(html, '<meta property="og:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', '<meta property="og:title" content="Tuyển thợ mỏ, thợ lò tại Quảng Ninh">', "Open Graph title");
 html = replaceOnce(html, '<meta property="og:description" content="Một hành trình rõ ràng từ kiểm tra điều kiện, học nghề tại Quang Hanh đến nhận việc ngành Than ở Quảng Ninh.">', '<meta property="og:description" content="Kiểm tra điều kiện, xem công việc thực tế, học nghề tại Quang Hanh và đăng ký nhận việc ngành Than ở Quảng Ninh.">', "Open Graph description");
+html = replaceOnce(html, '<meta property="og:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-v2.webp">', '<meta property="og:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">\n  <meta property="og:image:secure_url" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">', "Open Graph recruitment thumbnail");
+html = replaceOnce(html, '<meta property="og:image:type" content="image/webp">', '<meta property="og:image:type" content="image/jpeg">', "Open Graph thumbnail type");
+html = replaceOnce(html, '<meta property="og:image:alt" content="Thầy Linh – Học nghề mỏ, làm việc tại Quảng Ninh">', '<meta property="og:image:alt" content="Thầy Linh – Tuyển thợ mỏ, lương 25 triệu mỗi tháng khi hoàn thành định mức lao động">', "Open Graph thumbnail alternative text");
 html = replaceOnce(html, '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', '<meta name="twitter:title" content="Tuyển thợ mỏ, thợ lò tại Quảng Ninh">', "Twitter title");
 html = replaceOnce(html, '<meta name="twitter:description" content="Xem hành trình học nghề mỏ tại Quang Hanh, quyền lợi, hồ sơ và việc làm ngành Than tại Quảng Ninh.">', '<meta name="twitter:description" content="Xem điều kiện, video công việc thực tế, quyền lợi học nghề và cách đăng ký làm việc ngành Than tại Quảng Ninh.">', "Twitter description");
+html = replaceOnce(html, '<meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-v2.webp">', '<meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">\n  <meta name="twitter:image:alt" content="Thầy Linh – Tuyển thợ mỏ, lương 25 triệu mỗi tháng khi hoàn thành định mức lao động">', "Twitter recruitment thumbnail");
 html = replaceOnce(html, '"name":"Tuyển thợ mỏ tháng 8/2026: hành trình học nghề đến nhận việc"', '"name":"Tuyển thợ mỏ, thợ lò tại Quảng Ninh"', "WebPage structured title");
 html = replaceOnce(html, '"description":"Hành trình tuyển thợ mỏ tháng 8/2026 từ kiểm tra điều kiện, học nghề tại Quang Hanh đến nhận việc ngành Than ở Quảng Ninh; cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."', '"description":"Tuyển thợ mỏ, thợ lò tại Quảng Ninh: kiểm tra điều kiện, xem công việc thực tế, học nghề tại Quang Hanh và nhận việc ngành Than; cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."', "WebPage structured description");
 html = replaceOnce(html, '<p class="eyebrow">Thông tin tuyển sinh tháng 8/2026</p>', '<p class="eyebrow">Thông tin tuyển sinh nghề mỏ đang áp dụng</p>', "Homepage status eyebrow");
@@ -107,6 +111,8 @@ for (const marker of [
   'data-home-worker-journey',
   '/home-worker-journey.js?v=1',
   "Tuyển thợ mỏ, thợ lò tại Quảng Ninh",
+  "og-cover-luong-25-trieu-v4.jpg",
+  "lương 25 triệu mỗi tháng khi hoàn thành định mức lao động",
   "Thông tin tuyển sinh nghề mỏ đang áp dụng",
   "Xem công việc thợ mỏ qua người thật, việc thật",
   "Hành trình học nghề mỏ và nhận việc tại Quảng Ninh",
@@ -117,6 +123,7 @@ for (const staleMarker of [
   "<title>Tuyển thợ mỏ, thợ lò tháng 8/2026",
   '<p class="eyebrow">Thông tin tuyển sinh tháng 8/2026</p>',
   "<h1>Tuyển thợ mỏ tháng 8/2026.",
+  "og-cover-v2.webp",
 ]) {
   if (html.includes(staleMarker)) throw new Error(`Trang chủ còn mốc tháng không phù hợp nội dung lâu dài: ${staleMarker}`);
 }

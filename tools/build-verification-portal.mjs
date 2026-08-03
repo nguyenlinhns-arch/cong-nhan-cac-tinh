@@ -85,11 +85,11 @@ function pageHtml(page) {
   <meta property="og:title" content="${escapeHtml(page.title)}">
   <meta property="og:description" content="${escapeHtml(page.description)}">
   <meta property="og:url" content="${canonical}">
-  <meta property="og:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-v2.webp">
+  <meta property="og:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${escapeHtml(page.title)}">
   <meta name="twitter:description" content="${escapeHtml(page.description)}">
-  <meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-v2.webp">
+  <meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">
   <link rel="stylesheet" href="/landing-recruitment.css?v=17">
   <link rel="stylesheet" href="/publication-polish.css?v=5">
   <link rel="stylesheet" href="/mobile-core.css?v=1">
