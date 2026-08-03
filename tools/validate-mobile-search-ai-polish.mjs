@@ -34,6 +34,9 @@ for (const marker of [
   "polishMobileContact",
   "verification-mobile-primary",
   "network-mobile-primary",
+  "job-mobile-primary",
+  "content-mobile-primary",
+  "[data-application-form]",
   "20260803-v3",
 ]) requireText(shell, marker, "site-shell-20260803.js");
 
@@ -89,6 +92,8 @@ for (const [key, expected] of Object.entries({
 const conditionPage = read("kiem-tra-dieu-kien/index.html");
 const comparePage = read("chon-kcn-hay-lam-mo/index.html");
 const factsPage = read("thong-tin-tuyen-tho-mo/index.html");
+const jobPage = read("viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html");
+const articlePage = read("tin-nganh-than/index.html");
 for (const [html, label] of [[conditionPage, "Trang kiểm tra"], [comparePage, "Trang so sánh"], [factsPage, "Trang thông tin chuẩn"]]) {
   requireText(html, 'name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"', label);
   requireText(html, '/mobile-core.css?v=1', label);
@@ -97,12 +102,15 @@ for (const [html, label] of [[conditionPage, "Trang kiểm tra"], [comparePage, 
 requireText(conditionPage, 'class="verification-mobile-contact"', "Trang kiểm tra");
 requireText(comparePage, 'class="verification-comparison"', "Trang so sánh");
 requireText(factsPage, 'class="network-header"', "Trang thông tin chuẩn");
+requireText(jobPage, "data-application-form", "Trang việc làm trung tâm");
+requireText(articlePage, 'data-contact="application"', "Trang tin ngành Than");
 
 console.log(JSON.stringify({
   mobilePolishBytes: Buffer.byteLength(polishCss),
   shellBytes: Buffer.byteLength(shell),
   aiAgents: 10,
   discoveryEndpoints: Object.keys(discovery).length,
+  mobilePrimaryContexts: 4,
   errors: errors.length,
   sampleErrors: errors.slice(0, 25),
 }, null, 2));
