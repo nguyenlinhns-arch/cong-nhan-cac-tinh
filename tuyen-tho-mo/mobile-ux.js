@@ -393,26 +393,15 @@
   function createContactButtons() {
     if (document.querySelector(".tl-mobile-contact")) return;
     const activeDraft = hasActiveApplicationDraft();
-    const pageApplication = document.querySelector('.mobile-contact a[data-contact="application"], a[href*="#dang-ky"]');
-    let applicationUrl = APPLICATION_URL;
-    if (pageApplication) {
-      try {
-        const resolved = new URL(pageApplication.getAttribute("href"), location.href);
-        if (resolved.origin === location.origin) applicationUrl = `${resolved.pathname}${resolved.search}${resolved.hash}`;
-      } catch (_) {}
-    }
     const nav = document.createElement("nav");
     nav.className = "tl-mobile-contact";
-    nav.setAttribute("aria-label", "Ứng tuyển và liên hệ nhanh");
+    nav.setAttribute("aria-label", "Liên hệ nhanh qua Zalo, Messenger hoặc điện thoại");
     nav.innerHTML = `
-      <a class="tl-mobile-contact__application" href="${applicationUrl}" aria-label="${activeDraft ? "Tiếp tục hồ sơ ứng tuyển đã lưu" : "Ứng tuyển và kiểm tra điều kiện"}" data-contact="application" data-context="mobile-floating">
-        <b aria-hidden="true">✓</b><span data-application-resume-label>${activeDraft ? "Tiếp tục" : "Ứng tuyển"}</span>
-      </a>
       <a class="tl-mobile-contact__zalo" href="${ZALO_URL}" target="_blank" rel="noopener noreferrer" aria-label="Nhắn Zalo cho Thầy Linh theo số 096 304 8585" data-contact="zalo" data-context="mobile-floating">
         <b aria-hidden="true">Z</b><span>Zalo</span>
       </a>
       <a class="tl-mobile-contact__messenger" href="${MESSENGER_URL}" target="_blank" rel="noopener noreferrer" aria-label="Nhắn Messenger cho Thầy Linh" data-contact="messenger" data-context="mobile-floating">
-        <b aria-hidden="true">M</b><span>Mess.</span>
+        <b aria-hidden="true">M</b><span>Mess</span>
       </a>
       <a class="tl-mobile-contact__call" href="${PHONE_URL}" style="background:linear-gradient(145deg,#0b7a55,#075b66)" aria-label="Gọi Thầy Linh theo số 096 304 8585" data-contact="phone" data-context="mobile-floating">
         ${PHONE_ICON}<span>Gọi</span>
@@ -905,5 +894,4 @@
   compactMobileConsentBanner();
   document.documentElement.classList.add("tl-mobile-ux-ready");
   setupSearch();
-
 })();

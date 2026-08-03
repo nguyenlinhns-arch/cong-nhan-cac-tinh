@@ -442,7 +442,7 @@ input {
     right: max(10px, env(safe-area-inset-right));
     bottom: calc(10px + env(safe-area-inset-bottom));
     display: grid;
-    grid-template-columns: 1.15fr 0.8fr 0.9fr 0.8fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 7px;
     padding: 7px;
     border: 1px solid rgba(255, 255, 255, 0.82);
@@ -472,20 +472,6 @@ input {
     transform: translateZ(0);
   }
 
-  .tl-mobile-contact__application {
-    background: linear-gradient(145deg, #e77812, #c95608);
-  }
-
-  .tl-mobile-contact__application b {
-    display: grid;
-    width: 21px;
-    height: 21px;
-    place-items: center;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    font-size: 13px;
-  }
-
   .tl-mobile-contact__zalo {
     background: var(--tl-blue);
   }
@@ -498,6 +484,13 @@ input {
 
   .tl-mobile-contact__messenger {
     background: linear-gradient(145deg, #00b2ff, #0a66ff 52%, #a033ff);
+  }
+
+  .tl-mobile-contact__messenger b,
+  .tl-mobile-contact__call b {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 900;
   }
 
   .tl-mobile-contact__messenger svg {

@@ -132,7 +132,7 @@ const structuredDataMarkup = `  <script type="application/ld+json">\n  ${JSON.st
 
 const searchIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>';
 const headerSearch = `<button class="worker-header-search" type="button" data-open-site-search data-worker-search data-context="header" aria-haspopup="dialog" aria-label="Tìm thông tin trên website">${searchIcon}<span class="sr-only">Tìm thông tin</span></button>`;
-const heroBriefButton = '<button class="button button-brief" type="button" data-open-worker-brief data-worker-shortcut="brief" aria-haspopup="dialog">Xem nhanh 30 giây</button>';
+const heroBriefButton = '<button class="button button-brief" type="button" data-open-worker-brief data-worker-shortcut="brief" aria-haspopup="dialog">Xem nhanh tin tuyển dụng</button>';
 const selfCheck = `    <section class="worker-self-check" id="tu-kiem-tra" aria-labelledby="worker-self-check-title">
       <span id="dieu-kien" class="home-anchor" aria-hidden="true"></span>
       <div class="container">
@@ -275,10 +275,10 @@ html = replaceOnce(html, '<meta property="og:description" content="Điều kiệ
 html = replaceOnce(html, '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – thông tin dành cho người lao động">', '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', "Homepage Twitter title");
 html = replaceOnce(html, '<meta name="twitter:description" content="Xem nhanh điều kiện, quyền lợi, hồ sơ, địa điểm và cách đăng ký học nghề mỏ tại Quảng Ninh.">', '<meta name="twitter:description" content="Xem hành trình học nghề mỏ tại Quang Hanh, quyền lợi, hồ sơ và việc làm ngành Than tại Quảng Ninh.">', "Homepage Twitter description");
 html = replaceOnce(html, '<link rel="preload" href="assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" as="image" type="image/webp">', '<link rel="preload" href="/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp" as="image" type="image/webp" fetchpriority="high">', "Homepage hero image preload");
-html = replaceOnce(html, "</head>", '  <link rel="stylesheet" href="/worker-info-finder.css?v=2">\n  <link rel="stylesheet" href="/home-rich-media.css?v=8">\n  <link rel="stylesheet" href="/journey-optimizer.css?v=2">\n</head>', "Worker self-check and visual consultation funnel stylesheets");
+html = replaceOnce(html, "</head>", '  <link rel="stylesheet" href="/worker-info-finder.css?v=2">\n  <link rel="stylesheet" href="/home-rich-media.css?v=9">\n  <link rel="stylesheet" href="/journey-optimizer.css?v=2">\n</head>', "Worker self-check and visual consultation funnel stylesheets");
 html = replaceOnce(html, '<button class="menu-toggle" type="button"', `${headerSearch}\n      <button class="menu-toggle" type="button"`, "Header search button");
-html = replaceOnce(html, 'href="/mobile-ux.css?v=5"', 'href="/mobile-ux.css?v=6"', "Homepage mobile UX stylesheet version");
-html = replaceOnce(html, 'src="/mobile-ux.js?v=4"', 'src="/mobile-ux.js?v=9"', "Homepage mobile UX version");
+html = replaceOnce(html, 'href="/mobile-ux.css?v=5"', 'href="/mobile-ux.css?v=7"', "Homepage mobile UX stylesheet version");
+html = replaceOnce(html, 'src="/mobile-ux.js?v=4"', 'src="/mobile-ux.js?v=10"', "Homepage mobile UX version");
 html = html.replace(/<nav class="v4-primary-nav"[\s\S]*?<\/nav>\s*/i, "");
 const mainBlocks = html.match(/<main id="noi-dung"[\s\S]*?<\/main>/gi) || [];
 if (mainBlocks.length !== 1) throw new Error(`Worker-first homepage expected one main block, got ${mainBlocks.length}`);
@@ -291,17 +291,21 @@ const mainNavBlocks = html.match(/<nav class="main-nav"[\s\S]*?<\/nav>/gi) || []
 if (mainNavBlocks.length !== 1) throw new Error(`Worker-first homepage expected one main navigation, got ${mainNavBlocks.length}`);
 html = html.replace(mainNavBlocks[0], mainNav);
 html = html.replace(/<a class="header-cta"[\s\S]*?<\/a>/i, '<a class="header-cta" href="#tu-van">Nhận tư vấn</a>');
-html = replaceOnce(
-  html,
-  '<a href="tin-nganh-than/">Cẩm nang nghề mỏ</a>',
-  '<a href="/cam-nang-nghe-mo/">Bài viết hướng dẫn</a><a href="/tin-nganh-than/">Tin ngành mỏ</a><a href="/anh-video-thuc-te/">Video thực tế</a>',
-  "Homepage footer content hubs",
-);
+const simpleFooter = `<footer class="site-footer site-footer--home">
+    <div class="container footer-simple">
+      <a class="brand brand-light" href="./"><img class="brand-mark" src="/assets/thay-linh-avatar.webp?v=3" alt="" width="45" height="45"><span><strong>Thầy Linh</strong><small>Tuyển Thợ Mỏ</small></span></a>
+      <p>Tư vấn học nghề mỏ và việc làm ngành Than tại Quảng Ninh.</p>
+      <nav class="footer-simple__links" aria-label="Thông tin cuối trang"><a href="thong-tin-tuyen-tho-mo/">Tin tuyển dụng</a><a href="/cam-nang-nghe-mo/">Cẩm nang</a><a href="/tin-nganh-than/">Tin ngành Than</a><a href="/anh-video-thuc-te/">Video</a><a href="nguyen-tac-bien-tap/">Biên tập</a><a href="/quyen-rieng.html">Quyền riêng tư</a></nav>
+    </div>
+    <div class="container footer-bottom">© <span data-year></span> Thầy Linh – Tuyển Thợ Mỏ</div>
+  </footer>`;
+const footerBlocks = html.match(/<footer class="site-footer"[\s\S]*?<\/footer>/gi) || [];
+if (footerBlocks.length !== 1) throw new Error(`Worker-first homepage expected one footer, got ${footerBlocks.length}`);
+html = html.replace(footerBlocks[0], simpleFooter);
 
 const staticMobile = `<nav class="mobile-contact" aria-label="Liên hệ nhanh trên điện thoại">
-    <a href="${applicationHref}" data-contact="application" data-context="home-mobile"><strong>Đăng ký</strong><span data-application-resume-label>Biểu mẫu</span></a>
     <a href="${zaloHref}" target="_blank" rel="noopener" data-contact="zalo" data-context="home-mobile"><strong>Zalo</strong><span>Nhắn tin</span></a>
-    <a href="${messengerHref}" target="_blank" rel="noopener" data-contact="messenger" data-context="home-mobile"><strong>Mess.</strong><span>Nhắn tin</span></a>
+    <a href="${messengerHref}" target="_blank" rel="noopener" data-contact="messenger" data-context="home-mobile"><strong>Mess</strong><span>Nhắn tin</span></a>
     <a href="tel:+84963048585" data-contact="phone" data-context="home-mobile"><strong>Gọi</strong><span>096 304 8585</span></a>
   </nav>`;
 const mobileBlocks = html.match(/<nav class="mobile-contact"[\s\S]*?<\/nav>/gi) || [];

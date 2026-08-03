@@ -35,10 +35,10 @@ const footer = `
   </footer>`;
 
 const mobileContact = `
-  <nav class="verification-mobile-contact" data-verification-mobile-contact aria-label="Liên hệ và kiểm tra điều kiện">
+  <nav class="verification-mobile-contact" data-verification-mobile-contact aria-label="Liên hệ nhanh qua Zalo, Messenger hoặc điện thoại">
     <a href="https://zalo.me/0963048585" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="mobile-fixed-verification"><strong>Zalo</strong><span>Nhắn tư vấn</span></a>
-    <a href="tel:+84963048585" data-contact="phone" data-context="mobile-fixed-verification"><strong>Gọi điện</strong><span>096 304 8585</span></a>
-    <a href="/kiem-tra-dieu-kien/" data-verification-action="condition" data-context="mobile-fixed-verification"><strong>Kiểm tra</strong><span>Điều kiện</span></a>
+    <a href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener noreferrer" data-contact="messenger" data-context="mobile-fixed-verification"><strong>Mess</strong><span>Nhắn tin</span></a>
+    <a href="tel:+84963048585" data-contact="phone" data-context="mobile-fixed-verification"><strong>Gọi</strong><span>096 304 8585</span></a>
   </nav>`;
 
 function structuredData(page) {

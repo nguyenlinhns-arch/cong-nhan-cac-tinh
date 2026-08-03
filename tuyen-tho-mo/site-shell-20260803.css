@@ -89,7 +89,11 @@
   a,button{min-height:44px}
 
   .mobile-contact,.tl-mobile-contact{z-index:1000!important}
-  .v4-mobile-bar{grid-template-columns:1.15fr 1fr 1fr!important}
+  .v4-mobile-bar{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  .v4-mobile-bar a{min-width:0!important;min-height:50px!important}
+  .v4-mobile-bar a[data-contact="zalo"]{background:#0878e8!important;color:#fff!important}
+  .v4-mobile-bar a[data-contact="messenger"]{background:linear-gradient(145deg,#00b2ff,#0a66ff 52%,#a033ff)!important;color:#fff!important}
+  .v4-mobile-bar a[data-contact="phone"]{background:#e8f3f1!important;color:#063f48!important}
   .article-aside .aside-card:not(.accent){display:none!important}
 
   /* Homepage: remove stacked shell spacing and keep the first mobile screen decisive. */
