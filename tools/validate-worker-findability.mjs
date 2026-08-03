@@ -25,7 +25,7 @@ for (const [marker, expected] of [
   ['href="/home-rich-media.css?v=9"', 1],
   ['href="/journey-optimizer.css?v=2"', 1],
   ['src="/journey-optimizer.js?v=2"', 1],
-  ['href="/mobile-ux.css?v=7"', 1],
+  ['href="/mobile-ux.css?v=8"', 1],
   ['src="/mobile-ux.js?v=10"', 1],
   ["data-open-site-search", 1],
   ["data-worker-search", 1],

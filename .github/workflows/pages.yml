@@ -50,6 +50,7 @@ jobs:
           node tools/enhance-application-context.mjs
           node tools/enhance-application-prefill-note.mjs
           node tools/enhance-top-block-hotfix.mjs
+          node tools/normalize-mobile-delivery.mjs
           node tools/validate-natural-language-search.mjs
           node tools/validate-all-province-search.mjs
           node tools/validate-answer-first-search.mjs
@@ -61,6 +62,7 @@ jobs:
           node tools/validate-worker-findability.mjs
           node tools/validate-publication-integrity.mjs
           node tools/enhance-top-block-hotfix.mjs
+          node tools/normalize-mobile-delivery.mjs
           node tools/validate-top-block-hotfix.mjs
           node tools/validate-universal-worker-compass.mjs
           node tools/validate-content-network.mjs
@@ -128,7 +130,7 @@ jobs:
                 && grep -Fq 'id="noi-lam-viec"' "$html_file" \
                 && grep -Fq 'Cơ điện mỏ: 10 tháng' "$html_file" \
                 && grep -Fq '/mobile-ux.js?v=10' "$html_file" \
-                && grep -Fq '/mobile-ux.css?v=7' "$html_file" \
+                && grep -Fq '/mobile-ux.css?v=8' "$html_file" \
                 && grep -Fq '20–25 triệu/tháng' "$html_file" \
                 && grep -Fq 'khi hoàn thành định mức lao động' "$html_file" \
                 && grep -Fq 'function createWorkerCompass()' "$ux_file" \

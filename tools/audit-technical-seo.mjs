@@ -124,6 +124,9 @@ for (const url of sitemapUrls) {
 const htmlFiles = collectFiles(root, (file) => file.endsWith(".html"));
 const indexableUrls = new Set();
 let jsonLdBlocks = 0;
+let mobileViewportPages = 0;
+let mobileAssetVersionPages = 0;
+let mobileSnippetPages = 0;
 
 for (const file of htmlFiles) {
   const relative = path.relative(root, file).split(path.sep).join("/");
@@ -137,6 +140,7 @@ for (const file of htmlFiles) {
   const indexable = !robotsMeta.includes("noindex");
   const pageTitle = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1]?.trim() || "";
   const description = meta(html, "name", "description");
+  const viewport = meta(html, "name", "viewport");
   const canonicalLinks = tags(html, "link").filter((item) => item.rel?.split(/\s+/).includes("canonical"));
   const canonical = canonicalLinks[0]?.href || "";
   const ogTitle = meta(html, "property", "og:title");
@@ -151,9 +155,16 @@ for (const file of htmlFiles) {
   const linkTags = tags(html, "link");
   const faviconHrefs = new Set(linkTags.filter((item) => item.rel?.split(/\s+/).includes("icon")).map((item) => item.href));
   const appleIcon = linkTags.find((item) => item.rel === "apple-touch-icon")?.href || "";
+  const mobileStyles = linkTags.filter((item) => item.rel?.split(/\s+/).includes("stylesheet") && /\/mobile-ux\.css\?v=/.test(item.href || ""));
+  const mobileScripts = tags(html, "script").filter((item) => /\/mobile-ux\.js\?v=/.test(item.src || ""));
 
   if (!pageTitle) errors.push(`${relative}: missing title`);
   if (!description) errors.push(`${relative}: missing meta description`);
+  if (!viewport.includes("width=device-width") || !viewport.includes("viewport-fit=cover")) errors.push(`${relative}: viewport must support mobile width and safe-area insets`);
+  else mobileViewportPages += 1;
+  if (mobileStyles.length !== 1 || mobileStyles[0]?.href !== "/mobile-ux.css?v=8") errors.push(`${relative}: must load exactly /mobile-ux.css?v=8`);
+  else if (mobileScripts.length !== 1 || mobileScripts[0]?.src !== "/mobile-ux.js?v=10") errors.push(`${relative}: must load exactly /mobile-ux.js?v=10`);
+  else mobileAssetVersionPages += 1;
   if (canonicalLinks.length !== 1) errors.push(`${relative}: expected exactly one canonical, got ${canonicalLinks.length}`);
   if (canonical !== expectedCanonical) errors.push(`${relative}: canonical ${canonical || "missing"} must be ${expectedCanonical}`);
   if (!faviconHrefs.has("/favicon.ico")) errors.push(`${relative}: missing stable /favicon.ico declaration`);
@@ -170,6 +181,27 @@ for (const file of htmlFiles) {
     if (twitterCard !== "summary_large_image" || !twitterTitle || !twitterDescription || !twitterImage) errors.push(`${relative}: incomplete Twitter/X metadata`);
     if (!twitterImage.startsWith("https://")) errors.push(`${relative}: twitter:image must use HTTPS`);
     if (!jsonScripts.length) errors.push(`${relative}: missing JSON-LD`);
+
+    const mobileSnippetTarget = relative === "index.html"
+      || relative === "thong-tin-tuyen-tho-mo/index.html"
+      || relative === "chon-kcn-hay-lam-mo/index.html"
+      || relative.startsWith("viec-lam-nganh-than/");
+    if (mobileSnippetTarget) {
+      if ([...pageTitle].length > 65) errors.push(`${relative}: mobile SEO title exceeds 65 characters (${[...pageTitle].length})`);
+      if ([...description].length > 160) errors.push(`${relative}: mobile SEO description exceeds 160 characters (${[...description].length})`);
+      mobileSnippetPages += 1;
+    }
+    if (relative === "index.html") {
+      const h1 = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1]?.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim() || "";
+      if (!h1.includes("Tuyển thợ mỏ")) errors.push("index.html: visible H1 must contain the primary keyword “Tuyển thợ mỏ”");
+      const nodes = jsonScripts.flatMap((script) => {
+        try {
+          const value = JSON.parse(script[1]);
+          return Array.isArray(value?.["@graph"]) ? value["@graph"] : [value];
+        } catch { return []; }
+      });
+      if (nodes.some((node) => node?.["@type"] === "FAQPage")) errors.push("index.html: FAQPage markup must not be used without a visible FAQ block");
+    }
   }
 
   if (legacyRoute) {
@@ -234,6 +266,9 @@ console.log(JSON.stringify({
   jsonLdBlocks,
   rssItems: rssUrls.length,
   jsonFeedItems: feedJson.items?.length || 0,
+  mobileViewportPages,
+  mobileAssetVersionPages,
+  mobileSnippetPages,
   errors: errors.length,
 }, null, 2));
 

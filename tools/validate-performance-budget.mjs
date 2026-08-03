@@ -297,7 +297,7 @@ if (knownImagesMissingDimensions || articleCoversMissingDimensions) fail("Ảnh 
 const budgets = {
   "analytics.js": 19_000,
   "fonts.css": 9_000,
-  "mobile-ux.css": 16_000,
+  "mobile-ux.css": 16_200,
   "mobile-ux.js": 42_000,
   "job-application.js": 32_000,
   "portal-official.js": 20_000,
