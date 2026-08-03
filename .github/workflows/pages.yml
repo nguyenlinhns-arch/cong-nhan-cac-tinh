@@ -42,6 +42,7 @@ jobs:
           node tools/enhance-home-copy-actions.mjs
           node tools/build-search-index.mjs
           node tools/enhance-all-province-search.mjs
+          node tools/polish-discovery-output.mjs
           node tools/enhance-application-prefill-note.mjs
           node tools/enhance-top-block-hotfix.mjs
           node tools/normalize-mobile-delivery.mjs
@@ -58,6 +59,7 @@ jobs:
           node tools/test-home-video-facades.mjs
           node tools/validate-workflow-safety.mjs
           node tools/validate-ai-search.mjs
+          node tools/validate-mobile-search-ai-polish.mjs
           node tools/validate-job-postings.mjs
           node tools/validate-recruitment-funnel.mjs
           node tools/test-recruitment-application.mjs
@@ -70,13 +72,17 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: Verify live worker-first homepage
+      - name: Verify live mobile, search and AI discovery release
         env:
           LIVE_URL: https://thaylinhtuyenthomo.vn/
         run: |
           html_file="$(mktemp)"
           core_file="$(mktemp)"
           css_file="$(mktemp)"
+          polish_file="$(mktemp)"
+          shell_file="$(mktemp)"
+          robots_file="$(mktemp)"
+          llms_file="$(mktemp)"
           site_search_file="$(mktemp)"
           manifest_file="$(mktemp)"
           core_index_file="$(mktemp)"
@@ -88,6 +94,10 @@ jobs:
             if curl --fail --silent --show-error --location --max-time 20 "$LIVE_URL" -o "$html_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}mobile-core.js?run=${GITHUB_SHA}" -o "$core_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}mobile-core.css?run=${GITHUB_SHA}" -o "$css_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}mobile-polish-20260803.css?run=${GITHUB_SHA}" -o "$polish_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}site-shell-20260803.js?run=${GITHUB_SHA}" -o "$shell_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}robots.txt?run=${GITHUB_SHA}" -o "$robots_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}llms.txt?run=${GITHUB_SHA}" -o "$llms_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}site-search.js?run=${GITHUB_SHA}" -o "$site_search_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}search-index.json?run=${GITHUB_SHA}" -o "$manifest_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}search-core.json?run=${GITHUB_SHA}" -o "$core_index_file" \
@@ -110,6 +120,15 @@ jobs:
                 && grep -Fq '/worker-brief.js?v=1' "$core_file" \
                 && grep -Fq '/voice-assist.js?v=3' "$core_file" \
                 && grep -Fq 'tl-mobile-contact__messenger' "$core_file" \
+                && grep -Fq '.tl-worker-compass{' "$css_file" \
+                && grep -Fq '.verification-comparison td:nth-child(2)::before' "$polish_file" \
+                && grep -Fq '.network-header__inner' "$polish_file" \
+                && grep -Fq 'polishMobileContact' "$shell_file" \
+                && grep -Fq '20260803-v4' "$shell_file" \
+                && grep -Fq 'User-agent: OAI-SearchBot' "$robots_file" \
+                && grep -Fq 'User-agent: PerplexityBot' "$robots_file" \
+                && grep -Fq 'User-agent: Claude-SearchBot' "$robots_file" \
+                && grep -Fq '## Dữ liệu máy đọc và nguồn cập nhật' "$llms_file" \
                 && grep -Fq 'search-content.json?v=1' "$site_search_file" \
                 && grep -Fq 'mobile.activateVoice' "$site_search_file" \
                 && grep -Fq 'condition_check_complete' "$finder_file" \
@@ -118,17 +137,17 @@ jobs:
                 && grep -Fq 'internal_campaign' "$application_file" \
                 && grep -Fq '"version": 4' "$manifest_file" \
                 && grep -Fq '"strategy": "answer-first-tiered"' "$manifest_file" \
+                && grep -Fq '"discovery"' "$manifest_file" \
                 && grep -Fq '"title": "Học xong làm việc ở đâu?"' "$core_index_file" \
                 && [ "$(grep -Fc '"category": "province"' "$province_index_file")" -eq 26 ] \
-                && grep -Fq 'analytics-vendors.js?v=1' "$analytics_file" \
-                && grep -Fq '.tl-worker-compass{' "$css_file"; then
-                echo "Live modular mobile delivery, tiered search, consent analytics and recruitment funnel verified on attempt $attempt."
+                && grep -Fq 'analytics-vendors.js?v=1' "$analytics_file"; then
+                echo "Live mobile polish, tiered search, AI crawler access and recruitment funnel verified on attempt $attempt."
                 exit 0
               fi
             fi
             sleep 5
           done
-          echo "The custom domain did not expose the modular mobile and measurement release."
+          echo "The custom domain did not expose the complete mobile, search and AI discovery release."
           exit 1
       - name: Record deployment receipt
         if: success() && github.event_name != 'schedule'
@@ -137,5 +156,5 @@ jobs:
           DEPLOYMENT_URL: ${{ steps.deployment.outputs.page_url }}
         run: |
           deployed_at="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-          body="$(printf '✅ **Triển khai và xác minh tên miền thành công**\n\n- Commit: `%s`\n- Workflow run: `%s`\n- URL triển khai: %s\n- Tên miền đã kiểm tra: https://thaylinhtuyenthomo.vn/\n- Thời điểm UTC: `%s`\n- Kết quả: tìm kiếm nội bộ đã nhận đủ 26 tỉnh, thành và các địa danh cũ; những trang chưa có tư liệu riêng vẫn giữ noindex trên công cụ tìm kiếm bên ngoài. Luồng giữ tỉnh/nghề, sao chép, gọi, Zalo, giọng nói và tự kiểm tra tiếp tục hoạt động.\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$DEPLOYMENT_URL" "$deployed_at")"
+          body="$(printf '✅ **Triển khai và xác minh tên miền thành công**\n\n- Commit: `%s`\n- Workflow run: `%s`\n- URL triển khai: %s\n- Tên miền đã kiểm tra: https://thaylinhtuyenthomo.vn/\n- Thời điểm UTC: `%s`\n- Kết quả: giao diện mobile, tìm kiếm nội bộ, sitemap, llms.txt và quyền truy cập cho các bot tìm kiếm/AI đã được xác minh; luồng tỉnh/nghề, gọi, Zalo, tự kiểm tra và đăng ký tiếp tục hoạt động.\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$DEPLOYMENT_URL" "$deployed_at")"
           gh issue comment 42 --repo "$GITHUB_REPOSITORY" --body "$body"
