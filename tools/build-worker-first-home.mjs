@@ -151,63 +151,48 @@ const simpleMain = `  <main id="noi-dung" class="home-funnel">
     <section class="hero" data-hero>
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Tuyển thợ mỏ tháng 8/2026 · Học và làm việc tại Quảng Ninh</p>
-          <h1>Xem rõ điều kiện, quyền lợi và hành trình trước khi đăng ký nghề mỏ</h1>
-          <p class="hero-lead">Thông tin dành cho người lao động được sắp theo từng bước: xem nhanh, tự kiểm tra, hiểu công việc thực tế rồi mới để lại thông tin hoặc liên hệ tư vấn.</p>
-          <div class="salary-highlight"><strong>Cam kết 20–25 triệu/tháng khi hoàn thành định mức lao động</strong></div>
+          <p class="eyebrow">Tuyển thợ mỏ tháng 8/2026</p>
+          <h1>Học nghề mỏ.<span>Nhận việc tại Quảng Ninh.</span></h1>
+          <p class="hero-lead">Nam 18–40 tuổi · học nghề tại Quang Hanh</p>
+          <div class="hero-proof-grid" aria-label="Hai thông tin nổi bật">
+            <article class="hero-proof hero-proof--income"><small>Thu nhập cam kết</small><strong>20–25 triệu/tháng khi hoàn thành định mức lao động</strong></article>
+            <article class="hero-proof"><small>Đào tạo nghề chính</small><strong>2–3 tháng</strong><span>Miễn học phí · có ăn ở</span></article>
+          </div>
           <div class="button-row">
-            <a class="button button-zalo" href="#tu-kiem-tra">Kiểm tra tôi có phù hợp</a>
-            <a class="button button-messenger" href="#tu-van">Tôi muốn được tư vấn</a>
+            <a class="button button-zalo" href="#tu-kiem-tra">Kiểm tra điều kiện</a>
             ${heroBriefButton}
           </div>
-          <div class="hero-facts"><span>Học 2–3 tháng</span><span>Miễn học phí</span><span>Ăn 3 bữa/ngày</span><span>Ở ký túc xá</span><span>Hỗ trợ 7,5 triệu đồng</span></div>
         </div>
-        <aside class="hero-card">
-          <p class="eyebrow">Chưa cần hồ sơ</p><h2>Trước tiên chỉ cần 4 thông tin</h2>
-          <ul><li>Năm sinh</li><li>Chiều cao / cân nặng</li><li>Tình trạng sức khỏe</li><li>Tỉnh đang sinh sống</li></ul>
-          <a class="button button-zalo button-full" href="#tu-van">Chọn cách nhận tư vấn</a>
-        </aside>
+        <figure class="hero-visual">
+          <img src="/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp" alt="Học viên nghề mỏ mặc bảo hộ làm quen thiết bị trong hầm lò" loading="eager" fetchpriority="high" decoding="async" width="1200" height="673">
+          <figcaption><small>HỌC VIÊN THỰC TẾ</small><strong>Làm quen thiết bị và môi trường trước khi vào sản xuất</strong></figcaption>
+        </figure>
       </div>
     </section>
 
-    <nav class="consultation-path" aria-label="Bốn bước tìm hiểu và đăng ký"><span id="theo-tinh" aria-hidden="true"></span>
+    <nav class="consultation-path" id="quy-trinh" aria-label="Bốn bước từ tìm hiểu đến đăng ký"><span id="theo-tinh" aria-hidden="true"></span>
       <div class="container consultation-path__grid">
-        <a href="#thong-tin"><small>01</small><strong>Xem thông tin</strong><span>Điều kiện, học, ăn ở, thu nhập</span></a>
-        <a href="#tu-kiem-tra"><small>02</small><strong>Tự kiểm tra</strong><span>Biết sơ bộ mình có phù hợp</span></a>
-        <a href="#thuc-te"><small>03</small><strong>Xem thực tế</strong><span>Hình ảnh, video và câu chuyện</span></a>
-        <a href="#tu-van"><small>04</small><strong>Nhận tư vấn</strong><span>Biểu mẫu, Zalo, Messenger, gọi</span></a>
+        <a href="#thong-tin"><small>01</small><strong>Xem nhanh</strong></a>
+        <a href="#tu-kiem-tra"><small>02</small><strong>Tự kiểm tra</strong></a>
+        <a href="#thuc-te"><small>03</small><strong>Xem thực tế</strong></a>
+        <a href="#tu-van"><small>04</small><strong>Nhận tư vấn</strong></a>
       </div>
     </nav>
 
-    <section class="worker-summary" id="thong-tin" aria-labelledby="essential-title"><span id="dieu-kien" aria-hidden="true"></span><span id="che-do-ho-so" aria-hidden="true"></span>
+    <section class="worker-summary" id="thong-tin" aria-labelledby="essential-title"><span id="che-do-ho-so" aria-hidden="true"></span>
       <div class="container">
-        <div class="worker-summary__intro"><p class="eyebrow">Thông tin đang áp dụng</p><h2 id="essential-title">6 điều cần biết là đủ để cân nhắc</h2><p>Không cần đọc nhiều bài. Nếu cần chi tiết hơn, bấm vào nội dung liên quan hoặc hỏi trực tiếp Thầy Linh.</p></div>
-        <div class="worker-summary__grid">
-          <article class="worker-fact"><span>01</span><h3>Điều kiện cơ bản</h3><ul><li>Nam từ 18 đến 40 tuổi</li><li>Cao từ 1m53, nặng từ 47kg</li><li>Sức khỏe tốt; không cận thị, bệnh tim mạch, huyết áp hoặc bệnh về mắt</li></ul></article>
-          <article class="worker-fact worker-fact--income" id="quyen-loi"><span>02</span><h3>Thu nhập sau đào tạo</h3><strong>20–25 triệu đồng/tháng khi hoàn thành định mức lao động</strong></article>
-          <article class="worker-fact" id="thoi-gian-hoc"><span>03</span><h3>Thời gian học</h3><ul><li>Khai thác và xây dựng mỏ: 2–3 tháng</li><li>Cơ điện mỏ: 10 tháng</li></ul></article>
-          <article class="worker-fact" id="ho-tro-hoc-nghe"><span>04</span><h3>Hỗ trợ khi học</h3><ul><li>Miễn kinh phí đào tạo</li><li>Ăn 3 bữa/ngày, ở ký túc xá</li><li>Hỗ trợ 7,5 triệu đồng trong thời gian học</li></ul></article>
-          <article class="worker-fact" id="ho-so"><span>05</span><h3>Hồ sơ nhập học</h3><ul><li>CCCD bản gốc và giấy khai sinh</li><li>Bằng THCS hoặc THPT nếu có</li><li>Chỉ chuẩn bị sau khi được xác nhận lịch</li></ul></article>
-          <article class="worker-fact" id="noi-lam-viec"><span>06</span><h3>Nơi học và làm việc</h3><p>Học tại Quang Hanh; sau đào tạo, người đạt yêu cầu được doanh nghiệp ngành Than tiếp nhận làm việc tại Quảng Ninh.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="learning-story section" aria-labelledby="learning-story-title">
-      <div class="container learning-story__grid">
-        <figure class="learning-story__media">
-          <img src="/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp" alt="Học viên nghề mỏ mặc bảo hộ quan sát thiết bị trong hầm lò dưới sự hướng dẫn" loading="lazy" decoding="async" width="1200" height="673">
-          <figcaption>Học viên được làm quen thiết bị và điều kiện làm việc thực tế trước khi vào sản xuất.</figcaption>
-        </figure>
-        <div class="learning-story__copy">
-          <p class="eyebrow">Hành trình của người mới</p><h2 id="learning-story-title">Chưa biết nghề vẫn có người hướng dẫn từng bước</h2>
-          <p>Người lao động không tự lên đường ngay sau khi đọc tin. Trước hết là kiểm tra điều kiện, nhận tư vấn, được xác nhận lịch rồi mới chuẩn bị hồ sơ và nhập học.</p>
-          <ol class="learning-story__steps">
-            <li><span>01</span><div><strong>Được tư vấn trước khi đi</strong><small>Biết rõ điều kiện, nghề học, chế độ và lịch tiếp nhận.</small></div></li>
-            <li><span>02</span><div><strong>Học nghề, thực hành và an toàn</strong><small>Người mới được đào tạo nền tảng trước khi vào sản xuất.</small></div></li>
-            <li><span>03</span><div><strong>Nhận việc bằng tay nghề</strong><small>Doanh nghiệp tiếp nhận người tốt nghiệp đạt yêu cầu.</small></div></li>
-          </ol>
-          <a class="story-next" href="#tu-kiem-tra"><span>↓</span>Tự kiểm tra điều kiện trong 30 giây</a>
+        <div class="worker-summary__intro"><div><p class="eyebrow">Thông tin đang áp dụng</p><h2 id="essential-title">Nhìn một lần, nắm đủ điều chính</h2></div><a href="/thong-tin-tuyen-tho-mo/">Xem thông tin đầy đủ →</a></div>
+        <div class="worker-summary__grid worker-summary__grid--compact">
+          <article class="worker-fact worker-fact--income" id="quyen-loi"><small>THU NHẬP SAU ĐÀO TẠO</small><strong>20–25 triệu đồng/tháng khi hoàn thành định mức lao động</strong></article>
+          <article class="worker-fact" id="dieu-kien"><span>01</span><h3>Điều kiện</h3><p>Nam 18–40 · từ 1m53 · từ 47kg · sức khỏe tốt</p></article>
+          <article class="worker-fact" id="thoi-gian-hoc"><span>02</span><h3>Học nghề</h3><p>Khai thác và xây dựng mỏ: 2–3 tháng<br>Cơ điện mỏ: 10 tháng</p></article>
+          <article class="worker-fact" id="ho-tro-hoc-nghe"><span>03</span><h3>Trong thời gian học</h3><p>Miễn học phí · 3 bữa/ngày · ký túc xá · hỗ trợ 7,5 triệu đồng</p></article>
+          <article class="worker-fact" id="ho-so"><span>04</span><h3>Hồ sơ</h3><p>CCCD · giấy khai sinh · bằng THCS/THPT nếu có</p></article>
+          <article class="worker-fact" id="noi-lam-viec"><span>05</span><h3>Học và làm việc</h3><p>Quang Hanh → các đơn vị ngành Than tại Quảng Ninh</p></article>
+          <a class="home-journey-card" href="/cau-chuyen-cong-nhan/">
+            <img src="/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" alt="Người thợ mỏ làm việc cùng thiết bị trong hầm lò" loading="lazy" decoding="async" width="1200" height="736">
+            <span><small>CÂU CHUYỆN NGƯỜI MỚI</small><strong>Từ quê nhà đến ngày nhận việc</strong><em>Tư vấn → học nghề → vào tổ đội</em><b>Xem hành trình thật →</b></span>
+          </a>
         </div>
       </div>
     </section>
@@ -215,59 +200,39 @@ const simpleMain = `  <main id="noi-dung" class="home-funnel">
 ${selfCheck}
     <section class="home-proof" id="thuc-te" aria-labelledby="home-proof-title"><span id="nguoi-that-viec-that" aria-hidden="true"></span>
       <div class="container">
-        <div class="home-proof__head"><div><p class="eyebrow">Xem thực tế trước khi quyết định</p><h2 id="home-proof-title">Một video và một câu chuyện để hình dung rõ nghề</h2></div><p>Phần này giúp người lao động hiểu môi trường, nhịp sống và tinh thần tổ đội mà không phải đọc thêm nhiều đoạn giới thiệu.</p></div>
+        <div class="home-proof__head"><p class="eyebrow">Người thật · việc thật</p><h2 id="home-proof-title">Xem nghề qua video và câu chuyện người thợ</h2></div>
         <div class="home-proof__grid home-proof__grid--simple">
           <article class="home-proof__video">
             <div class="video-frame" data-featured-video-host><button class="home-video-facade" type="button" data-featured-video-facade data-video-id="ts41cqu7r9c" data-video-title="Hành trình lập nghiệp cùng nghề mỏ" aria-label="Phát video hành trình lập nghiệp cùng nghề mỏ"><img src="https://i.ytimg.com/vi/ts41cqu7r9c/hqdefault.jpg" alt="Hình xem trước video câu chuyện công nhân ngành Than" loading="lazy" decoding="async" width="480" height="360"><span class="home-video-facade__play" aria-hidden="true">▶</span><span class="home-video-facade__label">Bấm để xem phóng sự</span></button></div>
-            <div class="home-proof__video-copy"><small>VIDEO NGƯỜI LAO ĐỘNG</small><h3>Hành trình lập nghiệp cùng nghề mỏ</h3><p>Nghe người lao động chia sẻ về công việc và cuộc sống tại vùng mỏ Quảng Ninh.</p></div>
+            <div class="home-proof__video-copy"><small>VIDEO NGƯỜI LAO ĐỘNG</small><h3>Hành trình lập nghiệp cùng nghề mỏ</h3></div>
           </article>
           <a class="home-proof__story" href="/cau-chuyen-cong-nhan/">
             <img src="/assets/vinacomin-tho-mo-ham-lo-1200.webp" alt="Nhóm thợ mỏ TKV trao đổi phương án công việc trong hầm lò" loading="lazy" decoding="async" width="1200" height="800">
-            <span><small>CÂU CHUYỆN NGƯỜI THỢ</small><strong>Làm nghề bằng kỹ năng và tinh thần tổ đội</strong><em>Mỗi ca làm có phân công, phối hợp và yêu cầu an toàn rõ ràng; người mới được học trước khi làm.</em><b>Xem câu chuyện công nhân →</b></span>
+            <span><small>CÂU CHUYỆN NGƯỜI THỢ</small><strong>Kỹ năng, an toàn và tinh thần tổ đội</strong><b>Xem câu chuyện công nhân →</b></span>
           </a>
         </div>
       </div>
     </section>
 
-    <section class="section process-section" id="quy-trinh" aria-labelledby="process-title">
-      <div class="container">
-        <div class="section-heading"><div><p class="eyebrow">Hành trình tư vấn</p><h2 id="process-title">Từ quan tâm đến ngày nhập học</h2></div><p>Mỗi bước chỉ làm khi bước trước đã rõ. Đăng ký ban đầu chưa cần gửi ảnh CCCD hay hồ sơ.</p></div>
-        <ol class="process-grid process-grid--four">
-          <li><span>1</span><h3>Gửi thông tin</h3><p>Năm sinh, chiều cao/cân nặng, sức khỏe và tỉnh đang sống.</p></li>
-          <li><span>2</span><h3>Nhận tư vấn</h3><p>Đối chiếu điều kiện, nghề học, chế độ và công việc.</p></li>
-          <li><span>3</span><h3>Chuẩn bị hồ sơ</h3><p>Chỉ chuẩn bị giấy tờ sau khi đã được hướng dẫn.</p></li>
-          <li><span>4</span><h3>Xác nhận nhập học</h3><p>Đến Quang Hanh đúng lịch tiếp nhận đã xác nhận.</p></li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="worker-address" id="dia-diem">
-      <div class="container worker-address__grid">
-        <article class="worker-address__card"><small>Nơi học và nhập học</small><h2>Khu C – Phân hiệu Đào tạo Cẩm Phả</h2><p>Phường Quang Hanh, tỉnh Quảng Ninh.</p><div class="worker-address__note">Chỉ đến sau khi được xác nhận lịch tiếp nhận cụ thể.</div></article>
-        <article class="worker-address__card"><small>Đầu mối tư vấn</small><h3>Thầy Linh · 096 304 8585</h3><p>Số 8 Chu Văn An, phường Hạ Long, tỉnh Quảng Ninh.</p><div class="button-row"><a class="button button-outline" href="${zaloHref}" target="_blank" rel="noopener" data-contact="zalo" data-context="home-address">Nhắn Zalo</a><a class="button button-outline" href="tel:+84963048585" data-contact="phone" data-context="home-address">Gọi điện</a></div></article>
-      </div>
-    </section>
-
     <section class="worker-faq" id="faq">
       <div class="container worker-faq__grid">
-        <div><p class="eyebrow">Giải đáp ngắn gọn</p><h2>Câu hỏi thường gặp</h2></div>
+        <div><p class="eyebrow">Giải đáp nhanh</p><h2>Điều người mới thường hỏi</h2></div>
         <div>
-          <details open><summary>Chưa từng làm mỏ có đăng ký được không?</summary><p>Có. Người chưa có nghề được đào tạo trước khi doanh nghiệp tiếp nhận.</p></details>
+          <details><summary>Chưa từng làm mỏ có đăng ký được không?</summary><p>Có. Người chưa có nghề được đào tạo trước khi doanh nghiệp tiếp nhận.</p></details>
           <details><summary>Đăng ký ban đầu có phải nộp hồ sơ không?</summary><p>Không. Trước hết chỉ cần gửi thông tin cơ bản để kiểm tra điều kiện.</p></details>
-          <details><summary>Chưa có bằng cấp 2 hoặc cấp 3 thì sao?</summary><p>Vẫn có thể đăng ký để được hướng dẫn đối chiếu theo hệ đào tạo.</p></details>
-          <details><summary>Khi nào tôi mới cần lên Quảng Ninh?</summary><p>Chỉ lên đường sau khi đã được tư vấn, xác nhận phù hợp và có lịch tiếp nhận cụ thể.</p></details>
+          <details><summary>Khi nào mới cần lên Quảng Ninh?</summary><p>Chỉ lên đường sau khi đã được tư vấn và xác nhận lịch tiếp nhận cụ thể.</p></details>
         </div>
       </div>
     </section>
 
     <section class="worker-register" id="tu-van" aria-labelledby="consult-title"><span id="dang-ky" aria-hidden="true"></span>
       <div class="container worker-register__grid">
-        <div><p class="eyebrow">Bước tiếp theo</p><h2 id="consult-title">Chọn cách thuận tiện nhất để được tư vấn</h2><p>Chưa cần hồ sơ. Nếu chưa chắc mình phù hợp, cứ gửi thông tin để được kiểm tra trước.</p><div class="worker-register__promise">Cần chuẩn bị: năm sinh · chiều cao/cân nặng · sức khỏe · tỉnh đang sinh sống</div></div>
+        <div><p class="eyebrow">Bước tiếp theo</p><h2 id="consult-title">Chọn cách thuận tiện để được tư vấn</h2><p>Chưa cần hồ sơ. Chỉ cần năm sinh, chiều cao/cân nặng, sức khỏe và tỉnh đang sống.</p><div class="worker-register__location" id="dia-diem"><small>ĐỊA ĐIỂM NHẬP HỌC</small><strong>Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, Quảng Ninh</strong></div></div>
         <div class="contact-choice-grid" aria-label="Bốn cách đăng ký và liên hệ">
-          <a class="contact-choice contact-choice--form" href="${applicationHref}" data-contact="application" data-context="home-register"><small>ĐỂ LẠI THÔNG TIN</small><strong data-application-resume-label>Điền biểu mẫu 1 phút</strong><span>Chủ động gửi khi thuận tiện</span></a>
-          <a class="contact-choice contact-choice--zalo" href="${zaloHref}" target="_blank" rel="noopener" data-contact="zalo" data-context="home-register"><small>NHẮN TIN</small><strong>Zalo 096 304 8585</strong><span>Gửi thông tin để kiểm tra</span></a>
-          <a class="contact-choice contact-choice--messenger" href="${messengerHref}" target="_blank" rel="noopener" data-contact="messenger" data-context="home-register"><small>NHẮN TIN</small><strong>Messenger Thầy Linh</strong><span>Hỏi trực tiếp trường hợp của mình</span></a>
-          <a class="contact-choice contact-choice--phone" href="tel:+84963048585" data-contact="phone" data-context="home-register"><small>GỌI TRỰC TIẾP</small><strong>096 304 8585</strong><span>Trao đổi nhanh với Thầy Linh</span></a>
+          <a class="contact-choice contact-choice--form" href="${applicationHref}" data-contact="application" data-context="home-register"><small>ĐỂ LẠI THÔNG TIN</small><strong data-application-resume-label>Điền biểu mẫu 1 phút</strong></a>
+          <a class="contact-choice contact-choice--zalo" href="${zaloHref}" target="_blank" rel="noopener" data-contact="zalo" data-context="home-register"><small>NHẮN TIN</small><strong>Zalo 096 304 8585</strong></a>
+          <a class="contact-choice contact-choice--messenger" href="${messengerHref}" target="_blank" rel="noopener" data-contact="messenger" data-context="home-register"><small>NHẮN TIN</small><strong>Messenger Thầy Linh</strong></a>
+          <a class="contact-choice contact-choice--phone" href="tel:+84963048585" data-contact="phone" data-context="home-register"><small>GỌI TRỰC TIẾP</small><strong>096 304 8585</strong></a>
         </div>
       </div>
     </section>
@@ -289,7 +254,8 @@ html = replaceOnce(html, '<meta property="og:title" content="Tuyển thợ mỏ 
 html = replaceOnce(html, '<meta property="og:description" content="Điều kiện, quyền lợi, hồ sơ, địa điểm nhập học và cách đăng ký được trình bày ngắn gọn cho người lao động.">', '<meta property="og:description" content="Một hành trình rõ ràng từ kiểm tra điều kiện, học nghề tại Quang Hanh đến nhận việc ngành Than ở Quảng Ninh.">', "Homepage Open Graph description");
 html = replaceOnce(html, '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – thông tin dành cho người lao động">', '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', "Homepage Twitter title");
 html = replaceOnce(html, '<meta name="twitter:description" content="Xem nhanh điều kiện, quyền lợi, hồ sơ, địa điểm và cách đăng ký học nghề mỏ tại Quảng Ninh.">', '<meta name="twitter:description" content="Xem hành trình học nghề mỏ tại Quang Hanh, quyền lợi, hồ sơ và việc làm ngành Than tại Quảng Ninh.">', "Homepage Twitter description");
-html = replaceOnce(html, "</head>", '  <link rel="stylesheet" href="/worker-info-finder.css?v=2">\n  <link rel="stylesheet" href="/home-rich-media.css?v=2">\n</head>', "Worker self-check and consultation funnel stylesheets");
+html = replaceOnce(html, '<link rel="preload" href="assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" as="image" type="image/webp">', '<link rel="preload" href="/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp" as="image" type="image/webp" fetchpriority="high">', "Homepage hero image preload");
+html = replaceOnce(html, "</head>", '  <link rel="stylesheet" href="/worker-info-finder.css?v=2">\n  <link rel="stylesheet" href="/home-rich-media.css?v=3">\n</head>', "Worker self-check and visual consultation funnel stylesheets");
 html = replaceOnce(html, '<button class="menu-toggle" type="button"', `${headerSearch}\n      <button class="menu-toggle" type="button"`, "Header search button");
 html = replaceOnce(html, 'href="/mobile-ux.css?v=5"', 'href="/mobile-ux.css?v=6"', "Homepage mobile UX stylesheet version");
 html = replaceOnce(html, 'src="/mobile-ux.js?v=4"', 'src="/mobile-ux.js?v=8"', "Homepage mobile UX version");
@@ -317,11 +283,11 @@ if (mobileBlocks.length !== 1) throw new Error(`Worker-first homepage expected o
 html = html.replace(mobileBlocks[0], staticMobile);
 html = replaceOnce(html, "</body>", '  <script src="/worker-info-finder.js?v=2" defer></script>\n</body>', "Worker self-check script");
 
-for (const required of ['class="home-funnel"', 'class="consultation-path"', 'id="thong-tin"', 'id="tu-kiem-tra"', 'id="thuc-te"', 'id="quy-trinh"', 'id="tu-van"', 'class="home-proof"', 'data-featured-video-facade', 'id="learning-story-title"', '/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp', "data-open-site-search", "data-worker-check-form", "data-open-worker-brief", 'id="che-do-ho-so"', 'id="thoi-gian-hoc"', 'id="ho-tro-hoc-nghe"', 'id="noi-lam-viec"', 'class="contact-choice-grid"', 'data-contact="application"', 'data-contact="zalo"', 'data-contact="messenger"', 'data-contact="phone"']) {
+for (const required of ['class="home-funnel"', 'class="hero-visual"', 'class="consultation-path"', 'id="thong-tin"', 'id="tu-kiem-tra"', 'id="thuc-te"', 'id="quy-trinh"', 'id="tu-van"', 'class="worker-summary__grid worker-summary__grid--compact"', 'class="home-journey-card"', 'class="home-proof"', 'data-featured-video-facade', '/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp', '/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp', '/assets/vinacomin-tho-mo-ham-lo-1200.webp', "data-open-site-search", "data-worker-check-form", "data-open-worker-brief", 'id="che-do-ho-so"', 'id="thoi-gian-hoc"', 'id="ho-tro-hoc-nghe"', 'id="noi-lam-viec"', 'class="contact-choice-grid"', 'data-contact="application"', 'data-contact="zalo"', 'data-contact="messenger"', 'data-contact="phone"']) {
   if (!html.includes(required)) throw new Error(`Worker-first homepage is missing generated feature: ${required}`);
 }
 if (html.includes('/assets/vinacomin-dao-tao-tho-lo.webp')) throw new Error("Worker-first homepage still contains the rejected podium image");
-for (const removed of ['class="worker-quick"', 'class="worker-recommended"', 'class="home-gallery"', 'class="v5-intent-hub"', 'class="v4-final-conversion"', 'class="v4-five-paths"', 'data-worker-province-select', 'data-province-video-facade']) {
+for (const removed of ['class="worker-quick"', 'class="worker-recommended"', 'class="home-gallery"', 'class="hero-card"', 'class="hero-facts"', 'class="verification-gateway"', 'class="section process-section"', 'class="v5-intent-hub"', 'class="v4-final-conversion"', 'class="v4-five-paths"', 'data-worker-province-select', 'data-province-video-facade']) {
   if (html.includes(removed)) throw new Error(`Worker-first homepage still contains removed complexity: ${removed}`);
 }
 
@@ -339,6 +305,6 @@ console.log(JSON.stringify({
   compatibilityAnchors: 2,
   consultationSteps: 4,
   selfCheckQuestions: 4,
-  visibleMediaItems: 3,
+  visibleMediaItems: 4,
   contactChannels: ["form", "zalo", "messenger", "phone"],
 }, null, 2));

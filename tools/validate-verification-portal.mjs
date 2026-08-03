@@ -55,7 +55,7 @@ for (const unsafe of ["health_screen: values", "age_range: values", "localStorag
 if (Buffer.byteLength(js) > 18_000) errors.push(`verification-portal.js quá lớn: ${Buffer.byteLength(js)} bytes`);
 if (Buffer.byteLength(css) > 16_000) errors.push(`verification-portal.css quá lớn: ${Buffer.byteLength(css)} bytes`);
 if (!css.includes("grid-template-columns:repeat(3")) errors.push("CSS chưa khóa thanh mobile thành 3 nút");
-if (!home.includes('id="cong-kiem-chung-nghe-mo"')) errors.push("Trang chủ thiếu cổng kiểm chứng nghề mỏ");
+if (home.includes('id="cong-kiem-chung-nghe-mo"') || home.includes('class="verification-gateway"')) errors.push("Trang chủ còn khối cổng kiểm chứng lặp và nhiều chữ");
 const mobileUx = read("mobile-ux.js");
 if (mobileUx.includes("function loadVerificationPortalAssets()")) errors.push("Bộ nạp cổng kiểm chứng không được làm tăng mobile-ux.js");
 const analytics = read("analytics.js");

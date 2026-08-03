@@ -296,29 +296,12 @@ function writePages() {
   }
 }
 
-const gatewaySection = `
-    <section class="verification-gateway" id="cong-kiem-chung-nghe-mo" aria-labelledby="verification-gateway-title">
-      <div class="container">
-        <div class="verification-gateway__head"><div><p class="eyebrow">Website đã đổi vai</p><h2 id="verification-gateway-title">Cổng kiểm chứng nghề mỏ</h2></div><p>Không chỉ đọc một tin tuyển dụng. Hãy so sánh lựa chọn, xem người thật theo tỉnh, tự kiểm tra điều kiện và hiểu rõ hồ sơ, thu nhập, ăn ở, an toàn trước khi liên hệ.</p></div>
-        <div class="verification-gateway__grid">
-          <a class="verification-gateway__card verification-gateway__card--primary" href="/chon-kcn-hay-lam-mo/"><span><small>Bắt đầu từ quyết định</small><strong>Chọn KCN hay làm mỏ?</strong><em>So sánh thẳng thắn trước khi chọn nghề.</em></span></a>
-          <a class="verification-gateway__card" href="/cau-chuyen-cong-nhan/"><span><small>Người thật theo tỉnh</small><strong>Câu chuyện công nhân</strong><em>Video, hành trình và tư liệu đã đối chiếu.</em></span></a>
-          <a class="verification-gateway__card" href="/kiem-tra-dieu-kien/"><span><small>30 giây · không lưu dữ liệu</small><strong>Kiểm tra điều kiện</strong><em>Tuổi, chiều cao, cân nặng và sức khỏe sơ bộ.</em></span></a>
-          <a class="verification-gateway__card" href="/ho-so-nhap-hoc/"><span><small>Chuẩn bị đúng</small><strong>Hồ sơ nhập học</strong><em>Giấy tờ, thời điểm và địa chỉ cụ thể.</em></span></a>
-          <a class="verification-gateway__card" href="/thu-nhap-an-o-ho-tro/"><span><small>Đọc đủ điều kiện</small><strong>Thu nhập, ăn ở, hỗ trợ</strong><em>Hiểu quyền lợi và điều kiện áp dụng.</em></span></a>
-          <a class="verification-gateway__card" href="/an-toan-ky-luat-moi-truong/"><span><small>Hiểu nghề trước khi chọn</small><strong>An toàn và môi trường làm việc</strong><em>Hầm lò, ca kíp, bảo hộ và kỷ luật tổ đội.</em></span></a>
-        </div>
-      </div>
-    </section>`;
-
 function enhanceHome() {
   const target = path.join(root, "index.html");
   let source = fs.readFileSync(target, "utf8");
-  if (!source.includes('id="cong-kiem-chung-nghe-mo"')) {
-    const marker = '<section class="worker-summary"';
-    const index = source.indexOf(marker);
-    if (index < 0) throw new Error("Home verification gateway marker is missing");
-    source = `${source.slice(0, index)}${gatewaySection}\n\n    ${source.slice(index)}`;
+  source = source.replace(/\s*<section class="verification-gateway"[\s\S]*?<\/section>\s*/i, "\n\n");
+  if (source.includes('id="cong-kiem-chung-nghe-mo"')) {
+    throw new Error("Home verification gateway was not removed");
   }
   fs.writeFileSync(target, source);
 }
