@@ -124,7 +124,7 @@ jobs:
                 && grep -Fq '.verification-comparison td:nth-child(2)::before' "$polish_file" \
                 && grep -Fq '.network-header__inner' "$polish_file" \
                 && grep -Fq 'polishMobileContact' "$shell_file" \
-                && grep -Fq '20260803-v4' "$shell_file" \
+                && grep -Fq '20260803-v3' "$shell_file" \
                 && grep -Fq 'User-agent: OAI-SearchBot' "$robots_file" \
                 && grep -Fq 'User-agent: PerplexityBot' "$robots_file" \
                 && grep -Fq 'User-agent: Claude-SearchBot' "$robots_file" \
