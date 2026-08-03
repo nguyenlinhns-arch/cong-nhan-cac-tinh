@@ -25,6 +25,8 @@
   .home-proof.home-proof--early .home-section-head{margin-bottom:20px}
   .home-proof.home-proof--early .home-section-head h2{font-size:30px}
   .home-funnel .home-journey{padding-top:60px}
+  .home-funnel .hero .button-row .button-brief{border-color:rgba(255,255,255,.62)!important;background:rgba(255,255,255,.08)!important;color:#fff!important;box-shadow:none!important}
+  .home-funnel .hero .button-row .button-brief:focus-visible{outline:3px solid rgba(255,208,138,.7);outline-offset:3px}
   .tl-mobile-contact__journey{background:linear-gradient(145deg,#f39a32,#d86f0c)!important;color:#102a30!important}
   .tl-mobile-contact__journey b{font-size:14px}
 }

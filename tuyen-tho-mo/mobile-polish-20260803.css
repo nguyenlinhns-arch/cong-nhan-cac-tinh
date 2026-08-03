@@ -1,0 +1,165 @@
+/* Hoàn thiện giao diện mobile: header rõ thương hiệu, một thanh hành động, bảng so sánh dễ đọc. */
+@media (max-width: 767px) {
+  html.tl-mobile-ux-ready .verification-mobile-contact { display: none !important; }
+
+  .verification-page .site-header .header-inner {
+    height: 72px;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 42px auto;
+    align-items: center;
+    gap: 8px;
+  }
+  .verification-page .site-header .brand {
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0;
+    margin-right: 0 !important;
+    gap: 8px;
+    overflow: visible !important;
+  }
+  .verification-page .site-header .brand-mark {
+    width: 41px;
+    height: 41px;
+    flex: 0 0 41px;
+    font-size: 13px;
+  }
+  .verification-page .site-header .brand > span {
+    min-width: 0;
+    overflow: visible !important;
+  }
+  .verification-page .site-header .brand strong,
+  .verification-page .site-header .brand small {
+    display: block !important;
+    max-width: none !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: nowrap !important;
+  }
+  .verification-page .site-header .brand strong { font-size: 14px; line-height: 1.12; }
+  .verification-page .site-header .brand small { margin-top: 2px; font-size: 8px; line-height: 1.15; letter-spacing: .025em; }
+  .verification-page .site-header .tl-site-search-button,
+  .verification-page .site-header .worker-header-search { width: 42px; height: 42px; min-width: 42px; }
+  .verification-page .site-header .header-cta {
+    min-width: 0;
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 12px;
+    border-radius: 11px;
+    font-size: 12px;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+
+  .network-header__inner {
+    min-height: 72px;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 42px auto;
+    align-items: center;
+    gap: 8px;
+    padding-block: 7px !important;
+  }
+  .network-brand { min-width: 0; gap: 8px; }
+  .network-brand img { width: 41px; height: 41px; flex: 0 0 41px; }
+  .network-brand > span { min-width: 0; }
+  .network-brand strong,
+  .network-brand small { display: block !important; overflow: visible !important; text-overflow: clip !important; white-space: nowrap !important; }
+  .network-brand strong { font-size: 14px; line-height: 1.12; }
+  .network-brand small { margin-top: 2px; color: #5d7075; font-size: 8px !important; line-height: 1.15; }
+  .network-nav { display: none !important; }
+  .network-header .tl-site-search-button { width: 42px; height: 42px; min-width: 42px; }
+  .network-apply {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 12px;
+    border-radius: 11px;
+    font-size: 12px;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+
+  .tl-mobile-contact__primary {
+    background: linear-gradient(145deg, #f39a32, #d86f0c) !important;
+    color: #102a30 !important;
+  }
+  .tl-mobile-contact__primary b { font-size: 14px; }
+
+  .verification-comparison { overflow: visible !important; }
+  .verification-comparison table,
+  .verification-comparison tbody,
+  .verification-comparison tr,
+  .verification-comparison td {
+    display: block;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    position: static !important;
+    left: auto !important;
+  }
+  .verification-comparison table { border: 0 !important; table-layout: auto !important; }
+  .verification-comparison thead { position: absolute !important; width: 1px !important; height: 1px !important; overflow: hidden !important; clip: rect(0 0 0 0) !important; white-space: nowrap !important; }
+  .verification-comparison tr {
+    margin-bottom: 13px;
+    overflow: hidden;
+    border: 1px solid #cbdedb;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 10px 26px rgba(6, 60, 70, .07);
+  }
+  .verification-comparison td {
+    padding: 14px 15px !important;
+    border: 0 !important;
+    color: #3f595e;
+    font-size: 13px;
+    line-height: 1.58;
+  }
+  .verification-comparison td:first-child {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 13px 15px !important;
+    background: #063c46;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 900;
+  }
+  .verification-comparison td:nth-child(2) { border-bottom: 1px solid #e2ecea !important; }
+  .verification-comparison td:nth-child(2)::before,
+  .verification-comparison td:nth-child(3)::before {
+    display: block;
+    margin-bottom: 5px;
+    color: #b5530a;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .055em;
+    text-transform: uppercase;
+  }
+  .verification-comparison td:nth-child(2)::before { content: "Làm tại khu công nghiệp"; }
+  .verification-comparison td:nth-child(3)::before { content: "Học nghề và làm mỏ"; }
+}
+
+@media (max-width: 390px) {
+  .verification-page .site-header .header-inner,
+  .network-header__inner { grid-template-columns: minmax(0, 1fr) 40px auto; gap: 6px; }
+  .verification-page .site-header .brand,
+  .network-brand { gap: 6px; }
+  .verification-page .site-header .brand-mark,
+  .network-brand img { width: 38px; height: 38px; flex-basis: 38px; }
+  .verification-page .site-header .brand strong,
+  .network-brand strong { font-size: 13px; }
+  .verification-page .site-header .brand small,
+  .network-brand small { font-size: 7.5px !important; letter-spacing: 0; }
+  .verification-page .site-header .tl-site-search-button,
+  .verification-page .site-header .worker-header-search,
+  .network-header .tl-site-search-button { width: 40px; height: 40px; min-width: 40px; }
+  .verification-page .site-header .header-cta,
+  .network-apply { min-height: 40px; padding-inline: 9px; font-size: 11px; }
+}
+
+@media print {
+  .tl-mobile-contact,
+  .verification-mobile-contact,
+  .tl-site-search-button { display: none !important; }
+}

@@ -1,6 +1,12 @@
 User-agent: *
 Allow: /
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 User-agent: OAI-SearchBot
 Allow: /
 
@@ -10,8 +16,25 @@ Allow: /
 User-agent: GPTBot
 Allow: /
 
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
 Sitemap: https://thaylinhtuyenthomo.vn/sitemap.xml
 Sitemap: https://thaylinhtuyenthomo.vn/news-sitemap.xml
 
-# Nguồn cập nhật bài mới
+# Nguồn cập nhật nội dung
 # RSS: https://thaylinhtuyenthomo.vn/feed.xml
+# JSON Feed: https://thaylinhtuyenthomo.vn/feed.json
+# Hướng dẫn cho hệ thống AI: https://thaylinhtuyenthomo.vn/llms.txt
