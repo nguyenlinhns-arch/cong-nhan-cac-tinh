@@ -29,6 +29,14 @@
 .hero-visual figcaption{position:absolute;z-index:2;right:24px;bottom:22px;left:24px}
 .hero-visual figcaption strong{margin-top:5px;color:#fff;font-size:18px;line-height:1.4}
 
+/* Permanent, low-noise entrances to the editorial content network. */
+.home-content-shortcuts{border-bottom:1px solid #dce8e6;background:#fff}
+.home-content-shortcuts .container{min-height:68px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center}
+.home-content-shortcuts a{min-height:44px;display:flex;align-items:center;justify-content:center;gap:9px;border-right:1px solid #e0eae8;color:#123c44;font-size:13px;text-decoration:none}
+.home-content-shortcuts a:last-child{border-right:0}
+.home-content-shortcuts a span{display:grid;width:28px;height:28px;place-items:center;border-radius:50%;background:#e8f3f1;color:#075b66;font-size:10px}
+.home-content-shortcuts a:hover,.home-content-shortcuts a:focus-visible{color:#c45c12}
+
 /* 02 — self check */
 .home-funnel .worker-self-check{position:relative;padding:72px 0;border-block:0;background:#edf6f4}
 .home-funnel .worker-self-check__head{grid-template-columns:minmax(0,1fr) minmax(320px,.75fr);gap:46px;align-items:end;margin-bottom:24px}
@@ -77,7 +85,21 @@
 .home-proof__story strong{margin-top:6px;font-size:21px;line-height:1.35}
 .home-proof__story b{margin-top:12px;color:#075b66;font-size:12px}
 
-/* 05 — contact */
+/* 05 — articles, industry news and video */
+.home-library{padding:74px 0 80px;background:#f2f6f5}
+.home-library .home-section-head{max-width:none;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:0 24px}
+.home-library .home-section-head .home-step{grid-column:1/-1;width:max-content}
+.home-library .home-section-head>a{padding-bottom:6px;color:#075b66;font-size:13px;font-weight:900;text-decoration:none}
+.home-library__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.home-library__card{display:grid;grid-template-rows:auto 1fr;overflow:hidden;border:1px solid #d4e1df;border-radius:18px;background:#fff;color:#17363b;text-decoration:none;box-shadow:0 12px 34px rgba(6,60,70,.07);transition:transform .2s,border-color .2s,box-shadow .2s}
+.home-library__card:hover,.home-library__card:focus-visible{transform:translateY(-3px);border-color:#f18724;box-shadow:0 18px 40px rgba(6,60,70,.12)}
+.home-library__card img{width:100%;aspect-ratio:16/10;object-fit:cover;background:#dbe7e5}
+.home-library__card>span{display:flex;min-height:160px;flex-direction:column;padding:18px 19px 20px}
+.home-library__card small{color:#c45c12;font-size:9px;font-weight:900;letter-spacing:.09em}
+.home-library__card strong{margin-top:7px;color:#123c44;font-size:19px;line-height:1.35}
+.home-library__card b{margin-top:auto;padding-top:14px;color:#075b66;font-size:12px}
+
+/* 06 — contact */
 .home-funnel .worker-register{padding:78px 0 84px;background:#f4efe4;color:#17363b}
 .home-funnel .worker-register__grid{grid-template-columns:minmax(0,.92fr) minmax(420px,1.08fr);gap:54px;align-items:center}
 .home-funnel .worker-register h2{margin:0;color:#092f38;font-size:clamp(32px,4.4vw,48px);line-height:1.1;letter-spacing:-.035em}
@@ -100,6 +122,8 @@
   .home-journey__layout{grid-template-columns:1fr;gap:24px}
   .home-journey__visual,.home-journey__visual img{min-height:430px}
   .home-proof__grid--simple,.home-funnel .worker-register__grid{grid-template-columns:1fr}
+  .home-library__grid{grid-template-columns:repeat(3,minmax(240px,1fr));overflow-x:auto;padding:0 2px 16px;scroll-snap-type:x proximity}
+  .home-library__card{scroll-snap-align:start}
 }
 
 @media(max-width:640px){
@@ -116,7 +140,10 @@
   .hero-visual__income strong{font-size:14px;line-height:1.35}
   .hero-visual figcaption{right:16px;bottom:15px;left:16px}
   .hero-visual figcaption strong{font-size:14px}
-  .home-funnel .worker-self-check,.home-journey,.home-proof,.home-funnel .worker-register{padding:44px 0}
+  .home-funnel .worker-self-check,.home-journey,.home-proof,.home-library,.home-funnel .worker-register{padding:44px 0}
+  .home-content-shortcuts .container{width:100%;min-height:58px}
+  .home-content-shortcuts a{min-height:58px;gap:6px;font-size:12px}
+  .home-content-shortcuts a span{width:24px;height:24px}
   .home-funnel .worker-self-check__head{grid-template-columns:1fr;gap:8px;margin-bottom:18px}
   .home-funnel .worker-self-check__head h2,.home-section-head h2,.home-funnel .worker-register h2{font-size:28px;line-height:1.12}
   .home-funnel .worker-self-check__head>p{font-size:12px;line-height:1.5}
@@ -145,6 +172,11 @@
   .home-proof__video-copy h3{font-size:19px}
   .home-proof__story img{min-height:190px}
   .home-proof__story strong{font-size:18px}
+  .home-library .home-section-head{grid-template-columns:1fr;gap:10px}
+  .home-library .home-section-head>a{width:max-content;padding:0}
+  .home-library__grid{grid-template-columns:repeat(3,minmax(82vw,1fr));margin-right:calc((100vw - 100%)/-2);padding-right:18px}
+  .home-library__card>span{min-height:142px;padding:15px 16px 17px}
+  .home-library__card strong{font-size:17px}
   .home-funnel .worker-register__grid{gap:22px}
   .home-funnel .worker-register .worker-register__lead{margin-top:10px;font-size:13px;line-height:1.5}
   .contact-choice-grid{grid-template-columns:1fr 1fr}
@@ -162,4 +194,4 @@
 
 @media(max-width:340px){.home-funnel .hero .button-row{grid-template-columns:1fr}}
 
-@media(prefers-reduced-motion:reduce){.home-proof__story,.contact-choice{transition:none}}
+@media(prefers-reduced-motion:reduce){.home-proof__story,.home-library__card,.contact-choice{transition:none}}
