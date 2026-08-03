@@ -182,7 +182,7 @@ for (const file of contentFiles) {
   const relative = path.relative(root, file);
   if (!html.includes('/analytics.js?v=5')) fail(`${relative}: chưa nạp analytics v5`);
   if (!html.includes('/mobile-ux.css?v=6')) fail(`${relative}: chưa nạp mobile UX CSS v6`);
-  const mobileUxVersion = "/mobile-ux.js?v=8";
+  const mobileUxVersion = relative === "index.html" ? "/mobile-ux.js?v=9" : "/mobile-ux.js?v=8";
   if (!html.includes(mobileUxVersion)) fail(`${relative}: chưa nạp ${mobileUxVersion}`);
 }
 

@@ -122,22 +122,22 @@ const structuredDataMarkup = `  <script type="application/ld+json">\n  ${JSON.st
 
 const searchIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>';
 const headerSearch = `<button class="worker-header-search" type="button" data-open-site-search data-worker-search data-context="header" aria-haspopup="dialog" aria-label="Tìm thông tin trên website">${searchIcon}<span class="sr-only">Tìm thông tin</span></button>`;
-const heroBriefButton = '<button class="button button-brief" type="button" data-open-worker-brief data-worker-shortcut="brief" aria-haspopup="dialog">Tóm tắt 30 giây</button>';
+const heroBriefButton = '<button class="button button-brief" type="button" data-open-worker-brief data-worker-shortcut="brief" aria-haspopup="dialog">Xem nhanh 30 giây</button>';
 const selfCheck = `    <section class="worker-self-check" id="tu-kiem-tra" aria-labelledby="worker-self-check-title">
       <span id="dieu-kien" class="home-anchor" aria-hidden="true"></span>
       <div class="container">
         <div class="worker-self-check__head">
-          <div><p class="home-step">Bước 1</p><h2 id="worker-self-check-title">Bạn có phù hợp không?</h2></div>
-          <p>4 câu trả lời · không lưu dữ liệu. Kết quả sơ bộ; khám tuyển là căn cứ xác nhận cuối cùng.</p>
+          <div><p class="home-step">Bước 1</p><h2 id="worker-self-check-title">Kiểm tra điều kiện trong 30 giây</h2></div>
+          <p>4 câu · không lưu dữ liệu. Khám tuyển là căn cứ xác nhận cuối cùng.</p>
         </div>
         <form class="worker-check" data-worker-check-form novalidate>
           <div class="worker-check__questions">
-            <fieldset><legend><span>01</span><strong>Nam, từ 18 đến 40 tuổi?</strong></legend><div class="worker-check__choices"><label><input type="radio" name="age_range" value="yes"><span>Có</span></label><label><input type="radio" name="age_range" value="review"><span>Chưa / không rõ</span></label></div></fieldset>
-            <fieldset><legend><span>02</span><strong>Cao từ 1m53?</strong></legend><div class="worker-check__choices"><label><input type="radio" name="height_range" value="yes"><span>Có</span></label><label><input type="radio" name="height_range" value="review"><span>Chưa / không rõ</span></label></div></fieldset>
-            <fieldset><legend><span>03</span><strong>Nặng từ 47kg?</strong></legend><div class="worker-check__choices"><label><input type="radio" name="weight_range" value="yes"><span>Có</span></label><label><input type="radio" name="weight_range" value="review"><span>Chưa / không rõ</span></label></div></fieldset>
-            <fieldset><legend><span>04</span><strong>Sức khỏe tốt, không cận thị hoặc bệnh ảnh hưởng công việc?</strong></legend><div class="worker-check__choices"><label><input type="radio" name="health_screen" value="yes"><span>Có</span></label><label><input type="radio" name="health_screen" value="review"><span>Chưa / không rõ</span></label></div></fieldset>
+            <fieldset><legend><span>01</span><strong>Nam, 18–40 tuổi?</strong></legend><div class="worker-check__choices"><label><input type="radio" name="age_range" value="yes"><span>Có</span></label><label><input type="radio" name="age_range" value="review"><span>Không / chưa rõ</span></label></div></fieldset>
+            <fieldset><legend><span>02</span><strong>Cao từ 1m53?</strong></legend><div class="worker-check__choices"><label><input type="radio" name="height_range" value="yes"><span>Có</span></label><label><input type="radio" name="height_range" value="review"><span>Không / chưa rõ</span></label></div></fieldset>
+            <fieldset><legend><span>03</span><strong>Nặng từ 47kg?</strong></legend><div class="worker-check__choices"><label><input type="radio" name="weight_range" value="yes"><span>Có</span></label><label><input type="radio" name="weight_range" value="review"><span>Không / chưa rõ</span></label></div></fieldset>
+            <fieldset><legend><span>04</span><strong>Sức khỏe tốt, không cận thị hoặc bệnh ảnh hưởng công việc?</strong></legend><div class="worker-check__choices"><label><input type="radio" name="health_screen" value="yes"><span>Có</span></label><label><input type="radio" name="health_screen" value="review"><span>Không / chưa rõ</span></label></div></fieldset>
           </div>
-          <div class="worker-check__footer"><p><strong>Không lưu câu trả lời.</strong> Đăng ký ban đầu vẫn chưa cần nộp hồ sơ.</p><button class="worker-check__submit" type="submit">Xem kết quả sơ bộ</button></div>
+          <div class="worker-check__footer"><p>Chưa cần nộp hồ sơ.</p><button class="worker-check__submit" type="submit">Xem kết quả</button></div>
           <div class="worker-check__result" data-worker-check-result role="status" aria-live="polite" tabindex="-1" hidden></div>
         </form>
       </div>
@@ -153,10 +153,10 @@ const simpleMain = `  <main id="noi-dung" class="home-funnel">
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="eyebrow">Tuyển thợ mỏ tháng 8/2026</p>
-          <h1>Học nghề ngắn hạn.<span>Nhận việc tại Quảng Ninh.</span></h1>
-          <p class="hero-lead">Nam 18–40 tuổi · từ 1m53 · từ 47kg · sức khỏe tốt</p>
+          <h1>Học nghề mỏ.<span>Nhận việc tại Quảng Ninh.</span></h1>
+          <p class="hero-lead">Nam 18–40 · cao từ 1m53 · nặng từ 47kg · đủ sức khỏe</p>
           <div class="button-row">
-            <a class="button button-zalo" href="#tu-kiem-tra">Kiểm tra tôi có phù hợp</a>
+            <a class="button button-zalo" href="#tu-kiem-tra">Kiểm tra điều kiện</a>
             ${heroBriefButton}
           </div>
           <small class="hero-assurance">Chưa cần hồ sơ · chưa cần lên Quảng Ninh</small>
@@ -173,17 +173,17 @@ ${selfCheck}
     <section class="home-journey" id="thong-tin" aria-labelledby="home-journey-title">
       <span id="quy-trinh" class="home-anchor" aria-hidden="true"></span><span id="theo-tinh" class="home-anchor" aria-hidden="true"></span><span id="che-do-ho-so" class="home-anchor" aria-hidden="true"></span>
       <div class="container">
-        <div class="home-section-head"><p class="home-step">Bước 2</p><h2 id="home-journey-title">Nếu phù hợp, hành trình chỉ có 4 chặng</h2></div>
+        <div class="home-section-head"><p class="home-step">Bước 2</p><h2 id="home-journey-title">Từ tư vấn đến nhận việc: 4 chặng</h2></div>
         <div class="home-journey__layout">
           <figure class="home-journey__visual">
             <img src="/assets/vinacomin-tho-mo-ham-lo-1200.webp" alt="Tổ đội thợ mỏ trao đổi phương án công việc trong hầm lò" loading="lazy" decoding="async" width="1200" height="800">
             <figcaption><small>TỪ NGƯỜI MỚI</small><strong>Tư vấn → nhập học → học nghề → nhận việc</strong></figcaption>
           </figure>
           <ol class="home-journey__steps">
-            <li><span>01</span><div><h3>Trao đổi ban đầu</h3><p>Gửi năm sinh, chiều cao/cân nặng, sức khỏe và tỉnh đang sống.</p></div></li>
-            <li id="ho-so"><span>02</span><div><h3>Nhập học tại Quang Hanh</h3><p id="dia-diem">Mang CCCD, giấy khai sinh và bằng THCS/THPT nếu có.</p></div></li>
-            <li id="thoi-gian-hoc"><span>03</span><div><h3>Học nghề</h3><p>Khai thác và xây dựng mỏ: 2–3 tháng · Cơ điện mỏ: 10 tháng.</p><p id="ho-tro-hoc-nghe" class="home-journey__support">Miễn học phí · 3 bữa/ngày · ký túc xá · hỗ trợ 7,5 triệu.</p></div></li>
-            <li id="noi-lam-viec"><span>04</span><div><h3>Nhận việc</h3><p>Vào làm tại các đơn vị ngành Than ở Quảng Ninh.</p></div></li>
+            <li><span>01</span><div><h3>Tư vấn sơ bộ</h3><p>Gửi năm sinh, cao/nặng, sức khỏe và tỉnh đang sống.</p></div></li>
+            <li id="ho-so"><span>02</span><div><h3>Nhập học tại Quang Hanh</h3><p id="dia-diem">Mang CCCD, giấy khai sinh và bằng nếu có.</p></div></li>
+            <li id="thoi-gian-hoc"><span>03</span><div><h3>Học nghề</h3><p>Khai thác và xây dựng mỏ: 2–3 tháng · Cơ điện mỏ: 10 tháng.</p><p id="ho-tro-hoc-nghe" class="home-journey__support">Miễn học phí · 3 bữa/ngày · KTX · hỗ trợ 7,5 triệu.</p></div></li>
+            <li id="noi-lam-viec"><span>04</span><div><h3>Nhận việc tại Quảng Ninh</h3><p>Làm việc tại các đơn vị ngành Than.</p></div></li>
           </ol>
         </div>
         <a class="home-journey__more" href="/thong-tin-tuyen-tho-mo/">Xem thông tin tuyển đang áp dụng →</a>
@@ -192,7 +192,7 @@ ${selfCheck}
 
     <section class="home-proof" id="thuc-te" aria-labelledby="home-proof-title"><span id="nguoi-that-viec-that" aria-hidden="true"></span>
       <div class="container">
-        <div class="home-section-head home-section-head--light"><p class="home-step">Bước 3</p><h2 id="home-proof-title">Xem nghề trước khi quyết định</h2></div>
+        <div class="home-section-head home-section-head--light"><p class="home-step">Bước 3</p><h2 id="home-proof-title">Xem người thật, việc thật</h2></div>
         <div class="home-proof__grid home-proof__grid--simple">
           <article class="home-proof__video">
             <div class="video-frame" data-featured-video-host><button class="home-video-facade" type="button" data-featured-video-facade data-video-id="ts41cqu7r9c" data-video-title="Hành trình lập nghiệp cùng nghề mỏ" aria-label="Phát video hành trình lập nghiệp cùng nghề mỏ"><img src="/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" alt="Người thợ mỏ chuẩn bị thiết bị trước ca làm việc" loading="lazy" decoding="async" width="1200" height="736"><span class="home-video-facade__play" aria-hidden="true">▶</span><span class="home-video-facade__label">Bấm để xem phóng sự</span></button></div>
@@ -208,7 +208,7 @@ ${selfCheck}
 
     <section class="worker-register" id="tu-van" aria-labelledby="consult-title"><span id="dang-ky" aria-hidden="true"></span>
       <div class="container worker-register__grid">
-        <div><p class="home-step">Bước 4</p><h2 id="consult-title">Quan tâm? Chọn một cách liên hệ</h2><p>Đăng ký ban đầu chưa cần nộp hồ sơ.</p><div class="worker-register__message"><small>CHỈ CẦN GỬI</small><strong>Năm sinh · chiều cao/cân nặng · sức khỏe · tỉnh đang sống</strong></div></div>
+        <div><p class="home-step">Bước 4</p><h2 id="consult-title">Chọn cách liên hệ thuận tiện</h2><p class="worker-register__lead">Chỉ cần gửi: năm sinh · cao/nặng · sức khỏe · tỉnh đang sống.</p></div>
         <div class="contact-choice-grid" aria-label="Bốn cách đăng ký và liên hệ">
           <a class="contact-choice contact-choice--form" href="${applicationHref}" data-contact="application" data-context="home-register"><small>ĐƯỢC GỌI LẠI</small><strong data-application-resume-label>Để lại thông tin</strong></a>
           <a class="contact-choice contact-choice--zalo" href="${zaloHref}" target="_blank" rel="noopener" data-contact="zalo" data-context="home-register"><small>NHẮN TIN</small><strong>Zalo 096 304 8585</strong></a>
@@ -238,10 +238,10 @@ html = replaceOnce(html, '<meta property="og:description" content="Điều kiệ
 html = replaceOnce(html, '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – thông tin dành cho người lao động">', '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', "Homepage Twitter title");
 html = replaceOnce(html, '<meta name="twitter:description" content="Xem nhanh điều kiện, quyền lợi, hồ sơ, địa điểm và cách đăng ký học nghề mỏ tại Quảng Ninh.">', '<meta name="twitter:description" content="Xem hành trình học nghề mỏ tại Quang Hanh, quyền lợi, hồ sơ và việc làm ngành Than tại Quảng Ninh.">', "Homepage Twitter description");
 html = replaceOnce(html, '<link rel="preload" href="assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" as="image" type="image/webp">', '<link rel="preload" href="/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp" as="image" type="image/webp" fetchpriority="high">', "Homepage hero image preload");
-html = replaceOnce(html, "</head>", '  <link rel="stylesheet" href="/worker-info-finder.css?v=2">\n  <link rel="stylesheet" href="/home-rich-media.css?v=4">\n</head>', "Worker self-check and visual consultation funnel stylesheets");
+html = replaceOnce(html, "</head>", '  <link rel="stylesheet" href="/worker-info-finder.css?v=2">\n  <link rel="stylesheet" href="/home-rich-media.css?v=5">\n</head>', "Worker self-check and visual consultation funnel stylesheets");
 html = replaceOnce(html, '<button class="menu-toggle" type="button"', `${headerSearch}\n      <button class="menu-toggle" type="button"`, "Header search button");
 html = replaceOnce(html, 'href="/mobile-ux.css?v=5"', 'href="/mobile-ux.css?v=6"', "Homepage mobile UX stylesheet version");
-html = replaceOnce(html, 'src="/mobile-ux.js?v=4"', 'src="/mobile-ux.js?v=8"', "Homepage mobile UX version");
+html = replaceOnce(html, 'src="/mobile-ux.js?v=4"', 'src="/mobile-ux.js?v=9"', "Homepage mobile UX version");
 html = html.replace(/<nav class="v4-primary-nav"[\s\S]*?<\/nav>\s*/i, "");
 const mainBlocks = html.match(/<main id="noi-dung"[\s\S]*?<\/main>/gi) || [];
 if (mainBlocks.length !== 1) throw new Error(`Worker-first homepage expected one main block, got ${mainBlocks.length}`);
@@ -258,7 +258,7 @@ html = html.replace(/<a class="header-cta"[\s\S]*?<\/a>/i, '<a class="header-cta
 const staticMobile = `<nav class="mobile-contact" aria-label="Liên hệ nhanh trên điện thoại">
     <a href="${applicationHref}" data-contact="application" data-context="home-mobile"><strong>Đăng ký</strong><span data-application-resume-label>Biểu mẫu</span></a>
     <a href="${zaloHref}" target="_blank" rel="noopener" data-contact="zalo" data-context="home-mobile"><strong>Zalo</strong><span>Nhắn tin</span></a>
-    <a href="${messengerHref}" target="_blank" rel="noopener" data-contact="messenger" data-context="home-mobile"><strong>Messenger</strong><span>Nhắn tin</span></a>
+    <a href="${messengerHref}" target="_blank" rel="noopener" data-contact="messenger" data-context="home-mobile"><strong>Mess.</strong><span>Nhắn tin</span></a>
     <a href="tel:+84963048585" data-contact="phone" data-context="home-mobile"><strong>Gọi</strong><span>096 304 8585</span></a>
   </nav>`;
 const mobileBlocks = html.match(/<nav class="mobile-contact"[\s\S]*?<\/nav>/gi) || [];
@@ -266,7 +266,7 @@ if (mobileBlocks.length !== 1) throw new Error(`Worker-first homepage expected o
 html = html.replace(mobileBlocks[0], staticMobile);
 html = replaceOnce(html, "</body>", '  <script src="/worker-info-finder.js?v=2" defer></script>\n</body>', "Worker self-check script");
 
-for (const required of ['class="home-funnel"', 'class="hero-visual"', 'class="home-journey"', 'id="thong-tin"', 'id="tu-kiem-tra"', 'id="thuc-te"', 'id="quy-trinh"', 'id="tu-van"', 'class="home-journey__layout"', 'class="home-journey__steps"', 'class="home-proof"', 'data-featured-video-facade', '/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp', '/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp', '/assets/vinacomin-tho-mo-ham-lo-1200.webp', '/assets/vinacomin-tho-lo-thao-a-bang.webp', "data-open-site-search", "data-worker-check-form", "data-open-worker-brief", 'id="che-do-ho-so"', 'id="thoi-gian-hoc"', 'id="ho-tro-hoc-nghe"', 'id="noi-lam-viec"', 'class="contact-choice-grid"', 'data-contact="application"', 'data-contact="zalo"', 'data-contact="messenger"', 'data-contact="phone"']) {
+for (const required of ['class="home-funnel"', 'class="hero-visual"', 'class="home-journey"', 'id="thong-tin"', 'id="tu-kiem-tra"', 'id="thuc-te"', 'id="quy-trinh"', 'id="tu-van"', 'class="home-journey__layout"', 'class="home-journey__steps"', 'class="home-proof"', 'data-featured-video-facade', '/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp', '/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp', '/assets/vinacomin-tho-mo-ham-lo-1200.webp', '/assets/vinacomin-tho-lo-thao-a-bang.webp', "data-open-site-search", "data-worker-check-form", "data-open-worker-brief", 'id="che-do-ho-so"', 'id="thoi-gian-hoc"', 'id="ho-tro-hoc-nghe"', 'id="noi-lam-viec"', 'class="worker-register__lead"', 'class="contact-choice-grid"', 'data-contact="application"', 'data-contact="zalo"', 'data-contact="messenger"', 'data-contact="phone"']) {
   if (!html.includes(required)) throw new Error(`Worker-first homepage is missing generated feature: ${required}`);
 }
 if (html.includes('/assets/vinacomin-dao-tao-tho-lo.webp')) throw new Error("Worker-first homepage still contains the rejected podium image");
