@@ -182,8 +182,8 @@
     document.querySelectorAll(".verification-mobile-contact,.tl-mobile-contact,.mobile-contact,.v4-mobile-bar").forEach(node => node.remove());
     const bar = document.createElement("nav");
     bar.className = "v4-mobile-bar";
-    bar.setAttribute("aria-label", "Hành động chính");
-    bar.innerHTML = `<a href="${conditionHref()}" data-v4-action="condition">Kiểm tra</a><a href="${ZALO_URL}" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="v4-mobile">Zalo</a><a href="${MESSENGER_URL}" target="_blank" rel="noopener noreferrer" data-contact="messenger" data-context="v4-mobile">Messenger</a><a href="${PHONE_URL}" data-contact="phone" data-context="v4-mobile">Gọi</a>`;
+    bar.setAttribute("aria-label", "Kiểm tra điều kiện, Zalo và gọi điện");
+    bar.innerHTML = `<a href="${conditionHref()}" data-v4-action="condition">Kiểm tra</a><a href="${ZALO_URL}" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="v4-mobile">Zalo</a><a href="${PHONE_URL}" data-contact="phone" data-context="v4-mobile">Gọi</a>`;
     document.body.append(bar);
   }
 

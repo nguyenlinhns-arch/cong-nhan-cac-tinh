@@ -57,6 +57,7 @@ jobs:
           node tools/audit-technical-seo.mjs
           node tools/validate-accessibility.mjs
           node tools/validate-performance-budget.mjs
+          node tools/validate-video-proof-library.mjs
           node tools/validate-conversion-resilience.mjs
           node tools/test-home-video-facades.mjs
           node tools/validate-workflow-safety.mjs

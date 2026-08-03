@@ -212,6 +212,13 @@
 .fanpage-page-hero p{max-width:760px;color:#c6d3d6;font-size:17px;line-height:1.75}
 .fanpage-page-breadcrumb{color:#9cb0b5;font-size:11px;font-weight:800}
 .fanpage-page-breadcrumb a{color:#fff}
+.proof-video-library{padding:76px max(24px,calc((100vw - var(--max))/2)) 82px;background:#edf3f1}
+.proof-video-library__head{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.65fr);gap:48px;align-items:end}
+.proof-video-library__head h2{margin:10px 0 0;color:#102a30;font-size:clamp(34px,4.5vw,56px);line-height:1.04;letter-spacing:-.045em}
+.proof-video-library__head>p{margin:0;color:#60777c;font-size:14px;line-height:1.75}
+.proof-video-library .tkv-featured{margin-top:30px}
+.proof-video-grid{margin-top:22px}
+.proof-video-library__note{margin:24px 0 0;padding:16px 19px;border-left:4px solid #0866ff;background:#fff;color:#536b70;font-size:12px;line-height:1.65}
 .fanpage-page-main{padding:85px max(24px,calc((100vw - var(--max))/2))}
 .fanpage-page-intro{
   margin-bottom:35px;display:grid;grid-template-columns:1fr minmax(300px,.65fr);gap:60px;align-items:end
@@ -239,6 +246,7 @@
   .fanpage-media-layout{grid-template-columns:1fr}
   .fanpage-embed-shell{min-height:560px}
   .fanpage-page-intro{grid-template-columns:1fr;gap:15px}
+  .proof-video-library__head{grid-template-columns:1fr;gap:14px}
 }
 @media(max-width:760px){
   .fanpage-media-left{padding:18px}
@@ -257,6 +265,11 @@
   .fanpage-page-hero{padding:50px 18px 58px}
   .fanpage-page-hero h1{font-size:44px}
   .fanpage-page-hero p{font-size:15px}
+  .proof-video-library{padding:54px 12px 60px}
+  .proof-video-library__head{padding:0 6px}
+  .proof-video-library__head h2{font-size:34px}
+  .proof-video-library .tkv-featured{margin-top:22px}
+  .proof-video-grid{margin-top:14px}
   .fanpage-page-main{padding:65px 18px 100px}
   .fanpage-page-cta{padding:30px 22px;grid-template-columns:1fr}
   .fanpage-page-cta__actions{display:grid}
