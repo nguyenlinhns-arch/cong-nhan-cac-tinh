@@ -18,9 +18,9 @@ const searchItems = Array.isArray(searchIndex.items) ? searchIndex.items : [];
 for (const [marker, expected] of [
   ['href="/worker-info-finder.css?v=2"', 1],
   ['src="/worker-info-finder.js?v=3"', 1],
-  ['href="/home-rich-media.css?v=4"', 1],
+  ['href="/home-rich-media.css?v=5"', 1],
   ['href="/mobile-ux.css?v=6"', 1],
-  ['src="/mobile-ux.js?v=8"', 1],
+  ['src="/mobile-ux.js?v=9"', 1],
   ["data-open-site-search", 1],
   ["data-worker-search", 1],
   ["data-open-worker-brief", 1],
@@ -42,7 +42,7 @@ for (const marker of [
   'data-contact="zalo"',
   'data-contact="messenger"',
   'data-contact="phone"',
-  "Tóm tắt 30 giây",
+  "Xem nhanh 30 giây",
 ]) if (!home.includes(marker)) fail(`Luồng tư vấn: thiếu ${marker}`);
 
 for (const removed of [
@@ -116,7 +116,7 @@ try {
 for (const name of ["age_range", "height_range", "weight_range", "health_screen"]) {
   if (count(home, `name="${name}"`) !== 2) fail(`Tự kiểm tra: ${name} phải có hai lựa chọn`);
 }
-for (const marker of ["4 câu trả lời · không lưu dữ liệu", "Không lưu câu trả lời", "khám tuyển là căn cứ xác nhận cuối cùng"]) {
+for (const marker of ["4 câu · không lưu dữ liệu", "Chưa cần nộp hồ sơ", "Khám tuyển là căn cứ xác nhận cuối cùng"]) {
   if (!home.includes(marker)) fail(`Tự kiểm tra: thiếu ${marker}`);
 }
 
@@ -132,6 +132,7 @@ for (const prohibited of ["localStorage", "sessionStorage", "fetch(", "XMLHttpRe
 }
 for (const marker of ["focus-visible", "@media(max-width:900px)", "@media(max-width:720px)", "worker-check__result", "worker-check__back"]) if (!css.includes(marker)) fail(`CSS tự kiểm tra thiếu ${marker}`);
 for (const marker of ["hero-visual", "home-journey__layout", "home-journey__steps", "home-proof__grid--simple", "contact-choice-grid"]) if (!richCss.includes(marker)) fail(`CSS luồng tư vấn thiếu ${marker}`);
+for (const marker of ["grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)", ".home-funnel .worker-check{padding:0;border:0;background:transparent;box-shadow:none}", ".contact-choice{min-height:86px"]) if (!richCss.includes(marker)) fail(`CSS mobile-first thiếu ${marker}`);
 if (!mobileUx.includes('const MESSENGER_URL = "https://m.me/thaylinhtuyenthomo"')) fail("Thanh liên hệ di động thiếu Messenger");
 if (Buffer.byteLength(script) > 4_000) fail(`worker-info-finder.js vượt ngân sách 4 KB: ${Buffer.byteLength(script)}`);
 if (Buffer.byteLength(home) > 55_000) fail(`Trang chủ vượt ngân sách 55 KB: ${Buffer.byteLength(home)}`);

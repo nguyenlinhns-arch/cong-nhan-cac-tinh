@@ -141,17 +141,26 @@ else {
   if (!newsSitemap.includes('xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"')) errors.push("Google News sitemap namespace is missing");
   const feed = JSON.parse(fs.readFileSync(path.join(root, "feed.json"), "utf8"));
   const now = Date.now();
-  const expected = (feed.items || []).filter((item) => {
+  const windowMs = 48 * 60 * 60 * 1000;
+  const clockToleranceMs = 60 * 1000;
+  const candidates = (feed.items || []).filter((item) => {
     const published = new Date(item.date_published).getTime();
     try {
       const url = new URL(item.url);
-      return url.origin === base && url.pathname.startsWith("/tin-nganh-than/") && published >= now - (48 * 60 * 60 * 1000) && published <= now + (5 * 60 * 1000);
+      return url.origin === base && url.pathname.startsWith("/tin-nganh-than/") && published <= now + (5 * 60 * 1000);
     } catch { return false; }
   });
+  const required = candidates.filter((item) => new Date(item.date_published).getTime() >= now - windowMs + clockToleranceMs);
+  const allowed = new Map(candidates
+    .filter((item) => new Date(item.date_published).getTime() >= now - windowMs - clockToleranceMs)
+    .map((item) => [item.url, item]));
   const actualUrls = [...newsSitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1].replaceAll("&amp;", "&"));
-  if (actualUrls.length !== expected.length) errors.push(`Google News sitemap expected ${expected.length} recent articles, got ${actualUrls.length}`);
-  for (const item of expected) if (!actualUrls.includes(item.url)) errors.push(`Google News sitemap is missing recent article: ${item.url}`);
-  for (const url of actualUrls) if (!/^https:\/\/thaylinhtuyenthomo\.vn\/tin-nganh-than\//.test(url)) errors.push(`Google News sitemap contains a non-news URL: ${url}`);
+  if (new Set(actualUrls).size !== actualUrls.length) errors.push("Google News sitemap contains duplicate URLs");
+  for (const item of required) if (!actualUrls.includes(item.url)) errors.push(`Google News sitemap is missing recent article: ${item.url}`);
+  for (const url of actualUrls) {
+    if (!/^https:\/\/thaylinhtuyenthomo\.vn\/tin-nganh-than\//.test(url)) errors.push(`Google News sitemap contains a non-news URL: ${url}`);
+    else if (!allowed.has(url)) errors.push(`Google News sitemap contains an article outside the 48-hour window: ${url}`);
+  }
 }
 
 const factsPath = path.join(root, "thong-tin-tuyen-tho-mo", "index.html");

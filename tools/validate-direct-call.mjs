@@ -35,7 +35,7 @@ if (!mobileBlock) errors.push("Không tìm thấy khối liên hệ cố định
 else {
   const linkCount = (mobileBlock.match(/<a\b/g) || []).length;
   if (linkCount !== 4) errors.push(`Thanh liên hệ điện thoại phải có đúng 4 hành động, nhận ${linkCount}`);
-  for (const marker of ["data-application-resume-label", ">Zalo<", ">Messenger<", ">Gọi<"]) if (!mobileBlock.includes(marker)) errors.push(`Thanh liên hệ thiếu ${marker}`);
+  for (const marker of ["data-application-resume-label", ">Zalo<", ">Mess.<", ">Gọi<"]) if (!mobileBlock.includes(marker)) errors.push(`Thanh liên hệ thiếu ${marker}`);
   if (!mobileBlock.includes('? "Tiếp tục" : "Ứng tuyển"')) errors.push("Nút ứng tuyển không giữ nhãn động Tiếp tục/Ứng tuyển");
   if (/tl-mobile-contact__call[^>]*target=/i.test(mobileBlock)) errors.push("Nút gọi điện không được mở tab mới");
 }

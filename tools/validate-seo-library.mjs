@@ -440,7 +440,7 @@ for (const file of allHtml) {
   if (!/<meta\s+name="viewport"\s+content="[^"]*width=device-width/i.test(html)) errors.push(`${rel}: missing responsive viewport`);
   if (!/<link\s+rel="stylesheet"\s+href="\/mobile-ux\.css\?v=6"/i.test(html)) errors.push(`${rel}: missing shared mobile stylesheet`);
   if (!/<script\s+src="\/analytics\.js\?v=5"\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing current shared analytics script`);
-  const mobileUxVersion = 8;
+  const mobileUxVersion = rel === "index.html" ? 9 : 8;
   if (!new RegExp(`<script\\s+src="\\/mobile-ux\\.js\\?v=${mobileUxVersion}"\\s+defer><\\/script>`, "i").test(html)) errors.push(`${rel}: missing shared mobile script v${mobileUxVersion}`);
   if (/Bài\s+\d{1,2}\s*\/\s*50|50\+?\s*bài/iu.test(visible)) errors.push(`${rel}: contains an obsolete article-count claim`);
   if (/18(?:–|-|\s+đến\s+)35|1(?:m|,)56|1,56\s*m?|48\s*kg/iu.test(visible)) errors.push(`${rel}: contains superseded 2026 recruitment criteria`);

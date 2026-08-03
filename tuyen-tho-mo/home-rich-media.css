@@ -82,10 +82,7 @@
 .home-funnel .worker-register__grid{grid-template-columns:minmax(0,.92fr) minmax(420px,1.08fr);gap:54px;align-items:center}
 .home-funnel .worker-register h2{margin:0;color:#092f38;font-size:clamp(32px,4.4vw,48px);line-height:1.1;letter-spacing:-.035em}
 .home-funnel .worker-register p{margin:14px 0 0;color:#587075}
-.worker-register__message{margin-top:22px;padding:17px 18px;border-left:4px solid #f18724;background:#fff}
-.worker-register__message small,.worker-register__message strong{display:block}
-.worker-register__message small{color:#d96612;font-size:9px;font-weight:900;letter-spacing:.1em}
-.worker-register__message strong{margin-top:5px;color:#17363b;font-size:14px;line-height:1.5}
+.home-funnel .worker-register .worker-register__lead{max-width:540px;color:#3f5d62;font-weight:700;line-height:1.55}
 .contact-choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .contact-choice{min-height:112px;display:flex;flex-direction:column;justify-content:center;padding:18px;border:1px solid #d5e1df;border-radius:15px;background:#fff;color:#17363b;text-decoration:none;box-shadow:0 8px 24px rgba(6,60,70,.05);transition:transform .18s,border-color .18s,box-shadow .18s}
 .contact-choice:hover,.contact-choice:focus-visible{transform:translateY(-2px);border-color:#f18724;box-shadow:0 14px 30px rgba(6,60,70,.1)}
@@ -106,46 +103,63 @@
 }
 
 @media(max-width:640px){
-  .home-funnel .hero-grid{gap:24px;padding-block:34px 40px}
-  .home-funnel .hero h1{font-size:clamp(36px,10.5vw,46px)}
-  .home-funnel .hero-lead{margin-top:17px;font-size:14px}
-  .home-funnel .hero .button-row{display:grid;margin-top:22px}
-  .home-funnel .hero .button{width:100%;min-height:52px}
-  .hero-assurance{text-align:center}
-  .hero-visual,.hero-visual img{min-height:350px}
-  .hero-visual{border-radius:18px}
-  .hero-visual__income{top:14px;right:14px;left:14px;max-width:none;padding:12px 14px}
-  .hero-visual__income strong{font-size:15px}
+  .home-funnel .hero-grid{gap:20px;padding-block:24px 30px}
+  .home-funnel .hero-copy .eyebrow{margin-bottom:10px;font-size:10px}
+  .home-funnel .hero h1{font-size:clamp(32px,9.4vw,40px)}
+  .home-funnel .hero-lead{margin-top:14px;font-size:14px;line-height:1.48}
+  .home-funnel .hero .button-row{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:8px;margin-top:18px}
+  .home-funnel .hero .button{width:100%;min-height:48px;padding:10px 8px;border-radius:12px;font-size:13px;text-align:center}
+  .hero-assurance{margin-top:11px;text-align:center}
+  .hero-visual,.hero-visual img{min-height:286px}
+  .hero-visual{border-radius:17px}
+  .hero-visual__income{top:12px;right:auto;left:12px;max-width:225px;padding:10px 12px;border-radius:13px}
+  .hero-visual__income strong{font-size:14px;line-height:1.35}
   .hero-visual figcaption{right:16px;bottom:15px;left:16px}
-  .hero-visual figcaption strong{font-size:15px}
-  .home-funnel .worker-self-check,.home-journey,.home-proof,.home-funnel .worker-register{padding:52px 0}
+  .hero-visual figcaption strong{font-size:14px}
+  .home-funnel .worker-self-check,.home-journey,.home-proof,.home-funnel .worker-register{padding:44px 0}
   .home-funnel .worker-self-check__head{grid-template-columns:1fr;gap:8px;margin-bottom:18px}
-  .home-funnel .worker-self-check__head h2,.home-section-head h2,.home-funnel .worker-register h2{font-size:30px}
+  .home-funnel .worker-self-check__head h2,.home-section-head h2,.home-funnel .worker-register h2{font-size:28px;line-height:1.12}
+  .home-funnel .worker-self-check__head>p{font-size:12px;line-height:1.5}
+  .home-funnel .worker-check{padding:0;border:0;background:transparent;box-shadow:none}
   .home-funnel .worker-check__questions{grid-template-columns:1fr;gap:8px}
-  .home-funnel .worker-check fieldset{padding:13px}
+  .home-funnel .worker-check fieldset{padding:12px;border-color:#cfe0dd;background:#fff;box-shadow:0 5px 16px rgba(6,60,70,.04)}
   .home-funnel .worker-check legend{min-height:0}
+  .home-funnel .worker-check legend strong{font-size:13px}
+  .home-funnel .worker-check__choices{margin-top:8px}
+  .home-funnel .worker-check__choices span{min-height:42px}
+  .home-funnel .worker-check__footer{grid-template-columns:1fr;gap:8px;margin-top:10px}
+  .home-funnel .worker-check__footer p{text-align:center}
+  .home-funnel .worker-check__submit{min-height:48px}
   .home-section-head{margin-bottom:20px}
-  .home-journey__visual,.home-journey__visual img{min-height:280px}
-  .home-journey__visual{border-radius:18px}
+  .home-journey__layout{gap:18px}
+  .home-journey__visual,.home-journey__visual img{min-height:224px}
+  .home-journey__visual{border-radius:17px}
   .home-journey__visual strong{font-size:16px}
-  .home-journey__steps li{grid-template-columns:38px minmax(0,1fr);gap:12px;padding:18px 0}
-  .home-journey__steps>li>span{width:34px;height:34px}
-  .home-journey__steps h3{font-size:18px}
-  .home-journey__steps p{font-size:13px}
+  .home-journey__steps li{grid-template-columns:36px minmax(0,1fr);gap:10px;padding:14px 0}
+  .home-journey__steps>li>span{width:32px;height:32px}
+  .home-journey__steps h3{font-size:16px}
+  .home-journey__steps p{margin-top:4px;font-size:12.5px;line-height:1.5}
+  .home-journey__more{width:100%;min-height:44px;align-items:center;justify-content:center;margin-top:14px;border:1px solid #b8d2ce;border-radius:12px}
   .home-proof__grid--simple{grid-template-columns:1fr}
-  .home-proof__story img{min-height:220px}
-  .home-funnel .worker-register__grid{gap:28px}
+  .home-proof__video-copy,.home-proof__story>span{padding:15px 16px 17px}
+  .home-proof__video-copy h3{font-size:19px}
+  .home-proof__story img{min-height:190px}
+  .home-proof__story strong{font-size:18px}
+  .home-funnel .worker-register__grid{gap:22px}
+  .home-funnel .worker-register .worker-register__lead{margin-top:10px;font-size:13px;line-height:1.5}
   .contact-choice-grid{grid-template-columns:1fr 1fr}
-  .contact-choice{min-height:96px;padding:13px}
-  .contact-choice strong{font-size:14px}
+  .contact-choice{min-height:86px;padding:12px;border-radius:13px}
+  .contact-choice strong{font-size:13px}
   .mobile-contact{grid-template-columns:repeat(4,minmax(0,1fr))!important}
   .mobile-contact a{min-width:0!important;padding-inline:4px!important}
   .mobile-contact span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 }
 
 @media(max-width:390px){
-  .hero-visual,.hero-visual img{min-height:330px}
-  .contact-choice-grid{grid-template-columns:1fr}
+  .hero-visual,.hero-visual img{min-height:270px}
+  .contact-choice{min-height:82px;padding:10px}
 }
+
+@media(max-width:340px){.home-funnel .hero .button-row{grid-template-columns:1fr}}
 
 @media(prefers-reduced-motion:reduce){.home-proof__story,.contact-choice{transition:none}}
