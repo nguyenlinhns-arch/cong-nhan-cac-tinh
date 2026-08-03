@@ -245,6 +245,7 @@ function replaceOnce(text, marker, replacement, label) {
 }
 
 let html = sourceHtml;
+html = html.replace(/\s*<link rel="preconnect" href="https:\/\/i\.ytimg\.com">\s*/i, "\n");
 const structuredDataBlocks = [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi)];
 if (structuredDataBlocks.length !== 1) throw new Error(`Worker-first homepage expected one JSON-LD block, got ${structuredDataBlocks.length}`);
 html = html.replace(structuredDataBlocks[0][0], structuredDataMarkup);
