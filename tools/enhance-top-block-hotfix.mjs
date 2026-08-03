@@ -1,4 +1,3 @@
-import "./enhance-v5-utm-compat.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
@@ -30,7 +29,7 @@ function stripOldShellAssets(html) {
 for (const target of walk(root)) {
   const relative = path.relative(root, target).replace(/\\/g, "/");
   const before = fs.readFileSync(target, "utf8");
-  if (before.includes("data-legacy-redirect") || /^google[a-z0-9_-]+\.html$/i.test(relative)) continue;
+  if (relative === "index.html" || before.includes("data-legacy-redirect") || /^google[a-z0-9_-]+\.html$/i.test(relative)) continue;
   checked += 1;
 
   let html = stripOldShellAssets(before);

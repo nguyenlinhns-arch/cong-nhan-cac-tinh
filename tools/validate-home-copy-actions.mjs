@@ -7,7 +7,7 @@ const script = fs.readFileSync(path.resolve("tuyen-tho-mo", "worker-info-finder.
 const errors = [];
 
 if (!home.includes('class="home-funnel"')) errors.push("Trang chủ thiếu luồng tư vấn đơn giản");
-if (!home.includes('/worker-info-finder.js?v=3')) errors.push("Trang chủ thiếu script tự kiểm tra phiên bản 3");
+if (!home.includes('/worker-info-finder.js?v=4')) errors.push("Trang chủ thiếu script tự kiểm tra phiên bản 4");
 if (home.includes("data-worker-copy=")) errors.push("Trang chủ đơn giản không được hiển thị nút sao chép phụ");
 if (!home.includes('class="contact-choice-grid"')) errors.push("Trang chủ thiếu cụm lựa chọn liên hệ cuối hành trình");
 

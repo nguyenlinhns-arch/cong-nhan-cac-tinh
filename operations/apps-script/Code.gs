@@ -1,5 +1,7 @@
 const SHEET_NAME = 'Ứng viên';
 const DASHBOARD_SHEET_NAME = 'Tổng quan';
+const SPEND_SHEET_NAME = 'Chi phí quảng cáo';
+const PERFORMANCE_SHEET_NAME = 'Hiệu quả nguồn';
 const BASE_HEADERS = [
   'Mã đăng ký', 'Thời gian đăng ký', 'Họ và tên', 'Số điện thoại', 'Ngày sinh', 'Tuổi',
   'Tỉnh/thành', 'Chiều cao (cm)', 'Cân nặng (kg)', 'Trình độ', 'Nghề quan tâm',
@@ -9,7 +11,8 @@ const BASE_HEADERS = [
 const AUTOMATION_HEADERS = [
   'Hạn phản hồi', 'Cảnh báo chăm sóc', 'Nhắc 2 giờ đã gửi', 'Nhắc 24 giờ đã gửi',
   'Ngày đủ điều kiện', 'Ngày nộp hồ sơ', 'Ngày nhập học', 'Lý do không phù hợp',
-  'Tin nhắn gợi ý', 'Ngữ cảnh biểu mẫu', 'Phiên bản dữ liệu'
+  'Tin nhắn gợi ý', 'Ngữ cảnh biểu mẫu', 'Mã đo lường',
+  'Chiến dịch nội bộ', 'Nội dung nội bộ', 'Phiên bản dữ liệu'
 ];
 const HEADERS = BASE_HEADERS.concat(AUTOMATION_HEADERS);
 const STATUS_VALUES = ['Mới', 'Đã gọi', 'Quan tâm', 'Hẹn khám', 'Đủ điều kiện', 'Nộp hồ sơ', 'Nhập học', 'Không phù hợp', 'Không liên lạc được'];
@@ -20,14 +23,17 @@ function setupRecruitmentCRM() {
   const sheet = spreadsheet.getSheetByName(SHEET_NAME) || spreadsheet.insertSheet(SHEET_NAME);
   ensureHeaders_(sheet);
   formatCandidateSheet_(sheet);
+  setupSpendSheet_(spreadsheet);
   setupDashboard_(spreadsheet, sheet);
+  refreshSourcePerformance_();
   installAutomationTriggers_(spreadsheet.getId());
   return {
     ok: true,
-    version: 2,
+    version: 3,
     spreadsheet: spreadsheet.getUrl(),
     sheet: SHEET_NAME,
     dashboard: DASHBOARD_SHEET_NAME,
+    sourcePerformance: PERFORMANCE_SHEET_NAME,
     headers: HEADERS.length
   };
 }
@@ -36,8 +42,12 @@ function upgradeRecruitmentCRMV2() {
   return setupRecruitmentCRM();
 }
 
+function upgradeRecruitmentCRMV3() {
+  return setupRecruitmentCRM();
+}
+
 function doGet() {
-  return json_({ ok: true, service: 'Thầy Linh recruitment intake', version: 2 });
+  return json_({ ok: true, service: 'Thầy Linh recruitment intake', version: 3 });
 }
 
 function doPost(event) {
@@ -74,6 +84,7 @@ function doPost(event) {
         alertStatus = 'temporarily_unavailable';
       }
     }
+    if (!duplicate) refreshSourcePerformance_();
     return json_({ ok: true, code: data.code, duplicate: duplicate, alert: alertStatus });
   } catch (error) {
     console.error(error);
@@ -108,6 +119,12 @@ function handleCandidateEdit(event) {
   }
   const values = rowObject_(sheet, row, headers);
   sheet.getRange(row, headers['Tin nhắn gợi ý']).setValue(suggestedMessage_(status, values));
+  if (event.range.getColumn() === statusColumn) refreshSourcePerformance_();
+}
+
+function handleSpendEdit(event) {
+  if (!event || !event.range || event.range.getSheet().getName() !== SPEND_SHEET_NAME || event.range.getRow() < 2) return;
+  refreshSourcePerformance_();
 }
 
 function checkFollowUpReminders() {
@@ -236,6 +253,78 @@ function setupDashboard_(spreadsheet, candidateSheet) {
   dashboard.setColumnWidths(1, 6, 150);
 }
 
+function setupSpendSheet_(spreadsheet) {
+  const sheet = spreadsheet.getSheetByName(SPEND_SHEET_NAME) || spreadsheet.insertSheet(SPEND_SHEET_NAME);
+  const headers = ['Ngày', 'Nguồn', 'Chiến dịch', 'Chi phí (đ)', 'Ghi chú'];
+  if (!sheet.getLastRow()) sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+  sheet.setFrozenRows(1);
+  sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold').setBackground('#0b4f46').setFontColor('#ffffff');
+  sheet.getRange(2, 1, Math.max(sheet.getMaxRows() - 1, 1), 1).setNumberFormat('dd/mm/yyyy');
+  sheet.getRange(2, 4, Math.max(sheet.getMaxRows() - 1, 1), 1).setNumberFormat('#,##0 [$₫-vi-VN]');
+  sheet.setColumnWidths(1, headers.length, 160);
+}
+
+function refreshSourcePerformance_() {
+  const spreadsheet = getSpreadsheet_();
+  const candidateSheet = spreadsheet.getSheetByName(SHEET_NAME);
+  const spendSheet = spreadsheet.getSheetByName(SPEND_SHEET_NAME);
+  if (!candidateSheet || !spendSheet) return;
+  const groups = {};
+  const ensureGroup = function(source, campaign) {
+    const cleanSource = String(source || 'không xác định').trim().toLowerCase() || 'không xác định';
+    const cleanCampaign = String(campaign || 'không có chiến dịch').trim().toLowerCase() || 'không có chiến dịch';
+    const key = cleanSource + '\n' + cleanCampaign;
+    if (!groups[key]) groups[key] = { source: cleanSource, campaign: cleanCampaign, spend: 0, leads: 0, screened: 0, qualified: 0, enrolled: 0 };
+    return groups[key];
+  };
+
+  if (candidateSheet.getLastRow() > 1) {
+    const headers = headerMap_(candidateSheet);
+    const rows = candidateSheet.getRange(2, 1, candidateSheet.getLastRow() - 1, candidateSheet.getLastColumn()).getValues();
+    rows.forEach(function(values) {
+      const record = objectFromValues_(values, headers);
+      const group = ensureGroup(record['Nguồn'], record['Chiến dịch']);
+      const status = String(record['Trạng thái'] || 'Mới');
+      group.leads += 1;
+      if (String(record['Kết quả sơ bộ'] || '') === 'eligible') group.screened += 1;
+      if (['Đủ điều kiện', 'Nộp hồ sơ', 'Nhập học'].indexOf(status) !== -1) group.qualified += 1;
+      if (status === 'Nhập học') group.enrolled += 1;
+    });
+  }
+
+  if (spendSheet.getLastRow() > 1) {
+    spendSheet.getRange(2, 1, spendSheet.getLastRow() - 1, 5).getValues().forEach(function(row) {
+      const amount = Number(row[3]) || 0;
+      if (amount <= 0) return;
+      ensureGroup(row[1], row[2]).spend += amount;
+    });
+  }
+
+  const headers = ['Nguồn', 'Chiến dịch', 'Chi phí (đ)', 'Hồ sơ', 'Đạt sơ bộ', 'Đủ điều kiện', 'Nhập học', 'Tỷ lệ đủ điều kiện', 'Tỷ lệ nhập học', 'Chi phí / hồ sơ đủ điều kiện', 'Chi phí / học sinh nhập học', 'Cập nhật'];
+  const now = new Date();
+  const rows = Object.keys(groups).map(function(key) {
+    const item = groups[key];
+    return [
+      item.source, item.campaign, item.spend, item.leads, item.screened, item.qualified, item.enrolled,
+      item.leads ? item.qualified / item.leads : '', item.leads ? item.enrolled / item.leads : '',
+      item.qualified ? item.spend / item.qualified : '', item.enrolled ? item.spend / item.enrolled : '', now
+    ];
+  }).sort(function(a, b) { return b[6] - a[6] || b[5] - a[5] || b[3] - a[3] || b[2] - a[2]; });
+
+  const sheet = spreadsheet.getSheetByName(PERFORMANCE_SHEET_NAME) || spreadsheet.insertSheet(PERFORMANCE_SHEET_NAME);
+  sheet.clearContents();
+  sheet.getRange(1, 1, 1, headers.length).setValues([headers]).setFontWeight('bold').setBackground('#0b4f46').setFontColor('#ffffff').setWrap(true);
+  if (rows.length) sheet.getRange(2, 1, rows.length, headers.length).setValues(rows);
+  sheet.setFrozenRows(1);
+  if (rows.length) {
+    sheet.getRange(2, 3, rows.length, 1).setNumberFormat('#,##0 [$₫-vi-VN]');
+    sheet.getRange(2, 8, rows.length, 2).setNumberFormat('0.0%');
+    sheet.getRange(2, 10, rows.length, 2).setNumberFormat('#,##0 [$₫-vi-VN]');
+    sheet.getRange(2, 12, rows.length, 1).setNumberFormat('dd/mm/yyyy hh:mm');
+  }
+  sheet.setColumnWidths(1, headers.length, 155);
+}
+
 function dashboardFormulaSyntax_(spreadsheet) {
   const locale = String(spreadsheet.getSpreadsheetLocale() || '').toLowerCase();
   const usesVietnameseSeparators = locale === 'vi' || locale.indexOf('vi_') === 0;
@@ -246,17 +335,18 @@ function dashboardFormulaSyntax_(spreadsheet) {
 }
 
 function installAutomationTriggers_(spreadsheetId) {
-  const handlers = ['handleCandidateEdit', 'checkFollowUpReminders', 'sendDailyRecruitmentDigest'];
+  const handlers = ['handleCandidateEdit', 'handleSpendEdit', 'checkFollowUpReminders', 'sendDailyRecruitmentDigest'];
   ScriptApp.getProjectTriggers().forEach(function(trigger) {
     if (handlers.indexOf(trigger.getHandlerFunction()) !== -1) ScriptApp.deleteTrigger(trigger);
   });
   ScriptApp.newTrigger('handleCandidateEdit').forSpreadsheet(spreadsheetId).onEdit().create();
+  ScriptApp.newTrigger('handleSpendEdit').forSpreadsheet(spreadsheetId).onEdit().create();
   ScriptApp.newTrigger('checkFollowUpReminders').timeBased().everyMinutes(15).create();
   ScriptApp.newTrigger('sendDailyRecruitmentDigest').timeBased().atHour(7).everyDays(1).create();
 }
 
 function validate_(data) {
-  if (![1, 2].includes(Number(data.schema_version))) throw new Error('Phiên bản dữ liệu không hợp lệ');
+  if (![1, 2, 3, 4].includes(Number(data.schema_version))) throw new Error('Phiên bản dữ liệu không hợp lệ');
   if (String(data.website || '').trim()) throw new Error('Yêu cầu không hợp lệ');
   if (!/^TL-\d{6}-[A-Z0-9]{5}$/.test(String(data.code || ''))) throw new Error('Mã đăng ký không hợp lệ');
   if (!/^0[35789]\d{8}$/.test(String(data.phone || ''))) throw new Error('Số điện thoại không hợp lệ');
@@ -296,6 +386,9 @@ function toRow_(data, headers) {
     'Lý do không phù hợp': status === 'Không phù hợp' ? 'Không đạt ít nhất một mốc tuổi hoặc thể lực ở bước sàng lọc sơ bộ' : '',
     'Tin nhắn gợi ý': suggestedMessage_(status, { 'Họ và tên': data.full_name, 'Mã đăng ký': data.code }),
     'Ngữ cảnh biểu mẫu': clean_(data.form_context, 100),
+    'Mã đo lường': /^[a-z0-9-]{16,64}$/i.test(String(data.measurement_client_id || '')) ? clean_(data.measurement_client_id, 64) : '',
+    'Chiến dịch nội bộ': clean_(data.internal_campaign, 100),
+    'Nội dung nội bộ': clean_(data.internal_content, 100),
     'Phiên bản dữ liệu': Number(data.schema_version)
   };
   return Object.keys(headers).sort(function(a, b) { return headers[a] - headers[b]; }).map(function(header) { return record[header] === undefined ? '' : record[header]; });

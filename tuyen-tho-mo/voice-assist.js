@@ -1,27 +1,10 @@
 (() => {
   "use strict";
 
-  const STYLE_ID = "tl-voice-assist-style";
   const VOICE_LANG = "vi-VN";
   const PRIVACY_NOTE = "Trình duyệt xử lý giọng nói; website không lưu âm thanh hay câu hỏi.";
   let activeRecognition = null;
   let activeSpeech = null;
-
-  function injectStyles() {
-    if (document.getElementById(STYLE_ID)) return;
-    const style = document.createElement("style");
-    style.id = STYLE_ID;
-    style.textContent = `
-      .tl-voice-controls{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding-top:10px}
-      .tl-voice-search-button,.tl-voice-read-button{min-height:42px;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:8px 13px;border:1px solid var(--tl-line,#dbe7e5);border-radius:999px;background:#fff;color:var(--tl-brand,#075b66);font:inherit;font-size:12px;font-weight:800;cursor:pointer}
-      .tl-voice-search-button[aria-pressed="true"],.tl-voice-read-button[aria-pressed="true"]{border-color:var(--tl-brand,#075b66);background:var(--tl-brand,#075b66);color:#fff}
-      .tl-voice-status{min-width:180px;flex:1;color:var(--tl-muted,#5c7075);font-size:11px;line-height:1.45}
-      .tl-voice-read-wrap{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:0 24px 12px}
-      .tl-voice-answer-wrap{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:12px;padding-top:11px;border-top:1px solid var(--tl-line,#dbe7e5)}
-      @media(max-width:520px){.tl-voice-controls,.tl-voice-read-wrap,.tl-voice-answer-wrap{align-items:stretch}.tl-voice-search-button,.tl-voice-read-button{width:100%}.tl-voice-status{min-width:0;text-align:center}}
-    `;
-    document.head.append(style);
-  }
 
   function setButtonState(button, active, label) {
     button.setAttribute("aria-pressed", String(active));
@@ -46,7 +29,6 @@
       return;
     }
 
-    injectStyles();
     dialog.dataset.voiceSearchReady = "true";
     const controls = document.createElement("div");
     controls.className = "tl-voice-controls";
@@ -64,6 +46,7 @@
     status.setAttribute("aria-live", "polite");
     status.textContent = PRIVACY_NOTE;
     controls.append(button, status);
+    form.querySelector('[data-load-voice="search"]')?.closest(".tl-voice-entry")?.remove();
     form.append(controls);
 
     let recognition = null;
@@ -149,7 +132,6 @@
       return;
     }
 
-    injectStyles();
     dialog.dataset.searchAnswerReadAloudReady = "true";
     let activeButton = null;
     let activeLive = null;
@@ -186,6 +168,7 @@
         live.setAttribute("aria-live", "polite");
         live.textContent = "Có thể nghe câu trả lời mà không cần đọc.";
         wrap.append(button, live);
+        panel.querySelector('[data-load-voice="answer"]')?.remove();
         const actions = panel.querySelector(".tl-search-empty__actions");
         panel.insertBefore(wrap, actions || null);
 
@@ -239,7 +222,6 @@
       return;
     }
 
-    injectStyles();
     dialog.dataset.briefReadAloudReady = "true";
     const wrap = document.createElement("div");
     wrap.className = "tl-voice-read-wrap";
@@ -255,6 +237,7 @@
     live.setAttribute("aria-live", "polite");
     live.textContent = "Có thể nghe toàn bộ 6 thông tin mà không cần đọc.";
     wrap.append(button, live);
+    dialog.querySelector('[data-load-voice="brief"]')?.closest(".tl-voice-entry")?.remove();
     statusLine.insertAdjacentElement("afterend", wrap);
 
     const reset = (message = "Có thể nghe toàn bộ 6 thông tin mà không cần đọc.") => {
@@ -305,5 +288,21 @@
     });
   }
 
-  window.ThayLinhVoiceAssist = Object.freeze({ init });
+  function activate(dialog, mode) {
+    if (!dialog) return;
+    if (mode === "brief") {
+      setupBriefReadAloud(dialog);
+      dialog.querySelector("[data-brief-read-aloud]")?.click();
+      return;
+    }
+    if (mode === "answer") {
+      setupSearchAnswerReadAloud(dialog);
+      dialog.querySelector("[data-answer-read-aloud]")?.click();
+      return;
+    }
+    setupVoiceSearch(dialog);
+    dialog.querySelector("[data-voice-search]")?.click();
+  }
+
+  window.ThayLinhVoiceAssist = Object.freeze({ init, activate });
 })();

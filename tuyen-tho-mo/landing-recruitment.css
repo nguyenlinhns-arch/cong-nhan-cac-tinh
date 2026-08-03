@@ -1,4 +1,4 @@
-:root{--ink:#102a30;--muted:#5c7075;--brand:#075b66;--brand-dark:#063c46;--zalo:#0878e8;--messenger:#0a66ff;--orange:#f18724;--cream:#f7f5ef;--soft:#edf6f5;--line:#dbe7e5;--white:#fff;--shadow:0 18px 50px rgba(6,60,70,.12);--radius:22px}
+:root{--ink:#102a30;--muted:#5c7075;--brand:#075b66;--brand-dark:#063c46;--zalo:#0565b6;--messenger:#0a66ff;--orange:#f18724;--cream:#f7f5ef;--soft:#edf6f5;--line:#dbe7e5;--white:#fff;--shadow:0 18px 50px rgba(6,60,70,.12);--radius:22px}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{margin:0;color:var(--ink);background:var(--white);font-family:"Be Vietnam Pro",system-ui,sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}

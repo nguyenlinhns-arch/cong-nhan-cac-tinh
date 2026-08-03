@@ -192,5 +192,36 @@ const items = [...directAnswers, ...pageItems]
   .filter((item, index, all) => all.findIndex((candidate) => candidate.url === item.url) === index)
   .sort((a, b) => b.priority - a.priority || a.title.localeCompare(b.title, "vi"));
 
-fs.writeFileSync(path.join(root, "search-index.json"), `${JSON.stringify({ version: 3, items }, null, 2)}\n`);
-console.log(`Built search index with ${items.length} pages.`);
+const coreUrls = new Set([
+  "/", "/thong-tin-tuyen-tho-mo/", "/trung-tam-nghe-mo/", "/cam-nang-nghe-mo/",
+  "/kiem-tra-dieu-kien/", "/ho-so-nhap-hoc/", "/thu-nhap-an-o-ho-tro/", "/hoc-nghe-mo-tai-quang-ninh/",
+  "/chon-kcn-hay-lam-mo/", "/an-toan-ky-luat-moi-truong/", "/viec-lam-nganh-than/",
+]);
+const compact = (item, keywordLimit) => ({
+  ...item,
+  keywords: (Array.isArray(item.keywords) ? item.keywords : []).slice(0, keywordLimit),
+});
+const provinceItems = items.filter((item) => item.category === "province").map((item) => compact(item, 12));
+const coreItems = items
+  .filter((item) => item.category !== "province" && (item.type === "Trả lời nhanh" || item.category === "recruitment" || coreUrls.has(item.url)))
+  .map((item) => compact(item, 16));
+const coreUrlSet = new Set(coreItems.map((item) => item.url));
+const contentItems = items
+  .filter((item) => item.category !== "province" && !coreUrlSet.has(item.url))
+  .map((item) => compact(item, 24));
+const files = {
+  core: "search-core.json",
+  provinces: "search-provinces.json",
+  content: "search-content.json",
+};
+
+fs.writeFileSync(path.join(root, files.core), `${JSON.stringify({ version: 4, tier: "core", items: coreItems }, null, 2)}\n`);
+fs.writeFileSync(path.join(root, files.provinces), `${JSON.stringify({ version: 4, tier: "provinces", items: provinceItems }, null, 2)}\n`);
+fs.writeFileSync(path.join(root, files.content), `${JSON.stringify({ version: 4, tier: "content", items: contentItems }, null, 2)}\n`);
+fs.writeFileSync(path.join(root, "search-index.json"), `${JSON.stringify({
+  version: 4,
+  strategy: "answer-first-tiered",
+  files,
+  counts: { core: coreItems.length, provinces: provinceItems.length, content: contentItems.length, total: items.length },
+}, null, 2)}\n`);
+console.log(JSON.stringify({ built: items.length, core: coreItems.length, provinces: provinceItems.length, content: contentItems.length }, null, 2));

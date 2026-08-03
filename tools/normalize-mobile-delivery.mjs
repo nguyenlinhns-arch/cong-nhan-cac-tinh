@@ -2,8 +2,12 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve("tuyen-tho-mo");
-const CSS_URL = "/mobile-ux.css?v=8";
-const JS_URL = "/mobile-ux.js?v=10";
+const CSS_URL = "/mobile-core.css?v=1";
+const JS_URL = "/mobile-core.js?v=1";
+const ANALYTICS_URL = "/analytics.js?v=6";
+const APPLICATION_URL = "/job-application.js?v=10";
+const FINDER_URL = "/worker-info-finder.js?v=4";
+const RECRUITMENT_URL = "/recruitment-config.js?v=3";
 
 function collectHtml(directory, output = []) {
   for (const entry of fs.readdirSync(directory, {withFileTypes: true})) {
@@ -35,8 +39,12 @@ for (const file of collectHtml(root)) {
   });
 
   const next = html
-    .replace(/\/mobile-ux\.css\?v=\d+/g, CSS_URL)
-    .replace(/\/mobile-ux\.js\?v=\d+/g, JS_URL);
+    .replace(/\/?mobile-(?:ux|core)\.css\?v=\d+/g, CSS_URL)
+    .replace(/\/?mobile-(?:ux|core)\.js\?v=\d+/g, JS_URL)
+    .replace(/(?:\/|\.\.\/\.\.\/)analytics\.js\?v=\d+/g, ANALYTICS_URL)
+    .replace(/(?:\/|\.\.\/\.\.\/)job-application\.js\?v=\d+/g, APPLICATION_URL)
+    .replace(/\/worker-info-finder\.js\?v=\d+/g, FINDER_URL)
+    .replace(/(?:\/|\.\.\/\.\.\/)recruitment-config\.js\?v=\d+/g, RECRUITMENT_URL);
   if (next !== html) assetsFixed += 1;
   html = next;
 
@@ -53,4 +61,6 @@ console.log(JSON.stringify({
   asset_versions_fixed: assetsFixed,
   mobile_css: CSS_URL,
   mobile_js: JS_URL,
+  analytics_js: ANALYTICS_URL,
+  application_js: APPLICATION_URL,
 }, null, 2));

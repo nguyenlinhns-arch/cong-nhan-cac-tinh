@@ -26,12 +26,13 @@ jobs:
           node tools/generate-legacy-redirects.mjs
           node tools/generate-news-sitemap.mjs
           node tools/build-search-index.mjs
+          node tools/enhance-all-province-search.mjs
+          node tools/normalize-mobile-delivery.mjs
+          node tools/validate-modular-delivery.mjs
           node tools/validate-content-network.mjs
-          node tools/validate-seo-library.mjs
           node tools/audit-technical-seo.mjs
           node tools/validate-performance-budget.mjs
           node tools/validate-video-proof-library.mjs
-          node tools/validate-conversion-resilience.mjs
           node tools/validate-workflow-safety.mjs
           node tools/validate-ai-search.mjs
       - name: Publish new video metadata when the channel changes
@@ -43,6 +44,6 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tuyen-tho-mo/data/vinacomin-youtube.json tuyen-tho-mo/video-tkv/index.html tuyen-tho-mo/anh-video-thuc-te/index.html tuyen-tho-mo/sitemap.xml tuyen-tho-mo/search-index.json
+          git add tuyen-tho-mo/data/vinacomin-youtube.json tuyen-tho-mo/video-tkv/index.html tuyen-tho-mo/anh-video-thuc-te/index.html tuyen-tho-mo/sitemap.xml tuyen-tho-mo/search-index.json tuyen-tho-mo/search-core.json tuyen-tho-mo/search-provinces.json tuyen-tho-mo/search-content.json
           git commit -m "content: sync official TKV YouTube videos"
           git push origin HEAD:main

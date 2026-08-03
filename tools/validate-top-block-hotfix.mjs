@@ -47,7 +47,7 @@ function walk(directory, output = []) {
 for (const target of walk(root)) {
   const relative = path.relative(root, target).replace(/\\/g, "/");
   const html = fs.readFileSync(target, "utf8");
-  if (html.includes("data-legacy-redirect") || /^google[a-z0-9_-]+\.html$/i.test(relative)) continue;
+  if (relative === "index.html" || html.includes("data-legacy-redirect") || /^google[a-z0-9_-]+\.html$/i.test(relative)) continue;
   checked += 1;
   if (html.includes('/site-shell-20260803.css?v=3')) withStyle += 1;
   else errors.push(`${relative} thiếu site shell CSS v3`);

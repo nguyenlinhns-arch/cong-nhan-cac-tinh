@@ -7,12 +7,12 @@ const errors = [];
 const requiredHeaders = [
   "Hạn phản hồi", "Cảnh báo chăm sóc", "Nhắc 2 giờ đã gửi", "Nhắc 24 giờ đã gửi",
   "Ngày đủ điều kiện", "Ngày nộp hồ sơ", "Ngày nhập học", "Lý do không phù hợp",
-  "Tin nhắn gợi ý", "Ngữ cảnh biểu mẫu", "Phiên bản dữ liệu",
+  "Tin nhắn gợi ý", "Ngữ cảnh biểu mẫu", "Mã đo lường", "Chiến dịch nội bộ", "Nội dung nội bộ", "Phiên bản dữ liệu",
 ];
 const requiredFunctions = [
-  "setupRecruitmentCRM", "upgradeRecruitmentCRMV2", "doPost", "handleCandidateEdit",
+  "setupRecruitmentCRM", "upgradeRecruitmentCRMV2", "upgradeRecruitmentCRMV3", "doPost", "handleCandidateEdit", "handleSpendEdit",
   "checkFollowUpReminders", "sendDailyRecruitmentDigest", "setupDashboard_",
-  "dashboardFormulaSyntax_", "installAutomationTriggers_", "sendNewLeadAlert_", "suggestedMessage_",
+  "dashboardFormulaSyntax_", "setupSpendSheet_", "refreshSourcePerformance_", "installAutomationTriggers_", "sendNewLeadAlert_", "suggestedMessage_",
 ];
 
 for (const header of requiredHeaders) if (!code.includes(`'${header}'`)) errors.push(`Missing CRM header: ${header}`);
@@ -23,7 +23,7 @@ for (const interval of ["everyMinutes(15)", "atHour(7)", "24 * 60 * 60 * 1000", 
 for (const property of ["SPREADSHEET_ID", "ALERT_EMAILS", "DEFAULT_OWNER"]) {
   if (!code.includes(property) || !readme.includes(property)) errors.push(`Missing documented Script Property: ${property}`);
 }
-for (const marker of ["[1, 2].includes(Number(data.schema_version))", "String(data.website || '').trim()", "findCode_", "ensureHeaders_", "MailApp.getRemainingDailyQuota()"] ) {
+for (const marker of ["[1, 2, 3, 4].includes(Number(data.schema_version))", "String(data.website || '').trim()", "findCode_", "ensureHeaders_", "MailApp.getRemainingDailyQuota()", "Chi phí / hồ sơ đủ điều kiện", "Chi phí / học sinh nhập học"] ) {
   if (!code.includes(marker)) errors.push(`Missing compatibility or safety marker: ${marker}`);
 }
 for (const marker of ["getSpreadsheetLocale()", "argumentSeparator", "arrayColumnSeparator", "usesVietnameseSeparators ? ';' : ','"]) {
@@ -35,7 +35,7 @@ for (const marker of ["temporarily_unavailable", "Lỗi email cảnh báo không
 if (/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(code)) errors.push("Code.gs must not contain a hard-coded email address");
 if (/UrlFetchApp|sms|zalo\.me|m\.me/i.test(code)) errors.push("CRM must not send unreviewed automatic applicant messages");
 
-console.log(JSON.stringify({ crmVersion: 2, headers: requiredHeaders.length, functions: requiredFunctions.length, errors: errors.length, sampleErrors: errors.slice(0, 20) }, null, 2));
+console.log(JSON.stringify({ crmVersion: 3, headers: requiredHeaders.length, functions: requiredFunctions.length, errors: errors.length, sampleErrors: errors.slice(0, 20) }, null, 2));
 if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);

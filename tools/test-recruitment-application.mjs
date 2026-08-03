@@ -116,6 +116,7 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
     tlTrack: (name, payload) => tracked.push([name, payload]),
     setTimeout,
     clearTimeout,
+    thayLinhAnalytics: { measurementId: () => "tl-test-measurement-12345" },
     THAY_LINH_RECRUITMENT: {
       schemaVersion: 2,
       endpoint: "https://example.test/exec",
@@ -160,7 +161,8 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
   ]) if (!output.value.includes(expectedText)) throw new Error(`Message missing: ${expectedText}`);
   if (!sms.href.startsWith("sms:+84963048585?body=")) throw new Error(`Invalid SMS link: ${sms.href}`);
   if (delivered.length !== deliverySequence.length || delivered[0].phone !== "0963048585") throw new Error("Application was not delivered as expected");
-  if (delivered[0].schema_version !== 3) throw new Error(`Unexpected schema version: ${delivered[0].schema_version}`);
+  if (delivered[0].schema_version !== 2) throw new Error(`Unexpected schema version: ${delivered[0].schema_version}`);
+  if (delivered[0].measurement_client_id !== "tl-test-measurement-12345") throw new Error("Anonymous measurement key was not delivered");
   if (!String(delivered[0].form_context || "").startsWith("central_application|v3;")) throw new Error(`Unexpected form context: ${delivered[0].form_context}`);
   if (delivered[0].entry_intent !== "application" || delivered[0].journey_page_count !== 1) throw new Error("Journey context was not delivered");
   if (delivered[0].website !== "") throw new Error("Honeypot value must remain empty");
@@ -174,6 +176,10 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
   }
   const progress = tracked.find(([name]) => name === "ApplicationProgress")?.[1];
   if (progress?.step !== "01_identity" || progress?.field_group !== "identity") throw new Error("Anonymous application progress was not measured correctly");
+  for (const eventName of ["ApplicationSubmit", "Lead"]) {
+    const eventPayload = tracked.find(([name]) => name === eventName)?.[1];
+    if (eventPayload?.lead_key !== code.textContent) throw new Error(`${eventName} is missing the anonymous lead key`);
+  }
   if (deliverySequence[0] !== "failed" && tracked.some(([name]) => name === "ApplicationDeliveryFailure")) throw new Error("Failure event fired for a successful delivery");
 
   if (deliverySequence[0] === "failed") {

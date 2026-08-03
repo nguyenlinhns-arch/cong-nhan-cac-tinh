@@ -104,10 +104,12 @@
                     ? "tiktok"
                     : "website";
     return {
-      source: params.get("utm_source") || stored.utm_source || params.get("source") || inferredSource,
-      medium: params.get("utm_medium") || stored.utm_medium || (inferredSource === "website" ? "owned" : "referral"),
-      campaign: params.get("utm_campaign") || stored.utm_campaign || "tuyen_tho_mo_2026",
-      content: params.get("utm_content") || stored.utm_content || "application_form",
+      source: stored.utm_source || params.get("utm_source") || params.get("source") || inferredSource,
+      medium: stored.utm_medium || params.get("utm_medium") || (inferredSource === "website" ? "owned" : "referral"),
+      campaign: stored.utm_campaign || params.get("utm_campaign") || "tuyen_tho_mo_2026",
+      content: stored.utm_content || params.get("utm_content") || "application_form",
+      internal_campaign: params.get("tl_internal_campaign") || (params.get("utm_source") === "website" ? params.get("utm_campaign") : "") || "",
+      internal_content: params.get("tl_internal_content") || (params.get("utm_source") === "website" ? params.get("utm_content") : "") || "",
     };
   }
 
@@ -366,6 +368,10 @@
 
     const age = calculateAge(values.birth_date);
     const assessment = assess(values, age);
+    const fingerprint = submissionFingerprint(values, phone);
+    const previousAttempt = retryState?.fingerprint === fingerprint ? retryState : null;
+    const applicationCode = previousAttempt?.application.code || createApplicationCode();
+    const source = readAttribution();
     if (assessment.key === "eligible" && !conditionPassTracked) {
       conditionPassTracked = true;
       const passJourney = readJourneyContext();
@@ -379,12 +385,9 @@
         journey_score: passJourney.journey_score,
         page_count: passJourney.journey_page_count,
         seconds_to_action: passJourney.seconds_to_action,
+        lead_key: applicationCode,
       });
     }
-    const fingerprint = submissionFingerprint(values, phone);
-    const previousAttempt = retryState?.fingerprint === fingerprint ? retryState : null;
-    const applicationCode = previousAttempt?.application.code || createApplicationCode();
-    const source = readAttribution();
     const message = [
       "ĐĂNG KÝ TUYỂN LAO ĐỘNG HỌC NGHỀ MỎ 2026",
       `- Mã đăng ký: ${applicationCode}`,
@@ -404,7 +407,7 @@
 
     const journey = readJourneyContext();
     const application = {
-      schema_version: Math.max(3, Number(recruitment.schemaVersion) || 2),
+      schema_version: Number(recruitment.schemaVersion) || 2,
       code: applicationCode,
       created_at: previousAttempt?.application.created_at || new Date().toISOString(),
       full_name: String(values.full_name).trim(),
@@ -423,6 +426,9 @@
       medium: source.medium,
       campaign: source.campaign,
       content: source.content,
+      internal_campaign: source.internal_campaign,
+      internal_content: source.internal_content,
+      measurement_client_id: window.thayLinhAnalytics?.measurementId?.() || "",
       page_url: location.href,
       form_context: [formContext, journey.crm_context].filter(Boolean).join("|").slice(0, 100),
       entry_page: journey.entry_page,
@@ -482,6 +488,7 @@
       journey_score: journey.journey_score,
       page_count: journey.journey_page_count,
       seconds_to_action: journey.seconds_to_action,
+      lead_key: applicationCode,
     });
     const delivery = await deliverApplication(application);
     deliveryInFlight = false;
@@ -518,6 +525,7 @@
         medium: source.medium,
         campaign: source.campaign,
         content: source.content,
+        lead_key: applicationCode,
       });
       attempt.leadTracked = true;
     }

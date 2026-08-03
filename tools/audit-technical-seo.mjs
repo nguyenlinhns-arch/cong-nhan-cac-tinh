@@ -155,15 +155,16 @@ for (const file of htmlFiles) {
   const linkTags = tags(html, "link");
   const faviconHrefs = new Set(linkTags.filter((item) => item.rel?.split(/\s+/).includes("icon")).map((item) => item.href));
   const appleIcon = linkTags.find((item) => item.rel === "apple-touch-icon")?.href || "";
-  const mobileStyles = linkTags.filter((item) => item.rel?.split(/\s+/).includes("stylesheet") && /\/mobile-ux\.css\?v=/.test(item.href || ""));
-  const mobileScripts = tags(html, "script").filter((item) => /\/mobile-ux\.js\?v=/.test(item.src || ""));
+  const expectedMobileStyle = relative === "index.html" ? "/home-critical.css?v=1" : "/mobile-core.css?v=1";
+  const mobileStyles = linkTags.filter((item) => item.rel?.split(/\s+/).includes("stylesheet") && item.href === expectedMobileStyle);
+  const mobileScripts = tags(html, "script").filter((item) => /\/mobile-core\.js\?v=/.test(item.src || ""));
 
   if (!pageTitle) errors.push(`${relative}: missing title`);
   if (!description) errors.push(`${relative}: missing meta description`);
   if (!viewport.includes("width=device-width") || !viewport.includes("viewport-fit=cover")) errors.push(`${relative}: viewport must support mobile width and safe-area insets`);
   else mobileViewportPages += 1;
-  if (mobileStyles.length !== 1 || mobileStyles[0]?.href !== "/mobile-ux.css?v=8") errors.push(`${relative}: must load exactly /mobile-ux.css?v=8`);
-  else if (mobileScripts.length !== 1 || mobileScripts[0]?.src !== "/mobile-ux.js?v=10") errors.push(`${relative}: must load exactly /mobile-ux.js?v=10`);
+  if (mobileStyles.length !== 1) errors.push(`${relative}: must load exactly ${expectedMobileStyle}`);
+  else if (mobileScripts.length !== 1 || mobileScripts[0]?.src !== "/mobile-core.js?v=1") errors.push(`${relative}: must load exactly /mobile-core.js?v=1`);
   else mobileAssetVersionPages += 1;
   if (canonicalLinks.length !== 1) errors.push(`${relative}: expected exactly one canonical, got ${canonicalLinks.length}`);
   if (canonical !== expectedCanonical) errors.push(`${relative}: canonical ${canonical || "missing"} must be ${expectedCanonical}`);
