@@ -1,10 +1,4 @@
 {
-  "than-thong-nhat-tri-an-gia-dinh-tho-mo-hy-sinh": {
-    "album_title": "Ảnh Thành Nam · Công ty Than Thống Nhất – TKV",
-    "source_url": "https://www.thanthongnhat.vn/uploads/news/2026_07/1785144564564_1362602077895029208_g4651981227352933567_04c3598fdfbd9154fdde7b3e6dc857b9.jpg",
-    "provider": "Công ty Than Thống Nhất – TKV",
-    "source_article_url": "https://www.thanthongnhat.vn/tin-san-xuat/tri-an-cac-gia-dinh-co-than-nhan-hy-sinh-vi-su-nghiep-san-xuat-than-15690.html"
-  },
   "than-thong-nhat-do-dau-cuu-thanh-nien-xung-phong": {
     "album_title": "Công ty Than Thống Nhất – TKV",
     "source_url": "https://www.thanthongnhat.vn/uploads/news/2026_07/1785233493309_8368402457751477522_8368402457751477522_8eaf52b2957a4ca191b34eeec66355f2.jpg",
@@ -201,4 +195,186 @@
     "provider": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
     "source_article_url": "https://caodangtkv.edu.vn/ky-ket-quy-che-phoi-hop-ba-ben-gan-dao-tao-nghe-voi-giai-quyet-viec-lam-ben-vung-cho-lao-dong-dia-phuong/"
   },
-  "bao-lac-
+  "bao-lac-cao-bang-tu-van-hoc-nghe-mo": {
+    "album_title": "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_url": "https://caodangtkv.edu.vn/wp-content/uploads/2025/04/00d53924abb118ef41a08.jpg",
+    "provider": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_article_url": "https://caodangtkv.edu.vn/doan-cong-tac-ubnd-xa-hung-dao-huyen-bao-lac-tinh-cao-bang-den-tham-va-lam-viec-voi-truong-cao-dang-than-khoang-san-viet-nam/"
+  },
+  "tinh-doan-lai-chau-ket-noi-viec-lam-tkv": {
+    "album_title": "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_url": "https://caodangtkv.edu.vn/wp-content/uploads/2025/05/DSC02825-scaled.jpg",
+    "provider": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_article_url": "https://caodangtkv.edu.vn/that-chat-phoi-hop-mo-rong-co-hoi-viec-lam-cho-thanh-nien-lai-chau/"
+  },
+  "si-lo-lau-khun-ha-lai-chau-hoc-nghe-mo": {
+    "album_title": "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_url": "https://caodangtkv.edu.vn/wp-content/uploads/2025/09/DSC01786-scaled.jpg",
+    "provider": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_article_url": "https://caodangtkv.edu.vn/nang-tam-chat-luong-nguon-nhan-luc-thap-sang-tuong-lai-lao-dong-vung-cao-tay-bac/"
+  },
+  "hoanh-mo-xay-lap-mo-dao-tao-nghe-viec-lam": {
+    "album_title": "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_url": "https://caodangtkv.edu.vn/wp-content/uploads/2025/12/DSC09936-scaled.jpg",
+    "provider": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_article_url": "https://caodangtkv.edu.vn/hoi-nghi-ky-quy-che-phoi-hop-dao-tao-nghe-va-giai-quyet-viec-lam-cho-nguoi-lao-dong-xa-hoanh-mo-giai-doan-2026-2030/"
+  },
+  "vi-xuyen-ha-giang-hoc-nghe-mo-viec-lam-tkv": {
+    "album_title": "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_url": "https://caodangtkv.edu.vn/wp-content/uploads/2025/01/DSC09284-scaled.jpg",
+    "provider": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_article_url": "https://caodangtkv.edu.vn/dang-uy-truong-cao-dang-than-khoang-san-viet-nam-ky-ket-quy-che-phoi-hop-ve-dao-tao-nghe-va-giai-quyet-viec-lam-cho-lao-dong-huyen-vi-xuyen-ha-giang-giai-doan-2025-2030/"
+  },
+  "luc-hon-than-ha-long-dao-tao-nghe-giai-quyet-viec-lam": {
+    "album_title": "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_url": "https://caodangtkv.edu.vn/wp-content/uploads/2025/07/DSC09539-scaled.jpg",
+    "provider": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_article_url": "https://caodangtkv.edu.vn/tang-cuong-phoi-hop-mo-rong-co-hoi-viec-lam-cho-lao-dong-vung-cao-truong-cao-dang-than-khoang-san-viet-nam-ky-ket-quy-che-phoi-hop-voi-xa-luc-hon-va-cong-ty-than-ha-long-tkv/"
+  },
+  "binh-lieu-hop-tac-hoc-nghe-mo-viec-lam-tkv": {
+    "album_title": "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_url": "https://caodangtkv.edu.vn/wp-content/uploads/2025/11/DSC05741-scaled.jpg",
+    "provider": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_article_url": "https://caodangtkv.edu.vn/truong-cao-dang-than-khoang-san-viet-nam-va-xa-binh-lieu-ky-quy-che-phoi-hop-giai-doan-2025-2030/"
+  },
+  "tkv-ho-tro-12-ty-tay-nguyen-khac-phuc-mua-lu": {
+    "album_title": "Ảnh bài gốc · TKV",
+    "source_url": "https://vinacomin.vn/userfiles/thumbnail/5B15C55B8266903DBAB596E9B033B95963AFC9850E3A768D7480BFBD61BB5DB7.jpg",
+    "provider": "TKV",
+    "source_article_url": "https://vinacomin.vn/news/slug/tkv-ho-tro-12-ty-dong-giup-cac-tinh-tay-nguyen-khac-phuc-hau-qua-mua-lu"
+  },
+  "tkv-gieng-khoan-nuoc-sach-truong-hoc-lai-chau": {
+    "album_title": "Ảnh bài gốc · TKV",
+    "source_url": "https://vinacomin.vn/userfiles/thumbnail/683A81CBA2520692EAD445AC4CAECCD19DFEEA9A7E5587513CA1E011492FFCBB.jpg",
+    "provider": "TKV",
+    "source_article_url": "https://vinacomin.vn/news/slug/doan-thanh-nien-tkv-ho-tro-xay-dung-cong-trinh-gieng-khoan-cap-nuoc-sinh-hoat-cho-truong-hoc"
+  },
+  "tkv-ho-tro-70-ty-khac-phuc-bao-yagi": {
+    "album_title": "Ảnh bài gốc · TKV",
+    "source_url": "https://vinacomin.vn/userfiles/thumbnail/1733450E24E5CE24BC5F98A7422EDE5FD2B7F8DB8865A1D3C731F0CBA3B9CDCC.jpg",
+    "provider": "TKV",
+    "source_article_url": "https://vinacomin.vn/news/slug/tkv-trien-khai-goi-ho-tro-70-ty-dong-khac-phuc-hau-qua-bao-so-3"
+  },
+  "tho-mo-tkv-xoa-nha-tam-tay-nguyen": {
+    "album_title": "Ảnh bài gốc · TKV",
+    "source_url": "https://vinacomin.vn/userfiles/thumbnail/9E8F07C0BD7247F912DA6E279F8907B835B6D922569F9AD785BCE349C3C64CF6.jpg",
+    "provider": "TKV",
+    "source_article_url": "https://vinacomin.vn/news/slug/tho-mo-tkv-ung-ho-chuong-trinh-xoa-nha-tam-nha-dot-nat-tai-cac-tinh-tay-nguyen"
+  },
+  "dong-van-ha-giang-cong-trinh-phuc-loi-tuyen-sinh-nghe-mo": {
+    "album_title": "Ảnh bài gốc · TKV",
+    "source_url": "https://vinacomin.vn/userfiles/thumbnail/2FFA478E5D97C2EEBA1AA11482658B769726295983364AE1F86CB0B0335AD85C.jpg",
+    "provider": "TKV",
+    "source_article_url": "https://vinacomin.vn/news/slug/tkv-lam-viec-voi-huyen-dong-van-ha-giang-ve-cong-trinh-phuc-loi-va-tuyen-sinh-nghe-mo"
+  },
+  "duong-hoa-than-duong-huy-tuyen-sinh-nghe-mo": {
+    "album_title": "Ảnh bài gốc · TKV",
+    "source_url": "https://vinacomin.vn/userfiles/thumbnail/184065E14CD3235E25A52BB416A4302939FF72D4744DF8FB24C779883F12BCA6.jpg",
+    "provider": "TKV",
+    "source_article_url": "https://vinacomin.vn/news/slug/than-duong-huy-day-manh-phoi-hop-tuyen-sinh-nghe-mo-ham-lo"
+  },
+  "dien-xa-than-khe-cham-hop-tac-dao-tao-viec-lam": {
+    "album_title": "Ảnh bài gốc · TKV",
+    "source_url": "https://vinacomin.vn/userfiles/thumbnail/53EF3B111119D3F7FE5EFFA70FD53155A07AFAB230F6734AB2BFB86B4BE81BEF.jpg",
+    "provider": "TKV",
+    "source_article_url": "https://vinacomin.vn/news/slug/than-khe-cham-tang-cuong-phoi-hop-tuyen-sinh-dao-tao-nghe-mo-ham-lo"
+  },
+  "luong-minh-hieu-qua-tuyen-sinh-dao-tao-viec-lam": {
+    "album_title": "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_url": "https://caodangtkv.edu.vn/wp-content/uploads/2026/05/DSC00844-1920.jpg",
+    "provider": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_article_url": "https://caodangtkv.edu.vn/hoi-nghi-so-ket-cong-tac-tuyen-sinh-dao-tao-va-giai-quyet-viec-lam-tai-xa-luong-minh/"
+  },
+  "nam-tuan-cao-bang-dao-tao-nghe-mo-viec-lam": {
+    "album_title": "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_url": "https://caodangtkv.edu.vn/wp-content/uploads/2026/05/003.jpg",
+    "provider": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_article_url": "https://caodangtkv.edu.vn/hoi-nghi-trien-khai-ky-bien-ban-hop-tac-3-ben-tao-dot-pha-trong-dao-tao-nghe-va-giai-quyet-viec-lam-cho-lao-dong-dia-phuong-giai-doan-2026-2030/"
+  },
+  "bang-thanh-phuc-loc-hoc-nghe-tho-lo-tkv": {
+    "album_title": "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_url": "https://caodangtkv.edu.vn/wp-content/uploads/2026/02/DSC03572-scaled.jpg",
+    "provider": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_article_url": "https://caodangtkv.edu.vn/quyet-tam-cao-do-day-manh-tuyen-sinh-dao-tao-tho-lo-trong-nhung-ngay-can-tet/"
+  },
+  "hai-lang-phoi-hop-dao-tao-viec-lam-nganh-than": {
+    "album_title": "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_url": "https://caodangtkv.edu.vn/wp-content/uploads/2026/01/DSC02548-scaled.jpg",
+    "provider": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_article_url": "https://caodangtkv.edu.vn/hoi-nghi-ky-quy-che-phoi-hop-giua-truong-cao-dang-than-khoang-san-viet-nam-xa-hai-lang-va-cong-ty-than-duong-huy-tkv/"
+  },
+  "viec-lam-nganh-than-thang-8-2026": {
+    "album_title": "Ảnh bài Cách làm mới trong công tác đào tạo nghề mỏ hầm lò – Vinacomin",
+    "source_url": "https://thaylinhtuyenthomo.vn/assets/news/tuyen-tho-mo-thang-8-2026-og-1200x630.png",
+    "original_source_url": "https://vinacomin.vn/userfiles/thumbnail/1801E31082CB40098A13ECF1DD64BD38E04A2392E6D5F90F15BA1EF962A6D4E6.jpg",
+    "provider": "Thư viện ảnh Vinacomin",
+    "local_file": "../news/tuyen-tho-mo-thang-8-2026-og-1200x630.png"
+  },
+  "tuyen-quang-phoi-hop-tuyen-sinh-nghe-mo-2025-2030": {
+    "album_title": "Ảnh bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_url": "https://caodangtkv.edu.vn/wp-content/uploads/2025/11/DSC07599-scaled.jpg",
+    "provider": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    "source_article_url": "https://caodangtkv.edu.vn/truong-cao-dang-than-khoang-san-viet-nam-ky-ket-quy-che-phoi-hop-tuyen-sinh-dao-tao-nghe-voi-cac-dia-phuong-giai-doan-2025-2030/"
+  },
+  "an-toan-mua-mua-bao-2026": {
+    "album_title": "Thư viện ảnh Vinacomin · Công trình Than Mạo Khê",
+    "source_url": "https://vinacomin.vn/Share/Media/2017/09/IMG_9910.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "san-xuat-sach-hon-nganh-than": {
+    "album_title": "Thư viện ảnh Vinacomin · Dây chuyền cấp hạt mịn Tuyển than Cửa Ông",
+    "source_url": "https://vinacomin.vn/Share/Media/2017/09/DSC01675.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "nghe-tho-lo-co-on-dinh-khong": {
+    "album_title": "Thư viện ảnh Vinacomin · Tổng giám đốc TKV làm việc với Than Khe Chàm",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_8765.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "hoc-thuc-hanh-nghe-mo-ham-lo": {
+    "album_title": "Thư viện ảnh Vinacomin · TKV làm việc với Than Khe Chàm",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_8544.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "dao-tao-an-toan-truoc-khi-vao-lo": {
+    "album_title": "Ảnh học sinh trải nghiệm nghề mỏ · TKV/Vinacomin",
+    "source_url": "https://thaylinhtuyenthomo.vn/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "co-gioi-hoa-khai-thac-ham-lo": {
+    "album_title": "Ảnh công nhân vận hành thiết bị · TKV/Vinacomin",
+    "source_url": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "13500-tho-lo-thu-nhap-tren-300-trieu-2025": {
+    "album_title": "Ảnh thợ lò hầm lò · TKV/Vinacomin",
+    "source_url": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-thao-a-bang.webp",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "hoc-nghe-khai-thac-mo-2-3-thang": {
+    "album_title": "Thư viện ảnh Vinacomin · Lãnh đạo Công đoàn thăm công nhân Than Dương Huy",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4075.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "ho-so-hoc-nghe-mo-can-gi": {
+    "album_title": "Thư viện ảnh Vinacomin · Công đoàn thăm công nhân Than Dương Huy",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4062.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "dieu-kien-tuyen-tho-lo-2026": {
+    "album_title": "Thư viện ảnh Vinacomin · Lãnh đạo Công đoàn thăm công nhân Than Dương Huy",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4207.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  },
+  "tai-co-cau-tkv-2026-viec-lam-tho-mo": {
+    "album_title": "Ảnh thợ mỏ hầm lò · TKV/Vinacomin",
+    "source_url": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-ham-lo-1200.webp",
+    "provider": "Thư viện ảnh Vinacomin",
+    "local_file": "../vinacomin-tho-mo-ham-lo-1200.webp"
+  },
+  "phuc-loi-tho-mo-tkv-2026": {
+    "album_title": "Thư viện ảnh Vinacomin · Công đoàn thăm công nhân Than Dương Huy",
+    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4110.jpg",
+    "provider": "Thư viện ảnh Vinacomin"
+  }
+}
