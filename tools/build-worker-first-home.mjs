@@ -155,7 +155,7 @@ const simpleMain = `  <main id="noi-dung" class="home-funnel">
           <h1>Học nghề mỏ.<span>Nhận việc tại Quảng Ninh.</span></h1>
           <p class="hero-lead">Nam 18–40 tuổi · học nghề tại Quang Hanh</p>
           <div class="hero-proof-grid" aria-label="Hai thông tin nổi bật">
-            <article class="hero-proof hero-proof--income"><small>Thu nhập cam kết</small><strong>20–25 triệu/tháng</strong><span>Khi hoàn thành định mức lao động</span></article>
+            <article class="hero-proof hero-proof--income"><small>Thu nhập cam kết</small><strong>20–25 triệu/tháng khi hoàn thành định mức lao động</strong></article>
             <article class="hero-proof"><small>Đào tạo nghề chính</small><strong>2–3 tháng</strong><span>Miễn học phí · có ăn ở</span></article>
           </div>
           <div class="button-row">
