@@ -166,7 +166,7 @@
     polishMobileContact();
     cleanArticleHero();
     disableConsentPrompt();
-    document.documentElement.dataset.siteShell = "20260803-v4";
+    document.documentElement.dataset.siteShell = "20260803-v3";
   }
 
   function scheduleClean() {
