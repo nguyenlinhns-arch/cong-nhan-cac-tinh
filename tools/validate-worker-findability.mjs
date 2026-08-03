@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
+import {communityArticles} from "./community-articles.mjs";
 
 const root = path.resolve("tuyen-tho-mo");
 const read = (relative) => fs.readFileSync(path.join(root, relative), "utf8");
@@ -14,6 +15,8 @@ const mobileUx = read("mobile-ux.js");
 const richCss = read("home-rich-media.css");
 const searchIndex = JSON.parse(read("search-index.json"));
 const searchItems = Array.isArray(searchIndex.items) ? searchIndex.items : [];
+const latestArticle = [...communityArticles]
+  .sort((left, right) => new Date(right.published) - new Date(left.published))[0];
 
 for (const [marker, expected] of [
   ['href="/worker-info-finder.css?v=2"', 1],
@@ -87,7 +90,9 @@ if (!home.includes("Khai thác và xây dựng mỏ: 2–3 tháng") || !home.inc
 if (!home.includes('/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp')) fail("Thiếu ảnh học viên trải nghiệm thực tế");
 if (!home.includes('/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp')) fail("Thiếu ảnh câu chuyện người mới");
 if (!home.includes('/assets/vinacomin-tho-mo-ham-lo-1200.webp')) fail("Thiếu ảnh câu chuyện tổ đội thợ mỏ");
-if (!home.includes('/assets/vinacomin-tho-lo-thao-a-bang.webp')) fail("Thiếu ảnh câu chuyện công nhân theo tỉnh");
+if (!home.includes(`href="/${latestArticle.urlPath}/"`)) fail("Thiếu URL bài ngành Than mới nhất trên trang chủ");
+if (!home.includes(`src="${latestArticle.image}"`)) fail("Thiếu ảnh nguồn của bài ngành Than mới nhất trên trang chủ");
+if (!home.includes(`>${latestArticle.title}</strong>`)) fail("Thiếu tiêu đề bài ngành Than mới nhất trên trang chủ");
 const heroBlock = home.match(/<section class="hero"[\s\S]*?<\/section>/i)?.[0] || "";
 if (!heroBlock.includes('class="hero-visual"')) fail("Mở đầu chưa có ảnh thực tế độc lập");
 if ((heroBlock.match(/<(?:a|button)\b[^>]*class="[^"]*\bbutton\b[^"]*"/g) || []).length > 2) fail("Mở đầu còn quá nhiều nút");

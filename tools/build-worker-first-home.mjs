@@ -1,10 +1,21 @@
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
+import {communityArticles} from "./community-articles.mjs";
 
 const sourceDir = path.resolve("content", "home-worker-first");
 const siteRoot = path.resolve("tuyen-tho-mo");
 const target = path.join(siteRoot, "index.html");
+const esc = (value = "") => String(value)
+  .replaceAll("&", "&amp;")
+  .replaceAll("<", "&lt;")
+  .replaceAll(">", "&gt;")
+  .replaceAll('"', "&quot;");
+const latestArticle = [...communityArticles]
+  .sort((left, right) => new Date(right.published) - new Date(left.published))[0];
+const latestArticleHref = `/${latestArticle.urlPath}/`;
+const imageDimensions = JSON.parse(fs.readFileSync(path.resolve("content", "article-image-dimensions.json"), "utf8"));
+const [latestImageWidth, latestImageHeight] = imageDimensions[latestArticle.image] || [1200, 675];
 const expectedParts = Array.from({length: 8}, (_, index) => `part-${String(index).padStart(2, "0")}.b64`);
 const actualParts = fs.readdirSync(sourceDir)
   .filter((name) => /^part-\d+\.b64$/.test(name))
@@ -198,9 +209,9 @@ ${selfCheck}
             <div class="video-frame" data-featured-video-host><button class="home-video-facade" type="button" data-featured-video-facade data-video-id="ts41cqu7r9c" data-video-title="Hành trình lập nghiệp cùng nghề mỏ" aria-label="Phát video hành trình lập nghiệp cùng nghề mỏ"><img src="/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" alt="Người thợ mỏ chuẩn bị thiết bị trước ca làm việc" loading="lazy" decoding="async" width="1200" height="736"><span class="home-video-facade__play" aria-hidden="true">▶</span><span class="home-video-facade__label">Bấm để xem phóng sự</span></button></div>
             <div class="home-proof__video-copy"><small>VIDEO NGƯỜI LAO ĐỘNG</small><h3>Nghe người trong nghề chia sẻ</h3></div>
           </article>
-          <a class="home-proof__story" href="/cau-chuyen-cong-nhan/">
-            <img src="/assets/vinacomin-tho-lo-thao-a-bang.webp" alt="Người thợ mỏ làm việc tại đơn vị ngành Than" loading="lazy" decoding="async" width="907" height="624">
-            <span><small>CÂU CHUYỆN THEO TỈNH</small><strong>Từ quê nhà đến vùng mỏ</strong><b>Xem người lao động cùng quê →</b></span>
+          <a class="home-proof__story" href="${latestArticleHref}">
+            <img src="${esc(latestArticle.image)}" alt="${esc(latestArticle.imageAlt)}" loading="lazy" decoding="async" width="${latestImageWidth}" height="${latestImageHeight}">
+            <span><small>BÀI MỚI TỪ NGÀNH THAN</small><strong>${esc(latestArticle.title)}</strong><b>Đọc bài mới →</b></span>
           </a>
         </div>
       </div>
@@ -212,82 +223,4 @@ ${selfCheck}
         <div class="contact-choice-grid" aria-label="Bốn cách đăng ký và liên hệ">
           <a class="contact-choice contact-choice--form" href="${applicationHref}" data-contact="application" data-context="home-register"><small>ĐƯỢC GỌI LẠI</small><strong data-application-resume-label>Để lại thông tin</strong></a>
           <a class="contact-choice contact-choice--zalo" href="${zaloHref}" target="_blank" rel="noopener" data-contact="zalo" data-context="home-register"><small>NHẮN TIN</small><strong>Zalo 096 304 8585</strong></a>
-          <a class="contact-choice contact-choice--messenger" href="${messengerHref}" target="_blank" rel="noopener" data-contact="messenger" data-context="home-register"><small>NHẮN TIN</small><strong>Messenger Thầy Linh</strong></a>
-          <a class="contact-choice contact-choice--phone" href="tel:+84963048585" data-contact="phone" data-context="home-register"><small>GỌI TRỰC TIẾP</small><strong>096 304 8585</strong></a>
-        </div>
-      </div>
-    </section>
-  </main>`;
-
-function replaceOnce(text, marker, replacement, label) {
-  const occurrences = text.split(marker).length - 1;
-  if (occurrences !== 1) throw new Error(`${label}: expected one marker, got ${occurrences}`);
-  return text.replace(marker, replacement);
-}
-
-let html = sourceHtml;
-html = html.replace(/\s*<link rel="preconnect" href="https:\/\/i\.ytimg\.com">\s*/i, "\n");
-html = html.replace(/\s*<style>\s*\.worker-quick[\s\S]*?<\/style>\s*/i, "\n");
-const structuredDataBlocks = [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi)];
-if (structuredDataBlocks.length !== 1) throw new Error(`Worker-first homepage expected one JSON-LD block, got ${structuredDataBlocks.length}`);
-html = html.replace(structuredDataBlocks[0][0], structuredDataMarkup);
-html = replaceOnce(html, "<title>Tuyển thợ mỏ tháng 8/2026 | Điều kiện, quyền lợi, hồ sơ</title>", "<title>Tuyển thợ mỏ tháng 8/2026: học nghề đến nhận việc | Thầy Linh</title>", "Homepage title");
-html = replaceOnce(html, '<meta name="description" content="Nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg: xem nhanh điều kiện, hồ sơ, nơi học, chế độ ăn ở và cam kết 20–25 triệu/tháng khi hoàn thành định mức lao động.">', '<meta name="description" content="Tuyển thợ mỏ tháng 8/2026: nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg; học nghề tại Quảng Ninh, nhận việc, thu nhập 20–25 triệu/tháng khi hoàn thành định mức lao động.">', "Homepage description");
-html = replaceOnce(html, '<meta property="og:title" content="Tuyển thợ mỏ tháng 8/2026 – xem đủ thông tin trong 2 phút">', '<meta property="og:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', "Homepage Open Graph title");
-html = replaceOnce(html, '<meta property="og:description" content="Điều kiện, quyền lợi, hồ sơ, địa điểm nhập học và cách đăng ký được trình bày ngắn gọn cho người lao động.">', '<meta property="og:description" content="Một hành trình rõ ràng từ kiểm tra điều kiện, học nghề tại Quang Hanh đến nhận việc ngành Than ở Quảng Ninh.">', "Homepage Open Graph description");
-html = replaceOnce(html, '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – thông tin dành cho người lao động">', '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', "Homepage Twitter title");
-html = replaceOnce(html, '<meta name="twitter:description" content="Xem nhanh điều kiện, quyền lợi, hồ sơ, địa điểm và cách đăng ký học nghề mỏ tại Quảng Ninh.">', '<meta name="twitter:description" content="Xem hành trình học nghề mỏ tại Quang Hanh, quyền lợi, hồ sơ và việc làm ngành Than tại Quảng Ninh.">', "Homepage Twitter description");
-html = replaceOnce(html, '<link rel="preload" href="assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" as="image" type="image/webp">', '<link rel="preload" href="/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp" as="image" type="image/webp" fetchpriority="high">', "Homepage hero image preload");
-html = replaceOnce(html, "</head>", '  <link rel="stylesheet" href="/worker-info-finder.css?v=2">\n  <link rel="stylesheet" href="/home-rich-media.css?v=5">\n</head>', "Worker self-check and visual consultation funnel stylesheets");
-html = replaceOnce(html, '<button class="menu-toggle" type="button"', `${headerSearch}\n      <button class="menu-toggle" type="button"`, "Header search button");
-html = replaceOnce(html, 'href="/mobile-ux.css?v=5"', 'href="/mobile-ux.css?v=6"', "Homepage mobile UX stylesheet version");
-html = replaceOnce(html, 'src="/mobile-ux.js?v=4"', 'src="/mobile-ux.js?v=9"', "Homepage mobile UX version");
-html = html.replace(/<nav class="v4-primary-nav"[\s\S]*?<\/nav>\s*/i, "");
-const mainBlocks = html.match(/<main id="noi-dung"[\s\S]*?<\/main>/gi) || [];
-if (mainBlocks.length !== 1) throw new Error(`Worker-first homepage expected one main block, got ${mainBlocks.length}`);
-html = html.replace(mainBlocks[0], simpleMain);
-
-const mainNav = `<nav class="main-nav" id="main-nav" data-nav aria-label="Điều hướng chính">
-        <a href="#tu-kiem-tra">Kiểm tra</a><a href="#quy-trinh">Lộ trình</a><a href="#thuc-te">Xem thực tế</a><a href="#tu-van">Đăng ký</a>
-      </nav>`;
-const mainNavBlocks = html.match(/<nav class="main-nav"[\s\S]*?<\/nav>/gi) || [];
-if (mainNavBlocks.length !== 1) throw new Error(`Worker-first homepage expected one main navigation, got ${mainNavBlocks.length}`);
-html = html.replace(mainNavBlocks[0], mainNav);
-html = html.replace(/<a class="header-cta"[\s\S]*?<\/a>/i, '<a class="header-cta" href="#tu-van">Nhận tư vấn</a>');
-
-const staticMobile = `<nav class="mobile-contact" aria-label="Liên hệ nhanh trên điện thoại">
-    <a href="${applicationHref}" data-contact="application" data-context="home-mobile"><strong>Đăng ký</strong><span data-application-resume-label>Biểu mẫu</span></a>
-    <a href="${zaloHref}" target="_blank" rel="noopener" data-contact="zalo" data-context="home-mobile"><strong>Zalo</strong><span>Nhắn tin</span></a>
-    <a href="${messengerHref}" target="_blank" rel="noopener" data-contact="messenger" data-context="home-mobile"><strong>Mess.</strong><span>Nhắn tin</span></a>
-    <a href="tel:+84963048585" data-contact="phone" data-context="home-mobile"><strong>Gọi</strong><span>096 304 8585</span></a>
-  </nav>`;
-const mobileBlocks = html.match(/<nav class="mobile-contact"[\s\S]*?<\/nav>/gi) || [];
-if (mobileBlocks.length !== 1) throw new Error(`Worker-first homepage expected one static mobile contact bar, got ${mobileBlocks.length}`);
-html = html.replace(mobileBlocks[0], staticMobile);
-html = replaceOnce(html, "</body>", '  <script src="/worker-info-finder.js?v=2" defer></script>\n</body>', "Worker self-check script");
-
-for (const required of ['class="home-funnel"', 'class="hero-visual"', 'class="home-journey"', 'id="thong-tin"', 'id="tu-kiem-tra"', 'id="thuc-te"', 'id="quy-trinh"', 'id="tu-van"', 'class="home-journey__layout"', 'class="home-journey__steps"', 'class="home-proof"', 'data-featured-video-facade', '/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp', '/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp', '/assets/vinacomin-tho-mo-ham-lo-1200.webp', '/assets/vinacomin-tho-lo-thao-a-bang.webp', "data-open-site-search", "data-worker-check-form", "data-open-worker-brief", 'id="che-do-ho-so"', 'id="thoi-gian-hoc"', 'id="ho-tro-hoc-nghe"', 'id="noi-lam-viec"', 'class="worker-register__lead"', 'class="contact-choice-grid"', 'data-contact="application"', 'data-contact="zalo"', 'data-contact="messenger"', 'data-contact="phone"']) {
-  if (!html.includes(required)) throw new Error(`Worker-first homepage is missing generated feature: ${required}`);
-}
-if (html.includes('/assets/vinacomin-dao-tao-tho-lo.webp')) throw new Error("Worker-first homepage still contains the rejected podium image");
-for (const removed of ['class="worker-quick"', 'class="worker-recommended"', 'class="home-gallery"', 'class="hero-card"', 'class="hero-facts"', 'class="hero-proof-grid"', 'class="consultation-path"', 'class="worker-summary"', 'class="worker-faq"', 'class="verification-gateway"', 'class="section process-section"', 'class="v5-intent-hub"', 'class="v4-final-conversion"', 'class="v4-five-paths"', 'data-worker-province-select', 'data-province-video-facade']) {
-  if (html.includes(removed)) throw new Error(`Worker-first homepage still contains removed complexity: ${removed}`);
-}
-
-const outputBytes = Buffer.byteLength(html);
-const outputSha256 = crypto.createHash("sha256").update(html).digest("hex");
-fs.writeFileSync(target, html);
-console.log(JSON.stringify({
-  target: "tuyen-tho-mo/index.html",
-  publicUrl: "/",
-  parts: actualParts.length,
-  sourceBytes,
-  sourceSha256,
-  outputBytes,
-  outputSha256,
-  compatibilityAnchors: 2,
-  consultationSteps: 4,
-  selfCheckQuestions: 4,
-  visibleMediaItems: 3,
-  contactChannels: ["form", "zalo", "messenger", "phone"],
-}, null, 2));
+          <a class="contact-choice contact-choice--messenge

@@ -170,4 +170,10 @@ export const communitySourceImages = Object.freeze({
     alt: "Than Thống Nhất đỡ đầu cựu thanh niên xung phong Nguyễn Thị Lan tại Cẩm Phả",
     credit: "Công ty Than Thống Nhất – TKV",
   }),
+  "than-thong-nhat-tri-an-gia-dinh-tho-mo-hy-sinh": Object.freeze({
+    sourceUrl: "https://www.thanthongnhat.vn/tin-san-xuat/tri-an-cac-gia-dinh-co-than-nhan-hy-sinh-vi-su-nghiep-san-xuat-than-15690.html",
+    image: "https://www.thanthongnhat.vn/uploads/news/2026_07/1785144564564_1362602077895029208_g4651981227352933567_04c3598fdfbd9154fdde7b3e6dc857b9.jpg",
+    alt: "Đoàn công tác Công ty Than Thống Nhất – TKV thăm hỏi gia đình có thân nhân hy sinh vì sự nghiệp sản xuất than",
+    credit: "Ảnh Thành Nam · Công ty Than Thống Nhất – TKV",
+  }),
 });
