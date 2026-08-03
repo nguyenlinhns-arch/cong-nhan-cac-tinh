@@ -10,6 +10,7 @@ const requireText = (text, marker, label) => { if (!text.includes(marker)) error
 const polishCss = read("mobile-polish-20260803.css");
 const shell = read("site-shell-20260803.js");
 const homeCss = read("home-worker-journey.css");
+const richHomeCss = read("home-rich-media.css");
 const robots = read("robots.txt");
 const llms = read("llms.txt");
 const searchManifest = JSON.parse(read("search-index.json"));
@@ -45,6 +46,12 @@ for (const marker of [
   "color:#fff!important",
   "border-color:rgba(255,255,255,.62)!important",
 ]) requireText(homeCss, marker, "home-worker-journey.css");
+
+for (const marker of [
+  ".home-funnel .worker-check fieldset{padding:12px;border:0",
+  ".home-funnel .worker-check legend{float:left;width:100%",
+  ".home-funnel .worker-check__choices{clear:both",
+]) requireText(richHomeCss, marker, "home-rich-media.css");
 
 for (const agent of [
   "Googlebot",
