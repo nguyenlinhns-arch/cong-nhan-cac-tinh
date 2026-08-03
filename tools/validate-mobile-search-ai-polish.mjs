@@ -78,8 +78,11 @@ const llmsOpening = llms.slice(0, llms.indexOf("## Trả lời trực tiếp the
 for (const marker of [
   "## Các điểm vào trung tâm",
   "## Dữ liệu máy đọc và nguồn cập nhật",
+  "## Trang trả lời theo nhu cầu tìm kiếm",
   "[Sitemap chính](https://thaylinhtuyenthomo.vn/sitemap.xml)",
   "[Robots](https://thaylinhtuyenthomo.vn/robots.txt)",
+  "[tin tuyển công nhân mỏ](https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/)",
+  "[lương và quyền lợi](https://thaylinhtuyenthomo.vn/thu-nhap-an-o-ho-tro/)",
   "Thông tin tuyển thợ mỏ đang áp dụng: 15 câu hỏi",
 ]) requireText(llmsOpening, marker, "llms.txt");
 if (llmsOpening.includes("thu nhập tháng 8/2026")) errors.push("llms.txt: phần mở đầu còn khóa nội dung lâu dài vào tháng 8/2026");

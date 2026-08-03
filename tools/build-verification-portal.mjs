@@ -240,18 +240,18 @@ const pages = [
   {
     slug: "thu-nhap-an-o-ho-tro",
     kind: "benefits",
-    title: "Thu nhập, ăn ở và hỗ trợ khi học nghề mỏ",
-    description: "Kiểm chứng mức thu nhập, kinh phí đào tạo, ba bữa ăn, ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học nghề mỏ.",
+    title: "Lương thợ lò, ăn ở và hỗ trợ học nghề mỏ",
+    description: "Lương thợ lò 20–25 triệu đồng/tháng khi hoàn thành định mức lao động; miễn học phí, có ba bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng.",
     eyebrow: "Đọc đủ điều kiện áp dụng",
-    heading: "Thu nhập, ăn ở và hỗ trợ khi học nghề mỏ",
-    lead: "Không chỉ nhìn vào mức lương. Cần hiểu rõ điều kiện hoàn thành định mức, thời gian đào tạo, hỗ trợ ban đầu và nơi ở trước khi quyết định.",
+    heading: "Lương thợ lò, ăn ở và hỗ trợ học nghề mỏ",
+    lead: "Xem rõ mức lương thợ lò sau đào tạo, điều kiện hoàn thành định mức lao động, chính sách miễn học phí, ăn ở và hỗ trợ trước khi đăng ký.",
     body: `
     <section class="verification-page__section">
       <div class="container">
         <h2>Những thông tin đang áp dụng</h2>
         <div class="verification-card-grid">
-          <article class="verification-card"><h3>Thu nhập sau đào tạo</h3><p><strong>20–25 triệu đồng/tháng khi hoàn thành định mức lao động.</strong></p><p>Mức này gắn với yêu cầu công việc và định mức, không phải khoản trả cho người chưa đi làm hoặc chưa hoàn thành nhiệm vụ.</p></article>
-          <article class="verification-card"><h3>Kinh phí đào tạo</h3><p>Người học được miễn kinh phí đào tạo theo chỉ tiêu tuyển sinh đang áp dụng.</p><p>Khai thác mỏ và xây dựng mỏ học khoảng 2–3 tháng; cơ điện mỏ học khoảng 10 tháng.</p></article>
+          <article class="verification-card"><h3>Lương thợ lò sau đào tạo</h3><p><strong>20–25 triệu đồng/tháng khi hoàn thành định mức lao động.</strong></p><p>Mức này gắn với yêu cầu công việc và định mức, không phải khoản trả cho người chưa đi làm hoặc chưa hoàn thành nhiệm vụ.</p></article>
+          <article class="verification-card"><h3>Miễn học phí</h3><p>Người học không phải đóng kinh phí đào tạo theo chỉ tiêu tuyển sinh đang áp dụng.</p><p>Khai thác mỏ và xây dựng mỏ học khoảng 2–3 tháng; cơ điện mỏ học khoảng 10 tháng.</p></article>
           <article class="verification-card"><h3>Ăn và ở khi học</h3><p>Được phục vụ 3 bữa/ngày và bố trí ở ký túc xá trong thời gian học.</p></article>
           <article class="verification-card"><h3>Hỗ trợ sinh hoạt</h3><p>Được hỗ trợ tổng cộng 7,5 triệu đồng trong thời gian học theo thông tin tuyển sinh đang áp dụng.</p></article>
           <article class="verification-card"><h3>Việc làm sau tốt nghiệp</h3><p>Người đạt yêu cầu được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng và bố trí công việc tại Quảng Ninh.</p></article>
@@ -333,7 +333,7 @@ const searchItems = pages.map((page, index) => ({
     "cau-chuyen-cong-nhan": ["câu chuyện công nhân", "video công nhân theo tỉnh", "người thật việc thật", "phỏng vấn thợ mỏ"],
     "kiem-tra-dieu-kien": ["kiểm tra điều kiện", "đủ điều kiện làm mỏ", "tuổi chiều cao cân nặng", "sức khỏe thợ mỏ"],
     "ho-so-nhap-hoc": ["hồ sơ nhập học", "CCCD", "giấy khai sinh", "bằng THCS THPT", "địa chỉ nhập học"],
-    "thu-nhap-an-o-ho-tro": ["thu nhập thợ mỏ", "ăn ở khi học", "hỗ trợ 7,5 triệu", "ký túc xá", "miễn kinh phí đào tạo"],
+    "thu-nhap-an-o-ho-tro": ["lương thợ lò", "lương thợ lò bao nhiêu", "thu nhập thợ mỏ", "ăn ở khi học", "hỗ trợ 7,5 triệu", "ký túc xá", "miễn học phí"],
     "an-toan-ky-luat-moi-truong": ["an toàn nghề mỏ", "môi trường hầm lò", "kỷ luật thợ mỏ", "bảo hộ lao động", "ca kíp"],
   }[page.slug],
   category: {

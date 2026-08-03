@@ -42,7 +42,7 @@ function removeInterfaceHeadings(html) {
 
 function classify(url, title, keywords) {
   const haystack = `${url} ${title} ${keywords}`.toLocaleLowerCase("vi");
-  if (url === "/") return ["recruitment", "Thông tin tuyển tháng 8/2026"];
+  if (url === "/") return ["recruitment", "Tuyển thợ mỏ"];
   if (url === "/thong-tin-tuyen-tho-mo/") return ["recruitment", "Thông tin đang áp dụng"];
   if (url === "/trung-tam-nghe-mo/") return ["guide", "Trung tâm nghề mỏ"];
   if (url === "/viec-lam-nganh-than/") return ["recruitment", "Việc làm theo tỉnh"];

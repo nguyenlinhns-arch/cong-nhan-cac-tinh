@@ -35,6 +35,7 @@ jobs:
           node tools/validate-video-proof-library.mjs
           node tools/validate-workflow-safety.mjs
           node tools/validate-ai-search.mjs
+          node tools/validate-search-intents.mjs
       - name: Publish new video metadata when the channel changes
         shell: bash
         run: |

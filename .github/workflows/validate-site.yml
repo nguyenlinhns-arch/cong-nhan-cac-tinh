@@ -47,6 +47,7 @@ jobs:
           node tools/test-home-video-facades.mjs
           node tools/validate-workflow-safety.mjs
           node tools/validate-ai-search.mjs
+          node tools/validate-search-intents.mjs
           node tools/validate-mobile-search-ai-polish.mjs
           node tools/validate-job-postings.mjs
           node tools/validate-recruitment-funnel.mjs

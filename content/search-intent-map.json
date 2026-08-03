@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "locale": "vi-VN",
+  "principle": "Mỗi nhu cầu tìm kiếm chính có một trang trả lời ưu tiên; từ khóa được dùng tự nhiên trong tiêu đề, H1, mô tả và nội dung hữu ích.",
+  "clusters": [
+    {
+      "id": "recruitment-home",
+      "landing": "/",
+      "primary": "tuyển thợ mỏ",
+      "variants": ["tuyển thợ lò Quảng Ninh", "việc làm thợ mỏ Quảng Ninh"],
+      "titleTerms": ["tuyển thợ mỏ"],
+      "h1Terms": ["tuyển thợ mỏ", "Quảng Ninh"],
+      "visibleTerms": ["học nghề"]
+    },
+    {
+      "id": "mine-worker-job",
+      "landing": "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
+      "primary": "tuyển công nhân mỏ",
+      "variants": ["việc làm công nhân mỏ", "việc làm thợ lò", "việc làm mỏ không cần kinh nghiệm", "tuyển lao động ngành Than"],
+      "titleTerms": ["tuyển công nhân mỏ", "Quảng Ninh"],
+      "h1Terms": ["tuyển công nhân mỏ", "Quảng Ninh"],
+      "visibleTerms": ["chưa có kinh nghiệm", "đào tạo từ đầu"]
+    },
+    {
+      "id": "mine-training",
+      "landing": "/hoc-nghe-mo-tai-quang-ninh/",
+      "primary": "học nghề mỏ tại Quảng Ninh",
+      "variants": ["học nghề mỏ miễn học phí", "học nghề thợ lò", "học nghề mỏ có ăn ở"],
+      "titleTerms": ["học nghề mỏ tại Quảng Ninh"],
+      "h1Terms": ["học nghề mỏ tại Quảng Ninh"],
+      "visibleTerms": ["miễn kinh phí đào tạo", "ký túc xá"]
+    },
+    {
+      "id": "jobs-by-province",
+      "landing": "/viec-lam-nganh-than/",
+      "primary": "việc làm công nhân mỏ theo tỉnh",
+      "variants": ["việc làm ngành Than theo tỉnh", "tuyển thợ mỏ theo tỉnh"],
+      "titleTerms": ["việc làm công nhân mỏ", "theo tỉnh"],
+      "h1Terms": ["việc làm công nhân mỏ", "theo tỉnh"],
+      "visibleTerms": ["người chưa có kinh nghiệm"]
+    },
+    {
+      "id": "eligibility",
+      "landing": "/kiem-tra-dieu-kien/",
+      "primary": "điều kiện học nghề mỏ",
+      "variants": ["điều kiện làm thợ lò", "tuổi chiều cao cân nặng thợ mỏ", "kiểm tra sức khỏe nghề mỏ"],
+      "titleTerms": ["điều kiện học nghề mỏ"],
+      "h1Terms": ["điều kiện học nghề mỏ"],
+      "visibleTerms": ["18 đến 40 tuổi", "1m53", "47kg"]
+    },
+    {
+      "id": "admission-documents",
+      "landing": "/ho-so-nhap-hoc/",
+      "primary": "hồ sơ học nghề mỏ",
+      "variants": ["hồ sơ nhập học nghề mỏ", "học nghề mỏ cần giấy tờ gì"],
+      "titleTerms": ["hồ sơ nhập học nghề mỏ"],
+      "h1Terms": ["hồ sơ nhập học nghề mỏ"],
+      "visibleTerms": ["căn cước công dân", "giấy khai sinh"]
+    },
+    {
+      "id": "salary-benefits",
+      "landing": "/thu-nhap-an-o-ho-tro/",
+      "primary": "lương thợ lò",
+      "variants": ["lương thợ lò bao nhiêu", "thu nhập thợ mỏ", "hỗ trợ học nghề mỏ", "học nghề mỏ có ăn ở không"],
+      "titleTerms": ["lương thợ lò"],
+      "h1Terms": ["lương thợ lò"],
+      "visibleTerms": ["20–25 triệu đồng/tháng", "miễn học phí", "ký túc xá"]
+    }
+  ],
+  "provincePattern": {
+    "path": "/viec-lam-nganh-than/{province}/",
+    "primary": "tuyển thợ mỏ tại {province}",
+    "minimumIndexablePages": 17,
+    "titleTerms": ["tuyển thợ mỏ tại {province}"],
+    "h1Terms": ["tuyển thợ mỏ tại {province}", "Quảng Ninh"]
+  }
+}

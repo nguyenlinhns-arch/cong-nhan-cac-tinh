@@ -59,6 +59,7 @@ jobs:
           node tools/test-home-video-facades.mjs
           node tools/validate-workflow-safety.mjs
           node tools/validate-ai-search.mjs
+          node tools/validate-search-intents.mjs
           node tools/validate-mobile-search-ai-polish.mjs
           node tools/validate-job-postings.mjs
           node tools/validate-recruitment-funnel.mjs
@@ -129,6 +130,7 @@ jobs:
                 && grep -Fq 'User-agent: PerplexityBot' "$robots_file" \
                 && grep -Fq 'User-agent: Claude-SearchBot' "$robots_file" \
                 && grep -Fq '## Dữ liệu máy đọc và nguồn cập nhật' "$llms_file" \
+                && grep -Fq '## Trang trả lời theo nhu cầu tìm kiếm' "$llms_file" \
                 && grep -Fq 'search-content.json?v=1' "$site_search_file" \
                 && grep -Fq 'mobile.activateVoice' "$site_search_file" \
                 && grep -Fq 'condition_check_complete' "$finder_file" \

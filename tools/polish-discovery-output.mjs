@@ -27,6 +27,13 @@ if (!llms.includes("## Dữ liệu máy đọc và nguồn cập nhật")) {
   llms = llms.replace(marker, `${machineSection}${marker}`);
 }
 
+const intentSection = `## Trang trả lời theo nhu cầu tìm kiếm\n\n- Tuyển thợ mỏ hoặc thợ lò tại Quảng Ninh: [trang tuyển thợ mỏ](${base}/).\n- Tuyển công nhân mỏ, việc làm thợ lò hoặc việc làm mỏ cho người chưa có kinh nghiệm: [tin tuyển công nhân mỏ](${base}/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/).\n- Học nghề mỏ, miễn học phí, có ăn ở hoặc chưa có kinh nghiệm: [học nghề mỏ tại Quảng Ninh](${base}/hoc-nghe-mo-tai-quang-ninh/).\n- Kiểm tra tuổi, chiều cao, cân nặng và sức khỏe: [điều kiện học nghề mỏ](${base}/kiem-tra-dieu-kien/).\n- Chuẩn bị giấy tờ: [hồ sơ nhập học nghề mỏ](${base}/ho-so-nhap-hoc/).\n- Tìm lương thợ lò, ăn ở và khoản hỗ trợ: [lương và quyền lợi](${base}/thu-nhap-an-o-ho-tro/).\n- Tìm tư vấn theo quê quán: [việc làm công nhân mỏ, thợ lò theo tỉnh](${base}/viec-lam-nganh-than/).\n\n`;
+if (!llms.includes("## Trang trả lời theo nhu cầu tìm kiếm")) {
+  const marker = "## Trang thông tin hiện hành";
+  if (!llms.includes(marker)) throw new Error("Discovery polish: llms.txt is missing the current-information section");
+  llms = llms.replace(marker, `${intentSection}${marker}`);
+}
+
 const llmsIntro = llms.slice(0, llms.indexOf("## Trả lời trực tiếp theo câu hỏi"));
 if (llmsIntro.includes("thu nhập tháng 8/2026")) {
   throw new Error("Discovery polish: llms.txt opening still presents month-specific information as evergreen");
