@@ -2,6 +2,8 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 
+await import("./build-home-css.mjs");
+
 const sourceDir = path.resolve("content", "home-worker-first");
 const siteRoot = path.resolve("tuyen-tho-mo");
 const target = path.join(siteRoot, "index.html");
@@ -283,8 +285,7 @@ html = replaceOnce(html, '<meta name="twitter:description" content="Xem nhanh đ
 html = replaceOnce(html, '<link rel="preload" href="assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" as="image" type="image/webp">', '<link rel="preload" href="/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp" as="image" type="image/webp" fetchpriority="high">', "Homepage hero image preload");
 html = replaceOnce(html, "</head>", '  <link rel="stylesheet" href="/worker-info-finder.css?v=2">\n  <link rel="stylesheet" href="/home-rich-media.css?v=10">\n  <link rel="stylesheet" href="/journey-optimizer.css?v=2">\n</head>', "Worker self-check and visual consultation funnel stylesheets");
 html = replaceOnce(html, '<button class="menu-toggle" type="button"', `${headerSearch}\n      <button class="menu-toggle" type="button"`, "Header search button");
-html = replaceOnce(html, 'href="/mobile-ux.css?v=5"', 'href="/mobile-ux.css?v=8"', "Homepage mobile UX stylesheet version");
-html = replaceOnce(html, 'src="/mobile-ux.js?v=4"', 'src="/mobile-ux.js?v=10"', "Homepage mobile UX version");
+html = replaceOnce(html, 'src="/mobile-ux.js?v=4"', 'src="/mobile-core.js?v=1"', "Homepage mobile core version");
 html = html.replace(/<nav class="v4-primary-nav"[\s\S]*?<\/nav>\s*/i, "");
 const mainBlocks = html.match(/<main id="noi-dung"[\s\S]*?<\/main>/gi) || [];
 if (mainBlocks.length !== 1) throw new Error(`Worker-first homepage expected one main block, got ${mainBlocks.length}`);
@@ -318,6 +319,15 @@ const mobileBlocks = html.match(/<nav class="mobile-contact"[\s\S]*?<\/nav>/gi) 
 if (mobileBlocks.length !== 1) throw new Error(`Worker-first homepage expected one static mobile contact bar, got ${mobileBlocks.length}`);
 html = html.replace(mobileBlocks[0], staticMobile);
 html = replaceOnce(html, "</body>", '  <script src="/worker-info-finder.js?v=2" defer></script>\n  <script src="/journey-optimizer.js?v=2" defer></script>\n</body>', "Worker self-check and consultation journey scripts");
+
+const bundledStyles = [
+  "landing-recruitment.css", "publication-polish.css", "mobile-ux.css", "mobile-core.css", "fonts.css",
+  "worker-info-finder.css", "home-rich-media.css", "journey-optimizer.css", "v5-growth.css", "site-shell-20260803.css",
+];
+for (const stylesheet of bundledStyles) {
+  html = html.replace(new RegExp(`\\s*<link\\b[^>]*rel=["']stylesheet["'][^>]*href=["'][^"']*${stylesheet.replaceAll(".", "\\.")}[^"']*["'][^>]*>`, "gi"), "");
+}
+html = replaceOnce(html, "</head>", '  <link rel="stylesheet" href="/home-critical.css?v=1">\n  <link rel="preload" href="/home-content.css?v=1" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">\n  <noscript><link rel="stylesheet" href="/home-content.css?v=1"></noscript>\n</head>', "Bundled homepage styles");
 
 for (const required of ['class="home-funnel"', 'class="hero-visual"', 'class="home-journey"', 'class="home-province-quick"', 'id="home-province-title"', 'href="/viec-lam-nganh-than/"', 'id="thong-tin"', 'id="tu-kiem-tra"', 'id="thuc-te"', 'id="quy-trinh"', 'id="tu-van"', 'id="kho-noi-dung"', 'class="home-content-shortcuts"', 'class="home-library__grid"', 'href="/cam-nang-nghe-mo/"', 'href="/tin-nganh-than/"', 'href="/anh-video-thuc-te/"', 'href="/kiem-tra-dieu-kien/"', 'href="/ho-so-nhap-hoc/"', 'href="/thu-nhap-an-o-ho-tro/"', 'class="home-journey__layout"', 'class="home-journey__steps"', 'class="home-journey__detail"', 'class="home-proof"', 'data-featured-video-facade', '/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp', '/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp', '/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp', '/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp', "data-open-site-search", "data-worker-check-form", "data-open-worker-brief", 'id="che-do-ho-so"', 'id="thoi-gian-hoc"', 'id="ho-tro-hoc-nghe"', 'id="noi-lam-viec"', 'class="worker-register__lead"', 'class="contact-choice-grid"', 'data-contact="application"', 'data-contact="zalo"', 'data-contact="messenger"', 'data-contact="phone"']) {
   if (!html.includes(required)) throw new Error(`Worker-first homepage is missing generated feature: ${required}`);

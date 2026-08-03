@@ -76,6 +76,7 @@ function pageHtml(page) {
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="canonical" href="${canonical}">
   <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="/manifest.webmanifest">
   <meta property="og:type" content="website">
@@ -85,9 +86,13 @@ function pageHtml(page) {
   <meta property="og:description" content="${escapeHtml(page.description)}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-v2.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${escapeHtml(page.title)}">
+  <meta name="twitter:description" content="${escapeHtml(page.description)}">
+  <meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-v2.webp">
   <link rel="stylesheet" href="/landing-recruitment.css?v=17">
   <link rel="stylesheet" href="/publication-polish.css?v=5">
-  <link rel="stylesheet" href="/mobile-ux.css?v=8">
+  <link rel="stylesheet" href="/mobile-core.css?v=1">
   <link rel="stylesheet" href="/fonts.css?v=1">
   ${cssTag}
   <script type="application/ld+json">${structuredData(page)}</script>
@@ -119,8 +124,8 @@ function pageHtml(page) {
   </main>
   ${footer}
   ${mobileContact}
-  <script src="/analytics.js?v=5" defer></script>
-  <script src="/mobile-ux.js?v=10" defer></script>
+  <script src="/analytics.js?v=6" defer></script>
+  <script src="/mobile-core.js?v=1" defer></script>
   ${scriptTag}
 </body>
 </html>`;
@@ -194,7 +199,7 @@ const pages = [
       <div class="container">
         <h2>Trả lời đủ 4 câu hỏi</h2>
         <p class="verification-page__intro">Không nhập tên, số điện thoại, bệnh án hoặc giấy tờ cá nhân vào công cụ này.</p>
-        <form class="verification-check" data-verification-condition-form novalidate>
+        <form class="verification-check" id="dang-ky" data-verification-condition-form novalidate>
           <fieldset><legend>1. Bạn là nam từ 18 đến 40 tuổi?</legend><div class="verification-check__choices"><label><input type="radio" name="age_range" value="yes"><span>Có</span></label><label><input type="radio" name="age_range" value="review"><span>Chưa / không rõ</span></label></div></fieldset>
           <fieldset><legend>2. Chiều cao của bạn từ 1m53 trở lên?</legend><div class="verification-check__choices"><label><input type="radio" name="height_range" value="yes"><span>Có</span></label><label><input type="radio" name="height_range" value="review"><span>Chưa / không rõ</span></label></div></fieldset>
           <fieldset><legend>3. Cân nặng của bạn từ 47kg trở lên?</legend><div class="verification-check__choices"><label><input type="radio" name="weight_range" value="yes"><span>Có</span></label><label><input type="radio" name="weight_range" value="review"><span>Chưa / không rõ</span></label></div></fieldset>
@@ -369,8 +374,7 @@ function enhanceSearchIndex() {
 
 writePages();
 enhanceHome();
-const mobileLoader = enhanceMobileUxLoader();
-enhanceSearchIndex();
+const mobileLoader = "analytics-core";
 
 console.log(JSON.stringify({
   status: "built",

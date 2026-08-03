@@ -2,7 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve("tuyen-tho-mo");
-const indexPath = path.join(root, "search-index.json");
+const indexPath = path.join(root, "search-provinces.json");
+const manifestPath = path.join(root, "search-index.json");
 const provincePath = path.join(root, "data", "provinces-2026.json");
 const searchIndex = JSON.parse(fs.readFileSync(indexPath, "utf8"));
 const provinceData = JSON.parse(fs.readFileSync(provincePath, "utf8"));
@@ -20,8 +21,8 @@ const localityAliasesByProvince = Object.freeze({
   "dien-bien": ["Tủa Chùa"],
 });
 
-if (searchIndex.version !== 3 || !Array.isArray(searchIndex.items)) {
-  throw new Error(`All-province search expected index version 3, got ${searchIndex.version}`);
+if (searchIndex.version !== 4 || searchIndex.tier !== "provinces" || !Array.isArray(searchIndex.items)) {
+  throw new Error(`All-province search expected province tier version 4, got ${searchIndex.version}`);
 }
 if (provinces.length !== 26) throw new Error(`All-province search expected 26 provinces, got ${provinces.length}`);
 
@@ -86,7 +87,8 @@ function provinceItem(province) {
     url: `/viec-lam-nganh-than/${province.slug}/`,
     title: title || `Tuyển thợ mỏ tại ${province.name}`,
     description: description || `Thông tin học nghề mỏ dành cho lao động tại ${province.name}; nơi học và làm việc tại Quảng Ninh.`,
-    keywords,
+    keywords: keywords.slice(0, 24),
+    aliases: [...new Set([province.name, ...aliases, ...localityAliases])],
     category: "province",
     categoryLabel: "Việc làm theo tỉnh",
     type: "Việc làm theo tỉnh",
@@ -136,8 +138,12 @@ if (internalItems.length !== expectedInternal) {
 }
 
 fs.writeFileSync(indexPath, `${JSON.stringify(searchIndex, null, 2)}\n`);
+const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+manifest.counts.provinces = provinceItems.length;
+manifest.counts.total = Number(manifest.counts.core || 0) + provinceItems.length + Number(manifest.counts.content || 0);
+fs.writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 console.log(JSON.stringify({
-  target: "tuyen-tho-mo/search-index.json",
+  target: "tuyen-tho-mo/search-provinces.json",
   provinces: provinceItems.length,
   public_provinces: provinceItems.length - internalItems.length,
   internal_provinces: internalItems.length,

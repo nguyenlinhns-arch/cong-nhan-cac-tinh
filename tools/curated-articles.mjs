@@ -754,7 +754,7 @@ export const curatedArticles = [
       ["Người lao động làm gì khi thấy dấu hiệu bất thường?", "Báo người phụ trách, giữ khoảng cách an toàn và thực hiện nhiệm vụ theo đúng phương án được phân công."],
     ],
     sources: [
-      {publisher: "TKV", title: "Đảm bảo an toàn sản xuất lộ thiên trong mùa mưa bão 2026", date: "2026", url: "https://vinacomin.vn/news/slug/dam-bao-an-toan-san-xuat-lo-thien-trong-mua-mua-bao-2026"},
+      {publisher: "TKV", title: "Đảm bảo an toàn sản xuất lộ thiên trong mùa mưa bão 2026", date: "25/04/2026", url: "https://vinacomin.vn/news/slug/dam-bao-an-toan-san-xuat-lo-thien-trong-mua-mua-bao-2026"},
       {publisher: "PetroTimes", title: "TKV triển khai đồng bộ các giải pháp sản xuất, tiêu thụ than tháng 7/2026", date: "08/07/2026", url: "https://petrotimes.vn/tkv-trien-khai-dong-bo-cac-giai-phap-san-xuat-tieu-thu-than-thang-72026-743180.html"},
       {publisher: "Nhân Dân", title: "Tăng tốc tiến độ dự án băng tải nhưng phải bảo đảm an toàn", date: "13/07/2026", url: "https://nhandan.vn/tang-toc-tien-do-phan-dau-hoan-thanh-du-an-bang-tai-van-chuyen-than-trong-thang-8-post975334.html"},
     ],

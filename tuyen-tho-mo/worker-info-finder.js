@@ -13,6 +13,14 @@
   const checkForm = document.querySelector("[data-worker-check-form]");
   const checkResult = document.querySelector("[data-worker-check-result]");
   const checkNames = ["age_range", "height_range", "weight_range", "health_screen"];
+  let checkStarted = false;
+  let checkCompleted = false;
+
+  function startCheck() {
+    if (checkStarted) return;
+    checkStarted = true;
+    track("condition_check_start", { context: "home_self_check" });
+  }
 
   function resultLink(status) {
     if (status === "pass") {
@@ -21,9 +29,11 @@
     return "https://zalo.me/0963048585";
   }
 
+  checkForm?.addEventListener("change", startCheck);
   checkForm?.addEventListener("submit", (event) => {
     event.preventDefault();
     if (!checkResult) return;
+    startCheck();
     const values = checkNames.map((name) => checkForm.querySelector(`input[name="${name}"]:checked`)?.value || "");
     const missingIndex = values.findIndex((value) => !value);
 
@@ -46,5 +56,10 @@
     checkResult.focus({ preventScroll: true });
     checkResult.scrollIntoView({ behavior: "smooth", block: "nearest" });
     track("worker_self_check_complete", { result: status });
+    if (!checkCompleted) {
+      checkCompleted = true;
+      track("condition_check_complete", { context: "home_self_check", result: status });
+      if (pass) track("condition_pass", { context: "home_self_check", result: status, journey_stage: "condition_pass" });
+    }
   });
 })();

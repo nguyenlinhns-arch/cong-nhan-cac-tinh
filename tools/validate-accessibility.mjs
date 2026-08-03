@@ -102,7 +102,7 @@ for (const relative of applicationPages) {
     'autocomplete="address-level1"',
     'role="region" aria-labelledby="application-result-title" tabindex="-1"',
     'data-application-delivery role="status" aria-live="polite" aria-atomic="true"',
-    "job-application.js?v=9",
+    "job-application.js?v=10",
   ];
   for (const marker of required) if (!html.includes(marker)) errors.push(`${relative}: missing ${marker}`);
   if (/data-application-result[^>]*aria-live=/i.test(html)) errors.push(`${relative}: long result region must not be a live region`);

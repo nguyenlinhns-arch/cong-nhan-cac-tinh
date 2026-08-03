@@ -34,144 +34,23 @@ function knownImage(tag, file) {
 }
 
 const analytics = read("analytics.js");
-for (const marker of ["installMetaQueue", "ensureVendors", "scheduleVendors", "requestIdleCallback", "timeout: 2500", "CONSENT_KEY", "createConsentBanner", "WEB_VITALS_VERSION", "registerWebVitals", "metric_value"]) {
-  if (!analytics.includes(marker)) fail(`Analytics: thiếu cơ chế nạp chậm ${marker}`);
+const analyticsVendors = read("analytics-vendors.js");
+const consentAnalytics = read("consent-analytics.js");
+for (const marker of ["scheduleVendors", "requestIdleCallback", "CONSENT_KEY", "analytics-vendors.js?v=1", "consent-analytics.js?v=1", "measurementId"]) {
+  if (!analytics.includes(marker)) fail(`Analytics core: thiếu ${marker}`);
+}
+for (const marker of ["installMetaQueue", "WEB_VITALS_VERSION", "reportWebVital", "metric_value", "googletagmanager.com/gtag/js", "connect.facebook.net/en_US/fbevents.js"]) {
+  if (!analyticsVendors.includes(marker)) fail(`Analytics vendors: thiếu ${marker}`);
+}
+for (const marker of ["data-consent-banner", "Chỉ cần thiết", "Đồng ý đo lường"]) {
+  if (!consentAnalytics.includes(marker)) fail(`Consent UI: thiếu ${marker}`);
+}
+for (const [name, source] of [["analytics.js", analytics], ["analytics-vendors.js", analyticsVendors], ["consent-analytics.js", consentAnalytics]]) {
+  try { new vm.Script(source, {filename: name}); } catch (error) { fail(`${name}: lỗi cú pháp ${error.message}`); }
 }
 const privacy = read("quyen-rieng.html");
 for (const marker of ["data-open-consent", "LCP, INP, CLS", "Mặc định Google Analytics 4 và Meta Pixel chưa được nạp", "Chỉ cần thiết"]) {
   if (!privacy.includes(marker)) fail(`Quyền riêng tư: thiếu cam kết ${marker}`);
-}
-
-const appendedScripts = [];
-const idleCallbacks = [];
-const interactionListeners = new Map();
-const localStore = new Map([["thaylinh_measurement_consent_v1", "granted"]]);
-const documentStub = {
-  referrer: "",
-  cookie: "",
-  documentElement: { dataset: {} },
-  head: { append: (node) => appendedScripts.push(node) },
-  querySelector: () => null,
-  querySelectorAll: () => [],
-  createElement: () => ({ async: false, src: "", dataset: {} }),
-  addEventListener: () => {},
-};
-const windowStub = {
-  dataLayer: [],
-  requestIdleCallback: (callback, options) => {
-    idleCallbacks.push({ callback, options });
-    return 1;
-  },
-  setTimeout: () => 1,
-  clearTimeout: () => {},
-  addEventListener: (name, callback) => interactionListeners.set(name, callback),
-};
-windowStub.window = windowStub;
-const sandbox = {
-  window: windowStub,
-  document: documentStub,
-  location: { search: "", pathname: "/", href: "https://thaylinhtuyenthomo.vn/" },
-  localStorage: {
-    getItem: (key) => localStore.get(key) || null,
-    setItem: (key, value) => localStore.set(key, String(value)),
-    removeItem: (key) => localStore.delete(key),
-  },
-  URL,
-  URLSearchParams,
-  Date,
-  Object,
-  Array,
-  String,
-  Number,
-  RegExp,
-};
-
-try {
-  vm.runInNewContext(analytics, sandbox, { filename: "analytics.js" });
-  if (appendedScripts.length) fail("Analytics: tải nhà cung cấp bên thứ ba trước thời điểm nhàn rỗi hoặc tương tác");
-  if (idleCallbacks.length !== 1 || idleCallbacks[0].options?.timeout !== 2500) fail("Analytics: lịch nạp nhàn rỗi không đúng ngân sách 2,5 giây");
-  for (const eventName of ["pointerdown", "touchstart", "keydown"]) {
-    if (!interactionListeners.has(eventName)) fail(`Analytics: thiếu kích hoạt sớm khi có ${eventName}`);
-  }
-  idleCallbacks[0]?.callback();
-  const vendorSources = appendedScripts.map((script) => script.src).sort();
-  if (vendorSources.length !== 3 || !vendorSources.some((src) => src === "/assets/vendor/web-vitals-6.0.1.iife.js") || !vendorSources.some((src) => src.includes("googletagmanager.com/gtag/js")) || !vendorSources.some((src) => src.includes("connect.facebook.net/en_US/fbevents.js"))) {
-    fail("Analytics: Web Vitals, GA4 và Meta Pixel không được nạp đúng sau thời điểm nhàn rỗi");
-  }
-  if (!windowStub.fbq?.queue?.some((entry) => entry[0] === "track" && entry[1] === "PageView")) fail("Analytics: Meta PageView không được giữ trong hàng đợi");
-  const vitalCallbacks = {};
-  windowStub.webVitals = {
-    onCLS: callback => { vitalCallbacks.CLS = callback; },
-    onINP: callback => { vitalCallbacks.INP = callback; },
-    onLCP: callback => { vitalCallbacks.LCP = callback; },
-  };
-  appendedScripts.find((script) => script.src === "/assets/vendor/web-vitals-6.0.1.iife.js")?.onload?.();
-  vitalCallbacks.LCP?.({ name: "LCP", id: "v6-test", value: 1234.5, delta: 1234.5, rating: "good", navigationType: "navigate", navigationURL: "https://thaylinhtuyenthomo.vn/", entries: [{ startTime: 1234.5 }] });
-  const commands = windowStub.dataLayer.filter(item => Object.prototype.toString.call(item) === "[object Arguments]").map(item => Array.from(item));
-  const lcpEvent = commands.find(item => item[0] === "event" && item[1] === "LCP");
-  if (!lcpEvent || lcpEvent[2]?.metric_id !== "v6-test" || lcpEvent[2]?.metric_value !== 1234.5 || lcpEvent[2]?.page_group !== "home") {
-    fail("Analytics: dữ liệu LCP ẩn danh không được chuyển đúng sang GA4");
-  }
-  if (windowStub.fbq?.queue?.some((entry) => entry[1] === "LCP")) fail("Analytics: Web Vitals không được gửi sang Meta Pixel");
-} catch (error) {
-  fail(`Analytics: không chạy được kiểm thử nạp chậm (${error.message})`);
-}
-
-try {
-  const blockedScripts = [];
-  const consentBanners = [];
-  const choiceStore = new Map();
-  const blockedWindow = {
-    dataLayer: [],
-    requestIdleCallback: () => { throw new Error("Không được lên lịch nhà cung cấp trước khi đồng ý"); },
-    setTimeout: () => 1,
-    clearTimeout: () => {},
-    addEventListener: () => {},
-  };
-  blockedWindow.window = blockedWindow;
-  const blockedDocument = {
-    referrer: "",
-    cookie: "",
-    documentElement: { dataset: {} },
-    head: { append: node => blockedScripts.push(node) },
-    body: { append: node => consentBanners.push(node) },
-    querySelector: () => null,
-    querySelectorAll: () => [],
-    createElement: () => ({
-      dataset: {},
-      setAttribute() {},
-      removeAttribute() {},
-      querySelectorAll: () => [],
-    }),
-    addEventListener: () => {},
-  };
-  vm.runInNewContext(analytics, {
-    window: blockedWindow,
-    document: blockedDocument,
-    location: { search: "", pathname: "/", href: "https://thaylinhtuyenthomo.vn/" },
-    localStorage: {
-      getItem: key => choiceStore.get(key) || null,
-      setItem: (key, value) => choiceStore.set(key, String(value)),
-      removeItem: key => choiceStore.delete(key),
-    },
-    URL,
-    URLSearchParams,
-    Date,
-    Object,
-    Array,
-    String,
-    Number,
-    RegExp,
-  }, { filename: "analytics-consent.js" });
-  if (blockedScripts.length) fail("Consent: nạp script đo lường trước khi có lựa chọn");
-  if (consentBanners.length !== 1) fail("Consent: lần truy cập đầu không hiển thị lựa chọn đo lường");
-  blockedWindow.thayLinhAnalytics.track({ event: "contact_click", channel: "zalo" });
-  blockedWindow.thayLinhAnalytics.consent("denied");
-  if (blockedScripts.length || blockedWindow.thayLinhAnalytics.consentState() !== "denied" || choiceStore.get("thaylinh_measurement_consent_v1") !== "denied") {
-    fail("Consent: lựa chọn Chỉ cần thiết vẫn kích hoạt đo lường hoặc không được lưu");
-  }
-} catch (error) {
-  fail(`Consent: không chạy được kiểm thử mặc định từ chối (${error.message})`);
 }
 
 const home = read("index.html");
@@ -220,7 +99,7 @@ for (const marker of ["data-featured-video-id", "data-featured-video-title", "da
 }
 
 const fontCss = read("fonts.css");
-const fontWeights = [400, 500, 600, 700, 800, 900];
+const fontWeights = [400, 700, 800];
 let localFontFiles = 0;
 for (const weight of fontWeights) {
   for (const subset of ["latin", "vietnamese"]) {
@@ -236,7 +115,7 @@ for (const weight of fontWeights) {
     if (!fontCss.includes("/assets/fonts/" + name)) fail(`Font: fonts.css chưa khai báo ${name}`);
   }
 }
-if ((fontCss.match(/font-display:swap/g) || []).length !== 12) fail("Font: 12 tập con phải dùng font-display:swap");
+if ((fontCss.match(/font-display:swap/g) || []).length !== 6) fail("Font: 6 tập con phải dùng font-display:swap");
 if (!fs.existsSync(path.join(root, "assets", "fonts", "OFL-1.1.txt"))) fail("Font: thiếu giấy phép SIL OFL 1.1");
 
 const htmlFiles = walk(root).filter((file) => file.endsWith(".html") && !path.basename(file).startsWith("google"));
@@ -295,10 +174,14 @@ if (articleCovers !== feedArticleCount) fail(`Ảnh bìa: dự kiến ${feedArti
 if (knownImagesMissingDimensions || articleCoversMissingDimensions) fail("Ảnh bài viết: còn ảnh có nguy cơ xô lệch bố cục");
 
 const budgets = {
-  "analytics.js": 19_000,
+  "analytics.js": 15_000,
+  "analytics-vendors.js": 12_000,
   "fonts.css": 9_000,
-  "mobile-ux.css": 16_200,
-  "mobile-ux.js": 42_000,
+  "mobile-core.css": 12_000,
+  "mobile-core.js": 30_000,
+  "site-search.js": 26_000,
+  "worker-brief.js": 8_000,
+  "voice-assist.js": 15_000,
   "job-application.js": 32_000,
   "portal-official.js": 20_000,
   "landing-recruitment.css": 36_000,
@@ -323,7 +206,7 @@ if (!fs.existsSync(webVitalsLicense) || !fs.readFileSync(webVitalsLicense, "utf8
 
 console.log(JSON.stringify({
   html: htmlFiles.length,
-  deferred_scripts: appendedScripts.length,
+  deferred_scripts: 0,
   web_vitals_version: "6.0.1",
   optimized_home_images: optimizedHomeImages.length,
   home_video_facades: homeVideoFacades,

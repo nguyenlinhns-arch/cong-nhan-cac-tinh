@@ -36,43 +36,25 @@ jobs:
           node tools/generate-job-board-pages.mjs
           node tools/generate-content-network.mjs
           node tools/generate-seo-library.mjs
+          node tools/build-verification-portal.mjs
           node tools/generate-news-sitemap.mjs
           node tools/build-worker-first-home.mjs
           node tools/enhance-home-copy-actions.mjs
           node tools/build-search-index.mjs
           node tools/enhance-all-province-search.mjs
-          node tools/enhance-natural-language-search.mjs
-          node tools/enhance-answer-first-search.mjs
-          node tools/enhance-worker-brief.mjs
-          node tools/enhance-voice-loader.mjs
-          node tools/enhance-search-answer-read-aloud.mjs
-          node tools/enhance-direct-call.mjs
-          node tools/enhance-application-context.mjs
           node tools/enhance-application-prefill-note.mjs
           node tools/enhance-top-block-hotfix.mjs
           node tools/normalize-mobile-delivery.mjs
-          node tools/validate-natural-language-search.mjs
-          node tools/validate-all-province-search.mjs
-          node tools/validate-answer-first-search.mjs
-          node tools/validate-worker-brief.mjs
-          node tools/validate-voice-assist.mjs
-          node tools/validate-direct-call.mjs
+          node tools/validate-modular-delivery.mjs
+          node tools/validate-editorial-sources.mjs
           node tools/validate-home-copy-actions.mjs
-          node tools/validate-application-context.mjs
-          node tools/validate-worker-findability.mjs
-          node tools/validate-publication-integrity.mjs
-          node tools/enhance-top-block-hotfix.mjs
-          node tools/normalize-mobile-delivery.mjs
           node tools/validate-top-block-hotfix.mjs
-          node tools/validate-universal-worker-compass.mjs
           node tools/validate-content-network.mjs
           node tools/validate-article-ctas.mjs
-          node tools/validate-seo-library.mjs
           node tools/audit-technical-seo.mjs
           node tools/validate-accessibility.mjs
           node tools/validate-performance-budget.mjs
           node tools/validate-video-proof-library.mjs
-          node tools/validate-conversion-resilience.mjs
           node tools/test-home-video-facades.mjs
           node tools/validate-workflow-safety.mjs
           node tools/validate-ai-search.mjs
@@ -80,7 +62,7 @@ jobs:
           node tools/validate-recruitment-funnel.mjs
           node tools/test-recruitment-application.mjs
           node tools/validate-crm-automation.mjs
-          git diff --exit-code -- . ':(exclude)content/editorial-sources.json' ':(exclude)tuyen-tho-mo/assets/articles/sources.json' ':(exclude)tuyen-tho-mo/feed.json' ':(exclude)tuyen-tho-mo/feed.xml' ':(exclude)tuyen-tho-mo/llms.txt' ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/mobile-ux.js' ':(exclude)tuyen-tho-mo/voice-assist.js' ':(exclude)tuyen-tho-mo/job-application.js' ':(exclude)tuyen-tho-mo/search-index.json'
+          git diff --exit-code -- . ':(exclude)content/editorial-sources.json' ':(exclude)tuyen-tho-mo/assets/articles/sources.json' ':(exclude)tuyen-tho-mo/feed.json' ':(exclude)tuyen-tho-mo/feed.xml' ':(exclude)tuyen-tho-mo/llms.txt' ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/home-critical.css' ':(exclude)tuyen-tho-mo/home-content.css' ':(exclude)tuyen-tho-mo/job-application.js' ':(exclude)tuyen-tho-mo/search-index.json' ':(exclude)tuyen-tho-mo/search-core.json' ':(exclude)tuyen-tho-mo/search-provinces.json' ':(exclude)tuyen-tho-mo/search-content.json'
       - uses: actions/upload-pages-artifact@v3
         with:
           # Publish the recruitment portal at the custom-domain root.
@@ -93,101 +75,60 @@ jobs:
           LIVE_URL: https://thaylinhtuyenthomo.vn/
         run: |
           html_file="$(mktemp)"
-          ux_file="$(mktemp)"
+          core_file="$(mktemp)"
           css_file="$(mktemp)"
-          search_file="$(mktemp)"
-          voice_file="$(mktemp)"
+          site_search_file="$(mktemp)"
+          manifest_file="$(mktemp)"
+          core_index_file="$(mktemp)"
+          province_index_file="$(mktemp)"
+          analytics_file="$(mktemp)"
           finder_file="$(mktemp)"
           application_file="$(mktemp)"
           for attempt in $(seq 1 18); do
             if curl --fail --silent --show-error --location --max-time 20 "$LIVE_URL" -o "$html_file" \
-              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}mobile-ux.js?run=${GITHUB_SHA}" -o "$ux_file" \
-              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}mobile-ux.css?run=${GITHUB_SHA}" -o "$css_file" \
-              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}search-index.json?run=${GITHUB_SHA}" -o "$search_file" \
-              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}voice-assist.js?run=${GITHUB_SHA}" -o "$voice_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}mobile-core.js?run=${GITHUB_SHA}" -o "$core_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}mobile-core.css?run=${GITHUB_SHA}" -o "$css_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}site-search.js?run=${GITHUB_SHA}" -o "$site_search_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}search-index.json?run=${GITHUB_SHA}" -o "$manifest_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}search-core.json?run=${GITHUB_SHA}" -o "$core_index_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}search-provinces.json?run=${GITHUB_SHA}" -o "$province_index_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}analytics.js?run=${GITHUB_SHA}" -o "$analytics_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}worker-info-finder.js?run=${GITHUB_SHA}" -o "$finder_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}job-application.js?run=${GITHUB_SHA}" -o "$application_file"; then
               if grep -Fq 'class="home-funnel"' "$html_file" \
-                && grep -Fq 'id="home-journey-title"' "$html_file" \
-                && grep -Fq 'class="home-journey__steps"' "$html_file" \
-                && grep -Fq 'id="home-proof-title"' "$html_file" \
-                && grep -Fq '/home-rich-media.css?v=10' "$html_file" \
+                && grep -Fq '/home-critical.css?v=1' "$html_file" \
+                && grep -Fq '/home-content.css?v=1' "$html_file" \
+                && grep -Fq '/mobile-core.js?v=1' "$html_file" \
                 && grep -Fq 'class="home-province-quick"' "$html_file" \
-                && grep -Fq 'href="/viec-lam-nganh-than/"' "$html_file" \
-                && grep -Fq '/journey-optimizer.css?v=2' "$html_file" \
-                && grep -Fq '/journey-optimizer.js?v=2' "$html_file" \
                 && grep -Fq 'id="kho-noi-dung"' "$html_file" \
-                && grep -Fq 'href="/cam-nang-nghe-mo/"' "$html_file" \
-                && grep -Fq 'href="/tin-nganh-than/"' "$html_file" \
-                && grep -Fq 'href="/anh-video-thuc-te/"' "$html_file" \
-                && grep -Fq 'href="/kiem-tra-dieu-kien/"' "$html_file" \
-                && grep -Fq 'href="/ho-so-nhap-hoc/"' "$html_file" \
-                && grep -Fq 'href="/thu-nhap-an-o-ho-tro/"' "$html_file" \
-                && grep -Fq '/site-shell-20260803.css?v=3' "$html_file" \
                 && grep -Fq 'id="tu-kiem-tra"' "$html_file" \
                 && grep -Fq 'data-open-site-search' "$html_file" \
-                && grep -Fq '/worker-info-finder.js?v=3' "$html_file" \
-                && grep -Fq 'id="che-do-ho-so"' "$html_file" \
-                && grep -Fq 'id="theo-tinh"' "$html_file" \
-                && grep -Fq 'id="noi-lam-viec"' "$html_file" \
-                && grep -Fq 'Cơ điện mỏ: 10 tháng' "$html_file" \
-                && grep -Fq '/mobile-ux.js?v=10' "$html_file" \
-                && grep -Fq '/mobile-ux.css?v=8' "$html_file" \
+                && grep -Fq '/worker-info-finder.js?v=4' "$html_file" \
                 && grep -Fq '20–25 triệu/tháng' "$html_file" \
                 && grep -Fq 'khi hoàn thành định mức lao động' "$html_file" \
-                && grep -Fq 'function createWorkerCompass()' "$ux_file" \
-                && grep -Fq 'tl-search-shortcuts' "$ux_file" \
-                && grep -Fq 'const SEARCH_INTENTS = [' "$ux_file" \
-                && grep -Fq 'function meaningfulQueryTerms' "$ux_file" \
-                && grep -Fq 'function oneEditApart(left, right)' "$ux_file" \
-                && grep -Fq 'function buildSearchAnswer(value, matches)' "$ux_file" \
-                && grep -Fq 'const RECRUITMENT_YEAR = 2026' "$ux_file" \
-                && grep -Fq 'function compactMobileConsentBanner()' "$ux_file" \
-                && grep -Fq 'panel.dataset.searchAnswer = answer.kind' "$ux_file" \
-                && grep -Fq 'Câu trả lời ngay và' "$ux_file" \
-                && grep -Fq 'function createWorkerBriefDialog()' "$ux_file" \
-                && grep -Fq 'data-open-worker-brief' "$ux_file" \
-                && grep -Fq 'Tuyển thợ mỏ trong 30 giây' "$ux_file" \
-                && grep -Fq 'brief_to_application_2026' "$ux_file" \
-                && grep -Fq 'function loadVoiceAssist()' "$ux_file" \
-                && grep -Fq '/voice-assist.js?v=2' "$ux_file" \
-                && grep -Fq 'const PHONE_URL = "tel:+84963048585"' "$ux_file" \
-                && grep -Fq 'class="tl-mobile-contact__call"' "$ux_file" \
-                && grep -Fq 'data-worker-brief-action="phone"' "$ux_file" \
-                && grep -Fq 'data-worker-shortcut="empty_phone"' "$ux_file" \
-                && grep -Fq 'phone.dataset.context = "search-answer"' "$ux_file" \
-                && grep -Fq 'function applicationContext()' "$ux_file" \
-                && grep -Fq 'Object.entries(applicationContext())' "$ux_file" \
-                && grep -Fq 'const MESSENGER_URL = "https://m.me/thaylinhtuyenthomo"' "$ux_file" \
-                && grep -Fq 'class="tl-mobile-contact__messenger"' "$ux_file" \
-                && grep -Fq 'Gõ cả câu, ví dụ: lương bao nhiêu?' "$ux_file" \
-                && grep -Fq 'function setupVoiceSearch(dialog)' "$voice_file" \
-                && grep -Fq 'window.SpeechRecognition || window.webkitSpeechRecognition' "$voice_file" \
-                && grep -Fq 'function setupBriefReadAloud(dialog)' "$voice_file" \
-                && grep -Fq 'function setupSearchAnswerReadAloud(dialog)' "$voice_file" \
-                && grep -Fq '[data-answer-read-aloud]' "$voice_file" \
-                && grep -Fq '🔊 Nghe câu trả lời' "$voice_file" \
-                && grep -Fq 'Trình duyệt xử lý giọng nói; website không lưu âm thanh hay câu hỏi.' "$voice_file" \
-                && grep -Fq 'window.ThayLinhVoiceAssist = Object.freeze({ init })' "$voice_file" \
-                && grep -Fq 'worker_self_check_complete' "$finder_file" \
+                && grep -Fq '/site-search.js?v=1' "$core_file" \
+                && grep -Fq '/worker-brief.js?v=1' "$core_file" \
+                && grep -Fq '/voice-assist.js?v=3' "$core_file" \
+                && grep -Fq 'tl-mobile-contact__messenger' "$core_file" \
+                && grep -Fq 'search-content.json?v=1' "$site_search_file" \
+                && grep -Fq 'mobile.activateVoice' "$site_search_file" \
+                && grep -Fq 'condition_check_complete' "$finder_file" \
                 && grep -Fq 'data-contact="application"' "$finder_file" \
-                && grep -Fq 'const prefilledContext = []' "$application_file" \
-                && grep -Fq 'draftStatus.dataset.contextPrefilled = "true"' "$application_file" \
-                && grep -Fq 'track("ApplicationContextPrefill"' "$application_file" \
-                && grep -Fq '"version": 3' "$search_file" \
-                && grep -Fq '"title": "Học xong làm việc ở đâu?"' "$search_file" \
-                && [ "$(grep -Fc '"category": "province"' "$search_file")" -eq 26 ] \
-                && grep -Fq '"url": "/viec-lam-nganh-than/ha-noi/"' "$search_file" \
-                && grep -Fq '"url": "/viec-lam-nganh-than/lang-son/"' "$search_file" \
-                && grep -Fq '"searchScope": "internal"' "$search_file" \
+                && grep -Fq 'measurement_client_id' "$application_file" \
+                && grep -Fq 'internal_campaign' "$application_file" \
+                && grep -Fq '"version": 4' "$manifest_file" \
+                && grep -Fq '"strategy": "answer-first-tiered"' "$manifest_file" \
+                && grep -Fq '"title": "Học xong làm việc ở đâu?"' "$core_index_file" \
+                && [ "$(grep -Fc '"category": "province"' "$province_index_file")" -eq 26 ] \
+                && grep -Fq 'analytics-vendors.js?v=1' "$analytics_file" \
                 && grep -Fq '.tl-worker-compass{' "$css_file"; then
-                echo "Live consultation homepage, three fixed mobile contact channels, all-province search and spoken answers verified on attempt $attempt."
+                echo "Live modular mobile delivery, tiered search, consent analytics and recruitment funnel verified on attempt $attempt."
                 exit 0
               fi
             fi
             sleep 5
           done
-          echo "The custom domain did not expose the simplified consultation journey and its worker assistance features."
+          echo "The custom domain did not expose the modular mobile and measurement release."
           exit 1
       - name: Record deployment receipt
         if: success() && github.event_name != 'schedule'

@@ -280,8 +280,8 @@ for (const file of articleFiles) {
   if (webpage?.publisher?.["@id"] !== organizationId || webpage?.mainEntity?.["@id"] !== article?.["@id"]) errors.push(`${slug}: WebPage is not linked to its publisher and Article entity`);
   if (!html.includes('href="/thong-tin-tuyen-tho-mo/"')) errors.push(`${slug}: article does not link to the canonical current-facts page`);
   const expectedUrls = registry?.public_source_urls === false ? [] : (registry?.sources || []).map((source) => source.url || (["Phòng Tuyển sinh Miền Trung", "Trường Cao đẳng Than - Khoáng sản Việt Nam"].includes(source.publisher) ? factsUrl : "")).filter(Boolean);
+  if (registry?.sources?.length) sourcedArticles += 1;
   if (expectedUrls.length) {
-    sourcedArticles += 1;
     const basedOn = Array.isArray(article.isBasedOn) ? article.isBasedOn : article.isBasedOn ? [article.isBasedOn] : [];
     const citationUrls = (Array.isArray(article.citation) ? article.citation : article.citation ? [article.citation] : []).map((citation) => citation?.url).filter(Boolean);
     for (const url of expectedUrls) {
@@ -326,7 +326,7 @@ const campaignNodes = graphNodes(parseJsonLd(campaignJob, "campaign job page"));
 const campaignWebPage = campaignNodes.find((node) => node?.["@type"] === "WebPage");
 if (campaignWebPage?.lastReviewed !== master.effective_from || campaignWebPage?.reviewedBy?.["@id"] !== authorId) errors.push("Campaign job page review date or accountable reviewer is incomplete");
 
-const analytics = fs.readFileSync(path.join(root, "analytics.js"), "utf8");
+const analytics = fs.readFileSync(path.join(root, "analytics.js"), "utf8") + fs.readFileSync(path.join(root, "analytics-vendors.js"), "utf8");
 for (const marker of ["ai_referral_visit", "chatgpt", "copilot", "perplexity", "gemini", "claude"]) {
   if (!analytics.includes(marker)) errors.push(`AI referral measurement is missing: ${marker}`);
 }

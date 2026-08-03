@@ -26,9 +26,9 @@ for (const hook of [
   "data-application-draft-status",
   "autocomplete=\"address-level1\"",
   "<noscript>",
-  "recruitment-config.js?v=2",
-  "job-application.js?v=9",
-  "analytics.js?v=5",
+  "recruitment-config.js?v=3",
+  "job-application.js?v=10",
+  "analytics.js?v=6",
 ]) requireText(campaign, hook, "central application page");
 
 if (campaign.includes("data-copy-application") || campaign.includes("Sao chép lại tin nhắn")) {
@@ -60,6 +60,9 @@ for (const text of [
   "ApplicationDraftRestore",
   "DRAFT_TTL_MS",
   "clearDraft",
+  "measurement_client_id",
+  "internal_campaign",
+  "lead_key: applicationCode",
 ]) requireText(application, text, "application logic");
 
 for (const marker of ["deliverApplication(application)", "Content-Type\": \"text/plain", "application_saved", "values.consent === \"on\"", "String(values.website || \"\")"]) {
@@ -86,7 +89,7 @@ for (const marker of ["Bản nháp trên thiết bị", "tối đa 24 giờ", "k
 
 for (const slug of ["ky-thuat-khai-thac-mo-ham-lo-quang-ninh", "ky-thuat-xay-dung-mo-ham-lo-quang-ninh"]) {
   const role = read(`viec-lam/${slug}/index.html`);
-  for (const marker of ["data-application-form", "data-form-context=\"job_", "directApply\":true", "job-application.js?v=9", "data-application-draft-status", "application-result-title", "<noscript>"]) {
+  for (const marker of ["data-application-form", "data-form-context=\"job_", "directApply\":true", "job-application.js?v=10", "data-application-draft-status", "application-result-title", "<noscript>"]) {
     requireText(role, marker, `${slug} direct application`);
   }
   if (role.includes("data-copy-application") || role.includes("Sao chép lại tin nhắn")) errors.push(`${slug}: removed copy-message control returned`);

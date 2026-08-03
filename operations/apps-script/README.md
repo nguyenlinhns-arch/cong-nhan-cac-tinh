@@ -1,4 +1,4 @@
-# CRM tuyển dụng tự động v2
+# CRM tuyển dụng và hiệu quả nguồn v3
 
 Đầu nhận này ghi hồ sơ từ `thaylinhtuyenthomo.vn` vào Google Sheets, chống trùng theo mã đăng ký và tự tạo nhịp chăm sóc đến khi nhập học.
 
@@ -12,7 +12,9 @@
 - Dừng cảnh báo khi hồ sơ đã `Nhập học` hoặc `Không phù hợp`.
 - Tạo trang `Tổng quan` với số hồ sơ mới, quá hạn và tỷ lệ tiến triển theo nguồn/trạng thái.
 - Tạo sẵn tin nhắn gợi ý theo trạng thái để người phụ trách kiểm tra trước khi gửi.
-- Giữ nguyên 23 cột và dữ liệu của CRM v1; các cột v2 chỉ được nối thêm ở cuối.
+- Tạo trang `Chi phí quảng cáo` để nhập chi phí theo nguồn và chiến dịch.
+- Tạo trang `Hiệu quả nguồn` với số hồ sơ, hồ sơ đủ điều kiện, học sinh nhập học, chi phí trên một hồ sơ đủ điều kiện và chi phí trên một học sinh nhập học.
+- Giữ nguyên các cột và dữ liệu cũ; cột đo lường/chiến dịch nội bộ chỉ được nối thêm ở cuối.
 
 Hệ thống không tự nhắn hàng loạt cho ứng viên. Tin nhắn gợi ý cần được người phụ trách duyệt và gửi qua kênh phù hợp.
 
@@ -23,13 +25,24 @@ Hệ thống không tự nhắn hàng loạt cho ứng viên. Tin nhắn gợi �
 3. Trong **Project Settings → Script properties**, giữ `SPREADSHEET_ID` hiện có và có thể thêm:
    - `ALERT_EMAILS`: một hoặc nhiều email nhận cảnh báo, phân tách bằng dấu phẩy. Nếu bỏ trống, hệ thống dùng email tài khoản chạy script.
    - `DEFAULT_OWNER`: tên người mặc định phụ trách hồ sơ mới. Nếu bỏ trống, dùng `Nguyễn Tử Linh`.
-4. Chạy `upgradeRecruitmentCRMV2()` một lần và cấp quyền cho Sheets, trigger và gửi email.
+4. Chạy `upgradeRecruitmentCRMV3()` một lần và cấp quyền cho Sheets, trigger và gửi email.
 5. Chọn **Deploy → Manage deployments → Edit**, tạo phiên bản mới nhưng giữ nguyên deployment/web app URL.
 6. Gửi một hồ sơ kiểm thử; xác nhận:
    - dòng mới có `Hạn phản hồi`;
    - trang `Tổng quan` đã xuất hiện;
    - email báo hồ sơ mới đến đúng người;
-   - cột `Phiên bản dữ liệu` có giá trị `2`.
+   - cột `Phiên bản dữ liệu` có giá trị `2` để vẫn tương thích với đầu nhận cũ;
+   - các cột khóa đo lường và chiến dịch nội bộ có dữ liệu sau khi dùng bản CRM v3;
+   - hai trang `Chi phí quảng cáo` và `Hiệu quả nguồn` đã xuất hiện.
+
+## Cách tính hai KPI chính
+
+Nhập chi phí từng ngày vào trang `Chi phí quảng cáo`; tên `Nguồn` và `Chiến dịch` phải khớp UTM đã dùng. Trang `Hiệu quả nguồn` tự tính:
+
+- **Chi phí / hồ sơ đủ điều kiện** = tổng chi phí nguồn, chiến dịch / số hồ sơ có trạng thái `Đủ điều kiện`, `Nộp hồ sơ` hoặc `Nhập học`.
+- **Chi phí / học sinh nhập học** = tổng chi phí nguồn, chiến dịch / số hồ sơ có trạng thái `Nhập học`.
+
+Kết quả chỉ chính xác khi người phụ trách cập nhật trạng thái CRM và nhập đủ chi phí quảng cáo. Hồ sơ gửi biểu mẫu được nối chính xác bằng `Mã đăng ký`; người chỉ nhắn Zalo, Messenger hoặc gọi điện cần được nhân viên tạo hồ sơ CRM và ghi đúng nguồn/chiến dịch, nếu không hệ thống chỉ biết lượt bấm chứ không thể khẳng định người đó đã nhập học.
 
 ## Cài mới
 

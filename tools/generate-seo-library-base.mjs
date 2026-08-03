@@ -597,6 +597,9 @@ for (const article of existingNews) {
   const file = path.join(root, article.urlPath, "index.html");
   if (!fs.existsSync(file)) throw new Error(`Missing existing article page: ${article.slug}`);
   let html = fs.readFileSync(file, "utf8");
+  if (!html.includes("article-media-credit") && article.imageSource) {
+    html = html.replace(/<figcaption>([\s\S]*?)<\/figcaption>/i, (_match, caption) => `<figcaption><span>${caption.trim()}</span><span class="article-media-credit">${esc(article.imageSource)}</span></figcaption>`);
+  }
   html = upgradeExistingSchema(html, article);
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${esc(searchTitle(article))}</title>`);
   html = html.replace(/\s*<div class="article-source-footer">[\s\S]*?<\/div>\s*/g, "\n");

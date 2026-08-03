@@ -451,7 +451,7 @@ const stories = [
     ],
     sources: [
       {publisher: "Trường Cao đẳng Than – Khoáng sản Việt Nam", title: "Hội nghị sơ kết công tác tuyển sinh, đào tạo và giải quyết việc làm tại xã Lương Minh", date: "13/05/2026", url: "https://caodangtkv.edu.vn/hoi-nghi-so-ket-cong-tac-tuyen-sinh-dao-tao-va-giai-quyet-viec-lam-tai-xa-luong-minh/"},
-      {publisher: "TKV", title: "Hội nghị sơ kết công tác tuyển sinh, đào tạo và giải quyết việc làm tại xã Lương Minh", date: "05/2026", url: "https://vinacomin.vn/news/slug/hoi-nghi-so-ket-cong-tac-tuyen-sinh-dao-tao-va-giai-quyet-viec-lam-tai-xa-luong-minh"},
+      {publisher: "TKV", title: "Hội nghị sơ kết công tác tuyển sinh, đào tạo và giải quyết việc làm tại xã Lương Minh", date: "20/05/2026", url: "https://vinacomin.vn/news/slug/hoi-nghi-so-ket-cong-tac-tuyen-sinh-dao-tao-va-giai-quyet-viec-lam-tai-xa-luong-minh"},
     ],
   },
   {
@@ -781,7 +781,7 @@ const stories = [
     ],
     sources: [
       {publisher: "TKV", title: "TKV triển khai gói hỗ trợ 70 tỷ đồng khắc phục hậu quả bão số 3", date: "16/09/2024", url: "https://vinacomin.vn/news/slug/tkv-trien-khai-goi-ho-tro-70-ty-dong-khac-phuc-hau-qua-bao-so-3"},
-      {publisher: "Tạp chí Công Thương", title: "TKV triển khai gói hỗ trợ 70 tỷ đồng khắc phục hậu quả bão số 3", date: "09/2024", url: "https://tapchicongthuong.vn/tkv-trien-khai-goi-ho-tro-70-ty-dong-khac-phuc-hau-qua-bao-so-3-126647.htm"},
+      {publisher: "Tạp chí Công Thương", title: "TKV triển khai gói hỗ trợ 70 tỷ đồng khắc phục hậu quả bão số 3", date: "14/09/2024", url: "https://tapchicongthuong.vn/tkv-trien-khai-goi-ho-tro-70-ty-dong-khac-phuc-hau-qua-bao-so-3-126647.htm"},
     ],
   },
   {

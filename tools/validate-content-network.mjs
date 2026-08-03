@@ -55,9 +55,9 @@ for (const [file, url] of hubs) {
     `<link rel="canonical" href="${base}${url}">`,
     'type="application/ld+json"',
     '/content-network.css?v=1',
-    '/analytics.js?v=5',
-    '/mobile-ux.css?v=8',
-    '/mobile-ux.js?v=10',
+    '/analytics.js?v=6',
+    '/mobile-core.css?v=1',
+    '/mobile-core.js?v=1',
     '/feed.xml"',
     '/feed.json"',
     'data-contact="application"',
@@ -76,9 +76,9 @@ for (const [file, url] of verificationPages) {
     `<link rel="canonical" href="${base}${url}">`,
     '/verification-portal.css?v=1',
     '/verification-portal.js?v=1',
-    '/analytics.js?v=5',
-    '/mobile-ux.css?v=8',
-    '/mobile-ux.js?v=10',
+    '/analytics.js?v=6',
+    '/mobile-core.css?v=1',
+    '/mobile-core.js?v=1',
     'data-verification-mobile-contact',
   ]) if (!html.includes(marker)) fail(`${file}: thiếu ${marker}`);
 }
@@ -98,9 +98,9 @@ for (const [file, url] of v4CorePages) {
     '/journey-optimizer.js?v=1',
     '/v4-conversion.css?v=1',
     '/v4-conversion.js?v=1',
-    '/analytics.js?v=5',
-    '/mobile-ux.css?v=8',
-    '/mobile-ux.js?v=10',
+    '/analytics.js?v=6',
+    '/mobile-core.css?v=1',
+    '/mobile-core.js?v=1',
     'class="v4-final-conversion"',
   ]) if (!html.includes(marker)) fail(`${file}: thiếu ${marker}`);
 }
@@ -180,10 +180,10 @@ if (contentFiles.length !== expectedContentFiles) fail(`Website: cần ${expecte
 for (const file of contentFiles) {
   const html = fs.readFileSync(file, "utf8");
   const relative = path.relative(root, file);
-  if (!html.includes('/analytics.js?v=5')) fail(`${relative}: chưa nạp analytics v5`);
-  const mobileCssVersion = "/mobile-ux.css?v=8";
+  if (!html.includes('/analytics.js?v=6')) fail(`${relative}: chưa nạp analytics v5`);
+  const mobileCssVersion = path.relative(root, file) === "index.html" ? "/home-critical.css?v=1" : "/mobile-core.css?v=1";
   if (!html.includes(mobileCssVersion)) fail(`${relative}: chưa nạp ${mobileCssVersion}`);
-  const mobileUxVersion = "/mobile-ux.js?v=10";
+  const mobileUxVersion = "/mobile-core.js?v=1";
   if (!html.includes(mobileUxVersion)) fail(`${relative}: chưa nạp ${mobileUxVersion}`);
 }
 
@@ -211,15 +211,15 @@ for (const [, url] of hubs) if (!sitemap.includes(`<loc>${base}${url}</loc>`)) f
 for (const [, url] of verificationPages) if (!sitemap.includes(`<loc>${base}${url}</loc>`)) fail(`Sitemap: thiếu ${url}`);
 for (const [, url] of v4CorePages) if (!sitemap.includes(`<loc>${base}${url}</loc>`)) fail(`Sitemap: thiếu trang lõi V4 ${url}`);
 
-const analytics = read("analytics.js");
+const analytics = read("analytics.js") + read("analytics-vendors.js");
 const app = read("app.js");
 const portal = read("portal-official.js");
-const mobile = read("mobile-ux.js");
+const mobile = read("mobile-core.js");
 const shareTools = read("share-tools.js");
 if (!analytics.includes('event: "contact_click"') || !analytics.includes('document.addEventListener("click"')) fail("Analytics: thiếu đo liên hệ ủy quyền");
 for (const marker of ["ai_referral_visit", "chatgpt", "copilot", "perplexity", "gemini", "claude"]) if (!analytics.includes(marker)) fail(`Analytics: thiếu đo nguồn AI ${marker}`);
 if (app.includes("contact_click") || portal.includes("contact_click")) fail("Analytics: contact_click còn bị khai báo lặp ở app/portal");
-for (const marker of ['class="tl-mobile-contact__zalo"', 'class="tl-mobile-contact__messenger"', 'class="tl-mobile-contact__call"']) {
+for (const marker of ['tl-mobile-contact__zalo', 'tl-mobile-contact__messenger', 'tl-mobile-contact__call']) {
   if (!mobile.includes(marker)) fail(`Mobile UX: thiếu ${marker}`);
 }
 if (!shareTools.includes(`const CAMPAIGN = "${campaign}"`)) fail("Share tools: sai mã chiến dịch");
