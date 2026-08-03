@@ -34,7 +34,7 @@ for (const marker of [
   "polishMobileContact",
   "verification-mobile-primary",
   "network-mobile-primary",
-  "20260803-v4",
+  "20260803-v3",
 ]) requireText(shell, marker, "site-shell-20260803.js");
 
 for (const marker of [
