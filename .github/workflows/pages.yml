@@ -102,15 +102,14 @@ jobs:
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}voice-assist.js?run=${GITHUB_SHA}" -o "$voice_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}worker-info-finder.js?run=${GITHUB_SHA}" -o "$finder_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}job-application.js?run=${GITHUB_SHA}" -o "$application_file"; then
-              if grep -Fq 'id="worker-quick-title"' "$html_file" \
+              if grep -Fq 'class="home-funnel"' "$html_file" \
                 && grep -Fq 'id="home-journey-title"' "$html_file" \
-                && grep -Fq 'id="learning-story-title"' "$html_file" \
+                && grep -Fq 'class="home-journey__steps"' "$html_file" \
+                && grep -Fq 'id="home-proof-title"' "$html_file" \
+                && grep -Fq '/home-rich-media.css?v=4' "$html_file" \
                 && grep -Fq '/site-shell-20260803.css?v=3' "$html_file" \
                 && grep -Fq 'id="tu-kiem-tra"' "$html_file" \
                 && grep -Fq 'data-open-site-search' "$html_file" \
-                && grep -Fq 'data-worker-province-select' "$html_file" \
-                && grep -Fq 'data-worker-copy="admission_address"' "$html_file" \
-                && grep -Fq 'data-worker-copy="application_message"' "$html_file" \
                 && grep -Fq '/worker-info-finder.js?v=3' "$html_file" \
                 && grep -Fq 'id="che-do-ho-so"' "$html_file" \
                 && grep -Fq 'id="theo-tinh"' "$html_file" \
@@ -142,7 +141,8 @@ jobs:
                 && grep -Fq 'phone.dataset.context = "search-answer"' "$ux_file" \
                 && grep -Fq 'function applicationContext()' "$ux_file" \
                 && grep -Fq 'Object.entries(applicationContext())' "$ux_file" \
-                && ! grep -Fq 'MESSENGER_URL' "$ux_file" \
+                && grep -Fq 'const MESSENGER_URL = "https://m.me/thaylinhtuyenthomo"' "$ux_file" \
+                && grep -Fq 'class="tl-mobile-contact__messenger"' "$ux_file" \
                 && grep -Fq 'Gõ cả câu, ví dụ: lương bao nhiêu?' "$ux_file" \
                 && grep -Fq 'function setupVoiceSearch(dialog)' "$voice_file" \
                 && grep -Fq 'window.SpeechRecognition || window.webkitSpeechRecognition' "$voice_file" \
@@ -152,10 +152,8 @@ jobs:
                 && grep -Fq '🔊 Nghe câu trả lời' "$voice_file" \
                 && grep -Fq 'Trình duyệt xử lý giọng nói; website không lưu âm thanh hay câu hỏi.' "$voice_file" \
                 && grep -Fq 'window.ThayLinhVoiceAssist = Object.freeze({ init })' "$voice_file" \
-                && grep -Fq 'const COPY_VALUES = Object.freeze({' "$finder_file" \
-                && grep -Fq 'navigator.clipboard.writeText(value)' "$finder_file" \
-                && grep -Fq 'document.execCommand("copy")' "$finder_file" \
-                && grep -Fq 'track("worker_copy", { item: key, result: copied ? "success" : "failure" })' "$finder_file" \
+                && grep -Fq 'worker_self_check_complete' "$finder_file" \
+                && grep -Fq 'data-contact="application"' "$finder_file" \
                 && grep -Fq 'const prefilledContext = []' "$application_file" \
                 && grep -Fq 'draftStatus.dataset.contextPrefilled = "true"' "$application_file" \
                 && grep -Fq 'track("ApplicationContextPrefill"' "$application_file" \
@@ -166,13 +164,13 @@ jobs:
                 && grep -Fq '"url": "/viec-lam-nganh-than/lang-son/"' "$search_file" \
                 && grep -Fq '"searchScope": "internal"' "$search_file" \
                 && grep -Fq '.tl-worker-compass{' "$css_file"; then
-                echo "Live worker-first homepage, all-province internal search, province-preserving application links and spoken answers verified on attempt $attempt."
+                echo "Live consultation homepage, four contact channels, all-province search and spoken answers verified on attempt $attempt."
                 exit 0
               fi
             fi
             sleep 5
           done
-          echo "The custom domain did not expose all 26 province pages through internal search while preserving the worker-first flow."
+          echo "The custom domain did not expose the simplified consultation journey and its worker assistance features."
           exit 1
       - name: Record deployment receipt
         if: success() && github.event_name != 'schedule'
