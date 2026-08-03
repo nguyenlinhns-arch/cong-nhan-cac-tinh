@@ -134,8 +134,8 @@
   function contactMarkup() {
     return `
       <a href="${ZALO_URL}" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="mobile-fixed-verification" aria-label="Nhắn Zalo cho Thầy Linh"><strong>Zalo</strong><span>Nhắn tư vấn</span></a>
-      <a href="${PHONE_URL}" data-contact="phone" data-context="mobile-fixed-verification" aria-label="Gọi Thầy Linh theo số 096 304 8585"><strong>Gọi điện</strong><span>096 304 8585</span></a>
-      <a href="${conditionHref()}" data-verification-action="condition" data-context="mobile-fixed-verification" aria-label="Kiểm tra điều kiện học nghề mỏ"><strong>Kiểm tra</strong><span>Điều kiện</span></a>`;
+      <a href="${MESSENGER_URL}" target="_blank" rel="noopener noreferrer" data-contact="messenger" data-context="mobile-fixed-verification" aria-label="Nhắn Messenger cho Thầy Linh"><strong>Mess</strong><span>Nhắn tin</span></a>
+      <a href="${PHONE_URL}" data-contact="phone" data-context="mobile-fixed-verification" aria-label="Gọi Thầy Linh theo số 096 304 8585"><strong>Gọi</strong><span>096 304 8585</span></a>`;
   }
 
   function normalizeMobileContact() {
@@ -148,7 +148,7 @@
     }
     primary.classList.add("verification-mobile-contact");
     primary.dataset.verificationMobileContact = "";
-    primary.setAttribute("aria-label", "Liên hệ và kiểm tra điều kiện");
+    primary.setAttribute("aria-label", "Liên hệ nhanh qua Zalo, Messenger hoặc điện thoại");
     if (primary.dataset.verificationMarkup !== conditionHref()) {
       primary.innerHTML = contactMarkup();
       primary.dataset.verificationMarkup = conditionHref();

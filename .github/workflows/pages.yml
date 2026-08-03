@@ -109,7 +109,7 @@ jobs:
                 && grep -Fq 'id="home-journey-title"' "$html_file" \
                 && grep -Fq 'class="home-journey__steps"' "$html_file" \
                 && grep -Fq 'id="home-proof-title"' "$html_file" \
-                && grep -Fq '/home-rich-media.css?v=8' "$html_file" \
+                && grep -Fq '/home-rich-media.css?v=9' "$html_file" \
                 && grep -Fq '/journey-optimizer.css?v=2' "$html_file" \
                 && grep -Fq '/journey-optimizer.js?v=2' "$html_file" \
                 && grep -Fq 'id="kho-noi-dung"' "$html_file" \
@@ -127,8 +127,8 @@ jobs:
                 && grep -Fq 'id="theo-tinh"' "$html_file" \
                 && grep -Fq 'id="noi-lam-viec"' "$html_file" \
                 && grep -Fq 'Cơ điện mỏ: 10 tháng' "$html_file" \
-                && grep -Fq '/mobile-ux.js?v=9' "$html_file" \
-                && grep -Fq '/mobile-ux.css?v=6' "$html_file" \
+                && grep -Fq '/mobile-ux.js?v=10' "$html_file" \
+                && grep -Fq '/mobile-ux.css?v=7' "$html_file" \
                 && grep -Fq '20–25 triệu/tháng' "$html_file" \
                 && grep -Fq 'khi hoàn thành định mức lao động' "$html_file" \
                 && grep -Fq 'function createWorkerCompass()' "$ux_file" \
@@ -177,7 +177,7 @@ jobs:
                 && grep -Fq '"url": "/viec-lam-nganh-than/lang-son/"' "$search_file" \
                 && grep -Fq '"searchScope": "internal"' "$search_file" \
                 && grep -Fq '.tl-worker-compass{' "$css_file"; then
-                echo "Live consultation homepage, four contact channels, all-province search and spoken answers verified on attempt $attempt."
+                echo "Live consultation homepage, three fixed mobile contact channels, all-province search and spoken answers verified on attempt $attempt."
                 exit 0
               fi
             fi

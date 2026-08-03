@@ -46,11 +46,10 @@ if (!mobileBar) errors.push("Không tìm thấy thanh hành động cố định
 else {
   const actions = (mobileBar.match(/<a\b/g) || []).length;
   if (actions !== 3) errors.push(`Thanh cố định phải có đúng 3 hành động, nhận ${actions}`);
-  for (const marker of ['data-v4-action="condition"', 'data-contact="zalo"', 'data-contact="phone"']) if (!mobileBar.includes(marker)) errors.push(`Thanh cố định thiếu ${marker}`);
-  if (mobileBar.includes('data-contact="messenger"')) errors.push("Messenger không được chiếm một ô trên thanh cố định ba hành động");
+  for (const marker of ['data-contact="zalo"', 'data-contact="messenger"', 'data-contact="phone"']) if (!mobileBar.includes(marker)) errors.push(`Thanh cố định thiếu ${marker}`);
 }
 if (!page.includes('data-contact="messenger"') && !page.includes("m.me/thaylinhtuyenthomo")) errors.push("Messenger vẫn phải có trong nội dung trang");
-if (!shellStyles.includes(".v4-mobile-bar{grid-template-columns:1.15fr 1fr 1fr!important}")) errors.push("CSS khung trang chưa chia đều ba hành động cố định");
+if (!shellStyles.includes(".v4-mobile-bar{grid-template-columns:repeat(3,minmax(0,1fr))!important}")) errors.push("CSS khung trang chưa chia đều ba hành động cố định");
 if (/\.v4-mobile-bar[^\n]*repeat\(4|\.v4-mobile-bar[^\n]*1fr[^\n]*1fr[^\n]*1fr[^\n]*1fr/.test(shellStyles)) errors.push("CSS khung trang còn cấu hình bốn cột cho thanh cố định");
 if (!shellStyles.includes(".article-aside .aside-card:not(.accent){display:none!important}")) errors.push("Bài viết trên điện thoại còn lặp khối thông tin trước khi đăng ký");
 

@@ -181,8 +181,9 @@ for (const file of contentFiles) {
   const html = fs.readFileSync(file, "utf8");
   const relative = path.relative(root, file);
   if (!html.includes('/analytics.js?v=5')) fail(`${relative}: chưa nạp analytics v5`);
-  if (!html.includes('/mobile-ux.css?v=6')) fail(`${relative}: chưa nạp mobile UX CSS v6`);
-  const mobileUxVersion = relative === "index.html" ? "/mobile-ux.js?v=9" : "/mobile-ux.js?v=8";
+  const mobileCssVersion = relative === "index.html" ? "/mobile-ux.css?v=7" : "/mobile-ux.css?v=6";
+  if (!html.includes(mobileCssVersion)) fail(`${relative}: chưa nạp ${mobileCssVersion}`);
+  const mobileUxVersion = relative === "index.html" ? "/mobile-ux.js?v=10" : "/mobile-ux.js?v=8";
   if (!html.includes(mobileUxVersion)) fail(`${relative}: chưa nạp ${mobileUxVersion}`);
 }
 
@@ -218,7 +219,9 @@ const shareTools = read("share-tools.js");
 if (!analytics.includes('event: "contact_click"') || !analytics.includes('document.addEventListener("click"')) fail("Analytics: thiếu đo liên hệ ủy quyền");
 for (const marker of ["ai_referral_visit", "chatgpt", "copilot", "perplexity", "gemini", "claude"]) if (!analytics.includes(marker)) fail(`Analytics: thiếu đo nguồn AI ${marker}`);
 if (app.includes("contact_click") || portal.includes("contact_click")) fail("Analytics: contact_click còn bị khai báo lặp ở app/portal");
-if (!mobile.includes("tl-mobile-contact__application") || !mobile.includes('data-contact="application"')) fail("Mobile UX: thiếu nút Ứng tuyển");
+for (const marker of ['class="tl-mobile-contact__zalo"', 'class="tl-mobile-contact__messenger"', 'class="tl-mobile-contact__call"']) {
+  if (!mobile.includes(marker)) fail(`Mobile UX: thiếu ${marker}`);
+}
 if (!shareTools.includes(`const CAMPAIGN = "${campaign}"`)) fail("Share tools: sai mã chiến dịch");
 for (const field of ["full_name", "birth_date", "height_cm", "weight_kg", "health_screen", "education_level"]) {
   if (shareTools.includes(field)) fail(`Share tools: không được chứa trường ứng viên ${field}`);

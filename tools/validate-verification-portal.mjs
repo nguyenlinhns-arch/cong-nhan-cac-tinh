@@ -43,6 +43,7 @@ for (const marker of [
   'trackExact("condition_pass"',
   'data-verification-action="condition"',
   'data-contact="zalo"',
+  'data-contact="messenger"',
   'data-contact="phone"',
   "requiredConditionFields",
   "formSubmitTracked",
@@ -79,7 +80,7 @@ for (const slug of slugs) {
   for (const [key, value] of Object.entries(result)) {
     if (key !== "slug" && !value) errors.push(`${file} thiếu ${key}`);
   }
-  for (const label of [">Zalo<", ">Gọi điện<", ">Kiểm tra<"]) {
+  for (const label of [">Zalo<", ">Mess<", ">Gọi<"]) {
     if (!html.includes(label)) errors.push(`${file} thiếu nút ${label}`);
   }
   for (const marker of ["/favicon.ico", "/favicon-48x48.png", "twitter:card", "twitter:title", "twitter:description", "twitter:image"]) {
