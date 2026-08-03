@@ -107,7 +107,7 @@ jobs:
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}job-application.js?run=${GITHUB_SHA}" -o "$application_file"; then
               if grep -Fq 'class="home-funnel"' "$html_file" \
                 && grep -Fq '/home-critical.css?v=1' "$html_file" \
-                && grep -Fq '/home-content.css?v=1' "$html_file" \
+                && grep -Fq '/home-content.css?v=2' "$html_file" \
                 && grep -Fq '/mobile-core.js?v=1' "$html_file" \
                 && grep -Fq 'class="home-province-quick"' "$html_file" \
                 && grep -Fq 'id="kho-noi-dung"' "$html_file" \
