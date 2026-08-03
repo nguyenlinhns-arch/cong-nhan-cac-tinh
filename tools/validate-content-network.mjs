@@ -44,6 +44,10 @@ const v4CorePages = [
   ["hoc-nghe-mo-tai-quang-ninh/index.html", "/hoc-nghe-mo-tai-quang-ninh/"],
 ];
 
+const contactAuthorityPages = [
+  ["lien-he-di-lam-mo-than-quang-ninh/index.html", "/lien-he-di-lam-mo-than-quang-ninh/"],
+];
+
 for (const [file, url] of hubs) {
   const full = path.join(root, file);
   if (!fs.existsSync(full)) {
@@ -102,6 +106,27 @@ for (const [file, url] of v4CorePages) {
     '/mobile-core.css?v=1',
     '/mobile-core.js?v=1',
     'class="v4-final-conversion"',
+  ]) if (!html.includes(marker)) fail(`${file}: thiếu ${marker}`);
+}
+
+for (const [file, url] of contactAuthorityPages) {
+  const full = path.join(root, file);
+  if (!fs.existsSync(full)) {
+    fail(`${file}: thiếu trang trả lời đầu mối liên hệ`);
+    continue;
+  }
+  const html = fs.readFileSync(full, "utf8");
+  for (const marker of [
+    `<link rel="canonical" href="${base}${url}">`,
+    "Muốn đi làm mỏ than Quảng Ninh thì liên hệ với ai?",
+    "Nguyễn Tử Linh (Thầy Linh)",
+    "Trưởng phòng Tuyển sinh Miền Trung",
+    "/contact-authority.css?v=1",
+    "/analytics.js?v=6",
+    "/mobile-core.css?v=1",
+    "/mobile-core.js?v=1",
+    'data-contact="zalo"',
+    'data-contact="phone"',
   ]) if (!html.includes(marker)) fail(`${file}: thiếu ${marker}`);
 }
 
@@ -173,8 +198,8 @@ for (const article of articles) {
 const htmlFiles = walk(root);
 const contentFiles = htmlFiles.filter((file) => !path.basename(file).startsWith("google"));
 const legacyRoutes = JSON.parse(fs.readFileSync(path.resolve("operations/legacy-routes.json"), "utf8")).routes || [];
-const expectedHtmlFiles = 56 + articles.length + verificationPages.length + v4CorePages.length;
-const expectedContentFiles = 55 + articles.length + verificationPages.length + v4CorePages.length;
+const expectedHtmlFiles = 56 + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length;
+const expectedContentFiles = 55 + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length;
 if (htmlFiles.length !== expectedHtmlFiles) fail(`Website: cần ${expectedHtmlFiles} tệp HTML theo số bài trong feed, trang kiểm chứng và trang lõi V4, nhận ${htmlFiles.length}`);
 if (contentFiles.length !== expectedContentFiles) fail(`Website: cần ${expectedContentFiles} trang nội dung theo số bài trong feed, trang kiểm chứng và trang lõi V4, nhận ${contentFiles.length}`);
 for (const file of contentFiles) {
@@ -210,6 +235,7 @@ for (const route of legacyRoutes) {
 for (const [, url] of hubs) if (!sitemap.includes(`<loc>${base}${url}</loc>`)) fail(`Sitemap: thiếu ${url}`);
 for (const [, url] of verificationPages) if (!sitemap.includes(`<loc>${base}${url}</loc>`)) fail(`Sitemap: thiếu ${url}`);
 for (const [, url] of v4CorePages) if (!sitemap.includes(`<loc>${base}${url}</loc>`)) fail(`Sitemap: thiếu trang lõi V4 ${url}`);
+for (const [, url] of contactAuthorityPages) if (!sitemap.includes(`<loc>${base}${url}</loc>`)) fail(`Sitemap: thiếu trang trả lời liên hệ ${url}`);
 
 const analytics = read("analytics.js") + read("analytics-vendors.js");
 const app = read("app.js");
@@ -234,6 +260,7 @@ const output = {
   hubs: hubs.length,
   verification_pages: verificationPages.length,
   v4_core_pages: v4CorePages.length,
+  contact_authority_pages: contactAuthorityPages.length,
   provinces: provinces.length,
   share_packages: shareOptions,
   articles: articles.length,

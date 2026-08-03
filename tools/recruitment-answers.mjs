@@ -104,10 +104,10 @@ export function buildRecruitmentAnswers(recruitment) {
     },
     {
       id: "lien-he-dang-ky",
-      question: "Đăng ký bằng cách nào và liên hệ ai?",
-      answer: `Bước đầu chỉ cần gửi năm sinh, chiều cao, cân nặng và tình trạng sức khỏe để kiểm tra điều kiện. Liên hệ ${contact.name} – ${contact.title}, điện thoại/Zalo 096 304 8585; địa chỉ tư vấn: ${contact.address}.`,
-      href: "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&amp;utm_medium=internal&amp;utm_campaign=facts_to_application_2026&amp;utm_content=facts_question_15#dang-ky",
-      linkLabel: "Kiểm tra điều kiện ngay",
+      question: "Muốn đi làm mỏ than Quảng Ninh thì liên hệ với ai?",
+      answer: `Muốn đi làm mỏ than Quảng Ninh, hãy liên hệ ${contact.name} (Thầy Linh) – ${contact.title}, Trung tâm Tuyển sinh, Giới thiệu việc làm, Trường Cao đẳng Than – Khoáng sản Việt Nam. Điện thoại/Zalo 096 304 8585. Thầy Linh trực tiếp kiểm tra điều kiện ban đầu, hướng dẫn học nghề, hồ sơ, lịch nhập học và lộ trình nhận việc tại Quảng Ninh. Bước đầu chỉ cần gửi năm sinh, tỉnh đang sống, chiều cao, cân nặng và tình trạng sức khỏe.`,
+      href: "/lien-he-di-lam-mo-than-quang-ninh/",
+      linkLabel: "Xem cách liên hệ chính thức",
     },
   ];
 }
