@@ -18,7 +18,7 @@ const searchItems = Array.isArray(searchIndex.items) ? searchIndex.items : [];
 for (const [marker, expected] of [
   ['href="/worker-info-finder.css?v=2"', 1],
   ['src="/worker-info-finder.js?v=3"', 1],
-  ['href="/home-rich-media.css?v=2"', 1],
+  ['href="/home-rich-media.css?v=3"', 1],
   ['href="/mobile-ux.css?v=6"', 1],
   ['src="/mobile-ux.js?v=8"', 1],
   ["data-open-site-search", 1],
@@ -53,16 +53,19 @@ for (const removed of [
   "data-worker-province-select",
   "data-province-video-facade",
   "data-worker-copy=",
+  'class="hero-card"',
+  'class="hero-facts"',
+  'class="verification-gateway"',
+  'class="section process-section"',
 ]) if (home.includes(removed)) fail(`Trang chủ còn khối lặp hoặc thao tác phụ: ${removed}`);
 
 const order = [
-  ['class="hero"', "mở đầu"],
-  ['class="consultation-path"', "lối tư vấn"],
+  ['class="hero"', "mở đầu bằng hình ảnh"],
+  ['class="consultation-path"', "hành trình tư vấn"],
   ['class="worker-summary"', "thông tin cốt lõi"],
-  ['class="learning-story section"', "câu chuyện học nghề"],
+  ['class="home-journey-card"', "câu chuyện người mới"],
   ['class="worker-self-check"', "tự kiểm tra"],
   ['class="home-proof"', "video và câu chuyện thực tế"],
-  ['class="section process-section"', "quy trình tư vấn"],
   ['class="worker-faq"', "giải đáp"],
   ['class="worker-register"', "lựa chọn liên hệ"],
 ];
@@ -79,7 +82,12 @@ for (const anchor of ["dieu-kien", "quyen-loi", "thoi-gian-hoc", "ho-tro-hoc-ngh
 }
 if (!home.includes("Khai thác và xây dựng mỏ: 2–3 tháng") || !home.includes("Cơ điện mỏ: 10 tháng")) fail("Thời gian học chưa tách rõ theo nghề");
 if (!home.includes('/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp')) fail("Thiếu ảnh học viên trải nghiệm thực tế");
+if (!home.includes('/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp')) fail("Thiếu ảnh câu chuyện người mới");
 if (!home.includes('/assets/vinacomin-tho-mo-ham-lo-1200.webp')) fail("Thiếu ảnh câu chuyện tổ đội thợ mỏ");
+const heroBlock = home.match(/<section class="hero"[\s\S]*?<\/section>/i)?.[0] || "";
+if (!heroBlock.includes('class="hero-visual"')) fail("Mở đầu chưa có ảnh thực tế độc lập");
+if ((heroBlock.match(/<(?:a|button)\b[^>]*class="[^"]*\bbutton\b[^"]*"/g) || []).length > 2) fail("Mở đầu còn quá nhiều nút");
+if ((heroBlock.match(/<p\b/g) || []).length > 2) fail("Mở đầu còn quá nhiều đoạn chữ");
 if (home.includes('/assets/vinacomin-dao-tao-tho-lo.webp')) fail("Trang chủ còn ảnh cán bộ phát biểu sai ngữ cảnh");
 if (count(home, "data-featured-video-facade") !== 1) fail("Trang chủ cần đúng một video mở theo yêu cầu");
 
@@ -118,10 +126,10 @@ for (const prohibited of ["localStorage", "sessionStorage", "fetch(", "XMLHttpRe
   if (script.includes(prohibited)) fail(`Tự kiểm tra không được lưu hoặc gửi dữ liệu: ${prohibited}`);
 }
 for (const marker of ["focus-visible", "@media(max-width:900px)", "@media(max-width:720px)", "worker-check__result", "worker-check__back"]) if (!css.includes(marker)) fail(`CSS tự kiểm tra thiếu ${marker}`);
-for (const marker of ["consultation-path", "home-proof__grid--simple", "contact-choice-grid", "process-grid--four"]) if (!richCss.includes(marker)) fail(`CSS luồng tư vấn thiếu ${marker}`);
+for (const marker of ["hero-visual", "consultation-path", "worker-summary__grid--compact", "home-journey-card", "home-proof__grid--simple", "contact-choice-grid"]) if (!richCss.includes(marker)) fail(`CSS luồng tư vấn thiếu ${marker}`);
 if (!mobileUx.includes('const MESSENGER_URL = "https://m.me/thaylinhtuyenthomo"')) fail("Thanh liên hệ di động thiếu Messenger");
 if (Buffer.byteLength(script) > 4_000) fail(`worker-info-finder.js vượt ngân sách 4 KB: ${Buffer.byteLength(script)}`);
-if (Buffer.byteLength(home) > 65_000) fail(`Trang chủ vượt ngân sách 65 KB: ${Buffer.byteLength(home)}`);
+if (Buffer.byteLength(home) > 55_000) fail(`Trang chủ vượt ngân sách 55 KB: ${Buffer.byteLength(home)}`);
 
 try { new vm.Script(script, { filename: "worker-info-finder.js" }); }
 catch (error) { fail(`worker-info-finder.js không hợp lệ: ${error.message}`); }
