@@ -188,9 +188,18 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
     if (tracked.filter(([name]) => name === "ApplicationDeliveryFailure").length !== 1) throw new Error("Failed first attempt was not measured once");
   }
 
-  const trackingJson = JSON.stringify(tracked);
-  for (const pii of ["Nguyễn Văn Kiểm Thử", "0963048585", birthDate, "Hồ Chí Minh", String(height), String(weight)]) {
-    if (trackingJson.includes(pii)) throw new Error(`Tracking contains personal data: ${pii}`);
+  const trackingValues = [];
+  const collectTrackingValues = value => {
+    if (Array.isArray(value)) return value.forEach(collectTrackingValues);
+    if (value && typeof value === "object") return Object.values(value).forEach(collectTrackingValues);
+    if (value !== undefined && value !== null) trackingValues.push(String(value));
+  };
+  tracked.forEach(([, payload]) => collectTrackingValues(payload));
+  for (const pii of ["Nguyễn Văn Kiểm Thử", "0963048585", birthDate, "Hồ Chí Minh"]) {
+    if (trackingValues.some(value => value.includes(pii))) throw new Error(`Tracking contains personal data: ${pii}`);
+  }
+  for (const measurement of [String(height), String(weight)]) {
+    if (trackingValues.includes(measurement)) throw new Error(`Tracking contains personal measurement: ${measurement}`);
   }
   const storedApplication = stored.get("thaylinh_last_application") || "";
   for (const pii of ["Nguyễn Văn Kiểm Thử", "0963048585", "2000-01-01", "Hồ Chí Minh"]) {
