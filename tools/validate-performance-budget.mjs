@@ -190,7 +190,8 @@ for (const marker of ["home-video-facade", "home-video-facade__play", "focus-vis
 const optimizedHomeImages = [
   ["/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp", "1200", "673", "eager"],
   ["/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp", "1200", "736", "lazy"],
-  ["/assets/vinacomin-tho-mo-ham-lo-1200.webp", "1200", "800", "lazy"],
+  ["/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp", "1600", "860", "lazy"],
+  ["/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp", "1600", "882", "lazy"],
 ];
 for (const [source, width, height, delivery] of optimizedHomeImages) {
   const escaped = source.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");

@@ -22,7 +22,7 @@ const latestArticle = [...communityArticles]
 for (const [marker, expected] of [
   ['href="/worker-info-finder.css?v=2"', 1],
   ['src="/worker-info-finder.js?v=3"', 1],
-  ['href="/home-rich-media.css?v=7"', 1],
+  ['href="/home-rich-media.css?v=8"', 1],
   ['href="/journey-optimizer.css?v=2"', 1],
   ['src="/journey-optimizer.js?v=2"', 1],
   ['href="/mobile-ux.css?v=6"', 1],
@@ -109,7 +109,8 @@ for (const anchor of ["dieu-kien", "quyen-loi", "thoi-gian-hoc", "ho-tro-hoc-ngh
 if (!home.includes("Khai thác và xây dựng mỏ: 2–3 tháng") || !home.includes("Cơ điện mỏ: 10 tháng")) fail("Thời gian học chưa tách rõ theo nghề");
 if (!home.includes('/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp')) fail("Thiếu ảnh học viên trải nghiệm thực tế");
 if (!home.includes('/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp')) fail("Thiếu ảnh câu chuyện người mới");
-if (!home.includes('/assets/vinacomin-tho-mo-ham-lo-1200.webp')) fail("Thiếu ảnh câu chuyện tổ đội thợ mỏ");
+if (!home.includes('/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp')) fail("Thiếu ảnh tổ đội công nhân mặc bảo hộ xanh");
+if (!home.includes('/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp')) fail("Thiếu ảnh câu chuyện tổ đội công nhân áo xanh");
 if (!home.includes(`href="/${latestArticle.urlPath}/"`)) fail("Thiếu URL bài ngành Than mới nhất trên trang chủ");
 if (!home.includes(`src="${latestArticle.image}"`)) fail("Thiếu ảnh nguồn của bài ngành Than mới nhất trên trang chủ");
 if (!home.includes(`>${latestArticle.title}</strong>`)) fail("Thiếu tiêu đề bài ngành Than mới nhất trên trang chủ");
@@ -158,7 +159,7 @@ for (const prohibited of ["localStorage", "sessionStorage", "fetch(", "XMLHttpRe
 for (const marker of ["focus-visible", "@media(max-width:900px)", "@media(max-width:720px)", "worker-check__result", "worker-check__back"]) if (!css.includes(marker)) fail(`CSS tự kiểm tra thiếu ${marker}`);
 for (const marker of ["hero-visual", "home-content-shortcuts", "home-journey__layout", "home-journey__steps", "home-proof__grid--simple", "home-library__grid", "contact-choice-grid"]) if (!richCss.includes(marker)) fail(`CSS luồng tư vấn thiếu ${marker}`);
 for (const marker of ['["home", "article"].includes(currentGroup)', 'currentGroup !== "home" && !actions.querySelector(\'a[href^="tel:"]\')']) if (!journeyScript.includes(marker)) fail(`Trang chủ chưa khóa thành phần chèn thừa: ${marker}`);
-for (const marker of ["grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)", ".home-funnel .worker-check{padding:0;border:0;background:transparent;box-shadow:none}", ".contact-choice{min-height:86px"]) if (!richCss.includes(marker)) fail(`CSS mobile-first thiếu ${marker}`);
+for (const marker of ["grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)", ".home-funnel .worker-check{padding:0;border:0;background:transparent;box-shadow:none}", ".contact-choice{min-height:86px", ".home-library__card img{display:block;width:100%;height:clamp(196px,18vw,238px)", ".home-library__grid{grid-template-columns:1fr;gap:12px", ".home-library__card{display:grid;grid-template-columns:116px minmax(0,1fr)"]) if (!richCss.includes(marker)) fail(`CSS mobile-first thiếu ${marker}`);
 if (!mobileUx.includes('const MESSENGER_URL = "https://m.me/thaylinhtuyenthomo"')) fail("Thanh liên hệ di động thiếu Messenger");
 if (Buffer.byteLength(script) > 4_000) fail(`worker-info-finder.js vượt ngân sách 4 KB: ${Buffer.byteLength(script)}`);
 if (Buffer.byteLength(home) <= 16_384) fail(`Trang chủ có dấu hiệu bị cắt tệp: ${Buffer.byteLength(home)} byte`);
