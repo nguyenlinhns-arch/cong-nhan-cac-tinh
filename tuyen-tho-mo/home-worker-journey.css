@@ -38,3 +38,27 @@
 @media(prefers-reduced-motion:reduce){
   .home-content-shortcuts.home-journey-shortcuts a{transition:none}
 }
+
+/* Giữ đầy đủ tên thương hiệu trên thanh đầu trang điện thoại. */
+@media(max-width:767px){
+  .site-header .header-inner{height:72px;display:grid!important;grid-template-columns:minmax(0,1fr) 42px auto;gap:8px}
+  .site-header .brand{width:auto!important;max-width:none!important;min-width:0;margin-right:0!important;gap:9px;overflow:visible!important}
+  .site-header .brand-mark{width:42px;height:42px}
+  .site-header .brand>span{min-width:0;overflow:visible!important}
+  .site-header .brand strong,.site-header .brand small{display:block!important;max-width:none!important;overflow:visible!important;text-overflow:clip!important;white-space:nowrap!important}
+  .site-header .brand strong{font-size:15px;line-height:1.15}
+  .site-header .brand small{margin-top:2px;font-size:9px;line-height:1.15;letter-spacing:.035em}
+  .site-header .worker-header-search{width:42px;height:42px;min-width:42px}
+  .site-header .header-cta{min-width:0;padding:11px 13px;font-size:13px;line-height:1.2;white-space:nowrap}
+  .site-header .menu-toggle,.site-header .main-nav{display:none!important}
+}
+
+@media(max-width:390px){
+  .site-header .header-inner{grid-template-columns:minmax(0,1fr) 40px auto;gap:6px}
+  .site-header .brand{gap:7px}
+  .site-header .brand-mark{width:39px;height:39px}
+  .site-header .brand strong{font-size:14px}
+  .site-header .brand small{font-size:8px;letter-spacing:.02em}
+  .site-header .worker-header-search{width:40px;height:40px;min-width:40px}
+  .site-header .header-cta{padding-inline:10px;font-size:12px}
+}

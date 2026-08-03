@@ -31,7 +31,7 @@ const journeyScript = fs.readFileSync(journeyScriptPath, "utf8");
 if (Buffer.byteLength(journeyCss) > 9_000) throw new Error("CSS hành trình trang chủ vượt 9 KB");
 if (Buffer.byteLength(journeyScript) > 9_000) throw new Error("JS hành trình trang chủ vượt 9 KB");
 new vm.Script(journeyScript, {filename: "home-worker-journey.js"});
-for (const marker of ["home-journey-shortcuts", "tl-mobile-contact__journey", "worker_journey_step_view"]) {
+for (const marker of ["home-journey-shortcuts", "tl-mobile-contact__journey", "worker_journey_step_view", ".site-header .brand small"]) {
   if (!`${journeyCss}\n${journeyScript}`.includes(marker)) throw new Error(`Tài nguyên hành trình thiếu marker: ${marker}`);
 }
 
@@ -44,16 +44,17 @@ const latestArticleMarker = /<a class="home-library__card home-library__card--la
 if (!latestArticleMarker.test(html)) throw new Error("Trang chủ thiếu vị trí bài ngành Than mới nhất.");
 html = html.replace(latestArticleMarker, card);
 
-html = replaceOnce(html, "<title>Tuyển thợ mỏ tháng 8/2026 | Học nghề, nhận việc</title>", "<title>Tuyển thợ mỏ, thợ lò tháng 8/2026 | Quảng Ninh</title>", "SEO title");
-html = replaceOnce(html, '<meta name="description" content="Tuyển thợ mỏ tháng 8/2026: nam 18–40 tuổi, từ 1m53 và 47kg; học nghề tại Quang Hanh, cam kết 20–25 triệu/tháng khi hoàn thành định mức lao động.">', '<meta name="description" content="Tuyển thợ mỏ, thợ lò tháng 8/2026: nam 18–40 tuổi; học nghề tại Quang Hanh, miễn học phí, có ăn ở và nhận việc tại Quảng Ninh.">', "SEO description");
-html = replaceOnce(html, '<meta name="keywords" content="tuyển thợ mỏ tháng 8 2026, tuyển thợ lò, học nghề mỏ, việc làm TKV Quảng Ninh, hồ sơ học nghề mỏ, lương thợ lò">', '<meta name="keywords" content="tuyển thợ mỏ tháng 8 2026, tuyển thợ lò Quảng Ninh, học nghề mỏ Quang Hanh, việc làm ngành Than, việc làm TKV, hồ sơ học nghề mỏ">', "SEO keyword map");
-html = replaceOnce(html, '<meta property="og:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', '<meta property="og:title" content="Tuyển thợ mỏ, thợ lò tháng 8/2026 tại Quảng Ninh">', "Open Graph title");
+html = replaceOnce(html, "<title>Tuyển thợ mỏ tháng 8/2026 | Học nghề, nhận việc</title>", "<title>Tuyển thợ mỏ, thợ lò Quảng Ninh | Học nghề, nhận việc</title>", "SEO title");
+html = replaceOnce(html, '<meta name="description" content="Tuyển thợ mỏ tháng 8/2026: nam 18–40 tuổi, từ 1m53 và 47kg; học nghề tại Quang Hanh, cam kết 20–25 triệu/tháng khi hoàn thành định mức lao động.">', '<meta name="description" content="Tuyển thợ mỏ, thợ lò tại Quảng Ninh: nam 18–40 tuổi; học nghề tại Quang Hanh, miễn học phí, có ăn ở và được bố trí việc làm sau đào tạo.">', "SEO description");
+html = replaceOnce(html, '<meta name="keywords" content="tuyển thợ mỏ tháng 8 2026, tuyển thợ lò, học nghề mỏ, việc làm TKV Quảng Ninh, hồ sơ học nghề mỏ, lương thợ lò">', '<meta name="keywords" content="tuyển thợ mỏ, tuyển thợ lò Quảng Ninh, học nghề mỏ Quang Hanh, việc làm ngành Than, việc làm TKV, hồ sơ học nghề mỏ">', "SEO keyword map");
+html = replaceOnce(html, '<meta property="og:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', '<meta property="og:title" content="Tuyển thợ mỏ, thợ lò tại Quảng Ninh">', "Open Graph title");
 html = replaceOnce(html, '<meta property="og:description" content="Một hành trình rõ ràng từ kiểm tra điều kiện, học nghề tại Quang Hanh đến nhận việc ngành Than ở Quảng Ninh.">', '<meta property="og:description" content="Kiểm tra điều kiện, xem công việc thực tế, học nghề tại Quang Hanh và đăng ký nhận việc ngành Than ở Quảng Ninh.">', "Open Graph description");
-html = replaceOnce(html, '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', '<meta name="twitter:title" content="Tuyển thợ mỏ, thợ lò tháng 8/2026 tại Quảng Ninh">', "Twitter title");
+html = replaceOnce(html, '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', '<meta name="twitter:title" content="Tuyển thợ mỏ, thợ lò tại Quảng Ninh">', "Twitter title");
 html = replaceOnce(html, '<meta name="twitter:description" content="Xem hành trình học nghề mỏ tại Quang Hanh, quyền lợi, hồ sơ và việc làm ngành Than tại Quảng Ninh.">', '<meta name="twitter:description" content="Xem điều kiện, video công việc thực tế, quyền lợi học nghề và cách đăng ký làm việc ngành Than tại Quảng Ninh.">', "Twitter description");
-html = replaceOnce(html, '"name":"Tuyển thợ mỏ tháng 8/2026: hành trình học nghề đến nhận việc"', '"name":"Tuyển thợ mỏ, thợ lò tháng 8/2026 tại Quảng Ninh"', "WebPage structured title");
-html = replaceOnce(html, '"description":"Hành trình tuyển thợ mỏ tháng 8/2026 từ kiểm tra điều kiện, học nghề tại Quang Hanh đến nhận việc ngành Than ở Quảng Ninh; cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."', '"description":"Tuyển thợ mỏ, thợ lò tháng 8/2026: kiểm tra điều kiện, xem công việc thực tế, học nghề tại Quang Hanh và nhận việc ngành Than tại Quảng Ninh; cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."', "WebPage structured description");
-html = replaceOnce(html, '<h1>Tuyển thợ mỏ.<span>Học nghề, nhận việc tại Quảng Ninh.</span></h1>', '<h1>Tuyển thợ mỏ tháng 8/2026.<span>Học nghề, nhận việc tại Quảng Ninh.</span></h1>', "Homepage H1");
+html = replaceOnce(html, '"name":"Tuyển thợ mỏ tháng 8/2026: hành trình học nghề đến nhận việc"', '"name":"Tuyển thợ mỏ, thợ lò tại Quảng Ninh"', "WebPage structured title");
+html = replaceOnce(html, '"description":"Hành trình tuyển thợ mỏ tháng 8/2026 từ kiểm tra điều kiện, học nghề tại Quang Hanh đến nhận việc ngành Than ở Quảng Ninh; cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."', '"description":"Tuyển thợ mỏ, thợ lò tại Quảng Ninh: kiểm tra điều kiện, xem công việc thực tế, học nghề tại Quang Hanh và nhận việc ngành Than; cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."', "WebPage structured description");
+html = replaceOnce(html, '<p class="eyebrow">Thông tin tuyển sinh tháng 8/2026</p>', '<p class="eyebrow">Thông tin tuyển sinh nghề mỏ đang áp dụng</p>', "Homepage status eyebrow");
+html = replaceOnce(html, '<h1>Tuyển thợ mỏ.<span>Học nghề, nhận việc tại Quảng Ninh.</span></h1>', '<h1>Tuyển thợ mỏ, thợ lò.<span>Học nghề, nhận việc tại Quảng Ninh.</span></h1>', "Homepage H1");
 
 const journeyShortcuts = `    <nav class="home-content-shortcuts home-journey-shortcuts" aria-label="Ba bước chính dành cho người lao động">
       <div class="container">
@@ -105,11 +106,19 @@ for (const marker of [
   'data-journey-shortcut="consultation"',
   'data-home-worker-journey',
   '/home-worker-journey.js?v=1',
-  "Tuyển thợ mỏ, thợ lò tháng 8/2026",
+  "Tuyển thợ mỏ, thợ lò tại Quảng Ninh",
+  "Thông tin tuyển sinh nghề mỏ đang áp dụng",
   "Xem công việc thợ mỏ qua người thật, việc thật",
   "Hành trình học nghề mỏ và nhận việc tại Quảng Ninh",
 ]) {
   if (!html.includes(marker)) throw new Error(`Trang chủ sau tối ưu thiếu marker: ${marker}`);
+}
+for (const staleMarker of [
+  "<title>Tuyển thợ mỏ, thợ lò tháng 8/2026",
+  '<p class="eyebrow">Thông tin tuyển sinh tháng 8/2026</p>',
+  "<h1>Tuyển thợ mỏ tháng 8/2026.",
+]) {
+  if (html.includes(staleMarker)) throw new Error(`Trang chủ còn mốc tháng không phù hợp nội dung lâu dài: ${staleMarker}`);
 }
 
 fs.writeFileSync(homepagePath, html);
