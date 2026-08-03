@@ -38,6 +38,7 @@ jobs:
           node tools/enhance-application-context.mjs
           node tools/enhance-application-prefill-note.mjs
           node tools/enhance-top-block-hotfix.mjs
+          node tools/normalize-mobile-delivery.mjs
           node tools/validate-natural-language-search.mjs
           node tools/validate-all-province-search.mjs
           node tools/validate-answer-first-search.mjs
@@ -49,6 +50,7 @@ jobs:
           node tools/validate-worker-findability.mjs
           node tools/validate-publication-integrity.mjs
           node tools/enhance-top-block-hotfix.mjs
+          node tools/normalize-mobile-delivery.mjs
           node tools/validate-top-block-hotfix.mjs
           node tools/validate-universal-worker-compass.mjs
           node tools/validate-content-network.mjs

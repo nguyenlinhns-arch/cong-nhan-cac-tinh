@@ -56,8 +56,8 @@ for (const [file, url] of hubs) {
     'type="application/ld+json"',
     '/content-network.css?v=1',
     '/analytics.js?v=5',
-    '/mobile-ux.css?v=6',
-    '/mobile-ux.js?v=8',
+    '/mobile-ux.css?v=8',
+    '/mobile-ux.js?v=10',
     '/feed.xml"',
     '/feed.json"',
     'data-contact="application"',
@@ -77,8 +77,8 @@ for (const [file, url] of verificationPages) {
     '/verification-portal.css?v=1',
     '/verification-portal.js?v=1',
     '/analytics.js?v=5',
-    '/mobile-ux.css?v=6',
-    '/mobile-ux.js?v=8',
+    '/mobile-ux.css?v=8',
+    '/mobile-ux.js?v=10',
     'data-verification-mobile-contact',
   ]) if (!html.includes(marker)) fail(`${file}: thiếu ${marker}`);
 }
@@ -99,8 +99,8 @@ for (const [file, url] of v4CorePages) {
     '/v4-conversion.css?v=1',
     '/v4-conversion.js?v=1',
     '/analytics.js?v=5',
-    '/mobile-ux.css?v=6',
-    '/mobile-ux.js?v=8',
+    '/mobile-ux.css?v=8',
+    '/mobile-ux.js?v=10',
     'class="v4-final-conversion"',
   ]) if (!html.includes(marker)) fail(`${file}: thiếu ${marker}`);
 }
@@ -181,9 +181,9 @@ for (const file of contentFiles) {
   const html = fs.readFileSync(file, "utf8");
   const relative = path.relative(root, file);
   if (!html.includes('/analytics.js?v=5')) fail(`${relative}: chưa nạp analytics v5`);
-  const mobileCssVersion = relative === "index.html" ? "/mobile-ux.css?v=7" : "/mobile-ux.css?v=6";
+  const mobileCssVersion = "/mobile-ux.css?v=8";
   if (!html.includes(mobileCssVersion)) fail(`${relative}: chưa nạp ${mobileCssVersion}`);
-  const mobileUxVersion = relative === "index.html" ? "/mobile-ux.js?v=10" : "/mobile-ux.js?v=8";
+  const mobileUxVersion = "/mobile-ux.js?v=10";
   if (!html.includes(mobileUxVersion)) fail(`${relative}: chưa nạp ${mobileUxVersion}`);
 }
 

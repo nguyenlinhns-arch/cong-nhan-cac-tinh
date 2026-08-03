@@ -144,7 +144,7 @@ function page({pathName, title, description, eyebrow, heading, lead, body, schem
   <meta property="og:image" content="${base}/assets/og-cover-v2.webp"><meta property="og:image:alt" content="Trung tâm thông tin học nghề mỏ và việc làm ngành Than">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(title)}"><meta name="twitter:description" content="${esc(description)}"><meta name="twitter:image" content="${base}/assets/og-cover-v2.webp">
   <link rel="stylesheet" href="/fonts.css?v=1">
-  <link rel="stylesheet" href="/content-network.css?v=1"><link rel="stylesheet" href="/mobile-ux.css?v=6">
+  <link rel="stylesheet" href="/content-network.css?v=1"><link rel="stylesheet" href="/mobile-ux.css?v=8">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
 <body>
@@ -154,7 +154,7 @@ function page({pathName, title, description, eyebrow, heading, lead, body, schem
     ${body}
   </main>
   ${footer()}
-  <script src="/analytics.js?v=5" defer></script><script src="/mobile-ux.js?v=8" defer></script>${shareTools ? '<script src="/share-tools.js?v=1" defer></script>' : ""}
+  <script src="/analytics.js?v=5" defer></script><script src="/mobile-ux.js?v=10" defer></script>${shareTools ? '<script src="/share-tools.js?v=1" defer></script>' : ""}
 </body>
 </html>`;
 }
@@ -199,7 +199,7 @@ writePage("trung-tam-nghe-mo", page({pathName: "/trung-tam-nghe-mo/", title: "Tr
 
 const currentFactsPath = "/thong-tin-tuyen-tho-mo/";
 const currentFactsTitle = "Tuyển thợ mỏ tháng 8/2026: 15 câu hỏi";
-const currentFactsDescription = "Thông tin tuyển thợ mỏ tháng 8/2026 đang áp dụng: nam 18–40 tuổi, cao từ 1m53, nặng từ 47 kg, học nghề 2–3 tháng và cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.";
+const currentFactsDescription = "Tuyển thợ mỏ 2026: nam 18–40 tuổi, từ 1m53 và 47kg; học 2–3 tháng, hỗ trợ ăn ở, cam kết 20–25 triệu/tháng khi hoàn thành định mức lao động.";
 const currentFactsFaq = buildRecruitmentAnswers(recruitment);
 const currentFactsCanonical = `${base}${currentFactsPath}`;
 const currentFactsSchema = {

@@ -99,7 +99,7 @@ const structuredData = {
       url: `${base}/`,
       name: "Tuyển thợ mỏ tháng 8/2026: hành trình học nghề đến nhận việc",
       description: "Hành trình tuyển thợ mỏ tháng 8/2026 từ kiểm tra điều kiện, học nghề tại Quang Hanh đến nhận việc ngành Than ở Quảng Ninh; cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
-      abstract: "Đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ. Khi nhập học mang căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Chưa có bằng vẫn có thể đăng ký để được hướng dẫn đối chiếu theo hệ đào tạo. Địa chỉ tư vấn: Số 8 Chu Văn An, phường Hạ Long, Quảng Ninh.",
+      abstract: "Đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ. Khi nhập học mang căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Chưa có bằng vẫn có thể đăng ký để được hướng dẫn đối chiếu theo hệ đào tạo. Địa chỉ tư vấn: Số 8 Chu Văn An, phường Hạ Long, Quảng Ninh. Địa điểm nhập học: Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh.",
       dateModified: "2026-08-03",
       lastReviewed: "2026-08-01",
       reviewedBy: {"@id": authorId},
@@ -108,23 +108,11 @@ const structuredData = {
       publisher: {"@id": organizationId},
       publishingPrinciples: `${base}/nguyen-tac-bien-tap/`,
       about: {"@id": `${base}/thong-tin-tuyen-tho-mo/#webpage`},
-      mainEntity: {"@id": `${base}/#faq`},
       hasPart: [
         {"@type": "CollectionPage", name: "Cẩm nang nghề mỏ", url: `${base}/cam-nang-nghe-mo/`},
         {"@type": "CollectionPage", name: "Tin tức ngành Than", url: `${base}/tin-nganh-than/`},
         {"@type": "CollectionPage", name: "Ảnh và video thực tế", url: `${base}/anh-video-thuc-te/`},
       ],
-    },
-    {
-      "@type": "FAQPage",
-      "@id": `${base}/#faq`,
-      mainEntity: [
-        ["Điều kiện đăng ký học nghề mỏ là gì?", "Nam từ 18 đến 40 tuổi, cao từ 1,53 m, nặng từ 47 kg và có sức khỏe tốt. Không cận thị, không mắc bệnh tim mạch, huyết áp hoặc bệnh về mắt."],
-        ["Thu nhập thợ lò là bao nhiêu?", "Cam kết thu nhập 20–25 triệu đồng mỗi tháng khi hoàn thành định mức lao động."],
-        ["Hồ sơ nhập học gồm những gì?", "Khi nhập học cần mang căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Chưa có bằng vẫn có thể đăng ký để được hướng dẫn."],
-        ["Học nghề mỏ và nhập học ở đâu?", "Địa điểm nhập học là Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh. Chỉ đến sau khi được xác nhận lịch tiếp nhận."],
-        ["Trong thời gian học được hỗ trợ gì?", "Người học được miễn kinh phí đào tạo, phục vụ 3 bữa mỗi ngày, bố trí ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học."],
-      ].map(([name, text]) => ({"@type": "Question", name, acceptedAnswer: {"@type": "Answer", text}})),
     },
   ],
 };
@@ -162,8 +150,8 @@ const simpleMain = `  <main id="noi-dung" class="home-funnel">
     <section class="hero" data-hero>
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Tuyển thợ mỏ tháng 8/2026</p>
-          <h1>Học nghề mỏ.<span>Nhận việc tại Quảng Ninh.</span></h1>
+          <p class="eyebrow">Thông tin tuyển sinh tháng 8/2026</p>
+          <h1>Tuyển thợ mỏ.<span>Học nghề, nhận việc tại Quảng Ninh.</span></h1>
           <p class="hero-lead">Nam 18–40 · cao từ 1m53 · nặng từ 47kg · đủ sức khỏe</p>
           <div class="button-row">
             <a class="button button-zalo" href="#tu-kiem-tra">Kiểm tra điều kiện</a>
@@ -268,8 +256,8 @@ html = html.replace(/\s*<style>\s*\.worker-quick[\s\S]*?<\/style>\s*/i, "\n");
 const structuredDataBlocks = [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi)];
 if (structuredDataBlocks.length !== 1) throw new Error(`Worker-first homepage expected one JSON-LD block, got ${structuredDataBlocks.length}`);
 html = html.replace(structuredDataBlocks[0][0], structuredDataMarkup);
-html = replaceOnce(html, "<title>Tuyển thợ mỏ tháng 8/2026 | Điều kiện, quyền lợi, hồ sơ</title>", "<title>Tuyển thợ mỏ tháng 8/2026: học nghề đến nhận việc | Thầy Linh</title>", "Homepage title");
-html = replaceOnce(html, '<meta name="description" content="Nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg: xem nhanh điều kiện, hồ sơ, nơi học, chế độ ăn ở và cam kết 20–25 triệu/tháng khi hoàn thành định mức lao động.">', '<meta name="description" content="Tuyển thợ mỏ tháng 8/2026: nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg; học nghề tại Quảng Ninh, nhận việc, thu nhập 20–25 triệu/tháng khi hoàn thành định mức lao động.">', "Homepage description");
+html = replaceOnce(html, "<title>Tuyển thợ mỏ tháng 8/2026 | Điều kiện, quyền lợi, hồ sơ</title>", "<title>Tuyển thợ mỏ tháng 8/2026 | Học nghề, nhận việc</title>", "Homepage title");
+html = replaceOnce(html, '<meta name="description" content="Nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg: xem nhanh điều kiện, hồ sơ, nơi học, chế độ ăn ở và cam kết 20–25 triệu/tháng khi hoàn thành định mức lao động.">', '<meta name="description" content="Tuyển thợ mỏ tháng 8/2026: nam 18–40 tuổi, từ 1m53 và 47kg; học nghề tại Quang Hanh, cam kết 20–25 triệu/tháng khi hoàn thành định mức lao động.">', "Homepage description");
 html = replaceOnce(html, '<meta property="og:title" content="Tuyển thợ mỏ tháng 8/2026 – xem đủ thông tin trong 2 phút">', '<meta property="og:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', "Homepage Open Graph title");
 html = replaceOnce(html, '<meta property="og:description" content="Điều kiện, quyền lợi, hồ sơ, địa điểm nhập học và cách đăng ký được trình bày ngắn gọn cho người lao động.">', '<meta property="og:description" content="Một hành trình rõ ràng từ kiểm tra điều kiện, học nghề tại Quang Hanh đến nhận việc ngành Than ở Quảng Ninh.">', "Homepage Open Graph description");
 html = replaceOnce(html, '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – thông tin dành cho người lao động">', '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', "Homepage Twitter title");
@@ -277,7 +265,7 @@ html = replaceOnce(html, '<meta name="twitter:description" content="Xem nhanh đ
 html = replaceOnce(html, '<link rel="preload" href="assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" as="image" type="image/webp">', '<link rel="preload" href="/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp" as="image" type="image/webp" fetchpriority="high">', "Homepage hero image preload");
 html = replaceOnce(html, "</head>", '  <link rel="stylesheet" href="/worker-info-finder.css?v=2">\n  <link rel="stylesheet" href="/home-rich-media.css?v=9">\n  <link rel="stylesheet" href="/journey-optimizer.css?v=2">\n</head>', "Worker self-check and visual consultation funnel stylesheets");
 html = replaceOnce(html, '<button class="menu-toggle" type="button"', `${headerSearch}\n      <button class="menu-toggle" type="button"`, "Header search button");
-html = replaceOnce(html, 'href="/mobile-ux.css?v=5"', 'href="/mobile-ux.css?v=7"', "Homepage mobile UX stylesheet version");
+html = replaceOnce(html, 'href="/mobile-ux.css?v=5"', 'href="/mobile-ux.css?v=8"', "Homepage mobile UX stylesheet version");
 html = replaceOnce(html, 'src="/mobile-ux.js?v=4"', 'src="/mobile-ux.js?v=10"', "Homepage mobile UX version");
 html = html.replace(/<nav class="v4-primary-nav"[\s\S]*?<\/nav>\s*/i, "");
 const mainBlocks = html.match(/<main id="noi-dung"[\s\S]*?<\/main>/gi) || [];

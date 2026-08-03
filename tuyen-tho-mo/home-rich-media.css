@@ -155,7 +155,7 @@
   .hero-visual figcaption strong{font-size:14px}
   .home-funnel .worker-self-check,.home-journey,.home-proof,.home-library,.home-funnel .worker-register{padding:44px 0}
   .home-content-shortcuts .container{width:100%;min-height:58px}
-  .home-content-shortcuts a{min-height:58px;gap:6px;font-size:12px}
+  .home-content-shortcuts a{min-height:64px;flex-direction:column;gap:3px;font-size:12px;line-height:1.18;text-align:center}
   .home-content-shortcuts a span{width:24px;height:24px}
   .home-funnel .worker-self-check__head{grid-template-columns:1fr;gap:8px;margin-bottom:18px}
   .home-funnel .worker-self-check__head h2,.home-section-head h2,.home-funnel .worker-register h2{font-size:28px;line-height:1.12}
@@ -219,6 +219,6 @@
   .contact-choice{min-height:82px;padding:10px}
 }
 
-@media(max-width:340px){.home-funnel .hero .button-row{grid-template-columns:1fr}}
+@media(max-width:360px){.home-funnel .hero .button-row{grid-template-columns:1fr}}
 
 @media(prefers-reduced-motion:reduce){.home-proof__story,.home-library__card,.contact-choice{transition:none}}

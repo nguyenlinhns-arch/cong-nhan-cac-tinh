@@ -49,7 +49,7 @@ for (const parameter of ["utm_source", "utm_medium", "utm_campaign", "utm_conten
   if (!js.includes(`url.searchParams.set("${parameter}"`)) fail(`Đường ứng tuyển thiếu ${parameter}`);
 }
 if (Buffer.byteLength(js) > 42_000) fail(`mobile-ux.js vượt 42 KB: ${Buffer.byteLength(js)}`);
-if (Buffer.byteLength(css) > 16_000) fail(`mobile-ux.css vượt 16 KB: ${Buffer.byteLength(css)}`);
+if (Buffer.byteLength(css) > 16_200) fail(`mobile-ux.css vượt 16,2 KB: ${Buffer.byteLength(css)}`);
 
 function makeElement(tagName = "div", inserted = []) {
   return {

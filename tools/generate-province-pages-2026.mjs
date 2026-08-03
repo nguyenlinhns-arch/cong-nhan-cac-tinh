@@ -75,13 +75,11 @@ function provincePage(province) {
   const canonical = `https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/${slug}/`;
   const applicationUrl = `../../viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=${encodeURIComponent(name)}&amp;utm_source=website&amp;utm_medium=organic&amp;utm_campaign=tuyen_tho_mo_2026&amp;utm_content=province_${slug}#dang-ky`;
   const aliasNames = aliases.join(", ");
-  const aliasPhrase = aliases.length
-    ? `, bao gồm khu vực ${aliasNames} trước sắp xếp đơn vị hành chính năm 2025`
-    : "";
+  const aliasPhrase = aliases.length ? ` (gồm ${aliasNames})` : "";
   const localContext = provinceEditorialAngles[slug]
     || `Từ ${name}, người lao động có thể kiểm tra điều kiện từ xa, học nghề trong 2–3 tháng và chuẩn bị cho công việc tại Quảng Ninh theo một lộ trình rõ ràng.`;
   const hasLocalEvidence = Boolean(story || reportage);
-  const description = `Tuyển thợ mỏ tại ${name}${aliasPhrase}: học nghề 2–3 tháng, hỗ trợ ăn ở, cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động tại Quảng Ninh.`;
+  const description = `Tuyển thợ mỏ tại ${name}: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; cam kết 20–25 triệu/tháng khi hoàn thành định mức lao động.`;
   const localStories = [
     story ? {
       title: story,
@@ -184,7 +182,7 @@ function provincePage(province) {
   <meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-v2.webp">
   <link rel="stylesheet" href="../../styles.css">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
-  <link rel="stylesheet" href="/mobile-ux.css?v=6">
+  <link rel="stylesheet" href="/mobile-ux.css?v=8">
 </head>
 <body>
   <a class="skip-link" href="#noi-dung">Bỏ qua menu</a>
@@ -248,7 +246,7 @@ ${storySection}
   <div class="toast" role="status" aria-live="polite" data-toast hidden></div>
   <script src="../../app.js?v=4" defer></script>
   <script src="/analytics.js?v=5" defer></script>
-  <script src="/mobile-ux.js?v=8" defer></script>
+  <script src="/mobile-ux.js?v=10" defer></script>
 </body>
 </html>
 `;

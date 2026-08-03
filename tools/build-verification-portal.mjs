@@ -87,7 +87,7 @@ function pageHtml(page) {
   <meta property="og:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-v2.webp">
   <link rel="stylesheet" href="/landing-recruitment.css?v=17">
   <link rel="stylesheet" href="/publication-polish.css?v=5">
-  <link rel="stylesheet" href="/mobile-ux.css?v=6">
+  <link rel="stylesheet" href="/mobile-ux.css?v=8">
   <link rel="stylesheet" href="/fonts.css?v=1">
   ${cssTag}
   <script type="application/ld+json">${structuredData(page)}</script>
@@ -120,7 +120,7 @@ function pageHtml(page) {
   ${footer}
   ${mobileContact}
   <script src="/analytics.js?v=5" defer></script>
-  <script src="/mobile-ux.js?v=8" defer></script>
+  <script src="/mobile-ux.js?v=10" defer></script>
   ${scriptTag}
 </body>
 </html>`;

@@ -20,6 +20,17 @@ body {
   overflow-wrap: break-word;
 }
 
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p,
+li {
+  text-wrap: pretty;
+}
+
 img,
 video,
 iframe,
@@ -399,6 +410,10 @@ input {
 }
 
 @media (max-width: 767px) {
+  html.tl-mobile-ux-ready {
+    scroll-padding-bottom: calc(88px + env(safe-area-inset-bottom));
+  }
+
   html.tl-mobile-ux-ready body {
     padding-bottom: 0 !important;
   }
@@ -409,7 +424,7 @@ input {
   p,
   li,
   a {
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
   }
 
   .main-nav a,
@@ -464,7 +479,7 @@ input {
     overflow: hidden;
     border-radius: 13px;
     color: #fff;
-    font-size: 11px;
+    font-size: clamp(11.5px, 3.35vw, 13px);
     font-weight: 800;
     line-height: 1;
     text-decoration: none;
@@ -491,6 +506,12 @@ input {
     font-family: Arial, sans-serif;
     font-size: 15px;
     font-weight: 900;
+  }
+
+  .tl-mobile-contact a span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .tl-mobile-contact__messenger svg {

@@ -13,7 +13,7 @@ const escapeAttribute = (value = "") => String(value)
   .replaceAll("<", "&lt;")
   .replaceAll(">", "&gt;");
 
-const title = "Chọn KCN hay làm mỏ? So sánh thu nhập, chi phí và tương lai nghề nghiệp";
+const title = "KCN hay làm mỏ? So sánh lương, chi phí, công việc";
 const description = "Làm khu công nghiệp hay học nghề mỏ? So sánh tiền còn lại, chi phí ban đầu, điều kiện sức khỏe, lộ trình đào tạo và cơ hội làm việc tại Quảng Ninh.";
 
 const faqSchema = {
