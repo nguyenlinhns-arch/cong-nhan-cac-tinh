@@ -60,6 +60,7 @@ jobs:
           node tools/validate-application-context.mjs
           node tools/validate-worker-findability.mjs
           node tools/validate-publication-integrity.mjs
+          node tools/enhance-top-block-hotfix.mjs
           node tools/validate-top-block-hotfix.mjs
           node tools/validate-universal-worker-compass.mjs
           node tools/validate-content-network.mjs
@@ -107,11 +108,16 @@ jobs:
                 && grep -Fq 'id="home-journey-title"' "$html_file" \
                 && grep -Fq 'class="home-journey__steps"' "$html_file" \
                 && grep -Fq 'id="home-proof-title"' "$html_file" \
-                && grep -Fq '/home-rich-media.css?v=6' "$html_file" \
+                && grep -Fq '/home-rich-media.css?v=7' "$html_file" \
+                && grep -Fq '/journey-optimizer.css?v=2' "$html_file" \
+                && grep -Fq '/journey-optimizer.js?v=2' "$html_file" \
                 && grep -Fq 'id="kho-noi-dung"' "$html_file" \
                 && grep -Fq 'href="/cam-nang-nghe-mo/"' "$html_file" \
                 && grep -Fq 'href="/tin-nganh-than/"' "$html_file" \
                 && grep -Fq 'href="/anh-video-thuc-te/"' "$html_file" \
+                && grep -Fq 'href="/kiem-tra-dieu-kien/"' "$html_file" \
+                && grep -Fq 'href="/ho-so-nhap-hoc/"' "$html_file" \
+                && grep -Fq 'href="/thu-nhap-an-o-ho-tro/"' "$html_file" \
                 && grep -Fq '/site-shell-20260803.css?v=3' "$html_file" \
                 && grep -Fq 'id="tu-kiem-tra"' "$html_file" \
                 && grep -Fq 'data-open-site-search' "$html_file" \

@@ -255,10 +255,9 @@
   }
 
   function ensureFastFacts() {
-    // Article templates already present verified facts in the editorial body.
-    // Injecting another fact row into the hero made cards escape the content
-    // column and created the full-width blocks seen on news pages.
-    if (currentGroup === "article") return;
+    // The homepage and article templates already present their verified facts.
+    // Repeating them in the hero adds height without helping the next decision.
+    if (["home", "article"].includes(currentGroup)) return;
     const host = visibleHero();
     const config = intentConfig[currentGroup] || intentConfig[state.entry_intent] || intentConfig.article;
     if (!host || !config) return;
@@ -318,7 +317,9 @@
       actions.prepend(check);
     }
 
-    if (!actions.querySelector('a[href^="tel:"]')) {
+    // The homepage keeps two deliberate first-screen decisions. Calling stays
+    // available in the fixed contact bar and the final consultation section.
+    if (currentGroup !== "home" && !actions.querySelector('a[href^="tel:"]')) {
       const call = document.createElement("a");
       call.className = "journey-third-action";
       call.href = PHONE_URL;

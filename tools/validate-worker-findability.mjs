@@ -13,6 +13,7 @@ const css = read("worker-info-finder.css");
 const script = read("worker-info-finder.js");
 const mobileUx = read("mobile-ux.js");
 const richCss = read("home-rich-media.css");
+const journeyScript = read("journey-optimizer.js");
 const searchIndex = JSON.parse(read("search-index.json"));
 const searchItems = Array.isArray(searchIndex.items) ? searchIndex.items : [];
 const latestArticle = [...communityArticles]
@@ -21,7 +22,9 @@ const latestArticle = [...communityArticles]
 for (const [marker, expected] of [
   ['href="/worker-info-finder.css?v=2"', 1],
   ['src="/worker-info-finder.js?v=3"', 1],
-  ['href="/home-rich-media.css?v=6"', 1],
+  ['href="/home-rich-media.css?v=7"', 1],
+  ['href="/journey-optimizer.css?v=2"', 1],
+  ['src="/journey-optimizer.js?v=2"', 1],
   ['href="/mobile-ux.css?v=6"', 1],
   ['src="/mobile-ux.js?v=9"', 1],
   ["data-open-site-search", 1],
@@ -29,6 +32,7 @@ for (const [marker, expected] of [
   ["data-open-worker-brief", 1],
   ["data-worker-check-form", 1],
 ]) if (count(home, marker) !== expected) fail(`Trang chủ: ${marker} phải xuất hiện ${expected} lần`);
+if (home.includes('/journey-optimizer.css?v=1') || home.includes('/journey-optimizer.js?v=1')) fail("Trang chủ còn tải lặp hành trình phiên bản cũ");
 
 for (const marker of [
   'class="home-funnel"',
@@ -41,6 +45,10 @@ for (const marker of [
   'id="tu-van"',
   'class="home-journey__layout"',
   'class="home-journey__steps"',
+  'class="home-journey__detail"',
+  'href="/kiem-tra-dieu-kien/"',
+  'href="/ho-so-nhap-hoc/"',
+  'href="/thu-nhap-an-o-ho-tro/"',
   'class="contact-choice-grid"',
   'data-contact="application"',
   'data-contact="zalo"',
@@ -149,6 +157,7 @@ for (const prohibited of ["localStorage", "sessionStorage", "fetch(", "XMLHttpRe
 }
 for (const marker of ["focus-visible", "@media(max-width:900px)", "@media(max-width:720px)", "worker-check__result", "worker-check__back"]) if (!css.includes(marker)) fail(`CSS tự kiểm tra thiếu ${marker}`);
 for (const marker of ["hero-visual", "home-content-shortcuts", "home-journey__layout", "home-journey__steps", "home-proof__grid--simple", "home-library__grid", "contact-choice-grid"]) if (!richCss.includes(marker)) fail(`CSS luồng tư vấn thiếu ${marker}`);
+for (const marker of ['["home", "article"].includes(currentGroup)', 'currentGroup !== "home" && !actions.querySelector(\'a[href^="tel:"]\')']) if (!journeyScript.includes(marker)) fail(`Trang chủ chưa khóa thành phần chèn thừa: ${marker}`);
 for (const marker of ["grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)", ".home-funnel .worker-check{padding:0;border:0;background:transparent;box-shadow:none}", ".contact-choice{min-height:86px"]) if (!richCss.includes(marker)) fail(`CSS mobile-first thiếu ${marker}`);
 if (!mobileUx.includes('const MESSENGER_URL = "https://m.me/thaylinhtuyenthomo"')) fail("Thanh liên hệ di động thiếu Messenger");
 if (Buffer.byteLength(script) > 4_000) fail(`worker-info-finder.js vượt ngân sách 4 KB: ${Buffer.byteLength(script)}`);

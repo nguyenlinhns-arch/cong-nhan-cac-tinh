@@ -48,6 +48,7 @@ jobs:
           node tools/validate-application-context.mjs
           node tools/validate-worker-findability.mjs
           node tools/validate-publication-integrity.mjs
+          node tools/enhance-top-block-hotfix.mjs
           node tools/validate-top-block-hotfix.mjs
           node tools/validate-universal-worker-compass.mjs
           node tools/validate-content-network.mjs

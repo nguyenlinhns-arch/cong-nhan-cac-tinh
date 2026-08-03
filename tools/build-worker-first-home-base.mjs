@@ -176,9 +176,9 @@ const simpleMain = `  <main id="noi-dung" class="home-funnel">
 
     <nav class="home-content-shortcuts" aria-label="Bài viết, tin ngành mỏ và video">
       <div class="container">
-        <a href="/cam-nang-nghe-mo/"><span aria-hidden="true">▤</span><strong>Bài viết</strong></a>
-        <a href="/tin-nganh-than/"><span aria-hidden="true">●</span><strong>Tin ngành mỏ</strong></a>
-        <a href="/anh-video-thuc-te/"><span aria-hidden="true">▶</span><strong>Video</strong></a>
+        <a href="/cam-nang-nghe-mo/"><span aria-hidden="true">▤</span><strong>Cẩm nang</strong></a>
+        <a href="/tin-nganh-than/"><span aria-hidden="true">●</span><strong>Tin ngành Than</strong></a>
+        <a href="/anh-video-thuc-te/"><span aria-hidden="true">▶</span><strong>Video thực tế</strong></a>
       </div>
     </nav>
 
@@ -193,13 +193,12 @@ ${selfCheck}
             <figcaption><small>TỪ NGƯỜI MỚI</small><strong>Tư vấn → nhập học → học nghề → nhận việc</strong></figcaption>
           </figure>
           <ol class="home-journey__steps">
-            <li><span>01</span><div><h3>Tư vấn sơ bộ</h3><p>Gửi năm sinh, cao/nặng, sức khỏe và tỉnh đang sống.</p></div></li>
-            <li id="ho-so"><span>02</span><div><h3>Nhập học tại Quang Hanh</h3><p id="dia-diem">Mang CCCD, giấy khai sinh và bằng nếu có.</p></div></li>
-            <li id="thoi-gian-hoc"><span>03</span><div><h3>Học nghề</h3><p>Khai thác và xây dựng mỏ: 2–3 tháng · Cơ điện mỏ: 10 tháng.</p><p id="ho-tro-hoc-nghe" class="home-journey__support">Miễn học phí · 3 bữa/ngày · KTX · hỗ trợ 7,5 triệu.</p></div></li>
-            <li id="noi-lam-viec"><span>04</span><div><h3>Nhận việc tại Quảng Ninh</h3><p>Làm việc tại các đơn vị ngành Than.</p></div></li>
+            <li><span>01</span><div><h3>Tư vấn sơ bộ</h3><p>Gửi năm sinh, cao/nặng, sức khỏe và tỉnh đang sống.</p><a class="home-journey__detail" href="/kiem-tra-dieu-kien/">Xem điều kiện tuyển →</a></div></li>
+            <li id="ho-so"><span>02</span><div><h3>Nhập học tại Quang Hanh</h3><p id="dia-diem">Mang CCCD, giấy khai sinh và bằng nếu có.</p><a class="home-journey__detail" href="/ho-so-nhap-hoc/">Xem hồ sơ cần mang →</a></div></li>
+            <li id="thoi-gian-hoc"><span>03</span><div><h3>Học nghề</h3><p>Khai thác và xây dựng mỏ: 2–3 tháng · Cơ điện mỏ: 10 tháng.</p><p id="ho-tro-hoc-nghe" class="home-journey__support">Miễn học phí · 3 bữa/ngày · KTX · hỗ trợ 7,5 triệu.</p><a class="home-journey__detail" href="/thu-nhap-an-o-ho-tro/">Xem quyền lợi khi học →</a></div></li>
+            <li id="noi-lam-viec"><span>04</span><div><h3>Nhận việc tại Quảng Ninh</h3><p>Làm việc tại các đơn vị ngành Than.</p><a class="home-journey__detail" href="/thong-tin-tuyen-tho-mo/">Xem thông tin tuyển đang áp dụng →</a></div></li>
           </ol>
         </div>
-        <a class="home-journey__more" href="/thong-tin-tuyen-tho-mo/">Xem thông tin tuyển đang áp dụng →</a>
       </div>
     </section>
 
@@ -209,7 +208,7 @@ ${selfCheck}
         <div class="home-proof__grid home-proof__grid--simple">
           <article class="home-proof__video">
             <div class="video-frame" data-featured-video-host><button class="home-video-facade" type="button" data-featured-video-facade data-video-id="ts41cqu7r9c" data-video-title="Hành trình lập nghiệp cùng nghề mỏ" aria-label="Phát video hành trình lập nghiệp cùng nghề mỏ"><img src="/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" alt="Người thợ mỏ chuẩn bị thiết bị trước ca làm việc" loading="lazy" decoding="async" width="1200" height="736"><span class="home-video-facade__play" aria-hidden="true">▶</span><span class="home-video-facade__label">Bấm để xem phóng sự</span></button></div>
-            <div class="home-proof__video-copy"><small>VIDEO NGƯỜI LAO ĐỘNG</small><h3>Nghe người trong nghề chia sẻ</h3></div>
+            <div class="home-proof__video-copy"><small>VIDEO NGƯỜI LAO ĐỘNG</small><h3>Nghe người trong nghề chia sẻ</h3><a href="/anh-video-thuc-te/">Xem toàn bộ video thực tế →</a></div>
           </article>
           <a class="home-proof__story" href="/cau-chuyen-cong-nhan/">
             <img src="/assets/vinacomin-tho-lo-thao-a-bang.webp" alt="Người thợ mỏ làm việc tại đơn vị ngành Than" loading="lazy" decoding="async" width="907" height="624">
@@ -271,7 +270,7 @@ html = replaceOnce(html, '<meta property="og:description" content="Điều kiệ
 html = replaceOnce(html, '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – thông tin dành cho người lao động">', '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', "Homepage Twitter title");
 html = replaceOnce(html, '<meta name="twitter:description" content="Xem nhanh điều kiện, quyền lợi, hồ sơ, địa điểm và cách đăng ký học nghề mỏ tại Quảng Ninh.">', '<meta name="twitter:description" content="Xem hành trình học nghề mỏ tại Quang Hanh, quyền lợi, hồ sơ và việc làm ngành Than tại Quảng Ninh.">', "Homepage Twitter description");
 html = replaceOnce(html, '<link rel="preload" href="assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" as="image" type="image/webp">', '<link rel="preload" href="/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp" as="image" type="image/webp" fetchpriority="high">', "Homepage hero image preload");
-html = replaceOnce(html, "</head>", '  <link rel="stylesheet" href="/worker-info-finder.css?v=2">\n  <link rel="stylesheet" href="/home-rich-media.css?v=6">\n</head>', "Worker self-check and visual consultation funnel stylesheets");
+html = replaceOnce(html, "</head>", '  <link rel="stylesheet" href="/worker-info-finder.css?v=2">\n  <link rel="stylesheet" href="/home-rich-media.css?v=7">\n  <link rel="stylesheet" href="/journey-optimizer.css?v=2">\n</head>', "Worker self-check and visual consultation funnel stylesheets");
 html = replaceOnce(html, '<button class="menu-toggle" type="button"', `${headerSearch}\n      <button class="menu-toggle" type="button"`, "Header search button");
 html = replaceOnce(html, 'href="/mobile-ux.css?v=5"', 'href="/mobile-ux.css?v=6"', "Homepage mobile UX stylesheet version");
 html = replaceOnce(html, 'src="/mobile-ux.js?v=4"', 'src="/mobile-ux.js?v=9"', "Homepage mobile UX version");
@@ -303,9 +302,9 @@ const staticMobile = `<nav class="mobile-contact" aria-label="Liên hệ nhanh t
 const mobileBlocks = html.match(/<nav class="mobile-contact"[\s\S]*?<\/nav>/gi) || [];
 if (mobileBlocks.length !== 1) throw new Error(`Worker-first homepage expected one static mobile contact bar, got ${mobileBlocks.length}`);
 html = html.replace(mobileBlocks[0], staticMobile);
-html = replaceOnce(html, "</body>", '  <script src="/worker-info-finder.js?v=2" defer></script>\n</body>', "Worker self-check script");
+html = replaceOnce(html, "</body>", '  <script src="/worker-info-finder.js?v=2" defer></script>\n  <script src="/journey-optimizer.js?v=2" defer></script>\n</body>', "Worker self-check and consultation journey scripts");
 
-for (const required of ['class="home-funnel"', 'class="hero-visual"', 'class="home-journey"', 'id="thong-tin"', 'id="tu-kiem-tra"', 'id="thuc-te"', 'id="quy-trinh"', 'id="tu-van"', 'id="kho-noi-dung"', 'class="home-content-shortcuts"', 'class="home-library__grid"', 'href="/cam-nang-nghe-mo/"', 'href="/tin-nganh-than/"', 'href="/anh-video-thuc-te/"', 'class="home-journey__layout"', 'class="home-journey__steps"', 'class="home-proof"', 'data-featured-video-facade', '/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp', '/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp', '/assets/vinacomin-tho-mo-ham-lo-1200.webp', '/assets/vinacomin-tho-lo-thao-a-bang.webp', "data-open-site-search", "data-worker-check-form", "data-open-worker-brief", 'id="che-do-ho-so"', 'id="thoi-gian-hoc"', 'id="ho-tro-hoc-nghe"', 'id="noi-lam-viec"', 'class="worker-register__lead"', 'class="contact-choice-grid"', 'data-contact="application"', 'data-contact="zalo"', 'data-contact="messenger"', 'data-contact="phone"']) {
+for (const required of ['class="home-funnel"', 'class="hero-visual"', 'class="home-journey"', 'id="thong-tin"', 'id="tu-kiem-tra"', 'id="thuc-te"', 'id="quy-trinh"', 'id="tu-van"', 'id="kho-noi-dung"', 'class="home-content-shortcuts"', 'class="home-library__grid"', 'href="/cam-nang-nghe-mo/"', 'href="/tin-nganh-than/"', 'href="/anh-video-thuc-te/"', 'href="/kiem-tra-dieu-kien/"', 'href="/ho-so-nhap-hoc/"', 'href="/thu-nhap-an-o-ho-tro/"', 'class="home-journey__layout"', 'class="home-journey__steps"', 'class="home-journey__detail"', 'class="home-proof"', 'data-featured-video-facade', '/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp', '/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp', '/assets/vinacomin-tho-mo-ham-lo-1200.webp', '/assets/vinacomin-tho-lo-thao-a-bang.webp', "data-open-site-search", "data-worker-check-form", "data-open-worker-brief", 'id="che-do-ho-so"', 'id="thoi-gian-hoc"', 'id="ho-tro-hoc-nghe"', 'id="noi-lam-viec"', 'class="worker-register__lead"', 'class="contact-choice-grid"', 'data-contact="application"', 'data-contact="zalo"', 'data-contact="messenger"', 'data-contact="phone"']) {
   if (!html.includes(required)) throw new Error(`Worker-first homepage is missing generated feature: ${required}`);
 }
 if (html.includes('/assets/vinacomin-dao-tao-tho-lo.webp')) throw new Error("Worker-first homepage still contains the rejected podium image");
