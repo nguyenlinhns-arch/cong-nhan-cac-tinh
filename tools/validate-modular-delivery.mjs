@@ -63,7 +63,7 @@ const fontFiles = fs.readdirSync(path.join(root, "assets", "fonts")).filter((nam
 if (fontFiles.length !== 6) errors.push(`Font: cần đúng 6 tệp WOFF2, hiện có ${fontFiles.length}`);
 
 const home = read("index.html");
-for (const marker of ["/home-critical.css?v=1", "/home-content.css?v=1", "/mobile-core.js?v=1", ">Kiểm tra điều kiện</a>", "button button-brief"]) requireText(home, marker, "Trang chủ");
+for (const marker of ["/home-critical.css?v=1", "/home-content.css?v=2", "/mobile-core.js?v=1", ">Kiểm tra điều kiện</a>", "button button-brief"]) requireText(home, marker, "Trang chủ");
 for (const oldAsset of ["/landing-recruitment.css", "/publication-polish.css", "/mobile-ux.css", "/mobile-ux.js", "/site-shell-20260803.css"]) {
   if (home.includes(oldAsset)) errors.push(`Trang chủ: còn tải lớp CSS/JS riêng ${oldAsset}`);
 }
