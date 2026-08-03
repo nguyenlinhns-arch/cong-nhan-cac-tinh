@@ -145,6 +145,11 @@ function seoText(article) {
   return `Tìm hiểu thêm về ${keywords.join(", ")} trên Thầy Linh – Tuyển Thợ Mỏ.`;
 }
 
+function searchTitle(article) {
+  if (article.seoTitle) return article.seoTitle;
+  return article.title.length > 52 ? article.title : `${article.title} | Thầy Linh`;
+}
+
 function renderSourceFooter(article) {
   return `<div class="article-source-footer"><p class="article-current-facts"><a href="/thong-tin-tuyen-tho-mo/">Đối chiếu 15 câu hỏi về điều kiện, học nghề, hồ sơ và thu nhập đang áp dụng →</a></p><p><strong>Nguồn:</strong> ${esc(sourceText(article))}</p><p class="article-seo-line">${esc(seoText(article))}</p></div>`;
 }
@@ -402,7 +407,7 @@ function renderArticle(article) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#063c46">
-  <title>${esc(article.title)} | Thầy Linh</title>
+  <title>${esc(searchTitle(article))}</title>
   <meta name="description" content="${esc(article.description)}">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="author" content="${author}">
@@ -593,7 +598,7 @@ for (const article of existingNews) {
   if (!fs.existsSync(file)) throw new Error(`Missing existing article page: ${article.slug}`);
   let html = fs.readFileSync(file, "utf8");
   html = upgradeExistingSchema(html, article);
-  if (article.seoTitle) html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${esc(article.seoTitle)}</title>`);
+  html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${esc(searchTitle(article))}</title>`);
   html = html.replace(/\s*<div class="article-source-footer">[\s\S]*?<\/div>\s*/g, "\n");
   html = html.replace(/\s*<section class="article-apply"[\s\S]*?<\/section>\s*/g, "\n");
   html = html.replace(/\s*<section class="article-share-panel"[\s\S]*?<\/section>\s*/g, "\n");
