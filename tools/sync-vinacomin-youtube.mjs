@@ -8,6 +8,7 @@ const feedUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId
 const siteRoot = path.resolve("tuyen-tho-mo");
 const dataFile = path.join(siteRoot, "data", "vinacomin-youtube.json");
 const pageFile = path.join(siteRoot, "video-tkv", "index.html");
+const proofPageFile = path.join(siteRoot, "anh-video-thuc-te", "index.html");
 const sitemapFile = path.join(siteRoot, "sitemap.xml");
 
 function decodeXml(value = "") {
@@ -63,6 +64,50 @@ function makeCards(videos) {
           </button>
           <a href="${video.url}" target="_blank" rel="noopener noreferrer" data-tkv-source-link>Xem video gốc trên YouTube →</a>
         </article>`).join("\n");
+}
+
+function selectProofVideos(videos) {
+  const relevant = videos.filter((video) => /tuyển sinh|lao động|người lao động|công nhân|thợ lò|hầm lò|an toàn|atvslđ|khí metan|nổ bụi|nhà ở|tặng quà/i.test(video.title));
+  const selected = [...relevant];
+  for (const video of videos) if (selected.length < 4 && !selected.some((item) => item.id === video.id)) selected.push(video);
+  return selected.slice(0, 4);
+}
+
+function makeProofCards(videos) {
+  return videos.map((video) => `        <article class="tkv-video-card" data-video-card><button type="button" class="tkv-video-card__play" data-tkv-video-id="${video.id}" data-tkv-video-title="${escapeHtml(video.title)}" aria-label="Phát video: ${escapeHtml(video.title)}"><span class="tkv-video-card__thumb"><img src="${video.thumbnail}" alt="Ảnh đại diện video ${escapeHtml(video.title)}" loading="lazy" decoding="async" width="480" height="360"><i aria-hidden="true">▶</i></span><span class="tkv-video-card__content"><small>${escapeHtml(video.category)}</small><strong>${escapeHtml(video.title)}</strong><span>${formatDate(video.published)} · Kênh YouTube TKV chính thức</span></span></button><a href="${video.url}" target="_blank" rel="noopener noreferrer" data-tkv-source-link>Xem video gốc trên YouTube →</a></article>`).join("\n");
+}
+
+function makeProofFeatured(video) {
+  return `      <div class="tkv-featured">
+        <div class="tkv-featured__frame">
+          <button class="tkv-video-facade" type="button" data-featured-facade data-featured-video-id="${video.id}" data-featured-video-title="${escapeHtml(video.title)}" aria-label="Phát video: ${escapeHtml(video.title)}">
+            <img src="${video.thumbnail}" alt="Ảnh đại diện video ${escapeHtml(video.title)}" loading="lazy" decoding="async" width="480" height="360" data-featured-thumbnail>
+            <span class="tkv-video-facade__play" aria-hidden="true">▶</span><span class="tkv-video-facade__label">Bấm để xem video chính thức</span>
+          </button>
+        </div>
+        <div class="tkv-featured__caption"><small>${escapeHtml(video.category)}</small><h2 data-featured-title>${escapeHtml(video.title)}</h2><p>Nguồn: kênh YouTube chính thức của Tập đoàn Công nghiệp Than - Khoáng sản Việt Nam.</p><div class="tkv-featured__actions"><a href="/video-tkv/">Mở toàn bộ thư viện video TKV</a></div></div>
+      </div>`;
+}
+
+function makeProofSchema(videos) {
+  return `  <script type="application/ld+json">${JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Video chính thức về người lao động, tuyển sinh và an toàn ngành Than",
+    itemListElement: videos.map((video, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "VideoObject",
+        name: video.title,
+        description: `${video.title}. Video từ kênh YouTube chính thức của Tập đoàn Công nghiệp Than - Khoáng sản Việt Nam.`,
+        thumbnailUrl: [video.thumbnail],
+        uploadDate: video.published,
+        embedUrl: `https://www.youtube-nocookie.com/embed/${video.id}`,
+        contentUrl: video.url,
+      },
+    })),
+  })}</script>`;
 }
 
 function makeSchema(videos, syncedAt) {
@@ -161,6 +206,13 @@ page = page.replace(/(<img\b(?=[^>]*\bdata-featured-thumbnail\b)[^>]*\bsrc=")[^"
 page = page.replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${videos[0].thumbnail}$2`);
 page = page.replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${videos[0].thumbnail}$2`);
 fs.writeFileSync(pageFile, page);
+
+const proofVideos = selectProofVideos(videos);
+let proofPage = fs.readFileSync(proofPageFile, "utf8");
+proofPage = replaceBlock(proofPage, "<!-- PROOF_VIDEO_SCHEMA_START -->", "<!-- PROOF_VIDEO_SCHEMA_END -->", makeProofSchema(proofVideos));
+proofPage = replaceBlock(proofPage, "<!-- PROOF_VIDEO_FEATURED_START -->", "<!-- PROOF_VIDEO_FEATURED_END -->", makeProofFeatured(proofVideos[0]));
+proofPage = replaceBlock(proofPage, "<!-- PROOF_VIDEO_LIST_START -->", "<!-- PROOF_VIDEO_LIST_END -->", makeProofCards(proofVideos.slice(1)));
+fs.writeFileSync(proofPageFile, proofPage);
 
 let sitemap = fs.readFileSync(sitemapFile, "utf8");
 const lastmod = syncedAt.slice(0, 10);
