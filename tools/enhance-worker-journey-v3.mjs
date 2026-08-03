@@ -186,11 +186,11 @@ function injectJourneyAssets() {
     if (before.includes("data-legacy-redirect")) continue;
     checked += 1;
     let source = before;
-    if (!source.includes("/journey-optimizer.css?v=1")) {
+    if (!/\/journey-optimizer\.css\?v=\d+/.test(source)) {
       if (!source.includes("</head>")) throw new Error(`${relative}: missing </head>`);
       source = source.replace("</head>", `  ${JOURNEY_STYLE}\n</head>`);
     }
-    if (!source.includes("/journey-optimizer.js?v=1")) {
+    if (!/\/journey-optimizer\.js\?v=\d+/.test(source)) {
       if (!source.includes("</body>")) throw new Error(`${relative}: missing </body>`);
       source = source.replace("</body>", `  ${JOURNEY_SCRIPT}\n</body>`);
     }
