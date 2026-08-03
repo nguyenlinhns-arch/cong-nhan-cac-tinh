@@ -4,6 +4,7 @@ import path from "node:path";
 const ROOT = process.env.CONTACT_SEO_ROOT
   ? path.resolve(process.env.CONTACT_SEO_ROOT)
   : path.resolve(import.meta.dirname, "..");
+const SOURCE_ROOT = path.resolve(import.meta.dirname, "..");
 const SITE = path.join(ROOT, "tuyen-tho-mo");
 const CONTACT_PATH = "/lien-he-di-lam-mo-than-quang-ninh/";
 const CONTACT_URL = `https://thaylinhtuyenthomo.vn${CONTACT_PATH}`;
@@ -19,6 +20,11 @@ function write(relativePath, content) {
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, content);
 }
+
+write(
+  "tuyen-tho-mo/contact-authority.css",
+  fs.readFileSync(path.join(SOURCE_ROOT, "tuyen-tho-mo", "contact-authority.css"), "utf8"),
+);
 
 function replaceRequired(source, search, replacement, label) {
   if (!source.includes(search)) {

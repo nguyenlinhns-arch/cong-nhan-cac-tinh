@@ -29,6 +29,7 @@ jobs:
           node tools/build-worker-first-home.mjs
           node tools/enhance-home-copy-actions.mjs
           node tools/enhance-contact-authority-seo.mjs
+          node tools/build-worker-question-pages.mjs
           node tools/build-search-index.mjs
           node tools/enhance-all-province-search.mjs
           node tools/polish-discovery-output.mjs
@@ -50,6 +51,7 @@ jobs:
           node tools/validate-ai-search.mjs
           node tools/validate-search-intents.mjs
           node tools/validate-contact-authority-seo.mjs
+          node tools/validate-worker-question-pages.mjs
           node tools/validate-mobile-search-ai-polish.mjs
           node tools/validate-job-postings.mjs
           node tools/validate-recruitment-funnel.mjs

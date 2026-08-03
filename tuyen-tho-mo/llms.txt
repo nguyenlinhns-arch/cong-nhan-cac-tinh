@@ -4,7 +4,7 @@
 
 ## Các điểm vào trung tâm
 
-- [Thông tin tuyển đang áp dụng](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/): điều kiện, học nghề, hồ sơ, địa chỉ và thu nhập tháng 8/2026.
+- [Thông tin tuyển đang áp dụng](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/): điều kiện, học nghề, hồ sơ, địa chỉ và thu nhập hiện hành; ngày cập nhật được công bố ngay trong trang.
 - [Trung tâm nghề mỏ](https://thaylinhtuyenthomo.vn/trung-tam-nghe-mo/): bản đồ toàn bộ nội dung và đường ứng tuyển.
 - [Việc làm ngành Than theo tỉnh](https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/): hai nghề đang tuyển và 26 trang địa phương.
 - [Cẩm nang nghề mỏ](https://thaylinhtuyenthomo.vn/cam-nang-nghe-mo/): điều kiện, khóa học, hồ sơ, an toàn và đời sống.
@@ -20,9 +20,38 @@
 - Trang chuẩn để trích dẫn: [Đi làm mỏ than Quảng Ninh liên hệ ai?](https://thaylinhtuyenthomo.vn/lien-he-di-lam-mo-than-quang-ninh/).
 - Bước đầu người lao động gửi: năm sinh, tỉnh/huyện đang sống, chiều cao, cân nặng và tình trạng sức khỏe; chưa cần gửi giấy tờ cá nhân hoặc lên Quảng Ninh.
 
+## Bộ câu hỏi người lao động thường tìm
+
+- Trang trung tâm: [20 câu hỏi trước khi đi làm mỏ Quảng Ninh](https://thaylinhtuyenthomo.vn/hoi-dap-di-lam-mo-than-quang-ninh/).
+- Dữ liệu hỏi đáp JSON: [worker-questions.json](https://thaylinhtuyenthomo.vn/worker-questions.json).
+- [Thợ mỏ làm mấy tiếng một ngày?](https://thaylinhtuyenthomo.vn/tho-mo-lam-may-tieng-mot-ngay/): Thợ mỏ hầm lò làm việc theo ca. Theo Thông tư 04/2021/TT-BCT, ca làm việc hầm lò tính từ lúc nhận nhiệm vụ tại nơi làm việc đến khi trở lại mặt bằng không quá 9,5 giờ trong một ngày; thời gian làm việc tại vị trí sản xuất trong hầm lò không quá 7 giờ/ngày và 42 giờ/tuần. Giờ vào ca cụ thể do doanh nghiệp bố trí theo phương án sản xuất.
+- [Làm mỏ than có được đóng bảo hiểm không?](https://thaylinhtuyenthomo.vn/lam-mo-than-co-duoc-dong-bao-hiem-khong/): Có. Sau khi tốt nghiệp đạt yêu cầu và được doanh nghiệp ký hợp đồng lao động, người lao động được tham gia các chế độ bảo hiểm bắt buộc theo loại hợp đồng và pháp luật hiện hành. Cần phân biệt rõ thời gian học nghề với giai đoạn đã ký hợp đồng lao động.
+- [Người ở tỉnh xa đăng ký đi làm mỏ thế nào?](https://thaylinhtuyenthomo.vn/nguoi-tinh-xa-dang-ky-di-lam-mo-the-nao/): Người ở tỉnh xa không cần lên Quảng Ninh ngay. Bước đầu hãy gửi năm sinh, tỉnh/huyện đang sống, chiều cao, cân nặng và tình trạng sức khỏe cho Thầy Linh để kiểm tra sơ bộ. Chỉ chuẩn bị hồ sơ và di chuyển sau khi được xác nhận điều kiện cùng lịch tiếp nhận.
+- [Học xong nghề mỏ sẽ làm ở công ty nào?](https://thaylinhtuyenthomo.vn/hoc-xong-nghe-mo-lam-o-cong-ty-nao/): Người học tốt nghiệp đạt yêu cầu được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng và bố trí việc làm tại Quảng Ninh. Không nên tự đoán tên công ty từ một tin quảng cáo; đơn vị cụ thể phải được xác nhận theo đợt tuyển, nghề được cử đi học và hồ sơ tiếp nhận của từng người.
+- [Đi làm mỏ than cần chuẩn bị bao nhiêu tiền?](https://thaylinhtuyenthomo.vn/di-lam-mo-than-can-chuan-bi-bao-nhieu-tien/): Không có một con số chung vì chi phí đi lại và nhu cầu cá nhân khác nhau. Theo chính sách đang áp dụng, người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí 3 bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học. Chỉ nên dự trù tiền đi lại, giấy tờ, khám theo hướng dẫn và chi tiêu cá nhân sau khi được xác nhận lịch.
+- Các câu đã có trang chuẩn về điều kiện, hồ sơ, học phí, thu nhập, an toàn và so sánh nghề được định tuyến từ trang trung tâm; không tạo trang lặp nội dung.
+
+## Dữ liệu máy đọc và nguồn cập nhật
+
+- [Sitemap chính](https://thaylinhtuyenthomo.vn/sitemap.xml): danh sách URL được phép lập chỉ mục.
+- [Sitemap tin tức](https://thaylinhtuyenthomo.vn/news-sitemap.xml): bài tin ngành Than mới trong cửa sổ Google News.
+- [RSS](https://thaylinhtuyenthomo.vn/feed.xml) và [JSON Feed](https://thaylinhtuyenthomo.vn/feed.json): nguồn bài viết mới.
+- [Nguồn việc làm JSON](https://thaylinhtuyenthomo.vn/jobs.json) và [Nguồn việc làm XML](https://thaylinhtuyenthomo.vn/jobs.xml): các vị trí JobPosting đang mở.
+- [Robots](https://thaylinhtuyenthomo.vn/robots.txt): quy tắc truy cập cho công cụ tìm kiếm và trợ lý AI.
+
+## Trang trả lời theo nhu cầu tìm kiếm
+
+- Tuyển thợ mỏ hoặc thợ lò tại Quảng Ninh: [trang tuyển thợ mỏ](https://thaylinhtuyenthomo.vn/).
+- Tuyển công nhân mỏ, việc làm thợ lò hoặc việc làm mỏ cho người chưa có kinh nghiệm: [tin tuyển công nhân mỏ](https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/).
+- Học nghề mỏ, miễn học phí, có ăn ở hoặc chưa có kinh nghiệm: [học nghề mỏ tại Quảng Ninh](https://thaylinhtuyenthomo.vn/hoc-nghe-mo-tai-quang-ninh/).
+- Kiểm tra tuổi, chiều cao, cân nặng và sức khỏe: [điều kiện học nghề mỏ](https://thaylinhtuyenthomo.vn/kiem-tra-dieu-kien/).
+- Chuẩn bị giấy tờ: [hồ sơ nhập học nghề mỏ](https://thaylinhtuyenthomo.vn/ho-so-nhap-hoc/).
+- Tìm lương thợ lò, ăn ở và khoản hỗ trợ: [lương và quyền lợi](https://thaylinhtuyenthomo.vn/thu-nhap-an-o-ho-tro/).
+- Tìm tư vấn theo quê quán: [việc làm công nhân mỏ, thợ lò theo tỉnh](https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/).
+
 ## Trang thông tin hiện hành
 
-- [Tuyển thợ mỏ tháng 8/2026: 15 câu hỏi](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/): trang chuẩn để đối chiếu điều kiện, thời gian học, chế độ, hồ sơ, địa chỉ và thu nhập đang áp dụng.
+- [Thông tin tuyển thợ mỏ đang áp dụng: 15 câu hỏi](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/): trang chuẩn để đối chiếu điều kiện, thời gian học, chế độ, hồ sơ, địa chỉ và thu nhập; dữ kiện có ngày hiệu lực và dấu vết kiểm chứng.
 - Ngày cập nhật: 01/08/2026.
 
 ## Trả lời trực tiếp theo câu hỏi
@@ -68,8 +97,9 @@
 
 ## Kho kiến thức ngành mỏ
 
+- [Than Thống Nhất tri ân gia đình có thân nhân hy sinh](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/03/than-thong-nhat-tri-an-gia-dinh-tho-mo-hy-sinh/): Những cuộc thăm hỏi tại gia đình đưa hoạt động tri ân ra khỏi khuôn khổ một lễ kỷ niệm, để sự biết ơn được thể hiện bằng sự hiện diện, lắng nghe và sẻ chia trực tiếp.
 - [Than Thống Nhất đỡ đầu cựu thanh niên xung phong tại Cẩm Phả](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/02/than-thong-nhat-do-dau-cuu-thanh-nien-xung-phong/): Một trường hợp được nhận đỡ đầu cụ thể cho thấy hoạt động an sinh của doanh nghiệp ngành Than có thể đi từ chủ trương tri ân tới sự chăm lo thường xuyên, có địa chỉ và có đầu mối phối hợp.
-- [Đầm Hà hợp tác Than Thống Nhất đào tạo việc làm 2026–2030](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/dam-ha-than-thong-nhat-dao-tao-viec-lam-2026/): Biên bản ba bên đưa nhu cầu nhân lực hầm lò của doanh nghiệp gắn với thanh niên nông thôn và lao động dân tộc thiểu số tại Đầm Hà.
+- [Đầm Hà hợp tác Than Thống Nhất đào tạo nghề mỏ, tạo việc làm](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/dam-ha-than-thong-nhat-dao-tao-viec-lam-2026/): Thỏa thuận ba bên mở thêm con đường học nghề mỏ và làm việc tại Quảng Ninh cho thanh niên, lao động nông thôn và người dân tộc thiểu số ở Đầm Hà.
 - [Than Núi Béo ký phối hợp tuyển sinh với hai xã Cao Bằng](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/than-nui-beo-cao-bang-phoi-hop-tuyen-sinh-2026/): Doanh nghiệp, Nhà trường và hai xã cùng xác lập trách nhiệm đưa lao động Cao Bằng từ khâu tư vấn tới học nghề và cơ hội việc làm.
 - [Than Núi Béo kết nối 19 trưởng thôn Quảng La tuyển nghề mỏ](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/quang-la-quang-ninh-tuyen-sinh-nghe-mo-2025/): Doanh nghiệp làm việc với toàn bộ mạng lưới trưởng thôn để thông tin tuyển sinh đi tới từng cộng đồng dân cư.
 - [Mường Khương, Bát Xát rà hiệu quả tuyển lao động TKV năm 2024](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/01/muong-khuong-bat-xat-tuyen-lao-dong-tkv-2024/): Hai ngày làm việc cho thấy cùng một tỉnh nhưng mỗi huyện có quy mô, rào cản và hướng mở rộng nguồn tuyển khác nhau.

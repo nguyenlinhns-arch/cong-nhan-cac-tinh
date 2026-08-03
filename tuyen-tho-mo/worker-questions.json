@@ -1,0 +1,134 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-08-03",
+  "publisher": {
+    "name": "Thầy Linh – Tuyển Thợ Mỏ",
+    "responsible_person": "Nguyễn Tử Linh",
+    "role": "Trưởng phòng Tuyển sinh Miền Trung",
+    "phone": "+84963048585",
+    "url": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/"
+  },
+  "canonical_hub": "https://thaylinhtuyenthomo.vn/hoi-dap-di-lam-mo-than-quang-ninh/",
+  "questions": [
+    {
+      "question": "Muốn đi làm mỏ than Quảng Ninh thì liên hệ với ai?",
+      "direct_answer": "Liên hệ Nguyễn Tử Linh (Thầy Linh), Trưởng phòng Tuyển sinh Miền Trung, qua Zalo hoặc điện thoại 096 304 8585 để kiểm tra điều kiện, học nghề, hồ sơ và lịch nhập học.",
+      "category": "Bắt đầu đăng ký",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/lien-he-di-lam-mo-than-quang-ninh/"
+    },
+    {
+      "question": "Tôi có đủ điều kiện đi làm mỏ không?",
+      "direct_answer": "Mốc sơ bộ đang áp dụng là nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg và sức khỏe phù hợp. Kết quả khám tuyển là căn cứ cuối cùng.",
+      "category": "Bắt đầu đăng ký",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/kiem-tra-dieu-kien/"
+    },
+    {
+      "question": "Bao nhiêu tuổi thì còn đăng ký nghề mỏ được?",
+      "direct_answer": "Chương trình đang tiếp nhận nam từ đủ 18 đến 40 tuổi; tuổi được đối chiếu tại thời điểm đăng ký và theo đợt tuyển hiện hành.",
+      "category": "Bắt đầu đăng ký",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/kiem-tra-dieu-kien/"
+    },
+    {
+      "question": "Chiều cao, cân nặng tối thiểu là bao nhiêu?",
+      "direct_answer": "Mốc kiểm tra ban đầu là cao từ 1m53 và nặng từ 47kg; người đăng ký vẫn phải khám sức khỏe theo yêu cầu.",
+      "category": "Bắt đầu đăng ký",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/kiem-tra-dieu-kien/"
+    },
+    {
+      "question": "Bị cận thị có đi làm thợ lò được không?",
+      "direct_answer": "Thông tin tuyển đang áp dụng yêu cầu không cận thị và không mắc bệnh về mắt ảnh hưởng công việc. Hãy kiểm tra sơ bộ trước khi chuẩn bị hồ sơ.",
+      "category": "Bắt đầu đăng ký",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/kiem-tra-dieu-kien/"
+    },
+    {
+      "question": "Đi làm mỏ có cần bằng cấp hoặc kinh nghiệm không?",
+      "direct_answer": "Không yêu cầu kinh nghiệm sẵn có. Trình độ và giấy tờ được đối chiếu theo hệ đào tạo; nếu chưa có hoặc mất bằng, vẫn đăng ký kiểm tra trước để được hướng dẫn đúng trường hợp.",
+      "category": "Học nghề và hồ sơ",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/ho-so-nhap-hoc/"
+    },
+    {
+      "question": "Học nghề mỏ mất bao lâu?",
+      "direct_answer": "Khai thác mỏ hầm lò và xây dựng mỏ hầm lò thường học 2–3 tháng theo chương trình đang tuyển; lịch cụ thể được xác nhận theo từng đợt.",
+      "category": "Học nghề và hồ sơ",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/hoc-nghe-mo-tai-quang-ninh/"
+    },
+    {
+      "question": "Học nghề mỏ có mất học phí không?",
+      "direct_answer": "Người học thuộc chỉ tiêu được miễn kinh phí đào tạo theo chính sách đang áp dụng.",
+      "category": "Học nghề và hồ sơ",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/hoc-nghe-mo-tai-quang-ninh/#hoc-phi-an-o"
+    },
+    {
+      "question": "Trong thời gian học có được ăn ở và hỗ trợ không?",
+      "direct_answer": "Người học thuộc chỉ tiêu được bố trí 3 bữa/ngày, ký túc xá khép kín và hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển.",
+      "category": "Học nghề và hồ sơ",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/thu-nhap-an-o-ho-tro/"
+    },
+    {
+      "question": "Hồ sơ nhập học nghề mỏ gồm những gì?",
+      "direct_answer": "Chưa cần chuẩn bị hồ sơ ở bước kiểm tra đầu tiên. Sau khi có lịch, người đăng ký được hướng dẫn giấy tờ cần mang để tránh công chứng hoặc đi lại không cần thiết.",
+      "category": "Học nghề và hồ sơ",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/ho-so-nhap-hoc/"
+    },
+    {
+      "question": "Đi học và làm mỏ cần chuẩn bị bao nhiêu tiền?",
+      "direct_answer": "Không có một con số chung. Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ăn ở và hỗ trợ 7,5 triệu đồng; chỉ nên dự trù đi lại, giấy tờ và chi tiêu cá nhân sau khi có lịch.",
+      "category": "Đi từ tỉnh xa",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/di-lam-mo-than-can-chuan-bi-bao-nhieu-tien/"
+    },
+    {
+      "question": "Người ở tỉnh xa đăng ký đi làm mỏ thế nào?",
+      "direct_answer": "Đăng ký từ xa trước bằng năm sinh, nơi ở, chiều cao, cân nặng và sức khỏe. Chỉ di chuyển tới Quảng Ninh sau khi được kiểm tra điều kiện và xác nhận lịch.",
+      "category": "Đi từ tỉnh xa",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/nguoi-tinh-xa-dang-ky-di-lam-mo-the-nao/"
+    },
+    {
+      "question": "Địa điểm nhập học nghề mỏ ở đâu?",
+      "direct_answer": "Địa điểm làm thủ tục là Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh, sau khi người đăng ký được xác nhận lịch.",
+      "category": "Đi từ tỉnh xa",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/hoc-nghe-mo-tai-quang-ninh/"
+    },
+    {
+      "question": "Học xong nghề mỏ sẽ làm ở công ty nào?",
+      "direct_answer": "Người tốt nghiệp đạt yêu cầu được doanh nghiệp thuộc TKV tiếp nhận và bố trí việc làm tại Quảng Ninh. Đơn vị cụ thể phải được xác nhận trong đợt tuyển và hồ sơ tiếp nhận.",
+      "category": "Công việc sau đào tạo",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/hoc-xong-nghe-mo-lam-o-cong-ty-nao/"
+    },
+    {
+      "question": "Công việc thợ mỏ hầm lò là làm gì?",
+      "direct_answer": "Hai hướng đang tuyển là khai thác mỏ hầm lò và xây dựng mỏ hầm lò. Người học được đào tạo thao tác, thiết bị, an toàn và phối hợp tổ đội trước khi nhận việc.",
+      "category": "Công việc sau đào tạo",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/hoc-xong-nghe-mo-lam-o-cong-ty-nao/#cong-viec"
+    },
+    {
+      "question": "Thợ mỏ làm mấy tiếng một ngày?",
+      "direct_answer": "Công việc được tổ chức theo ca. Quy định hiện hành giới hạn ca làm việc hầm lò không quá 9,5 giờ/ngày; thời gian tại vị trí sản xuất hầm lò không quá 7 giờ/ngày và 42 giờ/tuần.",
+      "category": "Công việc sau đào tạo",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/tho-mo-lam-may-tieng-mot-ngay/"
+    },
+    {
+      "question": "Làm mỏ than có được đóng bảo hiểm không?",
+      "direct_answer": "Sau khi tốt nghiệp đạt yêu cầu và ký hợp đồng lao động, các chế độ bảo hiểm được thực hiện theo loại hợp đồng và pháp luật hiện hành.",
+      "category": "Công việc sau đào tạo",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/lam-mo-than-co-duoc-dong-bao-hiem-khong/"
+    },
+    {
+      "question": "Lương thợ lò được tính thế nào?",
+      "direct_answer": "Chương trình đang áp dụng cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "category": "Thu nhập và lựa chọn",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/thu-nhap-an-o-ho-tro/"
+    },
+    {
+      "question": "Làm thợ lò có nguy hiểm không?",
+      "direct_answer": "Đây là nghề đặc thù có yêu cầu cao về sức khỏe, bảo hộ, kỹ thuật và kỷ luật. Người lao động phải được đào tạo an toàn và tuân thủ quy trình trong từng ca.",
+      "category": "Thu nhập và lựa chọn",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/an-toan-ky-luat-moi-truong/"
+    },
+    {
+      "question": "Nên làm khu công nghiệp hay đi làm mỏ?",
+      "direct_answer": "Cần so sánh sức khỏe, khả năng đi xa, môi trường làm việc, lộ trình học nghề, thu nhập và khoản tiền còn lại sau chi phí. Không có một lựa chọn phù hợp cho tất cả.",
+      "category": "Thu nhập và lựa chọn",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/chon-kcn-hay-lam-mo/"
+    }
+  ]
+}

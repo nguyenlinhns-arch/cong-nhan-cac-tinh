@@ -48,6 +48,15 @@ const contactAuthorityPages = [
   ["lien-he-di-lam-mo-than-quang-ninh/index.html", "/lien-he-di-lam-mo-than-quang-ninh/"],
 ];
 
+const workerQuestionPages = [
+  ["hoi-dap-di-lam-mo-than-quang-ninh/index.html", "/hoi-dap-di-lam-mo-than-quang-ninh/"],
+  ["tho-mo-lam-may-tieng-mot-ngay/index.html", "/tho-mo-lam-may-tieng-mot-ngay/"],
+  ["lam-mo-than-co-duoc-dong-bao-hiem-khong/index.html", "/lam-mo-than-co-duoc-dong-bao-hiem-khong/"],
+  ["nguoi-tinh-xa-dang-ky-di-lam-mo-the-nao/index.html", "/nguoi-tinh-xa-dang-ky-di-lam-mo-the-nao/"],
+  ["hoc-xong-nghe-mo-lam-o-cong-ty-nao/index.html", "/hoc-xong-nghe-mo-lam-o-cong-ty-nao/"],
+  ["di-lam-mo-than-can-chuan-bi-bao-nhieu-tien/index.html", "/di-lam-mo-than-can-chuan-bi-bao-nhieu-tien/"],
+];
+
 for (const [file, url] of hubs) {
   const full = path.join(root, file);
   if (!fs.existsSync(full)) {
@@ -130,6 +139,24 @@ for (const [file, url] of contactAuthorityPages) {
   ]) if (!html.includes(marker)) fail(`${file}: thiếu ${marker}`);
 }
 
+for (const [file, url] of workerQuestionPages) {
+  const full = path.join(root, file);
+  if (!fs.existsSync(full)) {
+    fail(file + ": thiếu trang hỏi đáp người lao động");
+    continue;
+  }
+  const html = fs.readFileSync(full, "utf8");
+  for (const marker of [
+    "<link rel='canonical' href='" + base + url + "'>",
+    "/worker-questions.css?v=1",
+    "/analytics.js?v=6",
+    "/mobile-core.css?v=1",
+    "/mobile-core.js?v=1",
+    "Nguyễn Tử Linh",
+    "data-contact='zalo'",
+  ]) if (!html.includes(marker)) fail(file + ": thiếu " + marker);
+}
+
 const provinceData = JSON.parse(read("data/provinces-2026.json"));
 const provinces = provinceData.provinces || [];
 if (provinces.length !== 26) fail(`Dữ liệu tỉnh: cần 26, nhận ${provinces.length}`);
@@ -198,8 +225,8 @@ for (const article of articles) {
 const htmlFiles = walk(root);
 const contentFiles = htmlFiles.filter((file) => !path.basename(file).startsWith("google"));
 const legacyRoutes = JSON.parse(fs.readFileSync(path.resolve("operations/legacy-routes.json"), "utf8")).routes || [];
-const expectedHtmlFiles = 56 + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length;
-const expectedContentFiles = 55 + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length;
+const expectedHtmlFiles = 56 + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length + workerQuestionPages.length;
+const expectedContentFiles = 55 + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length + workerQuestionPages.length;
 if (htmlFiles.length !== expectedHtmlFiles) fail(`Website: cần ${expectedHtmlFiles} tệp HTML theo số bài trong feed, trang kiểm chứng và trang lõi V4, nhận ${htmlFiles.length}`);
 if (contentFiles.length !== expectedContentFiles) fail(`Website: cần ${expectedContentFiles} trang nội dung theo số bài trong feed, trang kiểm chứng và trang lõi V4, nhận ${contentFiles.length}`);
 for (const file of contentFiles) {
@@ -237,6 +264,10 @@ for (const [, url] of verificationPages) if (!sitemap.includes(`<loc>${base}${ur
 for (const [, url] of v4CorePages) if (!sitemap.includes(`<loc>${base}${url}</loc>`)) fail(`Sitemap: thiếu trang lõi V4 ${url}`);
 for (const [, url] of contactAuthorityPages) if (!sitemap.includes(`<loc>${base}${url}</loc>`)) fail(`Sitemap: thiếu trang trả lời liên hệ ${url}`);
 
+for (const [, url] of workerQuestionPages) {
+  if (!sitemap.includes("<loc>" + base + url + "</loc>")) fail("Sitemap: thiếu trang hỏi đáp " + url);
+}
+
 const analytics = read("analytics.js") + read("analytics-vendors.js");
 const app = read("app.js");
 const portal = read("portal-official.js");
@@ -261,6 +292,7 @@ const output = {
   verification_pages: verificationPages.length,
   v4_core_pages: v4CorePages.length,
   contact_authority_pages: contactAuthorityPages.length,
+  worker_question_pages: workerQuestionPages.length,
   provinces: provinces.length,
   share_packages: shareOptions,
   articles: articles.length,
