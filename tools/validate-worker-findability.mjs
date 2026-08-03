@@ -18,7 +18,7 @@ const searchItems = Array.isArray(searchIndex.items) ? searchIndex.items : [];
 for (const [marker, expected] of [
   ['href="/worker-info-finder.css?v=2"', 1],
   ['src="/worker-info-finder.js?v=3"', 1],
-  ['href="/home-rich-media.css?v=3"', 1],
+  ['href="/home-rich-media.css?v=4"', 1],
   ['href="/mobile-ux.css?v=6"', 1],
   ['src="/mobile-ux.js?v=8"', 1],
   ["data-open-site-search", 1],
@@ -29,12 +29,14 @@ for (const [marker, expected] of [
 
 for (const marker of [
   'class="home-funnel"',
-  'class="consultation-path"',
+  'class="home-journey"',
   'id="thong-tin"',
   'id="tu-kiem-tra"',
   'id="thuc-te"',
   'id="quy-trinh"',
   'id="tu-van"',
+  'class="home-journey__layout"',
+  'class="home-journey__steps"',
   'class="contact-choice-grid"',
   'data-contact="application"',
   'data-contact="zalo"',
@@ -55,18 +57,19 @@ for (const removed of [
   "data-worker-copy=",
   'class="hero-card"',
   'class="hero-facts"',
+  'class="hero-proof-grid"',
+  'class="consultation-path"',
+  'class="worker-summary"',
+  'class="worker-faq"',
   'class="verification-gateway"',
   'class="section process-section"',
 ]) if (home.includes(removed)) fail(`Trang chủ còn khối lặp hoặc thao tác phụ: ${removed}`);
 
 const order = [
   ['class="hero"', "mở đầu bằng hình ảnh"],
-  ['class="consultation-path"', "hành trình tư vấn"],
-  ['class="worker-summary"', "thông tin cốt lõi"],
-  ['class="home-journey-card"', "câu chuyện người mới"],
   ['class="worker-self-check"', "tự kiểm tra"],
+  ['class="home-journey"', "lộ trình tư vấn"],
   ['class="home-proof"', "video và câu chuyện thực tế"],
-  ['class="worker-faq"', "giải đáp"],
   ['class="worker-register"', "lựa chọn liên hệ"],
 ];
 let previous = -1;
@@ -84,6 +87,7 @@ if (!home.includes("Khai thác và xây dựng mỏ: 2–3 tháng") || !home.inc
 if (!home.includes('/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp')) fail("Thiếu ảnh học viên trải nghiệm thực tế");
 if (!home.includes('/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp')) fail("Thiếu ảnh câu chuyện người mới");
 if (!home.includes('/assets/vinacomin-tho-mo-ham-lo-1200.webp')) fail("Thiếu ảnh câu chuyện tổ đội thợ mỏ");
+if (!home.includes('/assets/vinacomin-tho-lo-thao-a-bang.webp')) fail("Thiếu ảnh câu chuyện công nhân theo tỉnh");
 const heroBlock = home.match(/<section class="hero"[\s\S]*?<\/section>/i)?.[0] || "";
 if (!heroBlock.includes('class="hero-visual"')) fail("Mở đầu chưa có ảnh thực tế độc lập");
 if ((heroBlock.match(/<(?:a|button)\b[^>]*class="[^"]*\bbutton\b[^"]*"/g) || []).length > 2) fail("Mở đầu còn quá nhiều nút");
@@ -112,7 +116,7 @@ try {
 for (const name of ["age_range", "height_range", "weight_range", "health_screen"]) {
   if (count(home, `name="${name}"`) !== 2) fail(`Tự kiểm tra: ${name} phải có hai lựa chọn`);
 }
-for (const marker of ["30 giây · không gửi dữ liệu", "Không lưu câu trả lời", "khám tuyển là căn cứ xác nhận cuối cùng"]) {
+for (const marker of ["4 câu trả lời · không lưu dữ liệu", "Không lưu câu trả lời", "khám tuyển là căn cứ xác nhận cuối cùng"]) {
   if (!home.includes(marker)) fail(`Tự kiểm tra: thiếu ${marker}`);
 }
 
@@ -127,7 +131,7 @@ for (const prohibited of ["localStorage", "sessionStorage", "fetch(", "XMLHttpRe
   if (script.includes(prohibited)) fail(`Tự kiểm tra không được lưu hoặc gửi dữ liệu: ${prohibited}`);
 }
 for (const marker of ["focus-visible", "@media(max-width:900px)", "@media(max-width:720px)", "worker-check__result", "worker-check__back"]) if (!css.includes(marker)) fail(`CSS tự kiểm tra thiếu ${marker}`);
-for (const marker of ["hero-visual", "consultation-path", "worker-summary__grid--compact", "home-journey-card", "home-proof__grid--simple", "contact-choice-grid"]) if (!richCss.includes(marker)) fail(`CSS luồng tư vấn thiếu ${marker}`);
+for (const marker of ["hero-visual", "home-journey__layout", "home-journey__steps", "home-proof__grid--simple", "contact-choice-grid"]) if (!richCss.includes(marker)) fail(`CSS luồng tư vấn thiếu ${marker}`);
 if (!mobileUx.includes('const MESSENGER_URL = "https://m.me/thaylinhtuyenthomo"')) fail("Thanh liên hệ di động thiếu Messenger");
 if (Buffer.byteLength(script) > 4_000) fail(`worker-info-finder.js vượt ngân sách 4 KB: ${Buffer.byteLength(script)}`);
 if (Buffer.byteLength(home) > 55_000) fail(`Trang chủ vượt ngân sách 55 KB: ${Buffer.byteLength(home)}`);
