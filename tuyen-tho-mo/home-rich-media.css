@@ -14,7 +14,7 @@
 .hero-proof strong{margin-top:4px;color:#fff;font-size:clamp(23px,2.5vw,31px);line-height:1.2}
 .hero-proof span{margin-top:4px;color:#d4e4e2;font-size:11px;line-height:1.4}
 .hero-proof--income{border-color:rgba(255,208,138,.42);background:rgba(255,196,99,.1)}
-.hero-proof--income strong{color:#ffd08a}
+.hero-proof--income strong{color:#ffd08a;font-size:clamp(18px,1.8vw,24px);line-height:1.28}
 .hero-visual{position:relative;min-height:460px;margin:0;overflow:hidden;border:1px solid rgba(255,255,255,.18);border-radius:28px;background:#061d24;box-shadow:0 28px 70px rgba(0,0,0,.32)}
 .hero-visual:after{position:absolute;inset:45% 0 0;content:"";background:linear-gradient(transparent,rgba(2,24,29,.9))}
 .hero-visual img{width:100%;height:100%;min-height:460px;object-fit:cover;object-position:center}
