@@ -91,8 +91,15 @@
   .verification-comparison table,
   .verification-comparison tbody,
   .verification-comparison tr,
-  .verification-comparison td { display: block; width: 100%; min-width: 0 !important; }
-  .verification-comparison table { border: 0 !important; }
+  .verification-comparison td {
+    display: block;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    position: static !important;
+    left: auto !important;
+  }
+  .verification-comparison table { border: 0 !important; table-layout: auto !important; }
   .verification-comparison thead { position: absolute !important; width: 1px !important; height: 1px !important; overflow: hidden !important; clip: rect(0 0 0 0) !important; white-space: nowrap !important; }
   .verification-comparison tr {
     margin-bottom: 13px;
@@ -110,6 +117,9 @@
     line-height: 1.58;
   }
   .verification-comparison td:first-child {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 13px 15px !important;
     background: #063c46;
     color: #fff;
     font-size: 15px;
