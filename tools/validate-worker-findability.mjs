@@ -90,6 +90,7 @@ if ((heroBlock.match(/<(?:a|button)\b[^>]*class="[^"]*\bbutton\b[^"]*"/g) || [])
 if ((heroBlock.match(/<p\b/g) || []).length > 2) fail("Mở đầu còn quá nhiều đoạn chữ");
 if (home.includes('/assets/vinacomin-dao-tao-tho-lo.webp')) fail("Trang chủ còn ảnh cán bộ phát biểu sai ngữ cảnh");
 if (count(home, "data-featured-video-facade") !== 1) fail("Trang chủ cần đúng một video mở theo yêu cầu");
+if (home.includes('https://i.ytimg.com')) fail("Ảnh đại diện video còn phụ thuộc máy chủ ngoài");
 
 const contactSectionStart = home.indexOf('class="worker-register"');
 const contactSectionEnd = home.indexOf("</section>", contactSectionStart);
