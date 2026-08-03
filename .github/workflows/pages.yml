@@ -111,7 +111,9 @@ jobs:
                 && grep -Fq 'id="home-journey-title"' "$html_file" \
                 && grep -Fq 'class="home-journey__steps"' "$html_file" \
                 && grep -Fq 'id="home-proof-title"' "$html_file" \
-                && grep -Fq '/home-rich-media.css?v=9' "$html_file" \
+                && grep -Fq '/home-rich-media.css?v=10' "$html_file" \
+                && grep -Fq 'class="home-province-quick"' "$html_file" \
+                && grep -Fq 'href="/viec-lam-nganh-than/"' "$html_file" \
                 && grep -Fq '/journey-optimizer.css?v=2' "$html_file" \
                 && grep -Fq '/journey-optimizer.js?v=2' "$html_file" \
                 && grep -Fq 'id="kho-noi-dung"' "$html_file" \

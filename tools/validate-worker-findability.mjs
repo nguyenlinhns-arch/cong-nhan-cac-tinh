@@ -22,7 +22,7 @@ const latestArticle = [...communityArticles]
 for (const [marker, expected] of [
   ['href="/worker-info-finder.css?v=2"', 1],
   ['src="/worker-info-finder.js?v=3"', 1],
-  ['href="/home-rich-media.css?v=9"', 1],
+  ['href="/home-rich-media.css?v=10"', 1],
   ['href="/journey-optimizer.css?v=2"', 1],
   ['src="/journey-optimizer.js?v=2"', 1],
   ['href="/mobile-ux.css?v=8"', 1],
@@ -46,6 +46,9 @@ for (const marker of [
   'class="home-journey__layout"',
   'class="home-journey__steps"',
   'class="home-journey__detail"',
+  'class="home-province-quick"',
+  'id="home-province-title"',
+  'href="/viec-lam-nganh-than/"',
   'href="/kiem-tra-dieu-kien/"',
   'href="/ho-so-nhap-hoc/"',
   'href="/thu-nhap-an-o-ho-tro/"',
@@ -91,6 +94,7 @@ const order = [
   ['class="home-content-shortcuts"', "lối vào bài viết, tin và video"],
   ['class="worker-self-check"', "tự kiểm tra"],
   ['class="home-journey"', "lộ trình tư vấn"],
+  ['class="home-province-quick"', "tìm thông tin theo tỉnh"],
   ['class="home-proof"', "video và câu chuyện thực tế"],
   ['class="home-library"', "kho nội dung nghề mỏ"],
   ['class="worker-register"', "lựa chọn liên hệ"],
@@ -129,6 +133,12 @@ for (const [channel, label] of [["application", "biểu mẫu"], ["zalo", "Zalo"
   if (count(contactSection, `data-contact="${channel}"`) !== 1) fail(`Cuối hành trình thiếu đúng một lựa chọn ${label}`);
 }
 
+const provinceSection = home.match(/<section class="home-province-quick"[\s\S]*?<\/section>/i)?.[0] || "";
+if ((provinceSection.match(/<a\b/gi) || []).length !== 9) fail("Tìm theo tỉnh: cần 8 tỉnh tiêu biểu và một liên kết xem đủ");
+for (const slug of ["thanh-hoa", "nghe-an", "ha-tinh", "quang-tri", "quang-ngai", "gia-lai", "dak-lak", "lai-chau"]) {
+  if (!provinceSection.includes(`href="/viec-lam-nganh-than/${slug}/"`)) fail(`Tìm theo tỉnh: thiếu ${slug}`);
+}
+
 try {
   const blocks = [...home.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];
   if (blocks.length !== 1) fail(`Dữ liệu cấu trúc trang chủ: cần một khối, nhận ${blocks.length}`);
@@ -136,6 +146,10 @@ try {
     const graph = JSON.parse(blocks[0][1])["@graph"] || [];
     if (graph.filter((node) => node?.["@type"] === "Person").length !== 1) fail("Dữ liệu cấu trúc phải có đúng một người tư vấn");
     if (graph.filter((node) => node?.["@type"] === "Organization").length !== 1) fail("Dữ liệu cấu trúc phải có đúng một đơn vị");
+    const webpage = graph.find((node) => node?.["@type"] === "WebPage");
+    if (!webpage?.hasPart?.some((part) => part?.url === "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/")) {
+      fail("Dữ liệu cấu trúc trang chủ thiếu thư mục việc làm theo tỉnh");
+    }
   }
 } catch (error) { fail(`Dữ liệu cấu trúc không hợp lệ: ${error.message}`); }
 
@@ -158,8 +172,10 @@ for (const prohibited of ["localStorage", "sessionStorage", "fetch(", "XMLHttpRe
 }
 for (const marker of ["focus-visible", "@media(max-width:900px)", "@media(max-width:720px)", "worker-check__result", "worker-check__back"]) if (!css.includes(marker)) fail(`CSS tự kiểm tra thiếu ${marker}`);
 for (const marker of ["hero-visual", "home-content-shortcuts", "home-journey__layout", "home-journey__steps", "home-proof__grid--simple", "home-library__grid", "contact-choice-grid"]) if (!richCss.includes(marker)) fail(`CSS luồng tư vấn thiếu ${marker}`);
+for (const marker of ["home-province-quick__inner", "home-province-quick__links", "home-province-quick__all"]) if (!richCss.includes(marker)) fail(`CSS tìm theo tỉnh thiếu ${marker}`);
 for (const marker of ['["home", "article"].includes(currentGroup)', 'currentGroup !== "home" && !actions.querySelector(\'a[href^="tel:"]\')']) if (!journeyScript.includes(marker)) fail(`Trang chủ chưa khóa thành phần chèn thừa: ${marker}`);
 for (const marker of ["grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)", ".home-funnel .worker-check{padding:0;border:0;background:transparent;box-shadow:none}", ".contact-choice{min-height:86px", ".home-library__card img{display:block;width:100%;height:clamp(196px,18vw,238px)", ".home-library__grid{grid-template-columns:1fr;gap:12px", ".home-library__card{display:grid;grid-template-columns:116px minmax(0,1fr)", ".site-footer--home .footer-simple", ".mobile-contact{grid-template-columns:repeat(3,minmax(0,1fr))!important}"]) if (!richCss.includes(marker)) fail(`CSS mobile-first thiếu ${marker}`);
+for (const marker of [".home-province-quick__links{display:grid;grid-template-columns:1fr 1fr", ".home-province-quick__links a{min-height:44px", ".home-province-quick__all{grid-column:1/-1}"]) if (!richCss.includes(marker)) fail(`CSS tỉnh trên mobile thiếu ${marker}`);
 if (!mobileUx.includes('const MESSENGER_URL = "https://m.me/thaylinhtuyenthomo"')) fail("Thanh liên hệ di động thiếu Messenger");
 if (Buffer.byteLength(script) > 4_000) fail(`worker-info-finder.js vượt ngân sách 4 KB: ${Buffer.byteLength(script)}`);
 if (Buffer.byteLength(home) <= 16_384) fail(`Trang chủ có dấu hiệu bị cắt tệp: ${Buffer.byteLength(home)} byte`);

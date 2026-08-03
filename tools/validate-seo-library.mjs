@@ -49,6 +49,15 @@ const normalize = (text) => strip(text)
   .trim();
 
 const editorialArticles = [...curatedArticles, ...communityArticles, ...pressStoryArticles];
+const managedSearchTitles = new Map([...curatedArticles, ...existingNews].map((article) => [
+  article.slug,
+  article.seoTitle || (article.title.length > 52 ? article.title : `${article.title} | Thầy Linh`),
+]));
+for (const article of [...curatedArticles, ...existingNews]) {
+  if (article.seoTitle && article.seoTitle.length > 60) {
+    errors.push(`${article.slug}: tiêu đề tìm kiếm riêng dài ${article.seoTitle.length} ký tự; tối đa 60 ký tự`);
+  }
+}
 const pressStoriesBySlug = new Map(pressStoryArticles.map((article) => [article.slug, article]));
 const editorialTopicImageOverrides = new Set([...curatedArticles, ...existingNews]
   .filter((article) => article.imagePolicy === "editorial-topic-override")
@@ -215,10 +224,18 @@ for (const [index, slug] of slugs.entries()) {
   const visibleWords = visible.split(/\s+/).filter(Boolean).length;
 
   if (h1Count !== 1) errors.push(`${prefix}expected one H1, got ${h1Count}`);
+  const expectedSearchTitle = managedSearchTitles.get(slug);
+  if (expectedSearchTitle && title !== expectedSearchTitle) errors.push(`${prefix}wrong mobile search title`);
+  const managedArticle = [...curatedArticles, ...existingNews].find((article) => article.slug === slug);
+  const visibleH1 = html.match(/<h1(?:\s[^>]*)?>([\s\S]*?)<\/h1>/i)?.[1] || "";
+  if (managedArticle && normalize(visibleH1) !== normalize(managedArticle.title)) {
+    errors.push(`${prefix}visible H1 must keep the full editorial title`);
+  }
   if (/<img\b/i.test(articleHero)) errors.push(`${prefix}hero must stay text-only; the source image belongs in the article body`);
   if (coverFigures.length !== 1) errors.push(`${prefix}expected one editorial cover inside the article body, got ${coverFigures.length}`);
   if (!/<figcaption>[\s\S]*?\S[\s\S]*?<\/figcaption>/i.test(coverFigures[0]?.[1] || "")) errors.push(`${prefix}editorial cover is missing a caption`);
   if (title.length < 35 || title.length > 90) warnings.push(`${prefix}title length ${title.length}`);
+  if (title.length > 64) warnings.push(`${prefix}mobile search title may be truncated at ${title.length} characters`);
   if (description.length < 100 || description.length > 165) errors.push(`${prefix}description length ${description.length}`);
   if (canonical !== item.url) errors.push(`${prefix}wrong canonical`);
   if (!normalize(html).includes(normalize(primaryKeyword))) errors.push(`${prefix}primary keyword absent from visible body`);

@@ -70,6 +70,15 @@
 .home-journey__detail{display:inline-flex;align-items:center;min-height:36px;margin-top:7px;color:#075b66;font-size:12px;font-weight:900;text-decoration:none}
 .home-journey__detail:hover,.home-journey__detail:focus-visible{color:#c45c12;text-decoration:underline;text-underline-offset:3px}
 
+/* A compact, crawlable route from the homepage to priority local pages. */
+.home-province-quick{padding:32px 0;border-block:1px solid #dce8e6;background:#f7faf9}
+.home-province-quick__inner{display:grid;grid-template-columns:minmax(250px,.62fr) minmax(0,1.38fr);gap:28px;align-items:center}
+.home-province-quick h2{max-width:360px;margin:0;color:#092f38;font-size:clamp(23px,2.5vw,30px);line-height:1.18;letter-spacing:-.025em}
+.home-province-quick__links{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.home-province-quick__links a{min-height:42px;display:inline-flex;align-items:center;justify-content:center;padding:8px 13px;border:1px solid #c9dcd8;border-radius:999px;background:#fff;color:#075b66;font-size:12px;font-weight:800;text-align:center;text-decoration:none}
+.home-province-quick__links a:hover,.home-province-quick__links a:focus-visible{border-color:#075b66;background:#e8f3f1}
+.home-province-quick__links .home-province-quick__all{border-color:#075b66;background:#075b66;color:#fff}
+
 /* 04 — proof */
 .home-proof{padding:78px 0 82px;background:#062f37;color:#fff}
 .home-proof__grid--simple{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(350px,.92fr);gap:18px;align-items:stretch}
@@ -180,6 +189,12 @@
   .home-journey__steps h3{font-size:16px}
   .home-journey__steps p{margin-top:4px;font-size:12.5px;line-height:1.5}
   .home-journey__detail{min-height:40px;margin-top:4px;font-size:12px}
+  .home-province-quick{padding:30px 0}
+  .home-province-quick__inner{grid-template-columns:1fr;gap:16px}
+  .home-province-quick h2{max-width:none;font-size:24px}
+  .home-province-quick__links{display:grid;grid-template-columns:1fr 1fr;gap:7px;justify-content:stretch}
+  .home-province-quick__links a{min-height:44px;padding:7px 6px;border-radius:12px;font-size:12px}
+  .home-province-quick__links .home-province-quick__all{grid-column:1/-1}
   .home-proof__grid--simple{grid-template-columns:1fr}
   .home-proof__video-copy,.home-proof__story>span{padding:15px 16px 17px}
   .home-proof__video-copy h3{font-size:19px}
