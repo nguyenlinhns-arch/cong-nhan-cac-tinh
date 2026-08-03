@@ -6,10 +6,19 @@ await import("./build-worker-first-home-base.mjs");
 
 const article = [...dailyCommunityArticles].sort((a, b) => new Date(b.published) - new Date(a.published))[0];
 const homepagePath = path.resolve("tuyen-tho-mo", "index.html");
+const dimensions = JSON.parse(fs.readFileSync(path.resolve("content", "article-image-dimensions.json"), "utf8"));
+const [width, height] = dimensions[article.image] || [1200, 675];
+const escapeHtml = (value = "") => String(value)
+  .replaceAll("&", "&amp;")
+  .replaceAll("<", "&lt;")
+  .replaceAll(">", "&gt;")
+  .replaceAll('"', "&quot;");
 let html = fs.readFileSync(homepagePath, "utf8");
-const card = `<a class="home-proof__story" href="/${article.urlPath}/">
-            <img src="${article.image}" alt="${article.imageAlt}" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="800" height="532">
-            <span><small>BÀI MỚI NHẤT</small><strong>${article.title}</strong><b>Đọc bài viết →</b></span>
+const card = `<a class="home-library__card home-library__card--latest" href="/${article.urlPath}/">
+            <img src="${escapeHtml(article.image)}" alt="${escapeHtml(article.imageAlt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="${width}" height="${height}">
+            <span><small>TIN NGÀNH MỎ MỚI NHẤT</small><strong>${escapeHtml(article.title)}</strong><b>Đọc bài mới →</b></span>
           </a>`;
-html = html.replace(/<a class="home-proof__story"[\s\S]*?<\/a>/, card);
+const marker = /<a class="home-library__card home-library__card--latest"[\s\S]*?<\/a>/;
+if (!marker.test(html)) throw new Error("Trang chủ thiếu vị trí bài ngành Than mới nhất.");
+html = html.replace(marker, card);
 fs.writeFileSync(homepagePath, html);

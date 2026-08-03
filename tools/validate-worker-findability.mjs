@@ -21,7 +21,7 @@ const latestArticle = [...communityArticles]
 for (const [marker, expected] of [
   ['href="/worker-info-finder.css?v=2"', 1],
   ['src="/worker-info-finder.js?v=3"', 1],
-  ['href="/home-rich-media.css?v=5"', 1],
+  ['href="/home-rich-media.css?v=6"', 1],
   ['href="/mobile-ux.css?v=6"', 1],
   ['src="/mobile-ux.js?v=9"', 1],
   ["data-open-site-search", 1],
@@ -36,6 +36,7 @@ for (const marker of [
   'id="thong-tin"',
   'id="tu-kiem-tra"',
   'id="thuc-te"',
+  'id="kho-noi-dung"',
   'id="quy-trinh"',
   'id="tu-van"',
   'class="home-journey__layout"',
@@ -46,7 +47,16 @@ for (const marker of [
   'data-contact="messenger"',
   'data-contact="phone"',
   "Xem nhanh 30 giây",
+  "Bài viết · Tin tức · Video",
 ]) if (!home.includes(marker)) fail(`Luồng tư vấn: thiếu ${marker}`);
+
+for (const [href, label] of [
+  ['/cam-nang-nghe-mo/', "Bài viết"],
+  ['/tin-nganh-than/', "Tin ngành mỏ"],
+  ['/anh-video-thuc-te/', "Video"],
+]) {
+  if (count(home, `href="${href}"`) < 2) fail(`Kho nội dung: liên kết ${label} phải có ở lối vào nhanh và khu nội dung`);
+}
 
 for (const removed of [
   'class="worker-quick"',
@@ -70,9 +80,11 @@ for (const removed of [
 
 const order = [
   ['class="hero"', "mở đầu bằng hình ảnh"],
+  ['class="home-content-shortcuts"', "lối vào bài viết, tin và video"],
   ['class="worker-self-check"', "tự kiểm tra"],
   ['class="home-journey"', "lộ trình tư vấn"],
   ['class="home-proof"', "video và câu chuyện thực tế"],
+  ['class="home-library"', "kho nội dung nghề mỏ"],
   ['class="worker-register"', "lựa chọn liên hệ"],
 ];
 let previous = -1;
@@ -136,10 +148,12 @@ for (const prohibited of ["localStorage", "sessionStorage", "fetch(", "XMLHttpRe
   if (script.includes(prohibited)) fail(`Tự kiểm tra không được lưu hoặc gửi dữ liệu: ${prohibited}`);
 }
 for (const marker of ["focus-visible", "@media(max-width:900px)", "@media(max-width:720px)", "worker-check__result", "worker-check__back"]) if (!css.includes(marker)) fail(`CSS tự kiểm tra thiếu ${marker}`);
-for (const marker of ["hero-visual", "home-journey__layout", "home-journey__steps", "home-proof__grid--simple", "contact-choice-grid"]) if (!richCss.includes(marker)) fail(`CSS luồng tư vấn thiếu ${marker}`);
+for (const marker of ["hero-visual", "home-content-shortcuts", "home-journey__layout", "home-journey__steps", "home-proof__grid--simple", "home-library__grid", "contact-choice-grid"]) if (!richCss.includes(marker)) fail(`CSS luồng tư vấn thiếu ${marker}`);
 for (const marker of ["grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)", ".home-funnel .worker-check{padding:0;border:0;background:transparent;box-shadow:none}", ".contact-choice{min-height:86px"]) if (!richCss.includes(marker)) fail(`CSS mobile-first thiếu ${marker}`);
 if (!mobileUx.includes('const MESSENGER_URL = "https://m.me/thaylinhtuyenthomo"')) fail("Thanh liên hệ di động thiếu Messenger");
 if (Buffer.byteLength(script) > 4_000) fail(`worker-info-finder.js vượt ngân sách 4 KB: ${Buffer.byteLength(script)}`);
+if (Buffer.byteLength(home) <= 16_384) fail(`Trang chủ có dấu hiệu bị cắt tệp: ${Buffer.byteLength(home)} byte`);
+if (Buffer.byteLength(read("search-index.json")) <= 100_000) fail("Chỉ mục tìm kiếm có dấu hiệu bị cắt tệp");
 if (Buffer.byteLength(home) > 55_000) fail(`Trang chủ vượt ngân sách 55 KB: ${Buffer.byteLength(home)}`);
 
 try { new vm.Script(script, { filename: "worker-info-finder.js" }); }
