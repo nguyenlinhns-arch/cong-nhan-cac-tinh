@@ -121,6 +121,7 @@
     const nav = document.querySelector(".tl-mobile-contact");
     if (!nav || nav.children.length < 3) return;
     const middle = nav.children[1];
+
     if (document.body?.classList.contains("verification-page")) {
       setPrimaryMobileAction(middle, {
         href: "/kiem-tra-dieu-kien/#dang-ky",
@@ -130,6 +131,7 @@
       nav.setAttribute("aria-label", "Zalo, kiểm tra điều kiện hoặc gọi điện");
       return;
     }
+
     const networkApply = document.querySelector(".network-header .network-apply");
     if (networkApply) {
       setPrimaryMobileAction(middle, {
@@ -138,7 +140,29 @@
         context: "network-mobile-primary",
       });
       nav.setAttribute("aria-label", "Zalo, đăng ký tư vấn hoặc gọi điện");
+      return;
     }
+
+    const applicationForm = document.querySelector("[data-application-form]");
+    const applicationLink = document.querySelector(
+      'a[data-contact="application"], a[href*="/kiem-tra-dieu-kien/"], a[href*="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/"]',
+    );
+    if (!applicationForm && !applicationLink) return;
+
+    const directApplication = Boolean(applicationForm);
+    setPrimaryMobileAction(middle, {
+      href: directApplication
+        ? "#dang-ky"
+        : applicationLink?.getAttribute("href") || "/kiem-tra-dieu-kien/",
+      label: directApplication ? "Đăng ký" : "Kiểm tra",
+      context: directApplication ? "job-mobile-primary" : "content-mobile-primary",
+    });
+    nav.setAttribute(
+      "aria-label",
+      directApplication
+        ? "Zalo, đăng ký ứng tuyển hoặc gọi điện"
+        : "Zalo, kiểm tra điều kiện hoặc gọi điện",
+    );
   }
 
   function cleanArticleHero() {
