@@ -74,10 +74,16 @@ const articleBodyPattern = /<article\b[^>]*class=["'][^"']*\barticle-body\b[^"']
 function mergeArticleIntoExistingShell(file, generatedHtml) {
   if (!fs.existsSync(file)) return generatedHtml;
   const existingHtml = fs.readFileSync(file, "utf8");
-  if (existingHtml.includes('class="source-original-card"')) return existingHtml;
+  const existingArticle = existingHtml.match(articleBodyPattern)?.[0];
   const generatedArticle = generatedHtml.match(articleBodyPattern)?.[0];
-  if (!generatedArticle || !articleBodyPattern.test(existingHtml)) return generatedHtml;
-  return `${existingHtml.replace(articleBodyPattern, generatedArticle).trimEnd()}\n`;
+  if (!existingArticle || !generatedArticle) return generatedHtml;
+  const existingParagraphs = existingArticle.match(/<p\b/gi)?.length || 0;
+  const keepsRewrittenArticle = existingArticle.includes("article-body--rewritten") && existingParagraphs >= 4;
+  const articleToKeep = keepsRewrittenArticle ? existingArticle : generatedArticle;
+  const merged = existingHtml
+    .replace(articleBodyPattern, articleToKeep)
+    .replace(/article-insights\.css\?v=\d+/g, "article-insights.css?v=12");
+  return `${merged.trimEnd()}\n`;
 }
 
 function mergeHubIntoExistingShell(file, generatedHtml) {
@@ -104,6 +110,7 @@ function mergeHubIntoExistingShell(file, generatedHtml) {
     const generatedTag = generatedHtml.match(pattern)?.[0];
     if (generatedTag && pattern.test(output)) output = output.replace(pattern, generatedTag);
   }
+  output = output.replace(/article-insights\.css\?v=\d+/g, "article-insights.css?v=12");
   return `${output.trimEnd()}\n`;
 }
 
@@ -190,12 +197,7 @@ function searchTitle(article) {
 
 function renderSourceFooter(article, compact = false) {
   if (compact) {
-    const links = (article.sources || []).map((source) => {
-      const url = sourceUrl(source);
-      if (!url) return "";
-      return `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer external">${esc(source.publisher || "Mở bài báo gốc")}</a>`;
-    }).filter(Boolean).join(" · ");
-    return `<div class="article-source-footer article-source-footer--brief"><p><strong>Nguồn:</strong> ${esc(sourceText(article))}${links ? ` · ${links}` : ""}</p><p class="article-seo-line">${esc(seoText(article))}</p><p class="article-current-facts"><a href="/thong-tin-tuyen-tho-mo/">Xem thông tin tuyển sinh đang áp dụng →</a></p></div>`;
+    return `<div class="article-source-footer article-source-footer--brief"><p><strong>Nguồn:</strong> ${esc(sourceText(article))}</p><p class="article-seo-line">${esc(seoText(article))}</p><p class="article-current-facts"><a href="/thong-tin-tuyen-tho-mo/">Xem thông tin tuyển sinh đang áp dụng →</a></p></div>`;
   }
   return `<div class="article-source-footer"><p class="article-current-facts"><a href="/thong-tin-tuyen-tho-mo/">Đối chiếu 15 câu hỏi về điều kiện, học nghề, hồ sơ và thu nhập đang áp dụng →</a></p><p><strong>Nguồn:</strong> ${esc(sourceText(article))}</p><p class="article-seo-line">${esc(seoText(article))}</p></div>`;
 }
@@ -237,7 +239,10 @@ function syncExistingArticleImage(html, article) {
       .replace(/(<meta property="og:image:height" content=")[^"]*(")/i, `$1${height}$2`);
   }
   const size = width && height ? ` width="${width}" height="${height}"` : "";
-  const figure = `<figure class="article-cover article-cover--editorial"><img src="${article.image}" alt="${esc(article.imageAlt)}" loading="lazy" decoding="async"${size}><figcaption><span>${esc(article.imageAlt)}</span><span class="article-media-credit">${esc(article.imageSource)}</span></figcaption></figure>`;
+  const loading = html.includes("article-body--rewritten")
+    ? ' fetchpriority="high" decoding="async" referrerpolicy="no-referrer"'
+    : ' loading="lazy" decoding="async"';
+  const figure = `<figure class="article-cover article-cover--editorial"><img src="${article.image}" alt="${esc(article.imageAlt)}"${loading}${size}><figcaption><span>${esc(article.imageAlt)}</span><span class="article-media-credit">${esc(article.imageSource)}</span></figcaption></figure>`;
   return output.replace(/<figure\b[^>]*class="[^"]*\barticle-cover\b[^"]*"[^>]*>[\s\S]*?<\/figure>/i, figure);
 }
 
@@ -392,80 +397,106 @@ function renderSections(sections, inlineImages = []) {
   }).join("");
 }
 
-const editorialMetaSentencePattern = /(?:\bbài\s+(?:gốc|nguồn|báo|phóng\s+sự|viết)|\btác\s+giả|\btheo\s+nguồn|\bnguồn\s+(?:chính\s+thức|không|công\s+bố|cho\s+biết|nêu|của))/iu;
-const defensiveSentencePattern = /(?:\bkhông\s+nên\s+(?:suy|hiểu|chia|cộng|biến)|\bkhông\s+đồng\s+nghĩa\b|\bkhông\s+phải\b[^.!?]*(?:quảng\s+cáo|tuyển\s+dụng|chính\s+sách|lời\s+mời|cam\s+kết|trợ\s+cấp))/iu;
+const defensiveSentencePattern = /(?:\bkhông\s+(?:nên\s+|tự\s+)?(?:suy|hiểu|chia|cộng|biến)\b|\bkhông\s+đồng\s+nghĩa\b|\bkhông\s+phải\b[^.!?]*(?:quảng\s+cáo|tuyển\s+dụng|chính\s+sách|lời\s+mời|cam\s+kết|trợ\s+cấp))/iu;
+const emptySourceSentencePattern = /(?:\bbài\s+(?:gốc|nguồn|báo)\s+(?:không|chưa)|\bnguồn\s+(?:không|chưa)\s+(?:nêu|cho\s+biết|công\s+bố|làm\s+rõ|đề\s+cập)|\bthông\s+tin\s+nguồn\s+không)/iu;
 
 function stripTags(value = "") {
-  return String(value).replace(/<[^>]+>/g, " ").replace(/&[^;]+;/g, " ").replace(/\s+/g, " ").trim();
+  return String(value).replace(/<[^>]+>/g, " ").replace(/&[^;]+;/g, " ").replace(/\s+([,.;:!?])/g, "$1").replace(/\s+/g, " ").trim();
 }
 
-function cleanBriefParagraph(paragraph = "") {
-  const sentences = String(paragraph).split(/(?<=[.!?])\s+/u).filter(Boolean);
-  return sentences
-    .filter((sentence) => !editorialMetaSentencePattern.test(stripTags(sentence)))
-    .filter((sentence) => !defensiveSentencePattern.test(stripTags(sentence)))
+function capitalizeSentence(value = "") {
+  return value.replace(/^([“"'‘’(]*)(\p{Ll})/u, (_match, prefix, letter) => `${prefix}${letter.toLocaleUpperCase("vi")}`);
+}
+
+function rewriteEditorialSentence(sentence = "") {
+  let text = stripTags(sentence);
+  if (!text || defensiveSentencePattern.test(text) || emptySourceSentencePattern.test(text) || /^tư\s+liệu\s+được\s+.+\s+đăng\s+ngày/iu.test(text)) return "";
+  text = text
+    .replace(/^theo\s+bài\s+do\s+[^,]+\s+phát\s+hành\s*[,,:-]?\s*/iu, "")
+    .replace(/^bài\s+viết\s+về\s+.+?\s+(?:cho\s+thấy|làm\s+rõ|thể\s+hiện)\s+/iu, "")
+    .replace(/^bài\s+(?:viết|báo)\s+của\s+.+?\s+(?:mở\s+đầu|tập\s+hợp|chọn|khắc\s+họa|kể)\s+/iu, "")
+    .replace(/^bài\s+(?:viết|báo|gốc|nguồn)(?:\s+của\s+.+?)?\s+(?:cũng\s+)?(?:cho\s+biết|cho\s+thấy|nêu|ghi(?:\s+nhận)?|công\s+bố|đề\s+cập|đưa\s+ví\s+dụ|làm\s+rõ|mô\s+tả|thể\s+hiện|sử\s+dụng|xác\s+định)\s+(?:rằng\s+)?/iu, "")
+    .replace(/^bài\s+(?:viết|nguồn)\s+(?:chỉ\s+)?(?:nói|viết)\s+về\s+/iu, "")
+    .replace(/^bài\s+viết\s+(?:giúp\s+người\s+đọc\s+hiểu|giải\s+thích|tổng\s+hợp)\s+/iu, "")
+    .replace(/\bbài\s+(?:viết|báo|gốc|nguồn|năm\s+\d{4})(?:\s+về\s+[^,.]+?)?\s+(?:cũng\s+)?(?:cho\s+biết|cho\s+thấy|nêu|ghi(?:\s+nhận)?|đề\s+cập|làm\s+rõ|mô\s+tả|thể\s+hiện|xác\s+định)\s+/giu, "")
+    .replace(/^tư\s+liệu\s+(?:cho\s+thấy|thể\s+hiện|ghi\s+nhận|làm\s+rõ)\s+/iu, "")
+    .replace(/^(?:theo\s+(?:bài\s+(?:báo|viết|gốc|nguồn)|nguồn(?:\s+chính\s+thức)?)|trong\s+bài\s+(?:gốc|nguồn))\s*[,,:;-]?\s*/iu, "")
+    .replace(/\btheo\s+(?:bài\s+(?:báo|viết|gốc|nguồn)|nguồn(?:\s+chính\s+thức)?)\b\s*[,,:;-]?\s*/giu, "")
+    .replace(/\b(?:trong\s+)?bài\s+(?:gốc|nguồn)\b\s*[,,:;-]?\s*/giu, "")
+    .replace(/\bnguồn(?:\s+chính\s+thức)?\s+(?:cũng\s+)?(?:nêu|cho\s+biết|cho\s+thấy|ghi(?:\s+nhận)?|công\s+bố|đề\s+cập|mô\s+tả|xác\s+định)\s*/giu, "")
+    .replace(/\s+được\s+(?:nguồn(?:\s+chính\s+thức)?|bài\s+(?:báo|viết|gốc|nguồn))\s+(?:ghi\s+nhận|nêu|công\s+bố|đề\s+cập|mô\s+tả|sử\s+dụng)\b/giu, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  return capitalizeSentence(text);
+}
+
+function rewriteEditorialParagraph(paragraph = "") {
+  return String(paragraph)
+    .split(/(?<=[.!?])\s+/u)
+    .map((sentence) => rewriteEditorialSentence(sentence))
+    .filter(Boolean)
     .join(" ")
     .trim();
 }
 
-function cleanBriefFact(label = "") {
-  return String(label)
-    .replace(/;\s*(?:nguồn|bài)\b[^.!?]*[.!?]?/giu, ".")
-    .replace(/\s+được\s+(?:nguồn\s+(?:chính\s+thức\s+)?(?:nêu|công\s+bố)|nhắc\s+trong\s+bài\s+(?:gốc|nguồn)|bài\s+(?:gốc|nguồn)\s+(?:nêu|sử\s+dụng))[^.!?]*[.!?]?/giu, ".")
-    .replace(/\b(?:theo\s+nguồn|nguồn\s+nêu)/giu, "")
-    .replace(/\s+/g, " ")
-    .trim();
+function rewrittenFacts(article) {
+  return (article.facts || [])
+    .map(([value, label]) => [String(value || "").trim(), rewriteEditorialParagraph(label)])
+    .filter(([value, label]) => value && stripTags(label).split(/\s+/u).length >= 4)
+    .slice(0, 8);
 }
 
-function briefIntro(article) {
-  const paragraphs = (article.intro || []).map(cleanBriefParagraph).filter((paragraph) => stripTags(paragraph).split(/\s+/u).length >= 12);
-  return paragraphs.slice(0, 2);
+function renderRewrittenSections(sections = [], inlineImages = []) {
+  const legacyImages = inlineImages.filter((media) => !Number.isInteger(media.afterSection));
+  return sections.map((section, index) => {
+    const paragraphs = (section.paragraphs || [])
+      .map((paragraph) => rewriteEditorialParagraph(paragraph))
+      .filter((paragraph) => paragraph.split(/\s+/u).length >= 8)
+      .map((paragraph) => `<p>${esc(paragraph)}</p>`)
+      .join("");
+    const bullets = (section.bullets || [])
+      .map((item) => rewriteEditorialParagraph(item))
+      .filter(Boolean);
+    const sectionImages = [
+      ...inlineImages.filter((media) => media.afterSection === index),
+      ...(legacyImages[index] ? [legacyImages[index]] : []),
+    ];
+    const inlineMedia = sectionImages.length
+      ? `\n  <div class="article-inline-gallery">${sectionImages.map((media) => renderFigure(media)).join("")}</div>`
+      : "";
+    if (!paragraphs && !bullets.length && !inlineMedia) return "";
+    return `<section class="editorial-section rewritten-news-section">
+    <h2>${esc(section.title)}</h2>
+    ${paragraphs}${bullets.length ? `\n    <ul class="evidence-list">${bullets.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>` : ""}
+  </section>${inlineMedia}`;
+  }).join("");
 }
 
-function sectionScore(section = {}) {
-  const heading = stripTags(section.title || "").toLocaleLowerCase("vi");
-  const body = stripTags((section.paragraphs || []).join(" ")).toLocaleLowerCase("vi");
-  let score = 0;
-  for (const term of ["người lao động", "người thợ", "gia đình", "sức khỏe", "an toàn", "đời sống", "tay nghề", "học nghề", "việc làm", "gắn bó", "ý nghĩa", "thay đổi"]) {
-    if (heading.includes(term)) score += 5;
-    if (body.includes(term)) score += 1;
-  }
-  if (/(?:số liệu|quy mô|mức hỗ trợ|công bố|phân bổ)/u.test(heading)) score -= 4;
-  return score;
-}
-
-function briefContext(article) {
-  const ranked = (article.sections || [])
-    .map((section, index) => ({section, index, score: sectionScore(section)}))
-    .sort((left, right) => right.score - left.score || left.index - right.index);
-  const selected = ranked[0]?.section;
-  if (!selected) return [];
-  return (selected.paragraphs || [])
-    .map(cleanBriefParagraph)
-    .filter((paragraph) => stripTags(paragraph).split(/\s+/u).length >= 16)
-    .slice(0, 2);
-}
-
-function renderNewsBrief(article, inlineImages) {
+function renderRewrittenNewsArticle(article, inlineImages) {
   const source = (article.sources || []).find((item) => sourceUrl(item)) || article.sources?.[0] || {};
   const originalUrl = sourceUrl(source);
   const originalTitle = source.title || article.title;
   const sourceLabel = source.publisher || "nguồn bài báo";
   const sourceAction = originalUrl
-    ? `<a class="source-original-card__button" href="${esc(originalUrl)}" target="_blank" rel="noopener noreferrer external">Đọc nguyên văn tại ${esc(sourceLabel)} →</a>`
+    ? `<a class="source-original-card__button" href="${esc(originalUrl)}" target="_blank" rel="noopener noreferrer external">Xem bài tại ${esc(sourceLabel)} →</a>`
     : "";
-  const media = inlineImages.length
-    ? `<section class="source-original-media" aria-labelledby="source-original-media-title"><h2 id="source-original-media-title">Hình ảnh từ bài báo gốc</h2><div class="article-inline-gallery">${inlineImages.map((item) => renderFigure(item)).join("")}</div></section>`
-    : "";
+  const intro = (article.intro || [])
+    .map((paragraph) => rewriteEditorialParagraph(paragraph))
+    .filter((paragraph) => paragraph.split(/\s+/u).length >= 8);
+  const facts = rewrittenFacts(article);
+  const takeaway = rewriteEditorialParagraph(article.takeaway);
   return `${renderArticleCover(article)}
-        <p class="news-brief-label">BÀI BÁO TỪ NGUỒN CHÍNH THỨC</p>
+        <div class="source-story-intro rewritten-news-intro">${intro.map((paragraph) => `<p>${esc(paragraph)}</p>`).join("")}</div>
+        ${facts.length ? `<section class="rewritten-news-facts"><h2>${esc(article.factsTitle || "Các dữ kiện chính")}</h2>${renderFacts(facts)}</section>` : ""}
+        ${renderRewrittenSections(article.sections, inlineImages)}
+        ${takeaway ? `<section class="source-story-ending"><h2>${esc(article.conclusionTitle || "Điều đọng lại")}</h2><p>${esc(takeaway)}</p></section>` : ""}
         <section class="source-original-card" aria-labelledby="source-original-title">
-          <small>ĐỌC ĐÚNG NỘI DUNG BÀI BÁO</small>
+          <small>NGUỒN BÀI VIẾT</small>
           <h2 id="source-original-title">${esc(originalTitle)}</h2>
-          <p>Bài đăng bởi <strong>${esc(sourceLabel)}</strong>${source.date ? ` ngày ${esc(source.date)}` : ""}. Mở bài gốc để đọc đầy đủ, đúng câu chữ và cách trình bày của cơ quan xuất bản.</p>
+          <p>Đăng bởi <strong>${esc(sourceLabel)}</strong>${source.date ? ` ngày ${esc(source.date)}` : ""}. Nội dung trên đã được biên soạn lại, giữ nguyên các nhân vật, số liệu và sự kiện chính.</p>
+          ${renderSourceFooter(article, true)}
           ${sourceAction}
         </section>
-${media}
         <section class="article-seo-info" aria-labelledby="article-seo-info-title">
           <small>THÔNG TIN CỦA THẦY LINH – TUYỂN THỢ MỎ</small>
           <h2 id="article-seo-info-title">Muốn học nghề và làm việc tại TKV?</h2>
@@ -478,7 +509,6 @@ ${media}
           </div>
           <div class="article-seo-info__actions"><a href="/kiem-tra-dieu-kien/">Kiểm tra điều kiện</a><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Nhắn Zalo</a><a href="tel:+84963048585">Gọi 096 304 8585</a></div>
         </section>
-        ${renderSourceFooter(article, true)}
         <nav class="article-nav" aria-label="Bài viết liên quan"></nav>`;
 }
 
@@ -547,7 +577,7 @@ function renderArticle(article) {
     return `<a href="/bai-viet/${target.slug}/"><small>${index ? "Đọc tiếp" : "Bài liên quan"}</small>${esc(target.title)} →</a>`;
   }).join("");
   const articleContent = isNewsBrief
-    ? renderNewsBrief(article, inlineImages, isPressLayout)
+    ? renderRewrittenNewsArticle(article, inlineImages)
     : isPressLayout
     ? renderPressBody(article, inlineImages)
     : `${renderArticleCover(article)}
@@ -598,7 +628,7 @@ function renderArticle(article) {
   <meta name="twitter:description" content="${esc(article.lead)}">
   <meta name="twitter:image" content="${article.image}">
   <link rel="stylesheet" href="/fonts.css?v=1">
-  <link rel="stylesheet" href="/article-insights.css?v=10">
+  <link rel="stylesheet" href="/article-insights.css?v=${isNewsBrief ? 12 : 10}">
   <link rel="stylesheet" href="/content-network.css?v=1">
   <link rel="stylesheet" href="/mobile-ux.css?v=8">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
@@ -616,7 +646,7 @@ function renderArticle(article) {
       </div>
     </section>
     <div class="container article-layout${isPressLayout ? " article-layout--source" : ""}">
-      <article class="article-body${isPressLayout || isNewsBrief ? " article-body--source" : ""}${isNewsBrief ? " article-body--brief" : ""}">
+      <article class="article-body${isPressLayout || isNewsBrief ? " article-body--source" : ""}${isNewsBrief ? " article-body--rewritten" : ""}">
         ${articleContent}
         ${renderArticleApply(article)}
         ${renderArticleShare(article)}
@@ -705,7 +735,7 @@ function hubHtml() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Ngành Than & Người thợ – Thầy Linh",
-    description: "Các bài báo chọn lọc về ngành Than, dẫn nguyên bản tại nguồn và bổ sung thông tin học nghề, việc làm TKV dành cho người lao động.",
+    description: "Các bài báo chọn lọc về ngành Than được tóm tắt dễ hiểu, ghi nguồn rõ ràng và bổ sung thông tin học nghề, việc làm TKV dành cho người lao động.",
     url: `${base}/tin-nganh-than/`,
     inLanguage: "vi-VN",
     dateModified: buildTime,
@@ -718,7 +748,7 @@ function hubHtml() {
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#063c46">
   <title>Tin ngành Than | Bài báo và thông tin việc làm TKV</title>
-  <meta name="description" content="Các bài báo chọn lọc về ngành Than, đọc nguyên văn tại nguồn và xem thêm thông tin học nghề, tuyển thợ mỏ, việc làm TKV tại Quảng Ninh.">
+  <meta name="description" content="Các bài viết chọn lọc về ngành Than được biên soạn lại đầy đủ, ghi nguồn rõ ràng và bổ sung thông tin học nghề, tuyển thợ mỏ, việc làm TKV tại Quảng Ninh.">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><meta name="author" content="${author}">
   <link rel="canonical" href="${base}/tin-nganh-than/">
   <link rel="icon" href="/favicon.ico">
@@ -726,19 +756,19 @@ function hubHtml() {
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="alternate" type="application/rss+xml" title="Tin ngành Than – Thầy Linh" href="${base}/feed.xml"><link rel="alternate" type="application/feed+json" title="Tin ngành Than – Thầy Linh" href="${base}/feed.json">
-  <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="Tin ngành Than"><meta property="og:description" content="Bài báo chọn lọc, nguồn rõ ràng và thông tin học nghề, việc làm TKV được tách riêng ở cuối mỗi trang."><meta property="og:url" content="${base}/tin-nganh-than/"><meta property="og:image" content="${feature.image}">
+  <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="Tin ngành Than"><meta property="og:description" content="Bài viết ngành Than được biên soạn lại đầy đủ, ghi nguồn rõ ràng; thông tin học nghề và việc làm TKV được tách riêng ở cuối mỗi trang."><meta property="og:url" content="${base}/tin-nganh-than/"><meta property="og:image" content="${feature.image}">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Tin ngành Than"><meta name="twitter:description" content="Bài báo ngành Than và thông tin việc làm TKV tại Quảng Ninh."><meta name="twitter:image" content="${feature.image}">
   <link rel="stylesheet" href="/fonts.css?v=1">
-  <link rel="stylesheet" href="../article-insights.css?v=10"><link rel="stylesheet" href="/mobile-ux.css?v=8">
+  <link rel="stylesheet" href="../article-insights.css?v=12"><link rel="stylesheet" href="/mobile-ux.css?v=8">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
 <body>
   <a class="skip-link" href="#noi-dung">Đến nội dung chính</a>
   <header class="site-header"><div class="container header-inner"><a class="brand" href="../"><img class="brand-mark" src="/assets/thay-linh-avatar.webp?v=3" alt="" width="45" height="45"><span><strong>Thầy Linh</strong><small>Tuyển Thợ Mỏ</small></span></a><a class="back-link" href="../">← Trang chủ</a></div></header>
   <main id="noi-dung">
-    <section class="news-hero"><div class="container"><p class="eyebrow">Bài báo chọn lọc · Nguồn rõ ràng</p><h1>Tin ngành Than</h1><p class="lead">Mỗi bài dẫn trực tiếp đến nội dung nguyên văn tại cơ quan xuất bản. Thông tin học nghề, tuyển thợ mỏ và việc làm TKV của Thầy Linh được đặt riêng ở cuối trang.</p><nav class="cluster-nav" aria-label="Nhóm bài viết">${sectionOrder.filter((section) => allEditorial.some((article) => article.section === section && article.slug !== feature.slug)).map((section) => `<a href="#${sectionIds[section]}">${esc(section)}</a>`).join("")}</nav></div></section>
+    <section class="news-hero"><div class="container"><p class="eyebrow">Bài viết đầy đủ · Nguồn rõ ràng</p><h1>Tin ngành Than</h1><p class="lead">Mỗi bài được biên soạn lại với đầy đủ sự việc, nhân vật và dữ kiện quan trọng để người đọc theo dõi ngay trên website. Nguồn báo cùng thông tin học nghề, tuyển thợ mỏ và việc làm TKV được đặt riêng ở cuối trang.</p><nav class="cluster-nav" aria-label="Nhóm bài viết">${sectionOrder.filter((section) => allEditorial.some((article) => article.section === section && article.slug !== feature.slug)).map((section) => `<a href="#${sectionIds[section]}">${esc(section)}</a>`).join("")}</nav></div></section>
     <div class="container news-main">
-      <section class="newsroom-method" aria-labelledby="newsroom-method-title"><div><p class="news-kicker">Cách trình bày</p><h2 id="newsroom-method-title">Bài báo và thông tin tuyển sinh được tách riêng</h2><p>Ảnh, tên bài, cơ quan xuất bản và ngày đăng được ghi rõ. Nút đọc nguyên văn mở đúng bài tại nguồn; phần của Thầy Linh chỉ bổ sung thông tin đang áp dụng cho người muốn học nghề và làm việc tại TKV.</p></div><ul><li><strong>Bài báo gốc</strong><span>Đọc đầy đủ tại cơ quan xuất bản.</span></li><li><strong>Nguồn rõ ràng</strong><span>Tên bài, đơn vị và ngày đăng.</span></li><li><strong>Thông tin tuyển sinh</strong><span>Đặt riêng ở cuối, không trộn vào bài báo.</span></li></ul></section>
+      <section class="newsroom-method" aria-labelledby="newsroom-method-title"><div><p class="news-kicker">Cách trình bày</p><h2 id="newsroom-method-title">Giữ đầy đủ nội dung, diễn đạt bằng giọng riêng</h2><p>Bài viết giữ các nhân vật, diễn biến và số liệu quan trọng, chỉ thay đổi cách diễn đạt để tự nhiên và dễ đọc hơn. Tên bài, cơ quan xuất bản, ngày đăng và liên kết nguồn được ghi ở cuối.</p></div><ul><li><strong>Nội dung đầy đủ</strong><span>Không rút còn vài đoạn tóm tắt.</span></li><li><strong>Nguồn rõ ràng</strong><span>Tên bài, đơn vị, ngày đăng và liên kết bài gốc.</span></li><li><strong>Thông tin tuyển sinh</strong><span>Đặt riêng ở cuối, không trộn vào nội dung báo chí.</span></li></ul></section>
       <article class="news-feature"><img src="${feature.image}" alt="${esc(feature.title)}" referrerpolicy="no-referrer"><div class="news-feature__body"><p class="news-kicker">Bài mới · ${displayDate(feature.published)}</p><h2>${esc(feature.title)}</h2><p>${esc(feature.lead)}</p><a class="news-link" href="./${feature.urlPath.replace(/^tin-nganh-than\//, "")}/">Đọc bài viết →</a></div></article>
       ${sections}
     </div>
@@ -755,7 +785,10 @@ for (const article of generatedArticles) {
   fs.mkdirSync(directory, {recursive: true});
   const file = path.join(directory, "index.html");
   const renderedHtml = renderArticle(article);
-  const keepsEstablishedShell = article.urlPath.startsWith("tin-nganh-than/") && (article.sources || []).some((source) => sourceUrl(source));
+  const hasEstablishedRewrite = fs.existsSync(file) && fs.readFileSync(file, "utf8").includes("article-body--rewritten");
+  const keepsEstablishedShell = article.urlPath.startsWith("tin-nganh-than/") && (
+    hasEstablishedRewrite || (article.sources || []).some((source) => sourceUrl(source))
+  );
   fs.writeFileSync(file, keepsEstablishedShell ? mergeArticleIntoExistingShell(file, renderedHtml) : renderedHtml);
 }
 
@@ -764,7 +797,6 @@ for (const article of existingNews) {
   if (!fs.existsSync(file)) throw new Error(`Missing existing article page: ${article.slug}`);
   let html = fs.readFileSync(file, "utf8");
   const usesSourceLanding = (article.sources || []).some((source) => source.url);
-  if (usesSourceLanding && html.includes('class="source-original-card"')) continue;
   html = syncExistingArticleImage(html, article);
   if (!html.includes("article-media-credit") && article.imageSource) {
     html = html.replace(/<figcaption>([\s\S]*?)<\/figcaption>/i, (_match, caption) => `<figcaption><span>${caption.trim()}</span><span class="article-media-credit">${esc(article.imageSource)}</span></figcaption>`);
@@ -772,11 +804,15 @@ for (const article of existingNews) {
   html = upgradeExistingSchema(html, article);
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${esc(searchTitle(article))}</title>`);
   if (usesSourceLanding) {
-    if (!html.includes('class="source-original-card"')) {
+    const establishedArticle = html.match(articleBodyPattern)?.[0] || "";
+    const establishedParagraphs = establishedArticle.match(/<p\b/gi)?.length || 0;
+    const keepsEstablishedRewrite = establishedArticle.includes("article-body--rewritten") && establishedParagraphs >= 4;
+    if (!keepsEstablishedRewrite) {
       const inlineImages = article.inlineMedia || articleInlineImages[article.slug] || [];
-      html = html.replace(/<article\b[^>]*class="[^"]*\barticle-body\b[^"]*"[^>]*>[\s\S]*?<\/article>/i,
-        `<article class="article-body article-body--source article-body--brief">\n        ${renderNewsBrief(article, inlineImages)}\n        ${renderArticleApply(article)}\n        ${renderArticleShare(article)}\n      </article>`);
+      html = html.replace(articleBodyPattern,
+        `<article class="article-body article-body--source article-body--rewritten">\n        ${renderRewrittenNewsArticle(article, inlineImages)}\n        ${renderArticleApply(article)}\n        ${renderArticleShare(article)}\n      </article>`);
     }
+    html = html.replace(/article-insights\.css\?v=\d+/g, "article-insights.css?v=12");
   } else {
     html = html.replace(/\s*<div class="article-source-footer">[\s\S]*?<\/div>\s*/g, "\n");
     html = html.replace(/\s*<section class="article-apply"[\s\S]*?<\/section>\s*/g, "\n");

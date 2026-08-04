@@ -63,7 +63,7 @@ for (const article of [...curatedArticles, ...existingNews]) {
   }
 }
 const pressStoriesBySlug = new Map(pressStoryArticles.map((article) => [article.slug, article]));
-const newsroomBriefSlugs = new Set([
+const rewrittenNewsSlugs = new Set([
   ...communityArticles,
   ...pressStoryArticles,
   ...existingNews.filter((article) => (article.sources || []).some((source) => source.url)),
@@ -229,7 +229,7 @@ for (const [index, slug] of slugs.entries()) {
   const ogImage = decodeAttribute(getAttr(html, /<meta property="og:image" content="([^"]+)"/i, `${prefix}Open Graph image`));
   const sourceImage = communitySourceImages[slug];
   const pressStory = pressStoriesBySlug.get(slug);
-  const newsroomBrief = newsroomBriefSlugs.has(slug);
+  const rewrittenNews = rewrittenNewsSlugs.has(slug);
   const h1Count = (html.match(/<h1(?:\s|>)/gi) || []).length;
   const visibleWords = visible.split(/\s+/).filter(Boolean).length;
 
@@ -248,19 +248,24 @@ for (const [index, slug] of slugs.entries()) {
   if (title.length > 64) warnings.push(`${prefix}mobile search title may be truncated at ${title.length} characters`);
   if (description.length < 100 || description.length > 165) errors.push(`${prefix}description length ${description.length}`);
   if (canonical !== item.url) errors.push(`${prefix}wrong canonical`);
-  if (!newsroomBrief && !normalize(html).includes(normalize(primaryKeyword))) errors.push(`${prefix}primary keyword absent from visible body`);
-  const minimumVisibleWords = newsroomBrief ? 430 : 650;
+  if (!rewrittenNews && !normalize(html).includes(normalize(primaryKeyword))) errors.push(`${prefix}primary keyword absent from visible body`);
+  const minimumVisibleWords = rewrittenNews ? 600 : 650;
   if (visibleWords < minimumVisibleWords) errors.push(`${prefix}only ${visibleWords} visible words; expected at least ${minimumVisibleWords}`);
   if (!/"@type":"(?:NewsArticle|Article|BlogPosting)"/.test(html)) errors.push(`${prefix}missing article schema`);
-  if (!newsroomBrief && !pressStory && !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing FAQ schema`);
-  if (newsroomBrief) {
-    if (!/class="[^\"]*\barticle-body--brief\b[^\"]*"/i.test(html)) errors.push(`${prefix}newsroom item is missing the compact brief layout`);
+  if (!rewrittenNews && !pressStory && !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing FAQ schema`);
+  if (rewrittenNews) {
+    if (!/class="[^\"]*\barticle-body--rewritten\b[^\"]*"/i.test(html)) errors.push(`${prefix}newsroom item is missing the full rewritten layout`);
+    const rewrittenParagraphCount = (editorialBody.match(/<p(?:\s|>)/gi) || []).length;
+    if (rewrittenParagraphCount < 5) errors.push(`${prefix}rewritten article has only ${rewrittenParagraphCount} paragraphs`);
     if (!/class="source-original-card"/i.test(articleBody) || !/class="source-original-card__button"/i.test(articleBody)) errors.push(`${prefix}newsroom item is missing the original-source reading card`);
     if (!/class="article-seo-info"/i.test(articleBody)) errors.push(`${prefix}newsroom item is missing the separated recruitment and SEO block`);
-    if (/class="(?:timeline|faq-list)"/i.test(articleBody)) errors.push(`${prefix}compact newsroom item contains a timeline or FAQ block`);
-    const briefWords = strip(editorialBody).split(/\s+/u).filter(Boolean).length;
-    if (briefWords > 950) errors.push(`${prefix}compact newsroom body is too long at ${briefWords} words`);
-    if (/class="(?:news-brief-intro|news-brief-section)"/i.test(articleBody)) errors.push(`${prefix}newsroom item still contains the previous rewritten-news layout`);
+    if (/class="(?:timeline|faq-list|article-summary)"/i.test(articleBody)) errors.push(`${prefix}rewritten article contains the superseded summary, timeline or FAQ layout`);
+    const rewrittenWords = strip(editorialBody).split(/\s+/u).filter(Boolean).length;
+    if (rewrittenWords < 300) errors.push(`${prefix}rewritten article is too short at ${rewrittenWords} words`);
+    if (rewrittenWords > 2_000) errors.push(`${prefix}rewritten article is unexpectedly long at ${rewrittenWords} words`);
+    if (/(?:TÓM TẮT NỘI DUNG|Những thông tin chính|Nội dung trên được tóm tắt)/iu.test(articleBody)) errors.push(`${prefix}still presents the article as a short summary`);
+    if (/(?:bài\s+(?:gốc|nguồn|báo)\s+(?:không|chưa)|nguồn\s+(?:không|chưa)\s+(?:nêu|cho\s+biết|công\s+bố|làm\s+rõ|đề\s+cập))/iu.test(editorialBody)) errors.push(`${prefix}contains source-narration or missing-source commentary`);
+    if (/(?:bài\s+(?:viết|báo|gốc|nguồn)[^.!?]{0,60}\b(?:cho\s+biết|cho\s+thấy|nêu|ghi\s+nhận|đề\s+cập|mô\s+tả)|nguồn\s+(?:cũng\s+)?(?:nêu|cho\s+biết|ghi\s+nhận|đề\s+cập))/iu.test(editorialBody)) errors.push(`${prefix}still narrates what the source article says`);
   }
   if (pressStory) {
     if (image !== pressStory.imageOriginal) errors.push(`${prefix}does not use the original image from its press source`);
@@ -268,8 +273,8 @@ for (const [index, slug] of slugs.entries()) {
       || !/class="[^"]*\barticle-body\b[^"]*\barticle-body--source\b[^"]*"/i.test(html)) {
       errors.push(`${prefix}press story must use the source-style article layout`);
     }
-    if (/class="(?:fact-grid|timeline|faq-list|source-facts|article-aside)"/i.test(html)) {
-      errors.push(`${prefix}press story contains a custom card, timeline, FAQ or sidebar block`);
+    if (/class="(?:timeline|faq-list|source-facts|article-aside)"/i.test(html)) {
+      errors.push(`${prefix}press story contains a timeline, FAQ or sidebar block`);
     }
     if (!/class="article-cover article-cover--editorial"[\s\S]*?class="article-media-credit"/i.test(articleBody)) {
       errors.push(`${prefix}press-story cover is missing its visible photo credit`);
