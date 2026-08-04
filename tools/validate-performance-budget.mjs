@@ -58,7 +58,12 @@ const homeScript = read("portal-official.js");
 const homeStyles = read("landing-recruitment.css");
 const homeVideoFacades = (home.match(/data-featured-video-facade/g) || []).length;
 if (homeVideoFacades !== 1) fail(`Trang chủ đơn giản: dự kiến 1 lớp xem trước video, thực tế ${homeVideoFacades}`);
-if (/<iframe\b/i.test(home)) fail("Trang chủ: còn tạo trình phát YouTube trước khi người dùng bấm xem");
+if (/<iframe\b[^>]+youtube/i.test(home)) fail("Trang chủ: còn tạo trình phát YouTube trước khi người dùng bấm xem");
+const facebookReelFrames = home.match(/<iframe\b[^>]+facebook\.com\/plugins\/video\.php[^>]*>/gi) || [];
+if (facebookReelFrames.length !== 1) fail(`Trang chủ: dự kiến 1 video Facebook Reel, thực tế ${facebookReelFrames.length}`);
+else if (!facebookReelFrames[0].includes('loading="lazy"') || !facebookReelFrames[0].includes('title="Video Làm mỏ hay làm khu công nghiệp của Thầy Linh"')) {
+  fail("Trang chủ: video Facebook Reel phải nạp chậm và có tiêu đề hỗ trợ truy cập");
+}
 if (/rel=["']preconnect["'][^>]+youtube-nocookie\.com/i.test(home)) fail("Trang chủ: còn mở sớm kết nối trình phát YouTube");
 for (const marker of ["mountYouTubePlayer", "renderVideoFacade", "activateFacade", "host.replaceChildren(frame)"]) {
   if (!homeScript.includes(marker)) fail(`Trang chủ: thiếu hành vi video ${marker}`);
@@ -210,6 +215,7 @@ console.log(JSON.stringify({
   web_vitals_version: "6.0.1",
   optimized_home_images: optimizedHomeImages.length,
   home_video_facades: homeVideoFacades,
+  facebook_reel_frames: facebookReelFrames.length,
   blocking_scripts: blockingScripts,
   eager_third_party_frames: eagerThirdPartyFrames,
   external_stylesheets: externalStylesheets,

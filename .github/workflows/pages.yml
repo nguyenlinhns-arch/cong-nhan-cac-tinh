@@ -54,6 +54,7 @@ jobs:
           node tools/validate-editorial-sources.mjs
           node tools/validate-daily-community-images-20260804.mjs
           node tools/validate-home-copy-actions.mjs
+          node tools/validate-homepage-redesign.mjs
           node tools/validate-top-block-hotfix.mjs
           node tools/validate-content-network.mjs
           node tools/validate-article-ctas.mjs
@@ -147,6 +148,11 @@ jobs:
                 && grep -Fq '/home-content.css?v=2' "$html_file" \
                 && grep -Fq '/mobile-core.js?v=1' "$html_file" \
                 && grep -Fq 'class="home-province-quick"' "$html_file" \
+                && grep -Fq 'id="home-kcn-video"' "$html_file" \
+                && grep -Fq 'facebook.com%2Freel%2F1145886217664123' "$html_file" \
+                && grep -Fq 'id="nghe-dang-tuyen"' "$html_file" \
+                && grep -Fq '/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/' "$html_file" \
+                && grep -Fq 'home-v6-mobile-contact' "$html_file" \
                 && grep -Fq 'id="kho-noi-dung"' "$html_file" \
                 && grep -Fq 'id="tu-kiem-tra"' "$html_file" \
                 && grep -Fq 'data-open-site-search' "$html_file" \

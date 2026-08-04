@@ -245,9 +245,9 @@ if (!home.includes("/daily-seo.css?v=1")) home = home.replace("</head>", "  <lin
 home = home.replace(/<!-- daily-seo:start -->[\s\S]*?<!-- daily-seo:end -->/g, "");
 const homeLinks = released.slice(0, 3).map((article) => `<a href="${SERIES_PATH}${article.slug}/"><small>${article.publish_on.split("-").reverse().join("/")}</small><strong>${esc(article.title)}</strong><span>${esc(article.direct_answer)}</span></a>`).join("");
 const homeBlock = `\n    <!-- daily-seo:start --><section class="home-daily-seo" aria-labelledby="home-daily-seo-title"><div class="container"><div class="home-daily-seo__head"><div><p class="home-step">Giải đáp mới mỗi ngày</p><h2 id="home-daily-seo-title">Người lao động hỏi gì, website trả lời thẳng câu đó</h2></div><a href="${SERIES_PATH}">Xem toàn bộ →</a></div><div class="home-daily-seo__grid">${homeLinks}</div></div></section><!-- daily-seo:end -->\n`;
-const homeAnchor = "<nav class=\"home-content-shortcuts";
+const homeAnchor = "    <nav class=\"home-content-shortcuts";
 if (!home.includes(homeAnchor)) throw new Error("Không tìm thấy vị trí chèn bài SEO hằng ngày trên trang chủ");
-home = home.replace(homeAnchor, `${homeBlock}    ${homeAnchor}`);
+home = home.replace(homeAnchor, `${homeBlock}${homeAnchor}`);
 write("index.html", home);
 
 let guide = read("cam-nang-nghe-mo/index.html");
