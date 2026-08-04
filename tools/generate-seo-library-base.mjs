@@ -74,10 +74,14 @@ const articleBodyPattern = /<article\b[^>]*class=["'][^"']*\barticle-body\b[^"']
 function mergeArticleIntoExistingShell(file, generatedHtml) {
   if (!fs.existsSync(file)) return generatedHtml;
   const existingHtml = fs.readFileSync(file, "utf8");
+  const existingArticle = existingHtml.match(articleBodyPattern)?.[0];
   const generatedArticle = generatedHtml.match(articleBodyPattern)?.[0];
-  if (!generatedArticle || !articleBodyPattern.test(existingHtml)) return generatedHtml;
+  if (!existingArticle || !generatedArticle) return generatedHtml;
+  const existingParagraphs = existingArticle.match(/<p\b/gi)?.length || 0;
+  const keepsRewrittenArticle = existingArticle.includes("article-body--rewritten") && existingParagraphs >= 4;
+  const articleToKeep = keepsRewrittenArticle ? existingArticle : generatedArticle;
   const merged = existingHtml
-    .replace(articleBodyPattern, generatedArticle)
+    .replace(articleBodyPattern, articleToKeep)
     .replace(/article-insights\.css\?v=\d+/g, "article-insights.css?v=12");
   return `${merged.trimEnd()}\n`;
 }
@@ -778,7 +782,10 @@ for (const article of generatedArticles) {
   fs.mkdirSync(directory, {recursive: true});
   const file = path.join(directory, "index.html");
   const renderedHtml = renderArticle(article);
-  const keepsEstablishedShell = article.urlPath.startsWith("tin-nganh-than/") && (article.sources || []).some((source) => sourceUrl(source));
+  const hasEstablishedRewrite = fs.existsSync(file) && fs.readFileSync(file, "utf8").includes("article-body--rewritten");
+  const keepsEstablishedShell = article.urlPath.startsWith("tin-nganh-than/") && (
+    hasEstablishedRewrite || (article.sources || []).some((source) => sourceUrl(source))
+  );
   fs.writeFileSync(file, keepsEstablishedShell ? mergeArticleIntoExistingShell(file, renderedHtml) : renderedHtml);
 }
 
@@ -794,9 +801,14 @@ for (const article of existingNews) {
   html = upgradeExistingSchema(html, article);
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${esc(searchTitle(article))}</title>`);
   if (usesSourceLanding) {
-    const inlineImages = article.inlineMedia || articleInlineImages[article.slug] || [];
-    html = html.replace(/<article\b[^>]*class="[^"]*\barticle-body\b[^"]*"[^>]*>[\s\S]*?<\/article>/i,
-      `<article class="article-body article-body--source article-body--rewritten">\n        ${renderRewrittenNewsArticle(article, inlineImages)}\n        ${renderArticleApply(article)}\n        ${renderArticleShare(article)}\n      </article>`);
+    const establishedArticle = html.match(articleBodyPattern)?.[0] || "";
+    const establishedParagraphs = establishedArticle.match(/<p\b/gi)?.length || 0;
+    const keepsEstablishedRewrite = establishedArticle.includes("article-body--rewritten") && establishedParagraphs >= 4;
+    if (!keepsEstablishedRewrite) {
+      const inlineImages = article.inlineMedia || articleInlineImages[article.slug] || [];
+      html = html.replace(articleBodyPattern,
+        `<article class="article-body article-body--source article-body--rewritten">\n        ${renderRewrittenNewsArticle(article, inlineImages)}\n        ${renderArticleApply(article)}\n        ${renderArticleShare(article)}\n      </article>`);
+    }
     html = html.replace(/article-insights\.css\?v=\d+/g, "article-insights.css?v=12");
   } else {
     html = html.replace(/\s*<div class="article-source-footer">[\s\S]*?<\/div>\s*/g, "\n");
