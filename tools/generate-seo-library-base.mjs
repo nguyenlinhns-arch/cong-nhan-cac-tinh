@@ -53,7 +53,7 @@ function normalizePageAssets(html, file) {
   if (hadRemoteFonts && !output.includes('href="/fonts.css')) {
     output = output.replace(/<\/head>/i, '  <link rel="stylesheet" href="/fonts.css?v=1">\n</head>');
   }
-  output = output.replace(/\/mobile-ux\.js\?v=\d+/g, "/mobile-ux.js?v=10");
+  if (!output.includes('class="source-original-card"')) output = output.replace(/\/mobile-ux\.js\?v=\d+/g, "/mobile-ux.js?v=10");
   return output.replace(/<img\b[^>]*>/gi, (tag) => {
     const source = tag.match(/\bsrc=(["'])(.*?)\1/i)?.[2];
     if (!source) return tag;
@@ -67,6 +67,44 @@ function normalizePageAssets(html, file) {
     if (!/\bheight=["']\d+["']/i.test(tag)) missing.push('height="' + dimensions[1] + '"');
     return missing.length ? tag.replace(/>$/, " " + missing.join(" ") + ">") : tag;
   });
+}
+
+const articleBodyPattern = /<article\b[^>]*class=["'][^"']*\barticle-body\b[^"']*["'][^>]*>[\s\S]*?<\/article>/i;
+
+function mergeArticleIntoExistingShell(file, generatedHtml) {
+  if (!fs.existsSync(file)) return generatedHtml;
+  const existingHtml = fs.readFileSync(file, "utf8");
+  if (existingHtml.includes('class="source-original-card"')) return existingHtml;
+  const generatedArticle = generatedHtml.match(articleBodyPattern)?.[0];
+  if (!generatedArticle || !articleBodyPattern.test(existingHtml)) return generatedHtml;
+  return `${existingHtml.replace(articleBodyPattern, generatedArticle).trimEnd()}\n`;
+}
+
+function mergeHubIntoExistingShell(file, generatedHtml) {
+  if (!fs.existsSync(file)) return generatedHtml;
+  const mainPattern = /<main\b[^>]*\bid=["']noi-dung["'][^>]*>[\s\S]*?<\/main>/i;
+  const conversionPattern = /<section class="v5-intent-hub"[\s\S]*?<\/section><section class="v4-final-conversion"[\s\S]*?<\/section>/i;
+  const existingHtml = fs.readFileSync(file, "utf8");
+  const generatedMain = generatedHtml.match(mainPattern)?.[0];
+  const existingConversion = existingHtml.match(conversionPattern)?.[0] || "";
+  if (!generatedMain || !mainPattern.test(existingHtml)) return generatedHtml;
+  let output = existingHtml.replace(mainPattern, generatedMain.replace(/<\/main>$/i, `${existingConversion}</main>`));
+  const headPatterns = [
+    /<title>[\s\S]*?<\/title>/i,
+    /<meta\s+name="description"[^>]*>/i,
+    /<meta\s+property="og:title"[^>]*>/i,
+    /<meta\s+property="og:description"[^>]*>/i,
+    /<meta\s+property="og:image"[^>]*>/i,
+    /<meta\s+name="twitter:title"[^>]*>/i,
+    /<meta\s+name="twitter:description"[^>]*>/i,
+    /<meta\s+name="twitter:image"[^>]*>/i,
+    /<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/i,
+  ];
+  for (const pattern of headPatterns) {
+    const generatedTag = generatedHtml.match(pattern)?.[0];
+    if (generatedTag && pattern.test(output)) output = output.replace(pattern, generatedTag);
+  }
+  return `${output.trimEnd()}\n`;
 }
 
 const displayDate = (iso) => new Intl.DateTimeFormat("vi-VN", {
@@ -436,7 +474,7 @@ ${media}
             <div><small>Học nghề</small><strong>2–3 tháng</strong><span>Khai thác mỏ hoặc Xây dựng mỏ; nghề Cơ điện mỏ học 10 tháng.</span></div>
             <div><small>Trong thời gian học</small><strong>Miễn học phí</strong><span>Ăn 3 bữa/ngày, ở ký túc xá và hỗ trợ sinh hoạt phí 7,5 triệu đồng.</span></div>
             <div><small>Sau đào tạo</small><strong>Làm việc tại TKV</strong><span>Được bố trí việc làm tại các đơn vị ngành Than ở Quảng Ninh.</span></div>
-            <div><small>Thu nhập</small><strong>20–25 triệu/tháng</strong><span>Cam kết khi người lao động hoàn thành định mức lao động.</span></div>
+            <div><small>Thu nhập</small><strong>20–25 triệu/tháng khi hoàn thành định mức lao động</strong><span>Mức cam kết áp dụng khi người lao động thực hiện đủ định mức.</span></div>
           </div>
           <div class="article-seo-info__actions"><a href="/kiem-tra-dieu-kien/">Kiểm tra điều kiện</a><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Nhắn Zalo</a><a href="tel:+84963048585">Gọi 096 304 8585</a></div>
         </section>
@@ -715,24 +753,30 @@ function hubHtml() {
 for (const article of generatedArticles) {
   const directory = path.join(root, article.urlPath);
   fs.mkdirSync(directory, {recursive: true});
-  fs.writeFileSync(path.join(directory, "index.html"), renderArticle(article));
+  const file = path.join(directory, "index.html");
+  const renderedHtml = renderArticle(article);
+  const keepsEstablishedShell = article.urlPath.startsWith("tin-nganh-than/") && (article.sources || []).some((source) => sourceUrl(source));
+  fs.writeFileSync(file, keepsEstablishedShell ? mergeArticleIntoExistingShell(file, renderedHtml) : renderedHtml);
 }
 
 for (const article of existingNews) {
   const file = path.join(root, article.urlPath, "index.html");
   if (!fs.existsSync(file)) throw new Error(`Missing existing article page: ${article.slug}`);
   let html = fs.readFileSync(file, "utf8");
+  const usesSourceLanding = (article.sources || []).some((source) => source.url);
+  if (usesSourceLanding && html.includes('class="source-original-card"')) continue;
   html = syncExistingArticleImage(html, article);
   if (!html.includes("article-media-credit") && article.imageSource) {
     html = html.replace(/<figcaption>([\s\S]*?)<\/figcaption>/i, (_match, caption) => `<figcaption><span>${caption.trim()}</span><span class="article-media-credit">${esc(article.imageSource)}</span></figcaption>`);
   }
   html = upgradeExistingSchema(html, article);
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${esc(searchTitle(article))}</title>`);
-  const usesSourceLanding = (article.sources || []).some((source) => source.url);
   if (usesSourceLanding) {
-    const inlineImages = article.inlineMedia || articleInlineImages[article.slug] || [];
-    html = html.replace(/<article\b[^>]*class="[^"]*\barticle-body\b[^"]*"[^>]*>[\s\S]*?<\/article>/i,
-      `<article class="article-body article-body--source article-body--brief">\n        ${renderNewsBrief(article, inlineImages)}\n        ${renderArticleApply(article)}\n        ${renderArticleShare(article)}\n      </article>`);
+    if (!html.includes('class="source-original-card"')) {
+      const inlineImages = article.inlineMedia || articleInlineImages[article.slug] || [];
+      html = html.replace(/<article\b[^>]*class="[^"]*\barticle-body\b[^"]*"[^>]*>[\s\S]*?<\/article>/i,
+        `<article class="article-body article-body--source article-body--brief">\n        ${renderNewsBrief(article, inlineImages)}\n        ${renderArticleApply(article)}\n        ${renderArticleShare(article)}\n      </article>`);
+    }
   } else {
     html = html.replace(/\s*<div class="article-source-footer">[\s\S]*?<\/div>\s*/g, "\n");
     html = html.replace(/\s*<section class="article-apply"[\s\S]*?<\/section>\s*/g, "\n");
@@ -750,12 +794,13 @@ for (const article of existingNews) {
   html = html.replaceAll(`${base}/#gioi-thieu`, `${base}/tac-gia/nguyen-tu-linh/`);
   if (!/<main\b[^>]*\bid=["']noi-dung["']/i.test(html)) html = html.replace(/<main\b/i, '<main id="noi-dung"');
   if (!/class=["'][^"']*\bskip-link\b/i.test(html)) html = html.replace(/<body>/i, '<body>\n  <a class="skip-link" href="#noi-dung">Đến nội dung chính</a>');
-  html = html.replace(/\/analytics\.js\?v=\d+/g, '/analytics.js?v=5').replace(/\/mobile-ux\.js\?v=\d+/g, '/mobile-ux.js?v=10').replace(/\/mobile-ux\.css\?v=\d+/g, '/mobile-ux.css?v=8').replace(/\/job-application\.js\?v=\d+/g, '/job-application.js?v=9');
+  if (!usesSourceLanding) html = html.replace(/\/analytics\.js\?v=\d+/g, '/analytics.js?v=5').replace(/\/mobile-ux\.js\?v=\d+/g, '/mobile-ux.js?v=10').replace(/\/mobile-ux\.css\?v=\d+/g, '/mobile-ux.css?v=8').replace(/\/job-application\.js\?v=\d+/g, '/job-application.js?v=9');
   if (!html.includes('/share-tools.js?v=1')) html = html.replace(/<\/body>/i, `  <script src="/share-tools.js?v=1" defer></script>\n</body>`);
   fs.writeFileSync(file, html);
 }
 
-fs.writeFileSync(path.join(root, "tin-nganh-than", "index.html"), hubHtml());
+const newsHubFile = path.join(root, "tin-nganh-than", "index.html");
+fs.writeFileSync(newsHubFile, mergeHubIntoExistingShell(newsHubFile, hubHtml()));
 
 function collectIndexHtml(directory, output = []) {
   for (const entry of fs.readdirSync(directory, {withFileTypes: true})) {
