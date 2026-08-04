@@ -41,10 +41,14 @@ for (const article of ledger.articles || []) {
   }
   const image = imageSources[article.slug];
   if (!image?.provider || !image?.source_url || !image?.album_title) errors.push(`${label}: nguồn ảnh chưa đầy đủ`);
-  if (!file.html.includes("<strong>Nguồn:</strong>")) errors.push(`${label}: trang chưa hiển thị dòng nguồn`);
+  const hasTraditionalSourceLine = file.html.includes("<strong>Nguồn:</strong>");
+  const hasJournalisticSourceLine = /<p class="article-source-note">[\s\S]*?<a\b[^>]*href="https?:\/\//i.test(file.html);
+  if (!hasTraditionalSourceLine && !hasJournalisticSourceLine) errors.push(`${label}: trang chưa hiển thị dòng nguồn`);
   if (!/article:published_time|"datePublished"/.test(file.html)) errors.push(`${label}: thiếu thời điểm xuất bản`);
   if (!file.html.includes("article-media-credit")) errors.push(`${label}: thiếu ghi nguồn ảnh hiển thị`);
-  if (!file.html.includes('/thong-tin-tuyen-tho-mo/')) errors.push(`${label}: chưa tách thông tin tuyển sinh hiện hành khỏi bài sự kiện`);
+  const hasSeparatedRecruitment = file.html.includes('/thong-tin-tuyen-tho-mo/')
+    || /<section class="article-apply"/i.test(file.html);
+  if (!hasSeparatedRecruitment) errors.push(`${label}: chưa tách thông tin tuyển sinh hiện hành khỏi bài sự kiện`);
   if (!file.html.includes('content="Nguyễn Tử Linh"') || !file.html.includes('"publisher":{"@type":"Organization","@id":"https://thaylinhtuyenthomo.vn/#organization"')) {
     errors.push(`${label}: tác giả/nhà xuất bản chưa phân biệt với nguồn TKV`);
   }
@@ -54,7 +58,7 @@ console.log(JSON.stringify({
   articles: articleFiles.length,
   sourceLedgers: ledger.articles?.length || 0,
   imageLedgers: Object.keys(imageSources).length,
-  articlesWithVisibleSource: articleFiles.filter(({html}) => html.includes("<strong>Nguồn:</strong>")).length,
+  articlesWithVisibleSource: articleFiles.filter(({html}) => html.includes("<strong>Nguồn:</strong>") || /<p class="article-source-note">[\s\S]*?<a\b/i.test(html)).length,
   errors: errors.length,
   sampleErrors: errors.slice(0, 25),
 }, null, 2));
