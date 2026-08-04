@@ -62,6 +62,7 @@ for (const article of [...curatedArticles, ...existingNews]) {
   }
 }
 const pressStoriesBySlug = new Map(pressStoryArticles.map((article) => [article.slug, article]));
+const newsroomBriefSlugs = new Set([...communityArticles, ...pressStoryArticles].map((article) => article.slug));
 const editorialTopicImageOverrides = new Set([...curatedArticles, ...existingNews]
   .filter((article) => article.imagePolicy === "editorial-topic-override")
   .map((article) => article.slug));
@@ -223,6 +224,7 @@ for (const [index, slug] of slugs.entries()) {
   const ogImage = decodeAttribute(getAttr(html, /<meta property="og:image" content="([^"]+)"/i, `${prefix}Open Graph image`));
   const sourceImage = communitySourceImages[slug];
   const pressStory = pressStoriesBySlug.get(slug);
+  const newsroomBrief = newsroomBriefSlugs.has(slug);
   const h1Count = (html.match(/<h1(?:\s|>)/gi) || []).length;
   const visibleWords = visible.split(/\s+/).filter(Boolean).length;
 
@@ -241,10 +243,23 @@ for (const [index, slug] of slugs.entries()) {
   if (title.length > 64) warnings.push(`${prefix}mobile search title may be truncated at ${title.length} characters`);
   if (description.length < 100 || description.length > 165) errors.push(`${prefix}description length ${description.length}`);
   if (canonical !== item.url) errors.push(`${prefix}wrong canonical`);
-  if (!normalize(html).includes(normalize(primaryKeyword))) errors.push(`${prefix}primary keyword absent from visible body`);
-  if (visibleWords < 650) errors.push(`${prefix}only ${visibleWords} visible words; expected at least 650`);
+  if (!newsroomBrief && !normalize(html).includes(normalize(primaryKeyword))) errors.push(`${prefix}primary keyword absent from visible body`);
+  const minimumVisibleWords = newsroomBrief ? 430 : 650;
+  if (visibleWords < minimumVisibleWords) errors.push(`${prefix}only ${visibleWords} visible words; expected at least ${minimumVisibleWords}`);
   if (!/"@type":"(?:NewsArticle|Article|BlogPosting)"/.test(html)) errors.push(`${prefix}missing article schema`);
-  if (!pressStory && !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing FAQ schema`);
+  if (!newsroomBrief && !pressStory && !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing FAQ schema`);
+  if (newsroomBrief) {
+    if (!/class="[^\"]*\barticle-body--brief\b[^\"]*"/i.test(html)) errors.push(`${prefix}newsroom item is missing the compact brief layout`);
+    if (/class="(?:timeline|faq-list)"/i.test(articleBody)) errors.push(`${prefix}compact newsroom item contains a timeline or FAQ block`);
+    const briefWords = strip(editorialBody).split(/\s+/u).filter(Boolean).length;
+    if (briefWords > 950) errors.push(`${prefix}compact newsroom body is too long at ${briefWords} words`);
+    const briefProse = editorialBody
+      .replace(/<figure[\s\S]*?<\/figure>/gi, " ")
+      .replace(/<div class="article-source-footer[^"]*">[\s\S]*?<\/div>/gi, " ");
+    if (/(?:bài\s+(?:gốc|nguồn|báo|phóng\s+sự)|theo\s+nguồn|nguồn\s+(?:chính\s+thức|không|công\s+bố|cho\s+biết|nêu))/iu.test(strip(briefProse))) {
+      errors.push(`${prefix}compact newsroom item still narrates or comments on its source`);
+    }
+  }
   if (pressStory) {
     if (image !== pressStory.imageOriginal) errors.push(`${prefix}does not use the original image from its press source`);
     if (!/class="[^"]*\barticle-layout\b[^"]*\barticle-layout--source\b[^"]*"/i.test(html)
@@ -283,8 +298,8 @@ for (const [index, slug] of slugs.entries()) {
   }
   const bodyImageUrls = [...articleBody.matchAll(/<img\b[^>]*src="([^"]+)"/gi)].map((match) => decodeAttribute(match[1]));
   if (new Set(bodyImageUrls).size !== bodyImageUrls.length) errors.push(`${prefix}repeats an image inside the article body`);
-  if (!/<div class="article-source-footer">[\s\S]*?<strong>Nguồn:<\/strong>/i.test(html)) errors.push(`${prefix}missing the public source line`);
-  if (!/<p class="article-seo-line">[^<]+<\/p>/i.test(html)) errors.push(`${prefix}missing the final SEO sentence`);
+  if (!/<div class="[^"]*\barticle-source-footer\b[^"]*">[\s\S]*?<strong>Nguồn:<\/strong>/i.test(html)) errors.push(`${prefix}missing the public source line`);
+  if (!newsroomBrief && !/<p class="article-seo-line">[^<]+<\/p>/i.test(html)) errors.push(`${prefix}missing the final SEO sentence`);
   if (/editorial-sources|Nguồn dữ kiện đã đối chiếu|Bài viết do Nguyễn Tử Linh phân tích và biên soạn độc lập/iu.test(html)) {
     errors.push(`${prefix}contains a public editorial-source block`);
   }

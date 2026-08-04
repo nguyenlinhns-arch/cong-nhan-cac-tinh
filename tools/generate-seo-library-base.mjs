@@ -150,7 +150,10 @@ function searchTitle(article) {
   return article.title.length > 52 ? article.title : `${article.title} | Thầy Linh`;
 }
 
-function renderSourceFooter(article) {
+function renderSourceFooter(article, compact = false) {
+  if (compact) {
+    return `<div class="article-source-footer article-source-footer--brief"><p><strong>Nguồn:</strong> ${esc(sourceText(article))}</p><p class="article-current-facts"><a href="/thong-tin-tuyen-tho-mo/">Thông tin tuyển sinh đang áp dụng được cập nhật riêng tại đây →</a></p></div>`;
+  }
   return `<div class="article-source-footer"><p class="article-current-facts"><a href="/thong-tin-tuyen-tho-mo/">Đối chiếu 15 câu hỏi về điều kiện, học nghề, hồ sơ và thu nhập đang áp dụng →</a></p><p><strong>Nguồn:</strong> ${esc(sourceText(article))}</p><p class="article-seo-line">${esc(seoText(article))}</p></div>`;
 }
 
@@ -302,11 +305,16 @@ function renderFacts(facts) {
 }
 
 function renderFigure(media, className = "article-inline-media", eager = false) {
-  const rawCredit = String(media.credit || "").trim();
+  const alt = String(media.alt || "").replace(/^Ảnh\s+bài\s+gốc\s*:\s*/iu, "").trim();
+  const caption = String(media.caption || media.alt || "").replace(/^Ảnh\s+bài\s+gốc\s*:\s*/iu, "").trim();
+  const rawCredit = String(media.credit || "")
+    .replace(/^Ảnh\s+bài\s+gốc\s*[·:]\s*/iu, "")
+    .replace(/^Ảnh\s+trong\s+bài\s+[^·]+\s*·\s*/iu, "")
+    .trim();
   const visibleCredit = media.suppressLabel || /^Ảnh(?:\s|:)/iu.test(rawCredit) ? rawCredit : `Ảnh: ${rawCredit}`;
   const credit = rawCredit ? `<span class="article-media-credit">${esc(visibleCredit)}</span>` : "";
   const referrerPolicy = media.referrerPolicy || "no-referrer";
-  return `<figure class="${className}"><img src="${esc(media.src)}" alt="${esc(media.alt)}" ${eager ? "fetchpriority=\"high\"" : "loading=\"lazy\""} decoding="async" referrerpolicy="${esc(referrerPolicy)}"><figcaption><span>${esc(media.caption || media.alt)}</span>${credit}</figcaption></figure>`;
+  return `<figure class="${className}"><img src="${esc(media.src)}" alt="${esc(alt)}" ${eager ? "fetchpriority=\"high\"" : "loading=\"lazy\""} decoding="async" referrerpolicy="${esc(referrerPolicy)}"><figcaption><span>${esc(caption)}</span>${credit}</figcaption></figure>`;
 }
 
 function renderArticleCover(article) {
@@ -341,6 +349,89 @@ function renderSections(sections, inlineImages = []) {
   }).join("");
 }
 
+const editorialMetaSentencePattern = /(?:\bbài\s+(?:gốc|nguồn|báo|phóng\s+sự|viết)|\btác\s+giả|\btheo\s+nguồn|\bnguồn\s+(?:chính\s+thức|không|công\s+bố|cho\s+biết|nêu|của))/iu;
+const defensiveSentencePattern = /(?:\bkhông\s+nên\s+(?:suy|hiểu|chia|cộng|biến)|\bkhông\s+đồng\s+nghĩa\b|\bkhông\s+phải\b[^.!?]*(?:quảng\s+cáo|tuyển\s+dụng|chính\s+sách|lời\s+mời|cam\s+kết|trợ\s+cấp))/iu;
+
+function stripTags(value = "") {
+  return String(value).replace(/<[^>]+>/g, " ").replace(/&[^;]+;/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function cleanBriefParagraph(paragraph = "") {
+  const sentences = String(paragraph).split(/(?<=[.!?])\s+/u).filter(Boolean);
+  return sentences
+    .filter((sentence) => !editorialMetaSentencePattern.test(stripTags(sentence)))
+    .filter((sentence) => !defensiveSentencePattern.test(stripTags(sentence)))
+    .join(" ")
+    .trim();
+}
+
+function cleanBriefFact(label = "") {
+  return String(label)
+    .replace(/;\s*(?:nguồn|bài)\b[^.!?]*[.!?]?/giu, ".")
+    .replace(/\s+được\s+(?:nguồn\s+(?:chính\s+thức\s+)?(?:nêu|công\s+bố)|nhắc\s+trong\s+bài\s+(?:gốc|nguồn)|bài\s+(?:gốc|nguồn)\s+(?:nêu|sử\s+dụng))[^.!?]*[.!?]?/giu, ".")
+    .replace(/\b(?:theo\s+nguồn|nguồn\s+nêu)/giu, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function briefIntro(article) {
+  const paragraphs = (article.intro || []).map(cleanBriefParagraph).filter((paragraph) => stripTags(paragraph).split(/\s+/u).length >= 12);
+  return paragraphs.slice(0, 2);
+}
+
+function sectionScore(section = {}) {
+  const heading = stripTags(section.title || "").toLocaleLowerCase("vi");
+  const body = stripTags((section.paragraphs || []).join(" ")).toLocaleLowerCase("vi");
+  let score = 0;
+  for (const term of ["người lao động", "người thợ", "gia đình", "sức khỏe", "an toàn", "đời sống", "tay nghề", "học nghề", "việc làm", "gắn bó", "ý nghĩa", "thay đổi"]) {
+    if (heading.includes(term)) score += 5;
+    if (body.includes(term)) score += 1;
+  }
+  if (/(?:số liệu|quy mô|mức hỗ trợ|công bố|phân bổ)/u.test(heading)) score -= 4;
+  return score;
+}
+
+function briefContext(article) {
+  const ranked = (article.sections || [])
+    .map((section, index) => ({section, index, score: sectionScore(section)}))
+    .sort((left, right) => right.score - left.score || left.index - right.index);
+  const selected = ranked[0]?.section;
+  if (!selected) return [];
+  return (selected.paragraphs || [])
+    .map(cleanBriefParagraph)
+    .filter((paragraph) => stripTags(paragraph).split(/\s+/u).length >= 16)
+    .slice(0, 2);
+}
+
+function renderNewsBrief(article, inlineImages, isProfile) {
+  const label = isProfile ? "HỒ SƠ NGƯỜI THỢ" : "BẢN TIN DỮ KIỆN";
+  const intro = briefIntro(article);
+  const context = briefContext(article);
+  const briefFacts = (article.facts || [])
+    .filter(([value, label]) => !/^Không\s+công\s+bố$/iu.test(String(value)) && !/\bnguồn\s+không/iu.test(String(label)))
+    .slice(0, 4)
+    .map(([value, label]) => [value, cleanBriefFact(label)]);
+  const facts = !isProfile && briefFacts.length
+    ? `<section class="news-brief-section"><h2>Những dữ kiện chính</h2>${renderFacts(briefFacts)}</section>`
+    : "";
+  const media = inlineImages.length
+    ? `<div class="article-inline-gallery">${inlineImages.map((item) => renderFigure(item)).join("")}</div>`
+    : "";
+  const takeaway = cleanBriefParagraph(article.takeaway || "");
+  const contextParagraphs = [...context, takeaway]
+    .filter(Boolean)
+    .filter((paragraph, index, items) => items.findIndex((item) => stripTags(item) === stripTags(paragraph)) === index)
+    .slice(0, 3);
+  return `${renderArticleCover(article)}
+        <p class="news-brief-label">${label}</p>
+        <div class="news-brief-intro">${intro.map((paragraph) => `<p>${paragraph}</p>`).join("")}</div>
+        ${facts}
+        <section class="news-brief-section news-brief-section--context"><h2>Góc nhìn từ dữ kiện</h2>${contextParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join("")}</section>
+        ${media}
+        ${renderSourceFooter(article, true)}
+        <nav class="article-nav" aria-label="Bài viết liên quan"></nav>`;
+}
+
 function renderPressBody(article, inlineImages) {
   return `${renderArticleCover(article)}
         <div class="source-story-intro">${article.intro.map((paragraph) => `<p>${paragraph}</p>`).join("")}</div>
@@ -357,6 +448,7 @@ function renderArticle(article) {
   const canonical = `${base}/${article.urlPath}/`;
   const inlineImages = article.inlineMedia || articleInlineImages[article.slug] || [];
   const isPressLayout = article.sourceLayout || article.contentMode === "press_digest";
+  const isNewsBrief = article.urlPath.startsWith("tin-nganh-than/");
   const sourceWorks = article.hideSourceUrlsInSchema ? [] : (article.sources || []).map(sourceCreativeWork);
   const sourceUrls = article.hideSourceUrlsInSchema ? [] : (article.sources || []).map(sourceUrl).filter(Boolean);
   const faqs = (article.faq || []).map(([question, answer]) => ({
@@ -396,7 +488,7 @@ function renderArticle(article) {
           {"@type": "ListItem", position: 3, name: article.title, item: canonical},
         ],
       },
-      ...(!isPressLayout && faqs.length ? [{"@type": "FAQPage", mainEntity: faqs}] : []),
+      ...(!isNewsBrief && !isPressLayout && faqs.length ? [{"@type": "FAQPage", mainEntity: faqs}] : []),
     ],
   };
   const related = (article.related || []).map((slug, index) => {
@@ -404,7 +496,9 @@ function renderArticle(article) {
     if (!target) return "";
     return `<a href="/bai-viet/${target.slug}/"><small>${index ? "Đọc tiếp" : "Bài liên quan"}</small>${esc(target.title)} →</a>`;
   }).join("");
-  const articleContent = isPressLayout
+  const articleContent = isNewsBrief
+    ? renderNewsBrief(article, inlineImages, isPressLayout)
+    : isPressLayout
     ? renderPressBody(article, inlineImages)
     : `${renderArticleCover(article)}
         ${article.intro.map((paragraph) => `<p>${paragraph}</p>`).join("")}
@@ -471,12 +565,12 @@ function renderArticle(article) {
         <p class="lead">${esc(article.lead)}</p>
       </div>
     </section>
-    <div class="container article-layout${isPressLayout ? " article-layout--source" : ""}">
-      <article class="article-body${isPressLayout ? " article-body--source" : ""}">
+    <div class="container article-layout${isPressLayout || isNewsBrief ? " article-layout--source" : ""}">
+      <article class="article-body${isPressLayout || isNewsBrief ? " article-body--source" : ""}${isNewsBrief ? " article-body--brief" : ""}">
         ${articleContent}
         ${renderArticleApply(article)}
         ${renderArticleShare(article)}
-      </article>${isPressLayout ? "" : `
+      </article>${isPressLayout || isNewsBrief ? "" : `
       <aside class="article-aside">
         ${renderArticleAsideCta(article)}
         <div class="aside-card"><h2>Thông tin cần biết trước khi đăng ký</h2><p>Điều kiện, chính sách học, công việc và đời sống tại Quảng Ninh được trình bày theo từng nhóm nội dung.</p><a class="aside-secondary-link" href="/tin-nganh-than/">Xem tất cả bài viết</a></div>
@@ -561,7 +655,7 @@ function hubHtml() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Ngành Than & Người thợ – Thầy Linh",
-    description: "Những bài viết chuyên sâu về nghề thợ mỏ, thu nhập, đời sống, tay nghề, công nghệ và cơ hội việc làm tại Quảng Ninh.",
+    description: "Bản tin dữ kiện, hồ sơ người thợ và bài phân tích nguyên bản về ngành Than, nghề mỏ và đời sống người lao động tại Quảng Ninh.",
     url: `${base}/tin-nganh-than/`,
     inLanguage: "vi-VN",
     dateModified: buildTime,
@@ -573,8 +667,8 @@ function hubHtml() {
 <html lang="vi">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#063c46">
-  <title>Ngành Than & Người thợ | Chuyện nghề mỏ tại Quảng Ninh</title>
-  <meta name="description" content="Bài viết chuyên sâu về nghề thợ mỏ, thu nhập, đời sống, tay nghề, công nghệ và cơ hội lập nghiệp trong ngành Than tại Quảng Ninh.">
+  <title>Tin ngành Than | Dữ kiện, người thợ và góc nhìn nghề</title>
+  <meta name="description" content="Bản tin dữ kiện, hồ sơ người thợ và bài phân tích nguyên bản về nghề mỏ, đời sống, công nghệ và việc làm ngành Than tại Quảng Ninh.">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><meta name="author" content="${author}">
   <link rel="canonical" href="${base}/tin-nganh-than/">
   <link rel="icon" href="/favicon.ico">
@@ -582,8 +676,8 @@ function hubHtml() {
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="alternate" type="application/rss+xml" title="Tin ngành Than – Thầy Linh" href="${base}/feed.xml"><link rel="alternate" type="application/feed+json" title="Tin ngành Than – Thầy Linh" href="${base}/feed.json">
-  <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="Ngành Than & Người thợ"><meta property="og:description" content="Những câu chuyện có thật, số liệu đáng tin cậy và góc nhìn nghề nghiệp dành cho người đang muốn vào ngành mỏ."><meta property="og:url" content="${base}/tin-nganh-than/"><meta property="og:image" content="${feature.image}">
-  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Ngành Than & Người thợ"><meta name="twitter:description" content="Chuyện nghề mỏ và cơ hội lập nghiệp tại Quảng Ninh."><meta name="twitter:image" content="${feature.image}">
+  <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="Tin ngành Than"><meta property="og:description" content="Tin ngắn đúng dữ kiện; bài dài chỉ xuất bản khi có góc riêng, nhiều nguồn hoặc tư liệu thực tế."><meta property="og:url" content="${base}/tin-nganh-than/"><meta property="og:image" content="${feature.image}">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Tin ngành Than"><meta name="twitter:description" content="Dữ kiện, người thợ và góc nhìn nghề nghiệp tại Quảng Ninh."><meta name="twitter:image" content="${feature.image}">
   <link rel="stylesheet" href="/fonts.css?v=1">
   <link rel="stylesheet" href="../article-insights.css?v=10"><link rel="stylesheet" href="/mobile-ux.css?v=8">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
@@ -592,8 +686,9 @@ function hubHtml() {
   <a class="skip-link" href="#noi-dung">Đến nội dung chính</a>
   <header class="site-header"><div class="container header-inner"><a class="brand" href="../"><img class="brand-mark" src="/assets/thay-linh-avatar.webp?v=3" alt="" width="45" height="45"><span><strong>Thầy Linh</strong><small>Tuyển Thợ Mỏ</small></span></a><a class="back-link" href="../">← Trang chủ</a></div></header>
   <main id="noi-dung">
-    <section class="news-hero"><div class="container"><p class="eyebrow">Người thật · Việc thật · Dữ kiện thật</p><h1>Ngành Than & Người thợ</h1><p class="lead">Những câu chuyện từ hầm lò, lớp học nghề và khu tập thể công nhân giúp người đọc hiểu nghề qua con người, công nghệ, thu nhập và nhịp sống vùng mỏ.</p><nav class="cluster-nav" aria-label="Nhóm bài viết">${sectionOrder.filter((section) => allEditorial.some((article) => article.section === section && article.slug !== feature.slug)).map((section) => `<a href="#${sectionIds[section]}">${esc(section)}</a>`).join("")}</nav></div></section>
+    <section class="news-hero"><div class="container"><p class="eyebrow">Tin chọn lọc · Hồ sơ · Phân tích</p><h1>Tin ngành Than</h1><p class="lead">Một sự kiện chỉ có một nguồn được trình bày thành bản tin ngắn. Bài dài chỉ xuất bản khi có góc viết riêng, nhiều nguồn đối chiếu hoặc tư liệu thực tế từ người lao động.</p><nav class="cluster-nav" aria-label="Nhóm bài viết">${sectionOrder.filter((section) => allEditorial.some((article) => article.section === section && article.slug !== feature.slug)).map((section) => `<a href="#${sectionIds[section]}">${esc(section)}</a>`).join("")}</nav></div></section>
     <div class="container news-main">
+      <section class="newsroom-method" aria-labelledby="newsroom-method-title"><div><p class="news-kicker">Cách làm mới</p><h2 id="newsroom-method-title">Không kéo dài một thông cáo thành bài báo</h2><p>Tin một nguồn đi thẳng vào sự kiện và dữ kiện cần biết. Hồ sơ người thợ giữ lại những chi tiết có giá trị về con người. Phân tích chuyên sâu phải trả lời một câu hỏi riêng bằng nhiều nguồn, số liệu hoặc trải nghiệm thực tế.</p></div><ul><li><strong>Bản tin dữ kiện</strong><span>Ngắn, rõ, ghi nguồn ở cuối.</span></li><li><strong>Hồ sơ người thợ</strong><span>Tập trung vào nhân vật, không kể lại bài báo.</span></li><li><strong>Phân tích nguyên bản</strong><span>Có góc riêng và căn cứ đủ sâu.</span></li></ul></section>
       <article class="news-feature"><img src="${feature.image}" alt="${esc(feature.title)}" referrerpolicy="no-referrer"><div class="news-feature__body"><p class="news-kicker">Bài mới · ${displayDate(feature.published)}</p><h2>${esc(feature.title)}</h2><p>${esc(feature.lead)}</p><a class="news-link" href="./${feature.urlPath.replace(/^tin-nganh-than\//, "")}/">Đọc bài viết →</a></div></article>
       ${sections}
     </div>
