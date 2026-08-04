@@ -12,6 +12,10 @@ const BLUE_WORKER_IMAGES = new Set([
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp",
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp",
+  "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-ha-lam-tang-qua.webp",
+  "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-ha-lam-dong-doi.webp",
+  "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-tkv-bat-tay-trong-ham-lo.webp",
+  "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-tkv-doan-ket-trong-ham-lo.webp",
 ]);
 
 function walk(directory) {
@@ -47,6 +51,10 @@ for (const required of [
   "/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
   "/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp",
   "/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp",
+  "/assets/vinacomin-tho-mo-ha-lam-tang-qua.webp",
+  "/assets/vinacomin-tho-mo-ha-lam-dong-doi.webp",
+  "/assets/vinacomin-tho-mo-tkv-bat-tay-trong-ham-lo.webp",
+  "/assets/vinacomin-tho-mo-tkv-doan-ket-trong-ham-lo.webp",
 ]) {
   if (!home.includes(required)) throw new Error(`Trang chủ thiếu ảnh công nhân áo xanh, đội mũ: ${required}`);
 }

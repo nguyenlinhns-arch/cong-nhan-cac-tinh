@@ -17,6 +17,11 @@ for (const marker of [
   'class="button button-brief home-v6-button home-v6-button--brief"',
   '/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp',
   'Nhóm công nhân Than Mông Dương mặc bảo hộ xanh, đội mũ',
+  '/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp',
+  '/assets/vinacomin-tho-mo-ha-lam-tang-qua.webp',
+  '/assets/vinacomin-tho-mo-ha-lam-dong-doi.webp',
+  '/assets/vinacomin-tho-mo-tkv-bat-tay-trong-ham-lo.webp',
+  '/assets/vinacomin-tho-mo-tkv-doan-ket-trong-ham-lo.webp',
   '/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/',
   '/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/',
   '/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/',
@@ -70,12 +75,20 @@ const dailyAnswerGrid = home.match(/<div class="home-daily-seo__grid">([\s\S]*?)
 const dailyAnswerCards = (dailyAnswerGrid.match(/<a\b/g) || []).length;
 if (dailyAnswerCards !== 3) errors.push(`Khối giải đáp trang chủ: cần đúng 3 thẻ, hiện có ${dailyAnswerCards}`);
 
+const homepageImageSources = [...home.matchAll(/<img\b[^>]*\bsrc="([^"]+)"[^>]*>/gi)]
+  .map((match) => match[1])
+  .filter((source) => !source.includes("thay-linh-avatar.webp"));
+const duplicateHomepageImages = [...new Set(homepageImageSources.filter((source, index) => homepageImageSources.indexOf(source) !== index))];
+if (duplicateHomepageImages.length) errors.push(`Ảnh minh họa trang chủ bị lặp: ${duplicateHomepageImages.join(", ")}`);
+
 console.log(JSON.stringify({
   sections: order.length,
   careers: (home.match(/\/viec-lam\/ky-thuat-[^\"]+\/"/g) || []).length,
   facebookReels: reel ? 1 : 0,
   mobileActions: mobileOrder.length,
   dailyAnswerCards,
+  homepageImages: homepageImageSources.length,
+  duplicateHomepageImages,
   errors: errors.length,
   sampleErrors: errors.slice(0, 20),
 }, null, 2));

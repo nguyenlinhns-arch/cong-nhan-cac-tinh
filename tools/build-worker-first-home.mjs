@@ -5,6 +5,10 @@ import {dailyCommunityArticles} from "./daily-community-articles-all.mjs";
 
 await import("./build-worker-first-home-base.mjs");
 
+// Ảnh trang chủ lấy từ Thư viện ảnh chính thức Vinacomin.
+// https://vinacomin.vn/vi/image-library/460/chu-tich-tong-lien-doan-lao-dong-vn-bui-van-cuong-tham-tho-mo-ha-lam
+// https://vinacomin.vn/vi/image-library/540/pho-thu-tuong-trinh-dinh-dung-tham-va-lam-viec-voi-tkv
+
 const article = [...dailyCommunityArticles].sort((a, b) => new Date(b.published) - new Date(a.published))[0];
 const homepagePath = path.resolve("tuyen-tho-mo", "index.html");
 const journeyCssPath = path.resolve("tuyen-tho-mo", "home-worker-journey.css");
@@ -178,11 +182,11 @@ ${selfCheckBlock}
         <div class="home-section-head home-section-head--light"><p class="home-step">Người thật · việc thật</p><h2 id="home-proof-title">Xem công việc thợ mỏ qua người thật, việc thật</h2></div>
         <div class="home-proof__grid home-proof__grid--simple">
           <article class="home-proof__video">
-            <div class="video-frame" data-featured-video-host><button class="home-video-facade" type="button" data-featured-video-facade data-video-id="ts41cqu7r9c" data-video-title="Hành trình lập nghiệp cùng nghề mỏ" aria-label="Phát video hành trình lập nghiệp cùng nghề mỏ"><img src="/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" alt="Người thợ mỏ chuẩn bị thiết bị trước ca làm việc" loading="lazy" decoding="async" width="1200" height="736"><span class="home-video-facade__play" aria-hidden="true">▶</span><span class="home-video-facade__label">Bấm để xem phóng sự</span></button></div>
+            <div class="video-frame" data-featured-video-host><button class="home-video-facade" type="button" data-featured-video-facade data-video-id="ts41cqu7r9c" data-video-title="Hành trình lập nghiệp cùng nghề mỏ" aria-label="Phát video hành trình lập nghiệp cùng nghề mỏ"><img src="/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp" alt="Tổ đội công nhân Than Mông Dương mặc bảo hộ xanh, đội mũ trong hầm lò" loading="lazy" decoding="async" width="1600" height="882"><span class="home-video-facade__play" aria-hidden="true">▶</span><span class="home-video-facade__label">Bấm để xem phóng sự</span></button></div>
             <div class="home-proof__video-copy"><small>PHÓNG SỰ CÔNG NHÂN</small><h3>Nghe người trong nghề kể về công việc và cuộc sống</h3><a href="/anh-video-thuc-te/">Xem toàn bộ video thực tế →</a></div>
           </article>
           <div class="home-v6-proof-links">
-            <a class="home-proof__story" href="/cau-chuyen-cong-nhan/"><img src="/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp" alt="Tổ đội công nhân Than Mông Dương mặc bảo hộ xanh trong hầm lò" loading="lazy" decoding="async" width="1600" height="882"><span><small>CÂU CHUYỆN THEO TỈNH</small><strong>Từ quê nhà đến vùng mỏ</strong><b>Xem người lao động cùng quê →</b></span></a>
+            <a class="home-proof__story" href="/cau-chuyen-cong-nhan/"><img src="/assets/vinacomin-tho-mo-ha-lam-tang-qua.webp" alt="Công nhân Than Hà Lầm mặc bảo hộ xanh, đội mũ cùng đồng đội trong hầm lò" loading="lazy" decoding="async" width="960" height="638"><span><small>CÂU CHUYỆN THEO TỈNH</small><strong>Từ quê nhà đến vùng mỏ</strong><b>Xem người lao động cùng quê →</b></span></a>
             <a class="home-v6-payroll-proof" href="/bang-luong/"><small>BẢNG LƯƠNG THỰC TẾ</small><strong>Xem bảng lương các công ty theo quý</strong><span>Thông tin cá nhân đã được ẩn trước khi công khai.</span><b>Mở kho bảng lương →</b></a>
           </div>
         </div>
@@ -193,7 +197,7 @@ ${selfCheckBlock}
       <div class="container">
         <div class="home-section-head"><p class="home-step">Từ đăng ký đến nhận việc</p><h2 id="home-journey-title">Hành trình học nghề mỏ và nhận việc tại Quảng Ninh</h2></div>
         <div class="home-journey__layout">
-          <figure class="home-journey__visual"><img src="/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp" alt="Tổ đội công nhân Than Mông Dương mặc bảo hộ xanh trao đổi công việc trong hầm lò" loading="lazy" decoding="async" width="1600" height="860"><figcaption><small>MỘT LỘ TRÌNH RÕ RÀNG</small><strong>Tư vấn → nhập học → học nghề → nhận việc</strong></figcaption></figure>
+          <figure class="home-journey__visual"><img src="/assets/vinacomin-tho-mo-tkv-doan-ket-trong-ham-lo.webp" alt="Nhóm công nhân TKV mặc bảo hộ xanh, đội mũ cùng làm việc trong hầm lò" loading="lazy" decoding="async" width="960" height="629"><figcaption><small>MỘT LỘ TRÌNH RÕ RÀNG</small><strong>Tư vấn → nhập học → học nghề → nhận việc</strong></figcaption></figure>
           <ol class="home-journey__steps">
             <li><span>01</span><div><h3>Kiểm tra và tư vấn từ xa</h3><p>Gửi năm sinh, tỉnh đang sống, chiều cao, cân nặng và sức khỏe hiện tại.</p><a class="home-journey__detail" href="/kiem-tra-dieu-kien/">Xem điều kiện tuyển →</a></div></li>
             <li id="ho-so"><span>02</span><div><h3>Nhập học tại Quang Hanh</h3><p id="dia-diem">Mang CCCD, giấy khai sinh và bằng THCS hoặc THPT nếu có.</p><a class="home-journey__detail" href="/ho-so-nhap-hoc/">Xem hồ sơ và địa chỉ →</a></div></li>
@@ -216,9 +220,9 @@ ${selfCheckBlock}
       <div class="container">
         <div class="home-section-head"><p class="home-step">Đọc sâu khi cần kiểm chứng</p><h2 id="home-library-title">Cẩm nang tuyển thợ mỏ, tin ngành Than và video</h2><a href="/cam-nang-nghe-mo/">Mở toàn bộ cẩm nang →</a></div>
         <div class="home-library__grid home-library__grid--four">
-          <a class="home-library__card" href="/cam-nang-nghe-mo/"><img src="/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp" alt="Nhóm công nhân Than Mông Dương mặc bảo hộ xanh, đội mũ và trao đổi công việc trong hầm lò" loading="lazy" decoding="async" width="1600" height="860"><span><small>CẨM NANG NGHỀ MỎ</small><strong>Từ điều kiện đến ngày nhận việc</strong><b>Đọc cẩm nang →</b></span></a>
+          <a class="home-library__card" href="/cam-nang-nghe-mo/"><img src="/assets/vinacomin-tho-mo-tkv-bat-tay-trong-ham-lo.webp" alt="Công nhân TKV mặc bảo hộ xanh, đội mũ bắt tay động viên nhau trong hầm lò" loading="lazy" decoding="async" width="960" height="629"><span><small>CẨM NANG NGHỀ MỎ</small><strong>Từ điều kiện đến ngày nhận việc</strong><b>Đọc cẩm nang →</b></span></a>
           ${card}
-          <a class="home-library__card" href="/anh-video-thuc-te/"><img src="/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" alt="Người thợ mỏ chuẩn bị thiết bị trước ca làm việc" loading="lazy" decoding="async" width="1200" height="736"><span><small>VIDEO THỰC TẾ</small><strong>Phóng sự và câu chuyện công nhân</strong><b>Mở kho video →</b></span></a>
+          <a class="home-library__card" href="/anh-video-thuc-te/"><img src="/assets/vinacomin-tho-mo-ha-lam-dong-doi.webp" alt="Nhóm công nhân Than Hà Lầm mặc bảo hộ xanh, đội mũ sau ca làm việc trong hầm lò" loading="lazy" decoding="async" width="960" height="638"><span><small>VIDEO THỰC TẾ</small><strong>Phóng sự và câu chuyện công nhân</strong><b>Mở kho video →</b></span></a>
 ${payrollCard}
         </div>
       </div>
@@ -310,6 +314,14 @@ for (const staleMarker of [
   "og-cover-v2.webp",
 ]) {
   if (html.includes(staleMarker)) throw new Error(`Trang chủ còn mốc tháng không phù hợp nội dung lâu dài: ${staleMarker}`);
+}
+
+const homepageImageSources = [...html.matchAll(/<img\b[^>]*\bsrc="([^"]+)"[^>]*>/gi)]
+  .map((match) => match[1])
+  .filter((source) => !source.includes("thay-linh-avatar.webp"));
+const duplicateHomepageImages = [...new Set(homepageImageSources.filter((source, index) => homepageImageSources.indexOf(source) !== index))];
+if (duplicateHomepageImages.length) {
+  throw new Error(`Ảnh minh họa trang chủ bị lặp: ${duplicateHomepageImages.join(", ")}`);
 }
 
 fs.writeFileSync(homepagePath, html);
