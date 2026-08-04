@@ -565,12 +565,12 @@ function renderArticle(article) {
         <p class="lead">${esc(article.lead)}</p>
       </div>
     </section>
-    <div class="container article-layout${isPressLayout || isNewsBrief ? " article-layout--source" : ""}">
+    <div class="container article-layout${isPressLayout ? " article-layout--source" : ""}">
       <article class="article-body${isPressLayout || isNewsBrief ? " article-body--source" : ""}${isNewsBrief ? " article-body--brief" : ""}">
         ${articleContent}
         ${renderArticleApply(article)}
         ${renderArticleShare(article)}
-      </article>${isPressLayout || isNewsBrief ? "" : `
+      </article>${isPressLayout ? "" : `
       <aside class="article-aside">
         ${renderArticleAsideCta(article)}
         <div class="aside-card"><h2>Thông tin cần biết trước khi đăng ký</h2><p>Điều kiện, chính sách học, công việc và đời sống tại Quảng Ninh được trình bày theo từng nhóm nội dung.</p><a class="aside-secondary-link" href="/tin-nganh-than/">Xem tất cả bài viết</a></div>
