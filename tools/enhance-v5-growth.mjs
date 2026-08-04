@@ -142,7 +142,7 @@ function enhanceFullInfoPage() {
   const before = fs.readFileSync(target, "utf8");
   let html = before;
   const title = "Học nghề mỏ tại Quảng Ninh 2026: điều kiện, ăn ở, hồ sơ | Thầy Linh";
-  const description = "Thông tin học nghề mỏ tại Quảng Ninh năm 2026: điều kiện, thời gian 2–3 tháng, miễn kinh phí đào tạo, ăn ở, hỗ trợ, hồ sơ và thu nhập.";
+  const description = "Thông tin học nghề mỏ tại Quảng Ninh năm 2026: khai thác, xây dựng mỏ học 2–3 tháng, cơ điện mỏ học 10 tháng; miễn kinh phí đào tạo, có ăn ở, hỗ trợ và việc làm.";
   html = replaceMeta(html, "title", title);
   html = replaceMeta(html, "description", description);
   html = replaceMeta(html, "ogTitle", "Học nghề mỏ tại Quảng Ninh 2026");
@@ -188,7 +188,7 @@ function enhanceSearchIndex() {
     {
       url: "/hoc-nghe-mo-tai-quang-ninh/",
       title: "Học nghề mỏ tại Quảng Ninh 2026: điều kiện, ăn ở, hồ sơ",
-      description: "Nơi học, thời gian 2–3 tháng, miễn kinh phí đào tạo, ăn ở, hỗ trợ 7,5 triệu, hồ sơ, việc làm và thu nhập.",
+      description: "Nơi học; khai thác, xây dựng mỏ học 2–3 tháng, cơ điện mỏ học 10 tháng; miễn kinh phí đào tạo, ăn ở, hỗ trợ 7,5 triệu, hồ sơ, việc làm và thu nhập.",
       keywords: ["học nghề mỏ tại Quảng Ninh", "học nghề mỏ bao lâu", "học nghề mỏ có mất tiền không", "ký túc xá", "hỗ trợ 7,5 triệu", "hồ sơ học nghề mỏ", "thu nhập thợ mỏ"],
       category: "entry",
       categoryLabel: "Điều kiện & hồ sơ",

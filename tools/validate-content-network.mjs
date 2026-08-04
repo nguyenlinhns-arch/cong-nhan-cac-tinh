@@ -251,8 +251,10 @@ for (const article of articles) {
 const htmlFiles = walk(root);
 const contentFiles = htmlFiles.filter((file) => !path.basename(file).startsWith("google"));
 const legacyRoutes = JSON.parse(fs.readFileSync(path.resolve("operations/legacy-routes.json"), "utf8")).routes || [];
-const expectedHtmlFiles = 56 + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length + workerQuestionPages.length + occupationPages.length + dailySeoPages;
-const expectedContentFiles = 55 + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length + workerQuestionPages.length + occupationPages.length + dailySeoPages;
+const jobMaster = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
+const activeJobPages = (jobMaster.occupation_profiles || []).filter((role) => role.active_intake !== false);
+const expectedHtmlFiles = 54 + activeJobPages.length + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length + workerQuestionPages.length + occupationPages.length + dailySeoPages;
+const expectedContentFiles = 53 + activeJobPages.length + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length + workerQuestionPages.length + occupationPages.length + dailySeoPages;
 if (htmlFiles.length !== expectedHtmlFiles) fail(`Website: cần ${expectedHtmlFiles} tệp HTML theo số bài trong feed, trang kiểm chứng và trang lõi V4, nhận ${htmlFiles.length}`);
 if (contentFiles.length !== expectedContentFiles) fail(`Website: cần ${expectedContentFiles} trang nội dung theo số bài trong feed, trang kiểm chứng và trang lõi V4, nhận ${contentFiles.length}`);
 for (const file of contentFiles) {
@@ -322,6 +324,7 @@ const output = {
   worker_question_pages: workerQuestionPages.length,
   occupation_pages: occupationPages.length,
   daily_seo_pages: dailySeoPages,
+  active_job_pages: activeJobPages.length,
   provinces: provinces.length,
   share_packages: shareOptions,
   articles: articles.length,

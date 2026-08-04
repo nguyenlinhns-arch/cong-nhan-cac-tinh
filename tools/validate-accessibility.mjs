@@ -88,6 +88,7 @@ const applicationPages = [
   "viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html",
   "viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/index.html",
   "viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/index.html",
+  "viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/index.html",
 ];
 
 for (const relative of applicationPages) {

@@ -309,7 +309,7 @@ for (const file of provinceFiles) {
 }
 if (provinceFiles.length !== 26 || noindexProvinces !== 9) errors.push(`Province quality gate expected 26 pages with 9 noindex templates, got ${provinceFiles.length}/${noindexProvinces}`);
 
-for (const slug of ["ky-thuat-khai-thac-mo-ham-lo-quang-ninh", "ky-thuat-xay-dung-mo-ham-lo-quang-ninh"]) {
+for (const slug of master.occupation_profiles.filter((profile) => profile.active_intake).map((profile) => profile.slug)) {
   const html = fs.readFileSync(path.join(root, "viec-lam", slug, "index.html"), "utf8");
   const nodes = graphNodes(parseJsonLd(html, `job ${slug}`));
   const job = nodes.find((node) => node?.["@type"] === "JobPosting");

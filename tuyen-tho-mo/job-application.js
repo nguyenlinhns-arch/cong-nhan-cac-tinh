@@ -520,7 +520,7 @@
         action: delivery.saved ? "application_saved" : "application_message_created",
         context: formContext,
         eligibility: assessment.key,
-        job_id: values.trade === "Kỹ thuật khai thác mỏ hầm lò" ? "khai_thac" : values.trade === "Kỹ thuật xây dựng mỏ hầm lò" ? "xay_dung" : "can_tu_van",
+        job_id: values.trade === "Kỹ thuật khai thác mỏ hầm lò" ? "khai_thac" : values.trade === "Kỹ thuật xây dựng mỏ hầm lò" ? "xay_dung" : values.trade === "Kỹ thuật cơ điện mỏ hầm lò" ? "co_dien" : "can_tu_van",
         source: source.source,
         medium: source.medium,
         campaign: source.campaign,

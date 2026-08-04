@@ -61,11 +61,11 @@
       "work_context": "Làm việc theo ca tại các đường lò được chiếu sáng bằng đèn điện; phối hợp theo tổ đội, thực hiện đúng ca lệnh và tuân thủ quy trình kỹ thuật, an toàn."
     },
     {
-      "id": "TKV-co-dien-mo-ham-lo",
-      "slug": "ky-thuat-co-dien-mo-ham-lo",
+      "id": "TKV-2026-co-dien-mo-ham-lo",
+      "slug": "ky-thuat-co-dien-mo-ham-lo-quang-ninh",
       "title": "Kỹ thuật cơ điện mỏ hầm lò",
       "short": "cơ điện mỏ hầm lò",
-      "active_intake": false,
+      "active_intake": true,
       "training_duration_current": "10 tháng",
       "summary": "Lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống cơ khí, điện, vận tải, chiếu sáng, thông tin liên lạc và thiết bị cơ giới phục vụ sản xuất mỏ.",
       "responsibilities": [

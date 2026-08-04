@@ -12,7 +12,7 @@
       "slug": "lo-trinh-di-lam-mo-than-quang-ninh-tu-dang-ky-den-nhan-viec",
       "title": "Lộ trình đi làm mỏ than Quảng Ninh từ đăng ký đến nhận việc",
       "short_title": "Lộ trình đi làm mỏ Quảng Ninh",
-      "meta": "Lộ trình đi làm mỏ than Quảng Ninh gồm 5 bước: kiểm tra điều kiện, xác nhận lịch, học nghề 2–3 tháng, thực tập và nhận việc tại TKV.",
+      "meta": "Lộ trình đi làm mỏ than Quảng Ninh gồm 5 bước: kiểm tra điều kiện, xác nhận lịch, học nghề 2–3 hoặc 10 tháng theo nghề, thực tập và nhận việc tại TKV.",
       "eyebrow": "LỘ TRÌNH TỪ ĐĂNG KÝ ĐẾN NHẬN VIỆC",
       "primary_query": "lộ trình đi làm mỏ than Quảng Ninh",
       "query_variants": [
@@ -20,7 +20,7 @@
         "đăng ký học nghề mỏ rồi làm gì tiếp theo",
         "quy trình tuyển thợ mỏ Quảng Ninh"
       ],
-      "direct_answer": "Lộ trình đúng gồm 5 bước: kiểm tra điều kiện sơ bộ từ xa; nhận hướng dẫn và lịch tiếp nhận; đến Quảng Ninh làm thủ tục; học nghề mỏ 2–3 tháng và thực tập; sau khi tốt nghiệp đạt yêu cầu, được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng và bố trí việc làm.",
+      "direct_answer": "Lộ trình đúng gồm 5 bước: kiểm tra điều kiện sơ bộ từ xa; nhận hướng dẫn và lịch tiếp nhận; đến Quảng Ninh làm thủ tục; học khai thác hoặc xây dựng mỏ 2–3 tháng, cơ điện mỏ 10 tháng rồi thực tập; sau khi tốt nghiệp đạt yêu cầu, được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng và bố trí việc làm.",
       "image": {
         "src": "https://vinacomin.vn/Share/Media/2018/07/IMG_8765.jpg",
         "alt": "Cán bộ và người lao động tại đơn vị ngành Than thuộc TKV ở Quảng Ninh",
@@ -33,7 +33,7 @@
       "key_points": [
         ["Kiểm tra từ xa trước", "Gửi năm sinh, nơi ở, chiều cao, cân nặng và tình trạng sức khỏe để đối chiếu điều kiện sơ bộ."],
         ["Chỉ đi khi có lịch", "Người đăng ký cần biết ngày, giờ, địa điểm và đầu mối tiếp nhận trước khi di chuyển tới Quảng Ninh."],
-        ["Học nghề trước khi làm", "Hai nghề khai thác mỏ hầm lò và xây dựng mỏ hầm lò có thời gian đào tạo 2–3 tháng theo đợt tuyển."],
+        ["Học nghề trước khi làm", "Khai thác và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng theo đợt tuyển."],
         ["Tốt nghiệp rồi nhận việc", "Người học đạt yêu cầu được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng và bố trí việc làm tại Quảng Ninh."]
       ],
       "sections": [
@@ -54,7 +54,7 @@
         {
           "heading": "Bước 3 và 4: học nghề, rèn an toàn và thực tập",
           "paragraphs": [
-            "Người học lựa chọn kỹ thuật khai thác mỏ hầm lò hoặc kỹ thuật xây dựng mỏ hầm lò. Thời gian đào tạo hiện là 2–3 tháng. Trong khóa học, nội dung không chỉ có thao tác nghề mà còn gồm an toàn, bảo hộ, kỷ luật ca làm và cách phối hợp trong tổ đội.",
+            "Người học lựa chọn kỹ thuật khai thác mỏ hầm lò, kỹ thuật xây dựng mỏ hầm lò hoặc kỹ thuật cơ điện mỏ hầm lò. Khai thác và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng. Trong khóa học, nội dung không chỉ có thao tác nghề mà còn gồm an toàn, bảo hộ, kỷ luật ca làm và cách phối hợp trong tổ đội.",
             "Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ba bữa mỗi ngày, ký túc xá khép kín và hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển. Giai đoạn thực tập giúp làm quen với dây chuyền và môi trường doanh nghiệp trước khi bước sang quan hệ lao động chính thức."
           ]
         },
@@ -67,7 +67,7 @@
         }
       ],
       "takeaway_title": "Bắt đầu bằng kiểm tra điều kiện, không bắt đầu bằng chuyến xe",
-      "takeaway": "Người muốn đi làm mỏ than Quảng Ninh nên thực hiện theo thứ tự: kiểm tra điều kiện từ xa, nhận lịch, chuẩn bị hồ sơ, học nghề 2–3 tháng, thực tập và nhận việc sau khi đạt yêu cầu. Làm đúng thứ tự giúp giảm chi phí, tránh thông tin giả và biết rõ người chịu trách nhiệm ở từng bước.",
+      "takeaway": "Người muốn đi làm mỏ than Quảng Ninh nên thực hiện theo thứ tự: kiểm tra điều kiện từ xa, nhận lịch, chuẩn bị hồ sơ, học 2–3 tháng với nghề khai thác hoặc xây dựng mỏ hoặc 10 tháng với nghề cơ điện mỏ, thực tập và nhận việc sau khi đạt yêu cầu. Làm đúng thứ tự giúp giảm chi phí, tránh thông tin giả và biết rõ người chịu trách nhiệm ở từng bước.",
       "source_note": "Thông báo số 10/TB-CĐTKV ngày 02/04/2026 và nội dung tuyển năm 2026 cập nhật ngày 01/08/2026.",
       "faqs": [
         ["Có phải lên Quảng Ninh ngay để đăng ký không?", "Không. Hãy kiểm tra điều kiện sơ bộ từ xa và chỉ di chuyển sau khi được xác nhận lịch tiếp nhận."],
@@ -85,7 +85,7 @@
       "slug": "di-lam-mo-than-co-can-kinh-nghiem-khong",
       "title": "Đi làm mỏ than có cần kinh nghiệm không?",
       "short_title": "Đi làm mỏ có cần kinh nghiệm không",
-      "meta": "Đi làm mỏ than không yêu cầu kinh nghiệm sẵn có. Người phù hợp được học nghề 2–3 tháng, học an toàn, thực hành rồi mới nhận việc tại TKV.",
+      "meta": "Đi làm mỏ than không yêu cầu kinh nghiệm sẵn có. Người phù hợp được học khai thác, xây dựng mỏ 2–3 tháng hoặc cơ điện mỏ 10 tháng rồi mới nhận việc tại TKV.",
       "eyebrow": "ĐIỀU KIỆN VÀ KINH NGHIỆM",
       "primary_query": "đi làm mỏ than có cần kinh nghiệm không",
       "query_variants": [
@@ -93,7 +93,7 @@
         "chưa làm mỏ bao giờ có đăng ký được không",
         "học nghề mỏ từ đầu"
       ],
-      "direct_answer": "Không yêu cầu kinh nghiệm làm mỏ sẵn có. Người đủ điều kiện được đào tạo nghề hầm lò 2–3 tháng, học quy trình an toàn, thao tác nghề và phối hợp tổ đội trước khi thực tập; chỉ sau khi tốt nghiệp đạt yêu cầu mới được doanh nghiệp thuộc TKV tiếp nhận và bố trí việc làm.",
+      "direct_answer": "Không yêu cầu kinh nghiệm làm mỏ sẵn có. Người đủ điều kiện được đào tạo từ đầu: khai thác và xây dựng mỏ học 2–3 tháng, cơ điện mỏ học 10 tháng; chỉ sau khi tốt nghiệp đạt yêu cầu mới được doanh nghiệp thuộc TKV tiếp nhận và bố trí việc làm.",
       "image": {
         "src": "https://vinacomin.vn/Share/Media/2018/07/IMG_8544.jpg",
         "alt": "Hoạt động thực hành và làm quen công việc tại đơn vị thuộc TKV",
@@ -105,7 +105,7 @@
       ],
       "key_points": [
         ["Không cần kinh nghiệm cũ", "Người từng làm nông nghiệp, xây dựng, nhà máy hoặc chưa có nghề vẫn có thể đăng ký kiểm tra điều kiện."],
-        ["Phải học nghề", "Khóa 2–3 tháng giúp người mới có kiến thức và thao tác nền tảng trước khi làm việc."],
+        ["Phải học nghề", "Khai thác, xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng để người mới có kiến thức và thao tác nền tảng trước khi làm việc."],
         ["An toàn là phần bắt buộc", "Mỗi người phải nắm quy trình, bảo hộ, tín hiệu và cách phối hợp tổ đội."],
         ["Đạt yêu cầu mới nhận việc", "Tốt nghiệp và đủ điều kiện là căn cứ để doanh nghiệp ký hợp đồng, bố trí công việc."]
       ],
@@ -118,16 +118,16 @@
           ]
         },
         {
-          "heading": "Hai nghề cho người bắt đầu từ con số không",
+          "heading": "Ba nghề cho người bắt đầu từ con số không",
           "paragraphs": [
-            "Kỹ thuật khai thác mỏ hầm lò tập trung vào các công việc phục vụ khai thác than trong dây chuyền sản xuất. Kỹ thuật xây dựng mỏ hầm lò tập trung vào đào, chống giữ, củng cố và duy trì đường lò. Cả hai đều cần nền tảng an toàn và phối hợp tổ đội.",
+            "Kỹ thuật khai thác mỏ hầm lò tập trung vào các công việc phục vụ khai thác than trong dây chuyền sản xuất. Kỹ thuật xây dựng mỏ hầm lò tập trung vào đào, chống giữ, củng cố và duy trì đường lò. Kỹ thuật cơ điện mỏ hầm lò tập trung lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống cơ khí, điện cùng thiết bị phục vụ sản xuất. Cả ba đều cần nền tảng an toàn và phối hợp tổ đội.",
             "Người đăng ký chưa cần tự quyết định nghề chỉ dựa trên tên gọi. Hãy hỏi rõ nội dung học, yêu cầu thể lực, loại thao tác và vị trí việc làm sau đào tạo. Việc hiểu sự khác nhau trước khi chọn giúp giảm tình trạng vào học rồi mới nhận ra công việc không hợp với sức khỏe hoặc sở trường."
           ]
         },
         {
-          "heading": "Khóa học 2–3 tháng bù khoảng trống kinh nghiệm như thế nào?",
+          "heading": "Đào tạo từ đầu bù khoảng trống kinh nghiệm như thế nào?",
           "paragraphs": [
-            "Khóa học tạo nền tảng theo trình tự: nhận biết môi trường, sử dụng bảo hộ, hiểu quy trình, thực hành thao tác và làm quen nhịp tổ đội. Người học không chỉ ghi nhớ lý thuyết mà phải thể hiện được cách thực hiện công việc an toàn trong điều kiện có giám sát.",
+            "Chương trình tạo nền tảng theo trình tự: nhận biết môi trường, sử dụng bảo hộ, hiểu quy trình, thực hành thao tác và làm quen nhịp tổ đội. Thời gian đào tạo là 2–3 tháng với khai thác, xây dựng mỏ và 10 tháng với cơ điện mỏ. Người học không chỉ ghi nhớ lý thuyết mà phải thể hiện được cách thực hiện công việc an toàn trong điều kiện có giám sát.",
             "Giai đoạn thực tập là cầu nối giữa lớp học và nơi sản xuất. Đây là lúc người học quan sát dây chuyền, tập làm theo phân công và hiểu rằng hiệu quả không đến từ làm nhanh bằng mọi giá, mà từ việc hoàn thành đúng kỹ thuật, đúng an toàn và phối hợp được với đồng đội."
           ]
         },
@@ -149,7 +149,8 @@
       ],
       "related": [
         ["/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/", "Tin tuyển công nhân mỏ không cần kinh nghiệm"],
-        ["/hoc-nghe-mo-tai-quang-ninh/", "Khóa học nghề mỏ 2–3 tháng"],
+        ["/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/", "Tuyển kỹ thuật cơ điện mỏ hầm lò"],
+        ["/hoc-nghe-mo-tai-quang-ninh/", "Thời gian học của từng nghề mỏ"],
         ["/an-toan-ky-luat-moi-truong/", "An toàn và kỷ luật hầm lò"]
       ]
     },
@@ -269,7 +270,7 @@
           "heading": "Miễn kinh phí đào tạo không có nghĩa là không cần xác nhận chỉ tiêu",
           "paragraphs": [
             "Quyền lợi miễn kinh phí áp dụng cho người học thuộc chỉ tiêu. Vì vậy, bước kiểm tra điều kiện và xác nhận lịch rất quan trọng. Người lao động không nên tự tới trường, đăng ký một chương trình khác rồi mặc định mọi chi phí sẽ được miễn theo thông tin tuyển thợ mỏ.",
-            "Khi tư vấn, hãy hỏi đúng tên nghề, thời gian học, địa điểm tiếp nhận và người phụ trách. Các câu trả lời phải thống nhất với hai nghề đang tuyển là kỹ thuật khai thác mỏ hầm lò và kỹ thuật xây dựng mỏ hầm lò."
+            "Khi tư vấn, hãy hỏi đúng tên nghề, thời gian học, địa điểm tiếp nhận và người phụ trách. Các câu trả lời phải thống nhất với ba nghề đang tuyển là kỹ thuật khai thác mỏ hầm lò, kỹ thuật xây dựng mỏ hầm lò và kỹ thuật cơ điện mỏ hầm lò."
           ]
         },
         {

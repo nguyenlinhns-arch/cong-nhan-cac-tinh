@@ -20,7 +20,7 @@ const profiles = master.occupation_profiles || [];
 if (!source) errors.push("Thiếu nguồn Hướng dẫn 554");
 if (source?.number !== "554/HD-CĐTKV") errors.push("Sai số văn bản Hướng dẫn 554");
 if (profiles.length !== 3) errors.push(`Nguồn dữ liệu nghề phải có 3 nghề, hiện có ${profiles.length}`);
-if (profiles.filter((profile) => profile.active_intake).length !== 2) errors.push("Phải phân biệt đúng hai nghề đang tiếp nhận với nghề cơ điện tư vấn theo chỉ tiêu từng đợt");
+if (profiles.filter((profile) => profile.active_intake).length !== 3) errors.push("Phải công bố đủ ba nghề khai thác, xây dựng và cơ điện mỏ đang tiếp nhận");
 
 for (const title of expectedTitles) {
   const profile = profiles.find((item) => item.title === title);

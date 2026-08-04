@@ -1,5 +1,6 @@
 export function buildRecruitmentAnswers(recruitment) {
   const {criteria, dossier, contact} = recruitment;
+  const activeProfiles = recruitment.occupation_profiles.filter((profile) => profile.active_intake);
   const ageLabel = `${criteria.age_min}–${criteria.age_max}`;
   const heightLabel = `${Math.floor(criteria.height_min_cm / 100)}m${String(criteria.height_min_cm % 100).padStart(2, "0")}`;
 
@@ -28,14 +29,14 @@ export function buildRecruitmentAnswers(recruitment) {
     {
       id: "nghe-dang-tuyen",
       question: "Năm 2026 đang tuyển những nghề mỏ nào?",
-      answer: `Hai nghề đang tiếp nhận là ${recruitment.occupations[0].toLocaleLowerCase("vi")} và ${recruitment.occupations[1].toLocaleLowerCase("vi")}. Người chưa có kinh nghiệm được đào tạo từ đầu trước khi nhận việc.`,
+      answer: `Ba nghề đang tiếp nhận là ${activeProfiles.map((profile) => profile.title.toLocaleLowerCase("vi")).join(", ")}. Người chưa có kinh nghiệm được đào tạo từ đầu trước khi nhận việc.`,
       href: "/viec-lam-nganh-than/",
-      linkLabel: "So sánh hai nghề",
+      linkLabel: "So sánh ba nghề",
     },
     {
       id: "hoc-bao-lau-o-dau",
       question: "Học nghề mỏ bao lâu và học ở đâu?",
-      answer: `Thời gian học hai nghề đang tuyển là ${recruitment.training_duration} tại Quảng Ninh theo lịch tiếp nhận. Địa điểm nhập học là ${contact.admission_address}; chỉ đến sau khi đã được xác nhận lịch.`,
+      answer: `Khai thác mỏ và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng tại Quảng Ninh theo lịch tiếp nhận. Địa điểm nhập học là ${contact.admission_address}; chỉ đến sau khi đã được xác nhận lịch.`,
       href: "/bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/",
       linkLabel: "Xem lộ trình khóa học",
     },

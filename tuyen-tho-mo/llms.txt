@@ -5,8 +5,9 @@
 ## Các điểm vào trung tâm
 
 - [Thông tin tuyển đang áp dụng](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/): điều kiện, học nghề, hồ sơ, địa chỉ và thu nhập hiện hành; ngày cập nhật được công bố ngay trong trang.
+- [Nghề mỏ hầm lò và mô tả công việc](https://thaylinhtuyenthomo.vn/nghe-mo-ham-lo/): khai thác, xây dựng và cơ điện mỏ hầm lò theo nguồn Hướng dẫn 554.
 - [Trung tâm nghề mỏ](https://thaylinhtuyenthomo.vn/trung-tam-nghe-mo/): bản đồ toàn bộ nội dung và đường ứng tuyển.
-- [Việc làm ngành Than theo tỉnh](https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/): hai nghề đang tuyển và 26 trang địa phương.
+- [Việc làm ngành Than theo tỉnh](https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/): ba nghề đang tuyển và 26 trang địa phương.
 - [Cẩm nang nghề mỏ](https://thaylinhtuyenthomo.vn/cam-nang-nghe-mo/): điều kiện, khóa học, hồ sơ, an toàn và đời sống.
 - [Chuyện người thợ](https://thaylinhtuyenthomo.vn/chuyen-nguoi-tho/): câu chuyện có nguồn về ca làm và hành trình nghề nghiệp.
 - [Bộ chia sẻ thông tin](https://thaylinhtuyenthomo.vn/chia-se-thong-tin/): tạo nội dung có mã nguồn cho toàn quốc hoặc từng tỉnh.
@@ -35,7 +36,7 @@
 
 - Trang trung tâm: [Giải đáp nghề mỏ Quảng Ninh mỗi ngày](https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/).
 - Dữ liệu máy đọc: [daily-seo-articles.json](https://thaylinhtuyenthomo.vn/daily-seo-articles.json).
-- [Lộ trình đi làm mỏ than Quảng Ninh từ đăng ký đến nhận việc](https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/lo-trinh-di-lam-mo-than-quang-ninh-tu-dang-ky-den-nhan-viec/): Lộ trình đúng gồm 5 bước: kiểm tra điều kiện sơ bộ từ xa; nhận hướng dẫn và lịch tiếp nhận; đến Quảng Ninh làm thủ tục; học nghề mỏ 2–3 tháng và thực tập; sau khi tốt nghiệp đạt yêu cầu, được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng và bố trí việc làm.
+- [Lộ trình đi làm mỏ than Quảng Ninh từ đăng ký đến nhận việc](https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/lo-trinh-di-lam-mo-than-quang-ninh-tu-dang-ky-den-nhan-viec/): Lộ trình đúng gồm 5 bước: kiểm tra điều kiện sơ bộ từ xa; nhận hướng dẫn và lịch tiếp nhận; đến Quảng Ninh làm thủ tục; học khai thác hoặc xây dựng mỏ 2–3 tháng, cơ điện mỏ 10 tháng rồi thực tập; sau khi tốt nghiệp đạt yêu cầu, được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng và bố trí việc làm.
 
 ## Dữ liệu máy đọc và nguồn cập nhật
 
@@ -66,8 +67,8 @@
 - [Bao nhiêu tuổi được đăng ký học nghề mỏ năm 2026?](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/#do-tuoi): Chương trình đang tiếp nhận nam từ 18–40 tuổi. Tuổi được đối chiếu tại thời điểm đăng ký và kết quả cuối cùng còn căn cứ hồ sơ của đợt tiếp nhận.
 - [Chiều cao và cân nặng tối thiểu là bao nhiêu?](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/#chieu-cao-can-nang): Mốc sàng lọc ban đầu là cao từ 1m53 và nặng từ 47 kg. Khám tuyển sẽ xác nhận thể lực và sức khỏe phù hợp với công việc.
 - [Bị cận thị có đăng ký học nghề mỏ được không?](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/#can-thi-suc-khoe): Không. Điều kiện đang áp dụng yêu cầu người đăng ký không cận thị, không mắc bệnh tim mạch, huyết áp hoặc bệnh về mắt ảnh hưởng đến công việc; kết luận cuối cùng do khám tuyển xác nhận.
-- [Năm 2026 đang tuyển những nghề mỏ nào?](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/#nghe-dang-tuyen): Hai nghề đang tiếp nhận là kỹ thuật khai thác mỏ hầm lò và kỹ thuật xây dựng mỏ hầm lò. Người chưa có kinh nghiệm được đào tạo từ đầu trước khi nhận việc.
-- [Học nghề mỏ bao lâu và học ở đâu?](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/#hoc-bao-lau-o-dau): Thời gian học hai nghề đang tuyển là 2–3 tháng tại Quảng Ninh theo lịch tiếp nhận. Địa điểm nhập học là Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh; chỉ đến sau khi đã được xác nhận lịch.
+- [Năm 2026 đang tuyển những nghề mỏ nào?](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/#nghe-dang-tuyen): Ba nghề đang tiếp nhận là kỹ thuật khai thác mỏ hầm lò, kỹ thuật xây dựng mỏ hầm lò, kỹ thuật cơ điện mỏ hầm lò. Người chưa có kinh nghiệm được đào tạo từ đầu trước khi nhận việc.
+- [Học nghề mỏ bao lâu và học ở đâu?](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/#hoc-bao-lau-o-dau): Khai thác mỏ và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng tại Quảng Ninh theo lịch tiếp nhận. Địa điểm nhập học là Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh; chỉ đến sau khi đã được xác nhận lịch.
 - [Học nghề mỏ có mất học phí không?](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/#mien-kinh-phi-dao-tao): Người học thuộc chỉ tiêu được miễn toàn bộ kinh phí đào tạo theo chính sách của chương trình. Hãy xác nhận đúng đợt tiếp nhận trước khi chuẩn bị nhập học.
 - [Trong thời gian học có được bố trí ăn ở không?](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/#an-o-ky-tuc-xa): Có. Người học thuộc chỉ tiêu được bố trí ba bữa mỗi ngày với mức ăn 90.000 đồng/ngày và ở ký túc xá khép kín theo chính sách đợt tuyển.
 - [Khoản hỗ trợ 7,5 triệu đồng được áp dụng thế nào?](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/#ho-tro-75-trieu): Người học thuộc chỉ tiêu được hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển. Cán bộ tiếp nhận sẽ xác nhận cách thực hiện cùng lịch nhập học.
@@ -82,7 +83,7 @@
 ## Thông tin tuyển sinh đang áp dụng
 
 - Căn cứ: Thông báo số 10/TB-CĐTKV ngày 02/04/2026 và nội dung tuyển tháng 8/2026 cập nhật ngày 01/08/2026.
-- Thời gian học các nghề đang tuyển: 2–3 tháng.
+- Thời gian học: khai thác mỏ và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng.
 - Điều kiện: nam 18–40 tuổi, cao từ 1,53 m, nặng từ 47 kg, có sức khỏe tốt và đáp ứng yêu cầu khám tuyển.
 - Sức khỏe: không cận thị; không mắc bệnh tim mạch, huyết áp hoặc bệnh về mắt ảnh hưởng đến công việc.
 - Đăng ký ban đầu chưa cần nộp giấy tờ. Khi có lịch nhập học, mang CCCD gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Chưa có bằng vẫn có thể đăng ký để được hướng dẫn đối chiếu theo hệ đào tạo; không gửi giấy tờ gốc qua bưu điện.
@@ -93,7 +94,17 @@
 - Tin tuyển dụng chuẩn: [Tuyển lao động học nghề mỏ hầm lò năm 2026](https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/).
 - Vị trí 1: [Kỹ thuật khai thác mỏ hầm lò](https://thaylinhtuyenthomo.vn/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/).
 - Vị trí 2: [Kỹ thuật xây dựng mỏ hầm lò](https://thaylinhtuyenthomo.vn/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/).
+- Vị trí 3: [Kỹ thuật cơ điện mỏ hầm lò](https://thaylinhtuyenthomo.vn/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/).
 - Liên hệ tư vấn: Zalo 096 304 8585.
+
+## Mô tả nghề mỏ hầm lò
+
+- Nguồn mô tả nghề: Hướng dẫn nội dung tư vấn tuyển sinh các nghề mỏ hầm lò, số 554/HD-CĐTKV ngày 22/02/2022 của Trường Cao đẳng Than - Khoáng sản Việt Nam. Nguồn này dùng cho tên nghề, công việc, thiết bị và bối cảnh làm việc; chính sách tuyển sinh và thu nhập dùng thông tin hiện hành năm 2026.
+- [Ba nghề mỏ hầm lò và công việc cụ thể](https://thaylinhtuyenthomo.vn/nghe-mo-ham-lo/).
+- [Dữ liệu nghề dành cho hệ thống máy đọc](https://thaylinhtuyenthomo.vn/occupations.json).
+- Kỹ thuật khai thác mỏ hầm lò: Thực hiện các công đoạn khai thác than, tổ chức chống giữ khu vực sản xuất, thu hồi than và phối hợp chuẩn bị đường lò phục vụ khai thác. Thời gian học hiện hành: 2–3 tháng.
+- Kỹ thuật xây dựng mỏ hầm lò: Đào, chống giữ, gia cố và duy trì các đường lò cơ bản, lò mở vỉa và lò chuẩn bị để tạo hạ tầng phục vụ khai thác than hầm lò. Thời gian học hiện hành: 2–3 tháng.
+- Kỹ thuật cơ điện mỏ hầm lò: Lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống cơ khí, điện, vận tải, chiếu sáng, thông tin liên lạc và thiết bị cơ giới phục vụ sản xuất mỏ. Thời gian học hiện hành: 10 tháng.
 
 ## Nguyên tắc nội dung
 

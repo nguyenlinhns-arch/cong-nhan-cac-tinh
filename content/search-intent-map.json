@@ -34,10 +34,19 @@
       "id": "mine-occupations",
       "landing": "/nghe-mo-ham-lo/",
       "primary": "nghề mỏ hầm lò gồm những nghề gì",
-      "variants": ["công việc thợ khai thác mỏ hầm lò", "nghề xây dựng mỏ hầm lò làm gì", "cơ điện mỏ hầm lò làm gì"],
+      "variants": ["công việc thợ khai thác mỏ hầm lò", "nghề xây dựng mỏ hầm lò làm gì", "các nghề mỏ hầm lò"],
       "titleTerms": ["nghề mỏ hầm lò", "mô tả công việc"],
       "h1Terms": ["nghề mỏ hầm lò", "nghề gì"],
       "visibleTerms": ["Kỹ thuật khai thác mỏ hầm lò", "Kỹ thuật xây dựng mỏ hầm lò", "Kỹ thuật cơ điện mỏ hầm lò", "20–25 triệu đồng/tháng"]
+    },
+    {
+      "id": "mine-electromechanical-recruitment",
+      "landing": "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
+      "primary": "tuyển cơ điện mỏ Quảng Ninh",
+      "variants": ["việc làm cơ điện mỏ", "cơ điện mỏ hầm lò làm gì", "học cơ điện mỏ 10 tháng", "lương cơ điện mỏ", "tuyển kỹ thuật cơ điện mỏ hầm lò"],
+      "titleTerms": ["Kỹ thuật cơ điện mỏ hầm lò", "Quảng Ninh"],
+      "h1Terms": ["Kỹ thuật cơ điện mỏ hầm lò"],
+      "visibleTerms": ["10 tháng", "20–25 triệu đồng/tháng", "lắp đặt", "bảo dưỡng", "sửa chữa", "ứng tuyển"]
     },
     {
       "id": "jobs-by-province",

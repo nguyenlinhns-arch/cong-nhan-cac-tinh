@@ -43,7 +43,7 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
   });
   const fields = Object.fromEntries(Object.keys(values).map(name => [name, makeElement({ name, value: values[name] })]));
   fields.province.options = [{ value: "" }, { value: "Hồ Chí Minh" }, { value: "An Giang" }];
-  fields.trade.options = [{ value: "" }, { value: "Kỹ thuật khai thác mỏ hầm lò" }, { value: "Kỹ thuật xây dựng mỏ hầm lò" }];
+  fields.trade.options = [{ value: "" }, { value: "Kỹ thuật khai thác mỏ hầm lò" }, { value: "Kỹ thuật xây dựng mỏ hầm lò" }, { value: "Kỹ thuật cơ điện mỏ hầm lò" }];
 
   const form = makeElement({
     elements: { namedItem: name => fields[name] },

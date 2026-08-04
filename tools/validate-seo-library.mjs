@@ -388,14 +388,13 @@ const campaignFile = path.join(root, "viec-lam", "cong-nhan-mo-ham-lo-quang-ninh
 if (!fs.existsSync(campaignFile)) errors.push("Missing recruitment campaign page");
 else {
   const campaignHtml = fs.readFileSync(campaignFile, "utf8");
-  for (const phrase of ["2–3 tháng", "7,5 triệu", `${criteria.age_min}–${criteria.age_max}`, "1m53", `${criteria.weight_min_kg}kg`, "ky-thuat-khai-thac-mo-ham-lo-quang-ninh", "ky-thuat-xay-dung-mo-ham-lo-quang-ninh"]) {
+  for (const phrase of ["2–3 tháng", "10 tháng", "7,5 triệu", `${criteria.age_min}–${criteria.age_max}`, "1m53", `${criteria.weight_min_kg}kg`, "ky-thuat-khai-thac-mo-ham-lo-quang-ninh", "ky-thuat-xay-dung-mo-ham-lo-quang-ninh", "ky-thuat-co-dien-mo-ham-lo-quang-ninh"]) {
     if (!campaignHtml.includes(phrase)) errors.push(`Recruitment campaign page is missing ${phrase}`);
   }
 }
-const roleJobs = [
-  { slug: "ky-thuat-khai-thac-mo-ham-lo-quang-ninh", title: "Kỹ thuật khai thác mỏ hầm lò" },
-  { slug: "ky-thuat-xay-dung-mo-ham-lo-quang-ninh", title: "Kỹ thuật xây dựng mỏ hầm lò" },
-];
+const roleJobs = recruitment.occupation_profiles
+  .filter((profile) => profile.active_intake)
+  .map((profile) => ({ slug: profile.slug, title: profile.title, trainingDuration: profile.training_duration_current }));
 for (const role of roleJobs) {
   const jobUrl = `${base}/viec-lam/${role.slug}/`;
   const jobFile = path.join(root, "viec-lam", role.slug, "index.html");
@@ -427,14 +426,14 @@ for (const role of roleJobs) {
     if (jobPosting.jobLocation?.address?.addressRegion !== recruitment.work_location) errors.push(`${role.slug}: jobLocation must be the actual Quảng Ninh work location`);
     if (jobPosting.jobLocation?.address?.streetAddress) errors.push(`${role.slug}: recruitment office must not be represented as the worksite`);
   }
-  for (const phrase of ["2–3 tháng", "7,5 triệu", `${criteria.age_min}–${criteria.age_max}`, "1m53", `${criteria.weight_min_kg} kg`, "data-application-form"]) {
+  for (const phrase of [role.trainingDuration, "7,5 triệu", `${criteria.age_min}–${criteria.age_max}`, "1m53", `${criteria.weight_min_kg} kg`, "data-application-form"]) {
     if (!jobHtml.includes(phrase)) errors.push(`${role.slug}: missing ${phrase}`);
   }
   if (!sitemap.includes(jobUrl)) errors.push(`${role.slug}: absent from sitemap`);
   if (!jobFeed.jobs?.some(job => job.url === jobUrl && job.status === "open" && job.title === role.title)) errors.push(`${role.slug}: absent from jobs.json`);
 }
 if (!sitemap.includes(`<loc>${campaignUrl}</loc>`)) errors.push("Recruitment campaign page is absent from sitemap");
-if (!Array.isArray(jobFeed.jobs) || jobFeed.jobs.length !== roleJobs.length) errors.push("jobs.json must contain exactly two role-specific jobs");
+if (!Array.isArray(jobFeed.jobs) || jobFeed.jobs.length !== roleJobs.length) errors.push(`jobs.json must contain exactly ${roleJobs.length} role-specific jobs`);
 if (provinceDirectory.provinces?.length !== 26) errors.push(`Expected 26 province pages from Lâm Đồng northward, got ${provinceDirectory.provinces?.length || 0}`);
 for (const province of provinceDirectory.provinces || []) {
   const file = path.join(root, "viec-lam-nganh-than", province.slug, "index.html");

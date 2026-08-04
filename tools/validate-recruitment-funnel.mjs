@@ -63,6 +63,7 @@ for (const text of [
   "measurement_client_id",
   "internal_campaign",
   "lead_key: applicationCode",
+  '"co_dien"',
 ]) requireText(application, text, "application logic");
 
 for (const marker of ["deliverApplication(application)", "Content-Type\": \"text/plain", "application_saved", "values.consent === \"on\"", "String(values.website || \"\")"]) {
@@ -87,7 +88,7 @@ for (const marker of ["Bản nháp trên thiết bị", "tối đa 24 giờ", "k
   requireText(privacy, marker, "privacy notice");
 }
 
-for (const slug of ["ky-thuat-khai-thac-mo-ham-lo-quang-ninh", "ky-thuat-xay-dung-mo-ham-lo-quang-ninh"]) {
+for (const slug of master.occupation_profiles.filter((profile) => profile.active_intake).map((profile) => profile.slug)) {
   const role = read(`viec-lam/${slug}/index.html`);
   for (const marker of ["data-application-form", "data-form-context=\"job_", "directApply\":true", "job-application.js?v=10", "data-application-draft-status", "application-result-title", "<noscript>"]) {
     requireText(role, marker, `${slug} direct application`);

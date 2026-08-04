@@ -5,10 +5,9 @@ const root = path.resolve("tuyen-tho-mo");
 const master = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
 const feed = JSON.parse(fs.readFileSync(path.join(root, "jobs.json"), "utf8"));
 const errors = [];
-const roles = [
-  ["ky-thuat-khai-thac-mo-ham-lo-quang-ninh", "Kỹ thuật khai thác mỏ hầm lò"],
-  ["ky-thuat-xay-dung-mo-ham-lo-quang-ninh", "Kỹ thuật xây dựng mỏ hầm lò"],
-];
+const roles = master.occupation_profiles
+  .filter((profile) => profile.active_intake)
+  .map((profile) => [profile.slug, profile.title, profile.training_duration_current]);
 const dossierDocuments = master.dossier?.admission_documents || [];
 
 if (master.version < 4) errors.push("Recruitment master must use Google Jobs compatible schema v4");
@@ -42,7 +41,7 @@ function jobPostingFrom(html, slug) {
   return postings[0];
 }
 
-for (const [slug, expectedTitle] of roles) {
+for (const [slug, expectedTitle, trainingDuration] of roles) {
   const file = path.join(root, "viec-lam", slug, "index.html");
   const html = fs.readFileSync(file, "utf8");
   const visible = visibleText(html);
@@ -72,10 +71,10 @@ for (const [slug, expectedTitle] of roles) {
   if (new Date(job.validThrough).getTime() <= Date.now()) errors.push(`${slug}: validThrough is not in the future`);
   if (!html.includes("data-application-form") || !html.includes("data-application-submit")) errors.push(`${slug}: direct application form is missing`);
 
-  for (const phrase of [expectedTitle, "18–40", "1m53", "47 kg", "2–3 tháng", "7,5 triệu", master.income_commitment, ...dossierDocuments, master.contact.address, master.contact.admission_address]) {
+  for (const phrase of [expectedTitle, "18–40", "1m53", "47 kg", trainingDuration, "7,5 triệu", master.income_commitment, ...dossierDocuments, master.contact.address, master.contact.admission_address]) {
     if (!visible.includes(phrase)) errors.push(`${slug}: visible page is missing ${phrase}`);
   }
-  for (const phrase of ["18–40", "1m53", "47 kg", "2–3 tháng", "7,5 triệu", master.income_commitment, ...dossierDocuments, master.contact.address, master.contact.admission_address]) {
+  for (const phrase of ["18–40", "1m53", "47 kg", trainingDuration, "7,5 triệu", master.income_commitment, ...dossierDocuments, master.contact.address, master.contact.admission_address]) {
     if (!job.description.toLocaleLowerCase("vi").includes(phrase.toLocaleLowerCase("vi"))) errors.push(`${slug}: JobPosting description is missing ${phrase}`);
   }
 
@@ -98,6 +97,11 @@ const campaignVisible = visibleText(campaign);
 const campaignNormalized = `${campaign}\n${campaignVisible}`.toLocaleLowerCase("vi");
 for (const phrase of [master.income_commitment, ...dossierDocuments, master.dossier.missing_diploma, master.contact.address, master.contact.admission_address]) {
   if (!campaignNormalized.includes(phrase.toLocaleLowerCase("vi"))) errors.push(`Recruitment list page is missing ${phrase}`);
+}
+for (const profile of master.occupation_profiles.filter((item) => item.active_intake)) {
+  for (const phrase of [profile.title, profile.slug, profile.training_duration_current]) {
+    if (!campaign.includes(phrase)) errors.push(`Recruitment list page is missing ${phrase}`);
+  }
 }
 for (const forbidden of ["Chỉ cần căn cước công dân gốc", "Hồ sơ dự tuyển gồm 2 bộ", "Thu nhập phổ biến từ 20 đến 25 triệu đồng"]) {
   if (campaign.includes(forbidden)) errors.push(`Recruitment list page contains outdated wording: ${forbidden}`);
