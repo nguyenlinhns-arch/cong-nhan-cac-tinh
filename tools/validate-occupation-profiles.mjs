@@ -5,6 +5,7 @@ const root = path.resolve("tuyen-tho-mo");
 const master = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
 const publicData = JSON.parse(fs.readFileSync(path.join(root, "occupations.json"), "utf8"));
 const page = fs.readFileSync(path.join(root, "nghe-mo-ham-lo", "index.html"), "utf8");
+const jobsCss = fs.readFileSync(path.join(root, "jobs.css"), "utf8");
 const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
 const llms = fs.readFileSync(path.join(root, "llms.txt"), "utf8");
 const errors = [];
@@ -44,6 +45,9 @@ if (publicData.current_income !== master.income_commitment) errors.push("occupat
 if (!page.includes('<link rel="canonical" href="https://thaylinhtuyenthomo.vn/nghe-mo-ham-lo/">')) errors.push("Trang nghề thiếu canonical chuẩn");
 if (!page.includes("Nghề mỏ hầm lò gồm những nghề gì?")) errors.push("Trang nghề thiếu câu hỏi tìm kiếm chính");
 if (!page.includes(master.income_commitment)) errors.push("Trang nghề thiếu mức thu nhập hiện hành");
+if (!page.includes('class="worker-question-page occupation-text-only"')) errors.push("Trang tổng hợp nghề chưa bật chế độ chỉ dùng nội dung chữ");
+const occupationMain = page.match(/<main\b[\s\S]*?<\/main>/i)?.[0] || "";
+if (/<(?:img|picture|figure)\b/i.test(occupationMain)) errors.push("Trang tổng hợp nghề còn ảnh minh họa trong nội dung chính");
 if ((page.match(/"@type":"Occupation"/g) || []).length !== 3) errors.push("Trang nghề phải có ba thực thể Occupation trong dữ liệu có cấu trúc");
 if (!sitemap.includes("<loc>https://thaylinhtuyenthomo.vn/nghe-mo-ham-lo/</loc>")) errors.push("Trang nghề chưa có trong sitemap");
 if (!llms.includes("https://thaylinhtuyenthomo.vn/nghe-mo-ham-lo/")) errors.push("llms.txt chưa định tuyến tới trang nghề");
@@ -51,6 +55,9 @@ if (!llms.includes("https://thaylinhtuyenthomo.vn/occupations.json")) errors.pus
 
 for (const profile of profiles.filter((item) => item.active_intake)) {
   const jobPage = fs.readFileSync(path.join(root, "viec-lam", profile.slug, "index.html"), "utf8");
+  if (!jobPage.includes('class="occupation-job-page occupation-text-only"')) errors.push(`${profile.title}: chưa bật chế độ chỉ dùng nội dung chữ`);
+  const jobMain = jobPage.match(/<main\b[\s\S]*?<\/main>/i)?.[0] || "";
+  if (/<(?:img|picture|figure)\b/i.test(jobMain)) errors.push(`${profile.title}: còn ảnh minh họa trong nội dung chính`);
   for (const task of profile.responsibilities) {
     if (!jobPage.includes(task)) errors.push(`${profile.title}: trang tuyển dụng thiếu công việc “${task}”`);
   }
@@ -58,6 +65,10 @@ for (const profile of profiles.filter((item) => item.active_intake)) {
   const job = jobs.jobs.find((item) => item.id === profile.id);
   if (JSON.stringify(job?.responsibilities) !== JSON.stringify(profile.responsibilities)) errors.push(`${profile.title}: jobs.json chưa đồng bộ mô tả công việc`);
 }
+
+if (!jobsCss.includes(".dossier-board ol>li{")) errors.push("CSS mô tả nghề chưa giới hạn kiểu thẻ vào danh sách công việc");
+if (!jobsCss.includes(".dossier-board aside li{")) errors.push("CSS mô tả nghề thiếu danh sách thiết bị dạng chữ gọn");
+if (jobsCss.includes(".dossier-board li{min-height")) errors.push("CSS mô tả nghề còn áp nhầm thẻ lớn cho danh sách thiết bị");
 
 const allowedTextExtensions = new Set([".html", ".json", ".xml", ".txt", ".js", ".css"]);
 function publicTextFiles(directory) {

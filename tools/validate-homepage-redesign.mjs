@@ -14,6 +14,7 @@ for (const marker of [
   'facebook.com%2Freel%2F1145886217664123',
   'data-home-reel-schema',
   'id="nghe-dang-tuyen"',
+  'class="button button-brief home-v6-button home-v6-button--brief"',
   '/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp',
   'Nhóm công nhân Than Mông Dương mặc bảo hộ xanh, đội mũ',
   '/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/',
@@ -27,6 +28,11 @@ for (const marker of [
   'href="/cau-chuyen-cong-nhan/"',
   'href="/hoi-dap-di-lam-mo-than-quang-ninh/"',
 ]) requireText(home, marker, "Trang chủ mới");
+
+const heroActions = home.match(/<div class="home-v6-actions">([\s\S]*?)<\/div>/)?.[1] || "";
+for (const marker of ["home-v6-button--primary", "home-v6-button--video", "home-v6-button--brief"]) {
+  if (!heroActions.includes(marker)) errors.push(`Cụm nút đầu trang: thiếu ${marker}`);
+}
 
 const order = ["home-kcn-video", "nghe-dang-tuyen", "tu-kiem-tra", "thuc-te", "thong-tin", "tu-van"];
 let previous = -1;

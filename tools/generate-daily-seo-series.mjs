@@ -23,6 +23,10 @@ if (!/^\d{4}-\d{2}-\d{2}$/.test(releaseDate)) throw new Error("SEO_DAILY_DATE mu
 const released = data.articles
   .filter((article) => article.publish_on <= releaseDate)
   .sort((a, b) => b.publish_on.localeCompare(a.publish_on));
+const occupationTerms = ["khai thác mỏ", "xây dựng mỏ", "cơ điện mỏ"];
+const isOccupationArticle = (article) => occupationTerms.some((term) =>
+  `${article.title} ${article.primary_query}`.toLocaleLowerCase("vi").includes(term),
+);
 
 const esc = (value = "") => String(value)
   .replaceAll("&", "&amp;")
@@ -70,7 +74,7 @@ function graphFor(article) {
         mainEntityOfPage: {"@id": `${url}#webpage`},
         author: {"@id": `${BASE}/tac-gia/nguyen-tu-linh/#person`},
         publisher: {"@id": `${BASE}/#organization`},
-        image: [article.image.src],
+        ...(isOccupationArticle(article) ? {} : {image: [article.image.src]}),
         about: [article.primary_query, ...(article.query_variants || [])],
         isPartOf: {"@id": `${hubUrl}#webpage`},
       },
@@ -129,6 +133,7 @@ function head({title, meta, canonical, graph, image, type = "article"}) {
   <meta property="og:image" content="${esc(image)}"><meta property="og:image:alt" content="${esc(title)}">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(title)}"><meta name="twitter:description" content="${esc(meta)}"><meta name="twitter:image" content="${esc(image)}">
   <link rel="stylesheet" href="/fonts.css?v=1"><link rel="stylesheet" href="/content-network.css?v=1"><link rel="stylesheet" href="/daily-seo.css?v=1"><link rel="stylesheet" href="/mobile-core.css?v=1">
+  <style>.daily-seo-hero__grid--text-only{grid-template-columns:minmax(0,900px)}</style>
   <script type="application/ld+json">${JSON.stringify(graph)}</script>
 </head>`;
 }
@@ -192,7 +197,16 @@ function hubPage() {
   return `<!doctype html><html lang="vi">${head({title: data.hub.title, meta: data.hub.meta, canonical, graph: hubGraph(), image: `${BASE}/assets/og-cover-luong-25-trieu-v4.jpg`, type: "website"})}<body class="daily-seo-page">${header()}<main id="noi-dung"><section class="daily-seo-hub-hero"><div class="network-wrap"><p class="network-eyebrow">MỖI NGÀY MỘT CÂU HỎI THẬT</p><h1>${esc(data.hub.title)}</h1><p>${esc(data.hub.lead)}</p><div class="daily-seo-actions"><a class="network-button" href="/hoi-dap-di-lam-mo-than-quang-ninh/">Xem 20 câu hỏi nền tảng</a><a class="network-button network-button--outline" href="/lien-he-di-lam-mo-than-quang-ninh/">Liên hệ người phụ trách</a></div></div></section><section class="daily-seo-section daily-seo-section--soft"><div class="network-wrap"><div class="daily-seo-heading"><div><p class="network-eyebrow">BÀI ĐÃ XUẤT BẢN</p><h2>${released.length} câu trả lời có thể tra cứu</h2></div><p>Nội dung mới chỉ được công bố khi đã có câu hỏi riêng, câu trả lời trực tiếp, căn cứ và liên kết về thông tin tuyển đang áp dụng.</p></div><div class="daily-seo-card-grid">${cards}</div></div></section></main>${footer()}<script src="/analytics.js?v=6" defer></script><script src="/mobile-core.js?v=1" defer></script></body></html>\n`;
 }
 
-for (const article of released) write(`giai-dap-nghe-mo/${article.slug}/index.html`, articlePage(article));
+for (const article of released) {
+  let articleHtml = articlePage(article);
+  if (isOccupationArticle(article)) {
+    articleHtml = articleHtml
+      .replace('<body class="daily-seo-page">', '<body class="daily-seo-page occupation-text-only">')
+      .replace('class="network-wrap daily-seo-hero__grid"', 'class="network-wrap daily-seo-hero__grid daily-seo-hero__grid--text-only"')
+      .replace(/<figure><img\b[^>]*><figcaption>[\s\S]*?<\/figcaption><\/figure>/i, "");
+  }
+  write(`giai-dap-nghe-mo/${article.slug}/index.html`, articleHtml);
+}
 write("giai-dap-nghe-mo/index.html", hubPage());
 
 const machineFeed = {

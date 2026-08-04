@@ -112,9 +112,9 @@ const redesignedMain = `  <main id="noi-dung" class="home-funnel">
           <div class="home-v6-actions">
             <a class="button home-v6-button home-v6-button--primary" href="#tu-kiem-tra">Kiểm tra điều kiện</a>
             <a class="button home-v6-button home-v6-button--video" href="#home-kcn-video">Xem “Làm mỏ hay KCN?”</a>
+            <button class="button button-brief home-v6-button home-v6-button--brief" type="button" data-open-worker-brief data-worker-shortcut="brief" aria-haspopup="dialog">Xem nhanh tin tuyển dụng</button>
           </div>
           <div class="home-v6-hero__assist">
-            <button class="button button-brief" type="button" data-open-worker-brief data-worker-shortcut="brief" aria-haspopup="dialog">Xem nhanh tin tuyển dụng</button>
             <span>Chưa cần hồ sơ · chưa cần lên Quảng Ninh</span>
           </div>
         </div>
