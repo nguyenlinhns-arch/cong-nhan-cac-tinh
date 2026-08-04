@@ -111,7 +111,6 @@ for (const anchor of ["dieu-kien", "quyen-loi", "thoi-gian-hoc", "ho-tro-hoc-ngh
   if (count(home, `id="${anchor}"`) !== 1) fail(`Thông tin nhanh: neo #${anchor} phải có đúng một lần`);
 }
 if (!home.includes("Khai thác và xây dựng mỏ: 2–3 tháng") || !home.includes("Cơ điện mỏ: 10 tháng")) fail("Thời gian học chưa tách rõ theo nghề");
-if (!home.includes('/assets/vinacomin-tho-lo-thao-a-bang.webp')) fail("Thiếu ảnh công nhân thợ lò mặc bảo hộ xanh, đội mũ");
 if (!home.includes('/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp')) fail("Thiếu ảnh câu chuyện người mới");
 if (!home.includes('/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp')) fail("Thiếu ảnh tổ đội công nhân mặc bảo hộ xanh");
 if (!home.includes('/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp')) fail("Thiếu ảnh câu chuyện tổ đội công nhân áo xanh");
@@ -123,7 +122,8 @@ if (!heroBlock.includes('class="hero-visual"')) fail("Mở đầu chưa có ản
 if ((heroBlock.match(/<(?:a|button)\b[^>]*class="[^"]*\bbutton\b[^"]*"/g) || []).length > 2) fail("Mở đầu còn quá nhiều nút");
 if ((heroBlock.match(/<p\b/g) || []).length > 2) fail("Mở đầu còn quá nhiều đoạn chữ");
 if (home.includes('/assets/vinacomin-dao-tao-tho-lo.webp')) fail("Trang chủ còn ảnh cán bộ phát biểu sai ngữ cảnh");
-if (home.includes('/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp') || home.includes('/assets/vinacomin-co-gioi-hoa-ham-lo.webp')) fail("Trang chủ còn ảnh minh họa không đúng quy tắc công nhân áo xanh, đội mũ");
+const retiredWorkerImage = ["/assets/vinacomin-tho-lo-thao", "a-bang.webp"].join("-");
+if (home.includes(retiredWorkerImage) || home.includes('/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp') || home.includes('/assets/vinacomin-co-gioi-hoa-ham-lo.webp')) fail("Trang chủ còn ảnh minh họa đã ngừng sử dụng");
 if (count(home, "data-featured-video-facade") !== 1) fail("Trang chủ cần đúng một video mở theo yêu cầu");
 if (home.includes('https://i.ytimg.com')) fail("Ảnh đại diện video còn phụ thuộc máy chủ ngoài");
 

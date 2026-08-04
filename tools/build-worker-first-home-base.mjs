@@ -163,7 +163,7 @@ const simpleMain = `  <main id="noi-dung" class="home-funnel">
           <small class="hero-assurance">Chưa cần hồ sơ · chưa cần lên Quảng Ninh</small>
         </div>
         <figure class="hero-visual">
-          <img src="/assets/vinacomin-tho-lo-thao-a-bang.webp" alt="Công nhân thợ lò Thào A Bảng mặc bảo hộ xanh, đội mũ trong hầm lò" loading="eager" fetchpriority="high" decoding="async" width="907" height="624">
+          <img src="/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" alt="Công nhân thợ lò mặc bảo hộ xanh, đội mũ chuẩn bị thiết bị trước ca làm việc" loading="eager" fetchpriority="high" decoding="async" width="1200" height="736">
           <div class="hero-visual__income" id="quyen-loi"><small>THU NHẬP CAM KẾT</small><strong>20–25 triệu/tháng khi hoàn thành định mức lao động</strong></div>
           <figcaption><small>HỌC NGHỀ TẠI QUANG HANH</small><strong>2–3 tháng · miễn học phí · có ăn ở</strong></figcaption>
         </figure>
@@ -240,7 +240,7 @@ ${selfCheck}
             <span><small>BÀI VIẾT HƯỚNG DẪN</small><strong>Cẩm nang nghề mỏ từ điều kiện đến nhận việc</strong><b>Đọc cẩm nang →</b></span>
           </a>
           <a class="home-library__card home-library__card--latest" href="/tin-nganh-than/">
-            <img src="/assets/vinacomin-tho-lo-thao-a-bang.webp" alt="Tin tức mới nhất từ ngành Than" loading="lazy" decoding="async" width="907" height="624">
+            <img src="/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" alt="Tin tức mới nhất từ ngành Than" loading="lazy" decoding="async" width="1200" height="736">
             <span><small>TIN NGÀNH MỎ MỚI NHẤT</small><strong>Đọc tin mới từ các đơn vị ngành Than</strong><b>Đọc bài mới →</b></span>
           </a>
           <a class="home-library__card" href="/anh-video-thuc-te/">
@@ -282,7 +282,7 @@ html = replaceOnce(html, '<meta property="og:title" content="Tuyển thợ mỏ 
 html = replaceOnce(html, '<meta property="og:description" content="Điều kiện, quyền lợi, hồ sơ, địa điểm nhập học và cách đăng ký được trình bày ngắn gọn cho người lao động.">', '<meta property="og:description" content="Một hành trình rõ ràng từ kiểm tra điều kiện, học nghề tại Quang Hanh đến nhận việc ngành Than ở Quảng Ninh.">', "Homepage Open Graph description");
 html = replaceOnce(html, '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – thông tin dành cho người lao động">', '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', "Homepage Twitter title");
 html = replaceOnce(html, '<meta name="twitter:description" content="Xem nhanh điều kiện, quyền lợi, hồ sơ, địa điểm và cách đăng ký học nghề mỏ tại Quảng Ninh.">', '<meta name="twitter:description" content="Xem hành trình học nghề mỏ tại Quang Hanh, quyền lợi, hồ sơ và việc làm ngành Than tại Quảng Ninh.">', "Homepage Twitter description");
-html = replaceOnce(html, '<link rel="preload" href="assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" as="image" type="image/webp">', '<link rel="preload" href="/assets/vinacomin-tho-lo-thao-a-bang.webp" as="image" type="image/webp" fetchpriority="high">', "Homepage hero image preload");
+html = replaceOnce(html, '<link rel="preload" href="assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" as="image" type="image/webp">', '<link rel="preload" href="/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" as="image" type="image/webp" fetchpriority="high">', "Homepage hero image preload");
 html = replaceOnce(html, "</head>", '  <link rel="stylesheet" href="/worker-info-finder.css?v=2">\n  <link rel="stylesheet" href="/home-rich-media.css?v=10">\n  <link rel="stylesheet" href="/journey-optimizer.css?v=2">\n</head>', "Worker self-check and visual consultation funnel stylesheets");
 html = replaceOnce(html, '<button class="menu-toggle" type="button"', `${headerSearch}\n      <button class="menu-toggle" type="button"`, "Header search button");
 html = replaceOnce(html, 'src="/mobile-ux.js?v=4"', 'src="/mobile-core.js?v=1"', "Homepage mobile core version");
@@ -329,7 +329,7 @@ for (const stylesheet of bundledStyles) {
 }
 html = replaceOnce(html, "</head>", '  <link rel="stylesheet" href="/home-critical.css?v=1">\n  <link rel="preload" href="/home-content.css?v=2" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">\n  <noscript><link rel="stylesheet" href="/home-content.css?v=2"></noscript>\n</head>', "Bundled homepage styles");
 
-for (const required of ['class="home-funnel"', 'class="hero-visual"', 'class="home-journey"', 'class="home-province-quick"', 'id="home-province-title"', 'href="/viec-lam-nganh-than/"', 'id="thong-tin"', 'id="tu-kiem-tra"', 'id="thuc-te"', 'id="quy-trinh"', 'id="tu-van"', 'id="kho-noi-dung"', 'class="home-content-shortcuts"', 'class="home-library__grid"', 'href="/cam-nang-nghe-mo/"', 'href="/tin-nganh-than/"', 'href="/anh-video-thuc-te/"', 'href="/kiem-tra-dieu-kien/"', 'href="/ho-so-nhap-hoc/"', 'href="/thu-nhap-an-o-ho-tro/"', 'class="home-journey__layout"', 'class="home-journey__steps"', 'class="home-journey__detail"', 'class="home-proof"', 'data-featured-video-facade', '/assets/vinacomin-tho-lo-thao-a-bang.webp', '/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp', '/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp', '/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp', "data-open-site-search", "data-worker-check-form", "data-open-worker-brief", 'id="che-do-ho-so"', 'id="thoi-gian-hoc"', 'id="ho-tro-hoc-nghe"', 'id="noi-lam-viec"', 'class="worker-register__lead"', 'class="contact-choice-grid"', 'data-contact="application"', 'data-contact="zalo"', 'data-contact="messenger"', 'data-contact="phone"']) {
+for (const required of ['class="home-funnel"', 'class="hero-visual"', 'class="home-journey"', 'class="home-province-quick"', 'id="home-province-title"', 'href="/viec-lam-nganh-than/"', 'id="thong-tin"', 'id="tu-kiem-tra"', 'id="thuc-te"', 'id="quy-trinh"', 'id="tu-van"', 'id="kho-noi-dung"', 'class="home-content-shortcuts"', 'class="home-library__grid"', 'href="/cam-nang-nghe-mo/"', 'href="/tin-nganh-than/"', 'href="/anh-video-thuc-te/"', 'href="/kiem-tra-dieu-kien/"', 'href="/ho-so-nhap-hoc/"', 'href="/thu-nhap-an-o-ho-tro/"', 'class="home-journey__layout"', 'class="home-journey__steps"', 'class="home-journey__detail"', 'class="home-proof"', 'data-featured-video-facade', '/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp', '/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp', '/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp', "data-open-site-search", "data-worker-check-form", "data-open-worker-brief", 'id="che-do-ho-so"', 'id="thoi-gian-hoc"', 'id="ho-tro-hoc-nghe"', 'id="noi-lam-viec"', 'class="worker-register__lead"', 'class="contact-choice-grid"', 'data-contact="application"', 'data-contact="zalo"', 'data-contact="messenger"', 'data-contact="phone"']) {
   if (!html.includes(required)) throw new Error(`Worker-first homepage is missing generated feature: ${required}`);
 }
 if (html.includes('/assets/vinacomin-dao-tao-tho-lo.webp')) throw new Error("Worker-first homepage still contains the rejected podium image");

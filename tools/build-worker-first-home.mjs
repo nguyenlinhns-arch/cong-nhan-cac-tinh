@@ -119,7 +119,7 @@ const redesignedMain = `  <main id="noi-dung" class="home-funnel">
           </div>
         </div>
         <figure class="home-v6-hero__visual">
-          <img src="/assets/vinacomin-tho-lo-thao-a-bang.webp" alt="Công nhân thợ lò Thào A Bảng mặc bảo hộ xanh, đội mũ trong hầm lò" loading="eager" fetchpriority="high" decoding="async" width="907" height="624">
+          <img src="/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" alt="Công nhân thợ lò mặc bảo hộ xanh, đội mũ chuẩn bị thiết bị trước ca làm việc" loading="eager" fetchpriority="high" decoding="async" width="1200" height="736">
           <figcaption><small>HỌC NGHỀ TẠI QUANG HANH</small><strong>Được đào tạo trước khi nhận việc tại Quảng Ninh</strong></figcaption>
           <div class="home-v6-income"><small>CAM KẾT THU NHẬP</small><strong>20–25 triệu/tháng khi hoàn thành định mức lao động</strong></div>
         </figure>

@@ -72,18 +72,19 @@ for (const marker of ["home-video-facade", "home-video-facade__play", "focus-vis
   if (!homeStyles.includes(marker)) fail(`Trang chủ: thiếu kiểu lớp xem trước ${marker}`);
 }
 const optimizedHomeImages = [
-  ["/assets/vinacomin-tho-lo-thao-a-bang.webp", "907", "624", "eager"],
+  ["/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp", "1200", "736", "eager"],
   ["/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp", "1200", "736", "lazy"],
   ["/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp", "1600", "860", "lazy"],
   ["/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp", "1600", "882", "lazy"],
 ];
 for (const [source, width, height, delivery] of optimizedHomeImages) {
   const escaped = source.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const tag = home.match(new RegExp(`<img\\b[^>]*src=["']${escaped}["'][^>]*>`, "i"))?.[0] || "";
-  if (!tag) fail(`Trang chủ: thiếu ảnh Vinacomin ${source}`);
+  const tags = [...home.matchAll(new RegExp(`<img\\b[^>]*src=["']${escaped}["'][^>]*>`, "gi"))].map((match) => match[0]);
+  if (!tags.length) fail(`Trang chủ: thiếu ảnh Vinacomin ${source}`);
   else {
     const deliveryMarker = delivery === "eager" ? 'fetchpriority="high"' : 'loading="lazy"';
-    if (![deliveryMarker, "decoding=\"async\"", `width=\"${width}\"`, `height=\"${height}\"`].every((marker) => tag.includes(marker))) fail(`Trang chủ: ảnh ${source} chưa đủ thuộc tính tải và chống dịch chuyển bố cục`);
+    const markers = [deliveryMarker, "decoding=\"async\"", `width=\"${width}\"`, `height=\"${height}\"`];
+    if (!tags.some((tag) => markers.every((marker) => tag.includes(marker)))) fail(`Trang chủ: ảnh ${source} chưa đủ thuộc tính tải và chống dịch chuyển bố cục`);
   }
 }
 

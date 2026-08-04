@@ -18,7 +18,6 @@ const hub = fs.readFileSync(path.join(site, "giai-dap-nghe-mo", "index.html"), "
 const errors = [];
 const occupationTerms = ["khai thác mỏ", "xây dựng mỏ", "cơ điện mỏ"];
 const allowedBlueWorkerImages = new Set([
-  "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-thao-a-bang.webp",
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp",
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp",
