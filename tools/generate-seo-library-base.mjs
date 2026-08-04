@@ -239,7 +239,10 @@ function syncExistingArticleImage(html, article) {
       .replace(/(<meta property="og:image:height" content=")[^"]*(")/i, `$1${height}$2`);
   }
   const size = width && height ? ` width="${width}" height="${height}"` : "";
-  const figure = `<figure class="article-cover article-cover--editorial"><img src="${article.image}" alt="${esc(article.imageAlt)}" loading="lazy" decoding="async"${size}><figcaption><span>${esc(article.imageAlt)}</span><span class="article-media-credit">${esc(article.imageSource)}</span></figcaption></figure>`;
+  const loading = html.includes("article-body--rewritten")
+    ? ' fetchpriority="high" decoding="async" referrerpolicy="no-referrer"'
+    : ' loading="lazy" decoding="async"';
+  const figure = `<figure class="article-cover article-cover--editorial"><img src="${article.image}" alt="${esc(article.imageAlt)}"${loading}${size}><figcaption><span>${esc(article.imageAlt)}</span><span class="article-media-credit">${esc(article.imageSource)}</span></figcaption></figure>`;
   return output.replace(/<figure\b[^>]*class="[^"]*\barticle-cover\b[^"]*"[^>]*>[\s\S]*?<\/figure>/i, figure);
 }
 
