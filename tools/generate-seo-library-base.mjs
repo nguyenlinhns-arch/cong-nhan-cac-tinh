@@ -51,7 +51,7 @@ function normalizePageAssets(html, file) {
   const hadRemoteFonts = /https:\/\/fonts\.(?:googleapis|gstatic)\.com/i.test(html);
   let output = html.replace(/\s*<link\b[^>]*href=["']https:\/\/fonts\.(?:googleapis|gstatic)\.com[^"']*["'][^>]*>/gi, "");
   if (hadRemoteFonts && !output.includes('href="/fonts.css')) {
-    output = output.replace(/<\/head>/i, '  <link rel="stylesheet" href="/fonts.css?v=1">\n</head>');
+    output = output.replace(/<\/head>/i, '  <link rel="stylesheet" href="/fonts.css?v=2">\n</head>');
   }
   if (!output.includes('class="source-original-card"')) output = output.replace(/\/mobile-ux\.js\?v=\d+/g, "/mobile-ux.js?v=10");
   return output.replace(/<img\b[^>]*>/gi, (tag) => {
@@ -799,7 +799,7 @@ function renderArticle(article) {
   <meta name="twitter:title" content="${esc(article.title)}">
   <meta name="twitter:description" content="${esc(article.lead)}">
   <meta name="twitter:image" content="${article.image}">
-  <link rel="stylesheet" href="/fonts.css?v=1">
+  <link rel="stylesheet" href="/fonts.css?v=2">
   <link rel="stylesheet" href="/article-insights.css?v=${isNewsBrief ? 14 : 10}">
   <link rel="stylesheet" href="/content-network.css?v=1">
   <link rel="stylesheet" href="/mobile-ux.css?v=8">
@@ -930,7 +930,7 @@ function hubHtml() {
   <link rel="alternate" type="application/rss+xml" title="Tin ngành Than – Thầy Linh" href="${base}/feed.xml"><link rel="alternate" type="application/feed+json" title="Tin ngành Than – Thầy Linh" href="${base}/feed.json">
   <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="Tin ngành Than"><meta property="og:description" content="Bài viết ngành Than được biên soạn lại đầy đủ, ghi nguồn rõ ràng; thông tin học nghề và việc làm TKV được tách riêng ở cuối mỗi trang."><meta property="og:url" content="${base}/tin-nganh-than/"><meta property="og:image" content="${feature.image}">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Tin ngành Than"><meta name="twitter:description" content="Bài báo ngành Than và thông tin việc làm TKV tại Quảng Ninh."><meta name="twitter:image" content="${feature.image}">
-  <link rel="stylesheet" href="/fonts.css?v=1">
+  <link rel="stylesheet" href="/fonts.css?v=2">
   <link rel="stylesheet" href="../article-insights.css?v=13"><link rel="stylesheet" href="/mobile-ux.css?v=8">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>

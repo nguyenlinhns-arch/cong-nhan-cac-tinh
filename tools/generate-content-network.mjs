@@ -144,7 +144,7 @@ function page({pathName, title, description, eyebrow, heading, lead, body, schem
   <meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${canonical}">
   <meta property="og:image" content="${base}/assets/og-cover-luong-25-trieu-v4.jpg"><meta property="og:image:alt" content="Trung tâm thông tin học nghề mỏ và việc làm ngành Than">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(title)}"><meta name="twitter:description" content="${esc(description)}"><meta name="twitter:image" content="${base}/assets/og-cover-luong-25-trieu-v4.jpg">
-  <link rel="stylesheet" href="/fonts.css?v=1">
+  <link rel="stylesheet" href="/fonts.css?v=2">
   <link rel="stylesheet" href="/content-network.css?v=1"><link rel="stylesheet" href="/mobile-ux.css?v=8">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>

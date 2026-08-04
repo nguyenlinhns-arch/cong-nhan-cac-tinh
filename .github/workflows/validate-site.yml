@@ -59,6 +59,7 @@ jobs:
           node tools/validate-worker-question-pages.mjs
           node tools/validate-daily-seo-series.mjs
           node tools/validate-mobile-search-ai-polish.mjs
+          node tools/validate-responsive-typography.mjs
           node tools/validate-job-postings.mjs
           node tools/validate-occupation-profiles.mjs
           node tools/validate-recruitment-funnel.mjs
