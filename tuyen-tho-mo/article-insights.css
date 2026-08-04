@@ -71,9 +71,22 @@ h1{max-width:760px;margin:0;font-size:clamp(34px,5.4vw,60px);line-height:1.14;le
 .article-body--source .article-cover--editorial{margin-top:0}
 .source-story-intro>p:first-child{color:var(--ink);font-size:18px;font-weight:600;line-height:1.85}
 .source-story-ending{margin-top:42px;padding-top:2px;border-top:3px solid var(--orange)}.source-story-ending h2{margin-top:28px}.source-story-ending p{color:var(--ink);font-size:18px;font-weight:600;line-height:1.85}
-.article-body--brief{padding:42px 58px 48px}
-.article-body--brief .article-cover--editorial{margin-bottom:28px}
+.article-body--brief,.article-body--rewritten{padding:42px 58px 48px}
+.article-body--brief .article-cover--editorial,.article-body--rewritten .article-cover--editorial{margin-bottom:28px}
+.rewritten-news-intro{margin-bottom:34px}
+.rewritten-news-facts{margin:34px 0 42px}
+.rewritten-news-facts>h2{margin:0 0 18px}
+.rewritten-news-section{margin-top:38px}
 .news-brief-label{display:inline-flex!important;width:max-content;margin:0 0 18px!important;padding:8px 12px;border-radius:999px;background:#fff0d9;color:#9d471f!important;font-size:11px!important;font-weight:900!important;letter-spacing:.1em;line-height:1!important;text-transform:uppercase}
+.article-summary{margin:0 0 38px}
+.article-summary>h2{margin:0 0 18px;font-size:clamp(27px,4vw,36px)}
+.article-summary__body>p{color:#30494f;font-size:17px;line-height:1.85}
+.article-summary__body>p:first-child{color:var(--ink);font-size:19px;font-weight:650}
+.article-summary__facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:28px}
+.article-summary__facts>div{padding:20px;border:1px solid #cfe0dd;border-radius:17px;background:#f2f8f7}
+.article-summary__facts strong,.article-summary__facts span{display:block}
+.article-summary__facts strong{color:var(--brand);font-size:24px;line-height:1.25}
+.article-summary__facts span{margin-top:7px;color:#50676c;font-size:13px;line-height:1.6}
 .news-brief-intro>p:first-child{color:var(--ink);font-size:19px;font-weight:650;line-height:1.82}
 .news-brief-intro>p:last-child{margin-bottom:8px}
 .news-brief-section{margin-top:34px;padding-top:2px;border-top:1px solid var(--line)}
@@ -88,6 +101,8 @@ h1{max-width:760px;margin:0;font-size:clamp(34px,5.4vw,60px);line-height:1.14;le
 .source-original-card h2{margin:10px 0 14px;font-size:clamp(25px,4vw,34px);line-height:1.28}
 .source-original-card p{margin:0;color:#3e5357;font-size:16px;line-height:1.75}
 .source-original-card__button{display:inline-flex;min-height:52px;margin-top:22px;padding:13px 18px;align-items:center;justify-content:center;border-radius:13px;background:var(--brand);color:#fff!important;font-weight:900;text-decoration:none!important}
+.source-original-card .article-source-footer--brief{margin:22px 0 0;padding:18px 0 0;border:0;border-top:1px solid #cbdedb;border-radius:0;background:transparent}
+.source-original-card .article-source-footer--brief p{color:#526a6f!important}
 .source-original-media{margin:34px 0}.source-original-media h2{margin-bottom:18px}
 .article-seo-info{margin:42px 0 0;padding:34px;border-radius:22px;background:#062f38;color:#fff}
 .article-seo-info h2{margin:10px 0 16px;color:#fff}
@@ -141,7 +156,7 @@ h1{max-width:760px;margin:0;font-size:clamp(34px,5.4vw,60px);line-height:1.14;le
   .article-inline-gallery{gap:18px;margin:30px -8px 36px}
   .article-inline-media figcaption,.article-cover--editorial figcaption{display:block}.article-media-credit{display:block;margin-top:5px;text-align:left}
   .article-layout--source{width:min(100% - 24px,900px)}.article-body--source{padding:26px 20px}
-  .newsroom-method{padding:23px 20px}.newsroom-method h2{font-size:25px}.news-brief-section--context{padding:22px 20px 6px}.news-brief-intro>p:first-child{font-size:17px}.source-original-card,.article-seo-info{padding:24px 20px}.source-original-card__button,.article-seo-info__actions a{width:100%}
+  .newsroom-method{padding:23px 20px}.newsroom-method h2{font-size:25px}.article-summary__body>p,.article-summary__body>p:first-child{font-size:16px}.article-summary__facts{grid-template-columns:1fr}.news-brief-section--context{padding:22px 20px 6px}.news-brief-intro>p:first-child{font-size:17px}.source-original-card,.article-seo-info{padding:24px 20px}.source-original-card__button,.article-seo-info__actions a{width:100%}
   .editorial-quote{padding:26px 20px 26px 50px;font-size:17px}
   .editorial-quote:before{left:13px;font-size:54px}
   .article-apply{margin-inline:-8px;padding:27px 20px}
