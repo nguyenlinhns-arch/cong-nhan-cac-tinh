@@ -61,6 +61,11 @@ const occupationPages = [
   ["nghe-mo-ham-lo/index.html", "/nghe-mo-ham-lo/"],
 ];
 
+const payrollPages = [
+  ["bang-luong/index.html", "/bang-luong/"],
+  ["bang-luong/vang-danh/quy-2-2026/index.html", "/bang-luong/vang-danh/quy-2-2026/"],
+];
+
 for (const [file, url] of hubs) {
   const full = path.join(root, file);
   if (!fs.existsSync(full)) {
@@ -253,8 +258,8 @@ const contentFiles = htmlFiles.filter((file) => !path.basename(file).startsWith(
 const legacyRoutes = JSON.parse(fs.readFileSync(path.resolve("operations/legacy-routes.json"), "utf8")).routes || [];
 const jobMaster = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
 const activeJobPages = (jobMaster.occupation_profiles || []).filter((role) => role.active_intake !== false);
-const expectedHtmlFiles = 54 + activeJobPages.length + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length + workerQuestionPages.length + occupationPages.length + dailySeoPages;
-const expectedContentFiles = 53 + activeJobPages.length + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length + workerQuestionPages.length + occupationPages.length + dailySeoPages;
+const expectedHtmlFiles = 54 + activeJobPages.length + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length + workerQuestionPages.length + occupationPages.length + payrollPages.length + dailySeoPages;
+const expectedContentFiles = 53 + activeJobPages.length + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length + workerQuestionPages.length + occupationPages.length + payrollPages.length + dailySeoPages;
 if (htmlFiles.length !== expectedHtmlFiles) fail(`Website: cần ${expectedHtmlFiles} tệp HTML theo số bài trong feed, trang kiểm chứng và trang lõi V4, nhận ${htmlFiles.length}`);
 if (contentFiles.length !== expectedContentFiles) fail(`Website: cần ${expectedContentFiles} trang nội dung theo số bài trong feed, trang kiểm chứng và trang lõi V4, nhận ${contentFiles.length}`);
 for (const file of contentFiles) {
@@ -292,6 +297,7 @@ for (const [, url] of verificationPages) if (!sitemap.includes(`<loc>${base}${ur
 for (const [, url] of v4CorePages) if (!sitemap.includes(`<loc>${base}${url}</loc>`)) fail(`Sitemap: thiếu trang lõi V4 ${url}`);
 for (const [, url] of contactAuthorityPages) if (!sitemap.includes(`<loc>${base}${url}</loc>`)) fail(`Sitemap: thiếu trang trả lời liên hệ ${url}`);
 for (const [, url] of occupationPages) if (!sitemap.includes(`<loc>${base}${url}</loc>`)) fail(`Sitemap: thiếu trang mô tả nghề ${url}`);
+for (const [, url] of payrollPages) if (!sitemap.includes(`<loc>${base}${url}</loc>`)) fail(`Sitemap: thiếu trang bảng lương ${url}`);
 
 for (const [, url] of workerQuestionPages) {
   if (!sitemap.includes("<loc>" + base + url + "</loc>")) fail("Sitemap: thiếu trang hỏi đáp " + url);
@@ -323,6 +329,7 @@ const output = {
   contact_authority_pages: contactAuthorityPages.length,
   worker_question_pages: workerQuestionPages.length,
   occupation_pages: occupationPages.length,
+  payroll_pages: payrollPages.length,
   daily_seo_pages: dailySeoPages,
   active_job_pages: activeJobPages.length,
   provinces: provinces.length,

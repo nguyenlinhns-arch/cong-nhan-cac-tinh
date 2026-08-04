@@ -104,6 +104,7 @@
 .home-library .home-section-head>a{display:inline-flex;align-items:center;min-height:42px;padding:9px 14px;border:1px solid #bfd3cf;border-radius:999px;background:rgba(255,255,255,.72);color:#075b66;font-size:12px;font-weight:900;text-decoration:none}
 .home-library .home-section-head>a:hover,.home-library .home-section-head>a:focus-visible{border-color:#075b66;background:#fff}
 .home-library__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+.home-library__grid--four{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .home-library__card{position:relative;display:flex;min-width:0;flex-direction:column;overflow:hidden;border:1px solid #cfdfdc;border-radius:22px;background:#fff;color:#17363b;text-decoration:none;box-shadow:0 12px 32px rgba(6,60,70,.08);isolation:isolate;transition:transform .2s,border-color .2s,box-shadow .2s}
 .home-library__card::before{position:absolute;z-index:2;top:0;right:0;left:0;height:4px;background:linear-gradient(90deg,#f18724,#f7bd4b);content:""}
 .home-library__card:hover,.home-library__card:focus-visible{transform:translateY(-4px);border-color:#efa45e;box-shadow:0 20px 44px rgba(6,60,70,.14)}
@@ -145,6 +146,7 @@
   .home-journey__visual,.home-journey__visual img{min-height:430px}
   .home-proof__grid--simple,.home-funnel .worker-register__grid{grid-template-columns:1fr}
   .home-library__grid{grid-template-columns:repeat(3,minmax(230px,1fr));gap:14px}
+  .home-library__grid--four{grid-template-columns:repeat(2,minmax(230px,1fr))}
   .home-library__card img{height:210px}
 }
 

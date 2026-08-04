@@ -1,0 +1,21 @@
+{
+  "updated_at": "2026-08-04",
+  "base_url": "https://thaylinhtuyenthomo.vn",
+  "items": [
+    {
+      "id": "vang-danh-q2-2026",
+      "company": "Công ty Cổ phần Than Vàng Danh - Vinacomin",
+      "company_short": "Than Vàng Danh",
+      "period": "Quý II/2026",
+      "months": ["04/2026", "05/2026", "06/2026"],
+      "roles": ["Khai thác mỏ hầm lò", "Cơ điện mỏ hầm lò"],
+      "source_format": "PDF scan",
+      "original_pages": 16,
+      "public_pages": 15,
+      "privacy": "Thông tin định danh đã được loại khỏi bản công khai",
+      "url": "https://thaylinhtuyenthomo.vn/bang-luong/vang-danh/quy-2-2026/",
+      "controlled_pdf": "https://drive.google.com/file/d/15J-vCKwY6TcZjVkd_18xIA90x5gJ3n7x/view?usp=drivesdk",
+      "cover": "https://thaylinhtuyenthomo.vn/bang-luong/assets/vang-danh-q2-2026-og.webp"
+    }
+  ]
+}

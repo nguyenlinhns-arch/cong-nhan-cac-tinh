@@ -44,6 +44,15 @@ const latestArticleMarker = /<a class="home-library__card home-library__card--la
 if (!latestArticleMarker.test(html)) throw new Error("Trang chủ thiếu vị trí bài ngành Than mới nhất.");
 html = html.replace(latestArticleMarker, card);
 
+const payrollCard = `          <a class="home-library__card home-library__card--payroll" href="/bang-luong/">
+            <img src="/bang-luong/assets/vang-danh-q2-2026-bang-luong-01.webp" alt="Bảng lương công nhân Than Vàng Danh quý II năm 2026 đã ẩn thông tin cá nhân" loading="lazy" decoding="async" width="1450" height="1289">
+            <span><small>BẢNG LƯƠNG THỰC TẾ</small><strong>Bảng lương các công ty theo quý</strong><b>Xem bảng lương →</b></span>
+          </a>`;
+const videoCardMarker = /<a class="home-library__card" href="\/anh-video-thuc-te\/">[\s\S]*?<\/a>/;
+if (!videoCardMarker.test(html)) throw new Error("Trang chủ thiếu thẻ kho video để đặt lối vào kho bảng lương.");
+html = html.replace(videoCardMarker, (videoCard) => `${videoCard}\n${payrollCard}`);
+html = replaceOnce(html, '<div class="home-library__grid">', '<div class="home-library__grid home-library__grid--four">', "Four-card homepage library grid");
+
 html = replaceOnce(html, "<title>Tuyển thợ mỏ tháng 8/2026 | Học nghề, nhận việc</title>", "<title>Tuyển thợ mỏ, thợ lò Quảng Ninh | Học nghề, nhận việc</title>", "SEO title");
 html = replaceOnce(html, '<meta name="description" content="Tuyển thợ mỏ tháng 8/2026: nam 18–40 tuổi, từ 1m53 và 47kg; học nghề tại Quang Hanh, cam kết 20–25 triệu/tháng khi hoàn thành định mức lao động.">', '<meta name="description" content="Tuyển thợ mỏ, thợ lò tại Quảng Ninh: nam 18–40 tuổi; học nghề tại Quang Hanh, miễn học phí, có ăn ở và được bố trí việc làm sau đào tạo.">', "SEO description");
 html = replaceOnce(html, '<meta name="keywords" content="tuyển thợ mỏ tháng 8 2026, tuyển thợ lò, học nghề mỏ, việc làm TKV Quảng Ninh, hồ sơ học nghề mỏ, lương thợ lò">', '<meta name="keywords" content="tuyển thợ mỏ, tuyển thợ lò Quảng Ninh, học nghề mỏ Quang Hanh, việc làm ngành Than, việc làm TKV, hồ sơ học nghề mỏ">', "SEO keyword map");
@@ -116,6 +125,10 @@ for (const marker of [
   "Thông tin tuyển sinh nghề mỏ đang áp dụng",
   "Xem công việc thợ mỏ qua người thật, việc thật",
   "Hành trình học nghề mỏ và nhận việc tại Quảng Ninh",
+  "home-library__card--payroll",
+  "home-library__grid--four",
+  'href="/bang-luong/"',
+  "Bảng lương các công ty theo quý",
 ]) {
   if (!html.includes(marker)) throw new Error(`Trang chủ sau tối ưu thiếu marker: ${marker}`);
 }

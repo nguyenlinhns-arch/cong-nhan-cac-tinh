@@ -75,6 +75,7 @@ jobs:
           node tools/test-recruitment-application.mjs
           node tools/validate-crm-automation.mjs
           node tools/validate-seo-library.mjs
+          node tools/validate-payroll-library.mjs
           git diff --exit-code -- . ':(exclude)content/editorial-sources.json' ':(exclude)tuyen-tho-mo/assets/articles/sources.json' ':(exclude)tuyen-tho-mo/feed.json' ':(exclude)tuyen-tho-mo/feed.xml' ':(exclude)tuyen-tho-mo/llms.txt' ':(exclude)tuyen-tho-mo/sitemap.xml' ':(exclude)tuyen-tho-mo/news-sitemap.xml' ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/home-critical.css' ':(exclude)tuyen-tho-mo/home-content.css' ':(exclude)tuyen-tho-mo/job-application.js' ':(exclude)tuyen-tho-mo/search-index.json' ':(exclude)tuyen-tho-mo/search-core.json' ':(exclude)tuyen-tho-mo/search-provinces.json' ':(exclude)tuyen-tho-mo/search-content.json'
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -192,6 +193,25 @@ jobs:
             sleep 5
           done
           echo "The custom domain did not expose the complete mobile, search and AI discovery release."
+          exit 1
+      - name: Verify live payroll library
+        env:
+          LIVE_URL: https://thaylinhtuyenthomo.vn/
+        run: |
+          payroll_hub="$(mktemp)"
+          payroll_detail="$(mktemp)"
+          for attempt in $(seq 1 18); do
+            if curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}bang-luong/?run=${GITHUB_SHA}" -o "$payroll_hub" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}bang-luong/vang-danh/quy-2-2026/?run=${GITHUB_SHA}" -o "$payroll_detail" \
+              && grep -Fq 'Bảng lương công nhân ngành Than theo công ty, theo quý' "$payroll_hub" \
+              && grep -Fq 'Bảng lương thợ lò Than Vàng Danh quý II/2026' "$payroll_detail" \
+              && grep -Fq '15J-vCKwY6TcZjVkd_18xIA90x5gJ3n7x' "$payroll_detail"; then
+              echo "Live payroll hub, company detail and controlled Drive PDF link verified on attempt $attempt."
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "The custom domain did not expose the payroll library release."
           exit 1
       - name: Record deployment receipt
         if: success() && github.event_name != 'schedule'
