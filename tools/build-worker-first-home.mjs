@@ -161,7 +161,7 @@ const redesignedMain = `  <main id="noi-dung" class="home-funnel">
       <div class="container">
         <div class="home-v6-heading"><div><p class="home-step">Ba nghề đang tuyển</p><h2 id="home-careers-title">Chọn nghề theo công việc bạn muốn học</h2></div><p>Mô tả nghề được chuẩn hóa theo Hướng dẫn số 554/HD-CĐTKV của Trường Cao đẳng Than – Khoáng sản Việt Nam.</p></div>
         <div class="home-v6-careers__grid">
-          <figure><img src="/assets/vinacomin-co-gioi-hoa-ham-lo.webp" alt="Thiết bị cơ giới hóa trong khai thác mỏ hầm lò" loading="lazy" decoding="async" width="1200" height="675"><figcaption><small>HỌC TỪ NỀN TẢNG</small><strong>Không yêu cầu kinh nghiệm trước khi đăng ký</strong></figcaption></figure>
+          <figure><img src="/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp" alt="Nhóm công nhân Than Mông Dương mặc bảo hộ xanh, đội mũ và trao đổi công việc trong hầm lò" loading="lazy" decoding="async" width="1600" height="860"><figcaption><small>HỌC TỪ NỀN TẢNG</small><strong>Không yêu cầu kinh nghiệm trước khi đăng ký</strong></figcaption></figure>
           <div class="home-v6-career-list">
             <a href="/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/"><span>01</span><div><small>HỌC 2–3 THÁNG</small><h3>Kỹ thuật khai thác mỏ hầm lò</h3><p>Khai thác than, vận hành thiết bị, vận tải và phối hợp công việc trong dây chuyền sản xuất.</p><b>Xem công việc và đăng ký →</b></div></a>
             <a href="/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/"><span>02</span><div><small>HỌC 2–3 THÁNG</small><h3>Kỹ thuật xây dựng mỏ hầm lò</h3><p>Đào, chống giữ, gia cố và duy trì đường lò phục vụ khai thác than hầm lò.</p><b>Xem công việc và đăng ký →</b></div></a>
