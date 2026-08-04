@@ -73,12 +73,12 @@ for (const marker of ["home-video-facade", "home-video-facade__play", "focus-vis
 }
 const optimizedHomeImages = [
   ["/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp", "1200", "736", "eager"],
+  ["/assets/vinacomin-tho-lo-ha-lam-giao-ca.webp", "1055", "593", "lazy"],
   ["/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp", "1600", "860", "lazy"],
-  ["/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp", "1600", "882", "lazy"],
-  ["/assets/vinacomin-tho-mo-ha-lam-tang-qua.webp", "960", "638", "lazy"],
-  ["/assets/vinacomin-tho-mo-ha-lam-dong-doi.webp", "960", "638", "lazy"],
-  ["/assets/vinacomin-tho-mo-tkv-bat-tay-trong-ham-lo.webp", "960", "629", "lazy"],
-  ["/assets/vinacomin-tho-mo-duong-huy-trong-ham-lo.webp", "960", "640", "lazy"],
+  ["/assets/vinacomin-tho-lo-than-thong-nhat-ngoai-khai-truong.webp", "789", "895", "lazy"],
+  ["/assets/vinacomin-hoc-vien-quang-hanh-ao-xanh-doi-mu.webp", "1280", "802", "lazy"],
+  ["/assets/vinacomin-tho-lo-lo-van-ky-mu-bao-ho.webp", "794", "1000", "lazy"],
+  ["/assets/vinacomin-tho-lo-guong-sang-mu-bao-ho.webp", "1280", "718", "lazy"],
 ];
 for (const [source, width, height, delivery] of optimizedHomeImages) {
   const escaped = source.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");

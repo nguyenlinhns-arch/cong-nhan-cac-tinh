@@ -121,9 +121,12 @@ const heroBlock = home.match(/<section class="hero"[\s\S]*?<\/section>/i)?.[0] |
 if (!heroBlock.includes('class="hero-visual"')) fail("Mở đầu chưa có ảnh thực tế độc lập");
 if ((heroBlock.match(/<(?:a|button)\b[^>]*class="[^"]*\bbutton\b[^"]*"/g) || []).length > 2) fail("Mở đầu còn quá nhiều nút");
 if ((heroBlock.match(/<p\b/g) || []).length > 2) fail("Mở đầu còn quá nhiều đoạn chữ");
-if (home.includes('/assets/vinacomin-dao-tao-tho-lo.webp')) fail("Trang chủ còn ảnh cán bộ phát biểu sai ngữ cảnh");
+const rejectedPodiumImage = ["vinacomin", "dao", "tao", "tho", "lo.webp"].join("-");
+if (home.includes(`/assets/${rejectedPodiumImage}`)) fail("Trang chủ còn ảnh cán bộ phát biểu sai ngữ cảnh");
 const retiredWorkerImage = ["/assets/vinacomin-tho-lo-thao", "a-bang.webp"].join("-");
-if (home.includes(retiredWorkerImage) || home.includes('/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp') || home.includes('/assets/vinacomin-co-gioi-hoa-ham-lo.webp')) fail("Trang chủ còn ảnh minh họa đã ngừng sử dụng");
+const retiredExperienceImage = ["vinacomin", "hoc", "sinh", "trai", "nghiem", "mo.webp"].join("-");
+const retiredMeetingImage = ["vinacomin", "co", "gioi", "hoa", "ham", "lo.webp"].join("-");
+if (home.includes(retiredWorkerImage) || home.includes(`/assets/${retiredExperienceImage}`) || home.includes(`/assets/${retiredMeetingImage}`)) fail("Trang chủ còn ảnh minh họa đã ngừng sử dụng");
 if (count(home, "data-featured-video-facade") !== 1) fail("Trang chủ cần đúng một video mở theo yêu cầu");
 if (home.includes('https://i.ytimg.com')) fail("Ảnh đại diện video còn phụ thuộc máy chủ ngoài");
 

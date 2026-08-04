@@ -7,10 +7,10 @@
     "content": "search-content.json"
   },
   "counts": {
-    "core": 23,
+    "core": 24,
     "provinces": 26,
-    "content": 80,
-    "total": 129
+    "content": 86,
+    "total": 136
   },
   "discovery": {
     "canonicalFacts": "/thong-tin-tuyen-tho-mo/",

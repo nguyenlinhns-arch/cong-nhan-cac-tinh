@@ -5,9 +5,9 @@ const image = (src, alt, caption = alt) => Object.freeze({src, alt, caption});
 const baseArticleInlineImages = Object.freeze({
   "dao-tao-an-toan-truoc-khi-vao-lo": Object.freeze([
     image(
-      "https://cdn.nhandan.vn/images/8d4dd6dbc1e2d72e66f1426728ddf64a9c543cfa89aa05eddc9bd24a3c117488549f3160fee712492c82da51b8dc701bebc551424f1bb2281b5b25c9aa5adfc4/cn-than-ha-long-5014.jpg.avif",
-      "Công nhân ngành Than làm việc với trang bị bảo hộ và quy trình an toàn",
-      "An toàn lao động được thực hiện từ trang bị, kiểm tra đến thao tác trong ca sản xuất.",
+      "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-lo-van-ky-mu-bao-ho.webp",
+      "Công nhân trẻ Lò Văn Kỷ mặc bảo hộ xanh, đội mũ và đèn lò",
+      "Trang bị bảo hộ, đèn lò và tác phong đúng quy trình được rèn ngay từ giai đoạn học nghề.",
     ),
   ]),
   "tuyen-quang-phoi-hop-tuyen-sinh-nghe-mo-2025-2030": Object.freeze([

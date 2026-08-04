@@ -166,6 +166,7 @@ function upgradeExistingSchema(html, article) {
     const sourceUrls = article.hideSourceUrlsInSchema ? [] : (article.sources || []).map(sourceUrl).filter(Boolean);
     articleNode.headline = article.title;
     articleNode.description = article.schemaDescription || article.description;
+    articleNode.image = [article.image];
     articleNode.author = {"@type": "Person", "@id": `${base}/tac-gia/nguyen-tu-linh/#person`, name: author, alternateName: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/tac-gia/nguyen-tu-linh/`};
     articleNode.publisher = {"@type": "Organization", "@id": organizationId, name: "Thầy Linh – Tuyển Thợ Mỏ", url: `${base}/`, logo: {"@type": "ImageObject", "@id": `${base}/#logo`, url: `${base}/favicon-512x512.png`, width: 512, height: 512}, publishingPrinciples: editorialPolicyUrl};
     articleNode.publishingPrinciples = editorialPolicyUrl;
@@ -175,6 +176,23 @@ function upgradeExistingSchema(html, article) {
     if (webpageNode) Object.assign(webpageNode, {url: canonical, name: article.title, datePublished: article.published, dateModified: article.updated, inLanguage: "vi-VN", isPartOf: {"@id": websiteId}, author: {"@id": `${authorUrl}#person`}, publisher: {"@id": organizationId}, publishingPrinciples: editorialPolicyUrl, mainEntity: {"@id": `${canonical}#article`}});
     return `<script${before}type="application/ld+json"${after}>${JSON.stringify(schema)}</script>`;
   });
+}
+
+function syncExistingArticleImage(html, article) {
+  const dimensions = imageDimensions[article.image] || [];
+  const [width, height] = dimensions;
+  let output = html
+    .replace(/(<meta property="og:image" content=")[^"]*(")/i, `$1${article.image}$2`)
+    .replace(/(<meta property="og:image:alt" content=")[^"]*(")/i, `$1${esc(article.imageAlt)}$2`)
+    .replace(/(<meta name="twitter:image" content=")[^"]*(")/i, `$1${article.image}$2`);
+  if (width && height) {
+    output = output
+      .replace(/(<meta property="og:image:width" content=")[^"]*(")/i, `$1${width}$2`)
+      .replace(/(<meta property="og:image:height" content=")[^"]*(")/i, `$1${height}$2`);
+  }
+  const size = width && height ? ` width="${width}" height="${height}"` : "";
+  const figure = `<figure class="article-cover article-cover--editorial"><img src="${article.image}" alt="${esc(article.imageAlt)}" loading="lazy" decoding="async"${size}><figcaption><span>${esc(article.imageAlt)}</span><span class="article-media-credit">${esc(article.imageSource)}</span></figcaption></figure>`;
+  return output.replace(/<figure\b[^>]*class="[^"]*\barticle-cover\b[^"]*"[^>]*>[\s\S]*?<\/figure>/i, figure);
 }
 
 function renderArticleShare(article) {
@@ -597,6 +615,7 @@ for (const article of existingNews) {
   const file = path.join(root, article.urlPath, "index.html");
   if (!fs.existsSync(file)) throw new Error(`Missing existing article page: ${article.slug}`);
   let html = fs.readFileSync(file, "utf8");
+  html = syncExistingArticleImage(html, article);
   if (!html.includes("article-media-credit") && article.imageSource) {
     html = html.replace(/<figcaption>([\s\S]*?)<\/figcaption>/i, (_match, caption) => `<figcaption><span>${caption.trim()}</span><span class="article-media-credit">${esc(article.imageSource)}</span></figcaption>`);
   }

@@ -5,16 +5,21 @@ import {dailyCommunityArticles} from "./daily-community-articles-all.mjs";
 
 await import("./build-worker-first-home-base.mjs");
 
-// Ảnh trang chủ lấy từ Thư viện ảnh chính thức Vinacomin.
-// https://vinacomin.vn/vi/image-library/460/chu-tich-tong-lien-doan-lao-dong-vn-bui-van-cuong-tham-tho-mo-ha-lam
-// https://vinacomin.vn/vi/image-library/540/pho-thu-tuong-trinh-dinh-dung-tham-va-lam-viec-voi-tkv
-// https://vinacomin.vn/vi/image-library/2877/lanh-dao-ldld-tinh-quang-ninh-va-cong-doan-tkv-tham-tang-qua-cong-nhan-cac-don-vi-xuat-sac-than-duong-huy
+// Ảnh trang chủ lấy từ các bài chính thức của Vinacomin về người lao động.
+// https://vinacomin.vn/news/slug/tam-guong-nguoi-tho-mo-nguoi-chien-sy-cua-than-thong-nhat
+// https://vinacomin.vn/news/slug/nguoi-tho-mo-uu-tu-tam-guong-sang-cua-phong-trao-cong-nhan-nganh-than
+// https://vinacomin.vn/news/slug/nhung-tho-lo-nghin-do-cua-than-ha-lam
+// https://vinacomin.vn/news/slug/pham-dinh-duan-nguoi-cong-nhan-guong-mau-tan-tam-voi-cong-viec
+// https://vinacomin.vn/news/slug/cong-ty-cp-dia-chat-mo-tkv-no-luc-vuot-kho-san-xuat-an-toan-hieu-qua
+// https://vinacomin.vn/news/slug/do-van-do-nguoi-tho-mo-hay-lam-hay-lam
+// https://vinacomin.vn/news/slug/nguoi-tho-mo-ban-linh-va-sang-tao-trong-lao-dong-san-xuat
 
 const article = [...dailyCommunityArticles].sort((a, b) => new Date(b.published) - new Date(a.published))[0];
 const homepagePath = path.resolve("tuyen-tho-mo", "index.html");
 const journeyCssPath = path.resolve("tuyen-tho-mo", "home-worker-journey.css");
 const journeyScriptPath = path.resolve("tuyen-tho-mo", "home-worker-journey.js");
 const dimensions = JSON.parse(fs.readFileSync(path.resolve("content", "article-image-dimensions.json"), "utf8"));
+const retiredSocialImage = ["og", "cover", "v2.webp"].join("-");
 const [width, height] = dimensions[article.image] || [1200, 675];
 const escapeHtml = (value = "") => String(value)
   .replaceAll("&", "&amp;")
@@ -63,12 +68,12 @@ html = replaceOnce(html, '<meta name="description" content="Tuyển thợ mỏ t
 html = replaceOnce(html, '<meta name="keywords" content="tuyển thợ mỏ tháng 8 2026, tuyển thợ lò, học nghề mỏ, việc làm TKV Quảng Ninh, hồ sơ học nghề mỏ, lương thợ lò">', '<meta name="keywords" content="tuyển thợ mỏ, tuyển thợ lò Quảng Ninh, học nghề mỏ Quang Hanh, việc làm ngành Than, việc làm TKV, hồ sơ học nghề mỏ">', "SEO keyword map");
 html = replaceOnce(html, '<meta property="og:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', '<meta property="og:title" content="Tuyển thợ mỏ, thợ lò tại Quảng Ninh">', "Open Graph title");
 html = replaceOnce(html, '<meta property="og:description" content="Một hành trình rõ ràng từ kiểm tra điều kiện, học nghề tại Quang Hanh đến nhận việc ngành Than ở Quảng Ninh.">', '<meta property="og:description" content="Kiểm tra điều kiện, xem công việc thực tế, học nghề tại Quang Hanh và đăng ký nhận việc ngành Than ở Quảng Ninh.">', "Open Graph description");
-html = replaceOnce(html, '<meta property="og:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-v2.webp">', '<meta property="og:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">\n  <meta property="og:image:secure_url" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">', "Open Graph recruitment thumbnail");
+html = replaceOnce(html, `<meta property="og:image" content="https://thaylinhtuyenthomo.vn/assets/${retiredSocialImage}">`, '<meta property="og:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">\n  <meta property="og:image:secure_url" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">', "Open Graph recruitment thumbnail");
 html = replaceOnce(html, '<meta property="og:image:type" content="image/webp">', '<meta property="og:image:type" content="image/jpeg">', "Open Graph thumbnail type");
 html = replaceOnce(html, '<meta property="og:image:alt" content="Thầy Linh – Học nghề mỏ, làm việc tại Quảng Ninh">', '<meta property="og:image:alt" content="Thầy Linh – Tuyển thợ mỏ, lương 25 triệu mỗi tháng khi hoàn thành định mức lao động">', "Open Graph thumbnail alternative text");
 html = replaceOnce(html, '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', '<meta name="twitter:title" content="Tuyển thợ mỏ, thợ lò tại Quảng Ninh">', "Twitter title");
 html = replaceOnce(html, '<meta name="twitter:description" content="Xem hành trình học nghề mỏ tại Quang Hanh, quyền lợi, hồ sơ và việc làm ngành Than tại Quảng Ninh.">', '<meta name="twitter:description" content="Xem điều kiện, video công việc thực tế, quyền lợi học nghề và cách đăng ký làm việc ngành Than tại Quảng Ninh.">', "Twitter description");
-html = replaceOnce(html, '<meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-v2.webp">', '<meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">\n  <meta name="twitter:image:alt" content="Thầy Linh – Tuyển thợ mỏ, lương 25 triệu mỗi tháng khi hoàn thành định mức lao động">', "Twitter recruitment thumbnail");
+html = replaceOnce(html, `<meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/${retiredSocialImage}">`, '<meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">\n  <meta name="twitter:image:alt" content="Thầy Linh – Tuyển thợ mỏ, lương 25 triệu mỗi tháng khi hoàn thành định mức lao động">', "Twitter recruitment thumbnail");
 html = replaceOnce(html, '"name":"Tuyển thợ mỏ tháng 8/2026: hành trình học nghề đến nhận việc"', '"name":"Tuyển thợ mỏ, thợ lò tại Quảng Ninh"', "WebPage structured title");
 html = replaceOnce(html, '"description":"Hành trình tuyển thợ mỏ tháng 8/2026 từ kiểm tra điều kiện, học nghề tại Quang Hanh đến nhận việc ngành Than ở Quảng Ninh; cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."', '"description":"Tuyển thợ mỏ, thợ lò tại Quảng Ninh: kiểm tra điều kiện, xem công việc thực tế, học nghề tại Quang Hanh và nhận việc ngành Than; cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."', "WebPage structured description");
 html = replaceOnce(html, '<p class="eyebrow">Thông tin tuyển sinh tháng 8/2026</p>', '<p class="eyebrow">Thông tin tuyển sinh nghề mỏ đang áp dụng</p>', "Homepage status eyebrow");
@@ -166,7 +171,7 @@ const redesignedMain = `  <main id="noi-dung" class="home-funnel">
       <div class="container">
         <div class="home-v6-heading"><div><p class="home-step">Ba nghề đang tuyển</p><h2 id="home-careers-title">Chọn nghề theo công việc bạn muốn học</h2></div><p>Mô tả nghề được chuẩn hóa theo Hướng dẫn số 554/HD-CĐTKV của Trường Cao đẳng Than – Khoáng sản Việt Nam.</p></div>
         <div class="home-v6-careers__grid">
-          <figure><img src="/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp" alt="Nhóm công nhân Than Mông Dương mặc bảo hộ xanh, đội mũ và trao đổi công việc trong hầm lò" loading="lazy" decoding="async" width="1600" height="860"><figcaption><small>HỌC TỪ NỀN TẢNG</small><strong>Không yêu cầu kinh nghiệm trước khi đăng ký</strong></figcaption></figure>
+          <figure><img src="/assets/vinacomin-tho-lo-ha-lam-giao-ca.webp" alt="Nhóm thợ lò Than Hà Lầm mặc bảo hộ xanh, đội mũ trong buổi giao ca" loading="lazy" decoding="async" width="1055" height="593"><figcaption><small>HỌC TỪ NỀN TẢNG</small><strong>Không yêu cầu kinh nghiệm trước khi đăng ký</strong></figcaption></figure>
           <div class="home-v6-career-list">
             <a href="/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/"><span>01</span><div><small>HỌC 2–3 THÁNG</small><h3>Kỹ thuật khai thác mỏ hầm lò</h3><p>Khai thác than, vận hành thiết bị, vận tải và phối hợp công việc trong dây chuyền sản xuất.</p><b>Xem công việc và đăng ký →</b></div></a>
             <a href="/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/"><span>02</span><div><small>HỌC 2–3 THÁNG</small><h3>Kỹ thuật xây dựng mỏ hầm lò</h3><p>Đào, chống giữ, gia cố và duy trì đường lò phục vụ khai thác than hầm lò.</p><b>Xem công việc và đăng ký →</b></div></a>
@@ -183,11 +188,11 @@ ${selfCheckBlock}
         <div class="home-section-head home-section-head--light"><p class="home-step">Người thật · việc thật</p><h2 id="home-proof-title">Xem công việc thợ mỏ qua người thật, việc thật</h2></div>
         <div class="home-proof__grid home-proof__grid--simple">
           <article class="home-proof__video">
-            <div class="video-frame" data-featured-video-host><button class="home-video-facade" type="button" data-featured-video-facade data-video-id="ts41cqu7r9c" data-video-title="Hành trình lập nghiệp cùng nghề mỏ" aria-label="Phát video hành trình lập nghiệp cùng nghề mỏ"><img src="/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp" alt="Tổ đội công nhân Than Mông Dương mặc bảo hộ xanh, đội mũ trong hầm lò" loading="lazy" decoding="async" width="1600" height="882"><span class="home-video-facade__play" aria-hidden="true">▶</span><span class="home-video-facade__label">Bấm để xem phóng sự</span></button></div>
+            <div class="video-frame" data-featured-video-host><button class="home-video-facade" type="button" data-featured-video-facade data-video-id="ts41cqu7r9c" data-video-title="Hành trình lập nghiệp cùng nghề mỏ" aria-label="Phát video hành trình lập nghiệp cùng nghề mỏ"><img src="/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp" alt="Nhóm công nhân Than Mông Dương mặc bảo hộ xanh, đội mũ trao đổi bản vẽ" loading="lazy" decoding="async" width="1600" height="860"><span class="home-video-facade__play" aria-hidden="true">▶</span><span class="home-video-facade__label">Bấm để xem phóng sự</span></button></div>
             <div class="home-proof__video-copy"><small>PHÓNG SỰ CÔNG NHÂN</small><h3>Nghe người trong nghề kể về công việc và cuộc sống</h3><a href="/anh-video-thuc-te/">Xem toàn bộ video thực tế →</a></div>
           </article>
           <div class="home-v6-proof-links">
-            <a class="home-proof__story" href="/cau-chuyen-cong-nhan/"><img src="/assets/vinacomin-tho-mo-ha-lam-tang-qua.webp" alt="Công nhân Than Hà Lầm mặc bảo hộ xanh, đội mũ cùng đồng đội trong hầm lò" loading="lazy" decoding="async" width="960" height="638"><span><small>CÂU CHUYỆN THEO TỈNH</small><strong>Từ quê nhà đến vùng mỏ</strong><b>Xem người lao động cùng quê →</b></span></a>
+            <a class="home-proof__story" href="/cau-chuyen-cong-nhan/"><img src="/assets/vinacomin-tho-lo-than-thong-nhat-ngoai-khai-truong.webp" alt="Công nhân trẻ Than Thống Nhất mặc bảo hộ xanh, đội mũ tại khai trường" loading="lazy" decoding="async" width="789" height="895"><span><small>CÂU CHUYỆN THEO TỈNH</small><strong>Từ quê nhà đến vùng mỏ</strong><b>Xem người lao động cùng quê →</b></span></a>
             <a class="home-v6-payroll-proof" href="/bang-luong/"><small>BẢNG LƯƠNG THỰC TẾ</small><strong>Xem bảng lương các công ty theo quý</strong><span>Thông tin cá nhân đã được ẩn trước khi công khai.</span><b>Mở kho bảng lương →</b></a>
           </div>
         </div>
@@ -198,7 +203,7 @@ ${selfCheckBlock}
       <div class="container">
         <div class="home-section-head"><p class="home-step">Từ đăng ký đến nhận việc</p><h2 id="home-journey-title">Hành trình học nghề mỏ và nhận việc tại Quảng Ninh</h2></div>
         <div class="home-journey__layout">
-          <figure class="home-journey__visual"><img src="/assets/vinacomin-tho-mo-duong-huy-trong-ham-lo.webp" alt="Tổ đội công nhân Than Dương Huy mặc bảo hộ, đội mũ tại vị trí làm việc trong hầm lò" loading="lazy" decoding="async" width="960" height="640"><figcaption><small>MỘT LỘ TRÌNH RÕ RÀNG</small><strong>Tư vấn → nhập học → học nghề → nhận việc</strong></figcaption></figure>
+          <figure class="home-journey__visual"><img src="/assets/vinacomin-hoc-vien-quang-hanh-ao-xanh-doi-mu.webp" alt="Nhóm học viên nghề mỏ Quang Hanh mặc bảo hộ xanh, đội mũ trước cửa lò" loading="lazy" decoding="async" width="1280" height="802"><figcaption><small>MỘT LỘ TRÌNH RÕ RÀNG</small><strong>Tư vấn → nhập học → học nghề → nhận việc</strong></figcaption></figure>
           <ol class="home-journey__steps">
             <li><span>01</span><div><h3>Kiểm tra và tư vấn từ xa</h3><p>Gửi năm sinh, tỉnh đang sống, chiều cao, cân nặng và sức khỏe hiện tại.</p><a class="home-journey__detail" href="/kiem-tra-dieu-kien/">Xem điều kiện tuyển →</a></div></li>
             <li id="ho-so"><span>02</span><div><h3>Nhập học tại Quang Hanh</h3><p id="dia-diem">Mang CCCD, giấy khai sinh và bằng THCS hoặc THPT nếu có.</p><a class="home-journey__detail" href="/ho-so-nhap-hoc/">Xem hồ sơ và địa chỉ →</a></div></li>
@@ -221,9 +226,9 @@ ${selfCheckBlock}
       <div class="container">
         <div class="home-section-head"><p class="home-step">Đọc sâu khi cần kiểm chứng</p><h2 id="home-library-title">Cẩm nang tuyển thợ mỏ, tin ngành Than và video</h2><a href="/cam-nang-nghe-mo/">Mở toàn bộ cẩm nang →</a></div>
         <div class="home-library__grid home-library__grid--four">
-          <a class="home-library__card" href="/cam-nang-nghe-mo/"><img src="/assets/vinacomin-tho-mo-tkv-bat-tay-trong-ham-lo.webp" alt="Công nhân TKV mặc bảo hộ xanh, đội mũ bắt tay động viên nhau trong hầm lò" loading="lazy" decoding="async" width="960" height="629"><span><small>CẨM NANG NGHỀ MỎ</small><strong>Từ điều kiện đến ngày nhận việc</strong><b>Đọc cẩm nang →</b></span></a>
+          <a class="home-library__card" href="/cam-nang-nghe-mo/"><img src="/assets/vinacomin-tho-lo-lo-van-ky-mu-bao-ho.webp" alt="Công nhân trẻ Lò Văn Kỷ mặc bảo hộ xanh, đội mũ và đèn lò" loading="lazy" decoding="async" width="794" height="1000"><span><small>CẨM NANG NGHỀ MỎ</small><strong>Từ điều kiện đến ngày nhận việc</strong><b>Đọc cẩm nang →</b></span></a>
           ${card}
-          <a class="home-library__card" href="/anh-video-thuc-te/"><img src="/assets/vinacomin-tho-mo-ha-lam-dong-doi.webp" alt="Nhóm công nhân Than Hà Lầm mặc bảo hộ xanh, đội mũ sau ca làm việc trong hầm lò" loading="lazy" decoding="async" width="960" height="638"><span><small>VIDEO THỰC TẾ</small><strong>Phóng sự và câu chuyện công nhân</strong><b>Mở kho video →</b></span></a>
+          <a class="home-library__card" href="/anh-video-thuc-te/"><img src="/assets/vinacomin-tho-lo-guong-sang-mu-bao-ho.webp" alt="Chân dung công nhân trẻ TKV mặc bảo hộ xanh, đội mũ trong hầm lò" loading="lazy" decoding="async" width="1280" height="718"><span><small>VIDEO THỰC TẾ</small><strong>Phóng sự và câu chuyện công nhân</strong><b>Mở kho video →</b></span></a>
 ${payrollCard}
         </div>
       </div>
@@ -312,7 +317,7 @@ for (const staleMarker of [
   "<title>Tuyển thợ mỏ, thợ lò tháng 8/2026",
   '<p class="eyebrow">Thông tin tuyển sinh tháng 8/2026</p>',
   "<h1>Tuyển thợ mỏ tháng 8/2026.",
-  "og-cover-v2.webp",
+  retiredSocialImage,
 ]) {
   if (html.includes(staleMarker)) throw new Error(`Trang chủ còn mốc tháng không phù hợp nội dung lâu dài: ${staleMarker}`);
 }

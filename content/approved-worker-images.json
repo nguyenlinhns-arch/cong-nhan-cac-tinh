@@ -1,0 +1,69 @@
+{
+  "updated_at": "2026-08-04T14:10:00+07:00",
+  "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
+  "images": [
+    {
+      "asset": "vinacomin-tho-lo-than-thong-nhat-ngoai-khai-truong.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/tam-guong-nguoi-tho-mo-nguoi-chien-sy-cua-than-thong-nhat",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/870F82D98EF8C2D344A849A22BD871451C19AA025F1D40EF90160B26ADD03BF6.jpg",
+      "provider": "Vinacomin",
+      "description": "Công nhân trẻ Than Thống Nhất mặc bảo hộ xanh, đội mũ tại khai trường"
+    },
+    {
+      "asset": "vinacomin-tho-lo-guong-sang-mu-bao-ho.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/nguoi-tho-mo-uu-tu-tam-guong-sang-cua-phong-trao-cong-nhan-nganh-than",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/8EBB1756A1AEE592363DA0B091706FEEF865F89FDE62787C3B484053A5E077BA.jpg",
+      "provider": "Vinacomin",
+      "description": "Chân dung công nhân trẻ mặc bảo hộ xanh, đội mũ trong hầm lò"
+    },
+    {
+      "asset": "vinacomin-tho-lo-ha-lam-giao-ca.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/nhung-tho-lo-nghin-do-cua-than-ha-lam",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/B00C31B66E22BFDF3F798DACD094F76A876D6DDDBFB9D4921DE4A9A17EAE5FF9.jpg",
+      "provider": "Vinacomin",
+      "description": "Nhóm thợ lò Than Hà Lầm mặc bảo hộ xanh, đội mũ trong buổi giao ca"
+    },
+    {
+      "asset": "vinacomin-tho-lo-pham-dinh-duan-van-hanh-thiet-bi.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/pham-dinh-duan-nguoi-cong-nhan-guong-mau-tan-tam-voi-cong-viec",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/B0103F3790A616D5E0664A2BD38C6D8C05D25A351DAEA583C0328CBB22915132.jpg",
+      "provider": "Vinacomin",
+      "description": "Công nhân TKV vận hành thiết bị trong hầm lò"
+    },
+    {
+      "asset": "vinacomin-cong-nhan-dia-chat-mo-an-toan.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/cong-ty-cp-dia-chat-mo-tkv-no-luc-vuot-kho-san-xuat-an-toan-hieu-qua",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/D8EC39BF8BBB72AADB0301C4DF0C5C61F69897A1DBE78D87A2FEA04AB5535F1D.jpg",
+      "provider": "Vinacomin",
+      "description": "Tổ đội công nhân Địa chất mỏ TKV tại công trường"
+    },
+    {
+      "asset": "vinacomin-tho-lo-do-van-do-trong-ham-lo.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/do-van-do-nguoi-tho-mo-hay-lam-hay-lam",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/B38435F3851AEDD50585718CC59C9A22FF377375ACFDA717832CA81491A6AC2A.jpg",
+      "provider": "Vinacomin",
+      "description": "Chân dung công nhân thợ lò Đỗ Văn Độ tại vị trí làm việc"
+    },
+    {
+      "asset": "vinacomin-cong-nhan-co-gioi-hoa-trong-ham-lo.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/nguoi-tho-mo-ban-linh-va-sang-tao-trong-lao-dong-san-xuat",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/09C604D08254E8910155B16ED5E91C26DB2293CF99E759F77F2968B668EA72D2.jpg",
+      "provider": "Vinacomin",
+      "description": "Công nhân TKV vận hành thiết bị cơ giới trong hầm lò"
+    },
+    {
+      "asset": "vinacomin-tho-lo-lo-van-ky-mu-bao-ho.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/lo-van-ky-guong-sang-tho-lo-tre-cua-cong-ty-than-khe-cham",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/0DBF902911D5F7DF05B9035B415D5BF72BA26AF66CEFF0F0E7EB0FACCD52CBDE.jpg",
+      "provider": "Vinacomin",
+      "description": "Chân dung công nhân trẻ Lò Văn Kỷ mặc bảo hộ xanh, đội mũ và đèn lò"
+    },
+    {
+      "asset": "vinacomin-hoc-vien-quang-hanh-ao-xanh-doi-mu.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/than-quang-hanh-va-truong-cao-dang-tkv-tang-cuong-gan-ket-dao-tao-voi-san-xuat-thuc-te",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/57BB424168D1C221B317CB93B441C55399D6311407D0261B3F299228DEB3B247.jpg",
+      "provider": "Vinacomin",
+      "description": "Nhóm học viên nghề mỏ mặc bảo hộ xanh, đội mũ tại khu thực hành Than Quang Hanh"
+    }
+  ]
+}

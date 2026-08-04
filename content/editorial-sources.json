@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-01T23:30:00+07:00",
+  "updated_at": "2026-08-04T08:46:00+07:00",
   "policy": "Mỗi bài công khai ghi một dòng Nguồn bằng chữ và một câu SEO ở cuối bài; URL chỉ dùng cho kiểm chứng nội bộ, không đặt liên kết ra ngoài.",
   "articles": [
     {
@@ -186,7 +186,7 @@
         {
           "publisher": "TKV",
           "title": "Đảm bảo an toàn sản xuất lộ thiên trong mùa mưa bão 2026",
-          "date": "2026",
+          "date": "25/04/2026",
           "url": "https://vinacomin.vn/news/slug/dam-bao-an-toan-san-xuat-lo-thien-trong-mua-mua-bao-2026"
         },
         {
@@ -310,7 +310,7 @@
         {
           "publisher": "TKV",
           "title": "Hội nghị sơ kết công tác tuyển sinh, đào tạo và giải quyết việc làm tại xã Lương Minh",
-          "date": "05/2026",
+          "date": "20/05/2026",
           "url": "https://vinacomin.vn/news/slug/hoi-nghi-so-ket-cong-tac-tuyen-sinh-dao-tao-va-giai-quyet-viec-lam-tai-xa-luong-minh"
         }
       ]
@@ -388,7 +388,7 @@
         {
           "publisher": "Tạp chí Công Thương",
           "title": "TKV triển khai gói hỗ trợ 70 tỷ đồng khắc phục hậu quả bão số 3",
-          "date": "09/2024",
+          "date": "14/09/2024",
           "url": "https://tapchicongthuong.vn/tkv-trien-khai-goi-ho-tro-70-ty-dong-khac-phuc-hau-qua-bao-so-3-126647.htm"
         }
       ]
@@ -737,7 +737,7 @@
     },
     {
       "slug": "dam-ha-than-thong-nhat-dao-tao-viec-lam-2026",
-      "title": "Đầm Hà hợp tác Than Thống Nhất đào tạo việc làm 2026–2030",
+      "title": "Đầm Hà hợp tác Than Thống Nhất đào tạo nghề mỏ, tạo việc làm",
       "sources": [
         {
           "publisher": "Công ty Than Thống Nhất – TKV",
@@ -769,6 +769,45 @@
           "title": "Tri ân các gia đình có thân nhân hy sinh vì sự nghiệp sản xuất than",
           "date": "28/07/2026",
           "url": "https://www.thanthongnhat.vn/tin-san-xuat/tri-an-cac-gia-dinh-co-than-nhan-hy-sinh-vi-su-nghiep-san-xuat-than-15690.html"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-ha-lam-phuc-hoi-suc-khoe-tho-lo-2026",
+      "title": "Than Hà Lầm chăm lo phục hồi sức khỏe thợ lò",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Chăm lo nghỉ dưỡng, phục hồi sức khỏe cho thợ lò - Động lực để người lao động Than Hà Lầm gắn bó với nghề",
+          "date": "03/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46003/Cham-lo-nghi-duong-phuc-hoi-suc-khoe-cho-tho-lo---Đong-luc-đe-nguoi-lao-đong-Than-Ha-Lam-gan-bo-voi-nghe"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "phuc-loi-tho-mo-mo-viet-bac-2026",
+      "title": "Phúc lợi thợ mỏ Mỏ Việt Bắc dành cho 47 lao động",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Công đoàn TCT Công nghiệp mỏ Việt Bắc tổ chức chương trình phúc lợi thợ mỏ năm 2026",
+          "date": "02/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46001/Cong-đoan-TCT-Cong-nghiep-mo-Viet-Bac-to-chuc-chuong-trinh-phuc-loi-tho-mo-nam-2026"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-nam-mau-tuyen-duong-con-cong-nhan-2026",
+      "title": "Than Nam Mẫu tuyên dương 1.672 con công nhân học giỏi",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Than Nam Mẫu gặp mặt, tuyên dương con cán bộ, công nhân viên đạt thành tích cao trong học tập",
+          "date": "02/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/45999/Than-Nam-Mau-gap-mat-tuyen-duong-con-can-bo-cong-nhan-vien-đat-thanh-tich-cao-trong-hoc-tap"
         }
       ],
       "public_source_urls": false

@@ -1,4 +1,28 @@
 {
+  "than-ha-lam-phuc-hoi-suc-khoe-tho-lo-2026": {
+    "album_title": "Ảnh bài gốc · Công đoàn Than – Khoáng sản Việt Nam",
+    "source_url": "https://congdoantkv.vn/data/images/news/03_08_2026_175946_409.jpg",
+    "provider": "Công đoàn Than – Khoáng sản Việt Nam",
+    "source_article_url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46003/Cham-lo-nghi-duong-phuc-hoi-suc-khoe-cho-tho-lo---Đong-luc-đe-nguoi-lao-đong-Than-Ha-Lam-gan-bo-voi-nghe"
+  },
+  "phuc-loi-tho-mo-mo-viet-bac-2026": {
+    "album_title": "Ảnh bài gốc · Công đoàn Than – Khoáng sản Việt Nam",
+    "source_url": "https://congdoantkv.vn/data/images/news/02_08_2026_203856_944.jpg",
+    "provider": "Công đoàn Than – Khoáng sản Việt Nam",
+    "source_article_url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46001/Cong-đoan-TCT-Cong-nghiep-mo-Viet-Bac-to-chuc-chuong-trinh-phuc-loi-tho-mo-nam-2026"
+  },
+  "than-nam-mau-tuyen-duong-con-cong-nhan-2026": {
+    "album_title": "Ảnh bài gốc · Công đoàn Than – Khoáng sản Việt Nam",
+    "source_url": "https://congdoantkv.vn/data/images/news/02_08_2026_095912_2.jpg",
+    "provider": "Công đoàn Than – Khoáng sản Việt Nam",
+    "source_article_url": "https://congdoantkv.vn/tin-tuc/chi-tiet/45999/Than-Nam-Mau-gap-mat-tuyen-duong-con-can-bo-cong-nhan-vien-đat-thanh-tich-cao-trong-hoc-tap"
+  },
+  "than-thong-nhat-tri-an-gia-dinh-tho-mo-hy-sinh": {
+    "album_title": "Ảnh Thành Nam · Công ty Than Thống Nhất – TKV",
+    "source_url": "https://www.thanthongnhat.vn/uploads/news/2026_07/1785144564564_1362602077895029208_g4651981227352933567_04c3598fdfbd9154fdde7b3e6dc857b9.jpg",
+    "provider": "Công ty Than Thống Nhất – TKV",
+    "source_article_url": "https://www.thanthongnhat.vn/tin-san-xuat/tri-an-cac-gia-dinh-co-than-nhan-hy-sinh-vi-su-nghiep-san-xuat-than-15690.html"
+  },
   "than-thong-nhat-do-dau-cuu-thanh-nien-xung-phong": {
     "album_title": "Công ty Than Thống Nhất – TKV",
     "source_url": "https://www.thanthongnhat.vn/uploads/news/2026_07/1785233493309_8368402457751477522_8368402457751477522_8eaf52b2957a4ca191b34eeec66355f2.jpg",
@@ -327,19 +351,25 @@
     "provider": "Thư viện ảnh Vinacomin"
   },
   "nghe-tho-lo-co-on-dinh-khong": {
-    "album_title": "Thư viện ảnh Vinacomin · Tổng giám đốc TKV làm việc với Than Khe Chàm",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_8765.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
+    "album_title": "Ảnh bài Lò Văn Kỷ - Gương sáng thợ lò trẻ của Công ty than Khe Chàm · Vinacomin",
+    "source_url": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-lo-van-ky-mu-bao-ho.webp",
+    "original_source_url": "https://vinacomin.vn/userfiles/thumbnail/0DBF902B9D4819713DC866FF64EDFB6E53F31F346CFD3C1EAE0F0E0B12EACBDE.jpg",
+    "provider": "Thư viện ảnh Vinacomin",
+    "local_file": "../vinacomin-tho-lo-lo-van-ky-mu-bao-ho.webp"
   },
   "hoc-thuc-hanh-nghe-mo-ham-lo": {
-    "album_title": "Thư viện ảnh Vinacomin · TKV làm việc với Than Khe Chàm",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_8544.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
+    "album_title": "Ảnh bài Người thợ mỏ bản lĩnh và sáng tạo trong lao động sản xuất · Vinacomin",
+    "source_url": "https://thaylinhtuyenthomo.vn/assets/vinacomin-cong-nhan-co-gioi-hoa-trong-ham-lo.webp",
+    "original_source_url": "https://vinacomin.vn/userfiles/thumbnail/09C604D08254E8910155B16ED5E91C26DB2293CF99E759F77F2968B668EA72D2.jpg",
+    "provider": "Thư viện ảnh Vinacomin",
+    "local_file": "../vinacomin-cong-nhan-co-gioi-hoa-trong-ham-lo.webp"
   },
   "dao-tao-an-toan-truoc-khi-vao-lo": {
-    "album_title": "Ảnh học sinh trải nghiệm nghề mỏ · TKV/Vinacomin",
-    "source_url": "https://thaylinhtuyenthomo.vn/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp",
-    "provider": "Thư viện ảnh Vinacomin"
+    "album_title": "Ảnh bài Công ty CP Địa chất mỏ - TKV: Nỗ lực vượt khó, sản xuất an toàn, hiệu quả · Vinacomin",
+    "source_url": "https://thaylinhtuyenthomo.vn/assets/vinacomin-cong-nhan-dia-chat-mo-an-toan.webp",
+    "original_source_url": "https://vinacomin.vn/userfiles/thumbnail/D8EC39BF8BBB72AADB0301C4DF0C5C61F69897A1DBE78D87A2FEA04AB5535F1D.jpg",
+    "provider": "Thư viện ảnh Vinacomin",
+    "local_file": "../vinacomin-cong-nhan-dia-chat-mo-an-toan.webp"
   },
   "co-gioi-hoa-khai-thac-ham-lo": {
     "album_title": "Ảnh công nhân vận hành thiết bị · TKV/Vinacomin",
@@ -352,29 +382,38 @@
     "provider": "Thư viện ảnh Vinacomin"
   },
   "hoc-nghe-khai-thac-mo-2-3-thang": {
-    "album_title": "Thư viện ảnh Vinacomin · Lãnh đạo Công đoàn thăm công nhân Than Dương Huy",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4075.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
+    "album_title": "Ảnh bài Những thợ lò nghìn đô của Than Hà Lầm · Vinacomin",
+    "source_url": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-ha-lam-giao-ca.webp",
+    "original_source_url": "https://vinacomin.vn/userfiles/thumbnail/B00C31B66E22BFDF3F798DACD094F76A876D6DDDBFB9D4921DE4A9A17EAE5FF9.jpg",
+    "provider": "Thư viện ảnh Vinacomin",
+    "local_file": "../vinacomin-tho-lo-ha-lam-giao-ca.webp"
   },
   "ho-so-hoc-nghe-mo-can-gi": {
-    "album_title": "Thư viện ảnh Vinacomin · Công đoàn thăm công nhân Than Dương Huy",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4062.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
+    "album_title": "Ảnh bài Người thợ mỏ ưu tú - Tấm gương sáng của phong trào công nhân ngành Than · Vinacomin",
+    "source_url": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-guong-sang-mu-bao-ho.webp",
+    "original_source_url": "https://vinacomin.vn/userfiles/thumbnail/8EBB1756A1AEE592363DA0B091706FEEF865F89FDE62787C3B484053A5E077BA.jpg",
+    "provider": "Thư viện ảnh Vinacomin",
+    "local_file": "../vinacomin-tho-lo-guong-sang-mu-bao-ho.webp"
   },
   "dieu-kien-tuyen-tho-lo-2026": {
-    "album_title": "Thư viện ảnh Vinacomin · Lãnh đạo Công đoàn thăm công nhân Than Dương Huy",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4207.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
+    "album_title": "Ảnh bài Tấm gương Người Thợ mỏ - Người Chiến sỹ của Than Thống Nhất · Vinacomin",
+    "source_url": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-than-thong-nhat-ngoai-khai-truong.webp",
+    "original_source_url": "https://vinacomin.vn/userfiles/thumbnail/870F82D98EF8C2D344A849A22BD871451C19AA025F1D40EF90160B26ADD03BF6.jpg",
+    "provider": "Thư viện ảnh Vinacomin",
+    "local_file": "../vinacomin-tho-lo-than-thong-nhat-ngoai-khai-truong.webp"
   },
   "tai-co-cau-tkv-2026-viec-lam-tho-mo": {
-    "album_title": "Ảnh thợ mỏ hầm lò · TKV/Vinacomin",
-    "source_url": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-ham-lo-1200.webp",
+    "album_title": "Ảnh bài Phạm Đình Duẩn - Người công nhân gương mẫu, tận tâm với công việc · Vinacomin",
+    "source_url": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-pham-dinh-duan-van-hanh-thiet-bi.webp",
+    "original_source_url": "https://vinacomin.vn/userfiles/thumbnail/B0103F3790A616D5E0664A2BD38C6D8C05D25A351DAEA583C0328CBB22915132.jpg",
     "provider": "Thư viện ảnh Vinacomin",
-    "local_file": "../vinacomin-tho-mo-ham-lo-1200.webp"
+    "local_file": "../vinacomin-tho-lo-pham-dinh-duan-van-hanh-thiet-bi.webp"
   },
   "phuc-loi-tho-mo-tkv-2026": {
-    "album_title": "Thư viện ảnh Vinacomin · Công đoàn thăm công nhân Than Dương Huy",
-    "source_url": "https://vinacomin.vn/Share/Media/2018/07/IMG_4110.jpg",
-    "provider": "Thư viện ảnh Vinacomin"
+    "album_title": "Ảnh bài Đỗ Văn Độ - Người thợ mỏ hay làm, hay làm · Vinacomin",
+    "source_url": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-do-van-do-trong-ham-lo.webp",
+    "original_source_url": "https://vinacomin.vn/userfiles/thumbnail/B38435F3851AEDD50585718CC59C9A22FF377375ACFDA717832CA81491A6AC2A.jpg",
+    "provider": "Thư viện ảnh Vinacomin",
+    "local_file": "../vinacomin-tho-lo-do-van-do-trong-ham-lo.webp"
   }
 }
