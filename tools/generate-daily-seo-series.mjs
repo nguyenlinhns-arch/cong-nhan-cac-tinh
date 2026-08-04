@@ -132,7 +132,7 @@ function head({title, meta, canonical, graph, image, type = "article"}) {
   <meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(meta)}"><meta property="og:url" content="${canonical}">
   <meta property="og:image" content="${esc(image)}"><meta property="og:image:alt" content="${esc(title)}">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(title)}"><meta name="twitter:description" content="${esc(meta)}"><meta name="twitter:image" content="${esc(image)}">
-  <link rel="stylesheet" href="/fonts.css?v=1"><link rel="stylesheet" href="/content-network.css?v=1"><link rel="stylesheet" href="/daily-seo.css?v=1"><link rel="stylesheet" href="/mobile-core.css?v=1">
+  <link rel="stylesheet" href="/fonts.css?v=2"><link rel="stylesheet" href="/content-network.css?v=1"><link rel="stylesheet" href="/daily-seo.css?v=1"><link rel="stylesheet" href="/mobile-core.css?v=1">
   <style>.daily-seo-hero__grid--text-only{grid-template-columns:minmax(0,900px)}</style>
   <script type="application/ld+json">${JSON.stringify(graph)}</script>
 </head>`;

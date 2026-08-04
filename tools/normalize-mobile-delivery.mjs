@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = path.resolve("tuyen-tho-mo");
+const FONT_URL = "/fonts.css?v=2";
 const CSS_URL = "/mobile-core.css?v=1";
 const JS_URL = "/mobile-core.js?v=1";
 const ANALYTICS_URL = "/analytics.js?v=6";
@@ -22,6 +23,7 @@ function collectHtml(directory, output = []) {
 let changed = 0;
 let viewportFixed = 0;
 let assetsFixed = 0;
+let fontLinksFixed = 0;
 
 for (const file of collectHtml(root)) {
   const before = fs.readFileSync(file, "utf8");
@@ -39,6 +41,7 @@ for (const file of collectHtml(root)) {
   });
 
   const next = html
+    .replace(/\s*<link\s+rel=["']stylesheet["']\s+href=["']\/?fonts\.css\?v=\d+["']\s*\/?>/gi, "")
     .replace(/\/?mobile-(?:ux|core)\.css\?v=\d+/g, CSS_URL)
     .replace(/\/?mobile-(?:ux|core)\.js\?v=\d+/g, JS_URL)
     .replace(/(?:\/|\.\.\/\.\.\/)analytics\.js\?v=\d+/g, ANALYTICS_URL)
@@ -47,6 +50,11 @@ for (const file of collectHtml(root)) {
     .replace(/(?:\/|\.\.\/\.\.\/)recruitment-config\.js\?v=\d+/g, RECRUITMENT_URL);
   if (next !== html) assetsFixed += 1;
   html = next;
+
+  if (/<\/head>/i.test(html)) {
+    html = html.replace(/<\/head>/i, `  <link rel="stylesheet" href="${FONT_URL}">\n</head>`);
+    if (!before.includes(FONT_URL) || before.lastIndexOf(FONT_URL) < before.lastIndexOf('rel="stylesheet"')) fontLinksFixed += 1;
+  }
 
   if (html !== before) {
     fs.writeFileSync(file, html);
@@ -59,6 +67,8 @@ console.log(JSON.stringify({
   html_changed: changed,
   viewport_fixed: viewportFixed,
   asset_versions_fixed: assetsFixed,
+  font_links_fixed: fontLinksFixed,
+  font_css: FONT_URL,
   mobile_css: CSS_URL,
   mobile_js: JS_URL,
   analytics_js: ANALYTICS_URL,

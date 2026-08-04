@@ -190,7 +190,7 @@ const contactPage = `<!doctype html>
   <meta name="twitter:title" content="Đi làm mỏ than Quảng Ninh liên hệ ai?">
   <meta name="twitter:description" content="Liên hệ Thầy Linh qua Zalo/điện thoại ${PHONE_DISPLAY} để kiểm tra điều kiện và được hướng dẫn lộ trình.">
   <meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">
-  <link rel="stylesheet" href="/fonts.css?v=1">
+  <link rel="stylesheet" href="/fonts.css?v=2">
   <link rel="stylesheet" href="/content-network.css?v=1">
   <link rel="stylesheet" href="/mobile-ux.css?v=8">
   <link rel="stylesheet" href="/contact-authority.css?v=1">

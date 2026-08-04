@@ -139,7 +139,7 @@ let articleCoversMissingDimensions = 0;
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, "utf8");
   const relative = path.relative(root, file);
-  if (html.includes('href="/fonts.css?v=1"')) localFontPages += 1;
+  if (html.includes('href="/fonts.css?v=2"')) localFontPages += 1;
   if (/fonts\.(?:googleapis|gstatic)\.com/i.test(html)) fail(`${relative}: còn gọi Google Fonts bên ngoài`);
   for (const match of html.matchAll(/<link\b[^>]*rel=["'][^"']*stylesheet[^"']*["'][^>]*href=["'](https?:\/\/[^"']+)["'][^>]*>/gi)) {
     externalStylesheets += 1;

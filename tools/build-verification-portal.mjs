@@ -93,7 +93,7 @@ function pageHtml(page) {
   <link rel="stylesheet" href="/landing-recruitment.css?v=17">
   <link rel="stylesheet" href="/publication-polish.css?v=5">
   <link rel="stylesheet" href="/mobile-core.css?v=1">
-  <link rel="stylesheet" href="/fonts.css?v=1">
+  <link rel="stylesheet" href="/fonts.css?v=2">
   ${cssTag}
   <script type="application/ld+json">${structuredData(page)}</script>
 </head>
