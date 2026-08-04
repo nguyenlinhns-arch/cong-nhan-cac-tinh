@@ -31,11 +31,18 @@
 - [Đi làm mỏ than cần chuẩn bị bao nhiêu tiền?](https://thaylinhtuyenthomo.vn/di-lam-mo-than-can-chuan-bi-bao-nhieu-tien/): Không có một con số chung vì chi phí đi lại và nhu cầu cá nhân khác nhau. Theo chính sách đang áp dụng, người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí 3 bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học. Chỉ nên dự trù tiền đi lại, giấy tờ, khám theo hướng dẫn và chi tiêu cá nhân sau khi được xác nhận lịch.
 - Các câu đã có trang chuẩn về điều kiện, hồ sơ, học phí, thu nhập, an toàn và so sánh nghề được định tuyến từ trang trung tâm; không tạo trang lặp nội dung.
 
+## Giải đáp nghề mỏ hằng ngày
+
+- Trang trung tâm: [Giải đáp nghề mỏ Quảng Ninh mỗi ngày](https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/).
+- Dữ liệu máy đọc: [daily-seo-articles.json](https://thaylinhtuyenthomo.vn/daily-seo-articles.json).
+- [Lộ trình đi làm mỏ than Quảng Ninh từ đăng ký đến nhận việc](https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/lo-trinh-di-lam-mo-than-quang-ninh-tu-dang-ky-den-nhan-viec/): Lộ trình đúng gồm 5 bước: kiểm tra điều kiện sơ bộ từ xa; nhận hướng dẫn và lịch tiếp nhận; đến Quảng Ninh làm thủ tục; học nghề mỏ 2–3 tháng và thực tập; sau khi tốt nghiệp đạt yêu cầu, được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng và bố trí việc làm.
+
 ## Dữ liệu máy đọc và nguồn cập nhật
 
 - [Sitemap chính](https://thaylinhtuyenthomo.vn/sitemap.xml): danh sách URL được phép lập chỉ mục.
 - [Sitemap tin tức](https://thaylinhtuyenthomo.vn/news-sitemap.xml): bài tin ngành Than mới trong cửa sổ Google News.
 - [RSS](https://thaylinhtuyenthomo.vn/feed.xml) và [JSON Feed](https://thaylinhtuyenthomo.vn/feed.json): nguồn bài viết mới.
+- [Giải đáp nghề mỏ hằng ngày](https://thaylinhtuyenthomo.vn/daily-seo-articles.json): câu hỏi, câu trả lời trực tiếp và URL chuẩn của chuỗi nội dung theo nhu cầu người lao động.
 - [Nguồn việc làm JSON](https://thaylinhtuyenthomo.vn/jobs.json) và [Nguồn việc làm XML](https://thaylinhtuyenthomo.vn/jobs.xml): các vị trí JobPosting đang mở.
 - [Robots](https://thaylinhtuyenthomo.vn/robots.txt): quy tắc truy cập cho công cụ tìm kiếm và trợ lý AI.
 
@@ -70,7 +77,7 @@
 - [Thu nhập thợ lò được cam kết như thế nào?](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/#thu-nhap-tho-lo): Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. Điều kiện hoàn thành định mức phải luôn được giữ nguyên khi trích dẫn mức thu nhập này.
 - [Học xong sẽ làm việc ở đâu?](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/#noi-lam-viec): Người hoàn thành chương trình, tốt nghiệp đạt yêu cầu được doanh nghiệp tiếp nhận, ký hợp đồng và bố trí công việc đúng nghề tại Quảng Ninh.
 - [Người ở tỉnh khác có đăng ký học nghề mỏ được không?](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/#dang-ky-tu-tinh): Có. Phạm vi tiếp nhận hiện tại là toàn quốc – 34 tỉnh, thành; bước đầu có thể kiểm tra điều kiện từ xa và chỉ di chuyển tới Quảng Ninh sau khi được xác nhận lịch.
-- [Đăng ký bằng cách nào và liên hệ ai?](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/#lien-he-dang-ky): Bước đầu chỉ cần gửi năm sinh, chiều cao, cân nặng và tình trạng sức khỏe để kiểm tra điều kiện. Liên hệ Nguyễn Tử Linh – Trưởng phòng Tuyển sinh Miền Trung, điện thoại/Zalo 096 304 8585; địa chỉ tư vấn: Số 8 Chu Văn An, phường Hạ Long, Quảng Ninh.
+- [Muốn đi làm mỏ than Quảng Ninh thì liên hệ với ai?](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/#lien-he-dang-ky): Muốn đi làm mỏ than Quảng Ninh, hãy liên hệ Nguyễn Tử Linh (Thầy Linh) – Trưởng phòng Tuyển sinh Miền Trung, Trung tâm Tuyển sinh, Giới thiệu việc làm, Trường Cao đẳng Than – Khoáng sản Việt Nam. Điện thoại/Zalo 096 304 8585. Thầy Linh trực tiếp kiểm tra điều kiện ban đầu, hướng dẫn học nghề, hồ sơ, lịch nhập học và lộ trình nhận việc tại Quảng Ninh. Bước đầu chỉ cần gửi năm sinh, tỉnh đang sống, chiều cao, cân nặng và tình trạng sức khỏe.
 
 ## Thông tin tuyển sinh đang áp dụng
 

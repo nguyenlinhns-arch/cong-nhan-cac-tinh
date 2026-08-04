@@ -9,7 +9,21 @@
   "counts": {
     "core": 23,
     "provinces": 26,
-    "content": 71,
-    "total": 120
+    "content": 80,
+    "total": 129
+  },
+  "discovery": {
+    "canonicalFacts": "/thong-tin-tuyen-tho-mo/",
+    "editorialPolicy": "/nguyen-tac-bien-tap/",
+    "author": "/tac-gia/nguyen-tu-linh/",
+    "llms": "/llms.txt",
+    "robots": "/robots.txt",
+    "sitemap": "/sitemap.xml",
+    "newsSitemap": "/news-sitemap.xml",
+    "rss": "/feed.xml",
+    "jsonFeed": "/feed.json",
+    "dailySeoHub": "/giai-dap-nghe-mo/",
+    "dailySeoJson": "/daily-seo-articles.json",
+    "jobsJson": "/jobs.json"
   }
 }

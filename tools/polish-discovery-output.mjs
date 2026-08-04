@@ -20,11 +20,17 @@ llms = llms
     "[Thông tin tuyển thợ mỏ đang áp dụng: 15 câu hỏi](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/): trang chuẩn để đối chiếu điều kiện, thời gian học, chế độ, hồ sơ, địa chỉ và thu nhập; dữ kiện có ngày hiệu lực và dấu vết kiểm chứng.",
   );
 
-const machineSection = `## Dữ liệu máy đọc và nguồn cập nhật\n\n- [Sitemap chính](${base}/sitemap.xml): danh sách URL được phép lập chỉ mục.\n- [Sitemap tin tức](${base}/news-sitemap.xml): bài tin ngành Than mới trong cửa sổ Google News.\n- [RSS](${base}/feed.xml) và [JSON Feed](${base}/feed.json): nguồn bài viết mới.\n- [Nguồn việc làm JSON](${base}/jobs.json) và [Nguồn việc làm XML](${base}/jobs.xml): các vị trí JobPosting đang mở.\n- [Robots](${base}/robots.txt): quy tắc truy cập cho công cụ tìm kiếm và trợ lý AI.\n\n`;
+const machineSection = `## Dữ liệu máy đọc và nguồn cập nhật\n\n- [Sitemap chính](${base}/sitemap.xml): danh sách URL được phép lập chỉ mục.\n- [Sitemap tin tức](${base}/news-sitemap.xml): bài tin ngành Than mới trong cửa sổ Google News.\n- [RSS](${base}/feed.xml) và [JSON Feed](${base}/feed.json): nguồn bài viết mới.\n- [Giải đáp nghề mỏ hằng ngày](${base}/daily-seo-articles.json): câu hỏi, câu trả lời trực tiếp và URL chuẩn của chuỗi nội dung theo nhu cầu người lao động.\n- [Nguồn việc làm JSON](${base}/jobs.json) và [Nguồn việc làm XML](${base}/jobs.xml): các vị trí JobPosting đang mở.\n- [Robots](${base}/robots.txt): quy tắc truy cập cho công cụ tìm kiếm và trợ lý AI.\n\n`;
 if (!llms.includes("## Dữ liệu máy đọc và nguồn cập nhật")) {
   const marker = "## Trang thông tin hiện hành";
   if (!llms.includes(marker)) throw new Error("Discovery polish: llms.txt is missing the current-information section");
   llms = llms.replace(marker, `${machineSection}${marker}`);
+}
+if (!llms.includes(`[Giải đáp nghề mỏ hằng ngày](${base}/daily-seo-articles.json)`)) {
+  llms = llms.replace(
+    `- [RSS](${base}/feed.xml) và [JSON Feed](${base}/feed.json): nguồn bài viết mới.`,
+    `- [RSS](${base}/feed.xml) và [JSON Feed](${base}/feed.json): nguồn bài viết mới.\n- [Giải đáp nghề mỏ hằng ngày](${base}/daily-seo-articles.json): câu hỏi, câu trả lời trực tiếp và URL chuẩn của chuỗi nội dung theo nhu cầu người lao động.`,
+  );
 }
 
 const intentSection = `## Trang trả lời theo nhu cầu tìm kiếm\n\n- Tuyển thợ mỏ hoặc thợ lò tại Quảng Ninh: [trang tuyển thợ mỏ](${base}/).\n- Tuyển công nhân mỏ, việc làm thợ lò hoặc việc làm mỏ cho người chưa có kinh nghiệm: [tin tuyển công nhân mỏ](${base}/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/).\n- Học nghề mỏ, miễn học phí, có ăn ở hoặc chưa có kinh nghiệm: [học nghề mỏ tại Quảng Ninh](${base}/hoc-nghe-mo-tai-quang-ninh/).\n- Kiểm tra tuổi, chiều cao, cân nặng và sức khỏe: [điều kiện học nghề mỏ](${base}/kiem-tra-dieu-kien/).\n- Chuẩn bị giấy tờ: [hồ sơ nhập học nghề mỏ](${base}/ho-so-nhap-hoc/).\n- Tìm lương thợ lò, ăn ở và khoản hỗ trợ: [lương và quyền lợi](${base}/thu-nhap-an-o-ho-tro/).\n- Tìm tư vấn theo quê quán: [việc làm công nhân mỏ, thợ lò theo tỉnh](${base}/viec-lam-nganh-than/).\n\n`;
@@ -51,6 +57,8 @@ manifest.discovery = {
   newsSitemap: "/news-sitemap.xml",
   rss: "/feed.xml",
   jsonFeed: "/feed.json",
+  dailySeoHub: "/giai-dap-nghe-mo/",
+  dailySeoJson: "/daily-seo-articles.json",
   jobsJson: "/jobs.json",
 };
 fs.writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);

@@ -4,8 +4,8 @@ on:
   push:
     branches: [main]
   schedule:
-    # Refresh the 48-hour Google News sitemap every day (23:17 Asia/Bangkok).
-    - cron: "17 16 * * *"
+    # Publish the next verified SEO answer and refresh sitemaps every day (07:10 Asia/Bangkok).
+    - cron: "10 0 * * *"
   workflow_dispatch:
 
 permissions:
@@ -42,6 +42,7 @@ jobs:
           node tools/enhance-home-copy-actions.mjs
           node tools/enhance-contact-authority-seo.mjs
           node tools/build-worker-question-pages.mjs
+          node tools/generate-daily-seo-series.mjs
           node tools/build-search-index.mjs
           node tools/enhance-all-province-search.mjs
           node tools/polish-discovery-output.mjs
@@ -64,6 +65,7 @@ jobs:
           node tools/validate-search-intents.mjs
           node tools/validate-contact-authority-seo.mjs
           node tools/validate-worker-question-pages.mjs
+          node tools/validate-daily-seo-series.mjs
           node tools/validate-mobile-search-ai-polish.mjs
           node tools/validate-job-postings.mjs
           node tools/validate-recruitment-funnel.mjs
@@ -77,6 +79,23 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Notify search engines about today's new SEO answer
+        if: success() && github.event_name == 'schedule'
+        shell: bash
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_INDEXING_SERVICE_ACCOUNT_JSON }}
+        run: |
+          release_files="$(node tools/list-daily-seo-release.mjs)"
+          if [ -z "$release_files" ]; then
+            echo "No daily SEO answer is scheduled for today."
+            exit 0
+          fi
+          INDEXNOW_CHANGED_FILES="$release_files" node tools/submit-indexnow.mjs
+          if [ -n "$GOOGLE_SERVICE_ACCOUNT_JSON" ]; then
+            node tools/submit-google-sitemap.mjs
+          else
+            echo "Google sitemap submission skipped because the Search Console credential is not configured."
+          fi
       - name: Verify live mobile, search and AI discovery release
         env:
           LIVE_URL: https://thaylinhtuyenthomo.vn/
@@ -96,6 +115,9 @@ jobs:
           finder_file="$(mktemp)"
           application_file="$(mktemp)"
           contact_authority_file="$(mktemp)"
+          daily_seo_hub_file="$(mktemp)"
+          daily_seo_article_file="$(mktemp)"
+          daily_seo_json_file="$(mktemp)"
           for attempt in $(seq 1 18); do
             if curl --fail --silent --show-error --location --max-time 20 "$LIVE_URL" -o "$html_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}mobile-core.js?run=${GITHUB_SHA}" -o "$core_file" \
@@ -111,7 +133,10 @@ jobs:
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}analytics.js?run=${GITHUB_SHA}" -o "$analytics_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}worker-info-finder.js?run=${GITHUB_SHA}" -o "$finder_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}job-application.js?run=${GITHUB_SHA}" -o "$application_file" \
-              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}lien-he-di-lam-mo-than-quang-ninh/?run=${GITHUB_SHA}" -o "$contact_authority_file"; then
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}lien-he-di-lam-mo-than-quang-ninh/?run=${GITHUB_SHA}" -o "$contact_authority_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}giai-dap-nghe-mo/?run=${GITHUB_SHA}" -o "$daily_seo_hub_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}giai-dap-nghe-mo/lo-trinh-di-lam-mo-than-quang-ninh-tu-dang-ky-den-nhan-viec/?run=${GITHUB_SHA}" -o "$daily_seo_article_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}daily-seo-articles.json?run=${GITHUB_SHA}" -o "$daily_seo_json_file"; then
               if grep -Fq 'class="home-funnel"' "$html_file" \
                 && grep -Fq '/home-critical.css?v=1' "$html_file" \
                 && grep -Fq '/home-content.css?v=2' "$html_file" \
@@ -147,6 +172,9 @@ jobs:
                 && grep -Fq 'Nguyễn Tử Linh (Thầy Linh)' "$contact_authority_file" \
                 && grep -Fq '096 304 8585' "$contact_authority_file" \
                 && grep -Fq 'https://thaylinhtuyenthomo.vn/lien-he-di-lam-mo-than-quang-ninh/' "$contact_authority_file" \
+                && grep -Fq 'Giải đáp nghề mỏ Quảng Ninh mỗi ngày' "$daily_seo_hub_file" \
+                && grep -Fq 'Lộ trình đi làm mỏ than Quảng Ninh từ đăng ký đến nhận việc' "$daily_seo_article_file" \
+                && grep -Fq '"canonical_hub": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/"' "$daily_seo_json_file" \
                 && grep -Fq '"version": 4' "$manifest_file" \
                 && grep -Fq '"strategy": "answer-first-tiered"' "$manifest_file" \
                 && grep -Fq '"discovery"' "$manifest_file" \

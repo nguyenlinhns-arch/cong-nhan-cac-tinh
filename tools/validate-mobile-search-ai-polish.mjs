@@ -80,6 +80,7 @@ for (const marker of [
   "## Dữ liệu máy đọc và nguồn cập nhật",
   "## Trang trả lời theo nhu cầu tìm kiếm",
   "[Sitemap chính](https://thaylinhtuyenthomo.vn/sitemap.xml)",
+  "[Giải đáp nghề mỏ hằng ngày](https://thaylinhtuyenthomo.vn/daily-seo-articles.json)",
   "[Robots](https://thaylinhtuyenthomo.vn/robots.txt)",
   "[tin tuyển công nhân mỏ](https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/)",
   "[lương và quyền lợi](https://thaylinhtuyenthomo.vn/thu-nhap-an-o-ho-tro/)",
@@ -94,6 +95,8 @@ for (const [key, expected] of Object.entries({
   robots: "/robots.txt",
   sitemap: "/sitemap.xml",
   rss: "/feed.xml",
+  dailySeoHub: "/giai-dap-nghe-mo/",
+  dailySeoJson: "/daily-seo-articles.json",
   jobsJson: "/jobs.json",
 })) {
   if (discovery[key] !== expected) errors.push(`search-index.json discovery.${key}: dự kiến ${expected}, thực tế ${discovery[key] || "thiếu"}`);

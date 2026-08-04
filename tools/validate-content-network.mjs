@@ -207,6 +207,8 @@ if (noindexProvinces !== 9) fail(`Trang tỉnh: cần noindex 9 trang chưa có 
 
 const feed = JSON.parse(read("feed.json"));
 const articles = Array.isArray(feed.items) ? feed.items : [];
+const dailySeoFeed = JSON.parse(read("daily-seo-articles.json"));
+const dailySeoPages = 1 + (Array.isArray(dailySeoFeed.articles) ? dailySeoFeed.articles.length : 0);
 if (!articles.length) fail("Thư viện: feed không có bài viết");
 for (const article of articles) {
   const url = new URL(article.url);
@@ -225,8 +227,8 @@ for (const article of articles) {
 const htmlFiles = walk(root);
 const contentFiles = htmlFiles.filter((file) => !path.basename(file).startsWith("google"));
 const legacyRoutes = JSON.parse(fs.readFileSync(path.resolve("operations/legacy-routes.json"), "utf8")).routes || [];
-const expectedHtmlFiles = 56 + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length + workerQuestionPages.length;
-const expectedContentFiles = 55 + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length + workerQuestionPages.length;
+const expectedHtmlFiles = 56 + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length + workerQuestionPages.length + dailySeoPages;
+const expectedContentFiles = 55 + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length + workerQuestionPages.length + dailySeoPages;
 if (htmlFiles.length !== expectedHtmlFiles) fail(`Website: cần ${expectedHtmlFiles} tệp HTML theo số bài trong feed, trang kiểm chứng và trang lõi V4, nhận ${htmlFiles.length}`);
 if (contentFiles.length !== expectedContentFiles) fail(`Website: cần ${expectedContentFiles} trang nội dung theo số bài trong feed, trang kiểm chứng và trang lõi V4, nhận ${contentFiles.length}`);
 for (const file of contentFiles) {
@@ -293,6 +295,7 @@ const output = {
   v4_core_pages: v4CorePages.length,
   contact_authority_pages: contactAuthorityPages.length,
   worker_question_pages: workerQuestionPages.length,
+  daily_seo_pages: dailySeoPages,
   provinces: provinces.length,
   share_packages: shareOptions,
   articles: articles.length,

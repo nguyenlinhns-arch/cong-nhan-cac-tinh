@@ -1,4 +1,6 @@
 import {execFileSync} from "node:child_process";
+import fs from "node:fs";
+import path from "node:path";
 
 const host = "thaylinhtuyenthomo.vn";
 const base = `https://${host}`;
@@ -22,6 +24,33 @@ const discoverySources = [
   "tuyen-tho-mo/sitemap.xml",
   "tuyen-tho-mo/news-sitemap.xml",
 ];
+const dailySeoSources = [
+  "content/daily-seo-articles.json",
+  "tools/generate-daily-seo-series.mjs",
+  "tuyen-tho-mo/daily-seo-articles.json",
+];
+
+function bangkokDate() {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Bangkok",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date());
+}
+
+function currentDailySeoUrls() {
+  const contentPath = path.resolve("content/daily-seo-articles.json");
+  if (!fs.existsSync(contentPath)) return [];
+  const data = JSON.parse(fs.readFileSync(contentPath, "utf8"));
+  const today = process.env.SEO_DAILY_DATE || bangkokDate();
+  return [
+    `${base}/giai-dap-nghe-mo/`,
+    ...(data.articles || [])
+      .filter((article) => article.publish_on === today)
+      .map((article) => `${base}/giai-dap-nghe-mo/${article.slug}/`),
+  ];
+}
 
 function matchesSource(file, source) {
   return source.endsWith("/") ? file.startsWith(source) : file === source;
@@ -34,6 +63,9 @@ function urlsForChangedFile(file) {
   }
   if (discoverySources.some((source) => matchesSource(file, source))) {
     urls.push(`${base}/`, `${base}/thong-tin-tuyen-tho-mo/`);
+  }
+  if (dailySeoSources.some((source) => matchesSource(file, source))) {
+    urls.push(...currentDailySeoUrls());
   }
   const prefix = "tuyen-tho-mo/";
   if (!file.startsWith(prefix) || !file.endsWith(".html")) return urls;
