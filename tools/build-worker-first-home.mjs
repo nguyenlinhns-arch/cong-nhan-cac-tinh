@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
-import {dailyCommunityArticles} from "./daily-community-articles.mjs";
+import {dailyCommunityArticles} from "./daily-community-articles-all.mjs";
 
 await import("./build-worker-first-home-base.mjs");
 

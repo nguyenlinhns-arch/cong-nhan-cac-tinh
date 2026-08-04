@@ -16,6 +16,9 @@ const warnings = [];
 const feed = JSON.parse(fs.readFileSync(path.join(root, "feed.json"), "utf8"));
 const imageSources = JSON.parse(fs.readFileSync(path.join(root, "assets", "articles", "sources.json"), "utf8"));
 const searchIndex = JSON.parse(fs.readFileSync(path.join(root, "search-index.json"), "utf8"));
+const searchCore = JSON.parse(fs.readFileSync(path.join(root, "search-core.json"), "utf8"));
+const searchProvinces = JSON.parse(fs.readFileSync(path.join(root, "search-provinces.json"), "utf8"));
+const searchContent = JSON.parse(fs.readFileSync(path.join(root, "search-content.json"), "utf8"));
 const editorialSources = JSON.parse(fs.readFileSync(path.resolve("content", "editorial-sources.json"), "utf8"));
 const jobFeed = JSON.parse(fs.readFileSync(path.join(root, "jobs.json"), "utf8"));
 const provinceDirectory = JSON.parse(fs.readFileSync(path.join(root, "data", "provinces-2026.json"), "utf8"));
@@ -453,12 +456,11 @@ for (const file of allHtml) {
   const rel = path.relative(root, file);
   if (/^google[a-z0-9]+\.html$/i.test(rel)) continue;
   const visible = strip(html);
-  if (!/<meta\s+name="viewport"\s+content="[^"]*width=device-width/i.test(html)) errors.push(`${rel}: missing responsive viewport`);
-  const mobileCssVersion = 8;
-  if (!new RegExp(`<link\\s+rel="stylesheet"\\s+href="\\/mobile-ux\\.css\\?v=${mobileCssVersion}"`, "i").test(html)) errors.push(`${rel}: missing shared mobile stylesheet v${mobileCssVersion}`);
-  if (!/<script\s+src="\/analytics\.js\?v=5"\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing current shared analytics script`);
-  const mobileUxVersion = 10;
-  if (!new RegExp(`<script\\s+src="\\/mobile-ux\\.js\\?v=${mobileUxVersion}"\\s+defer><\\/script>`, "i").test(html)) errors.push(`${rel}: missing shared mobile script v${mobileUxVersion}`);
+  const viewportTag = html.match(/<meta\b[^>]*\bname=["']viewport["'][^>]*>/i)?.[0] || "";
+  if (!/width=device-width/i.test(viewportTag)) errors.push(`${rel}: missing responsive viewport`);
+  if (!/<link\s+rel=["']stylesheet["']\s+href=["']\/(?:mobile-core\.css\?v=1|home-critical\.css\?v=1)["']/i.test(html)) errors.push(`${rel}: missing current shared mobile stylesheet`);
+  if (!/<script\s+src=["']\/analytics\.js\?v=6["']\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing current shared analytics script`);
+  if (!/<script\s+src=["']\/mobile-core\.js\?v=1["']\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing shared mobile-core script v1`);
   if (/Bài\s+\d{1,2}\s*\/\s*50|50\+?\s*bài/iu.test(visible)) errors.push(`${rel}: contains an obsolete article-count claim`);
   if (/18(?:–|-|\s+đến\s+)35|1(?:m|,)56|1,56\s*m?|48\s*kg/iu.test(visible)) errors.push(`${rel}: contains superseded 2026 recruitment criteria`);
   if (/thu nhập tham khảo|thu nhập thực tế phụ thuộc|thu nhập tùy|không cam kết|không phải mức lương cứng|không phải cam kết|mức thu nhập cố định|không lấy trường hợp cao nhất làm mặt bằng chung/iu.test(visible)) {
@@ -474,11 +476,13 @@ const guideFiles = collectHtml(path.join(root, "bai-viet")).filter((file) => pat
 const feedGuideFiles = items.map((item) => fileForUrl(item.url)).filter((file) => file?.includes(`${path.sep}bai-viet${path.sep}`));
 if (guideFiles.length !== feedGuideFiles.length) errors.push(`Every guide must be curated: found ${guideFiles.length} guide files but ${feedGuideFiles.length} in feed`);
 
-if (!Array.isArray(searchIndex.items) || !searchIndex.items.length) errors.push("Search index must contain indexable pages");
+const searchItems = [searchCore, searchProvinces, searchContent].flatMap((part) => part.items || []);
+if (searchIndex.counts?.total !== searchItems.length) errors.push(`Search manifest total ${searchIndex.counts?.total || 0} does not match ${searchItems.length} indexed items`);
+if (!searchItems.length) errors.push("Search index must contain indexable pages");
 else {
-  const searchUrls = searchIndex.items.map((item) => item.url);
+  const searchUrls = searchItems.map((item) => item.url);
   if (new Set(searchUrls).size !== searchUrls.length) errors.push("Search index contains duplicate URLs");
-  for (const item of searchIndex.items) {
+  for (const item of searchItems) {
     if (!item.url?.startsWith("/") || !item.title || !item.description || !item.category) errors.push(`Invalid search entry: ${JSON.stringify(item)}`);
   }
   for (const item of items) {
@@ -502,7 +506,7 @@ if (!analytics.includes("1382247304000287")) errors.push("Meta Pixel ID is missi
 console.log(JSON.stringify({
   curatedArticles: slugs.length,
   pages: allHtml.length,
-  searchPages: searchIndex.items?.length || 0,
+  searchPages: searchItems.length,
   errors: errors.length,
   warnings: warnings.length,
   sampleWarnings: warnings.slice(0, 10),

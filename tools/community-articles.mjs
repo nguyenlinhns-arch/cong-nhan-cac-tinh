@@ -1,5 +1,5 @@
 import {communityArticles as baseCommunityArticles} from "./community-articles-base.mjs";
-import {dailyCommunityArticles} from "./daily-community-articles.mjs";
+import {dailyCommunityArticles} from "./daily-community-articles-all.mjs";
 
 const dailySlugs = new Set(dailyCommunityArticles.map((article) => article.slug));
 const combinedArticles = [

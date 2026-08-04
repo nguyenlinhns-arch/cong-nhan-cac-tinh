@@ -52,6 +52,7 @@ jobs:
           node tools/normalize-mobile-delivery.mjs
           node tools/validate-modular-delivery.mjs
           node tools/validate-editorial-sources.mjs
+          node tools/validate-daily-community-images-20260804.mjs
           node tools/validate-home-copy-actions.mjs
           node tools/validate-top-block-hotfix.mjs
           node tools/validate-content-network.mjs
@@ -73,6 +74,7 @@ jobs:
           node tools/validate-recruitment-funnel.mjs
           node tools/test-recruitment-application.mjs
           node tools/validate-crm-automation.mjs
+          node tools/validate-seo-library.mjs
           git diff --exit-code -- . ':(exclude)content/editorial-sources.json' ':(exclude)tuyen-tho-mo/assets/articles/sources.json' ':(exclude)tuyen-tho-mo/feed.json' ':(exclude)tuyen-tho-mo/feed.xml' ':(exclude)tuyen-tho-mo/llms.txt' ':(exclude)tuyen-tho-mo/sitemap.xml' ':(exclude)tuyen-tho-mo/news-sitemap.xml' ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/home-critical.css' ':(exclude)tuyen-tho-mo/home-content.css' ':(exclude)tuyen-tho-mo/job-application.js' ':(exclude)tuyen-tho-mo/search-index.json' ':(exclude)tuyen-tho-mo/search-core.json' ':(exclude)tuyen-tho-mo/search-provinces.json' ':(exclude)tuyen-tho-mo/search-content.json'
       - uses: actions/upload-pages-artifact@v3
         with:

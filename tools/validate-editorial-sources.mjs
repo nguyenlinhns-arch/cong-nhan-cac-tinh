@@ -20,9 +20,9 @@ function walk(directory) {
 walk(path.join(root, "tin-nganh-than"));
 walk(path.join(root, "bai-viet"));
 
-if (!Array.isArray(ledger.articles) || ledger.articles.length !== 63) errors.push(`Sổ nguồn phải có 63 bài, hiện có ${ledger.articles?.length || 0}`);
-if (Object.keys(imageSources).length !== 63) errors.push(`Sổ nguồn ảnh phải có 63 bài, hiện có ${Object.keys(imageSources).length}`);
-if (articleFiles.length !== 63) errors.push(`Website phải có 63 bài, hiện tìm thấy ${articleFiles.length}`);
+if (!Array.isArray(ledger.articles) || ledger.articles.length !== 66) errors.push(`Sổ nguồn phải có 66 bài, hiện có ${ledger.articles?.length || 0}`);
+if (Object.keys(imageSources).length !== 66) errors.push(`Sổ nguồn ảnh phải có 66 bài, hiện có ${Object.keys(imageSources).length}`);
+if (articleFiles.length !== 66) errors.push(`Website phải có 66 bài, hiện tìm thấy ${articleFiles.length}`);
 
 const bySlug = new Map(articleFiles.map((item) => {
   const canonical = item.html.match(/<link rel="canonical" href="[^"]+\/([^/]+)\/">/i)?.[1] || "";

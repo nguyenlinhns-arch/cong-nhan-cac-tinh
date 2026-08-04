@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import {dailyCommunityArticles} from "./daily-community-articles.mjs";
+import {dailyCommunityArticles} from "./daily-community-articles-all.mjs";
 
 await import("./generate-seo-library-base.mjs");
 
