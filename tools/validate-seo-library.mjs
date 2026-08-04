@@ -34,6 +34,7 @@ const strip = (html) => html
 
 const removeArticleInterface = (html) => html
   .replace(/<section\b[^>]*class=["'][^"']*\barticle-(?:apply|share-panel)\b[^"']*["'][^>]*>[\s\S]*?<\/section>/gi, " ")
+  .replace(/<section\b[^>]*class=["'][^"']*\b(?:source-original-card|article-seo-info)\b[^"']*["'][^>]*>[\s\S]*?<\/section>/gi, " ")
   .replace(/<aside\b[^>]*class=["'][^"']*\barticle-aside\b[^"']*["'][^>]*>[\s\S]*?<\/aside>/gi, " ");
 
 const decodeAttribute = (value = "") => value
@@ -62,7 +63,11 @@ for (const article of [...curatedArticles, ...existingNews]) {
   }
 }
 const pressStoriesBySlug = new Map(pressStoryArticles.map((article) => [article.slug, article]));
-const newsroomBriefSlugs = new Set([...communityArticles, ...pressStoryArticles].map((article) => article.slug));
+const newsroomBriefSlugs = new Set([
+  ...communityArticles,
+  ...pressStoryArticles,
+  ...existingNews.filter((article) => (article.sources || []).some((source) => source.url)),
+].map((article) => article.slug));
 const editorialTopicImageOverrides = new Set([...curatedArticles, ...existingNews]
   .filter((article) => article.imagePolicy === "editorial-topic-override")
   .map((article) => article.slug));
@@ -250,15 +255,12 @@ for (const [index, slug] of slugs.entries()) {
   if (!newsroomBrief && !pressStory && !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing FAQ schema`);
   if (newsroomBrief) {
     if (!/class="[^\"]*\barticle-body--brief\b[^\"]*"/i.test(html)) errors.push(`${prefix}newsroom item is missing the compact brief layout`);
+    if (!/class="source-original-card"/i.test(articleBody) || !/class="source-original-card__button"/i.test(articleBody)) errors.push(`${prefix}newsroom item is missing the original-source reading card`);
+    if (!/class="article-seo-info"/i.test(articleBody)) errors.push(`${prefix}newsroom item is missing the separated recruitment and SEO block`);
     if (/class="(?:timeline|faq-list)"/i.test(articleBody)) errors.push(`${prefix}compact newsroom item contains a timeline or FAQ block`);
     const briefWords = strip(editorialBody).split(/\s+/u).filter(Boolean).length;
     if (briefWords > 950) errors.push(`${prefix}compact newsroom body is too long at ${briefWords} words`);
-    const briefProse = editorialBody
-      .replace(/<figure[\s\S]*?<\/figure>/gi, " ")
-      .replace(/<div class="article-source-footer[^"]*">[\s\S]*?<\/div>/gi, " ");
-    if (/(?:bài\s+(?:gốc|nguồn|báo|phóng\s+sự)|theo\s+nguồn|nguồn\s+(?:chính\s+thức|không|công\s+bố|cho\s+biết|nêu))/iu.test(strip(briefProse))) {
-      errors.push(`${prefix}compact newsroom item still narrates or comments on its source`);
-    }
+    if (/class="(?:news-brief-intro|news-brief-section)"/i.test(articleBody)) errors.push(`${prefix}newsroom item still contains the previous rewritten-news layout`);
   }
   if (pressStory) {
     if (image !== pressStory.imageOriginal) errors.push(`${prefix}does not use the original image from its press source`);
@@ -299,7 +301,7 @@ for (const [index, slug] of slugs.entries()) {
   const bodyImageUrls = [...articleBody.matchAll(/<img\b[^>]*src="([^"]+)"/gi)].map((match) => decodeAttribute(match[1]));
   if (new Set(bodyImageUrls).size !== bodyImageUrls.length) errors.push(`${prefix}repeats an image inside the article body`);
   if (!/<div class="[^"]*\barticle-source-footer\b[^"]*">[\s\S]*?<strong>Nguồn:<\/strong>/i.test(html)) errors.push(`${prefix}missing the public source line`);
-  if (!newsroomBrief && !/<p class="article-seo-line">[^<]+<\/p>/i.test(html)) errors.push(`${prefix}missing the final SEO sentence`);
+  if (!/<p class="article-seo-line">[^<]+<\/p>/i.test(html)) errors.push(`${prefix}missing the final SEO sentence`);
   if (/editorial-sources|Nguồn dữ kiện đã đối chiếu|Bài viết do Nguyễn Tử Linh phân tích và biên soạn độc lập/iu.test(html)) {
     errors.push(`${prefix}contains a public editorial-source block`);
   }
@@ -312,9 +314,10 @@ for (const [index, slug] of slugs.entries()) {
   }
   if (visible.split(/(?<=[.!?])\s+/u).some(lowIncomeFigure)) errors.push(`${prefix}publishes an income figure below 20 million VND per month`);
 
+  const managedArticleSources = ([...editorialArticles, ...existingNews].find((article) => article.slug === slug)?.sources || []).map((source) => source.url).filter(Boolean);
   const externalAnchors = [...html.matchAll(/<a\b[^>]*href="(https?:\/\/[^"]+)"/gi)]
     .map((match) => match[1])
-    .filter((url) => !url.startsWith(base) && !url.startsWith("https://zalo.me/") && !url.startsWith("https://m.me/"));
+    .filter((url) => !url.startsWith(base) && !url.startsWith("https://zalo.me/") && !url.startsWith("https://m.me/") && !managedArticleSources.includes(decodeAttribute(url)));
   if (externalAnchors.length) errors.push(`${prefix}unexpected outbound anchors: ${externalAnchors.join(", ")}`);
 
   const jsonScripts = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi)];

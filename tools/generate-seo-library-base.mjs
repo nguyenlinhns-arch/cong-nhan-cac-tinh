@@ -152,7 +152,12 @@ function searchTitle(article) {
 
 function renderSourceFooter(article, compact = false) {
   if (compact) {
-    return `<div class="article-source-footer article-source-footer--brief"><p><strong>Nguồn:</strong> ${esc(sourceText(article))}</p><p class="article-current-facts"><a href="/thong-tin-tuyen-tho-mo/">Thông tin tuyển sinh đang áp dụng được cập nhật riêng tại đây →</a></p></div>`;
+    const links = (article.sources || []).map((source) => {
+      const url = sourceUrl(source);
+      if (!url) return "";
+      return `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer external">${esc(source.publisher || "Mở bài báo gốc")}</a>`;
+    }).filter(Boolean).join(" · ");
+    return `<div class="article-source-footer article-source-footer--brief"><p><strong>Nguồn:</strong> ${esc(sourceText(article))}${links ? ` · ${links}` : ""}</p><p class="article-seo-line">${esc(seoText(article))}</p><p class="article-current-facts"><a href="/thong-tin-tuyen-tho-mo/">Xem thông tin tuyển sinh đang áp dụng →</a></p></div>`;
   }
   return `<div class="article-source-footer"><p class="article-current-facts"><a href="/thong-tin-tuyen-tho-mo/">Đối chiếu 15 câu hỏi về điều kiện, học nghề, hồ sơ và thu nhập đang áp dụng →</a></p><p><strong>Nguồn:</strong> ${esc(sourceText(article))}</p><p class="article-seo-line">${esc(seoText(article))}</p></div>`;
 }
@@ -403,31 +408,38 @@ function briefContext(article) {
     .slice(0, 2);
 }
 
-function renderNewsBrief(article, inlineImages, isProfile) {
-  const label = isProfile ? "HỒ SƠ NGƯỜI THỢ" : "BẢN TIN DỮ KIỆN";
-  const intro = briefIntro(article);
-  const context = briefContext(article);
-  const briefFacts = (article.facts || [])
-    .filter(([value, label]) => !/^Không\s+công\s+bố$/iu.test(String(value)) && !/\bnguồn\s+không/iu.test(String(label)))
-    .slice(0, 4)
-    .map(([value, label]) => [value, cleanBriefFact(label)]);
-  const facts = !isProfile && briefFacts.length
-    ? `<section class="news-brief-section"><h2>Những dữ kiện chính</h2>${renderFacts(briefFacts)}</section>`
+function renderNewsBrief(article, inlineImages) {
+  const source = (article.sources || []).find((item) => sourceUrl(item)) || article.sources?.[0] || {};
+  const originalUrl = sourceUrl(source);
+  const originalTitle = source.title || article.title;
+  const sourceLabel = source.publisher || "nguồn bài báo";
+  const sourceAction = originalUrl
+    ? `<a class="source-original-card__button" href="${esc(originalUrl)}" target="_blank" rel="noopener noreferrer external">Đọc nguyên văn tại ${esc(sourceLabel)} →</a>`
     : "";
   const media = inlineImages.length
-    ? `<div class="article-inline-gallery">${inlineImages.map((item) => renderFigure(item)).join("")}</div>`
+    ? `<section class="source-original-media" aria-labelledby="source-original-media-title"><h2 id="source-original-media-title">Hình ảnh từ bài báo gốc</h2><div class="article-inline-gallery">${inlineImages.map((item) => renderFigure(item)).join("")}</div></section>`
     : "";
-  const takeaway = cleanBriefParagraph(article.takeaway || "");
-  const contextParagraphs = [...context, takeaway]
-    .filter(Boolean)
-    .filter((paragraph, index, items) => items.findIndex((item) => stripTags(item) === stripTags(paragraph)) === index)
-    .slice(0, 3);
   return `${renderArticleCover(article)}
-        <p class="news-brief-label">${label}</p>
-        <div class="news-brief-intro">${intro.map((paragraph) => `<p>${paragraph}</p>`).join("")}</div>
-        ${facts}
-        <section class="news-brief-section news-brief-section--context"><h2>Góc nhìn từ dữ kiện</h2>${contextParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join("")}</section>
-        ${media}
+        <p class="news-brief-label">BÀI BÁO TỪ NGUỒN CHÍNH THỨC</p>
+        <section class="source-original-card" aria-labelledby="source-original-title">
+          <small>ĐỌC ĐÚNG NỘI DUNG BÀI BÁO</small>
+          <h2 id="source-original-title">${esc(originalTitle)}</h2>
+          <p>Bài đăng bởi <strong>${esc(sourceLabel)}</strong>${source.date ? ` ngày ${esc(source.date)}` : ""}. Mở bài gốc để đọc đầy đủ, đúng câu chữ và cách trình bày của cơ quan xuất bản.</p>
+          ${sourceAction}
+        </section>
+${media}
+        <section class="article-seo-info" aria-labelledby="article-seo-info-title">
+          <small>THÔNG TIN CỦA THẦY LINH – TUYỂN THỢ MỎ</small>
+          <h2 id="article-seo-info-title">Muốn học nghề và làm việc tại TKV?</h2>
+          <p>Chương trình đang tiếp nhận nam từ 18–40 tuổi, sức khỏe tốt, cao từ 1m53 và nặng từ 47kg.</p>
+          <div class="recruitment-summary">
+            <div><small>Học nghề</small><strong>2–3 tháng</strong><span>Khai thác mỏ hoặc Xây dựng mỏ; nghề Cơ điện mỏ học 10 tháng.</span></div>
+            <div><small>Trong thời gian học</small><strong>Miễn học phí</strong><span>Ăn 3 bữa/ngày, ở ký túc xá và hỗ trợ sinh hoạt phí 7,5 triệu đồng.</span></div>
+            <div><small>Sau đào tạo</small><strong>Làm việc tại TKV</strong><span>Được bố trí việc làm tại các đơn vị ngành Than ở Quảng Ninh.</span></div>
+            <div><small>Thu nhập</small><strong>20–25 triệu/tháng</strong><span>Cam kết khi người lao động hoàn thành định mức lao động.</span></div>
+          </div>
+          <div class="article-seo-info__actions"><a href="/kiem-tra-dieu-kien/">Kiểm tra điều kiện</a><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Nhắn Zalo</a><a href="tel:+84963048585">Gọi 096 304 8585</a></div>
+        </section>
         ${renderSourceFooter(article, true)}
         <nav class="article-nav" aria-label="Bài viết liên quan"></nav>`;
 }
@@ -655,7 +667,7 @@ function hubHtml() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Ngành Than & Người thợ – Thầy Linh",
-    description: "Bản tin dữ kiện, hồ sơ người thợ và bài phân tích nguyên bản về ngành Than, nghề mỏ và đời sống người lao động tại Quảng Ninh.",
+    description: "Các bài báo chọn lọc về ngành Than, dẫn nguyên bản tại nguồn và bổ sung thông tin học nghề, việc làm TKV dành cho người lao động.",
     url: `${base}/tin-nganh-than/`,
     inLanguage: "vi-VN",
     dateModified: buildTime,
@@ -667,8 +679,8 @@ function hubHtml() {
 <html lang="vi">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#063c46">
-  <title>Tin ngành Than | Dữ kiện, người thợ và góc nhìn nghề</title>
-  <meta name="description" content="Bản tin dữ kiện, hồ sơ người thợ và bài phân tích nguyên bản về nghề mỏ, đời sống, công nghệ và việc làm ngành Than tại Quảng Ninh.">
+  <title>Tin ngành Than | Bài báo và thông tin việc làm TKV</title>
+  <meta name="description" content="Các bài báo chọn lọc về ngành Than, đọc nguyên văn tại nguồn và xem thêm thông tin học nghề, tuyển thợ mỏ, việc làm TKV tại Quảng Ninh.">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><meta name="author" content="${author}">
   <link rel="canonical" href="${base}/tin-nganh-than/">
   <link rel="icon" href="/favicon.ico">
@@ -676,8 +688,8 @@ function hubHtml() {
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="alternate" type="application/rss+xml" title="Tin ngành Than – Thầy Linh" href="${base}/feed.xml"><link rel="alternate" type="application/feed+json" title="Tin ngành Than – Thầy Linh" href="${base}/feed.json">
-  <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="Tin ngành Than"><meta property="og:description" content="Tin ngắn đúng dữ kiện; bài dài chỉ xuất bản khi có góc riêng, nhiều nguồn hoặc tư liệu thực tế."><meta property="og:url" content="${base}/tin-nganh-than/"><meta property="og:image" content="${feature.image}">
-  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Tin ngành Than"><meta name="twitter:description" content="Dữ kiện, người thợ và góc nhìn nghề nghiệp tại Quảng Ninh."><meta name="twitter:image" content="${feature.image}">
+  <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="Tin ngành Than"><meta property="og:description" content="Bài báo chọn lọc, nguồn rõ ràng và thông tin học nghề, việc làm TKV được tách riêng ở cuối mỗi trang."><meta property="og:url" content="${base}/tin-nganh-than/"><meta property="og:image" content="${feature.image}">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Tin ngành Than"><meta name="twitter:description" content="Bài báo ngành Than và thông tin việc làm TKV tại Quảng Ninh."><meta name="twitter:image" content="${feature.image}">
   <link rel="stylesheet" href="/fonts.css?v=1">
   <link rel="stylesheet" href="../article-insights.css?v=10"><link rel="stylesheet" href="/mobile-ux.css?v=8">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
@@ -686,9 +698,9 @@ function hubHtml() {
   <a class="skip-link" href="#noi-dung">Đến nội dung chính</a>
   <header class="site-header"><div class="container header-inner"><a class="brand" href="../"><img class="brand-mark" src="/assets/thay-linh-avatar.webp?v=3" alt="" width="45" height="45"><span><strong>Thầy Linh</strong><small>Tuyển Thợ Mỏ</small></span></a><a class="back-link" href="../">← Trang chủ</a></div></header>
   <main id="noi-dung">
-    <section class="news-hero"><div class="container"><p class="eyebrow">Tin chọn lọc · Hồ sơ · Phân tích</p><h1>Tin ngành Than</h1><p class="lead">Một sự kiện chỉ có một nguồn được trình bày thành bản tin ngắn. Bài dài chỉ xuất bản khi có góc viết riêng, nhiều nguồn đối chiếu hoặc tư liệu thực tế từ người lao động.</p><nav class="cluster-nav" aria-label="Nhóm bài viết">${sectionOrder.filter((section) => allEditorial.some((article) => article.section === section && article.slug !== feature.slug)).map((section) => `<a href="#${sectionIds[section]}">${esc(section)}</a>`).join("")}</nav></div></section>
+    <section class="news-hero"><div class="container"><p class="eyebrow">Bài báo chọn lọc · Nguồn rõ ràng</p><h1>Tin ngành Than</h1><p class="lead">Mỗi bài dẫn trực tiếp đến nội dung nguyên văn tại cơ quan xuất bản. Thông tin học nghề, tuyển thợ mỏ và việc làm TKV của Thầy Linh được đặt riêng ở cuối trang.</p><nav class="cluster-nav" aria-label="Nhóm bài viết">${sectionOrder.filter((section) => allEditorial.some((article) => article.section === section && article.slug !== feature.slug)).map((section) => `<a href="#${sectionIds[section]}">${esc(section)}</a>`).join("")}</nav></div></section>
     <div class="container news-main">
-      <section class="newsroom-method" aria-labelledby="newsroom-method-title"><div><p class="news-kicker">Cách làm mới</p><h2 id="newsroom-method-title">Không kéo dài một thông cáo thành bài báo</h2><p>Tin một nguồn đi thẳng vào sự kiện và dữ kiện cần biết. Hồ sơ người thợ giữ lại những chi tiết có giá trị về con người. Phân tích chuyên sâu phải trả lời một câu hỏi riêng bằng nhiều nguồn, số liệu hoặc trải nghiệm thực tế.</p></div><ul><li><strong>Bản tin dữ kiện</strong><span>Ngắn, rõ, ghi nguồn ở cuối.</span></li><li><strong>Hồ sơ người thợ</strong><span>Tập trung vào nhân vật, không kể lại bài báo.</span></li><li><strong>Phân tích nguyên bản</strong><span>Có góc riêng và căn cứ đủ sâu.</span></li></ul></section>
+      <section class="newsroom-method" aria-labelledby="newsroom-method-title"><div><p class="news-kicker">Cách trình bày</p><h2 id="newsroom-method-title">Bài báo và thông tin tuyển sinh được tách riêng</h2><p>Ảnh, tên bài, cơ quan xuất bản và ngày đăng được ghi rõ. Nút đọc nguyên văn mở đúng bài tại nguồn; phần của Thầy Linh chỉ bổ sung thông tin đang áp dụng cho người muốn học nghề và làm việc tại TKV.</p></div><ul><li><strong>Bài báo gốc</strong><span>Đọc đầy đủ tại cơ quan xuất bản.</span></li><li><strong>Nguồn rõ ràng</strong><span>Tên bài, đơn vị và ngày đăng.</span></li><li><strong>Thông tin tuyển sinh</strong><span>Đặt riêng ở cuối, không trộn vào bài báo.</span></li></ul></section>
       <article class="news-feature"><img src="${feature.image}" alt="${esc(feature.title)}" referrerpolicy="no-referrer"><div class="news-feature__body"><p class="news-kicker">Bài mới · ${displayDate(feature.published)}</p><h2>${esc(feature.title)}</h2><p>${esc(feature.lead)}</p><a class="news-link" href="./${feature.urlPath.replace(/^tin-nganh-than\//, "")}/">Đọc bài viết →</a></div></article>
       ${sections}
     </div>
@@ -716,15 +728,22 @@ for (const article of existingNews) {
   }
   html = upgradeExistingSchema(html, article);
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${esc(searchTitle(article))}</title>`);
-  html = html.replace(/\s*<div class="article-source-footer">[\s\S]*?<\/div>\s*/g, "\n");
-  html = html.replace(/\s*<section class="article-apply"[\s\S]*?<\/section>\s*/g, "\n");
-  html = html.replace(/\s*<section class="article-share-panel"[\s\S]*?<\/section>\s*/g, "\n");
-  if (/^([ \t]*)<nav class="article-nav"/im.test(html)) {
-    html = html.replace(/^([ \t]*)<nav class="article-nav"/im, `$1${renderSourceFooter(article)}\n$1<nav class="article-nav"`);
+  const usesSourceLanding = (article.sources || []).some((source) => source.url);
+  if (usesSourceLanding) {
+    const inlineImages = article.inlineMedia || articleInlineImages[article.slug] || [];
+    html = html.replace(/<article\b[^>]*class="[^"]*\barticle-body\b[^"]*"[^>]*>[\s\S]*?<\/article>/i,
+      `<article class="article-body article-body--source article-body--brief">\n        ${renderNewsBrief(article, inlineImages)}\n        ${renderArticleApply(article)}\n        ${renderArticleShare(article)}\n      </article>`);
   } else {
-    html = html.replace(/^([ \t]*)<\/article>/im, `$1  ${renderSourceFooter(article)}\n$1</article>`);
+    html = html.replace(/\s*<div class="article-source-footer">[\s\S]*?<\/div>\s*/g, "\n");
+    html = html.replace(/\s*<section class="article-apply"[\s\S]*?<\/section>\s*/g, "\n");
+    html = html.replace(/\s*<section class="article-share-panel"[\s\S]*?<\/section>\s*/g, "\n");
+    if (/^([ \t]*)<nav class="article-nav"/im.test(html)) {
+      html = html.replace(/^([ \t]*)<nav class="article-nav"/im, `$1${renderSourceFooter(article)}\n$1<nav class="article-nav"`);
+    } else {
+      html = html.replace(/^([ \t]*)<\/article>/im, `$1  ${renderSourceFooter(article)}\n$1</article>`);
+    }
+    html = html.replace(/^([ \t]*)<\/article>/im, `$1  ${renderArticleApply(article)}\n$1  ${renderArticleShare(article)}\n$1</article>`);
   }
-  html = html.replace(/^([ \t]*)<\/article>/im, `$1  ${renderArticleApply(article)}\n$1  ${renderArticleShare(article)}\n$1</article>`);
   html = html.replace(/<div class="aside-card accent">[\s\S]*?<\/div>/, renderArticleAsideCta(article));
   if (!html.includes('rel="author"')) html = html.replace(/(<link\s+rel="canonical"[^>]*>)/i, `$1\n  <link rel="author" href="/tac-gia/nguyen-tu-linh/">`);
   if (!html.includes('/content-network.css?v=1')) html = html.replace(/<\/head>/i, `  <link rel="stylesheet" href="/content-network.css?v=1">\n</head>`);
