@@ -255,16 +255,24 @@ for (const [index, slug] of slugs.entries()) {
   if (!rewrittenNews && !pressStory && !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing FAQ schema`);
   if (rewrittenNews) {
     if (!/class="[^\"]*\barticle-body--professional\b[^\"]*"/i.test(html)) errors.push(`${prefix}newsroom item is missing the professional article layout`);
+    if (!/class="[^\"]*\barticle-body--journalistic-v2\b[^\"]*"/i.test(html)) errors.push(`${prefix}newsroom item is missing the newsroom v2 layout`);
     const rewrittenParagraphCount = (editorialBody.match(/<p(?:\s|>)/gi) || []).length;
     if (rewrittenParagraphCount < 6) errors.push(`${prefix}professional article has only ${rewrittenParagraphCount} paragraphs`);
-    if (!/class="source-original-card"/i.test(articleBody) || !/class="source-original-card__button"/i.test(articleBody)) errors.push(`${prefix}newsroom item is missing the original-source reading card`);
-    if (!/class="article-seo-info"/i.test(articleBody)) errors.push(`${prefix}newsroom item is missing the separated recruitment and SEO block`);
+    if (!/class="article-source-note"/i.test(articleBody) || !/class="article-source-note"[\s\S]*?<a\b/i.test(articleBody)) errors.push(`${prefix}newsroom item is missing its concise linked source note`);
+    if (/class="(?:source-original-card|article-seo-info|article-source-footer)"/i.test(articleBody)) errors.push(`${prefix}newsroom item still contains a bulky source or SEO block`);
     if (/class="(?:timeline|faq-list|article-summary|rewritten-news-facts|fact-grid|evidence-list)"/i.test(articleBody)) errors.push(`${prefix}professional article contains a list-like or superseded layout`);
     const editorialHeadingCount = (articleBody.match(/class="editorial-section professional-news-section"[\s\S]*?<h2>/gi) || []).length;
-    if (editorialHeadingCount > 3) errors.push(`${prefix}professional article is split into ${editorialHeadingCount} small sections`);
+    if (editorialHeadingCount > 2) errors.push(`${prefix}professional article is split into ${editorialHeadingCount} small sections`);
     const rewrittenWords = strip(editorialBody).split(/\s+/u).filter(Boolean).length;
     if (rewrittenWords < 300) errors.push(`${prefix}professional article is too short at ${rewrittenWords} words`);
     if (rewrittenWords > 2_000) errors.push(`${prefix}professional article is unexpectedly long at ${rewrittenWords} words`);
+    const editorialParagraphs = [...editorialBody.matchAll(/<p(?:\s[^>]*)?>([\s\S]*?)<\/p>/gi)]
+      .map((match) => strip(match[1]))
+      .filter((paragraph) => paragraph && !/^(?:Nguyễn Tử Linh|Bài được Nguyễn Tử Linh|Bài do Nguyễn Tử Linh)/u.test(paragraph));
+    const fragmentaryParagraphs = editorialParagraphs.filter((paragraph) => paragraph.split(/\s+/u).length < 18);
+    if (fragmentaryParagraphs.length) errors.push(`${prefix}contains ${fragmentaryParagraphs.length} fragmentary paragraph(s): ${fragmentaryParagraphs[0]}`);
+    if (/<(?:ul|ol)\b/i.test(editorialBody)) errors.push(`${prefix}uses a list inside the journalistic body`);
+    if (editorialBody.includes("—")) errors.push(`${prefix}contains a prohibited em dash`);
     if (/(?:TÓM TẮT NỘI DUNG|Những thông tin chính|Nội dung trên được tóm tắt)/iu.test(articleBody)) errors.push(`${prefix}still presents the article as a short summary`);
     if (/(?:bài\s+(?:gốc|nguồn|báo|phóng\s+sự)\s+(?:không|chưa)|nguồn(?:\s+chính\s+thức|\s+của\s+[^,.]+)?\s+(?:không|chưa)\s+(?:nêu|cho\s+biết|công\s+bố|làm\s+rõ|đề\s+cập))/iu.test(editorialBody)) errors.push(`${prefix}contains source-narration or missing-source commentary`);
     if (/(?:bài\s+(?:viết|báo|gốc|nguồn|phóng\s+sự)[^.!?]{0,80}\b(?:cho\s+biết|cho\s+thấy|nêu|ghi\s+nhận|đề\s+cập|mô\s+tả|tách\s+rõ)|phóng\s+sự(?:\s+ảnh)?\s+của|nguồn(?:\s+chính\s+thức|\s+của\s+[^,.]+)?\s+(?:cũng\s+)?(?:nêu|cho\s+biết|ghi\s+nhận|đề\s+cập|xác\s+nhận|thống\s+kê|liệt\s+kê)|\btác\s+giả\s+|\bphóng\s+viên\s+)/iu.test(editorialBody)) errors.push(`${prefix}still narrates what the source article says`);
@@ -307,8 +315,12 @@ for (const [index, slug] of slugs.entries()) {
   }
   const bodyImageUrls = [...articleBody.matchAll(/<img\b[^>]*src="([^"]+)"/gi)].map((match) => decodeAttribute(match[1]));
   if (new Set(bodyImageUrls).size !== bodyImageUrls.length) errors.push(`${prefix}repeats an image inside the article body`);
-  if (!/<div class="[^"]*\barticle-source-footer\b[^"]*">[\s\S]*?<strong>Nguồn:<\/strong>/i.test(html)) errors.push(`${prefix}missing the public source line`);
-  if (!/<p class="article-seo-line">[^<]+<\/p>/i.test(html)) errors.push(`${prefix}missing the final SEO sentence`);
+  if (rewrittenNews) {
+    if (!/<p class="article-source-note">[\s\S]*?<a\b/i.test(html)) errors.push(`${prefix}missing the concise linked source line`);
+  } else {
+    if (!/<div class="[^"]*\barticle-source-footer\b[^"]*">[\s\S]*?<strong>Nguồn:<\/strong>/i.test(html)) errors.push(`${prefix}missing the public source line`);
+    if (!/<p class="article-seo-line">[^<]+<\/p>/i.test(html)) errors.push(`${prefix}missing the final SEO sentence`);
+  }
   if (/editorial-sources|Nguồn dữ kiện đã đối chiếu|Bài viết do Nguyễn Tử Linh phân tích và biên soạn độc lập/iu.test(html)) {
     errors.push(`${prefix}contains a public editorial-source block`);
   }

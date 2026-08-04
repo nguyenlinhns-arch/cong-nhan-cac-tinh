@@ -77,12 +77,9 @@ function mergeArticleIntoExistingShell(file, generatedHtml) {
   const existingArticle = existingHtml.match(articleBodyPattern)?.[0];
   const generatedArticle = generatedHtml.match(articleBodyPattern)?.[0];
   if (!existingArticle || !generatedArticle) return generatedHtml;
-  const existingParagraphs = existingArticle.match(/<p\b/gi)?.length || 0;
-  const keepsProfessionalArticle = existingArticle.includes("article-body--professional") && existingParagraphs >= 6;
-  const articleToKeep = keepsProfessionalArticle ? existingArticle : generatedArticle;
   const merged = existingHtml
-    .replace(articleBodyPattern, articleToKeep)
-    .replace(/article-insights\.css\?v=\d+/g, "article-insights.css?v=13");
+    .replace(articleBodyPattern, generatedArticle)
+    .replace(/article-insights\.css\?v=\d+/g, "article-insights.css?v=14");
   return `${merged.trimEnd()}\n`;
 }
 
@@ -110,7 +107,7 @@ function mergeHubIntoExistingShell(file, generatedHtml) {
     const generatedTag = generatedHtml.match(pattern)?.[0];
     if (generatedTag && pattern.test(output)) output = output.replace(pattern, generatedTag);
   }
-  output = output.replace(/article-insights\.css\?v=\d+/g, "article-insights.css?v=13");
+  output = output.replace(/article-insights\.css\?v=\d+/g, "article-insights.css?v=14");
   return `${output.trimEnd()}\n`;
 }
 
@@ -239,7 +236,7 @@ function syncExistingArticleImage(html, article) {
       .replace(/(<meta property="og:image:height" content=")[^"]*(")/i, `$1${height}$2`);
   }
   const size = width && height ? ` width="${width}" height="${height}"` : "";
-  const loading = html.includes("article-body--professional")
+  const loading = html.includes("article-body--professional") || html.includes("article-body--journalistic-v2")
     ? ' fetchpriority="high" decoding="async" referrerpolicy="no-referrer"'
     : ' loading="lazy" decoding="async"';
   const figure = `<figure class="article-cover article-cover--editorial"><img src="${article.image}" alt="${esc(article.imageAlt)}"${loading}${size}><figcaption><span>${esc(article.imageAlt)}</span><span class="article-media-credit">${esc(article.imageSource)}</span></figcaption></figure>`;
@@ -269,12 +266,16 @@ function renderArticleApply(article) {
     ? "Biểu mẫu khoảng một phút giúp đối chiếu tuổi, thể hình và sức khỏe ban đầu. Lần đăng ký đầu chưa cần nộp hoặc gửi ảnh giấy tờ."
     : "Biểu mẫu khoảng một phút giúp đối chiếu điều kiện ban đầu và chuyển thông tin đến Thầy Linh. Lần đăng ký đầu chưa cần nộp hoặc gửi ảnh giấy tờ.";
   const button = recruitmentArticle ? "Kiểm tra điều kiện ngay" : "Kiểm tra điều kiện trong một phút";
+  const currentFactsAction = recruitmentArticle
+    ? ""
+    : '<a class="article-apply__secondary" href="/thong-tin-tuyen-tho-mo/">Xem thông tin tuyển sinh</a>';
   return `<section class="article-apply" aria-labelledby="article-apply-title-${esc(article.slug)}">
           <small>${eyebrow}</small>
           <h2 id="article-apply-title-${esc(article.slug)}">${title}</h2>
           <p>${text}</p>
           <div class="article-apply__actions">
-            <a href="${applicationUrl}" data-contact="application" data-context="article-apply" data-application-resume-label>${button}</a>
+            <a href="${applicationUrl}" data-contact="application" data-context="article-apply" data-application-resume-label>${button}</a>${currentFactsAction ? `
+            ${currentFactsAction}` : ""}
             <a class="article-apply__secondary" href="https://zalo.me/0963048585" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="article-apply">Trao đổi qua Zalo</a>
           </div>
         </section>`;
@@ -449,11 +450,16 @@ function rewriteEditorialSentence(sentence = "") {
 
 const professionalFactParagraphs = {
   "bang-thanh-phuc-loc-hoc-nghe-tho-lo-tkv": "Đại diện của 74 thôn thuộc hai xã cùng tham dự, tạo thành mạng lưới đưa thông tin từ hội nghị về từng khu dân cư.",
-  "tho-mo-vao-ca-duong-huy": "Hệ thống lò chính và các nhánh lò được ghi nhận có tổng chiều dài 26 km, cho thấy quy mô di chuyển và phối hợp trong mỗi ca sản xuất.",
-  "ky-luat-dong-tam-tho-mo-ha-lam": "Sau hơn 20 năm làm lò, Trịnh Ngọc Toản đã đi qua nhiều thay đổi về công nghệ và tổ chức sản xuất.",
-  "ly-van-di-nguoi-cha-tho-lo": "Sinh năm 1993, Lý Văn Dỉ vừa bước qua năm thứ năm ở mỏ vừa một mình gánh phần lớn trách nhiệm chăm lo cho ba con nhỏ.",
-  "nhung-nguoi-tho-lo-gieo-no-luc": "Phan Văn Đạo đã gắn bó với nghề 14 năm, quãng thời gian giúp anh tích lũy sức bền, kinh nghiệm và sự tin cậy trong tập thể.",
-  "mot-ngay-trong-lo-than-duong-huy": "Ở khu vực sâu, nhiệt độ khoảng 30°C kèm độ ẩm cao khiến thông gió, nước uống và việc tuân thủ thời gian nghỉ trở thành những điều kiện thiết yếu.",
+  "tho-mo-vao-ca-duong-huy": "Ca đầu ngày bắt đầu từ 7 giờ, sau khi công nhân có mặt tại khai trường từ khoảng 5 giờ 30 phút để ăn sáng, nhận trang bị và nghe giao việc. Ba ca nối tiếp nhau, mỗi ca kéo dài tám giờ; hệ thống lò chính và các nhánh lò dài khoảng 26 km, điểm sâu nhất trong hành trình ở mức -100 m.",
+  "gia-dinh-ba-the-he-tho-mo-thong-nhat": "Mạch nghề của gia đình bắt đầu năm 1965, khi ông Nguyễn Đức Tông rời Thái Bình tới Quảng Ninh làm thợ lò. Người con Nguyễn Hồng Cẩm đã có gần 25 năm ở mỏ, còn Nguyễn Duy Khánh thuộc thế hệ thứ ba và đã làm việc dưới hầm lò sáu năm khi câu chuyện được ghi lại.",
+  "ma-khac-huynh-nguoi-mo-duong-trong-long-dat": "Trước khi đổi nghề, Bùi Văn Tuyên đã làm việc tại quê chín năm; đến thời điểm được nhắc tới, anh có gần năm năm gắn bó với mỏ. Ma Khắc Huỳnh đi theo một lối khác: chọn học nghề từ cuối phổ thông và có hơn tám năm làm công việc đào lò.",
+  "mot-ngay-trong-lo-than-duong-huy": "Khoảng 700 công nhân làm việc trong các hầm lò mỗi ngày. Từ chặng xe chở người, họ tiếp tục đi bộ khoảng 20 phút tới khu vực sản xuất ở độ sâu 150–300 m, nơi nhiệt độ có lúc khoảng 30°C và độ ẩm luôn ở mức cao.",
+  "nhung-nguoi-tho-lo-gieo-no-luc": "Phan Văn Đạo có 14 năm gắn bó với nghề, Hán Cao Phi đã làm cơ điện lò 17 năm. Lê Văn Biên có hai sáng kiến kỹ thuật được ghi nhận và từng kèm hơn 20 thợ trẻ thi nâng bậc.",
+  "khoanh-khac-tho-mo-vang-danh": "Bộ ảnh gồm 27 khoảnh khắc do nhiếp ảnh gia Phạm Cường thực hiện tại Vàng Danh, được VTV giới thiệu ngày 01/12/2017. Chuỗi hình đi từ giao ca, khai thác, vận tải đến những phút nghỉ ngắn của người thợ.",
+  "ly-van-di-nguoi-cha-tho-lo": "Sinh năm 1993 trong một gia đình người Nùng ở xã Khánh Xuân, Cao Bằng, Lý Văn Dỉ đã có năm năm làm nghề khi câu chuyện được ghi lại. Sau mỗi ca, điều anh nghĩ tới là ba người con, gồm hai gái và một trai, đang cần cha giữ vững một nguồn thu nhập lâu dài.",
+  "ky-luat-dong-tam-tho-mo-ha-lam": "Trịnh Ngọc Toản đã có hơn 20 năm làm lò; Phạm Văn An công tác tại Hà Lầm 26 năm và từng tham gia cứu hộ sự cố thủy điện Đạ Dâng năm 2014. Nguyễn Trọng Thái được nhắc tới với hơn 100 sáng kiến, một con số phản ánh quá trình bám hiện trường bền bỉ.",
+  "pham-dinh-duan-to-cuu-ho-vang-danh": "Sau sự cố sụt lò ngày 15/04/2023, lực lượng cứu hộ đã làm việc gần 15 giờ để đưa hai công nhân ra ngoài an toàn. Phạm Đình Duẩn trực tiếp tham gia cuộc cứu nạn ấy; trước đó anh cũng có 12 sáng kiến cấp công ty.",
+  "anh-tho-mo-khe-cham-qua-ong-kinh-ttxvn": "Bộ ảnh do TTXVN thực hiện và VietnamPlus công bố ngày 12/11/2019 đi qua khai trường Cọc Sáu, cảng Hòn Nét và hầm lò Khe Chàm. Ba không gian nối khai thác, vận chuyển với chân dung người thợ trong cùng một dây chuyền công nghiệp.",
 };
 
 const professionalArticleOverrides = {
@@ -526,6 +532,7 @@ const professionalArticleOverrides = {
 };
 
 const professionalLeadParagraphs = {
+  "bao-lac-cao-bang-tu-van-hoc-nghe-mo": "Ngày 19/04/2025, đoàn công tác xã Hưng Đạo, huyện Bảo Lạc tới Phân hiệu Hoành Bồ làm việc với Trường Cao đẳng Than - Khoáng sản Việt Nam. Cuộc gặp nhìn thẳng vào kết quả ba tháng đầu năm và thống nhất cách đưa tư vấn nghề mỏ trở lại từng xã, từng thôn trong chín tháng còn lại.",
   "tho-mo-vao-ca-duong-huy": "Tại khai trường Than Dương Huy, gần 400 công nhân bắt đầu ca làm bằng một chuỗi chuẩn bị chặt chẽ. Từ bữa ăn, nhà đèn đến quần áo bảo hộ, mũ, đèn lò và bình tự cứu, mỗi bước trên mặt đất đều hướng tới tám giờ làm việc an toàn ở phía dưới.",
   "ky-luat-dong-tam-tho-mo-ha-lam": "Tại Than Hà Lầm, câu chuyện của Trịnh Ngọc Toản, Phạm Văn An và Nguyễn Trọng Thái tạo nên ba lát cắt về người thợ mỏ. Một người học công nghệ mới để chuyển giao cho đồng đội, một người tham gia cứu hộ xa mỏ, người còn lại bám những đường lò sâu bằng kinh nghiệm và sáng kiến.",
   "ma-khac-huynh-nguoi-mo-duong-trong-long-dat": "Ngày làm việc của Bùi Văn Tuyên bắt đầu khi chuông báo thức vang lên từ sáng sớm. Trước lúc rời nơi ở công nhân, anh gọi về nhà, kiểm tra trang bị rồi chuẩn bị vào ca tại Công ty Than Hòn Gai.",
@@ -535,6 +542,7 @@ const professionalLeadParagraphs = {
 
 function rewriteEditorialParagraph(paragraph = "") {
   return String(paragraph)
+    .replaceAll("—", ",")
     .split(/(?<=[.!?])\s+/u)
     .map((sentence) => rewriteEditorialSentence(sentence))
     .filter(Boolean)
@@ -603,26 +611,29 @@ function missingFactsParagraph(article, editorialParagraphs) {
 
 function professionalHeadingIndexes(article, sections) {
   if (!sections.length) return new Set();
-  const isFeature = ["Chuyện người thợ mỏ", "Đời sống thợ mỏ"].includes(article.section);
-  if (isFeature) return new Set(sections.map((_section, index) => index).slice(0, 3));
-  if (sections.length <= 2) return new Set([0]);
-  return new Set([0, Math.ceil(sections.length / 2)]);
+  if (sections.length <= 2) return new Set();
+  if (sections.length === 3) return new Set([1]);
+  return new Set([1, Math.ceil(sections.length * 0.65)]);
 }
 
 function renderProfessionalSections(article, sections = [], inlineImages = []) {
   const legacyImages = inlineImages.filter((media) => !Number.isInteger(media.afterSection));
   const headingIndexes = professionalHeadingIndexes(article, sections);
   return sections.map((section, index) => {
-    const paragraphs = (section.paragraphs || [])
+    const normalizedParagraphs = (section.paragraphs || [])
       .map((paragraph) => rewriteEditorialParagraph(paragraph))
-      .filter((paragraph) => paragraph.split(/\s+/u).length >= 8)
-      .map((paragraph) => `<p>${esc(paragraph)}</p>`)
-      .join("");
-    const bullets = (section.bullets || [])
-      .map((item) => rewriteEditorialParagraph(item))
-      .filter(Boolean)
-      .map((item) => `<p>${esc(item)}</p>`)
-      .join("");
+      .filter((paragraph) => paragraph.split(/\s+/u).length >= 8);
+    const mergedParagraphs = normalizedParagraphs.reduce((result, paragraph) => {
+      if (paragraph.split(/\s+/u).length < 18 && result.length) {
+        result[result.length - 1] = `${result[result.length - 1]} ${paragraph}`;
+      } else if (result.length && result[result.length - 1].split(/\s+/u).length < 18) {
+        result[result.length - 1] = `${result[result.length - 1]} ${paragraph}`;
+      } else {
+        result.push(paragraph);
+      }
+      return result;
+    }, []);
+    const paragraphs = mergedParagraphs.map((paragraph) => `<p>${esc(paragraph)}</p>`).join("");
     const sectionImages = [
       ...inlineImages.filter((media) => media.afterSection === index),
       ...(legacyImages[index] ? [legacyImages[index]] : []),
@@ -630,9 +641,9 @@ function renderProfessionalSections(article, sections = [], inlineImages = []) {
     const inlineMedia = sectionImages.length
       ? `\n  <div class="article-inline-gallery">${sectionImages.map((media) => renderFigure(media)).join("")}</div>`
       : "";
-    if (!paragraphs && !bullets && !inlineMedia) return "";
+    if (!paragraphs && !inlineMedia) return "";
     const heading = headingIndexes.has(index) ? `<h2>${esc(section.title)}</h2>` : "";
-    const sectionBody = [heading, `${paragraphs}${bullets}`]
+    const sectionBody = [heading, paragraphs]
       .filter(Boolean)
       .map((block) => `    ${block}`)
       .join("\n");
@@ -647,9 +658,6 @@ function renderProfessionalNewsArticle(article, inlineImages) {
   const originalUrl = sourceUrl(source);
   const originalTitle = source.title || article.title;
   const sourceLabel = source.publisher || "nguồn bài báo";
-  const sourceAction = originalUrl
-    ? `<a class="source-original-card__button" href="${esc(originalUrl)}" target="_blank" rel="noopener noreferrer external">Xem bài tại ${esc(sourceLabel)} →</a>`
-    : "";
   const editorial = professionalArticleOverrides[article.slug] || article;
   const introSource = [...(editorial.intro || [])];
   if (professionalLeadParagraphs[article.slug]) introSource[0] = professionalLeadParagraphs[article.slug];
@@ -664,30 +672,15 @@ function renderProfessionalNewsArticle(article, inlineImages) {
     renderProfessionalSections(article, editorial.sections, inlineImages),
     takeaway ? `<p class="professional-ending">${esc(takeaway)}</p>` : "",
   ].filter(Boolean).join("\n          ");
+  const sourceLine = originalUrl
+    ? `<p class="article-source-note">Bài được Nguyễn Tử Linh biên soạn từ <a href="${esc(originalUrl)}" target="_blank" rel="noopener noreferrer external">“${esc(originalTitle)}”</a>, đăng trên ${esc(sourceLabel)}${source.date ? ` ngày ${esc(source.date)}` : ""}.</p>`
+    : `<p class="article-source-note">Bài do Nguyễn Tử Linh biên soạn từ thông tin của ${esc(sourceLabel)}${source.date ? ` ngày ${esc(source.date)}` : ""}.</p>`;
   return `${renderArticleCover(article)}
-        <p class="article-byline"><strong>Nguyễn Tử Linh</strong> biên soạn · ${esc(sourceLabel)}</p>
+        <p class="article-byline"><strong>Nguyễn Tử Linh</strong><span>Biên tập viên</span></p>
         <div class="professional-news-copy">
           ${professionalBlocks}
         </div>
-        <section class="source-original-card" aria-labelledby="source-original-title">
-          <small>NGUỒN BÀI VIẾT</small>
-          <h2 id="source-original-title">${esc(originalTitle)}</h2>
-          <p>Đăng bởi <strong>${esc(sourceLabel)}</strong>${source.date ? ` ngày ${esc(source.date)}` : ""}. Nội dung trên đã được biên soạn lại, giữ nguyên các nhân vật, số liệu và sự kiện chính.</p>
-          ${renderSourceFooter(article, true)}
-          ${sourceAction}
-        </section>
-        <section class="article-seo-info" aria-labelledby="article-seo-info-title">
-          <small>THÔNG TIN CỦA THẦY LINH – TUYỂN THỢ MỎ</small>
-          <h2 id="article-seo-info-title">Muốn học nghề và làm việc tại TKV?</h2>
-          <p>Chương trình đang tiếp nhận nam từ 18–40 tuổi, sức khỏe tốt, cao từ 1m53 và nặng từ 47kg.</p>
-          <div class="recruitment-summary">
-            <div><small>Học nghề</small><strong>2–3 tháng</strong><span>Khai thác mỏ hoặc Xây dựng mỏ; nghề Cơ điện mỏ học 10 tháng.</span></div>
-            <div><small>Trong thời gian học</small><strong>Miễn học phí</strong><span>Ăn 3 bữa/ngày, ở ký túc xá và hỗ trợ sinh hoạt phí 7,5 triệu đồng.</span></div>
-            <div><small>Sau đào tạo</small><strong>Làm việc tại TKV</strong><span>Được bố trí việc làm tại các đơn vị ngành Than ở Quảng Ninh.</span></div>
-            <div><small>Thu nhập</small><strong>20–25 triệu/tháng khi hoàn thành định mức lao động</strong><span>Mức cam kết áp dụng khi người lao động thực hiện đủ định mức.</span></div>
-          </div>
-          <div class="article-seo-info__actions"><a href="/kiem-tra-dieu-kien/">Kiểm tra điều kiện</a><a href="https://zalo.me/0963048585" target="_blank" rel="noopener">Nhắn Zalo</a><a href="tel:+84963048585">Gọi 096 304 8585</a></div>
-        </section>
+        ${sourceLine}
         <nav class="article-nav" aria-label="Bài viết liên quan"></nav>`;
 }
 
@@ -807,7 +800,7 @@ function renderArticle(article) {
   <meta name="twitter:description" content="${esc(article.lead)}">
   <meta name="twitter:image" content="${article.image}">
   <link rel="stylesheet" href="/fonts.css?v=1">
-  <link rel="stylesheet" href="/article-insights.css?v=${isNewsBrief ? 12 : 10}">
+  <link rel="stylesheet" href="/article-insights.css?v=${isNewsBrief ? 14 : 10}">
   <link rel="stylesheet" href="/content-network.css?v=1">
   <link rel="stylesheet" href="/mobile-ux.css?v=8">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
@@ -825,7 +818,7 @@ function renderArticle(article) {
       </div>
     </section>
     <div class="container article-layout${isPressLayout ? " article-layout--source" : ""}">
-      <article class="article-body${isPressLayout || isNewsBrief ? " article-body--source" : ""}${isNewsBrief ? " article-body--professional" : ""}">
+      <article class="article-body${isPressLayout || isNewsBrief ? " article-body--source" : ""}${isNewsBrief ? " article-body--professional article-body--journalistic-v2" : ""}">
         ${articleContent}
         ${renderArticleApply(article)}
         ${renderArticleShare(article)}
@@ -945,9 +938,8 @@ function hubHtml() {
   <a class="skip-link" href="#noi-dung">Đến nội dung chính</a>
   <header class="site-header"><div class="container header-inner"><a class="brand" href="../"><img class="brand-mark" src="/assets/thay-linh-avatar.webp?v=3" alt="" width="45" height="45"><span><strong>Thầy Linh</strong><small>Tuyển Thợ Mỏ</small></span></a><a class="back-link" href="../">← Trang chủ</a></div></header>
   <main id="noi-dung">
-    <section class="news-hero"><div class="container"><p class="eyebrow">Bài viết đầy đủ · Nguồn rõ ràng</p><h1>Tin ngành Than</h1><p class="lead">Mỗi bài được biên soạn lại với đầy đủ sự việc, nhân vật và dữ kiện quan trọng để người đọc theo dõi ngay trên website. Nguồn báo cùng thông tin học nghề, tuyển thợ mỏ và việc làm TKV được đặt riêng ở cuối trang.</p><nav class="cluster-nav" aria-label="Nhóm bài viết">${sectionOrder.filter((section) => allEditorial.some((article) => article.section === section && article.slug !== feature.slug)).map((section) => `<a href="#${sectionIds[section]}">${esc(section)}</a>`).join("")}</nav></div></section>
+    <section class="news-hero"><div class="container"><p class="eyebrow">TIN TỨC VÀ CÂU CHUYỆN NGƯỜI THỢ</p><h1>Tin ngành Than</h1><p class="lead">Những chuyển động của ngành Than, đời sống người lao động và các chương trình kết nối học nghề, việc làm được kể lại bằng nhân vật, sự kiện và số liệu cụ thể.</p><nav class="cluster-nav" aria-label="Nhóm bài viết">${sectionOrder.filter((section) => allEditorial.some((article) => article.section === section && article.slug !== feature.slug)).map((section) => `<a href="#${sectionIds[section]}">${esc(section)}</a>`).join("")}</nav></div></section>
     <div class="container news-main">
-      <section class="newsroom-method newsroom-method--prose" aria-labelledby="newsroom-method-title"><div><p class="news-kicker">Cách biên tập</p><h2 id="newsroom-method-title">Mỗi bài có một mạch kể rõ ràng</h2><p>Phần mở đầu đưa thẳng người đọc tới sự kiện hoặc nhân vật chính. Các dữ kiện, bối cảnh và diễn biến được nối trong cùng một mạch văn; đề mục chỉ xuất hiện khi câu chuyện thực sự chuyển sang một lớp thông tin mới.</p><p>Tên bài, cơ quan xuất bản, ngày đăng và liên kết nguồn được ghi ở cuối. Thông tin tuyển sinh của Thầy Linh nằm trong một khối riêng, không trộn vào nội dung báo chí.</p></div></section>
       <article class="news-feature"><img src="${feature.image}" alt="${esc(feature.title)}" referrerpolicy="no-referrer"><div class="news-feature__body"><p class="news-kicker">Bài mới · ${displayDate(feature.published)}</p><h2>${esc(feature.title)}</h2><p>${esc(feature.lead)}</p><a class="news-link" href="./${feature.urlPath.replace(/^tin-nganh-than\//, "")}/">Đọc bài viết →</a></div></article>
       ${sections}
     </div>
@@ -964,7 +956,7 @@ for (const article of generatedArticles) {
   fs.mkdirSync(directory, {recursive: true});
   const file = path.join(directory, "index.html");
   const renderedHtml = renderArticle(article);
-  const hasEstablishedRewrite = fs.existsSync(file) && fs.readFileSync(file, "utf8").includes("article-body--professional");
+  const hasEstablishedRewrite = fs.existsSync(file) && fs.readFileSync(file, "utf8").includes("article-body--journalistic-v2");
   const keepsEstablishedShell = article.urlPath.startsWith("tin-nganh-than/") && (
     hasEstablishedRewrite || (article.sources || []).some((source) => sourceUrl(source))
   );
@@ -983,15 +975,10 @@ for (const article of existingNews) {
   html = upgradeExistingSchema(html, article);
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${esc(searchTitle(article))}</title>`);
   if (usesSourceLanding) {
-    const establishedArticle = html.match(articleBodyPattern)?.[0] || "";
-    const establishedParagraphs = establishedArticle.match(/<p\b/gi)?.length || 0;
-    const keepsEstablishedRewrite = establishedArticle.includes("article-body--professional") && establishedParagraphs >= 6;
-    if (!keepsEstablishedRewrite) {
-      const inlineImages = article.inlineMedia || articleInlineImages[article.slug] || [];
-      html = html.replace(articleBodyPattern,
-        `<article class="article-body article-body--source article-body--professional">\n        ${renderProfessionalNewsArticle(article, inlineImages)}\n        ${renderArticleApply(article)}\n        ${renderArticleShare(article)}\n      </article>`);
-    }
-    html = html.replace(/article-insights\.css\?v=\d+/g, "article-insights.css?v=13");
+    const inlineImages = article.inlineMedia || articleInlineImages[article.slug] || [];
+    html = html.replace(articleBodyPattern,
+      `<article class="article-body article-body--source article-body--professional article-body--journalistic-v2">\n        ${renderProfessionalNewsArticle(article, inlineImages)}\n        ${renderArticleApply(article)}\n        ${renderArticleShare(article)}\n      </article>`);
+    html = html.replace(/article-insights\.css\?v=\d+/g, "article-insights.css?v=14");
   } else {
     html = html.replace(/\s*<div class="article-source-footer">[\s\S]*?<\/div>\s*/g, "\n");
     html = html.replace(/\s*<section class="article-apply"[\s\S]*?<\/section>\s*/g, "\n");
