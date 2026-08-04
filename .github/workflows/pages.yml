@@ -44,6 +44,7 @@ jobs:
           node tools/enhance-contact-authority-seo.mjs
           node tools/build-worker-question-pages.mjs
           node tools/generate-daily-seo-series.mjs
+          node tools/enforce-blue-worker-illustrations.mjs
           node tools/build-search-index.mjs
           node tools/enhance-all-province-search.mjs
           node tools/polish-discovery-output.mjs
@@ -77,6 +78,7 @@ jobs:
           node tools/validate-crm-automation.mjs
           node tools/validate-seo-library.mjs
           node tools/validate-payroll-library.mjs
+          node tools/enforce-blue-worker-illustrations.mjs --check
           git diff --exit-code -- . ':(exclude)content/editorial-sources.json' ':(exclude)tuyen-tho-mo/assets/articles/sources.json' ':(exclude)tuyen-tho-mo/feed.json' ':(exclude)tuyen-tho-mo/feed.xml' ':(exclude)tuyen-tho-mo/llms.txt' ':(exclude)tuyen-tho-mo/sitemap.xml' ':(exclude)tuyen-tho-mo/news-sitemap.xml' ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/home-critical.css' ':(exclude)tuyen-tho-mo/home-content.css' ':(exclude)tuyen-tho-mo/job-application.js' ':(exclude)tuyen-tho-mo/search-index.json' ':(exclude)tuyen-tho-mo/search-core.json' ':(exclude)tuyen-tho-mo/search-provinces.json' ':(exclude)tuyen-tho-mo/search-content.json'
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -206,17 +208,13 @@ jobs:
         run: |
           payroll_hub="$(mktemp)"
           payroll_detail="$(mktemp)"
-          payroll_pdf="$(mktemp)"
           for attempt in $(seq 1 18); do
             if curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}bang-luong/?run=${GITHUB_SHA}" -o "$payroll_hub" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}bang-luong/vang-danh/quy-2-2026/?run=${GITHUB_SHA}" -o "$payroll_detail" \
-              && curl --fail --silent --show-error --location --max-time 30 "${LIVE_URL}bang-luong/vang-danh/quy-2-2026/bang-luong-vang-danh-q2-2026-an-danh.pdf?run=${GITHUB_SHA}" -o "$payroll_pdf" \
               && grep -Fq 'Bảng lương công nhân ngành Than theo công ty, theo quý' "$payroll_hub" \
               && grep -Fq 'Bảng lương thợ lò Than Vàng Danh quý II/2026' "$payroll_detail" \
-              && grep -Fq 'bang-luong-vang-danh-q2-2026-an-danh.pdf' "$payroll_detail" \
-              && [ "$(head -c 5 "$payroll_pdf")" = "%PDF-" ] \
-              && [ "$(wc -c < "$payroll_pdf")" -eq 5520767 ]; then
-              echo "Live payroll hub, company detail and direct public PDF download verified on attempt $attempt."
+              && grep -Fq '15J-vCKwY6TcZjVkd_18xIA90x5gJ3n7x' "$payroll_detail"; then
+              echo "Live payroll hub, company detail and Google Drive PDF link verified on attempt $attempt."
               exit 0
             fi
             sleep 5

@@ -119,7 +119,7 @@ const redesignedMain = `  <main id="noi-dung" class="home-funnel">
           </div>
         </div>
         <figure class="home-v6-hero__visual">
-          <img src="/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp" alt="Học viên nghề mỏ mặc bảo hộ làm quen thiết bị trong hầm lò" loading="eager" fetchpriority="high" decoding="async" width="1200" height="673">
+          <img src="/assets/vinacomin-tho-lo-thao-a-bang.webp" alt="Công nhân thợ lò Thào A Bảng mặc bảo hộ xanh, đội mũ trong hầm lò" loading="eager" fetchpriority="high" decoding="async" width="907" height="624">
           <figcaption><small>HỌC NGHỀ TẠI QUANG HANH</small><strong>Được đào tạo trước khi nhận việc tại Quảng Ninh</strong></figcaption>
           <div class="home-v6-income"><small>CAM KẾT THU NHẬP</small><strong>20–25 triệu/tháng khi hoàn thành định mức lao động</strong></div>
         </figure>
@@ -216,7 +216,7 @@ ${selfCheckBlock}
       <div class="container">
         <div class="home-section-head"><p class="home-step">Đọc sâu khi cần kiểm chứng</p><h2 id="home-library-title">Cẩm nang tuyển thợ mỏ, tin ngành Than và video</h2><a href="/cam-nang-nghe-mo/">Mở toàn bộ cẩm nang →</a></div>
         <div class="home-library__grid home-library__grid--four">
-          <a class="home-library__card" href="/cam-nang-nghe-mo/"><img src="/assets/vinacomin-co-gioi-hoa-ham-lo.webp" alt="Thiết bị cơ giới hóa trong khai thác mỏ hầm lò" loading="lazy" decoding="async" width="1200" height="675"><span><small>CẨM NANG NGHỀ MỎ</small><strong>Từ điều kiện đến ngày nhận việc</strong><b>Đọc cẩm nang →</b></span></a>
+          <a class="home-library__card" href="/cam-nang-nghe-mo/"><img src="/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp" alt="Nhóm công nhân Than Mông Dương mặc bảo hộ xanh, đội mũ và trao đổi công việc trong hầm lò" loading="lazy" decoding="async" width="1600" height="860"><span><small>CẨM NANG NGHỀ MỎ</small><strong>Từ điều kiện đến ngày nhận việc</strong><b>Đọc cẩm nang →</b></span></a>
           ${card}
           <a class="home-library__card" href="/anh-video-thuc-te/"><img src="/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" alt="Người thợ mỏ chuẩn bị thiết bị trước ca làm việc" loading="lazy" decoding="async" width="1200" height="736"><span><small>VIDEO THỰC TẾ</small><strong>Phóng sự và câu chuyện công nhân</strong><b>Mở kho video →</b></span></a>
 ${payrollCard}

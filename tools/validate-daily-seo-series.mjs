@@ -17,6 +17,12 @@ const llms = fs.readFileSync(path.join(site, "llms.txt"), "utf8");
 const hub = fs.readFileSync(path.join(site, "giai-dap-nghe-mo", "index.html"), "utf8");
 const errors = [];
 const occupationTerms = ["khai thác mỏ", "xây dựng mỏ", "cơ điện mỏ"];
+const allowedBlueWorkerImages = new Set([
+  "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-thao-a-bang.webp",
+  "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
+  "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp",
+  "https://thaylinhtuyenthomo.vn/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp",
+]);
 const isOccupationArticle = (article) => occupationTerms.some((term) =>
   `${article.title} ${article.primary_query}`.toLocaleLowerCase("vi").includes(term),
 );
@@ -31,10 +37,9 @@ const unique = (items, label) => {
 unique(data.articles.map((article) => article.slug), "Slug");
 unique(data.articles.map((article) => article.publish_on), "Ngày xuất bản");
 unique(data.articles.map((article) => article.primary_query.toLocaleLowerCase("vi")), "Từ khóa chính");
-unique(data.articles.map((article) => article.image.src), "Ảnh");
 
 for (const article of data.articles) {
-  if (!/^https:\/\/vinacomin\.vn\//.test(article.image.src)) errors.push(`${article.slug}: ảnh không thuộc Vinacomin`);
+  if (!allowedBlueWorkerImages.has(article.image.src)) errors.push(`${article.slug}: ảnh không phải công nhân Vinacomin mặc áo xanh, đội mũ`);
   if (article.meta.length < 100 || article.meta.length > 165) errors.push(`${article.slug}: meta description dài ${article.meta.length} ký tự`);
   if (article.direct_answer.length < 90 || article.direct_answer.length > 330) errors.push(`${article.slug}: câu trả lời trực tiếp cần 90–330 ký tự`);
   if ((article.sections || []).length < 3) errors.push(`${article.slug}: cần ít nhất 3 mục giải thích`);
