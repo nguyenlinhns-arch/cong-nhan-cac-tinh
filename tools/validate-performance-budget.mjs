@@ -78,7 +78,7 @@ const optimizedHomeImages = [
   ["/assets/vinacomin-tho-mo-ha-lam-tang-qua.webp", "960", "638", "lazy"],
   ["/assets/vinacomin-tho-mo-ha-lam-dong-doi.webp", "960", "638", "lazy"],
   ["/assets/vinacomin-tho-mo-tkv-bat-tay-trong-ham-lo.webp", "960", "629", "lazy"],
-  ["/assets/vinacomin-tho-mo-tkv-doan-ket-trong-ham-lo.webp", "960", "629", "lazy"],
+  ["/assets/vinacomin-tho-mo-duong-huy-trong-ham-lo.webp", "960", "640", "lazy"],
 ];
 for (const [source, width, height, delivery] of optimizedHomeImages) {
   const escaped = source.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");

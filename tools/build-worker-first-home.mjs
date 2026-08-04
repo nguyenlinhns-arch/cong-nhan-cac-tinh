@@ -8,6 +8,7 @@ await import("./build-worker-first-home-base.mjs");
 // Ảnh trang chủ lấy từ Thư viện ảnh chính thức Vinacomin.
 // https://vinacomin.vn/vi/image-library/460/chu-tich-tong-lien-doan-lao-dong-vn-bui-van-cuong-tham-tho-mo-ha-lam
 // https://vinacomin.vn/vi/image-library/540/pho-thu-tuong-trinh-dinh-dung-tham-va-lam-viec-voi-tkv
+// https://vinacomin.vn/vi/image-library/2877/lanh-dao-ldld-tinh-quang-ninh-va-cong-doan-tkv-tham-tang-qua-cong-nhan-cac-don-vi-xuat-sac-than-duong-huy
 
 const article = [...dailyCommunityArticles].sort((a, b) => new Date(b.published) - new Date(a.published))[0];
 const homepagePath = path.resolve("tuyen-tho-mo", "index.html");
@@ -197,7 +198,7 @@ ${selfCheckBlock}
       <div class="container">
         <div class="home-section-head"><p class="home-step">Từ đăng ký đến nhận việc</p><h2 id="home-journey-title">Hành trình học nghề mỏ và nhận việc tại Quảng Ninh</h2></div>
         <div class="home-journey__layout">
-          <figure class="home-journey__visual"><img src="/assets/vinacomin-tho-mo-tkv-doan-ket-trong-ham-lo.webp" alt="Nhóm công nhân TKV mặc bảo hộ xanh, đội mũ cùng làm việc trong hầm lò" loading="lazy" decoding="async" width="960" height="629"><figcaption><small>MỘT LỘ TRÌNH RÕ RÀNG</small><strong>Tư vấn → nhập học → học nghề → nhận việc</strong></figcaption></figure>
+          <figure class="home-journey__visual"><img src="/assets/vinacomin-tho-mo-duong-huy-trong-ham-lo.webp" alt="Tổ đội công nhân Than Dương Huy mặc bảo hộ, đội mũ tại vị trí làm việc trong hầm lò" loading="lazy" decoding="async" width="960" height="640"><figcaption><small>MỘT LỘ TRÌNH RÕ RÀNG</small><strong>Tư vấn → nhập học → học nghề → nhận việc</strong></figcaption></figure>
           <ol class="home-journey__steps">
             <li><span>01</span><div><h3>Kiểm tra và tư vấn từ xa</h3><p>Gửi năm sinh, tỉnh đang sống, chiều cao, cân nặng và sức khỏe hiện tại.</p><a class="home-journey__detail" href="/kiem-tra-dieu-kien/">Xem điều kiện tuyển →</a></div></li>
             <li id="ho-so"><span>02</span><div><h3>Nhập học tại Quang Hanh</h3><p id="dia-diem">Mang CCCD, giấy khai sinh và bằng THCS hoặc THPT nếu có.</p><a class="home-journey__detail" href="/ho-so-nhap-hoc/">Xem hồ sơ và địa chỉ →</a></div></li>

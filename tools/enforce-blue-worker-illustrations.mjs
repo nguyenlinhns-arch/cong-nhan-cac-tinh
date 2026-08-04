@@ -6,8 +6,12 @@ const SITE = path.join(ROOT, "tuyen-tho-mo");
 const CHECK_ONLY = process.argv.includes("--check");
 const OLD_SOCIAL_IMAGE = "https://thaylinhtuyenthomo.vn/assets/og-cover-v2.webp";
 const BLUE_SOCIAL_IMAGE = "https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg";
-const RETIRED_IMAGE = ["vinacomin-tho-lo-thao", "a-bang.webp"].join("-");
-const REPLACEMENT_IMAGE = "vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp";
+const OLD_RETIRED_IMAGE = ["vinacomin-tho-lo-thao", "a-bang.webp"].join("-");
+const BANNED_GROUP_IMAGE = ["vinacomin-tho-mo-tkv", "doan-ket-trong-ham-lo.webp"].join("-");
+const RETIRED_IMAGES = new Map([
+  [OLD_RETIRED_IMAGE, "vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp"],
+  [BANNED_GROUP_IMAGE, "vinacomin-tho-mo-duong-huy-trong-ham-lo.webp"],
+]);
 const BLUE_WORKER_IMAGES = new Set([
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp",
@@ -15,7 +19,7 @@ const BLUE_WORKER_IMAGES = new Set([
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-ha-lam-tang-qua.webp",
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-ha-lam-dong-doi.webp",
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-tkv-bat-tay-trong-ham-lo.webp",
-  "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-tkv-doan-ket-trong-ham-lo.webp",
+  "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-duong-huy-trong-ham-lo.webp",
 ]);
 
 function walk(directory) {
@@ -33,7 +37,10 @@ const changed = [];
 for (const file of walk(SITE).filter((target) => target.endsWith(".html"))) {
   const relativePath = path.relative(SITE, file).split(path.sep).join("/");
   const current = fs.readFileSync(file, "utf8");
-  let next = current.replaceAll(RETIRED_IMAGE, REPLACEMENT_IMAGE);
+  let next = current;
+  for (const [retiredImage, replacementImage] of RETIRED_IMAGES) {
+    next = next.replaceAll(retiredImage, replacementImage);
+  }
   if (!isSourcedArticle(relativePath)) next = next.replaceAll(OLD_SOCIAL_IMAGE, BLUE_SOCIAL_IMAGE);
   if (next === current) continue;
   changed.push(relativePath);
@@ -54,12 +61,12 @@ for (const required of [
   "/assets/vinacomin-tho-mo-ha-lam-tang-qua.webp",
   "/assets/vinacomin-tho-mo-ha-lam-dong-doi.webp",
   "/assets/vinacomin-tho-mo-tkv-bat-tay-trong-ham-lo.webp",
-  "/assets/vinacomin-tho-mo-tkv-doan-ket-trong-ham-lo.webp",
+  "/assets/vinacomin-tho-mo-duong-huy-trong-ham-lo.webp",
 ]) {
   if (!home.includes(required)) throw new Error(`Trang chủ thiếu ảnh công nhân áo xanh, đội mũ: ${required}`);
 }
 for (const forbidden of [
-  `/assets/${RETIRED_IMAGE}`,
+  ...[...RETIRED_IMAGES.keys()].map((retiredImage) => `/assets/${retiredImage}`),
   "/assets/vinacomin-hoc-sinh-trai-nghiem-mo.webp",
   "/assets/vinacomin-co-gioi-hoa-ham-lo.webp",
 ]) {
@@ -70,9 +77,11 @@ if (CHECK_ONLY && changed.length) {
   throw new Error(`Còn ${changed.length} trang chưa chuyển ảnh chia sẻ mặc định sang công nhân áo xanh: ${changed.join(", ")}`);
 }
 
-const retiredAsset = path.join(SITE, "assets", RETIRED_IMAGE);
-if (fs.existsSync(retiredAsset)) {
-  throw new Error(`Ảnh đã ngừng sử dụng vẫn còn trong kho xuất bản: assets/${RETIRED_IMAGE}`);
+for (const retiredImage of RETIRED_IMAGES.keys()) {
+  const retiredAsset = path.join(SITE, "assets", retiredImage);
+  if (fs.existsSync(retiredAsset)) {
+    throw new Error(`Ảnh đã ngừng sử dụng vẫn còn trong kho xuất bản: assets/${retiredImage}`);
+  }
 }
 
 const referenceFiles = [
@@ -81,9 +90,12 @@ const referenceFiles = [
   ...walk(path.join(ROOT, "tools")),
   ...walk(SITE),
 ].filter((file) => /\.(?:css|html|js|json|md|mjs|txt|xml)$/i.test(file));
-const retiredReferences = referenceFiles
-  .filter((file) => fs.readFileSync(file, "utf8").includes(RETIRED_IMAGE))
-  .map((file) => path.relative(ROOT, file).split(path.sep).join("/"));
+const retiredReferences = referenceFiles.flatMap((file) => {
+  const source = fs.readFileSync(file, "utf8");
+  return [...RETIRED_IMAGES.keys()]
+    .filter((retiredImage) => source.includes(retiredImage))
+    .map((retiredImage) => `${path.relative(ROOT, file).split(path.sep).join("/")} (${retiredImage})`);
+});
 if (retiredReferences.length) {
   throw new Error(`Ảnh đã ngừng sử dụng còn được tham chiếu tại: ${retiredReferences.join(", ")}`);
 }

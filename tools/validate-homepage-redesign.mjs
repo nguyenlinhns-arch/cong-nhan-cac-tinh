@@ -21,7 +21,7 @@ for (const marker of [
   '/assets/vinacomin-tho-mo-ha-lam-tang-qua.webp',
   '/assets/vinacomin-tho-mo-ha-lam-dong-doi.webp',
   '/assets/vinacomin-tho-mo-tkv-bat-tay-trong-ham-lo.webp',
-  '/assets/vinacomin-tho-mo-tkv-doan-ket-trong-ham-lo.webp',
+  '/assets/vinacomin-tho-mo-duong-huy-trong-ham-lo.webp',
   '/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/',
   '/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/',
   '/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/',
