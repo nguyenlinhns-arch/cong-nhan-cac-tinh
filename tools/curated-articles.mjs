@@ -341,7 +341,7 @@ export const curatedArticles = [
       {
         title: "Ca sản xuất bớt nặng sức, tăng hàm lượng kỹ thuật",
         paragraphs: [
-          "Thứ nhất, nhiều khâu nặng nhọc được thiết bị đảm nhận, giúp giảm lao động thủ công nhưng tăng yêu cầu thao tác đúng. Thứ hai, trạng thái thiết bị và môi trường được theo dõi nhiều hơn bằng cảm biến, màn hình hoặc hệ thống điều hành. Thứ ba, bảo dưỡng và xử lý lỗi trở thành mắt xích ảnh hưởng trực tiếp đến năng suất cả dây chuyền.",
+          "Thứ nhất, thiết bị đảm nhận ngày càng nhiều công đoạn cần sức lực, giúp giảm lao động thủ công nhưng tăng yêu cầu thao tác đúng. Thứ hai, trạng thái thiết bị và môi trường được theo dõi nhiều hơn bằng cảm biến, màn hình hoặc hệ thống điều hành. Thứ ba, bảo dưỡng và xử lý lỗi trở thành mắt xích ảnh hưởng trực tiếp đến năng suất cả dây chuyền.",
           "Khi một công đoạn được cơ giới hóa, người thợ không thể chỉ biết bấm nút. Họ phải hiểu điều kiện vận hành, tín hiệu cảnh báo, giới hạn dừng máy và quy trình báo cáo. Khả năng phối hợp giữa khai thác, cơ điện, thông gió và điều hành ngày càng quan trọng.",
         ],
         bullets: [
@@ -372,7 +372,7 @@ export const curatedArticles = [
       ["Ghi dữ liệu", "Bàn giao chính xác, không bỏ qua thông tin bất thường."],
       ["Học liên tục", "Kết hợp kinh nghiệm hiện trường với kiến thức về công nghệ mới."],
     ],
-    takeaway: "Cơ giới hóa đang đưa người thợ ra khỏi nhiều phần việc nặng nhọc và đặt họ vào vị trí làm chủ thiết bị. Với người trẻ chịu học, đây là cơ hội bước vào một nghề công nghiệp hiện đại, nơi sức khỏe vẫn quan trọng nhưng tay nghề, kỷ luật và khả năng học công nghệ mới là giá trị đi đường dài.",
+    takeaway: "Cơ giới hóa đang giảm nhiều phần việc thủ công tiêu tốn thể lực và đặt người thợ vào vị trí làm chủ thiết bị. Với người trẻ chịu học, đây là cơ hội bước vào một nghề công nghiệp hiện đại, nơi sức khỏe vẫn quan trọng nhưng tay nghề, kỷ luật và khả năng học công nghệ mới là giá trị đi đường dài.",
     faq: [
       ["Mỏ thông minh có còn cần thợ khai thác không?", "Có. Hệ thống vẫn cần nhân lực vận hành, chuẩn bị sản xuất, kiểm soát hiện trường, bảo dưỡng và xử lý tình huống; yêu cầu kỹ năng sẽ thay đổi."],
       ["Người không giỏi máy tính có theo nghề được không?", "Có thể, nếu sẵn sàng học. Kỹ năng số ban đầu chủ yếu là đọc giao diện, ghi dữ liệu và tuân thủ quy trình; năng lực được rèn trong đào tạo và công việc."],
@@ -429,7 +429,7 @@ export const curatedArticles = [
       {
         title: "Công nghệ hỗ trợ an toàn như thế nào?",
         paragraphs: [
-          "Hệ thống quan trắc, cảm biến, camera, liên lạc và điều hành số giúp phát hiện và truyền thông tin nhanh hơn. Cơ giới hóa cũng có thể đưa con người ra khỏi một số khâu nặng nhọc. Nhưng thiết bị không thay thế việc kiểm tra, bảo dưỡng và phản ứng đúng của tổ đội.",
+          "Hệ thống quan trắc, cảm biến, camera, liên lạc và điều hành số giúp phát hiện và truyền thông tin nhanh hơn. Cơ giới hóa cũng có thể giảm nhiều thao tác thủ công cần sức lực. Nhưng thiết bị không thay thế việc kiểm tra, bảo dưỡng và phản ứng đúng của tổ đội.",
           "Hợp tác TKV – JOGMEC năm 2026 tiếp tục tập trung vào đào tạo công nghệ an toàn, quản lý thông gió, khí mỏ và khai thác. Việc hợp tác kéo dài từ năm 2002 cho thấy an toàn là lĩnh vực phải học liên tục khi điều kiện khai thác và công nghệ thay đổi.",
         ],
       },

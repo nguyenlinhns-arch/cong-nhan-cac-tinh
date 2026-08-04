@@ -30,6 +30,14 @@
 .wq-panel h3{margin:0 0 12px;font-size:25px}
 .wq-panel ul,.wq-panel ol{margin:0;padding-left:22px}
 .wq-panel li+li{margin-top:8px}
+.occupation-profile+.occupation-profile{margin-top:24px}
+.occupation-profile>.wq-summary{max-width:none;margin:0 0 28px}
+.occupation-profile>.wq-actions{padding-top:22px;border-top:1px solid var(--wq-line)}
+.occupation-task-list{list-style:none!important;padding:0!important}
+.occupation-task-list li{display:grid;grid-template-columns:42px 1fr;gap:12px;align-items:start}
+.occupation-task-list li+li{margin-top:14px}
+.occupation-task-list b{display:grid;width:38px;height:38px;place-items:center;border-radius:11px;background:#e7f1f0;color:var(--wq-teal);font-size:13px}
+.occupation-task-list span{padding-top:4px}
 .wq-source{margin-top:28px;padding:18px 20px;border-radius:14px;background:#edf5f4;color:#36595f;font-size:15px;line-height:1.65}
 .wq-source strong{color:var(--wq-teal-dark)}
 .wq-faq{max-width:960px}

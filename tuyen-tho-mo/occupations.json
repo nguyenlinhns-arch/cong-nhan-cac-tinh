@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "updated_at": "2026-08-01T23:30:00+07:00",
+  "canonical_page": "https://thaylinhtuyenthomo.vn/nghe-mo-ham-lo/",
+  "source": {
+    "id": "554-HD-CDTKV",
+    "number": "554/HD-CĐTKV",
+    "title": "Hướng dẫn nội dung tư vấn tuyển sinh các nghề mỏ hầm lò",
+    "issuer": "Trường Cao đẳng Than - Khoáng sản Việt Nam",
+    "issued_date": "2022-02-22",
+    "usage_scope": "Dùng làm nguồn chuẩn cho tên nghề, mục tiêu nghề, công việc chủ yếu, thiết bị và bối cảnh làm việc. Điều kiện tuyển sinh, thời gian học, chế độ và thu nhập sử dụng thông tin hiện hành năm 2026."
+  },
+  "current_income": "Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động",
+  "profiles": [
+    {
+      "id": "TKV-2026-khai-thac-mo-ham-lo",
+      "slug": "ky-thuat-khai-thac-mo-ham-lo-quang-ninh",
+      "title": "Kỹ thuật khai thác mỏ hầm lò",
+      "short": "khai thác mỏ hầm lò",
+      "active_intake": true,
+      "training_duration_current": "2–3 tháng",
+      "summary": "Thực hiện các công đoạn khai thác than, tổ chức chống giữ khu vực sản xuất, thu hồi than và phối hợp chuẩn bị đường lò phục vụ khai thác.",
+      "responsibilities": [
+        "Thực hiện công đoạn phá vỡ đất đá và than bằng thiết bị cơ giới, bán cơ giới hoặc khoan theo quy trình kỹ thuật.",
+        "Xúc bốc đất đá, than lên thiết bị vận tải và hỗ trợ từng công đoạn theo phân công của tổ đội.",
+        "Vận chuyển đất đá, than bằng máng trượt, goòng, băng tải, máng cào hoặc tàu điện.",
+        "Vận chuyển vật liệu bằng thiết bị chuyên dùng và phối hợp đưa vật tư tới vị trí sản xuất.",
+        "Lắp dựng, kiểm tra và duy trì hệ thống chống giữ tại khu vực khai thác.",
+        "Củng cố, sửa chữa các vị trí chống giữ hoặc đoạn lò cần khắc phục theo yêu cầu kỹ thuật."
+      ],
+      "equipment": [
+        "Máy khoan điện, máy khoan khí ép và thiết bị khai thác cơ giới",
+        "Máng cào, băng tải, máng trượt, goòng và tàu điện",
+        "Máy khấu hoặc combai, quạt gió, máy bơm nước và máy nén khí",
+        "Giá, giàn chống thủy lực, vì chống kim loại và cột thủy lực đơn"
+      ],
+      "work_context": "Làm việc theo ca trong các đường lò được chiếu sáng bằng đèn điện; phối hợp theo tổ đội, sử dụng đầy đủ phương tiện bảo hộ và tuân thủ quy trình kỹ thuật, an toàn."
+    },
+    {
+      "id": "TKV-2026-xay-dung-mo-ham-lo",
+      "slug": "ky-thuat-xay-dung-mo-ham-lo-quang-ninh",
+      "title": "Kỹ thuật xây dựng mỏ hầm lò",
+      "short": "xây dựng mỏ hầm lò",
+      "active_intake": true,
+      "training_duration_current": "2–3 tháng",
+      "summary": "Đào, chống giữ, gia cố và duy trì các đường lò cơ bản, lò mở vỉa và lò chuẩn bị để tạo hạ tầng phục vụ khai thác than hầm lò.",
+      "responsibilities": [
+        "Thực hiện công đoạn phá vỡ đất đá bằng thiết bị cơ giới, bán cơ giới hoặc khoan theo quy trình kỹ thuật.",
+        "Xúc dỡ đất đá, san nền và chuẩn bị mặt bằng làm việc bằng dụng cụ hoặc thiết bị cơ giới.",
+        "Lắp đặt đường ray phục vụ vận chuyển đất đá, vật tư, thiết bị và người trong đường lò.",
+        "Vận chuyển đất đá bằng goòng, tời trục, băng tải, máng cào hoặc tàu điện.",
+        "Vận chuyển vật liệu chuyên dùng như vì chống, cấu kiện bê tông và vật liệu chèn lấp.",
+        "Lắp dựng hệ thống chống giữ bằng vì chống kim loại, vì neo hoặc bê tông cốt thép; củng cố và sửa chữa vị trí cần khắc phục."
+      ],
+      "equipment": [
+        "Máy khoan điện, máy khoan khí ép và thiết bị đào lò cơ giới",
+        "Máng cào, băng tải, goòng, tời trục và tàu điện",
+        "Quạt gió, máy bơm nước, máy nén khí và trạm bơm dung dịch",
+        "Vì chống kim loại, vì neo, cấu kiện bê tông và cột thủy lực đơn"
+      ],
+      "work_context": "Làm việc theo ca tại các đường lò được chiếu sáng bằng đèn điện; phối hợp theo tổ đội, thực hiện đúng ca lệnh và tuân thủ quy trình kỹ thuật, an toàn."
+    },
+    {
+      "id": "TKV-co-dien-mo-ham-lo",
+      "slug": "ky-thuat-co-dien-mo-ham-lo",
+      "title": "Kỹ thuật cơ điện mỏ hầm lò",
+      "short": "cơ điện mỏ hầm lò",
+      "active_intake": false,
+      "training_duration_current": "10 tháng",
+      "summary": "Lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống cơ khí, điện, vận tải, chiếu sáng, thông tin liên lạc và thiết bị cơ giới phục vụ sản xuất mỏ.",
+      "responsibilities": [
+        "Lắp đặt, vận hành, bảo dưỡng và sửa chữa máy khoan, máy nén khí, thiết bị bốc xúc, vận tải và các thiết bị cơ - điện phục vụ sản xuất.",
+        "Lắp đặt và đấu nối hệ thống dây dẫn điện theo thiết kế và quy trình kỹ thuật.",
+        "Lắp đặt, sửa chữa và vận hành thiết bị khai thác cùng các hệ thống phụ trợ.",
+        "Lắp đặt, sửa chữa và vận hành hệ thống chiếu sáng trong khu vực sản xuất.",
+        "Sử dụng, vận hành hệ thống thông tin liên lạc, trạm và mạng phục vụ điều hành.",
+        "Lắp đặt, sử dụng các loại khí cụ điện và vận hành hệ thống khai thác cơ giới hóa."
+      ],
+      "equipment": [
+        "Dụng cụ đo kiểm điện và cơ khí",
+        "Dụng cụ tháo lắp, bảo dưỡng và sửa chữa máy móc",
+        "Thiết bị điện, chiếu sáng, thông tin liên lạc và điều khiển",
+        "Máy khoan, máy nén khí, thiết bị bốc xúc, vận tải và hệ thống cơ giới hóa"
+      ],
+      "work_context": "Có thể làm việc trong hầm lò hoặc trên mặt bằng; công việc yêu cầu kiến thức kỹ thuật, tay nghề chuyên môn, khả năng kiểm tra, phán đoán và xử lý thiết bị theo quy trình."
+    }
+  ]
+}

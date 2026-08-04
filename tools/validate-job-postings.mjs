@@ -64,9 +64,10 @@ for (const [slug, expectedTitle] of roles) {
     errors.push(`${slug}: experienceRequirements must declare zero months as a typed object`);
   }
   if (Object.hasOwn(job, "educationRequirements")) errors.push(`${slug}: educationRequirements must be omitted when no formal credential is compulsory`);
-  if (job.responsibilities !== (expectedTitle.startsWith("Kỹ thuật khai thác")
-    ? "Vận hành theo quy trình khai thác, phối hợp thiết bị và tổ đội trong dây chuyền sản xuất hầm lò sau khi hoàn thành chương trình đào tạo."
-    : "Tham gia đào, chống giữ, gia cố và duy trì đường lò phục vụ sản xuất sau khi hoàn thành chương trình đào tạo.")) errors.push(`${slug}: responsibilities are missing or inconsistent`);
+  const occupationProfile = master.occupation_profiles?.find((profile) => profile.title === expectedTitle);
+  if (!occupationProfile) errors.push(`${slug}: occupation profile is missing from the recruitment master`);
+  const expectedResponsibilities = occupationProfile?.responsibilities?.map((item) => item.replace(/[.;]+$/u, "")).join("; ");
+  if (job.responsibilities !== expectedResponsibilities) errors.push(`${slug}: responsibilities are missing or inconsistent`);
   if (job.baseSalary) errors.push(`${slug}: baseSalary is not allowed because the 20–25 million commitment depends on completing the labor norm and is not a fixed base salary`);
   if (new Date(job.validThrough).getTime() <= Date.now()) errors.push(`${slug}: validThrough is not in the future`);
   if (!html.includes("data-application-form") || !html.includes("data-application-submit")) errors.push(`${slug}: direct application form is missing`);

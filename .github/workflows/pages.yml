@@ -34,6 +34,7 @@ jobs:
           node tools/generate-province-pages-2026.mjs
           node tools/generate-legacy-redirects.mjs
           node tools/generate-job-board-pages.mjs
+          node tools/generate-occupation-profiles.mjs
           node tools/generate-content-network.mjs
           node tools/generate-seo-library.mjs
           node tools/build-verification-portal.mjs
@@ -68,6 +69,7 @@ jobs:
           node tools/validate-daily-seo-series.mjs
           node tools/validate-mobile-search-ai-polish.mjs
           node tools/validate-job-postings.mjs
+          node tools/validate-occupation-profiles.mjs
           node tools/validate-recruitment-funnel.mjs
           node tools/test-recruitment-application.mjs
           node tools/validate-crm-automation.mjs

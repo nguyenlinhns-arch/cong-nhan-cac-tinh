@@ -361,7 +361,7 @@ const stories = [
         title: "Than Khe Chàm cần người lao động như thế nào?",
         paragraphs: [
           "Doanh nghiệp hầm lò cần sức khỏe, khả năng phối hợp tổ đội và thái độ tôn trọng quy trình. Máy móc ngày càng hiện đại làm tăng yêu cầu học kỹ thuật, chứ không xóa nhu cầu về người thợ có trách nhiệm. Người mới phải sẵn sàng tiếp nhận hướng dẫn và báo cáo khi phát hiện bất thường.",
-          "Thanh niên chưa có nghề không cần tự học trước các thao tác chuyên môn nguy hiểm. Việc cần chuẩn bị là thể lực, giấy tờ, thói quen đúng giờ và tâm thế học nghiêm túc. Kỹ năng nghề phải được rèn trong chương trình và dưới sự hướng dẫn có trách nhiệm.",
+          "Thanh niên chưa có nghề không nên tự thực hiện thao tác chuyên môn khi chưa được đào tạo và hướng dẫn. Việc cần chuẩn bị là thể lực, giấy tờ, thói quen đúng giờ và tâm thế học nghiêm túc. Kỹ năng nghề phải được rèn trong chương trình và dưới sự hướng dẫn có trách nhiệm.",
         ],
       },
       {

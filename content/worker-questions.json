@@ -117,7 +117,7 @@
     },
     {
       "group": "Thu nhập và lựa chọn",
-      "question": "Làm thợ lò có nguy hiểm không?",
+      "question": "Làm thợ lò có an toàn không?",
       "answer": "Đây là nghề đặc thù có yêu cầu cao về sức khỏe, bảo hộ, kỹ thuật và kỷ luật. Người lao động phải được đào tạo an toàn và tuân thủ quy trình trong từng ca.",
       "path": "/an-toan-ky-luat-moi-truong/"
     },
@@ -148,7 +148,7 @@
           "heading": "Vì sao “ca hầm lò” và “giờ ở vị trí sản xuất” không giống nhau?",
           "paragraphs": [
             "Ca làm việc hầm lò bao quát thời gian nhận nhiệm vụ, chuẩn bị, di chuyển, làm việc, bàn giao và trở lại mặt bằng. Vì vậy tổng thời gian của ca dài hơn thời gian trực tiếp đứng tại vị trí sản xuất.",
-            "Thời gian ở vị trí sản xuất là khoảng trực tiếp thực hiện công việc dưới hầm lò. Quy định tách riêng giới hạn này để phản ánh tính chất nặng nhọc và điều kiện lao động đặc thù."
+            "Thời gian ở vị trí sản xuất là khoảng trực tiếp thực hiện công việc dưới hầm lò. Quy định tách riêng giới hạn này để phản ánh cường độ và điều kiện lao động đặc thù."
           ]
         },
         {
@@ -196,7 +196,7 @@
         ["BHXH bắt buộc", "Áp dụng theo đối tượng và loại hợp đồng được pháp luật quy định."],
         ["BHYT", "Bảo vệ quyền lợi khám, chữa bệnh theo phạm vi và mức hưởng hiện hành."],
         ["BHTN", "Thực hiện theo Luật Việc làm và loại hợp đồng thuộc diện tham gia."],
-        ["Tai nạn, bệnh nghề nghiệp", "Chế độ đặc biệt quan trọng đối với công việc nặng nhọc, nguy hiểm."]
+        ["Tai nạn, bệnh nghề nghiệp", "Đây là chế độ cần được người lao động kiểm tra rõ khi ký hợp đồng làm việc trong hầm lò."]
       ],
       "sections": [
         {

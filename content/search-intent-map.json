@@ -31,6 +31,15 @@
       "visibleTerms": ["miễn kinh phí đào tạo", "ký túc xá"]
     },
     {
+      "id": "mine-occupations",
+      "landing": "/nghe-mo-ham-lo/",
+      "primary": "nghề mỏ hầm lò gồm những nghề gì",
+      "variants": ["công việc thợ khai thác mỏ hầm lò", "nghề xây dựng mỏ hầm lò làm gì", "cơ điện mỏ hầm lò làm gì"],
+      "titleTerms": ["nghề mỏ hầm lò", "mô tả công việc"],
+      "h1Terms": ["nghề mỏ hầm lò", "nghề gì"],
+      "visibleTerms": ["Kỹ thuật khai thác mỏ hầm lò", "Kỹ thuật xây dựng mỏ hầm lò", "Kỹ thuật cơ điện mỏ hầm lò", "20–25 triệu đồng/tháng"]
+    },
+    {
       "id": "jobs-by-province",
       "landing": "/viec-lam-nganh-than/",
       "primary": "việc làm công nhân mỏ theo tỉnh",
