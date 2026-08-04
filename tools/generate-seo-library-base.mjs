@@ -78,11 +78,11 @@ function mergeArticleIntoExistingShell(file, generatedHtml) {
   const generatedArticle = generatedHtml.match(articleBodyPattern)?.[0];
   if (!existingArticle || !generatedArticle) return generatedHtml;
   const existingParagraphs = existingArticle.match(/<p\b/gi)?.length || 0;
-  const keepsRewrittenArticle = existingArticle.includes("article-body--rewritten") && existingParagraphs >= 4;
-  const articleToKeep = keepsRewrittenArticle ? existingArticle : generatedArticle;
+  const keepsProfessionalArticle = existingArticle.includes("article-body--professional") && existingParagraphs >= 6;
+  const articleToKeep = keepsProfessionalArticle ? existingArticle : generatedArticle;
   const merged = existingHtml
     .replace(articleBodyPattern, articleToKeep)
-    .replace(/article-insights\.css\?v=\d+/g, "article-insights.css?v=12");
+    .replace(/article-insights\.css\?v=\d+/g, "article-insights.css?v=13");
   return `${merged.trimEnd()}\n`;
 }
 
@@ -110,7 +110,7 @@ function mergeHubIntoExistingShell(file, generatedHtml) {
     const generatedTag = generatedHtml.match(pattern)?.[0];
     if (generatedTag && pattern.test(output)) output = output.replace(pattern, generatedTag);
   }
-  output = output.replace(/article-insights\.css\?v=\d+/g, "article-insights.css?v=12");
+  output = output.replace(/article-insights\.css\?v=\d+/g, "article-insights.css?v=13");
   return `${output.trimEnd()}\n`;
 }
 
@@ -239,7 +239,7 @@ function syncExistingArticleImage(html, article) {
       .replace(/(<meta property="og:image:height" content=")[^"]*(")/i, `$1${height}$2`);
   }
   const size = width && height ? ` width="${width}" height="${height}"` : "";
-  const loading = html.includes("article-body--rewritten")
+  const loading = html.includes("article-body--professional")
     ? ' fetchpriority="high" decoding="async" referrerpolicy="no-referrer"'
     : ' loading="lazy" decoding="async"';
   const figure = `<figure class="article-cover article-cover--editorial"><img src="${article.image}" alt="${esc(article.imageAlt)}"${loading}${size}><figcaption><span>${esc(article.imageAlt)}</span><span class="article-media-credit">${esc(article.imageSource)}</span></figcaption></figure>`;
@@ -398,7 +398,7 @@ function renderSections(sections, inlineImages = []) {
 }
 
 const defensiveSentencePattern = /(?:\bkhông\s+(?:nên\s+|tự\s+)?(?:suy|hiểu|chia|cộng|biến)\b|\bkhông\s+đồng\s+nghĩa\b|\bkhông\s+phải\b[^.!?]*(?:quảng\s+cáo|tuyển\s+dụng|chính\s+sách|lời\s+mời|cam\s+kết|trợ\s+cấp))/iu;
-const emptySourceSentencePattern = /(?:\bbài\s+(?:gốc|nguồn|báo)\s+(?:không|chưa)|\bnguồn\s+(?:không|chưa)\s+(?:nêu|cho\s+biết|công\s+bố|làm\s+rõ|đề\s+cập)|\bthông\s+tin\s+nguồn\s+không)/iu;
+const emptySourceSentencePattern = /(?:\bbài\s+(?:gốc|nguồn|báo)\s+(?:không|chưa)|\bnguồn(?:\s+chính\s+thức|\s+của\s+[^,.]+)?\s+(?:không|chưa)\s+(?:nêu|cho\s+biết|công\s+bố|làm\s+rõ|đề\s+cập)|\bthông\s+tin\s+nguồn\s+không)/iu;
 
 function stripTags(value = "") {
   return String(value).replace(/<[^>]+>/g, " ").replace(/&[^;]+;/g, " ").replace(/\s+([,.;:!?])/g, "$1").replace(/\s+/g, " ").trim();
@@ -410,9 +410,14 @@ function capitalizeSentence(value = "") {
 
 function rewriteEditorialSentence(sentence = "") {
   let text = stripTags(sentence);
-  if (!text || defensiveSentencePattern.test(text) || emptySourceSentencePattern.test(text) || /^tư\s+liệu\s+được\s+.+\s+đăng\s+ngày/iu.test(text)) return "";
+  if (!text || defensiveSentencePattern.test(text) || emptySourceSentencePattern.test(text) || /^tư\s+liệu\s+được\s+.+\s+đăng\s+ngày/iu.test(text) || /^bài\s+do\s+.+?\s+đăng\s+ngày/iu.test(text) || /^thông\s+tin\s+có\s+nguồn\s+/iu.test(text)) return "";
   text = text
+    .replace(/^bài\s+phóng\s+sự(?:\s+ảnh)?\s+của\s+[^,]+?\s+(?:mở\s+ra\s+bằng|đưa\s+người\s+đọc|khắc\s+họa|ghi\s+lại)\s+/iu, "")
+    .replace(/^phóng\s+sự(?:\s+ảnh)?\s+của\s+[^,]+?\s+đưa\s+người\s+đọc\s+/iu, "")
+    .replace(/^phóng\s+sự\s+của\s+[^,]+?\s+đi\s+từ\s+/iu, "Câu chuyện đi từ ")
+    .replace(/^(?:Báo\s+)?(?:Tiền\s+Phong|Nhân\s+Dân|Dân\s+trí|VOV|VTV|Báo\s+Công\s+Thương)\s+(?:đặt\s+cạnh\s+nhau|mở\s+ra\s+bằng|đưa\s+người\s+đọc|khắc\s+họa|ghi\s+lại)\s+/iu, "")
     .replace(/^theo\s+bài\s+do\s+[^,]+\s+phát\s+hành\s*[,,:-]?\s*/iu, "")
+    .replace(/^bài\s+viết\s+về\s+.+?\s+tách\s+rõ\s+[^.!?]+[.!?]?$/iu, "")
     .replace(/^bài\s+viết\s+về\s+.+?\s+(?:cho\s+thấy|làm\s+rõ|thể\s+hiện)\s+/iu, "")
     .replace(/^bài\s+(?:viết|báo)\s+của\s+.+?\s+(?:mở\s+đầu|tập\s+hợp|chọn|khắc\s+họa|kể)\s+/iu, "")
     .replace(/^bài\s+(?:viết|báo|gốc|nguồn)(?:\s+của\s+.+?)?\s+(?:cũng\s+)?(?:cho\s+biết|cho\s+thấy|nêu|ghi(?:\s+nhận)?|công\s+bố|đề\s+cập|đưa\s+ví\s+dụ|làm\s+rõ|mô\s+tả|thể\s+hiện|sử\s+dụng|xác\s+định)\s+(?:rằng\s+)?/iu, "")
@@ -420,15 +425,113 @@ function rewriteEditorialSentence(sentence = "") {
     .replace(/^bài\s+viết\s+(?:giúp\s+người\s+đọc\s+hiểu|giải\s+thích|tổng\s+hợp)\s+/iu, "")
     .replace(/\bbài\s+(?:viết|báo|gốc|nguồn|năm\s+\d{4})(?:\s+về\s+[^,.]+?)?\s+(?:cũng\s+)?(?:cho\s+biết|cho\s+thấy|nêu|ghi(?:\s+nhận)?|đề\s+cập|làm\s+rõ|mô\s+tả|thể\s+hiện|xác\s+định)\s+/giu, "")
     .replace(/^tư\s+liệu\s+(?:cho\s+thấy|thể\s+hiện|ghi\s+nhận|làm\s+rõ)\s+/iu, "")
+    .replace(/^nguồn\s+(?:nhắc\s+tới|đề\s+cập)\s+/iu, "")
+    .replace(/^nguồn\s+chính\s+thức\s+dùng\s+mốc\s+/iu, "Mốc ")
+    .replace(/^nguồn\s+được\s+rà\s+soát\s+nêu\s+/iu, "")
+    .replace(/^nguồn(?:\s+chính\s+thức|\s+của\s+[^,.]+)?\s+(?:cho\s+biết|nêu|ghi(?:\s+nhận)?|xác\s+nhận|thống\s+kê|liệt\s+kê|thẳng\s+thắn\s+nêu)\s+(?:rằng\s+)?/iu, "")
+    .replace(/^nguồn\s+(?:cho\s+phép|dùng)\s+[^.!?]+[.!?]?$/iu, "")
     .replace(/^(?:theo\s+(?:bài\s+(?:báo|viết|gốc|nguồn)|nguồn(?:\s+chính\s+thức)?)|trong\s+bài\s+(?:gốc|nguồn))\s*[,,:;-]?\s*/iu, "")
     .replace(/\btheo\s+(?:bài\s+(?:báo|viết|gốc|nguồn)|nguồn(?:\s+chính\s+thức)?)\b\s*[,,:;-]?\s*/giu, "")
     .replace(/\b(?:trong\s+)?bài\s+(?:gốc|nguồn)\b\s*[,,:;-]?\s*/giu, "")
     .replace(/\bnguồn(?:\s+chính\s+thức)?\s+(?:cũng\s+)?(?:nêu|cho\s+biết|cho\s+thấy|ghi(?:\s+nhận)?|công\s+bố|đề\s+cập|mô\s+tả|xác\s+định)\s*/giu, "")
     .replace(/\s+được\s+(?:nguồn(?:\s+chính\s+thức)?|bài\s+(?:báo|viết|gốc|nguồn))\s+(?:ghi\s+nhận|nêu|công\s+bố|đề\s+cập|mô\s+tả|sử\s+dụng)\b/giu, "")
+    .replace(/,\s*nhưng\s+bài\s+viết\s+chỉ\s+dùng\s+phép\s+tính\s+này[^.!?]*[.!?]?$/iu, "")
+    .replace(/\s+được\s+bài\s+báo\s+đặt\s+cạnh\s+câu\s+chuyện\s+sản\s+xuất/iu, " cùng tạo nên điều kiện sinh hoạt quanh ca sản xuất")
+    .replace(/\bbài\s+viết\s+giúp\s+hiểu\s+thêm\b/giu, "đây là một lát cắt về")
+    .replace(/^tác\s+giả\s+đi\s+bộ\s+từ\s+cửa\s+lò\s+để\s+cảm\s+nhận\s+rõ\s+/iu, "Từ cửa lò, hành trình đi bộ cho thấy rõ ")
+    .replace(/^trong\s+lò,\s*phóng\s+viên\s+gặp\s+/iu, "Trong lò có ")
+    .replace(/\bphóng\s+viên\s+gặp\s+/giu, "")
+    .replace(/^giá\s+trị\s+lớn\s+nhất\s+của\s+phóng\s+sự\s+nằm\s+ở\s+/iu, "Điều đọng lại là ")
     .replace(/\s+/g, " ")
     .trim();
   return capitalizeSentence(text);
 }
+
+const professionalFactParagraphs = {
+  "bang-thanh-phuc-loc-hoc-nghe-tho-lo-tkv": "Đại diện của 74 thôn thuộc hai xã cùng tham dự, tạo thành mạng lưới đưa thông tin từ hội nghị về từng khu dân cư.",
+  "tho-mo-vao-ca-duong-huy": "Hệ thống lò chính và các nhánh lò được ghi nhận có tổng chiều dài 26 km, cho thấy quy mô di chuyển và phối hợp trong mỗi ca sản xuất.",
+  "ky-luat-dong-tam-tho-mo-ha-lam": "Sau hơn 20 năm làm lò, Trịnh Ngọc Toản đã đi qua nhiều thay đổi về công nghệ và tổ chức sản xuất.",
+  "ly-van-di-nguoi-cha-tho-lo": "Sinh năm 1993, Lý Văn Dỉ vừa bước qua năm thứ năm ở mỏ vừa một mình gánh phần lớn trách nhiệm chăm lo cho ba con nhỏ.",
+  "nhung-nguoi-tho-lo-gieo-no-luc": "Phan Văn Đạo đã gắn bó với nghề 14 năm, quãng thời gian giúp anh tích lũy sức bền, kinh nghiệm và sự tin cậy trong tập thể.",
+  "mot-ngay-trong-lo-than-duong-huy": "Ở khu vực sâu, nhiệt độ khoảng 30°C kèm độ ẩm cao khiến thông gió, nước uống và việc tuân thủ thời gian nghỉ trở thành những điều kiện thiết yếu.",
+};
+
+const professionalArticleOverrides = {
+  "tai-co-cau-tkv-2026-viec-lam-tho-mo": {
+    intro: [
+      "Định hướng cơ cấu lại TKV giai đoạn 2026–2030 đặt tuyển dụng, đào tạo và giữ chân thợ lò trong cùng kế hoạch đổi mới công nghệ, nâng chất lượng quản trị và tổ chức sản xuất an toàn. Trong bức tranh ấy, người thợ trực tiếp không đứng ngoài quá trình hiện đại hóa mà là lực lượng quyết định thiết bị và quy trình mới có vận hành hiệu quả hay không.",
+      "Sáu tháng đầu năm 2026, TKV sản xuất 19,6 triệu tấn than nguyên khai và cung cấp 22,77 triệu tấn than cho sản xuất điện. Các con số cho thấy quy mô nhiệm vụ vẫn rất lớn, trong khi yêu cầu về an toàn, tiết kiệm tài nguyên, giảm phát thải và hiệu quả ngày càng cao. Áp lực đó buộc doanh nghiệp phải đồng thời đầu tư máy móc và xây dựng đội ngũ có tay nghề.",
+    ],
+    sections: [
+      {
+        title: "Hiện đại hóa bắt đầu từ cách tổ chức sản xuất",
+        paragraphs: [
+          "Mục tiêu giai đoạn mới là hình thành mô hình công nghiệp năng lượng hiện đại, dựa trên khai thác an toàn, tiết kiệm và hiệu quả. Chuyển đổi số, tự động hóa, quản trị dữ liệu và kiểm soát môi trường sẽ đi sâu hơn vào từng khâu, từ chuẩn bị sản xuất đến vận tải, sàng tuyển và tiêu thụ than.",
+          "Với các mỏ hầm lò, công nghệ giúp giảm những thao tác cần nhiều sức nhưng đồng thời làm công việc trở nên chặt chẽ hơn. Một tín hiệu bất thường trên thiết bị, sai lệch trong quy trình hoặc sự phối hợp không đồng bộ giữa các vị trí đều có thể ảnh hưởng tới cả dây chuyền. Vì thế, hiện đại hóa gồm cả việc đưa máy móc xuống lò và thay đổi cách giao việc, kiểm tra, bảo dưỡng, xử lý tình huống.",
+          "Kế hoạch sản xuất phải đi cùng khả năng chủ động nguồn than và đáp ứng nhu cầu năng lượng. Khi sản lượng được đặt trong yêu cầu dài hạn, doanh nghiệp cần một lực lượng ổn định, hiểu hiện trường và có thể thích nghi với công nghệ mới qua nhiều năm làm việc.",
+        ],
+      },
+      {
+        title: "Người thợ chuyển từ làm nặng sang làm chủ thiết bị",
+        paragraphs: [
+          "Cơ giới hóa thay đổi nội dung tay nghề. Bên cạnh sức khỏe và kỹ thuật cơ bản, người lao động cần biết vận hành, quan sát tín hiệu, kiểm tra tình trạng máy, phối hợp với cơ điện và báo cáo chính xác khi xuất hiện bất thường. Những năng lực này chỉ hình thành khi kiến thức trong trường được tiếp tục rèn trong tổ đội sản xuất.",
+          "Vai trò của thợ lò vì vậy không giảm đi. Trái lại, giá trị của một người thợ biết giữ quy trình, hiểu thiết bị và làm việc có trách nhiệm sẽ rõ hơn trong dây chuyền hiện đại. Kinh nghiệm hiện trường giúp họ nhận ra thay đổi nhỏ mà hệ thống giám sát chưa thể tự giải thích, còn kỷ luật giúp mọi thông tin được chuyển đúng người, đúng thời điểm.",
+          "Đào tạo và giữ chân lao động trở thành hai phần của cùng một bài toán. Tuyển đủ người mới chỉ giải quyết đầu vào; doanh nghiệp còn phải tạo môi trường để người mới nâng bậc, nhìn thấy đường phát triển và đủ tin tưởng để gắn bó lâu dài với vùng mỏ.",
+        ],
+      },
+      {
+        title: "Cơ hội thuộc về người trẻ chịu học và giữ kỷ luật",
+        paragraphs: [
+          "Giai đoạn 2026–2030 mở ra nhu cầu rõ hơn đối với lao động kỹ thuật trực tiếp. Người trẻ có sức khỏe phù hợp, học nghề bài bản và sẵn sàng làm việc theo quy trình có thể bắt đầu từ vị trí sản xuất, tích lũy kinh nghiệm rồi phát triển theo hướng vận hành thiết bị, cơ điện, an toàn hoặc quản lý tổ đội.",
+          "Lựa chọn nghề mỏ vẫn cần được nhìn đầy đủ. Công việc có ca kíp, yêu cầu thể lực và tiêu chuẩn an toàn nghiêm; đổi lại, tay nghề được trả công và có khả năng tăng giá trị khi công nghệ thay đổi. Người học nên tìm hiểu cả chương trình đào tạo, đơn vị tiếp nhận, điều kiện làm việc và lộ trình sau tốt nghiệp trước khi quyết định.",
+          "Định hướng cơ cấu lại TKV đặt con người cạnh công nghệ. Một chiến lược hiện đại hóa chỉ thành công khi máy móc được vận hành bởi đội ngũ hiểu nghề, tôn trọng quy trình và biết cùng nhau xử lý những tình huống không có sẵn đáp án.",
+        ],
+      },
+    ],
+    takeaway: "Với người thợ trẻ, cơ hội của giai đoạn mới đến từ khả năng học nghề chắc, làm chủ thiết bị, giữ an toàn và trưởng thành cùng quá trình hiện đại hóa ngành Than.",
+  },
+  "phuc-loi-tho-mo-tkv-2026": {
+    intro: [
+      "Trong sáu tháng đầu năm 2026, hoạt động chăm lo người lao động ngành Than được triển khai từ nơi ở, khám sức khỏe, bữa ăn đến hỗ trợ khó khăn và đối thoại tại nơi làm việc. Các chương trình giải quyết nhu cầu sau ca sản xuất, đồng thời tạo điều kiện để người thợ gắn bó lâu dài với doanh nghiệp và vùng mỏ.",
+      "Phúc lợi trong một ngành sản xuất có cường độ cao không thể được đo bằng một khoản hỗ trợ riêng lẻ. Mái nhà giúp gia đình ổn định; khám sức khỏe phát hiện sớm nguy cơ; bữa ăn duy trì thể lực; còn đối thoại tạo cơ hội để những bất cập ở hiện trường được nói ra và xử lý. Khi các phần này nối với nhau, sự chăm lo mới đi vào đời sống hằng ngày.",
+    ],
+    sections: [
+      {
+        title: "Mái nhà ổn định là điểm tựa sau mỗi ca làm",
+        paragraphs: [
+          "Chương trình Mái ấm Công đoàn đã xét hỗ trợ xây mới hoặc sửa chữa 108 căn nhà, với tổng kinh phí 8,52 tỷ đồng. Với một gia đình công nhân, chỗ ở an toàn vừa là tài sản vừa là nơi người lao động phục hồi sau ca, chăm lo con cái và bớt áp lực khi phải làm việc xa quê.",
+          "Công đoàn TKV đồng thời kiểm tra cơ sở vật chất tại 23 khu tập thể của 14 đơn vị ở Quảng Ninh. Việc kiểm tra nơi ở tập trung có ý nghĩa trực tiếp với công nhân mới, bởi chất lượng phòng ở, điện nước, vệ sinh và khoảng cách tới nơi làm việc đều ảnh hưởng tới nhịp sinh hoạt theo ca.",
+          "Hơn 700 người lao động được tư vấn về nhà ở xã hội. Đây là bước chuyển từ hỗ trợ trước mắt sang nhu cầu ổn định lâu dài: người thợ có thêm thông tin để cân nhắc khả năng tạo lập chỗ ở và đưa gia đình tới sinh sống tại vùng mỏ.",
+        ],
+      },
+      {
+        title: "Sức khỏe và bữa ăn được chăm lo theo từng nhu cầu",
+        paragraphs: [
+          "Trong nửa đầu năm, 71.869 lượt người lao động được khám sức khỏe định kỳ; 9.577 lượt được khám chuyên khoa và 3.576 người tham gia điều dưỡng hoặc được hỗ trợ điều trị. Hoạt động chăm sóc được chia theo mức độ và nhu cầu của từng nhóm, từ khám chung tới chuyên khoa, điều dưỡng, hỗ trợ điều trị.",
+          "Chương trình Bữa cơm Công đoàn phục vụ 41.471 đoàn viên, người lao động. Một bữa ăn có giá trị khi đủ dinh dưỡng, an toàn và phù hợp thời gian ca kíp. Với lao động trực tiếp, chất lượng bữa ăn liên quan ngay tới thể lực, khả năng tập trung và tốc độ phục hồi sau công việc nặng.",
+          "Khám định kỳ, điều dưỡng và dinh dưỡng chỉ phát huy đầy đủ khi người lao động chủ động khai báo tình trạng sức khỏe, tuân thủ hướng dẫn chuyên môn và báo sớm các biểu hiện bất thường. Sự chăm lo từ doanh nghiệp cần đi cùng thói quen tự bảo vệ của mỗi người thợ.",
+        ],
+      },
+      {
+        title: "Đối thoại biến kiến nghị thành thay đổi tại nơi làm việc",
+        paragraphs: [
+          "Các đơn vị đã tổ chức 234 cuộc đối thoại với 21.518 lượt người tham gia, tiếp nhận và giải quyết 1.428 ý kiến, kiến nghị. Những cuộc trao đổi trực tiếp đưa vấn đề về điều kiện làm việc, an toàn, thu nhập hoặc đời sống tới đúng đầu mối để xử lý.",
+          "Bên cạnh đó, 23.150 lượt người lao động có hoàn cảnh khó khăn được thăm hỏi và hỗ trợ. Con số lớn phản ánh nhu cầu chăm lo rất đa dạng: có trường hợp cần giúp đỡ đột xuất, có gia đình chịu ảnh hưởng bởi bệnh tật, tai nạn hoặc những biến cố ngoài khả năng tự xoay xở.",
+          "Thước đo cuối cùng của phúc lợi là những thay đổi người lao động cảm nhận được: chỗ ở an toàn hơn, sức khỏe được theo dõi sớm hơn, bữa ăn tốt hơn và kiến nghị được phản hồi rõ ràng. Đó là những điều quyết định một người thợ có thể yên tâm làm việc qua nhiều năm hay không.",
+        ],
+      },
+    ],
+    takeaway: "Đời sống thợ mỏ được tạo nên cả trong và ngoài ca sản xuất. Khi nhà ở, sức khỏe, bữa ăn, hỗ trợ khó khăn và đối thoại cùng vận hành, phúc lợi trở thành một phần của năng lực sản xuất bền vững.",
+  },
+};
+
+const professionalLeadParagraphs = {
+  "tho-mo-vao-ca-duong-huy": "Tại khai trường Than Dương Huy, gần 400 công nhân bắt đầu ca làm bằng một chuỗi chuẩn bị chặt chẽ. Từ bữa ăn, nhà đèn đến quần áo bảo hộ, mũ, đèn lò và bình tự cứu, mỗi bước trên mặt đất đều hướng tới tám giờ làm việc an toàn ở phía dưới.",
+  "ky-luat-dong-tam-tho-mo-ha-lam": "Tại Than Hà Lầm, câu chuyện của Trịnh Ngọc Toản, Phạm Văn An và Nguyễn Trọng Thái tạo nên ba lát cắt về người thợ mỏ. Một người học công nghệ mới để chuyển giao cho đồng đội, một người tham gia cứu hộ xa mỏ, người còn lại bám những đường lò sâu bằng kinh nghiệm và sáng kiến.",
+  "ma-khac-huynh-nguoi-mo-duong-trong-long-dat": "Ngày làm việc của Bùi Văn Tuyên bắt đầu khi chuông báo thức vang lên từ sáng sớm. Trước lúc rời nơi ở công nhân, anh gọi về nhà, kiểm tra trang bị rồi chuẩn bị vào ca tại Công ty Than Hòn Gai.",
+  "mot-ngay-trong-lo-than-duong-huy": "Từ cửa lò, hành trình xuống khu vực khai thác của Than Dương Huy đi qua nhiều lớp không gian khác nhau. Đèn gắn trên mũ, bảo hộ, phương tiện tự cứu, xe chở người và quãng đi bộ dài là những phần không thể tách rời trước khi người thợ tới vị trí sản xuất.",
+  "nhung-nguoi-tho-lo-gieo-no-luc": "Ba người thợ ở ba vị trí khác nhau cùng tạo nên nhịp sản xuất dưới lò. Phan Văn Đạo giữ vai trò người anh của phân xưởng khai thác, Hán Cao Phi phụ trách cơ điện, còn Lê Văn Biên vừa làm việc vừa truyền kinh nghiệm cho lớp thợ trẻ.",
+};
 
 function rewriteEditorialParagraph(paragraph = "") {
   return String(paragraph)
@@ -439,15 +542,76 @@ function rewriteEditorialParagraph(paragraph = "") {
     .trim();
 }
 
-function rewrittenFacts(article) {
-  return (article.facts || [])
-    .map(([value, label]) => [String(value || "").trim(), rewriteEditorialParagraph(label)])
-    .filter(([value, label]) => value && stripTags(label).split(/\s+/u).length >= 4)
-    .slice(0, 8);
+function normalizeFactValue(value = "") {
+  return stripTags(value).toLocaleLowerCase("vi").replace(/[–—−]/g, "-").replace(/\s+/g, " ").trim();
 }
 
-function renderRewrittenSections(sections = [], inlineImages = []) {
+function lowerFirst(value = "") {
+  return value.replace(/^(\p{Lu})/u, (letter) => letter.toLocaleLowerCase("vi"));
+}
+
+function factClause(value, label) {
+  const cleanValue = stripTags(value).replace(/[.?!]+$/u, "");
+  const cleanLabel = rewriteEditorialParagraph(label).replace(/[.?!]+$/u, "");
+  if (!cleanValue || !cleanLabel) return "";
+
+  if (/^(?:tổng|mức|khoản|thời gian|quãng thời gian|giai đoạn|mục tiêu|tỷ lệ|số lượng|năm|ngày)\b/iu.test(cleanLabel)) {
+    return `${cleanLabel} là ${cleanValue}`;
+  }
+
+  const valueUnit = cleanValue.match(/^\S+(?:\s+(?:người|gia đình|học sinh|suất|xã|thôn|huyện|tỉnh|địa phương|đơn vị|bên|hội nghị|hồ sơ|công trình|cấp học|nhóm nghề|ca|ảnh))\b/iu)?.[0] || "";
+  if (valueUnit) {
+    const unit = valueUnit.split(/\s+/u).slice(1).join(" ");
+    const withoutRepeatedUnit = cleanLabel.replace(new RegExp(`^${unit}\\s*`, "iu"), "");
+    if (/^(?:người|công nhân|cán bộ|học sinh|gia đình|xã|thôn|huyện|tỉnh|địa phương|đơn vị|nhà trường)\b/iu.test(cleanLabel)) {
+      const numeric = cleanValue.split(/\s+/u)[0];
+      const noun = cleanLabel.match(/^(?:người\s+lao\s+động|công\s+nhân|cán\s+bộ|học\s+sinh|gia\s+đình|xã|thôn|huyện|tỉnh|địa\s+phương|đơn\s+vị|nhà\s+trường)/iu)?.[0] || "";
+      return `có ${numeric} ${noun ? lowerFirst(cleanLabel) : lowerFirst(cleanLabel)}`;
+    }
+    return `có ${cleanValue} ${lowerFirst(withoutRepeatedUnit || cleanLabel)}`;
+  }
+
+  return `${cleanValue} là con số gắn với ${lowerFirst(cleanLabel)}`;
+}
+
+function factAlreadyCovered(value, label, body) {
+  const normalizedValue = normalizeFactValue(value);
+  if (normalizedValue && body.includes(normalizedValue)) return true;
+  const stopWords = new Set(["của", "và", "được", "trong", "tại", "theo", "cho", "với", "khi", "này", "đó", "một", "những", "các", "là"]);
+  const labelWords = normalizeFactValue(label)
+    .split(/[^\p{L}\p{N}]+/u)
+    .filter((word) => word.length >= 3 && !stopWords.has(word));
+  const uniqueWords = [...new Set(labelWords)];
+  if (uniqueWords.length < 3) return false;
+  const matched = uniqueWords.filter((word) => body.includes(word)).length;
+  return matched >= 3 && matched / uniqueWords.length >= 0.6;
+}
+
+function missingFactsParagraph(article, editorialParagraphs) {
+  const body = editorialParagraphs.map((paragraph) => normalizeFactValue(paragraph)).join(" ");
+  const clauses = (article.facts || [])
+    .filter(([value, label]) => !factAlreadyCovered(value, label, body))
+    .map(([value, label]) => factClause(value, label))
+    .filter(Boolean)
+    .slice(0, 4);
+  if (!clauses.length) return "";
+  const [first, ...rest] = clauses;
+  const transitions = ["Cùng với đó", "Bên cạnh đó", "Ngoài ra"];
+  const sentences = [capitalizeSentence(first), ...rest.map((clause, index) => `${transitions[index] || "Đồng thời"}, ${clause}`)];
+  return sentences.map((sentence) => sentence.replace(/[.?!]+$/u, "") + ".").join(" ");
+}
+
+function professionalHeadingIndexes(article, sections) {
+  if (!sections.length) return new Set();
+  const isFeature = ["Chuyện người thợ mỏ", "Đời sống thợ mỏ"].includes(article.section);
+  if (isFeature) return new Set(sections.map((_section, index) => index).slice(0, 3));
+  if (sections.length <= 2) return new Set([0]);
+  return new Set([0, Math.ceil(sections.length / 2)]);
+}
+
+function renderProfessionalSections(article, sections = [], inlineImages = []) {
   const legacyImages = inlineImages.filter((media) => !Number.isInteger(media.afterSection));
+  const headingIndexes = professionalHeadingIndexes(article, sections);
   return sections.map((section, index) => {
     const paragraphs = (section.paragraphs || [])
       .map((paragraph) => rewriteEditorialParagraph(paragraph))
@@ -456,7 +620,9 @@ function renderRewrittenSections(sections = [], inlineImages = []) {
       .join("");
     const bullets = (section.bullets || [])
       .map((item) => rewriteEditorialParagraph(item))
-      .filter(Boolean);
+      .filter(Boolean)
+      .map((item) => `<p>${esc(item)}</p>`)
+      .join("");
     const sectionImages = [
       ...inlineImages.filter((media) => media.afterSection === index),
       ...(legacyImages[index] ? [legacyImages[index]] : []),
@@ -464,15 +630,19 @@ function renderRewrittenSections(sections = [], inlineImages = []) {
     const inlineMedia = sectionImages.length
       ? `\n  <div class="article-inline-gallery">${sectionImages.map((media) => renderFigure(media)).join("")}</div>`
       : "";
-    if (!paragraphs && !bullets.length && !inlineMedia) return "";
-    return `<section class="editorial-section rewritten-news-section">
-    <h2>${esc(section.title)}</h2>
-    ${paragraphs}${bullets.length ? `\n    <ul class="evidence-list">${bullets.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>` : ""}
+    if (!paragraphs && !bullets && !inlineMedia) return "";
+    const heading = headingIndexes.has(index) ? `<h2>${esc(section.title)}</h2>` : "";
+    const sectionBody = [heading, `${paragraphs}${bullets}`]
+      .filter(Boolean)
+      .map((block) => `    ${block}`)
+      .join("\n");
+    return `<section class="editorial-section professional-news-section">
+${sectionBody}
   </section>${inlineMedia}`;
   }).join("");
 }
 
-function renderRewrittenNewsArticle(article, inlineImages) {
+function renderProfessionalNewsArticle(article, inlineImages) {
   const source = (article.sources || []).find((item) => sourceUrl(item)) || article.sources?.[0] || {};
   const originalUrl = sourceUrl(source);
   const originalTitle = source.title || article.title;
@@ -480,16 +650,25 @@ function renderRewrittenNewsArticle(article, inlineImages) {
   const sourceAction = originalUrl
     ? `<a class="source-original-card__button" href="${esc(originalUrl)}" target="_blank" rel="noopener noreferrer external">Xem bài tại ${esc(sourceLabel)} →</a>`
     : "";
-  const intro = (article.intro || [])
+  const editorial = professionalArticleOverrides[article.slug] || article;
+  const introSource = [...(editorial.intro || [])];
+  if (professionalLeadParagraphs[article.slug]) introSource[0] = professionalLeadParagraphs[article.slug];
+  const intro = introSource
     .map((paragraph) => rewriteEditorialParagraph(paragraph))
     .filter((paragraph) => paragraph.split(/\s+/u).length >= 8);
-  const facts = rewrittenFacts(article);
-  const takeaway = rewriteEditorialParagraph(article.takeaway);
+  const factParagraph = professionalFactParagraphs[article.slug] || "";
+  const takeaway = rewriteEditorialParagraph(editorial.takeaway);
+  const professionalBlocks = [
+    `<div class="source-story-intro professional-news-intro">${intro.map((paragraph, index) => `<p${index === 0 ? ' class="professional-lede"' : ""}>${esc(paragraph)}</p>`).join("")}</div>`,
+    factParagraph ? `<p class="professional-nutgraph">${esc(factParagraph)}</p>` : "",
+    renderProfessionalSections(article, editorial.sections, inlineImages),
+    takeaway ? `<p class="professional-ending">${esc(takeaway)}</p>` : "",
+  ].filter(Boolean).join("\n          ");
   return `${renderArticleCover(article)}
-        <div class="source-story-intro rewritten-news-intro">${intro.map((paragraph) => `<p>${esc(paragraph)}</p>`).join("")}</div>
-        ${facts.length ? `<section class="rewritten-news-facts"><h2>${esc(article.factsTitle || "Các dữ kiện chính")}</h2>${renderFacts(facts)}</section>` : ""}
-        ${renderRewrittenSections(article.sections, inlineImages)}
-        ${takeaway ? `<section class="source-story-ending"><h2>${esc(article.conclusionTitle || "Điều đọng lại")}</h2><p>${esc(takeaway)}</p></section>` : ""}
+        <p class="article-byline"><strong>Nguyễn Tử Linh</strong> biên soạn · ${esc(sourceLabel)}</p>
+        <div class="professional-news-copy">
+          ${professionalBlocks}
+        </div>
         <section class="source-original-card" aria-labelledby="source-original-title">
           <small>NGUỒN BÀI VIẾT</small>
           <h2 id="source-original-title">${esc(originalTitle)}</h2>
@@ -577,7 +756,7 @@ function renderArticle(article) {
     return `<a href="/bai-viet/${target.slug}/"><small>${index ? "Đọc tiếp" : "Bài liên quan"}</small>${esc(target.title)} →</a>`;
   }).join("");
   const articleContent = isNewsBrief
-    ? renderRewrittenNewsArticle(article, inlineImages)
+    ? renderProfessionalNewsArticle(article, inlineImages)
     : isPressLayout
     ? renderPressBody(article, inlineImages)
     : `${renderArticleCover(article)}
@@ -646,7 +825,7 @@ function renderArticle(article) {
       </div>
     </section>
     <div class="container article-layout${isPressLayout ? " article-layout--source" : ""}">
-      <article class="article-body${isPressLayout || isNewsBrief ? " article-body--source" : ""}${isNewsBrief ? " article-body--rewritten" : ""}">
+      <article class="article-body${isPressLayout || isNewsBrief ? " article-body--source" : ""}${isNewsBrief ? " article-body--professional" : ""}">
         ${articleContent}
         ${renderArticleApply(article)}
         ${renderArticleShare(article)}
@@ -735,7 +914,7 @@ function hubHtml() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Ngành Than & Người thợ – Thầy Linh",
-    description: "Các bài báo chọn lọc về ngành Than được tóm tắt dễ hiểu, ghi nguồn rõ ràng và bổ sung thông tin học nghề, việc làm TKV dành cho người lao động.",
+    description: "Các bài báo chọn lọc về ngành Than được biên soạn theo cấu trúc báo chí, ghi nguồn rõ ràng và bổ sung thông tin học nghề, việc làm TKV dành cho người lao động.",
     url: `${base}/tin-nganh-than/`,
     inLanguage: "vi-VN",
     dateModified: buildTime,
@@ -759,7 +938,7 @@ function hubHtml() {
   <meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="Tin ngành Than"><meta property="og:description" content="Bài viết ngành Than được biên soạn lại đầy đủ, ghi nguồn rõ ràng; thông tin học nghề và việc làm TKV được tách riêng ở cuối mỗi trang."><meta property="og:url" content="${base}/tin-nganh-than/"><meta property="og:image" content="${feature.image}">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Tin ngành Than"><meta name="twitter:description" content="Bài báo ngành Than và thông tin việc làm TKV tại Quảng Ninh."><meta name="twitter:image" content="${feature.image}">
   <link rel="stylesheet" href="/fonts.css?v=1">
-  <link rel="stylesheet" href="../article-insights.css?v=12"><link rel="stylesheet" href="/mobile-ux.css?v=8">
+  <link rel="stylesheet" href="../article-insights.css?v=13"><link rel="stylesheet" href="/mobile-ux.css?v=8">
   <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </head>
 <body>
@@ -768,7 +947,7 @@ function hubHtml() {
   <main id="noi-dung">
     <section class="news-hero"><div class="container"><p class="eyebrow">Bài viết đầy đủ · Nguồn rõ ràng</p><h1>Tin ngành Than</h1><p class="lead">Mỗi bài được biên soạn lại với đầy đủ sự việc, nhân vật và dữ kiện quan trọng để người đọc theo dõi ngay trên website. Nguồn báo cùng thông tin học nghề, tuyển thợ mỏ và việc làm TKV được đặt riêng ở cuối trang.</p><nav class="cluster-nav" aria-label="Nhóm bài viết">${sectionOrder.filter((section) => allEditorial.some((article) => article.section === section && article.slug !== feature.slug)).map((section) => `<a href="#${sectionIds[section]}">${esc(section)}</a>`).join("")}</nav></div></section>
     <div class="container news-main">
-      <section class="newsroom-method" aria-labelledby="newsroom-method-title"><div><p class="news-kicker">Cách trình bày</p><h2 id="newsroom-method-title">Giữ đầy đủ nội dung, diễn đạt bằng giọng riêng</h2><p>Bài viết giữ các nhân vật, diễn biến và số liệu quan trọng, chỉ thay đổi cách diễn đạt để tự nhiên và dễ đọc hơn. Tên bài, cơ quan xuất bản, ngày đăng và liên kết nguồn được ghi ở cuối.</p></div><ul><li><strong>Nội dung đầy đủ</strong><span>Không rút còn vài đoạn tóm tắt.</span></li><li><strong>Nguồn rõ ràng</strong><span>Tên bài, đơn vị, ngày đăng và liên kết bài gốc.</span></li><li><strong>Thông tin tuyển sinh</strong><span>Đặt riêng ở cuối, không trộn vào nội dung báo chí.</span></li></ul></section>
+      <section class="newsroom-method newsroom-method--prose" aria-labelledby="newsroom-method-title"><div><p class="news-kicker">Cách biên tập</p><h2 id="newsroom-method-title">Mỗi bài có một mạch kể rõ ràng</h2><p>Phần mở đầu đưa thẳng người đọc tới sự kiện hoặc nhân vật chính. Các dữ kiện, bối cảnh và diễn biến được nối trong cùng một mạch văn; đề mục chỉ xuất hiện khi câu chuyện thực sự chuyển sang một lớp thông tin mới.</p><p>Tên bài, cơ quan xuất bản, ngày đăng và liên kết nguồn được ghi ở cuối. Thông tin tuyển sinh của Thầy Linh nằm trong một khối riêng, không trộn vào nội dung báo chí.</p></div></section>
       <article class="news-feature"><img src="${feature.image}" alt="${esc(feature.title)}" referrerpolicy="no-referrer"><div class="news-feature__body"><p class="news-kicker">Bài mới · ${displayDate(feature.published)}</p><h2>${esc(feature.title)}</h2><p>${esc(feature.lead)}</p><a class="news-link" href="./${feature.urlPath.replace(/^tin-nganh-than\//, "")}/">Đọc bài viết →</a></div></article>
       ${sections}
     </div>
@@ -785,7 +964,7 @@ for (const article of generatedArticles) {
   fs.mkdirSync(directory, {recursive: true});
   const file = path.join(directory, "index.html");
   const renderedHtml = renderArticle(article);
-  const hasEstablishedRewrite = fs.existsSync(file) && fs.readFileSync(file, "utf8").includes("article-body--rewritten");
+  const hasEstablishedRewrite = fs.existsSync(file) && fs.readFileSync(file, "utf8").includes("article-body--professional");
   const keepsEstablishedShell = article.urlPath.startsWith("tin-nganh-than/") && (
     hasEstablishedRewrite || (article.sources || []).some((source) => sourceUrl(source))
   );
@@ -806,13 +985,13 @@ for (const article of existingNews) {
   if (usesSourceLanding) {
     const establishedArticle = html.match(articleBodyPattern)?.[0] || "";
     const establishedParagraphs = establishedArticle.match(/<p\b/gi)?.length || 0;
-    const keepsEstablishedRewrite = establishedArticle.includes("article-body--rewritten") && establishedParagraphs >= 4;
+    const keepsEstablishedRewrite = establishedArticle.includes("article-body--professional") && establishedParagraphs >= 6;
     if (!keepsEstablishedRewrite) {
       const inlineImages = article.inlineMedia || articleInlineImages[article.slug] || [];
       html = html.replace(articleBodyPattern,
-        `<article class="article-body article-body--source article-body--rewritten">\n        ${renderRewrittenNewsArticle(article, inlineImages)}\n        ${renderArticleApply(article)}\n        ${renderArticleShare(article)}\n      </article>`);
+        `<article class="article-body article-body--source article-body--professional">\n        ${renderProfessionalNewsArticle(article, inlineImages)}\n        ${renderArticleApply(article)}\n        ${renderArticleShare(article)}\n      </article>`);
     }
-    html = html.replace(/article-insights\.css\?v=\d+/g, "article-insights.css?v=12");
+    html = html.replace(/article-insights\.css\?v=\d+/g, "article-insights.css?v=13");
   } else {
     html = html.replace(/\s*<div class="article-source-footer">[\s\S]*?<\/div>\s*/g, "\n");
     html = html.replace(/\s*<section class="article-apply"[\s\S]*?<\/section>\s*/g, "\n");
