@@ -5,6 +5,7 @@ const siteRoot = path.resolve("tuyen-tho-mo");
 const files = {
   hub: path.join(siteRoot, "bang-luong", "index.html"),
   detail: path.join(siteRoot, "bang-luong", "vang-danh", "quy-2-2026", "index.html"),
+  publicPdf: path.join(siteRoot, "bang-luong", "vang-danh", "quy-2-2026", "bang-luong-vang-danh-q2-2026-an-danh.pdf"),
   imageOne: path.join(siteRoot, "bang-luong", "assets", "vang-danh-q2-2026-bang-luong-01.webp"),
   imageTwo: path.join(siteRoot, "bang-luong", "assets", "vang-danh-q2-2026-bang-luong-02.webp"),
   ogImage: path.join(siteRoot, "bang-luong", "assets", "vang-danh-q2-2026-og.webp"),
@@ -41,7 +42,7 @@ for (const marker of expectedHubMarkers) {
 const expectedDetailMarkers = [
   "Bảng lương thợ lò Than Vàng Danh quý II/2026",
   "https://thaylinhtuyenthomo.vn/bang-luong/vang-danh/quy-2-2026/",
-  "https://drive.google.com/file/d/15J-vCKwY6TcZjVkd_18xIA90x5gJ3n7x/view?usp=drivesdk",
+  "https://thaylinhtuyenthomo.vn/bang-luong/vang-danh/quy-2-2026/bang-luong-vang-danh-q2-2026-an-danh.pdf",
   "Không công khai mã nhân sự, họ tên, ngày sinh và nơi cư trú",
 ];
 for (const marker of expectedDetailMarkers) {
@@ -49,8 +50,8 @@ for (const marker of expectedDetailMarkers) {
 }
 
 if (!Array.isArray(payrolls.items) || payrolls.items.length < 1) throw new Error("Dữ liệu kho bảng lương chưa có hồ sơ.");
-if (payrolls.items[0].controlled_pdf !== "https://drive.google.com/file/d/15J-vCKwY6TcZjVkd_18xIA90x5gJ3n7x/view?usp=drivesdk") {
-  throw new Error("Đường dẫn PDF đối chiếu chưa trỏ về đúng tệp Drive Q2.2026.");
+if (payrolls.items[0].public_pdf !== "https://thaylinhtuyenthomo.vn/bang-luong/vang-danh/quy-2-2026/bang-luong-vang-danh-q2-2026-an-danh.pdf") {
+  throw new Error("Đường dẫn PDF công khai chưa trỏ về tệp tải trực tiếp trên website.");
 }
 
 for (const url of [
@@ -72,4 +73,4 @@ for (const marker of [
   if (!homeCssSource.includes(marker)) throw new Error(`CSS trang chủ thiếu bố cục kho nội dung bốn thẻ: ${marker}`);
 }
 
-console.log("Payroll library pages, controlled Drive PDF, discovery files and homepage entry validated.");
+console.log("Payroll library pages, public PDF download, discovery files and homepage entry validated.");
