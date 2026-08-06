@@ -20,6 +20,24 @@ for (const [label, file] of Object.entries(files)) {
   if (fs.statSync(file).size === 0) throw new Error(`Tệp kho bảng lương bị rỗng: ${file}`);
 }
 
+const forbiddenPayrollAssets = [
+  path.join(siteRoot, "bang-luong", "assets", "vang-danh-q2-2026-og.webp"),
+  path.join(siteRoot, "bang-luong", "assets", "vang-danh-q2-2026-bang-luong-01.webp"),
+  path.join(siteRoot, "bang-luong", "assets", "vang-danh-q2-2026-bang-luong-02.webp"),
+  ...Array.from({ length: 15 }, (_, index) =>
+    path.join(
+      siteRoot,
+      "bang-luong",
+      "assets",
+      "vang-danh-q2-2026-pages",
+      `trang-${String(index + 1).padStart(2, "0")}.webp`,
+    ),
+  ),
+];
+for (const file of forbiddenPayrollAssets) {
+  if (fs.existsSync(file)) throw new Error(`Tệp ảnh bảng lương Than Vàng Danh phải được xóa hẳn: ${file}`);
+}
+
 // Bộ dựng trang chủ cũ còn chèn ảnh trang bảng lương. Chuẩn hóa đầu ra về thẻ chữ trước khi kiểm định và triển khai.
 const payrollHomeImagePattern = /<img\b[^>]*\bsrc="\/bang-luong\/assets\/vang-danh-q2-2026-bang-luong-01\.webp"[^>]*>\s*/g;
 const homeBeforeNormalization = fs.readFileSync(files.home, "utf8");
@@ -106,4 +124,4 @@ for (const marker of [
   if (!homeCssSource.includes(marker)) throw new Error(`CSS trang chủ thiếu bố cục kho nội dung bốn thẻ: ${marker}`);
 }
 
-console.log("Payroll library uses the original Google Drive file and contains no worker payroll-page images.");
+console.log("Payroll library uses the original Google Drive file and contains no worker payroll-page images or retained payroll image assets.");
