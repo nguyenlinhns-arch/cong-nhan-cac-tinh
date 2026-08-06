@@ -24,6 +24,64 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 2
 
+      - name: Harden article text extraction and topic-link validation
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          target = Path("tools/optimize-article-keywords.mjs")
+          text = target.read_text(encoding="utf-8")
+
+          replacements = [
+              (
+                  r'''function firstCopyText(html) {
+            const articleMarkup = html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i)?.[1] || html;''',
+                  r'''function firstCopyText(html) {
+            const articleMarkup = html.match(/<article\b[^>]*class=["'][^"']*\barticle-body\b[^"']*["'][^>]*>([\s\S]*?)<\/article>/i)?.[1]
+              || html.match(/<main\b[^>]*id=["']noi-dung["'][^>]*>([\s\S]*)<\/main>/i)?.[1]
+              || html.match(/<article\b[^>]*>([\s\S]*)<\/article>/i)?.[1]
+              || html;''',
+              ),
+              (
+                  r'''function visibleArticleText(html) {
+            const articleMarkup = html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i)?.[1]
+              || html.match(/<article\b[^>]*class=["'][^"']*\barticle-body\b[^"']*["'][^>]*>([\s\S]*?)<\/article>/i)?.[1]
+              || html;
+            return stripHtml(articleMarkup);
+          }''',
+                  r'''function visibleArticleText(html) {
+            let articleMarkup = html.match(/<article\b[^>]*class=["'][^"']*\barticle-body\b[^"']*["'][^>]*>([\s\S]*?)<\/article>/i)?.[1]
+              || html.match(/<main\b[^>]*id=["']noi-dung["'][^>]*>([\s\S]*)<\/main>/i)?.[1]
+              || html.match(/<article\b[^>]*>([\s\S]*)<\/article>/i)?.[1]
+              || html;
+            articleMarkup = articleMarkup
+              .replace(/<div\b[^>]*class=["'][^"']*\barticle-source-footer\b[^"']*["'][^>]*>[\s\S]*?<\/div>/gi, " ")
+              .replace(/<nav\b[^>]*class=["'][^"']*\barticle-nav\b[^"']*["'][^>]*>[\s\S]*?<\/nav>/gi, " ")
+              .replace(/<section\b[^>]*class=["'][^"']*\barticle-apply\b[^"']*["'][^>]*>[\s\S]*?<\/section>/gi, " ")
+              .replace(/<section\b[^>]*class=["'][^"']*\bdaily-seo-final\b[^"']*["'][^>]*>[\s\S]*?<\/section>/gi, " ");
+            return stripHtml(articleMarkup);
+          }''',
+              ),
+              (
+                  r'''  if (!article.relativePath.startsWith("giai-dap-nghe-mo/")) {
+            if (!article.html.includes("article-topic-hub")) errors.push(`${article.relativePath}: thiếu liên kết trung tâm chủ đề`);''',
+                  r'''  if (!article.relativePath.startsWith("giai-dap-nghe-mo/")) {
+            const hasTopicHubLink = article.html.includes("article-topic-hub")
+              || article.html.includes(`href="${article.cluster.hub}"`)
+              || article.html.includes(`href='${article.cluster.hub}'`);
+            if (!hasTopicHubLink) errors.push(`${article.relativePath}: thiếu liên kết trung tâm chủ đề`);''',
+              ),
+          ]
+
+          for old, new in replacements:
+              if old not in text:
+                  raise SystemExit(f"Optimizer patch target not found: {old.splitlines()[0]}")
+              text = text.replace(old, new, 1)
+
+          target.write_text(text, encoding="utf-8")
+          PY
+
       - name: Check optimizer syntax
         run: node --check tools/optimize-article-keywords.mjs
 
@@ -36,6 +94,7 @@ jobs:
       - name: Commit optimized article HTML
         shell: bash
         run: |
+          git add tools/optimize-article-keywords.mjs
           find tuyen-tho-mo/bai-viet tuyen-tho-mo/tin-nganh-than tuyen-tho-mo/giai-dap-nghe-mo -name '*.html' -print0 | xargs -0 -r git add --
           if git diff --cached --quiet; then
             echo "Article outputs are already optimized."
