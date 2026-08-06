@@ -1,9 +1,25 @@
 {
   "version": "1.0",
-  "updated_at": "2026-08-04",
+  "updated_at": "2026-08-06",
   "canonical_hub": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/",
   "publisher": "Thầy Linh – Tuyển Thợ Mỏ",
   "articles": [
+    {
+      "title": "Nên học khai thác mỏ hay xây dựng mỏ hầm lò?",
+      "primary_query": "nên học khai thác mỏ hay xây dựng mỏ hầm lò",
+      "direct_answer": "Khai thác mỏ hầm lò phù hợp với người muốn tham gia trực tiếp dây chuyền khai thác; xây dựng mỏ hầm lò tập trung vào đào, chống giữ và củng cố đường lò. Không có nghề tốt hơn cho tất cả mọi người: cần chọn theo sức khỏe, khả năng thao tác, nội dung học và nhu cầu tiếp nhận của đợt tuyển.",
+      "date_published": "2026-08-06",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/nen-hoc-khai-thac-mo-hay-xay-dung-mo-ham-lo/",
+      "source_note": "Danh mục hai nghề và chính sách đào tạo trong thông tin tuyển năm 2026 của Trường Cao đẳng Than – Khoáng sản Việt Nam."
+    },
+    {
+      "title": "Đi làm mỏ than có cần kinh nghiệm không?",
+      "primary_query": "đi làm mỏ than có cần kinh nghiệm không",
+      "direct_answer": "Không yêu cầu kinh nghiệm làm mỏ sẵn có. Người đủ điều kiện được đào tạo từ đầu: khai thác và xây dựng mỏ học 2–3 tháng, cơ điện mỏ học 10 tháng; chỉ sau khi tốt nghiệp đạt yêu cầu mới được doanh nghiệp thuộc TKV tiếp nhận và bố trí việc làm.",
+      "date_published": "2026-08-05",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/di-lam-mo-than-co-can-kinh-nghiem-khong/",
+      "source_note": "Nguồn tuyển dụng thống nhất năm 2026 của Trường Cao đẳng Than – Khoáng sản Việt Nam; mục kinh nghiệm ghi rõ không yêu cầu kinh nghiệm."
+    },
     {
       "title": "Lộ trình đi làm mỏ than Quảng Ninh từ đăng ký đến nhận việc",
       "primary_query": "lộ trình đi làm mỏ than Quảng Ninh",
