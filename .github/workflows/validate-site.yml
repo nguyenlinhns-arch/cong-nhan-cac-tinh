@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: validate-site-${{ github.event.pull_request.number || github.ref }}
@@ -17,90 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
-          fetch-depth: 2
-
-      - name: Prepare permanent article SEO release
-        if: >-
-          github.event_name == 'pull_request' &&
-          github.event.pull_request.head.ref == 'agent/toi-uu-bai-viet-seo-tu-khoa-20260806' &&
-          github.actor != 'github-actions[bot]'
-        shell: bash
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-
-          quality = Path("tools/enforce-search-quality.mjs")
-          quality_text = quality.read_text(encoding="utf-8")
-          marker = 'import path from "node:path";\n'
-          import_line = 'await import("./optimize-article-keywords.mjs");\n'
-          if import_line not in quality_text:
-              if marker not in quality_text:
-                  raise SystemExit("Cannot locate search-quality import marker")
-              quality.write_text(quality_text.replace(marker, marker + "\n" + import_line, 1), encoding="utf-8")
-
-          validator = Path("tools/validate-seo-library.mjs")
-          validator_text = validator.read_text(encoding="utf-8")
-          replacements = [
-              (
-                  '  const expectedSearchTitle = managedSearchTitles.get(slug);\n  if (expectedSearchTitle && title !== expectedSearchTitle) errors.push(`${prefix}wrong mobile search title`);',
-                  '  const expectedSearchTitle = managedSearchTitles.get(slug);\n  if (expectedSearchTitle && title.length > 65) errors.push(`${prefix}mobile search title exceeds 65 characters`);',
-              ),
-              (
-                  '''  if (rewrittenNews) {
-    if (!/<p class="article-source-note">[\\s\\S]*?<a\\b/i.test(html)) errors.push(`${prefix}missing the concise linked source line`);
-  } else {
-    if (!/<div class="[^\"]*\\barticle-source-footer\\b[^\"]*">[\\s\\S]*?<strong>Nguồn:<\\/strong>/i.test(html)) errors.push(`${prefix}missing the public source line`);
-    if (!/<p class="article-seo-line">[^<]+<\\/p>/i.test(html)) errors.push(`${prefix}missing the final SEO sentence`);
-  }''',
-                  '''  if (rewrittenNews) {
-    if (!/<p class="article-source-note">[\\s\\S]*?<a\\b/i.test(html)) errors.push(`${prefix}missing the concise linked source line`);
-  } else {
-    if (!/<div class="[^\"]*\\barticle-source-footer\\b[^\"]*">[\\s\\S]*?<strong>Nguồn:<\\/strong>/i.test(html)) errors.push(`${prefix}missing the public source line`);
-  }
-  if (/<p class="article-seo-line">[^<]+<\\/p>/i.test(html)) errors.push(`${prefix}contains a visible keyword-stuffing SEO sentence`);''',
-              ),
-          ]
-          for old, new in replacements:
-              if new in validator_text:
-                  continue
-              if old not in validator_text:
-                  raise SystemExit(f"SEO validator patch target not found: {old.splitlines()[0]}")
-              validator_text = validator_text.replace(old, new, 1)
-          validator.write_text(validator_text, encoding="utf-8")
-
-          safety = Path("tools/validate-workflow-safety.mjs")
-          safety_text = safety.read_text(encoding="utf-8")
-          safety_text = safety_text.replace(
-              'const allowedContentWriters = new Set(["sync-vinacomin-youtube.yml", "refresh-article-seo-temp.yml"]);',
-              'const allowedContentWriters = new Set(["sync-vinacomin-youtube.yml"]);',
-          )
-          safety.write_text(safety_text, encoding="utf-8")
-          PY
-
-          node --check tools/optimize-article-keywords.mjs
-          node --check tools/enforce-search-quality.mjs
-          node --check tools/validate-seo-library.mjs
-          node tools/optimize-article-keywords.mjs
-          node tools/optimize-article-keywords.mjs --check
-          rm -f .github/workflows/refresh-article-seo-temp.yml
-          git fetch origin main --depth=1
-          git show origin/main:.github/workflows/validate-site.yml > .github/workflows/validate-site.yml
-          git diff --check
-
-          git add tools/optimize-article-keywords.mjs tools/enforce-search-quality.mjs tools/validate-seo-library.mjs tools/validate-workflow-safety.mjs .github/workflows/validate-site.yml
-          git add -u .github/workflows/refresh-article-seo-temp.yml
-          find tuyen-tho-mo/bai-viet tuyen-tho-mo/tin-nganh-than tuyen-tho-mo/giai-dap-nghe-mo -name '*.html' -print0 | xargs -0 -r git add --
-          if git diff --cached --quiet; then
-            echo "Article SEO release is already synchronized."
-          else
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git commit -m "Đồng bộ SEO từ khóa cho toàn bộ bài viết"
-            git push origin "HEAD:${{ github.event.pull_request.head.ref }}"
-          fi
-
       - name: Rebuild and validate website
         run: |
           node tools/generate-province-pages-2026.mjs
