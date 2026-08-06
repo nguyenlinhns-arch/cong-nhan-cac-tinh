@@ -61,9 +61,14 @@ const occupationPages = [
   ["nghe-mo-ham-lo/index.html", "/nghe-mo-ham-lo/"],
 ];
 
+const payrollData = JSON.parse(read("data/payrolls.json"));
 const payrollPages = [
   ["bang-luong/index.html", "/bang-luong/"],
-  ["bang-luong/vang-danh/quy-2-2026/index.html", "/bang-luong/vang-danh/quy-2-2026/"],
+  ...(payrollData.items || []).map((item) => {
+    const url = new URL(item.url);
+    const pathname = url.pathname.endsWith("/") ? url.pathname : `${url.pathname}/`;
+    return [`${pathname.replace(/^\/+/, "")}index.html`, pathname];
+  }),
 ];
 
 for (const [file, url] of hubs) {
