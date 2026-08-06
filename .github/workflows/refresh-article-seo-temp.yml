@@ -24,149 +24,66 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 2
 
-      - name: Harden article optimizer and align editorial SEO validation
+      - name: Integrate optimizer and align editorial validation
         shell: bash
         run: |
           python - <<'PY'
           from pathlib import Path
 
-          optimizer = Path("tools/optimize-article-keywords.mjs")
-          text = optimizer.read_text(encoding="utf-8")
-
-          replacements = [
-              (
-                  '''const MIN_DESCRIPTION_LENGTH = 80;
-          const MAX_DESCRIPTION_LENGTH = 180;''',
-                  '''const MIN_DESCRIPTION_LENGTH = 100;
-          const MAX_DESCRIPTION_LENGTH = 165;''',
-              ),
-              (
-                  r'''function firstCopyText(html) {
-            const articleMarkup = html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i)?.[1] || html;''',
-                  r'''function firstCopyText(html) {
-            const articleMarkup = html.match(/<article\b[^>]*class=["'][^"']*\barticle-body\b[^"']*["'][^>]*>([\s\S]*?)<\/article>/i)?.[1]
-              || html.match(/<main\b[^>]*id=["']noi-dung["'][^>]*>([\s\S]*)<\/main>/i)?.[1]
-              || html.match(/<article\b[^>]*>([\s\S]*)<\/article>/i)?.[1]
-              || html;''',
-              ),
-              (
-                  r'''function visibleArticleText(html) {
-            const articleMarkup = html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i)?.[1]
-              || html.match(/<article\b[^>]*class=["'][^"']*\barticle-body\b[^"']*["'][^>]*>([\s\S]*?)<\/article>/i)?.[1]
-              || html;
-            return stripHtml(articleMarkup);
-          }''',
-                  r'''function visibleArticleText(html) {
-            let articleMarkup = html.match(/<article\b[^>]*class=["'][^"']*\barticle-body\b[^"']*["'][^>]*>([\s\S]*?)<\/article>/i)?.[1]
-              || html.match(/<main\b[^>]*id=["']noi-dung["'][^>]*>([\s\S]*)<\/main>/i)?.[1]
-              || html.match(/<article\b[^>]*>([\s\S]*)<\/article>/i)?.[1]
-              || html;
-            articleMarkup = articleMarkup
-              .replace(/<div\b[^>]*class=["'][^"']*\barticle-source-footer\b[^"']*["'][^>]*>[\s\S]*?<\/div>/gi, " ")
-              .replace(/<p\b[^>]*class=["'][^"']*\barticle-(?:source-note|topic-hub)\b[^"']*["'][^>]*>[\s\S]*?<\/p>/gi, " ")
-              .replace(/<nav\b[^>]*class=["'][^"']*\barticle-nav\b[^"']*["'][^>]*>[\s\S]*?<\/nav>/gi, " ")
-              .replace(/<section\b[^>]*class=["'][^"']*\barticle-apply\b[^"']*["'][^>]*>[\s\S]*?<\/section>/gi, " ")
-              .replace(/<section\b[^>]*class=["'][^"']*\bdaily-seo-final\b[^"']*["'][^>]*>[\s\S]*?<\/section>/gi, " ");
-            return stripHtml(articleMarkup);
-          }''',
-              ),
-              (
-                  r'''function optimizeRegularArticleFooter(html, article) {
-            let next = html.replace(/<p\b[^>]*class=["'][^"']*\barticle-seo-line\b[^"']*["'][^>]*>[\s\S]*?<\/p>\s*/gi, "");
-            next = next.replace(/<p\b[^>]*class=["'][^"']*\barticle-topic-hub\b[^"']*["'][^>]*>[\s\S]*?<\/p>\s*/gi, "");
-            const footerPattern = /<div\b([^>]*class=["'][^"']*\barticle-source-footer\b[^"']*["'][^>]*)>([\s\S]*?)<\/div>/i;
-            if (!footerPattern.test(next)) return next;
-            return next.replace(footerPattern, (_full, attrs, content) => {
-              const topicLink = content.includes(`href="${article.cluster.hub}"`)
-                ? ""
-                : `<p class="article-topic-hub"><a href="${article.cluster.hub}">${escapeHtml(article.cluster.label)} →</a></p>`;
-              return `<div${attrs}>${content}${topicLink}</div>`;
-            });
-          }''',
-                  r'''function optimizeRegularArticleFooter(html, article) {
-            let next = html.replace(/<p\b[^>]*class=["'][^"']*\barticle-seo-line\b[^"']*["'][^>]*>[\s\S]*?<\/p>\s*/gi, "");
-            next = next.replace(/<p\b[^>]*class=["'][^"']*\barticle-topic-hub\b[^"']*["'][^>]*>[\s\S]*?<\/p>\s*/gi, "");
-            const topicLink = `<p class="article-topic-hub"><a href="${article.cluster.hub}">${escapeHtml(article.cluster.label)} →</a></p>`;
-            const footerPattern = /<div\b([^>]*class=["'][^"']*\barticle-source-footer\b[^"']*["'][^>]*)>([\s\S]*?)<\/div>/i;
-            if (footerPattern.test(next)) {
-              return next.replace(footerPattern, (_full, attrs, content) => {
-                const addition = content.includes(`href="${article.cluster.hub}"`) ? "" : topicLink;
-                return `<div${attrs}>${content}${addition}</div>`;
-              });
-            }
-            const sourceNotePattern = /(<p\b[^>]*class=["'][^"']*\barticle-source-note\b[^"']*["'][^>]*>[\s\S]*?<\/p>)/i;
-            if (sourceNotePattern.test(next)) return next.replace(sourceNotePattern, `$1${topicLink}`);
-            return next;
-          }''',
-              ),
-              (
-                  r'''  if (!article.relativePath.startsWith("giai-dap-nghe-mo/")) {
-            if (!article.html.includes("article-topic-hub")) errors.push(`${article.relativePath}: thiếu liên kết trung tâm chủ đề`);''',
-                  r'''  if (!article.relativePath.startsWith("giai-dap-nghe-mo/")) {
-            const hasTopicHubLink = article.html.includes("article-topic-hub")
-              || article.html.includes(`href="${article.cluster.hub}"`)
-              || article.html.includes(`href='${article.cluster.hub}'`);
-            if (!hasTopicHubLink) errors.push(`${article.relativePath}: thiếu liên kết trung tâm chủ đề`);''',
-              ),
-              (
-                  'return compactText(`${keyword}: ${article.description}`, 170);',
-                  'return compactText(`${keyword}: ${article.description}`, 160);',
-              ),
-          ]
-
-          for old, new in replacements:
-              if old not in text:
-                  raise SystemExit(f"Optimizer patch target not found: {old.splitlines()[0]}")
-              text = text.replace(old, new, 1)
-
-          optimizer.write_text(text, encoding="utf-8")
+          quality = Path("tools/enforce-search-quality.mjs")
+          quality_text = quality.read_text(encoding="utf-8")
+          marker = 'import path from "node:path";\n'
+          import_line = 'await import("./optimize-article-keywords.mjs");\n'
+          if import_line not in quality_text:
+              if marker not in quality_text:
+                  raise SystemExit("Cannot locate search-quality import marker")
+              quality_text = quality_text.replace(marker, marker + "\n" + import_line, 1)
+              quality.write_text(quality_text, encoding="utf-8")
 
           validator = Path("tools/validate-seo-library.mjs")
           validator_text = validator.read_text(encoding="utf-8")
-          validator_replacements = [
+          replacements = [
               (
-                  r'''  const expectedSearchTitle = managedSearchTitles.get(slug);
-            if (expectedSearchTitle && title !== expectedSearchTitle) errors.push(`${prefix}wrong mobile search title`);''',
-                  r'''  const expectedSearchTitle = managedSearchTitles.get(slug);
-            if (expectedSearchTitle && title.length > 65) errors.push(`${prefix}mobile search title exceeds 65 characters`);''',
+                  '  const expectedSearchTitle = managedSearchTitles.get(slug);\n  if (expectedSearchTitle && title !== expectedSearchTitle) errors.push(`${prefix}wrong mobile search title`);',
+                  '  const expectedSearchTitle = managedSearchTitles.get(slug);\n  if (expectedSearchTitle && title.length > 65) errors.push(`${prefix}mobile search title exceeds 65 characters`);',
               ),
               (
-                  r'''  if (rewrittenNews) {
-            if (!/<p class="article-source-note">[\s\S]*?<a\b/i.test(html)) errors.push(`${prefix}missing the concise linked source line`);
-          } else {
-            if (!/<div class="[^"]*\barticle-source-footer\b[^"]*">[\s\S]*?<strong>Nguồn:<\/strong>/i.test(html)) errors.push(`${prefix}missing the public source line`);
-            if (!/<p class="article-seo-line">[^<]+<\/p>/i.test(html)) errors.push(`${prefix}missing the final SEO sentence`);
-          }''',
-                  r'''  if (rewrittenNews) {
-            if (!/<p class="article-source-note">[\s\S]*?<a\b/i.test(html)) errors.push(`${prefix}missing the concise linked source line`);
-          } else {
-            if (!/<div class="[^"]*\barticle-source-footer\b[^"]*">[\s\S]*?<strong>Nguồn:<\/strong>/i.test(html)) errors.push(`${prefix}missing the public source line`);
-          }
-          if (/<p class="article-seo-line">[^<]+<\/p>/i.test(html)) errors.push(`${prefix}contains a visible keyword-stuffing SEO sentence`);''',
+                  '''  if (rewrittenNews) {
+    if (!/<p class="article-source-note">[\\s\\S]*?<a\\b/i.test(html)) errors.push(`${prefix}missing the concise linked source line`);
+  } else {
+    if (!/<div class="[^\"]*\\barticle-source-footer\\b[^\"]*">[\\s\\S]*?<strong>Nguồn:<\\/strong>/i.test(html)) errors.push(`${prefix}missing the public source line`);
+    if (!/<p class="article-seo-line">[^<]+<\\/p>/i.test(html)) errors.push(`${prefix}missing the final SEO sentence`);
+  }''',
+                  '''  if (rewrittenNews) {
+    if (!/<p class="article-source-note">[\\s\\S]*?<a\\b/i.test(html)) errors.push(`${prefix}missing the concise linked source line`);
+  } else {
+    if (!/<div class="[^\"]*\\barticle-source-footer\\b[^\"]*">[\\s\\S]*?<strong>Nguồn:<\\/strong>/i.test(html)) errors.push(`${prefix}missing the public source line`);
+  }
+  if (/<p class="article-seo-line">[^<]+<\\/p>/i.test(html)) errors.push(`${prefix}contains a visible keyword-stuffing SEO sentence`);''',
               ),
           ]
-          for old, new in validator_replacements:
+          for old, new in replacements:
+              if new in validator_text:
+                  continue
               if old not in validator_text:
-                  raise SystemExit(f"SEO library validator patch target not found: {old.splitlines()[0]}")
+                  raise SystemExit(f"SEO validator patch target not found: {old.splitlines()[0]}")
               validator_text = validator_text.replace(old, new, 1)
           validator.write_text(validator_text, encoding="utf-8")
           PY
 
-      - name: Check optimizer syntax
+      - name: Optimize and verify all article outputs
         run: |
           node --check tools/optimize-article-keywords.mjs
+          node --check tools/enforce-search-quality.mjs
           node --check tools/validate-seo-library.mjs
+          node tools/optimize-article-keywords.mjs
+          node tools/optimize-article-keywords.mjs --check
+          git diff --check
 
-      - name: Optimize all article outputs
-        run: node tools/optimize-article-keywords.mjs
-
-      - name: Verify generated diff
-        run: git diff --check
-
-      - name: Commit optimized article HTML
+      - name: Commit optimized article HTML and permanent pipeline changes
         shell: bash
         run: |
-          git add tools/optimize-article-keywords.mjs tools/validate-seo-library.mjs
+          git add tools/optimize-article-keywords.mjs tools/enforce-search-quality.mjs tools/validate-seo-library.mjs
           find tuyen-tho-mo/bai-viet tuyen-tho-mo/tin-nganh-than tuyen-tho-mo/giai-dap-nghe-mo -name '*.html' -print0 | xargs -0 -r git add --
           if git diff --cached --quiet; then
             echo "Article outputs are already optimized."
