@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 
+await import("./optimize-article-keywords.mjs");
+
 const ROOT = path.resolve(import.meta.dirname, "..");
 const SITE = path.join(ROOT, "tuyen-tho-mo");
 const CHECK_ONLY = process.argv.includes("--check");
