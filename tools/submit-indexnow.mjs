@@ -29,6 +29,17 @@ const dailySeoSources = [
   "tools/generate-daily-seo-series.mjs",
   "tuyen-tho-mo/daily-seo-articles.json",
 ];
+const broadSeoSources = [
+  "tools/enforce-search-quality.mjs",
+  "tools/generate-seo-library.mjs",
+  "tools/generate-seo-library-base.mjs",
+  "tools/generate-province-pages-2026.mjs",
+  "tools/generate-job-board-pages.mjs",
+  "tools/generate-content-network.mjs",
+  "tools/build-worker-question-pages.mjs",
+  "tools/enforce-blue-worker-illustrations.mjs",
+  "content/editorial-sources.json",
+];
 
 function bangkokDate() {
   return new Intl.DateTimeFormat("en-CA", {
@@ -52,6 +63,14 @@ function currentDailySeoUrls() {
   ];
 }
 
+function currentSitemapUrls() {
+  const sitemapPath = path.resolve("tuyen-tho-mo", "sitemap.xml");
+  if (!fs.existsSync(sitemapPath)) return [`${base}/`];
+  const sitemap = fs.readFileSync(sitemapPath, "utf8");
+  return [...sitemap.matchAll(/<loc>(https:\/\/thaylinhtuyenthomo\.vn\/[^<]*)<\/loc>/g)]
+    .map((match) => match[1]);
+}
+
 function matchesSource(file, source) {
   return source.endsWith("/") ? file.startsWith(source) : file === source;
 }
@@ -66,6 +85,9 @@ function urlsForChangedFile(file) {
   }
   if (dailySeoSources.some((source) => matchesSource(file, source))) {
     urls.push(...currentDailySeoUrls());
+  }
+  if (broadSeoSources.some((source) => matchesSource(file, source))) {
+    urls.push(...currentSitemapUrls());
   }
   const prefix = "tuyen-tho-mo/";
   if (!file.startsWith(prefix) || !file.endsWith(".html")) return urls;
