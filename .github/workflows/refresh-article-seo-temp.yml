@@ -24,7 +24,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 2
 
-      - name: Harden article optimizer and remove visible SEO-sentence requirement
+      - name: Harden article optimizer and align editorial SEO validation
         shell: bash
         run: |
           python - <<'PY'
@@ -34,6 +34,12 @@ jobs:
           text = optimizer.read_text(encoding="utf-8")
 
           replacements = [
+              (
+                  '''const MIN_DESCRIPTION_LENGTH = 80;
+          const MAX_DESCRIPTION_LENGTH = 180;''',
+                  '''const MIN_DESCRIPTION_LENGTH = 100;
+          const MAX_DESCRIPTION_LENGTH = 165;''',
+              ),
               (
                   r'''function firstCopyText(html) {
             const articleMarkup = html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i)?.[1] || html;''',
@@ -72,6 +78,10 @@ jobs:
               || article.html.includes(`href='${article.cluster.hub}'`);
             if (!hasTopicHubLink) errors.push(`${article.relativePath}: thiếu liên kết trung tâm chủ đề`);''',
               ),
+              (
+                  'return compactText(`${keyword}: ${article.description}`, 170);',
+                  'return compactText(`${keyword}: ${article.description}`, 160);',
+              ),
           ]
 
           for old, new in replacements:
@@ -83,21 +93,33 @@ jobs:
 
           validator = Path("tools/validate-seo-library.mjs")
           validator_text = validator.read_text(encoding="utf-8")
-          old_validator = r'''  if (rewrittenNews) {
+          validator_replacements = [
+              (
+                  r'''  const expectedSearchTitle = managedSearchTitles.get(slug);
+            if (expectedSearchTitle && title !== expectedSearchTitle) errors.push(`${prefix}wrong mobile search title`);''',
+                  r'''  const expectedSearchTitle = managedSearchTitles.get(slug);
+            if (expectedSearchTitle && title.length > 65) errors.push(`${prefix}mobile search title exceeds 65 characters`);''',
+              ),
+              (
+                  r'''  if (rewrittenNews) {
             if (!/<p class="article-source-note">[\s\S]*?<a\b/i.test(html)) errors.push(`${prefix}missing the concise linked source line`);
           } else {
             if (!/<div class="[^"]*\barticle-source-footer\b[^"]*">[\s\S]*?<strong>Nguồn:<\/strong>/i.test(html)) errors.push(`${prefix}missing the public source line`);
             if (!/<p class="article-seo-line">[^<]+<\/p>/i.test(html)) errors.push(`${prefix}missing the final SEO sentence`);
-          }'''
-          new_validator = r'''  if (rewrittenNews) {
+          }''',
+                  r'''  if (rewrittenNews) {
             if (!/<p class="article-source-note">[\s\S]*?<a\b/i.test(html)) errors.push(`${prefix}missing the concise linked source line`);
           } else {
             if (!/<div class="[^"]*\barticle-source-footer\b[^"]*">[\s\S]*?<strong>Nguồn:<\/strong>/i.test(html)) errors.push(`${prefix}missing the public source line`);
           }
-          if (/<p class="article-seo-line">[^<]+<\/p>/i.test(html)) errors.push(`${prefix}contains a visible keyword-stuffing SEO sentence`);'''
-          if old_validator not in validator_text:
-              raise SystemExit("SEO library validator patch target not found")
-          validator.write_text(validator_text.replace(old_validator, new_validator, 1), encoding="utf-8")
+          if (/<p class="article-seo-line">[^<]+<\/p>/i.test(html)) errors.push(`${prefix}contains a visible keyword-stuffing SEO sentence`);''',
+              ),
+          ]
+          for old, new in validator_replacements:
+              if old not in validator_text:
+                  raise SystemExit(f"SEO library validator patch target not found: {old.splitlines()[0]}")
+              validator_text = validator_text.replace(old, new, 1)
+          validator.write_text(validator_text, encoding="utf-8")
           PY
 
       - name: Check optimizer syntax
