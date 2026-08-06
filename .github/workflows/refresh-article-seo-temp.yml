@@ -1,24 +1,27 @@
 name: Refresh article keyword SEO (temporary)
 
 on:
-  push:
-    branches: ["agent/toi-uu-bai-viet-seo-tu-khoa-20260806"]
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: write
 
 concurrency:
-  group: refresh-article-keyword-seo-temp
+  group: refresh-article-keyword-seo-temp-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
 jobs:
   refresh:
-    if: github.actor != 'github-actions[bot]'
+    if: >-
+      github.event.pull_request.head.ref == 'agent/toi-uu-bai-viet-seo-tu-khoa-20260806' &&
+      github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 2
 
       - name: Check optimizer syntax
@@ -41,4 +44,4 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Đồng bộ SEO từ khóa cho toàn bộ bài viết"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+          git push origin "HEAD:${{ github.event.pull_request.head.ref }}"
