@@ -3,8 +3,8 @@ import fs from "node:fs";
 import path from "node:path";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
-const SITE = path.join(ROOT, "tuyen-tho-mo");
 const MAX_TITLE_LENGTH = 65;
+const MAX_DESCRIPTION_LENGTH = 180;
 
 function decodeHtml(value = "") {
   return String(value)
@@ -23,18 +23,31 @@ function escapeHtml(value = "") {
     .replaceAll('"', "&quot;");
 }
 
-function compactSearchTitle(value) {
+function compactText(value, limit) {
   const original = decodeHtml(value).replace(/\s+/gu, " ").trim();
-  if (original.length <= MAX_TITLE_LENGTH) return original;
-  let candidate = original.replace(/\s*(?:\||–|—|-)\s*Thầy Linh(?:\s*(?:–|—|-)\s*Tuyển Thợ Mỏ)?\s*$/u, "").trim();
-  if (candidate.length <= MAX_TITLE_LENGTH) return candidate;
-  const available = MAX_TITLE_LENGTH - 1;
-  const excerpt = candidate.slice(0, available + 1);
+  if (original.length <= limit) return original;
+  const available = limit - 1;
+  const excerpt = original.slice(0, available + 1);
   const boundary = excerpt.lastIndexOf(" ");
-  candidate = (boundary >= Math.floor(available * 0.68) ? excerpt.slice(0, boundary) : candidate.slice(0, available))
+  const candidate = (boundary >= Math.floor(available * 0.68) ? excerpt.slice(0, boundary) : original.slice(0, available))
     .replace(/[,:;–—-]+$/u, "")
     .trim();
   return `${candidate}…`;
+}
+
+function compactSearchTitle(value) {
+  const original = decodeHtml(value).replace(/\s+/gu, " ").trim();
+  if (original.length <= MAX_TITLE_LENGTH) return original;
+  const withoutBrand = original.replace(/\s*(?:\||–|—|-)\s*Thầy Linh(?:\s*(?:–|—|-)\s*Tuyển Thợ Mỏ)?\s*$/u, "").trim();
+  return withoutBrand.length <= MAX_TITLE_LENGTH ? withoutBrand : compactText(withoutBrand, MAX_TITLE_LENGTH);
+}
+
+function compactMetaDescription(tag) {
+  const match = tag.match(/\bcontent=(["'])(.*?)\1/i);
+  if (!match) return tag;
+  const original = decodeHtml(match[2]).replace(/\s+/gu, " ").trim();
+  const compact = compactText(original, MAX_DESCRIPTION_LENGTH);
+  return compact === original ? tag : tag.replace(match[0], `content=${match[1]}${escapeHtml(compact)}${match[1]}`);
 }
 
 function transform(html, relativePath) {
@@ -59,6 +72,7 @@ function transform(html, relativePath) {
     const compact = compactSearchTitle(title);
     return compact === decodeHtml(title).replace(/\s+/gu, " ").trim() ? full : `<title>${escapeHtml(compact)}</title>`;
   });
+  next = next.replace(/<meta\b[^>]*\bname=["']description["'][^>]*>/i, compactMetaDescription);
   return next;
 }
 
