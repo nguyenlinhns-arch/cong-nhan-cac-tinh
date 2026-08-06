@@ -4,7 +4,7 @@ import path from "node:path";
 const workflowRoot = path.resolve(".github", "workflows");
 const siteRoot = path.resolve("tuyen-tho-mo");
 const errors = [];
-const allowedContentWriters = new Set(["sync-vinacomin-youtube.yml", "refresh-article-seo-temp.yml"]);
+const allowedContentWriters = new Set(["sync-vinacomin-youtube.yml"]);
 const retiredPaths = [
   ".deploy",
   ".publish-v110-fixed-trigger",
