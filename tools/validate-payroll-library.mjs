@@ -58,10 +58,18 @@ const expectedHubMarkers = [
   "https://thaylinhtuyenthomo.vn/bang-luong/",
   "Mở file bảng lương trên Google Drive",
   driveUrl,
-  "Website không hiển thị ảnh trích ngang bảng lương",
 ];
 for (const marker of expectedHubMarkers) {
   if (!hub.includes(marker)) throw new Error(`Trang kho bảng lương thiếu marker: ${marker}`);
+}
+
+const forbiddenHubMarkers = [
+  'class="payroll-method"',
+  "Cách xem đơn giản",
+  "Website không hiển thị ảnh trích ngang bảng lương",
+];
+for (const marker of forbiddenHubMarkers) {
+  if (hub.includes(marker)) throw new Error(`Trang kho bảng lương vẫn còn khối hướng dẫn cần bỏ: ${marker}`);
 }
 
 const expectedDetailMarkers = [
@@ -124,4 +132,4 @@ for (const marker of [
   if (!homeCssSource.includes(marker)) throw new Error(`CSS trang chủ thiếu bố cục kho nội dung bốn thẻ: ${marker}`);
 }
 
-console.log("Payroll library uses the original Google Drive file and contains no worker payroll-page images or retained payroll image assets.");
+console.log("Payroll library uses the original Google Drive file, keeps no worker payroll images and omits the redundant instruction block.");
