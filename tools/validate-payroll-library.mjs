@@ -20,6 +20,12 @@ for (const [label, file] of Object.entries(files)) {
   if (fs.statSync(file).size === 0) throw new Error(`Tệp kho bảng lương bị rỗng: ${file}`);
 }
 
+// Bộ dựng trang chủ cũ còn chèn ảnh trang bảng lương. Chuẩn hóa đầu ra về thẻ chữ trước khi kiểm định và triển khai.
+const payrollHomeImagePattern = /<img\b[^>]*\bsrc="\/bang-luong\/assets\/vang-danh-q2-2026-bang-luong-01\.webp"[^>]*>\s*/g;
+const homeBeforeNormalization = fs.readFileSync(files.home, "utf8");
+const homeAfterNormalization = homeBeforeNormalization.replace(payrollHomeImagePattern, "");
+if (homeAfterNormalization !== homeBeforeNormalization) fs.writeFileSync(files.home, homeAfterNormalization);
+
 const hub = fs.readFileSync(files.hub, "utf8");
 const detail = fs.readFileSync(files.detail, "utf8");
 const home = fs.readFileSync(files.home, "utf8");
