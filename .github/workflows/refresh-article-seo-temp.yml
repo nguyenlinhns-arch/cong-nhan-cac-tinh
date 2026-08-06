@@ -24,14 +24,14 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 2
 
-      - name: Harden article text extraction and topic-link validation
+      - name: Harden article optimizer and remove visible SEO-sentence requirement
         shell: bash
         run: |
           python - <<'PY'
           from pathlib import Path
 
-          target = Path("tools/optimize-article-keywords.mjs")
-          text = target.read_text(encoding="utf-8")
+          optimizer = Path("tools/optimize-article-keywords.mjs")
+          text = optimizer.read_text(encoding="utf-8")
 
           replacements = [
               (
@@ -79,11 +79,31 @@ jobs:
                   raise SystemExit(f"Optimizer patch target not found: {old.splitlines()[0]}")
               text = text.replace(old, new, 1)
 
-          target.write_text(text, encoding="utf-8")
+          optimizer.write_text(text, encoding="utf-8")
+
+          validator = Path("tools/validate-seo-library.mjs")
+          validator_text = validator.read_text(encoding="utf-8")
+          old_validator = r'''  if (rewrittenNews) {
+            if (!/<p class="article-source-note">[\s\S]*?<a\b/i.test(html)) errors.push(`${prefix}missing the concise linked source line`);
+          } else {
+            if (!/<div class="[^"]*\barticle-source-footer\b[^"]*">[\s\S]*?<strong>Nguồn:<\/strong>/i.test(html)) errors.push(`${prefix}missing the public source line`);
+            if (!/<p class="article-seo-line">[^<]+<\/p>/i.test(html)) errors.push(`${prefix}missing the final SEO sentence`);
+          }'''
+          new_validator = r'''  if (rewrittenNews) {
+            if (!/<p class="article-source-note">[\s\S]*?<a\b/i.test(html)) errors.push(`${prefix}missing the concise linked source line`);
+          } else {
+            if (!/<div class="[^"]*\barticle-source-footer\b[^"]*">[\s\S]*?<strong>Nguồn:<\/strong>/i.test(html)) errors.push(`${prefix}missing the public source line`);
+          }
+          if (/<p class="article-seo-line">[^<]+<\/p>/i.test(html)) errors.push(`${prefix}contains a visible keyword-stuffing SEO sentence`);'''
+          if old_validator not in validator_text:
+              raise SystemExit("SEO library validator patch target not found")
+          validator.write_text(validator_text.replace(old_validator, new_validator, 1), encoding="utf-8")
           PY
 
       - name: Check optimizer syntax
-        run: node --check tools/optimize-article-keywords.mjs
+        run: |
+          node --check tools/optimize-article-keywords.mjs
+          node --check tools/validate-seo-library.mjs
 
       - name: Optimize all article outputs
         run: node tools/optimize-article-keywords.mjs
@@ -94,7 +114,7 @@ jobs:
       - name: Commit optimized article HTML
         shell: bash
         run: |
-          git add tools/optimize-article-keywords.mjs
+          git add tools/optimize-article-keywords.mjs tools/validate-seo-library.mjs
           find tuyen-tho-mo/bai-viet tuyen-tho-mo/tin-nganh-than tuyen-tho-mo/giai-dap-nghe-mo -name '*.html' -print0 | xargs -0 -r git add --
           if git diff --cached --quiet; then
             echo "Article outputs are already optimized."
