@@ -189,7 +189,7 @@ function optimizedDescription(article) {
 function updateFooter(html, article) {
   let next = html.replace(/<p\b([^>]*class=["'][^"']*\barticle-seo-line\b[^"']*["'][^>]*)>[\s\S]*?<\/p>/gi, `<p$1>${esc(article.cluster.guidance)}</p>`)
     .replace(/<p\b[^>]*class=["'][^"']*\barticle-topic-hub\b[^"']*["'][^>]*>[\s\S]*?<\/p>/gi, "");
-  const topic = `<p class="article-topic-hub"><a href="${article.cluster.hub}">${esc(article.cluster.label)} →</a></p>`;
+  const topic = `<p class="article-topic-hub">Xem thêm nội dung cùng chủ đề để đối chiếu thông tin trước khi lựa chọn: <a href="${article.cluster.hub}">${esc(article.cluster.label)} →</a></p>`;
   const footer = /<div\b([^>]*class=["'][^"']*\barticle-source-footer\b[^"']*["'][^>]*)>([\s\S]*?)<\/div>/i;
   if (footer.test(next)) return next.replace(footer, (_all, attrs, content) => `<div${attrs}>${content}${content.includes(`href="${article.cluster.hub}"`) ? "" : topic}</div>`);
   const note = /(<p\b[^>]*class=["'][^"']*\barticle-source-note\b[^"']*["'][^>]*>[\s\S]*?<\/p>)/i;
