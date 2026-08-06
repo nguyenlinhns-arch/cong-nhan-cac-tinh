@@ -1,0 +1,44 @@
+name: Refresh article keyword SEO (temporary)
+
+on:
+  push:
+    branches: ["agent/toi-uu-bai-viet-seo-tu-khoa-20260806"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-article-keyword-seo-temp
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 2
+
+      - name: Check optimizer syntax
+        run: node --check tools/optimize-article-keywords.mjs
+
+      - name: Optimize all article outputs
+        run: node tools/optimize-article-keywords.mjs
+
+      - name: Verify generated diff
+        run: git diff --check
+
+      - name: Commit optimized article HTML
+        shell: bash
+        run: |
+          find tuyen-tho-mo/bai-viet tuyen-tho-mo/tin-nganh-than tuyen-tho-mo/giai-dap-nghe-mo -name '*.html' -print0 | xargs -0 -r git add --
+          if git diff --cached --quiet; then
+            echo "Article outputs are already optimized."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Đồng bộ SEO từ khóa cho toàn bộ bài viết"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
