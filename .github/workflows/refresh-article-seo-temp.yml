@@ -63,10 +63,40 @@ jobs:
               || html;
             articleMarkup = articleMarkup
               .replace(/<div\b[^>]*class=["'][^"']*\barticle-source-footer\b[^"']*["'][^>]*>[\s\S]*?<\/div>/gi, " ")
+              .replace(/<p\b[^>]*class=["'][^"']*\barticle-(?:source-note|topic-hub)\b[^"']*["'][^>]*>[\s\S]*?<\/p>/gi, " ")
               .replace(/<nav\b[^>]*class=["'][^"']*\barticle-nav\b[^"']*["'][^>]*>[\s\S]*?<\/nav>/gi, " ")
               .replace(/<section\b[^>]*class=["'][^"']*\barticle-apply\b[^"']*["'][^>]*>[\s\S]*?<\/section>/gi, " ")
               .replace(/<section\b[^>]*class=["'][^"']*\bdaily-seo-final\b[^"']*["'][^>]*>[\s\S]*?<\/section>/gi, " ");
             return stripHtml(articleMarkup);
+          }''',
+              ),
+              (
+                  r'''function optimizeRegularArticleFooter(html, article) {
+            let next = html.replace(/<p\b[^>]*class=["'][^"']*\barticle-seo-line\b[^"']*["'][^>]*>[\s\S]*?<\/p>\s*/gi, "");
+            next = next.replace(/<p\b[^>]*class=["'][^"']*\barticle-topic-hub\b[^"']*["'][^>]*>[\s\S]*?<\/p>\s*/gi, "");
+            const footerPattern = /<div\b([^>]*class=["'][^"']*\barticle-source-footer\b[^"']*["'][^>]*)>([\s\S]*?)<\/div>/i;
+            if (!footerPattern.test(next)) return next;
+            return next.replace(footerPattern, (_full, attrs, content) => {
+              const topicLink = content.includes(`href="${article.cluster.hub}"`)
+                ? ""
+                : `<p class="article-topic-hub"><a href="${article.cluster.hub}">${escapeHtml(article.cluster.label)} →</a></p>`;
+              return `<div${attrs}>${content}${topicLink}</div>`;
+            });
+          }''',
+                  r'''function optimizeRegularArticleFooter(html, article) {
+            let next = html.replace(/<p\b[^>]*class=["'][^"']*\barticle-seo-line\b[^"']*["'][^>]*>[\s\S]*?<\/p>\s*/gi, "");
+            next = next.replace(/<p\b[^>]*class=["'][^"']*\barticle-topic-hub\b[^"']*["'][^>]*>[\s\S]*?<\/p>\s*/gi, "");
+            const topicLink = `<p class="article-topic-hub"><a href="${article.cluster.hub}">${escapeHtml(article.cluster.label)} →</a></p>`;
+            const footerPattern = /<div\b([^>]*class=["'][^"']*\barticle-source-footer\b[^"']*["'][^>]*)>([\s\S]*?)<\/div>/i;
+            if (footerPattern.test(next)) {
+              return next.replace(footerPattern, (_full, attrs, content) => {
+                const addition = content.includes(`href="${article.cluster.hub}"`) ? "" : topicLink;
+                return `<div${attrs}>${content}${addition}</div>`;
+              });
+            }
+            const sourceNotePattern = /(<p\b[^>]*class=["'][^"']*\barticle-source-note\b[^"']*["'][^>]*>[\s\S]*?<\/p>)/i;
+            if (sourceNotePattern.test(next)) return next.replace(sourceNotePattern, `$1${topicLink}`);
+            return next;
           }''',
               ),
               (
