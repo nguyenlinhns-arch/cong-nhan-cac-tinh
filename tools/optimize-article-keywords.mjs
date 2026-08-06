@@ -1,579 +1,315 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const ROOT = path.resolve(import.meta.dirname, "..");
-const SITE = path.join(ROOT, "tuyen-tho-mo");
-const BASE = "https://thaylinhtuyenthomo.vn";
+const ROOT = path.resolve(import.meta.dirname || path.dirname(new URL(import.meta.url).pathname), "..");
+const SITE = path.resolve(process.env.SITE_ROOT || path.join(ROOT, "tuyen-tho-mo"));
 const CHECK_ONLY = process.argv.includes("--check");
-const MAX_TITLE_LENGTH = 65;
-const MIN_DESCRIPTION_LENGTH = 80;
-const MAX_DESCRIPTION_LENGTH = 180;
-
-const STOPWORDS = new Set([
-  "ai", "anh", "ba", "bai", "ban", "bang", "bao", "cac", "cach", "cho", "co", "con", "cua",
-  "da", "dang", "day", "de", "den", "do", "duoc", "gi", "giua", "hai", "hay", "hon", "khi",
-  "khong", "la", "lai", "lam", "mot", "nam", "nay", "ngay", "nguoi", "nhieu", "nhung", "o",
-  "qua", "ra", "sau", "tai", "the", "theo", "thi", "thang", "trong", "tu", "va", "ve", "voi",
-  "tkv", "vinacomin", "viet", "nam", "thay", "linh", "cong", "ty", "tap", "doan",
-]);
-
+const BASE = "https://thaylinhtuyenthomo.vn";
+const MAX_TITLE = 65;
+const MIN_DESCRIPTION = 100;
+const MAX_DESCRIPTION = 165;
+const STOPWORDS = new Set("ai anh ba bai ban bang bao cac cach cho co con cua da dang day de den do duoc gi giua hai hay hon khi khong la lai lam mot nam nay ngay nguoi nhieu nhung o qua ra sau tai the theo thi thang trong tu va ve voi tkv vinacomin viet thay linh cong ty tap doan".split(" "));
 const CLUSTERS = {
-  "giai-dap": {
-    genre: "Giải đáp nghề mỏ",
-    hub: "/giai-dap-nghe-mo/",
-    label: "Xem toàn bộ giải đáp nghề mỏ",
-  },
-  "huong-dan-nhap-nghe": {
-    genre: "Hướng dẫn học nghề và tuyển thợ mỏ",
-    hub: "/thong-tin-tuyen-tho-mo/",
-    label: "Xem thông tin tuyển thợ mỏ đang áp dụng",
-  },
-  "viec-lam-dia-phuong": {
-    genre: "Việc làm ngành Than theo địa phương",
-    hub: "/viec-lam-nganh-than/",
-    label: "Xem việc làm ngành Than theo tỉnh",
-  },
-  "thu-nhap-phuc-loi": {
-    genre: "Thu nhập và phúc lợi thợ mỏ",
-    hub: "/thu-nhap-an-o-ho-tro/",
-    label: "Xem thêm về thu nhập, ăn ở và hỗ trợ",
-  },
-  "an-toan-cong-nghe": {
-    genre: "An toàn, công nghệ và môi trường mỏ",
-    hub: "/an-toan-ky-luat-moi-truong/",
-    label: "Xem hướng dẫn về an toàn, kỷ luật và môi trường mỏ",
-  },
-  "chuyen-nguoi-tho": {
-    genre: "Chuyện người thợ mỏ",
-    hub: "/cau-chuyen-cong-nhan/",
-    label: "Xem thêm câu chuyện công nhân mỏ",
-  },
-  "tin-nganh-than": {
-    genre: "Tin ngành Than và TKV",
-    hub: "/tin-nganh-than/",
-    label: "Xem thêm tin tức ngành Than và TKV",
-  },
+  "giai-dap": {genre: "Giải đáp nghề mỏ", hub: "/giai-dap-nghe-mo/", label: "Xem toàn bộ giải đáp nghề mỏ"},
+  "huong-dan-nhap-nghe": {genre: "Hướng dẫn học nghề và tuyển thợ mỏ", hub: "/thong-tin-tuyen-tho-mo/", label: "Xem thông tin tuyển thợ mỏ đang áp dụng"},
+  "viec-lam-dia-phuong": {genre: "Việc làm ngành Than theo địa phương", hub: "/viec-lam-nganh-than/", label: "Xem việc làm ngành Than theo tỉnh"},
+  "thu-nhap-phuc-loi": {genre: "Thu nhập và phúc lợi thợ mỏ", hub: "/thu-nhap-an-o-ho-tro/", label: "Xem thêm về thu nhập, ăn ở và hỗ trợ"},
+  "an-toan-cong-nghe": {genre: "An toàn, công nghệ và môi trường mỏ", hub: "/an-toan-ky-luat-moi-truong/", label: "Xem hướng dẫn về an toàn, kỷ luật và môi trường mỏ"},
+  "chuyen-nguoi-tho": {genre: "Chuyện người thợ mỏ", hub: "/cau-chuyen-cong-nhan/", label: "Xem thêm câu chuyện công nhân mỏ"},
+  "tin-nganh-than": {genre: "Tin ngành Than và TKV", hub: "/tin-nganh-than/", label: "Xem thêm tin tức ngành Than và TKV"},
 };
+const ARTICLE_PATH = /^(?:bai-viet\/[^/]+|tin-nganh-than\/\d{4}\/\d{2}\/\d{2}\/[^/]+|giai-dap-nghe-mo\/(?!index\.html$)[^/]+)\/index\.html$/u;
+const JSON_LD = /<script\b([^>]*\btype=["']application\/ld\+json["'][^>]*)>([\s\S]*?)<\/script>/gi;
 
-function walk(directory) {
-  return fs.readdirSync(directory, {withFileTypes: true}).flatMap((entry) => {
-    const target = path.join(directory, entry.name);
+function walk(dir) {
+  return fs.readdirSync(dir, {withFileTypes: true}).flatMap((entry) => {
+    const target = path.join(dir, entry.name);
     return entry.isDirectory() ? walk(target) : [target];
   });
 }
-
-function isArticlePath(relativePath) {
-  return /^bai-viet\/[^/]+\/index\.html$/u.test(relativePath)
-    || /^tin-nganh-than\/\d{4}\/\d{2}\/\d{2}\/[^/]+\/index\.html$/u.test(relativePath)
-    || /^giai-dap-nghe-mo\/(?!index\.html$)[^/]+\/index\.html$/u.test(relativePath);
+const decode = (value = "") => String(value)
+  .replaceAll("&amp;", "&").replaceAll("&quot;", '"').replaceAll("&#39;", "'")
+  .replaceAll("&apos;", "'").replaceAll("&nbsp;", " ").replaceAll("&lt;", "<").replaceAll("&gt;", ">");
+const esc = (value = "") => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+const text = (html = "") => decode(String(html)
+  .replace(/<script\b[\s\S]*?<\/script>/gi, " ").replace(/<style\b[\s\S]*?<\/style>/gi, " ")
+  .replace(/<noscript\b[\s\S]*?<\/noscript>/gi, " ").replace(/<[^>]+>/g, " "))
+  .replace(/\s+/gu, " ").trim();
+const normalized = (value = "") => decode(value).normalize("NFD").replace(/\p{M}/gu, "")
+  .replaceAll("đ", "d").replaceAll("Đ", "D").toLocaleLowerCase("vi")
+  .replace(/[^a-z0-9\s-]/g, " ").replace(/\s+/g, " ").trim();
+const tokens = (value = "") => [...new Set(normalized(value).split(/[\s-]+/).filter((token) => token.length > 1 && !STOPWORDS.has(token)))];
+function coverage(keyword, value) {
+  const wanted = tokens(keyword);
+  if (!wanted.length) return 1;
+  const found = new Set(tokens(value));
+  return wanted.filter((token) => found.has(token)).length / wanted.length;
 }
-
-function decodeHtml(value = "") {
-  return String(value)
-    .replaceAll("&amp;", "&")
-    .replaceAll("&quot;", '"')
-    .replaceAll("&#39;", "'")
-    .replaceAll("&apos;", "'")
-    .replaceAll("&nbsp;", " ")
-    .replaceAll("&lt;", "<")
-    .replaceAll("&gt;", ">");
-}
-
-function escapeHtml(value = "") {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
-}
-
-function escapeRegex(value = "") {
-  return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
-function stripHtml(value = "") {
-  return decodeHtml(String(value)
-    .replace(/<script\b[\s\S]*?<\/script>/gi, " ")
-    .replace(/<style\b[\s\S]*?<\/style>/gi, " ")
-    .replace(/<noscript\b[\s\S]*?<\/noscript>/gi, " ")
-    .replace(/<[^>]+>/g, " "))
-    .replace(/\s+/gu, " ")
-    .trim();
-}
-
-function normalize(value = "") {
-  return decodeHtml(value)
-    .normalize("NFD")
-    .replace(/\p{M}/gu, "")
-    .replaceAll("đ", "d")
-    .replaceAll("Đ", "D")
-    .toLocaleLowerCase("vi")
-    .replace(/[^a-z0-9\s-]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function tokens(value = "") {
-  return [...new Set(normalize(value)
-    .split(/[\s-]+/)
-    .map((token) => token.trim())
-    .filter((token) => token.length > 1 && !STOPWORDS.has(token)))];
-}
-
-function keywordCoverage(keyword, text) {
-  const keywordTokens = tokens(keyword);
-  if (!keywordTokens.length) return 1;
-  const textTokens = new Set(tokens(text));
-  return keywordTokens.filter((token) => textTokens.has(token)).length / keywordTokens.length;
-}
-
-function compactText(value, limit) {
-  const original = decodeHtml(value).replace(/\s+/gu, " ").trim();
+function compact(value, limit) {
+  const original = decode(value).replace(/\s+/gu, " ").trim();
   if (original.length <= limit) return original;
   const available = limit - 1;
   const excerpt = original.slice(0, available + 1);
   const boundary = excerpt.lastIndexOf(" ");
-  const candidate = (boundary >= Math.floor(available * 0.7) ? excerpt.slice(0, boundary) : original.slice(0, available))
-    .replace(/[,:;–—-]+$/u, "")
-    .trim();
-  return `${candidate}…`;
+  return `${(boundary >= Math.floor(available * 0.7) ? excerpt.slice(0, boundary) : original.slice(0, available)).replace(/[,:;–—-]+$/u, "").trim()}…`;
 }
-
-function capitalize(value = "") {
-  const text = String(value).trim();
-  if (!text) return text;
-  return `${text[0].toLocaleUpperCase("vi")}${text.slice(1)}`;
-}
-
+const capitalize = (value = "") => value ? `${value[0].toLocaleUpperCase("vi")}${value.slice(1)}` : value;
 function metaTag(html, attribute, key) {
-  const pattern = new RegExp(`<meta\\b(?=[^>]*\\b${attribute}=["']${escapeRegex(key)}["'])[^>]*>`, "i");
-  return html.match(pattern)?.[0] || "";
+  const safe = key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return html.match(new RegExp(`<meta\\b(?=[^>]*\\b${attribute}=["']${safe}["'])[^>]*>`, "i"))?.[0] || "";
 }
-
-function tagContent(tag) {
-  return decodeHtml(tag.match(/\bcontent=(["'])(.*?)\1/i)?.[2] || "").replace(/\s+/gu, " ").trim();
-}
-
-function metaContent(html, attribute, key) {
-  return tagContent(metaTag(html, attribute, key));
-}
-
-function replaceMetaContent(html, attribute, key, value) {
+const tagContent = (tag) => decode(tag.match(/\bcontent=(["'])(.*?)\1/i)?.[2] || "").replace(/\s+/gu, " ").trim();
+const meta = (html, attribute, key) => tagContent(metaTag(html, attribute, key));
+function replaceMeta(html, attribute, key, value) {
   const tag = metaTag(html, attribute, key);
   if (!tag) return html;
-  const nextTag = /\bcontent=(["'])(.*?)\1/i.test(tag)
-    ? tag.replace(/\bcontent=(["'])(.*?)\1/i, (_full, quote) => `content=${quote}${escapeHtml(value)}${quote}`)
-    : tag.replace(/>$/, ` content="${escapeHtml(value)}">`);
-  return html.replace(tag, nextTag);
+  const next = tag.replace(/\bcontent=(["'])(.*?)\1/i, (_all, quote) => `content=${quote}${esc(value)}${quote}`);
+  return html.replace(tag, next);
 }
-
-function insertMetaProperties(html, properties) {
-  const missing = properties.filter(([key]) => !metaTag(html, "property", key));
+function insertProperties(html, entries) {
+  const missing = entries.filter(([key, value]) => value && !metaTag(html, "property", key));
   if (!missing.length) return html;
-  const markup = missing.map(([key, value]) => `  <meta property="${key}" content="${escapeHtml(value)}">`).join("\n");
+  const markup = missing.map(([key, value]) => `  <meta property="${esc(key)}" content="${esc(value)}">`).join("\n");
   return html.replace(/(<meta\s+name=["']twitter:card["'][^>]*>)/i, `${markup}\n$1`);
 }
-
-function titleText(html) {
-  return stripHtml(html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] || "");
+const titleOf = (html) => text(html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] || "");
+const h1Of = (html) => text(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || "");
+const canonicalOf = (html) => html.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i)?.[1] || "";
+const graphNodes = (data) => data && typeof data === "object" ? (Array.isArray(data["@graph"]) ? data["@graph"] : [data]) : [];
+function jsonDocuments(html) {
+  return [...html.matchAll(new RegExp(JSON_LD.source, "gi"))].map((match) => {
+    try { return {full: match[0], attrs: match[1], data: JSON.parse(match[2])}; }
+    catch { return {full: match[0], attrs: match[1], data: null}; }
+  });
 }
-
-function h1Text(html) {
-  return stripHtml(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || "");
-}
-
-function canonicalUrl(html) {
-  return html.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i)?.[1] || "";
-}
-
-function parseStructuredData(html) {
-  const scripts = [];
-  const pattern = /<script\b([^>]*\btype=["']application\/ld\+json["'][^>]*)>([\s\S]*?)<\/script>/gi;
-  for (const match of html.matchAll(pattern)) {
-    try {
-      scripts.push({full: match[0], attrs: match[1], data: JSON.parse(match[2])});
-    } catch (error) {
-      scripts.push({full: match[0], attrs: match[1], data: null, error});
-    }
-  }
-  return scripts;
-}
-
-function graphNodes(data) {
-  if (!data || typeof data !== "object") return [];
-  return Array.isArray(data["@graph"]) ? data["@graph"] : [data];
-}
-
-function articleNodeFrom(html) {
-  for (const script of parseStructuredData(html)) {
-    const node = graphNodes(script.data).find((item) => ["Article", "NewsArticle"].includes(item?.["@type"]));
+function articleNode(html) {
+  for (const document of jsonDocuments(html)) {
+    const node = graphNodes(document.data).find((item) => ["Article", "NewsArticle"].includes(item?.["@type"]));
     if (node) return node;
   }
   return null;
 }
-
-function keywordList(html, articleNode, fallback) {
-  const metaKeywords = metaContent(html, "name", "keywords")
-    .split(",")
-    .map((value) => value.trim())
-    .filter(Boolean);
-  const schemaKeywords = Array.isArray(articleNode?.keywords)
-    ? articleNode.keywords
-    : String(articleNode?.keywords || "").split(",");
-  const aboutKeywords = (Array.isArray(articleNode?.about) ? articleNode.about : [articleNode?.about])
-    .map((item) => typeof item === "string" ? item : item?.name)
-    .filter(Boolean);
-  const all = [...metaKeywords, ...schemaKeywords, ...aboutKeywords, fallback]
-    .map((value) => stripHtml(value))
-    .filter(Boolean);
+function keywordList(html, node, fallback) {
+  const values = meta(html, "name", "keywords").split(",").map((value) => value.trim()).filter(Boolean);
+  const schemaKeywords = Array.isArray(node?.keywords) ? node.keywords : String(node?.keywords || "").split(",");
+  values.push(...schemaKeywords);
+  const about = Array.isArray(node?.about) ? node.about : [node?.about];
+  values.push(...about.map((item) => typeof item === "string" ? item : item?.name).filter(Boolean), fallback);
   const seen = new Set();
-  return all.filter((value) => {
-    const key = normalize(value);
+  return values.map((value) => text(value)).filter((value) => {
+    const key = normalized(value);
     if (!key || seen.has(key)) return false;
     seen.add(key);
     return true;
   });
 }
-
-function firstCopyText(html) {
-  const articleMarkup = html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i)?.[1] || html;
+function articleMarkup(html) {
+  return html.match(/<article\b[^>]*class=["'][^"']*\barticle-body\b[^"']*["'][^>]*>([\s\S]*?)<\/article>/i)?.[1]
+    || html.match(/<main\b[^>]*id=["']noi-dung["'][^>]*>([\s\S]*)<\/main>/i)?.[1]
+    || html.match(/<article\b[^>]*>([\s\S]*)<\/article>/i)?.[1]
+    || html;
+}
+function firstCopy(html) {
   const paragraphs = [];
-  for (const match of articleMarkup.matchAll(/<p\b([^>]*)>([\s\S]*?)<\/p>/gi)) {
-    const attrs = match[1] || "";
-    if (/\b(?:eyebrow|byline|date|source|current-facts|article-topic-hub|article-seo-line)\b/i.test(attrs)) continue;
-    const text = stripHtml(match[2]);
-    if (text.length < 35) continue;
-    paragraphs.push(text);
+  for (const match of articleMarkup(html).matchAll(/<p\b([^>]*)>([\s\S]*?)<\/p>/gi)) {
+    if (/\b(?:eyebrow|byline|date|source|current-facts|article-topic-hub|article-seo-line)\b/i.test(match[1])) continue;
+    const value = text(match[2]);
+    if (value.length < 35) continue;
+    paragraphs.push(value);
     if (paragraphs.join(" ").split(/\s+/).length >= 180 || paragraphs.length >= 3) break;
   }
   return paragraphs.join(" ");
 }
-
-function visibleArticleText(html) {
-  const articleMarkup = html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i)?.[1]
-    || html.match(/<article\b[^>]*class=["'][^"']*\barticle-body\b[^"']*["'][^>]*>([\s\S]*?)<\/article>/i)?.[1]
-    || html;
-  return stripHtml(articleMarkup);
+function coreText(html) {
+  let markup = articleMarkup(html);
+  for (const pattern of [
+    /<div\b[^>]*class=["'][^"']*\barticle-source-footer\b[^"']*["'][^>]*>[\s\S]*?<\/div>/gi,
+    /<p\b[^>]*class=["'][^"']*\barticle-(?:source-note|topic-hub)\b[^"']*["'][^>]*>[\s\S]*?<\/p>/gi,
+    /<nav\b[^>]*class=["'][^"']*\barticle-nav\b[^"']*["'][^>]*>[\s\S]*?<\/nav>/gi,
+    /<section\b[^>]*class=["'][^"']*\barticle-apply\b[^"']*["'][^>]*>[\s\S]*?<\/section>/gi,
+    /<section\b[^>]*class=["'][^"']*\bdaily-seo-final\b[^"']*["'][^>]*>[\s\S]*?<\/section>/gi,
+  ]) markup = markup.replace(pattern, " ");
+  return text(markup);
 }
-
-function chooseCluster(relativePath, section, keywordText) {
-  if (relativePath.startsWith("giai-dap-nghe-mo/")) return "giai-dap";
-  const normalizedSection = normalize(section);
-  const normalizedKeywords = normalize(keywordText);
-
-  if (normalizedSection.includes("ket noi dia phuong")) return "viec-lam-dia-phuong";
-  if (normalizedSection.includes("chuyen nguoi tho")) return "chuyen-nguoi-tho";
-  if (normalizedSection.includes("an toan") || normalizedSection.includes("cong nghe") || normalizedSection.includes("mo xanh")) return "an-toan-cong-nghe";
-  if (normalizedSection.includes("huong dan") || normalizedSection.includes("tay nghe") || normalizedSection.includes("dao tao")) return "huong-dan-nhap-nghe";
-  if (normalizedSection.includes("thu nhap") || normalizedSection.includes("doi song")) return "thu-nhap-phuc-loi";
-  if (/luong|thu nhap|phuc loi|nghi duong|an o|ho tro/.test(normalizedKeywords)) return "thu-nhap-phuc-loi";
-  if (/tuyen sinh|hoc nghe|ho so|dieu kien|nhap hoc|dao tao/.test(normalizedKeywords)) return "huong-dan-nhap-nghe";
-  if (/tinh|xa|huyen|dia phuong|cao bang|tuyen quang|lai chau|lao cai|dien bien|son la|quang tri|thanh hoa/.test(normalizedKeywords)) return "viec-lam-dia-phuong";
-  if (/an toan|suc khoe|co gioi|cong nghe|moi truong|thong gio/.test(normalizedKeywords)) return "an-toan-cong-nghe";
+function clusterFor(relative, section, keywordText) {
+  if (relative.startsWith("giai-dap-nghe-mo/")) return "giai-dap";
+  const sectionKey = normalized(section);
+  const keywords = normalized(keywordText);
+  if (sectionKey.includes("ket noi dia phuong")) return "viec-lam-dia-phuong";
+  if (sectionKey.includes("chuyen nguoi tho")) return "chuyen-nguoi-tho";
+  if (/an toan|cong nghe|mo xanh/.test(sectionKey)) return "an-toan-cong-nghe";
+  if (/huong dan|tay nghe|dao tao/.test(sectionKey)) return "huong-dan-nhap-nghe";
+  if (/thu nhap|doi song/.test(sectionKey)) return "thu-nhap-phuc-loi";
+  if (/luong|thu nhap|phuc loi|nghi duong|an o|ho tro/.test(keywords)) return "thu-nhap-phuc-loi";
+  if (/tuyen sinh|hoc nghe|ho so|dieu kien|nhap hoc|dao tao/.test(keywords)) return "huong-dan-nhap-nghe";
+  if (/tinh|xa|huyen|dia phuong|cao bang|tuyen quang|lai chau|lao cai|dien bien|son la|quang tri|thanh hoa/.test(keywords)) return "viec-lam-dia-phuong";
+  if (/an toan|suc khoe|co gioi|cong nghe|moi truong|thong gio/.test(keywords)) return "an-toan-cong-nghe";
   return "tin-nganh-than";
 }
-
 function analyze(file) {
-  const relativePath = path.relative(SITE, file).split(path.sep).join("/");
+  const relative = path.relative(SITE, file).split(path.sep).join("/");
   const html = fs.readFileSync(file, "utf8");
-  const node = articleNodeFrom(html);
-  const h1 = h1Text(html);
-  const title = titleText(html);
-  const description = metaContent(html, "name", "description");
-  const canonical = canonicalUrl(html);
-  const section = metaContent(html, "property", "article:section") || node?.articleSection || (relativePath.startsWith("giai-dap-nghe-mo/") ? "Giải đáp nghề mỏ" : "Tin ngành Than");
+  const node = articleNode(html);
+  const h1 = h1Of(html);
   const keywords = keywordList(html, node, h1);
-  const primaryKeyword = keywords[0] || h1;
-  const articleText = visibleArticleText(html);
-  const firstCopy = firstCopyText(html);
-  const clusterId = chooseCluster(relativePath, section, `${primaryKeyword} ${keywords.join(" ")} ${h1}`);
-  return {
-    file,
-    relativePath,
-    html,
-    node,
-    h1,
-    title,
-    description,
-    canonical,
-    section,
-    keywords,
-    primaryKeyword,
-    articleText,
-    firstCopy,
-    wordCount: articleText ? articleText.split(/\s+/).filter(Boolean).length : 0,
-    clusterId,
-    cluster: CLUSTERS[clusterId],
-    internalPath: canonical.startsWith(BASE) ? new URL(canonical).pathname : `/${relativePath.replace(/index\.html$/, "")}`,
-    published: metaContent(html, "property", "article:published_time") || node?.datePublished || "",
-    modified: metaContent(html, "property", "article:modified_time") || node?.dateModified || "",
-    image: metaContent(html, "property", "og:image") || (Array.isArray(node?.image) ? node.image[0] : node?.image) || "",
-  };
+  const primary = keywords[0] || h1;
+  const canonical = canonicalOf(html);
+  const section = meta(html, "property", "article:section") || node?.articleSection || (relative.startsWith("giai-dap") ? "Giải đáp nghề mỏ" : "Tin ngành Than");
+  const clusterId = clusterFor(relative, section, `${primary} ${keywords.join(" ")} ${h1}`);
+  const body = coreText(html);
+  const imageValue = meta(html, "property", "og:image") || (Array.isArray(node?.image) ? node.image[0] : node?.image) || "";
+  return {file, relative, html, node, h1, keywords, primary, canonical, section, clusterId, cluster: CLUSTERS[clusterId],
+    title: titleOf(html), description: meta(html, "name", "description"), first: firstCopy(html), body,
+    wordCount: body.split(/\s+/).filter(Boolean).length,
+    internal: canonical.startsWith(BASE) ? new URL(canonical).pathname : `/${relative.replace(/index\.html$/, "")}`,
+    published: meta(html, "property", "article:published_time") || node?.datePublished || "",
+    modified: meta(html, "property", "article:modified_time") || node?.dateModified || "",
+    image: imageValue};
 }
-
-function relatedArticles(article, articles) {
-  const ownTokens = new Set(tokens(`${article.primaryKeyword} ${article.keywords.join(" ")} ${article.h1}`));
-  return articles
-    .filter((candidate) => candidate.canonical && candidate.canonical !== article.canonical)
-    .map((candidate) => {
-      const candidateTokens = new Set(tokens(`${candidate.primaryKeyword} ${candidate.keywords.join(" ")} ${candidate.h1}`));
-      const shared = [...ownTokens].filter((token) => candidateTokens.has(token)).length;
-      let score = shared * 4;
-      if (candidate.clusterId === article.clusterId) score += 28;
-      if (normalize(candidate.section) === normalize(article.section)) score += 10;
-      if (candidate.relativePath.startsWith("bai-viet/")) score += 3;
-      if (candidate.relativePath.startsWith(article.relativePath.split("/")[0])) score += 1;
-      return {candidate, score};
-    })
-    .sort((left, right) => right.score - left.score || left.candidate.h1.localeCompare(right.candidate.h1, "vi"))
-    .slice(0, 2)
-    .map(({candidate}) => candidate);
+function relatedTo(article, articles) {
+  const own = new Set(tokens(`${article.primary} ${article.keywords.join(" ")} ${article.h1}`));
+  return articles.filter((candidate) => candidate.canonical && candidate.canonical !== article.canonical).map((candidate) => {
+    const other = new Set(tokens(`${candidate.primary} ${candidate.keywords.join(" ")} ${candidate.h1}`));
+    let score = [...own].filter((token) => other.has(token)).length * 4;
+    if (candidate.clusterId === article.clusterId) score += 28;
+    if (normalized(candidate.section) === normalized(article.section)) score += 10;
+    if (candidate.relative.startsWith("bai-viet/")) score += 3;
+    if (candidate.relative.split("/")[0] === article.relative.split("/")[0]) score += 1;
+    return {candidate, score};
+  }).sort((a, b) => b.score - a.score || a.candidate.h1.localeCompare(b.candidate.h1, "vi")).slice(0, 2).map(({candidate}) => candidate);
 }
-
-function buildRelatedNav(article, related) {
+function optimizedTitle(article) {
+  if (coverage(article.primary, article.title) >= 0.45 && article.title.length <= MAX_TITLE) return article.title;
+  return compact(`${capitalize(article.primary.replace(/[?!.,;:]+$/u, ""))} | Thầy Linh`, MAX_TITLE);
+}
+function optimizedDescription(article) {
+  if (coverage(article.primary, article.description) >= 0.45 && article.description.length >= MIN_DESCRIPTION && article.description.length <= MAX_DESCRIPTION) return article.description;
+  const keyword = capitalize(article.primary.replace(/[?!.,;:]+$/u, ""));
+  let value = coverage(article.primary, article.description) >= 0.45 ? article.description : `${keyword}: ${article.description}`;
+  if (value.length < MIN_DESCRIPTION) value = `${value.replace(/\.$/u, "")} — bài viết giải thích rõ nội dung, bối cảnh và thông tin người lao động cần đối chiếu.`;
+  return compact(value, 160);
+}
+function updateFooter(html, article) {
+  let next = html.replace(/<p\b[^>]*class=["'][^"']*\barticle-seo-line\b[^"']*["'][^>]*>[\s\S]*?<\/p>/gi, "")
+    .replace(/<p\b[^>]*class=["'][^"']*\barticle-topic-hub\b[^"']*["'][^>]*>[\s\S]*?<\/p>/gi, "");
+  const topic = `<p class="article-topic-hub"><a href="${article.cluster.hub}">${esc(article.cluster.label)} →</a></p>`;
+  const footer = /<div\b([^>]*class=["'][^"']*\barticle-source-footer\b[^"']*["'][^>]*)>([\s\S]*?)<\/div>/i;
+  if (footer.test(next)) return next.replace(footer, (_all, attrs, content) => `<div${attrs}>${content}${content.includes(`href="${article.cluster.hub}"`) ? "" : topic}</div>`);
+  const note = /(<p\b[^>]*class=["'][^"']*\barticle-source-note\b[^"']*["'][^>]*>[\s\S]*?<\/p>)/i;
+  return note.test(next) ? next.replace(note, `$1${topic}`) : next;
+}
+function updateNav(html, article, related) {
   const labels = ["Cùng chủ đề", "Nên đọc tiếp"];
-  const links = related.map((item, index) => `<a href="${escapeHtml(item.internalPath)}"><small>${labels[index] || "Bài liên quan"}</small>${escapeHtml(item.h1)} →</a>`).join("");
-  return `<nav class="article-nav" aria-label="Bài viết liên quan theo chủ đề">${links}</nav>`;
-}
-
-function optimizeSearchTitle(article) {
-  if (keywordCoverage(article.primaryKeyword, article.title) >= 0.45) return article.title;
-  return compactText(`${capitalize(article.primaryKeyword.replace(/[?!.,;:]+$/u, ""))} | Thầy Linh`, MAX_TITLE_LENGTH);
-}
-
-function optimizeDescription(article) {
-  if (keywordCoverage(article.primaryKeyword, article.description) >= 0.45) return article.description;
-  const keyword = capitalize(article.primaryKeyword.replace(/[?!.,;:]+$/u, ""));
-  return compactText(`${keyword}: ${article.description}`, 170);
-}
-
-function updateStructuredData(html, article, title, description) {
-  let changed = false;
-  const pattern = /<script\b([^>]*\btype=["']application\/ld\+json["'][^>]*)>([\s\S]*?)<\/script>/gi;
-  const output = html.replace(pattern, (full, attrs, payload) => {
-    let data;
-    try {
-      data = JSON.parse(payload);
-    } catch {
-      return full;
-    }
-    const articleNode = graphNodes(data).find((item) => ["Article", "NewsArticle"].includes(item?.["@type"]));
-    if (!articleNode) return full;
-
-    articleNode.headline = article.h1;
-    articleNode.description = description;
-    articleNode.articleSection = article.section;
-    articleNode.keywords = article.keywords;
-    articleNode.about = article.keywords.slice(0, 6).map((name) => ({"@type": "Thing", name}));
-    articleNode.genre = article.cluster.genre;
-    articleNode.wordCount = article.wordCount;
-    articleNode.isAccessibleForFree = true;
-    if (article.image) articleNode.image = [article.image];
-    if (!articleNode.mainEntityOfPage && article.canonical) articleNode.mainEntityOfPage = {"@id": `${article.canonical}#webpage`};
-
-    for (const node of graphNodes(data)) {
-      if (node?.["@type"] !== "WebPage") continue;
-      if (article.canonical) node.url = article.canonical;
-      node.name = article.h1;
-      node.description = description;
-    }
-
-    changed = true;
-    return `<script${attrs}>${JSON.stringify(data)}</script>`;
-  });
-  return {html: output, changed};
-}
-
-function wrapVisibleDate(html, article) {
-  if (!article.published) return html;
-  const date = String(article.published).slice(0, 10);
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || html.includes(`<time datetime="${date}">`)) return html;
-  return html.replace(
-    /(<p\b[^>]*class=["'][^"']*(?:eyebrow|daily-seo-date)[^"']*["'][^>]*>[\s\S]*?)(\d{2}\/\d{2}\/\d{4})([\s\S]*?<\/p>)/i,
-    `$1<time datetime="${date}">$2</time>$3`,
-  );
-}
-
-function optimizeRegularArticleFooter(html, article) {
-  let next = html.replace(/<p\b[^>]*class=["'][^"']*\barticle-seo-line\b[^"']*["'][^>]*>[\s\S]*?<\/p>\s*/gi, "");
-  next = next.replace(/<p\b[^>]*class=["'][^"']*\barticle-topic-hub\b[^"']*["'][^>]*>[\s\S]*?<\/p>\s*/gi, "");
-  const footerPattern = /<div\b([^>]*class=["'][^"']*\barticle-source-footer\b[^"']*["'][^>]*)>([\s\S]*?)<\/div>/i;
-  if (!footerPattern.test(next)) return next;
-  return next.replace(footerPattern, (_full, attrs, content) => {
-    const topicLink = content.includes(`href="${article.cluster.hub}"`)
-      ? ""
-      : `<p class="article-topic-hub"><a href="${article.cluster.hub}">${escapeHtml(article.cluster.label)} →</a></p>`;
-    return `<div${attrs}>${content}${topicLink}</div>`;
-  });
-}
-
-function optimizeRegularRelatedNav(html, article, related) {
-  if (!related.length) return html;
-  const nav = buildRelatedNav(article, related);
-  const navPattern = /<nav\b[^>]*class=["'][^"']*\barticle-nav\b[^"']*["'][^>]*>[\s\S]*?<\/nav>/i;
-  if (navPattern.test(html)) return html.replace(navPattern, nav);
-  if (/<section\b[^>]*class=["'][^"']*\barticle-apply\b/i.test(html)) {
-    return html.replace(/(<section\b[^>]*class=["'][^"']*\barticle-apply\b)/i, `${nav}$1`);
-  }
+  const links = related.map((item, index) => `<a href="${esc(item.internal)}"><small>${labels[index]}</small>${esc(item.h1)} →</a>`).join("");
+  const nav = `<nav class="article-nav" aria-label="Bài viết liên quan theo chủ đề">${links}</nav>`;
+  const pattern = /<nav\b[^>]*class=["'][^"']*\barticle-nav\b[^"']*["'][^>]*>[\s\S]*?<\/nav>/i;
+  if (pattern.test(html)) return html.replace(pattern, nav);
+  if (/<section\b[^>]*class=["'][^"']*\barticle-apply\b/i.test(html)) return html.replace(/(<section\b[^>]*class=["'][^"']*\barticle-apply\b)/i, `${nav}$1`);
   return html.replace(/<\/article>/i, `${nav}</article>`);
 }
-
-const articleFiles = walk(SITE).filter((file) => file.endsWith(".html") && isArticlePath(path.relative(SITE, file).split(path.sep).join("/")));
-const initialArticles = articleFiles.map(analyze);
-const changedFiles = [];
-const changeStats = {
-  titles: 0,
-  descriptions: 0,
-  visibleSeoLinesRemoved: 0,
-  topicHubLinks: 0,
-  relatedNavigations: 0,
-  structuredData: 0,
-  visibleDates: 0,
-};
-
-for (const article of initialArticles) {
-  let next = article.html;
-  const nextTitle = optimizeSearchTitle(article);
-  const nextDescription = optimizeDescription(article);
-
-  if (nextTitle !== article.title) {
-    next = next.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(nextTitle)}</title>`);
-    changeStats.titles += 1;
-  }
-  if (nextDescription !== article.description) {
-    next = replaceMetaContent(next, "name", "description", nextDescription);
-    changeStats.descriptions += 1;
-  }
-
-  const beforeSeoLine = next;
-  if (!article.relativePath.startsWith("giai-dap-nghe-mo/")) {
-    next = optimizeRegularArticleFooter(next, article);
-    if (beforeSeoLine.includes("article-seo-line") && !next.includes("article-seo-line")) changeStats.visibleSeoLinesRemoved += 1;
-    if (next.includes("article-topic-hub")) changeStats.topicHubLinks += 1;
-    const related = relatedArticles(article, initialArticles);
-    const beforeNav = next;
-    next = optimizeRegularRelatedNav(next, article, related);
-    if (next !== beforeNav) changeStats.relatedNavigations += 1;
-  }
-
-  const beforeDate = next;
-  next = wrapVisibleDate(next, article);
-  if (next !== beforeDate) changeStats.visibleDates += 1;
-
-  const published = article.published;
-  const modified = article.modified || published;
-  if (article.relativePath.startsWith("giai-dap-nghe-mo/")) {
-    next = insertMetaProperties(next, [
-      ["article:published_time", published],
-      ["article:modified_time", modified],
-      ["article:author", "Nguyễn Tử Linh"],
-      ["article:section", article.section],
-    ].filter(([, value]) => Boolean(value)));
-  }
-
-  const schemaUpdate = updateStructuredData(next, {...article, description: nextDescription}, nextTitle, nextDescription);
-  next = schemaUpdate.html;
-  if (schemaUpdate.changed) changeStats.structuredData += 1;
-
-  if (next === article.html) continue;
-  changedFiles.push(article.relativePath);
-  if (!CHECK_ONLY) fs.writeFileSync(article.file, next);
+function wrapDate(html, article) {
+  const date = String(article.published).slice(0, 10);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || html.includes(`<time datetime="${date}">`)) return html;
+  return html.replace(/(<p\b[^>]*class=["'][^"']*(?:eyebrow|daily-seo-date)[^"']*["'][^>]*>[\s\S]*?)(\d{2}\/\d{2}\/\d{4})([\s\S]*?<\/p>)/i, `$1<time datetime="${date}">$2</time>$3`);
+}
+function updateSchema(html, article, description) {
+  return html.replace(new RegExp(JSON_LD.source, "gi"), (full, attrs, payload) => {
+    let data;
+    try { data = JSON.parse(payload); } catch { return full; }
+    const articleNode = graphNodes(data).find((item) => ["Article", "NewsArticle"].includes(item?.["@type"]));
+    if (!articleNode) return full;
+    Object.assign(articleNode, {headline: article.h1, description, articleSection: article.section, keywords: article.keywords,
+      about: article.keywords.slice(0, 6).map((name) => ({"@type": "Thing", name})), genre: article.cluster.genre,
+      wordCount: article.wordCount, isAccessibleForFree: true});
+    if (article.image) articleNode.image = [article.image];
+    if (!articleNode.mainEntityOfPage && article.canonical) articleNode.mainEntityOfPage = {"@id": `${article.canonical}#webpage`};
+    const webpage = graphNodes(data).find((item) => item?.["@type"] === "WebPage");
+    if (webpage) Object.assign(webpage, {url: article.canonical || webpage.url, name: article.h1, description});
+    return `<script${attrs}>${JSON.stringify(data)}</script>`;
+  });
 }
 
-const finalArticles = articleFiles.map(analyze);
+const files = walk(SITE).filter((file) => file.endsWith(".html") && ARTICLE_PATH.test(path.relative(SITE, file).split(path.sep).join("/")));
+const initial = files.map(analyze);
+const stats = {titles: 0, descriptions: 0, seoLinesRemoved: 0, topicLinks: 0, relatedNavigations: 0, dates: 0, schemas: 0};
+const changed = [];
+for (const article of initial) {
+  let next = article.html;
+  const title = optimizedTitle(article);
+  const description = optimizedDescription(article);
+  if (title !== article.title) { next = next.replace(/<title>[\s\S]*?<\/title>/i, `<title>${esc(title)}</title>`); stats.titles += 1; }
+  if (description !== article.description) { next = replaceMeta(next, "name", "description", description); stats.descriptions += 1; }
+  if (!article.relative.startsWith("giai-dap-nghe-mo/")) {
+    const beforeFooter = next;
+    next = updateFooter(next, article);
+    if (beforeFooter.includes("article-seo-line") && !next.includes("article-seo-line")) stats.seoLinesRemoved += 1;
+    if (next.includes("article-topic-hub")) stats.topicLinks += 1;
+    const beforeNav = next;
+    next = updateNav(next, article, relatedTo(article, initial));
+    if (next !== beforeNav) stats.relatedNavigations += 1;
+  }
+  const beforeDate = next;
+  next = wrapDate(next, article);
+  if (next !== beforeDate) stats.dates += 1;
+  if (article.relative.startsWith("giai-dap-nghe-mo/")) next = insertProperties(next, [["article:published_time", article.published], ["article:modified_time", article.modified], ["article:author", "Nguyễn Tử Linh"], ["article:section", article.section]]);
+  next = updateSchema(next, article, description);
+  stats.schemas += 1;
+  if (next !== article.html) {
+    changed.push(article.relative);
+    if (!CHECK_ONLY) fs.writeFileSync(article.file, next);
+  }
+}
+
+const finalArticles = files.map(analyze);
 const errors = [];
 const warnings = [];
 const titleOwners = new Map();
 const descriptionOwners = new Map();
 const keywordOwners = new Map();
-
 const feed = JSON.parse(fs.readFileSync(path.join(SITE, "feed.json"), "utf8"));
-const dailyFeed = JSON.parse(fs.readFileSync(path.join(SITE, "daily-seo-articles.json"), "utf8"));
-const expectedArticles = (feed.items?.length || 0) + (dailyFeed.articles?.length || 0);
-if (finalArticles.length !== expectedArticles) {
-  errors.push(`Cần ${expectedArticles} bài từ feed và giải đáp hằng ngày, hiện kiểm tra được ${finalArticles.length}`);
-}
-
+const daily = JSON.parse(fs.readFileSync(path.join(SITE, "daily-seo-articles.json"), "utf8"));
+const expected = (feed.items?.length || 0) + (daily.articles?.length || 0);
+if (files.length !== expected) errors.push(`Cần ${expected} bài từ feed, hiện kiểm tra được ${files.length}`);
 for (const article of finalArticles) {
-  const currentTitle = titleText(article.html);
-  const currentDescription = metaContent(article.html, "name", "description");
-  const currentNode = articleNodeFrom(article.html);
-  const titleCoverage = keywordCoverage(article.primaryKeyword, currentTitle);
-  const descriptionCoverage = keywordCoverage(article.primaryKeyword, currentDescription);
-  const introCoverage = keywordCoverage(article.primaryKeyword, article.firstCopy);
-
-  if (!article.primaryKeyword) errors.push(`${article.relativePath}: thiếu từ khóa chính`);
-  if (!currentTitle || currentTitle.length > MAX_TITLE_LENGTH) errors.push(`${article.relativePath}: title dài ${currentTitle.length} ký tự`);
-  if (currentDescription.length < MIN_DESCRIPTION_LENGTH || currentDescription.length > MAX_DESCRIPTION_LENGTH) {
-    errors.push(`${article.relativePath}: meta description dài ${currentDescription.length} ký tự`);
-  }
-  if (titleCoverage < 0.45) errors.push(`${article.relativePath}: title chưa bao phủ đủ từ khóa “${article.primaryKeyword}”`);
-  if (descriptionCoverage < 0.45) errors.push(`${article.relativePath}: description chưa bao phủ đủ từ khóa “${article.primaryKeyword}”`);
-  if (introCoverage < 0.35) errors.push(`${article.relativePath}: phần mở đầu chưa làm rõ từ khóa “${article.primaryKeyword}”`);
-  if (!article.canonical.startsWith(`${BASE}/`)) errors.push(`${article.relativePath}: canonical không hợp lệ`);
-  if (!article.h1) errors.push(`${article.relativePath}: thiếu H1`);
-  if (!article.html.includes(`<time datetime="${String(article.published).slice(0, 10)}">`)) {
-    errors.push(`${article.relativePath}: ngày xuất bản chưa có thẻ time máy đọc được`);
-  }
-  if (article.html.includes("article-seo-line")) errors.push(`${article.relativePath}: còn dòng SEO lộ liễu trong nội dung hiển thị`);
-
-  if (!article.relativePath.startsWith("giai-dap-nghe-mo/")) {
-    if (!article.html.includes("article-topic-hub")) errors.push(`${article.relativePath}: thiếu liên kết trung tâm chủ đề`);
+  const currentTitle = titleOf(article.html);
+  const currentDescription = meta(article.html, "name", "description");
+  const node = articleNode(article.html);
+  if (!article.primary) errors.push(`${article.relative}: thiếu từ khóa chính`);
+  if (!currentTitle || currentTitle.length > MAX_TITLE) errors.push(`${article.relative}: title dài ${currentTitle.length} ký tự`);
+  if (currentDescription.length < MIN_DESCRIPTION || currentDescription.length > MAX_DESCRIPTION) errors.push(`${article.relative}: description dài ${currentDescription.length} ký tự`);
+  if (coverage(article.primary, currentTitle) < 0.45) errors.push(`${article.relative}: title chưa bao phủ từ khóa “${article.primary}”`);
+  if (coverage(article.primary, currentDescription) < 0.45) errors.push(`${article.relative}: description chưa bao phủ từ khóa “${article.primary}”`);
+  if (coverage(article.primary, article.first) < 0.35) errors.push(`${article.relative}: phần mở đầu chưa làm rõ từ khóa “${article.primary}”`);
+  if (!article.canonical.startsWith(`${BASE}/`)) errors.push(`${article.relative}: canonical không hợp lệ`);
+  const date = String(article.published).slice(0, 10);
+  if (!date || !article.html.includes(`<time datetime="${date}">`)) errors.push(`${article.relative}: ngày xuất bản chưa có thẻ time`);
+  if (article.html.includes("article-seo-line")) errors.push(`${article.relative}: còn câu SEO lộ liễu`);
+  if (!article.relative.startsWith("giai-dap-nghe-mo/")) {
+    if (!article.html.includes("article-topic-hub") && !article.html.includes(`href="${article.cluster.hub}"`)) errors.push(`${article.relative}: thiếu liên kết cụm chủ đề`);
     const nav = article.html.match(/<nav\b[^>]*class=["'][^"']*\barticle-nav\b[^"']*["'][^>]*>([\s\S]*?)<\/nav>/i)?.[1] || "";
-    const relatedLinks = [...nav.matchAll(/<a\b[^>]*href=["']([^"']+)["']/gi)].map((match) => match[1]);
-    if (new Set(relatedLinks).size !== 2) errors.push(`${article.relativePath}: cần đúng hai liên kết bài liên quan khác nhau`);
-    if (relatedLinks.includes(article.internalPath)) errors.push(`${article.relativePath}: liên kết bài liên quan tự trỏ về chính bài`);
+    const links = [...nav.matchAll(/<a\b[^>]*href=["']([^"']+)/gi)].map((match) => match[1]);
+    if (new Set(links).size !== 2) errors.push(`${article.relative}: cần đúng hai bài liên quan`);
+    if (links.includes(article.internal)) errors.push(`${article.relative}: bài liên quan tự trỏ về chính bài`);
   }
-
-  if (!currentNode) {
-    errors.push(`${article.relativePath}: thiếu Article/NewsArticle JSON-LD`);
-  } else {
-    if (currentNode.wordCount !== article.wordCount || article.wordCount < 120) errors.push(`${article.relativePath}: wordCount JSON-LD chưa đồng bộ`);
-    if (!Array.isArray(currentNode.keywords) || !currentNode.keywords.length) errors.push(`${article.relativePath}: JSON-LD thiếu keywords`);
-    if (!Array.isArray(currentNode.about) || !currentNode.about.every((item) => item?.["@type"] === "Thing" && item.name)) {
-      errors.push(`${article.relativePath}: JSON-LD about chưa chuẩn hóa thành Thing`);
-    }
-    if (!currentNode.image || !(Array.isArray(currentNode.image) ? currentNode.image[0] : currentNode.image)) errors.push(`${article.relativePath}: JSON-LD thiếu ảnh bài viết`);
-    if (!currentNode.articleSection) errors.push(`${article.relativePath}: JSON-LD thiếu articleSection`);
-    if (!currentNode.genre) errors.push(`${article.relativePath}: JSON-LD thiếu genre theo cụm chủ đề`);
+  if (!node) errors.push(`${article.relative}: thiếu Article/NewsArticle JSON-LD`);
+  else {
+    if (node.wordCount !== article.wordCount || article.wordCount < 120) errors.push(`${article.relative}: wordCount chưa đồng bộ`);
+    if (!Array.isArray(node.keywords) || !node.keywords.length) errors.push(`${article.relative}: schema thiếu keywords`);
+    if (!Array.isArray(node.about) || !node.about.every((item) => item?.["@type"] === "Thing" && item.name)) errors.push(`${article.relative}: schema about chưa chuẩn`);
+    if (!node.image) errors.push(`${article.relative}: schema thiếu ảnh`);
+    if (!node.articleSection) errors.push(`${article.relative}: schema thiếu articleSection`);
+    if (!node.genre) errors.push(`${article.relative}: schema thiếu genre`);
   }
-
-  const titleKey = normalize(currentTitle);
-  const descKey = normalize(currentDescription);
-  const keywordKey = normalize(article.primaryKeyword);
-  titleOwners.set(titleKey, [...(titleOwners.get(titleKey) || []), article.relativePath]);
-  descriptionOwners.set(descKey, [...(descriptionOwners.get(descKey) || []), article.relativePath]);
-  keywordOwners.set(keywordKey, [...(keywordOwners.get(keywordKey) || []), article.relativePath]);
-
-  const exactOccurrences = normalize(article.articleText).split(normalize(article.primaryKeyword)).length - 1;
-  if (exactOccurrences > 6) warnings.push(`${article.relativePath}: cụm từ khóa chính xuất hiện ${exactOccurrences} lần, cần đọc lại để tránh lặp`);
+  for (const [map, key] of [[titleOwners, normalized(currentTitle)], [descriptionOwners, normalized(currentDescription)], [keywordOwners, normalized(article.primary)]]) map.set(key, [...(map.get(key) || []), article.relative]);
+  const exact = normalized(article.body).split(normalized(article.primary)).length - 1;
+  if (exact > 6) warnings.push(`${article.relative}: từ khóa chính lặp ${exact} lần`);
 }
+for (const [label, owners] of [["title", titleOwners], ["description", descriptionOwners]]) for (const [key, paths] of owners) if (key && paths.length > 1) errors.push(`Trùng ${label}: ${paths.join(", ")}`);
+for (const [key, paths] of keywordOwners) if (key && paths.length > 1) warnings.push(`Từ khóa chính gần trùng: ${paths.join(", ")}`);
+if (CHECK_ONLY && changed.length) errors.push(`Còn ${changed.length} bài chưa đồng bộ SEO từ khóa`);
 
-for (const [title, owners] of titleOwners) if (title && owners.length > 1) errors.push(`Trùng title SEO: ${owners.join(", ")}`);
-for (const [description, owners] of descriptionOwners) if (description && owners.length > 1) errors.push(`Trùng meta description: ${owners.join(", ")}`);
-for (const [keyword, owners] of keywordOwners) if (keyword && owners.length > 1) warnings.push(`Từ khóa chính gần trùng giữa: ${owners.join(", ")}`);
-
-if (CHECK_ONLY && changedFiles.length) errors.push(`Còn ${changedFiles.length} bài chưa được đồng bộ tối ưu từ khóa: ${changedFiles.join(", ")}`);
-
-console.log(JSON.stringify({
-  mode: CHECK_ONLY ? "check" : "update",
-  articles: finalArticles.length,
-  editorialFeedArticles: feed.items?.length || 0,
-  dailyAnswerArticles: dailyFeed.articles?.length || 0,
-  clusters: Object.fromEntries(Object.keys(CLUSTERS).map((id) => [id, finalArticles.filter((article) => article.clusterId === id).length])),
-  changedFiles: changedFiles.length,
-  changes: changeStats,
-  uniqueTitles: titleOwners.size,
-  uniqueDescriptions: descriptionOwners.size,
-  uniquePrimaryKeywords: keywordOwners.size,
-  warnings: warnings.length,
-  sampleWarnings: warnings.slice(0, 20),
-  errors: errors.length,
-  sampleErrors: errors.slice(0, 30),
-}, null, 2));
-
+console.log(JSON.stringify({mode: CHECK_ONLY ? "check" : "update", articles: files.length, changed: changed.length, stats,
+  clusters: Object.fromEntries(Object.keys(CLUSTERS).map((id) => [id, finalArticles.filter((item) => item.clusterId === id).length])),
+  warnings: warnings.length, sampleWarnings: warnings.slice(0, 20), errors: errors.length, sampleErrors: errors.slice(0, 30)}, null, 2));
 if (warnings.length) console.warn(warnings.join("\n"));
-if (errors.length) {
-  console.error(errors.join("\n"));
-  process.exit(1);
-}
+if (errors.length) { console.error(errors.join("\n")); process.exit(1); }
