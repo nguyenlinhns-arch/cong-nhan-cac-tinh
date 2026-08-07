@@ -784,7 +784,7 @@ export const existingNews = [
     section: "Tuyển dụng thợ mỏ",
     title: "Tuyển thợ mỏ tháng 8/2026: học nghề bài bản, việc làm rõ ràng",
     seoTitle: "Tuyển thợ mỏ tháng 8/2026 | Học nghề 2–3 tháng",
-    description: "Nam 18–40 tuổi có thể học nghề mỏ 2–3 tháng, được hỗ trợ trong thời gian học, bố trí việc làm và cam kết thu nhập 20–25 triệu/tháng khi hoàn thành định mức lao động.",
+    description: "Tuyển thợ mỏ tháng 8/2026: nam 18–40 tuổi, học nghề 2–3 tháng, được hỗ trợ, bố trí việc làm; cam kết 20–25 triệu/tháng khi hoàn thành định mức lao động.",
     lead: "Từ lớp học nghề đến vị trí sản xuất tại Quảng Ninh, người lao động được chuẩn bị từng bước về kỹ năng, an toàn, chỗ ở và công việc sau đào tạo.",
     keyword: "tuyển thợ mỏ tháng 8/2026",
     keywords: ["tuyển thợ mỏ tháng 8/2026", "tuyển thợ lò", "học nghề mỏ", "thu nhập 20–25 triệu/tháng khi hoàn thành định mức lao động", "việc làm TKV Quảng Ninh"],
