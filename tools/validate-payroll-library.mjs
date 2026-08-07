@@ -21,8 +21,8 @@ for (const [label, file] of Object.entries(files)) {
 
 const payrolls = JSON.parse(fs.readFileSync(files.data, "utf8"));
 if (payrolls.version !== "2.0") throw new Error(`Dữ liệu kho bảng lương phải dùng phiên bản 2.0, hiện là ${payrolls.version}`);
-if (!Array.isArray(payrolls.items) || payrolls.items.length !== 7) {
-  throw new Error(`Kho bảng lương phải có đúng 7 bộ dữ liệu đã xác minh, hiện có ${payrolls.items?.length || 0}`);
+if (!Array.isArray(payrolls.items) || payrolls.items.length !== 8) {
+  throw new Error(`Kho bảng lương phải có đúng 8 bộ dữ liệu đã xác minh, hiện có ${payrolls.items?.length || 0}`);
 }
 if (!Array.isArray(payrolls.pending_sources) || payrolls.pending_sources.length !== 1) {
   throw new Error("Kho bảng lương phải ghi nhận đúng một nguồn đang chờ tài liệu.");
@@ -48,7 +48,6 @@ for (const file of forbiddenPayrollAssets) {
   if (fs.existsSync(file)) throw new Error(`Tệp ảnh bảng lương phải được xóa hẳn: ${file}`);
 }
 
-// Bộ dựng trang chủ cũ còn chèn ảnh trang bảng lương. Chuẩn hóa đầu ra về thẻ chữ trước khi kiểm định và triển khai.
 const payrollHomeImagePattern = /<img\b[^>]*\bsrc="\/bang-luong\/assets\/vang-danh-q2-2026-bang-luong-01\.webp"[^>]*>\s*/g;
 const homeBeforeNormalization = fs.readFileSync(files.home, "utf8");
 const homeAfterNormalization = homeBeforeNormalization.replace(payrollHomeImagePattern, "");
@@ -64,9 +63,10 @@ const generator = fs.readFileSync(path.resolve("tools", "build-worker-first-home
 const expectedHubMarkers = [
   "Bảng lương công nhân ngành Than theo công ty, theo kỳ",
   `${baseUrl}/bang-luong/`,
-  "7 bộ dữ liệu",
-  "5 doanh nghiệp",
+  "8 bộ dữ liệu",
+  "6 doanh nghiệp",
   "Google Drive",
+  "/bang-luong/ha-lam/quy-2-2026/",
 ];
 for (const marker of expectedHubMarkers) {
   if (!hub.includes(marker)) throw new Error(`Trang kho bảng lương thiếu marker: ${marker}`);
