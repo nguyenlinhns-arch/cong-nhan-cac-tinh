@@ -974,6 +974,7 @@ for (const article of existingNews) {
   }
   html = upgradeExistingSchema(html, article);
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${esc(searchTitle(article))}</title>`);
+  html = html.replace(/<meta\s+name="description"\s+content="[^"]*">/i, `<meta name="description" content="${esc(article.description)}">`);
   if (usesSourceLanding) {
     const inlineImages = article.inlineMedia || articleInlineImages[article.slug] || [];
     html = html.replace(articleBodyPattern,

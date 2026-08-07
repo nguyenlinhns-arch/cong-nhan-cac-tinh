@@ -228,7 +228,10 @@ function updateSchema(html, article, description) {
 function maskGeneratedArticleDiffs(files) {
   if (CHECK_ONLY || process.env.GITHUB_ACTIONS !== "true") return false;
   try {
-    const relative = files.map((file) => path.relative(ROOT, file));
+    const tracked = new Set(execFileSync("git", ["ls-files"], {cwd: ROOT, encoding: "utf8"})
+      .split(/\r?\n/).filter(Boolean));
+    const relative = files.map((file) => path.relative(ROOT, file)).filter((file) => tracked.has(file));
+    if (!relative.length) return false;
     execFileSync("git", ["update-index", "--assume-unchanged", ...relative], {cwd: ROOT, stdio: "ignore"});
     return true;
   } catch (error) {
