@@ -1,9 +1,26 @@
 {
   "version": "2.0",
-  "updated_at": "2026-08-06",
+  "updated_at": "2026-08-07",
   "base_url": "https://thaylinhtuyenthomo.vn",
   "source_folder": "https://drive.google.com/drive/folders/1a52OLQqB06hamGLG9K0DlJqOs5Tfu7hR",
   "items": [
+    {
+      "id": "ha-lam-q2-2026",
+      "company": "Công ty Cổ phần Than Hà Lầm - Vinacomin",
+      "company_short": "Than Hà Lầm",
+      "period": "Quý II/2026",
+      "months": ["04/2026", "05/2026", "06/2026"],
+      "scope": "Công nhân Công ty Cổ phần Than Hà Lầm - Vinacomin",
+      "roles": ["Công nhân ngành Than"],
+      "source_type": "file",
+      "source_format": "PDF trên Google Drive",
+      "source_count": 1,
+      "public_pages": 0,
+      "privacy": "Website chỉ dẫn tới tài liệu gốc trên Google Drive, không hiển thị ảnh trích ngang bảng lương",
+      "url": "https://thaylinhtuyenthomo.vn/bang-luong/ha-lam/quy-2-2026/",
+      "drive_url": "https://drive.google.com/file/d/1GzoDuZW1t6popc5bRK9GIRXsOmtfBtwH/view?usp=drivesdk",
+      "cover": "https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg"
+    },
     {
       "id": "vang-danh-q2-2026",
       "company": "Công ty Cổ phần Than Vàng Danh - Vinacomin",
