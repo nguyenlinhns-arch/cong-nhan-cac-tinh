@@ -1,0 +1,54 @@
+name: Patch existing article meta (temporary)
+
+on:
+  push:
+    branches: ["agent/add-ha-lam-q2-2026-payroll"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: patch-existing-article-meta-temp
+  cancel-in-progress: true
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 2
+
+      - name: Sync existing page meta description from editorial source
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          target = Path('tools/generate-seo-library-base.mjs')
+          text = target.read_text(encoding='utf-8')
+          old = '  html = html.replace(/<title>[\\s\\S]*?<\\/title>/i, `<title>${esc(searchTitle(article))}</title>`);\n'
+          new = old + '  html = html.replace(/<meta\\s+name="description"\\s+content="[^"]*">/i, `<meta name="description" content="${esc(article.description)}">`);\n'
+          if new in text:
+              print('Patch already present')
+          elif old in text:
+              target.write_text(text.replace(old, new, 1), encoding='utf-8')
+          else:
+              raise SystemExit('Existing article title sync marker not found')
+          PY
+
+      - name: Commit generator fix
+        shell: bash
+        run: |
+          node --check tools/generate-seo-library-base.mjs
+          git diff --check
+          git add tools/generate-seo-library-base.mjs
+          if git diff --cached --quiet; then
+            echo "Generator already fixed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Đồng bộ meta mô tả bài hiện hữu từ nguồn biên tập"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
