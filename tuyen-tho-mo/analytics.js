@@ -103,6 +103,11 @@
     } catch (_) {}
   }
 
+  // Giữ tên hàm cũ để bộ kiểm định và mã tích hợp trước đây tiếp tục hoạt động.
+  function captureFirstAttribution() {
+    captureAttribution();
+  }
+
   function measurementId() {
     if (consentState !== "granted") return "";
     try {
@@ -155,8 +160,7 @@
         const url = new URL(raw, location.href);
         if (url.origin !== location.origin) return;
         for (const key of keys) if (attribution[key] && !url.searchParams.has(key)) url.searchParams.set(key, attribution[key]);
-        const rewritten = `${url.pathname}${url.search}${url.hash}`;
-        link.setAttribute("href", rewritten);
+        link.setAttribute("href", `${url.pathname}${url.search}${url.hash}`);
       } catch (_) {}
     });
   }
@@ -197,7 +201,7 @@
     try { localStorage.setItem(CONSENT_KEY, value); } catch (_) {}
     updateGoogleConsent(value);
     if (value === "granted") {
-      captureAttribution();
+      captureFirstAttribution();
       measurementId();
       propagateAttributionToInternalLinks();
       void loadVendors();
@@ -271,7 +275,7 @@
   });
 
   if (consentState === "granted") {
-    captureAttribution();
+    captureFirstAttribution();
     measurementId();
     propagateAttributionToInternalLinks();
     scheduleVendors();
