@@ -35,22 +35,70 @@
     });
   }
 
+  function referrerSource(host) {
+    const value = String(host || "").toLowerCase();
+    if (!value) return { source: "", medium: "" };
+    if (/(^|\.)google\./i.test(value)) return { source: "google", medium: "organic" };
+    if (/(^|\.)(?:chatgpt\.com|openai\.com)$/i.test(value)) return { source: "chatgpt", medium: "ai_referral" };
+    if (/(^|\.)(?:copilot\.microsoft\.com|microsoftcopilot\.com)$/i.test(value)) return { source: "copilot", medium: "ai_referral" };
+    if (/(^|\.)perplexity\.ai$/i.test(value)) return { source: "perplexity", medium: "ai_referral" };
+    if (/(^|\.)gemini\.google\.com$/i.test(value)) return { source: "gemini", medium: "ai_referral" };
+    if (/(^|\.)claude\.ai$/i.test(value)) return { source: "claude", medium: "ai_referral" };
+    if (/(^|\.)(?:facebook\.com|fb\.com)$/i.test(value)) return { source: "facebook", medium: "referral" };
+    if (/(^|\.)tiktok\.com$/i.test(value)) return { source: "tiktok", medium: "referral" };
+    return { source: value, medium: "referral" };
+  }
+
   function currentAttribution() {
     const params = new URLSearchParams(location.search);
     let referrerHost = "";
     try { referrerHost = document.referrer ? new URL(document.referrer).hostname : ""; } catch (_) {}
+    const clickId = params.get("gclid") || params.get("gbraid") || params.get("wbraid") || "";
+    const inferred = clickId ? { source: "google", medium: "cpc" } : referrerSource(referrerHost);
     return Object.fromEntries(Object.entries({
-      utm_source: params.get("utm_source"), utm_medium: params.get("utm_medium"),
-      utm_campaign: params.get("utm_campaign"), utm_content: params.get("utm_content"),
+      utm_source: params.get("utm_source") || inferred.source,
+      utm_medium: params.get("utm_medium") || inferred.medium,
+      utm_campaign: params.get("utm_campaign"),
+      utm_content: params.get("utm_content"),
+      utm_term: params.get("utm_term"),
+      gclid: params.get("gclid"),
+      gbraid: params.get("gbraid"),
+      wbraid: params.get("wbraid"),
       province: params.get("province") || document.documentElement.dataset.province,
-      landing_path: location.pathname, referrer_host: referrerHost, first_seen_at: new Date().toISOString(),
-    }).filter(([, value]) => value));
+      landing_path: location.pathname,
+      referrer_host: referrerHost,
+      captured_at: new Date().toISOString(),
+    }).filter(([, value]) => typeof value === "string" && value.trim()));
   }
 
-  function captureFirstAttribution() {
+  function captureAttribution() {
     try {
       const stored = JSON.parse(localStorage.getItem(ATTRIBUTION_KEY) || "{}");
-      if (!stored.first_seen_at) localStorage.setItem(ATTRIBUTION_KEY, JSON.stringify(currentAttribution()));
+      const current = currentAttribution();
+      const params = new URLSearchParams(location.search);
+      const hasExplicitCampaign = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "gbraid", "wbraid"]
+        .some((key) => Boolean(params.get(key)));
+      const hasExternalReferrer = Boolean(current.referrer_host) && !/(^|\.)thaylinhtuyenthomo\.vn$/i.test(current.referrer_host);
+      const next = { ...stored };
+
+      if (!stored.first_seen_at) {
+        next.first_seen_at = current.captured_at || new Date().toISOString();
+        next.first_utm_source = current.utm_source || "direct";
+        next.first_utm_medium = current.utm_medium || "none";
+        next.first_utm_campaign = current.utm_campaign || "";
+        next.first_utm_content = current.utm_content || "";
+        next.first_utm_term = current.utm_term || "";
+        next.first_landing_path = current.landing_path || location.pathname;
+        next.first_referrer_host = current.referrer_host || "";
+      }
+
+      if (hasExplicitCampaign || hasExternalReferrer || !stored.utm_source) {
+        for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "gbraid", "wbraid", "province", "landing_path", "referrer_host"]) {
+          if (current[key]) next[key] = current[key];
+        }
+        next.last_seen_at = current.captured_at || new Date().toISOString();
+      }
+      localStorage.setItem(ATTRIBUTION_KEY, JSON.stringify(next));
     } catch (_) {}
   }
 
@@ -116,7 +164,7 @@
     try { localStorage.setItem(CONSENT_KEY, value); } catch (_) {}
     updateGoogleConsent(value);
     if (value === "granted") {
-      captureFirstAttribution(); measurementId(); void loadVendors();
+      captureAttribution(); measurementId(); void loadVendors();
       window.fbq?.("consent", "grant");
     } else {
       for (let index = dataLayer.length - 1; index >= 0; index -= 1) if (dataLayer[index]?.event) dataLayer.splice(index, 1);
@@ -129,12 +177,23 @@
     let stored = {};
     try { stored = JSON.parse(localStorage.getItem(ATTRIBUTION_KEY) || "{}"); } catch (_) {}
     const params = new URLSearchParams(location.search);
+    const clickId = params.get("gclid") || params.get("gbraid") || params.get("wbraid") || "";
     return Object.fromEntries(Object.entries({
-      utm_source: params.get("utm_source") || stored.utm_source,
-      utm_medium: params.get("utm_medium") || stored.utm_medium,
+      utm_source: params.get("utm_source") || (clickId ? "google" : "") || stored.utm_source,
+      utm_medium: params.get("utm_medium") || (clickId ? "cpc" : "") || stored.utm_medium,
       utm_campaign: params.get("utm_campaign") || stored.utm_campaign,
       utm_content: params.get("utm_content") || stored.utm_content,
+      utm_term: params.get("utm_term") || stored.utm_term,
+      gclid: params.get("gclid") || stored.gclid,
+      gbraid: params.get("gbraid") || stored.gbraid,
+      wbraid: params.get("wbraid") || stored.wbraid,
       province: params.get("province") || document.documentElement.dataset.province || stored.province,
+      first_source: stored.first_utm_source,
+      first_medium: stored.first_utm_medium,
+      first_campaign: stored.first_utm_campaign,
+      first_content: stored.first_utm_content,
+      first_term: stored.first_utm_term,
+      first_landing_path: stored.first_landing_path,
     }).filter(([, value]) => typeof value === "string" && value.trim()));
   }
 
@@ -153,28 +212,28 @@
     dataLayer.push({ event: "contact_click", channel, context: link.dataset.context || "site_link", page_path: location.pathname, ...readAttribution() });
     if (channel === "application" && !formOpened) {
       formOpened = true;
-      dataLayer.push({ event: "application_form_open", context: "application_link", page_path: location.pathname });
+      dataLayer.push({ event: "application_form_open", context: "application_link", page_path: location.pathname, ...readAttribution() });
     }
   }, { capture: true });
 
   document.addEventListener("focusin", (event) => {
     if (!formOpened && event.target.closest?.("[data-application-form]")) {
       formOpened = true;
-      dataLayer.push({ event: "application_form_open", context: "application_form", page_path: location.pathname });
+      dataLayer.push({ event: "application_form_open", context: "application_form", page_path: location.pathname, ...readAttribution() });
     }
   });
 
   updateGoogleConsent(consentState, true);
-  window.tlTrack = (name, payload = {}) => dataLayer.push({ event: name, ...payload });
+  window.tlTrack = (name, payload = {}) => dataLayer.push({ event: name, ...readAttribution(), ...payload });
   const queued = Array.isArray(window.tlTrackingQueue) ? window.tlTrackingQueue.splice(0) : [];
   queued.forEach(([name, payload]) => window.tlTrack(name, payload));
   window.thayLinhAnalytics = Object.freeze({
     ga4Id: GA4_ID, metaPixelId: META_PIXEL_ID, track: (event) => dataLayer.push(event),
     load: loadVendors, consent: setConsent, consentState: () => consentState,
-    openConsent, measurementId,
+    openConsent, measurementId, attribution: readAttribution,
   });
 
-  if (consentState === "granted") { captureFirstAttribution(); measurementId(); scheduleVendors(); }
+  if (consentState === "granted") { captureAttribution(); measurementId(); scheduleVendors(); }
   else if (consentState === "pending") {
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", () => void openConsent(), { once: true });
     else void openConsent();

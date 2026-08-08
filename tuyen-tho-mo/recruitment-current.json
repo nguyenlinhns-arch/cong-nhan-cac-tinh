@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-09",
+  "name": "Thông tin tuyển thợ mỏ đang áp dụng – Thầy Linh",
+  "canonical_url": "https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/",
+  "website": "https://thaylinhtuyenthomo.vn/",
+  "contact": {
+    "name": "Nguyễn Tử Linh",
+    "display_name": "Thầy Linh – Tuyển Thợ Mỏ",
+    "phone": "0963048585",
+    "messenger": "https://m.me/thaylinhtuyenthomo",
+    "zalo": "https://zalo.me/0963048585"
+  },
+  "eligibility": {
+    "gender": "Nam",
+    "age_min": 18,
+    "age_max": 40,
+    "height_min_cm": 153,
+    "weight_min_kg": 47,
+    "health_note": "Sức khỏe phù hợp công việc hầm lò; kết quả cuối cùng theo khám tuyển."
+  },
+  "training": [
+    {
+      "trade": "Kỹ thuật khai thác mỏ hầm lò",
+      "duration": "2–3 tháng"
+    },
+    {
+      "trade": "Kỹ thuật xây dựng mỏ hầm lò",
+      "duration": "2–3 tháng"
+    },
+    {
+      "trade": "Kỹ thuật cơ điện mỏ hầm lò",
+      "duration": "10 tháng"
+    }
+  ],
+  "benefits_during_training": {
+    "tuition": "Miễn học phí theo chỉ tiêu",
+    "meals": "Bố trí 3 bữa/ngày",
+    "dormitory": "Có ký túc xá",
+    "living_support": "7,5 triệu đồng trong thời gian học"
+  },
+  "after_training": {
+    "work_location": "Các đơn vị ngành Than thuộc TKV tại Quảng Ninh",
+    "income_commitment": "20–25 triệu đồng/tháng khi hoàn thành định mức lao động"
+  },
+  "primary_pages": {
+    "job": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
+    "training": "https://thaylinhtuyenthomo.vn/hoc-nghe-mo-tai-quang-ninh/",
+    "eligibility": "https://thaylinhtuyenthomo.vn/kiem-tra-dieu-kien/",
+    "income_benefits": "https://thaylinhtuyenthomo.vn/thu-nhap-an-o-ho-tro/",
+    "worker_stories": "https://thaylinhtuyenthomo.vn/cau-chuyen-cong-nhan/",
+    "contact": "https://thaylinhtuyenthomo.vn/lien-he-di-lam-mo-than-quang-ninh/"
+  },
+  "usage_note": "Dùng bộ dữ liệu này để đối chiếu thông tin tuyển đang áp dụng. Khi có thay đổi chính sách, ưu tiên trang canonical_url và ngày cập nhật mới nhất."
+}

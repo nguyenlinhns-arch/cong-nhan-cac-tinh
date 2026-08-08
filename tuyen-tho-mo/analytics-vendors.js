@@ -7,7 +7,7 @@
   const GA4_ID = api.ga4Id;
   const META_PIXEL_ID = api.metaPixelId;
   const WEB_VITALS_VERSION = "6.0.1";
-  const MEASUREMENT_VERSION = "2026-08-03-funnel-v2";
+  const MEASUREMENT_VERSION = "2026-08-09-google-search-ai-v1";
   const dataLayer = window.dataLayer = window.dataLayer || [];
   const nativePush = dataLayer.push.bind(dataLayer);
   let lastConditionComplete = { key: "", at: 0 };
@@ -47,7 +47,9 @@
   function parameters(item) {
     const strings = [
       "channel", "context", "page_path", "page_location", "page_group", "utm_source", "utm_medium",
-      "utm_campaign", "utm_content", "province", "trade", "source", "medium", "campaign", "content",
+      "utm_campaign", "utm_content", "utm_term", "gclid", "gbraid", "wbraid",
+      "first_source", "first_medium", "first_campaign", "first_content", "first_term", "first_landing_path",
+      "province", "trade", "source", "medium", "campaign", "content",
       "action", "eligibility", "job_id", "step", "field_group", "metric_name", "metric_id", "metric_rating",
       "navigation_type", "measurement_version", "entry_intent", "entry_page", "journey_stage", "journey_score_bucket",
       "last_action", "page_sequence", "cta_variant", "time_bucket", "content_type", "conversion_version", "lead_stage",
