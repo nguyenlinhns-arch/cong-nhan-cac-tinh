@@ -37,4 +37,5 @@ Sitemap: https://thaylinhtuyenthomo.vn/news-sitemap.xml
 # Nguồn cập nhật nội dung
 # RSS: https://thaylinhtuyenthomo.vn/feed.xml
 # JSON Feed: https://thaylinhtuyenthomo.vn/feed.json
+# Thông tin tuyển đang áp dụng dạng JSON: https://thaylinhtuyenthomo.vn/recruitment-current.json
 # Hướng dẫn cho hệ thống AI: https://thaylinhtuyenthomo.vn/llms.txt
