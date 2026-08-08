@@ -6,6 +6,7 @@
   const CONSENT_KEY = "thaylinh_measurement_consent_v1";
   const ATTRIBUTION_KEY = "thaylinh_attribution";
   const MEASUREMENT_ID_KEY = "thaylinh_measurement_id_v1";
+  const JOB_PATH = "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/";
   const dataLayer = window.dataLayer = window.dataLayer || [];
   let consentState = readConsent();
   let vendorPromise = null;
@@ -128,6 +129,38 @@
     });
   }
 
+  function isPaidGoogleLanding() {
+    const params = new URLSearchParams(location.search);
+    const hasClickId = Boolean(params.get("gclid") || params.get("gbraid") || params.get("wbraid"));
+    const source = String(params.get("utm_source") || "").toLowerCase();
+    const medium = String(params.get("utm_medium") || "").toLowerCase();
+    return location.pathname === JOB_PATH && (hasClickId || (source === "google" && /^(cpc|paid|paid_search|search)$/i.test(medium)));
+  }
+
+  function loadPaidSearchLanding() {
+    if (!isPaidGoogleLanding()) return;
+    void loadAsset("link", "href", "/google-search-intent.css?v=1", "google-search-intent-style");
+    void loadAsset("script", "src", "/google-search-intent.js?v=1", "google-search-intent-script");
+  }
+
+  function propagateAttributionToInternalLinks() {
+    if (consentState !== "granted") return;
+    const attribution = readAttribution();
+    const keys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "gbraid", "wbraid"];
+    if (!keys.some((key) => attribution[key])) return;
+    document.querySelectorAll("a[href]").forEach((link) => {
+      const raw = String(link.getAttribute("href") || "").trim();
+      if (!raw || raw.startsWith("#") || /^(?:mailto:|tel:|sms:|javascript:)/i.test(raw) || link.dataset.noAttribution === "true") return;
+      try {
+        const url = new URL(raw, location.href);
+        if (url.origin !== location.origin) return;
+        for (const key of keys) if (attribution[key] && !url.searchParams.has(key)) url.searchParams.set(key, attribution[key]);
+        const rewritten = `${url.pathname}${url.search}${url.hash}`;
+        link.setAttribute("href", rewritten);
+      } catch (_) {}
+    });
+  }
+
   function loadVendors() {
     if (consentState !== "granted") return Promise.resolve(null);
     if (!vendorPromise) vendorPromise = loadAsset("script", "src", "/analytics-vendors.js?v=1", "analytics-vendors").catch(() => null);
@@ -164,7 +197,10 @@
     try { localStorage.setItem(CONSENT_KEY, value); } catch (_) {}
     updateGoogleConsent(value);
     if (value === "granted") {
-      captureAttribution(); measurementId(); void loadVendors();
+      captureAttribution();
+      measurementId();
+      propagateAttributionToInternalLinks();
+      void loadVendors();
       window.fbq?.("consent", "grant");
     } else {
       for (let index = dataLayer.length - 1; index >= 0; index -= 1) if (dataLayer[index]?.event) dataLayer.splice(index, 1);
@@ -224,6 +260,7 @@
   });
 
   updateGoogleConsent(consentState, true);
+  loadPaidSearchLanding();
   window.tlTrack = (name, payload = {}) => dataLayer.push({ event: name, ...readAttribution(), ...payload });
   const queued = Array.isArray(window.tlTrackingQueue) ? window.tlTrackingQueue.splice(0) : [];
   queued.forEach(([name, payload]) => window.tlTrack(name, payload));
@@ -233,8 +270,12 @@
     openConsent, measurementId, attribution: readAttribution,
   });
 
-  if (consentState === "granted") { captureAttribution(); measurementId(); scheduleVendors(); }
-  else if (consentState === "pending") {
+  if (consentState === "granted") {
+    captureAttribution();
+    measurementId();
+    propagateAttributionToInternalLinks();
+    scheduleVendors();
+  } else if (consentState === "pending") {
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", () => void openConsent(), { once: true });
     else void openConsent();
   }
