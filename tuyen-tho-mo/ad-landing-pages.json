@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-09",
+  "site": "https://thaylinhtuyenthomo.vn/",
+  "purpose": "Paid-search landing pages and machine-readable intent mapping for mine recruitment in Quang Ninh",
+  "pages": [
+    {
+      "intent": "tuyen_tho_mo_quang_ninh",
+      "url": "https://thaylinhtuyenthomo.vn/tuyen-tho-mo-quang-ninh/",
+      "primary_query_examples": ["tuyen tho mo quang ninh", "tuyen tho lo quang ninh", "viec lam mo quang ninh"],
+      "primary_action": "eligibility_check_and_application"
+    },
+    {
+      "intent": "hoc_nghe_mo_mien_phi",
+      "url": "https://thaylinhtuyenthomo.vn/hoc-nghe-mo-mien-phi/",
+      "primary_query_examples": ["hoc nghe mo mien phi", "hoc nghe mo co an o", "hoc tho lo quang ninh"],
+      "primary_action": "eligibility_check"
+    },
+    {
+      "intent": "viec_lam_tho_lo_20_25_trieu",
+      "url": "https://thaylinhtuyenthomo.vn/viec-lam-tho-lo-25-trieu/",
+      "primary_query_examples": ["luong tho lo 25 trieu", "viec lam tho lo luong cao", "luong cong nhan mo quang ninh"],
+      "primary_action": "proof_then_application"
+    }
+  ],
+  "current_recruitment": {
+    "gender": "Nam",
+    "age": "18-40",
+    "minimum_height_cm": 153,
+    "minimum_weight_kg": 47,
+    "training": {
+      "khai_thac_mo_ham_lo": "2-3 thang",
+      "xay_dung_mo_ham_lo": "2-3 thang",
+      "co_dien_mo_ham_lo": "10 thang"
+    },
+    "benefits": ["Mien hoc phi theo chi tieu", "Bo tri 3 bua/ngay", "Ky tuc xa", "Ho tro 7,5 trieu dong trong thoi gian hoc"],
+    "income_commitment": "20-25 trieu dong/thang khi hoan thanh dinh muc lao dong",
+    "work_location": "Cac don vi nganh Than thuoc TKV tai Quang Ninh"
+  },
+  "contact": {
+    "name": "Nguyen Tu Linh",
+    "display_name": "Thay Linh",
+    "phone": "0963048585"
+  }
+}
