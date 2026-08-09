@@ -1,0 +1,12 @@
+{
+  "updated_at":"2026-08-09",
+  "paid_bridge":"https://thaylinhtuyenthomo.vn/tuyen-tho-mo-quang-ninh/",
+  "canonical_conversion_page":"https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
+  "groups":[
+    {"ad_group":"AG_TuyenThoMo","intent":"job","core_keywords":["tuyển thợ mỏ","tuyển thợ lò","tuyển thợ mỏ quảng ninh","việc làm mỏ quảng ninh","việc làm thợ lò"],"utm_content":"intent_job"},
+    {"ad_group":"AG_HocNgheMo","intent":"training","core_keywords":["học nghề mỏ","học nghề mỏ miễn phí","học thợ lò quảng ninh","học nghề mỏ có ăn ở","học thợ lò bao lâu"],"utm_content":"intent_training"},
+    {"ad_group":"AG_LuongThoLo","intent":"income","core_keywords":["lương thợ lò","lương công nhân mỏ","việc làm mỏ lương 20 triệu","việc làm mỏ lương 25 triệu"],"utm_content":"intent_income"}
+  ],
+  "seo_only_initially":["thợ mỏ là nghề gì","thợ lò làm gì","làm thợ lò có nguy hiểm không","thợ lò làm mấy tiếng một ngày"],
+  "decision_metric":"cost_per_qualified_lead_then_cost_per_enrollment"
+}
