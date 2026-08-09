@@ -1,0 +1,10 @@
+{
+  "updated_at": "2026-08-09",
+  "primary_optimization_order": [
+    {"event":"qualified_lead","role":"primary_after_volume"},
+    {"event":"application_completed","role":"offline_quality"},
+    {"event":"enrollment","role":"highest_business_value"},
+    {"event":"generate_lead","role":"initial_learning_only"}
+  ],
+  "guardrail": "Do not optimize long-term bidding to raw lead if downstream qualification/enrollment data is available."
+}
