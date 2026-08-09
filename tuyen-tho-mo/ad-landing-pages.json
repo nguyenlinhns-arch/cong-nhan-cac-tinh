@@ -1,0 +1,24 @@
+{
+  "schema_version": 2,
+  "updated_at": "2026-08-09",
+  "strategy": "single_canonical_recruitment_landing_with_paid_search_intent_adaptation",
+  "primary_landing_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
+  "intent_detection": ["utm_term", "utm_content", "utm_campaign", "gclid", "gbraid", "wbraid"],
+  "intents": [
+    {
+      "intent": "job",
+      "query_examples": ["tuyen tho mo quang ninh", "tuyen tho lo quang ninh", "viec lam mo quang ninh"],
+      "supporting_urls": ["https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/", "https://thaylinhtuyenthomo.vn/cau-chuyen-cong-nhan/"]
+    },
+    {
+      "intent": "training",
+      "query_examples": ["hoc nghe mo mien phi", "hoc nghe mo co an o", "hoc tho lo quang ninh"],
+      "supporting_urls": ["https://thaylinhtuyenthomo.vn/hoc-nghe-mo-tai-quang-ninh/", "https://thaylinhtuyenthomo.vn/ho-so-nhap-hoc/"]
+    },
+    {
+      "intent": "income",
+      "query_examples": ["luong tho lo 25 trieu", "viec lam tho lo luong cao", "luong cong nhan mo quang ninh"],
+      "supporting_urls": ["https://thaylinhtuyenthomo.vn/bang-luong/", "https://thaylinhtuyenthomo.vn/thu-nhap-an-o-ho-tro/"]
+    }
+  ]
+}
