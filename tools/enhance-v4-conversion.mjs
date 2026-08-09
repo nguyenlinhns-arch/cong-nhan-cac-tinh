@@ -79,7 +79,7 @@ function enhanceApplicationScript() {
   source = source.replace('const DRAFT_FIELDS = ["province", "height", "weight", "education", "trade"]', 'const DRAFT_FIELDS = ["province", "district", "height", "weight"]');
   source = source.replace('`- Tỉnh, thành: ${values.province}`', '`- Tỉnh/huyện: ${[values.province, values.district].filter(Boolean).join(" - ")}`');
   source = source.replace('      province: values.province,', '      province: [values.province, values.district].filter(Boolean).join(" - "),\n      district: String(values.district || "").trim(),');
-  source = source.replace('"Đăng ký đã được tiếp nhận. Bộ phận tư vấn sẽ liên hệ theo số điện thoại bạn cung cấp."', '"Thầy Linh đã nhận thông tin. Anh giữ điện thoại/Zalo; bộ phận tư vấn sẽ kiểm tra điều kiện và hướng dẫn hồ sơ, nơi học, thời gian nhập học."');
+  source = source.replace('"Đăng ký đã được tiếp nhận. Bộ phận tư vấn sẽ liên hệ theo số điện thoại bạn cung cấp."', '"Thầy Linh đã nhận thông tin. Anh giữ điện thoại/Zalo; nếu sau 2 giờ chưa nhận phản hồi, hãy bấm Nhắn Zalo hoặc Gọi ngay bên dưới để được kiểm tra điều kiện."');
   for (const marker of ["Tỉnh/huyện", "district: String(values.district", 'DRAFT_FIELDS = ["province", "district", "height", "weight"]']) if (!source.includes(marker)) throw new Error(`V4 application script is missing ${marker}`);
   return writeIfChanged(target, source, before);
 }

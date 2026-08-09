@@ -172,7 +172,7 @@
         const eligibility = result.dataset.eligibility || "unknown";
         track("form_submit", { lead_stage: "submitted", eligibility });
         if (eligibility === "eligible") track("qualified_lead", { lead_stage: "prequalified", eligibility: "eligible" });
-        delivery.textContent = "Thầy Linh đã nhận thông tin. Anh giữ điện thoại/Zalo; bộ phận tư vấn sẽ kiểm tra điều kiện và hướng dẫn hồ sơ, nơi học, thời gian nhập học.";
+        delivery.textContent = "Thầy Linh đã nhận thông tin. Anh giữ điện thoại/Zalo; nếu sau 2 giờ chưa nhận phản hồi, hãy bấm Nhắn Zalo hoặc Gọi ngay bên dưới để được kiểm tra điều kiện.";
       });
       observer.observe(delivery, { attributes: true, attributeFilter: ["data-state"], childList: true, subtree: true });
     }

@@ -6,11 +6,11 @@
 
 - Tạo hạn phản hồi trong 2 giờ cho hồ sơ mới.
 - Gửi email báo ngay khi có đăng ký hợp lệ.
-- Kiểm tra mỗi 15 phút, cảnh báo hồ sơ chưa được xử lý sau 2 giờ và 24 giờ.
+- Kiểm tra mỗi 15 phút, cảnh báo hồ sơ chưa được xử lý sau 2 giờ và nhắc lại mỗi 24 giờ cho đến khi trạng thái được cập nhật.
 - Gửi bản tổng hợp CRM hằng ngày lúc 7 giờ.
 - Đóng dấu ngày khi hồ sơ chuyển sang `Đủ điều kiện`, `Nộp hồ sơ` hoặc `Nhập học`.
 - Dừng cảnh báo khi hồ sơ đã `Nhập học` hoặc `Không phù hợp`.
-- Tạo trang `Tổng quan` với số hồ sơ mới, quá hạn và tỷ lệ tiến triển theo nguồn/trạng thái.
+- Tạo trang `Tổng quan` với số hồ sơ mới, quá hạn, nhóm quá 24/72 giờ và tỷ lệ tiến triển theo nguồn/trạng thái.
 - Tạo sẵn tin nhắn gợi ý theo trạng thái để người phụ trách kiểm tra trước khi gửi.
 - Tạo trang `Chi phí quảng cáo` để nhập chi phí theo nguồn và chiến dịch.
 - Tạo trang `Hiệu quả nguồn` với số hồ sơ, hồ sơ đủ điều kiện, học sinh nhập học, chi phí trên một hồ sơ đủ điều kiện và chi phí trên một học sinh nhập học.

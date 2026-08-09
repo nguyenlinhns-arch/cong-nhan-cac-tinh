@@ -497,7 +497,7 @@
     if (deliveryOutput) {
       deliveryOutput.dataset.state = delivery.saved ? "saved" : "fallback";
       deliveryOutput.textContent = delivery.saved
-        ? "Thầy Linh đã nhận thông tin. Anh giữ điện thoại/Zalo; bộ phận tư vấn sẽ kiểm tra điều kiện và hướng dẫn hồ sơ, nơi học, thời gian nhập học."
+        ? "Thầy Linh đã nhận thông tin. Anh giữ điện thoại/Zalo; nếu sau 2 giờ chưa nhận phản hồi, hãy bấm Nhắn Zalo hoặc Gọi ngay bên dưới để được kiểm tra điều kiện."
         : "Chưa chuyển tự động được. Mã đăng ký được giữ nguyên; hãy thử gửi lại hoặc mở Zalo, Messenger, SMS bên dưới.";
     }
     if (submitButton) {

@@ -89,6 +89,7 @@ for (const marker of [
   "Tỉnh/huyện",
   "district: String(values.district",
   "Thầy Linh đã nhận thông tin",
+  "sau 2 giờ chưa nhận phản hồi",
 ]) if (!application.includes(marker)) errors.push(`job-application.js thiếu ${marker}`);
 
 for (const marker of [
@@ -108,6 +109,7 @@ for (const marker of [
   "simplifyApplicationForm",
   "updateInternalLinks",
   "Thầy Linh trực tiếp kiểm tra điều kiện",
+  "sau 2 giờ chưa nhận phản hồi",
 ]) if (!runtime.includes(marker)) errors.push(`v4-conversion.js thiếu ${marker}`);
 
 for (const forbidden of ["full_name:", "phone:", "birth_date:", "health_screen:"]) {

@@ -36,6 +36,9 @@ for (const marker of ["getSpreadsheetLocale()", "argumentSeparator", "arrayColum
 for (const marker of ["temporarily_unavailable", "Lỗi email cảnh báo không được phép", "return true;"]) {
   if (!code.includes(marker)) errors.push(`Missing resilient lead-alert marker: ${marker}`);
 }
+for (const marker of ["last24HourReminder", "repeat24HourReminder", "Quá 72 giờ còn Mới", "ƯU TIÊN CHĂM SÓC"]) {
+  if (!code.includes(marker)) errors.push(`Missing overdue lead escalation marker: ${marker}`);
+}
 for (const marker of [
   "phone_e164", "utm_term", "gclid", "gbraid", "wbraid", "first_source", "first_landing_path",
   "paid_search_intent", "google_ads_import_ready", "thaylinh_measurement_consent_v1", "/application-progressive.js?v=1",

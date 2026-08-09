@@ -270,7 +270,7 @@ if (contentFiles.length !== expectedContentFiles) fail(`Website: cần ${expecte
 for (const file of contentFiles) {
   const html = fs.readFileSync(file, "utf8");
   const relative = path.relative(root, file);
-  if (!html.includes('/analytics.js?v=6')) fail(`${relative}: chưa nạp analytics v5`);
+  if (!html.includes('/analytics.js?v=6')) fail(`${relative}: chưa nạp analytics v6`);
   const mobileCssVersion = path.relative(root, file) === "index.html" ? "/home-critical.css?v=1" : "/mobile-core.css?v=1";
   if (!html.includes(mobileCssVersion)) fail(`${relative}: chưa nạp ${mobileCssVersion}`);
   const mobileUxVersion = "/mobile-core.js?v=1";

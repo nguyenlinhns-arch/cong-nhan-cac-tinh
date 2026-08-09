@@ -167,6 +167,7 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
   if (delivered[0].entry_intent !== "application" || delivered[0].journey_page_count !== 1) throw new Error("Journey context was not delivered");
   if (delivered[0].website !== "") throw new Error("Honeypot value must remain empty");
   if (delivery.dataset.state !== "saved") throw new Error(`Unexpected delivery state: ${delivery.dataset.state}`);
+  if (!delivery.textContent.includes("sau 2 giờ chưa nhận phản hồi") || !delivery.textContent.includes("Nhắn Zalo hoặc Gọi ngay")) throw new Error("Successful delivery did not expose the two-hour contact fallback");
   if (!submit.disabled || submit.textContent !== "Đăng ký đã được tiếp nhận") throw new Error("Successful form was not locked after delivery");
   if (form.getAttribute("aria-busy") !== null || result.getAttribute("aria-busy") !== null) throw new Error("Busy state remained after delivery");
   if (result.focusCount !== 1 || result.scrollCount !== 1) throw new Error("Result was not revealed and focused exactly once");

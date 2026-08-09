@@ -146,15 +146,19 @@ function checkFollowUpReminders() {
 
     const elapsedHours = (now.getTime() - createdAt.getTime()) / 3600000;
     const isOverdue = deadline && deadline.getTime() < now.getTime();
+    const last24HourReminder = asDate_(record['Nhắc 24 giờ đã gửi']);
+    const repeat24HourReminder = elapsedHours >= 24 && (
+      !last24HourReminder || (now.getTime() - last24HourReminder.getTime()) >= 24 * 60 * 60 * 1000
+    );
     sheet.getRange(row, headers['Cảnh báo chăm sóc']).setValue(isOverdue ? 'QUÁ HẠN – cần liên hệ' : 'Đang trong hạn');
 
     if (elapsedHours >= 2 && !record['Nhắc 2 giờ đã gửi'] && status === 'Mới') {
       sheet.getRange(row, headers['Nhắc 2 giờ đã gửi']).setValue(now);
       alerts.push(alertRecord_(record, 'Quá 2 giờ chưa cập nhật'));
     }
-    if (elapsedHours >= 24 && !record['Nhắc 24 giờ đã gửi']) {
+    if (repeat24HourReminder) {
       sheet.getRange(row, headers['Nhắc 24 giờ đã gửi']).setValue(now);
-      alerts.push(alertRecord_(record, 'Quá 24 giờ chưa hoàn tất chăm sóc'));
+      alerts.push(alertRecord_(record, 'Quá 24 giờ chưa hoàn tất chăm sóc – nhắc lại hằng ngày đến khi cập nhật'));
     }
   });
 
@@ -237,6 +241,7 @@ function setupDashboard_(spreadsheet, candidateSheet) {
   const statusCol = columnLetter_(headers['Trạng thái']);
   const deadlineCol = columnLetter_(headers['Hạn phản hồi']);
   const sourceCol = columnLetter_(headers['Nguồn']);
+  const createdCol = columnLetter_(headers['Thời gian đăng ký']);
   const formulaSyntax = dashboardFormulaSyntax_(spreadsheet);
   const separator = formulaSyntax.argumentSeparator;
   dashboard.getRange('A1:F1').merge().setValue('BẢNG ĐIỀU HÀNH TUYỂN DỤNG').setFontSize(16).setFontWeight('bold').setBackground('#0b4f46').setFontColor('#ffffff').setHorizontalAlignment('center');
@@ -249,6 +254,15 @@ function setupDashboard_(spreadsheet, candidateSheet) {
   dashboard.getRange('D3').setValue('Kết quả theo nguồn và trạng thái').setFontWeight('bold');
   dashboard.getRange('D4').setFormula("=QUERY({'" + SHEET_NAME + "'!" + sourceCol + "2:" + sourceCol + formulaSyntax.arrayColumnSeparator + "'" + SHEET_NAME + "'!" + statusCol + "2:" + statusCol + "}" + separator + "\"select Col1,count(Col1) where Col1 is not null group by Col1 pivot Col2 label Col1 'Nguồn'\"" + separator + "0)");
   dashboard.getRange('A9').setValue('Cập nhật tự động khi trạng thái hồ sơ thay đổi. Chỉ số chính cần theo dõi: hồ sơ mới → đủ điều kiện → nộp hồ sơ → nhập học.').setWrap(true);
+  dashboard.getRange('A11:B11').merge().setValue('ƯU TIÊN CHĂM SÓC').setFontWeight('bold').setBackground('#8b1e1e').setFontColor('#ffffff').setHorizontalAlignment('center');
+  dashboard.getRange('A12:A13').setValues([['Quá 24 giờ còn Mới'], ['Quá 72 giờ còn Mới']]).setFontWeight('bold');
+  dashboard.getRange('B12').setFormula("=COUNTIFS('" + SHEET_NAME + "'!" + createdCol + "2:" + createdCol + separator + "\"<\"&NOW()-1" + separator + "'" + SHEET_NAME + "'!" + createdCol + "2:" + createdCol + separator + "\"<>\"" + separator + "'" + SHEET_NAME + "'!" + statusCol + "2:" + statusCol + separator + "\"Mới\")");
+  dashboard.getRange('B13').setFormula("=COUNTIFS('" + SHEET_NAME + "'!" + createdCol + "2:" + createdCol + separator + "\"<\"&NOW()-3" + separator + "'" + SHEET_NAME + "'!" + createdCol + "2:" + createdCol + separator + "\"<>\"" + separator + "'" + SHEET_NAME + "'!" + statusCol + "2:" + statusCol + separator + "\"Mới\")");
+  dashboard.getRange('A14').setValue('Hành động').setFontWeight('bold');
+  dashboard.getRange('B14').setFormula('=HYPERLINK("' + spreadsheet.getUrl() + '#gid=' + candidateSheet.getSheetId() + '"' + separator + '"Mở tab Ứng viên")');
+  dashboard.setConditionalFormatRules([
+    SpreadsheetApp.newConditionalFormatRule().whenNumberGreaterThan(0).setBackground('#f4cccc').setFontColor('#990000').setBold(true).setRanges([dashboard.getRange('B12:B13')]).build()
+  ]);
   dashboard.setFrozenRows(1);
   dashboard.setColumnWidths(1, 6, 150);
 }
