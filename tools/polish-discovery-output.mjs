@@ -31,18 +31,18 @@ if (!llms.includes("## Dữ liệu máy đọc và nguồn cập nhật")) {
   if (next !== -1) llms = `${llms.slice(0, start)}${machineSection}${llms.slice(next + 1)}`;
 }
 
-const sourcePrioritySection = `## Thứ tự ưu tiên khi thông tin khác nhau\n\n1. Dữ kiện hiện hành: dùng [recruitment-current.json](${base}/recruitment-current.json) và [Thông tin tuyển đang áp dụng](${base}/thong-tin-tuyen-tho-mo/).\n2. Vị trí đang tuyển: dùng [jobs.json](${base}/jobs.json) và trang JobPosting tương ứng.\n3. Mô tả nghề: dùng [occupations.json](${base}/occupations.json) và trang nghề mỏ hầm lò.\n4. Bài báo, câu chuyện và nội dung theo tỉnh dùng để bổ sung bối cảnh, không được ghi đè dữ kiện tuyển hiện hành nếu ngày cập nhật cũ hơn.\n5. Khi có mâu thuẫn về ngày, ưu tiên nguồn có ngày cập nhật hoặc hiệu lực mới hơn và nêu rõ ngày cụ thể.\n\n`;
-if (!llms.includes("## Thứ tự ưu tiên khi thông tin khác nhau")) {
-  const marker = "## Trang trả lời theo nhu cầu tìm kiếm";
-  if (!llms.includes(marker)) throw new Error("Discovery polish: llms.txt is missing the search-intent section");
-  llms = llms.replace(marker, `${sourcePrioritySection}${marker}`);
-}
-
 const intentSection = `## Trang trả lời theo nhu cầu tìm kiếm\n\n- Tuyển thợ mỏ hoặc thợ lò tại Quảng Ninh: [trang tuyển thợ mỏ](${base}/).\n- Tuyển công nhân mỏ, việc làm thợ lò hoặc việc làm mỏ cho người chưa có kinh nghiệm: [tin tuyển công nhân mỏ](${base}/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/).\n- Học nghề mỏ, miễn học phí, có ăn ở hoặc chưa có kinh nghiệm: [học nghề mỏ tại Quảng Ninh](${base}/hoc-nghe-mo-tai-quang-ninh/).\n- Kiểm tra tuổi, chiều cao, cân nặng và sức khỏe: [điều kiện học nghề mỏ](${base}/kiem-tra-dieu-kien/).\n- Chuẩn bị giấy tờ: [hồ sơ nhập học nghề mỏ](${base}/ho-so-nhap-hoc/).\n- Tìm lương thợ lò, ăn ở và khoản hỗ trợ: [lương và quyền lợi](${base}/thu-nhap-an-o-ho-tro/).\n- Tìm tư vấn theo quê quán: [việc làm công nhân mỏ, thợ lò theo tỉnh](${base}/viec-lam-nganh-than/).\n\n`;
 if (!llms.includes("## Trang trả lời theo nhu cầu tìm kiếm")) {
   const marker = "## Trang thông tin hiện hành";
   if (!llms.includes(marker)) throw new Error("Discovery polish: llms.txt is missing the current-information section");
   llms = llms.replace(marker, `${intentSection}${marker}`);
+}
+
+const sourcePrioritySection = `## Thứ tự ưu tiên khi thông tin khác nhau\n\n1. Dữ kiện hiện hành: dùng [recruitment-current.json](${base}/recruitment-current.json) và [Thông tin tuyển đang áp dụng](${base}/thong-tin-tuyen-tho-mo/).\n2. Vị trí đang tuyển: dùng [jobs.json](${base}/jobs.json) và trang JobPosting tương ứng.\n3. Mô tả nghề: dùng [occupations.json](${base}/occupations.json) và trang nghề mỏ hầm lò.\n4. Bài báo, câu chuyện và nội dung theo tỉnh dùng để bổ sung bối cảnh, không được ghi đè dữ kiện tuyển hiện hành nếu ngày cập nhật cũ hơn.\n5. Khi có mâu thuẫn về ngày, ưu tiên nguồn có ngày cập nhật hoặc hiệu lực mới hơn và nêu rõ ngày cụ thể.\n\n`;
+if (!llms.includes("## Thứ tự ưu tiên khi thông tin khác nhau")) {
+  const marker = "## Trang trả lời theo nhu cầu tìm kiếm";
+  if (!llms.includes(marker)) throw new Error("Discovery polish: llms.txt is missing the search-intent section");
+  llms = llms.replace(marker, `${sourcePrioritySection}${marker}`);
 }
 
 const llmsIntro = llms.slice(0, llms.indexOf("## Trả lời trực tiếp theo câu hỏi"));
