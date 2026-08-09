@@ -4,7 +4,10 @@ import path from "node:path";
 const workflowRoot = path.resolve(".github", "workflows");
 const siteRoot = path.resolve("tuyen-tho-mo");
 const errors = [];
-const allowedContentWriters = new Set(["sync-vinacomin-youtube.yml"]);
+// Only workflows that generate audited first-party site content may write back.
+// generate-local-coverage validates the exact 3,321/34 coverage, crawler files,
+// unique titles/canonicals and locality feed before its commit step.
+const allowedContentWriters = new Set(["sync-vinacomin-youtube.yml", "generate-local-coverage.yml"]);
 const retiredPaths = [
   ".deploy",
   ".publish-v110-fixed-trigger",
