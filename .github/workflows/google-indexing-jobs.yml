@@ -1,0 +1,31 @@
+name: Google Indexing API - Jobs
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'tuyen-tho-mo/jobs.json'
+      - 'tuyen-tho-mo/jobs-sitemap.xml'
+      - 'tuyen-tho-mo/viec-lam/**/index.html'
+      - 'scripts/google-indexing-jobs.mjs'
+
+permissions:
+  contents: read
+
+jobs:
+  submit-jobs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Submit active JobPosting URLs
+        env:
+          GOOGLE_INDEXING_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_INDEXING_SERVICE_ACCOUNT_JSON }}
+        run: node scripts/google-indexing-jobs.mjs
