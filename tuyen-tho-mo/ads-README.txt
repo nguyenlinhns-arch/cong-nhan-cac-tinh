@@ -1,0 +1,1 @@
+Paid-search landing pages are intentionally lightweight. Do not add heavy embeds above the fold. Keep the primary CTA pointed at the existing CRM-backed application form and keep factual recruitment claims synchronized with recruitment-current.json.
