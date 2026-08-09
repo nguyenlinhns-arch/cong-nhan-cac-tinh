@@ -1,0 +1,34 @@
+# Dùng làm danh sách negative seed ban đầu cho Search.
+# Sau khi chạy phải bổ sung từ Search Terms thực tế; negative keywords không tự khớp mọi biến thể.
+
+"kỹ sư mỏ"
+"tuyển kỹ sư"
+"đại học mỏ"
+"đại học mỏ địa chất"
+"đề thi"
+"giá than"
+"than đá giá"
+"cổ phiếu than"
+"chứng khoán than"
+"mỏ bitcoin"
+bitcoin
+minecraft
+game
+"việc làm văn phòng"
+"kế toán mỏ"
+"thực tập"
+"part time"
+"bán thời gian"
+"làm tại nhà"
+"remote"
+"xuất khẩu lao động"
+"việc làm cho nữ"
+"tuyển nữ"
+"nữ thợ mỏ"
+"bản đồ mỏ"
+"địa chất mỏ"
+"luận văn mỏ"
+"giáo trình mỏ"
+"tài liệu mỏ"
+"máy khai thác bitcoin"
+"khai thác coin"
