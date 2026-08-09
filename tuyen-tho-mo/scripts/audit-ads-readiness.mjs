@@ -24,7 +24,7 @@ const requiredLanding=[
   '/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/',
   '/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/',
   '/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/',
-  '/chinh-sach-bao-mat/'
+  '/quyen-rieng.html'
 ];
 for(const marker of requiredLanding) if(!html.includes(marker)) throw new Error(`Landing thiếu: ${marker}`);
 if(/"@type"\s*:\s*"JobPosting"/u.test(html)) throw new Error('Landing tổng hợp không được khai JobPosting');
