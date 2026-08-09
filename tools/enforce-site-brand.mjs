@@ -43,12 +43,18 @@ for (const file of htmlFiles) {
   if (/<meta\b[^>]*http-equiv=["']refresh["']/i.test(html)) continue;
 
   const header = html.match(/<header\b[^>]*>[\s\S]*?<\/header>/i)?.[0] || "";
-  const markers = [
+  const standardMarkers = [
     AVATAR,
     "<strong>Thầy Linh</strong>",
     "<small>Tuyển Thợ Mỏ</small>",
   ];
-  if (!header || !markers.every((marker) => header.includes(marker))) invalid.push(relative);
+  const compactAdsMarkers = [
+    AVATAR,
+    "Thầy Linh – Tuyển Thợ Mỏ",
+    "ads-brand",
+  ];
+  const hasApprovedBrand = standardMarkers.every((marker) => header.includes(marker)) || compactAdsMarkers.every((marker) => header.includes(marker));
+  if (!header || !hasApprovedBrand) invalid.push(relative);
   if (/brand-mark["'][^>]*>TL<\/span>|payroll-brand__mark["'][^>]*>TL<\/span>|Cổng kiểm chứng nghề mỏ/.test(header)) invalid.push(relative);
   if (/Website trả lời/i.test(html)) invalid.push(`${relative} (còn nhãn Website trả lời)`);
 }
