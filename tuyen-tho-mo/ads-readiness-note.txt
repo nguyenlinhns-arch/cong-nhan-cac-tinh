@@ -1,0 +1,1 @@
+Paid Search readiness: noindex paid bridge -> CRM canonical form -> qualified lead -> enrollment. Do not use raw bridge form.
