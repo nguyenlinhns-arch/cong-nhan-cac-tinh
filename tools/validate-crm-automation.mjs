@@ -5,6 +5,7 @@ const readme = fs.readFileSync("operations/apps-script/README.md", "utf8");
 const recruitmentConfig = fs.readFileSync("tuyen-tho-mo/recruitment-config.js", "utf8");
 const paidSearchIntent = fs.readFileSync("tuyen-tho-mo/google-search-intent.js", "utf8");
 const progressiveForm = fs.readFileSync("tuyen-tho-mo/application-progressive.js", "utf8");
+const vendors = fs.readFileSync("tuyen-tho-mo/analytics-vendors.js", "utf8");
 const errors = [];
 
 const requiredHeaders = [
@@ -50,10 +51,19 @@ for (const marker of [
 ]) {
   if (!progressiveForm.includes(marker)) errors.push(`Missing progressive-form marker: ${marker}`);
 }
+for (const marker of [
+  'params.action === "application_saved"', 'gtagEvent("generate_lead", params)',
+  'gtagEvent("lead_fallback_created", params)', 'LeadFallbackCreated',
+]) {
+  if (!vendors.includes(marker)) errors.push(`Missing lead-quality conversion marker: ${marker}`);
+}
+if (vendors.includes('if (["Lead", "application_message_created"].includes(item.event))')) {
+  errors.push("Lead fallback must not share the generate_lead branch");
+}
 if (/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(code)) errors.push("Code.gs must not contain a hard-coded email address");
 if (/UrlFetchApp|sms|zalo\.me|m\.me/i.test(code)) errors.push("CRM must not send unreviewed automatic applicant messages");
 
-console.log(JSON.stringify({ crmVersion: 3, headers: requiredHeaders.length, functions: requiredFunctions.length, googleAdsAttributionReady: true, progressiveFormReady: true, errors: errors.length, sampleErrors: errors.slice(0, 20) }, null, 2));
+console.log(JSON.stringify({ crmVersion: 3, headers: requiredHeaders.length, functions: requiredFunctions.length, googleAdsAttributionReady: true, progressiveFormReady: true, leadQualityGuardReady: true, errors: errors.length, sampleErrors: errors.slice(0, 20) }, null, 2));
 if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
