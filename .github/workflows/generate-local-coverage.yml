@@ -3,7 +3,7 @@ name: Generate local coverage
 on:
   workflow_dispatch:
   schedule:
-    - cron: '17 20 * * 0'
+    - cron: '17 20 * * *'
   push:
     branches: [main]
     paths:
@@ -13,25 +13,51 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: generate-local-coverage
+  cancel-in-progress: false
+
 jobs:
   generate:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Generate commune and legacy district coverage
+      - name: Generate all current commune, ward and special-zone pages
         run: node tuyen-tho-mo/scripts/generate-local-coverage.mjs
-      - name: Validate generated coverage
+      - name: Validate complete national coverage
         run: |
-          node -e "const d=require('./tuyen-tho-mo/local-coverage.json'); if(d.communes<3300||d.communes>3340) process.exit(1); console.log(d)"
-          test -f tuyen-tho-mo/commune-sitemap.xml
-      - name: Commit generated pages
+          node <<'NODE'
+          const fs=require('fs');
+          const d=JSON.parse(fs.readFileSync('./tuyen-tho-mo/local-coverage.json','utf8'));
+          if(d.communes!==3321) throw new Error(`Coverage must be exactly 3321, got ${d.communes}`);
+          const provinces=Object.keys(d.by_province||{});
+          if(provinces.length!==34) throw new Error(`Coverage must include 34 provinces/cities, got ${provinces.length}`);
+          if(provinces.some(k=>!d.by_province[k])) throw new Error('A province/city has zero commune-level pages');
+          const xml=fs.readFileSync('./tuyen-tho-mo/commune-sitemap.xml','utf8');
+          const urls=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
+          if(urls.length!==3321) throw new Error(`commune-sitemap.xml must contain 3321 URLs, got ${urls.length}`);
+          if(new Set(urls).size!==3321) throw new Error('commune-sitemap.xml contains duplicate URLs');
+          for(const [slug,count] of Object.entries(d.by_province)) {
+            const hub=`./tuyen-tho-mo/viec-lam-nganh-than/${slug}/xa-phuong/index.html`;
+            if(!fs.existsSync(hub)) throw new Error(`Missing province commune hub: ${slug}`);
+            if(count<1) throw new Error(`Invalid commune count for ${slug}`);
+          }
+          console.log(JSON.stringify(d,null,2));
+          NODE
+      - name: Validate crawler discovery files
+        run: |
+          grep -q 'commune-sitemap.xml' tuyen-tho-mo/robots.txt
+          grep -q 'jobs-sitemap.xml' tuyen-tho-mo/robots.txt
+          grep -q 'province-sitemap.xml' tuyen-tho-mo/robots.txt
+      - name: Commit generated coverage
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add tuyen-tho-mo/viec-lam-nganh-than tuyen-tho-mo/commune-sitemap.xml tuyen-tho-mo/local-coverage.json
           git diff --cached --quiet && exit 0
-          git commit -m 'Cập nhật phủ tuyển dụng đến cấp xã [skip ci]'
+          git commit -m 'Cập nhật đủ 3.321 địa bàn cấp xã [skip ci]'
           git push
