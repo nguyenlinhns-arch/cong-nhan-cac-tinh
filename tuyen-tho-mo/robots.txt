@@ -33,9 +33,12 @@ Allow: /
 
 Sitemap: https://thaylinhtuyenthomo.vn/sitemap.xml
 Sitemap: https://thaylinhtuyenthomo.vn/news-sitemap.xml
+Sitemap: https://thaylinhtuyenthomo.vn/jobs-sitemap.xml
 
 # Nguồn cập nhật nội dung
 # RSS: https://thaylinhtuyenthomo.vn/feed.xml
 # JSON Feed: https://thaylinhtuyenthomo.vn/feed.json
+# Nguồn tuyển dụng chuẩn hóa: https://thaylinhtuyenthomo.vn/jobs.json
+# Nguồn tuyển dụng XML: https://thaylinhtuyenthomo.vn/jobs.xml
 # Thông tin tuyển đang áp dụng dạng JSON: https://thaylinhtuyenthomo.vn/recruitment-current.json
 # Hướng dẫn cho hệ thống AI: https://thaylinhtuyenthomo.vn/llms.txt
