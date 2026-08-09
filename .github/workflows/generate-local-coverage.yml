@@ -8,8 +8,10 @@ on:
     branches: [main]
     paths:
       - 'tuyen-tho-mo/scripts/generate-local-coverage.mjs'
+      - 'tuyen-tho-mo/scripts/enhance-local-coverage.mjs'
       - 'tuyen-tho-mo/scripts/audit-local-coverage.mjs'
       - 'tuyen-tho-mo/scripts/link-province-commune-hubs.mjs'
+      - 'tuyen-tho-mo/recruitment-current.json'
       - '.github/workflows/generate-local-coverage.yml'
 
 permissions:
@@ -32,6 +34,8 @@ jobs:
         run: node tuyen-tho-mo/scripts/generate-local-coverage.mjs
       - name: Link every province page to its commune directory
         run: node tuyen-tho-mo/scripts/link-province-commune-hubs.mjs
+      - name: Add useful recruitment content to every locality page
+        run: node tuyen-tho-mo/scripts/enhance-local-coverage.mjs
       - name: Audit every generated locality page
         run: node tuyen-tho-mo/scripts/audit-local-coverage.mjs
       - name: Validate crawler discovery files
