@@ -1,0 +1,23 @@
+{
+  "sitelinks": [
+    {"text":"Kiểm Tra Điều Kiện","url":"https://thaylinhtuyenthomo.vn/kiem-tra-dieu-kien/","description1":"Đối chiếu tuổi và thể lực","description2":"Biết trước khả năng phù hợp"},
+    {"text":"Học Nghề Mỏ","url":"https://thaylinhtuyenthomo.vn/hoc-nghe-mo-tai-quang-ninh/","description1":"Xem thời gian học từng nghề","description2":"Miễn học phí theo chỉ tiêu"},
+    {"text":"Thu Nhập & Quyền Lợi","url":"https://thaylinhtuyenthomo.vn/thu-nhap-an-o-ho-tro/","description1":"Xem thu nhập và hỗ trợ","description2":"Thông tin rõ trước đăng ký"},
+    {"text":"Bảng Lương Thực Tế","url":"https://thaylinhtuyenthomo.vn/bang-luong/","description1":"Đối chiếu bảng lương công khai","description2":"Xem theo từng doanh nghiệp"},
+    {"text":"Hồ Sơ Nhập Học","url":"https://thaylinhtuyenthomo.vn/ho-so-nhap-hoc/","description1":"Xem giấy tờ cần chuẩn bị","description2":"Biết nơi và cách nhập học"},
+    {"text":"Thông Tin Tuyển Hiện Hành","url":"https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/","description1":"Điều kiện và chính sách mới","description2":"Đối chiếu trước khi đăng ký"}
+  ],
+  "callouts": [
+    "Nam 18–40 tuổi",
+    "Cao từ 1m53",
+    "Nặng từ 47kg",
+    "Chưa có nghề được đào tạo",
+    "Miễn học phí theo chỉ tiêu",
+    "Có ăn ở khi học",
+    "Hỗ trợ 7,5 triệu",
+    "Làm việc tại Quảng Ninh"
+  ],
+  "structured_snippets": [
+    {"header":"Loại hình","values":["Khai thác mỏ","Xây dựng mỏ","Cơ điện mỏ"]}
+  ]
+}
