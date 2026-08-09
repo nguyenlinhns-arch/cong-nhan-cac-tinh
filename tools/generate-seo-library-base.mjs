@@ -77,9 +77,11 @@ function mergeArticleIntoExistingShell(file, generatedHtml) {
   const existingArticle = existingHtml.match(articleBodyPattern)?.[0];
   const generatedArticle = generatedHtml.match(articleBodyPattern)?.[0];
   if (!existingArticle || !generatedArticle) return generatedHtml;
-  const merged = existingHtml
+  let merged = existingHtml
     .replace(articleBodyPattern, generatedArticle)
     .replace(/article-insights\.css\?v=\d+/g, "article-insights.css?v=14");
+  const generatedTitle = generatedHtml.match(/<title>[\s\S]*?<\/title>/i)?.[0];
+  if (generatedTitle) merged = merged.replace(/<title>[\s\S]*?<\/title>/i, generatedTitle);
   return `${merged.trimEnd()}\n`;
 }
 

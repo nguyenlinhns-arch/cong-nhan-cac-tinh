@@ -4,6 +4,7 @@ import path from "node:path";
 const root = path.resolve(import.meta.dirname, "..");
 const site = path.join(root, "tuyen-tho-mo");
 const data = JSON.parse(fs.readFileSync(path.join(root, "content", "daily-seo-articles.json"), "utf8"));
+const approvedWorkerImages = JSON.parse(fs.readFileSync(path.join(root, "content", "approved-worker-images.json"), "utf8"));
 const releaseDate = process.env.SEO_DAILY_DATE || new Intl.DateTimeFormat("en-CA", {
   timeZone: "Asia/Bangkok",
   year: "numeric",
@@ -18,6 +19,7 @@ const hub = fs.readFileSync(path.join(site, "giai-dap-nghe-mo", "index.html"), "
 const errors = [];
 const occupationTerms = ["khai thác mỏ", "xây dựng mỏ", "cơ điện mỏ"];
 const allowedBlueWorkerImages = new Set([
+  ...approvedWorkerImages.images.map((image) => `https://thaylinhtuyenthomo.vn/assets/${image.asset}`),
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp",
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp",
@@ -36,6 +38,7 @@ const unique = (items, label) => {
 unique(data.articles.map((article) => article.slug), "Slug");
 unique(data.articles.map((article) => article.publish_on), "Ngày xuất bản");
 unique(data.articles.map((article) => article.primary_query.toLocaleLowerCase("vi")), "Từ khóa chính");
+unique(data.articles.map((article) => article.image.src), "Ảnh chuỗi giải đáp");
 
 for (const article of data.articles) {
   if (!allowedBlueWorkerImages.has(article.image.src)) errors.push(`${article.slug}: ảnh không phải công nhân Vinacomin mặc áo xanh, đội mũ`);

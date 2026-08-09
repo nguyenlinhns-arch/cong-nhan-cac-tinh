@@ -828,6 +828,7 @@ export const existingNews = [
     urlPath: "tin-nganh-than/2026/07/31/tai-co-cau-tkv-2026-viec-lam-tho-mo",
     section: "Việc làm ngành Than",
     title: "TKV bước vào giai đoạn mới: cơ hội nào cho người thợ trẻ?",
+    seoTitle: "Tái cơ cấu TKV 2026: cơ hội cho người thợ trẻ",
     description: "Việc làm, kỹ năng, an toàn và cơ giới hóa trong định hướng cơ cấu lại TKV giai đoạn 2026–2030.",
     schemaDescription: "Giai đoạn 2026–2030, TKV đặt tuyển dụng, đào tạo, giữ chân thợ lò và cơ giới hóa trong cùng chiến lược phát triển hiện đại.",
     lead: "Tuyển dụng, đào tạo, giữ chân thợ lò và cơ giới hóa được đặt trong cùng một chiến lược—tín hiệu rõ về giá trị của người thợ có tay nghề trong giai đoạn 2026–2030.",

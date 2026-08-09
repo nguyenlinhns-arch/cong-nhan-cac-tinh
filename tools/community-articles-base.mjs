@@ -100,6 +100,7 @@ const stories = [
     slug: "tuyen-quang-phoi-hop-tuyen-sinh-nghe-mo-2025-2030",
     section: "Kết nối địa phương",
     title: "Bốn xã Tuyên Quang mở đường học nghề mỏ, việc làm TKV",
+    seoTitle: "Tuyển sinh nghề mỏ Tuyên Quang giai đoạn 2025–2030",
     description: "Bốn xã Ngọc Long, Đường Thượng, Thàng Tín, Trung Thịnh phối hợp Trường Cao đẳng TKV và doanh nghiệp tuyển sinh nghề mỏ giai đoạn 2025–2030.",
     lead: "Một chuỗi hợp tác đưa thông tin học nghề, điều kiện sinh hoạt và nơi làm việc đến tận thôn bản, giúp thanh niên Tuyên Quang nhìn rõ con đường vào ngành Than.",
     keyword: "tuyển sinh nghề mỏ Tuyên Quang",
@@ -1198,6 +1199,7 @@ const makeLocalCooperationStory = (item) => {
     slug: item.slug,
     section: "Kết nối địa phương",
     title: item.title,
+    seoTitle: item.seoTitle,
     description: item.description,
     lead: item.lead,
     keyword: item.keyword,
@@ -1574,6 +1576,7 @@ const expandedStories = [
   makeLocalCooperationStory({
     slug: "bao-lac-cao-bang-tu-van-hoc-nghe-mo",
     title: "Bảo Lạc đưa tư vấn học nghề mỏ đến từng xã, từng thôn",
+    seoTitle: "Học nghề mỏ Bảo Lạc: tư vấn tại xã, thôn",
     description: "Huyện Bảo Lạc phối hợp Trường Cao đẳng TKV tư vấn học nghề, giải quyết việc làm; kế hoạch 2025 đặt mục tiêu trên 60 học sinh toàn huyện.",
     lead: "Từ 144 lượt tư vấn trong quý I/2025, Bảo Lạc xác định cách làm sát cơ sở: trở lại xã, thôn khi người lao động cần được hướng dẫn.",
     keyword: "học nghề mỏ Bảo Lạc",
