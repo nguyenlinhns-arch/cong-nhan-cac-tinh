@@ -20,7 +20,7 @@ for(const [slug,count] of provinces){
     const file=path.join(ROOT,'viec-lam-nganh-than',slug,type,localSlug,'index.html');
     if(!fs.existsSync(file)) throw new Error(`${slug}/${key}: thiếu trang`);
     const html=fs.readFileSync(file,'utf8');
-    for(const marker of ['<h1>','rel="canonical"','utm_campaign=commune_jobs','NƠI HỌC &amp; LÀM VIỆC']) if(!html.includes(marker)) throw new Error(`${slug}/${key}: thiếu ${marker}`);
+    for(const marker of ['<h1>','rel="canonical"','utm_campaign=commune_jobs','NƠI HỌC & LÀM VIỆC']) if(!html.includes(marker)) throw new Error(`${slug}/${key}: thiếu ${marker}`);
     if(/"@type"\s*:\s*"JobPosting"/u.test(html)) throw new Error(`${slug}/${key}: không được khai JobPosting giả tại địa phương`);
     files++;
   }
