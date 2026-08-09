@@ -1,2 +1,2 @@
-2026-08-09T14:58:30+07:00
-Run final full-site validation against the materialized 3,321 locality pages after SEO/social normalization.
+2026-08-09T15:06:00+07:00
+Final validation after materializing SEO, social, mobile and accessibility for all 3,321 localities.
