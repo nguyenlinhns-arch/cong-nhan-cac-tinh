@@ -4,7 +4,12 @@ import path from 'node:path';
 const ROOT=path.resolve('tuyen-tho-mo');
 const coverage=JSON.parse(fs.readFileSync(path.join(ROOT,'local-coverage.json'),'utf8'));
 const BASE=path.join(ROOT,'viec-lam-nganh-than');
-const OG_IMAGE='https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg';
+const SITE='https://thaylinhtuyenthomo.vn';
+const AUTHOR_ID=`${SITE}/tac-gia/nguyen-tu-linh/#person`;
+const ORG_ID=`${SITE}/#organization`;
+const POLICY_URL=`${SITE}/nguyen-tac-bien-tap/`;
+const FACTS_URL=`${SITE}/thong-tin-tuyen-tho-mo/#webpage`;
+const OG_IMAGE=`${SITE}/assets/og-cover-luong-25-trieu-v4.jpg`;
 const esc=s=>String(s||'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]));
 const text=s=>String(s||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
 
@@ -36,28 +41,42 @@ function ensureAccessibility(html){
   const mainMatch=html.match(/<main\b([^>]*)>/i);
   if(!mainMatch) throw new Error('Trang địa phương thiếu main landmark');
   let mainId=mainMatch[1].match(/\bid=["']([^"']+)["']/i)?.[1]||'';
-  if(!mainId){
-    mainId='main-content';
-    html=html.replace(/<main\b([^>]*)>/i,(_m,attrs)=>`<main${attrs} id="${mainId}">`);
-  }
-  if(!/<a\b[^>]*class=["'][^"']*(?:skip-link|network-skip)[^"']*["']/i.test(html)){
-    html=html.replace(/<body([^>]*)>/i,`<body$1><a class="skip-link" href="#${esc(mainId)}">Bỏ qua điều hướng</a>`);
-  }
+  if(!mainId){mainId='main-content';html=html.replace(/<main\b([^>]*)>/i,(_m,attrs)=>`<main${attrs} id="${mainId}">`);}
+  if(!/<a\b[^>]*class=["'][^"']*(?:skip-link|network-skip)[^"']*["']/i.test(html)) html=html.replace(/<body([^>]*)>/i,`<body$1><a class="skip-link" href="#${esc(mainId)}">Bỏ qua điều hướng</a>`);
   return html;
 }
-function normalize(file){let html=fs.readFileSync(file,'utf8');html=ensureHead(html);html=ensureAccessibility(html);html=ensureScripts(html);fs.writeFileSync(file,html);}
+function enrichProvinceSchema(html){
+  return html.replace(/<script\b([^>]*)type=["']application\/ld\+json["']([^>]*)>([\s\S]*?)<\/script>/gi,(full,a,b,payload)=>{
+    try{
+      const doc=JSON.parse(payload);
+      const nodes=Array.isArray(doc?.['@graph'])?doc['@graph']:[doc];
+      const webpage=nodes.find(node=>node?.['@type']==='WebPage');
+      if(!webpage) return full;
+      webpage.author={'@id':AUTHOR_ID};
+      webpage.publisher={'@id':ORG_ID};
+      webpage.publishingPrinciples=POLICY_URL;
+      if(!webpage.about) webpage.about={'@id':FACTS_URL};
+      return `<script${a}type="application/ld+json"${b}>${JSON.stringify(doc)}</script>`;
+    }catch{return full;}
+  });
+}
+function ensureProvinceQuality(html){
+  const hasLocalEvidence=html.includes('id="local-story-title"');
+  html=html.replace(/<meta\s+name=["']robots["']\s+content=["'][^"']*["']\s*\/?>/i,hasLocalEvidence?'<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">':'<meta name="robots" content="noindex,follow,max-image-preview:large,max-snippet:-1">');
+  if(!html.includes('rel="author" href="/tac-gia/nguyen-tu-linh/"')) html=html.replace('</head>','<link rel="author" href="/tac-gia/nguyen-tu-linh/"></head>');
+  html=enrichProvinceSchema(html);
+  if(!/href=["'](?:\.\.\/\.\.\/|\/)thong-tin-tuyen-tho-mo\//i.test(html)) html=html.replace('</main>','<section class="section"><p><a href="/thong-tin-tuyen-tho-mo/">Xem thông tin tuyển thợ mỏ đang áp dụng →</a></p></section></main>');
+  html=html.replace(/20\s*[–-]\s*25\s*triệu(?:\s*đồng)?\/tháng(?!\s*khi hoàn thành định mức lao động)/giu,'20–25 triệu đồng/tháng khi hoàn thành định mức lao động');
+  return html;
+}
+function normalize(file,{provinceRoot=false}={}){let html=fs.readFileSync(file,'utf8');html=ensureHead(html);if(provinceRoot)html=ensureProvinceQuality(html);html=ensureAccessibility(html);html=ensureScripts(html);fs.writeFileSync(file,html);}
 
 let localities=0,hubs=0,provinceRoots=0;
 for(const [slug,count] of Object.entries(coverage.by_province||{})){
-  const hub=path.join(BASE,slug,'xa-phuong','index.html');
-  normalize(hub); hubs++;
-  const hubHtml=fs.readFileSync(hub,'utf8');
-  const links=[...hubHtml.matchAll(/href="\.\.\/(xã|phường|đặc khu)\/([^/]+)\//giu)];
-  if(links.length!==count) throw new Error(`${slug}: hub có ${links.length}/${count} địa bàn`);
+  const hub=path.join(BASE,slug,'xa-phuong','index.html');normalize(hub);hubs++;
+  const hubHtml=fs.readFileSync(hub,'utf8');const links=[...hubHtml.matchAll(/href="\.\.\/(xã|phường|đặc khu)\/([^/]+)\//giu)];if(links.length!==count)throw new Error(`${slug}: hub có ${links.length}/${count} địa bàn`);
   for(const m of links){normalize(path.join(BASE,slug,m[1],m[2],'index.html'));localities++;}
-  const root=path.join(BASE,slug,'index.html');
-  if(!fs.existsSync(root)) throw new Error(`${slug}: thiếu trang tỉnh`);
-  normalize(root); provinceRoots++;
+  const root=path.join(BASE,slug,'index.html');if(!fs.existsSync(root))throw new Error(`${slug}: thiếu trang tỉnh`);normalize(root,{provinceRoot:true});provinceRoots++;
 }
-if(localities!==3321||hubs!==34||provinceRoots!==34) throw new Error(`Chuẩn hóa sai số lượng: ${localities}/${hubs}/${provinceRoots}`);
-console.log(JSON.stringify({status:'ok',localities,hubs,province_roots:provinceRoots,accessibility:true},null,2));
+if(localities!==3321||hubs!==34||provinceRoots!==34)throw new Error(`Chuẩn hóa sai số lượng: ${localities}/${hubs}/${provinceRoots}`);
+console.log(JSON.stringify({status:'ok',localities,hubs,province_roots:provinceRoots,accessibility:true,province_quality:true},null,2));
