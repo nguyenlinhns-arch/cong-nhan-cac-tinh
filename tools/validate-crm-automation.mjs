@@ -4,6 +4,7 @@ const code = fs.readFileSync("operations/apps-script/Code.gs", "utf8");
 const readme = fs.readFileSync("operations/apps-script/README.md", "utf8");
 const recruitmentConfig = fs.readFileSync("tuyen-tho-mo/recruitment-config.js", "utf8");
 const paidSearchIntent = fs.readFileSync("tuyen-tho-mo/google-search-intent.js", "utf8");
+const progressiveForm = fs.readFileSync("tuyen-tho-mo/application-progressive.js", "utf8");
 const errors = [];
 
 const requiredHeaders = [
@@ -36,17 +37,23 @@ for (const marker of ["temporarily_unavailable", "Lỗi email cảnh báo không
 }
 for (const marker of [
   "phone_e164", "utm_term", "gclid", "gbraid", "wbraid", "first_source", "first_landing_path",
-  "paid_search_intent", "google_ads_import_ready", "thaylinh_measurement_consent_v1",
+  "paid_search_intent", "google_ads_import_ready", "thaylinh_measurement_consent_v1", "/application-progressive.js?v=1",
 ]) {
   if (!recruitmentConfig.includes(marker)) errors.push(`Missing Google Ads CRM attribution marker: ${marker}`);
 }
 for (const marker of ["content: `paid_search_intent_${intent}`", "utm_term:", "google_paid_search_fast_answer_view", "google_paid_search_fast_answer_click"]) {
   if (!paidSearchIntent.includes(marker)) errors.push(`Missing paid-search measurement marker: ${marker}`);
 }
+for (const marker of [
+  "full_name", "phone", "birth_date", "province", "Tiếp tục kiểm tra điều kiện",
+  "application_progressive_step", "step_1_validation_error", "step_2_view", "final_submit_attempt",
+]) {
+  if (!progressiveForm.includes(marker)) errors.push(`Missing progressive-form marker: ${marker}`);
+}
 if (/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(code)) errors.push("Code.gs must not contain a hard-coded email address");
 if (/UrlFetchApp|sms|zalo\.me|m\.me/i.test(code)) errors.push("CRM must not send unreviewed automatic applicant messages");
 
-console.log(JSON.stringify({ crmVersion: 3, headers: requiredHeaders.length, functions: requiredFunctions.length, googleAdsAttributionReady: true, errors: errors.length, sampleErrors: errors.slice(0, 20) }, null, 2));
+console.log(JSON.stringify({ crmVersion: 3, headers: requiredHeaders.length, functions: requiredFunctions.length, googleAdsAttributionReady: true, progressiveFormReady: true, errors: errors.length, sampleErrors: errors.slice(0, 20) }, null, 2));
 if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
