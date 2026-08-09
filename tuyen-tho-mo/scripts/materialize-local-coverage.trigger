@@ -1,2 +1,2 @@
-2026-08-09T14:39:00+07:00
-Final validation after materializing all 3,321 locality pages and machine feeds.
+2026-08-09T14:42:30+07:00
+Final full-site validation against the materialized 3,321 locality pages.
