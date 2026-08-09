@@ -56,7 +56,7 @@ jobs:
         run: node tuyen-tho-mo/scripts/link-province-commune-hubs.mjs
       - name: Add useful recruitment content to every locality page
         run: node tuyen-tho-mo/scripts/enhance-local-coverage.mjs
-      - name: Add historical recruitment evidence by commune
+      - name: Add privacy-safe historical recruitment evidence by commune
         run: node tuyen-tho-mo/scripts/enrich-local-worker-history.mjs
       - name: Normalize mobile analytics and social delivery
         run: node tuyen-tho-mo/scripts/normalize-local-page-delivery.mjs
@@ -64,7 +64,7 @@ jobs:
         run: node tuyen-tho-mo/scripts/build-locality-feed.mjs
       - name: Update AI and crawler locality discovery
         run: node tuyen-tho-mo/scripts/update-ai-locality-discovery.mjs
-      - name: Audit every generated locality page
+      - name: Audit every generated locality page and evidence privacy
         run: node tuyen-tho-mo/scripts/audit-local-coverage.mjs
       - name: Validate crawler discovery files
         run: |
@@ -77,8 +77,8 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add tuyen-tho-mo/viec-lam-nganh-than tuyen-tho-mo/commune-sitemap.xml tuyen-tho-mo/local-coverage.json tuyen-tho-mo/localities.json tuyen-tho-mo/robots.txt tuyen-tho-mo/llms.txt
+          git add tuyen-tho-mo/viec-lam-nganh-than tuyen-tho-mo/commune-sitemap.xml tuyen-tho-mo/local-coverage.json tuyen-tho-mo/local-evidence-report.json tuyen-tho-mo/localities.json tuyen-tho-mo/robots.txt tuyen-tho-mo/llms.txt
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'Cập nhật đủ 3.321 địa bàn cấp xã [skip ci]'
+          git commit -m 'Cập nhật đủ 3.321 địa bàn và bằng chứng địa phương [skip ci]'
           TARGET_BRANCH="${GITHUB_HEAD_REF:-main}"
           git push origin "HEAD:${TARGET_BRANCH}"
