@@ -22,26 +22,15 @@ const prioritizedBySlug = new Map(prioritized.map(p=>[p.slug,p]));
 const coverageSlugs = Object.keys(coverage.by_province || {});
 const provinces = coverageSlugs.map(slug => ({slug,name:ALL_NAMES[slug]||slug,aliases:[],...(prioritizedBySlug.get(slug)||{})}));
 const localityAliasesByProvince = Object.freeze({
-  "thanh-hoa": ["Mường Lát", "Lang Chánh"],
-  "nghe-an": ["Anh Sơn"],
-  "quang-tri": ["Hướng Hóa"],
-  "gia-lai": ["K'Bang", "K’Bang", "KBang"],
-  "quang-ninh": ["Bình Liêu"],
-  "thai-nguyen": ["Bằng Thành", "Phúc Lộc"],
-  "lao-cai": ["Bát Xát"],
-  "cao-bang": ["Bảo Lạc"],
-  "son-la": ["Sông Mã"],
-  "dien-bien": ["Tủa Chùa"],
+  "thanh-hoa": ["Mường Lát", "Lang Chánh"], "nghe-an": ["Anh Sơn"], "quang-tri": ["Hướng Hóa"],
+  "gia-lai": ["K'Bang", "K’Bang", "KBang"], "quang-ninh": ["Bình Liêu"], "thai-nguyen": ["Bằng Thành", "Phúc Lộc"],
+  "lao-cai": ["Bát Xát"], "cao-bang": ["Bảo Lạc"], "son-la": ["Sông Mã"], "dien-bien": ["Tủa Chùa"],
 });
 
-if (searchIndex.version !== 4 || searchIndex.tier !== "provinces" || !Array.isArray(searchIndex.items)) {
-  throw new Error(`All-province search expected province tier version 4, got ${searchIndex.version}`);
-}
+if (searchIndex.version !== 4 || searchIndex.tier !== "provinces" || !Array.isArray(searchIndex.items)) throw new Error(`All-province search expected province tier version 4, got ${searchIndex.version}`);
 if (provinces.length !== 34) throw new Error(`All-province search expected 34 provinces, got ${provinces.length}`);
 
-function decode(value = "") {
-  return String(value).replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#039;|&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
-}
+function decode(value = "") { return String(value).replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#039;|&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim(); }
 function strip(value = "") { return decode(String(value).replace(/<[^>]*>/g, " ")); }
 function match(html, pattern) { return decode(html.match(pattern)?.[1] || ""); }
 function localEvidencePhrases(html, province) {
@@ -66,12 +55,23 @@ function provinceItem(province) {
   const keywords = [...new Set([...metaKeywords,province.name,...aliases,...localityAliases,...localEvidence,`tuyển thợ mỏ ${province.name}`,`việc làm ngành than ${province.name}`,...aliases.flatMap((alias) => [`tuyển thợ mỏ ${alias}`, `việc làm ngành than ${alias}`]),...localityAliases.flatMap((alias) => [`tuyển thợ mỏ ${alias}`, `việc làm ngành than ${alias}`])])];
   return {url:`/viec-lam-nganh-than/${province.slug}/`,title:title||`Tuyển thợ mỏ tại ${province.name}`,description:description||`Thông tin học nghề mỏ dành cho lao động tại ${province.name}; nơi học và làm việc tại Quảng Ninh.`,keywords:keywords.slice(0,24),aliases:[...new Set([province.name,...aliases,...localityAliases])],category:"province",categoryLabel:"Việc làm theo tỉnh",type:"Việc làm theo tỉnh",priority:45,searchScope:noindex?"internal":"public",localityEvidenceCount:localEvidence.length,localityAliasCount:localityAliases.length};
 }
+function ensureLocalityDirectoryLink(province) {
+  const file = path.join(root,"viec-lam-nganh-than",province.slug,"index.html");
+  if(!fs.existsSync(file)) throw new Error(`Missing province page ${province.slug}`);
+  let html=fs.readFileSync(file,"utf8");
+  const href=`/viec-lam-nganh-than/${province.slug}/xa-phuong/`;
+  if(!html.includes(href)) {
+    const count=Number(coverage.by_province?.[province.slug]||0);
+    const block=`<section class="section local-directory-entry"><h2>Tuyển thợ mỏ theo từng xã, phường</h2><p><a href="${href}">Xem toàn bộ ${count} xã, phường, đặc khu của ${province.name} →</a></p></section>`;
+    html=html.replace('</main>',`${block}</main>`);
+    fs.writeFileSync(file,html);
+  }
+}
 
-// search-provinces.json is a lightweight province tier. Remove commune/ward pages
-// that the generic index builder may classify under the same path prefix.
 searchIndex.items = searchIndex.items.filter(item => item.category !== "province" || /^\/viec-lam-nganh-than\/[^/]+\/$/u.test(item.url || ""));
 let added=0,refreshed=0,expectedInternal=0,localityEvidencePhrases=0,localityAliases=0;
 for (const province of provinces) {
+  ensureLocalityDirectoryLink(province);
   const item=provinceItem(province);
   if(item.searchScope==="internal") expectedInternal++;
   localityEvidencePhrases+=Number(item.localityEvidenceCount||0); localityAliases+=Number(item.localityAliasCount||0);
@@ -88,4 +88,4 @@ const manifest=JSON.parse(fs.readFileSync(manifestPath,"utf8"));
 manifest.counts.provinces=provinceItems.length;
 manifest.counts.total=Number(manifest.counts.core||0)+provinceItems.length+Number(manifest.counts.content||0);
 fs.writeFileSync(manifestPath,`${JSON.stringify(manifest,null,2)}\n`);
-console.log(JSON.stringify({target:"tuyen-tho-mo/search-provinces.json",provinces:provinceItems.length,public_provinces:provinceItems.length-internalItems.length,internal_provinces:internalItems.length,locality_evidence_phrases:localityEvidencePhrases,locality_aliases:localityAliases,added,refreshed},null,2));
+console.log(JSON.stringify({target:"tuyen-tho-mo/search-provinces.json",provinces:provinceItems.length,public_provinces:provinceItems.length-internalItems.length,internal_provinces:internalItems.length,locality_evidence_phrases:localityEvidencePhrases,locality_aliases:localityAliases,province_directory_links:provinces.length,added,refreshed},null,2));
