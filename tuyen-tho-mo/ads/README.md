@@ -12,6 +12,20 @@ Dùng các nhóm ý định trong `search-campaign-map.json`: Tuyển thợ mỏ
 
 Ưu tiên nhắm theo truy vấn và địa lý chiến dịch. Không đưa điều kiện cá nhân nhạy cảm vào URL hoặc tham số tracking.
 
+## Message match theo ad group
+
+Mỗi ad group đặt custom parameter Google Ads `_intent` theo `search-campaign-map.json`:
+
+- Tuyển thợ mỏ → `tho_mo`
+- Tuyển thợ lò → `tho_lo`
+- Việc làm ngành Than → `nganh_than`
+- Học nghề mỏ → `hoc_nghe`
+- Không cần kinh nghiệm → `khong_kinh_nghiem`
+
+Final URL suffix chuyển giá trị này thành `tl_intent={_intent}`. `/ads-attribution.js` chỉ chấp nhận 5 giá trị đã whitelist và đổi **hero title/kicker/lead** cho đúng ý định của ad group. Nội dung cốt lõi, canonical, structured data và URL SEO vẫn giữ nguyên; không tạo thêm hàng loạt landing page gần giống nhau.
+
+Cách này giúp chuỗi **keyword → ad copy → landing hero** khớp hơn mà không nhân bản nội dung/URL.
+
 ## Auto-tagging + ValueTrack
 
 Bật Google Ads auto-tagging. `gclid`, `gbraid`, `wbraid` là các định danh click cần được giữ xuyên funnel để đo lường chính xác. Nếu cần báo cáo nội bộ, `search-campaign-map.json` đã có Final URL suffix mẫu dùng các ValueTrack field không phải PII như campaign ID, ad group ID, creative, keyword, match type, device và network.
@@ -22,7 +36,7 @@ Không tắt auto-tagging để thay bằng UTM thủ công. UTM chỉ là lớp
 
 `/ads-attribution.js` giữ các tham số không phải PII trong URL khi người dùng đi từ landing sang các bước nội bộ.
 
-Quy tắc mới:
+Quy tắc:
 
 - Trước khi người dùng đồng ý đo lường: click identifiers chỉ được giữ trong URL/bộ nhớ của trang để chuyển tiếp funnel, **không ghi vào localStorage**.
 - Sau khi measurement consent ở trạng thái `granted`: attribution mới được lưu cục bộ tối đa 90 ngày.
@@ -38,6 +52,8 @@ Các event dataLayer sẵn sàng để bind với Google tag/GTM:
 - `job_detail_click`
 - `proof_media_click`
 - `locality_click`
+
+Mỗi event trên landing có thêm `landing_intent` để đối chiếu hiệu quả của 5 nhóm search intent mà không cần đưa PII vào analytics.
 
 ## Conversion hierarchy
 
@@ -66,7 +82,8 @@ Không hard-code ID chưa xác minh trong repository. Khi tài khoản quảng c
 2. Conversion action ID/label cho các conversion chính.
 3. Consent settings phù hợp với cấu hình website.
 4. Auto-tagging.
-5. Kết nối Google Ads Data Manager/CRM cho conversion chất lượng.
+5. Custom parameter `_intent` cho từng ad group.
+6. Kết nối Google Ads Data Manager/CRM cho conversion chất lượng.
 
 ## Quality gate
 
@@ -74,4 +91,4 @@ Chạy:
 
 `node tuyen-tho-mo/scripts/audit-ads-readiness.mjs`
 
-CI `.github/workflows/ads-readiness.yml` chặn thay đổi làm mất canonical, search-intent content, attribution, CTA đo lường, privacy link, consent-safe persistence hoặc vô tình đưa PII vào GET URL.
+CI `.github/workflows/ads-readiness.yml` chặn thay đổi làm mất canonical, search-intent content, attribution, CTA đo lường, privacy link, consent-safe persistence, message match hoặc vô tình đưa PII vào GET URL.

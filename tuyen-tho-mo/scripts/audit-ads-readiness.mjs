@@ -33,18 +33,29 @@ if(/"@type"\s*:\s*"JobPosting"/u.test(html)) throw new Error('Landing tổng h�
 if(/<form\b[^>]*method=["']get["'][^>]*>[\s\S]*?(name=["'](?:name|phone|email)["'])/iu.test(html)) throw new Error('Không được đưa dữ liệu cá nhân vào GET URL');
 if(/name=["'](?:phone|email|name)["']/iu.test(html)) throw new Error('Landing Ads không thu PII trực tiếp; phải chuyển sang luồng kiểm tra điều kiện');
 
-const requiredAttribution=['gclid','gbraid','wbraid','gad_source','gad_campaignid','utm_source','utm_campaign','tl_adgroup','tl_matchtype','dataLayer','ads_landing_view','CONSENT_KEY','consentGranted','localStorage'];
+const requiredAttribution=['gclid','gbraid','wbraid','gad_source','gad_campaignid','utm_source','utm_campaign','tl_adgroup','tl_matchtype','tl_intent','INTENTS','applyIntent','Object.hasOwn','dataLayer','ads_landing_view','CONSENT_KEY','consentGranted','localStorage'];
 for(const marker of requiredAttribution) if(!js.includes(marker)) throw new Error(`Attribution thiếu: ${marker}`);
 if(!/if\(consentGranted\(\)\)\s*\{[\s\S]*localStorage\.setItem\(STORAGE_KEY/u.test(js)) throw new Error('Click identifiers chỉ được persist sau measurement consent');
 if(/sessionStorage\.setItem\(STORAGE_KEY/u.test(js)) throw new Error('Không persist click identifiers vào sessionStorage trước consent');
 for(const forbidden of ['hoten','birth_year','phone_number','email_address','full_name']) if(js.includes(forbidden)) throw new Error(`Attribution không được xử lý PII: ${forbidden}`);
 
-if(Number(campaign.version)<2) throw new Error('Campaign map phải dùng schema v2 trở lên');
+if(Number(campaign.version)<3) throw new Error('Campaign map phải dùng schema v3 trở lên');
 if(!Array.isArray(campaign.ad_groups)||campaign.ad_groups.length<5) throw new Error('Bản đồ Search Ads phải có ít nhất 5 nhóm ý định');
 if(!Array.isArray(campaign.negative_keyword_seeds)||campaign.negative_keyword_seeds.length<15) throw new Error('Thiếu negative keyword seeds');
 if(campaign.tracking?.auto_tagging_required!==true) throw new Error('Campaign map phải bắt buộc auto-tagging');
-for(const marker of ['{campaignid}','{adgroupid}','{creative}','{keyword}','{matchtype}','{device}','{network}']) if(!String(campaign.tracking?.final_url_suffix_recommended||'').includes(marker)) throw new Error(`Final URL suffix thiếu ValueTrack ${marker}`);
+for(const marker of ['{campaignid}','{adgroupid}','{creative}','{keyword}','{matchtype}','{device}','{network}','{_intent}']) if(!String(campaign.tracking?.final_url_suffix_recommended||'').includes(marker)) throw new Error(`Final URL suffix thiếu ValueTrack/custom parameter ${marker}`);
+if(campaign.tracking?.custom_parameter_required_per_ad_group!=='_intent') throw new Error('Phải dùng custom parameter _intent ở ad group để message match');
 if(campaign.tracking?.pii_in_url!==false) throw new Error('Tracking contract phải cấm PII trong URL');
+const allowedIntent=new Set(campaign.tracking?.allowed_intent_values||[]);
+if(allowedIntent.size!==5) throw new Error('Phải có đúng 5 intent landing được whitelist');
+const mappedIntent=new Set();
+for(const group of campaign.ad_groups){
+  const value=group.custom_parameters?._intent;
+  if(!allowedIntent.has(value)) throw new Error(`Ad group ${group.name} có _intent không hợp lệ: ${value||'thiếu'}`);
+  if(!group.landing_message) throw new Error(`Ad group ${group.name} thiếu landing_message`);
+  mappedIntent.add(value);
+}
+if(mappedIntent.size!==allowedIntent.size) throw new Error('Mỗi intent phải được map ít nhất một ad group');
 const eventSet=new Set(campaign.conversion_events_ready_for_gtm||[]);
 for(const event of ['ads_landing_view','eligibility_click','messenger_click','phone_click','payroll_proof_click','job_detail_click']) if(!eventSet.has(event)) throw new Error(`Campaign map thiếu event ${event}`);
 const primaryStages=new Set(campaign.conversion_hierarchy?.primary_when_connected||[]);
@@ -61,6 +72,7 @@ console.log(JSON.stringify({
   status:'ok',
   landing:'/tuyen-tho-mo-quang-ninh/',
   intent_sections:titles.length,
+  message_match_intents:mappedIntent.size,
   ad_groups:campaign.ad_groups.length,
   negative_keyword_seeds:campaign.negative_keyword_seeds.length,
   tracking_events:eventSet.size,
