@@ -45,8 +45,13 @@ for (const marker of [
 ]) {
   if (!recruitmentConfig.includes(marker)) errors.push(`Missing Google Ads CRM attribution marker: ${marker}`);
 }
-for (const marker of ["content: `paid_search_intent_${intent}`", "utm_term:", "google_paid_search_fast_answer_view", "google_paid_search_fast_answer_click"]) {
-  if (!paidSearchIntent.includes(marker)) errors.push(`Missing paid-search measurement marker: ${marker}`);
+for (const marker of [
+  "content: `paid_search_intent_${intent}_${subIntent}`", "utm_term:",
+  "google_paid_search_fast_answer_view", "google_paid_search_fast_answer_click",
+  "detectSubIntent", '"training:contact"', '"training:benefits"', '"training:location"',
+  '"training:duration"', '"job:no_experience"', '"income:salary"',
+]) {
+  if (!paidSearchIntent.includes(marker)) errors.push(`Missing paid-search relevance marker: ${marker}`);
 }
 for (const marker of [
   "full_name", "phone", "birth_date", "province", "Tiếp tục kiểm tra điều kiện",
@@ -66,7 +71,7 @@ if (vendors.includes('if (["Lead", "application_message_created"].includes(item.
 if (/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(code)) errors.push("Code.gs must not contain a hard-coded email address");
 if (/UrlFetchApp|sms|zalo\.me|m\.me/i.test(code)) errors.push("CRM must not send unreviewed automatic applicant messages");
 
-console.log(JSON.stringify({ crmVersion: 3, headers: requiredHeaders.length, functions: requiredFunctions.length, googleAdsAttributionReady: true, progressiveFormReady: true, leadQualityGuardReady: true, errors: errors.length, sampleErrors: errors.slice(0, 20) }, null, 2));
+console.log(JSON.stringify({ crmVersion: 3, headers: requiredHeaders.length, functions: requiredFunctions.length, googleAdsAttributionReady: true, paidSearchSubIntentReady: true, progressiveFormReady: true, leadQualityGuardReady: true, errors: errors.length, sampleErrors: errors.slice(0, 20) }, null, 2));
 if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);

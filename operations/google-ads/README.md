@@ -16,6 +16,17 @@ Bộ này là cấu hình vận hành chuẩn để triển khai Search Ads khi 
 
 Website tự đổi fast-answer theo intent từ `utm_term`, `utm_content`, `utm_campaign` và giữ click attribution phục vụ CRM.
 
+## SEO ↔ Paid Search
+
+`tuyen-tho-mo/search-intent-strategy.json` là bản đồ canonical giữa truy vấn, trang SEO và paid-search intent. Quy tắc là:
+
+- truy vấn có ý định hành động cao như “học thợ lò liên hệ ai”, “học nghề mỏ miễn phí”, “học thợ lò ở đâu”, “lương thợ lò bao nhiêu” được thử bằng Exact/Phrase;
+- truy vấn giải thích như “thợ mỏ là nghề gì”, “thợ lò có nguy hiểm không”, “làm mấy tiếng” được SEO phục vụ trước;
+- không mua traffic thông tin chỉ để tăng lượt truy cập; chỉ mở khi CRM chứng minh có qualified lead;
+- bài SEO là lớp giải thích/bằng chứng, còn landing tuyển dụng canonical là trang chuyển đổi chính.
+
+Chi tiết tại `informational-query-policy.md`.
+
 ## Final URL Suffix
 
 ```text
@@ -39,11 +50,13 @@ Không dùng click Zalo hoặc form start làm mục tiêu Smart Bidding chính.
 
 ## Asset
 
-`assets.json` chứa 6 sitelink và callout. Đây là số lượng sitelink nên có để hỗ trợ Ad Strength tốt hơn.
+`assets.json` chứa 6 sitelink và callout. Dùng sitelink tới kiểm tra điều kiện, học nghề, quyền lợi, bảng lương, hồ sơ và thông tin tuyển hiện hành để tăng độ liên quan mà không tạo landing trùng lặp.
 
 ## Negative keywords
 
 `negative-keywords.txt` là seed ban đầu. Negative keywords phải tiếp tục được bổ sung từ Search Terms thực tế vì negative matching không tự bao phủ mọi biến thể cùng nghĩa.
+
+Không dùng negative broad cho toàn bộ các câu hỏi “nguy hiểm / nghề gì / bảo hiểm / ca làm”. Đây là nội dung hợp lệ của nghề mỏ; nếu cần loại chi phí thì loại bằng Exact/Phrase tại campaign sau khi có dữ liệu Search Terms.
 
 ## Vận hành 14 ngày đầu
 
@@ -52,6 +65,7 @@ Không dùng click Zalo hoặc form start làm mục tiêu Smart Bidding chính.
 - KPI quyết định: chi phí / hồ sơ đủ điều kiện; khi đủ dữ liệu chuyển sang chi phí / người nhập học.
 - Không thay đổi ngân sách/bidding quá nhiều cùng lúc trong giai đoạn học.
 - Khi Exact/Phrase đã có tín hiệu Qualified lead ổn định, mới thử Broad trên nhóm từ khóa thắng và so sánh theo CPQL/Enrollment.
+- Mọi keyword mới phải được gắn vào một cluster trong `search-intent-strategy.json` để tránh hai campaign cùng tranh một ý định.
 
 ## CRM Google Sheet
 

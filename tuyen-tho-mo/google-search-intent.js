@@ -20,18 +20,36 @@
       .trim();
   }
 
+  const signal = normalize([
+    params.get("utm_term"),
+    params.get("utm_content"),
+    params.get("utm_campaign"),
+  ].filter(Boolean).join(" "));
+
   function detectIntent() {
-    const signal = normalize([
-      params.get("utm_term"),
-      params.get("utm_content"),
-      params.get("utm_campaign"),
-    ].filter(Boolean).join(" "));
-    if (/(hoc nghe|mien phi|hoc phi|an o|ky tuc|7 5|dao tao|hoc tho lo)/.test(signal)) return "training";
+    if (/(hoc nghe|mien phi|hoc phi|an o|ky tuc|7 5|dao tao|hoc tho lo|hoc tho mo)/.test(signal)) return "training";
     if (/(luong|thu nhap|20 25|25 trieu|bang luong|luong cao)/.test(signal)) return "income";
     return "job";
   }
 
+  function detectSubIntent(intent) {
+    if (intent === "training") {
+      if (/(lien he ai|lien he|tu van ai|dang ky voi ai)/.test(signal)) return "contact";
+      if (/(mien phi|mat tien|hoc phi|an o|ky tuc|ho tro|7 5)/.test(signal)) return "benefits";
+      if (/(o dau|dia chi|quang ninh|nhap hoc o dau)/.test(signal)) return "location";
+      if (/(bao lau|may thang|thoi gian hoc)/.test(signal)) return "duration";
+      return "general";
+    }
+    if (intent === "income") {
+      if (/(bao nhieu|luong tho lo|luong cong nhan mo)/.test(signal)) return "salary";
+      return "general";
+    }
+    if (/(kinh nghiem|chua co nghe|chua tung lam)/.test(signal)) return "no_experience";
+    return "general";
+  }
+
   const intent = detectIntent();
+  const subIntent = detectSubIntent(intent);
   const configs = {
     job: {
       eyebrow: "THÔNG TIN TUYỂN ĐANG ÁP DỤNG",
@@ -88,16 +106,62 @@
       ],
     },
   };
-  const config = configs[intent] || configs.job;
+
+  const variants = {
+    "training:contact": {
+      eyebrow: "HỌC THỢ LÒ · LIÊN HỆ TRỰC TIẾP",
+      title: "Học thợ lò, thợ mỏ liên hệ ai?",
+      lead: "Liên hệ Thầy Linh qua 096 304 8585 để kiểm tra điều kiện, chọn nghề và nhận lịch tiếp nhận trước khi đi Quảng Ninh.",
+      primary: "Đăng ký để Thầy Linh tư vấn",
+      proof: [["/giai-dap-nghe-mo/hoc-tho-lo-lien-he-ai/", "Xem hướng dẫn liên hệ"], ["/kiem-tra-dieu-kien/", "Tự kiểm tra điều kiện"], ["/ho-so-nhap-hoc/", "Xem hồ sơ cần chuẩn bị"]],
+    },
+    "training:benefits": {
+      eyebrow: "HỌC NGHỀ MỎ · HỌC PHÍ VÀ HỖ TRỢ",
+      title: "Học thợ lò có miễn phí không?",
+      lead: "Người học thuộc chỉ tiêu được miễn học phí, bố trí ăn ở và hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đang áp dụng.",
+      primary: "Kiểm tra điều kiện học miễn phí",
+      proof: [["/giai-dap-nghe-mo/hoc-tho-lo-co-mien-phi-khong/", "Xem giải thích học phí"], ["/thu-nhap-an-o-ho-tro/", "Xem ăn ở và hỗ trợ"], ["/thong-tin-tuyen-tho-mo/", "Đối chiếu chính sách hiện hành"]],
+    },
+    "training:location": {
+      eyebrow: "HỌC THỢ LÒ · QUẢNG NINH",
+      title: "Học thợ lò ở đâu tại Quảng Ninh?",
+      lead: "Địa điểm làm thủ tục theo thông tin đang áp dụng là Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh; chỉ nên đến sau khi được xác nhận lịch.",
+      primary: "Kiểm tra điều kiện trước khi đi",
+      proof: [["/giai-dap-nghe-mo/hoc-tho-lo-o-dau-quang-ninh/", "Xem địa điểm học"], ["/hoc-nghe-mo-tai-quang-ninh/", "Xem lộ trình học nghề"], ["/ho-so-nhap-hoc/", "Xem hồ sơ nhập học"]],
+    },
+    "training:duration": {
+      eyebrow: "HỌC NGHỀ MỎ · THỜI GIAN ĐÀO TẠO",
+      title: "Học thợ lò bao lâu thì đi làm?",
+      lead: "Khai thác và xây dựng mỏ hầm lò học khoảng 2–3 tháng; cơ điện mỏ khoảng 10 tháng. Người học phải đạt yêu cầu trước khi được tiếp nhận làm việc.",
+      primary: "Kiểm tra điều kiện học nghề",
+      proof: [["/giai-dap-nghe-mo/hoc-tho-lo-bao-lau/", "Xem thời gian học"], ["/hoc-nghe-mo-tai-quang-ninh/", "Xem từng nghề đào tạo"], ["/thong-tin-tuyen-tho-mo/", "Xem thông tin tuyển hiện hành"]],
+    },
+    "job:no_experience": {
+      eyebrow: "VIỆC LÀM MỎ · KHÔNG CẦN KINH NGHIỆM SẴN CÓ",
+      title: "Chưa từng làm mỏ có đăng ký được không?",
+      lead: "Có thể đăng ký kiểm tra điều kiện. Người phù hợp được đào tạo nghề từ đầu trước khi đi làm; không yêu cầu kinh nghiệm làm mỏ sẵn có.",
+      primary: "Kiểm tra điều kiện của anh",
+      proof: [["/giai-dap-nghe-mo/di-lam-mo-than-co-can-kinh-nghiem-khong/", "Xem giải đáp kinh nghiệm"], ["/hoc-nghe-mo-tai-quang-ninh/", "Xem chương trình đào tạo"], ["/kiem-tra-dieu-kien/", "Tự kiểm tra điều kiện"]],
+    },
+    "income:salary": {
+      eyebrow: "LƯƠNG THỢ LÒ · QUẢNG NINH",
+      title: "Lương thợ lò bao nhiêu một tháng?",
+      lead: "Chương trình đang áp dụng cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động; website có bảng lương để đối chiếu.",
+      primary: "Kiểm tra điều kiện & đăng ký",
+      proof: [["/giai-dap-nghe-mo/luong-tho-lo-bao-nhieu/", "Xem giải thích mức lương"], ["/bang-luong/", "Xem bảng lương thực tế"], ["/thu-nhap-an-o-ho-tro/", "Xem quyền lợi đầy đủ"]],
+    },
+  };
+
+  const baseConfig = configs[intent] || configs.job;
+  const variant = variants[`${intent}:${subIntent}`] || {};
+  const config = { ...baseConfig, ...variant };
 
   function track(name, payload = {}) {
     try {
       window.tlTrack?.(name, {
         page_path: location.pathname,
         landing_type: "google_paid_search",
-        // `content` và `utm_term` là các trường analytics-vendors hiện đã cho phép,
-        // nên intent được gửi thực sự tới GA4 thay vì chỉ tồn tại trong dataLayer.
-        content: `paid_search_intent_${intent}`,
+        content: `paid_search_intent_${intent}_${subIntent}`,
         utm_term: String(params.get("utm_term") || "").slice(0, 100),
         ...payload,
       });
@@ -108,6 +172,7 @@
     if (document.querySelector("[data-google-search-intent]")) return;
     document.documentElement.dataset.googlePaidSearch = "true";
     document.documentElement.dataset.googlePaidIntent = intent;
+    document.documentElement.dataset.googlePaidSubIntent = subIntent;
 
     const hero = document.querySelector(".job-hero");
     if (!hero) return;
@@ -119,6 +184,7 @@
     const section = document.createElement("section");
     section.className = "google-search-intent";
     section.dataset.googleSearchIntent = intent;
+    section.dataset.googleSearchSubIntent = subIntent;
     section.setAttribute("aria-labelledby", "google-search-intent-title");
     section.innerHTML = `
       <div class="google-search-intent__inner">
