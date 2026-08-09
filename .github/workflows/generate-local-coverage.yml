@@ -10,6 +10,7 @@ on:
       - 'tuyen-tho-mo/scripts/generate-local-coverage.mjs'
       - 'tuyen-tho-mo/scripts/enhance-local-coverage.mjs'
       - 'tuyen-tho-mo/scripts/build-locality-feed.mjs'
+      - 'tuyen-tho-mo/scripts/update-ai-locality-discovery.mjs'
       - 'tuyen-tho-mo/scripts/audit-local-coverage.mjs'
       - 'tuyen-tho-mo/scripts/link-province-commune-hubs.mjs'
       - 'tuyen-tho-mo/recruitment-current.json'
@@ -39,6 +40,8 @@ jobs:
         run: node tuyen-tho-mo/scripts/enhance-local-coverage.mjs
       - name: Build machine-readable locality feed
         run: node tuyen-tho-mo/scripts/build-locality-feed.mjs
+      - name: Update AI and crawler locality discovery
+        run: node tuyen-tho-mo/scripts/update-ai-locality-discovery.mjs
       - name: Audit every generated locality page
         run: node tuyen-tho-mo/scripts/audit-local-coverage.mjs
       - name: Validate crawler discovery files
@@ -46,11 +49,13 @@ jobs:
           grep -q 'commune-sitemap.xml' tuyen-tho-mo/robots.txt
           grep -q 'jobs-sitemap.xml' tuyen-tho-mo/robots.txt
           grep -q 'province-sitemap.xml' tuyen-tho-mo/robots.txt
+          grep -q 'localities.json' tuyen-tho-mo/robots.txt
+          grep -q 'localities.json' tuyen-tho-mo/llms.txt
       - name: Commit generated coverage
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add tuyen-tho-mo/viec-lam-nganh-than tuyen-tho-mo/commune-sitemap.xml tuyen-tho-mo/local-coverage.json tuyen-tho-mo/localities.json
+          git add tuyen-tho-mo/viec-lam-nganh-than tuyen-tho-mo/commune-sitemap.xml tuyen-tho-mo/local-coverage.json tuyen-tho-mo/localities.json tuyen-tho-mo/robots.txt tuyen-tho-mo/llms.txt
           git diff --cached --quiet && exit 0
           git commit -m 'Cập nhật đủ 3.321 địa bàn cấp xã [skip ci]'
           git push
