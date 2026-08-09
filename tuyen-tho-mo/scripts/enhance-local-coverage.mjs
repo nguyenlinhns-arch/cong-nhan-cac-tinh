@@ -4,7 +4,7 @@ import path from 'node:path';
 const ROOT = path.resolve('tuyen-tho-mo');
 const COVERAGE = JSON.parse(fs.readFileSync(path.join(ROOT, 'local-coverage.json'), 'utf8'));
 const POLICY = JSON.parse(fs.readFileSync(path.join(ROOT, 'recruitment-current.json'), 'utf8'));
-const SOURCE = COVERAGE.source;
+const SOURCE = COVERAGE.official_source || COVERAGE.source;
 const BASE = path.join(ROOT, 'viec-lam-nganh-than');
 
 const esc = (s='') => String(s).replace(/[&<>\"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]));
@@ -18,7 +18,7 @@ const after = POLICY.after_training || {};
 function parseHub(slug) {
   const file = path.join(BASE, slug, 'xa-phuong', 'index.html');
   const html = fs.readFileSync(file, 'utf8');
-  return [...html.matchAll(/href="\.\.\/(xã|phường|đặc khu)\/([^/]+)\/">([^<]+)<\/a>/giu)].map(m => ({type:m[1], slug:m[2], label:text(m[3])}));
+  return [...html.matchAll(/href="\.\.\/(xã|phường|đặc khu)\/([^/]+)\/">([\s\S]*?)<\/a>/giu)].map(m => ({type:m[1], slug:m[2], label:text(m[3])}));
 }
 
 function addHead(html, {title, description, url, province, locality}) {
@@ -70,7 +70,7 @@ for (const provinceSlug of Object.keys(COVERAGE.by_province || {})) {
     const h1 = text(html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || entry.label);
     const canonical = html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i)?.[1];
     const province = text(html.match(/<nav class="breadcrumb">[\s\S]*?<a href="\/viec-lam-nganh-than\/[^/]+\/">([^<]+)<\/a>/i)?.[1] || provinceSlug);
-    const locality = entry.label.replace(/^(xã|phường|đặc khu)\s+/iu,'');
+    const locality = entry.label.replace(/^(xã|phường|đặc khu)\s+/iu,'').replace(/\s*\(mã\s+\d+\)\s*$/iu,'');
     const description = `${h1}. Kiểm tra điều kiện từ xa, học nghề và làm việc tại Quảng Ninh; thông tin tuyển đang áp dụng và đường dẫn đăng ký trực tiếp.`;
     html = addHead(html,{title:h1,description,url:canonical,province,locality});
     if (!html.includes('data-local-quality="2"')) {
