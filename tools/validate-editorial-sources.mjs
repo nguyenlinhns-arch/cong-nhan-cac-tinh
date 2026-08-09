@@ -6,6 +6,11 @@ const ledger = JSON.parse(fs.readFileSync(path.resolve("content", "editorial-sou
 const imageSources = JSON.parse(fs.readFileSync(path.join(root, "assets", "articles", "sources.json"), "utf8"));
 const errors = [];
 const articleFiles = [];
+const htmlEsc = (value = "") => String(value)
+  .replaceAll("&", "&amp;")
+  .replaceAll("<", "&lt;")
+  .replaceAll(">", "&gt;")
+  .replaceAll('"', "&quot;");
 
 function walk(directory) {
   for (const entry of fs.readdirSync(directory, {withFileTypes: true})) {
@@ -20,9 +25,9 @@ function walk(directory) {
 walk(path.join(root, "tin-nganh-than"));
 walk(path.join(root, "bai-viet"));
 
-if (!Array.isArray(ledger.articles) || ledger.articles.length !== 66) errors.push(`Sổ nguồn phải có 66 bài, hiện có ${ledger.articles?.length || 0}`);
-if (Object.keys(imageSources).length !== 66) errors.push(`Sổ nguồn ảnh phải có 66 bài, hiện có ${Object.keys(imageSources).length}`);
-if (articleFiles.length !== 66) errors.push(`Website phải có 66 bài, hiện tìm thấy ${articleFiles.length}`);
+if (!Array.isArray(ledger.articles) || ledger.articles.length !== 70) errors.push(`Sổ nguồn phải có 70 bài, hiện có ${ledger.articles?.length || 0}`);
+if (Object.keys(imageSources).length !== 70) errors.push(`Sổ nguồn ảnh phải có 70 bài, hiện có ${Object.keys(imageSources).length}`);
+if (articleFiles.length !== 70) errors.push(`Website phải có 70 bài, hiện tìm thấy ${articleFiles.length}`);
 
 const bySlug = new Map(articleFiles.map((item) => {
   const canonical = item.html.match(/<link rel="canonical" href="[^"]+\/([^/]+)\/">/i)?.[1] || "";
@@ -42,8 +47,18 @@ for (const article of ledger.articles || []) {
   const image = imageSources[article.slug];
   if (!image?.provider || !image?.source_url || !image?.album_title) errors.push(`${label}: nguồn ảnh chưa đầy đủ`);
   const hasTraditionalSourceLine = file.html.includes("<strong>Nguồn:</strong>");
-  const hasJournalisticSourceLine = /<p class="article-source-note">[\s\S]*?<a\b[^>]*href="https?:\/\//i.test(file.html);
+  const hasJournalisticSourceLine = /<p class="article-source-note">[\s\S]*?<\/p>/i.test(file.html);
   if (!hasTraditionalSourceLine && !hasJournalisticSourceLine) errors.push(`${label}: trang chưa hiển thị dòng nguồn`);
+  if (article.public_source_urls === false) {
+    for (const source of article.sources || []) {
+      if (!file.html.includes(htmlEsc(source.publisher)) || !file.html.includes(htmlEsc(source.title)) || !file.html.includes(htmlEsc(source.date))) {
+        errors.push(label + ": dòng nguồn chữ chưa đủ cơ quan, tên bài và ngày đăng");
+      }
+      if (file.html.includes('href="' + htmlEsc(source.url) + '"') || file.html.includes("href='" + htmlEsc(source.url) + "'")) {
+        errors.push(label + ": URL nguồn đang là liên kết bấm ra ngoài");
+      }
+    }
+  }
   if (!/article:published_time|"datePublished"/.test(file.html)) errors.push(`${label}: thiếu thời điểm xuất bản`);
   if (!file.html.includes("article-media-credit")) errors.push(`${label}: thiếu ghi nguồn ảnh hiển thị`);
   const hasSeparatedRecruitment = file.html.includes('/thong-tin-tuyen-tho-mo/')
@@ -58,7 +73,7 @@ console.log(JSON.stringify({
   articles: articleFiles.length,
   sourceLedgers: ledger.articles?.length || 0,
   imageLedgers: Object.keys(imageSources).length,
-  articlesWithVisibleSource: articleFiles.filter(({html}) => html.includes("<strong>Nguồn:</strong>") || /<p class="article-source-note">[\s\S]*?<a\b/i.test(html)).length,
+  articlesWithVisibleSource: articleFiles.filter(({html}) => html.includes("<strong>Nguồn:</strong>") || /<p class="article-source-note">[\s\S]*?<\/p>/i.test(html)).length,
   errors: errors.length,
   sampleErrors: errors.slice(0, 25),
 }, null, 2));

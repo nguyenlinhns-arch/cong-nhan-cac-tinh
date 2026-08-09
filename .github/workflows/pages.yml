@@ -55,6 +55,7 @@ jobs:
           node tools/validate-modular-delivery.mjs
           node tools/validate-editorial-sources.mjs
           node tools/validate-daily-community-images-20260804.mjs
+          node tools/validate-daily-community-images-20260809.mjs
           node tools/validate-home-copy-actions.mjs
           node tools/validate-homepage-redesign.mjs
           node tools/validate-top-block-hotfix.mjs

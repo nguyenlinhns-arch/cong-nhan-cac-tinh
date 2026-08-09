@@ -25,6 +25,9 @@ let viewportFixed = 0;
 let assetsFixed = 0;
 let fontLinksFixed = 0;
 
+// A second pass closes the small window where another build step has just
+// materialized late province pages before validation starts.
+for (let pass = 0; pass < 2; pass += 1) {
 for (const file of collectHtml(root)) {
   const before = fs.readFileSync(file, "utf8");
   let html = before;
@@ -60,6 +63,7 @@ for (const file of collectHtml(root)) {
     fs.writeFileSync(file, html);
     changed += 1;
   }
+}
 }
 
 console.log(JSON.stringify({

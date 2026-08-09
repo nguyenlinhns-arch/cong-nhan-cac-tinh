@@ -237,6 +237,7 @@ for (const [index, slug] of slugs.entries()) {
   const expectedSearchTitle = managedSearchTitles.get(slug);
   if (expectedSearchTitle && title !== expectedSearchTitle) errors.push(`${prefix}wrong mobile search title`);
   const managedArticle = [...curatedArticles, ...existingNews].find((article) => article.slug === slug);
+  const sourcePolicyArticle = [...editorialArticles, ...existingNews].find((article) => article.slug === slug);
   const visibleH1 = html.match(/<h1(?:\s[^>]*)?>([\s\S]*?)<\/h1>/i)?.[1] || "";
   if (managedArticle && normalize(visibleH1) !== normalize(managedArticle.title)) {
     errors.push(`${prefix}visible H1 must keep the full editorial title`);
@@ -258,7 +259,10 @@ for (const [index, slug] of slugs.entries()) {
     if (!/class="[^\"]*\barticle-body--journalistic-v2\b[^\"]*"/i.test(html)) errors.push(`${prefix}newsroom item is missing the newsroom v2 layout`);
     const rewrittenParagraphCount = (editorialBody.match(/<p(?:\s|>)/gi) || []).length;
     if (rewrittenParagraphCount < 6) errors.push(`${prefix}professional article has only ${rewrittenParagraphCount} paragraphs`);
-    if (!/class="article-source-note"/i.test(articleBody) || !/class="article-source-note"[\s\S]*?<a\b/i.test(articleBody)) errors.push(`${prefix}newsroom item is missing its concise linked source note`);
+    const sourceNote = articleBody.match(/<p class="article-source-note">([\s\S]*?)<\/p>/i)?.[1] || "";
+    if (!sourceNote) errors.push(`${prefix}newsroom item is missing its concise source note`);
+    if (sourcePolicyArticle?.hideSourceUrlsInSchema && /<a\b/i.test(sourceNote)) errors.push(`${prefix}source note must not link to the source website`);
+    if (!sourcePolicyArticle?.hideSourceUrlsInSchema && sourceNote && !/<a\b/i.test(sourceNote)) errors.push(`${prefix}newsroom item is missing its concise linked source note`);
     if (/class="(?:source-original-card|article-seo-info|article-source-footer)"/i.test(articleBody)) errors.push(`${prefix}newsroom item still contains a bulky source or SEO block`);
     if (/class="(?:timeline|faq-list|article-summary|rewritten-news-facts|fact-grid|evidence-list)"/i.test(articleBody)) errors.push(`${prefix}professional article contains a list-like or superseded layout`);
     const editorialHeadingCount = (articleBody.match(/class="editorial-section professional-news-section"[\s\S]*?<h2>/gi) || []).length;
@@ -316,7 +320,7 @@ for (const [index, slug] of slugs.entries()) {
   const bodyImageUrls = [...articleBody.matchAll(/<img\b[^>]*src="([^"]+)"/gi)].map((match) => decodeAttribute(match[1]));
   if (new Set(bodyImageUrls).size !== bodyImageUrls.length) errors.push(`${prefix}repeats an image inside the article body`);
   if (rewrittenNews) {
-    if (!/<p class="article-source-note">[\s\S]*?<a\b/i.test(html)) errors.push(`${prefix}missing the concise linked source line`);
+    if (!/<p class="article-source-note">[\s\S]*?<\/p>/i.test(html)) errors.push(`${prefix}missing the concise source line`);
   } else {
     if (!/<div class="[^"]*\barticle-source-footer\b[^"]*">[\s\S]*?<strong>Nguồn:<\/strong>/i.test(html)) errors.push(`${prefix}missing the public source line`);
     if (!/<p class="article-seo-line">[^<]+<\/p>/i.test(html)) errors.push(`${prefix}missing the final SEO sentence`);
@@ -333,9 +337,12 @@ for (const [index, slug] of slugs.entries()) {
   }
   if (visible.split(/(?<=[.!?])\s+/u).some(lowIncomeFigure)) errors.push(`${prefix}publishes an income figure below 20 million VND per month`);
 
-  const managedArticleSources = ([...editorialArticles, ...existingNews].find((article) => article.slug === slug)?.sources || []).map((source) => source.url).filter(Boolean);
-  const externalAnchors = [...html.matchAll(/<a\b[^>]*href="(https?:\/\/[^"]+)"/gi)]
-    .map((match) => match[1])
+  const managedArticleSources = (sourcePolicyArticle?.sources || []).map((source) => source.url).filter(Boolean);
+  const rawExternalAnchors = [...html.matchAll(/<a\b[^>]*href="(https?:\/\/[^"]+)"/gi)].map((match) => match[1]);
+  if (sourcePolicyArticle?.hideSourceUrlsInSchema && rawExternalAnchors.some((url) => managedArticleSources.includes(decodeAttribute(url)))) {
+    errors.push(prefix + "contains a clickable source link");
+  }
+  const externalAnchors = rawExternalAnchors
     .filter((url) => !url.startsWith(base) && !url.startsWith("https://zalo.me/") && !url.startsWith("https://m.me/") && !managedArticleSources.includes(decodeAttribute(url)));
   if (externalAnchors.length) errors.push(`${prefix}unexpected outbound anchors: ${externalAnchors.join(", ")}`);
 

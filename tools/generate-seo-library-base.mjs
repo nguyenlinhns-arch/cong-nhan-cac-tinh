@@ -674,9 +674,9 @@ function renderProfessionalNewsArticle(article, inlineImages) {
     renderProfessionalSections(article, editorial.sections, inlineImages),
     takeaway ? `<p class="professional-ending">${esc(takeaway)}</p>` : "",
   ].filter(Boolean).join("\n          ");
-  const sourceLine = originalUrl
+  const sourceLine = originalUrl && !article.hideSourceUrlsInSchema
     ? `<p class="article-source-note">Bài được Nguyễn Tử Linh biên soạn từ <a href="${esc(originalUrl)}" target="_blank" rel="noopener noreferrer external">“${esc(originalTitle)}”</a>, đăng trên ${esc(sourceLabel)}${source.date ? ` ngày ${esc(source.date)}` : ""}.</p>`
-    : `<p class="article-source-note">Bài do Nguyễn Tử Linh biên soạn từ thông tin của ${esc(sourceLabel)}${source.date ? ` ngày ${esc(source.date)}` : ""}.</p>`;
+    : `<p class="article-source-note">Bài được Nguyễn Tử Linh biên soạn từ “${esc(originalTitle)}”, đăng trên ${esc(sourceLabel)}${source.date ? ` ngày ${esc(source.date)}` : ""}.</p>`;
   return `${renderArticleCover(article)}
         <p class="article-byline"><strong>Nguyễn Tử Linh</strong><span>Biên tập viên</span></p>
         <div class="professional-news-copy">
