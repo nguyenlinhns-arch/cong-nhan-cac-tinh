@@ -4,7 +4,11 @@ const site = process.env.GOOGLE_SEARCH_CONSOLE_SITE || "https://thaylinhtuyentho
 const sitemaps = (process.env.GOOGLE_SITEMAP_URLS || [
   "https://thaylinhtuyenthomo.vn/sitemap.xml",
   "https://thaylinhtuyenthomo.vn/news-sitemap.xml",
+  "https://thaylinhtuyenthomo.vn/jobs-sitemap.xml",
+  "https://thaylinhtuyenthomo.vn/province-sitemap.xml",
+  "https://thaylinhtuyenthomo.vn/commune-sitemap.xml",
 ].join(",")).split(",").map((value) => value.trim()).filter(Boolean);
+
 const token = await getGoogleAccessToken("https://www.googleapis.com/auth/webmasters");
 const results = [];
 for (const sitemap of sitemaps) {
