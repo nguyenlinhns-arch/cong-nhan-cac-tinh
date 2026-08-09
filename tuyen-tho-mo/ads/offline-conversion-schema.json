@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "purpose": "Data contract for future Google Ads Data Manager enhanced-conversions-for-leads export. This file is a schema only and contains no applicant records.",
+  "source_system": "Thay Linh recruitment CRM",
+  "recommended_rows": [
+    {
+      "conversion_stage": "qualified_lead",
+      "meaning": "Applicant was contacted and confirmed to meet the recruitment screening criteria."
+    },
+    {
+      "conversion_stage": "enrolled_student",
+      "meaning": "Applicant completed the admission/enrolment step."
+    },
+    {
+      "conversion_stage": "started_employment",
+      "meaning": "Applicant progressed to employment after training."
+    }
+  ],
+  "export_fields": [
+    {"name": "lead_key", "required": true, "pii": false, "description": "Stable internal application/lead identifier used for deduplication."},
+    {"name": "conversion_stage", "required": true, "pii": false, "description": "qualified_lead, enrolled_student, or started_employment."},
+    {"name": "conversion_time", "required": true, "pii": false, "description": "Timestamp for the real offline stage transition."},
+    {"name": "gclid", "required": false, "pii": false, "description": "Google Click ID when collected with valid measurement consent."},
+    {"name": "gbraid", "required": false, "pii": false, "description": "Google click identifier when applicable and collected with valid measurement consent."},
+    {"name": "wbraid", "required": false, "pii": false, "description": "Google click identifier when applicable and collected with valid measurement consent."},
+    {"name": "normalized_phone_hash", "required": false, "pii": true, "description": "SHA-256 of the normalized first-party phone number, generated in the controlled CRM/export layer only after the appropriate consent and legal basis are satisfied."},
+    {"name": "source_campaign", "required": false, "pii": false, "description": "Internal campaign reference for reconciliation, not a replacement for Google attribution identifiers."}
+  ],
+  "privacy_rules": [
+    "Never commit real applicant rows, phone numbers, email addresses, hashes, GCLIDs or conversion uploads to the public repository.",
+    "Do not place applicant PII in URLs, UTM parameters, dataLayer events or page markup.",
+    "Advertising click identifiers are stored persistently only when measurement consent is granted.",
+    "Hashing and Data Manager export should occur in a controlled server-side or CRM workflow, not in public client-side source code."
+  ],
+  "deduplication": {
+    "recommended_key": "lead_key + conversion_stage + conversion_time",
+    "rule": "Do not upload the same real-world stage transition more than once."
+  }
+}
