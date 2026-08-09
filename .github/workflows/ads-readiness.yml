@@ -1,0 +1,34 @@
+name: Ads readiness
+
+on:
+  pull_request:
+    paths:
+      - 'tuyen-tho-mo/tuyen-tho-mo-quang-ninh/**'
+      - 'tuyen-tho-mo/google-ads-landing.css'
+      - 'tuyen-tho-mo/ads-attribution.js'
+      - 'tuyen-tho-mo/ads/**'
+      - 'tuyen-tho-mo/scripts/audit-ads-readiness.mjs'
+      - '.github/workflows/ads-readiness.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tuyen-tho-mo/tuyen-tho-mo-quang-ninh/**'
+      - 'tuyen-tho-mo/google-ads-landing.css'
+      - 'tuyen-tho-mo/ads-attribution.js'
+      - 'tuyen-tho-mo/ads/**'
+      - 'tuyen-tho-mo/scripts/audit-ads-readiness.mjs'
+      - '.github/workflows/ads-readiness.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Audit SEO and Ads readiness
+        run: node tuyen-tho-mo/scripts/audit-ads-readiness.mjs
