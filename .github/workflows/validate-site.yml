@@ -66,7 +66,7 @@ jobs:
           node tools/validate-recruitment-funnel.mjs
           node tools/test-recruitment-application.mjs
           node tools/validate-crm-automation.mjs
-          node tools/validate-seo-library.mjs
+          node tools/validate-seo-library-current.mjs
           node tools/enforce-blue-worker-illustrations.mjs --check
           node tools/enforce-site-brand.mjs --check
           git diff --exit-code -- . ':(exclude)content/editorial-sources.json' ':(exclude)tuyen-tho-mo/assets/articles/sources.json' ':(exclude)tuyen-tho-mo/feed.json' ':(exclude)tuyen-tho-mo/feed.xml' ':(exclude)tuyen-tho-mo/llms.txt' ':(exclude)tuyen-tho-mo/sitemap.xml' ':(exclude)tuyen-tho-mo/news-sitemap.xml' ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/home-critical.css' ':(exclude)tuyen-tho-mo/home-content.css' ':(exclude)tuyen-tho-mo/job-application.js' ':(exclude)tuyen-tho-mo/search-index.json' ':(exclude)tuyen-tho-mo/search-core.json' ':(exclude)tuyen-tho-mo/search-provinces.json' ':(exclude)tuyen-tho-mo/search-content.json' ':(exclude)tuyen-tho-mo/daily-seo-articles.json' ':(exclude)tuyen-tho-mo/giai-dap-nghe-mo/**' ':(exclude)tuyen-tho-mo/cam-nang-nghe-mo/index.html'
