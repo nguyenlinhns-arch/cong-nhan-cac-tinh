@@ -44,3 +44,4 @@ Sitemap: https://thaylinhtuyenthomo.vn/commune-sitemap.xml
 # Nguồn tuyển dụng XML: https://thaylinhtuyenthomo.vn/jobs.xml
 # Thông tin tuyển đang áp dụng dạng JSON: https://thaylinhtuyenthomo.vn/recruitment-current.json
 # Hướng dẫn cho hệ thống AI: https://thaylinhtuyenthomo.vn/llms.txt
+# Danh mục 3.321 địa bàn tuyển nguồn dạng JSON: https://thaylinhtuyenthomo.vn/localities.json
