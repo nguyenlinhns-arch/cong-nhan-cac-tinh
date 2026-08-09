@@ -1,26 +1,28 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "updated_at": "2026-08-09",
   "site": "https://thaylinhtuyenthomo.vn/",
-  "purpose": "Paid-search landing pages and machine-readable intent mapping for mine recruitment in Quang Ninh",
-  "pages": [
+  "strategy": "single_canonical_recruitment_landing_with_paid_search_intent_adaptation",
+  "primary_landing_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
+  "intent_detection": ["utm_term", "utm_content", "utm_campaign", "gclid", "gbraid", "wbraid"],
+  "intents": [
     {
-      "intent": "tuyen_tho_mo_quang_ninh",
-      "url": "https://thaylinhtuyenthomo.vn/tuyen-tho-mo-quang-ninh/",
-      "primary_query_examples": ["tuyen tho mo quang ninh", "tuyen tho lo quang ninh", "viec lam mo quang ninh"],
-      "primary_action": "eligibility_check_and_application"
+      "intent": "job",
+      "query_examples": ["tuyen tho mo quang ninh", "tuyen tho lo quang ninh", "viec lam mo quang ninh"],
+      "primary_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
+      "supporting_urls": ["https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/", "https://thaylinhtuyenthomo.vn/cau-chuyen-cong-nhan/"]
     },
     {
-      "intent": "hoc_nghe_mo_mien_phi",
-      "url": "https://thaylinhtuyenthomo.vn/hoc-nghe-mo-mien-phi/",
-      "primary_query_examples": ["hoc nghe mo mien phi", "hoc nghe mo co an o", "hoc tho lo quang ninh"],
-      "primary_action": "eligibility_check"
+      "intent": "training",
+      "query_examples": ["hoc nghe mo mien phi", "hoc nghe mo co an o", "hoc tho lo quang ninh"],
+      "primary_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
+      "supporting_urls": ["https://thaylinhtuyenthomo.vn/hoc-nghe-mo-tai-quang-ninh/", "https://thaylinhtuyenthomo.vn/ho-so-nhap-hoc/"]
     },
     {
-      "intent": "viec_lam_tho_lo_20_25_trieu",
-      "url": "https://thaylinhtuyenthomo.vn/viec-lam-tho-lo-25-trieu/",
-      "primary_query_examples": ["luong tho lo 25 trieu", "viec lam tho lo luong cao", "luong cong nhan mo quang ninh"],
-      "primary_action": "proof_then_application"
+      "intent": "income",
+      "query_examples": ["luong tho lo 25 trieu", "viec lam tho lo luong cao", "luong cong nhan mo quang ninh"],
+      "primary_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
+      "supporting_urls": ["https://thaylinhtuyenthomo.vn/bang-luong/", "https://thaylinhtuyenthomo.vn/thu-nhap-an-o-ho-tro/"]
     }
   ],
   "current_recruitment": {
