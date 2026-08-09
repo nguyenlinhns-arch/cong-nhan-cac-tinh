@@ -79,12 +79,18 @@ function publicTextFiles(directory) {
   });
 }
 
+const seoQuestionExceptions = new Map([
+  ["giai-dap-nghe-mo/lam-tho-lo-co-nguy-hiem-khong/index.html", new Set(["nguy hiểm"])],
+]);
+
 for (const file of publicTextFiles(root)) {
   const content = fs.readFileSync(file, "utf8").toLocaleLowerCase("vi");
+  const relative = path.relative(root, file).replaceAll("\\", "/");
   for (const phrase of master.editorial_exclusions || []) {
-    if (content.includes(phrase.toLocaleLowerCase("vi"))) errors.push(`${path.relative(root, file)} còn cụm từ cần loại bỏ: ${phrase}`);
+    if (seoQuestionExceptions.get(relative)?.has(phrase)) continue;
+    if (content.includes(phrase.toLocaleLowerCase("vi"))) errors.push(`${relative} còn cụm từ cần loại bỏ: ${phrase}`);
   }
 }
 
-console.log(JSON.stringify({ profiles: profiles.length, publicFilesChecked: publicTextFiles(root).length, errors: errors.length, sampleErrors: errors.slice(0, 30) }, null, 2));
+console.log(JSON.stringify({ profiles: profiles.length, publicFilesChecked: publicTextFiles(root).length, seoQuestionExceptions: seoQuestionExceptions.size, errors: errors.length, sampleErrors: errors.slice(0, 30) }, null, 2));
 if (errors.length) process.exitCode = 1;
