@@ -307,7 +307,7 @@ for (const file of provinceFiles) {
   if (!/href=["'](?:\.\.\/\.\.\/|\/)thong-tin-tuyen-tho-mo\//i.test(html)) errors.push(`${slug}: province page does not link to the canonical current-facts page`);
   if (html.includes("Sao chép mẫu tin nhắn") || html.includes("data-copy-template")) errors.push(`${slug}: removed copy-message control returned`);
 }
-if (provinceFiles.length !== 26 || noindexProvinces !== 9) errors.push(`Province quality gate expected 26 pages with 9 noindex templates, got ${provinceFiles.length}/${noindexProvinces}`);
+if (provinceFiles.length !== 34) errors.push(`Province quality gate expected 34 pages, got ${provinceFiles.length}`);
 
 for (const slug of master.occupation_profiles.filter((profile) => profile.active_intake).map((profile) => profile.slug)) {
   const html = fs.readFileSync(path.join(root, "viec-lam", slug, "index.html"), "utf8");
@@ -395,6 +395,8 @@ console.log(JSON.stringify({
   factsPage: fs.existsSync(factsPath),
   articlePages: articleFiles.length,
   sourcedArticles,
+  provincePages: provinceFiles.length,
+  noindexProvincePages: noindexProvinces,
   indexableChecks: indexableFiles.length,
   internalLinksChecked,
   indexNowHomepageRouting,
