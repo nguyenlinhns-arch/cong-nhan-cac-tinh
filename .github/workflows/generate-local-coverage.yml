@@ -9,6 +9,7 @@ on:
     paths:
       - 'tuyen-tho-mo/scripts/generate-local-coverage.mjs'
       - 'tuyen-tho-mo/scripts/enhance-local-coverage.mjs'
+      - 'tuyen-tho-mo/scripts/normalize-local-page-delivery.mjs'
       - 'tuyen-tho-mo/scripts/build-locality-feed.mjs'
       - 'tuyen-tho-mo/scripts/update-ai-locality-discovery.mjs'
       - 'tuyen-tho-mo/scripts/audit-local-coverage.mjs'
@@ -20,6 +21,7 @@ on:
       - 'tuyen-tho-mo/scripts/materialize-local-coverage.trigger'
       - 'tuyen-tho-mo/scripts/generate-local-coverage.mjs'
       - 'tuyen-tho-mo/scripts/enhance-local-coverage.mjs'
+      - 'tuyen-tho-mo/scripts/normalize-local-page-delivery.mjs'
       - 'tuyen-tho-mo/scripts/build-locality-feed.mjs'
       - 'tuyen-tho-mo/scripts/update-ai-locality-discovery.mjs'
       - 'tuyen-tho-mo/scripts/audit-local-coverage.mjs'
@@ -50,6 +52,8 @@ jobs:
         run: node tuyen-tho-mo/scripts/link-province-commune-hubs.mjs
       - name: Add useful recruitment content to every locality page
         run: node tuyen-tho-mo/scripts/enhance-local-coverage.mjs
+      - name: Normalize mobile analytics and social delivery
+        run: node tuyen-tho-mo/scripts/normalize-local-page-delivery.mjs
       - name: Build machine-readable locality feed
         run: node tuyen-tho-mo/scripts/build-locality-feed.mjs
       - name: Update AI and crawler locality discovery

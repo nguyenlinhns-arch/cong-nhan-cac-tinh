@@ -20,10 +20,31 @@ function collectHtml(directory, output = []) {
   return output;
 }
 
+function dedupeStylesheet(html, href) {
+  let seen = false;
+  const escaped = href.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return html.replace(new RegExp(`\\s*<link\\s+rel=["']stylesheet["']\\s+href=["']${escaped}["']\\s*\\/?>`, "gi"), (tag) => {
+    if (seen) return "";
+    seen = true;
+    return tag;
+  });
+}
+
+function shortenDescription(html, max = 160) {
+  return html.replace(/(<meta\s+name=["']description["']\s+content=["'])([^"']*)(["'])/i, (_match, open, content, close) => {
+    if ([...content].length <= max) return `${open}${content}${close}`;
+    const clipped = [...content].slice(0, max - 1).join("");
+    const clean = clipped.replace(/\s+\S*$/u, "").replace(/[,:;\s]+$/u, "");
+    return `${open}${clean}.${close}`;
+  });
+}
+
 let changed = 0;
 let viewportFixed = 0;
 let assetsFixed = 0;
 let fontLinksFixed = 0;
+let duplicateMobileCssRemoved = 0;
+let provinceDescriptionsShortened = 0;
 
 // A second pass closes the small window where another build step has just
 // materialized late province pages before validation starts.
@@ -54,6 +75,17 @@ for (const file of collectHtml(root)) {
   if (next !== html) assetsFixed += 1;
   html = next;
 
+  const mobileCountBefore = (html.match(/<link\s+rel=["']stylesheet["']\s+href=["']\/mobile-core\.css\?v=1["']/gi) || []).length;
+  html = dedupeStylesheet(html, CSS_URL);
+  if (mobileCountBefore > 1) duplicateMobileCssRemoved += mobileCountBefore - 1;
+
+  const relative = path.relative(root, file).split(path.sep).join("/");
+  if (relative === "viec-lam-nganh-than/can-tho/index.html" || relative === "viec-lam-nganh-than/vinh-long/index.html") {
+    const old = html;
+    html = shortenDescription(html, 160);
+    if (html !== old) provinceDescriptionsShortened += 1;
+  }
+
   if (/<\/head>/i.test(html)) {
     html = html.replace(/<\/head>/i, `  <link rel="stylesheet" href="${FONT_URL}">\n</head>`);
     if (!before.includes(FONT_URL) || before.lastIndexOf(FONT_URL) < before.lastIndexOf('rel="stylesheet"')) fontLinksFixed += 1;
@@ -72,6 +104,8 @@ console.log(JSON.stringify({
   viewport_fixed: viewportFixed,
   asset_versions_fixed: assetsFixed,
   font_links_fixed: fontLinksFixed,
+  duplicate_mobile_css_removed: duplicateMobileCssRemoved,
+  province_descriptions_shortened: provinceDescriptionsShortened,
   font_css: FONT_URL,
   mobile_css: CSS_URL,
   mobile_js: JS_URL,
