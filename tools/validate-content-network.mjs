@@ -41,7 +41,7 @@ for (const slug of verificationPages) requireMarkers(`${slug}/index.html`,['/ana
 requireMarkers("hoc-nghe-mo-tai-quang-ninh/index.html",['"@type":"FAQPage"','/analytics.js?v=6','/mobile-core.css?v=1','/mobile-core.js?v=1']);
 requireMarkers("lien-he-di-lam-mo-than-quang-ninh/index.html",['Nguyễn Tử Linh (Thầy Linh)','Trưởng phòng Tuyển sinh Miền Trung','data-contact="zalo"','data-contact="phone"']);
 requireMarkers("nghe-mo-ham-lo/index.html",['Kỹ thuật khai thác mỏ hầm lò','Kỹ thuật xây dựng mỏ hầm lò','Kỹ thuật cơ điện mỏ hầm lò']);
-requireMarkers("tuyen-tho-mo-quang-ninh/index.html",['Tuyển thợ lò Quảng Ninh','Việc làm ngành Than tại Quảng Ninh','/ads-attribution.js?v=1','/analytics.js?v=6','/mobile-core.css?v=1','/mobile-core.js?v=1','/chinh-sach-bao-mat/']);
+requireMarkers("tuyen-tho-mo-quang-ninh/index.html",['Tuyển thợ lò Quảng Ninh','Việc làm ngành Than tại Quảng Ninh','/ads-attribution.js?v=1','/analytics.js?v=6','/mobile-core.css?v=1','/mobile-core.js?v=1','/quyen-rieng.html']);
 
 const coverage = JSON.parse(read("local-coverage.json"));
 const localityFeed = JSON.parse(read("localities.json"));
