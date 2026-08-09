@@ -15,12 +15,22 @@ on:
       - 'tuyen-tho-mo/scripts/link-province-commune-hubs.mjs'
       - 'tuyen-tho-mo/recruitment-current.json'
       - '.github/workflows/generate-local-coverage.yml'
+  pull_request:
+    paths:
+      - 'tuyen-tho-mo/scripts/materialize-local-coverage.trigger'
+      - 'tuyen-tho-mo/scripts/generate-local-coverage.mjs'
+      - 'tuyen-tho-mo/scripts/enhance-local-coverage.mjs'
+      - 'tuyen-tho-mo/scripts/build-locality-feed.mjs'
+      - 'tuyen-tho-mo/scripts/update-ai-locality-discovery.mjs'
+      - 'tuyen-tho-mo/scripts/audit-local-coverage.mjs'
+      - 'tuyen-tho-mo/scripts/link-province-commune-hubs.mjs'
+      - 'tuyen-tho-mo/recruitment-current.json'
 
 permissions:
   contents: write
 
 concurrency:
-  group: generate-local-coverage
+  group: generate-local-coverage-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -29,6 +39,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -56,6 +68,7 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add tuyen-tho-mo/viec-lam-nganh-than tuyen-tho-mo/commune-sitemap.xml tuyen-tho-mo/local-coverage.json tuyen-tho-mo/localities.json tuyen-tho-mo/robots.txt tuyen-tho-mo/llms.txt
-          git diff --cached --quiet && exit 0
+          if git diff --cached --quiet; then exit 0; fi
           git commit -m 'Cập nhật đủ 3.321 địa bàn cấp xã [skip ci]'
-          git push
+          TARGET_BRANCH="${GITHUB_HEAD_REF:-main}"
+          git push origin "HEAD:${TARGET_BRANCH}"
