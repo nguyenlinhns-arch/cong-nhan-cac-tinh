@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - 'tuyen-tho-mo/scripts/generate-local-coverage.mjs'
+      - 'tuyen-tho-mo/scripts/audit-local-coverage.mjs'
       - 'tuyen-tho-mo/scripts/link-province-commune-hubs.mjs'
       - '.github/workflows/generate-local-coverage.yml'
 
@@ -31,30 +32,8 @@ jobs:
         run: node tuyen-tho-mo/scripts/generate-local-coverage.mjs
       - name: Link every province page to its commune directory
         run: node tuyen-tho-mo/scripts/link-province-commune-hubs.mjs
-      - name: Validate complete national coverage
-        run: |
-          node <<'NODE'
-          const fs=require('fs');
-          const d=JSON.parse(fs.readFileSync('./tuyen-tho-mo/local-coverage.json','utf8'));
-          if(d.communes!==3321) throw new Error(`Coverage must be exactly 3321, got ${d.communes}`);
-          const provinces=Object.keys(d.by_province||{});
-          if(provinces.length!==34) throw new Error(`Coverage must include 34 provinces/cities, got ${provinces.length}`);
-          if(provinces.some(k=>!d.by_province[k])) throw new Error('A province/city has zero commune-level pages');
-          const xml=fs.readFileSync('./tuyen-tho-mo/commune-sitemap.xml','utf8');
-          const urls=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
-          if(urls.length!==3321) throw new Error(`commune-sitemap.xml must contain 3321 URLs, got ${urls.length}`);
-          if(new Set(urls).size!==3321) throw new Error('commune-sitemap.xml contains duplicate URLs');
-          for(const [slug,count] of Object.entries(d.by_province)) {
-            const hub=`./tuyen-tho-mo/viec-lam-nganh-than/${slug}/xa-phuong/index.html`;
-            const province=`./tuyen-tho-mo/viec-lam-nganh-than/${slug}/index.html`;
-            if(!fs.existsSync(hub)) throw new Error(`Missing province commune hub: ${slug}`);
-            if(!fs.existsSync(province)) throw new Error(`Missing province landing page: ${slug}`);
-            const provinceHtml=fs.readFileSync(province,'utf8');
-            if(!provinceHtml.includes(`/viec-lam-nganh-than/${slug}/xa-phuong/`)) throw new Error(`Province page does not link to commune hub: ${slug}`);
-            if(count<1) throw new Error(`Invalid commune count for ${slug}`);
-          }
-          console.log(JSON.stringify(d,null,2));
-          NODE
+      - name: Audit every generated locality page
+        run: node tuyen-tho-mo/scripts/audit-local-coverage.mjs
       - name: Validate crawler discovery files
         run: |
           grep -q 'commune-sitemap.xml' tuyen-tho-mo/robots.txt
