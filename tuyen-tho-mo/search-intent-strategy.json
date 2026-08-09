@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-09-v3",
+  "version": "2026-08-09-v4",
   "site": "https://thaylinhtuyenthomo.vn/",
   "goal": "Phân tách rõ truy vấn làm SEO và truy vấn nên trả tiền Google Ads để giảm cannibalization và lãng phí ngân sách.",
   "primary_paid_landing": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
@@ -9,7 +9,7 @@
       "funnel": "high_intent",
       "paid_search": "test_now",
       "queries": ["học thợ lò liên hệ ai", "học thợ mỏ liên hệ ai", "học nghề mỏ than liên hệ ai", "tuyển thợ mỏ", "tuyển thợ lò"],
-      "seo_urls": ["/giai-dap-nghe-mo/hoc-tho-lo-lien-he-ai/", "/giai-dap-nghe-mo/hoc-tho-mo-lien-he-ai/", "/lien-he-di-lam-mo-than-quang-ninh/"],
+      "seo_urls": ["/hoc-tho-lo-lien-he-ai/", "/hoc-tho-mo-lien-he-ai/", "/lien-he-di-lam-mo-than-quang-ninh/"],
       "ad_intent": "job",
       "preferred_ad_group": "AG_TuyenThoMo",
       "conversion": "crm_saved_then_qualified_lead"
@@ -19,7 +19,7 @@
       "funnel": "high_intent",
       "paid_search": "test_now",
       "queries": ["học nghề mỏ miễn phí", "học thợ lò có miễn phí không", "học nghề mỏ có mất tiền không", "học thợ lò có được ăn ở không", "học thợ lò bao lâu", "học thợ lò ở đâu quảng ninh"],
-      "seo_urls": ["/hoc-nghe-mo-tai-quang-ninh/", "/giai-dap-nghe-mo/hoc-tho-lo-co-mien-phi-khong/", "/giai-dap-nghe-mo/hoc-nghe-mo-co-mat-tien-khong/", "/giai-dap-nghe-mo/hoc-tho-lo-co-duoc-an-o-khong/", "/giai-dap-nghe-mo/hoc-tho-lo-bao-lau/", "/giai-dap-nghe-mo/hoc-tho-lo-o-dau-quang-ninh/"],
+      "seo_urls": ["/hoc-nghe-mo-tai-quang-ninh/", "/hoc-tho-lo-co-mien-phi-khong/", "/hoc-nghe-mo-co-mat-tien-khong/", "/hoc-tho-lo-co-duoc-an-o-khong/", "/hoc-tho-lo-bao-lau/", "/hoc-tho-lo-o-dau-quang-ninh/"],
       "ad_intent": "training",
       "preferred_ad_group": "AG_HocNgheMo",
       "conversion": "crm_saved_then_qualified_lead"
@@ -29,7 +29,7 @@
       "funnel": "high_intent",
       "paid_search": "test_now",
       "queries": ["lương thợ lò", "lương thợ lò bao nhiêu", "lương công nhân mỏ", "việc làm mỏ lương 20 triệu", "việc làm mỏ lương 25 triệu"],
-      "seo_urls": ["/thu-nhap-an-o-ho-tro/", "/bang-luong/", "/giai-dap-nghe-mo/luong-tho-lo-bao-nhieu/"],
+      "seo_urls": ["/thu-nhap-an-o-ho-tro/", "/bang-luong/", "/luong-tho-lo-bao-nhieu/"],
       "ad_intent": "income",
       "preferred_ad_group": "AG_LuongThoLo",
       "conversion": "crm_saved_then_qualified_lead"
@@ -48,7 +48,7 @@
       "funnel": "informational",
       "paid_search": "seo_only_initially",
       "queries": ["thợ mỏ là nghề gì", "thợ lò là nghề gì", "thợ mỏ làm gì", "thợ lò làm gì"],
-      "seo_urls": ["/nghe-mo-ham-lo/", "/giai-dap-nghe-mo/tho-mo-la-nghe-gi/", "/giai-dap-nghe-mo/tho-lo-la-nghe-gi/"],
+      "seo_urls": ["/nghe-mo-ham-lo/", "/tho-mo-la-nghe-gi/", "/tho-lo-la-nghe-gi/"],
       "reason": "Ý định tìm hiểu, chưa đủ tín hiệu đăng ký; ưu tiên organic và remarketing sau khi có dữ liệu."
     },
     {
@@ -56,7 +56,7 @@
       "funnel": "informational_consideration",
       "paid_search": "seo_only_initially",
       "queries": ["làm thợ lò có rủi ro gì", "thợ lò làm mấy tiếng một ngày", "thợ lò có được đóng bảo hiểm không", "thợ mỏ có những chế độ gì"],
-      "seo_urls": ["/an-toan-ky-luat-moi-truong/", "/giai-dap-nghe-mo/lam-tho-lo-co-nguy-hiem-khong/", "/tho-mo-lam-may-tieng-mot-ngay/", "/lam-mo-than-co-duoc-dong-bao-hiem-khong/", "/giai-dap-nghe-mo/tho-mo-co-nhung-che-do-gi/"],
+      "seo_urls": ["/an-toan-ky-luat-moi-truong/", "/lam-tho-lo-co-nguy-hiem-khong/", "/tho-mo-lam-may-tieng-mot-ngay/", "/lam-mo-than-co-duoc-dong-bao-hiem-khong/", "/tho-mo-co-nhung-che-do-gi/"],
       "reason": "Các truy vấn quan trọng để xây niềm tin nhưng nên để SEO phục vụ trước; chỉ mua khi Search Terms chứng minh có tỷ lệ qualified lead tốt."
     }
   ],
