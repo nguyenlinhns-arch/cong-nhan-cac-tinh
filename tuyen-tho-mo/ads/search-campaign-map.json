@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "updated_at": "2026-08-09",
   "landing_page": "https://thaylinhtuyenthomo.vn/tuyen-tho-mo-quang-ninh/",
   "goal": "lead_tuyen_sinh_nghe_mo",
@@ -7,44 +7,68 @@
     "Nhóm từ khóa theo cùng một ý định tìm kiếm để thông điệp quảng cáo và landing page khớp nhau.",
     "Ưu tiên Search intent và địa lý; điều kiện ứng viên được giải thích trên landing page thay vì phụ thuộc vào nhắm chọn nhân khẩu học.",
     "Không dùng dữ liệu cá nhân trong URL hoặc event analytics.",
-    "Chỉ coi lead đủ điều kiện/đã liên hệ thành công là conversion chính khi hệ thống CRM hoặc Data Manager được kết nối."
+    "Chỉ coi lead đủ điều kiện, nhập học hoặc chuyển đổi chất lượng là conversion chính khi CRM/Data Manager đã kết nối."
   ],
+  "tracking": {
+    "auto_tagging_required": true,
+    "final_url_suffix_recommended": "utm_source=google&utm_medium=cpc&utm_campaign={campaignid}&utm_content={creative}&utm_term={keyword}&tl_campaign={campaignid}&tl_adgroup={adgroupid}&tl_creative={creative}&tl_matchtype={matchtype}&tl_device={device}&tl_network={network}",
+    "preserved_click_ids": ["gclid", "gbraid", "wbraid"],
+    "value_track_fields": ["campaignid", "adgroupid", "creative", "keyword", "matchtype", "device", "network"],
+    "pii_in_url": false,
+    "persistence_rule": "Advertising click identifiers are persisted in localStorage only after measurement consent; before consent they remain in the current URL/in-memory funnel decoration."
+  },
   "ad_groups": [
     {
       "name": "Tuyen tho mo",
       "intent": "Tìm nơi đang tuyển thợ mỏ",
       "keywords_phrase": ["tuyển thợ mỏ", "tuyển công nhân mỏ", "tuyển thợ mỏ quảng ninh", "tuyển công nhân mỏ quảng ninh"],
-      "keywords_exact": ["tuyển thợ mỏ", "tuyển thợ mỏ quảng ninh"]
+      "keywords_exact": ["tuyển thợ mỏ", "tuyển thợ mỏ quảng ninh"],
+      "landing_message": "Tuyển thợ mỏ Quảng Ninh: học nghề từ đầu, bố trí việc làm"
     },
     {
       "name": "Tuyen tho lo",
       "intent": "Tìm việc thợ lò/hầm lò",
       "keywords_phrase": ["tuyển thợ lò", "việc làm thợ lò", "tuyển thợ lò quảng ninh", "việc làm hầm lò quảng ninh"],
-      "keywords_exact": ["tuyển thợ lò", "tuyển thợ lò quảng ninh"]
+      "keywords_exact": ["tuyển thợ lò", "tuyển thợ lò quảng ninh"],
+      "landing_message": "Tuyển thợ lò Quảng Ninh cho người chưa có kinh nghiệm"
     },
     {
       "name": "Viec lam nganh than",
       "intent": "Tìm việc ngành Than/TKV",
       "keywords_phrase": ["việc làm ngành than", "việc làm tkv", "việc làm mỏ quảng ninh", "công nhân than quảng ninh"],
-      "keywords_exact": ["việc làm ngành than", "việc làm tkv"]
+      "keywords_exact": ["việc làm ngành than", "việc làm tkv"],
+      "landing_message": "Việc làm ngành Than tại Quảng Ninh: 3 nghề hầm lò đang tiếp nhận"
     },
     {
       "name": "Hoc nghe mo",
       "intent": "Muốn học nghề để đi làm mỏ",
       "keywords_phrase": ["học nghề mỏ", "học nghề mỏ quảng ninh", "học nghề thợ lò", "học khai thác mỏ hầm lò"],
-      "keywords_exact": ["học nghề mỏ quảng ninh", "học nghề thợ lò"]
+      "keywords_exact": ["học nghề mỏ quảng ninh", "học nghề thợ lò"],
+      "landing_message": "Học nghề mỏ từ đầu trước khi bố trí việc làm tại Quảng Ninh"
     },
     {
       "name": "Khong can kinh nghiem",
       "intent": "Tìm việc mỏ có đào tạo từ đầu",
       "keywords_phrase": ["việc làm mỏ không cần kinh nghiệm", "tuyển thợ mỏ không cần kinh nghiệm", "việc làm quảng ninh có đào tạo nghề"],
-      "keywords_exact": ["việc làm mỏ không cần kinh nghiệm"]
+      "keywords_exact": ["việc làm mỏ không cần kinh nghiệm"],
+      "landing_message": "Chưa có kinh nghiệm vẫn có thể học nghề mỏ từ đầu nếu đáp ứng điều kiện"
     }
   ],
   "negative_keyword_seeds": [
-    "than hoạt tính", "than củi", "bếp than", "mỏ bitcoin", "đào coin", "game", "minecraft", "đồ chơi", "mô hình", "tuyển dụng văn phòng", "kế toán", "bảo vệ", "lái xe", "part time", "remote", "làm tại nhà"
+    "than hoạt tính", "than củi", "bếp than", "mỏ bitcoin", "đào coin", "game", "minecraft", "đồ chơi", "mô hình", "tuyển dụng văn phòng", "kế toán", "bảo vệ", "lái xe", "part time", "remote", "làm tại nhà", "mỏ vàng", "đầu tư mỏ", "cổ phiếu than"
   ],
   "conversion_events_ready_for_gtm": [
-    "ads_landing_view", "eligibility_click", "messenger_click", "phone_click", "payroll_proof_click", "job_detail_click"
-  ]
+    "ads_landing_view", "eligibility_click", "messenger_click", "phone_click", "payroll_proof_click", "job_detail_click", "proof_media_click", "locality_click"
+  ],
+  "conversion_hierarchy": {
+    "primary_when_connected": ["qualified_lead", "enrolled_student", "started_employment"],
+    "secondary_diagnostics": ["eligibility_click", "messenger_click", "phone_click", "job_detail_click"],
+    "do_not_optimize_long_term_to": ["page_view", "payroll_proof_click", "proof_media_click"]
+  },
+  "offline_measurement": {
+    "preferred_2026_path": "Google Ads Data Manager enhanced conversions for leads",
+    "recommended_join_keys": ["gclid", "gbraid", "wbraid", "normalized_phone_hash"],
+    "quality_stages": ["lead_created", "qualified_lead", "enrolled_student", "started_employment"],
+    "repository_contains_real_customer_data": false
+  }
 }
