@@ -1,9 +1,10 @@
 Validation checklist 2026-08-09
-- 3 self-canonical landing pages
-- unique title and meta description per intent
-- responsive shared CSS and fixed mobile CTA
-- existing analytics.js loaded on each landing page
-- primary application CTA routes to existing CRM-backed application form
-- FAQPage JSON-LD present on each landing page
-- ads-sitemap.xml added and declared from robots.txt
-- machine-readable ad-landing-pages.json added
+- one canonical recruitment landing page remains the paid-search destination
+- paid Google traffic is detected by gclid/gbraid/wbraid or Google paid UTM medium
+- paid-search fast-answer adapts to job, training and income intent
+- primary CTA remains the existing CRM-backed application form
+- phone, Messenger and Zalo remain available as secondary conversion paths
+- analytics records ad_intent and paid_search_term in paid-search events
+- supporting proof links change by intent: training, hồ sơ, thu nhập, bảng lương, current recruitment facts
+- no extra indexable HTML pages or duplicate paid-search URLs are introduced
+- machine-readable ad-landing-pages.json documents intent routing
