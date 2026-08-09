@@ -53,7 +53,7 @@ const provinceIndex = JSON.parse(read("search-provinces.json"));
 const contentIndex = JSON.parse(read("search-content.json"));
 if (manifest.version !== 4 || manifest.strategy !== "answer-first-tiered") errors.push("search-index.json: manifest phân tầng không hợp lệ");
 if (coreIndex.items.length < 20) errors.push("search-core.json: thiếu câu trả lời trực tiếp");
-if (provinceIndex.items.filter((item) => item.category === "province").length !== 26) errors.push("search-provinces.json: chưa đủ 26 tỉnh/thành");
+if (provinceIndex.items.filter((item) => item.category === "province").length !== 34) errors.push("search-provinces.json: chưa đủ 34 tỉnh/thành");
 if (contentIndex.items.length < 60) errors.push("search-content.json: thiếu kho bài chuyên sâu");
 
 const fontCss = read("fonts.css");
