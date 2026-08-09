@@ -39,6 +39,18 @@
     "[data-page-shortcuts]",
   ];
 
+  const ALL_PROVINCES = [
+    ["Hà Nội", "ha-noi"], ["Cao Bằng", "cao-bang"], ["Tuyên Quang", "tuyen-quang"], ["Điện Biên", "dien-bien"],
+    ["Lai Châu", "lai-chau"], ["Sơn La", "son-la"], ["Lào Cai", "lao-cai"], ["Thái Nguyên", "thai-nguyen"],
+    ["Lạng Sơn", "lang-son"], ["Quảng Ninh", "quang-ninh"], ["Bắc Ninh", "bac-ninh"], ["Phú Thọ", "phu-tho"],
+    ["Hải Phòng", "hai-phong"], ["Hưng Yên", "hung-yen"], ["Ninh Bình", "ninh-binh"], ["Thanh Hóa", "thanh-hoa"],
+    ["Nghệ An", "nghe-an"], ["Hà Tĩnh", "ha-tinh"], ["Quảng Trị", "quang-tri"], ["Huế", "hue"],
+    ["Đà Nẵng", "da-nang"], ["Quảng Ngãi", "quang-ngai"], ["Gia Lai", "gia-lai"], ["Khánh Hòa", "khanh-hoa"],
+    ["Đắk Lắk", "dak-lak"], ["Lâm Đồng", "lam-dong"], ["Đồng Nai", "dong-nai"], ["TP Hồ Chí Minh", "ho-chi-minh"],
+    ["Tây Ninh", "tay-ninh"], ["Đồng Tháp", "dong-thap"], ["Vĩnh Long", "vinh-long"], ["An Giang", "an-giang"],
+    ["Cần Thơ", "can-tho"], ["Cà Mau", "ca-mau"],
+  ];
+
   let consentLocked = false;
   let cleanScheduled = false;
 
@@ -171,6 +183,60 @@
     hero.querySelectorAll(":scope > .journey-fast-facts, :scope > .journey-assurance, :scope > .v4-fast-answer, :scope > .v4-hero-actions, :scope > .v4-direct-note").forEach(node => node.remove());
   }
 
+  function enhanceProvinceDirectory() {
+    const normalized = location.pathname.replace(/\/+$/, "");
+    if (normalized !== "/viec-lam-nganh-than") return;
+    const section = document.querySelector("#theo-tinh");
+    const groups = section?.querySelector(".province-groups");
+    if (!section || !groups) return;
+
+    const heading = section.querySelector(".network-heading h2");
+    if (heading) heading.textContent = "Chọn một trong 34 tỉnh, thành";
+
+    if (!groups.querySelector('[data-province-group="south"]')) {
+      const block = document.createElement("section");
+      block.className = "province-group";
+      block.dataset.provinceGroup = "south";
+      block.innerHTML = '<h2>Đông Nam Bộ &amp; Đồng bằng sông Cửu Long</h2><div class="province-links"></div>';
+      const links = block.querySelector(".province-links");
+      [["Đồng Nai","dong-nai"],["TP Hồ Chí Minh","ho-chi-minh"],["Tây Ninh","tay-ninh"],["Đồng Tháp","dong-thap"],["Vĩnh Long","vinh-long"],["An Giang","an-giang"],["Cần Thơ","can-tho"],["Cà Mau","ca-mau"]].forEach(([name, slug]) => {
+        const a = document.createElement("a");
+        a.href = `/viec-lam-nganh-than/${slug}/`;
+        a.textContent = name;
+        links.append(a);
+      });
+      groups.append(block);
+    }
+
+    const description = "Việc làm ngành Than tại Quảng Ninh và 34 trang tư vấn theo tỉnh, thành; người lao động đăng ký tại địa phương, nơi học và làm việc thực tế là Quảng Ninh.";
+    document.querySelectorAll('meta[name="description"], meta[property="og:description"], meta[name="twitter:description"]').forEach(meta => meta.setAttribute("content", description));
+
+    const schemaScript = [...document.querySelectorAll('script[type="application/ld+json"]')].find(node => node.textContent.includes('"#items"'));
+    if (schemaScript) {
+      try {
+        const schema = JSON.parse(schemaScript.textContent);
+        const graph = Array.isArray(schema["@graph"]) ? schema["@graph"] : [];
+        const page = graph.find(item => item["@type"] === "CollectionPage");
+        if (page) {
+          page.description = description;
+          page.dateModified = "2026-08-09";
+        }
+        const itemList = graph.find(item => item["@type"] === "ItemList");
+        if (itemList) {
+          itemList.numberOfItems = ALL_PROVINCES.length;
+          itemList.itemListElement = ALL_PROVINCES.map(([name, slug], index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name: `Việc làm ngành Than cho người ${name}`,
+            url: `https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/${slug}/`,
+          }));
+        }
+        schemaScript.textContent = JSON.stringify(schema);
+      } catch (_) {}
+    }
+    document.documentElement.dataset.provinceDirectory = "34";
+  }
+
   function disableConsentPrompt() {
     if (consentLocked) return;
     consentLocked = true;
@@ -189,6 +255,7 @@
     polishVerificationHeader();
     polishMobileContact();
     cleanArticleHero();
+    enhanceProvinceDirectory();
     disableConsentPrompt();
     document.documentElement.dataset.siteShell = "20260803-v3";
   }
