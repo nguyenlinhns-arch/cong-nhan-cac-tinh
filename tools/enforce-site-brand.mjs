@@ -7,6 +7,7 @@ const CHECK_ONLY = process.argv.includes("--check");
 const AVATAR = "/assets/thay-linh-avatar.webp?v=3";
 const BRAND_MARK = `<img class="brand-mark" src="${AVATAR}" alt="" width="45" height="45">`;
 const PAYROLL_BRAND_MARK = `<img class="payroll-brand__mark" src="${AVATAR}" alt="" width="44" height="44">`;
+const ANSWER_BRAND = "Thầy Linh - Tuyển Thợ Mỏ trả lời";
 
 function walk(directory) {
   return fs.readdirSync(directory, {withFileTypes: true}).flatMap((entry) => {
@@ -19,7 +20,8 @@ function normalizeBrand(html) {
   return html
     .replace(/<span class=(["'])brand-mark\1>TL<\/span>/g, BRAND_MARK)
     .replace(/<span class=(["'])payroll-brand__mark\1>TL<\/span>/g, PAYROLL_BRAND_MARK)
-    .replaceAll("<small>Cổng kiểm chứng nghề mỏ</small>", "<small>Tuyển Thợ Mỏ</small>");
+    .replaceAll("<small>Cổng kiểm chứng nghề mỏ</small>", "<small>Tuyển Thợ Mỏ</small>")
+    .replace(/Website trả lời/gi, ANSWER_BRAND);
 }
 
 const htmlFiles = walk(SITE).filter((file) => file.endsWith(".html"));
@@ -48,16 +50,17 @@ for (const file of htmlFiles) {
   ];
   if (!header || !markers.every((marker) => header.includes(marker))) invalid.push(relative);
   if (/brand-mark["'][^>]*>TL<\/span>|payroll-brand__mark["'][^>]*>TL<\/span>|Cổng kiểm chứng nghề mỏ/.test(header)) invalid.push(relative);
+  if (/Website trả lời/i.test(html)) invalid.push(`${relative} (còn nhãn Website trả lời)`);
 }
 
 if (!fs.existsSync(path.join(SITE, "assets", "thay-linh-avatar.webp"))) {
   throw new Error("Thiếu ảnh đại diện dùng chung assets/thay-linh-avatar.webp");
 }
 if (CHECK_ONLY && changed.length) {
-  throw new Error(`Còn ${changed.length} trang chưa được chuẩn hóa logo: ${changed.join(", ")}`);
+  throw new Error(`Còn ${changed.length} trang chưa được chuẩn hóa logo/nhãn trả lời: ${changed.join(", ")}`);
 }
 if (invalid.length) {
-  throw new Error(`Trang chưa dùng logo Thầy Linh – Tuyển Thợ Mỏ thống nhất: ${[...new Set(invalid)].join(", ")}`);
+  throw new Error(`Trang chưa dùng nhận diện Thầy Linh – Tuyển Thợ Mỏ thống nhất: ${[...new Set(invalid)].join(", ")}`);
 }
 
 console.log(`${CHECK_ONLY ? "Validated" : "Updated"} the shared Thầy Linh – Tuyển Thợ Mỏ brand across ${htmlFiles.length} HTML files; changed ${changed.length}.`);
