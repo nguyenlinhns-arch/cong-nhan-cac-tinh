@@ -95,8 +95,10 @@
       window.tlTrack?.(name, {
         page_path: location.pathname,
         landing_type: "google_paid_search",
-        ad_intent: intent,
-        paid_search_term: String(params.get("utm_term") || "").slice(0, 100),
+        // `content` và `utm_term` là các trường analytics-vendors hiện đã cho phép,
+        // nên intent được gửi thực sự tới GA4 thay vì chỉ tồn tại trong dataLayer.
+        content: `paid_search_intent_${intent}`,
+        utm_term: String(params.get("utm_term") || "").slice(0, 100),
         ...payload,
       });
     } catch (_) {}
