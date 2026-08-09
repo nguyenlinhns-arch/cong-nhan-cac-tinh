@@ -33,7 +33,6 @@ Allow: /
 
 Sitemap: https://thaylinhtuyenthomo.vn/sitemap.xml
 Sitemap: https://thaylinhtuyenthomo.vn/news-sitemap.xml
-Sitemap: https://thaylinhtuyenthomo.vn/ads-sitemap.xml
 
 # Nguồn cập nhật nội dung
 # RSS: https://thaylinhtuyenthomo.vn/feed.xml
