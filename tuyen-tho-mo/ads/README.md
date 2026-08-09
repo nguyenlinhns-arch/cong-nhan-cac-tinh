@@ -6,17 +6,29 @@
 
 Landing page dành cho lưu lượng Search có ý định cao. Trang không khai `JobPosting` vì đây là trang tổng hợp; ba trang nghề riêng tiếp tục giữ structured data tuyển dụng.
 
-## Cấu trúc chiến dịch đề xuất
+## Cấu trúc chiến dịch
 
-Bắt đầu bằng các nhóm ý định trong `search-campaign-map.json`: Tuyển thợ mỏ, Tuyển thợ lò, Việc làm ngành Than, Học nghề mỏ và Không cần kinh nghiệm. Mỗi nhóm quảng cáo nên dùng headline/description bám sát đúng cụm ý định, nhưng cùng dẫn về landing page chính khi thông tin và CTA tương đồng.
+Dùng các nhóm ý định trong `search-campaign-map.json`: Tuyển thợ mỏ, Tuyển thợ lò, Việc làm ngành Than, Học nghề mỏ và Không cần kinh nghiệm. Headline/description của từng ad group phải bám sát chính cụm ý định và phần nội dung tương ứng trên landing page.
 
 Ưu tiên nhắm theo truy vấn và địa lý chiến dịch. Không đưa điều kiện cá nhân nhạy cảm vào URL hoặc tham số tracking.
 
-## Attribution đã chuẩn bị
+## Auto-tagging + ValueTrack
 
-`/ads-attribution.js` giữ các tham số không phải PII: `gclid`, `gbraid`, `wbraid`, `gad_source`, `gad_campaignid` và UTM. Chúng được lưu tối đa 90 ngày và chuyển tiếp qua các liên kết nội bộ có `data-preserve-attribution`.
+Bật Google Ads auto-tagging. `gclid`, `gbraid`, `wbraid` là các định danh click cần được giữ xuyên funnel để đo lường chính xác. Nếu cần báo cáo nội bộ, `search-campaign-map.json` đã có Final URL suffix mẫu dùng các ValueTrack field không phải PII như campaign ID, ad group ID, creative, keyword, match type, device và network.
 
-Các event dataLayer sẵn sàng cho GTM/Google tag:
+Không tắt auto-tagging để thay bằng UTM thủ công. UTM chỉ là lớp bổ sung cho báo cáo nội bộ.
+
+## Attribution và consent
+
+`/ads-attribution.js` giữ các tham số không phải PII trong URL khi người dùng đi từ landing sang các bước nội bộ.
+
+Quy tắc mới:
+
+- Trước khi người dùng đồng ý đo lường: click identifiers chỉ được giữ trong URL/bộ nhớ của trang để chuyển tiếp funnel, **không ghi vào localStorage**.
+- Sau khi measurement consent ở trạng thái `granted`: attribution mới được lưu cục bộ tối đa 90 ngày.
+- Không lưu họ tên, số điện thoại, năm sinh, CCCD hoặc thông tin sức khỏe vào attribution storage hay dataLayer.
+
+Các event dataLayer sẵn sàng để bind với Google tag/GTM:
 
 - `ads_landing_view`
 - `eligibility_click`
@@ -27,13 +39,24 @@ Các event dataLayer sẵn sàng cho GTM/Google tag:
 - `proof_media_click`
 - `locality_click`
 
-Không gửi họ tên, số điện thoại, năm sinh hoặc hồ sơ vào dataLayer.
+## Conversion hierarchy
 
-## Conversion hierarchy khi mở quảng cáo
+**Conversion chính khi đã nối CRM/Data Manager:** `qualified_lead`, `enrolled_student`, `started_employment`.
 
-**Primary:** lead đủ điều kiện / liên hệ thành công / nhập học, khi CRM hoặc Data Manager đã kết nối và có thể gửi conversion chất lượng trở lại Google Ads.
+**Conversion phụ/chẩn đoán funnel:** click kiểm tra điều kiện, Messenger, gọi điện và click xem tin nghề. Không tối ưu ngân sách dài hạn chỉ dựa trên page view hoặc click bằng chứng nếu chưa biết lead có đạt điều kiện hay không.
 
-**Secondary:** click kiểm tra điều kiện, Messenger, gọi điện. Các sự kiện này dùng để chẩn đoán funnel; không nên tối ưu ngân sách dài hạn chỉ dựa trên click CTA nếu chưa biết lead có đạt điều kiện hay không.
+## Enhanced conversions for leads / Data Manager
+
+Từ năm 2026, chuẩn bị theo hướng Google Ads Data Manager cho dữ liệu lead chất lượng/offline. File `offline-conversion-schema.json` mô tả data contract; file này **không chứa dữ liệu ứng viên thật**.
+
+Khi kết nối CRM thực tế, luồng nên là:
+
+1. Website tạo lead và giữ `lead_key` ổn định.
+2. CRM xác nhận các mốc thật: lead đủ điều kiện → nhập học → đi làm.
+3. Lớp export kiểm tra consent/legal basis, chuẩn hóa dữ liệu first-party và hash theo yêu cầu của Google khi áp dụng.
+4. Data Manager gửi conversion chất lượng về Google Ads để Smart Bidding học theo lead thật, không học theo click CTA.
+
+Không commit phone/email/hash/GCLID của ứng viên hoặc file upload conversion vào repository công khai.
 
 ## Việc cần nhập từ tài khoản Google Ads khi triển khai
 
@@ -42,12 +65,8 @@ Không hard-code ID chưa xác minh trong repository. Khi tài khoản quảng c
 1. Google Ads account/tag ID (`AW-...`).
 2. Conversion action ID/label cho các conversion chính.
 3. Consent settings phù hợp với cấu hình website.
-4. Auto-tagging để nhận `gclid` và các click identifiers tương ứng.
-5. Nếu dùng enhanced conversions for leads, kết nối nguồn first-party/CRM qua phương thức Google hỗ trợ tại thời điểm triển khai.
-
-## URL tracking
-
-Giữ auto-tagging của Google Ads. Nếu cần UTM cho hệ thống báo cáo nội bộ, dùng campaign/ad group/keyword identifiers; không thêm họ tên, số điện thoại hoặc thông tin hồ sơ vào Final URL suffix.
+4. Auto-tagging.
+5. Kết nối Google Ads Data Manager/CRM cho conversion chất lượng.
 
 ## Quality gate
 
@@ -55,4 +74,4 @@ Chạy:
 
 `node tuyen-tho-mo/scripts/audit-ads-readiness.mjs`
 
-CI `.github/workflows/ads-readiness.yml` sẽ chặn thay đổi làm mất canonical, cụm nội dung theo search intent, attribution, CTA đo lường, privacy link hoặc vô tình đưa PII vào GET URL.
+CI `.github/workflows/ads-readiness.yml` chặn thay đổi làm mất canonical, search-intent content, attribution, CTA đo lường, privacy link, consent-safe persistence hoặc vô tình đưa PII vào GET URL.
