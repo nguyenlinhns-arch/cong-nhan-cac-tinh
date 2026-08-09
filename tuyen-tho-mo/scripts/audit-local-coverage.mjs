@@ -7,6 +7,8 @@ if(report.communes!==3321) throw new Error(`Sai tổng số địa bàn: ${repor
 const provinces=Object.entries(report.by_province||{});
 if(provinces.length!==34) throw new Error(`Sai số tỉnh thành: ${provinces.length}`);
 let files=0;
+const canonicals=new Set();
+const titles=new Set();
 for(const [slug,count] of provinces){
   const hub=path.join(ROOT,'viec-lam-nganh-than',slug,'xa-phuong','index.html');
   if(!fs.existsSync(hub)) throw new Error(`${slug}: thiếu hub xã/phường`);
@@ -20,8 +22,13 @@ for(const [slug,count] of provinces){
     const file=path.join(ROOT,'viec-lam-nganh-than',slug,type,localSlug,'index.html');
     if(!fs.existsSync(file)) throw new Error(`${slug}/${key}: thiếu trang`);
     const html=fs.readFileSync(file,'utf8');
-    for(const marker of ['<h1>','rel="canonical"','utm_campaign=commune_jobs','NƠI HỌC & LÀM VIỆC']) if(!html.includes(marker)) throw new Error(`${slug}/${key}: thiếu ${marker}`);
+    for(const marker of ['<h1>','rel="canonical"','utm_campaign=commune_jobs','NƠI HỌC & LÀM VIỆC','data-local-quality="2"','property="og:title"','"@type":"FAQPage"','Cổng Thông tin điện tử Chính phủ','Điều kiện cơ bản','Học nghề trước khi nhận việc']) if(!html.includes(marker)) throw new Error(`${slug}/${key}: thiếu ${marker}`);
     if(/"@type"\s*:\s*"JobPosting"/u.test(html)) throw new Error(`${slug}/${key}: không được khai JobPosting giả tại địa phương`);
+    const canonical=html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i)?.[1];
+    const title=html.match(/<title>([^<]+)<\/title>/i)?.[1];
+    if(!canonical||canonicals.has(canonical)) throw new Error(`${slug}/${key}: canonical thiếu hoặc trùng`);
+    if(!title||titles.has(title)) throw new Error(`${slug}/${key}: title thiếu hoặc trùng`);
+    canonicals.add(canonical); titles.add(title);
     files++;
   }
   const provincePage=path.join(ROOT,'viec-lam-nganh-than',slug,'index.html');
@@ -31,4 +38,7 @@ if(files!==3321) throw new Error(`Chỉ kiểm được ${files}/3321 trang`);
 const sitemap=fs.readFileSync(path.join(ROOT,'commune-sitemap.xml'),'utf8');
 const urls=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
 if(urls.length!==3321||new Set(urls).size!==3321) throw new Error(`Sitemap có ${urls.length} URL, unique ${new Set(urls).size}`);
-console.log(JSON.stringify({status:'ok',communes:files,provinces:provinces.length,sitemap_urls:urls.length},null,2));
+const feed=JSON.parse(fs.readFileSync(path.join(ROOT,'localities.json'),'utf8'));
+if(feed.total!==3321||feed.localities?.length!==3321) throw new Error(`Feed địa bàn sai tổng số: ${feed.total}/${feed.localities?.length}`);
+if(new Set(feed.localities.map(x=>x.url)).size!==3321) throw new Error('Feed địa bàn có URL trùng');
+console.log(JSON.stringify({status:'ok',communes:files,provinces:provinces.length,sitemap_urls:urls.length,locality_feed:feed.total,unique_titles:titles.size,unique_canonicals:canonicals.size},null,2));
