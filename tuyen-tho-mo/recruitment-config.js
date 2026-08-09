@@ -19,6 +19,15 @@
     }),
   });
 
+  if (!window.__TL_PROGRESSIVE_APPLICATION_LOADER__ && /^\/viec-lam\//.test(location.pathname)) {
+    window.__TL_PROGRESSIVE_APPLICATION_LOADER__ = true;
+    const script = document.createElement("script");
+    script.src = "/application-progressive.js?v=1";
+    script.async = true;
+    script.dataset.tlApplicationProgressive = "true";
+    document.head.append(script);
+  }
+
   if (window.__TL_CRM_ATTRIBUTION_ENRICHER__) return;
   window.__TL_CRM_ATTRIBUTION_ENRICHER__ = true;
 
