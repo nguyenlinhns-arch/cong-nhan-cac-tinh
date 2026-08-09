@@ -81,6 +81,7 @@ function publicTextFiles(directory) {
 
 const seoQuestionExceptions = new Map([
   ["giai-dap-nghe-mo/lam-tho-lo-co-nguy-hiem-khong/index.html", new Set(["nguy hiểm"])],
+  ["lam-tho-lo-co-nguy-hiem-khong/index.html", new Set(["nguy hiểm"])],
 ]);
 
 for (const file of publicTextFiles(root)) {
