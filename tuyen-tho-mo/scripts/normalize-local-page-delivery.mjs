@@ -32,7 +32,20 @@ function ensureScripts(html){
   if(additions.length) html=html.replace('</body>',`${additions.join('')}</body>`);
   return html;
 }
-function normalize(file){let html=fs.readFileSync(file,'utf8');html=ensureHead(html);html=ensureScripts(html);fs.writeFileSync(file,html);}
+function ensureAccessibility(html){
+  const mainMatch=html.match(/<main\b([^>]*)>/i);
+  if(!mainMatch) throw new Error('Trang địa phương thiếu main landmark');
+  let mainId=mainMatch[1].match(/\bid=["']([^"']+)["']/i)?.[1]||'';
+  if(!mainId){
+    mainId='main-content';
+    html=html.replace(/<main\b([^>]*)>/i,(_m,attrs)=>`<main${attrs} id="${mainId}">`);
+  }
+  if(!/<a\b[^>]*class=["'][^"']*(?:skip-link|network-skip)[^"']*["']/i.test(html)){
+    html=html.replace(/<body([^>]*)>/i,`<body$1><a class="skip-link" href="#${esc(mainId)}">Bỏ qua điều hướng</a>`);
+  }
+  return html;
+}
+function normalize(file){let html=fs.readFileSync(file,'utf8');html=ensureHead(html);html=ensureAccessibility(html);html=ensureScripts(html);fs.writeFileSync(file,html);}
 
 let localities=0,hubs=0,provinceRoots=0;
 for(const [slug,count] of Object.entries(coverage.by_province||{})){
@@ -47,4 +60,4 @@ for(const [slug,count] of Object.entries(coverage.by_province||{})){
   normalize(root); provinceRoots++;
 }
 if(localities!==3321||hubs!==34||provinceRoots!==34) throw new Error(`Chuẩn hóa sai số lượng: ${localities}/${hubs}/${provinceRoots}`);
-console.log(JSON.stringify({status:'ok',localities,hubs,province_roots:provinceRoots},null,2));
+console.log(JSON.stringify({status:'ok',localities,hubs,province_roots:provinceRoots,accessibility:true},null,2));
