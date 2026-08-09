@@ -1,11 +1,17 @@
-# Google Ads & AI Search landing map
+# Google Ads & AI Search intent routing
 
 Cập nhật: 09/08/2026.
 
-- `/tuyen-tho-mo-quang-ninh/`: nhóm từ khóa tuyển thợ mỏ/thợ lò/việc làm mỏ Quảng Ninh.
-- `/hoc-nghe-mo-mien-phi/`: nhóm từ khóa học nghề mỏ miễn phí/có ăn ở/hỗ trợ học nghề.
-- `/viec-lam-tho-lo-25-trieu/`: nhóm từ khóa lương thợ lò 20–25 triệu/việc làm thợ lò lương cao.
+Google Ads dùng một landing page tuyển dụng chuẩn:
 
-Mỗi trang dùng CTA chính dẫn tới biểu mẫu tuyển dụng hiện hành tại `/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky`, dùng `analytics.js` hiện có để giữ attribution Google Ads/Search/AI referral, và có canonical + JSON-LD + FAQPage riêng theo ý định tìm kiếm.
+- `/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/`
 
-`ads-sitemap.xml` được khai báo thêm trong `robots.txt` để crawler có đường phát hiện trực tiếp.
+Khối trả lời nhanh cho paid search tự điều chỉnh theo `utm_term`, `utm_content` và `utm_campaign`:
+
+- `job`: tuyển thợ mỏ/thợ lò/việc làm mỏ Quảng Ninh.
+- `training`: học nghề mỏ, miễn học phí, ăn ở, hỗ trợ học nghề.
+- `income`: lương thợ lò 20–25 triệu, thu nhập và bảng lương.
+
+Các nhóm vẫn dùng cùng biểu mẫu CRM và cùng canonical URL, tránh tạo nội dung gần trùng lặp. Các trang chuyên sâu hiện có được dùng làm bằng chứng/hỗ trợ theo intent: học nghề, hồ sơ, thu nhập, bảng lương và thông tin tuyển đang áp dụng.
+
+`ad-landing-pages.json` cung cấp bản đồ intent máy đọc được. `analytics.js` tiếp tục giữ Google Ads/Search/AI attribution và `google-search-intent.js` ghi thêm `ad_intent` vào sự kiện paid-search.
