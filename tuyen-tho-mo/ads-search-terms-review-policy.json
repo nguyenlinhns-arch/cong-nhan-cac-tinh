@@ -1,0 +1,6 @@
+{
+  "review": "weekly_when_campaign_active",
+  "promote_to_exact_when": ["qualified_leads_observed", "intent_is_recruitment", "query_matches_landing_message"],
+  "add_negative_when": ["clearly_irrelevant", "non_recruitment_intent", "repeated_spend_without_qualified_signal_after_enough_clicks"],
+  "never_auto_negative": ["province_names", "commune_names", "TKV", "thợ mỏ", "thợ lò", "học nghề mỏ", "lương thợ lò"]
+}
