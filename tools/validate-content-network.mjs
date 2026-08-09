@@ -185,9 +185,9 @@ for (const [file, url] of occupationPages) {
     "Kỹ thuật xây dựng mỏ hầm lò",
     "Kỹ thuật cơ điện mỏ hầm lò",
     "/worker-questions.css?v=2",
-    "/analytics.js?v=6",
-    "/mobile-core.css?v=1",
-    "/mobile-core.js?v=1",
+    '/analytics.js?v=6',
+    '/mobile-core.css?v=1',
+    '/mobile-core.js?v=1',
   ]) if (!html.includes(marker)) fail(`${file}: thiếu ${marker}`);
 }
 
@@ -263,10 +263,16 @@ const contentFiles = htmlFiles.filter((file) => !path.basename(file).startsWith(
 const legacyRoutes = JSON.parse(fs.readFileSync(path.resolve("operations/legacy-routes.json"), "utf8")).routes || [];
 const jobMaster = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
 const activeJobPages = (jobMaster.occupation_profiles || []).filter((role) => role.active_intake !== false);
-const expectedHtmlFiles = 54 + activeJobPages.length + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length + workerQuestionPages.length + occupationPages.length + payrollPages.length + dailySeoPages;
-const expectedContentFiles = 53 + activeJobPages.length + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length + workerQuestionPages.length + occupationPages.length + payrollPages.length + dailySeoPages;
-if (htmlFiles.length !== expectedHtmlFiles) fail(`Website: cần ${expectedHtmlFiles} tệp HTML theo số bài trong feed, trang kiểm chứng và trang lõi V4, nhận ${htmlFiles.length}`);
-if (contentFiles.length !== expectedContentFiles) fail(`Website: cần ${expectedContentFiles} trang nội dung theo số bài trong feed, trang kiểm chứng và trang lõi V4, nhận ${contentFiles.length}`);
+const evergreenSeoPages = fs.readdirSync(root, {withFileTypes: true}).filter((entry) => {
+  if (!entry.isDirectory()) return false;
+  const indexFile = path.join(root, entry.name, "index.html");
+  if (!fs.existsSync(indexFile)) return false;
+  return fs.readFileSync(indexFile, "utf8").includes('body class="daily-seo-page"');
+}).length;
+const expectedHtmlFiles = 54 + activeJobPages.length + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length + workerQuestionPages.length + occupationPages.length + payrollPages.length + dailySeoPages + evergreenSeoPages;
+const expectedContentFiles = 53 + activeJobPages.length + articles.length + verificationPages.length + v4CorePages.length + contactAuthorityPages.length + workerQuestionPages.length + occupationPages.length + payrollPages.length + dailySeoPages + evergreenSeoPages;
+if (htmlFiles.length !== expectedHtmlFiles) fail(`Website: cần ${expectedHtmlFiles} tệp HTML theo số bài trong feed, trang kiểm chứng, trang lõi và SEO evergreen, nhận ${htmlFiles.length}`);
+if (contentFiles.length !== expectedContentFiles) fail(`Website: cần ${expectedContentFiles} trang nội dung theo số bài trong feed, trang kiểm chứng, trang lõi và SEO evergreen, nhận ${contentFiles.length}`);
 for (const file of contentFiles) {
   const html = fs.readFileSync(file, "utf8");
   const relative = path.relative(root, file);
@@ -336,6 +342,7 @@ const output = {
   occupation_pages: occupationPages.length,
   payroll_pages: payrollPages.length,
   daily_seo_pages: dailySeoPages,
+  evergreen_seo_pages: evergreenSeoPages,
   active_job_pages: activeJobPages.length,
   provinces: provinces.length,
   share_packages: shareOptions,
