@@ -55,7 +55,7 @@
       "cluster": "safety_and_work_conditions",
       "funnel": "informational_consideration",
       "paid_search": "seo_only_initially",
-      "queries": ["làm thợ lò có nguy hiểm không", "thợ lò làm mấy tiếng một ngày", "thợ lò có được đóng bảo hiểm không", "thợ mỏ có những chế độ gì"],
+      "queries": ["làm thợ lò có rủi ro gì", "thợ lò làm mấy tiếng một ngày", "thợ lò có được đóng bảo hiểm không", "thợ mỏ có những chế độ gì"],
       "seo_urls": ["/an-toan-ky-luat-moi-truong/", "/giai-dap-nghe-mo/lam-tho-lo-co-nguy-hiem-khong/", "/giai-dap-nghe-mo/tho-lo-lam-may-tieng/", "/giai-dap-nghe-mo/tho-lo-co-duoc-dong-bao-hiem-khong/", "/giai-dap-nghe-mo/tho-mo-co-nhung-che-do-gi/"],
       "reason": "Các truy vấn quan trọng để xây niềm tin nhưng nên để SEO phục vụ trước; chỉ mua khi Search Terms chứng minh có tỷ lệ qualified lead tốt."
     }
