@@ -1,0 +1,9 @@
+Validation checklist 2026-08-09
+- 3 self-canonical landing pages
+- unique title and meta description per intent
+- responsive shared CSS and fixed mobile CTA
+- existing analytics.js loaded on each landing page
+- primary application CTA routes to existing CRM-backed application form
+- FAQPage JSON-LD present on each landing page
+- ads-sitemap.xml added and declared from robots.txt
+- machine-readable ad-landing-pages.json added
