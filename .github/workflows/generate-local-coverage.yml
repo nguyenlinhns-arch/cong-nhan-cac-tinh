@@ -1,0 +1,37 @@
+name: Generate local coverage
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 20 * * 0'
+  push:
+    branches: [main]
+    paths:
+      - 'tuyen-tho-mo/scripts/generate-local-coverage.mjs'
+      - '.github/workflows/generate-local-coverage.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate commune and legacy district coverage
+        run: node tuyen-tho-mo/scripts/generate-local-coverage.mjs
+      - name: Validate generated coverage
+        run: |
+          node -e "const d=require('./tuyen-tho-mo/local-coverage.json'); if(d.communes<3000||d.communes>3500) process.exit(1); console.log(d)"
+          test -f tuyen-tho-mo/commune-sitemap.xml
+      - name: Commit generated pages
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add tuyen-tho-mo/viec-lam-nganh-than tuyen-tho-mo/commune-sitemap.xml tuyen-tho-mo/local-coverage.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'Cập nhật phủ tuyển dụng đến cấp xã [skip ci]'
+          git push
