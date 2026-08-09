@@ -35,6 +35,7 @@ Sitemap: https://thaylinhtuyenthomo.vn/sitemap.xml
 Sitemap: https://thaylinhtuyenthomo.vn/news-sitemap.xml
 Sitemap: https://thaylinhtuyenthomo.vn/jobs-sitemap.xml
 Sitemap: https://thaylinhtuyenthomo.vn/province-sitemap.xml
+Sitemap: https://thaylinhtuyenthomo.vn/commune-sitemap.xml
 
 # Nguồn cập nhật nội dung
 # RSS: https://thaylinhtuyenthomo.vn/feed.xml
