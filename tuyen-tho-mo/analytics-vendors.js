@@ -7,7 +7,7 @@
   const GA4_ID = api.ga4Id;
   const META_PIXEL_ID = api.metaPixelId;
   const WEB_VITALS_VERSION = "6.0.1";
-  const MEASUREMENT_VERSION = "2026-08-09-google-search-ai-v1";
+  const MEASUREMENT_VERSION = "2026-08-09-google-search-ai-v2";
   const dataLayer = window.dataLayer = window.dataLayer || [];
   const nativePush = dataLayer.push.bind(dataLayer);
   let lastConditionComplete = { key: "", at: 0 };
@@ -119,9 +119,19 @@
       window.fbq("trackCustom", "FormSubmit", params);
       return;
     }
-    if (["Lead", "application_message_created"].includes(item.event)) {
-      gtagEvent("generate_lead", params);
-      window.fbq("track", "Lead", { content_name: params.job_id || "recruitment_application", content_category: params.eligibility || "unknown" });
+    if (item.event === "Lead") {
+      if (params.action === "application_saved") {
+        gtagEvent("generate_lead", params);
+        window.fbq("track", "Lead", { content_name: params.job_id || "recruitment_application", content_category: params.eligibility || "unknown" });
+      } else {
+        gtagEvent("lead_fallback_created", params);
+        window.fbq("trackCustom", "LeadFallbackCreated", params);
+      }
+      return;
+    }
+    if (item.event === "application_message_created") {
+      gtagEvent("lead_fallback_created", params);
+      window.fbq("trackCustom", "LeadFallbackCreated", params);
       return;
     }
     if (item.event === "ApplicationProgress") { gtagEvent("application_progress", params); return; }
