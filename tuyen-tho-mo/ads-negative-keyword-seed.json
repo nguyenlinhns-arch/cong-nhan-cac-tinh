@@ -1,0 +1,10 @@
+{
+  "updated_at": "2026-08-09",
+  "purpose": "Seed list; review Search Terms before applying broad exclusions.",
+  "negative_seed": [
+    "game", "phim", "truyện", "ảnh chế", "hình nền", "minecraft", "roblox",
+    "đồ chơi", "mô hình", "crypto", "bitcoin", "forex", "casino", "cá cược",
+    "tuyển nữ", "việc online tại nhà", "cộng tác viên online"
+  ],
+  "do_not_block_without_search_terms_review": ["than", "tkv", "quảng ninh", "công nhân", "học nghề", "lương", "tuyển dụng"]
+}
