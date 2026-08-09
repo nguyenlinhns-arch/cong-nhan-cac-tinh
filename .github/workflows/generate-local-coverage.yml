@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - 'tuyen-tho-mo/scripts/generate-local-coverage.mjs'
+      - 'tuyen-tho-mo/scripts/link-province-commune-hubs.mjs'
       - '.github/workflows/generate-local-coverage.yml'
 
 permissions:
@@ -28,6 +29,8 @@ jobs:
           node-version: '22'
       - name: Generate all current commune, ward and special-zone pages
         run: node tuyen-tho-mo/scripts/generate-local-coverage.mjs
+      - name: Link every province page to its commune directory
+        run: node tuyen-tho-mo/scripts/link-province-commune-hubs.mjs
       - name: Validate complete national coverage
         run: |
           node <<'NODE'
@@ -43,7 +46,11 @@ jobs:
           if(new Set(urls).size!==3321) throw new Error('commune-sitemap.xml contains duplicate URLs');
           for(const [slug,count] of Object.entries(d.by_province)) {
             const hub=`./tuyen-tho-mo/viec-lam-nganh-than/${slug}/xa-phuong/index.html`;
+            const province=`./tuyen-tho-mo/viec-lam-nganh-than/${slug}/index.html`;
             if(!fs.existsSync(hub)) throw new Error(`Missing province commune hub: ${slug}`);
+            if(!fs.existsSync(province)) throw new Error(`Missing province landing page: ${slug}`);
+            const provinceHtml=fs.readFileSync(province,'utf8');
+            if(!provinceHtml.includes(`/viec-lam-nganh-than/${slug}/xa-phuong/`)) throw new Error(`Province page does not link to commune hub: ${slug}`);
             if(count<1) throw new Error(`Invalid commune count for ${slug}`);
           }
           console.log(JSON.stringify(d,null,2));
