@@ -9,11 +9,13 @@ on:
     paths:
       - 'tuyen-tho-mo/scripts/generate-local-coverage.mjs'
       - 'tuyen-tho-mo/scripts/enhance-local-coverage.mjs'
+      - 'tuyen-tho-mo/scripts/enrich-local-worker-history.mjs'
       - 'tuyen-tho-mo/scripts/normalize-local-page-delivery.mjs'
       - 'tuyen-tho-mo/scripts/build-locality-feed.mjs'
       - 'tuyen-tho-mo/scripts/update-ai-locality-discovery.mjs'
       - 'tuyen-tho-mo/scripts/audit-local-coverage.mjs'
       - 'tuyen-tho-mo/scripts/link-province-commune-hubs.mjs'
+      - 'tuyen-tho-mo/data/historical-workers-by-commune-*.json'
       - 'tuyen-tho-mo/recruitment-current.json'
       - '.github/workflows/generate-local-coverage.yml'
   pull_request:
@@ -21,11 +23,13 @@ on:
       - 'tuyen-tho-mo/scripts/materialize-local-coverage.trigger'
       - 'tuyen-tho-mo/scripts/generate-local-coverage.mjs'
       - 'tuyen-tho-mo/scripts/enhance-local-coverage.mjs'
+      - 'tuyen-tho-mo/scripts/enrich-local-worker-history.mjs'
       - 'tuyen-tho-mo/scripts/normalize-local-page-delivery.mjs'
       - 'tuyen-tho-mo/scripts/build-locality-feed.mjs'
       - 'tuyen-tho-mo/scripts/update-ai-locality-discovery.mjs'
       - 'tuyen-tho-mo/scripts/audit-local-coverage.mjs'
       - 'tuyen-tho-mo/scripts/link-province-commune-hubs.mjs'
+      - 'tuyen-tho-mo/data/historical-workers-by-commune-*.json'
       - 'tuyen-tho-mo/recruitment-current.json'
 
 permissions:
@@ -52,6 +56,8 @@ jobs:
         run: node tuyen-tho-mo/scripts/link-province-commune-hubs.mjs
       - name: Add useful recruitment content to every locality page
         run: node tuyen-tho-mo/scripts/enhance-local-coverage.mjs
+      - name: Add historical recruitment evidence by commune
+        run: node tuyen-tho-mo/scripts/enrich-local-worker-history.mjs
       - name: Normalize mobile analytics and social delivery
         run: node tuyen-tho-mo/scripts/normalize-local-page-delivery.mjs
       - name: Build machine-readable locality feed
