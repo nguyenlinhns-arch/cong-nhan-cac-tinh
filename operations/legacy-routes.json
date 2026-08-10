@@ -11,6 +11,18 @@
     { "from": "/quang-ngai/", "to": "/viec-lam-nganh-than/quang-ngai/", "label": "Quảng Ngãi" },
     { "from": "/quang-tri/", "to": "/viec-lam-nganh-than/quang-tri/", "label": "Quảng Trị" },
     { "from": "/son-la/", "to": "/viec-lam-nganh-than/son-la/", "label": "Sơn La" },
-    { "from": "/tuyen-quang-ha-giang/", "to": "/viec-lam-nganh-than/tuyen-quang/", "label": "Tuyên Quang – Hà Giang" }
+    { "from": "/tuyen-quang-ha-giang/", "to": "/viec-lam-nganh-than/tuyen-quang/", "label": "Tuyên Quang – Hà Giang" },
+    { "from": "/giai-dap-nghe-mo/hoc-nghe-mo-co-mat-tien-khong/", "to": "/hoc-nghe-mo-co-mat-tien-khong/", "label": "Học nghề mỏ có mất tiền không?", "kind": "duplicate-question" },
+    { "from": "/giai-dap-nghe-mo/hoc-tho-lo-bao-lau/", "to": "/hoc-tho-lo-bao-lau/", "label": "Học thợ lò bao lâu?", "kind": "duplicate-question" },
+    { "from": "/giai-dap-nghe-mo/hoc-tho-lo-co-duoc-an-o-khong/", "to": "/hoc-tho-lo-co-duoc-an-o-khong/", "label": "Học thợ lò có được ăn ở không?", "kind": "duplicate-question" },
+    { "from": "/giai-dap-nghe-mo/hoc-tho-lo-co-mien-phi-khong/", "to": "/hoc-tho-lo-co-mien-phi-khong/", "label": "Học thợ lò có miễn phí không?", "kind": "duplicate-question" },
+    { "from": "/giai-dap-nghe-mo/hoc-tho-lo-lien-he-ai/", "to": "/hoc-tho-lo-lien-he-ai/", "label": "Học thợ lò liên hệ ai?", "kind": "duplicate-question" },
+    { "from": "/giai-dap-nghe-mo/hoc-tho-lo-o-dau-quang-ninh/", "to": "/hoc-tho-lo-o-dau-quang-ninh/", "label": "Học thợ lò ở đâu tại Quảng Ninh?", "kind": "duplicate-question" },
+    { "from": "/giai-dap-nghe-mo/hoc-tho-mo-lien-he-ai/", "to": "/hoc-tho-mo-lien-he-ai/", "label": "Học thợ mỏ liên hệ ai?", "kind": "duplicate-question" },
+    { "from": "/giai-dap-nghe-mo/lam-tho-lo-co-nguy-hiem-khong/", "to": "/lam-tho-lo-co-nguy-hiem-khong/", "label": "Làm thợ lò có nguy hiểm không?", "kind": "duplicate-question" },
+    { "from": "/giai-dap-nghe-mo/luong-tho-lo-bao-nhieu/", "to": "/luong-tho-lo-bao-nhieu/", "label": "Lương thợ lò bao nhiêu?", "kind": "duplicate-question" },
+    { "from": "/giai-dap-nghe-mo/tho-lo-la-nghe-gi/", "to": "/tho-lo-la-nghe-gi/", "label": "Thợ lò là nghề gì?", "kind": "duplicate-question" },
+    { "from": "/giai-dap-nghe-mo/tho-mo-co-nhung-che-do-gi/", "to": "/tho-mo-co-nhung-che-do-gi/", "label": "Thợ mỏ, thợ lò có những chế độ gì?", "kind": "duplicate-question" },
+    { "from": "/giai-dap-nghe-mo/tho-mo-la-nghe-gi/", "to": "/tho-mo-la-nghe-gi/", "label": "Thợ mỏ là nghề gì?", "kind": "duplicate-question" }
   ]
 }

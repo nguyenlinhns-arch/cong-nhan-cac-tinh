@@ -15,8 +15,13 @@ function escapeHtml(value) {
 
 function render(route) {
   const targetUrl = `${base}${route.to}`;
-  const title = `Thông tin việc làm ngành Than tại ${route.label} đã chuyển địa chỉ`;
-  const description = `Đường dẫn cũ được chuyển tới trang thông tin việc làm ngành Than tại ${route.label} trên Thầy Linh Tuyển Thợ Mỏ.`;
+  const isQuestion = route.kind === "duplicate-question";
+  const title = isQuestion
+    ? `${route.label} Nội dung đã được hợp nhất`
+    : `Thông tin việc làm ngành Than tại ${route.label} đã chuyển địa chỉ`;
+  const description = isQuestion
+    ? `Câu trả lời về “${route.label}” đã được hợp nhất tại trang thông tin chính để người lao động không gặp nội dung trùng lặp.`
+    : `Đường dẫn cũ được chuyển tới trang thông tin việc làm ngành Than tại ${route.label} trên Thầy Linh Tuyển Thợ Mỏ.`;
   return `<!doctype html>
 <html lang="vi">
 <head>
@@ -39,10 +44,10 @@ function render(route) {
   <a class="skip-link" href="#noi-dung">Bỏ qua đến nội dung</a>
   <main id="noi-dung" class="legal-page">
     <article class="legal-card">
-      <p class="eyebrow">ĐƯỜNG DẪN ĐÃ CẬP NHẬT</p>
-      <h1>Thông tin tại ${escapeHtml(route.label)} đã chuyển sang địa chỉ mới</h1>
-      <p>Website đang chuyển bạn tới trang thông tin việc làm ngành Than hiện hành.</p>
-      <a class="button" href="${route.to}">Mở trang mới</a>
+      <p class="eyebrow">${isQuestion ? "CÂU TRẢ LỜI ĐÃ HỢP NHẤT" : "ĐƯỜNG DẪN ĐÃ CẬP NHẬT"}</p>
+      <h1>${isQuestion ? escapeHtml(route.label) : `Thông tin tại ${escapeHtml(route.label)} đã chuyển sang địa chỉ mới`}</h1>
+      <p>${isQuestion ? "Website đang chuyển bạn tới câu trả lời chính để tránh hai trang cùng giải thích một vấn đề." : "Website đang chuyển bạn tới trang thông tin việc làm ngành Than hiện hành."}</p>
+      <a class="button" href="${route.to}">${isQuestion ? "Mở câu trả lời chính" : "Mở trang mới"}</a>
     </article>
   </main>
   <script>location.replace(${JSON.stringify(route.to)} + location.search + location.hash);</script>

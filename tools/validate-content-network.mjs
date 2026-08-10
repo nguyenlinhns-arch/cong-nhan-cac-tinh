@@ -95,7 +95,9 @@ if (!llms.includes("localities.json")) fail("llms.txt: thiếu localities.json")
 const htmlFiles = walk(root);
 const contentFiles = htmlFiles.filter(file => !path.basename(file).startsWith("google"));
 const materializedDelta = 3321 + 34 + Math.max(0, provinceEntries.length - 26);
-const permanentContentBaseline = 171;
+const dailySeoFeed = JSON.parse(read("daily-seo-articles.json"));
+const dailySeoPages = 1 + (Array.isArray(dailySeoFeed.articles) ? dailySeoFeed.articles.length : 0);
+const permanentContentBaseline = 176 + dailySeoPages;
 const expectedHtmlFiles = (permanentContentBaseline + 1) + materializedDelta;
 const expectedContentFiles = permanentContentBaseline + materializedDelta;
 if (htmlFiles.length !== expectedHtmlFiles) fail(`Website: cần ${expectedHtmlFiles} tệp HTML sau khi materialize 3.321 địa bàn, nhận ${htmlFiles.length}`);
@@ -109,5 +111,5 @@ for (const file of contentFiles) {
   if (!html.includes('/mobile-core.js?v=1')) fail(`${relative}: chưa nạp /mobile-core.js?v=1`);
 }
 
-console.log(JSON.stringify({html:htmlFiles.length,content_pages:contentFiles.length,hubs:hubs.length,verification_pages:verificationPages.length,provinces:provinceEntries.length,locality_hubs:localityHubs,locality_pages:localityPages,articles:articles.length,errors:errors.length,sampleErrors:errors.slice(0,40)},null,2));
+console.log(JSON.stringify({html:htmlFiles.length,content_pages:contentFiles.length,hubs:hubs.length,verification_pages:verificationPages.length,daily_seo_pages:dailySeoPages,provinces:provinceEntries.length,locality_hubs:localityHubs,locality_pages:localityPages,articles:articles.length,errors:errors.length,sampleErrors:errors.slice(0,40)},null,2));
 if (errors.length) process.exitCode = 1;

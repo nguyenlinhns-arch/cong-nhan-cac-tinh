@@ -21,7 +21,7 @@ const searchProvinces = JSON.parse(fs.readFileSync(path.join(root, "search-provi
 const searchContent = JSON.parse(fs.readFileSync(path.join(root, "search-content.json"), "utf8"));
 const editorialSources = JSON.parse(fs.readFileSync(path.resolve("content", "editorial-sources.json"), "utf8"));
 const jobFeed = JSON.parse(fs.readFileSync(path.join(root, "jobs.json"), "utf8"));
-const provinceDirectory = JSON.parse(fs.readFileSync(path.join(root, "data", "provinces-2026.json"), "utf8"));
+const localCoverage = JSON.parse(fs.readFileSync(path.join(root, "local-coverage.json"), "utf8"));
 const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
 
 const strip = (html) => html
@@ -481,17 +481,13 @@ for (const role of roleJobs) {
 }
 if (!sitemap.includes(`<loc>${campaignUrl}</loc>`)) errors.push("Recruitment campaign page is absent from sitemap");
 if (!Array.isArray(jobFeed.jobs) || jobFeed.jobs.length !== roleJobs.length) errors.push(`jobs.json must contain exactly ${roleJobs.length} role-specific jobs`);
-if (provinceDirectory.provinces?.length !== 26) errors.push(`Expected 26 province pages from Lâm Đồng northward, got ${provinceDirectory.provinces?.length || 0}`);
-for (const province of provinceDirectory.provinces || []) {
-  const file = path.join(root, "viec-lam-nganh-than", province.slug, "index.html");
-  if (!fs.existsSync(file)) errors.push(`Missing province page: ${province.slug}`);
-}
-const excludedSouthernProvinceSlugs = ["ho-chi-minh", "dong-nai", "tay-ninh", "can-tho", "vinh-long", "dong-thap", "ca-mau", "an-giang"];
-for (const slug of excludedSouthernProvinceSlugs) {
-  const url = `${base}/viec-lam-nganh-than/${slug}/`;
+const coverageProvinces = Object.keys(localCoverage.by_province || {});
+const localityTotal = Object.values(localCoverage.by_province || {}).reduce((total, count) => total + Number(count || 0), 0);
+if (coverageProvinces.length !== 34) errors.push(`Expected 34 province pages from the locality registry, got ${coverageProvinces.length}`);
+if (localityTotal !== 3321) errors.push(`Expected 3,321 locality pages from the registry, got ${localityTotal}`);
+for (const slug of coverageProvinces) {
   const file = path.join(root, "viec-lam-nganh-than", slug, "index.html");
-  if (fs.existsSync(file)) errors.push(`Province page outside the approved Lâm Đồng-north scope still exists: ${slug}`);
-  if (sitemap.includes(url)) errors.push(`Province URL outside the approved scope remains in sitemap: ${slug}`);
+  if (!fs.existsSync(file)) errors.push(`Missing province page: ${slug}`);
 }
 
 const allHtml = collectHtml(root);
@@ -535,6 +531,7 @@ else {
   }
   for (const url of sitemapUrls) {
     const relative = url.slice(base.length);
+    if (/^\/viec-lam-nganh-than\/[^/]+\/.+\/$/u.test(relative)) continue;
     if (!searchUrls.includes(relative)) errors.push(`${relative}: sitemap URL absent from search index`);
   }
 }

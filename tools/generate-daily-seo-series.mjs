@@ -51,9 +51,25 @@ function read(relativePath) {
 }
 
 const seriesDirectory = path.join(SITE, "giai-dap-nghe-mo");
+const managedArticleSlugs = new Set(data.articles.map((article) => article.slug));
 if (fs.existsSync(seriesDirectory)) {
   for (const entry of fs.readdirSync(seriesDirectory, {withFileTypes: true})) {
-    if (entry.isDirectory()) fs.rmSync(path.join(seriesDirectory, entry.name), {recursive: true});
+    if (entry.isDirectory() && managedArticleSlugs.has(entry.name)) {
+      fs.rmSync(path.join(seriesDirectory, entry.name), {recursive: true});
+      continue;
+    }
+    if (!entry.isDirectory()) continue;
+    const duplicatePath = path.join(seriesDirectory, entry.name, "index.html");
+    const canonicalPath = path.join(SITE, entry.name, "index.html");
+    if (!fs.existsSync(duplicatePath) || !fs.existsSync(canonicalPath)) continue;
+    const duplicate = fs.readFileSync(duplicatePath, "utf8");
+    if (/<meta\s+name=["']robots["']\s+content=["'][^"']*noindex/i.test(duplicate)) continue;
+    const consolidated = duplicate.replace(
+      /<meta\s+name=["']robots["']\s+content=["'][^"']*["']>/i,
+      '<meta name="robots" content="noindex,follow">',
+    );
+    if (consolidated === duplicate) throw new Error(`Không thể hợp nhất trang hỏi đáp trùng: ${entry.name}`);
+    fs.writeFileSync(duplicatePath, consolidated);
   }
 }
 

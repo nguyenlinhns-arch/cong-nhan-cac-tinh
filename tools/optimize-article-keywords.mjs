@@ -240,7 +240,16 @@ function maskGeneratedArticleDiffs(files) {
   }
 }
 
-const files = walk(SITE).filter((file) => file.endsWith(".html") && ARTICLE_PATH.test(path.relative(SITE, file).split(path.sep).join("/")));
+const feed = JSON.parse(fs.readFileSync(path.join(SITE, "feed.json"), "utf8"));
+const daily = JSON.parse(fs.readFileSync(path.join(SITE, "daily-seo-articles.json"), "utf8"));
+const managedArticlePaths = new Set([
+  ...(feed.items || []).map((item) => item.url),
+  ...(daily.articles || []).map((article) => article.canonical_url),
+].map((url) => `${new URL(url).pathname.replace(/^\/+|\/+$/gu, "")}/index.html`));
+const files = walk(SITE).filter((file) => {
+  const relative = path.relative(SITE, file).split(path.sep).join("/");
+  return file.endsWith(".html") && ARTICLE_PATH.test(relative) && managedArticlePaths.has(relative);
+});
 const initial = files.map(analyze);
 const stats = {descriptions: 0, seoGuidanceRewritten: 0, topicLinks: 0, relatedNavigations: 0, dates: 0, schemas: 0};
 const changed = [];
@@ -275,9 +284,7 @@ const warnings = [];
 const titleOwners = new Map();
 const descriptionOwners = new Map();
 const keywordOwners = new Map();
-const feed = JSON.parse(fs.readFileSync(path.join(SITE, "feed.json"), "utf8"));
-const daily = JSON.parse(fs.readFileSync(path.join(SITE, "daily-seo-articles.json"), "utf8"));
-const expected = (feed.items?.length || 0) + (daily.articles?.length || 0);
+const expected = managedArticlePaths.size;
 if (files.length !== expected) errors.push(`Cần ${expected} bài từ feed, hiện kiểm tra được ${files.length}`);
 for (const article of finalArticles) {
   const currentTitle = titleOf(article.html);
