@@ -97,7 +97,7 @@ const contentFiles = htmlFiles.filter(file => !path.basename(file).startsWith("g
 const materializedDelta = 3321 + 34 + Math.max(0, provinceEntries.length - 26);
 const dailySeoFeed = JSON.parse(read("daily-seo-articles.json"));
 const dailySeoPages = 1 + (Array.isArray(dailySeoFeed.articles) ? dailySeoFeed.articles.length : 0);
-const permanentContentBaseline = 176 + dailySeoPages;
+const permanentContentBaseline = 177 + dailySeoPages;
 const expectedHtmlFiles = (permanentContentBaseline + 1) + materializedDelta;
 const expectedContentFiles = permanentContentBaseline + materializedDelta;
 if (htmlFiles.length !== expectedHtmlFiles) fail(`Website: cần ${expectedHtmlFiles} tệp HTML sau khi materialize 3.321 địa bàn, nhận ${htmlFiles.length}`);

@@ -4,6 +4,7 @@ import path from "node:path";
 const root = path.resolve("tuyen-tho-mo");
 const ledger = JSON.parse(fs.readFileSync(path.resolve("content", "editorial-sources.json"), "utf8"));
 const imageSources = JSON.parse(fs.readFileSync(path.join(root, "assets", "articles", "sources.json"), "utf8"));
+const expectedArticleCount = 71;
 const errors = [];
 const articleFiles = [];
 const htmlEsc = (value = "") => String(value)
@@ -25,9 +26,9 @@ function walk(directory) {
 walk(path.join(root, "tin-nganh-than"));
 walk(path.join(root, "bai-viet"));
 
-if (!Array.isArray(ledger.articles) || ledger.articles.length !== 70) errors.push(`Sổ nguồn phải có 70 bài, hiện có ${ledger.articles?.length || 0}`);
-if (Object.keys(imageSources).length !== 70) errors.push(`Sổ nguồn ảnh phải có 70 bài, hiện có ${Object.keys(imageSources).length}`);
-if (articleFiles.length !== 70) errors.push(`Website phải có 70 bài, hiện tìm thấy ${articleFiles.length}`);
+if (!Array.isArray(ledger.articles) || ledger.articles.length !== expectedArticleCount) errors.push(`Sổ nguồn phải có ${expectedArticleCount} bài, hiện có ${ledger.articles?.length || 0}`);
+if (Object.keys(imageSources).length !== expectedArticleCount) errors.push(`Sổ nguồn ảnh phải có ${expectedArticleCount} bài, hiện có ${Object.keys(imageSources).length}`);
+if (articleFiles.length !== expectedArticleCount) errors.push(`Website phải có ${expectedArticleCount} bài, hiện tìm thấy ${articleFiles.length}`);
 
 const bySlug = new Map(articleFiles.map((item) => {
   const canonical = item.html.match(/<link rel="canonical" href="[^"]+\/([^/]+)\/">/i)?.[1] || "";
