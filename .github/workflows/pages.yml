@@ -196,7 +196,7 @@ jobs:
                 && grep -Fq '"strategy": "answer-first-tiered"' "$manifest_file" \
                 && grep -Fq '"discovery"' "$manifest_file" \
                 && grep -Fq '"title": "Học xong làm việc ở đâu?"' "$core_index_file" \
-                && [ "$(grep -Fc '"category": "province"' "$province_index_file")" -eq 26 ] \
+                && [ "$(grep -Fc '"category": "province"' "$province_index_file")" -eq 34 ] \
                 && grep -Fq 'analytics-vendors.js?v=1' "$analytics_file"; then
                 echo "Live mobile polish, tiered search, AI crawler access and recruitment funnel verified on attempt $attempt."
                 exit 0
