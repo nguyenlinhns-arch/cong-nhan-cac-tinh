@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-08-09",
+  "updated_at": "2026-08-11",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -677,6 +677,82 @@
         ["/kiem-tra-dieu-kien/", "Tự kiểm tra điều kiện sơ bộ"],
         ["/thong-tin-tuyen-tho-mo/#can-thi-suc-khoe", "Đối chiếu điều kiện cận thị và sức khỏe"],
         ["/lien-he-di-lam-mo-than-quang-ninh/", "Liên hệ người phụ trách để được hướng dẫn"]
+      ]
+    },
+    {
+      "publish_on": "2026-08-13",
+      "slug": "bi-huyet-ap-cao-co-dang-ky-hoc-nghe-mo-duoc-khong",
+      "title": "Bị huyết áp cao có đăng ký học nghề mỏ được không?",
+      "short_title": "Huyết áp cao đăng ký nghề mỏ thế nào",
+      "meta": "Bị huyết áp cao có đăng ký học nghề mỏ được không? Xem cách khai tình trạng, ý nghĩa của sàng lọc ban đầu và vai trò của khám tuyển.",
+      "eyebrow": "HUYẾT ÁP VÀ KHÁM SỨC KHỎE NGHỀ MỎ",
+      "primary_query": "bị huyết áp cao có đăng ký học nghề mỏ được không",
+      "query_variants": [
+        "cao huyết áp có làm thợ lò được không",
+        "đang uống thuốc huyết áp có học nghề mỏ được không",
+        "khám huyết áp tuyển thợ mỏ thế nào"
+      ],
+      "direct_answer": "Điều kiện tuyển hiện hành loại trừ trường hợp huyết áp không phù hợp, nhưng không đưa một ngưỡng đo để người lao động tự kết luận. Người từng được chẩn đoán tăng huyết áp, đang dùng thuốc hoặc có kết quả bất thường cần khai đúng; chỉ khám sức khỏe tuyển dụng mới xác nhận mức độ phù hợp.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-kham-huyet-ap-cong-nhan.webp",
+        "alt": "Nhân viên y tế đo huyết áp cho công nhân TKV trong đợt khám sức khỏe định kỳ",
+        "credit": "Ảnh: Vinacomin · khám sức khỏe định kỳ cho người lao động TKV"
+      },
+      "intro": [
+        "Huyết áp là một trong những vấn đề người lao động thường ngại nói khi hỏi về nghề mỏ. Có người từng được bác sĩ chẩn đoán tăng huyết áp, có người đang dùng thuốc đều hằng ngày, cũng có người chỉ thấy một lần đo cao sau khi đi đường xa hoặc thức khuya. Ba trường hợp này không nên được tự gộp thành một kết luận đủ hay không đủ sức khỏe.",
+        "Nguồn tuyển đang áp dụng ghi rõ trường hợp huyết áp không phù hợp thuộc nhóm loại trừ sức khỏe, nhưng không công bố một con số để website hoặc người tư vấn tự chẩn đoán. Vì vậy, bước đúng là khai trung thực tình trạng đã biết, nhận hướng dẫn kiểm tra và chờ kết luận khám tuyển. Đăng ký hỏi không đồng nghĩa đã được xác nhận sức khỏe; ngược lại, một lần đo tại nhà cũng không phải căn cứ để tự bỏ cuộc hoặc tự điều chỉnh thuốc."
+      ],
+      "key_points": [
+        ["Không tự kết luận từ một lần đo", "Website không dùng một chỉ số huyết áp đơn lẻ để xác nhận đủ hoặc không đủ điều kiện."],
+        ["Khai đúng tình trạng đang biết", "Nói rõ đã từng được chẩn đoán, đang theo dõi hoặc đang dùng thuốc; không che giấu để vượt bước sàng lọc."],
+        ["Khám tuyển là căn cứ cuối cùng", "Người tư vấn chỉ kiểm tra sơ bộ; cơ sở khám mới đánh giá tình trạng sức khỏe theo yêu cầu tuyển dụng."],
+        ["Giữ thông tin y tế riêng tư", "Chưa gửi ảnh đơn thuốc, sổ khám hoặc kết quả xét nghiệm lên biểu mẫu công khai ở bước đầu."]
+      ],
+      "sections": [
+        {
+          "heading": "Bị huyết áp cao có đăng ký học nghề mỏ được không?",
+          "paragraphs": [
+            "Người có vấn đề huyết áp vẫn có thể liên hệ để được hướng dẫn đúng quy trình, nhưng không nên hiểu việc gửi đăng ký là đã đạt yêu cầu sức khỏe. Điều kiện hiện hành dùng cách diễn đạt \"huyết áp không phù hợp\" và không đặt một mốc số đo công khai để người lao động tự chia thành mức được nhận hoặc bị loại. Kết quả cuối cùng cần căn cứ vào khám sức khỏe tuyển dụng và hồ sơ thực tế.",
+            "Nếu đã từng được bác sĩ chẩn đoán tăng huyết áp, đang tái khám hoặc đang dùng thuốc, hãy nói đúng ngay ở bước tư vấn. Việc che giấu có thể khiến người lao động chuẩn bị hồ sơ, mua vé và đi xa rồi mới phát hiện không phù hợp. Khai đúng giúp người phụ trách hướng dẫn bước tiếp theo, nhưng không biến cuộc trao đổi qua điện thoại thành một kết luận y khoa."
+          ]
+        },
+        {
+          "heading": "Vì sao một lần đo cao chưa đủ để tự quyết định?",
+          "paragraphs": [
+            "Một chỉ số đo tại nhà, tại hiệu thuốc hoặc sau khi vừa vận động chỉ phản ánh đúng thời điểm đó. Website không biết thiết bị có phù hợp, cách đo có đúng hay người đo có đang dùng thuốc theo chỉ định hay không. Vì vậy, bài viết này không đưa ra ngưỡng để người đọc tự chẩn đoán, tự đổi liều thuốc hoặc cố làm thay đổi kết quả trước ngày khám.",
+            "Ngược lại, người thấy chỉ số bình thường trong một lần đo cũng không nên khẳng định bệnh đã hết hoặc bỏ qua tiền sử. Nếu đang được bác sĩ theo dõi, hãy tiếp tục làm theo hướng dẫn chuyên môn. Khi cơ sở tuyển dụng yêu cầu khám, nhân viên y tế sẽ quyết định cách đo, đánh giá và tài liệu cần đối chiếu; người tư vấn tuyển sinh không thay thế bước này."
+          ]
+        },
+        {
+          "heading": "Tin nhắn đầu tiên nên nói gì về huyết áp?",
+          "items": [
+            "Gửi năm sinh, địa phương đang sống, chiều cao và cân nặng để đối chiếu các điều kiện cơ bản trước.",
+            "Nói ngắn gọn đã từng được chẩn đoán huyết áp cao hay chỉ mới có một lần đo bất thường; nếu đang điều trị thì nói rõ là đang theo dõi theo chỉ định.",
+            "Chưa gửi ảnh đơn thuốc, kết quả khám, sổ bệnh hoặc giấy tờ y tế lên biểu mẫu website; chỉ cung cấp tài liệu khi có hướng dẫn phù hợp và kênh tiếp nhận rõ ràng.",
+            "Hỏi rõ bước tiếp theo là tư vấn thêm hay khám sức khỏe; chỉ chuẩn bị hồ sơ và di chuyển sau khi được xác nhận lịch."
+          ]
+        },
+        {
+          "heading": "Bốn việc không nên làm trước khi khám tuyển",
+          "paragraphs": [
+            "Không tự ngừng thuốc, đổi liều hoặc dùng thuốc của người khác với mục đích làm đẹp chỉ số. Không mượn kết quả khám của người khác và không trả tiền cho người hứa có thể bỏ qua tiêu chuẩn sức khỏe. Không giấu tiền sử chỉ vì lo bị từ chối. Những cách này có thể tạo kỳ vọng sai, phát sinh chi phí và làm mất an toàn cho chính người lao động.",
+            "Trước ngày khám, hãy làm theo hướng dẫn của cơ sở y tế hoặc người phụ trách lịch tiếp nhận. Nếu đang điều trị, giữ lại thông tin thuốc và lịch theo dõi của mình để xuất trình khi được yêu cầu, nhưng không đăng công khai. Người ở tỉnh xa không nên tự mua vé lên Quảng Ninh chỉ để hỏi trực tiếp; sàng lọc từ xa trước giúp biết mình cần chuẩn bị gì và tránh một chuyến đi không cần thiết."
+          ]
+        }
+      ],
+      "takeaway_title": "Khai đúng huyết áp trước khi chuẩn bị hồ sơ và đường đi",
+      "takeaway": "Điều kiện tuyển hiện hành loại trừ trường hợp huyết áp không phù hợp, nhưng website không thể xác nhận bằng một con số đo đơn lẻ. Người từng được chẩn đoán, đang dùng thuốc hoặc có kết quả bất thường nên nói đúng ngay từ đầu, không tự thay đổi điều trị và chờ kết luận khám tuyển trước khi chuẩn bị hồ sơ hoặc di chuyển.",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 ghi huyết áp không phù hợp trong nhóm loại trừ sức khỏe; kết quả tiếp nhận cuối cùng căn cứ khám sức khỏe tuyển dụng và hồ sơ thực tế.",
+      "faqs": [
+        ["Một lần đo huyết áp cao có chắc chắn bị loại không?", "Không thể kết luận từ một lần đo. Điều kiện hiện hành yêu cầu huyết áp phù hợp; cơ sở khám tuyển mới đánh giá tình trạng cụ thể."],
+        ["Đang uống thuốc huyết áp có cần nói khi đăng ký không?", "Có. Hãy nói ngắn gọn rằng đang được theo dõi hoặc dùng thuốc theo chỉ định; không tự ngừng thuốc để đi khám."],
+        ["Có phải gửi ảnh đơn thuốc hoặc kết quả khám qua website không?", "Không. Bước đầu chỉ cần mô tả ngắn tình trạng; chưa gửi tài liệu y tế hoặc thông tin sức khỏe chi tiết lên biểu mẫu công khai."],
+        ["Huyết áp đo bình thường ở nhà có được xác nhận đủ sức khỏe không?", "Chưa. Một lần đo tại nhà không thay thế khám tuyển. Hãy khai đúng tiền sử và thực hiện bước khám khi được hướng dẫn."]
+      ],
+      "related": [
+        ["/kiem-tra-dieu-kien/", "Tự kiểm tra điều kiện sơ bộ"],
+        ["/thong-tin-tuyen-tho-mo/#can-thi-suc-khoe", "Đối chiếu điều kiện sức khỏe hiện hành"],
+        ["/lien-he-di-lam-mo-than-quang-ninh/", "Liên hệ người phụ trách trước khi đi"]
       ]
     }
   ]

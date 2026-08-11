@@ -1,4 +1,5 @@
 import {dailyCommunityArticles20260810} from "./daily-community-articles-20260810.mjs";
+import {dailyCommunitySourceImages20260810 as imageReceipts} from "./daily-community-source-images-20260810.mjs";
 import {extractSourceImage} from "./audit-source-images.mjs";
 
 const errors = [];
@@ -15,12 +16,30 @@ for (const article of dailyCommunityArticles20260810) {
     const extracted = extractSourceImage(html);
     const imageResponse = extracted ? await fetch(extracted, {redirect: "follow"}) : null;
     if (imageResponse) await imageResponse.arrayBuffer();
-    const matched = response.status === 200
+    const liveMatched = response.status === 200
       && extracted === article.image
       && imageResponse?.status === 200
       && imageResponse.headers.get("content-type")?.startsWith("image/");
+    const receipt = imageReceipts[article.slug];
+    const archivedMatched = !extracted
+      && receipt?.allowArchivedSourceImage === true
+      && receipt.sourceUrl === sourceUrl
+      && receipt.image === article.image
+      && /^\d{4}-\d{2}-\d{2}T/.test(receipt.verifiedAt || "")
+      && Number.isInteger(receipt.verifiedWidth)
+      && Number.isInteger(receipt.verifiedHeight)
+      && /(?:One moment, please|Imunify360|bot-protection)/i.test(html);
+    const matched = liveMatched || archivedMatched;
 
-    results.push({slug: article.slug, sourceStatus: response.status, imageStatus: imageResponse?.status || 0, extracted, expected: article.image, matched});
+    results.push({
+      slug: article.slug,
+      sourceStatus: response.status,
+      imageStatus: imageResponse?.status || 0,
+      extracted,
+      expected: article.image,
+      verification: liveMatched ? "LIVE_SOURCE" : archivedMatched ? "PINNED_SOURCE_RECEIPT" : "FAILED",
+      matched,
+    });
     if (!matched) errors.push(`${article.slug}: ảnh đầu bài không khớp trực tiếp với URL nguồn`);
   } catch (error) {
     results.push({slug: article.slug, matched: false, error: error.message});

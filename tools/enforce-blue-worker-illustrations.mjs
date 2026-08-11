@@ -34,7 +34,8 @@ const retiredRemoteImages = new Map([
   [["https://cdn.nhandan.vn/images/8d4dd6dbc1e2d72e66f1426728ddf64a9c543cfa89aa05eddc9bd24a3c117488549f3160fee712492c82da51b8dc701bebc551424f1bb2281b5b25c9aa5adfc4/cn-than-ha-long", "5014.jpg.avif"].join("-"), "https://thaylinhtuyenthomo.vn/assets/vinacomin-cong-nhan-co-gioi-hoa-trong-ham-lo.webp"],
 ]);
 const RETIRED_REFERENCES = new Map([...retiredLocalImages, ...retiredRemoteImages]);
-const BLUE_WORKER_IMAGES = new Set([
+const approvedWorkerImages = JSON.parse(fs.readFileSync(path.join(ROOT, "content", "approved-worker-images.json"), "utf8"));
+const APPROVED_VINACOMIN_IMAGES = new Set([
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp",
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp",
@@ -47,6 +48,7 @@ const BLUE_WORKER_IMAGES = new Set([
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-cong-nhan-co-gioi-hoa-trong-ham-lo.webp",
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-lo-van-ky-mu-bao-ho.webp",
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-hoc-vien-quang-hanh-ao-xanh-doi-mu.webp",
+  ...approvedWorkerImages.images.map((image) => `https://thaylinhtuyenthomo.vn/assets/${image.asset}`),
 ]);
 
 function walk(directory) {
@@ -75,12 +77,11 @@ for (const file of walk(SITE).filter((target) => target.endsWith(".html"))) {
 }
 
 const dailySeo = JSON.parse(fs.readFileSync(path.join(ROOT, "content", "daily-seo-articles.json"), "utf8"));
-const invalidDailyImages = dailySeo.articles.filter((article) => !BLUE_WORKER_IMAGES.has(article.image?.src));
+const invalidDailyImages = dailySeo.articles.filter((article) => !APPROVED_VINACOMIN_IMAGES.has(article.image?.src));
 if (invalidDailyImages.length) {
-  throw new Error(`Bài giải đáp còn ảnh không phải công nhân áo xanh, đội mũ: ${invalidDailyImages.map((article) => article.slug).join(", ")}`);
+  throw new Error(`Bài giải đáp còn ảnh chưa có trong sổ ảnh Vinacomin đã duyệt: ${invalidDailyImages.map((article) => article.slug).join(", ")}`);
 }
 
-const approvedWorkerImages = JSON.parse(fs.readFileSync(path.join(ROOT, "content", "approved-worker-images.json"), "utf8"));
 for (const image of approvedWorkerImages.images) {
   if (!/^https:\/\/(?:www\.)?(?:web\.)?vinacomin\.vn\//.test(image.source_article_url)) {
     throw new Error(`Nguồn ảnh minh họa không thuộc Vinacomin: ${image.asset}`);

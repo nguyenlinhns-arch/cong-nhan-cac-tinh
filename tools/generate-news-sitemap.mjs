@@ -5,7 +5,11 @@ const siteRoot = path.resolve("tuyen-tho-mo");
 const feedPath = path.join(siteRoot, "feed.json");
 const outputPath = path.resolve(process.env.NEWS_SITEMAP_OUTPUT || path.join(siteRoot, "news-sitemap.xml"));
 const now = new Date(process.env.NEWS_SITEMAP_NOW || Date.now());
-const windowStart = new Date(now.getTime() - (48 * 60 * 60 * 1000));
+// Leave enough time for the complete validation and Pages deployment to finish.
+// Otherwise an item can be valid when this file is generated, but older than
+// Google's 48-hour News window by the time the same artifact is published.
+const publicationBufferMs = 30 * 60 * 1000;
+const windowStart = new Date(now.getTime() - (48 * 60 * 60 * 1000) + publicationBufferMs);
 const futureTolerance = new Date(now.getTime() + (5 * 60 * 1000));
 const base = "https://thaylinhtuyenthomo.vn";
 

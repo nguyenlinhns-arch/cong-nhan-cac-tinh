@@ -142,6 +142,7 @@ else {
   const feed = JSON.parse(fs.readFileSync(path.join(root, "feed.json"), "utf8"));
   const now = Date.now();
   const windowMs = 48 * 60 * 60 * 1000;
+  const publicationBufferMs = 30 * 60 * 1000;
   const clockToleranceMs = 60 * 1000;
   const candidates = (feed.items || []).filter((item) => {
     const published = new Date(item.date_published).getTime();
@@ -150,7 +151,7 @@ else {
       return url.origin === base && url.pathname.startsWith("/tin-nganh-than/") && published <= now + (5 * 60 * 1000);
     } catch { return false; }
   });
-  const required = candidates.filter((item) => new Date(item.date_published).getTime() >= now - windowMs + clockToleranceMs);
+  const required = candidates.filter((item) => new Date(item.date_published).getTime() >= now - windowMs + publicationBufferMs + clockToleranceMs);
   const allowed = new Map(candidates
     .filter((item) => new Date(item.date_published).getTime() >= now - windowMs - clockToleranceMs)
     .map((item) => [item.url, item]));
