@@ -41,7 +41,7 @@ for (const slug of verificationPages) requireMarkers(`${slug}/index.html`,['/ana
 requireMarkers("hoc-nghe-mo-tai-quang-ninh/index.html",['"@type":"FAQPage"','/analytics.js?v=6','/mobile-core.css?v=1','/mobile-core.js?v=1']);
 requireMarkers("lien-he-di-lam-mo-than-quang-ninh/index.html",['Nguyễn Tử Linh (Thầy Linh)','Trưởng phòng Tuyển sinh Miền Trung','data-contact="zalo"','data-contact="phone"']);
 requireMarkers("nghe-mo-ham-lo/index.html",['Kỹ thuật khai thác mỏ hầm lò','Kỹ thuật xây dựng mỏ hầm lò','Kỹ thuật cơ điện mỏ hầm lò']);
-requireMarkers("tuyen-tho-mo-quang-ninh/index.html",['Tuyển thợ lò Quảng Ninh','Việc làm ngành Than tại Quảng Ninh','/ads-attribution.js?v=1','/analytics.js?v=6','/mobile-core.css?v=1','/mobile-core.js?v=1','/quyen-rieng.html']);
+requireMarkers("tuyen-tho-mo-quang-ninh/index.html",['Tuyển thợ lò Quảng Ninh','Việc làm ngành Than tại Quảng Ninh','/ads-attribution.js?v=1','/analytics.js?v=6','data-contact="zalo"','data-track="phone_click"','/quyen-rieng.html']);
 
 const coverage = JSON.parse(read("local-coverage.json"));
 const localityFeed = JSON.parse(read("localities.json"));
@@ -106,9 +106,10 @@ for (const file of contentFiles) {
   const html = fs.readFileSync(file,"utf8");
   const relative = path.relative(root,file).split(path.sep).join("/");
   if (!html.includes('/analytics.js?v=6')) fail(`${relative}: chưa nạp analytics v6`);
-  const css = relative === "index.html" ? "/home-critical.css?v=1" : "/mobile-core.css?v=1";
-  if (!html.includes(css)) fail(`${relative}: chưa nạp ${css}`);
-  if (!html.includes('/mobile-core.js?v=1')) fail(`${relative}: chưa nạp /mobile-core.js?v=1`);
+  const isAdsLanding = relative === "tuyen-tho-mo-quang-ninh/index.html";
+  const css = relative === "index.html" ? "/home-critical.css?v=2" : "/mobile-core.css?v=1";
+  if (!isAdsLanding && !html.includes(css)) fail(`${relative}: chưa nạp ${css}`);
+  if (!isAdsLanding && !html.includes('/mobile-core.js?v=1')) fail(`${relative}: chưa nạp /mobile-core.js?v=1`);
 }
 
 console.log(JSON.stringify({html:htmlFiles.length,content_pages:contentFiles.length,hubs:hubs.length,verification_pages:verificationPages.length,daily_seo_pages:dailySeoPages,provinces:provinceEntries.length,locality_hubs:localityHubs,locality_pages:localityPages,articles:articles.length,errors:errors.length,sampleErrors:errors.slice(0,40)},null,2));

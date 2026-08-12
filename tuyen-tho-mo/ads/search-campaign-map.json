@@ -65,11 +65,11 @@
     "than hoạt tính", "than củi", "bếp than", "mỏ bitcoin", "đào coin", "game", "minecraft", "đồ chơi", "mô hình", "tuyển dụng văn phòng", "kế toán", "bảo vệ", "lái xe", "part time", "remote", "làm tại nhà", "mỏ vàng", "đầu tư mỏ", "cổ phiếu than"
   ],
   "conversion_events_ready_for_gtm": [
-    "ads_landing_view", "eligibility_click", "messenger_click", "phone_click", "payroll_proof_click", "job_detail_click", "proof_media_click", "locality_click"
+    "ads_landing_view", "eligibility_click", "contact_click", "phone_click", "payroll_proof_click", "job_detail_click", "proof_media_click", "locality_click"
   ],
   "conversion_hierarchy": {
     "primary_when_connected": ["qualified_lead", "enrolled_student", "started_employment"],
-    "secondary_diagnostics": ["eligibility_click", "messenger_click", "phone_click", "job_detail_click"],
+    "secondary_diagnostics": ["eligibility_click", "contact_click", "phone_click", "job_detail_click"],
     "do_not_optimize_long_term_to": ["page_view", "payroll_proof_click", "proof_media_click"]
   },
   "offline_measurement": {

@@ -42,6 +42,11 @@ const featuredLabel = element();
 const featuredHeading = element();
 const storyButton = element("BUTTON", { videoId: "TIDiY-Nuo_4", videoTitle: "An cư, lập nghiệp tại Quảng Ninh", videoLabel: "Đời sống vùng mỏ" });
 
+const facebookHost = element();
+const facebookFacade = element("BUTTON", { facebookEmbed: "https://www.facebook.com/plugins/video.php?href=facebook-reel" });
+facebookFacade.parentElement = facebookHost;
+facebookHost.children = [facebookFacade];
+
 const provinceHost = element();
 const provinceFacade = element("BUTTON", { videoId: "ts41cqu7r9c", videoTitle: "Video Thanh Hóa" });
 provinceFacade.setAttribute("data-province-video-facade", "");
@@ -59,6 +64,7 @@ const provinceStatus = element();
 
 const selectors = new Map([
   ["[data-featured-video-host]", featuredHost],
+  ["[data-facebook-reel-facade]", facebookFacade],
   ["[data-video-label]", featuredLabel],
   ["[data-video-heading]", featuredHeading],
   ["[data-province-video-host]", provinceHost],
@@ -113,12 +119,16 @@ provinceHost.listeners.get("click")({ target: refreshedFacade });
 const provinceFrame = provinceHost.children[0];
 if (provinceFrame.tagName !== "IFRAME" || !provinceFrame.src.includes("uPLUcoFN1cU") || !provinceFrame.src.includes("autoplay=1")) throw new Error("Province facade did not mount the selected video");
 
-if (windowStub.dataLayer.filter(item => item.event === "video_play").length !== 3) throw new Error("Video play events were not measured exactly once per play action");
+facebookFacade.listeners.get("click")();
+const facebookFrame = facebookHost.children[0];
+if (facebookFrame.tagName !== "IFRAME" || !facebookFrame.src.includes("facebook.com/plugins/video.php") || facebookFrame.loading !== "eager") throw new Error("Facebook facade did not mount the Reel on click");
+
+if (windowStub.dataLayer.filter(item => item.event === "video_play").length !== 4) throw new Error("Video play events were not measured exactly once per play action");
 
 console.log(JSON.stringify({
   initial_iframes: 0,
-  facades: 2,
-  tested_plays: 3,
+  facades: 3,
+  tested_plays: 4,
   province_resets_to_facade: true,
   errors: 0,
 }, null, 2));

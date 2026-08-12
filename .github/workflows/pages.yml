@@ -153,8 +153,8 @@ jobs:
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}giai-dap-nghe-mo/lo-trinh-di-lam-mo-than-quang-ninh-tu-dang-ky-den-nhan-viec/?run=${GITHUB_SHA}" -o "$daily_seo_article_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}daily-seo-articles.json?run=${GITHUB_SHA}" -o "$daily_seo_json_file"; then
               if grep -Fq 'class="home-funnel"' "$html_file" \
-                && grep -Fq '/home-critical.css?v=1' "$html_file" \
-                && grep -Fq '/home-content.css?v=2' "$html_file" \
+                && grep -Fq '/home-critical.css?v=2' "$html_file" \
+                && grep -Fq '/home-content.css?v=3' "$html_file" \
                 && grep -Fq '/mobile-core.js?v=1' "$html_file" \
                 && grep -Fq 'class="home-province-quick"' "$html_file" \
                 && grep -Fq 'id="home-kcn-video"' "$html_file" \

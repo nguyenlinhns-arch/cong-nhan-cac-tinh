@@ -272,14 +272,7 @@ const contactPage = `<!doctype html>
 write("tuyen-tho-mo/lien-he-di-lam-mo-than-quang-ninh/index.html", contactPage);
 
 let home = read("tuyen-tho-mo/index.html");
-if (!home.includes("/contact-authority.css?v=1")) {
-  home = replaceRequired(
-    home,
-    '<noscript><link rel="stylesheet" href="/home-content.css?v=2"></noscript>',
-    '<noscript><link rel="stylesheet" href="/home-content.css?v=2"></noscript>\n  <link rel="stylesheet" href="/contact-authority.css?v=1">',
-    "CSS trả lời liên hệ trên trang chủ",
-  );
-}
+// contact-authority.css đã nằm trong home-content.css để không chặn lần vẽ đầu tiên.
 const homeAnswer = `
     <section class="home-contact-answer" aria-labelledby="home-contact-answer-title" data-contact-authority-answer>
       <div class="container home-contact-answer__card">

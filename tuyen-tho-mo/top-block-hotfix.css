@@ -1,6 +1,4 @@
-/* Mobile header cleanup: one compact header, no consent popup, no duplicated navigation rows. */
-.tl-consent-banner,
-[data-consent-banner],
+/* Mobile header cleanup: one compact header and no duplicated navigation rows. */
 .tl-worker-compass,
 .v5-intent-hub,
 .v5-return-prompt{display:none!important}

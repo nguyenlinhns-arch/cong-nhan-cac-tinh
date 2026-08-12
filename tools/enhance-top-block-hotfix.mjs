@@ -29,7 +29,7 @@ function stripOldShellAssets(html) {
 for (const target of walk(root)) {
   const relative = path.relative(root, target).replace(/\\/g, "/");
   const before = fs.readFileSync(target, "utf8");
-  if (relative === "index.html" || before.includes("data-legacy-redirect") || /^google[a-z0-9_-]+\.html$/i.test(relative)) continue;
+  if (relative === "index.html" || relative === "tuyen-tho-mo-quang-ninh/index.html" || before.includes("data-legacy-redirect") || /^google[a-z0-9_-]+\.html$/i.test(relative)) continue;
   checked += 1;
 
   let html = stripOldShellAssets(before);

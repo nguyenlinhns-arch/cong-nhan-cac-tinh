@@ -28,6 +28,11 @@
   const DRAFT_KEY = "thaylinh_application_draft_v1";
   const DRAFT_TTL_MS = 24 * 60 * 60 * 1000;
   const DRAFT_FIELDS = ["province", "district", "height", "weight", "education", "trade"];
+  const ATTRIBUTION_KEYS = [
+    "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term",
+    "gclid", "gbraid", "wbraid", "gad_source", "gad_campaignid",
+    "tl_campaign", "tl_adgroup", "tl_creative", "tl_matchtype", "tl_device", "tl_network", "tl_intent",
+  ];
   // V4 visible draft core: const DRAFT_FIELDS = ["province", "district", "height", "weight"]
   const progressSeen = new Set();
   const progressSteps = Object.freeze({
@@ -69,6 +74,17 @@
     return /^0[35789]\d{8}$/.test(digits) ? digits : "";
   }
 
+  function pageUrlWithoutQuery() {
+    try {
+      const url = new URL(location.href);
+      url.search = "";
+      url.hash = "";
+      return url.toString();
+    } catch (_) {
+      return "https://thaylinhtuyenthomo.vn/";
+    }
+  }
+
   function createApplicationCode() {
     const date = isoDate(today).slice(2).replace(/-/g, "");
     const bytes = new Uint8Array(4);
@@ -103,11 +119,16 @@
                   : /(^|\.)tiktok\.com$/i.test(referrer)
                     ? "tiktok"
                     : "website";
+    const paid = Object.fromEntries(ATTRIBUTION_KEYS
+      .map(key => [key, params.get(key) || stored[key]])
+      .filter(([, value]) => typeof value === "string" && value.trim())
+      .map(([key, value]) => [key, value.trim().slice(0, 500)]));
     return {
-      source: stored.utm_source || params.get("utm_source") || params.get("source") || inferredSource,
-      medium: stored.utm_medium || params.get("utm_medium") || (inferredSource === "website" ? "owned" : "referral"),
-      campaign: stored.utm_campaign || params.get("utm_campaign") || "tuyen_tho_mo_2026",
-      content: stored.utm_content || params.get("utm_content") || "application_form",
+      ...paid,
+      source: paid.utm_source || params.get("source") || inferredSource,
+      medium: paid.utm_medium || (inferredSource === "website" ? "owned" : "referral"),
+      campaign: paid.utm_campaign || "tuyen_tho_mo_2026",
+      content: paid.utm_content || "application_form",
       internal_campaign: params.get("tl_internal_campaign") || (params.get("utm_source") === "website" ? params.get("utm_campaign") : "") || "",
       internal_content: params.get("tl_internal_content") || (params.get("utm_source") === "website" ? params.get("utm_content") : "") || "",
     };
@@ -428,8 +449,22 @@
       content: source.content,
       internal_campaign: source.internal_campaign,
       internal_content: source.internal_content,
+      utm_term: source.utm_term || "",
+      gclid: source.gclid || "",
+      gbraid: source.gbraid || "",
+      wbraid: source.wbraid || "",
+      gad_source: source.gad_source || "",
+      gad_campaignid: source.gad_campaignid || "",
+      tl_campaign: source.tl_campaign || "",
+      tl_adgroup: source.tl_adgroup || "",
+      tl_creative: source.tl_creative || "",
+      tl_matchtype: source.tl_matchtype || "",
+      tl_device: source.tl_device || "",
+      tl_network: source.tl_network || "",
+      tl_intent: source.tl_intent || "",
       measurement_client_id: window.thayLinhAnalytics?.measurementId?.() || "",
-      page_url: location.href,
+      // Attribution has dedicated fields above; the page URL never carries form/PII query values into CRM.
+      page_url: pageUrlWithoutQuery(),
       form_context: [formContext, journey.crm_context].filter(Boolean).join("|").slice(0, 100),
       entry_page: journey.entry_page,
       entry_intent: journey.entry_intent,

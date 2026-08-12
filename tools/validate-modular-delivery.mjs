@@ -39,8 +39,9 @@ const richMediaCss = read("home-rich-media.css");
 for (const marker of ["/site-search.js?v=1", "/worker-brief.js?v=1", "/voice-assist.js?v=3", "data-open-site-search", "data-open-worker-brief", "tl-mobile-contact__messenger"]) requireText(core, marker, "mobile-core.js");
 for (const marker of ["search-core.json?v=1", "search-provinces.json?v=1", "search-content.json?v=1", "loadTier(\"content\")", "mobile.activateVoice"]) requireText(search, marker, "site-search.js");
 for (const marker of ["mobile.activateVoice", "data-worker-brief-action=\"phone\"", "data-contact=\"application\""]) requireText(brief, marker, "worker-brief.js");
-for (const marker of ["analytics-vendors.js?v=1", "consent-analytics.js?v=1", "measurementId", "captureFirstAttribution", "contact_click"]) requireText(analytics, marker, "analytics.js");
+for (const marker of ["analytics-vendors.js?v=1", "consent-analytics.js?v=1", "measurementId", "captureFirstAttribution", "contact_click", 'channel === "zalo" && consentState === "granted"', '${GOOGLE_ADS_ID}/6at3CNe_teAcEKn0tog-']) requireText(analytics, marker, "analytics.js");
 for (const marker of ["gtagEvent(`click_${channel}`", '"zalo", "messenger", "phone", "application"', "condition_check_start", "condition_check_complete", "generate_lead", "WebVital"]) requireText(vendors, marker, "analytics-vendors.js");
+if (vendors.includes('gtagEvent("conversion", { send_to: GOOGLE_ADS_ZALO_SEND_TO')) errors.push("analytics-vendors.js: không được gửi trùng conversion Zalo");
 for (const marker of ["internal_campaign", "measurement_client_id", "lead_key: applicationCode", "schema_version: Number(recruitment.schemaVersion) || 2"]) requireText(application, marker, "job-application.js");
 for (const marker of ["condition_check_start", "condition_check_complete", "condition_pass"]) requireText(finder, marker, "worker-info-finder.js");
 for (const marker of ["--zalo:#0565b6", ".header-cta"]) requireText(landingCss, marker, "landing-recruitment.css");
@@ -63,7 +64,7 @@ const fontFiles = fs.readdirSync(path.join(root, "assets", "fonts")).filter((nam
 if (fontFiles.length !== 6) errors.push(`Font: cần đúng 6 tệp WOFF2, hiện có ${fontFiles.length}`);
 
 const home = read("index.html");
-for (const marker of ["/home-critical.css?v=1", "/home-content.css?v=2", "/mobile-core.js?v=1", ">Kiểm tra điều kiện</a>", "button button-brief"]) requireText(home, marker, "Trang chủ");
+for (const marker of ["/home-critical.css?v=2", "/home-content.css?v=3", "/mobile-core.js?v=1", ">Kiểm tra điều kiện</a>", "button button-brief"]) requireText(home, marker, "Trang chủ");
 for (const oldAsset of ["/landing-recruitment.css", "/publication-polish.css", "/mobile-ux.css", "/mobile-ux.js", "/site-shell-20260803.css"]) {
   if (home.includes(oldAsset)) errors.push(`Trang chủ: còn tải lớp CSS/JS riêng ${oldAsset}`);
 }

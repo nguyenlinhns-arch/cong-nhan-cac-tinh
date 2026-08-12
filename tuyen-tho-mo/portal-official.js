@@ -34,6 +34,23 @@
     window.dataLayer.push({ event: "video_play", video_id: id, context, page_path: location.pathname });
   }
 
+  function mountFacebookReel(host, facade) {
+    if (!host || !facade?.dataset.facebookEmbed) return;
+    const frame = document.createElement("iframe");
+    frame.src = facade.dataset.facebookEmbed;
+    frame.title = "Video Làm mỏ hay làm khu công nghiệp của Thầy Linh";
+    frame.width = "500";
+    frame.height = "889";
+    frame.loading = "eager";
+    frame.allow = "autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share";
+    frame.setAttribute("allowfullscreen", "true");
+    frame.setAttribute("scrolling", "no");
+    frame.setAttribute("frameborder", "0");
+    host.replaceChildren(frame);
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "video_play", video_id: "facebook-reel-1145886217664123", context: "home_kcn_reel", page_path: location.pathname });
+  }
+
   function renderVideoFacade(host, id, title, kind) {
     if (!host || !id) return;
     const facade = document.createElement("button");
@@ -73,6 +90,8 @@
   }
 
   const featuredVideoHost = document.querySelector("[data-featured-video-host]");
+  const facebookReelFacade = document.querySelector("[data-facebook-reel-facade]");
+  facebookReelFacade?.addEventListener("click", () => mountFacebookReel(facebookReelFacade.parentElement, facebookReelFacade));
   const videoLabel = document.querySelector("[data-video-label]");
   const videoHeading = document.querySelector("[data-video-heading]");
   const videoButtons = document.querySelectorAll(".video-item[data-video-id]");

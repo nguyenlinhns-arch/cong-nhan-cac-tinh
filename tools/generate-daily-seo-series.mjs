@@ -271,7 +271,7 @@ llms = llms.replace(llmsAnchor, `${llmsSection}${llmsAnchor}`);
 write("llms.txt", llms);
 
 let home = read("index.html");
-if (!home.includes("/daily-seo.css?v=1")) home = home.replace("</head>", "  <link rel=\"stylesheet\" href=\"/daily-seo.css?v=1\">\n</head>");
+// daily-seo.css đã nằm trong home-content.css để không chặn lần vẽ đầu tiên.
 home = home.replace(/<!-- daily-seo:start -->[\s\S]*?<!-- daily-seo:end -->/g, "");
 const homeCards = released.slice(0, 3).map((article) => ({
   href: `${SERIES_PATH}${article.slug}/`,

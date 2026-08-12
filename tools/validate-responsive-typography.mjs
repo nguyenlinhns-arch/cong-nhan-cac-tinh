@@ -25,9 +25,10 @@ for (const file of htmlFiles) {
   if (html !== html.normalize("NFC")) errors.push(`${relative}: văn bản chưa được chuẩn hóa Unicode NFC`);
 
   const fontLinks = [...html.matchAll(/<link\s+rel=["']stylesheet["']\s+href=["']([^"']+)["'][^>]*>/gi)];
+  const bundledOrSystemFontPage = relative === "index.html" || relative === "tuyen-tho-mo-quang-ninh/index.html";
   const fontLink = fontLinks.find((match) => match[1] === "/fonts.css?v=2");
-  if (!fontLink) errors.push(`${relative}: thiếu /fonts.css?v=2`);
-  else if (fontLink !== fontLinks.at(-1)) errors.push(`${relative}: fonts.css phải là stylesheet cuối để chặn CSS cũ ghi đè`);
+  if (!fontLink && !bundledOrSystemFontPage) errors.push(`${relative}: thiếu /fonts.css?v=2`);
+  if (fontLink && fontLink !== fontLinks.at(-1)) errors.push(`${relative}: fonts.css phải là stylesheet cuối để chặn CSS cũ ghi đè`);
 }
 
 const fontCss = fs.readFileSync(path.join(root, "fonts.css"), "utf8");

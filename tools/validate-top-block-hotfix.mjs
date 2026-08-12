@@ -4,12 +4,13 @@ import path from "node:path";
 const root = path.resolve("tuyen-tho-mo");
 const cssPath = path.join(root, "site-shell-20260803.css");
 const jsPath = path.join(root, "site-shell-20260803.js");
+const legacyCssPath = path.join(root, "top-block-hotfix.css");
 const errors = [];
 const css = fs.existsSync(cssPath) ? fs.readFileSync(cssPath, "utf8") : "";
 const js = fs.existsSync(jsPath) ? fs.readFileSync(jsPath, "utf8") : "";
+const legacyCss = fs.existsSync(legacyCssPath) ? fs.readFileSync(legacyCssPath, "utf8") : "";
 
 for (const marker of [
-  "[data-consent-banner]",
   ".v4-primary-nav",
   ".tl-worker-compass",
   ".journey-short-nav",
@@ -24,10 +25,19 @@ for (const marker of [
   "header.nextElementSibling",
   "node !== main",
   ".journey-short-nav",
-  "window.thayLinhAnalytics?.consent?.(\"denied\")",
-  "MutationObserver",
   "document.documentElement.dataset.siteShell = \"20260803-v3\"",
 ]) if (!js.includes(marker)) errors.push(`Site shell JS thiếu ${marker}`);
+
+for (const forbidden of [
+  "[data-consent-banner]",
+  "thaylinh_measurement_consent_v1",
+  "window.thayLinhAnalytics?.consent?.(\"denied\")",
+  "MutationObserver",
+]) {
+  if (css.includes(forbidden)) errors.push(`Site shell CSS không được chặn consent: ${forbidden}`);
+  if (legacyCss.includes(forbidden)) errors.push(`Legacy hotfix CSS không được chặn consent: ${forbidden}`);
+  if (js.includes(forbidden)) errors.push(`Site shell JS không được can thiệp consent/quét DOM: ${forbidden}`);
+}
 
 let checked = 0;
 let withStyle = 0;
@@ -47,7 +57,7 @@ function walk(directory, output = []) {
 for (const target of walk(root)) {
   const relative = path.relative(root, target).replace(/\\/g, "/");
   const html = fs.readFileSync(target, "utf8");
-  if (relative === "index.html" || html.includes("data-legacy-redirect") || /^google[a-z0-9_-]+\.html$/i.test(relative)) continue;
+  if (relative === "index.html" || relative === "tuyen-tho-mo-quang-ninh/index.html" || html.includes("data-legacy-redirect") || /^google[a-z0-9_-]+\.html$/i.test(relative)) continue;
   checked += 1;
   if (html.includes('/site-shell-20260803.css?v=3')) withStyle += 1;
   else errors.push(`${relative} thiếu site shell CSS v3`);

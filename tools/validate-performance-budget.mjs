@@ -36,8 +36,18 @@ function knownImage(tag, file) {
 const analytics = read("analytics.js");
 const analyticsVendors = read("analytics-vendors.js");
 const consentAnalytics = read("consent-analytics.js");
-for (const marker of ["scheduleVendors", "requestIdleCallback", "CONSENT_KEY", "analytics-vendors.js?v=1", "consent-analytics.js?v=1", "measurementId"]) {
+for (const marker of ["scheduleGoogleTagBase", "scheduleVendors", "scheduleTask", "requestIdleCallback", "hasPaidGoogleSignal", "CONSENT_KEY", "analytics-vendors.js?v=1", "consent-analytics.js?v=1", "measurementId"]) {
   if (!analytics.includes(marker)) fail(`Analytics core: thiếu ${marker}`);
+}
+for (const marker of ['channel === "zalo" && consentState === "granted"', '${GOOGLE_ADS_ID}/6at3CNe_teAcEKn0tog-', 'window.gtag("event", "conversion"']) {
+  if (!analytics.includes(marker)) fail(`Analytics core: thiếu conversion Zalo consent-safe ${marker}`);
+}
+if (analyticsVendors.includes('gtagEvent("conversion", { send_to: GOOGLE_ADS_ZALO_SEND_TO')) fail("Analytics vendors: còn gửi trùng conversion Zalo");
+if (/updateGoogleConsent\(consentState, true\);\s*loadGoogleTagBase\(\);/u.test(analytics)) {
+  fail("Analytics core: Google tag base còn nạp đồng bộ trong luồng khởi động");
+}
+for (const marker of ['priority ? 700 : 2200', 'priority ? 200 : 1400', 'consentState === "granted" || hasPaidGoogleSignal()']) {
+  if (!analytics.includes(marker)) fail(`Analytics core: thiếu ưu tiên tải Google tag ${marker}`);
 }
 for (const marker of ["installMetaQueue", "WEB_VITALS_VERSION", "reportWebVital", "metric_value", "googletagmanager.com/gtag/js", "connect.facebook.net/en_US/fbevents.js"]) {
   if (!analyticsVendors.includes(marker)) fail(`Analytics vendors: thiếu ${marker}`);
@@ -56,16 +66,16 @@ for (const marker of ["data-open-consent", "LCP, INP, CLS", "Mặc định Googl
 const home = read("index.html");
 const homeScript = read("portal-official.js");
 const homeStyles = read("landing-recruitment.css");
+if (!home.includes("data-home-content-loader") || !home.includes('addEventListener("load"')) fail("Trang chủ: CSS dưới màn hình phải đợi sự kiện load");
 const homeVideoFacades = (home.match(/data-featured-video-facade/g) || []).length;
 if (homeVideoFacades !== 1) fail(`Trang chủ đơn giản: dự kiến 1 lớp xem trước video, thực tế ${homeVideoFacades}`);
 if (/<iframe\b[^>]+youtube/i.test(home)) fail("Trang chủ: còn tạo trình phát YouTube trước khi người dùng bấm xem");
 const facebookReelFrames = home.match(/<iframe\b[^>]+facebook\.com\/plugins\/video\.php[^>]*>/gi) || [];
-if (facebookReelFrames.length !== 1) fail(`Trang chủ: dự kiến 1 video Facebook Reel, thực tế ${facebookReelFrames.length}`);
-else if (!facebookReelFrames[0].includes('loading="lazy"') || !facebookReelFrames[0].includes('title="Video Làm mỏ hay làm khu công nghiệp của Thầy Linh"')) {
-  fail("Trang chủ: video Facebook Reel phải nạp chậm và có tiêu đề hỗ trợ truy cập");
-}
+const facebookReelFacades = home.match(/data-facebook-reel-facade/g) || [];
+if (facebookReelFrames.length) fail("Trang chủ: iframe Facebook chỉ được tạo sau khi người dùng bấm phát");
+if (facebookReelFacades.length !== 1) fail(`Trang chủ: dự kiến 1 lớp xem trước Facebook Reel, thực tế ${facebookReelFacades.length}`);
 if (/rel=["']preconnect["'][^>]+youtube-nocookie\.com/i.test(home)) fail("Trang chủ: còn mở sớm kết nối trình phát YouTube");
-for (const marker of ["mountYouTubePlayer", "renderVideoFacade", "activateFacade", "host.replaceChildren(frame)"]) {
+for (const marker of ["mountYouTubePlayer", "mountFacebookReel", "renderVideoFacade", "activateFacade", "host.replaceChildren(frame)"]) {
   if (!homeScript.includes(marker)) fail(`Trang chủ: thiếu hành vi video ${marker}`);
 }
 for (const marker of ["home-video-facade", "home-video-facade__play", "focus-visible"]) {
@@ -196,6 +206,7 @@ const budgets = {
   "landing-recruitment.css": 36_000,
   "assets/vendor/web-vitals-6.0.1.iife.js": 10_000,
   "index.html": 90_000,
+  "home-critical.css": 18_000,
 };
 for (const [relative, limit] of Object.entries(budgets)) {
   const bytes = fs.statSync(path.join(root, relative)).size;
@@ -220,6 +231,7 @@ console.log(JSON.stringify({
   optimized_home_images: optimizedHomeImages.length,
   home_video_facades: homeVideoFacades,
   facebook_reel_frames: facebookReelFrames.length,
+  facebook_reel_facades: facebookReelFacades.length,
   blocking_scripts: blockingScripts,
   eager_third_party_frames: eagerThirdPartyFrames,
   external_stylesheets: externalStylesheets,

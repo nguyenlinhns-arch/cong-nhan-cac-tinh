@@ -46,6 +46,7 @@ for (const marker of ["home-journey-shortcuts", "tl-mobile-contact__journey", "w
 }
 
 let html = fs.readFileSync(homepagePath, "utf8");
+html = replaceOnce(html, "portal-official.js?v=10", "portal-official.js?v=11", "Homepage portal script version");
 const card = `<a class="home-library__card home-library__card--latest" href="/${article.urlPath}/">
             <img src="${escapeHtml(article.image)}" alt="${escapeHtml(article.imageAlt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="${width}" height="${height}">
             <span><small>TIN NGÀNH MỎ MỚI NHẤT</small><strong>${escapeHtml(article.title)}</strong><b>Đọc bài mới →</b></span>
@@ -149,7 +150,10 @@ const redesignedMain = `  <main id="noi-dung" class="home-funnel">
       <div class="container home-v6-decision__grid">
         <div class="home-v6-reel">
           <div class="home-v6-reel__device">
-            <iframe title="Video Làm mỏ hay làm khu công nghiệp của Thầy Linh" src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1145886217664123%2F&amp;show_text=false&amp;width=500" width="500" height="889" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe>
+            <button class="home-facebook-facade" type="button" data-facebook-reel-facade data-facebook-embed="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1145886217664123%2F&amp;show_text=false&amp;width=500" aria-label="Phát video Làm mỏ hay làm khu công nghiệp của Thầy Linh">
+              <span class="home-facebook-facade__play" aria-hidden="true">▶</span>
+              <span class="home-facebook-facade__copy"><small>VIDEO CỦA THẦY LINH</small><strong>Làm mỏ hay làm KCN?</strong><em>Bấm để xem trên Facebook</em></span>
+            </button>
           </div>
           <a href="https://www.facebook.com/reel/1145886217664123" target="_blank" rel="noopener noreferrer" data-context="home-kcn-reel">Nếu video chưa phát, mở trên Facebook →</a>
         </div>

@@ -104,7 +104,6 @@
     } catch (_) {}
   }
 
-  // Giữ tên hàm cũ để bộ kiểm định và mã tích hợp trước đây tiếp tục hoạt động.
   function captureFirstAttribution() {
     captureAttribution();
   }
@@ -147,12 +146,16 @@
     window.gtag("config", GOOGLE_ADS_ID, { send_page_view: false });
   }
 
-  function isPaidGoogleLanding() {
+  function hasPaidGoogleSignal() {
     const params = new URLSearchParams(location.search);
     const hasClickId = Boolean(params.get("gclid") || params.get("gbraid") || params.get("wbraid"));
     const source = String(params.get("utm_source") || "").toLowerCase();
     const medium = String(params.get("utm_medium") || "").toLowerCase();
-    return location.pathname === JOB_PATH && (hasClickId || (source === "google" && /^(cpc|paid|paid_search|search)$/i.test(medium)));
+    return hasClickId || (source === "google" && /^(cpc|paid|paid_search|search)$/i.test(medium));
+  }
+
+  function isPaidGoogleLanding() {
+    return location.pathname === JOB_PATH && hasPaidGoogleSignal();
   }
 
   function loadPaidSearchLanding() {
@@ -184,11 +187,17 @@
     return vendorPromise;
   }
 
+  function scheduleTask(start, priority = false) {
+    if (typeof requestIdleCallback === "function") requestIdleCallback(start, { timeout: priority ? 700 : 2200 });
+    else setTimeout(start, priority ? 200 : 1400);
+  }
+
+  function scheduleGoogleTagBase() {
+    scheduleTask(loadGoogleTagBase, consentState === "granted" || hasPaidGoogleSignal());
+  }
+
   function scheduleVendors() {
-    if (consentState !== "granted") return;
-    const start = () => void loadVendors();
-    if (typeof requestIdleCallback === "function") requestIdleCallback(start, { timeout: 2200 });
-    else setTimeout(start, 1400);
+    if (consentState === "granted") scheduleTask(() => void loadVendors(), true);
   }
 
   function openConsent() {
@@ -217,6 +226,7 @@
       captureFirstAttribution();
       measurementId();
       propagateAttributionToInternalLinks();
+      loadGoogleTagBase();
       void loadVendors();
       window.fbq?.("consent", "grant");
     } else {
@@ -263,6 +273,7 @@
     const channel = contactChannel(link);
     if (!link || !channel) return;
     dataLayer.push({ event: "contact_click", channel, context: link.dataset.context || "site_link", page_path: location.pathname, ...readAttribution() });
+    if (channel === "zalo" && consentState === "granted") window.gtag("event", "conversion", { send_to: `${GOOGLE_ADS_ID}/6at3CNe_teAcEKn0tog-`, value: 1, currency: "VND" });
     if (channel === "application" && !formOpened) {
       formOpened = true;
       dataLayer.push({ event: "application_form_open", context: "application_link", page_path: location.pathname, ...readAttribution() });
@@ -277,7 +288,7 @@
   });
 
   updateGoogleConsent(consentState, true);
-  loadGoogleTagBase();
+  scheduleGoogleTagBase();
   loadPaidSearchLanding();
   window.tlTrack = (name, payload = {}) => dataLayer.push({ event: name, ...readAttribution(), ...payload });
   const queued = Array.isArray(window.tlTrackingQueue) ? window.tlTrackingQueue.splice(0) : [];
