@@ -5,6 +5,8 @@
   if (!api || api.consentState() !== "granted" || window.__TL_ANALYTICS_VENDORS__) return;
   window.__TL_ANALYTICS_VENDORS__ = true;
   const GA4_ID = api.ga4Id;
+  const GOOGLE_ADS_ID = api.googleAdsId || "AW-16660675113";
+  const GOOGLE_ADS_ZALO_SEND_TO = `${GOOGLE_ADS_ID}/6at3CNe_teAcEKn0tog-`;
   const META_PIXEL_ID = api.metaPixelId;
   const WEB_VITALS_VERSION = "6.0.1";
   const MEASUREMENT_VERSION = "2026-08-09-google-search-ai-v2";
@@ -24,6 +26,7 @@
   }
 
   function appendScript(src, marker, onload) {
+    if (marker === "ga4" && document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) { onload?.(); return; }
     if (document.querySelector(`script[data-tl-vendor="${marker}"]`)) return;
     const script = document.createElement("script");
     script.async = true;
@@ -82,6 +85,7 @@
       const channel = params.channel || "unknown";
       gtagEvent("contact_click", params);
       if (["zalo", "messenger", "phone", "application"].includes(channel)) gtagEvent(`click_${channel}`, params);
+      if (channel === "zalo") gtagEvent("conversion", { send_to: GOOGLE_ADS_ZALO_SEND_TO, value: 1, currency: "VND" });
       window.fbq("track", "Contact", { content_name: channel, page_path: params.page_path || location.pathname });
       const metaName = { application: "ApplicationClick", zalo: "ZaloClick", messenger: "MessengerClick", phone: "PhoneClick" }[channel];
       if (metaName) window.fbq("trackCustom", metaName, params);
@@ -151,6 +155,7 @@
   appendScript(`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA4_ID)}`, "ga4");
   window.gtag("js", new Date());
   window.gtag("config", GA4_ID, { send_page_view: true, transport_type: "beacon", client_id: api.measurementId() || undefined });
+  window.gtag("config", GOOGLE_ADS_ID, { send_page_view: false });
   appendScript("https://connect.facebook.net/en_US/fbevents.js", "meta");
   window.fbq("init", META_PIXEL_ID);
   window.fbq("track", "PageView");
