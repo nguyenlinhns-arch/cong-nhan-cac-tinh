@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-08-11",
+  "updated_at": "2026-08-12",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -10,7 +10,7 @@
     {
       "publish_on": "2026-08-04",
       "slug": "lo-trinh-di-lam-mo-than-quang-ninh-tu-dang-ky-den-nhan-viec",
-      "title": "Lộ trình đi làm mỏ than Quảng Ninh từ đăng ký đến nhận việc",
+      "title": "Lộ trình làm mỏ Quảng Ninh: đăng ký đến nhận việc",
       "short_title": "Lộ trình đi làm mỏ Quảng Ninh",
       "meta": "Lộ trình đi làm mỏ than Quảng Ninh gồm 5 bước: kiểm tra điều kiện, xác nhận lịch, học nghề 2–3 hoặc 10 tháng theo nghề, thực tập và nhận việc tại TKV.",
       "eyebrow": "LỘ TRÌNH TỪ ĐĂNG KÝ ĐẾN NHẬN VIỆC",
@@ -752,6 +752,82 @@
       "related": [
         ["/kiem-tra-dieu-kien/", "Tự kiểm tra điều kiện sơ bộ"],
         ["/thong-tin-tuyen-tho-mo/#can-thi-suc-khoe", "Đối chiếu điều kiện sức khỏe hiện hành"],
+        ["/lien-he-di-lam-mo-than-quang-ninh/", "Liên hệ người phụ trách trước khi đi"]
+      ]
+    },
+    {
+      "publish_on": "2026-08-14",
+      "slug": "nang-duoi-47-kg-co-dang-ky-hoc-nghe-mo-duoc-khong",
+      "title": "Nặng dưới 47 kg có đăng ký học nghề mỏ được không?",
+      "short_title": "Dưới 47 kg đăng ký nghề mỏ thế nào",
+      "meta": "Nặng dưới 47 kg có đăng ký học nghề mỏ được không? Đối chiếu mốc 47 kg, cách cân lại chính xác và bước cần làm trước khi đi khám.",
+      "eyebrow": "CÂN NẶNG VÀ ĐIỀU KIỆN HỌC NGHỀ MỎ",
+      "primary_query": "nặng dưới 47 kg có đăng ký học nghề mỏ được không",
+      "query_variants": [
+        "46 kg có đi làm thợ lò được không",
+        "cân nặng tối thiểu để học nghề mỏ",
+        "thiếu cân có đăng ký làm thợ mỏ được không"
+      ],
+      "direct_answer": "Chưa đạt mốc kiểm tra sơ bộ nếu cân nặng hiện tại dưới 47 kg. Điều kiện tuyển đang áp dụng yêu cầu nam nặng từ 47 kg; người lao động nên cân lại đúng cách, gửi số đo thật để được hướng dẫn và chỉ chuẩn bị hồ sơ hoặc di chuyển sau khi có lịch. Khám tuyển vẫn là căn cứ xác nhận cuối cùng.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-cong-nhan-nhan-ho-so-kham-suc-khoe.webp",
+        "alt": "Công nhân Tuyển than Cửa Ông nhận hồ sơ trong đợt khám sức khỏe định kỳ",
+        "credit": "Ảnh: Vinacomin · khám sức khỏe định kỳ tại Tuyển than Cửa Ông"
+      },
+      "intro": [
+        "Nhiều người lao động tự cân ở nhà thấy 45 hoặc 46 kg rồi hỏi có nên nộp hồ sơ ngay hay cố đi Quảng Ninh để khám. Với nguồn tuyển đang áp dụng, câu trả lời cần rõ ràng: mốc kiểm tra ban đầu là nam nặng từ 47 kg. Nếu số đo hiện tại thực sự dưới 47 kg thì chưa đạt mốc sơ bộ này, dù tuổi và chiều cao có thể phù hợp.",
+        "Điều đó không có nghĩa người tư vấn được tự kết luận toàn bộ sức khỏe qua một con số. Cân nặng cần được đo đúng, các điều kiện khác vẫn phải đối chiếu và khám tuyển mới xác nhận kết quả cuối cùng. Cách ít tốn kém nhất là cân lại chính xác, gửi số đo thật cùng năm sinh, nơi ở, chiều cao và tình trạng sức khỏe; chưa mua vé, chưa làm nhiều bản hồ sơ và không dùng cách tăng cân cấp tốc để đối phó một lần kiểm tra."
+      ],
+      "key_points": [
+        ["Mốc sơ bộ là từ 47 kg", "Người có cân nặng thực tế dưới 47 kg chưa đạt điều kiện cân nặng đang áp dụng."],
+        ["Cân lại trước khi kết luận", "Dùng cân ổn định, đặt trên nền phẳng và ghi số đo hiện tại thay vì ước lượng hoặc dùng số cũ."],
+        ["Không tăng cân cấp tốc", "Không tự dùng thuốc, thực phẩm không rõ nguồn gốc hoặc cố làm sai số cân chỉ để vượt một lần kiểm tra."],
+        ["Kiểm tra từ xa trước", "Gửi thông tin thật để được đối chiếu; chỉ chuẩn bị hồ sơ và di chuyển khi đã được xác nhận bước tiếp theo."]
+      ],
+      "sections": [
+        {
+          "heading": "Nặng dưới 47 kg có đăng ký học nghề mỏ được không?",
+          "paragraphs": [
+            "Người lao động vẫn có thể liên hệ để hỏi và nhận hướng dẫn, nhưng nếu cân nặng đo đúng đang dưới 47 kg thì chưa đạt mốc sàng lọc ban đầu của đợt tuyển hiện hành. Cụm từ \"từ 47 kg\" có nghĩa 47 kg là mức bắt đầu được đối chiếu, không phải 46 kg có thể tự làm tròn thành 47 kg. Người tư vấn cần ghi đúng số thực tế để tránh người đăng ký chuẩn bị hồ sơ và đi xa trong khi điều kiện cơ bản chưa phù hợp.",
+            "Cân nặng cũng không thay thế các yêu cầu khác. Người đạt 47 kg vẫn phải nằm trong độ tuổi 18–40, cao từ 1m53 và đáp ứng yêu cầu sức khỏe; kết quả khám tuyển là căn cứ cuối cùng. Ngược lại, website không đưa ra lời hứa rằng chỉ cần tăng lên đúng 47 kg là chắc chắn được tiếp nhận, vì khám sức khỏe còn đánh giá thể trạng và các nội dung liên quan đến công việc hầm lò."
+          ]
+        },
+        {
+          "heading": "Cách cân lại để tránh sai số trước khi gửi thông tin",
+          "paragraphs": [
+            "Nếu số cân dao động gần mốc 47 kg, hãy kiểm tra lại bằng một chiếc cân hoạt động ổn định, đặt trên nền cứng và phẳng. Đứng cân bằng, không dựa vào tường hoặc cầm thêm đồ vật. Có thể đo lại vào cùng một thời điểm trong hai ngày để nhận biết cân có cho kết quả bất thường, nhưng không cần cân liên tục nhiều lần rồi chỉ chọn con số cao nhất để báo.",
+            "Nên gửi số đo đang thấy trên cân và nói rõ nếu cân tại nhà không ổn định. Không dùng cân nặng trên căn cước, hồ sơ cũ hoặc trí nhớ từ vài tháng trước. Nếu người phụ trách yêu cầu đo lại tại cơ sở y tế hoặc tại nơi tiếp nhận, hãy thực hiện theo hướng dẫn; số khai ban đầu chỉ giúp sàng lọc và không thay cho kết quả khám."
+          ]
+        },
+        {
+          "heading": "Người ở tỉnh xa nên nhắn gì trước khi chuẩn bị hồ sơ?",
+          "items": [
+            "Gửi năm sinh, tỉnh hoặc huyện đang sống, chiều cao và cân nặng vừa đo; không tự làm tròn số cân.",
+            "Nêu ngắn gọn tình trạng sức khỏe hiện tại, đặc biệt nếu có cận thị, bệnh tim mạch, vấn đề huyết áp hoặc bệnh mắt đã biết.",
+            "Hỏi rõ mình đang được hướng dẫn theo dõi thêm hay đã có lịch kiểm tra; không hiểu một tin nhắn trả lời là giấy xác nhận đủ sức khỏe.",
+            "Chưa gửi ảnh căn cước, hồ sơ y tế hoặc chuyển tiền cho người hứa có thể bỏ qua mốc cân nặng và bước khám tuyển."
+          ]
+        },
+        {
+          "heading": "Vì sao không nên cố tăng cân thật nhanh để kịp một đợt tuyển?",
+          "paragraphs": [
+            "Mục tiêu của điều kiện thể lực là đánh giá sự phù hợp với quá trình học và công việc, không phải tạo ra một con số đẹp trong một buổi cân. Việc ăn uống quá mức trong thời gian ngắn, tự dùng thuốc hoặc sản phẩm tăng cân không rõ nguồn gốc có thể ảnh hưởng sức khỏe nhưng vẫn không bảo đảm kết quả khám. Website không tư vấn phác đồ tăng cân và người tư vấn tuyển sinh không thay thế bác sĩ hoặc chuyên gia dinh dưỡng.",
+            "Nếu cân nặng đang dưới mốc, hãy nói thật và nhận hướng dẫn cho trường hợp hiện tại. Người muốn cải thiện thể trạng nên ưu tiên ăn uống, nghỉ ngơi và vận động hợp lý; nếu sụt cân không rõ nguyên nhân hoặc có bệnh đang điều trị thì nên trao đổi với cơ sở y tế. Chỉ đăng ký lại hoặc thực hiện bước tiếp theo khi số đo thực tế và các điều kiện liên quan đã được đối chiếu, không vay tiền hay mua vé chỉ vì một lời hứa truyền miệng."
+          ]
+        }
+      ],
+      "takeaway_title": "Cân đúng, khai thật rồi mới chuẩn bị đường đi",
+      "takeaway": "Mốc cân nặng sơ bộ hiện hành là từ 47 kg. Người đang dưới 47 kg chưa đạt điều kiện cân nặng ban đầu; hãy cân lại chính xác, gửi số đo thật và chờ hướng dẫn trước khi làm hồ sơ hoặc lên Quảng Ninh. Không làm tròn số, không tăng cân cấp tốc và không coi việc chạm đúng 47 kg là bảo đảm đạt khám tuyển.",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 quy định nam nặng từ 47 kg; việc tiếp nhận cuối cùng còn phụ thuộc các điều kiện khác, khám sức khỏe tuyển dụng và hồ sơ thực tế.",
+      "faqs": [
+        ["Nặng 46,8 kg có được làm tròn thành 47 kg không?", "Không nên tự làm tròn khi khai thông tin. Hãy báo đúng số đo và làm theo hướng dẫn cân, kiểm tra của nơi tiếp nhận."],
+        ["Đạt đúng 47 kg có chắc chắn đủ điều kiện không?", "Chưa. 47 kg mới là mốc cân nặng sơ bộ; người đăng ký còn phải đáp ứng tuổi, chiều cao và yêu cầu khám sức khỏe."],
+        ["Có cần lên Quảng Ninh để cân lại không?", "Không nên tự đi chỉ để cân. Hãy cân lại tại nơi thuận tiện, gửi thông tin từ xa và chỉ di chuyển sau khi được xác nhận lịch."],
+        ["Có nên dùng thuốc hoặc sản phẩm tăng cân trước khám không?", "Không tự dùng sản phẩm chỉ để thay đổi số cân. Nếu cần cải thiện thể trạng hoặc đang sụt cân, hãy ưu tiên tư vấn y tế phù hợp."]
+      ],
+      "related": [
+        ["/kiem-tra-dieu-kien/", "Tự kiểm tra điều kiện tuổi, chiều cao và cân nặng"],
+        ["/thong-tin-tuyen-tho-mo/#chieu-cao-can-nang", "Đối chiếu mốc chiều cao và cân nặng hiện hành"],
         ["/lien-he-di-lam-mo-than-quang-ninh/", "Liên hệ người phụ trách trước khi đi"]
       ]
     }
