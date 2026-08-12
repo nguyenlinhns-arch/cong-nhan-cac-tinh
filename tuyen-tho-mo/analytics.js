@@ -2,6 +2,7 @@
   "use strict";
 
   const GA4_ID = "G-PZRRY10JNN";
+  const GOOGLE_ADS_ID = "AW-16660675113";
   const META_PIXEL_ID = "1382247304000287";
   const CONSENT_KEY = "thaylinh_measurement_consent_v1";
   const ATTRIBUTION_KEY = "thaylinh_attribution";
@@ -134,6 +135,18 @@
     });
   }
 
+  function loadGoogleTagBase() {
+    if (!document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) {
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GOOGLE_ADS_ID)}`;
+      script.dataset.tlAsset = "google-tag";
+      document.head.append(script);
+    }
+    window.gtag("js", new Date());
+    window.gtag("config", GOOGLE_ADS_ID, { send_page_view: false });
+  }
+
   function isPaidGoogleLanding() {
     const params = new URLSearchParams(location.search);
     const hasClickId = Boolean(params.get("gclid") || params.get("gbraid") || params.get("wbraid"));
@@ -264,12 +277,13 @@
   });
 
   updateGoogleConsent(consentState, true);
+  loadGoogleTagBase();
   loadPaidSearchLanding();
   window.tlTrack = (name, payload = {}) => dataLayer.push({ event: name, ...readAttribution(), ...payload });
   const queued = Array.isArray(window.tlTrackingQueue) ? window.tlTrackingQueue.splice(0) : [];
   queued.forEach(([name, payload]) => window.tlTrack(name, payload));
   window.thayLinhAnalytics = Object.freeze({
-    ga4Id: GA4_ID, metaPixelId: META_PIXEL_ID, track: (event) => dataLayer.push(event),
+    ga4Id: GA4_ID, googleAdsId: GOOGLE_ADS_ID, metaPixelId: META_PIXEL_ID, track: (event) => dataLayer.push(event),
     load: loadVendors, consent: setConsent, consentState: () => consentState,
     openConsent, measurementId, attribution: readAttribution,
   });
