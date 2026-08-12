@@ -81,7 +81,7 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
     encodeURIComponent,
     location: {
       href: `https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/${utmSource ? `?utm_source=${encodeURIComponent(utmSource)}` : ""}`,
-      search: `?province=Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh&trade=K%E1%BB%B9%20thu%E1%BA%ADt%20khai%20th%C3%A1c%20m%E1%BB%8F%20h%E1%BA%A7m%20l%C3%B2${utmSource ? `&utm_source=${encodeURIComponent(utmSource)}` : ""}&utm_medium=owned&utm_campaign=tuyen_tho_mo_2026&utm_content=unit`,
+      search: `?province=Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh&trade=K%E1%BB%B9%20thu%E1%BA%ADt%20khai%20th%C3%A1c%20m%E1%BB%8F%20h%E1%BA%A7m%20l%C3%B2${utmSource ? `&utm_source=${encodeURIComponent(utmSource)}` : ""}&utm_medium=owned&utm_campaign=tuyen_tho_mo_2026&utm_content=unit&utm_term=tho+mo&gclid=qa-gclid&gbraid=qa-gbraid&wbraid=qa-wbraid&gad_source=1&gad_campaignid=123&tl_campaign=paid-2026&tl_adgroup=miners&tl_creative=456&tl_matchtype=e&tl_device=m&tl_network=g&tl_intent=tho_mo`,
     },
     document: {
       referrer,
@@ -163,6 +163,22 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
   if (delivered.length !== deliverySequence.length || delivered[0].phone !== "0963048585") throw new Error("Application was not delivered as expected");
   if (delivered[0].schema_version !== 2) throw new Error(`Unexpected schema version: ${delivered[0].schema_version}`);
   if (delivered[0].measurement_client_id !== "tl-test-measurement-12345") throw new Error("Anonymous measurement key was not delivered");
+  if (delivered[0].page_url.includes("?") || delivered[0].page_url.includes("#")) throw new Error(`Application page URL was not stripped of query/hash data: ${delivered[0].page_url}`);
+  for (const [key, expectedValue] of Object.entries({
+    utm_term: "tho mo",
+    gclid: "qa-gclid",
+    gbraid: "qa-gbraid",
+    wbraid: "qa-wbraid",
+    gad_source: "1",
+    gad_campaignid: "123",
+    tl_campaign: "paid-2026",
+    tl_adgroup: "miners",
+    tl_creative: "456",
+    tl_matchtype: "e",
+    tl_device: "m",
+    tl_network: "g",
+    tl_intent: "tho_mo",
+  })) if (delivered[0][key] !== expectedValue) throw new Error(`Application attribution missing ${key}: ${delivered[0][key] || "empty"}`);
   if (!String(delivered[0].form_context || "").startsWith("central_application|v3;")) throw new Error(`Unexpected form context: ${delivered[0].form_context}`);
   if (delivered[0].entry_intent !== "application" || delivered[0].journey_page_count !== 1) throw new Error("Journey context was not delivered");
   if (delivered[0].website !== "") throw new Error("Honeypot value must remain empty");

@@ -62,9 +62,15 @@ for (const text of [
   "clearDraft",
   "measurement_client_id",
   "internal_campaign",
+  "pageUrlWithoutQuery",
   "lead_key: applicationCode",
   '"co_dien"',
 ]) requireText(application, text, "application logic");
+
+for (const attributionField of [
+  "utm_term", "gclid", "gbraid", "wbraid", "gad_source", "gad_campaignid",
+  "tl_campaign", "tl_adgroup", "tl_creative", "tl_matchtype", "tl_device", "tl_network", "tl_intent",
+]) requireText(application, `${attributionField}: source.${attributionField}`, "application attribution payload");
 
 for (const marker of ["deliverApplication(application)", "Content-Type\": \"text/plain", "application_saved", "values.consent === \"on\"", "String(values.website || \"\")"]) {
   requireText(application, marker, "secure application delivery");

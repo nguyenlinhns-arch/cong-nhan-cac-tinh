@@ -86,7 +86,8 @@ for (const file of collectHtml(root)) {
     if (html !== old) provinceDescriptionsShortened += 1;
   }
 
-  if (/<\/head>/i.test(html)) {
+  const skipStandaloneFonts = relative === "index.html" || relative === "tuyen-tho-mo-quang-ninh/index.html";
+  if (/<\/head>/i.test(html) && !skipStandaloneFonts) {
     html = html.replace(/<\/head>/i, `  <link rel="stylesheet" href="${FONT_URL}">\n</head>`);
     if (!before.includes(FONT_URL) || before.lastIndexOf(FONT_URL) < before.lastIndexOf('rel="stylesheet"')) fontLinksFixed += 1;
   }

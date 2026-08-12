@@ -3,8 +3,8 @@ import path from "node:path";
 
 const root = path.resolve("tuyen-tho-mo");
 const bundles = {
-  "home-critical.css": ["fonts.css", "landing-recruitment.css", "mobile-core.css", "homepage-redesign-critical.css"],
-  "home-content.css": ["publication-polish.css", "worker-info-finder.css", "home-rich-media.css", "journey-optimizer.css", "v5-growth.css", "site-shell-20260803.css", "homepage-redesign.css"],
+  "home-critical.css": ["fonts.css", "home-shell-critical.css", "homepage-redesign-critical.css"],
+  "home-content.css": ["landing-recruitment.css", "mobile-core.css", "publication-polish.css", "worker-info-finder.css", "home-rich-media.css", "journey-optimizer.css", "v5-growth.css", "site-shell-20260803.css", "homepage-redesign.css", "contact-authority.css", "worker-questions.css", "daily-seo.css"],
 };
 
 for (const [target, sources] of Object.entries(bundles)) {

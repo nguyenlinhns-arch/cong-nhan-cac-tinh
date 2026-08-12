@@ -105,7 +105,7 @@ if (feed.canonical_hub !== BASE + content.hub.path) errors.push("worker-question
 const home = load("index.html");
 requireText(home, "data-worker-question-hub", "trang chủ");
 requireText(home, "Xem đủ 20 câu hỏi", "trang chủ");
-requireText(home, "/worker-questions.css?v=1", "trang chủ");
+requireText(home, "/home-content.css?v=3", "trang chủ");
 
 const contact = load("lien-he-di-lam-mo-than-quang-ninh/index.html");
 requireText(contact, "20 câu hỏi cần biết trước khi đi làm mỏ", "trang liên hệ");

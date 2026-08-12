@@ -493,14 +493,16 @@ for (const slug of coverageProvinces) {
 const allHtml = collectHtml(root);
 for (const file of allHtml) {
   const html = fs.readFileSync(file, "utf8");
-  const rel = path.relative(root, file);
+  const rel = path.relative(root, file).split(path.sep).join("/");
   if (/^google[a-z0-9]+\.html$/i.test(rel)) continue;
+  const isAdsLanding = rel === "tuyen-tho-mo-quang-ninh/index.html";
   const visible = strip(html);
   const viewportTag = html.match(/<meta\b[^>]*\bname=["']viewport["'][^>]*>/i)?.[0] || "";
   if (!/width=device-width/i.test(viewportTag)) errors.push(`${rel}: missing responsive viewport`);
-  if (!/<link\s+rel=["']stylesheet["']\s+href=["']\/(?:mobile-core\.css\?v=1|home-critical\.css\?v=1)["']/i.test(html)) errors.push(`${rel}: missing current shared mobile stylesheet`);
+  if (!/<link\s+rel=["']stylesheet["']\s+href=["']\/(?:mobile-core\.css\?v=1|home-critical\.css\?v=2|google-ads-landing\.css\?v=3)["']/i.test(html)) errors.push(`${rel}: missing current shared mobile stylesheet`);
   if (!/<script\s+src=["']\/analytics\.js\?v=6["']\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing current shared analytics script`);
-  if (!/<script\s+src=["']\/mobile-core\.js\?v=1["']\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing shared mobile-core script v1`);
+  if (!isAdsLanding && !/<script\s+src=["']\/mobile-core\.js\?v=1["']\s+defer><\/script>/i.test(html)) errors.push(`${rel}: missing shared mobile-core script v1`);
+  if (isAdsLanding && /\/mobile-core\.(?:css|js)/i.test(html)) errors.push(`${rel}: Ads landing must stay independent from mobile-core`);
   if (/Bài\s+\d{1,2}\s*\/\s*50|50\+?\s*bài/iu.test(visible)) errors.push(`${rel}: contains an obsolete article-count claim`);
   if (/18(?:–|-|\s+đến\s+)35|1(?:m|,)56|1,56\s*m?|48\s*kg/iu.test(visible)) errors.push(`${rel}: contains superseded 2026 recruitment criteria`);
   if (/thu nhập tham khảo|thu nhập thực tế phụ thuộc|thu nhập tùy|không cam kết|không phải mức lương cứng|không phải cam kết|mức thu nhập cố định|không lấy trường hợp cao nhất làm mặt bằng chung/iu.test(visible)) {

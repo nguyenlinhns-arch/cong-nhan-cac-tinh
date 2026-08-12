@@ -1,20 +1,9 @@
 (() => {
   "use strict";
 
-  const CONSENT_KEY = "thaylinh_measurement_consent_v1";
   const MOBILE_POLISH_STYLE = "/mobile-polish-20260803.css?v=1";
   const SEARCH_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>';
   const removableSelectors = [
-    ".tl-consent-banner",
-    "[data-consent-banner]",
-    ".analytics-consent",
-    ".analytics-consent-banner",
-    ".consent-banner",
-    ".cookie-banner",
-    ".cookie-consent",
-    "[data-analytics-consent]",
-    "[data-cookie-consent]",
-    "[data-measurement-consent]",
     ".v4-primary-nav",
     ".tl-worker-compass",
     ".journey-short-nav",
@@ -50,9 +39,6 @@
     ["Tây Ninh", "tay-ninh"], ["Đồng Tháp", "dong-thap"], ["Vĩnh Long", "vinh-long"], ["An Giang", "an-giang"],
     ["Cần Thơ", "can-tho"], ["Cà Mau", "ca-mau"],
   ];
-
-  let consentLocked = false;
-  let cleanScheduled = false;
 
   function ensureMobilePolishStyle() {
     if (document.querySelector(`link[href^="${MOBILE_POLISH_STYLE.split("?")[0]}"]`)) return;
@@ -237,16 +223,7 @@
     document.documentElement.dataset.provinceDirectory = "34";
   }
 
-  function disableConsentPrompt() {
-    if (consentLocked) return;
-    consentLocked = true;
-    try { localStorage.setItem(CONSENT_KEY, "denied"); } catch (_) {}
-    try { window.thayLinhAnalytics?.consent?.("denied"); } catch (_) {}
-    document.querySelectorAll("[data-consent-banner], .tl-consent-banner").forEach(node => node.remove());
-  }
-
   function cleanPageShell() {
-    cleanScheduled = false;
     ensureMobilePolishStyle();
     removeKnownBlocks();
     removeRowsBetweenHeaderAndMain();
@@ -256,26 +233,12 @@
     polishMobileContact();
     cleanArticleHero();
     enhanceProvinceDirectory();
-    disableConsentPrompt();
     document.documentElement.dataset.siteShell = "20260803-v3";
   }
 
-  function scheduleClean() {
-    if (cleanScheduled) return;
-    cleanScheduled = true;
-    requestAnimationFrame(cleanPageShell);
-  }
-
-  cleanPageShell();
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", cleanPageShell, { once: true });
-  }
-  window.addEventListener("resize", scheduleClean, { passive: true });
-
-  const observer = new MutationObserver(scheduleClean);
-  observer.observe(document.documentElement, { childList: true, subtree: true });
-  window.setTimeout(() => {
+  } else {
     cleanPageShell();
-    observer.disconnect();
-  }, 10000);
+  }
 })();

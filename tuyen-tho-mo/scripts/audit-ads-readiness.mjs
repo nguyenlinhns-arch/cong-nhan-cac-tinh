@@ -20,7 +20,7 @@ const requiredLanding=[
   'Việc làm ngành Than tại Quảng Ninh',
   '/ads-attribution.js?v=1',
   'data-track="eligibility_click"',
-  'data-track="messenger_click"',
+  'data-contact="zalo"',
   'data-track="phone_click"',
   'data-track="payroll_proof_click"',
   '/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/',
@@ -57,7 +57,7 @@ for(const group of campaign.ad_groups){
 }
 if(mappedIntent.size!==allowedIntent.size) throw new Error('Mỗi intent phải được map ít nhất một ad group');
 const eventSet=new Set(campaign.conversion_events_ready_for_gtm||[]);
-for(const event of ['ads_landing_view','eligibility_click','messenger_click','phone_click','payroll_proof_click','job_detail_click']) if(!eventSet.has(event)) throw new Error(`Campaign map thiếu event ${event}`);
+for(const event of ['ads_landing_view','eligibility_click','contact_click','phone_click','payroll_proof_click','job_detail_click']) if(!eventSet.has(event)) throw new Error(`Campaign map thiếu event ${event}`);
 const primaryStages=new Set(campaign.conversion_hierarchy?.primary_when_connected||[]);
 for(const stage of ['qualified_lead','enrolled_student','started_employment']) if(!primaryStages.has(stage)) throw new Error(`Thiếu conversion chất lượng ${stage}`);
 if(campaign.offline_measurement?.repository_contains_real_customer_data!==false) throw new Error('Repository không được chứa dữ liệu khách hàng thật');

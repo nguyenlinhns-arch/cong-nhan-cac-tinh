@@ -16,6 +16,11 @@
     { key: "address", label: "Nơi học", question: "Học và nhập học ở đâu?", href: "/#dia-diem" },
     { key: "province", label: "Theo tỉnh", question: "Xem thông tin tỉnh tôi", href: "/viec-lam-nganh-than/" },
   ];
+  const ATTRIBUTION_KEYS = [
+    "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term",
+    "gclid", "gbraid", "wbraid", "gad_source", "gad_campaignid",
+    "tl_campaign", "tl_adgroup", "tl_creative", "tl_matchtype", "tl_device", "tl_network", "tl_intent",
+  ];
   const featurePromises = new Map();
 
   function pageGroup() {
@@ -38,12 +43,10 @@
   function readAttribution() {
     const stored = storedAttribution();
     const params = new URLSearchParams(location.search);
-    return Object.fromEntries(Object.entries({
-      utm_source: params.get("utm_source") || stored.utm_source,
-      utm_medium: params.get("utm_medium") || stored.utm_medium,
-      utm_campaign: params.get("utm_campaign") || stored.utm_campaign,
-      utm_content: params.get("utm_content") || stored.utm_content,
-    }).filter(([, value]) => typeof value === "string" && value.trim()));
+    return Object.fromEntries(ATTRIBUTION_KEYS
+      .map((key) => [key, params.get(key) || stored[key]])
+      .filter(([, value]) => typeof value === "string" && value.trim())
+      .map(([key, value]) => [key, value.trim().slice(0, 500)]));
   }
 
   function applicationContext() {

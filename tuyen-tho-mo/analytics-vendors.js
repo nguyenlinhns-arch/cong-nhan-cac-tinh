@@ -6,7 +6,6 @@
   window.__TL_ANALYTICS_VENDORS__ = true;
   const GA4_ID = api.ga4Id;
   const GOOGLE_ADS_ID = api.googleAdsId || "AW-16660675113";
-  const GOOGLE_ADS_ZALO_SEND_TO = `${GOOGLE_ADS_ID}/6at3CNe_teAcEKn0tog-`;
   const META_PIXEL_ID = api.metaPixelId;
   const WEB_VITALS_VERSION = "6.0.1";
   const MEASUREMENT_VERSION = "2026-08-09-google-search-ai-v2";
@@ -85,7 +84,6 @@
       const channel = params.channel || "unknown";
       gtagEvent("contact_click", params);
       if (["zalo", "messenger", "phone", "application"].includes(channel)) gtagEvent(`click_${channel}`, params);
-      if (channel === "zalo") gtagEvent("conversion", { send_to: GOOGLE_ADS_ZALO_SEND_TO, value: 1, currency: "VND" });
       window.fbq("track", "Contact", { content_name: channel, page_path: params.page_path || location.pathname });
       const metaName = { application: "ApplicationClick", zalo: "ZaloClick", messenger: "MessengerClick", phone: "PhoneClick" }[channel];
       if (metaName) window.fbq("trackCustom", metaName, params);

@@ -155,7 +155,8 @@ for (const file of htmlFiles) {
   const linkTags = tags(html, "link");
   const faviconHrefs = new Set(linkTags.filter((item) => item.rel?.split(/\s+/).includes("icon")).map((item) => item.href));
   const appleIcon = linkTags.find((item) => item.rel === "apple-touch-icon")?.href || "";
-  const expectedMobileStyle = relative === "index.html" ? "/home-critical.css?v=1" : "/mobile-core.css?v=1";
+  const isAdsLanding = relative === "tuyen-tho-mo-quang-ninh/index.html";
+  const expectedMobileStyle = relative === "index.html" ? "/home-critical.css?v=2" : isAdsLanding ? "/google-ads-landing.css?v=3" : "/mobile-core.css?v=1";
   const mobileStyles = linkTags.filter((item) => item.rel?.split(/\s+/).includes("stylesheet") && item.href === expectedMobileStyle);
   const mobileScripts = tags(html, "script").filter((item) => /\/mobile-core\.js\?v=/.test(item.src || ""));
 
@@ -164,7 +165,8 @@ for (const file of htmlFiles) {
   if (!viewport.includes("width=device-width") || !viewport.includes("viewport-fit=cover")) errors.push(`${relative}: viewport must support mobile width and safe-area insets`);
   else mobileViewportPages += 1;
   if (mobileStyles.length !== 1) errors.push(`${relative}: must load exactly ${expectedMobileStyle}`);
-  else if (mobileScripts.length !== 1 || mobileScripts[0]?.src !== "/mobile-core.js?v=1") errors.push(`${relative}: must load exactly /mobile-core.js?v=1`);
+  else if (isAdsLanding && mobileScripts.length !== 0) errors.push(`${relative}: Ads landing must not load /mobile-core.js`);
+  else if (!isAdsLanding && (mobileScripts.length !== 1 || mobileScripts[0]?.src !== "/mobile-core.js?v=1")) errors.push(`${relative}: must load exactly /mobile-core.js?v=1`);
   else mobileAssetVersionPages += 1;
   if (canonicalLinks.length !== 1) errors.push(`${relative}: expected exactly one canonical, got ${canonicalLinks.length}`);
   if (canonical !== expectedCanonical) errors.push(`${relative}: canonical ${canonical || "missing"} must be ${expectedCanonical}`);
