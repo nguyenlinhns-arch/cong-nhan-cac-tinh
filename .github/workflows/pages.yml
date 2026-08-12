@@ -193,7 +193,7 @@ jobs:
                 && grep -Fq '096 304 8585' "$contact_authority_file" \
                 && grep -Fq 'https://thaylinhtuyenthomo.vn/lien-he-di-lam-mo-than-quang-ninh/' "$contact_authority_file" \
                 && grep -Fq 'Giải đáp nghề mỏ Quảng Ninh mỗi ngày' "$daily_seo_hub_file" \
-                && grep -Fq 'Lộ trình đi làm mỏ than Quảng Ninh từ đăng ký đến nhận việc' "$daily_seo_article_file" \
+                && grep -Fq 'Lộ trình làm mỏ Quảng Ninh: đăng ký đến nhận việc' "$daily_seo_article_file" \
                 && grep -Fq '"canonical_hub": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/"' "$daily_seo_json_file" \
                 && grep -Fq '"version": 4' "$manifest_file" \
                 && grep -Fq '"strategy": "answer-first-tiered"' "$manifest_file" \
