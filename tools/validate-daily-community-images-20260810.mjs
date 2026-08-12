@@ -11,14 +11,19 @@ for (const article of dailyCommunityArticles20260810) {
     const response = await fetch(sourceUrl, {
       headers: {"user-agent": "Mozilla/5.0 (compatible; ThayLinhDailyImageValidator/1.0)"},
       redirect: "follow",
+      signal: AbortSignal.timeout(45_000),
     });
     const html = await response.text();
     const extracted = extractSourceImage(html);
-    const imageResponse = extracted ? await fetch(extracted, {redirect: "follow"}) : null;
-    if (imageResponse) await imageResponse.arrayBuffer();
+    const imageResponse = extracted ? await fetch(extracted, {
+      headers: {range: "bytes=0-0", referer: sourceUrl},
+      redirect: "follow",
+      signal: AbortSignal.timeout(45_000),
+    }) : null;
+    if (imageResponse?.body) await imageResponse.body.cancel();
     const liveMatched = response.status === 200
       && extracted === article.image
-      && imageResponse?.status === 200
+      && [200, 206].includes(imageResponse?.status)
       && imageResponse.headers.get("content-type")?.startsWith("image/");
     const receipt = imageReceipts[article.slug];
     const archivedMatched = !extracted
