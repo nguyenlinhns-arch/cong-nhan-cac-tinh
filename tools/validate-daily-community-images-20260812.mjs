@@ -25,8 +25,11 @@ for (const article of dailyCommunityArticles20260812) {
       && articleImages[0] === article.image
       && [200, 206].includes(imageResponse.status)
       && imageResponse.headers.get("content-type")?.startsWith("image/");
+    const sourceChallenge = response.status === 200
+      && /<title>One moment, please\.\.\.<\/title>/i.test(html)
+      && /window\.location\.reload\(\)/.test(html);
     const archivedMatched = !extracted
-      && [403, 429, 520].includes(response.status)
+      && ([403, 429, 520].includes(response.status) || sourceChallenge)
       && receipt?.allowArchivedSourceImage === true
       && receipt.sourceUrl === sourceUrl
       && receipt.image === article.image
@@ -44,6 +47,7 @@ for (const article of dailyCommunityArticles20260812) {
       extracted,
       expected: article.image,
       verification: liveMatched ? "LIVE_SOURCE" : archivedMatched ? "PINNED_SOURCE_RECEIPT_AND_LIVE_IMAGE" : "FAILED",
+      ...(sourceChallenge ? {sourceChallenge: "KNOWN_RELOAD_GATE"} : {}),
       matched,
     });
     if (!matched) errors.push(`${article.slug}: ảnh đầu bài không khớp trực tiếp với URL nguồn`);

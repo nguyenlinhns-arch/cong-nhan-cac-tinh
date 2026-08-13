@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-08-12",
+  "updated_at": "2026-08-13",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -827,6 +827,89 @@
       ],
       "related": [
         ["/kiem-tra-dieu-kien/", "Tự kiểm tra điều kiện tuổi, chiều cao và cân nặng"],
+        ["/thong-tin-tuyen-tho-mo/#chieu-cao-can-nang", "Đối chiếu mốc chiều cao và cân nặng hiện hành"],
+        ["/lien-he-di-lam-mo-than-quang-ninh/", "Liên hệ người phụ trách trước khi đi"]
+      ]
+    },
+    {
+      "publish_on": "2026-08-15",
+      "slug": "cao-duoi-1m53-co-dang-ky-hoc-nghe-mo-duoc-khong",
+      "title": "Cao dưới 1m53 có đăng ký học nghề mỏ được không?",
+      "short_title": "Dưới 1m53 đăng ký nghề mỏ thế nào",
+      "meta": "Cao dưới 1m53 có đăng ký học nghề mỏ được không? Đối chiếu mốc 1m53, cách đo lại chiều cao và bước cần làm trước khi đi khám.",
+      "eyebrow": "CHIỀU CAO VÀ ĐIỀU KIỆN HỌC NGHỀ MỎ",
+      "primary_query": "cao dưới 1m53 có đăng ký học nghề mỏ được không",
+      "query_variants": [
+        "cao 1m52 có đi làm thợ lò được không",
+        "chiều cao tối thiểu để học nghề mỏ",
+        "thấp hơn 1m53 có đăng ký làm thợ mỏ được không"
+      ],
+      "direct_answer": "Chưa đạt mốc kiểm tra sơ bộ nếu chiều cao đo đúng hiện dưới 1m53. Điều kiện tuyển đang áp dụng yêu cầu nam cao từ 1m53; người lao động nên đo lại chính xác, gửi số đo thật để được đối chiếu và chỉ chuẩn bị hồ sơ hoặc di chuyển sau khi có lịch. Khám tuyển vẫn là căn cứ xác nhận cuối cùng.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-cong-nhan-do-huyet-ap-kham-suc-khoe.webp",
+        "alt": "Nhân viên y tế kiểm tra huyết áp cho công nhân Tuyển than Cửa Ông trong đợt khám sức khỏe định kỳ",
+        "credit": "Ảnh: Vinacomin · khám sức khỏe định kỳ tại Tuyển than Cửa Ông"
+      },
+      "intro": [
+        "Nhiều người lao động tự đo ở nhà được 1m52 hoặc gần 1m53 rồi hỏi có nên làm hồ sơ, mua vé lên Quảng Ninh hay chờ kiểm tra lại. Với nguồn tuyển đang áp dụng, câu trả lời cần nói thẳng: mốc kiểm tra ban đầu là nam cao từ 1m53. Nếu chiều cao thực tế sau khi đo đúng vẫn dưới 1m53 thì chưa đạt điều kiện sơ bộ này, dù tuổi và cân nặng có thể phù hợp.",
+        "Một lần đo vội không nên là căn cứ duy nhất, nhưng cũng không được tự làm tròn số để vượt mốc. Người đăng ký nên đo lại trong tư thế chuẩn, báo đúng kết quả cùng năm sinh, nơi ở, cân nặng và tình trạng sức khỏe. Đây là cách kiểm tra từ xa ít tốn kém nhất; khám tuyển và hồ sơ thực tế mới xác nhận kết quả cuối cùng, nên chưa có lịch thì chưa cần đi xa hoặc chuẩn bị nhiều bản giấy tờ."
+      ],
+      "key_points": [
+        ["Mốc sơ bộ là từ 1m53", "Người có chiều cao thực tế dưới 1m53 chưa đạt điều kiện chiều cao đang áp dụng."],
+        ["Đo lại đúng tư thế", "Đứng chân trần, lưng thẳng trên nền phẳng và dùng thước cố định thay vì ước lượng."],
+        ["Không tự làm tròn số", "Số đo 1m52 hoặc 1m529 không được tự ghi thành 1m53 để vượt bước sàng lọc."],
+        ["Kiểm tra từ xa trước", "Gửi thông tin thật để được đối chiếu; chỉ làm hồ sơ và di chuyển khi đã được xác nhận bước tiếp theo."]
+      ],
+      "sections": [
+        {
+          "heading": "Cao dưới 1m53 có đăng ký học nghề mỏ được không?",
+          "paragraphs": [
+            "Người lao động vẫn có thể liên hệ để hỏi và nhận hướng dẫn, nhưng nếu chiều cao đo đúng đang dưới 1m53 thì chưa đạt mốc sàng lọc ban đầu của đợt tuyển hiện hành. Cụm từ \"từ 1m53\" có nghĩa 1m53 là mức bắt đầu được đối chiếu; 1m52 không được tự làm tròn thành 1m53. Báo đúng số đo giúp người phụ trách tư vấn đúng ngay từ đầu và tránh cho người đăng ký mất chi phí chuẩn bị hồ sơ hoặc đi xa khi điều kiện cơ bản chưa phù hợp.",
+            "Chiều cao cũng không thay thế những yêu cầu còn lại. Người đạt 1m53 vẫn phải là nam trong độ tuổi 18–40, nặng từ 47 kg và đáp ứng yêu cầu sức khỏe; kết quả khám tuyển là căn cứ cuối cùng. Website không hứa rằng chỉ cần chạm đúng mốc 1m53 là chắc chắn được tiếp nhận, bởi quá trình khám còn đánh giá thể trạng và các nội dung sức khỏe liên quan đến học tập, làm việc trong môi trường hầm lò."
+          ]
+        },
+        {
+          "heading": "Cách đo lại chiều cao để tránh sai số trước khi đăng ký",
+          "paragraphs": [
+            "Nên đo trên nền cứng và phẳng, không đo trên thảm hoặc nền dốc. Bỏ giày dép, mũ và vật làm tóc cao; đứng thẳng, hai chân ổn định, mắt nhìn ngang. Lưng và đầu giữ tự nhiên, không nhón gót, không rướn cổ. Dùng thước đo chiều cao cố định là tốt nhất; nếu đo tại nhà, có thể dùng một vật phẳng đặt vuông góc với tường rồi đánh dấu và đo lại từ nền lên điểm đó.",
+            "Nếu kết quả sát mốc, hãy đo lại ở nơi có dụng cụ phù hợp như cơ sở y tế hoặc nhà thuốc có thước chiều cao. Có thể kiểm tra hai lần để phát hiện thao tác sai, nhưng không nên đo liên tục rồi chỉ chọn con số cao nhất để khai. Hãy gửi đúng số đang đo được và nói rõ nếu dụng cụ tại nhà không chắc chắn; thông tin ban đầu phục vụ sàng lọc, không thay cho phép đo và kết luận khi khám tuyển."
+          ]
+        },
+        {
+          "heading": "Người ở tỉnh xa cần gửi thông tin gì trước khi làm hồ sơ?",
+          "items": [
+            "Gửi năm sinh, tỉnh hoặc huyện đang sống, chiều cao vừa đo và cân nặng hiện tại; không tự làm tròn số.",
+            "Nêu ngắn gọn tình trạng sức khỏe, đặc biệt nếu có cận thị, bệnh tim mạch, vấn đề huyết áp hoặc bệnh mắt đã biết.",
+            "Hỏi rõ mình mới được hướng dẫn đo lại hay đã có lịch tiếp nhận; một tin nhắn trao đổi không phải giấy xác nhận đủ sức khỏe.",
+            "Chưa gửi ảnh căn cước, hồ sơ y tế hoặc chuyển tiền cho người hứa có thể bỏ qua mốc chiều cao và bước khám tuyển."
+          ]
+        },
+        {
+          "heading": "Nếu kết quả vẫn dưới 1m53 thì nên làm gì tiếp theo?",
+          "paragraphs": [
+            "Nếu đã đo lại bằng dụng cụ phù hợp mà kết quả vẫn dưới 1m53, hãy coi đó là thông tin thật để dừng bước chuẩn bị hồ sơ cho đợt tuyển hiện hành. Không vay tiền, mua vé hoặc nhờ người sửa số đo vì lời hứa rằng có thể bỏ qua điều kiện. Người phụ trách tuyển sinh không có quyền tự hạ mốc chiều cao và website cũng không hướng dẫn cách đối phó một lần kiểm tra.",
+            "Người đăng ký có thể lưu lại thông tin liên hệ và chỉ hỏi lại khi có thông báo tuyển dụng chính thức thay đổi; không nên dựa vào lời truyền miệng trên mạng. Nếu số đo bất thường so với hồ sơ y tế hoặc các lần đo gần đây, hãy kiểm tra tại cơ sở có dụng cụ chuẩn. Việc đo lại nhằm xác định đúng tình trạng hiện tại, không phải tìm cách tạo ra một con số phù hợp."
+          ]
+        },
+        {
+          "heading": "Vì sao cần kiểm tra cả cân nặng và sức khỏe dù đã đủ chiều cao?",
+          "paragraphs": [
+            "Mốc 1m53 chỉ là một phần của bước kiểm tra sơ bộ. Người đăng ký còn phải đối chiếu cân nặng từ 47 kg, độ tuổi và các yêu cầu sức khỏe. Vì vậy, không nên chỉ gửi một con số chiều cao rồi hiểu câu trả lời là mình đã đủ toàn bộ điều kiện. Công cụ kiểm tra trên website giúp rà các thông tin cơ bản trước, sau đó người phụ trách mới hướng dẫn lịch và giấy tờ nếu trường hợp phù hợp.",
+            "Khai đúng ngay từ đầu giúp bảo vệ chính người lao động. Người ở xa biết mình nên dừng, đo lại hay tiếp tục; người tư vấn không phải dựa vào dữ liệu sai; nơi tiếp nhận có thông tin nhất quán với hồ sơ và kết quả khám. Khi đã được xác nhận bước tiếp theo, người lao động mới chuẩn bị căn cước bản gốc, giấy khai sinh và bằng cấp nếu có theo hướng dẫn hiện hành."
+          ]
+        }
+      ],
+      "takeaway_title": "Đo đúng, khai thật rồi mới chuẩn bị đường đi",
+      "takeaway": "Mốc chiều cao sơ bộ hiện hành là từ 1m53. Người đo đúng vẫn dưới 1m53 chưa đạt điều kiện chiều cao ban đầu; hãy báo số thật và chờ hướng dẫn trước khi làm hồ sơ hoặc lên Quảng Ninh. Không nhón chân, không tự làm tròn số và không coi việc chạm đúng 1m53 là bảo đảm đạt khám tuyển.",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 quy định nam cao từ 1m53; việc tiếp nhận cuối cùng còn phụ thuộc tuổi, cân nặng, các điều kiện sức khỏe khác, khám tuyển và hồ sơ thực tế.",
+      "faqs": [
+        ["Cao 1m52,8 có được làm tròn thành 1m53 không?", "Không nên tự làm tròn khi khai thông tin. Hãy báo đúng số đo và làm theo hướng dẫn đo, kiểm tra của nơi tiếp nhận."],
+        ["Đạt đúng 1m53 có chắc chắn đủ điều kiện không?", "Chưa. 1m53 mới là mốc chiều cao sơ bộ; người đăng ký còn phải đáp ứng tuổi, cân nặng và yêu cầu khám sức khỏe."],
+        ["Có cần lên Quảng Ninh chỉ để đo lại chiều cao không?", "Không nên tự đi chỉ để đo. Hãy đo lại tại nơi có dụng cụ phù hợp, gửi thông tin từ xa và chỉ di chuyển sau khi được xác nhận lịch."],
+        ["Đo ở nhà và đo tại nơi khám khác nhau thì lấy số nào?", "Hãy nói rõ cả hai kết quả và tuân theo phép đo của nơi khám, tiếp nhận. Số đo ở nhà chỉ hỗ trợ kiểm tra sơ bộ." ]
+      ],
+      "related": [
+        ["/kiem-tra-dieu-kien/", "Tự kiểm tra tuổi, chiều cao và cân nặng"],
         ["/thong-tin-tuyen-tho-mo/#chieu-cao-can-nang", "Đối chiếu mốc chiều cao và cân nặng hiện hành"],
         ["/lien-he-di-lam-mo-than-quang-ninh/", "Liên hệ người phụ trách trước khi đi"]
       ]

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-04T14:10:00+07:00",
+  "updated_at": "2026-08-13T08:06:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -78,6 +78,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/D1CC2A40E8C9E920909CC2FB4440627D08B9ED6A19F8C61BD518E756CF011026.jpg",
       "provider": "Vinacomin",
       "description": "Công nhân Tuyển than Cửa Ông nhận hồ sơ trong đợt khám sức khỏe định kỳ năm 2025"
+    },
+    {
+      "asset": "vinacomin-cong-nhan-do-huyet-ap-kham-suc-khoe.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/cong-ty-tuyen-than-cua-ong-tkv-to-chuc-kham-suc-khoe-dinh-ky-va-kham-suc-khoe-phat-hien-benh-nghe-nghiep-nam-2025",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2025/T04/01/CO1.jpg",
+      "provider": "Vinacomin",
+      "description": "Nhân viên y tế kiểm tra huyết áp cho công nhân Tuyển than Cửa Ông trong đợt khám sức khỏe định kỳ năm 2025"
     }
   ]
 }
