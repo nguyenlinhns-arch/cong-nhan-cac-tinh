@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-12T21:02:56.930Z",
+  "generated_at": "2026-08-13T21:03:48.849Z",
   "source": "https://xaydungchinhsach.chinhphu.vn/danh-sach-3321-don-vi-hanh-chinh-cap-xa-tai-34-tinh-thanh-sau-sap-xep-sap-nhap-119250710102358656.htm",
   "data_source": {
     "province": "https://raw.githubusercontent.com/vietmap-company/vietnam_administrative_address/refs/heads/main/admin_new/province.json",
@@ -12441,13 +12441,13 @@
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=Ch%C6%A1n%20Th%C3%A0nh&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },
     {
-      "name": "xã Dầu Giây",
+      "name": "phường Dầu Giây",
       "locality": "Dầu Giây",
       "locality_code": null,
-      "type": "xã",
+      "type": "phường",
       "province": "dong-nai",
       "province_slug": "dong-nai",
-      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/xã/dau-giay/",
+      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/phường/dau-giay/",
       "parent": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/",
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=D%E1%BA%A7u%20Gi%C3%A2y&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },
@@ -12518,13 +12518,13 @@
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=%C4%90%E1%BB%8Bnh%20Qu%C3%A1n&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },
     {
-      "name": "xã Đồng Phú",
+      "name": "phường Đồng Phú",
       "locality": "Đồng Phú",
       "locality_code": null,
-      "type": "xã",
+      "type": "phường",
       "province": "dong-nai",
       "province_slug": "dong-nai",
-      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/xã/dong-phu/",
+      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/phường/dong-phu/",
       "parent": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/",
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=%C4%90%E1%BB%93ng%20Ph%C3%BA&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },
@@ -12672,13 +12672,13 @@
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=Long%20Ph%C6%B0%E1%BB%9Bc&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },
     {
-      "name": "xã Long Thành",
+      "name": "phường Long Thành",
       "locality": "Long Thành",
       "locality_code": null,
-      "type": "xã",
+      "type": "phường",
       "province": "dong-nai",
       "province_slug": "dong-nai",
-      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/xã/long-thanh/",
+      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/phường/long-thanh/",
       "parent": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/",
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=Long%20Th%C3%A0nh&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },
@@ -12694,13 +12694,13 @@
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=L%E1%BB%99c%20H%C6%B0ng&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },
     {
-      "name": "xã Lộc Ninh",
+      "name": "phường Lộc Ninh",
       "locality": "Lộc Ninh",
       "locality_code": null,
-      "type": "xã",
+      "type": "phường",
       "province": "dong-nai",
       "province_slug": "dong-nai",
-      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/xã/loc-ninh/",
+      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/phường/loc-ninh/",
       "parent": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/",
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=L%E1%BB%99c%20Ninh&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },
@@ -12804,13 +12804,13 @@
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=Nha%20B%C3%ADch&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },
     {
-      "name": "xã Nhơn Trạch",
+      "name": "phường Nhơn Trạch",
       "locality": "Nhơn Trạch",
       "locality_code": null,
-      "type": "xã",
+      "type": "phường",
       "province": "dong-nai",
       "province_slug": "dong-nai",
-      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/xã/nhon-trach/",
+      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/phường/nhon-trach/",
       "parent": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/",
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=Nh%C6%A1n%20Tr%E1%BA%A1ch&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },
@@ -13024,13 +13024,13 @@
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=T%C3%A2n%20H%C6%B0ng&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },
     {
-      "name": "xã Tân Khai",
+      "name": "phường Tân Khai",
       "locality": "Tân Khai",
       "locality_code": null,
-      "type": "xã",
+      "type": "phường",
       "province": "dong-nai",
       "province_slug": "dong-nai",
-      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/xã/tan-khai/",
+      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/phường/tan-khai/",
       "parent": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/",
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=T%C3%A2n%20Khai&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },
@@ -13046,13 +13046,13 @@
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=T%C3%A2n%20L%E1%BB%A3i&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },
     {
-      "name": "xã Tân Phú",
+      "name": "phường Tân Phú",
       "locality": "Tân Phú",
       "locality_code": null,
-      "type": "xã",
+      "type": "phường",
       "province": "dong-nai",
       "province_slug": "dong-nai",
-      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/xã/tan-phu/",
+      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/phường/tan-phu/",
       "parent": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/",
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=T%C3%A2n%20Ph%C3%BA&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },
@@ -13145,13 +13145,13 @@
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=Thu%E1%BA%ADn%20L%E1%BB%A3i&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },
     {
-      "name": "xã Trảng Bom",
+      "name": "phường Trảng Bom",
       "locality": "Trảng Bom",
       "locality_code": null,
-      "type": "xã",
+      "type": "phường",
       "province": "dong-nai",
       "province_slug": "dong-nai",
-      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/xã/trang-bom/",
+      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/phường/trang-bom/",
       "parent": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/",
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=Tr%E1%BA%A3ng%20Bom&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },
@@ -13178,13 +13178,13 @@
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=Tr%E1%BA%A5n%20Bi%C3%AAn&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },
     {
-      "name": "xã Trị An",
+      "name": "phường Trị An",
       "locality": "Trị An",
       "locality_code": null,
-      "type": "xã",
+      "type": "phường",
       "province": "dong-nai",
       "province_slug": "dong-nai",
-      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/xã/tri-an/",
+      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/phường/tri-an/",
       "parent": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/",
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=Tr%E1%BB%8B%20An&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },
@@ -13255,13 +13255,13 @@
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=Xu%C3%A2n%20L%E1%BA%ADp&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },
     {
-      "name": "xã Xuân Lộc",
+      "name": "phường Xuân Lộc",
       "locality": "Xuân Lộc",
       "locality_code": null,
-      "type": "xã",
+      "type": "phường",
       "province": "dong-nai",
       "province_slug": "dong-nai",
-      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/xã/xuan-loc/",
+      "url": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/phường/xuan-loc/",
       "parent": "https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/dong-nai/",
       "application_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=dong-nai&locality=Xu%C3%A2n%20L%E1%BB%99c&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky"
     },

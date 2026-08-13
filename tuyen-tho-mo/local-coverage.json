@@ -4,7 +4,7 @@
     "province": "https://raw.githubusercontent.com/vietmap-company/vietnam_administrative_address/refs/heads/main/admin_new/province.json",
     "locality": "https://raw.githubusercontent.com/vietmap-company/vietnam_administrative_address/refs/heads/main/admin_new/ward.json"
   },
-  "generated_at": "2026-08-12T21:02:54.679Z",
+  "generated_at": "2026-08-13T21:03:46.638Z",
   "communes": 3321,
   "duplicate_name_groups": 8,
   "legacy_district_names": 0,
