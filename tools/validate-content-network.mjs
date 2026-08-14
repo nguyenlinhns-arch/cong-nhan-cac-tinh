@@ -101,7 +101,8 @@ const dailySeoPages = 1 + (Array.isArray(dailySeoFeed.articles) ? dailySeoFeed.a
 // one-to-one feed additions dynamically so daily source-led publishing does
 // not make the locality coverage gate stale.
 const editorialDelta = Math.max(0, articles.length - 69);
-const permanentContentBaseline = 185 + editorialDelta + dailySeoPages;
+// Add one permanent page for the local temporary-recruitment landing page.
+const permanentContentBaseline = 186 + editorialDelta + dailySeoPages;
 const expectedHtmlFiles = (permanentContentBaseline + 1) + materializedDelta;
 const expectedContentFiles = permanentContentBaseline + materializedDelta;
 if (htmlFiles.length !== expectedHtmlFiles) fail(`Website: cần ${expectedHtmlFiles} tệp HTML sau khi materialize 3.321 địa bàn, nhận ${htmlFiles.length}`);
