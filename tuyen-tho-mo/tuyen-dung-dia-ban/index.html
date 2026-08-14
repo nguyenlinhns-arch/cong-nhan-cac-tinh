@@ -11,13 +11,26 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://thaylinhtuyenthomo.vn/tuyen-dung-dia-ban/">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .site-brand{display:flex;align-items:center;gap:10px;flex:0 0 auto;color:#062b63}
+    .site-brand .brand-mark{border-radius:50%;object-fit:cover}
+    .site-brand span{display:flex;flex-direction:column;line-height:1.08}
+    .site-brand strong{font-size:15px}
+    .site-brand small{margin-top:3px;color:#0f5eab;font-size:11px;font-weight:800}
+    .campaign-brand{padding-left:14px;border-left:1px solid #dbe4ef}
+    @media(max-width:720px){.campaign-brand{display:none}}
+  </style>
   <script defer src="config.js"></script>
   <script defer src="app.js"></script>
 </head>
 <body>
   <header class="topbar">
     <div class="wrap brand">
-      <div>
+      <a class="site-brand" href="/" aria-label="Thầy Linh – Tuyển Thợ Mỏ">
+        <img class="brand-mark" src="/assets/thay-linh-avatar.webp?v=3" alt="" width="45" height="45">
+        <span><strong>Thầy Linh</strong><small>Tuyển Thợ Mỏ</small></span>
+      </a>
+      <div class="campaign-brand">
         <div class="eyebrow">CÔNG TÁC TUYỂN SINH NGHỀ MỎ</div>
         <div class="brandline">Tuyển lao động thời vụ tại địa phương</div>
       </div>
