@@ -25,6 +25,8 @@
   <link rel="stylesheet" href="/mobile-core.css?v=1">
   <link rel="stylesheet" href="styles.css">
   <style>
+    .skip-link{position:fixed;top:-64px;left:14px;z-index:100;background:#fff;color:#062b63;padding:10px 14px;border-radius:10px;font-weight:900;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+    .skip-link:focus{top:14px}
     .site-brand{display:flex;align-items:center;gap:10px;flex:0 0 auto;color:#062b63}
     .site-brand .brand-mark{border-radius:50%;object-fit:cover}
     .site-brand span{display:flex;flex-direction:column;line-height:1.08}
@@ -41,6 +43,7 @@
   <link rel="stylesheet" href="/fonts.css?v=2">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Bỏ qua đến nội dung chính</a>
   <header class="topbar">
     <div class="wrap brand">
       <a class="site-brand" href="/" aria-label="Thầy Linh – Tuyển Thợ Mỏ">
@@ -55,7 +58,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="hero">
       <div class="hero-overlay"></div>
       <div class="wrap hero-grid">
