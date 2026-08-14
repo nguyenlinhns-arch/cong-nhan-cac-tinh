@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-13T08:06:00+07:00",
+  "updated_at": "2026-08-14T07:56:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -85,6 +85,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2025/T04/01/CO1.jpg",
       "provider": "Vinacomin",
       "description": "Nhân viên y tế kiểm tra huyết áp cho công nhân Tuyển than Cửa Ông trong đợt khám sức khỏe định kỳ năm 2025"
+    },
+    {
+      "asset": "vinacomin-hoc-sinh-trai-nghiem-nghe-mo.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/hanh-trinh-trai-nghiem-san-xuat-than-ham-lo-dinh-huong-tuong-lai-hoc-sinh-nghe-mo",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/024479B6CDD9037AB78581F005DF230FB8805A916D54F3091AE6AEFD3105E0C7.jpg",
+      "provider": "Vinacomin",
+      "description": "Nhóm học sinh nghề mỏ mặc bảo hộ xanh, đội mũ trong chuyến trải nghiệm sản xuất than hầm lò"
     }
   ]
 }

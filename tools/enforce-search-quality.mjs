@@ -89,6 +89,39 @@ function isIndexable(html) {
   return !/\bnoindex\b/i.test(metaContent(html, "robots"));
 }
 
+function localityUnit(relativePath) {
+  return relativePath.match(/^viec-lam-nganh-than\/[^/]+\/(xã|phường|đặc khu)\/[^/]+\/index\.html$/u)?.[1] || "";
+}
+
+function searchTitle(html) {
+  return compactSearchTitle(html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] || "");
+}
+
+const rawTitleOwners = new Map();
+for (const file of walk(SITE).filter((target) => target.endsWith(".html"))) {
+  const relativePath = path.relative(SITE, file).split(path.sep).join("/");
+  if (!localityUnit(relativePath)) continue;
+  const html = fs.readFileSync(file, "utf8");
+  if (!isIndexable(html)) continue;
+  const title = searchTitle(html);
+  const owners = rawTitleOwners.get(title) || [];
+  owners.push(relativePath);
+  rawTitleOwners.set(title, owners);
+}
+
+function qualifyDuplicateLocality(html, relativePath) {
+  const unit = localityUnit(relativePath);
+  if (!unit) return html;
+  const title = searchTitle(html);
+  if ((rawTitleOwners.get(title) || []).length < 2) return html;
+  const unqualified = decodeHtml(title)
+    .replace(/\s*(?:\||–|—|-)\s*Thầy Linh(?:\s*(?:–|—|-)\s*Tuyển Thợ Mỏ)?\s*$/u, "")
+    .trim();
+  if (!unqualified.startsWith("Tuyển thợ mỏ tại ") || unqualified.startsWith(`Tuyển thợ mỏ tại ${unit} `)) return html;
+  const qualified = unqualified.replace("Tuyển thợ mỏ tại ", `Tuyển thợ mỏ tại ${unit} `);
+  return html.replaceAll(unqualified, qualified);
+}
+
 const changed = [];
 const htmlFiles = walk(SITE).filter((file) => file.endsWith(".html") && !/^google[a-z0-9_-]+\.html$/i.test(path.basename(file)));
 for (const file of htmlFiles) {
@@ -96,6 +129,7 @@ for (const file of htmlFiles) {
   const current = fs.readFileSync(file, "utf8");
   let next = current;
 
+  next = qualifyDuplicateLocality(next, relativePath);
   if (relativePath.startsWith("viec-lam-nganh-than/")) next = strengthenProvinceLinks(next);
   next = addVisiblePublicationTime(next, relativePath);
   next = next.replace(/<title>([\s\S]*?)<\/title>/i, (full, title) => {

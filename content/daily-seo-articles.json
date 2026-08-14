@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-08-13",
+  "updated_at": "2026-08-14",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -912,6 +912,89 @@
         ["/kiem-tra-dieu-kien/", "Tự kiểm tra tuổi, chiều cao và cân nặng"],
         ["/thong-tin-tuyen-tho-mo/#chieu-cao-can-nang", "Đối chiếu mốc chiều cao và cân nặng hiện hành"],
         ["/lien-he-di-lam-mo-than-quang-ninh/", "Liên hệ người phụ trách trước khi đi"]
+      ]
+    },
+    {
+      "publish_on": "2026-08-16",
+      "slug": "chua-du-18-tuoi-co-dang-ky-hoc-nghe-mo-duoc-khong",
+      "title": "Chưa đủ 18 tuổi có đăng ký học nghề mỏ được không?",
+      "short_title": "Chưa đủ 18 tuổi đăng ký nghề mỏ thế nào",
+      "meta": "Chưa đủ 18 tuổi có đăng ký học nghề mỏ được không? Đối chiếu mốc từ 18 tuổi và những việc nên chuẩn bị trước khi đủ điều kiện.",
+      "eyebrow": "TUỔI TỐI THIỂU VÀ ĐIỀU KIỆN HỌC NGHỀ MỎ",
+      "primary_query": "chưa đủ 18 tuổi có đăng ký học nghề mỏ được không",
+      "query_variants": [
+        "17 tuổi có học nghề mỏ được không",
+        "bao nhiêu tuổi được đăng ký làm thợ mỏ",
+        "sắp đủ 18 tuổi có đăng ký nghề mỏ được không"
+      ],
+      "direct_answer": "Chưa thuộc nhóm tiếp nhận của đợt tuyển hiện hành nếu chưa đủ 18 tuổi. Điều kiện đang áp dụng là nam từ 18 đến 40 tuổi; người sắp đủ 18 có thể tìm hiểu trước, nhưng chỉ nên làm bước đăng ký chính thức khi đã đủ tuổi và thông tin tuyển lúc đó vẫn còn hiệu lực.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-hoc-sinh-trai-nghiem-nghe-mo.webp",
+        "alt": "Nhóm học sinh nghề mỏ mặc bảo hộ xanh, đội mũ trong chuyến trải nghiệm sản xuất than hầm lò",
+        "credit": "Ảnh: Vinacomin · học sinh nghề mỏ trải nghiệm sản xuất than hầm lò"
+      },
+      "intro": [
+        "Người 17 tuổi hoặc chỉ còn ít tháng nữa mới đủ 18 thường muốn đăng ký sớm để giữ chỗ, chuẩn bị hồ sơ hoặc lên Quảng Ninh ngay khi có đợt tiếp nhận. Với nguồn tuyển đang áp dụng, mốc tuổi cần hiểu rõ là nam từ 18 đến 40 tuổi. Người chưa đủ 18 chưa thuộc nhóm tiếp nhận hiện hành, dù chiều cao, cân nặng và sức khỏe có thể phù hợp.",
+        "Chưa đủ tuổi không có nghĩa phải bỏ qua việc tìm hiểu. Người lao động có thể đọc trước về ba nghề đang tuyển, thời gian học, nơi học, công việc sau đào tạo và giấy tờ cần mang khi có lịch. Tuy nhiên, không nên khai tăng tuổi, dùng giấy tờ của người khác, gửi căn cước trước khi được yêu cầu hoặc mua vé chỉ vì một lời hứa giữ suất. Khi đã đủ 18, cần đối chiếu lại thông báo đang còn hiệu lực vì điều kiện và lịch tiếp nhận có thể được cập nhật theo từng đợt."
+      ],
+      "key_points": [
+        ["Mốc tối thiểu là đủ 18 tuổi", "Người chưa đủ 18 chưa thuộc độ tuổi tiếp nhận của thông tin tuyển đang áp dụng."],
+        ["Có thể tìm hiểu trước", "Đọc trước về nghề, khóa học, sức khỏe và hồ sơ nhưng chưa coi việc hỏi thông tin là một suất đã được xác nhận."],
+        ["Không khai sai năm sinh", "Tuổi phải khớp giấy tờ thật; không sửa số, mượn giấy tờ hoặc nhờ người hứa bỏ qua điều kiện."],
+        ["Đủ tuổi phải kiểm tra lại", "Khi tròn 18 tuổi, đối chiếu lại thông báo hiện hành rồi mới chuẩn bị hồ sơ và di chuyển."]
+      ],
+      "sections": [
+        {
+          "heading": "Chưa đủ 18 tuổi có đăng ký học nghề mỏ được không?",
+          "paragraphs": [
+            "Theo bộ dữ liệu tuyển dụng năm 2026, độ tuổi đang tiếp nhận là nam từ 18 đến 40 tuổi. Vì vậy, người 17 tuổi, kể cả chỉ còn một thời gian ngắn nữa mới đủ 18, chưa đạt mốc tuổi sơ bộ tại thời điểm hiện tại. Website không tự hạ tuổi và người tư vấn cũng không có quyền xác nhận ngoại lệ khi chưa có thông báo chính thức thay đổi điều kiện.",
+            "Người chưa đủ 18 vẫn có thể xem thông tin để định hướng, nhưng một cuộc gọi hoặc tin nhắn hỏi trước không phải là hồ sơ đã được duyệt. Không nên hiểu lời mời tìm hiểu nghề, tham quan hoặc tư vấn hướng nghiệp là quyết định tiếp nhận vào khóa học. Khi đến tuổi, người đăng ký còn phải đối chiếu chiều cao từ 1m53, cân nặng từ 47 kg, sức khỏe và các yêu cầu khác của đợt tuyển đang còn hiệu lực."
+          ]
+        },
+        {
+          "heading": "Sắp đủ 18 tuổi nên chuẩn bị gì mà không tốn chi phí sớm?",
+          "paragraphs": [
+            "Việc hữu ích nhất là đọc rõ ba hướng nghề: kỹ thuật khai thác mỏ hầm lò, kỹ thuật xây dựng mỏ hầm lò và kỹ thuật cơ điện mỏ hầm lò. Hai nghề khai thác và xây dựng mỏ đang có thời gian học 2–3 tháng; cơ điện mỏ học 10 tháng. Người tìm hiểu nên xem mô tả công việc, bối cảnh làm việc theo ca và yêu cầu phối hợp tổ đội để biết mình có thật sự muốn theo nghề hay không.",
+            "Có thể tự đo chiều cao, cân nặng và ghi lại những vấn đề sức khỏe đã biết để sau này khai đúng ở bước kiểm tra sơ bộ. Chưa cần công chứng nhiều bản giấy tờ, gửi ảnh căn cước, chuyển tiền hoặc đặt vé. Hồ sơ nhập học hiện hành gồm căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có, nhưng chỉ chuẩn bị theo hướng dẫn sau khi đã đủ điều kiện ban đầu và được xác nhận lịch."
+          ]
+        },
+        {
+          "heading": "Khi vừa đủ 18 tuổi, cần kiểm tra lại theo thứ tự nào?",
+          "items": [
+            "Mở trang thông tin tuyển hiện hành để xác nhận đợt tuyển vẫn tiếp nhận nam từ 18 đến 40 tuổi và xem ngày cập nhật gần nhất.",
+            "Dùng công cụ kiểm tra điều kiện, khai đúng năm sinh, nơi ở, chiều cao, cân nặng và tình trạng sức khỏe đang biết.",
+            "Chờ người phụ trách xác nhận bước tiếp theo; không coi việc gửi biểu mẫu là giấy báo nhập học hoặc cam kết chắc chắn đạt khám tuyển.",
+            "Chỉ chuẩn bị giấy tờ và di chuyển tới Quảng Ninh khi đã có lịch, địa điểm và đầu mối tiếp nhận rõ ràng."
+          ]
+        },
+        {
+          "heading": "Vì sao không nên khai tăng tuổi hoặc nhờ người giữ chỗ?",
+          "paragraphs": [
+            "Năm sinh sẽ được đối chiếu với giấy tờ thật khi làm thủ tục. Khai tăng tuổi, dùng giấy tờ của người khác hoặc sửa ảnh giấy tờ chỉ tạo ra thông tin không nhất quán và có thể khiến người đăng ký mất thời gian, chi phí đi lại. Website không yêu cầu gửi ảnh giấy tờ ở bước ban đầu và không có cơ chế trả tiền để bỏ qua mốc tuổi.",
+            "Cũng không có lý do phải vay tiền hay chuyển khoản cho người hứa giữ suất đến ngày đủ 18. Nguồn tuyển hiện hành cho phép đăng ký ban đầu từ xa và người học chỉ đi khi có lịch. Nếu còn thiếu thời gian để đủ tuổi, hãy dùng khoảng thời gian đó để tìm hiểu nghề, duy trì thể trạng, trao đổi với gia đình và theo dõi thông báo chính thức thay vì cố hoàn thành một hồ sơ chưa đủ điều kiện."
+          ]
+        },
+        {
+          "heading": "Đủ 18 tuổi có đồng nghĩa chắc chắn được nhận không?",
+          "paragraphs": [
+            "Không. Tuổi chỉ là một trong các điều kiện sàng lọc ban đầu. Người vừa đủ 18 vẫn cần là nam, cao từ 1m53, nặng từ 47 kg, đọc và viết thành thạo, có sức khỏe phù hợp và đáp ứng kết quả khám tuyển. Việc chưa có kinh nghiệm không phải rào cản vì chương trình có đào tạo nghề trước khi bố trí việc làm, nhưng không điều kiện đơn lẻ nào bảo đảm tiếp nhận.",
+            "Sau khi được xác nhận phù hợp sơ bộ, người đăng ký mới nhận hướng dẫn về hồ sơ và lịch nhập học. Người tốt nghiệp đạt yêu cầu được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng và bố trí việc làm tại Quảng Ninh. Đơn vị cụ thể, lịch học và các bước tiếp nhận phải theo thông tin của đợt hiện hành, không nên suy đoán từ nội dung cũ hoặc lời truyền miệng."
+          ]
+        }
+      ],
+      "takeaway_title": "Chờ đủ 18 tuổi, nhưng có thể chuẩn bị hiểu biết ngay từ bây giờ",
+      "takeaway": "Điều kiện tuyển hiện hành tiếp nhận nam từ 18 đến 40 tuổi, nên người chưa đủ 18 chưa thuộc nhóm đăng ký chính thức. Hãy tìm hiểu nghề, tự đối chiếu thể lực và theo dõi thông báo; không khai sai tuổi, không gửi giấy tờ hoặc chuyển tiền để giữ chỗ. Khi đủ 18, kiểm tra lại điều kiện đang áp dụng rồi mới thực hiện bước tiếp theo.",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 quy định độ tuổi tiếp nhận là nam từ 18 đến 40 tuổi; các điều kiện và lịch tiếp nhận cần được đối chiếu lại tại thời điểm đăng ký.",
+      "faqs": [
+        ["17 tuổi 11 tháng có đăng ký chính thức được chưa?", "Chưa thuộc mốc từ 18 tuổi của đợt tuyển hiện hành. Có thể tìm hiểu trước và kiểm tra lại thông tin khi đã đủ 18 tuổi."],
+        ["Có được khai tăng một tuổi để gửi hồ sơ trước không?", "Không. Năm sinh phải khớp giấy tờ thật; không sửa thông tin hoặc dùng giấy tờ của người khác để vượt điều kiện."],
+        ["Chưa đủ 18 tuổi có cần công chứng hồ sơ trước không?", "Chưa cần. Đăng ký ban đầu hiện không yêu cầu nộp giấy tờ; chỉ chuẩn bị hồ sơ sau khi đủ điều kiện sơ bộ và có lịch hướng dẫn."],
+        ["Đủ 18 tuổi là chắc chắn được học nghề mỏ phải không?", "Không. Tuổi chỉ là một điều kiện; còn phải đối chiếu chiều cao, cân nặng, sức khỏe và kết quả khám tuyển."]
+      ],
+      "related": [
+        ["/kiem-tra-dieu-kien/", "Tự kiểm tra tuổi và thể lực sơ bộ"],
+        ["/thong-tin-tuyen-tho-mo/#do-tuoi", "Đối chiếu độ tuổi tuyển hiện hành"],
+        ["/nghe-mo-ham-lo/", "Tìm hiểu ba nghề mỏ đang tuyển"]
       ]
     }
   ]
