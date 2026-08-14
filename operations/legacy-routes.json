@@ -23,6 +23,16 @@
     { "from": "/giai-dap-nghe-mo/luong-tho-lo-bao-nhieu/", "to": "/luong-tho-lo-bao-nhieu/", "label": "Lương thợ lò bao nhiêu?", "kind": "duplicate-question" },
     { "from": "/giai-dap-nghe-mo/tho-lo-la-nghe-gi/", "to": "/tho-lo-la-nghe-gi/", "label": "Thợ lò là nghề gì?", "kind": "duplicate-question" },
     { "from": "/giai-dap-nghe-mo/tho-mo-co-nhung-che-do-gi/", "to": "/tho-mo-co-nhung-che-do-gi/", "label": "Thợ mỏ, thợ lò có những chế độ gì?", "kind": "duplicate-question" },
-    { "from": "/giai-dap-nghe-mo/tho-mo-la-nghe-gi/", "to": "/tho-mo-la-nghe-gi/", "label": "Thợ mỏ là nghề gì?", "kind": "duplicate-question" }
+    { "from": "/giai-dap-nghe-mo/tho-mo-la-nghe-gi/", "to": "/tho-mo-la-nghe-gi/", "label": "Thợ mỏ là nghề gì?", "kind": "duplicate-question" },
+    { "from": "/viec-lam-nganh-than/dong-nai/xã/dau-giay/", "to": "/viec-lam-nganh-than/dong-nai/phường/dau-giay/", "label": "phường Dầu Giây, Đồng Nai" },
+    { "from": "/viec-lam-nganh-than/dong-nai/xã/dong-phu/", "to": "/viec-lam-nganh-than/dong-nai/phường/dong-phu/", "label": "phường Đồng Phú, Đồng Nai" },
+    { "from": "/viec-lam-nganh-than/dong-nai/xã/loc-ninh/", "to": "/viec-lam-nganh-than/dong-nai/phường/loc-ninh/", "label": "phường Lộc Ninh, Đồng Nai" },
+    { "from": "/viec-lam-nganh-than/dong-nai/xã/long-thanh/", "to": "/viec-lam-nganh-than/dong-nai/phường/long-thanh/", "label": "phường Long Thành, Đồng Nai" },
+    { "from": "/viec-lam-nganh-than/dong-nai/xã/nhon-trach/", "to": "/viec-lam-nganh-than/dong-nai/phường/nhon-trach/", "label": "phường Nhơn Trạch, Đồng Nai" },
+    { "from": "/viec-lam-nganh-than/dong-nai/xã/tan-khai/", "to": "/viec-lam-nganh-than/dong-nai/phường/tan-khai/", "label": "phường Tân Khai, Đồng Nai" },
+    { "from": "/viec-lam-nganh-than/dong-nai/xã/tan-phu/", "to": "/viec-lam-nganh-than/dong-nai/phường/tan-phu/", "label": "phường Tân Phú, Đồng Nai" },
+    { "from": "/viec-lam-nganh-than/dong-nai/xã/trang-bom/", "to": "/viec-lam-nganh-than/dong-nai/phường/trang-bom/", "label": "phường Trảng Bom, Đồng Nai" },
+    { "from": "/viec-lam-nganh-than/dong-nai/xã/tri-an/", "to": "/viec-lam-nganh-than/dong-nai/phường/tri-an/", "label": "phường Trị An, Đồng Nai" },
+    { "from": "/viec-lam-nganh-than/dong-nai/xã/xuan-loc/", "to": "/viec-lam-nganh-than/dong-nai/phường/xuan-loc/", "label": "phường Xuân Lộc, Đồng Nai" }
   ]
 }

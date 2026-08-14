@@ -34,6 +34,7 @@ const strip = (html) => html
 
 const removeArticleInterface = (html) => html
   .replace(/<section\b[^>]*class=["'][^"']*\barticle-(?:apply|share-panel)\b[^"']*["'][^>]*>[\s\S]*?<\/section>/gi, " ")
+  .replace(/<section\b[^>]*class=["'][^"']*\bprofessional-news-faq\b[^"']*["'][^>]*>[\s\S]*?<\/section>/gi, " ")
   .replace(/<section\b[^>]*class=["'][^"']*\b(?:source-original-card|article-seo-info)\b[^"']*["'][^>]*>[\s\S]*?<\/section>/gi, " ")
   .replace(/<aside\b[^>]*class=["'][^"']*\barticle-aside\b[^"']*["'][^>]*>[\s\S]*?<\/aside>/gi, " ");
 

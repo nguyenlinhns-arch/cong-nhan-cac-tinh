@@ -668,11 +668,16 @@ function renderProfessionalNewsArticle(article, inlineImages) {
     .filter((paragraph) => paragraph.split(/\s+/u).length >= 8);
   const factParagraph = professionalFactParagraphs[article.slug] || "";
   const takeaway = rewriteEditorialParagraph(editorial.takeaway);
+  const isPressLayout = article.sourceLayout || article.contentMode === "press_digest";
+  const faqBlock = !isPressLayout && (article.faq || []).length
+    ? `<section class="professional-news-faq"><h2>Câu hỏi thường gặp</h2>${article.faq.map(([question, answer]) => `<details><summary>${esc(question)}</summary><div>${esc(answer)}</div></details>`).join("")}</section>`
+    : "";
   const professionalBlocks = [
     `<div class="source-story-intro professional-news-intro">${intro.map((paragraph, index) => `<p${index === 0 ? ' class="professional-lede"' : ""}>${esc(paragraph)}</p>`).join("")}</div>`,
     factParagraph ? `<p class="professional-nutgraph">${esc(factParagraph)}</p>` : "",
     renderProfessionalSections(article, editorial.sections, inlineImages),
     takeaway ? `<p class="professional-ending">${esc(takeaway)}</p>` : "",
+    faqBlock,
   ].filter(Boolean).join("\n          ");
   const sourceLine = originalUrl && !article.hideSourceUrlsInSchema
     ? `<p class="article-source-note">Bài được Nguyễn Tử Linh biên soạn từ <a href="${esc(originalUrl)}" target="_blank" rel="noopener noreferrer external">“${esc(originalTitle)}”</a>, đăng trên ${esc(sourceLabel)}${source.date ? ` ngày ${esc(source.date)}` : ""}.</p>`
@@ -742,7 +747,7 @@ function renderArticle(article) {
           {"@type": "ListItem", position: 3, name: article.title, item: canonical},
         ],
       },
-      ...(!isNewsBrief && !isPressLayout && faqs.length ? [{"@type": "FAQPage", mainEntity: faqs}] : []),
+      ...(!isPressLayout && faqs.length ? [{"@type": "FAQPage", mainEntity: faqs}] : []),
     ],
   };
   const related = (article.related || []).map((slug, index) => {

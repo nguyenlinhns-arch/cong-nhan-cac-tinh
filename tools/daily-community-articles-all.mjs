@@ -5,6 +5,7 @@ import {dailyCommunityArticles20260810} from "./daily-community-articles-2026081
 import {dailyCommunityArticles20260811} from "./daily-community-articles-20260811.mjs";
 import {dailyCommunityArticles20260812} from "./daily-community-articles-20260812.mjs";
 import {dailyCommunityArticles20260813} from "./daily-community-articles-20260813.mjs";
+import {dailyCommunityArticles20260814} from "./daily-community-articles-20260814.mjs";
 
 export const dailyCommunityArticles = [
   ...dailyCommunityArticles20260803,
@@ -14,4 +15,5 @@ export const dailyCommunityArticles = [
   ...dailyCommunityArticles20260811,
   ...dailyCommunityArticles20260812,
   ...dailyCommunityArticles20260813,
+  ...dailyCommunityArticles20260814,
 ];
