@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#123b5d" />
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+  <meta name="description" content="Dashboard quản lý học sinh thực tập sản xuất TKV, tổng hợp trực tiếp từ Google Sheets." />
+  <title>Dashboard TTSX | Quản lý học sinh TKV</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-wrap">
+        <div class="brand-mark" aria-hidden="true">TKV</div>
+        <div>
+          <p class="eyebrow">QUẢN LÝ THỰC TẬP SẢN XUẤT</p>
+          <h1>Dashboard TTSX</h1>
+        </div>
+      </div>
+      <div class="top-actions">
+        <div class="sync-state" id="syncState" role="status" aria-live="polite"><span class="sync-dot"></span><span>Đang tải dữ liệu...</span></div>
+        <button class="button secondary" id="refreshBtn" type="button">↻ Làm mới</button>
+      </div>
+    </header>
+
+    <nav class="section-nav" aria-label="Điều hướng dashboard">
+      <a href="#overview" class="nav-pill active">Tổng quan</a><a href="#daily">Theo ngày</a><a href="#analysis">Phân tích</a><a href="#students">Học sinh</a>
+    </nav>
+
+    <main>
+      <section class="filter-panel" aria-label="Bộ lọc dữ liệu">
+        <div class="filter-heading"><div><span class="section-kicker">BỘ LỌC</span><h2>Lọc toàn bộ dashboard</h2></div><button class="button ghost" id="resetFiltersBtn" type="button">Xóa bộ lọc</button></div>
+        <div class="filters-grid">
+          <label class="field search-field"><span>Tìm học sinh</span><input id="searchInput" type="search" placeholder="Nhập họ tên, lớp hoặc công trường..." autocomplete="off" /></label>
+          <label class="field"><span>Doanh nghiệp</span><select id="companyFilter"><option value="">Tất cả</option></select></label>
+          <label class="field"><span>Tỉnh</span><select id="provinceFilter"><option value="">Tất cả</option></select></label>
+          <label class="field"><span>Đơn vị tuyển</span><select id="recruitmentFilter"><option value="">Tất cả</option></select></label>
+          <label class="field"><span>Phân hiệu</span><select id="campusFilter"><option value="">Tất cả</option></select></label>
+          <label class="field"><span>Tình trạng</span><select id="statusFilter"><option value="">Tất cả</option><option value="active">Đang thực tập</option><option value="dropped">Bỏ học/TTSX</option><option value="graduated">Đã tốt nghiệp</option><option value="other">Khác</option></select></label>
+          <label class="field"><span>Công trường/Đơn vị TTSX</span><select id="unitFilter"><option value="">Tất cả</option></select></label>
+        </div>
+        <div class="active-filter-row" id="activeFilterRow" hidden></div>
+      </section>
+
+      <section id="overview" class="section-block">
+        <div class="section-heading"><div><span class="section-kicker">TỔNG QUAN</span><h2>Chỉ số trọng tâm</h2></div><span class="section-note" id="scopeNote">Toàn bộ dữ liệu</span></div>
+        <div class="kpi-grid" id="kpiGrid" aria-live="polite">
+          <article class="kpi-card primary"><span class="kpi-label">Tổng HS TTSX</span><strong id="kpiTotal">—</strong><small>Không tính đã tốt nghiệp</small></article>
+          <article class="kpi-card success"><span class="kpi-label">Đang thực tập</span><strong id="kpiActive">—</strong><small id="kpiActiveSub">—</small></article>
+          <article class="kpi-card danger"><span class="kpi-label">Bỏ TTSX</span><strong id="kpiDropped">—</strong><small id="kpiDroppedSub">—</small></article>
+          <article class="kpi-card warning"><span class="kpi-label">Tỷ lệ bỏ</span><strong id="kpiDropRate">—</strong><small>Bỏ / (Đang TT + Bỏ)</small></article>
+          <article class="kpi-card neutral"><span class="kpi-label">Đã tốt nghiệp</span><strong id="kpiGraduated">—</strong><small>Không tính vào tỷ lệ bỏ</small></article>
+          <article class="kpi-card info"><span class="kpi-label">Tỷ lệ đang TT</span><strong id="kpiActiveRate">—</strong><small>Đang TT / Tổng HS TTSX</small></article>
+        </div>
+        <div class="overview-grid">
+          <article class="panel status-panel"><div class="panel-head"><div><span class="panel-kicker">CƠ CẤU</span><h3>Tình trạng học sinh</h3></div></div><div class="status-layout"><div class="donut" id="statusDonut" role="img" aria-label="Cơ cấu tình trạng học sinh"><div class="donut-center"><strong id="donutTotal">—</strong><span>HS</span></div></div><div class="legend" id="statusLegend"></div></div></article>
+          <article class="panel alert-panel"><div class="panel-head"><div><span class="panel-kicker">KIỂM SOÁT</span><h3>Cảnh báo dữ liệu</h3></div></div><div class="alert-grid" id="dataAlerts"></div></article>
+        </div>
+      </section>
+
+      <section id="daily" class="section-block">
+        <div class="section-heading daily-heading"><div><span class="section-kicker">THEO DÕI HẰNG NGÀY</span><h2>Điểm danh & số điểm</h2></div><label class="compact-field"><span>Ngày theo dõi</span><select id="dailyDateSelect"></select></label></div>
+        <div class="daily-kpi-grid">
+          <article class="mini-kpi"><span>HS đang TT</span><strong id="dailyExpected">—</strong></article><article class="mini-kpi"><span>Đã nhập</span><strong id="dailyEntered">—</strong></article><article class="mini-kpi"><span>Có điểm</span><strong id="dailyScored">—</strong></article><article class="mini-kpi sick"><span>Ô - Ốm</span><strong id="dailySick">—</strong></article><article class="mini-kpi leave"><span>N - Có phép</span><strong id="dailyLeave">—</strong></article><article class="mini-kpi absent"><span>KLD</span><strong id="dailyKld">—</strong></article><article class="mini-kpi muted"><span>Chưa nhập</span><strong id="dailyMissing">—</strong></article><article class="mini-kpi progress-card"><span>Tỷ lệ cập nhật</span><strong id="dailyCoverage">—</strong></article>
+        </div>
+        <div class="two-col-grid">
+          <article class="panel"><div class="panel-head"><div><span class="panel-kicker">DOANH NGHIỆP</span><h3>Mức độ cập nhật theo ngày</h3></div></div><div class="coverage-list" id="companyCoverage"></div></article>
+          <article class="panel"><div class="panel-head"><div><span class="panel-kicker">BẤT THƯỜNG</span><h3>Ô / N / KLD trong ngày</h3></div></div><div class="daily-exception-list" id="dailyExceptions"></div></article>
+        </div>
+      </section>
+
+      <section id="analysis" class="section-block">
+        <div class="section-heading"><div><span class="section-kicker">PHÂN TÍCH</span><h2>Doanh nghiệp, tỉnh & đơn vị tuyển</h2></div></div>
+        <div class="analysis-grid">
+          <article class="panel chart-panel"><div class="panel-head"><div><span class="panel-kicker">QUY MÔ</span><h3>HS TTSX theo doanh nghiệp</h3></div></div><div id="companyBars" class="bar-chart"></div></article>
+          <article class="panel chart-panel"><div class="panel-head"><div><span class="panel-kicker">RỦI RO</span><h3>Tỷ lệ bỏ theo doanh nghiệp</h3></div></div><div id="dropRateBars" class="bar-chart"></div></article>
+          <article class="panel chart-panel"><div class="panel-head"><div><span class="panel-kicker">ĐỊA BÀN</span><h3>Top tỉnh theo số HS</h3></div></div><div id="provinceBars" class="bar-chart"></div></article>
+        </div>
+        <article class="panel table-panel"><div class="panel-head"><div><span class="panel-kicker">SO SÁNH</span><h3>Thống kê theo doanh nghiệp</h3></div></div><div class="table-scroll"><table class="data-table company-table"><thead><tr><th>Doanh nghiệp</th><th>Tổng HS</th><th>Đang TT</th><th>Bỏ</th><th>Tốt nghiệp</th><th>Tỷ lệ bỏ</th></tr></thead><tbody id="companyTableBody"></tbody></table></div></article>
+        <article class="panel hotspot-panel"><div class="panel-head"><div><span class="panel-kicker">CÔNG TRƯỜNG CẢNH BÁO</span><h3>Đơn vị có từ 3 HS bỏ trở lên</h3></div><span class="panel-help">Áp dụng đúng quy tắc báo cáo TTSX</span></div><div id="hotspotContainer"></div></article>
+      </section>
+
+      <section id="students" class="section-block">
+        <div class="section-heading student-heading"><div><span class="section-kicker">DANH SÁCH HỌC SINH</span><h2>Tra cứu chi tiết</h2></div><div class="student-actions"><span class="result-count" id="studentCount">—</span><button class="button secondary" id="exportBtn" type="button">⇩ Xuất CSV</button></div></div>
+        <article class="panel student-panel"><div class="table-scroll student-table-wrap"><table class="data-table student-table"><thead><tr><th>HS</th><th>Doanh nghiệp</th><th>Tỉnh</th><th>Lớp</th><th>Đơn vị tuyển</th><th>Công trường</th><th>Trạng thái</th><th></th></tr></thead><tbody id="studentTableBody"></tbody></table></div><div class="mobile-student-list" id="mobileStudentList"></div><div class="pagination"><button id="prevPageBtn" class="button ghost" type="button">← Trước</button><span id="pageInfo">Trang 1</span><button id="nextPageBtn" class="button ghost" type="button">Sau →</button></div></article>
+      </section>
+    </main>
+
+    <footer><p>Dashboard phục vụ quản lý TTSX. Trang không hiển thị số điện thoại, ngày sinh hoặc địa chỉ chi tiết của học sinh.</p><p><span id="footerUpdated">Dữ liệu đang tải...</span> · Nguồn: Google Sheets BC TTSX</p></footer>
+  </div>
+
+  <div class="loading-overlay" id="loadingOverlay" aria-live="polite"><div class="loader"></div><strong>Đang đồng bộ dữ liệu TTSX...</strong><span>Lấy trực tiếp từ Google Sheets</span></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="student-drawer" id="studentDrawer" aria-hidden="true" aria-label="Chi tiết học sinh"><div class="drawer-head"><div><span class="section-kicker">CHI TIẾT HỌC SINH</span><h2 id="drawerName">—</h2></div><button class="icon-btn" id="closeDrawerBtn" type="button" aria-label="Đóng">×</button></div><div id="drawerContent" class="drawer-content"></div></aside>
+  <script src="app.js" defer></script>
+</body>
+</html>
