@@ -5,8 +5,8 @@
     dv: { title:'TỔNG HỢP KẾT QUẢ NHẬP HỌC HỌC SINH HỆ A THEO ĐƠN VỊ NĂM 2026', note:'Quý 3/2026 · Tháng 8/2026 · Số nền đến 31/07/2026', heads:[4,5,6,7], from:8, to:26 },
     ph: { title:'TỔNG HỢP KẾT QUẢ NHẬP HỌC HỌC SINH HỆ A THEO PHÂN HIỆU/TRUNG TÂM NĂM 2026', note:'Quý 3/2026 · Tháng 8/2026', heads:[6,7,8], from:9, to:15 },
     dn: { title:'TỔNG HỢP KẾT QUẢ TUYỂN SINH THEO DOANH NGHIỆP NĂM 2026', note:'Tháng 08/2026 · Cộng trên số nền đến 31/07/2026', heads:[3,4,5], from:6, to:29 },
-    tinh: { title:'TỔNG HỢP KẾT QUẢ NHẬP HỌC SINH HỆ A TRONG TỈNH NĂM 2026', note:'Theo phường/xã và tháng nhập học', heads:[5], from:7, to:59 },
-    qc: { title:'TỔNG HỢP KẾT QUẢ TUYỂN SINH HỌC SINH KÝ QUY CHẾ', note:'Các đơn vị ký quy chế phối hợp', heads:[4], from:41, to:69 }
+    tinh: { title:'TỔNG HỢP KẾT QUẢ NHẬP HỌC SINH HỆ A TRONG TỈNH NĂM 2026', note:'Theo phường/xã · Tự động cộng DSHS đến ngày mới nhất', heads:[5], from:7, to:59 },
+    qc: { title:'TỔNG HỢP KẾT QUẢ TUYỂN SINH HỌC SINH KÝ QUY CHẾ', note:'Đối chiếu địa bàn ký quy chế từ DSHS đến ngày mới nhất', heads:[4], from:41, to:69 }
   };
   function toneClass(key, col) {
     const maps = {
@@ -77,7 +77,11 @@
     if(ph[7]) ph[7][2]='Tháng 8/2026';
     ph.slice(9,15).forEach(row=>{const x=findByName(details.ph?.rows,row[1]);if(x){x.month.forEach((v,i)=>row[2+i]=v);row[14]=(x.month[9]||0)+(x.month[10]||0)+(x.month[11]||0);[0,1,2,3,4,5,9,10,11].forEach((src,i)=>row[15+i]=x.current[src]||0)}});
     if(details.ph?.total){const x=details.ph.total;x.month.forEach((v,i)=>ph[15][2+i]=v);ph[15][14]=(x.month[9]||0)+(x.month[10]||0)+(x.month[11]||0);[0,1,2,3,4,5,9,10,11].forEach((src,i)=>ph[15][15+i]=x.current[src]||0)}
-    if(dn[3]) dn[3][4]='Tháng 08/2026';
+    if(dn[3]) {
+      dn[3][4]='Tháng 08/2026';
+      const latest=meta?.summary?.latest_admission_date||details?.snapshot_date||'';
+      dn[3]=dn[3].map(v=>typeof v==='string'?v.replace(/31\s*tháng\s*7\s*năm\s*2026/gi,latest).replace(/31\/7\/2026/g,latest):v);
+    }
     const putDn=(row,x)=>{row[2]=x.contract??row[2];row[3]=x.target??row[3];x.aug.forEach((v,i)=>row[4+i]=v);x.current.slice(0,3).forEach((v,i)=>row[13+i]=v);[0,0,0].forEach((v,i)=>row[16+i]=v);x.current.slice(3).forEach((v,i)=>row[19+i]=v);x.overall.forEach((v,i)=>row[28+i]=v);row[31]=x.same2025??'';row[32]=x.retuyen??0;row[33]=x.grand??0};
     dn.slice(6,29).forEach(row=>{const x=findByName(details.dn?.rows,row[1]);if(x)putDn(row,x)});
     if(details.dn?.total)putDn(dn[29],details.dn.total);
