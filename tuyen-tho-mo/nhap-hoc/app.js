@@ -13,8 +13,7 @@
       dv: { green:[9,17,18,27], yellow:[19], peach:[11,20,21,22,23,24,25,28] },
       ph: { green:[22] },
       dn: { blue:[4], green:[33], peach:[3,7,10,13,16,19,22,25,28,31,32,34] },
-      tinh: {},
-      qc: {}
+      tinh: {}, qc: {}
     };
     const m=maps[key]||{};
     for (const tone of ['green','yellow','peach','blue']) if ((m[tone]||[]).includes(col)) return 'tone-'+tone;
@@ -31,15 +30,16 @@
     }
     return `<tr>${out.join('')}</tr>`;
   }
+  const dateFmt=new Intl.DateTimeFormat('vi-VN',{timeZone:'Asia/Ho_Chi_Minh',day:'2-digit',month:'2-digit',year:'numeric'});
+  const todayLabel=()=>dateFmt.format(new Date());
   function dvHeader() {
     const now=new Date();
-    const dateFmt=new Intl.DateTimeFormat('vi-VN',{timeZone:'Asia/Ho_Chi_Minh',day:'2-digit',month:'2-digit',year:'numeric'});
-    const todayLabel=dateFmt.format(now);
+    const today=todayLabel();
     const priorYear=new Date(now); priorYear.setFullYear(now.getFullYear()-1);
     const priorYearLabel=dateFmt.format(priorYear);
     return `<tr>
       <th rowspan="4" class="dv-tt">TT</th><th rowspan="4" class="dv-unit">ĐƠN VỊ TUYỂN SINH</th>
-      <th colspan="14">Quý 3.2026</th><th colspan="7" rowspan="2">Tổng nhập đến ngày hôm nay<br>${todayLabel}</th>
+      <th colspan="14">Quý 3.2026</th><th colspan="7" rowspan="2">Tổng nhập đến ngày hôm nay<br>${today}</th>
       <th colspan="2" rowspan="2">Tổng nhập hệ A cùng kỳ<br>đến ${priorYearLabel}</th>
       <th rowspan="4">So sánh<br>kết quả tuyển HS TKV<br>năm 2026 với cùng ngày<br>năm 2025</th>
       <th rowspan="4" class="head-green red">Số học sinh<br>tái tuyển<br>2026</th>
@@ -47,12 +47,12 @@
     </tr>
     <tr><th colspan="14">Tháng 8/2026</th></tr>
     <tr>
-      <th colspan="6">Hệ A - TKV</th><th colspan="2">Công hệ A TKV</th>
+      <th colspan="6">Hệ A - TKV</th><th colspan="2">Cộng hệ A TKV</th>
       <th rowspan="2" class="head-peach">Cộng hệ A TKV<br>- Quý</th><th colspan="3">Tổng ĐB</th>
       <th rowspan="2">Cộng hệ A<br>Đông Bắc</th><th rowspan="2">Hệ B -<br>TC + CĐ</th>
-      <th colspan="2" class="head-green">Công hệ A TKV trong đó</th>
+      <th colspan="2" class="head-green">Cộng hệ A TKV trong đó</th>
       <th rowspan="2" class="head-yellow">CỘNG HỆ A<br>TKV</th>
-      <th rowspan="2" class="head-peach">Học sinh<br>xóa tên đến<br>${todayLabel}</th>
+      <th rowspan="2" class="head-peach">Học sinh<br>xóa tên đến<br>${today}</th>
       <th rowspan="2" class="head-peach">Số học sinh<br>còn lại</th>
       <th rowspan="2" class="head-peach">KH điều hành<br>TKV năm<br>2026</th>
       <th rowspan="2" class="head-peach">Tỷ lệ hoàn<br>thành TKV (%)</th>
@@ -68,12 +68,54 @@
   }
   const norm = v => String(v??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').replace(/\s+/g,' ').trim().toLowerCase();
   const findByName = (rows,name) => (rows||[]).find(r=>norm(r.name)===norm(name));
+  const nval = v => {
+    if (typeof v==='number') return Number.isFinite(v)?v:0;
+    const s=String(v??'').trim().replace(/\s/g,'').replace(/\./g,'').replace(',','.');
+    const n=Number(s); return Number.isFinite(n)?n:0;
+  };
+  const isDnRecruitUnit = name => /^phong tsdn[123](?:\s|$)/.test(norm(name));
+  function overlayDvRow(row,x) {
+    const aug=x?.aug||[], current=x?.current||[];
+    const dnRecruit=isDnRecruitUnit(row[1]);
+    const julyQuarterBase=nval(row[10]);
+    const monthTotal=nval(aug[7]);
+    const currentTotal=nval(current[2]);
+
+    row[2]=0;
+    row[3]=nval(aug[0]);
+    row[4]=nval(aug[1]);
+    row[5]=nval(aug[2]);
+    row[6]=nval(aug[3]);
+    row[7]=nval(aug[4]);
+
+    row[8]=dnRecruit?0:monthTotal;
+    row[9]=dnRecruit?monthTotal:0;
+    row[10]=julyQuarterBase+monthTotal;
+
+    row[16]=dnRecruit?0:currentTotal;
+    row[17]=dnRecruit?currentTotal:0;
+    row[18]=currentTotal;
+    current.slice(3).forEach((v,i)=>row[19+i]=v);
+  }
   function overlayLive(base, details, meta) {
     const out=JSON.parse(JSON.stringify(base));
     if (!details) return out;
     const dv=out.dv||[], ph=out.ph||[], dn=out.dn||[];
-    dv.slice(8,26).forEach(row=>{const x=findByName(details.dv?.rows,row[1]);if(x){x.aug.forEach((v,i)=>row[2+i]=v);x.current.forEach((v,i)=>row[16+i]=v)}});
-    if(details.dv?.total){details.dv.total.aug.forEach((v,i)=>dv[26][2+i]=v);details.dv.total.current.forEach((v,i)=>dv[26][16+i]=v)}
+    const dvRows=dv.slice(8,26);
+    dvRows.forEach(row=>{const x=findByName(details.dv?.rows,row[1]);if(x)overlayDvRow(row,x)});
+    if(dv[26]){
+      const x=details.dv?.total||{}, aug=x.aug||[];
+      const julyQuarterBase=nval(dv[26][10]);
+      dv[26][2]=0;
+      dv[26][3]=nval(aug[0]); dv[26][4]=nval(aug[1]); dv[26][5]=nval(aug[2]); dv[26][6]=nval(aug[3]); dv[26][7]=nval(aug[4]);
+      dv[26][8]=dvRows.reduce((s,r)=>s+nval(r[8]),0);
+      dv[26][9]=dvRows.reduce((s,r)=>s+nval(r[9]),0);
+      dv[26][10]=julyQuarterBase+nval(aug[7]);
+      dv[26][16]=dvRows.reduce((s,r)=>s+nval(r[16]),0);
+      dv[26][17]=dvRows.reduce((s,r)=>s+nval(r[17]),0);
+      dv[26][18]=dvRows.reduce((s,r)=>s+nval(r[18]),0);
+      (x.current||[]).slice(3).forEach((v,i)=>dv[26][19+i]=v);
+    }
     if(ph[7]) ph[7][2]='Tháng 8/2026';
     ph.slice(9,15).forEach(row=>{const x=findByName(details.ph?.rows,row[1]);if(x){x.month.forEach((v,i)=>row[2+i]=v);row[14]=(x.month[9]||0)+(x.month[10]||0)+(x.month[11]||0);[0,1,2,3,4,5,9,10,11].forEach((src,i)=>row[15+i]=x.current[src]||0)}});
     if(details.ph?.total){const x=details.ph.total;x.month.forEach((v,i)=>ph[15][2+i]=v);ph[15][14]=(x.month[9]||0)+(x.month[10]||0)+(x.month[11]||0);[0,1,2,3,4,5,9,10,11].forEach((src,i)=>ph[15][15+i]=x.current[src]||0)}
@@ -89,10 +131,10 @@
   }
   function reportStatus() {
     const s=state.meta?.summary||{};
-    const today=new Intl.DateTimeFormat('vi-VN',{timeZone:'Asia/Ho_Chi_Minh',day:'2-digit',month:'2-digit',year:'numeric'}).format(new Date());
+    const today=todayLabel();
     const latest=s.latest_admission_date||state.details?.snapshot_date||'--/--/----';
     const generated=state.meta?.generated_at||'';
-    return `<div class="report-status"><b>BÁO CÁO NGÀY HÔM NAY: ${esc(today)}</b><span>Số liệu cập nhật đến: <b>${esc(latest)}</b></span><span>Nhập học hôm nay: <b>${esc(s.today_count??0)}</b></span><span>Còn học: <b>${esc(s.active_records??'—')}</b></span><span>Bỏ học: <b>${esc(s.inactive_records??'—')}</b></span>${generated?`<small>Đồng bộ DSHS: ${esc(generated)} · Website kiểm tra mỗi 1 phút</small>`:''}</div>`;
+    return `<div class="report-status"><b>BÁO CÁO NGÀY HÔM NAY: ${esc(today)}</b><span>Số liệu cập nhật đến: <b>${esc(latest)}</b></span><span>Nhập học hôm nay: <b>${esc(s.today_count??0)}</b></span><span>Còn học: <b>${esc(s.active_records??'—')}</b></span><span>Bỏ học: <b>${esc(s.inactive_records??'—')}</b></span>${generated?`<small>Đồng bộ DSHS: ${esc(generated)}</small>`:''}</div>`;
   }
   function displayValue(key,col,value) {
     if (key==='dv' && [23,26].includes(col)) {
@@ -101,11 +143,13 @@
     }
     return value;
   }
+  const pad2=n=>String(Math.max(0,nval(n))).padStart(2,'0');
+  const dropoutMonthFromNote = note => {const m=String(note||'').match(/bỏ học lũy kế tháng\s*8\s*:\s*(\d+)/i);return m?Number(m[1]):0;};
   function renderReport(key) {
     const rows=state.reports[key]||[], cfg=configs[key];
     const width=Math.max(1,...rows.map(r=>r.length));
     const heads=key==='dv' ? dvHeader() : cfg.heads.map(idx=>mergedHeader(rows[idx]||[],width,key)).join('');
-    const body=rows.slice(cfg.from,cfg.to+1).filter(r=>r.some(v=>String(v??'').trim()!=='')).map((r,ri)=>{
+    const body=rows.slice(cfg.from,cfg.to+1).filter(r=>r.some(v=>String(v??'').trim()!=='')).map(r=>{
       const cells=Array.from({length:width},(_,i)=>r[i]??'');
       const first=String(cells[0]).trim().toUpperCase();
       const section=first==='I'||first==='II'||first.includes('TỔNG')||String(cells[1]).toUpperCase().includes('KÝ QC');
@@ -115,16 +159,23 @@
     const identityWidths={dv:['w-tt','w-unit'],ph:['w-tt','w-name-ph'],dn:['w-tt','w-name-dn'],tinh:['w-tt','w-name-tinh'],qc:['w-tt','w-name-qc']};
     const widths=identityWidths[key];
     const colgroup='<colgroup><col class="'+widths[0]+'"><col class="'+widths[1]+'">'+Array.from({length:width-2},()=>'<col>').join('')+'</colgroup>';
-    const liveDv=state.details?.dv;
-    const campusMap=Object.fromEntries((liveDv?.today_by_campus||[]).map(x=>[x.campus,x.count]));
-    const progressRows=liveDv?.progress||[];
-    const dvExtra=key==='dv' ? `<div class="dv-note">${esc(liveDv?.note||rows[27]?.[1]||'')}</div>
-      <table class="dv-campus"><tr><th rowspan="2">Trong đó nhập tại</th><th>PHHN</th><th>PHCP</th><th>TTHC</th><th>PHVB</th><th>PHHB</th><th>Tổng nhập</th></tr>
-      <tr><td>${esc(campusMap.PHHN??0)}</td><td>${esc(campusMap.PHCP??0)}</td><td>${esc(campusMap.TTHC??0)}</td><td>${esc(campusMap.PHVB??0)}</td><td>${esc(campusMap.PHHB??0)}</td><td><b>${esc(liveDv?.today_total??0)}</b></td></tr></table>
-      <div class="progress-title">Lũy kế kết quả thực hiện đến thời điểm báo cáo</div>
-      <div class="progress-wrap"><table class="dv-progress"><thead><tr><th>Nội dung</th><th>Kế hoạch 2026</th><th>Kết quả thực hiện</th><th>Tỷ lệ hoàn thành (%)</th></tr></thead><tbody>
-      ${progressRows.map(x=>`<tr><td>${esc(x.label)}</td><td>${esc(x.plan)}</td><td>${esc(x.actual)}</td><td>${esc(Number(x.pct).toLocaleString('vi-VN',{minimumFractionDigits:1,maximumFractionDigits:1}))}</td></tr>`).join('')}</tbody></table>
-      <div class="progress-notes"><div>Đã bao gồm HS Tái tuyển</div><div>Đã bao gồm HS Tái tuyển</div></div></div>` : '';
+
+    const s=state.meta?.summary||{};
+    const liveDv=state.details?.dv||{};
+    const detailsFresh=String(state.details?.snapshot_date||'')===String(s.latest_admission_date||'');
+    const campusMap=detailsFresh?Object.fromEntries((liveDv.today_by_campus||[]).map(x=>[x.campus,nval(x.count)])):{};
+    const dropoutMap=detailsFresh?Object.fromEntries((liveDv.dropout_today_by_campus||[]).map(x=>[x.campus,nval(x.count)])):{};
+    const todayTotal=nval(s.today_count??liveDv.today_total??0);
+    const dropoutToday=detailsFresh?nval(liveDv.dropout_today_total??0):0;
+    const dropoutMonth=detailsFresh?nval(liveDv.dropout_month_total??dropoutMonthFromNote(liveDv.note)):0;
+    const summaryNote=`Nhập học ngày ${todayLabel()}: ${pad2(todayTotal)} học sinh. Bỏ học trong ngày: ${pad2(dropoutToday)} học sinh. Bỏ học lũy kế tháng 8: ${pad2(dropoutMonth)} học sinh`;
+    const progressRows=detailsFresh?(liveDv.progress||[]):[];
+    const cell=(map,k)=>detailsFresh?esc(map[k]??0):'…';
+    const dvExtra=key==='dv' ? `<div class="dv-note">${esc(summaryNote)}</div>
+      <table class="dv-campus"><tr><th>Nội dung</th><th>PHHN</th><th>PHCP</th><th>TTHC</th><th>PHVB</th><th>PHHB</th><th>Tổng</th></tr>
+      <tr><th>Nhập học trong ngày</th><td>${cell(campusMap,'PHHN')}</td><td>${cell(campusMap,'PHCP')}</td><td>${cell(campusMap,'TTHC')}</td><td>${cell(campusMap,'PHVB')}</td><td>${cell(campusMap,'PHHB')}</td><td><b>${esc(todayTotal)}</b></td></tr>
+      <tr><th>Bỏ học trong ngày</th><td>${cell(dropoutMap,'PHHN')}</td><td>${cell(dropoutMap,'PHCP')}</td><td>${cell(dropoutMap,'TTHC')}</td><td>${cell(dropoutMap,'PHVB')}</td><td>${cell(dropoutMap,'PHHB')}</td><td><b>${esc(dropoutToday)}</b></td></tr></table>
+      ${detailsFresh?`<div class="progress-title">Lũy kế kết quả thực hiện đến thời điểm báo cáo</div><div class="progress-wrap"><table class="dv-progress"><thead><tr><th>Nội dung</th><th>Kế hoạch 2026</th><th>Kết quả thực hiện</th><th>Tỷ lệ hoàn thành (%)</th></tr></thead><tbody>${progressRows.map(x=>`<tr><td>${esc(x.label)}</td><td>${esc(x.plan)}</td><td>${esc(x.actual)}</td><td>${esc(Number(x.pct).toLocaleString('vi-VN',{minimumFractionDigits:1,maximumFractionDigits:1}))}</td></tr>`).join('')}</tbody></table><div class="progress-notes"><div>Đã bao gồm HS Tái tuyển</div><div>Đã bao gồm HS Tái tuyển</div></div></div>`:`<div class="dv-sync-wait">Đang đồng bộ dữ liệu chi tiết DSHS mới nhất; không hiển thị snapshot cũ.</div>`}` : '';
     return `<article class="dashboard-card report-${key}">
       <div class="dashboard-title"><h2>${esc(cfg.title)}</h2><p>${esc(cfg.note)}</p></div>${reportStatus()}
       <div class="native-table-wrap"><table class="native-report">${colgroup}<thead>${heads}</thead><tbody>${body}</tbody></table></div>${dvExtra}
