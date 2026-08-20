@@ -8,13 +8,25 @@
     tinh: { title:'TỔNG HỢP KẾT QUẢ NHẬP HỌC SINH HỆ A TRONG TỈNH NĂM 2026', note:'Theo phường/xã và tháng nhập học', heads:[5], from:7, to:59 },
     qc: { title:'TỔNG HỢP KẾT QUẢ TUYỂN SINH HỌC SINH KÝ QUY CHẾ', note:'Các đơn vị ký quy chế phối hợp', heads:[4], from:41, to:69 }
   };
-  function mergedHeader(row, width) {
+  function toneClass(key, col) {
+    const maps = {
+      dv: { green:[9,17,18,27], yellow:[19], peach:[11,20,21,22,23,24,25,28] },
+      ph: { green:[22] },
+      dn: { blue:[4], green:[33], peach:[3,7,10,13,16,19,22,25,28,31,32,34] },
+      tinh: {},
+      qc: {}
+    };
+    const m=maps[key]||{};
+    for (const tone of ['green','yellow','peach','blue']) if ((m[tone]||[]).includes(col)) return 'tone-'+tone;
+    return '';
+  }
+  function mergedHeader(row, width, key) {
     const cells = Array.from({length:width},(_,i)=>row[i]??'');
     const out=[]; let i=0;
     while(i<width){
       let next=i+1;
       while(next<width && String(cells[next]).trim()==='') next++;
-      out.push(`<th colspan="${next-i}">${esc(cells[i])}</th>`);
+      out.push(`<th class="${toneClass(key,i+1)}" colspan="${next-i}">${esc(cells[i])}</th>`);
       i=next;
     }
     return `<tr>${out.join('')}</tr>`;
@@ -52,13 +64,13 @@
   function renderReport(key) {
     const rows=state.reports[key]||[], cfg=configs[key];
     const width=Math.max(1,...rows.map(r=>r.length));
-    const heads=key==='dv' ? dvHeader() : cfg.heads.map(idx=>mergedHeader(rows[idx]||[],width)).join('');
+    const heads=key==='dv' ? dvHeader() : cfg.heads.map(idx=>mergedHeader(rows[idx]||[],width,key)).join('');
     const body=rows.slice(cfg.from,cfg.to+1).filter(r=>r.some(v=>String(v??'').trim()!=='')).map((r,ri)=>{
       const cells=Array.from({length:width},(_,i)=>r[i]??'');
       const first=String(cells[0]).trim().toUpperCase();
       const section=first==='I'||first==='II'||first.includes('TỔNG')||String(cells[1]).toUpperCase().includes('KÝ QC');
       const flagged=key==='dv' && /KT-NV|PHÒNG TSĐB$/.test(String(cells[1]).trim().toUpperCase());
-      return `<tr class="${section?'summary-row ':''}${flagged?'flagged-row':''}">${cells.map((v,i)=>`<td class="col-${i+1}">${esc(v)}</td>`).join('')}</tr>`;
+      return `<tr class="${section?'summary-row ':''}${flagged?'flagged-row':''}">${cells.map((v,i)=>`<td class="col-${i+1} ${toneClass(key,i+1)}">${esc(v)}</td>`).join('')}</tr>`;
     }).join('');
     const colgroup=key==='dv' ? '<colgroup><col class="w-tt"><col class="w-unit">'+Array.from({length:26},()=>'<col>').join('')+'</colgroup>' : '';
     const dvExtra=key==='dv' ? `<div class="dv-note">${esc(rows[27]?.[1]||'')}</div>
