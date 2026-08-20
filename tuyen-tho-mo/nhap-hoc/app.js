@@ -32,24 +32,25 @@
   }
   const fmtDate = d => new Intl.DateTimeFormat('vi-VN',{timeZone:'Asia/Ho_Chi_Minh',day:'2-digit',month:'2-digit',year:'numeric'}).format(d);
   const todayLabel = () => fmtDate(new Date());
+  const DV_HIDDEN_COLUMNS = new Set([11,12,13,14,15]);
+  const visibleColumns = (key,width) => Array.from({length:width},(_,i)=>i).filter(i=>key!=='dv'||!DV_HIDDEN_COLUMNS.has(i));
   function dvHeader() {
     const now=new Date();
     const prior=new Date(now); prior.setFullYear(now.getFullYear()-1);
     const today=todayLabel(), priorLabel=fmtDate(prior);
     return `<tr>
       <th rowspan="4" class="dv-tt">TT</th><th rowspan="4" class="dv-unit">ĐƠN VỊ TUYỂN SINH</th>
-      <th colspan="14">Quý 3.2026</th><th colspan="7" rowspan="2">Tổng nhập đến ngày hôm nay<br>${today}</th>
+      <th colspan="9">Quý 3.2026</th><th colspan="7" rowspan="2">Tổng nhập đến ngày hôm nay<br>${today}</th>
       <th colspan="2" rowspan="2">Tổng nhập hệ A cùng kỳ<br>đến ${priorLabel}</th>
       <th rowspan="4">So sánh<br>kết quả tuyển HS TKV<br>năm 2026 với cùng ngày<br>năm 2025</th>
       <th rowspan="4" class="head-green red">Số học sinh<br>tái tuyển<br>2026</th>
       <th rowspan="4" class="head-peach red">Tổng số nhập<br>bao gồm cả<br>tái tuyển</th>
     </tr>
-    <tr><th colspan="14">Tháng 8/2026</th></tr>
+    <tr><th colspan="9">Tháng 8/2026</th></tr>
     <tr>
       <th colspan="6">Hệ A - TKV</th><th colspan="2">Cộng hệ A TKV</th>
-      <th rowspan="2" class="head-peach">Cộng hệ A TKV<br>- Quý</th><th colspan="3">Tổng ĐB</th>
-      <th rowspan="2">Cộng hệ A<br>Đông Bắc</th><th rowspan="2">Hệ B -<br>TC + CĐ</th>
-      <th colspan="2" class="head-green">Cộng hệ A TKV trong đó</th>
+      <th rowspan="2" class="head-peach">Cộng hệ A TKV<br>- Quý</th>
+      <th colspan="2" class="head-green">Số HS còn lại trong đó</th>
       <th rowspan="2" class="head-yellow">CỘNG HỆ A<br>TKV</th>
       <th rowspan="2" class="head-peach">Học sinh<br>xóa tên đến<br>${today}</th>
       <th rowspan="2" class="head-peach">Số học sinh<br>còn lại</th>
@@ -61,7 +62,6 @@
       <th>TCN<br>Khai thác</th><th>Sơ cấp<br>khai thác</th><th>TC CĐ<br>liên thông</th>
       <th>SCN<br>XDM</th><th>VHTBĐ</th><th>Cơ điện<br>lò</th>
       <th class="head-green">Trường<br>tuyển</th><th>DN<br>tuyển</th>
-      <th>TCKT</th><th>SCKT</th><th>Cơ điện<br>lò</th>
       <th class="head-green">Trường tuyển</th><th class="head-green">DN tuyển</th>
     </tr>`;
   }
@@ -78,10 +78,10 @@
     row[2]=0; row[3]=nval(aug[0]); row[4]=nval(aug[1]); row[5]=nval(aug[2]); row[6]=nval(aug[3]); row[7]=nval(aug[4]);
     row[8]=dnRecruit?0:monthTotal; row[9]=dnRecruit?monthTotal:0; row[10]=quarterBase+monthTotal;
     const currentTotal=nval(x.current_a_total), inactive=nval(x.current_a_inactive), active=nval(x.current_a_active);
-    row[16]=dnRecruit?0:currentTotal; row[17]=dnRecruit?currentTotal:0; row[18]=currentTotal; row[19]=inactive; row[20]=active;
+    row[16]=dnRecruit?0:active; row[17]=dnRecruit?active:0; row[18]=currentTotal; row[19]=inactive; row[20]=active;
     const plan=nval(row[21]); if (plan>0) row[22]=active/plan*100;
-    const prior=nval(row[23]); if (prior>0) row[25]=currentTotal/prior*100;
-    row[27]=currentTotal+nval(row[26]);
+    const prior=nval(row[23]); if (prior>0) row[25]=active/prior*100;
+    row[27]=active+nval(row[26]);
   }
   function overlayDv(baseRows,details) {
     const rows=baseRows||[], body=rows.slice(8,26);
@@ -93,8 +93,8 @@
       rows[26][16]=body.reduce((s,r)=>s+nval(r[16]),0); rows[26][17]=body.reduce((s,r)=>s+nval(r[17]),0);
       rows[26][18]=nval(x.current_a_total); rows[26][19]=nval(x.current_a_inactive); rows[26][20]=nval(x.current_a_active);
       const plan=nval(rows[26][21]); if (plan>0) rows[26][22]=rows[26][20]/plan*100;
-      const prior=nval(rows[26][23]); if (prior>0) rows[26][25]=rows[26][18]/prior*100;
-      rows[26][27]=rows[26][18]+nval(rows[26][26]);
+      const prior=nval(rows[26][23]); if (prior>0) rows[26][25]=rows[26][20]/prior*100;
+      rows[26][27]=rows[26][20]+nval(rows[26][26]);
     }
   }
   function overlayPh(rows,details) {
@@ -117,11 +117,17 @@
   function displayValue(key,col,value) { if (key==='dv' && [23,26].includes(col)) { const n=Number(value); return Number.isFinite(n)?n.toLocaleString('vi-VN',{minimumFractionDigits:1,maximumFractionDigits:1}):value; } return value; }
   const pad2=n=>String(Math.max(0,nval(n))).padStart(2,'0');
   function renderReport(key) {
-    const rows=state.reports?.[key]||[], cfg=configs[key], width=Math.max(1,...rows.map(r=>r.length));
-    const heads=key==='dv'?dvHeader():cfg.heads.map(idx=>mergedHeader(rows[idx]||[],width,key)).join('');
-    const body=rows.slice(cfg.from,cfg.to+1).filter(r=>r.some(v=>String(v??'').trim()!=='')).map(r=>{ const cells=Array.from({length:width},(_,i)=>r[i]??''); const first=String(cells[0]).trim().toUpperCase(); const section=first==='I'||first==='II'||first.includes('TỔNG')||String(cells[1]).toUpperCase().includes('KÝ QC'); const flagged=key==='dv' && /KT-NV|PHÒNG TSĐB$/.test(String(cells[1]).trim().toUpperCase()); return `<tr class="${section?'summary-row ':''}${flagged?'flagged-row':''}">${cells.map((v,i)=>`<td class="col-${i+1} ${toneClass(key,i+1)}">${esc(displayValue(key,i+1,v))}</td>`).join('')}</tr>`; }).join('');
+    const rows=state.reports?.[key]||[], cfg=configs[key], rawWidth=Math.max(1,...rows.map(r=>r.length)), visible=visibleColumns(key,rawWidth);
+    const heads=key==='dv'?dvHeader():cfg.heads.map(idx=>mergedHeader(rows[idx]||[],rawWidth,key)).join('');
+    const body=rows.slice(cfg.from,cfg.to+1).filter(r=>r.some(v=>String(v??'').trim()!=='')).map(r=>{
+      const first=String(r[0]??'').trim().toUpperCase();
+      const section=first==='I'||first==='II'||first.includes('TỔNG')||String(r[1]??'').toUpperCase().includes('KÝ QC');
+      const flagged=key==='dv' && /KT-NV|PHÒNG TSĐB$/.test(String(r[1]??'').trim().toUpperCase());
+      const cells=visible.map(i=>({value:r[i]??'',sourceIndex:i}));
+      return `<tr class="${section?'summary-row ':''}${flagged?'flagged-row':''}">${cells.map(c=>`<td class="col-${c.sourceIndex+1} ${toneClass(key,c.sourceIndex+1)}">${esc(displayValue(key,c.sourceIndex+1,c.value))}</td>`).join('')}</tr>`;
+    }).join('');
     const identityWidths={dv:['w-tt','w-unit'],ph:['w-tt','w-name-ph'],dn:['w-tt','w-name-dn'],tinh:['w-tt','w-name-tinh'],qc:['w-tt','w-name-qc']}, widths=identityWidths[key];
-    const colgroup='<colgroup><col class="'+widths[0]+'"><col class="'+widths[1]+'">'+Array.from({length:width-2},()=>'<col>').join('')+'</colgroup>';
+    const colgroup='<colgroup><col class="'+widths[0]+'"><col class="'+widths[1]+'">'+Array.from({length:Math.max(0,visible.length-2)},()=>'<col>').join('')+'</colgroup>';
     const s=state.meta?.summary||{}, liveDv=state.details?.dv||{}, detailsFresh=String(state.details?.snapshot_date||'')===todayLabel();
     const campusMap=detailsFresh?Object.fromEntries((liveDv.today_by_campus||[]).map(x=>[x.campus,nval(x.count)])):{}, dropoutMap=detailsFresh?Object.fromEntries((liveDv.dropout_today_by_campus||[]).map(x=>[x.campus,nval(x.count)])):{};
     const todayTotal=nval(s.today_count??liveDv.today_total??0), dropoutToday=detailsFresh?nval(liveDv.dropout_today_total??0):0, dropoutMonth=detailsFresh?nval(liveDv.dropout_month_total??0):0;
