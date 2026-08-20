@@ -215,3 +215,11 @@
 .dv-progress{border-collapse:collapse;width:53%;margin:0 0 14px 1%;font-size:9.5px;color:#001ec8;font-weight:700}
 .dv-progress th,.dv-progress td{border:1px solid #111;padding:6px;text-align:center}.dv-progress th:first-child,.dv-progress td:first-child{text-align:left}.dv-progress th:last-child,.dv-progress td:last-child{border:0;color:red;text-align:left;font-weight:400;width:27%}
 @media(max-width:900px){.report-status{justify-content:flex-start;gap:7px;font-size:10px;position:sticky;left:0}.report-dv .native-report .w-unit{width:150px!important}.dv-progress{width:760px;font-size:10px}.progress-title{width:620px;font-size:11px;text-align:center}}
+
+/* Khối bổ sung cuối Tab 1 theo ảnh mẫu */
+.progress-wrap{display:flex;align-items:flex-start;gap:14px;margin:0 0 14px 1%}
+.progress-wrap .dv-progress{width:420px;margin:0;font-size:9.5px}
+.progress-wrap .dv-progress th,.progress-wrap .dv-progress td{height:27px;padding:5px;border:1px solid #111;color:#001ec8;font-weight:700}
+.progress-wrap .dv-progress th:first-child,.progress-wrap .dv-progress td:first-child{text-align:center}
+.progress-notes{padding-top:31px;color:red;font-size:10px;line-height:27px;white-space:nowrap}
+@media(max-width:900px){.progress-wrap{width:780px;gap:10px}.progress-wrap .dv-progress{width:520px;font-size:10px}.progress-notes{font-size:10px}}
