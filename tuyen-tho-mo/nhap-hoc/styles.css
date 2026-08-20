@@ -205,3 +205,13 @@
 }
 .native-table-wrap{isolation:isolate}
 .report-dv .native-report tbody .flagged-row td:nth-child(2){color:#e00000!important;font-weight:700}
+
+/* Bố cục gọn + trạng thái đồng bộ + lũy kế Biểu 1 */
+.report-dv .native-report .w-unit{width:170px!important}
+.report-dv .native-report th,.report-dv .native-report td{padding-left:1px!important;padding-right:1px!important}
+.report-status{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;border:1px solid #8aa6c1;background:#eef6fb;padding:6px 10px;margin:0 0 6px;font-family:Arial,sans-serif;font-size:11px}
+.report-status b{color:#b00000}.report-status small{color:#555}
+.progress-title{width:46%;text-align:center;color:#001ec8;font-weight:700;font-size:11px;margin:8px 0 6px 1%}
+.dv-progress{border-collapse:collapse;width:53%;margin:0 0 14px 1%;font-size:9.5px;color:#001ec8;font-weight:700}
+.dv-progress th,.dv-progress td{border:1px solid #111;padding:6px;text-align:center}.dv-progress th:first-child,.dv-progress td:first-child{text-align:left}.dv-progress th:last-child,.dv-progress td:last-child{border:0;color:red;text-align:left;font-weight:400;width:27%}
+@media(max-width:900px){.report-status{justify-content:flex-start;gap:7px;font-size:10px;position:sticky;left:0}.report-dv .native-report .w-unit{width:150px!important}.dv-progress{width:760px;font-size:10px}.progress-title{width:620px;font-size:11px;text-align:center}}
