@@ -47,10 +47,10 @@
     </tr>
     <tr><th colspan="14">Tháng 8/2026</th></tr>
     <tr>
-      <th colspan="6">Hệ A - TKV</th><th colspan="2">Công hệ A TKV</th>
+      <th colspan="6">Hệ A - TKV</th><th colspan="2">Cộng hệ A TKV</th>
       <th rowspan="2" class="head-peach">Cộng hệ A TKV<br>- Quý</th><th colspan="3">Tổng ĐB</th>
       <th rowspan="2">Cộng hệ A<br>Đông Bắc</th><th rowspan="2">Hệ B -<br>TC + CĐ</th>
-      <th colspan="2" class="head-green">Công hệ A TKV trong đó</th>
+      <th colspan="2" class="head-green">Cộng hệ A TKV trong đó</th>
       <th rowspan="2" class="head-yellow">CỘNG HỆ A<br>TKV</th>
       <th rowspan="2" class="head-peach">Học sinh<br>xóa tên đến<br>${todayLabel}</th>
       <th rowspan="2" class="head-peach">Số học sinh<br>còn lại</th>
@@ -68,12 +68,52 @@
   }
   const norm = v => String(v??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').replace(/\s+/g,' ').trim().toLowerCase();
   const findByName = (rows,name) => (rows||[]).find(r=>norm(r.name)===norm(name));
+  const nval = v => {
+    if (typeof v === 'number') return Number.isFinite(v) ? v : 0;
+    const s=String(v??'').trim().replace(/\s/g,'').replace(/\./g,'').replace(',','.');
+    const n=Number(s);
+    return Number.isFinite(n) ? n : 0;
+  };
+  const isDnRecruitUnit = name => /^phong tsdn[123](?:\s|$)/.test(norm(name));
+  function overlayDvRow(row,x) {
+    const aug=x?.aug||[], current=x?.current||[];
+    const dnRecruit=isDnRecruitUnit(row[1]);
+    const julyQuarterBase=nval(row[10]);
+    const monthTotal=nval(aug[7]);
+    const currentTotal=nval(current[2]);
+
+    // report-details tháng 8 bắt đầu từ Sơ cấp khai thác (không có cột TCN Khai thác).
+    // Map theo tên cột, không map tuần tự để tránh dịch cột Trường tuyển / DN tuyển.
+    row[2]=0;
+    row[3]=nval(aug[0]);
+    row[4]=nval(aug[1]);
+    row[5]=nval(aug[2]);
+    row[6]=nval(aug[3]);
+    row[7]=nval(aug[4]);
+    row[8]=dnRecruit?0:monthTotal;
+    row[9]=dnRecruit?monthTotal:0;
+    row[10]=julyQuarterBase+monthTotal;
+
+    // Quy tắc nghiệp vụ cố định: TSDN1-3 là DN tuyển; tất cả đơn vị khác là Trường tuyển.
+    row[16]=dnRecruit?0:currentTotal;
+    row[17]=dnRecruit?currentTotal:0;
+    row[18]=currentTotal;
+    current.slice(3).forEach((v,i)=>row[19+i]=v);
+  }
   function overlayLive(base, details, meta) {
     const out=JSON.parse(JSON.stringify(base));
     if (!details) return out;
     const dv=out.dv||[], ph=out.ph||[], dn=out.dn||[];
-    dv.slice(8,26).forEach(row=>{const x=findByName(details.dv?.rows,row[1]);if(x){x.aug.forEach((v,i)=>row[2+i]=v);x.current.forEach((v,i)=>row[16+i]=v)}});
-    if(details.dv?.total){details.dv.total.aug.forEach((v,i)=>dv[26][2+i]=v);details.dv.total.current.forEach((v,i)=>dv[26][16+i]=v)}
+    const dvRows=dv.slice(8,26);
+    dvRows.forEach(row=>{const x=findByName(details.dv?.rows,row[1]);if(x)overlayDvRow(row,x)});
+    if(dv[26]){
+      const total=details.dv?.total||{};
+      const aug=total.aug||[];
+      dv[26][2]=0;
+      [0,1,2,3,4].forEach((src,i)=>dv[26][3+i]=nval(aug[src]));
+      [8,9,10,16,17,18].forEach(col=>dv[26][col]=dvRows.reduce((sum,row)=>sum+nval(row[col]),0));
+      (total.current||[]).slice(3).forEach((v,i)=>dv[26][19+i]=v);
+    }
     if(ph[7]) ph[7][2]='Tháng 8/2026';
     ph.slice(9,15).forEach(row=>{const x=findByName(details.ph?.rows,row[1]);if(x){x.month.forEach((v,i)=>row[2+i]=v);row[14]=(x.month[9]||0)+(x.month[10]||0)+(x.month[11]||0);[0,1,2,3,4,5,9,10,11].forEach((src,i)=>row[15+i]=x.current[src]||0)}});
     if(details.ph?.total){const x=details.ph.total;x.month.forEach((v,i)=>ph[15][2+i]=v);ph[15][14]=(x.month[9]||0)+(x.month[10]||0)+(x.month[11]||0);[0,1,2,3,4,5,9,10,11].forEach((src,i)=>ph[15][15+i]=x.current[src]||0)}
