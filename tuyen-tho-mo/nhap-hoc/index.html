@@ -5,25 +5,93 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#ffffff" />
   <meta name="robots" content="noindex,nofollow" />
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-  <title>TH KQ nhập học</title>
-  <link rel="stylesheet" href="./styles.css?v=20260820-3" />
+  <meta name="description" content="Tổng hợp kết quả nhập học năm 2026, trình bày theo mẫu TH KQ và thống kê duy nhất từ DSHS Tổng." />
+  <title>TH Kết quả nhập học năm 2026 | CĐ TKV</title>
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <main class="workbook-view">
-    <div id="sheetHost" class="sheet-host" aria-live="polite">
-      <div class="loading">Đang tải biểu TH THEO PH…</div>
-    </div>
+  <main class="sheet-page">
+    <header class="report-header">
+      <div class="agency-block">
+        <div>TRƯỜNG CAO ĐẲNG THAN - KHOÁNG SẢN VIỆT NAM</div>
+        <strong>TRUNG TÂM TUYỂN SINH - GIỚI THIỆU VIỆC LÀM</strong>
+      </div>
+      <div class="sync-block">
+        <span class="source-chip" id="masterStatus">DSHS TỔNG · ĐANG TẢI</span>
+        <span class="source-health" id="sourceStatus">HỆ THỐNG NGUỒN</span>
+      </div>
+      <h1>TỔNG HỢP KẾT QUẢ NHẬP HỌC NĂM 2026</h1>
+      <div class="header-meta">
+        <span>Ngày nhập học mới nhất: <b data-key="latest_admission_date">—</b></span>
+        <span>Mốc khóa lịch sử: <b data-key="cutoff_date">29/07/2026</b></span>
+        <span id="updatedText">Đang tải dữ liệu…</span>
+      </div>
+    </header>
+
+    <nav class="report-tabs" aria-label="Chọn biểu tổng hợp">
+      <button class="tab-btn active" data-report="ph">TH THEO PH</button>
+      <button class="tab-btn" data-report="dn">TH THEO DN</button>
+      <button class="tab-btn" data-report="dv">TH TS THEO ĐV</button>
+    </nav>
+
+    <section class="report-sheet">
+      <div class="report-title" id="reportTitle">TỔNG HỢP KẾT QUẢ NHẬP HỌC HỌC SINH HỆ A THEO PHÂN HIỆU / TRUNG TÂM NĂM 2026</div>
+      <div class="unit-line">Đơn vị tính: học sinh</div>
+
+      <div class="table-scroll">
+        <table class="report-table" id="reportTable">
+          <thead>
+            <tr class="quarter-row">
+              <th rowspan="2" class="sticky-tt">TT</th>
+              <th rowspan="2" class="sticky-name">ĐƠN VỊ</th>
+              <th colspan="4" class="q1">QUÝ I/2026</th>
+              <th colspan="4" class="q2">QUÝ II/2026</th>
+              <th colspan="4" class="q3">QUÝ III/2026</th>
+              <th colspan="4" class="q4">QUÝ IV/2026</th>
+              <th rowspan="2" class="total-head">TỔNG<br/>NĂM</th>
+              <th rowspan="2" class="active-head">CÒN<br/>HOẠT ĐỘNG</th>
+              <th rowspan="2" class="inactive-head">KHÔNG HỌC<br/>BỎ HỌC</th>
+            </tr>
+            <tr class="month-row">
+              <th class="q1" data-month="1">T1</th><th class="q1" data-month="2">T2</th><th class="q1" data-month="3">T3</th><th class="quarter-total-head q1">CỘNG Q1</th>
+              <th class="q2" data-month="4">T4</th><th class="q2" data-month="5">T5</th><th class="q2" data-month="6">T6</th><th class="quarter-total-head q2">CỘNG Q2</th>
+              <th class="q3" data-month="7">T7</th><th class="q3" data-month="8">T8</th><th class="q3" data-month="9">T9</th><th class="quarter-total-head q3">CỘNG Q3</th>
+              <th class="q4" data-month="10">T10</th><th class="q4" data-month="11">T11</th><th class="q4" data-month="12">T12</th><th class="quarter-total-head q4">CỘNG Q4</th>
+            </tr>
+          </thead>
+          <tbody id="reportBody">
+            <tr><td colspan="21" class="loading-cell">Đang tải biểu tổng hợp…</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="report-foot">
+        <div id="tableQualityNote">Đang đối chiếu với DSHS Tổng…</div>
+        <div>Phiên bản dữ liệu: <b data-key="data_version">—</b></div>
+      </div>
+    </section>
+
+    <section class="quality-sheet">
+      <div class="quality-title">KIỂM SOÁT CHẤT LƯỢNG DỮ LIỆU</div>
+      <div class="quality-table">
+        <div><span>5 nguồn → Master</span><b data-key="source_system_status">—</b></div>
+        <div><span>Số nguồn lệch Master</span><b data-key="source_mismatch_count">—</b></div>
+        <div><span>Thiếu/sai ngày nhập học 2026</span><b data-key="missing_date_total">—</b></div>
+        <div><span>Thiếu mã phân hiệu</span><b data-key="missing_campus_total">—</b></div>
+        <div><span>Thiếu mã doanh nghiệp</span><b data-key="missing_company_total">—</b></div>
+        <div><span>Thiếu đơn vị tuyển</span><b data-key="missing_recruit_unit_total">—</b></div>
+        <div><span>Ngoài danh mục phân hiệu cố định</span><b data-key="unknown_campus_catalog">—</b></div>
+        <div><span>Ngoài danh mục doanh nghiệp cố định</span><b data-key="unknown_company_catalog">—</b></div>
+        <div><span>Ngoài danh mục đơn vị tuyển cố định</span><b data-key="unknown_recruit_catalog">—</b></div>
+      </div>
+      <p class="source-principle"><b>Nguyên tắc:</b> 5 phân hiệu → DSHS Tổng → Dashboard. TH KQ Nhập Học chỉ là mẫu bố cục. Tên và thứ tự Phân hiệu, Doanh nghiệp, Đơn vị tuyển sinh được cố định theo biểu tổng hợp; mã lạ không tự tạo thêm dòng.</p>
+    </section>
+
+    <footer class="page-footer">
+      <span>Dashboard Nhập học hàng ngày · CĐ TKV</span>
+      <span>thaylinhtuyenthomo.vn/nhap-hoc/</span>
+    </footer>
   </main>
-
-  <nav class="sheet-tabs" aria-label="Các biểu trong file tổng hợp">
-    <button type="button" class="sheet-tab active" data-sheet="ph">TH THEO PH</button>
-    <button type="button" class="sheet-tab" data-sheet="dn">TH THEO DN</button>
-    <button type="button" class="sheet-tab" data-sheet="dv">TH TS THEO ĐV</button>
-  </nav>
-
-  <script src="./app.js?v=20260820-3"></script>
+  <script src="./app.js"></script>
 </body>
 </html>
