@@ -48,7 +48,7 @@
     <tr><th colspan="14">Tháng 8/2026</th></tr>
     <tr>
       <th colspan="6">Hệ A - TKV</th><th colspan="2">Công hệ A TKV</th>
-      <th rowspan="2" class="head-peach">Cộng hệ A<br>TKV</th><th colspan="3">Tổng ĐB</th>
+      <th rowspan="2" class="head-peach">Cộng hệ A TKV<br>- Quý</th><th colspan="3">Tổng ĐB</th>
       <th rowspan="2">Cộng hệ A<br>Đông Bắc</th><th rowspan="2">Hệ B -<br>TC + CĐ</th>
       <th colspan="2" class="head-green">Công hệ A TKV trong đó</th>
       <th rowspan="2" class="head-yellow">CỘNG HỆ A<br>TKV</th>
