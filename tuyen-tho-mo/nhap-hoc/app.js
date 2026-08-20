@@ -103,8 +103,9 @@
       <table class="dv-campus"><tr><th rowspan="2">Trong đó nhập tại</th><th>PHHN</th><th>PHCP</th><th>TTHC</th><th>PHVB</th><th>PHHB</th><th>Tổng nhập</th></tr>
       <tr><td>${esc(rows[29]?.[2]||'')}</td><td>${esc(rows[29]?.[4]||'')}</td><td>${esc(rows[29]?.[6]||'')}</td><td>${esc(rows[29]?.[8]||'')}</td><td>${esc(rows[29]?.[10]||'')}</td><td><b>${esc(rows[29]?.[12]||'')}</b></td></tr></table>
       <div class="progress-title">Lũy kế kết quả thực hiện đến thời điểm báo cáo</div>
-      <table class="dv-progress"><thead><tr><th>Nội dung</th><th>Kế hoạch 2026</th><th>Kết quả thực hiện</th><th>Tỷ lệ hoàn thành (%)</th><th>Ghi chú</th></tr></thead><tbody>
-      ${[32,33,34].map(i=>`<tr><td>${esc(rows[i]?.[1]||'')}</td><td>${esc(rows[i]?.[2]||'')}</td><td>${esc(rows[i]?.[6]||'')}</td><td>${esc(rows[i]?.[9]||'')}</td><td>${esc(rows[i]?.[11]||'')}</td></tr>`).join('')}</tbody></table>` : '';
+      <div class="progress-wrap"><table class="dv-progress"><thead><tr><th>Nội dung</th><th>Kế hoạch 2026</th><th>Kết quả thực hiện</th><th>Tỷ lệ hoàn thành (%)</th></tr></thead><tbody>
+      ${[32,33,34].map(i=>`<tr><td>${esc(rows[i]?.[1]||'')}</td><td>${esc(rows[i]?.[2]||'')}</td><td>${esc(rows[i]?.[6]||'')}</td><td>${esc(rows[i]?.[9]||'')}</td></tr>`).join('')}</tbody></table>
+      <div class="progress-notes"><div>${esc(rows[32]?.[11]||'')}</div><div>${esc(rows[33]?.[11]||'')}</div><div>${esc(rows[34]?.[11]||'')}</div></div></div>` : '';
     return `<article class="dashboard-card report-${key}">
       <div class="dashboard-title"><h2>${esc(cfg.title)}</h2><p>${esc(cfg.note)}</p></div>${reportStatus()}
       <div class="native-table-wrap"><table class="native-report">${colgroup}<thead>${heads}</thead><tbody>${body}</tbody></table></div>${dvExtra}
