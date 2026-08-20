@@ -8,7 +8,84 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta name="description" content="Tổng hợp kết quả nhập học năm 2026 theo 5 biểu báo cáo chuẩn." />
   <title>TH Kết quả nhập học năm 2026 | CĐ TKV</title>
-  <link rel="stylesheet" href="./styles.css?v=20260820-24" />
+  <link rel="stylesheet" href="./styles.css?v=20260820-25" />
+  <style>
+    /* 2026-08-20: tăng thêm cỡ chữ/số, ưu tiên dễ đọc trên desktop + mobile */
+    .agency-block{font-size:15px!important;line-height:1.3!important}
+    .report-header h1{font-size:26px!important;line-height:1.18!important;margin:8px 0!important}
+    .report-header p{font-size:15px!important;line-height:1.3!important}
+    .tab-btn{font-size:14px!important;padding:11px 16px!important}
+    .dashboard-title h2{font-size:24px!important;line-height:1.22!important}
+    .dashboard-title p{font-size:15px!important;line-height:1.3!important}
+    .report-status{font-size:15px!important;line-height:1.35!important;padding:9px 13px!important}
+
+    .native-report{font-size:15px!important;line-height:1.28!important}
+    .native-report th,.native-report td{
+      font-size:15px!important;
+      line-height:1.25!important;
+      padding:7px 6px!important;
+      height:39px!important;
+    }
+    .native-report thead th{font-size:14.5px!important;font-weight:800!important}
+    .native-report tbody td{font-weight:600}
+    .native-report tbody td:nth-child(2){font-size:15.5px!important;font-weight:700!important}
+    .native-report .summary-row td{font-size:16px!important;font-weight:800!important}
+
+    .source-note,.dv-note{font-size:15px!important;line-height:1.4!important}
+    .dv-campus,.dv-progress,.progress-wrap .dv-progress{font-size:14px!important}
+    .progress-title{font-size:15px!important}
+    .progress-notes{font-size:14px!important}
+
+    /* Chữ lớn hơn cần thêm không gian ngang; giữ cuộn ngang thay vì ép chữ */
+    .report-dv .native-report{min-width:2700px!important}
+    .report-ph .native-report{min-width:2050px!important}
+    .report-dn .native-report{min-width:3300px!important}
+    .report-tinh .native-report{min-width:1700px!important}
+    .report-qc .native-report{min-width:2000px!important}
+    .report-dv .native-report .w-unit{width:220px!important}
+    .report-ph .native-report .w-name-ph{width:245px!important}
+    .report-dn .native-report .w-name-dn{width:300px!important;min-width:300px!important}
+    .report-tinh .native-report .w-name-tinh{width:220px!important}
+    .report-qc .native-report .w-name-qc{width:300px!important}
+
+    @media(max-width:900px){
+      .report-header{padding:10px 8px!important}
+      .agency-block{font-size:14px!important;line-height:1.3!important}
+      .report-header h1{font-size:22px!important;line-height:1.18!important}
+      .report-header p{font-size:14px!important;line-height:1.35!important}
+      .tab-btn{font-size:15px!important;padding:12px 14px!important}
+      .dashboard-title{padding:9px 6px!important}
+      .dashboard-title h2{font-size:21px!important;line-height:1.22!important}
+      .dashboard-title p{font-size:14px!important}
+      .report-status{font-size:14px!important;line-height:1.4!important}
+
+      .native-report{font-size:16px!important;line-height:1.3!important}
+      .native-report th,.native-report td{
+        font-size:16px!important;
+        line-height:1.28!important;
+        padding:9px 7px!important;
+        height:48px!important;
+      }
+      .native-report thead th{font-size:15px!important;line-height:1.22!important}
+      .native-report tbody td:nth-child(2){font-size:16.5px!important}
+      .native-report .summary-row td{font-size:17px!important}
+
+      .report-dv .native-report{min-width:3000px!important}
+      .report-ph .native-report{min-width:2250px!important}
+      .report-dn .native-report{min-width:3600px!important}
+      .report-tinh .native-report{min-width:1900px!important}
+      .report-qc .native-report{min-width:2200px!important}
+      .report-dv .native-report .w-unit{width:235px!important}
+      .report-ph .native-report .w-name-ph{width:260px!important}
+      .report-dn .native-report .w-name-dn{width:320px!important;min-width:320px!important}
+      .report-tinh .native-report .w-name-tinh{width:235px!important}
+      .report-qc .native-report .w-name-qc{width:320px!important}
+      .source-note,.dv-note{font-size:15px!important}
+      .dv-campus,.dv-progress,.progress-wrap .dv-progress{font-size:14px!important}
+      .progress-title{font-size:15px!important}
+      .progress-notes{font-size:14px!important}
+    }
+  </style>
 </head>
 <body>
   <main class="sheet-page">
