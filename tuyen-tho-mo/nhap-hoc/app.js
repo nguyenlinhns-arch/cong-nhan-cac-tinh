@@ -14,8 +14,8 @@
   ];
   const state = { data: null, active: 'ph' };
 
-  const fmt = v => nf.format(Number(v || 0));
   const nonZero = v => Number(v || 0) !== 0;
+  const fmt = v => nonZero(v) ? nf.format(Number(v)) : '';
 
   function displayTT(kind, index, groupIndex) {
     if (kind === 'ph') return ['1','2','3','4','5','5'][index] || String(index + 1);
@@ -151,8 +151,7 @@
     title.textContent = TITLES[kind];
     body.innerHTML = '';
 
-    const allRows = orderedRows(kind);
-    const rows = allRows.filter(rowHasData);
+    const rows = orderedRows(kind).filter(rowHasData);
     const months = visibleMonths(rows);
     buildHeader(months);
 
