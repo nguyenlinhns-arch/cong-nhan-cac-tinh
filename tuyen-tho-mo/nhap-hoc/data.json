@@ -1,5 +1,5 @@
 {
-  "generated_at": "20/08/2026 12:07",
+  "generated_at": "20/08/2026 12:33",
   "summary": {
     "schema_version": "5",
     "data_version": "20260818-2737-513",
@@ -87,7 +87,7 @@
       {"tt":"3","code":"PHHN","name":"Phân hiệu Hữu Nghị","months":[28,119,195,69,45,113,71,35,0,0,0,0],"total":676,"active":562,"inactive":114},
       {"tt":"4","code":"PHVB","name":"Phân hiệu Việt Bắc","months":[101,25,42,18,38,18,27,14,0,0,0,0],"total":288,"active":228,"inactive":60},
       {"tt":"5","code":"PHHC","name":"TT HTĐT Hồng Cẩm","months":[0,0,0,0,0,0,0,0,0,0,0,0],"total":0,"active":0,"inactive":0},
-      {"tt":"6","code":"PHMC","name":"Phân hiệu Móng Cái","months":[49,60,87,0,30,0,0,0,0,0,0,0],"total":228,"active":178,"inactive":50},
+      {"tt":"5","code":"PHMC","name":"Phân hiệu Móng Cái","months":[49,60,87,0,30,0,0,0,0,0,0,0],"total":228,"active":178,"inactive":50},
       {"total_row":true,"months":[281,335,799,267,267,332,268,125,0,0,0,0],"total":2734,"active":2221,"inactive":513}
     ],
     "dn": [
@@ -106,12 +106,12 @@
       {"tt":"13","code":"NB","name":"Núi Béo","months":[10,36,113,21,4,11,7,5,0,0,0,0],"total":215,"active":176,"inactive":39,"group":"TKV"},
       {"tt":"14","code":"VD","name":"Vàng Danh","months":[12,33,79,19,14,30,17,6,0,0,0,0],"total":212,"active":170,"inactive":42,"group":"TKV"},
       {"tt":"15","code":"SQ","name":"Mỏ tuyển đồng (TCT Khoáng sản)","months":[97,0,0,0,0,0,0,0,0,0,0,0],"total":101,"active":86,"inactive":15,"group":"TKV"},
-      {"tt":"16","code":"790","name":"CTY 790","months":[0,0,0,0,0,0,0,0,0,0,0,0],"total":0,"active":0,"inactive":0,"group":"DONG_BAC"},
-      {"tt":"17","code":"35","name":"CTY 35","months":[0,0,0,0,0,0,0,0,0,0,0,0],"total":0,"active":0,"inactive":0,"group":"DONG_BAC"},
-      {"tt":"18","code":"45","name":"CTY 45","months":[0,0,0,0,0,0,0,0,0,0,0,0],"total":0,"active":0,"inactive":0,"group":"DONG_BAC"},
-      {"tt":"19","code":"618","name":"CTY 618","months":[0,0,0,0,0,0,0,0,0,0,0,0],"total":0,"active":0,"inactive":0,"group":"DONG_BAC"},
-      {"tt":"20","code":"91","name":"CTY 91","months":[0,0,0,0,0,0,0,0,0,0,0,0],"total":0,"active":0,"inactive":0,"group":"DONG_BAC"},
-      {"tt":"21","code":"KHE SIM","name":"Cty Khe Sim","months":[0,0,0,0,0,0,0,0,0,0,0,0],"total":0,"active":0,"inactive":0,"group":"DONG_BAC"},
+      {"tt":"1","code":"790","name":"CTY 790","months":[0,0,0,0,0,0,0,0,0,0,0,0],"total":0,"active":0,"inactive":0,"group":"DONG_BAC"},
+      {"tt":"2","code":"35","name":"CTY 35","months":[0,0,0,0,0,0,0,0,0,0,0,0],"total":0,"active":0,"inactive":0,"group":"DONG_BAC"},
+      {"tt":"3","code":"45","name":"CTY 45","months":[0,0,0,0,0,0,0,0,0,0,0,0],"total":0,"active":0,"inactive":0,"group":"DONG_BAC"},
+      {"tt":"4","code":"618","name":"CTY 618","months":[0,0,0,0,0,0,0,0,0,0,0,0],"total":0,"active":0,"inactive":0,"group":"DONG_BAC"},
+      {"tt":"5","code":"91","name":"CTY 91","months":[0,0,0,0,0,0,0,0,0,0,0,0],"total":0,"active":0,"inactive":0,"group":"DONG_BAC"},
+      {"tt":"6","code":"KHE SIM","name":"Cty Khe Sim","months":[0,0,0,0,0,0,0,0,0,0,0,0],"total":0,"active":0,"inactive":0,"group":"DONG_BAC"},
       {"total_row":true,"months":[281,335,797,267,267,329,268,125,0,0,0,0],"total":2731,"active":2219,"inactive":512}
     ],
     "dv": [
