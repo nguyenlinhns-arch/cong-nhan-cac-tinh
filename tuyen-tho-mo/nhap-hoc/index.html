@@ -8,7 +8,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta name="description" content="Tổng hợp kết quả nhập học năm 2026." />
   <title>TH Kết quả nhập học năm 2026 | CĐ TKV</title>
-  <link rel="stylesheet" href="./styles.css?v=20260820-5" />
+  <link rel="stylesheet" href="./styles.css?v=20260820-6" />
 </head>
 <body>
   <main class="sheet-page">
@@ -21,24 +21,17 @@
     </header>
 
     <nav class="report-tabs" aria-label="Chọn biểu tổng hợp">
-      <button class="tab-btn active" data-report="ph">TH THEO PH</button>
-      <button class="tab-btn" data-report="dn">TH THEO DN</button>
-      <button class="tab-btn" data-report="dv">TH TS THEO ĐV</button>
+      <button class="tab-btn active" data-report="overview">1. TỔNG QUAN</button>
+      <button class="tab-btn" data-report="quality">2. KIỂM SOÁT DỮ LIỆU</button>
+      <button class="tab-btn" data-report="ph">3. TH THEO PH</button>
+      <button class="tab-btn" data-report="dn">4. TH THEO DN</button>
+      <button class="tab-btn" data-report="dv">5. TH TS THEO ĐV</button>
     </nav>
 
-    <section class="report-sheet">
-      <div class="report-title" id="reportTitle"></div>
-      <div class="unit-line">Đơn vị tính: học sinh</div>
-      <div class="table-scroll">
-        <table class="report-table" id="reportTable">
-          <thead id="reportHead"></thead>
-          <tbody id="reportBody">
-            <tr><td class="loading-cell">Đang tải biểu tổng hợp…</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <section class="report-sheet" id="reportContent" aria-live="polite">
+      <div class="loading-cell">Đang tải 5 biểu tổng hợp…</div>
     </section>
   </main>
-  <script src="./app.js?v=20260820-5"></script>
+  <script src="./app.js?v=20260820-6"></script>
 </body>
 </html>
