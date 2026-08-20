@@ -72,7 +72,9 @@
       const flagged=key==='dv' && /KT-NV|PHÒNG TSĐB$/.test(String(cells[1]).trim().toUpperCase());
       return `<tr class="${section?'summary-row ':''}${flagged?'flagged-row':''}">${cells.map((v,i)=>`<td class="col-${i+1} ${toneClass(key,i+1)}">${esc(v)}</td>`).join('')}</tr>`;
     }).join('');
-    const colgroup=key==='dv' ? '<colgroup><col class="w-tt"><col class="w-unit">'+Array.from({length:26},()=>'<col>').join('')+'</colgroup>' : '';
+    const identityWidths={dv:['w-tt','w-unit'],ph:['w-tt','w-name-ph'],dn:['w-tt','w-name-dn'],tinh:['w-tt','w-name-tinh'],qc:['w-tt','w-name-qc']};
+    const widths=identityWidths[key];
+    const colgroup='<colgroup><col class="'+widths[0]+'"><col class="'+widths[1]+'">'+Array.from({length:width-2},()=>'<col>').join('')+'</colgroup>';
     const dvExtra=key==='dv' ? `<div class="dv-note">${esc(rows[27]?.[1]||'')}</div>
       <table class="dv-campus"><tr><th rowspan="2">Trong đó nhập tại</th><th>PHHN</th><th>PHCP</th><th>TTHC</th><th>PHVB</th><th>PHHB</th><th>Tổng nhập</th></tr>
       <tr><td>${esc(rows[29]?.[2]||'')}</td><td>${esc(rows[29]?.[4]||'')}</td><td>${esc(rows[29]?.[6]||'')}</td><td>${esc(rows[29]?.[8]||'')}</td><td>${esc(rows[29]?.[10]||'')}</td><td><b>${esc(rows[29]?.[12]||'')}</b></td></tr></table>` : '';
