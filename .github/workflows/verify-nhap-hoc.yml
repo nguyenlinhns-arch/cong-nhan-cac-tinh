@@ -1,0 +1,81 @@
+name: Verify live admissions dashboard
+
+on:
+  workflow_run:
+    workflows: ["Deploy GitHub Pages"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-live-nhap-hoc
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout deployed commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Verify /nhap-hoc live matches deployed commit
+        shell: bash
+        env:
+          LIVE_URL: https://thaylinhtuyenthomo.vn/nhap-hoc
+          DEPLOY_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+
+          live_index="$(mktemp)"
+          live_app="$(mktemp)"
+          live_data="$(mktemp)"
+          live_details="$(mktemp)"
+          live_extra="$(mktemp)"
+          expected_data="$(mktemp)"
+          actual_data="$(mktemp)"
+          expected_details="$(mktemp)"
+          actual_details="$(mktemp)"
+          expected_extra="$(mktemp)"
+          actual_extra="$(mktemp)"
+
+          jq -S . tuyen-tho-mo/nhap-hoc/data.json > "$expected_data"
+          jq -S . tuyen-tho-mo/nhap-hoc/report-details.json > "$expected_details"
+          jq -S . tuyen-tho-mo/nhap-hoc/report-extra.json > "$expected_extra"
+
+          for attempt in $(seq 1 36); do
+            if curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}/?run=${DEPLOY_SHA}" -o "$live_index" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}/app.js?run=${DEPLOY_SHA}" -o "$live_app" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}/data.json?run=${DEPLOY_SHA}" -o "$live_data" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}/report-details.json?run=${DEPLOY_SHA}" -o "$live_details" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}/report-extra.json?run=${DEPLOY_SHA}" -o "$live_extra"; then
+
+              if jq -S . "$live_data" > "$actual_data" \
+                && jq -S . "$live_details" > "$actual_details" \
+                && jq -S . "$live_extra" > "$actual_extra" \
+                && cmp -s tuyen-tho-mo/nhap-hoc/index.html "$live_index" \
+                && cmp -s tuyen-tho-mo/nhap-hoc/app.js "$live_app" \
+                && cmp -s "$expected_data" "$actual_data" \
+                && cmp -s "$expected_details" "$actual_details" \
+                && cmp -s "$expected_extra" "$actual_extra" \
+                && [ "$(jq -r '.summary.source_system_status' "$live_data")" = "HỆ THỐNG NGUỒN OK" ] \
+                && [ "$(jq -r '.summary.total_records == (.summary.active_records + .summary.inactive_records)' "$live_data")" = "true" ] \
+                && [ "$(jq -r '.summary.new_since_cutoff' "$live_data")" = "$(jq -r '.audit.aug_admissions' "$live_details")" ]; then
+                  echo "Admissions dashboard live readback PASS on attempt ${attempt}."
+                  echo "Deployed SHA: ${DEPLOY_SHA}"
+                  echo "Master: $(jq -r '.summary.total_records' "$live_data")"
+                  echo "August: $(jq -r '.summary.new_since_cutoff' "$live_data")"
+                  echo "Snapshot: $(jq -r '.snapshot_date' "$live_details")"
+                  exit 0
+              fi
+            fi
+
+            echo "Admissions dashboard not fully updated yet (attempt ${attempt}/36)."
+            sleep 10
+          done
+
+          echo "ERROR: /nhap-hoc did not match deployed commit ${DEPLOY_SHA}."
+          exit 1
