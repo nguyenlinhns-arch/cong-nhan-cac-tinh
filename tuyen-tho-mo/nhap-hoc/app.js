@@ -19,19 +19,53 @@
     }
     return `<tr>${out.join('')}</tr>`;
   }
+  function dvHeader() {
+    return `<tr>
+      <th rowspan="4" class="dv-tt">TT</th><th rowspan="4" class="dv-unit">ĐƠN VỊ TUYỂN SINH</th>
+      <th colspan="14">Quý 3.2026</th><th colspan="7" rowspan="2">Tổng nhập đến 31/7/2026</th>
+      <th colspan="2" rowspan="2">Tổng nhập hệ A<br>đến 31/7/2025</th>
+      <th rowspan="4">So sánh<br>kết quả tuyển HS TKV<br>năm 2026 cùng kỳ<br>năm 2025</th>
+      <th rowspan="4" class="head-green red">Số học sinh<br>tái tuyển<br>2026</th>
+      <th rowspan="4" class="head-peach red">Tổng số nhập<br>bao gồm cả<br>tái tuyển</th>
+    </tr>
+    <tr><th colspan="14">Tháng 7/2026</th></tr>
+    <tr>
+      <th colspan="6">Hệ A - TKV</th><th colspan="2">Công hệ A TKV</th>
+      <th rowspan="2" class="head-peach">Cộng hệ A<br>TKV</th><th colspan="3">Tổng ĐB</th>
+      <th rowspan="2">Cộng hệ A<br>Đông Bắc</th><th rowspan="2">Hệ B -<br>TC + CĐ</th>
+      <th colspan="2" class="head-green">Công hệ A TKV trong đó</th>
+      <th rowspan="2" class="head-yellow">CỘNG HỆ A<br>TKV</th>
+      <th rowspan="2" class="head-peach">Học sinh<br>xóa tên đến<br>31/7/2026</th>
+      <th rowspan="2" class="head-peach">Số học sinh<br>còn lại</th>
+      <th rowspan="2" class="head-peach">KH điều hành<br>TKV năm<br>2026</th>
+      <th rowspan="2" class="head-peach">Tỷ lệ hoàn<br>thành TKV (%)</th>
+      <th rowspan="2" class="head-peach">TKV</th><th rowspan="2" class="head-peach">Tổng</th>
+    </tr>
+    <tr>
+      <th>TCN<br>Khai thác</th><th>Sơ cấp<br>khai thác</th><th>TC CĐ<br>liên thông</th>
+      <th>SCN<br>XDM</th><th>VHTBĐ</th><th>Cơ điện<br>lò</th>
+      <th class="head-green">Trường<br>tuyển</th><th>DN<br>tuyển</th>
+      <th>TCKT</th><th>SCKT</th><th>Cơ điện<br>lò</th>
+      <th class="head-green">Trường tuyển</th><th class="head-green">DN tuyển</th>
+    </tr>`;
+  }
   function renderReport(key) {
     const rows=state.reports[key]||[], cfg=configs[key];
     const width=Math.max(1,...rows.map(r=>r.length));
-    const heads=cfg.heads.map(idx=>mergedHeader(rows[idx]||[],width)).join('');
+    const heads=key==='dv' ? dvHeader() : cfg.heads.map(idx=>mergedHeader(rows[idx]||[],width)).join('');
     const body=rows.slice(cfg.from,cfg.to+1).filter(r=>r.some(v=>String(v??'').trim()!=='')).map((r,ri)=>{
       const cells=Array.from({length:width},(_,i)=>r[i]??'');
       const first=String(cells[0]).trim().toUpperCase();
       const section=first==='I'||first==='II'||first.includes('TỔNG')||String(cells[1]).toUpperCase().includes('KÝ QC');
       return `<tr class="${section?'summary-row':''}">${cells.map((v,i)=>`<td class="col-${i+1}">${esc(v)}</td>`).join('')}</tr>`;
     }).join('');
+    const colgroup=key==='dv' ? '<colgroup><col class="w-tt"><col class="w-unit">'+Array.from({length:26},()=>'<col>').join('')+'</colgroup>' : '';
+    const dvExtra=key==='dv' ? `<div class="dv-note">${esc(rows[27]?.[1]||'')}</div>
+      <table class="dv-campus"><tr><th rowspan="2">Trong đó nhập tại</th><th>PHHN</th><th>PHCP</th><th>TTHC</th><th>PHVB</th><th>PHHB</th><th>Tổng nhập</th></tr>
+      <tr><td>${esc(rows[29]?.[2]||'')}</td><td>${esc(rows[29]?.[4]||'')}</td><td>${esc(rows[29]?.[6]||'')}</td><td>${esc(rows[29]?.[8]||'')}</td><td>${esc(rows[29]?.[10]||'')}</td><td><b>${esc(rows[29]?.[12]||'')}</b></td></tr></table>` : '';
     return `<article class="dashboard-card report-${key}">
       <div class="dashboard-title"><h2>${esc(cfg.title)}</h2><p>${esc(cfg.note)}</p></div>
-      <div class="native-table-wrap"><table class="native-report"><thead>${heads}</thead><tbody>${body}</tbody></table></div>
+      <div class="native-table-wrap"><table class="native-report">${colgroup}<thead>${heads}</thead><tbody>${body}</tbody></table></div>${dvExtra}
       <div class="source-note">Nguồn số liệu: DSHS Nhập học tổng năm 2026 · Tự động cộng phát sinh từ 01/08/2026</div>
     </article>`;
   }
