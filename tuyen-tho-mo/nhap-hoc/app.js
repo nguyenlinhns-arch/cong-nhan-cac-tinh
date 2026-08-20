@@ -85,6 +85,13 @@
     const generated=state.meta?.generated_at||'';
     return `<div class="report-status"><b>BÁO CÁO NGÀY HÔM NAY: ${esc(today)}</b><span>Số liệu cập nhật đến: <b>${esc(latest)}</b></span><span>Nhập học hôm nay: <b>${esc(s.today_count??0)}</b></span><span>Còn học: <b>${esc(s.active_records??'—')}</b></span><span>Bỏ học: <b>${esc(s.inactive_records??'—')}</b></span>${generated?`<small>Đồng bộ: ${esc(generated)}</small>`:''}</div>`;
   }
+  function displayValue(key,col,value) {
+    if (key==='dv' && [23,26].includes(col)) {
+      const n=Number(value);
+      return Number.isFinite(n) ? n.toLocaleString('vi-VN',{minimumFractionDigits:1,maximumFractionDigits:1}) : value;
+    }
+    return value;
+  }
   function renderReport(key) {
     const rows=state.reports[key]||[], cfg=configs[key];
     const width=Math.max(1,...rows.map(r=>r.length));
@@ -94,7 +101,7 @@
       const first=String(cells[0]).trim().toUpperCase();
       const section=first==='I'||first==='II'||first.includes('TỔNG')||String(cells[1]).toUpperCase().includes('KÝ QC');
       const flagged=key==='dv' && /KT-NV|PHÒNG TSĐB$/.test(String(cells[1]).trim().toUpperCase());
-      return `<tr class="${section?'summary-row ':''}${flagged?'flagged-row':''}">${cells.map((v,i)=>`<td class="col-${i+1} ${toneClass(key,i+1)}">${esc(v)}</td>`).join('')}</tr>`;
+      return `<tr class="${section?'summary-row ':''}${flagged?'flagged-row':''}">${cells.map((v,i)=>`<td class="col-${i+1} ${toneClass(key,i+1)}">${esc(displayValue(key,i+1,v))}</td>`).join('')}</tr>`;
     }).join('');
     const identityWidths={dv:['w-tt','w-unit'],ph:['w-tt','w-name-ph'],dn:['w-tt','w-name-dn'],tinh:['w-tt','w-name-tinh'],qc:['w-tt','w-name-qc']};
     const widths=identityWidths[key];
@@ -107,7 +114,7 @@
       <tr><td>${esc(campusMap.PHHN??0)}</td><td>${esc(campusMap.PHCP??0)}</td><td>${esc(campusMap.TTHC??0)}</td><td>${esc(campusMap.PHVB??0)}</td><td>${esc(campusMap.PHHB??0)}</td><td><b>${esc(liveDv?.today_total??0)}</b></td></tr></table>
       <div class="progress-title">Lũy kế kết quả thực hiện đến thời điểm báo cáo</div>
       <div class="progress-wrap"><table class="dv-progress"><thead><tr><th>Nội dung</th><th>Kế hoạch 2026</th><th>Kết quả thực hiện</th><th>Tỷ lệ hoàn thành (%)</th></tr></thead><tbody>
-      ${progressRows.map(x=>`<tr><td>${esc(x.label)}</td><td>${esc(x.plan)}</td><td>${esc(x.actual)}</td><td>${esc(Number(x.pct).toLocaleString('vi-VN',{maximumFractionDigits:2}))}</td></tr>`).join('')}</tbody></table>
+      ${progressRows.map(x=>`<tr><td>${esc(x.label)}</td><td>${esc(x.plan)}</td><td>${esc(x.actual)}</td><td>${esc(Number(x.pct).toLocaleString('vi-VN',{minimumFractionDigits:1,maximumFractionDigits:1}))}</td></tr>`).join('')}</tbody></table>
       <div class="progress-notes"><div>Đã bao gồm HS Tái tuyển</div><div>Đã bao gồm HS Tái tuyển</div></div></div>` : '';
     return `<article class="dashboard-card report-${key}">
       <div class="dashboard-title"><h2>${esc(cfg.title)}</h2><p>${esc(cfg.note)}</p></div>${reportStatus()}
