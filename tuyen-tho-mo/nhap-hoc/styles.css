@@ -347,3 +347,24 @@
 .report-qc .native-report tbody .tone-yellow{
   background:#fff200!important;
 }
+
+
+/* Không ngắt chữ giữa từ; chỉ xuống dòng theo khoảng trắng */
+.native-report th,.native-report td{
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+  hyphens:none!important;
+}
+.native-report thead th{
+  white-space:normal!important;
+}
+.report-dn .native-report{min-width:2850px!important}
+.report-dn .native-report th,.report-dn .native-report td{min-width:58px}
+.report-dn .native-report .w-tt{min-width:42px;width:42px!important}
+.report-dn .native-report .w-name-dn{min-width:260px;width:260px!important}
+.report-dn .native-report tbody td:nth-child(2){white-space:nowrap!important}
+@media(max-width:900px){
+  .report-dn .native-report{min-width:3050px!important}
+  .report-dn .native-report th,.report-dn .native-report td{min-width:62px}
+  .report-dn .native-report .w-name-dn{min-width:280px;width:280px!important}
+}
