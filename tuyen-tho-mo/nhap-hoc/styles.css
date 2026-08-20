@@ -146,3 +146,29 @@
 .report-qc .native-report th,.report-qc .native-report td{background:#fff!important}
 .report-tinh .native-report tbody td:nth-child(11),
 .report-qc .native-report tbody td:nth-child(13){font-weight:800}
+
+/* Tên nhận diện ở cả 5 biểu luôn nằm trên một dòng */
+.native-report .w-tt{width:2.8%}
+.report-ph .native-report .w-name-ph{width:15%}
+.report-dn .native-report .w-name-dn{width:14%}
+.report-tinh .native-report .w-name-tinh{width:15%}
+.report-qc .native-report .w-name-qc{width:19%}
+.report-ph .native-report tbody td:nth-child(2),
+.report-dn .native-report tbody td:nth-child(2),
+.report-tinh .native-report tbody td:nth-child(2),
+.report-qc .native-report tbody td:nth-child(2){
+  white-space:nowrap!important;
+  overflow-wrap:normal!important;
+  word-break:keep-all!important;
+  hyphens:none!important;
+  overflow:hidden;
+  text-overflow:clip;
+  padding-left:4px;
+}
+@media(max-width:900px){
+  .native-report .w-tt{width:42px!important}
+  .report-ph .native-report .w-name-ph{width:180px!important}
+  .report-dn .native-report .w-name-dn{width:190px!important}
+  .report-tinh .native-report .w-name-tinh{width:160px!important}
+  .report-qc .native-report .w-name-qc{width:230px!important}
+}
