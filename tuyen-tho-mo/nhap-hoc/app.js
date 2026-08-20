@@ -99,13 +99,16 @@
     const identityWidths={dv:['w-tt','w-unit'],ph:['w-tt','w-name-ph'],dn:['w-tt','w-name-dn'],tinh:['w-tt','w-name-tinh'],qc:['w-tt','w-name-qc']};
     const widths=identityWidths[key];
     const colgroup='<colgroup><col class="'+widths[0]+'"><col class="'+widths[1]+'">'+Array.from({length:width-2},()=>'<col>').join('')+'</colgroup>';
-    const dvExtra=key==='dv' ? `<div class="dv-note">${esc(rows[27]?.[1]||'')}</div>
+    const liveDv=state.details?.dv;
+    const campusMap=Object.fromEntries((liveDv?.today_by_campus||[]).map(x=>[x.campus,x.count]));
+    const progressRows=liveDv?.progress||[];
+    const dvExtra=key==='dv' ? `<div class="dv-note">${esc(liveDv?.note||rows[27]?.[1]||'')}</div>
       <table class="dv-campus"><tr><th rowspan="2">Trong đó nhập tại</th><th>PHHN</th><th>PHCP</th><th>TTHC</th><th>PHVB</th><th>PHHB</th><th>Tổng nhập</th></tr>
-      <tr><td>${esc(rows[29]?.[2]||'')}</td><td>${esc(rows[29]?.[4]||'')}</td><td>${esc(rows[29]?.[6]||'')}</td><td>${esc(rows[29]?.[8]||'')}</td><td>${esc(rows[29]?.[10]||'')}</td><td><b>${esc(rows[29]?.[12]||'')}</b></td></tr></table>
+      <tr><td>${esc(campusMap.PHHN??0)}</td><td>${esc(campusMap.PHCP??0)}</td><td>${esc(campusMap.TTHC??0)}</td><td>${esc(campusMap.PHVB??0)}</td><td>${esc(campusMap.PHHB??0)}</td><td><b>${esc(liveDv?.today_total??0)}</b></td></tr></table>
       <div class="progress-title">Lũy kế kết quả thực hiện đến thời điểm báo cáo</div>
       <div class="progress-wrap"><table class="dv-progress"><thead><tr><th>Nội dung</th><th>Kế hoạch 2026</th><th>Kết quả thực hiện</th><th>Tỷ lệ hoàn thành (%)</th></tr></thead><tbody>
-      ${[32,33,34].map(i=>`<tr><td>${esc(rows[i]?.[1]||'')}</td><td>${esc(rows[i]?.[2]||'')}</td><td>${esc(rows[i]?.[6]||'')}</td><td>${esc(rows[i]?.[9]||'')}</td></tr>`).join('')}</tbody></table>
-      <div class="progress-notes"><div>${esc(rows[32]?.[11]||'')}</div><div>${esc(rows[33]?.[11]||'')}</div><div>${esc(rows[34]?.[11]||'')}</div></div></div>` : '';
+      ${progressRows.map(x=>`<tr><td>${esc(x.label)}</td><td>${esc(x.plan)}</td><td>${esc(x.actual)}</td><td>${esc(Number(x.pct).toLocaleString('vi-VN',{maximumFractionDigits:2}))}</td></tr>`).join('')}</tbody></table>
+      <div class="progress-notes"><div>Đã bao gồm HS Tái tuyển</div><div>Đã bao gồm HS Tái tuyển</div></div></div>` : '';
     return `<article class="dashboard-card report-${key}">
       <div class="dashboard-title"><h2>${esc(cfg.title)}</h2><p>${esc(cfg.note)}</p></div>${reportStatus()}
       <div class="native-table-wrap"><table class="native-report">${colgroup}<thead>${heads}</thead><tbody>${body}</tbody></table></div>${dvExtra}
