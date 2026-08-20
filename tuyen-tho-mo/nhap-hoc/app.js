@@ -1,10 +1,10 @@
 (() => {
-  const state = { reports: null, active: 'dv' };
+  const state = { reports: null, meta: null, details: null, active: 'dv' };
   const esc = v => String(v ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'","&#039;");
   const configs = {
-    dv: { title:'TỔNG HỢP KẾT QUẢ NHẬP HỌC HỌC SINH HỆ A THEO ĐƠN VỊ NĂM 2026', note:'Quý 3/2026 · Tháng 7/2026 · Mốc số liệu 31/07/2026', heads:[4,5,6,7], from:8, to:26 },
-    ph: { title:'TỔNG HỢP KẾT QUẢ NHẬP HỌC HỌC SINH HỆ A THEO PHÂN HIỆU/TRUNG TÂM NĂM 2026', note:'Quý 3/2026 · Tháng 7/2026', heads:[6,7,8], from:9, to:15 },
-    dn: { title:'TỔNG HỢP KẾT QUẢ TUYỂN SINH THEO DOANH NGHIỆP NĂM 2026', note:'Tháng 07/2026 · Tổng nhập đến 31/07/2026', heads:[3,4,5], from:6, to:29 },
+    dv: { title:'TỔNG HỢP KẾT QUẢ NHẬP HỌC HỌC SINH HỆ A THEO ĐƠN VỊ NĂM 2026', note:'Quý 3/2026 · Tháng 8/2026 · Số nền đến 31/07/2026', heads:[4,5,6,7], from:8, to:26 },
+    ph: { title:'TỔNG HỢP KẾT QUẢ NHẬP HỌC HỌC SINH HỆ A THEO PHÂN HIỆU/TRUNG TÂM NĂM 2026', note:'Quý 3/2026 · Tháng 8/2026', heads:[6,7,8], from:9, to:15 },
+    dn: { title:'TỔNG HỢP KẾT QUẢ TUYỂN SINH THEO DOANH NGHIỆP NĂM 2026', note:'Tháng 08/2026 · Cộng trên số nền đến 31/07/2026', heads:[3,4,5], from:6, to:29 },
     tinh: { title:'TỔNG HỢP KẾT QUẢ NHẬP HỌC SINH HỆ A TRONG TỈNH NĂM 2026', note:'Theo phường/xã và tháng nhập học', heads:[5], from:7, to:59 },
     qc: { title:'TỔNG HỢP KẾT QUẢ TUYỂN SINH HỌC SINH KÝ QUY CHẾ', note:'Các đơn vị ký quy chế phối hợp', heads:[4], from:41, to:69 }
   };
@@ -40,7 +40,7 @@
       <th rowspan="4" class="head-green red">Số học sinh<br>tái tuyển<br>2026</th>
       <th rowspan="4" class="head-peach red">Tổng số nhập<br>bao gồm cả<br>tái tuyển</th>
     </tr>
-    <tr><th colspan="14">Tháng 7/2026</th></tr>
+    <tr><th colspan="14">Tháng 8/2026</th></tr>
     <tr>
       <th colspan="6">Hệ A - TKV</th><th colspan="2">Công hệ A TKV</th>
       <th rowspan="2" class="head-peach">Cộng hệ A<br>TKV</th><th colspan="3">Tổng ĐB</th>
@@ -61,6 +61,30 @@
       <th class="head-green">Trường tuyển</th><th class="head-green">DN tuyển</th>
     </tr>`;
   }
+  const norm = v => String(v??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').replace(/\s+/g,' ').trim().toLowerCase();
+  const findByName = (rows,name) => (rows||[]).find(r=>norm(r.name)===norm(name));
+  function overlayLive(base, details, meta) {
+    const out=JSON.parse(JSON.stringify(base));
+    if (!details) return out;
+    const dv=out.dv||[], ph=out.ph||[], dn=out.dn||[];
+    dv.slice(8,26).forEach(row=>{const x=findByName(details.dv?.rows,row[1]);if(x){x.aug.forEach((v,i)=>row[2+i]=v);x.current.forEach((v,i)=>row[16+i]=v)}});
+    if(details.dv?.total){details.dv.total.aug.forEach((v,i)=>dv[26][2+i]=v);details.dv.total.current.forEach((v,i)=>dv[26][16+i]=v)}
+    if(ph[7]) ph[7][2]='Tháng 8/2026';
+    ph.slice(9,15).forEach(row=>{const x=findByName(details.ph?.rows,row[1]);if(x){x.month.forEach((v,i)=>row[2+i]=v);row[14]=(x.month[9]||0)+(x.month[10]||0)+(x.month[11]||0);[0,1,2,3,4,5,9,10,11].forEach((src,i)=>row[15+i]=x.current[src]||0)}});
+    if(details.ph?.total){const x=details.ph.total;x.month.forEach((v,i)=>ph[15][2+i]=v);ph[15][14]=(x.month[9]||0)+(x.month[10]||0)+(x.month[11]||0);[0,1,2,3,4,5,9,10,11].forEach((src,i)=>ph[15][15+i]=x.current[src]||0)}
+    if(dn[3]) dn[3][4]='Tháng 08/2026';
+    const putDn=(row,x)=>{row[2]=x.contract??row[2];row[3]=x.target??row[3];x.aug.forEach((v,i)=>row[4+i]=v);x.current.slice(0,3).forEach((v,i)=>row[13+i]=v);[0,0,0].forEach((v,i)=>row[16+i]=v);x.current.slice(3).forEach((v,i)=>row[19+i]=v);x.overall.forEach((v,i)=>row[28+i]=v);row[31]=x.same2025??'';row[32]=x.retuyen??0;row[33]=x.grand??0};
+    dn.slice(6,29).forEach(row=>{const x=findByName(details.dn?.rows,row[1]);if(x)putDn(row,x)});
+    if(details.dn?.total)putDn(dn[29],details.dn.total);
+    return out;
+  }
+  function reportStatus() {
+    const s=state.meta?.summary||{};
+    const today=new Intl.DateTimeFormat('vi-VN',{timeZone:'Asia/Ho_Chi_Minh',day:'2-digit',month:'2-digit',year:'numeric'}).format(new Date());
+    const latest=s.latest_admission_date||state.details?.snapshot_date||'--/--/----';
+    const generated=state.meta?.generated_at||'';
+    return `<div class="report-status"><b>BÁO CÁO NGÀY HÔM NAY: ${esc(today)}</b><span>Số liệu cập nhật đến: <b>${esc(latest)}</b></span><span>Nhập học hôm nay: <b>${esc(s.today_count??0)}</b></span><span>Còn học: <b>${esc(s.active_records??'—')}</b></span><span>Bỏ học: <b>${esc(s.inactive_records??'—')}</b></span>${generated?`<small>Đồng bộ: ${esc(generated)}</small>`:''}</div>`;
+  }
   function renderReport(key) {
     const rows=state.reports[key]||[], cfg=configs[key];
     const width=Math.max(1,...rows.map(r=>r.length));
@@ -77,9 +101,12 @@
     const colgroup='<colgroup><col class="'+widths[0]+'"><col class="'+widths[1]+'">'+Array.from({length:width-2},()=>'<col>').join('')+'</colgroup>';
     const dvExtra=key==='dv' ? `<div class="dv-note">${esc(rows[27]?.[1]||'')}</div>
       <table class="dv-campus"><tr><th rowspan="2">Trong đó nhập tại</th><th>PHHN</th><th>PHCP</th><th>TTHC</th><th>PHVB</th><th>PHHB</th><th>Tổng nhập</th></tr>
-      <tr><td>${esc(rows[29]?.[2]||'')}</td><td>${esc(rows[29]?.[4]||'')}</td><td>${esc(rows[29]?.[6]||'')}</td><td>${esc(rows[29]?.[8]||'')}</td><td>${esc(rows[29]?.[10]||'')}</td><td><b>${esc(rows[29]?.[12]||'')}</b></td></tr></table>` : '';
+      <tr><td>${esc(rows[29]?.[2]||'')}</td><td>${esc(rows[29]?.[4]||'')}</td><td>${esc(rows[29]?.[6]||'')}</td><td>${esc(rows[29]?.[8]||'')}</td><td>${esc(rows[29]?.[10]||'')}</td><td><b>${esc(rows[29]?.[12]||'')}</b></td></tr></table>
+      <div class="progress-title">Lũy kế kết quả thực hiện đến thời điểm báo cáo</div>
+      <table class="dv-progress"><thead><tr><th>Nội dung</th><th>Kế hoạch 2026</th><th>Kết quả thực hiện</th><th>Tỷ lệ hoàn thành (%)</th><th>Ghi chú</th></tr></thead><tbody>
+      ${[32,33,34].map(i=>`<tr><td>${esc(rows[i]?.[1]||'')}</td><td>${esc(rows[i]?.[2]||'')}</td><td>${esc(rows[i]?.[6]||'')}</td><td>${esc(rows[i]?.[9]||'')}</td><td>${esc(rows[i]?.[11]||'')}</td></tr>`).join('')}</tbody></table>` : '';
     return `<article class="dashboard-card report-${key}">
-      <div class="dashboard-title"><h2>${esc(cfg.title)}</h2><p>${esc(cfg.note)}</p></div>
+      <div class="dashboard-title"><h2>${esc(cfg.title)}</h2><p>${esc(cfg.note)}</p></div>${reportStatus()}
       <div class="native-table-wrap"><table class="native-report">${colgroup}<thead>${heads}</thead><tbody>${body}</tbody></table></div>${dvExtra}
       <div class="source-note">Nguồn số liệu: DSHS Nhập học tổng năm 2026 · Tự động cộng phát sinh từ 01/08/2026</div>
     </article>`;
@@ -87,9 +114,15 @@
   function render(){document.getElementById('reportContent').innerHTML=renderReport(state.active)}
   async function load(){
     try{
-      const r=await fetch(`./report-extra.json?v=${Date.now()}`,{cache:'no-store'});
-      if(!r.ok) throw new Error(r.status);
-      state.reports=await r.json(); render();
+      const stamp=Date.now();
+      const [rBase,rMeta,rDetails]=await Promise.all([
+        fetch(`./report-extra.json?v=${stamp}`,{cache:'no-store'}),
+        fetch(`./data.json?v=${stamp}`,{cache:'no-store'}),
+        fetch(`./report-details.json?v=${stamp}`,{cache:'no-store'})
+      ]);
+      if(!rBase.ok||!rMeta.ok||!rDetails.ok) throw new Error(`${rBase.status}/${rMeta.status}/${rDetails.status}`);
+      const [base,meta,details]=await Promise.all([rBase.json(),rMeta.json(),rDetails.json()]);
+      state.meta=meta;state.details=details;state.reports=overlayLive(base,details,meta);render();
     }catch(e){console.error(e);document.getElementById('reportContent').innerHTML='<div class="loading-cell error-cell">Không tải được dữ liệu báo cáo.</div>'}
   }
   document.querySelectorAll('.tab-btn').forEach(btn=>btn.addEventListener('click',()=>{
