@@ -44,3 +44,19 @@
 .report-dv .source-note{display:none}
 @media(min-width:1500px){.report-dv .native-report{font-size:9px}.report-dv .native-report tbody td:nth-child(2){font-size:10px}.report-dv .dashboard-title h2{font-size:18px}}
 @media(max-width:1100px){.report-dv .native-report{font-size:6.2px}.report-dv .native-report thead th,.report-dv .native-report tbody td{padding:2px 1px}.report-dv .native-report tbody td:nth-child(2){font-size:6.8px;padding-left:3px}.report-dv .dashboard-title h2{font-size:14px}}
+
+/* Tên đơn vị Biểu 1 luôn hiển thị trên một dòng */
+.report-dv .native-report .w-tt{width:2.7%}
+.report-dv .native-report .w-unit{width:12.8%}
+.report-dv .native-report tbody td:nth-child(2){
+  white-space:nowrap!important;
+  overflow-wrap:normal!important;
+  word-break:keep-all!important;
+  hyphens:none!important;
+  overflow:hidden;
+  text-overflow:clip;
+  font-size:clamp(7px,.61vw,10px);
+  padding-left:4px;
+}
+.report-dv .native-report tbody td{height:22px}
+@media(max-width:1100px){.report-dv .native-report .w-unit{width:15%}.report-dv .native-report tbody td:nth-child(2){font-size:5.8px}}
