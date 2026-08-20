@@ -210,9 +210,9 @@
 
   function render() {
     const root = document.getElementById('reportContent');
-    if (!state.data || !state.details || !state.extra) return;
-    const map = { ph: renderPH, dn: renderDN, dv: renderDV, tinh: () => renderRaw('tinh'), qc: () => renderRaw('qc') };
-    root.innerHTML = (map[state.active] || renderDV)();
+    if (!state.extra) return;
+    const map = { dv: () => renderRaw('dv'), ph: () => renderRaw('ph'), dn: () => renderRaw('dn'), tinh: () => renderRaw('tinh'), qc: () => renderRaw('qc') };
+    root.innerHTML = (map[state.active] || map.dv)();
   }
 
   async function load() {
