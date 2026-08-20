@@ -319,3 +319,31 @@
   .progress-wrap .dv-progress{font-size:12px!important}
   .progress-notes{font-size:12px!important}
 }
+
+
+/* Ưu tiên cuối: mọi ô của 5 biểu nền trắng, duy nhất cột vàng giữ vàng */
+.report-dv .native-report thead th,
+.report-dv .native-report tbody td,
+.report-ph .native-report thead th,
+.report-ph .native-report tbody td,
+.report-dn .native-report thead th,
+.report-dn .native-report tbody td,
+.report-tinh .native-report thead th,
+.report-tinh .native-report tbody td,
+.report-qc .native-report thead th,
+.report-qc .native-report tbody td{
+  background:#fff!important;
+}
+.report-dv .native-report thead .head-yellow,
+.report-dv .native-report thead .tone-yellow,
+.report-dv .native-report tbody td:nth-child(19),
+.report-ph .native-report thead .tone-yellow,
+.report-ph .native-report tbody .tone-yellow,
+.report-dn .native-report thead .tone-yellow,
+.report-dn .native-report tbody .tone-yellow,
+.report-tinh .native-report thead .tone-yellow,
+.report-tinh .native-report tbody .tone-yellow,
+.report-qc .native-report thead .tone-yellow,
+.report-qc .native-report tbody .tone-yellow{
+  background:#fff200!important;
+}
