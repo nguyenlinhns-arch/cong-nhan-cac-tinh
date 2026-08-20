@@ -32,12 +32,16 @@
     return `<tr>${out.join('')}</tr>`;
   }
   function dvHeader() {
-    const todayLabel=new Intl.DateTimeFormat('vi-VN',{timeZone:'Asia/Ho_Chi_Minh',day:'2-digit',month:'2-digit',year:'numeric'}).format(new Date());
+    const now=new Date();
+    const dateFmt=new Intl.DateTimeFormat('vi-VN',{timeZone:'Asia/Ho_Chi_Minh',day:'2-digit',month:'2-digit',year:'numeric'});
+    const todayLabel=dateFmt.format(now);
+    const priorYear=new Date(now); priorYear.setFullYear(now.getFullYear()-1);
+    const priorYearLabel=dateFmt.format(priorYear);
     return `<tr>
       <th rowspan="4" class="dv-tt">TT</th><th rowspan="4" class="dv-unit">ĐƠN VỊ TUYỂN SINH</th>
       <th colspan="14">Quý 3.2026</th><th colspan="7" rowspan="2">Tổng nhập đến ngày hôm nay<br>${todayLabel}</th>
-      <th colspan="2" rowspan="2">Tổng nhập hệ A<br>đến 31/7/2025</th>
-      <th rowspan="4">So sánh<br>kết quả tuyển HS TKV<br>năm 2026 cùng kỳ<br>năm 2025</th>
+      <th colspan="2" rowspan="2">Tổng nhập hệ A cùng kỳ<br>đến ${priorYearLabel}</th>
+      <th rowspan="4">So sánh<br>kết quả tuyển HS TKV<br>năm 2026 với cùng ngày<br>năm 2025</th>
       <th rowspan="4" class="head-green red">Số học sinh<br>tái tuyển<br>2026</th>
       <th rowspan="4" class="head-peach red">Tổng số nhập<br>bao gồm cả<br>tái tuyển</th>
     </tr>
