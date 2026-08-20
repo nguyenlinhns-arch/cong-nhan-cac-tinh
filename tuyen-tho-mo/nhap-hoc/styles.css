@@ -104,3 +104,45 @@
   .dv-campus{width:720px!important;font-size:10px!important;margin-left:0!important}
   .source-note{font-size:10px}
 }
+
+/* Khóa màu theo đúng ảnh mẫu - áp dụng cả desktop và mobile */
+/* Biểu 1 */
+.report-dv .native-report tbody td{background:#fff!important}
+.report-dv .native-report tbody td:nth-child(9),
+.report-dv .native-report tbody td:nth-child(17),
+.report-dv .native-report tbody td:nth-child(18){background:#b8d08c!important}
+.report-dv .native-report tbody td:nth-child(19){background:#fff200!important}
+.report-dv .native-report tbody td:nth-child(11),
+.report-dv .native-report tbody td:nth-child(20),
+.report-dv .native-report tbody td:nth-child(21),
+.report-dv .native-report tbody td:nth-child(22),
+.report-dv .native-report tbody td:nth-child(23),
+.report-dv .native-report tbody td:nth-child(24),
+.report-dv .native-report tbody td:nth-child(25),
+.report-dv .native-report tbody td:nth-child(28){background:#f7cda8!important}
+.report-dv .native-report tbody td:nth-child(27){background:#92d050!important}
+/* Biểu 2 */
+.report-ph .native-report tbody td{background:#fff!important}
+.report-ph .native-report tbody td:nth-child(22),
+.report-ph .native-report thead .tone-green{background:#dce8c5!important}
+/* Biểu 3 */
+.report-dn .native-report tbody td{background:#fff!important}
+.report-dn .native-report tbody td:nth-child(4){background:#b7dce8!important}
+.report-dn .native-report tbody td:nth-child(3),
+.report-dn .native-report tbody td:nth-child(7),
+.report-dn .native-report tbody td:nth-child(10),
+.report-dn .native-report tbody td:nth-child(13),
+.report-dn .native-report tbody td:nth-child(16),
+.report-dn .native-report tbody td:nth-child(19),
+.report-dn .native-report tbody td:nth-child(22),
+.report-dn .native-report tbody td:nth-child(25),
+.report-dn .native-report tbody td:nth-child(28),
+.report-dn .native-report tbody td:nth-child(31),
+.report-dn .native-report tbody td:nth-child(32),
+.report-dn .native-report tbody td:nth-child(34){background:#f7cda8!important}
+.report-dn .native-report tbody td:nth-child(33){background:#92d050!important}
+/* Biểu 4 và 5: ảnh mẫu không tô nền cột */
+.report-tinh .native-report th,.report-tinh .native-report td,
+.report-qc .native-report th,.report-qc .native-report td{background:#fff!important}
+.report-tinh .native-report tbody td:nth-child(11),
+.report-qc .native-report tbody td:nth-child(13){font-weight:800}
