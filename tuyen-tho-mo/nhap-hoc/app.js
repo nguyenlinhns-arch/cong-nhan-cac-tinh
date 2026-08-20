@@ -199,13 +199,30 @@
   function renderRaw(key) {
     const rows = state.extra[key] || [];
     const width = Math.max(1, ...rows.map(r => r.length));
+    const dataStarts = { dv: 8, ph: 9, dn: 6, tinh: 7, qc: 6 };
     const body = rows.map((r, ri) => {
       const cells = Array.from({length: width}, (_, i) => r[i] ?? '');
       const nonEmpty = cells.filter(v => String(v).trim() !== '').length;
-      const cls = nonEmpty === 1 ? 'raw-title-row' : (ri === 5 || (key === 'qc' && ri === 4) ? 'raw-header-row' : '');
-      return `<tr class="${cls}">${cells.map((v, i) => `<td class="${i === 0 ? 'raw-first' : ''}">${esc(v)}</td>`).join('')}</tr>`;
+      if (!nonEmpty) return `<tr class="raw-spacer"><td colspan="${width}"></td></tr>`;
+      if (nonEmpty === 1) {
+        const value = cells.find(v => String(v).trim() !== '');
+        return `<tr class="raw-title-row"><td colspan="${width}">${esc(value)}</td></tr>`;
+      }
+      if (ri < dataStarts[key]) {
+        const parts = [];
+        let i = 0;
+        while (i < width) {
+          let next = i + 1;
+          while (next < width && String(cells[next]).trim() === '') next++;
+          const span = next - i;
+          parts.push(`<th colspan="${span}">${esc(cells[i])}</th>`);
+          i = next;
+        }
+        return `<tr class="raw-header-row">${parts.join('')}</tr>`;
+      }
+      return `<tr>${cells.map((v, i) => `<td class="${i === 0 ? 'raw-first' : ''}">${esc(v)}</td>`).join('')}</tr>`;
     }).join('');
-    return `<div class="table-scroll raw-scroll"><table class="report-table raw-report"><tbody>${body}</tbody></table></div>`;
+    return `<div class="raw-scroll"><table class="report-table raw-report raw-${key}"><tbody>${body}</tbody></table></div>`;
   }
 
   function render() {
