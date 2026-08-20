@@ -60,3 +60,16 @@
 }
 .report-dv .native-report tbody td{height:22px}
 @media(max-width:1100px){.report-dv .native-report .w-unit{width:15%}.report-dv .native-report tbody td:nth-child(2){font-size:5.8px}}
+
+/* Màu cột chuẩn cho cả 5 biểu */
+.native-report tbody td,.native-report thead th{background:#fff}
+.native-report .tone-peach{background:#f7cda8!important}
+.native-report .tone-blue{background:#b7dce8!important}
+.native-report .tone-green{background:#92d050!important}
+.native-report .tone-yellow{background:#fff200!important}
+.report-dv .tone-green{background:#b8d08c!important}
+.report-dv .col-27,.report-dn .col-33{color:#e60000;font-weight:700}
+.report-dv .col-28,.report-dn .col-34{color:#e60000;font-weight:700}
+.report-ph .col-22{font-weight:700}
+.report-dn .col-3,.report-dn .col-4,.report-dn .col-7,.report-dn .col-10,.report-dn .col-13,.report-dn .col-16,.report-dn .col-19,.report-dn .col-22,.report-dn .col-25,.report-dn .col-28,.report-dn .col-31,.report-dn .col-32,.report-dn .col-33,.report-dn .col-34{font-weight:700}
+.report-tinh .col-11,.report-qc .col-13{font-weight:700}
