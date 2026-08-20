@@ -73,3 +73,34 @@
 .report-ph .col-22{font-weight:700}
 .report-dn .col-3,.report-dn .col-4,.report-dn .col-7,.report-dn .col-10,.report-dn .col-13,.report-dn .col-16,.report-dn .col-19,.report-dn .col-22,.report-dn .col-25,.report-dn .col-28,.report-dn .col-31,.report-dn .col-32,.report-dn .col-33,.report-dn .col-34{font-weight:700}
 .report-tinh .col-11,.report-qc .col-13{font-weight:700}
+
+/* Mobile: chữ/số lớn, cuộn trong bảng, cố định cột nhận diện */
+@media(max-width:900px){
+  body{background:#fff}
+  .sheet-page{padding:0}
+  .report-header{padding:8px 6px}
+  .report-header h1{font-size:17px;line-height:1.2}
+  .report-header p{font-size:10px;line-height:1.25}
+  .report-tabs{position:sticky;top:0;z-index:30;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tab-btn{flex:0 0 auto;font-size:10px;padding:8px 10px}
+  .report-sheet{padding:3px}
+  .dashboard-title{position:sticky;left:0;padding:7px 5px}
+  .dashboard-title h2{font-size:15px!important;line-height:1.25}
+  .dashboard-title p{font-size:10px}
+  .native-table-wrap{width:100%;overflow-x:auto!important;overflow-y:visible;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+  .native-report{table-layout:fixed;font-size:10px!important;line-height:1.18}
+  .native-report th,.native-report td{font-size:10px!important;padding:5px 4px!important;min-height:30px;height:30px}
+  .native-report thead th{font-size:9.5px!important;line-height:1.15}
+  .report-dv .native-report{min-width:1380px}
+  .report-ph .native-report{min-width:1180px}
+  .report-dn .native-report{min-width:1550px}
+  .report-tinh .native-report{min-width:1050px}
+  .report-qc .native-report{min-width:1200px}
+  .native-report tbody td:first-child,.native-report thead th:first-child{position:sticky;left:0;z-index:8;background:#fff}
+  .native-report tbody td:nth-child(2),.native-report thead th:nth-child(2){position:sticky;left:42px;z-index:7;background:#fff!important;white-space:nowrap!important;font-size:10.5px!important}
+  .native-report thead th:first-child,.native-report thead th:nth-child(2){z-index:12}
+  .report-dv .native-report .w-tt{width:42px}.report-dv .native-report .w-unit{width:150px}
+  .dv-note{font-size:11px!important;padding:10px 8px!important;white-space:normal}
+  .dv-campus{width:720px!important;font-size:10px!important;margin-left:0!important}
+  .source-note{font-size:10px}
+}
