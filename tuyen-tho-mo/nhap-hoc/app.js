@@ -84,7 +84,7 @@
     const today=new Intl.DateTimeFormat('vi-VN',{timeZone:'Asia/Ho_Chi_Minh',day:'2-digit',month:'2-digit',year:'numeric'}).format(new Date());
     const latest=s.latest_admission_date||state.details?.snapshot_date||'--/--/----';
     const generated=state.meta?.generated_at||'';
-    return `<div class="report-status"><b>BÁO CÁO NGÀY HÔM NAY: ${esc(today)}</b><span>Số liệu cập nhật đến: <b>${esc(latest)}</b></span><span>Nhập học hôm nay: <b>${esc(s.today_count??0)}</b></span><span>Còn học: <b>${esc(s.active_records??'—')}</b></span><span>Bỏ học: <b>${esc(s.inactive_records??'—')}</b></span>${generated?`<small>Đồng bộ: ${esc(generated)}</small>`:''}</div>`;
+    return `<div class="report-status"><b>BÁO CÁO NGÀY HÔM NAY: ${esc(today)}</b><span>Số liệu cập nhật đến: <b>${esc(latest)}</b></span><span>Nhập học hôm nay: <b>${esc(s.today_count??0)}</b></span><span>Còn học: <b>${esc(s.active_records??'—')}</b></span><span>Bỏ học: <b>${esc(s.inactive_records??'—')}</b></span>${generated?`<small>Đồng bộ DSHS: ${esc(generated)} · Website kiểm tra mỗi 1 phút</small>`:''}</div>`;
   }
   function displayValue(key,col,value) {
     if (key==='dv' && [23,26].includes(col)) {
@@ -141,5 +141,5 @@
     document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b===btn));
     state.active=btn.dataset.report; if(state.reports) render();
   }));
-  load(); setInterval(load,5*60*1000);
+  load(); setInterval(load,60*1000);
 })();
