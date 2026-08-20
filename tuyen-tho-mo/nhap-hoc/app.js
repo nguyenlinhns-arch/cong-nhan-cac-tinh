@@ -57,7 +57,8 @@
       const cells=Array.from({length:width},(_,i)=>r[i]??'');
       const first=String(cells[0]).trim().toUpperCase();
       const section=first==='I'||first==='II'||first.includes('TỔNG')||String(cells[1]).toUpperCase().includes('KÝ QC');
-      return `<tr class="${section?'summary-row':''}">${cells.map((v,i)=>`<td class="col-${i+1}">${esc(v)}</td>`).join('')}</tr>`;
+      const flagged=key==='dv' && /KT-NV|PHÒNG TSĐB$/.test(String(cells[1]).trim().toUpperCase());
+      return `<tr class="${section?'summary-row ':''}${flagged?'flagged-row':''}">${cells.map((v,i)=>`<td class="col-${i+1}">${esc(v)}</td>`).join('')}</tr>`;
     }).join('');
     const colgroup=key==='dv' ? '<colgroup><col class="w-tt"><col class="w-unit">'+Array.from({length:26},()=>'<col>').join('')+'</colgroup>' : '';
     const dvExtra=key==='dv' ? `<div class="dv-note">${esc(rows[27]?.[1]||'')}</div>
