@@ -223,3 +223,99 @@
 .progress-wrap .dv-progress th:first-child,.progress-wrap .dv-progress td:first-child{text-align:center}
 .progress-notes{padding-top:31px;color:red;font-size:10px;line-height:27px;white-space:nowrap}
 @media(max-width:900px){.progress-wrap{width:780px;gap:10px}.progress-wrap .dv-progress{width:520px;font-size:10px}.progress-notes{font-size:10px}}
+
+
+/* 2026-08-20: Chữ lớn, responsive, chỉ giữ nền vàng */
+.native-table-wrap{
+  max-width:100%;
+  overflow-x:auto!important;
+  overflow-y:visible;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:auto;
+}
+.native-report{
+  font-size:12px!important;
+  line-height:1.22!important;
+}
+.native-report th,.native-report td{
+  font-size:12px!important;
+  padding:5px 4px!important;
+  height:31px!important;
+}
+.native-report thead th{
+  font-size:11.5px!important;
+  line-height:1.18!important;
+}
+.dashboard-title h2{font-size:21px!important;line-height:1.25}
+.dashboard-title p{font-size:13px!important}
+.report-status{font-size:13px!important;gap:14px;padding:8px 12px}
+.source-note,.dv-note{font-size:13px!important}
+.dv-campus,.dv-progress,.progress-wrap .dv-progress{font-size:12px!important}
+.progress-title{font-size:13px!important}
+.progress-notes{font-size:12px!important}
+
+/* Không ép hàng chục cột vào một màn hình: bảng tự cuộn trong khung */
+.report-dv .native-report{min-width:2220px}
+.report-ph .native-report{min-width:1650px}
+.report-dn .native-report{min-width:2500px}
+.report-tinh .native-report{min-width:1380px}
+.report-qc .native-report{min-width:1580px}
+
+/* Chỉ cột đánh dấu vàng được tô nền; toàn bộ màu nền khác chuyển trắng */
+.native-report thead th,
+.native-report tbody td,
+.native-report .tone-green,
+.native-report .tone-peach,
+.native-report .tone-blue,
+.native-report .head-green,
+.native-report .head-peach,
+.report-dv .head-green,
+.report-dv .head-peach,
+.report-ph .native-report thead .tone-green{
+  background:#fff!important;
+}
+.native-report .tone-yellow,
+.native-report .head-yellow,
+.report-dv .native-report tbody td:nth-child(19){
+  background:#fff200!important;
+}
+/* Hai cột nhận diện cố định luôn nền trắng */
+.native-report tbody td:first-child,
+.native-report tbody td:nth-child(2),
+.native-report thead tr:first-child th:first-child,
+.native-report thead tr:first-child th:nth-child(2){
+  background:#fff!important;
+}
+
+@media(max-width:900px){
+  .report-header h1{font-size:20px!important}
+  .report-header p{font-size:12px!important}
+  .agency-block{font-size:12px!important}
+  .tab-btn{font-size:12px!important;padding:10px 12px!important}
+  .dashboard-title h2{font-size:18px!important}
+  .dashboard-title p{font-size:12px!important}
+  .report-status{font-size:12px!important;line-height:1.35}
+  .native-report{font-size:13px!important;line-height:1.25!important}
+  .native-report th,.native-report td{
+    font-size:13px!important;
+    padding:7px 5px!important;
+    height:38px!important;
+  }
+  .native-report thead th{font-size:12px!important}
+  .native-report tbody td:nth-child(2){font-size:13px!important}
+  .report-dv .native-report{min-width:2380px}
+  .report-ph .native-report{min-width:1780px}
+  .report-dn .native-report{min-width:2680px}
+  .report-tinh .native-report{min-width:1450px}
+  .report-qc .native-report{min-width:1680px}
+  .report-dv .native-report .w-unit{width:190px!important}
+  .report-ph .native-report .w-name-ph{width:210px!important}
+  .report-dn .native-report .w-name-dn{width:220px!important}
+  .report-tinh .native-report .w-name-tinh{width:190px!important}
+  .report-qc .native-report .w-name-qc{width:260px!important}
+  .dv-note{font-size:13px!important}
+  .dv-campus{font-size:12px!important}
+  .progress-title{font-size:13px!important}
+  .progress-wrap .dv-progress{font-size:12px!important}
+  .progress-notes{font-size:12px!important}
+}
