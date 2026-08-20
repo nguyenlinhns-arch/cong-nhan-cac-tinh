@@ -76,7 +76,7 @@
     const monthTotal=nval(aug[7]);
     const quarterBase=nval(row[10]);
     row[2]=0; row[3]=nval(aug[0]); row[4]=nval(aug[1]); row[5]=nval(aug[2]); row[6]=nval(aug[3]); row[7]=nval(aug[4]);
-    row[8]=dnRecruit?0:monthTotal; row[9]=dnRecruit?monthTotal:0; row[10]=quarterBase+monthTotal;
+    row[8]=dnRecruit?0:monthTotal; row[9]=dnRecruit?monthTotal:0; row[10]=Number.isFinite(Number(x.quarter_a_total))?nval(x.quarter_a_total):quarterBase+monthTotal;
     const currentTotal=nval(x.current_a_total), inactive=nval(x.current_a_inactive), active=nval(x.current_a_active);
     row[16]=dnRecruit?0:active; row[17]=dnRecruit?active:0; row[18]=currentTotal; row[19]=inactive; row[20]=active;
     const plan=nval(row[21]); if (plan>0) row[22]=active/plan*100;
@@ -89,7 +89,7 @@
     if (rows[26] && details?.total) {
       const x=details.total, aug=x.aug||[], quarterBase=nval(rows[26][10]);
       rows[26][2]=0; rows[26][3]=nval(aug[0]); rows[26][4]=nval(aug[1]); rows[26][5]=nval(aug[2]); rows[26][6]=nval(aug[3]); rows[26][7]=nval(aug[4]);
-      rows[26][8]=body.reduce((s,r)=>s+nval(r[8]),0); rows[26][9]=body.reduce((s,r)=>s+nval(r[9]),0); rows[26][10]=quarterBase+nval(aug[7]);
+      rows[26][8]=body.reduce((s,r)=>s+nval(r[8]),0); rows[26][9]=body.reduce((s,r)=>s+nval(r[9]),0); rows[26][10]=Number.isFinite(Number(x.quarter_a_total))?nval(x.quarter_a_total):quarterBase+nval(aug[7]);
       rows[26][16]=body.reduce((s,r)=>s+nval(r[16]),0); rows[26][17]=body.reduce((s,r)=>s+nval(r[17]),0);
       rows[26][18]=nval(x.current_a_total); rows[26][19]=nval(x.current_a_inactive); rows[26][20]=nval(x.current_a_active);
       const plan=nval(rows[26][21]); if (plan>0) rows[26][22]=rows[26][20]/plan*100;
