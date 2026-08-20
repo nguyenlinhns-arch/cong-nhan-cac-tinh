@@ -27,3 +27,20 @@
 .raw-report .raw-header-row td{font-weight:700;background:#f5f5f5;position:sticky;top:0;z-index:3}
 .raw-report tr:last-child td{font-weight:700}
 .report-header p{margin:6px 0 0;text-align:center;color:#b91c1c;font-weight:700}
+
+/* Khớp bố cục 5 ảnh mẫu: bảng co vừa trang, không tràn ngang */
+.report-sheet{width:100%;max-width:100%;overflow:hidden}
+.raw-scroll{width:100%;max-width:100%;overflow:hidden!important;max-height:none}
+.raw-report{width:100%!important;min-width:0!important;max-width:100%;table-layout:fixed;border-collapse:collapse;font-family:"Times New Roman",serif;font-size:clamp(5px,.58vw,10px);line-height:1.08}
+.raw-report td,.raw-report th{min-width:0!important;width:auto!important;max-width:none;padding:2px 1px!important;border:1px solid #222;white-space:normal!important;overflow-wrap:anywhere;text-align:center;vertical-align:middle}
+.raw-report td:nth-child(2){text-align:left}
+.raw-report td:nth-child(2),.raw-report td:nth-child(3){min-width:0!important}
+.raw-report .raw-title-row td{font-size:clamp(11px,1.15vw,18px);padding:7px 2px!important;text-align:center!important;font-weight:700}
+.raw-report .raw-header-row th{background:#fff;font-weight:700;padding:4px 1px!important}
+.raw-report .raw-spacer td{height:4px;padding:0!important;border-left:0;border-right:0}
+.raw-dv td:nth-child(2),.raw-dv tr:not(.raw-header-row) td:nth-child(2){width:10%!important}
+.raw-ph td:nth-child(2){width:11%!important}
+.raw-dn td:nth-child(2){width:9%!important}
+.raw-tinh td:nth-child(2){width:15%!important}.raw-tinh td:nth-child(3){width:23%!important}
+.raw-qc td:nth-child(2){width:15%!important}.raw-qc td:nth-child(18){width:14%!important}
+@media(max-width:800px){.sheet-page{padding:2px}.report-tabs{gap:2px}.tab-btn{font-size:8px;padding:5px 3px}.raw-report{font-size:4.5px}.raw-report td,.raw-report th{padding:1px 0!important}}
