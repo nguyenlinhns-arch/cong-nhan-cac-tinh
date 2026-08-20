@@ -2,6 +2,7 @@
   const nativeFetch = window.fetch.bind(window);
   const activeUrl = () => `./active-aug.json?v=${Date.now()}`;
   const metaUrl = () => `./data.json?v=${Date.now()}`;
+  const dropoutUrl = () => `./dropout-aug.json?v=${Date.now()}`;
   const dnCodes = new Set(['TSDN1','TSDN2','TSDN3']);
 
   async function loadJson(url) {
@@ -73,18 +74,41 @@
     return details;
   }
 
+  function mergeDropoutAudit(details, dropout) {
+    if (!details?.dv || !dropout || String(dropout.snapshot_date || '') !== String(details.snapshot_date || '')) return details;
+    details.dv.dropout_month_total = Number(dropout.aug_dropout_total || 0);
+    details.dv.dropout_month_from_july = Number(dropout.from_july_admissions || 0);
+    details.dv.dropout_month_from_august = Number(dropout.from_august_admissions || 0);
+    details.dv.july_active_at_31_07 = Number(dropout.july_active_at_31_07 || 0);
+    details.dv.july_enter_aug_dropout_total = Number(dropout.from_july_admissions || 0);
+    details.dv.july_enter_aug_dropout_by_unit = dropout.by_unit || [];
+    details.dv.q3_reconciliation = dropout.reconciliation || '';
+    details.dv.dropout_month_definition = dropout.definition || '';
+    details.dv.dropout_month_breakdown_text = `${Number(dropout.from_july_admissions || 0)} HS nhập tháng 7 + ${Number(dropout.from_august_admissions || 0)} HS nhập tháng 8`;
+    if (details.audit) {
+      details.audit.aug_dropout_events = Number(dropout.aug_dropout_total || 0);
+      details.audit.july_enter_aug_dropout = Number(dropout.from_july_admissions || 0);
+      details.audit.aug_enter_aug_dropout = Number(dropout.from_august_admissions || 0);
+      details.audit.july_active_at_31_07 = Number(dropout.july_active_at_31_07 || 0);
+      details.audit.q3_active_reconciled = Number(dropout.q3_active_reconciled || 0);
+    }
+    return details;
+  }
+
   window.fetch = async function(input, init) {
     const response = await nativeFetch(input, init);
     const url = typeof input === 'string' ? input : String(input?.url || '');
     if (!/report-details\.json(?:\?|$)/.test(url) || !response.ok) return response;
     try {
-      const [details, active, meta] = await Promise.all([
+      const [details, active, meta, dropout] = await Promise.all([
         response.clone().json(),
         loadJson(activeUrl()),
-        loadJson(metaUrl())
+        loadJson(metaUrl()),
+        loadJson(dropoutUrl())
       ]);
       mergeActive(details, active);
       mergeCurrentFromMeta(details, meta);
+      mergeDropoutAudit(details, dropout);
       const headers = new Headers(response.headers);
       headers.set('content-type', 'application/json; charset=utf-8');
       headers.set('cache-control', 'no-store');
