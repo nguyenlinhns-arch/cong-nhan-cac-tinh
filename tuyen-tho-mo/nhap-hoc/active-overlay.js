@@ -43,4 +43,13 @@
       return response;
     }
   };
+
+  function loadLocationOverlay() {
+    if (document.querySelector('script[data-location-overlay="1"]')) return;
+    const script = document.createElement('script');
+    script.src = `./location-overlay.js?v=${Date.now()}`;
+    script.dataset.locationOverlay = '1';
+    document.head.appendChild(script);
+  }
+  loadLocationOverlay();
 })();
