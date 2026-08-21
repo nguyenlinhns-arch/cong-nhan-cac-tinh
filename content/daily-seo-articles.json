@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-08-14",
+  "updated_at": "2026-08-21",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -995,6 +995,89 @@
         ["/kiem-tra-dieu-kien/", "Tự kiểm tra tuổi và thể lực sơ bộ"],
         ["/thong-tin-tuyen-tho-mo/#do-tuoi", "Đối chiếu độ tuổi tuyển hiện hành"],
         ["/nghe-mo-ham-lo/", "Tìm hiểu ba nghề mỏ đang tuyển"]
+      ]
+    },
+    {
+      "publish_on": "2026-08-21",
+      "slug": "sau-khi-hoc-nghe-mo-co-duoc-ky-hop-dong-lao-dong-khong",
+      "title": "Sau khi học nghề mỏ có được ký hợp đồng lao động không?",
+      "short_title": "Học nghề mỏ xong có được ký hợp đồng không",
+      "meta": "Sau khi học nghề mỏ có được ký hợp đồng lao động không? Hiểu đúng thời điểm ký, điều kiện tốt nghiệp và bước tiếp nhận việc làm.",
+      "eyebrow": "HỢP ĐỒNG LAO ĐỘNG SAU KHI HỌC NGHỀ MỎ",
+      "primary_query": "sau khi học nghề mỏ có được ký hợp đồng lao động không",
+      "query_variants": [
+        "học nghề mỏ xong có hợp đồng không",
+        "khi nào học viên nghề mỏ được ký hợp đồng",
+        "tốt nghiệp nghề mỏ có được bố trí việc làm không"
+      ],
+      "direct_answer": "Có, nhưng không ký ngay khi gửi đăng ký hoặc vừa nhập học. Theo thông tin tuyển hiện hành, người học phải hoàn thành chương trình và đạt yêu cầu; sau đó doanh nghiệp thuộc TKV mới tiếp nhận, ký hợp đồng lao động và bố trí việc làm tại Quảng Ninh. Đơn vị, thời điểm và thủ tục cụ thể được xác nhận ở bước tiếp nhận.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-khe-cham-bao-ho-xanh.webp",
+        "alt": "Công nhân thợ lò Khe Chàm mặc bảo hộ xanh, đội mũ và đèn lò tại khu giao ca",
+        "credit": "Ảnh: Vinacomin · gương sáng thợ lò tại Công ty Than Khe Chàm"
+      },
+      "intro": [
+        "Nhiều người lao động hỏi rất thẳng: học vài tháng rồi có chắc được ký hợp đồng hay chỉ được giới thiệu việc làm? Với thông tin tuyển đang áp dụng, câu trả lời là người tốt nghiệp đạt yêu cầu được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng lao động và bố trí việc làm tại Quảng Ninh. Tuy nhiên, ba việc này diễn ra sau quá trình học và đánh giá, không phải ngay lúc điền biểu mẫu, trao đổi qua Zalo hoặc đến làm thủ tục nhập học.",
+        "Phân biệt đúng từng mốc giúp người đăng ký tránh hai hiểu lầm: coi tin nhắn tư vấn là một hợp đồng đã có hiệu lực, hoặc cho rằng chỉ cần có tên trong lớp là chắc chắn được nhận vào một công ty cụ thể. Trước khi đi, người lao động nên kiểm tra điều kiện, nhận lịch chính thức và hiểu rõ nghề mình học. Trong thời gian đào tạo cần hoàn thành chương trình, rèn an toàn, tác phong và đạt các yêu cầu liên quan; doanh nghiệp, thời điểm ký và hồ sơ tiếp nhận sẽ được xác nhận ở bước sau."
+      ],
+      "key_points": [
+        ["Có lộ trình ký hợp đồng", "Người tốt nghiệp đạt yêu cầu được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng và bố trí việc làm."],
+        ["Không ký ở bước đăng ký", "Gửi biểu mẫu, nhắn Zalo hoặc được xác nhận nhập học chưa phải là ký hợp đồng lao động."],
+        ["Phải hoàn thành và đạt yêu cầu", "Việc tiếp nhận diễn ra sau khi người học hoàn thành chương trình và đáp ứng kết quả cần thiết."],
+        ["Đơn vị được xác nhận sau", "Không tự suy đoán công ty cụ thể; tên đơn vị và thủ tục phải theo thông tin tiếp nhận chính thức."]
+      ],
+      "sections": [
+        {
+          "heading": "Sau khi học nghề mỏ có được ký hợp đồng lao động không?",
+          "paragraphs": [
+            "Có. Bộ dữ liệu tuyển dụng năm 2026 ghi rõ quyền lợi sau đào tạo: người tốt nghiệp đạt yêu cầu được doanh nghiệp tiếp nhận, ký hợp đồng lao động và bố trí việc làm. Nơi làm việc là tại các doanh nghiệp thuộc TKV ở Quảng Ninh. Cách diễn đạt \"đạt yêu cầu\" rất quan trọng, bởi nó cho biết hợp đồng là kết quả của cả quá trình đào tạo và tiếp nhận, không phải lời hứa vô điều kiện ngay từ bước tư vấn ban đầu.",
+            "Người đăng ký không nên yêu cầu một bản hợp đồng lao động khi mới gửi năm sinh, chiều cao, cân nặng và tình trạng sức khỏe. Ở giai đoạn đó, người phụ trách chỉ kiểm tra sơ bộ và hướng dẫn bước tiếp theo. Khi có lịch nhập học, người học làm thủ tục với cơ sở đào tạo; sau khi hoàn thành chương trình và được xác nhận đạt yêu cầu, doanh nghiệp sử dụng lao động mới thực hiện thủ tục tiếp nhận và hợp đồng theo hồ sơ thực tế."
+          ]
+        },
+        {
+          "heading": "Ba mốc dễ bị nhầm: đăng ký, nhập học và ký hợp đồng",
+          "paragraphs": [
+            "Đăng ký ban đầu là bước gửi thông tin để kiểm tra điều kiện. Người lao động chưa cần nộp ảnh giấy tờ và cũng chưa có quan hệ lao động với doanh nghiệp ở bước này. Xác nhận lịch nhập học cho biết người đăng ký cần đến đâu, vào thời gian nào và mang giấy tờ gì; nó vẫn không phải hợp đồng lao động. Người học còn phải tham gia chương trình nghề, thực hành, rèn kỷ luật và hoàn thành các yêu cầu của khóa học.",
+            "Ký hợp đồng là bước sau đào tạo đối với người tốt nghiệp đạt yêu cầu và được doanh nghiệp tiếp nhận. Vì vậy, không nên dùng các cụm từ \"đã trúng tuyển vào công ty\" hoặc \"đã có biên chế\" chỉ dựa trên một tin nhắn tư vấn. Cũng không nên chuyển tiền cho người hứa có thể ký hợp đồng trước hoặc chọn chắc chắn một doanh nghiệp khi chưa có thông báo tiếp nhận chính thức."
+          ]
+        },
+        {
+          "heading": "Người học cần đạt những gì trước bước tiếp nhận việc làm?",
+          "items": [
+            "Hoàn thành chương trình của nghề đã đăng ký và đáp ứng kết quả đào tạo theo yêu cầu.",
+            "Tuân thủ nội quy, quy trình an toàn, thời gian học và các bước thực hành được hướng dẫn.",
+            "Có hồ sơ, thông tin cá nhân và kết quả liên quan thống nhất với nội dung đã khai ban đầu.",
+            "Thực hiện thủ tục tiếp nhận theo thông báo; không tự đến một công ty bất kỳ để yêu cầu ký hợp đồng."
+          ]
+        },
+        {
+          "heading": "Có được tự chọn công ty sẽ ký hợp đồng không?",
+          "paragraphs": [
+            "Thông tin hiện hành xác định phạm vi là các doanh nghiệp thuộc TKV tại Quảng Ninh, nhưng không cho phép website tự gán trước một đơn vị cho từng người. Doanh nghiệp cụ thể phụ thuộc kế hoạch tiếp nhận, nghề đào tạo, hồ sơ và kết quả của người học. Vì vậy, người tư vấn có thể giải thích lộ trình chung nhưng không nên hứa bằng miệng rằng một người chắc chắn sẽ ký với công ty A hoặc làm ở công trường B khi chưa có căn cứ chính thức.",
+            "Trước ngày tiếp nhận, người học nên hỏi rõ tên doanh nghiệp, đầu mối, địa điểm, giấy tờ cần mang và thời gian làm thủ tục. Nếu thông tin chỉ đến từ một tài khoản lạ, không khớp lịch đã được hướng dẫn hoặc yêu cầu gửi giấy tờ gốc qua bưu điện, hãy dừng lại để xác minh. Nguồn tuyển hiện hành không yêu cầu gửi giấy tờ gốc từ xa và người lao động chỉ nên di chuyển khi đã được xác nhận lịch."
+          ]
+        },
+        {
+          "heading": "Ký hợp đồng rồi thì thu nhập và quyền lợi được hiểu thế nào?",
+          "paragraphs": [
+            "Hợp đồng là căn cứ để xác định công việc, quyền và nghĩa vụ giữa người lao động với doanh nghiệp tiếp nhận. Các chế độ bảo hiểm và quyền lợi được thực hiện theo loại hợp đồng cùng quy định hiện hành. Người lao động cần đọc nội dung thực tế trước khi ký, hỏi lại những điểm chưa rõ và giữ bản hợp đồng của mình; không dựa hoàn toàn vào ảnh chụp quảng cáo hoặc lời kể của người khác.",
+            "Nguồn tuyển đang áp dụng cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. Điều kiện \"khi hoàn thành định mức lao động\" phải được đọc cùng con số, không tách riêng thành mức chắc chắn nhận ngay từ tháng đầu. Thu nhập thực tế còn gắn với công việc, kết quả lao động và quy định của doanh nghiệp. Bài viết này giải thích lộ trình ký hợp đồng, không thay thế nội dung hợp đồng cụ thể tại thời điểm tiếp nhận."
+          ]
+        }
+      ],
+      "takeaway_title": "Có hợp đồng sau đào tạo, nhưng phải đúng thứ tự",
+      "takeaway": "Người tốt nghiệp nghề mỏ đạt yêu cầu được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng lao động và bố trí việc làm tại Quảng Ninh. Đăng ký tư vấn hay nhập học chưa phải là ký hợp đồng. Hãy hoàn thành chương trình, chờ thông báo tiếp nhận và đọc kỹ hồ sơ thực tế; không trả tiền cho lời hứa ký trước hoặc tự gán một công ty khi chưa có xác nhận.",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 quy định người tốt nghiệp đạt yêu cầu được doanh nghiệp tiếp nhận, ký hợp đồng lao động và bố trí việc làm; doanh nghiệp, thời điểm và thủ tục cụ thể được xác nhận theo đợt tiếp nhận thực tế.",
+      "faqs": [
+        ["Vừa gửi đăng ký có được ký hợp đồng ngay không?", "Không. Đăng ký ban đầu chỉ để kiểm tra điều kiện và hướng dẫn; hợp đồng được thực hiện sau khi người học tốt nghiệp đạt yêu cầu và được doanh nghiệp tiếp nhận."],
+        ["Nhập học nghề mỏ có đồng nghĩa đã là công nhân TKV không?", "Chưa. Người nhập học đang ở giai đoạn đào tạo; chỉ sau khi tốt nghiệp đạt yêu cầu và hoàn tất tiếp nhận mới thực hiện hợp đồng lao động."],
+        ["Có được chọn trước công ty sẽ làm việc không?", "Không nên tự coi một đơn vị là chắc chắn. Doanh nghiệp cụ thể phải được xác nhận theo kế hoạch tiếp nhận, nghề đào tạo và hồ sơ thực tế."],
+        ["Ai ký hợp đồng lao động với người tốt nghiệp?", "Doanh nghiệp tiếp nhận người lao động thực hiện thủ tục ký hợp đồng; cơ sở đào tạo và người tư vấn không thay doanh nghiệp ký hợp đồng lao động."]
+      ],
+      "related": [
+        ["/giai-dap-nghe-mo/lo-trinh-di-lam-mo-than-quang-ninh-tu-dang-ky-den-nhan-viec/", "Xem toàn bộ lộ trình từ đăng ký đến nhận việc"],
+        ["/thong-tin-tuyen-tho-mo/", "Đối chiếu chính sách tuyển đang áp dụng"],
+        ["/kiem-tra-dieu-kien/", "Kiểm tra điều kiện trước khi nhập học"]
       ]
     }
   ]

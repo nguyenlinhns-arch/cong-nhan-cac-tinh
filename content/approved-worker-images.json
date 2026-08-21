@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-14T07:56:00+07:00",
+  "updated_at": "2026-08-21T08:07:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -92,6 +92,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/024479B6CDD9037AB78581F005DF230FB8805A916D54F3091AE6AEFD3105E0C7.jpg",
       "provider": "Vinacomin",
       "description": "Nhóm học sinh nghề mỏ mặc bảo hộ xanh, đội mũ trong chuyến trải nghiệm sản xuất than hầm lò"
+    },
+    {
+      "asset": "vinacomin-tho-lo-khe-cham-bao-ho-xanh.webp",
+      "source_article_url": "https://vinacomin.vn/vi/news/slug/guong-sang-tho-lo-tai-cong-ty-than-khe-cham",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/24AD525461D548313C69212EF3FB6DDFF555AD7C44D0B92495A0FA6E732302D1.png",
+      "provider": "Vinacomin",
+      "description": "Công nhân thợ lò Khe Chàm mặc bảo hộ xanh, đội mũ và đèn lò tại khu giao ca"
     }
   ]
 }
