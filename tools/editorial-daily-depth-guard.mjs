@@ -32,6 +32,7 @@ function cleanCopy(value = "") {
     .replace(/\bđối chiếu sơ bộ\b/gi, "kiểm tra ban đầu")
     .replace(/\bphù hợp sơ bộ\b/gi, "phù hợp ở bước kiểm tra ban đầu")
     .replace(/\bkhông nên tự suy ra\b/gi, "chỉ xác nhận khi có thông báo chính thức")
+    .replace(/\bKết luận ngắn\b/gi, "Điều người lao động cần ghi nhớ")
     .replace(/\s{2,}/g, " ")
     .trim();
 }
@@ -84,6 +85,7 @@ for (const article of data.articles.filter((item) => item.publish_on <= releaseD
   if (!fs.existsSync(file)) continue;
   let html = fs.readFileSync(file, "utf8");
   const before = html;
+  html = html.replace(/Kết luận ngắn/gi, "Điều người lao động cần ghi nhớ");
   html = fixRepeatedOpeningHeading(html, article);
 
   if (wordCount(html) < 680) {
