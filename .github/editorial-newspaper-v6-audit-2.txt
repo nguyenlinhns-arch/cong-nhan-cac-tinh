@@ -1,0 +1,1 @@
+Second newsroom v6 validation after source-label and copy-marker fixes.
