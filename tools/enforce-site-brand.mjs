@@ -71,4 +71,7 @@ if (invalid.length) {
 
 console.log(`${CHECK_ONLY ? "Validated" : "Updated"} the shared Thầy Linh – Tuyển Thợ Mỏ brand across ${htmlFiles.length} HTML files; changed ${changed.length}.`);
 
-if (!CHECK_ONLY) await import("./editorial-newsroom-pass.mjs");
+if (!CHECK_ONLY) {
+  await import("./editorial-newsroom-pass.mjs");
+  await import("./editorial-copy-finalizer.mjs");
+}
