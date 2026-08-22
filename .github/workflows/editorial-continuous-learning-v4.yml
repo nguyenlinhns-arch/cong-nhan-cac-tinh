@@ -1,0 +1,57 @@
+name: Editorial continuous learning v4
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/editorial-continuous-learning-v4.yml'
+      - 'tools/editorial-continuous-learning-v4b.mjs'
+      - 'tools/editorial-priority-rewrites-v4.mjs'
+      - 'tools/editorial-authority-fallback-v4.mjs'
+      - 'tools/validate-editorial-continuous-v4.mjs'
+      - 'tools/curated-articles.mjs'
+      - 'tools/community-articles*.mjs'
+      - 'tools/press-story-articles.mjs'
+      - 'tools/daily-community-articles*.mjs'
+      - 'tools/editorial-*.mjs'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: editorial-continuous-learning-v4
+  cancel-in-progress: true
+
+jobs:
+  edit-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Apply newsroom, expert and responsible communication pass
+        run: |
+          node tools/editorial-continuous-learning-v4b.mjs
+          node tools/editorial-priority-rewrites-v4.mjs
+          node tools/editorial-authority-fallback-v4.mjs
+          node tools/validate-editorial-continuous-v4.mjs
+
+      - name: Commit edited article pages
+        run: |
+          git config user.name "Thầy Linh Editorial Bot"
+          git config user.email "nguyenlinhns@gmail.com"
+          git add \
+            tuyen-tho-mo/tin-nganh-than \
+            tuyen-tho-mo/bai-viet \
+            tuyen-tho-mo/chuyen-nguoi-tho \
+            tuyen-tho-mo/giai-dap-nghe-mo
+
+          if git diff --cached --quiet; then
+            echo "Không có thay đổi nội dung cần xuất bản."
+            exit 0
+          fi
+
+          git commit -m "Tiếp tục biên tập bài viết theo chuẩn báo chí chuyên môn v4"
+          git push origin HEAD:main
