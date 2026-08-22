@@ -5,7 +5,6 @@ import {execFileSync} from "node:child_process";
 const projectRoot = process.cwd();
 const siteRoot = path.resolve(projectRoot, "tuyen-tho-mo");
 const changed = [];
-const editorNote = '<p class="article-seo-line">Bài viết thuộc chuyên mục nghề mỏ và việc làm ngành Than, được biên tập để người lao động có thêm dữ liệu trước khi đưa ra quyết định.</p>';
 
 function walk(directory, output = []) {
   if (!fs.existsSync(directory)) return output;
@@ -17,23 +16,34 @@ function walk(directory, output = []) {
   return output;
 }
 
+function mapOutsideScripts(html, transform) {
+  return String(html).split(/(<(?:script|style)\b[^>]*>[\s\S]*?<\/(?:script|style)>)/gi)
+    .map((part) => /^<(?:script|style)\b/i.test(part) ? part : transform(part))
+    .join("");
+}
+
 function finishCopy(html) {
-  return String(html)
+  let output = String(html)
     .replace(/\s+data-editorial-style="newsroom"/gi, "")
-    .replace(/<strong>Nguồn tư liệu:<\/strong>/gi, "<strong>Nguồn:</strong>")
-    .replace(/Bài được Nguyễn Tử Linh · Biên tập và chịu trách nhiệm nội dung dựa trên/gi, "Bài do Nguyễn Tử Linh biên tập dựa trên")
-    .replace(/Bài được Nguyễn Tử Linh · Biên tập và chịu trách nhiệm nội dung từ/gi, "Bài do Nguyễn Tử Linh biên tập từ")
-    .replace(/Bài do Nguyễn Tử Linh · Biên tập và chịu trách nhiệm nội dung dựa trên/gi, "Bài do Nguyễn Tử Linh biên tập dựa trên")
-    .replace(/Bài do Nguyễn Tử Linh · Biên tập và chịu trách nhiệm nội dung từ/gi, "Bài do Nguyễn Tử Linh biên tập từ")
-    .replace(/Bài được Nguyễn Tử Linh · Biên tập và chịu trách nhiệm nội dung/gi, "Bài do Nguyễn Tử Linh biên tập")
-    .replace(/Bài do Nguyễn Tử Linh · Biên tập và chịu trách nhiệm nội dung/gi, "Bài do Nguyễn Tử Linh biên tập")
-    .replace(/\bBài viết này được biên soạn\b/gi, "Bài viết được biên tập")
-    .replace(/\bNội dung được tổng hợp lại\b/gi, "Nội dung được biên tập lại")
+    .replace(/<strong>Nguồn\s+tư\s+liệu:<\/strong>/gi, "<strong>Nguồn:</strong>")
+    .replace(/Bài\s+được\s+Nguyễn\s+Tử\s+Linh\s*·\s*Biên\s+tập\s+và\s+chịu\s+trách\s+nhiệm\s+nội\s+dung\s+dựa\s+trên/gi, "Bài do Nguyễn Tử Linh biên tập dựa trên")
+    .replace(/Bài\s+được\s+Nguyễn\s+Tử\s+Linh\s*·\s*Biên\s+tập\s+và\s+chịu\s+trách\s+nhiệm\s+nội\s+dung\s+từ/gi, "Bài do Nguyễn Tử Linh biên tập từ")
+    .replace(/Bài\s+do\s+Nguyễn\s+Tử\s+Linh\s*·\s*Biên\s+tập\s+và\s+chịu\s+trách\s+nhiệm\s+nội\s+dung\s+dựa\s+trên/gi, "Bài do Nguyễn Tử Linh biên tập dựa trên")
+    .replace(/Bài\s+do\s+Nguyễn\s+Tử\s+Linh\s*·\s*Biên\s+tập\s+và\s+chịu\s+trách\s+nhiệm\s+nội\s+dung\s+từ/gi, "Bài do Nguyễn Tử Linh biên tập từ")
+    .replace(/Bài\s+được\s+Nguyễn\s+Tử\s+Linh\s*·\s*Biên\s+tập\s+và\s+chịu\s+trách\s+nhiệm\s+nội\s+dung/gi, "Bài do Nguyễn Tử Linh biên tập")
+    .replace(/Bài\s+do\s+Nguyễn\s+Tử\s+Linh\s*·\s*Biên\s+tập\s+và\s+chịu\s+trách\s+nhiệm\s+nội\s+dung/gi, "Bài do Nguyễn Tử Linh biên tập")
+    .replace(/<p\b[^>]*class="[^"]*(?:article-seo-line|keyword-summary|article-editor-note)[^"]*"[^>]*>[\s\S]*?<\/p>/gi, "")
+    .replace(/LAN\s+TỎA\s+THÔNG\s+TIN\s+ĐÚNG\s+NGUỒN/gi, "CHIA SẺ BÀI VIẾT");
+
+  output = mapOutsideScripts(output, (part) => part
+    .replace(/\bBài\s+viết\s+này\s+được\s+biên\s+soạn\b/gi, "Bài viết được biên tập")
+    .replace(/\bNội\s+dung\s+được\s+tổng\s+hợp\s+lại\b/gi, "Nội dung được biên tập lại")
     .replace(/\bTheo\s+nguồn,?\s*/giu, "")
     .replace(/\bNguồn\s+cho\s+biết(?:\s+rằng)?\s*/giu, "")
-    .replace(/<p\s+class="article-seo-line">[\s\S]*?<\/p>/gi, editorNote)
-    .replace(/<p\s+class="keyword-summary">[\s\S]*?<\/p>/gi, editorNote)
-    .replace(/LAN TỎA THÔNG TIN ĐÚNG NGUỒN/gi, "CHIA SẺ BÀI VIẾT");
+    .replace(/\bnhằm\s+góp\s+phần\b/giu, "để")
+    .replace(/\bqua\s+đó\s+góp\s+phần\b/giu, "qua đó")
+    .replace(/\s{2,}/g, " "));
+  return output;
 }
 
 for (const directory of ["tin-nganh-than", "bai-viet", "chuyen-nguoi-tho"]) {
@@ -55,4 +65,4 @@ if (process.env.GITHUB_ACTIONS === "true" && changed.length) {
   }
 }
 
-console.log(JSON.stringify({status: "editorial-copy-finalized", changedFiles: changed.length}, null, 2));
+console.log(JSON.stringify({status: "editorial-copy-finalized-v4", changedFiles: changed.length}, null, 2));
