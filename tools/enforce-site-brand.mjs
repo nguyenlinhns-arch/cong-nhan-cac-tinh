@@ -124,6 +124,11 @@ if (!CHECK_ONLY) {
   // Synchronize metadata and internal links against the exact final copy.
   await import("./optimize-article-keywords.mjs?after-editorial-v6=1");
 
+  // Original reporting belongs on the local pages where the events happened.
+  // These two field notes are built from first-party trip/video material and
+  // never invent direct quotes. They are regenerated after every province build.
+  await import("./editorial-field-report-v8.mjs");
+
   await runValidator("./validate-editorial-source-v5.mjs", "Kiểm định nguồn bài v5");
   await runValidator("./validate-editorial-story-v3.mjs", "Kiểm định bài nguồn newsroom");
   await runValidator("./validate-editorial-authority.mjs", "Kiểm định tác giả và trách nhiệm biên tập");
@@ -131,6 +136,7 @@ if (!CHECK_ONLY) {
   await runValidator("./validate-editorial-specialist-v6.mjs", "Kiểm định 10 bài chuyên sâu v6");
   await runValidator("./validate-editorial-continuous-v4b.mjs", "Kiểm định văn phong hiển thị v5");
   await runValidator("./validate-editorial-newspaper-v6.mjs", "Kiểm định bố cục báo chuyên ngành v6");
+  await runValidator("./validate-editorial-field-report-v8.mjs", "Kiểm định phóng sự hiện trường v8");
 
   // The old SEO gate predates specialist-v6 and assumes every evergreen article
   // keeps a visible FAQ. Apply a narrow compatibility layer only after the new
