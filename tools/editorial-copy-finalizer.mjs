@@ -26,6 +26,7 @@ function finishCopy(html) {
   let output = String(html)
     .replace(/\s+data-editorial-style="newsroom"/gi, "")
     .replace(/<strong>Nguồn\s+tư\s+liệu:<\/strong>/gi, "<strong>Nguồn:</strong>")
+    .replace(/<p\b([^>]*)class="([^"]*\barticle-genre-label\b[^"]*)"([^>]*)>([\s\S]*?)<\/p>/gi, '<div$1class="$2"$3 role="note">$4</div>')
     .replace(/Bài\s+được\s+Nguyễn\s+Tử\s+Linh\s*·\s*Biên\s+tập\s+và\s+chịu\s+trách\s+nhiệm\s+nội\s+dung\s+dựa\s+trên/gi, "Bài do Nguyễn Tử Linh biên tập dựa trên")
     .replace(/Bài\s+được\s+Nguyễn\s+Tử\s+Linh\s*·\s*Biên\s+tập\s+và\s+chịu\s+trách\s+nhiệm\s+nội\s+dung\s+từ/gi, "Bài do Nguyễn Tử Linh biên tập từ")
     .replace(/Bài\s+do\s+Nguyễn\s+Tử\s+Linh\s*·\s*Biên\s+tập\s+và\s+chịu\s+trách\s+nhiệm\s+nội\s+dung\s+dựa\s+trên/gi, "Bài do Nguyễn Tử Linh biên tập dựa trên")
@@ -40,6 +41,12 @@ function finishCopy(html) {
     .replace(/\bNội\s+dung\s+được\s+tổng\s+hợp\s+lại\b/gi, "Nội dung được biên tập lại")
     .replace(/\bTheo\s+nguồn,?\s*/giu, "")
     .replace(/\bNguồn\s+cho\s+biết(?:\s+rằng)?\s*/giu, "")
+    .replace(/\bĐiểm\s+đáng\s+chú\s+ý\s+của\s+cuộc\s+làm\s+việc\s+là\s+cách\s+đưa\s+thông\s+tin\s+trở\s+lại\s+cấp\s+xã,\s*thôn\s+thay\s+vì\s+dừng\s+ở\s+một\s+hội\s+nghị\s+tập\s+trung\.?/giu, "Cuộc làm việc hướng hoạt động tư vấn trở lại cấp xã, thôn để thông tin tiếp tục đến đúng địa bàn sau hội nghị tập trung.")
+    .replace(/\bTrọng\s+tâm\s+không\s+chỉ\s+là\s+tăng\s+số\s+người\s+vào\s+học\.?/giu, "Cuộc làm việc đặt tuyển sinh trong toàn bộ lộ trình từ tiếp cận người học đến đào tạo và thực tập.")
+    .replace(/\bĐiều\s+được\s+truyền\s+lại\s+không\s+chỉ\s+là\s+công\s+việc,\s*mà\s+còn\s+là\s+kỷ\s+luật,\s*lòng\s+tự\s+trọng\s+và\s+trách\s+nhiệm\s+với\s+gia\s+đình\.?/giu, "Gia đình truyền lại cả công việc, kỷ luật, lòng tự trọng và trách nhiệm với nhau.")
+    .replace(/\bĐây\s+không\s+chỉ\s+là\s+một\s+tin\s+tuyển\.?/giu, "Thông tin tuyển sinh mô tả một lộ trình cụ thể.")
+    .replace(/\bPhúc\s+lợi\s+không\s+chỉ\s+là\s+khoản\s+hỗ\s+trợ\s+sau\s+khó\s+khăn\.?/giu, "Phúc lợi bao gồm cả hỗ trợ sau khó khăn và những điều kiện giúp người lao động duy trì sức khỏe, ngày công và khả năng gắn bó.")
+    .replace(/\bĐáng\s+chú\s+ý(?:\s+là)?[,;:]?\s*/giu, "")
     .replace(/\bnhằm\s+góp\s+phần\b/giu, "để")
     .replace(/\bqua\s+đó\s+góp\s+phần\b/giu, "qua đó")
     .replace(/\s{2,}/g, " "));
@@ -65,4 +72,4 @@ if (process.env.GITHUB_ACTIONS === "true" && changed.length) {
   }
 }
 
-console.log(JSON.stringify({status: "editorial-copy-finalized-v4", changedFiles: changed.length}, null, 2));
+console.log(JSON.stringify({status: "editorial-copy-finalized-v5d", changedFiles: changed.length}, null, 2));
