@@ -24,6 +24,15 @@ const allowedBlueWorkerImages = new Set([
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp",
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp",
 ]);
+const forbiddenMachinePhrases = [
+  "GIẢI THÍCH RÕ TỪNG Ý",
+  "Điều cần hiểu trước tiên",
+  "KẾT LUẬN NGẮN",
+  "Bài nguồn ngày",
+  "Nguồn cho biết",
+  "Nguồn thông tin tuyển dụng hiện hành",
+  "Bộ dữ liệu tuyển dụng năm 2026",
+];
 const isOccupationArticle = (article) => occupationTerms.some((term) =>
   `${article.title} ${article.primary_query}`.toLocaleLowerCase("vi").includes(term),
 );
@@ -44,8 +53,8 @@ for (const article of data.articles) {
   if (!allowedBlueWorkerImages.has(article.image.src)) errors.push(`${article.slug}: ảnh không phải công nhân Vinacomin mặc áo xanh, đội mũ`);
   if (article.meta.length < 100 || article.meta.length > 165) errors.push(`${article.slug}: meta description dài ${article.meta.length} ký tự`);
   if (article.direct_answer.length < 90 || article.direct_answer.length > 330) errors.push(`${article.slug}: câu trả lời trực tiếp cần 90–330 ký tự`);
-  if ((article.sections || []).length < 3) errors.push(`${article.slug}: cần ít nhất 3 mục giải thích`);
-  if ((article.faqs || []).length < 3) errors.push(`${article.slug}: cần ít nhất 3 FAQ`);
+  if ((article.sections || []).length < 2) errors.push(`${article.slug}: cần ít nhất 2 mục thông tin có nội dung riêng`);
+  if ((article.faqs || []).length < 2) errors.push(`${article.slug}: cần ít nhất 2 câu hỏi bổ sung`);
 }
 
 for (const article of released) {
@@ -59,7 +68,11 @@ for (const article of released) {
   const html = fs.readFileSync(target, "utf8");
   const visible = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ").replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
   const words = visible.split(/\s+/).filter(Boolean).length;
-  if (words < 650) errors.push(`${article.slug}: nội dung còn mỏng (${words} từ)`);
+  if (words < 420) errors.push(`${article.slug}: bài chưa đủ thông tin để người lao động ra quyết định (${words} từ)`);
+  if (words > 1250) errors.push(`${article.slug}: bài quá dài và có nguy cơ lặp ý (${words} từ)`);
+  for (const phrase of forbiddenMachinePhrases) {
+    if (html.includes(phrase)) errors.push(`${article.slug}: còn cụm văn máy “${phrase}”`);
+  }
   for (const marker of [
     `<link rel="canonical" href="${canonical}">`,
     `<h1>${article.title}</h1>`,
@@ -68,6 +81,8 @@ for (const article of released) {
     '"@type":"FAQPage"',
     'data-contact="zalo"',
     "/lien-he-di-lam-mo-than-quang-ninh/",
+    "Nguồn và trách nhiệm biên tập:",
+    "Nguyễn Tử Linh biên tập và chịu trách nhiệm nội dung",
   ]) if (!html.includes(marker)) errors.push(`${article.slug}: thiếu ${marker}`);
   if (isOccupationArticle(article)) {
     const main = html.match(/<main\b[\s\S]*?<\/main>/i)?.[0] || "";
@@ -88,7 +103,9 @@ for (const article of future) {
 
 const machineFeed = JSON.parse(fs.readFileSync(path.join(site, "daily-seo-articles.json"), "utf8"));
 if (machineFeed.articles.length !== released.length) errors.push("Dữ liệu máy đọc không khớp số bài đã xuất bản");
-if (!fs.readFileSync(path.join(site, "index.html"), "utf8").includes("home-daily-seo")) errors.push("Trang chủ thiếu khối giải đáp mới mỗi ngày");
+const homepage = fs.readFileSync(path.join(site, "index.html"), "utf8");
+if (!homepage.includes("home-daily-seo")) errors.push("Trang chủ thiếu khối bài viết mới");
+if (!homepage.includes("Đã biên tập theo chuẩn báo chí")) errors.push("Trang chủ chưa hiển thị trạng thái biên tập mới");
 if (!fs.readFileSync(path.join(site, "cam-nang-nghe-mo", "index.html"), "utf8").includes("daily-seo-guide:start")) errors.push("Cẩm nang thiếu liên kết tới chuỗi SEO hằng ngày");
 
 console.log(JSON.stringify({releaseDate, planned: data.articles.length, released: released.length, future: future.length, errors: errors.length, sampleErrors: errors.slice(0, 30)}, null, 2));
