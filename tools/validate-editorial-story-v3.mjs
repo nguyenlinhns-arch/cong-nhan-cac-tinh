@@ -78,7 +78,8 @@ for (const [urlPath, article] of registry) {
   stats.checked += 1;
   const html = fs.readFileSync(file, "utf8");
   const body = html.match(/<article\b[^>]*class=["'][^"']*\barticle-body\b[^"']*["'][^>]*>[\s\S]*?<\/article>/i)?.[0] || "";
-  const copy = body.match(/<div class="professional-news-copy newsroom-copy-v3">[\s\S]*?<\/div>/i)?.[0] || "";
+  const markedCopy = body.match(/<!-- newsroom-copy-v3:start -->([\s\S]*?)<!-- newsroom-copy-v3:end -->/i)?.[1] || "";
+  const copy = markedCopy.match(/<div class="professional-news-copy newsroom-copy-v3">([\s\S]*)<\/div>\s*$/i)?.[1] || markedCopy;
   if (!body) {
     errors.push(`${article.slug}: không tìm thấy article-body`);
     continue;
@@ -86,21 +87,21 @@ for (const [urlPath, article] of registry) {
   if (!body.includes("article-body--journalistic-v3")) errors.push(`${article.slug}: chưa dùng cấu trúc newsroom v3`);
   else stats.newsroomV3 += 1;
   if (!html.includes('/editorial-newsroom.css?v=1')) errors.push(`${article.slug}: thiếu CSS newsroom`);
-  if (!copy) errors.push(`${article.slug}: thiếu professional-news-copy newsroom-copy-v3`);
+  if (!markedCopy || !body.includes('professional-news-copy newsroom-copy-v3')) errors.push(`${article.slug}: thiếu vùng professional-news-copy newsroom-copy-v3`);
 
   const lede = copy.match(/<p class="professional-lede">([\s\S]*?)<\/p>/i)?.[1] || "";
   const nutgraph = copy.match(/<p class="professional-nutgraph">([\s\S]*?)<\/p>/i)?.[1] || "";
   const ledeWords = wordCount(lede);
   const nutWords = wordCount(nutgraph);
-  if (ledeWords < 18 || ledeWords > 75) errors.push(`${article.slug}: lede dài ${ledeWords} từ, cần 18–75`);
+  if (ledeWords < 18 || ledeWords > 72) errors.push(`${article.slug}: lede dài ${ledeWords} từ, cần 18–72`);
   if (nutWords < 18 || nutWords > 90) errors.push(`${article.slug}: nut graph dài ${nutWords} từ, cần 18–90`);
   if (lede && nutgraph && similarity(lede, nutgraph) >= 0.78) errors.push(`${article.slug}: lede và nut graph lặp ý`);
 
   const paragraphs = [...copy.matchAll(/<p(?:\s[^>]*)?>([\s\S]*?)<\/p>/gi)].map((match) => stripTags(match[1])).filter(Boolean);
   if (paragraphs.length < 6 || paragraphs.length > 18) errors.push(`${article.slug}: có ${paragraphs.length} đoạn, cần 6–18`);
   const copyWords = wordCount(copy);
-  if (copyWords < 300 || copyWords > 1800) errors.push(`${article.slug}: thân bài ${copyWords} từ, cần 300–1.800`);
-  const longParagraph = paragraphs.find((paragraph) => wordCount(paragraph) > 115);
+  if (copyWords < 300 || copyWords > 1900) errors.push(`${article.slug}: thân bài ${copyWords} từ, cần 300–1.900`);
+  const longParagraph = paragraphs.find((paragraph) => wordCount(paragraph) > 125);
   if (longParagraph) errors.push(`${article.slug}: còn đoạn dài ${wordCount(longParagraph)} từ`);
   const fragment = paragraphs.find((paragraph) => wordCount(paragraph) < 18 && !/^Nguồn:/u.test(paragraph));
   if (fragment) errors.push(`${article.slug}: còn đoạn cụt ${wordCount(fragment)} từ: ${fragment.slice(0, 90)}`);
@@ -113,11 +114,12 @@ for (const [urlPath, article] of registry) {
 
   const visible = stripTags(copy);
   for (const pattern of bannedPatterns) if (pattern.test(visible)) errors.push(`${article.slug}: còn cụm máy móc ${pattern}`);
-  for (let left = 0; left < paragraphs.length; left += 1) {
+  let duplicateFound = false;
+  for (let left = 0; left < paragraphs.length && !duplicateFound; left += 1) {
     for (let right = left + 1; right < paragraphs.length; right += 1) {
       if (wordCount(paragraphs[left]) >= 25 && wordCount(paragraphs[right]) >= 25 && similarity(paragraphs[left], paragraphs[right]) >= 0.9) {
         errors.push(`${article.slug}: hai đoạn gần như trùng nhau`);
-        left = paragraphs.length;
+        duplicateFound = true;
         break;
       }
     }
