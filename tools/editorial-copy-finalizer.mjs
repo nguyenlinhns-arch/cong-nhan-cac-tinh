@@ -5,7 +5,7 @@ import {execFileSync} from "node:child_process";
 const projectRoot = process.cwd();
 const siteRoot = path.resolve(projectRoot, "tuyen-tho-mo");
 const changed = [];
-const editorNote = '<p class="article-editor-note">Bài viết thuộc chuyên mục nghề mỏ và việc làm ngành Than, được biên tập để người lao động có thêm dữ liệu trước khi đưa ra quyết định.</p>';
+const editorNote = '<p class="article-seo-line">Bài viết thuộc chuyên mục nghề mỏ và việc làm ngành Than, được biên tập để người lao động có thêm dữ liệu trước khi đưa ra quyết định.</p>';
 
 function walk(directory, output = []) {
   if (!fs.existsSync(directory)) return output;
