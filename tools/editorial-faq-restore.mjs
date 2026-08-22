@@ -29,10 +29,9 @@ function renderFaq(article) {
     .filter((entry) => Array.isArray(entry) && clean(entry[0]) && clean(entry[1]))
     .slice(0, 4);
   if (!items.length) return "";
-  const id = `faq-${article.slug}`;
   return `<!-- editorial-faq-v3:start -->
-<section class="professional-news-faq" aria-labelledby="${id}">
-  <h2 id="${id}">Câu hỏi thường gặp</h2>
+<section class="professional-news-faq" aria-label="Câu hỏi thường gặp">
+  <h2>Câu hỏi thường gặp</h2>
   <div class="professional-news-faq__list">
     ${items.map(([question, answer]) => `<details><summary>${escapeHtml(clean(question))}</summary><p>${escapeHtml(clean(answer))}</p></details>`).join("\n    ")}
   </div>
