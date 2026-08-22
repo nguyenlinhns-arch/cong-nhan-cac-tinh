@@ -86,4 +86,10 @@ if (!CHECK_ONLY) {
   await import("./editorial-image-dimensions-guard.mjs");
   await import("./editorial-daily-depth-guard.mjs");
   await import("./editorial-copy-finalizer.mjs");
+
+  // The editorial pass changes body length and navigation after the first SEO
+  // normalization. A distinct module URL forces one final update pass so the
+  // JSON-LD wordCount, topic hub, related stories and guidance line match the
+  // exact copy that will be published and indexed.
+  await import("./optimize-article-keywords.mjs?after-editorial-v3=1");
 }
