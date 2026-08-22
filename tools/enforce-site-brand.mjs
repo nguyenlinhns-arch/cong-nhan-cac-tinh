@@ -16,6 +16,10 @@ function walk(directory) {
   });
 }
 
+function relativePath(file) {
+  return path.relative(SITE, file).split(path.sep).join("/");
+}
+
 function normalizeBrand(html) {
   return html
     .replace(/<span class=(["'])brand-mark\1>TL<\/span>/g, BRAND_MARK)
@@ -24,19 +28,21 @@ function normalizeBrand(html) {
     .replace(/Website trả lời/gi, ANSWER_BRAND);
 }
 
-const htmlFiles = walk(SITE).filter((file) => file.endsWith(".html"));
+// /nhap-hoc is a separate operational dashboard and does not share the
+// recruitment portal's header, brand shell or editorial pipeline.
+const htmlFiles = walk(SITE).filter((file) => file.endsWith(".html") && !relativePath(file).startsWith("nhap-hoc/"));
 const changed = [];
 for (const file of htmlFiles) {
   const current = fs.readFileSync(file, "utf8");
   const next = normalizeBrand(current);
   if (next === current) continue;
-  changed.push(path.relative(SITE, file).split(path.sep).join("/"));
+  changed.push(relativePath(file));
   if (!CHECK_ONLY) fs.writeFileSync(file, next);
 }
 
 const invalid = [];
 for (const file of htmlFiles) {
-  const relative = path.relative(SITE, file).split(path.sep).join("/");
+  const relative = relativePath(file);
   if (/^google[^/]*\.html$/i.test(relative)) continue;
 
   const html = fs.readFileSync(file, "utf8");
