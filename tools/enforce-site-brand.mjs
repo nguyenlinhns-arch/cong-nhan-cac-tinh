@@ -32,7 +32,7 @@ function normalizeBrand(html) {
 async function runValidator(modulePath, label) {
   const previousExitCode = process.exitCode;
   process.exitCode = undefined;
-  await import(`${modulePath}?editorial-v4=${Date.now()}-${Math.random()}`);
+  await import(`${modulePath}?editorial-v5=${Date.now()}-${Math.random()}`);
   if (process.exitCode) throw new Error(`${label} không đạt yêu cầu`);
   process.exitCode = previousExitCode;
 }
@@ -111,14 +111,21 @@ if (!CHECK_ONLY) {
   await import("./editorial-prose-v4.mjs");
   await import("./editorial-authority-pass.mjs");
 
+  // Authority is the last structural layer and may reinsert labels. Run the
+  // copy finalizer once more with a unique module URL so the published HTML is
+  // the exact, cleaned newsroom version rather than an intermediate build.
+  await import("./editorial-copy-finalizer.mjs?after-authority-v5=1");
+
   // The prose and authority passes change article body length, labels and
   // navigation. Run the metadata synchronizer once more against the exact
   // copy that will be published and indexed.
-  await import("./optimize-article-keywords.mjs?after-editorial-v4=1");
+  await import("./optimize-article-keywords.mjs?after-editorial-v5=1");
 
-  await runValidator("./validate-editorial-story-v3.mjs", "Kiểm định bài nguồn newsroom v3");
-  await runValidator("./validate-editorial-authority.mjs", "Kiểm định tác giả và trách nhiệm biên tập v4");
-  await runValidator("./validate-editorial-prose-v4.mjs", "Kiểm định văn xuôi nhà báo và chuyên gia v4");
+  await runValidator("./validate-editorial-source-v5.mjs", "Kiểm định nguồn bài v5");
+  await runValidator("./validate-editorial-story-v3.mjs", "Kiểm định bài nguồn newsroom");
+  await runValidator("./validate-editorial-authority.mjs", "Kiểm định tác giả và trách nhiệm biên tập");
+  await runValidator("./validate-editorial-prose-v4.mjs", "Kiểm định văn xuôi nhà báo và chuyên gia");
+  await runValidator("./validate-editorial-continuous-v4b.mjs", "Kiểm định văn phong hiển thị v5");
   await runValidator("./validate-seo-library-current.mjs", "Kiểm định thư viện SEO hiện hành");
 
   // The workflows historically invoke the legacy SEO validator again later in
