@@ -57,6 +57,11 @@ const newsroomV3PlainSourceGate = '    if (!/article-body--journalistic-v3/.test
 if (source.includes(legacyPublicSourceLinkGate)) source = source.replace(legacyPublicSourceLinkGate, newsroomV3PlainSourceGate);
 else if (!source.includes(newsroomV3PlainSourceGate)) throw new Error("Editorial SEO gate: source-link gate changed; update the compatibility patch");
 
+const legacySeoSentenceGate = '    if (!/<p class="article-seo-line">[^<]+<\\/p>/i.test(html)) errors.push(`${prefix}missing the final SEO sentence`);';
+const proseV4SeoSentenceGate = '    if (!/article-body--prose-v4/.test(html) && !/<p class="article-seo-line">[^<]+<\\/p>/i.test(html)) errors.push(`${prefix}missing the final SEO sentence`);';
+if (source.includes(legacySeoSentenceGate)) source = source.replace(legacySeoSentenceGate, proseV4SeoSentenceGate);
+else if (!source.includes(proseV4SeoSentenceGate)) throw new Error("Editorial SEO gate: final SEO sentence gate changed; update the compatibility patch");
+
 try {
   fs.writeFileSync(runtimePath, source);
   execFileSync(process.execPath, [runtimePath], {stdio: "inherit", env: process.env});
@@ -65,6 +70,7 @@ try {
     legacySeoChecksPreserved: true,
     newsroomV3Detected: true,
     newsroomV3PlainTextSources: true,
+    editorialProseV4WithoutSeoNarration: true,
   }, null, 2));
 } finally {
   if (fs.existsSync(runtimePath)) fs.unlinkSync(runtimePath);
