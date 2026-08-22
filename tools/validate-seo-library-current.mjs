@@ -58,6 +58,21 @@ const newsroomV3Detector = "  const rewrittenNews = rewrittenNewsSlugs.has(slug)
 if (source.includes(legacyRewrittenDetector)) source = source.replace(legacyRewrittenDetector, newsroomV3Detector);
 else if (!source.includes(newsroomV3Detector)) throw new Error("Editorial SEO gate: rewritten-news detector changed; update the compatibility patch");
 
+// The legacy validator expected the article tag to contain only a class
+// attribute. Specialist v7 adds semantic metadata attributes, so teach the
+// legacy runtime to locate article-body regardless of attribute order/shape.
+const legacyArticleBodyParser = '  const articleBody = html.match(/<article class="article-body(?:\\s[^\"]*)?">([\\s\\S]*?)<\\/article>/i)?.[1] || "";';
+const currentArticleBodyParser = '  const articleBody = html.match(/<article\\b[^>]*class="[^\"]*\\barticle-body\\b[^\"]*"[^>]*>([\\s\\S]*?)<\\/article>/i)?.[1] || "";';
+if (source.includes(legacyArticleBodyParser)) source = source.replace(legacyArticleBodyParser, currentArticleBodyParser);
+else if (!source.includes(currentArticleBodyParser)) throw new Error("Editorial SEO gate: article-body parser changed; update the compatibility patch");
+
+// Specialist v7 intentionally removes visible FAQ panels and therefore must
+// not publish FAQPage schema. The dedicated v7 validator enforces this match.
+const legacyFaqGate = '  if (!rewrittenNews && !pressStory && !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing FAQ schema`);';
+const specialistV7FaqGate = '  if (!rewrittenNews && !pressStory && !/article-body--specialist-v7/.test(html) && !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing FAQ schema`);';
+if (source.includes(legacyFaqGate)) source = source.replace(legacyFaqGate, specialistV7FaqGate);
+else if (!source.includes(specialistV7FaqGate)) throw new Error("Editorial SEO gate: FAQ gate changed; update the compatibility patch");
+
 const legacyPublicSourceLinkGate = '    if (!sourcePolicyArticle?.hideSourceUrlsInSchema && sourceNote && !/<a\\b/i.test(sourceNote)) errors.push(`${prefix}newsroom item is missing its concise linked source note`);';
 const newsroomV3PlainSourceGate = '    if (!/article-body--journalistic-v3/.test(html) && !sourcePolicyArticle?.hideSourceUrlsInSchema && sourceNote && !/<a\\b/i.test(sourceNote)) errors.push(`${prefix}newsroom item is missing its concise linked source note`);';
 if (source.includes(legacyPublicSourceLinkGate)) source = source.replace(legacyPublicSourceLinkGate, newsroomV3PlainSourceGate);
@@ -117,6 +132,8 @@ try {
     newsroomV3Detected: true,
     newsroomV3PlainTextSources: true,
     editorialProseV4WithoutSeoNarration: true,
+    specialistV7ArticleParserCompatible: true,
+    specialistV7FaqSchemaMatchesVisibleContent: true,
     currentModularDeliveryValidatedSeparately: true,
     curatedSearchIndexValidatedWithoutLegacyFullSitemapRequirement: true,
     socialSupportExcludedFromSalaryFloorCheck: true,
