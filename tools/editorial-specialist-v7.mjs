@@ -18,6 +18,10 @@ function cleanText(value = "") {
   return String(value)
     .replace(/20–25 triệu đồng\/tháng khi người lao động hoàn thành định mức(?=[;,.])/giu,
       "20–25 triệu đồng/tháng khi người lao động hoàn thành định mức lao động")
+    .replace(/Năm 2025, TKV có 13\.507 thợ lò đạt tổng thu nhập trên 300 triệu đồng\/người, tương đương 57% lực lượng thợ lò; bốn công nhân/giu,
+      "Năm 2025, TKV có 13.507 thợ lò đạt tổng thu nhập trên 300 triệu đồng/người, chiếm 57% lực lượng và tăng 16,5% so với năm trước; bốn công nhân")
+    .replace(/phụ thuộc đơn vị, vị trí, sức khỏe và tay nghề/giu,
+      "phụ thuộc đơn vị tiếp nhận, vị trí, sức khỏe và tay nghề")
     .replace(/nhu cầu nhân lực không chỉ nằm ở khai thác trực tiếp mà còn trải sang/giu,
       "nhu cầu nhân lực trải từ khai thác trực tiếp sang")
     .replace(/Sự thay đổi lớn nhất của mỏ hầm lò không nằm ở việc có thêm máy móc/giu,
