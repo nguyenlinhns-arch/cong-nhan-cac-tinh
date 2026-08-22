@@ -20,7 +20,7 @@ const directReplacements = [
   [/Các hội nghị ngày 20 và 22\/01\/2026 ký quy chế phối hợp cho giai đoạn 2026–2030\./giu, "Các hội nghị ngày 20 và 22/01/2026 ký quy chế phối hợp cho giai đoạn 2026–2030, đồng thời phân định trách nhiệm của từng bên trong quá trình triển khai."],
   [/Sau thống kê đầu kỳ, hội nghị đặt mục tiêu tuyển 60–100 người trong năm 2024\./giu, "Sau thống kê đầu kỳ, hội nghị đặt mục tiêu tuyển 60–100 người trong năm 2024. Kết quả cần được theo dõi tới số người nhập học và duy trì việc học."],
   [/Tổng 121 người cho thấy quy mô chưa lớn nhưng duy trì liên tục qua nhiều năm\./giu, "Tổng 121 người cho thấy quy mô chưa lớn nhưng được duy trì qua nhiều năm. Ý nghĩa của con số nằm ở khả năng đưa người học tới giai đoạn việc làm."],
-  [/Tổng kinh phí quà khen thưởng là 534,2 triệu đồng\./giu, "Tổng kinh phí quà khen thưởng là 534,2 triệu đồng. Khoản chi phản ánh quy mô tuyên dương trên toàn Công ty."],
+  [/Tổng kinh phí quà khen thưởng là 534,2 triệu đồng\./giu, "Tổng kinh phí quà khen thưởng là 534,2 triệu đồng, phản ánh quy mô tuyên dương được triển khai trên toàn Công ty trong năm học 2025–2026."],
   [/Việc tách rõ hai mốc giúp người đọc không hiểu sai quy mô\./giu, "Việc tách rõ hai mốc giúp người đọc hiểu đúng quy mô: một mốc là số người, mốc còn lại là tổng số ngày nghỉ dưỡng."],
   [/Điểm đáng chú ý là\s*/giu, ""],
   [/Đáng chú ý,?\s*/giu, ""],
