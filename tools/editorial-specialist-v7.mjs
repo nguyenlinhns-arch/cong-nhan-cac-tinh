@@ -22,6 +22,14 @@ function cleanText(value = "") {
       "Năm 2025, TKV có 13.507 thợ lò đạt tổng thu nhập trên 300 triệu đồng/người, chiếm 57% lực lượng và tăng 16,5% so với năm trước; bốn công nhân")
     .replace(/phụ thuộc đơn vị, vị trí, sức khỏe và tay nghề/giu,
       "phụ thuộc đơn vị tiếp nhận, vị trí, sức khỏe và tay nghề")
+    .replace(/Quy trình hồ sơ hợp lý bắt đầu sau bước kiểm tra điều kiện/giu,
+      "Với câu hỏi hồ sơ học nghề mỏ cần gì, quy trình hợp lý bắt đầu sau bước kiểm tra điều kiện")
+    .replace(/Mưa lớn tác động đồng thời tới mặt tầng, đường vận tải, bãi thải, điện, thoát nước và khu vực hầm lò/giu,
+      "An toàn mỏ mùa mưa bão 2026 đặt ra yêu cầu kiểm soát đồng thời mặt tầng, đường vận tải, bãi thải, điện, thoát nước và khu vực hầm lò")
+    .replace(/Đào tạo an toàn bắt đầu từ việc rất cụ thể/giu,
+      "Đào tạo an toàn trước khi vào lò bắt đầu từ những việc rất cụ thể")
+    .replace(/Quy mô hội thi cho thấy tay nghề trong ngành Than được nhìn bằng năng lực có thể quan sát và kiểm chứng/giu,
+      "Tay nghề thợ mỏ trong thời kỳ mỏ thông minh được nhìn bằng năng lực có thể quan sát và kiểm chứng qua quy mô hội thi")
     .replace(/nhu cầu nhân lực không chỉ nằm ở khai thác trực tiếp mà còn trải sang/giu,
       "nhu cầu nhân lực trải từ khai thác trực tiếp sang")
     .replace(/Sự thay đổi lớn nhất của mỏ hầm lò không nằm ở việc có thêm máy móc/giu,
