@@ -72,6 +72,7 @@ function renderSpecialistBody(existingBody, v4, v6) {
   const openingTag = existingBody.match(/<article\b[^>]*>/i)?.[0] || '<article class="article-body">';
   const articleOpen = addArticleClass(openingTag, "article-body--specialist-v6");
   const cover = extract(existingBody, /<figure\b[^>]*class="[^"]*\barticle-cover\b[^"]*"[^>]*>[\s\S]*?<\/figure>/i);
+  const galleries = [...existingBody.matchAll(/<div\b[^>]*class="[^"]*\barticle-inline-gallery\b[^"]*"[^>]*>[\s\S]*?<\/div>/gi)].map((match) => match[0]);
   const nav = extract(existingBody, /<nav\b[^>]*class="[^"]*\barticle-nav\b[^"]*"[^>]*>[\s\S]*?<\/nav>/i);
   const apply = extract(existingBody, /<section\b[^>]*class="[^"]*\barticle-apply\b[^"]*"[^>]*>[\s\S]*?<\/section>/i);
   const share = extract(existingBody, /<section\b[^>]*class="[^"]*\barticle-share-panel\b[^"]*"[^>]*>[\s\S]*?<\/section>/i);
@@ -82,10 +83,11 @@ function renderSpecialistBody(existingBody, v4, v6) {
     `<h2>${escapeHtml(v6.heading1)}</h2>`,
     `<p>${escapeHtml(v4.evidence)}</p>`,
     `<p>${escapeHtml(v6.analysis[0])}</p>`,
+    galleries.join("\n"),
     `<h2>${escapeHtml(v6.heading2)}</h2>`,
     `<p>${escapeHtml(v6.analysis[1])}</p>`,
     `<p class="article-conclusion specialist-v6__ending">${escapeHtml(v4.conclusion)}</p>`,
-  ].join("\n");
+  ].filter(Boolean).join("\n");
   const extras = [source, nav, apply, share].filter(Boolean).join("\n");
   return `${articleOpen}\n${cover ? `${cover}\n` : ""}<!-- specialist-v6:start -->\n<div class="specialist-v6__copy">\n${paragraphs}\n</div>\n<!-- specialist-v6:end -->\n${extras}\n</article>`;
 }
