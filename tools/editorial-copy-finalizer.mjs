@@ -25,7 +25,10 @@ function finishCopy(html) {
     .replace(/Bài được Nguyễn Tử Linh · Biên tập và chịu trách nhiệm nội dung/gi, "Bài do Nguyễn Tử Linh biên tập")
     .replace(/Bài do Nguyễn Tử Linh · Biên tập và chịu trách nhiệm nội dung/gi, "Bài do Nguyễn Tử Linh biên tập")
     .replace(/\bBài viết này được biên soạn\b/gi, "Bài viết được biên tập")
-    .replace(/\bNội dung được tổng hợp lại\b/gi, "Nội dung được biên tập lại");
+    .replace(/\bNội dung được tổng hợp lại\b/gi, "Nội dung được biên tập lại")
+    .replace(/<p\s+class="article-seo-line">[\s\S]*?<\/p>/gi, "")
+    .replace(/<p\s+class="keyword-summary">[\s\S]*?<\/p>/gi, "")
+    .replace(/LAN TỎA THÔNG TIN ĐÚNG NGUỒN/gi, "CHIA SẺ BÀI VIẾT");
 }
 
 for (const directory of ["tin-nganh-than", "bai-viet", "chuyen-nguoi-tho"]) {
