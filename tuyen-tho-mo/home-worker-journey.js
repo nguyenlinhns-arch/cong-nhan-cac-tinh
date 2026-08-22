@@ -12,11 +12,38 @@
 
   if (!document.querySelector("script[data-home-province-reels-loader]")) {
     const provinceReels = document.createElement("script");
-    provinceReels.src = "/home-province-reels.js?v=20260822-2";
+    provinceReels.src = "/home-province-reels.js?v=20260822-3";
     provinceReels.defer = true;
     provinceReels.dataset.homeProvinceReelsLoader = "";
     document.head.append(provinceReels);
   }
+
+  function useRealVideoThumbnails() {
+    const featuredFacade = document.querySelector("[data-featured-video-facade]");
+    const featuredImage = featuredFacade?.querySelector("img");
+    const featuredId = featuredFacade?.dataset.videoId;
+    if (featuredImage && featuredId) {
+      featuredImage.src = `https://i.ytimg.com/vi/${featuredId}/hqdefault.jpg`;
+      featuredImage.alt = "Ảnh đại diện video Hành trình lập nghiệp cùng nghề mỏ";
+      featuredImage.width = 480;
+      featuredImage.height = 360;
+      featuredImage.removeAttribute("referrerpolicy");
+    }
+
+    const story = document.querySelector(".home-proof__story");
+    if (!story || story.dataset.videoThumbnail === "facebook") return;
+    const article = document.createElement("article");
+    article.className = story.className;
+    article.dataset.videoThumbnail = "facebook";
+    article.innerHTML = `
+      <div class="home-proof__story-frame">
+        <iframe title="Từ Ia RDeh đến vùng mỏ Quảng Ninh" src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F988978737487363%2F&amp;show_text=false&amp;width=500" width="500" height="889" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <span><small>HÀNH TRÌNH THEO TỈNH</small><strong>Từ quê nhà đến vùng mỏ</strong><a href="#hanh-trinh-dia-phuong"><b>Xem hai video Gia Lai và Quảng Ngãi →</b></a></span>`;
+    story.replaceWith(article);
+  }
+
+  useRealVideoThumbnails();
 
   const track = (event, payload = {}) => {
     window.dataLayer = window.dataLayer || [];
