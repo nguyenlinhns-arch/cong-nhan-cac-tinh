@@ -63,14 +63,14 @@ for (const file of files) {
     'article-body--newspaper-v6',
   ]) if (!html.includes(marker)) errors.push(`${relative}: thiếu ${marker}`);
 
-  if (html.includes('class="professional-news-copy')) {
+  const marked = html.match(/<!-- newsroom-copy-v3:start -->\s*<div class="professional-news-copy[^"]*">([\s\S]*?)<\/div>\s*<!-- newsroom-copy-v3:end -->/i)?.[1] || "";
+  if (marked) {
     stats.news += 1;
-    const copy = html.match(/<div class="professional-news-copy[^"]*">([\s\S]*?)<\/div>\s*<p class="article-source-note"/i)?.[1] || "";
-    const paragraphs = [...copy.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)].map((match) => visible(match[1])).filter(Boolean);
+    const paragraphs = [...marked.matchAll(/<p\b(?![^>]*article-source-note)[^>]*>([\s\S]*?)<\/p>/gi)].map((match) => visible(match[1])).filter(Boolean);
     if (paragraphs.length < 5) errors.push(`${relative}: thân bài báo chỉ có ${paragraphs.length} đoạn`);
-    const headings = [...copy.matchAll(/<h2>[\s\S]*?<\/h2>/gi)].length;
+    const headings = [...marked.matchAll(/<h2>[\s\S]*?<\/h2>/gi)].length;
     if (headings > 3) errors.push(`${relative}: còn ${headings} tiêu đề phụ; tối đa 3`);
-    if (/professional-news-faq/i.test(copy)) errors.push(`${relative}: FAQ còn nằm trong thân bài báo`);
+    if (/professional-news-faq/i.test(marked)) errors.push(`${relative}: FAQ còn nằm trong thân bài báo`);
     let duplicate = false;
     for (let left = 0; left < paragraphs.length && !duplicate; left += 1) {
       for (let right = left + 1; right < paragraphs.length; right += 1) {
@@ -87,7 +87,7 @@ for (const file of files) {
   const sourceNote = html.match(/<p class="article-source-note">([\s\S]*?)<\/p>/i)?.[1] || "";
   if (sourceNote) {
     stats.sourceNotes += 1;
-    if (!sourceNote.includes("Nguồn tư liệu:")) errors.push(`${relative}: nguồn chưa dùng nhãn Nguồn tư liệu`);
+    if (!sourceNote.includes("<strong>Nguồn:</strong>")) errors.push(`${relative}: nguồn chưa dùng nhãn Nguồn:`);
     if (!visible(sourceNote).includes("Nguyễn Tử Linh")) errors.push(`${relative}: thiếu trách nhiệm biên tập ở cuối bài`);
   }
   if (/Bài được Nguyễn Tử Linh biên soạn từ/iu.test(visible(html))) errors.push(`${relative}: còn câu kể quy trình biên soạn`);
