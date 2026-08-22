@@ -4,7 +4,8 @@ import path from "node:path";
 const siteRoot = path.resolve("tuyen-tho-mo");
 const profiles = JSON.parse(fs.readFileSync(path.resolve("content", "editorial-specialist-v6.json"), "utf8"));
 const errors = [];
-const stats = {checked: 0, specialist: 0, faqSchemasRemoved: 0, proseOnly: 0};
+const stats = {checked: 0, specialist: 0, faqSchemasRemoved: 0, proseOnly: 0, cleanLanguage: 0};
+const formulaicPattern = /(?:không\s+chỉ[^.!?]{0,100}mà\s+còn|đáng\s+chú\s+ý(?:\s+là)?|đây\s+không\s+chỉ\s+là|trọng\s+tâm\s+không\s+chỉ\s+là|với\s+từ\s+khóa|người\s+đọc\s+vì\s+thế\s+tìm\s+thấy|có\s+thể\s+thấy\s+rằng)/iu;
 
 function visible(value = "") {
   return String(value)
@@ -31,6 +32,7 @@ for (const [slug, profile] of Object.entries(profiles)) {
   const html = fs.readFileSync(file, "utf8");
   const article = html.match(/<article\b[^>]*class="[^"]*\barticle-body\b[^"]*"[^>]*>[\s\S]*?<\/article>/i)?.[0] || "";
   const copy = article.match(/<!-- specialist-v6:start -->([\s\S]*?)<!-- specialist-v6:end -->/i)?.[1] || "";
+  const heroLead = html.match(/<p\b[^>]*class="[^"]*\blead\b[^"]*"[^>]*>([\s\S]*?)<\/p>/i)?.[1] || "";
 
   if (!article.includes("article-body--specialist-v6")) errors.push(`${slug}: thiếu lớp article-body--specialist-v6`);
   else stats.specialist += 1;
@@ -50,6 +52,10 @@ for (const [slug, profile] of Object.entries(profiles)) {
   const residue = bannedBlocks.filter((marker) => new RegExp(`class="[^"]*\\b${marker}\\b`, "i").test(article));
   if (residue.length) errors.push(`${slug}: còn cấu trúc dashboard/SEO: ${residue.join(", ")}`);
   else stats.proseOnly += 1;
+
+  const readerCopy = `${visible(heroLead)} ${visible(copy)}`.trim();
+  if (formulaicPattern.test(readerCopy)) errors.push(`${slug}: phần người đọc thấy còn văn mẫu cần viết lại`);
+  else stats.cleanLanguage += 1;
 
   if (/"@type"\s*:\s*"FAQPage"/.test(html)) errors.push(`${slug}: còn FAQPage schema dù FAQ đã rời thân bài`);
   else stats.faqSchemasRemoved += 1;
