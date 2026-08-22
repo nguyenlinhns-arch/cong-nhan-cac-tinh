@@ -58,9 +58,10 @@ for (const file of editorialFiles) {
   if (!html.includes('/editorial-newsroom.css?v=1')) errors.push(`${relative}: thiếu stylesheet biên tập`);
   if (!html.includes('article-body--newsroom')) errors.push(`${relative}: thiếu lớp bài viết newsroom`);
   if (!html.includes('article-media-credit')) errors.push(`${relative}: thiếu nguồn ảnh`);
-  if (!html.includes('<strong>Nguồn tư liệu:</strong>') && !html.includes('class="article-source-note"')) {
-    errors.push(`${relative}: thiếu nguồn tư liệu hiển thị`);
-  }
+  const hasSource = html.includes('<strong>Nguồn:</strong>')
+    || html.includes('<strong>Nguồn tư liệu:</strong>')
+    || html.includes('class="article-source-note"');
+  if (!hasSource) errors.push(`${relative}: thiếu nguồn tư liệu hiển thị`);
   const text = visible(html);
   for (const pattern of banned) if (pattern.test(text)) errors.push(`${relative}: còn cụm máy móc ${pattern}`);
   newsroomArticles += 1;
