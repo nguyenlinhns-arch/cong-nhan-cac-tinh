@@ -33,11 +33,19 @@ function addArticleClass(tag, className) {
   });
 }
 
+function normalizeSourceParagraph(source = "") {
+  return String(source)
+    .replace(/<strong>Nguồn\s+tư\s+liệu:<\/strong>/i, "<strong>Nguồn:</strong>")
+    .replace(/<strong>Nguồn:<\/strong>\s*<strong>Nguồn:<\/strong>/i, "<strong>Nguồn:</strong>");
+}
+
 function cleanSourceFooter(body) {
   const footer = extract(body, /<div\b[^>]*class="[^"]*\barticle-source-footer\b[^"]*"[^>]*>[\s\S]*?<\/div>/i);
-  if (!footer) return "";
-  const currentFacts = extract(footer, /<p\b[^>]*class="[^"]*\barticle-current-facts\b[^"]*"[^>]*>[\s\S]*?<\/p>/i);
-  const source = extract(footer, /<p(?:\s[^>]*)?>\s*<strong>Nguồn:<\/strong>[\s\S]*?<\/p>/i);
+  const currentFacts = extract(footer || body, /<p\b[^>]*class="[^"]*\barticle-current-facts\b[^"]*"[^>]*>[\s\S]*?<\/p>/i);
+  let source = extract(footer || body, /<p(?:\s[^>]*)?>\s*<strong>Nguồn(?:\s+tư\s+liệu)?:<\/strong>[\s\S]*?<\/p>/i);
+  if (!source) source = extract(body, /<p\b[^>]*class="[^"]*\barticle-source-note\b[^"]*"[^>]*>[\s\S]*?<\/p>/i);
+  source = normalizeSourceParagraph(source);
+  if (!source) return "";
   return `<div class="article-source-footer article-source-footer--specialist-v6">${currentFacts}${source}</div>`;
 }
 
