@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-08-21",
+  "updated_at": "2026-08-22",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -1078,6 +1078,90 @@
         ["/giai-dap-nghe-mo/lo-trinh-di-lam-mo-than-quang-ninh-tu-dang-ky-den-nhan-viec/", "Xem toàn bộ lộ trình từ đăng ký đến nhận việc"],
         ["/thong-tin-tuyen-tho-mo/", "Đối chiếu chính sách tuyển đang áp dụng"],
         ["/kiem-tra-dieu-kien/", "Kiểm tra điều kiện trước khi nhập học"]
+      ]
+    },
+    {
+      "publish_on": "2026-08-22",
+      "slug": "dang-ky-hoc-nghe-mo-ban-dau-co-can-gui-anh-cccd-khong",
+      "title": "Đăng ký học nghề mỏ ban đầu có cần gửi ảnh CCCD không?",
+      "short_title": "Đăng ký ban đầu có cần gửi ảnh CCCD không",
+      "meta": "Đăng ký học nghề mỏ ban đầu chưa cần gửi ảnh CCCD hay giấy tờ. Xem thông tin cần khai, lúc mang hồ sơ gốc và cách đăng ký an toàn.",
+      "eyebrow": "GIẤY TỜ Ở BƯỚC ĐĂNG KÝ HỌC NGHỀ MỎ",
+      "primary_query": "đăng ký học nghề mỏ ban đầu có cần gửi ảnh CCCD không",
+      "query_variants": [
+        "đăng ký học nghề mỏ có cần ảnh căn cước không",
+        "gửi hồ sơ học nghề mỏ qua mạng cần gì",
+        "đăng ký nghề mỏ ban đầu cần giấy tờ gì"
+      ],
+      "direct_answer": "Không. Đăng ký học nghề mỏ ban đầu hiện chưa yêu cầu nộp hoặc gửi ảnh CCCD, giấy khai sinh hay bằng cấp. Người lao động chỉ cần cung cấp thông tin cơ bản để kiểm tra điều kiện sơ bộ. Hồ sơ gốc được chuẩn bị và mang theo sau khi đã được xác nhận phù hợp, nhận đúng lịch cùng hướng dẫn nhập học; không gửi giấy tờ gốc qua bưu điện.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-hoc-sinh-khe-cham-tham-quan-thuc-te.webp",
+        "alt": "Nhóm học sinh nghề mỏ mặc bảo hộ xanh và đội mũ trong chuyến tham quan thực tế tại Than Khe Chàm",
+        "credit": "Ảnh: Vinacomin · học sinh nghề mỏ tham quan thực tế tại Than Khe Chàm"
+      },
+      "intro": [
+        "Nhiều người lao động vừa thấy thông tin tuyển đã được đề nghị chụp hai mặt căn cước, bằng cấp hoặc giấy khai sinh để gửi qua mạng. Với quy trình đang áp dụng trên website này, việc đó chưa cần thiết ở bước đầu. Đăng ký ban đầu chỉ nhằm ghi nhận nhu cầu và đối chiếu sơ bộ những điều kiện thiết yếu trước khi người đăng ký mất thời gian đi lại hoặc chuẩn bị cả bộ hồ sơ.",
+        "Tách hai giai đoạn giúp người lao động dễ làm đúng hơn: trước hết khai thông tin cơ bản trên biểu mẫu để người phụ trách kiểm tra; sau khi phù hợp và có lịch xác nhận mới chuẩn bị hồ sơ nhập học. CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có là giấy tờ cần mang theo ở bước làm thủ tục theo hướng dẫn, không phải ảnh bắt buộc phải tải lên khi mới tìm hiểu. Nếu chưa có bằng cấp, người lao động vẫn có thể đăng ký để được hướng dẫn trường hợp cụ thể."
+      ],
+      "key_points": [
+        ["Chưa cần gửi ảnh CCCD", "Biểu mẫu đăng ký ban đầu không yêu cầu tải ảnh CCCD, giấy khai sinh hoặc bằng cấp."],
+        ["Chỉ khai thông tin cơ bản", "Cung cấp đúng thông tin để đối chiếu tuổi, thể lực, sức khỏe, nơi ở và nhu cầu nghề nghiệp."],
+        ["Mang hồ sơ khi có lịch", "Chỉ chuẩn bị và mang giấy tờ theo hướng dẫn sau khi được xác nhận điều kiện sơ bộ."],
+        ["Không gửi giấy tờ gốc", "Không chuyển giấy tờ gốc qua bưu điện và không đi khi chưa nhận lịch được xác nhận."]
+      ],
+      "sections": [
+        {
+          "heading": "Đăng ký học nghề mỏ ban đầu có cần gửi ảnh CCCD không?",
+          "paragraphs": [
+            "Không. Nguồn thông tin tuyển dụng hiện hành quy định đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ. Người lao động có thể tự kiểm tra điều kiện rồi dùng biểu mẫu đăng ký để gửi các thông tin cơ bản. Website không có ô tải ảnh CCCD, giấy khai sinh, bằng cấp hoặc ảnh hồ sơ. Vì vậy, nếu mới ở bước tìm hiểu mà một tài khoản lạ yêu cầu gửi ngay toàn bộ ảnh giấy tờ, người đăng ký nên dừng lại và xác minh đúng đầu mối trước khi tiếp tục.",
+            "Việc chưa yêu cầu ảnh giấy tờ không có nghĩa hồ sơ nhập học được bỏ qua. Đây chỉ là cách sắp xếp đúng thứ tự: kiểm tra sơ bộ trước, chuẩn bị giấy tờ sau. Khi người phụ trách đã đối chiếu thông tin, xác nhận trường hợp phù hợp và thông báo lịch cụ thể, người đăng ký mới cần mang hồ sơ theo hướng dẫn để làm thủ tục. Cách này giảm việc gửi tài liệu cá nhân quá sớm và tránh chuẩn bị hoặc công chứng không cần thiết khi chưa biết mình có phù hợp hay không."
+          ]
+        },
+        {
+          "heading": "Bước đăng ký ban đầu cần cung cấp thông tin gì?",
+          "paragraphs": [
+            "Biểu mẫu hiện hành hỏi họ tên, số điện thoại, ngày sinh, tỉnh đang ở, chiều cao, cân nặng, tình trạng sức khỏe chung, trình độ học vấn và nghề quan tâm. Các trường này phục vụ việc liên hệ và đối chiếu sơ bộ với điều kiện tuyển đang áp dụng. Người đăng ký nên đo lại chiều cao, cân nặng, nhập đúng năm sinh và chọn thông tin học vấn đúng thực tế. Số điện thoại cần là số đang sử dụng để không bỏ lỡ cuộc gọi xác nhận.",
+            "Phần sức khỏe chỉ cần phản ánh tình trạng chung theo lựa chọn của biểu mẫu; không ghi bệnh án chi tiết, kết quả xét nghiệm hoặc thông tin riêng tư không được hỏi. Kiểm tra trực tuyến không thay thế khám sức khỏe chính thức. Nếu có vấn đề cần trao đổi riêng, người lao động có thể đề nghị người phụ trách hướng dẫn bước tiếp theo thay vì đưa nội dung dài vào ô thông tin. Không điền dữ liệu của người khác, không dùng giấy tờ mượn và không khai sai để vượt qua điều kiện sơ bộ."
+          ]
+        },
+        {
+          "heading": "Khi nào mới cần CCCD, giấy khai sinh và bằng cấp?",
+          "paragraphs": [
+            "Sau khi thông tin ban đầu được kiểm tra và người đăng ký nhận lịch nhập học đã xác nhận, hồ sơ hiện hành cần CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Người lao động nên đọc lại hướng dẫn cho đúng đợt, chuẩn bị giấy tờ rõ ràng và tự mang theo khi đến làm thủ tục. Không gửi giấy tờ gốc qua bưu điện. Nếu được yêu cầu bổ sung bản sao hoặc loại giấy tờ nào khác, cần hỏi rõ số lượng và thời điểm trước khi thực hiện.",
+            "Trường hợp chưa có bằng THPT không đồng nghĩa phải tự loại mình ngay. Nguồn chuẩn cho phép người chưa có bằng cấp đăng ký ban đầu để được hướng dẫn. Điều quan trọng là khai đúng trình độ hiện có, không chọn một mục cao hơn thực tế và không tự làm giấy tờ thay thế. Trang hồ sơ nhập học của website luôn là nơi đối chiếu danh mục đang áp dụng; bài này chỉ giải thích vì sao ảnh giấy tờ chưa phải yêu cầu ở lần đăng ký đầu tiên."
+          ]
+        },
+        {
+          "heading": "Cách nhận biết yêu cầu gửi giấy tờ quá sớm",
+          "paragraphs": [
+            "Một quy trình phù hợp phải cho người lao động biết rõ đang ở bước nào, ai là người xác nhận và mục đích của từng thông tin. Ở website này, biểu mẫu không tải tệp và không yêu cầu ảnh CCCD. Nếu có người chủ động nhắn từ một tài khoản chưa xác minh, thúc giục gửi hai mặt căn cước, yêu cầu chuyển tiền giữ chỗ hoặc hứa bỏ qua điều kiện tuyển, đó không phải bước được mô tả trong quy trình hiện hành. Người lao động nên giữ lại nội dung trao đổi và kiểm tra lại qua kênh liên hệ công khai trên website.",
+            "Không chụp giấy tờ cùng mã xác thực, thông tin tài khoản ngân hàng hoặc dữ liệu không liên quan đến hồ sơ tuyển. Cũng không đăng ảnh giấy tờ vào bình luận công khai. Khi thật sự cần đối chiếu hồ sơ tại buổi làm thủ tục, chỉ xuất trình cho đúng người tiếp nhận theo lịch. Mọi thay đổi về giấy tờ phải được thông báo rõ trong nguồn tuyển chính thức; một lời nhắn riêng lẻ không nên được coi là căn cứ thay đổi quy trình."
+          ]
+        },
+        {
+          "heading": "Làm đúng theo năm bước từ kiểm tra đến nhập học",
+          "items": [
+            "Mở trang kiểm tra điều kiện để tự đối chiếu tuổi, chiều cao, cân nặng và tình trạng sức khỏe sơ bộ.",
+            "Điền biểu mẫu đăng ký bằng thông tin thật; chưa tải hoặc gửi ảnh CCCD và các giấy tờ khác.",
+            "Chờ người phụ trách liên hệ, hỏi lại điểm chưa rõ và chỉ xác nhận kế hoạch khi đã có lịch cụ thể.",
+            "Đối chiếu trang hồ sơ nhập học, chuẩn bị CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có.",
+            "Tự mang hồ sơ tới đúng nơi, đúng thời gian đã được xác nhận; không gửi giấy tờ gốc từ xa và không di chuyển chỉ dựa trên lời nhắn chưa kiểm chứng."
+          ]
+        }
+      ],
+      "takeaway_title": "Đăng ký trước, hồ sơ mang theo sau khi có lịch",
+      "takeaway": "Bước đăng ký học nghề mỏ ban đầu chưa cần gửi ảnh CCCD hoặc giấy tờ. Hãy khai đúng thông tin cơ bản để kiểm tra điều kiện, chờ xác nhận rồi mới chuẩn bị hồ sơ theo lịch. CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có được mang theo khi làm thủ tục; không gửi giấy tờ gốc qua bưu điện, không gửi ảnh cho tài khoản chưa xác minh và không chuyển tiền để giữ chỗ.",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 quy định đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ; hồ sơ nhập học hiện gồm CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Người chưa có bằng cấp vẫn có thể đăng ký để được hướng dẫn.",
+      "faqs": [
+        ["Biểu mẫu đăng ký có chỗ tải ảnh CCCD không?", "Không. Biểu mẫu hiện hành chỉ thu thập thông tin cơ bản để liên hệ và kiểm tra điều kiện sơ bộ, không có trường tải ảnh giấy tờ."],
+        ["Khi nào tôi phải mang CCCD bản gốc?", "Sau khi được xác nhận điều kiện sơ bộ và nhận lịch hướng dẫn nhập học, hãy chuẩn bị rồi tự mang CCCD bản gốc cùng hồ sơ cần thiết đến đúng nơi."],
+        ["Chưa có bằng cấp 3 thì có được đăng ký ban đầu không?", "Có thể đăng ký để được hướng dẫn. Hãy khai đúng trình độ hiện có; hồ sơ dùng bằng THCS hoặc THPT nếu có theo hướng dẫn đang áp dụng."],
+        ["Có nên gửi giấy tờ cho người nhắn tin trước không?", "Không gửi khi chưa xác minh đúng đầu mối và mục đích. Quy trình ban đầu trên website không yêu cầu ảnh giấy tờ, không yêu cầu gửi giấy tờ gốc qua bưu điện."]
+      ],
+      "related": [
+        ["/kiem-tra-dieu-kien/", "Tự kiểm tra điều kiện trước khi đăng ký"],
+        ["/ho-so-nhap-hoc/", "Xem hồ sơ cần mang khi có lịch nhập học"],
+        ["/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=dang_ky_cccd#dang-ky", "Mở biểu mẫu đăng ký hiện hành"]
       ]
     }
   ]

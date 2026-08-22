@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-21T08:07:00+07:00",
+  "updated_at": "2026-08-22T07:41:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -99,6 +99,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/24AD525461D548313C69212EF3FB6DDFF555AD7C44D0B92495A0FA6E732302D1.png",
       "provider": "Vinacomin",
       "description": "Công nhân thợ lò Khe Chàm mặc bảo hộ xanh, đội mũ và đèn lò tại khu giao ca"
+    },
+    {
+      "asset": "vinacomin-hoc-sinh-khe-cham-tham-quan-thuc-te.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/than-khe-cham-to-chuc-cho-hoc-sinh-nghe-mo-ham-lo-tham-quan-thuc-te-tai-khai-truong-san-xuat",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/4B3054D32C6E4759B6D66DF81300A191101B472F5DE46DEE02F49E0013D55227.jpg",
+      "provider": "Vinacomin",
+      "description": "Nhóm học sinh nghề mỏ mặc bảo hộ xanh và đội mũ trong chuyến tham quan thực tế tại Than Khe Chàm"
     }
   ]
 }
