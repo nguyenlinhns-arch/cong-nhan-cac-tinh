@@ -5,7 +5,7 @@ const overrides = {
       "Đặc thù thi công đào lò tại nhiều đơn vị khiến Công ty phải đồng thời giải quyết tuyển mới, tái tuyển, giữ chân lao động, điều động giữa các diện sản xuất và điều kiện ăn ở cho người xa gia đình.",
       "Các mức 20,683 triệu đồng và 23,3 triệu đồng là số bình quân trong sáu tháng đầu năm 2026. Khi xem một vị trí cụ thể, người lao động vẫn cần hỏi rõ địa bàn thi công, ngày công, định mức, phụ cấp, nơi ở và cách tổ chức di chuyển."
     ],
-    takeaway: "Dữ liệu sáu tháng đầu năm cho thấy Công ty Xây lắp mỏ duy trì hơn 2.000 lao động và mức lương bình quân đáng chú ý. Độ ổn định của một vị trí cụ thể vẫn phải được đánh giá cùng địa bàn thi công, ngày công, định mức, chỗ ở và khả năng điều động."
+    takeaway: "Dữ liệu sáu tháng đầu năm cho thấy Công ty Xây lắp mỏ duy trì hơn 2.000 lao động; tiền lương bình quân toàn Công ty đạt 20,683 triệu đồng/người/tháng và riêng thợ lò đạt 23,3 triệu đồng. Độ ổn định của từng vị trí vẫn cần được đánh giá cùng địa bàn thi công, ngày công, định mức, chỗ ở và khả năng điều động."
   },
 
   "cong-ty-vat-tu-do-dau-cuu-thanh-nien-xung-phong-2026": {
@@ -51,7 +51,7 @@ const overrides = {
   "truong-cao-dang-tkv-thao-go-diem-nghen-tuyen-sinh-nghe-mo-2026": {
     lead: "Trường Cao đẳng TKV tuyển sinh nghề mỏ năm 2026 được đặt trong cả chuỗi từ tạo nguồn, đào tạo đến thực tập tại buổi làm việc ngày 19/08; trọng tâm là tháo gỡ khó khăn tuyển sinh và giữ người học đi hết lộ trình.",
     intro: [
-      "Buổi làm việc không chỉ nhìn vào số người đăng ký mà xem cả ba mắt xích: địa phương tạo nguồn và xác nhận thông tin ban đầu; Nhà trường tuyển sinh, đào tạo, quản lý; doanh nghiệp cung cấp nhu cầu nhân lực, môi trường thực tập và tiêu chuẩn tiếp nhận.",
+      "Buổi làm việc xem đồng thời ba mắt xích: địa phương tạo nguồn và xác nhận thông tin ban đầu; Nhà trường tuyển sinh, đào tạo, quản lý; doanh nghiệp cung cấp nhu cầu nhân lực, môi trường thực tập và tiêu chuẩn tiếp nhận.",
       "Vì vậy, người lao động cần được giải thích toàn bộ hành trình trước khi nhập học: điều kiện sức khỏe, nghề học, thời gian đào tạo, nơi thực tập, đầu mối quản lý và tiêu chuẩn chuyển sang doanh nghiệp. Một mắt xích thiếu thông tin có thể làm tăng nguy cơ bỏ học hoặc hiểu sai đầu ra."
     ]
   }
