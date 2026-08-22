@@ -277,7 +277,7 @@ html = html.replace("</head>", `  <script type="application/ld+json" data-home-r
 html = html.replace('"dateModified":"2026-08-03"', '"dateModified":"2026-08-04"');
 
 html = replaceOnce(html, "</head>", `  <style data-home-worker-journey>\n${journeyCss}\n  </style>\n</head>`, "Inline worker journey styles");
-html = replaceOnce(html, "</body>", '  <script src="/home-worker-journey.js?v=1" defer></script>\n</body>', "Worker journey behavior");
+html = replaceOnce(html, "</body>", '  <script src="/home-worker-journey.js?v=2" defer></script>\n</body>', "Worker journey behavior");
 
 const expectedOrder = [
   ['id="tu-kiem-tra"', "condition"],
@@ -297,7 +297,7 @@ for (const marker of [
   'data-journey-shortcut="proof"',
   'data-journey-shortcut="consultation"',
   'data-home-worker-journey',
-  '/home-worker-journey.js?v=1',
+  '/home-worker-journey.js?v=2',
   "Tuyển thợ mỏ, thợ lò tại Quảng Ninh",
   "og-cover-luong-25-trieu-v4.jpg",
   "lương 25 triệu mỗi tháng khi hoàn thành định mức lao động",
