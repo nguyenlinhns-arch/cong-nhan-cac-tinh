@@ -1,34 +1,47 @@
-name: Editorial continuous learning v5
+name: Editorial quality gate v5
 
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/editorial-continuous-learning-v4d.yml'
+      - 'content/editorial-*.md'
+      - 'content/editorial-prose-v4/**'
+      - 'tools/editorial-*.mjs'
+      - 'tools/journalistic-source-edit.mjs'
+      - 'tools/daily-community-articles*.mjs'
+      - 'tools/community-articles*.mjs'
+      - 'tools/curated-articles.mjs'
+      - 'tools/press-story-articles.mjs'
+      - 'tools/validate-editorial-*.mjs'
   push:
     branches: [main]
-    paths-ignore:
-      - 'tuyen-tho-mo/tin-nganh-than/**'
-      - 'tuyen-tho-mo/bai-viet/**'
-      - 'tuyen-tho-mo/chuyen-nguoi-tho/**'
-      - 'tuyen-tho-mo/giai-dap-nghe-mo/**'
-      - 'content/editorial-v4-*.json'
-      - 'content/editorial-v5-*.json'
+    paths:
+      - '.github/workflows/editorial-continuous-learning-v4d.yml'
+      - 'content/editorial-*.md'
+      - 'content/editorial-prose-v4/**'
+      - 'tools/editorial-*.mjs'
+      - 'tools/journalistic-source-edit.mjs'
+      - 'tools/daily-community-articles*.mjs'
+      - 'tools/community-articles*.mjs'
+      - 'tools/curated-articles.mjs'
+      - 'tools/press-story-articles.mjs'
+      - 'tools/validate-editorial-*.mjs'
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: editorial-continuous-learning-v5
+  group: editorial-quality-gate-v5-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  edit-validate-publish:
+  validate-editorial-quality:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Audit, edit and validate the editorial library
-        id: editorial
+      - name: Build editorial candidate in runner workspace
         shell: bash
         run: |
           mkdir -p content
@@ -39,61 +52,20 @@ jobs:
           node tools/editorial-auto-repair-v4.mjs > content/editorial-v4-repair-report.json
           node tools/editorial-copy-finalizer.mjs > content/editorial-v5-copy-finalizer-report.json
 
-          set +e
-          node tools/validate-editorial-source-v5.mjs > content/editorial-v5-source-validation.json
-          source_status=$?
-          node tools/validate-editorial-continuous-v4b.mjs > content/editorial-v5-rendered-validation.json
-          rendered_status=$?
-          set -e
-
-          validation_status=0
-          if [ "$source_status" != "0" ] || [ "$rendered_status" != "0" ]; then
-            validation_status=1
-          fi
-
-          echo "validation_status=$validation_status" >> "$GITHUB_OUTPUT"
-          cat content/editorial-v5-source-audit.json
-          cat content/editorial-v4-polish-report.json
-          cat content/editorial-v4-priority-report.json
-          cat content/editorial-v4-authority-report.json
-          cat content/editorial-v4-repair-report.json
-          cat content/editorial-v5-copy-finalizer-report.json
-          cat content/editorial-v5-source-validation.json
-          cat content/editorial-v5-rendered-validation.json
-
-      - name: Save the report when validation fails
-        if: steps.editorial.outputs.validation_status != '0'
+      - name: Validate source and rendered editorial quality
         shell: bash
         run: |
-          git config user.name "Thầy Linh Editorial Bot"
-          git config user.email "nguyenlinhns@gmail.com"
-          git add content/editorial-v4-*.json content/editorial-v5-*.json
-          git commit -m "Ghi nhận lỗi kiểm định vòng biên tập v5" || true
-          git fetch origin main
-          git rebase origin/main
-          git push origin HEAD:main
-          exit 1
+          node tools/validate-editorial-source-v5.mjs | tee content/editorial-v5-source-validation.json
+          node tools/validate-editorial-continuous-v4b.mjs | tee content/editorial-v5-rendered-validation.json
 
-      - name: Publish the edited article library
-        if: steps.editorial.outputs.validation_status == '0'
+      - name: Show audit summary
+        if: always()
         shell: bash
         run: |
-          git config user.name "Thầy Linh Editorial Bot"
-          git config user.email "nguyenlinhns@gmail.com"
-          git add \
-            content/editorial-v4-*.json \
-            content/editorial-v5-*.json \
-            tuyen-tho-mo/tin-nganh-than \
-            tuyen-tho-mo/bai-viet \
-            tuyen-tho-mo/chuyen-nguoi-tho \
-            tuyen-tho-mo/giai-dap-nghe-mo
-
-          if git diff --cached --quiet; then
-            echo "Không có thay đổi nội dung cần xuất bản."
-            exit 0
-          fi
-
-          git commit -m "Tiếp tục biên tập bài viết theo chuẩn báo chí chuyên môn v5"
-          git fetch origin main
-          git rebase origin/main
-          git push origin HEAD:main
+          echo '=== Source audit ==='
+          cat content/editorial-v5-source-audit.json || true
+          echo '=== Source validation ==='
+          cat content/editorial-v5-source-validation.json || true
+          echo '=== Rendered validation ==='
+          cat content/editorial-v5-rendered-validation.json || true
+          echo 'Editorial quality gate is read-only; it never commits or pushes generated files.'
