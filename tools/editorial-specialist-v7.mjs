@@ -18,6 +18,8 @@ function cleanText(value = "") {
   return String(value)
     .replace(/20–25 triệu đồng\/tháng khi người lao động hoàn thành định mức(?=[;,.])/giu,
       "20–25 triệu đồng/tháng khi người lao động hoàn thành định mức lao động")
+    .replace(/nhu cầu nhân lực không chỉ nằm ở khai thác trực tiếp mà còn trải sang/giu,
+      "nhu cầu nhân lực trải từ khai thác trực tiếp sang")
     .replace(/\bĐáng chú ý(?: là)?[,;:]?\s*/giu, "")
     .replace(/\bCó thể thấy rằng\b/giu, "Dữ liệu cho thấy")
     .replace(/\bĐiều này cho thấy\b/giu, "Dữ liệu cho thấy")
