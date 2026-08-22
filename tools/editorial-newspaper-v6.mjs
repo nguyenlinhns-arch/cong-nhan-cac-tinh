@@ -116,8 +116,8 @@ function cleanProfessionalCopy(copy) {
   });
 
   const seenSentences = [];
-  output = output.replace(/<p\b([^>]*)>([\s\S]*?)<\/p>/gi, (_full, attrs, body) => {
-    if (/professional-ending/i.test(attrs)) return `<p${attrs}>${body}</p>`;
+  output = output.replace(/<p\b([^>]*)>([\s\S]*?)<\/p>/gi, (full, attrs, body) => {
+    if (/professional-ending|article-source-note/i.test(attrs)) return full;
     const text = visible(body);
     if (!text) return "";
     const sentences = text.split(/(?<=[.!?])\s+/u).filter(Boolean);
@@ -153,20 +153,29 @@ function cleanProfessionalCopy(copy) {
 }
 
 function rewriteProfessionalCopy(html) {
-  const pattern = /(<div class="professional-news-copy[^"]*">)([\s\S]*?)(<\/div>\s*<p class="article-source-note")/i;
+  const pattern = /(<!-- newsroom-copy-v3:start -->\s*<div class="professional-news-copy[^"]*">)([\s\S]*?)(<\/div>\s*<!-- newsroom-copy-v3:end -->)/i;
   if (!pattern.test(html)) return html;
   stats.newsArticles += 1;
   return html.replace(pattern, (_match, start, copy, end) => `${start}${cleanProfessionalCopy(copy)}${end}`);
 }
 
 function normalizeSourceNote(html) {
-  return html
+  let output = html
+    .replace(/<strong>Nguồn tư liệu:<\/strong>/gi, "<strong>Nguồn:</strong>")
     .replace(/<p class="article-source-note">\s*Bài được Nguyễn Tử Linh biên soạn từ\s+([\s\S]*?),\s*đăng trên\s+([\s\S]*?)\.\s*<\/p>/gi,
-      '<p class="article-source-note"><strong>Nguồn tư liệu:</strong> $1, $2. <span>Biên tập và đối chiếu: Nguyễn Tử Linh.</span></p>')
+      '<p class="article-source-note"><strong>Nguồn:</strong> $1, $2. <span class="article-source-responsibility">Biên tập và đối chiếu: Nguyễn Tử Linh.</span></p>')
     .replace(/<p class="article-source-note">\s*Bài do Nguyễn Tử Linh biên tập từ\s+([\s\S]*?)\.\s*<\/p>/gi,
-      '<p class="article-source-note"><strong>Nguồn tư liệu:</strong> $1. <span>Biên tập và đối chiếu: Nguyễn Tử Linh.</span></p>')
-    .replace(/<p class="article-source-note">(?![\s\S]*?<strong>Nguồn tư liệu:<\/strong>)([\s\S]*?)<\/p>/gi,
-      '<p class="article-source-note"><strong>Nguồn tư liệu:</strong> $1 <span>Biên tập và đối chiếu: Nguyễn Tử Linh.</span></p>');
+      '<p class="article-source-note"><strong>Nguồn:</strong> $1. <span class="article-source-responsibility">Biên tập và đối chiếu: Nguyễn Tử Linh.</span></p>');
+
+  output = output.replace(/<p class="article-source-note">([\s\S]*?)<\/p>/gi, (full, body) => {
+    let next = body;
+    if (!/<strong>Nguồn:<\/strong>/i.test(next)) next = `<strong>Nguồn:</strong> ${next}`;
+    if (!/Nguyễn Tử Linh/i.test(visible(next))) {
+      next += ' <span class="article-source-responsibility">Biên tập và đối chiếu: Nguyễn Tử Linh.</span>';
+    }
+    return `<p class="article-source-note">${next}</p>`;
+  });
+  return output;
 }
 
 function normalizeByline(html) {
