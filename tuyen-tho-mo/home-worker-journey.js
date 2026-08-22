@@ -31,16 +31,35 @@
     }
 
     const story = document.querySelector(".home-proof__story");
-    if (!story || story.dataset.videoThumbnail === "facebook") return;
+    if (!story || story.dataset.videoThumbnail === "youtube-dien-bien") return;
+    const videoId = "xW92UBKmWok";
+    const videoTitle = "Mùa A Vàng – Điện Biên, hành trình đổi đời tại vùng mỏ Quảng Ninh";
     const article = document.createElement("article");
     article.className = story.className;
-    article.dataset.videoThumbnail = "facebook";
+    article.dataset.videoThumbnail = "youtube-dien-bien";
     article.innerHTML = `
       <div class="home-proof__story-frame">
-        <iframe title="Từ Ia RDeh đến vùng mỏ Quảng Ninh" src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F988978737487363%2F&amp;show_text=false&amp;width=500" width="500" height="889" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <button class="home-video-facade" type="button" data-home-story-video aria-label="Phát video ${videoTitle}">
+          <img src="https://i.ytimg.com/vi/${videoId}/hqdefault.jpg" alt="Ảnh đại diện video Mùa A Vàng từ Điện Biên đến vùng mỏ Quảng Ninh" loading="lazy" decoding="async" width="480" height="360">
+          <span class="home-video-facade__play" aria-hidden="true">▶</span>
+          <span class="home-video-facade__label">Bấm để xem video</span>
+        </button>
       </div>
-      <span><small>HÀNH TRÌNH THEO TỈNH</small><strong>Từ quê nhà đến vùng mỏ</strong><a href="#hanh-trinh-dia-phuong"><b>Xem hai video Gia Lai và Quảng Ngãi →</b></a></span>`;
+      <span><small>CÂU CHUYỆN NGƯỜI THỢ</small><strong>Từ Điện Biên đến vùng mỏ Quảng Ninh</strong><a href="/viec-lam-nganh-than/dien-bien/"><b>Xem câu chuyện Mùa A Vàng →</b></a></span>`;
     story.replaceWith(article);
+
+    article.querySelector("[data-home-story-video]")?.addEventListener("click", (event) => {
+      const host = event.currentTarget.parentElement;
+      const frame = document.createElement("iframe");
+      frame.src = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&autoplay=1`;
+      frame.title = videoTitle;
+      frame.loading = "eager";
+      frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      frame.setAttribute("allowfullscreen", "");
+      host.replaceChildren(frame);
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "video_play", video_id: videoId, context: "home_worker_story", page_path: location.pathname });
+    });
   }
 
   useRealVideoThumbnails();
