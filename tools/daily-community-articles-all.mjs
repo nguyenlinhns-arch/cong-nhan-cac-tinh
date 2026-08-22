@@ -1,6 +1,7 @@
 import {applyJournalisticSourceEditing} from "./journalistic-source-edit.mjs";
 import {applyEditorialSourceOverridesV5} from "./editorial-source-overrides-v5.mjs";
 import {applyEditorialSourceOverridesV5b} from "./editorial-source-overrides-v5b.mjs";
+import {applyEditorialSourceOverridesV5c} from "./editorial-source-overrides-v5c.mjs";
 import {dailyCommunityArticles as dailyCommunityArticles20260803} from "./daily-community-articles.mjs";
 import {dailyCommunityArticles20260804} from "./daily-community-articles-20260804.mjs";
 import {dailyCommunityArticles20260809} from "./daily-community-articles-20260809.mjs";
@@ -23,4 +24,7 @@ export const dailyCommunityArticles = [
   ...dailyCommunityArticles20260814,
   ...dailyCommunityArticles20260821,
   ...dailyCommunityArticles20260822,
-].map(applyJournalisticSourceEditing).map(applyEditorialSourceOverridesV5).map(applyEditorialSourceOverridesV5b);
+].map(applyJournalisticSourceEditing)
+  .map(applyEditorialSourceOverridesV5)
+  .map(applyEditorialSourceOverridesV5b)
+  .map(applyEditorialSourceOverridesV5c);
