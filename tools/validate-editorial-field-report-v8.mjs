@@ -70,9 +70,13 @@ for (const [slug, report] of Object.entries(reports)) {
 
   const lead = visible(section.match(/class="editorial-field-report-v8__lead"[^>]*>([\s\S]*?)<\/p>/i)?.[1] || "");
   if (words(lead) < 35 || words(lead) > 90) errors.push(`${slug}: sapô hiện trường dài ${words(lead)} từ`);
-  for (const paragraph of paragraphs.filter((paragraph) => !paragraph.startsWith("Đọc bài trước") && !paragraph.startsWith("Tư liệu:"))) {
-    if (words(paragraph) < 18) errors.push(`${slug}: còn đoạn quá ngắn ${words(paragraph)} từ`);
-    if (words(paragraph) > 125) errors.push(`${slug}: còn đoạn quá dài ${words(paragraph)} từ`);
+
+  const prose = section.match(/<article\b[^>]*class="[^"]*editorial-field-report-v8__prose[^"]*"[^>]*>([\s\S]*?)<\/article>/i)?.[1] || "";
+  const proseParagraphs = [...prose.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)].map((match) => visible(match[1])).filter(Boolean);
+  if (proseParagraphs.length < 7 || proseParagraphs.length > 8) errors.push(`${slug}: phần văn xuôi có ${proseParagraphs.length} đoạn, cần 7–8`);
+  for (const paragraph of proseParagraphs) {
+    if (words(paragraph) < 18) errors.push(`${slug}: còn đoạn văn xuôi quá ngắn ${words(paragraph)} từ`);
+    if (words(paragraph) > 125) errors.push(`${slug}: còn đoạn văn xuôi quá dài ${words(paragraph)} từ`);
   }
 
   const triggered = banned.filter((patternItem) => patternItem.test(text));
