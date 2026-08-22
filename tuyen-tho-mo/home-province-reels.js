@@ -7,7 +7,7 @@
   if (!document.querySelector("link[data-home-province-reels-css]")) {
     const css = document.createElement("link");
     css.rel = "stylesheet";
-    css.href = "/home-province-reels.css?v=20260822-1";
+    css.href = "/home-province-reels.css?v=20260822-2";
     css.dataset.homeProvinceReelsCss = "";
     document.head.append(css);
   }
@@ -77,6 +77,29 @@
     </div>`;
 
   proof.insertAdjacentElement("afterend", section);
+
+  if (!document.querySelector("script[data-home-province-reels-schema]")) {
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.dataset.homeProvinceReelsSchema = "";
+    schema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": reels.map((reel, index) => ({
+        "@type": "VideoObject",
+        "@id": `https://thaylinhtuyenthomo.vn/#hanh-trinh-dia-phuong-video-${index + 1}`,
+        name: reel.title,
+        description: reel.description,
+        contentUrl: reel.url,
+        inLanguage: "vi-VN",
+        author: { "@id": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/#person" },
+      })),
+    });
+    document.head.append(schema);
+  }
+
+  if (location.hash === "#hanh-trinh-dia-phuong") {
+    requestAnimationFrame(() => section.scrollIntoView({ block: "start" }));
+  }
 
   const track = (event, payload = {}) => {
     window.dataLayer = window.dataLayer || [];
