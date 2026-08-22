@@ -41,3 +41,6 @@ manifest.discoveryPriority=["/recruitment-current.json","/thong-tin-tuyen-tho-mo
 manifest.freshnessPolicy={currentRecruitmentWinsOverEditorial:true,preferNewerEffectiveDate:true,editorialContentIsContextNotCurrentPolicy:true,localityPagesAreRecruitmentSourceNotJobLocation:true};
 fs.writeFileSync(manifestPath,`${JSON.stringify(manifest,null,2)}\n`);
 console.log(JSON.stringify({status:"polished",llms:path.relative(process.cwd(),llmsPath),manifest:path.relative(process.cwd(),manifestPath),discoveryEndpoints:Object.keys(manifest.discovery).length,prioritySources:manifest.discoveryPriority.length},null,2));
+
+await import("./editorial-newsroom-pass.mjs");
+await import("./validate-editorial-newsroom.mjs");
