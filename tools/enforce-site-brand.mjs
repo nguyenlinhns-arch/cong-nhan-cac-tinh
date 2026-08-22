@@ -80,6 +80,7 @@ console.log(`${CHECK_ONLY ? "Validated" : "Updated"} the shared Thầy Linh – 
 if (!CHECK_ONLY) {
   await import("./editorial-newsroom-pass.mjs");
   await import("./editorial-story-rewrite.mjs");
+  await import("./editorial-faq-restore.mjs");
   await import("./editorial-image-dimensions-guard.mjs");
   await import("./editorial-daily-depth-guard.mjs");
   await import("./editorial-copy-finalizer.mjs");
