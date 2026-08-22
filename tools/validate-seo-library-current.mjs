@@ -66,12 +66,19 @@ const currentArticleBodyParser = '  const articleBody = html.match(/<article\\b[
 if (source.includes(legacyArticleBodyParser)) source = source.replace(legacyArticleBodyParser, currentArticleBodyParser);
 else if (!source.includes(currentArticleBodyParser)) throw new Error("Editorial SEO gate: article-body parser changed; update the compatibility patch");
 
-// Specialist v7 intentionally removes visible FAQ panels and therefore must
-// not publish FAQPage schema. The dedicated v7 validator enforces this match.
+// FAQ requirements have existed in more than one legacy compatibility form.
+// Normalize whichever version is present to the current semantic rule: only a
+// page that still exposes a visible FAQ block must publish FAQPage schema.
 const legacyFaqGate = '  if (!rewrittenNews && !pressStory && !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing FAQ schema`);';
-const specialistV7FaqGate = '  if (!rewrittenNews && !pressStory && !/article-body--specialist-v7/.test(html) && !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing FAQ schema`);';
-if (source.includes(legacyFaqGate)) source = source.replace(legacyFaqGate, specialistV7FaqGate);
-else if (!source.includes(specialistV7FaqGate)) throw new Error("Editorial SEO gate: FAQ gate changed; update the compatibility patch");
+const specialistV7FaqGate = '  if (!rewrittenNews && !pressStory && /class="[^\"]*\\b(?:faq-list|faq-item|professional-news-faq)\\b/i.test(articleBody) && !/"@type":"FAQPage"/.test(html)) errors.push(`${prefix}missing FAQ schema`);';
+const faqErrorLinePattern = /^\s*if\s*\([^\n]*\)\s*errors\.push\(`\$\{prefix\}missing FAQ schema`\);\s*$/m;
+if (source.includes(legacyFaqGate)) {
+  source = source.replace(legacyFaqGate, specialistV7FaqGate);
+} else if (faqErrorLinePattern.test(source)) {
+  source = source.replace(faqErrorLinePattern, specialistV7FaqGate);
+} else if (!source.includes(specialistV7FaqGate)) {
+  throw new Error("Editorial SEO gate: FAQ gate changed; update the compatibility patch");
+}
 
 const legacyPublicSourceLinkGate = '    if (!sourcePolicyArticle?.hideSourceUrlsInSchema && sourceNote && !/<a\\b/i.test(sourceNote)) errors.push(`${prefix}newsroom item is missing its concise linked source note`);';
 const newsroomV3PlainSourceGate = '    if (!/article-body--journalistic-v3/.test(html) && !sourcePolicyArticle?.hideSourceUrlsInSchema && sourceNote && !/<a\\b/i.test(sourceNote)) errors.push(`${prefix}newsroom item is missing its concise linked source note`);';
