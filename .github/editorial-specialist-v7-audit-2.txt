@@ -1,0 +1,1 @@
+Temporary CI marker for specialist v7 validation round 2 on 2026-08-22.
