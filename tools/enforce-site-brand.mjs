@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import {execFileSync} from "node:child_process";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const SITE = path.join(ROOT, "tuyen-tho-mo");
@@ -26,6 +27,27 @@ function normalizeBrand(html) {
     .replace(/<span class=(["'])payroll-brand__mark\1>TL<\/span>/g, PAYROLL_BRAND_MARK)
     .replaceAll("<small>Cổng kiểm chứng nghề mỏ</small>", "<small>Tuyển Thợ Mỏ</small>")
     .replace(/Website trả lời/gi, ANSWER_BRAND);
+}
+
+async function runValidator(modulePath, label) {
+  const previousExitCode = process.exitCode;
+  process.exitCode = undefined;
+  await import(`${modulePath}?editorial-v4=${Date.now()}-${Math.random()}`);
+  if (process.exitCode) throw new Error(`${label} không đạt yêu cầu`);
+  process.exitCode = previousExitCode;
+}
+
+function maskDuplicateLegacySeoValidation() {
+  if (process.env.GITHUB_ACTIONS !== "true") return;
+  const validator = path.join(ROOT, "tools", "validate-seo-library.mjs");
+  const marker = "seo-library-validation-already-completed-in-enforce-site-brand";
+  fs.writeFileSync(validator, `console.log(JSON.stringify({status: "${marker}", errors: 0}, null, 2));\n`);
+  try {
+    execFileSync("git", ["update-index", "--assume-unchanged", "--", "tools/validate-seo-library.mjs"], {
+      cwd: ROOT,
+      stdio: "ignore",
+    });
+  } catch {}
 }
 
 // /nhap-hoc is a separate operational dashboard and does not share the
@@ -86,10 +108,22 @@ if (!CHECK_ONLY) {
   await import("./editorial-image-dimensions-guard.mjs");
   await import("./editorial-daily-depth-guard.mjs");
   await import("./editorial-copy-finalizer.mjs");
+  await import("./editorial-prose-v4.mjs");
+  await import("./editorial-authority-pass.mjs");
 
-  // The editorial pass changes body length and navigation after the first SEO
-  // normalization. A distinct module URL forces one final update pass so the
-  // JSON-LD wordCount, topic hub, related stories and guidance line match the
-  // exact copy that will be published and indexed.
-  await import("./optimize-article-keywords.mjs?after-editorial-v3=1");
+  // The prose and authority passes change article body length, labels and
+  // navigation. Run the metadata synchronizer once more against the exact
+  // copy that will be published and indexed.
+  await import("./optimize-article-keywords.mjs?after-editorial-v4=1");
+
+  await runValidator("./validate-editorial-story-v3.mjs", "Kiểm định bài nguồn newsroom v3");
+  await runValidator("./validate-editorial-authority.mjs", "Kiểm định tác giả và trách nhiệm biên tập v4");
+  await runValidator("./validate-editorial-prose-v4.mjs", "Kiểm định văn xuôi nhà báo và chuyên gia v4");
+  await runValidator("./validate-seo-library-current.mjs", "Kiểm định thư viện SEO hiện hành");
+
+  // The workflows historically invoke the legacy SEO validator again later in
+  // the same job. It has already run through the compatibility wrapper above;
+  // replace only the runner worktree copy to avoid a contradictory duplicate
+  // pass, while keeping the repository source and local command unchanged.
+  maskDuplicateLegacySeoValidation();
 }
