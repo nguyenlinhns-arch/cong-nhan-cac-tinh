@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import {dailyCommunityArticles} from "./daily-community-articles-all.mjs";
 
+await import("./validate-editorial-source-v5.mjs");
 await import("./generate-seo-library-base.mjs");
 
 const root = path.resolve("tuyen-tho-mo");
