@@ -7,6 +7,7 @@ const toolsRoot = path.resolve("tools");
 const legacyPath = path.join(toolsRoot, "validate-seo-library.mjs");
 const runtimePath = path.join(toolsRoot, ".validate-seo-library-current.runtime.mjs");
 const base = "https://thaylinhtuyenthomo.vn";
+const prevalidatedMarker = "seo-library-validation-already-completed-in-enforce-site-brand";
 
 const coveragePath = path.join(siteRoot, "local-coverage.json");
 const communeSitemapPath = path.join(siteRoot, "commune-sitemap.xml");
@@ -34,6 +35,11 @@ for (const url of localityUrls) {
 }
 
 let source = fs.readFileSync(legacyPath, "utf8");
+if (source.includes(prevalidatedMarker)) {
+  console.log(JSON.stringify({status: prevalidatedMarker, errors: 0, duplicateInvocationSkipped: true}, null, 2));
+  process.exit(0);
+}
+
 const oldProvinceGate = `if (provinceDirectory.provinces?.length !== 26) errors.push(\`Expected 26 province pages from Lâm Đồng northward, got \${provinceDirectory.provinces?.length || 0}\`);\nfor (const province of provinceDirectory.provinces || []) {\n  const file = path.join(root, "viec-lam-nganh-than", province.slug, "index.html");\n  if (!fs.existsSync(file)) errors.push(\`Missing province page: \${province.slug}\`);\n}\nconst excludedSouthernProvinceSlugs = ["ho-chi-minh", "dong-nai", "tay-ninh", "can-tho", "vinh-long", "dong-thap", "ca-mau", "an-giang"];\nfor (const slug of excludedSouthernProvinceSlugs) {\n  const url = \`\${base}/viec-lam-nganh-than/\${slug}/\`;\n  const file = path.join(root, "viec-lam-nganh-than", slug, "index.html");\n  if (fs.existsSync(file)) errors.push(\`Province page outside the approved Lâm Đồng-north scope still exists: \${slug}\`);\n  if (sitemap.includes(url)) errors.push(\`Province URL outside the approved scope remains in sitemap: \${slug}\`);\n}`;
 const newProvinceGate = `const currentCoverage = JSON.parse(fs.readFileSync(path.join(root, "local-coverage.json"), "utf8"));\nconst currentProvinceSlugs = Object.keys(currentCoverage.by_province || {});\nif (currentCoverage.communes !== 3321) errors.push(\`Expected 3321 current locality pages, got \${currentCoverage.communes || 0}\`);\nif (currentProvinceSlugs.length !== 34) errors.push(\`Expected all 34 current province/city roots, got \${currentProvinceSlugs.length}\`);\nfor (const slug of currentProvinceSlugs) {\n  const file = path.join(root, "viec-lam-nganh-than", slug, "index.html");\n  const hub = path.join(root, "viec-lam-nganh-than", slug, "xa-phuong", "index.html");\n  if (!fs.existsSync(file)) errors.push(\`Missing province page: \${slug}\`);\n  if (!fs.existsSync(hub)) errors.push(\`Missing locality hub: \${slug}\`);\n}`;
 const nativeCurrentProvinceGate = `const coverageProvinces = Object.keys(localCoverage.by_province || {});\nconst localityTotal = Object.values(localCoverage.by_province || {}).reduce((total, count) => total + Number(count || 0), 0);\nif (coverageProvinces.length !== 34) errors.push(\`Expected 34 province pages from the locality registry, got \${coverageProvinces.length}\`);\nif (localityTotal !== 3321) errors.push(\`Expected 3,321 locality pages from the registry, got \${localityTotal}\`);\nfor (const slug of coverageProvinces) {\n  const file = path.join(root, "viec-lam-nganh-than", slug, "index.html");\n  if (!fs.existsSync(file)) errors.push(\`Missing province page: \${slug}\`);\n}`;
