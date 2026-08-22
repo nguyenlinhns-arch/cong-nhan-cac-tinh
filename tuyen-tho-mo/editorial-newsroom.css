@@ -4,7 +4,7 @@
 .editorial-newsroom-page .article-hero--newsroom h1{max-width:950px;letter-spacing:-.035em;text-wrap:balance}
 .editorial-newsroom-page .article-hero--newsroom .lead{max-width:850px;color:#d7e5e7;font-size:clamp(18px,2vw,22px);line-height:1.62}
 .editorial-newsroom-page .article-layout{align-items:start}
-.editorial-newsroom-page .article-body--newsroom{font-family:var(--font-sans,Arial,sans-serif);color:var(--news-ink)}
+.editorial-newsroom-page .article-body--newsroom{font-family:var(--site-font-sans,var(--font-sans,Arial,sans-serif));color:var(--news-ink)}
 .editorial-newsroom-page .article-body--newsroom>p,
 .editorial-newsroom-page .article-body--newsroom .professional-news-copy>p,
 .editorial-newsroom-page .article-body--newsroom .editorial-section>p,
@@ -28,6 +28,7 @@
 .editorial-newsroom-page .source-story-note strong{color:#0b4c56}
 .editorial-newsroom-page .article-body--newsroom .article-apply{margin-top:46px}
 .editorial-newsroom-page .article-body--newsroom .professional-ending{max-width:800px;margin:38px auto 0;padding:22px 24px;border-top:1px solid #cbdcd8;border-bottom:1px solid #cbdcd8;color:#1c4d55;font-size:18px;font-weight:700;line-height:1.65}
+.editorial-newsroom-page .article-editor-note{max-width:780px;margin:28px auto!important;padding:14px 17px;border-left:4px solid #d96d15;border-radius:0 12px 12px 0;background:#fff7ed;color:#6b4a31!important;font-size:13px!important;line-height:1.62!important}
 
 /* Daily answer pages: answer first, then context, facts and source. */
 .daily-seo-article--newsroom{background:#fff;color:var(--news-ink)}
