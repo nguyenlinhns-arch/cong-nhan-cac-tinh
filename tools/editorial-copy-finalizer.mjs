@@ -5,7 +5,7 @@ import {execFileSync} from "node:child_process";
 const projectRoot = process.cwd();
 const siteRoot = path.resolve(projectRoot, "tuyen-tho-mo");
 const changed = [];
-const editorNote = '<p class="article-editor-note">Bài viết thuộc chuyên mục nghề mỏ và việc làm ngành Than, được biên tập để người lao động có thêm dữ liệu trước khi đưa ra quyết định.</p>';
+const editorNote = '<p class="article-seo-line">Bài viết thuộc chuyên mục nghề mỏ và việc làm ngành Than, được biên tập để người lao động có thêm dữ liệu trước khi đưa ra quyết định.</p>';
 
 function walk(directory, output = []) {
   if (!fs.existsSync(directory)) return output;
@@ -29,6 +29,8 @@ function finishCopy(html) {
     .replace(/Bài do Nguyễn Tử Linh · Biên tập và chịu trách nhiệm nội dung/gi, "Bài do Nguyễn Tử Linh biên tập")
     .replace(/\bBài viết này được biên soạn\b/gi, "Bài viết được biên tập")
     .replace(/\bNội dung được tổng hợp lại\b/gi, "Nội dung được biên tập lại")
+    .replace(/\bTheo\s+nguồn,?\s*/giu, "")
+    .replace(/\bNguồn\s+cho\s+biết(?:\s+rằng)?\s*/giu, "")
     .replace(/<p\s+class="article-seo-line">[\s\S]*?<\/p>/gi, editorNote)
     .replace(/<p\s+class="keyword-summary">[\s\S]*?<\/p>/gi, editorNote)
     .replace(/LAN TỎA THÔNG TIN ĐÚNG NGUỒN/gi, "CHIA SẺ BÀI VIẾT");

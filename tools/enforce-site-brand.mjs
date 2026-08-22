@@ -16,6 +16,10 @@ function walk(directory) {
   });
 }
 
+function relativePath(file) {
+  return path.relative(SITE, file).split(path.sep).join("/");
+}
+
 function normalizeBrand(html) {
   return html
     .replace(/<span class=(["'])brand-mark\1>TL<\/span>/g, BRAND_MARK)
@@ -24,19 +28,21 @@ function normalizeBrand(html) {
     .replace(/Website trả lời/gi, ANSWER_BRAND);
 }
 
-const htmlFiles = walk(SITE).filter((file) => file.endsWith(".html"));
+// /nhap-hoc is a separate operational dashboard and does not share the
+// recruitment portal's header, brand shell or editorial pipeline.
+const htmlFiles = walk(SITE).filter((file) => file.endsWith(".html") && !relativePath(file).startsWith("nhap-hoc/"));
 const changed = [];
 for (const file of htmlFiles) {
   const current = fs.readFileSync(file, "utf8");
   const next = normalizeBrand(current);
   if (next === current) continue;
-  changed.push(path.relative(SITE, file).split(path.sep).join("/"));
+  changed.push(relativePath(file));
   if (!CHECK_ONLY) fs.writeFileSync(file, next);
 }
 
 const invalid = [];
 for (const file of htmlFiles) {
-  const relative = path.relative(SITE, file).split(path.sep).join("/");
+  const relative = relativePath(file);
   if (/^google[^/]*\.html$/i.test(relative)) continue;
 
   const html = fs.readFileSync(file, "utf8");
@@ -73,7 +79,17 @@ console.log(`${CHECK_ONLY ? "Validated" : "Updated"} the shared Thầy Linh – 
 
 if (!CHECK_ONLY) {
   await import("./editorial-newsroom-pass.mjs");
+  await import("./editorial-story-rewrite.mjs");
+  await import("./editorial-copy-sanitizer-v3.mjs");
+  await import("./editorial-faq-restore.mjs");
+  await import("./editorial-current-facts-link.mjs");
   await import("./editorial-image-dimensions-guard.mjs");
   await import("./editorial-daily-depth-guard.mjs");
   await import("./editorial-copy-finalizer.mjs");
+
+  // The editorial pass changes body length and navigation after the first SEO
+  // normalization. A distinct module URL forces one final update pass so the
+  // JSON-LD wordCount, topic hub, related stories and guidance line match the
+  // exact copy that will be published and indexed.
+  await import("./optimize-article-keywords.mjs?after-editorial-v3=1");
 }

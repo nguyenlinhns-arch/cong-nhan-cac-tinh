@@ -47,10 +47,25 @@ if (source.includes(oldSitemapGate)) source = source.replace(oldSitemapGate, new
 else if (source.includes(nativeCurrentSitemapGate)) source = source.replace(nativeCurrentSitemapGate, newSitemapGate);
 else throw new Error("Local SEO gate: sitemap/search gate changed; update the compatibility patch instead of silently bypassing it");
 
+const legacyRewrittenDetector = "  const rewrittenNews = rewrittenNewsSlugs.has(slug);";
+const newsroomV3Detector = "  const rewrittenNews = rewrittenNewsSlugs.has(slug) || /article-body--journalistic-v3/.test(html);";
+if (source.includes(legacyRewrittenDetector)) source = source.replace(legacyRewrittenDetector, newsroomV3Detector);
+else if (!source.includes(newsroomV3Detector)) throw new Error("Editorial SEO gate: rewritten-news detector changed; update the compatibility patch");
+
+const legacyPublicSourceLinkGate = '    if (!sourcePolicyArticle?.hideSourceUrlsInSchema && sourceNote && !/<a\\b/i.test(sourceNote)) errors.push(`${prefix}newsroom item is missing its concise linked source note`);';
+const newsroomV3PlainSourceGate = '    if (!/article-body--journalistic-v3/.test(html) && !sourcePolicyArticle?.hideSourceUrlsInSchema && sourceNote && !/<a\\b/i.test(sourceNote)) errors.push(`${prefix}newsroom item is missing its concise linked source note`);';
+if (source.includes(legacyPublicSourceLinkGate)) source = source.replace(legacyPublicSourceLinkGate, newsroomV3PlainSourceGate);
+else if (!source.includes(newsroomV3PlainSourceGate)) throw new Error("Editorial SEO gate: source-link gate changed; update the compatibility patch");
+
 try {
   fs.writeFileSync(runtimePath, source);
   execFileSync(process.execPath, [runtimePath], {stdio: "inherit", env: process.env});
-  console.log(JSON.stringify({localSeoCoverage: {provinces: 34, localities: 3321, uniqueCommuneSitemapUrls: 3321}, legacySeoChecksPreserved: true}, null, 2));
+  console.log(JSON.stringify({
+    localSeoCoverage: {provinces: 34, localities: 3321, uniqueCommuneSitemapUrls: 3321},
+    legacySeoChecksPreserved: true,
+    newsroomV3Detected: true,
+    newsroomV3PlainTextSources: true,
+  }, null, 2));
 } finally {
   if (fs.existsSync(runtimePath)) fs.unlinkSync(runtimePath);
 }

@@ -19,6 +19,22 @@ jobs:
       - uses: actions/checkout@v4
       - name: Rebuild and validate website
         run: |
+          # /nhap-hoc is a separate operational dashboard. Keep it out of the
+          # recruitment content, branding and SEO validation pipeline, then
+          # restore it before the final repository-diff check.
+          dashboard_tmp="$RUNNER_TEMP/nhap-hoc-dashboard"
+          rm -rf "$dashboard_tmp"
+          if [ -d tuyen-tho-mo/nhap-hoc ]; then
+            mv tuyen-tho-mo/nhap-hoc "$dashboard_tmp"
+          fi
+          restore_dashboard() {
+            if [ -d "$dashboard_tmp" ]; then
+              rm -rf tuyen-tho-mo/nhap-hoc
+              mv "$dashboard_tmp" tuyen-tho-mo/nhap-hoc
+            fi
+          }
+          trap restore_dashboard EXIT
+
           node tools/generate-province-pages-2026.mjs
           node tools/generate-legacy-redirects.mjs
           node tools/generate-job-board-pages.mjs
@@ -76,4 +92,7 @@ jobs:
           node tools/validate-seo-library-current.mjs
           node tools/enforce-blue-worker-illustrations.mjs --check
           node tools/enforce-site-brand.mjs --check
+
+          restore_dashboard
+          trap - EXIT
           git diff --exit-code -- . ':(exclude)content/editorial-sources.json' ':(exclude)tuyen-tho-mo/assets/articles/sources.json' ':(exclude)tuyen-tho-mo/feed.json' ':(exclude)tuyen-tho-mo/feed.xml' ':(exclude)tuyen-tho-mo/llms.txt' ':(exclude)tuyen-tho-mo/sitemap.xml' ':(exclude)tuyen-tho-mo/news-sitemap.xml' ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/home-critical.css' ':(exclude)tuyen-tho-mo/home-content.css' ':(exclude)tuyen-tho-mo/job-application.js' ':(exclude)tuyen-tho-mo/search-index.json' ':(exclude)tuyen-tho-mo/search-core.json' ':(exclude)tuyen-tho-mo/search-provinces.json' ':(exclude)tuyen-tho-mo/search-content.json' ':(exclude)tuyen-tho-mo/daily-seo-articles.json' ':(exclude)tuyen-tho-mo/giai-dap-nghe-mo/**' ':(exclude)tuyen-tho-mo/cam-nang-nghe-mo/index.html' ':(glob,exclude)tuyen-tho-mo/viec-lam-nganh-than/**'
