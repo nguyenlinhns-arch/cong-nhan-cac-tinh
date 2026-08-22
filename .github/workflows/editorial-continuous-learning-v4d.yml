@@ -41,21 +41,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build editorial candidate in runner workspace
+      - name: Audit source library
         shell: bash
         run: |
           mkdir -p content
           node tools/editorial-source-audit-v5.mjs > content/editorial-v5-source-audit.json
-          node tools/editorial-continuous-learning-v4b.mjs > content/editorial-v4-polish-report.json
-          node tools/editorial-priority-rewrites-v4.mjs > content/editorial-v4-priority-report.json
-          node tools/editorial-authority-fallback-v4.mjs > content/editorial-v4-authority-report.json
-          node tools/editorial-auto-repair-v4.mjs > content/editorial-v4-repair-report.json
-          node tools/editorial-copy-finalizer.mjs > content/editorial-v5-copy-finalizer-report.json
+
+      - name: Build the same editorial library used by Pages
+        shell: bash
+        run: |
+          node tools/generate-content-network.mjs
+          node tools/generate-seo-library.mjs
+          node tools/generate-daily-seo-series.mjs
+          node tools/enforce-blue-worker-illustrations.mjs
+          node tools/enforce-site-brand.mjs
 
       - name: Validate source and rendered editorial quality
         shell: bash
         run: |
           node tools/validate-editorial-source-v5.mjs | tee content/editorial-v5-source-validation.json
+          node tools/validate-editorial-story-v3.mjs | tee content/editorial-v5-story-validation.json
+          node tools/validate-editorial-authority.mjs | tee content/editorial-v5-authority-validation.json
+          node tools/validate-editorial-prose-v4.mjs | tee content/editorial-v5-prose-validation.json
           node tools/validate-editorial-continuous-v4b.mjs | tee content/editorial-v5-rendered-validation.json
 
       - name: Show audit summary
@@ -66,6 +73,12 @@ jobs:
           cat content/editorial-v5-source-audit.json || true
           echo '=== Source validation ==='
           cat content/editorial-v5-source-validation.json || true
+          echo '=== Story validation ==='
+          cat content/editorial-v5-story-validation.json || true
+          echo '=== Authority validation ==='
+          cat content/editorial-v5-authority-validation.json || true
+          echo '=== Prose validation ==='
+          cat content/editorial-v5-prose-validation.json || true
           echo '=== Rendered validation ==='
           cat content/editorial-v5-rendered-validation.json || true
           echo 'Editorial quality gate is read-only; it never commits or pushes generated files.'
