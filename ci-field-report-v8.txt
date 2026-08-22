@@ -1,1 +1,2 @@
 temporary CI trigger for editorial field report v8
+rerun after validator prose-only fix
