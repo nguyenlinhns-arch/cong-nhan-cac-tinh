@@ -20,6 +20,16 @@ const escapeHtml = (value = "") => String(value)
   .replaceAll(">", "&gt;")
   .replaceAll('"', "&quot;");
 
+function specialistText(value = "") {
+  return String(value)
+    .replace(/chuyển đổi xanh trong ngành Than không chỉ là câu chuyện đầu tư công nghệ mà còn là thay đổi/giu,
+      "chuyển đổi xanh trong ngành Than bao gồm cả đầu tư công nghệ và thay đổi")
+    .replace(/\bĐáng chú ý(?: là)?[,;:]?\s*/giu, "")
+    .replace(/\bCó thể thấy rằng\b/giu, "Dữ liệu cho thấy")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
 function extract(value, pattern) {
   return String(value).match(pattern)?.[0] || "";
 }
@@ -65,7 +75,7 @@ function removeFaqSchema(html) {
 
 function replaceHeroLead(html, lead) {
   return String(html).replace(/<p\b([^>]*)class="([^"]*\blead\b[^"]*)"([^>]*)>[\s\S]*?<\/p>/i,
-    `<p$1class="$2"$3>${escapeHtml(lead)}</p>`);
+    `<p$1class="$2"$3>${escapeHtml(specialistText(lead))}</p>`);
 }
 
 function renderSpecialistBody(existingBody, v4, v6) {
@@ -78,15 +88,15 @@ function renderSpecialistBody(existingBody, v4, v6) {
   const share = extract(existingBody, /<section\b[^>]*class="[^"]*\barticle-share-panel\b[^"]*"[^>]*>[\s\S]*?<\/section>/i);
   const source = cleanSourceFooter(existingBody);
   const paragraphs = [
-    `<p class="specialist-v6__opening">${escapeHtml(v4.intro[0])}</p>`,
-    `<p>${escapeHtml(v4.intro[1])}</p>`,
-    `<h2>${escapeHtml(v6.heading1)}</h2>`,
-    `<p>${escapeHtml(v4.evidence)}</p>`,
-    `<p>${escapeHtml(v6.analysis[0])}</p>`,
+    `<p class="specialist-v6__opening">${escapeHtml(specialistText(v4.intro[0]))}</p>`,
+    `<p>${escapeHtml(specialistText(v4.intro[1]))}</p>`,
+    `<h2>${escapeHtml(specialistText(v6.heading1))}</h2>`,
+    `<p>${escapeHtml(specialistText(v4.evidence))}</p>`,
+    `<p>${escapeHtml(specialistText(v6.analysis[0]))}</p>`,
     galleries.join("\n"),
-    `<h2>${escapeHtml(v6.heading2)}</h2>`,
-    `<p>${escapeHtml(v6.analysis[1])}</p>`,
-    `<p class="article-conclusion specialist-v6__ending">${escapeHtml(v4.conclusion)}</p>`,
+    `<h2>${escapeHtml(specialistText(v6.heading2))}</h2>`,
+    `<p>${escapeHtml(specialistText(v6.analysis[1]))}</p>`,
+    `<p class="article-conclusion specialist-v6__ending">${escapeHtml(specialistText(v4.conclusion))}</p>`,
   ].filter(Boolean).join("\n");
   const extras = [source, nav, apply, share].filter(Boolean).join("\n");
   return `${articleOpen}\n${cover ? `${cover}\n` : ""}<!-- specialist-v6:start -->\n<div class="specialist-v6__copy">\n${paragraphs}\n</div>\n<!-- specialist-v6:end -->\n${extras}\n</article>`;
