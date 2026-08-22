@@ -14,6 +14,7 @@ const file = path.resolve(
   "index.html",
 );
 const canonicalFactsPath = "/thong-tin-tuyen-tho-mo/";
+const canonicalFactsHref = `href="${canonicalFactsPath}"`;
 const marker = "<!-- editorial-current-facts:start -->";
 const block = `${marker}
 <div class="article-current-facts">
@@ -31,7 +32,7 @@ let after = before.replace(
   block,
 );
 
-if (!after.includes(canonicalFactsPath)) {
+if (!after.includes(canonicalFactsHref)) {
   if (after.includes("<!-- editorial-faq-v3:start -->")) {
     after = after.replace("<!-- editorial-faq-v3:start -->", `${block}\n<!-- editorial-faq-v3:start -->`);
   } else if (/<nav\b[^>]*class=["'][^"']*\barticle-nav\b/i.test(after)) {
@@ -43,7 +44,7 @@ if (!after.includes(canonicalFactsPath)) {
   }
 }
 
-if (!after.includes(`href="${canonicalFactsPath}"`)) {
+if (!after.includes(canonicalFactsHref)) {
   throw new Error("Không thể gắn liên kết tới trang thông tin tuyển đang áp dụng");
 }
 
