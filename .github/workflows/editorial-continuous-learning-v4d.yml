@@ -1,0 +1,85 @@
+name: Editorial continuous learning v4d
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'tuyen-tho-mo/tin-nganh-than/**'
+      - 'tuyen-tho-mo/bai-viet/**'
+      - 'tuyen-tho-mo/chuyen-nguoi-tho/**'
+      - 'tuyen-tho-mo/giai-dap-nghe-mo/**'
+      - 'content/editorial-v4-*.json'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: editorial-continuous-learning-v4b
+  cancel-in-progress: true
+
+jobs:
+  edit-validate-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Apply and repair the editorial pass
+        id: editorial
+        shell: bash
+        run: |
+          mkdir -p content
+          node tools/editorial-continuous-learning-v4b.mjs > content/editorial-v4-polish-report.json
+          node tools/editorial-priority-rewrites-v4.mjs > content/editorial-v4-priority-report.json
+          node tools/editorial-authority-fallback-v4.mjs > content/editorial-v4-authority-report.json
+          node tools/editorial-auto-repair-v4.mjs > content/editorial-v4-repair-report.json
+
+          set +e
+          node tools/validate-editorial-continuous-v4b.mjs > content/editorial-v4-validation.json
+          validation_status=$?
+          set -e
+
+          echo "validation_status=$validation_status" >> "$GITHUB_OUTPUT"
+          cat content/editorial-v4-polish-report.json
+          cat content/editorial-v4-priority-report.json
+          cat content/editorial-v4-authority-report.json
+          cat content/editorial-v4-repair-report.json
+          cat content/editorial-v4-validation.json
+
+      - name: Save the report when validation fails
+        if: steps.editorial.outputs.validation_status != '0'
+        shell: bash
+        run: |
+          git config user.name "Thầy Linh Editorial Bot"
+          git config user.email "nguyenlinhns@gmail.com"
+          git add content/editorial-v4-*.json
+          git commit -m "Ghi nhận lỗi kiểm định vòng biên tập v4" || true
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
+          exit 1
+
+      - name: Publish the edited article library
+        if: steps.editorial.outputs.validation_status == '0'
+        shell: bash
+        run: |
+          git config user.name "Thầy Linh Editorial Bot"
+          git config user.email "nguyenlinhns@gmail.com"
+          git add \
+            content/editorial-v4-*.json \
+            tuyen-tho-mo/tin-nganh-than \
+            tuyen-tho-mo/bai-viet \
+            tuyen-tho-mo/chuyen-nguoi-tho \
+            tuyen-tho-mo/giai-dap-nghe-mo
+
+          if git diff --cached --quiet; then
+            echo "Không có thay đổi nội dung cần xuất bản."
+            exit 0
+          fi
+
+          git commit -m "Tiếp tục biên tập bài viết theo chuẩn báo chí chuyên môn v4"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
