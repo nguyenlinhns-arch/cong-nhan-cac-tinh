@@ -10,6 +10,7 @@ on:
       - 'tuyen-tho-mo/chuyen-nguoi-tho/**'
       - 'tuyen-tho-mo/giai-dap-nghe-mo/**'
       - 'content/editorial-v4-*.json'
+      - 'content/editorial-v5-*.json'
 
 permissions:
   contents: write
@@ -26,11 +27,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Apply and repair the editorial pass
+      - name: Audit, edit and validate the editorial library
         id: editorial
         shell: bash
         run: |
           mkdir -p content
+          node tools/editorial-source-audit-v5.mjs > content/editorial-v5-source-audit.json
           node tools/editorial-continuous-learning-v4b.mjs > content/editorial-v4-polish-report.json
           node tools/editorial-priority-rewrites-v4.mjs > content/editorial-v4-priority-report.json
           node tools/editorial-authority-fallback-v4.mjs > content/editorial-v4-authority-report.json
@@ -50,6 +52,7 @@ jobs:
           fi
 
           echo "validation_status=$validation_status" >> "$GITHUB_OUTPUT"
+          cat content/editorial-v5-source-audit.json
           cat content/editorial-v4-polish-report.json
           cat content/editorial-v4-priority-report.json
           cat content/editorial-v4-authority-report.json
