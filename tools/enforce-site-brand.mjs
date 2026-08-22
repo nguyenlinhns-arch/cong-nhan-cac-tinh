@@ -108,6 +108,11 @@ if (!CHECK_ONLY) {
   await import("./editorial-image-dimensions-guard.mjs");
   await import("./editorial-daily-depth-guard.mjs");
   await import("./editorial-prose-v4.mjs");
+
+  // The ten evergreen specialist/explainer articles used to retain dashboard
+  // blocks (fact cards, evidence lists, timelines and FAQ panels). Rewrite
+  // them into continuous expert prose before the authority/byline layer runs.
+  await import("./editorial-specialist-v6.mjs");
   await import("./editorial-authority-pass.mjs");
 
   // Clean the final copy first, then convert the presentation from a dashboard
@@ -123,6 +128,7 @@ if (!CHECK_ONLY) {
   await runValidator("./validate-editorial-story-v3.mjs", "Kiểm định bài nguồn newsroom");
   await runValidator("./validate-editorial-authority.mjs", "Kiểm định tác giả và trách nhiệm biên tập");
   await runValidator("./validate-editorial-prose-v4.mjs", "Kiểm định văn xuôi nhà báo và chuyên gia");
+  await runValidator("./validate-editorial-specialist-v6.mjs", "Kiểm định 10 bài chuyên sâu v6");
   await runValidator("./validate-editorial-continuous-v4b.mjs", "Kiểm định văn phong hiển thị v5");
   await runValidator("./validate-editorial-newspaper-v6.mjs", "Kiểm định bố cục báo chuyên ngành v6");
   await runValidator("./validate-seo-library-current.mjs", "Kiểm định thư viện SEO hiện hành");
