@@ -131,6 +131,11 @@ if (!CHECK_ONLY) {
   await runValidator("./validate-editorial-specialist-v6.mjs", "Kiểm định 10 bài chuyên sâu v6");
   await runValidator("./validate-editorial-continuous-v4b.mjs", "Kiểm định văn phong hiển thị v5");
   await runValidator("./validate-editorial-newspaper-v6.mjs", "Kiểm định bố cục báo chuyên ngành v6");
+
+  // The old SEO gate predates specialist-v6 and assumes every evergreen article
+  // keeps a visible FAQ. Apply a narrow compatibility layer only after the new
+  // specialist validator has already verified the exact reader-facing copy.
+  await import("./editorial-specialist-v6-legacy-compat.mjs");
   await runValidator("./validate-seo-library-current.mjs", "Kiểm định thư viện SEO hiện hành");
 
   // The workflows historically invoke the legacy SEO validator again later in
