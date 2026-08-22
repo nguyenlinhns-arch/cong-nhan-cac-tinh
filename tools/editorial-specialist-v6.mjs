@@ -24,6 +24,8 @@ function specialistText(value = "") {
   return String(value)
     .replace(/chuyển đổi xanh trong ngành Than không chỉ là câu chuyện đầu tư công nghệ mà còn là thay đổi/giu,
       "chuyển đổi xanh trong ngành Than bao gồm cả đầu tư công nghệ và thay đổi")
+    .replace(/20–25 triệu đồng\/tháng khi người lao động hoàn thành định mức(?=[;,.])/giu,
+      "20–25 triệu đồng/tháng khi người lao động hoàn thành định mức lao động")
     .replace(/\bĐáng chú ý(?: là)?[,;:]?\s*/giu, "")
     .replace(/\bCó thể thấy rằng\b/giu, "Dữ liệu cho thấy")
     .replace(/\s{2,}/g, " ")
