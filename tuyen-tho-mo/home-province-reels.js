@@ -7,7 +7,7 @@
   if (!document.querySelector("link[data-home-province-reels-css]")) {
     const css = document.createElement("link");
     css.rel = "stylesheet";
-    css.href = "/home-province-reels.css?v=20260822-2";
+    css.href = "/home-province-reels.css?v=20260822-3";
     css.dataset.homeProvinceReelsCss = "";
     document.head.append(css);
   }
@@ -18,20 +18,18 @@
       title: "Từ Ia RDeh đến vùng mỏ Quảng Ninh",
       description: "Nhà trường trực tiếp về địa phương tư vấn, kết nối chính quyền và doanh nghiệp để người lao động hiểu rõ nơi học, nghề học và cơ hội nhận việc sau đào tạo.",
       url: "https://www.facebook.com/reel/988978737487363",
+      embedUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F988978737487363%2F&show_text=false&width=500",
       page: "/viec-lam-nganh-than/gia-lai/",
       pageLabel: "Cơ hội tại Gia Lai",
-      poster: "/assets/vinacomin-hoc-vien-quang-hanh-ao-xanh-doi-mu.webp",
-      alt: "Học viên nghề mỏ tại Quang Hanh trong hành trình từ địa phương đến vùng mỏ",
     },
     {
       province: "Quảng Ngãi · hành trình nhập học",
       title: "Hành trình từ Quảng Ngãi đến vùng Than",
       description: "Theo chân người lao động từ quê nhà đến Quảng Ninh để thấy rõ quá trình lên đường, nhập học, học nghề và bắt đầu một hướng đi việc làm mới.",
       url: "https://www.facebook.com/reel/1015675787556708",
+      embedUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1015675787556708%2F&show_text=false&width=500",
       page: "/viec-lam-nganh-than/quang-ngai/",
       pageLabel: "Cơ hội tại Quảng Ngãi",
-      poster: "/assets/vinacomin-tho-lo-than-thong-nhat-ngoai-khai-truong.webp",
-      alt: "Công nhân ngành Than mặc bảo hộ xanh tại khai trường Quảng Ninh",
     },
   ];
 
@@ -50,11 +48,7 @@
         ${reels.map((reel, index) => `
           <article class="home-province-reel">
             <div class="home-province-reel__media" data-province-reel-host>
-              <button class="home-province-reel__facade" type="button" data-province-reel-play data-reel-url="${reel.url}" data-reel-position="${index + 1}" aria-label="Phát video: ${reel.title}">
-                <img src="${reel.poster}" alt="${reel.alt}" loading="lazy" decoding="async">
-                <span class="home-province-reel__play" aria-hidden="true">▶</span>
-                <span class="home-province-reel__watch">Bấm để xem video thực tế</span>
-              </button>
+              <iframe title="${reel.title}" src="${reel.embedUrl.replaceAll("&", "&amp;")}" width="500" height="889" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
             <div class="home-province-reel__copy">
               <small>${reel.province}</small>
@@ -90,6 +84,7 @@
         name: reel.title,
         description: reel.description,
         contentUrl: reel.url,
+        embedUrl: reel.embedUrl,
         inLanguage: "vi-VN",
         author: { "@id": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/#person" },
       })),
@@ -107,23 +102,6 @@
   };
 
   section.addEventListener("click", (event) => {
-    const play = event.target.closest?.("[data-province-reel-play]");
-    if (play) {
-      const host = play.closest("[data-province-reel-host]");
-      const iframe = document.createElement("iframe");
-      const reelUrl = `${play.dataset.reelUrl}/`;
-      iframe.title = play.getAttribute("aria-label")?.replace("Phát video: ", "") || "Video hành trình đến vùng mỏ";
-      iframe.src = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(reelUrl)}&show_text=false&width=500`;
-      iframe.width = "500";
-      iframe.height = "889";
-      iframe.allowFullscreen = true;
-      iframe.allow = "autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share";
-      iframe.referrerPolicy = "strict-origin-when-cross-origin";
-      host.replaceChildren(iframe);
-      track("home_province_reel_play", { reel_position: play.dataset.reelPosition || "unknown" });
-      return;
-    }
-
     const link = event.target.closest?.("[data-province-reel-link]");
     if (link) track("home_province_reel_click", { destination: link.dataset.provinceReelLink || "unknown" });
     const action = event.target.closest?.("[data-province-reel-action]");
