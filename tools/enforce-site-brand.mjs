@@ -107,18 +107,15 @@ if (!CHECK_ONLY) {
   await import("./editorial-current-facts-link.mjs");
   await import("./editorial-image-dimensions-guard.mjs");
   await import("./editorial-daily-depth-guard.mjs");
-  await import("./editorial-copy-finalizer.mjs");
   await import("./editorial-prose-v4.mjs");
   await import("./editorial-authority-pass.mjs");
 
-  // Authority is the last structural layer and may reinsert labels. Run the
-  // copy finalizer once more with a unique module URL so the published HTML is
-  // the exact, cleaned newsroom version rather than an intermediate build.
+  // Finalizer must be the final copy-changing pass. Nothing after this point
+  // may recreate paragraph-style genre labels, SEO narration or formulaic
+  // transitions in the published HTML.
   await import("./editorial-copy-finalizer.mjs?after-authority-v5=1");
 
-  // The prose and authority passes change article body length, labels and
-  // navigation. Run the metadata synchronizer once more against the exact
-  // copy that will be published and indexed.
+  // Synchronize metadata and internal links against the exact final copy.
   await import("./optimize-article-keywords.mjs?after-editorial-v5=1");
 
   await runValidator("./validate-editorial-source-v5.mjs", "Kiểm định nguồn bài v5");
