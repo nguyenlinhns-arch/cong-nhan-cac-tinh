@@ -18,6 +18,7 @@ function walk(directory, output = []) {
 
 function finishCopy(html) {
   return String(html)
+    .replace(/\s+data-editorial-style="newsroom"/gi, "")
     .replace(/Bài được Nguyễn Tử Linh · Biên tập và chịu trách nhiệm nội dung dựa trên/gi, "Bài do Nguyễn Tử Linh biên tập dựa trên")
     .replace(/Bài được Nguyễn Tử Linh · Biên tập và chịu trách nhiệm nội dung từ/gi, "Bài do Nguyễn Tử Linh biên tập từ")
     .replace(/Bài do Nguyễn Tử Linh · Biên tập và chịu trách nhiệm nội dung dựa trên/gi, "Bài do Nguyễn Tử Linh biên tập dựa trên")
