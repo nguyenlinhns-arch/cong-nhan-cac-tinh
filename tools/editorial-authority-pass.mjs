@@ -6,9 +6,35 @@ const projectRoot = process.cwd();
 const siteRoot = path.resolve(projectRoot, "tuyen-tho-mo");
 const changed = [];
 
-const bannedOpening = /^(?:bài(?:\s+viết|\s+nguồn|\s+báo)?|nguồn|website|fanpage|thông tin từ)\b[^.!?]{0,180}\b(?:đăng|đăng tải|công bố|cho biết|nêu|ghi nhận|đề cập|thông tin)\b/iu;
-const sourceNarration = /(?:bài\s+(?:viết|nguồn|báo|gốc)|nguồn(?:\s+chính\s+thức)?|website|fanpage)[^.!?]{0,100}\b(?:cho biết|cho thấy|nêu|ghi nhận|đề cập|mô tả|công bố|đăng tải)\b/iu;
-const seoNarration = /(?:tìm hiểu thêm về|với từ khóa|người đọc vì thế tìm thấy|bài viết chuẩn seo|tối ưu seo)/iu;
+const bannedOpening = /^(?:bài(?:\s+viết|\s+nguồn|\s+báo)?|nguồn|website|fanpage|thông\s+tin\s+từ)\b[^.!?]{0,180}\b(?:đăng|đăng\s+tải|công\s+bố|cho\s+biết|nêu|ghi\s+nhận|đề\s+cập|thông\s+tin)\b/iu;
+const sourceNarration = /(?:bài\s+(?:viết|nguồn|báo|gốc)|nguồn(?:\s+chính\s+thức)?|website|fanpage)[^.!?]{0,100}\b(?:cho\s+biết|cho\s+thấy|nêu|ghi\s+nhận|đề\s+cập|mô\s+tả|công\s+bố|đăng\s+tải)\b/iu;
+const seoNarration = /(?:tìm\s+hiểu\s+thêm\s+về|với\s+từ\s+khóa|người\s+đọc\s+vì\s+thế\s+tìm\s+thấy|bài\s+viết\s+chuẩn\s+seo|tối\s+ưu\s+seo)/iu;
+const explainerSlugs = new Set([
+  "dieu-kien-tuyen-tho-lo-2026",
+  "ho-so-hoc-nghe-mo-can-gi",
+  "hoc-nghe-khai-thac-mo-2-3-thang",
+  "dao-tao-an-toan-truoc-khi-vao-lo",
+  "hoc-thuc-hanh-nghe-mo-ham-lo",
+]);
+
+const genreConfig = {
+  news: {
+    label: "TIN TỨC · DỮ KIỆN VÀ BỐI CẢNH",
+    role: "Biên tập và kiểm chứng nguồn",
+  },
+  feature: {
+    label: "CHUYỆN NGƯỜI THỢ · NHÂN VẬT VÀ TRẢI NGHIỆM",
+    role: "Biên tập câu chuyện và kiểm chứng nguồn",
+  },
+  analysis: {
+    label: "PHÂN TÍCH · DỮ LIỆU VÀ TÁC ĐỘNG",
+    role: "Phân tích và chịu trách nhiệm nội dung",
+  },
+  explainer: {
+    label: "GIẢI THÍCH · QUY TRÌNH VÀ ĐIỀU KIỆN ÁP DỤNG",
+    role: "Giải thích và chịu trách nhiệm nội dung",
+  },
+};
 
 function walk(directory, output = []) {
   if (!fs.existsSync(directory)) return output;
@@ -26,7 +52,7 @@ function visible(value = "") {
     .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ")
     .replace(/<[^>]+>/g, " ")
     .replace(/&nbsp;|&#160;/gi, " ")
-    .replace(/&amp;/gi, "&")
+    .replace(/&amp;|&#38;|&#038;/gi, "&")
     .replace(/&quot;/gi, '"')
     .replace(/&#39;|&apos;/gi, "'")
     .replace(/\s+/g, " ")
@@ -52,18 +78,18 @@ function mapOutsideScripts(html, transform) {
 
 function polishLanguage(html) {
   return mapOutsideScripts(html, (part) => part
-    .replace(/Bài nguồn ngày\s+\d{2}\/\d{2}\/\d{4}\s+(?:nêu|cho biết|thông tin rằng)\s*/gi, "")
-    .replace(/\bNguồn cho biết(?: rằng)?\s+/gi, "")
-    .replace(/\bTheo nguồn,?\s+/gi, "")
-    .replace(/\bĐáng chú ý(?: là)?[,;:]?\s*/gi, "")
-    .replace(/\bCó thể thấy rằng\b/gi, "Dữ liệu cho thấy")
-    .replace(/\bĐiều này cho thấy\b/gi, "Dữ liệu cho thấy")
-    .replace(/\bĐiều đó cho thấy\b/gi, "Điều đó phản ánh")
-    .replace(/\bTrong bối cảnh đó\b/gi, "Từ thực tế này")
-    .replace(/\bĐối với người lao động\b/gi, "Với người lao động")
-    .replace(/\bĐiều quan trọng là\b/gi, "Điểm cần lưu ý là")
-    .replace(/\bNội dung này cho thấy\b/gi, "Dữ liệu cho thấy")
-    .replace(/\bBài viết này nhằm\b/gi, "Bài viết giúp")
+    .replace(/Bài\s+nguồn\s+ngày\s+\d{2}\/\d{2}\/\d{4}\s+(?:nêu|cho\s+biết|thông\s+tin\s+rằng)\s*/gi, "")
+    .replace(/\bNguồn\s+cho\s+biết(?:\s+rằng)?\s+/gi, "")
+    .replace(/\bTheo\s+nguồn,?\s+/gi, "")
+    .replace(/\bĐáng\s+chú\s+ý(?:\s+là)?[,;:]?\s*/gi, "")
+    .replace(/\bCó\s+thể\s+thấy\s+rằng\b/gi, "Dữ liệu cho thấy")
+    .replace(/\bĐiều\s+này\s+cho\s+thấy\b/gi, "Dữ liệu cho thấy")
+    .replace(/\bĐiều\s+đó\s+cho\s+thấy\b/gi, "Điều đó phản ánh")
+    .replace(/\bTrong\s+bối\s+cảnh\s+đó\b/gi, "Từ thực tế này")
+    .replace(/\bĐối\s+với\s+người\s+lao\s+động\b/gi, "Với người lao động")
+    .replace(/\bĐiều\s+quan\s+trọng\s+là\b/gi, "Điểm cần lưu ý là")
+    .replace(/\bNội\s+dung\s+này\s+cho\s+thấy\b/gi, "Dữ liệu cho thấy")
+    .replace(/\bBài\s+viết\s+này\s+nhằm\b/gi, "Bài viết giúp")
     .replace(/\s{2,}/g, " "));
 }
 
@@ -82,12 +108,8 @@ function dropSourceNarrationLead(html) {
 
 function removeSeoResidue(html) {
   return html
-    .replace(/<p\b[^>]*class="[^"]*(?:article-seo-line|keyword-summary)[^"]*"[^>]*>[\s\S]*?<\/p>/gi, "")
-    .replace(/<p\b[^>]*class="[^"]*article-editor-note[^"]*"[^>]*>[\s\S]*?<\/p>/gi, "")
-    .replace(/<p\b([^>]*)>([\s\S]*?)<\/p>/gi, (full, attrs, body) => {
-      const text = visible(body);
-      return seoNarration.test(text) ? "" : full;
-    });
+    .replace(/<p\b[^>]*class="[^"]*(?:article-seo-line|keyword-summary|article-editor-note)[^"]*"[^>]*>[\s\S]*?<\/p>/gi, "")
+    .replace(/<p\b([^>]*)>([\s\S]*?)<\/p>/gi, (full, _attrs, body) => seoNarration.test(visible(body)) ? "" : full);
 }
 
 function dedupeParagraphs(html) {
@@ -103,75 +125,87 @@ function dedupeParagraphs(html) {
   });
 }
 
-function genreFor(relative, html) {
-  const title = key(html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || "");
-  if (/cau chuyen|guong|nguoi tho|hanh trinh|doi tho|thoi tho/.test(title)) return "feature";
+function genreFor(relative) {
+  const slug = relative.split("/").filter(Boolean).at(-2) || "";
+  if (relative.startsWith("chuyen-nguoi-tho/")) return "feature";
+  if (relative.startsWith("bai-viet/") && explainerSlugs.has(slug)) return "explainer";
   if (relative.startsWith("bai-viet/")) return "analysis";
   return "news";
 }
 
-function addClass(html, selector, className) {
-  if (selector === "body") {
-    if (/<body\b[^>]*class=/i.test(html)) {
-      return html.replace(/<body\b([^>]*)class="([^"]*)"([^>]*)>/i, (_match, before, classes, after) => {
-        const all = new Set(classes.split(/\s+/).filter(Boolean));
-        all.add(className);
-        return `<body${before}class="${[...all].join(" ")}"${after}>`;
-      });
-    }
-    return html.replace(/<body\b([^>]*)>/i, `<body class="${className}"$1>`);
-  }
-  if (selector === "article") {
-    return html.replace(/<article\b([^>]*)class="([^"]*\barticle-body\b[^"]*)"([^>]*)>/i, (_match, before, classes, after) => {
+function addBodyClass(html, className) {
+  if (/<body\b[^>]*class=/i.test(html)) {
+    return html.replace(/<body\b([^>]*)class="([^"]*)"([^>]*)>/i, (_match, before, classes, after) => {
       const all = new Set(classes.split(/\s+/).filter(Boolean));
       all.add(className);
-      return `<article${before}class="${[...all].join(" ")}"${after}>`;
+      return `<body${before}class="${[...all].join(" ")}"${after}>`;
     });
   }
-  return html;
+  return html.replace(/<body\b([^>]*)>/i, `<body class="${className}"$1>`);
 }
 
-function addByline(html, genre) {
-  if (html.includes('class="article-byline"')) return html;
-  const role = genre === "news" ? "Biên tập và kiểm chứng nguồn" : genre === "feature" ? "Biên tập câu chuyện và kiểm chứng nguồn" : "Phân tích và chịu trách nhiệm nội dung";
+function setArticleGenreClass(html, genre) {
+  return html.replace(/<article\b([^>]*)class="([^"]*\barticle-body\b[^"]*)"([^>]*)>/i, (_match, before, classes, after) => {
+    const kept = classes.split(/\s+/).filter((className) => className && !/^article-body--(?:news|analysis|feature|explainer)$/u.test(className));
+    kept.push(`article-body--${genre}`);
+    return `<article${before}class="${[...new Set(kept)].join(" ")}"${after}>`;
+  });
+}
+
+function upsertByline(html, genre) {
+  const role = genreConfig[genre].role;
   const byline = `<p class="article-byline"><a href="/tac-gia/nguyen-tu-linh/">Nguyễn Tử Linh</a><span>${role}</span></p>`;
+  if (/<p\b[^>]*class="[^"]*\barticle-byline\b[^"]*"[^>]*>[\s\S]*?<\/p>/i.test(html)) {
+    return html.replace(/<p\b[^>]*class="[^"]*\barticle-byline\b[^"]*"[^>]*>[\s\S]*?<\/p>/i, byline);
+  }
   if (/<p\b[^>]*class="[^"]*\blead\b[^"]*"[^>]*>[\s\S]*?<\/p>/i.test(html)) {
     return html.replace(/(<p\b[^>]*class="[^"]*\blead\b[^"]*"[^>]*>[\s\S]*?<\/p>)/i, `$1${byline}`);
   }
   return html;
 }
 
-function addGenreLabel(html, genre) {
-  if (html.includes('class="article-genre-label"')) return html;
-  const label = genre === "news" ? "TIN TỨC · DỮ KIỆN VÀ BỐI CẢNH" : genre === "feature" ? "CHUYỆN NGƯỜI THỢ · NHÂN VẬT VÀ TRẢI NGHIỆM" : "PHÂN TÍCH · THÔNG TIN CHO NGƯỜI LAO ĐỘNG";
-  const marker = `<p class="article-genre-label">${label}</p>`;
+function upsertGenreLabel(html, genre) {
+  const marker = `<p class="article-genre-label">${genreConfig[genre].label}</p>`;
+  if (/<p\b[^>]*class="[^"]*\barticle-genre-label\b[^"]*"[^>]*>[\s\S]*?<\/p>/i.test(html)) {
+    return html.replace(/<p\b[^>]*class="[^"]*\barticle-genre-label\b[^"]*"[^>]*>[\s\S]*?<\/p>/i, marker);
+  }
   return html.replace(/(<article\b[^>]*class="[^"]*\barticle-body\b[^"]*"[^>]*>\s*(?:<figure\b[\s\S]*?<\/figure>\s*)?)/i, `$1${marker}`);
 }
 
 function normalizeSource(html) {
-  let output = html.replace(/<strong>Nguồn tư liệu:<\/strong>/gi, "<strong>Nguồn:</strong>");
+  const responsibility = "Nguyễn Tử Linh biên tập, đối chiếu và chịu trách nhiệm nội dung.";
+  let output = html.replace(/<strong>Nguồn\s+tư\s+liệu:<\/strong>/gi, "<strong>Nguồn:</strong>");
+  output = output.replace(/<span\b[^>]*class="[^"]*\barticle-source-responsibility\b[^"]*"[^>]*>[\s\S]*?<\/span>/gi,
+    `<span class="article-source-responsibility"> ${responsibility}</span>`);
   output = output.replace(/<p class="article-source-note">([\s\S]*?)<\/p>/gi, (full, body) => {
-    if (/Nguyễn Tử Linh[^<]{0,100}(?:biên tập|kiểm chứng)/iu.test(visible(body))) return full;
-    return `<p class="article-source-note">${body}<span class="article-source-responsibility"> Nguyễn Tử Linh biên tập và kiểm chứng nguồn.</span></p>`;
+    if (/article-source-responsibility/i.test(body)) return full;
+    return `<p class="article-source-note">${body}<span class="article-source-responsibility"> ${responsibility}</span></p>`;
   });
   output = output.replace(/<p>(\s*<strong>Nguồn:<\/strong>[\s\S]*?)<\/p>/gi, (full, body) => {
-    if (/Nguyễn Tử Linh[^<]{0,100}(?:biên tập|kiểm chứng)/iu.test(visible(body))) return full;
-    return `<p>${body}<span class="article-source-responsibility"> Nguyễn Tử Linh biên tập và kiểm chứng nguồn.</span></p>`;
+    if (/article-source-responsibility/i.test(body)) return full;
+    return `<p>${body}<span class="article-source-responsibility"> ${responsibility}</span></p>`;
   });
   return output;
 }
 
 function normalizeCallsToAction(html) {
   return mapOutsideScripts(html, (part) => part
-    .replace(/>Ứng tuyển ngay</gi, ">Kiểm tra điều kiện<")
-    .replace(/>Đăng ký ngay</gi, ">Gửi thông tin để được hướng dẫn<")
-    .replace(/LAN TỎA THÔNG TIN ĐÚNG NGUỒN/gi, "CHIA SẺ BÀI VIẾT")
-    .replace(/Tìm hiểu chương trình ngay/gi, "Xem thông tin đang áp dụng"));
+    .replace(/>Ứng\s+tuyển\s+ngay</gi, ">Kiểm tra điều kiện<")
+    .replace(/>Đăng\s+ký\s+ngay</gi, ">Gửi thông tin để được hướng dẫn<")
+    .replace(/LAN\s+TỎA\s+THÔNG\s+TIN\s+ĐÚNG\s+NGUỒN/gi, "CHIA SẺ BÀI VIẾT")
+    .replace(/Tìm\s+hiểu\s+chương\s+trình\s+ngay/gi, "Xem thông tin đang áp dụng"));
 }
 
-function addStylesheet(html) {
-  if (html.includes('/editorial-newsroom.css?v=1')) return html;
-  return html.replace(/<\/head>/i, '  <link rel="stylesheet" href="/editorial-newsroom.css?v=1">\n</head>');
+function addStylesheet(html, href) {
+  if (html.includes(href)) return html;
+  return html.replace(/<\/head>/i, `  <link rel="stylesheet" href="${href}">\n</head>`);
+}
+
+function normalizeDailyResponsibility(html) {
+  return html
+    .replace(/Nguyễn\s+Tử\s+Linh\s+biên\s+soạn/giu, "Nguyễn Tử Linh · Biên tập và chịu trách nhiệm nội dung")
+    .replace(/Nguyễn\s+Tử\s+Linh\s*·\s*Biên\s+tập\s+và\s+chịu\s+trách\s+nhiệm\s+nội\s+dung(?:\s*·\s*Biên\s+tập\s+và\s+chịu\s+trách\s+nhiệm\s+nội\s+dung)+/giu,
+      "Nguyễn Tử Linh · Biên tập và chịu trách nhiệm nội dung");
 }
 
 function polishArticle(file) {
@@ -179,17 +213,18 @@ function polishArticle(file) {
   const before = fs.readFileSync(file, "utf8");
   if (!/"@type":"(?:NewsArticle|Article|BlogPosting)"/.test(before)) return;
   if (!/<article\b[^>]*class="[^"]*\barticle-body\b/i.test(before)) return;
-  const genre = genreFor(relative, before);
+  const genre = genreFor(relative);
   let html = before;
-  html = addStylesheet(html);
-  html = addClass(html, "body", "editorial-authority-page");
-  html = addClass(html, "article", `article-body--${genre}`);
+  html = addStylesheet(html, "/editorial-newsroom.css?v=1");
+  html = addStylesheet(html, "/editorial-prose-v4.css?v=1");
+  html = addBodyClass(html, "editorial-authority-page");
+  html = setArticleGenreClass(html, genre);
   html = polishLanguage(html);
   html = dropSourceNarrationLead(html);
   html = removeSeoResidue(html);
   html = dedupeParagraphs(html);
-  html = addByline(html, genre);
-  html = addGenreLabel(html, genre);
+  html = upsertByline(html, genre);
+  html = upsertGenreLabel(html, genre);
   html = normalizeSource(html);
   html = normalizeCallsToAction(html);
   if (html === before) return;
@@ -197,17 +232,20 @@ function polishArticle(file) {
   changed.push(path.relative(projectRoot, file).split(path.sep).join("/"));
 }
 
-for (const directory of ["tin-nganh-than", "bai-viet"]) {
+for (const directory of ["tin-nganh-than", "bai-viet", "chuyen-nguoi-tho"]) {
   for (const file of walk(path.join(siteRoot, directory))) polishArticle(file);
 }
 
 for (const file of walk(path.join(siteRoot, "giai-dap-nghe-mo"))) {
   const before = fs.readFileSync(file, "utf8");
   if (!before.includes("daily-seo-page") || !before.includes('"@type":"Article"')) continue;
-  let html = addStylesheet(before);
-  html = addClass(html, "body", "editorial-authority-page");
+  let html = addStylesheet(before, "/editorial-newsroom.css?v=1");
+  html = addStylesheet(html, "/editorial-prose-v4.css?v=1");
+  html = addBodyClass(html, "editorial-authority-page");
   html = polishLanguage(html);
+  html = removeSeoResidue(html);
   html = normalizeCallsToAction(html);
+  html = normalizeDailyResponsibility(html);
   if (html === before) continue;
   fs.writeFileSync(file, html);
   changed.push(path.relative(projectRoot, file).split(path.sep).join("/"));
@@ -227,7 +265,7 @@ if (process.env.GITHUB_ACTIONS === "true" && changed.length) {
 }
 
 console.log(JSON.stringify({
-  status: "editorial-authority-pass-complete",
+  status: "editorial-authority-pass-v4-complete",
   changedFiles: changed.length,
   sample: changed.slice(0, 20),
 }, null, 2));
