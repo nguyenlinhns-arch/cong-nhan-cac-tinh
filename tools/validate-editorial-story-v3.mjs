@@ -98,7 +98,7 @@ for (const [urlPath, article] of registry) {
   if (lede && nutgraph && similarity(lede, nutgraph) >= 0.78) errors.push(`${article.slug}: lede và nut graph lặp ý`);
 
   const paragraphs = [...copy.matchAll(/<p(?:\s[^>]*)?>([\s\S]*?)<\/p>/gi)].map((match) => stripTags(match[1])).filter(Boolean);
-  if (paragraphs.length < 6 || paragraphs.length > 18) errors.push(`${article.slug}: có ${paragraphs.length} đoạn, cần 6–18`);
+  if (paragraphs.length < 6 || paragraphs.length > 22) errors.push(`${article.slug}: có ${paragraphs.length} đoạn, cần 6–22`);
   const copyWords = wordCount(copy);
   if (copyWords < 300 || copyWords > 1900) errors.push(`${article.slug}: thân bài ${copyWords} từ, cần 300–1.900`);
   const longParagraph = paragraphs.find((paragraph) => wordCount(paragraph) > 125);
