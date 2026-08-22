@@ -36,6 +36,7 @@ function addDimensions(html, file) {
     const attributes = [];
     if (!/\bwidth=["']\d+["']/i.test(tag)) attributes.push(`width="${size[0]}"`);
     if (!/\bheight=["']\d+["']/i.test(tag)) attributes.push(`height="${size[1]}"`);
+    if (!/\bdecoding=["'](?:async|sync|auto)["']/i.test(tag)) attributes.push('decoding="async"');
     return attributes.length ? tag.replace(/>$/, ` ${attributes.join(" ")}>`) : tag;
   });
 }
