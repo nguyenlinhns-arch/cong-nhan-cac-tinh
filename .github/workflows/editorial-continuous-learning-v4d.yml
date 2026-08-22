@@ -1,4 +1,4 @@
-name: Editorial continuous learning v4d
+name: Editorial continuous learning v5
 
 on:
   workflow_dispatch:
@@ -15,7 +15,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: editorial-continuous-learning-v4b
+  group: editorial-continuous-learning-v5
   cancel-in-progress: true
 
 jobs:
@@ -35,18 +35,28 @@ jobs:
           node tools/editorial-priority-rewrites-v4.mjs > content/editorial-v4-priority-report.json
           node tools/editorial-authority-fallback-v4.mjs > content/editorial-v4-authority-report.json
           node tools/editorial-auto-repair-v4.mjs > content/editorial-v4-repair-report.json
+          node tools/editorial-copy-finalizer.mjs > content/editorial-v5-copy-finalizer-report.json
 
           set +e
-          node tools/validate-editorial-continuous-v4b.mjs > content/editorial-v4-validation.json
-          validation_status=$?
+          node tools/validate-editorial-source-v5.mjs > content/editorial-v5-source-validation.json
+          source_status=$?
+          node tools/validate-editorial-continuous-v4b.mjs > content/editorial-v5-rendered-validation.json
+          rendered_status=$?
           set -e
+
+          validation_status=0
+          if [ "$source_status" != "0" ] || [ "$rendered_status" != "0" ]; then
+            validation_status=1
+          fi
 
           echo "validation_status=$validation_status" >> "$GITHUB_OUTPUT"
           cat content/editorial-v4-polish-report.json
           cat content/editorial-v4-priority-report.json
           cat content/editorial-v4-authority-report.json
           cat content/editorial-v4-repair-report.json
-          cat content/editorial-v4-validation.json
+          cat content/editorial-v5-copy-finalizer-report.json
+          cat content/editorial-v5-source-validation.json
+          cat content/editorial-v5-rendered-validation.json
 
       - name: Save the report when validation fails
         if: steps.editorial.outputs.validation_status != '0'
@@ -54,8 +64,8 @@ jobs:
         run: |
           git config user.name "Thầy Linh Editorial Bot"
           git config user.email "nguyenlinhns@gmail.com"
-          git add content/editorial-v4-*.json
-          git commit -m "Ghi nhận lỗi kiểm định vòng biên tập v4" || true
+          git add content/editorial-v4-*.json content/editorial-v5-*.json
+          git commit -m "Ghi nhận lỗi kiểm định vòng biên tập v5" || true
           git fetch origin main
           git rebase origin/main
           git push origin HEAD:main
@@ -69,6 +79,7 @@ jobs:
           git config user.email "nguyenlinhns@gmail.com"
           git add \
             content/editorial-v4-*.json \
+            content/editorial-v5-*.json \
             tuyen-tho-mo/tin-nganh-than \
             tuyen-tho-mo/bai-viet \
             tuyen-tho-mo/chuyen-nguoi-tho \
@@ -79,7 +90,7 @@ jobs:
             exit 0
           fi
 
-          git commit -m "Tiếp tục biên tập bài viết theo chuẩn báo chí chuyên môn v4"
+          git commit -m "Tiếp tục biên tập bài viết theo chuẩn báo chí chuyên môn v5"
           git fetch origin main
           git rebase origin/main
           git push origin HEAD:main
