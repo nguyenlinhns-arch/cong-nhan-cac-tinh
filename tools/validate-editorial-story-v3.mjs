@@ -10,8 +10,8 @@ const stats = {
   registered: 0,
   checked: 0,
   newsroomV3: 0,
+  plainTextSources: 0,
   linkedSources: 0,
-  privateSources: 0,
 };
 
 function stripTags(value = "") {
@@ -127,12 +127,16 @@ for (const [urlPath, article] of registry) {
 
   const sourceNote = copy.match(/<p class="article-source-note">([\s\S]*?)<\/p>/i)?.[1] || "";
   if (!sourceNote || !sourceNote.includes("<strong>Nguồn:</strong>")) errors.push(`${article.slug}: thiếu dòng nguồn chuẩn`);
-  const mustHideLink = article.hideSourceUrlsInSchema === true;
   const hasLink = /<a\b/i.test(sourceNote);
-  if (mustHideLink && hasLink) errors.push(`${article.slug}: nguồn riêng tư đang có liên kết bấm ra ngoài`);
-  if (!mustHideLink && (article.sources || []).some((source) => source.url) && !hasLink) errors.push(`${article.slug}: nguồn công khai chưa có liên kết`);
-  if (hasLink) stats.linkedSources += 1;
-  else stats.privateSources += 1;
+  if (hasLink) {
+    stats.linkedSources += 1;
+    errors.push(`${article.slug}: dòng nguồn phải là văn bản thuần, không liên kết ra website ngoài`);
+  } else {
+    stats.plainTextSources += 1;
+  }
+  for (const source of article.sources || []) {
+    if (!stripTags(sourceNote).includes(String(source.publisher || "").trim())) errors.push(`${article.slug}: dòng nguồn thiếu tên đơn vị ${source.publisher}`);
+  }
   if (!stripTags(sourceNote).includes("Nguyễn Tử Linh")) errors.push(`${article.slug}: thiếu người chịu trách nhiệm biên tập`);
 
   const applyCount = (body.match(/class="[^"]*\barticle-apply\b/g) || []).length;
@@ -143,6 +147,7 @@ for (const [urlPath, article] of registry) {
 
 if (stats.registered < 60) errors.push(`Số bài nguồn thấp bất thường: ${stats.registered}`);
 if (stats.newsroomV3 !== stats.checked) errors.push(`Chỉ ${stats.newsroomV3}/${stats.checked} bài nguồn dùng newsroom v3`);
+if (stats.linkedSources) errors.push(`Còn ${stats.linkedSources} dòng nguồn liên kết ra website ngoài`);
 
 console.log(JSON.stringify({
   ...stats,
