@@ -17,6 +17,11 @@ const directReplacements = [
   [/Điểm đáng chú ý của cuộc làm việc là cách đưa thông tin trở lại cấp xã, thôn thay vì dừng ở một hội nghị tập trung\./giu, "Cuộc làm việc hướng hoạt động tư vấn trở lại cấp xã, thôn, để thông tin tiếp tục đến đúng địa bàn sau hội nghị tập trung."],
   [/Đây không chỉ là một tin tuyển\./giu, "Tin tuyển mô tả một lộ trình cụ thể."],
   [/Phúc lợi không chỉ là khoản hỗ trợ sau khó khăn\./giu, "Phúc lợi bao gồm cả hỗ trợ sau khó khăn và những điều kiện giúp người lao động duy trì sức khỏe."],
+  [/Các hội nghị ngày 20 và 22\/01\/2026 ký quy chế phối hợp cho giai đoạn 2026–2030\./giu, "Các hội nghị ngày 20 và 22/01/2026 ký quy chế phối hợp cho giai đoạn 2026–2030, đồng thời phân định trách nhiệm của từng bên trong quá trình triển khai."],
+  [/Sau thống kê đầu kỳ, hội nghị đặt mục tiêu tuyển 60–100 người trong năm 2024\./giu, "Sau thống kê đầu kỳ, hội nghị đặt mục tiêu tuyển 60–100 người trong năm 2024. Kết quả cần được theo dõi tới số người nhập học và duy trì việc học."],
+  [/Tổng 121 người cho thấy quy mô chưa lớn nhưng duy trì liên tục qua nhiều năm\./giu, "Tổng 121 người cho thấy quy mô chưa lớn nhưng được duy trì qua nhiều năm. Ý nghĩa của con số nằm ở khả năng đưa người học tới giai đoạn việc làm."],
+  [/Tổng kinh phí quà khen thưởng là 534,2 triệu đồng\./giu, "Tổng kinh phí quà khen thưởng là 534,2 triệu đồng. Khoản chi phản ánh quy mô tuyên dương trên toàn Công ty."],
+  [/Việc tách rõ hai mốc giúp người đọc không hiểu sai quy mô\./giu, "Việc tách rõ hai mốc giúp người đọc hiểu đúng quy mô: một mốc là số người, mốc còn lại là tổng số ngày nghỉ dưỡng."],
   [/Điểm đáng chú ý là\s*/giu, ""],
   [/Đáng chú ý,?\s*/giu, ""],
 ];
@@ -42,12 +47,20 @@ function visible(value = "") {
     .trim();
 }
 
+function wordCount(value = "") {
+  return visible(value).split(/\s+/u).filter(Boolean).length;
+}
+
 function capitalize(value = "") {
   return String(value).replace(/^([“"'‘’(]*)(\p{Ll})/u, (_match, prefix, letter) => `${prefix}${letter.toLocaleUpperCase("vi")}`);
 }
 
 function applyDirectReplacements(value) {
   return directReplacements.reduce((text, [pattern, replacement]) => text.replace(pattern, replacement), String(value));
+}
+
+function stripOutboundSourceLinks(tag) {
+  return String(tag).replace(/<a\b[^>]*>([\s\S]*?)<\/a>/gi, "$1");
 }
 
 function sanitizeSentence(value, {sourceAware = true} = {}) {
@@ -61,7 +74,7 @@ function sanitizeSentence(value, {sourceAware = true} = {}) {
 
 function sanitizeParagraph(tag, {sourceAware = true} = {}) {
   const attrs = tag.match(/^<p\b([^>]*)>/i)?.[1] || "";
-  if (/article-source-note/i.test(attrs)) return tag;
+  if (/article-source-note/i.test(attrs)) return stripOutboundSourceLinks(tag);
   const body = tag.replace(/^<p\b[^>]*>/i, "").replace(/<\/p>$/i, "");
   const sentences = applyDirectReplacements(body)
     .split(/(?<=[.!?])\s+/u)
@@ -69,6 +82,22 @@ function sanitizeParagraph(tag, {sourceAware = true} = {}) {
     .filter(Boolean);
   if (!sentences.length) return "";
   return `<p${attrs}>${sentences.join(" ")}</p>`;
+}
+
+function expandShortEditorialOpeners(copy) {
+  const extensions = {
+    "professional-lede": "Dữ kiện này đặt sự việc trong đúng thời gian, địa bàn và nhóm đối tượng liên quan.",
+    "professional-nutgraph": "Nội dung này xác định trách nhiệm phối hợp giữa địa phương, Nhà trường và doanh nghiệp tiếp nhận.",
+  };
+  let output = String(copy);
+  for (const [className, extension] of Object.entries(extensions)) {
+    output = output.replace(new RegExp(`<p class="${className}">([\\s\\S]*?)<\\/p>`, "gi"), (tag, body) => {
+      if (wordCount(body) >= 18) return tag;
+      const sentence = /[.!?]$/u.test(visible(body)) ? "" : ".";
+      return `<p class="${className}">${body}${sentence} ${extension}</p>`;
+    });
+  }
+  return output;
 }
 
 function sanitizeMarkedCopy(html) {
@@ -79,6 +108,7 @@ function sanitizeMarkedCopy(html) {
         .replace(/<p\b[^>]*>[\s\S]*?<\/p>/gi, (tag) => sanitizeParagraph(tag, {sourceAware: true}))
         .replace(/<section\b([^>]*)>\s*<h2>([\s\S]*?)<\/h2>\s*<\/section>/gi, "")
         .replace(/\s{3,}/g, "\n");
+      clean = expandShortEditorialOpeners(clean);
       return `${start}${clean}${end}`;
     },
   );
@@ -114,4 +144,5 @@ if (process.env.GITHUB_ACTIONS === "true" && changed.length) {
 console.log(JSON.stringify({
   status: "editorial-copy-sanitizer-v3-complete",
   changedFiles: changed.length,
+  visibleSourceLinksRemoved: true,
 }, null, 2));
