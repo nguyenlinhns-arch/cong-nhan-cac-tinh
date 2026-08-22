@@ -27,4 +27,5 @@ export const dailyCommunityArticles = [
 ].map(applyJournalisticSourceEditing)
   .map(applyEditorialSourceOverridesV5)
   .map(applyEditorialSourceOverridesV5b)
-  .map(applyEditorialSourceOverridesV5c);
+  .map(applyEditorialSourceOverridesV5c)
+  .map(applyJournalisticSourceEditing);
