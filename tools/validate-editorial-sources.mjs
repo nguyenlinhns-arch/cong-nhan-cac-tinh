@@ -4,7 +4,7 @@ import path from "node:path";
 const root = path.resolve("tuyen-tho-mo");
 const ledger = JSON.parse(fs.readFileSync(path.resolve("content", "editorial-sources.json"), "utf8"));
 const imageSources = JSON.parse(fs.readFileSync(path.join(root, "assets", "articles", "sources.json"), "utf8"));
-const expectedArticleCount = 90;
+const expectedArticleCount = 92;
 const errors = [];
 const articleFiles = [];
 const htmlEsc = (value = "") => String(value)
