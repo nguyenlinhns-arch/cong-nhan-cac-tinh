@@ -1,3 +1,4 @@
+import {applyJournalisticSourceEditing} from "./journalistic-source-edit.mjs";
 import {dailyCommunityArticles as dailyCommunityArticles20260803} from "./daily-community-articles.mjs";
 import {dailyCommunityArticles20260804} from "./daily-community-articles-20260804.mjs";
 import {dailyCommunityArticles20260809} from "./daily-community-articles-20260809.mjs";
@@ -20,4 +21,4 @@ export const dailyCommunityArticles = [
   ...dailyCommunityArticles20260814,
   ...dailyCommunityArticles20260821,
   ...dailyCommunityArticles20260822,
-];
+].map(applyJournalisticSourceEditing);
