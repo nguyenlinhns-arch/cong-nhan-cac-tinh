@@ -4,20 +4,31 @@ import path from "node:path";
 const root = path.resolve(import.meta.dirname, "..");
 const site = path.join(root, "tuyen-tho-mo");
 const master = JSON.parse(fs.readFileSync(path.join(root, "operations", "job-posting-master-2026.json"), "utf8"));
+const facts = JSON.parse(fs.readFileSync(path.join(site, "data", "recruitment-facts-2026.json"), "utf8"));
 const activeProfiles = master.occupation_profiles.filter((profile) => profile.active_intake);
 const touched = [];
 
-const wrongIncome = /Thu nhập bình quân 20[–-]25 triệu đồng\/tháng, tùy đơn vị, vị trí, ngày công và năng suất/giu;
-const monthlySupport = /7[,.]5 triệu đồng\s*\/\s*tháng/giu;
-const shortIncome = /20[–-]25 triệu\/tháng(?! khi hoàn thành định mức lao động)/giu;
-const fullIncome = /20[–-]25 triệu đồng\/tháng(?! khi hoàn thành định mức lao động)/giu;
+const livingSupport = facts.study_benefits?.living_support || "";
+const incomeStatement = `${facts.after_training?.income || ""}, ${String(facts.after_training?.income_note || "").replace(/^./u, (char) => char.toLocaleLowerCase("vi"))}`;
+if (livingSupport !== "7,5 triệu đồng/tháng trong thời gian học") {
+  throw new Error(`normalize-current-recruitment-copy-v10: living_support canonical không hợp lệ: ${livingSupport}`);
+}
+if (master.income_commitment !== incomeStatement) {
+  throw new Error(`normalize-current-recruitment-copy-v10: master income lệch canonical facts: ${master.income_commitment} <> ${incomeStatement}`);
+}
+if (!master.benefits.some((item) => String(item).includes(livingSupport))) {
+  throw new Error("normalize-current-recruitment-copy-v10: master benefits chưa chứa hỗ trợ 7,5 triệu đồng/tháng");
+}
+
+const totalOnlySupport = /7[,.]5 triệu đồng(?!\s*\/\s*tháng)\s+trong thời gian học/giu;
+const totalCourseSupport = /7[,.]5 triệu(?: đồng)?\s+(?:là\s+)?tổng(?:\s+cả)?\s+khóa/giu;
+const legacyIncomeNorm = /(?:Cam kết\s+)?(?:thu nhập\s+)?20[–-]25 triệu(?: đồng)?\/tháng khi hoàn thành định mức lao động/giu;
 
 function normalizeString(value) {
   return String(value)
-    .replace(monthlySupport, "7,5 triệu đồng trong thời gian học")
-    .replace(wrongIncome, master.income_commitment)
-    .replace(fullIncome, "20–25 triệu đồng/tháng")
-    .replace(shortIncome, "20–25 triệu/tháng");
+    .replace(totalOnlySupport, livingSupport)
+    .replace(totalCourseSupport, livingSupport)
+    .replace(legacyIncomeNorm, incomeStatement);
 }
 
 function normalizeNode(node) {
@@ -53,18 +64,21 @@ if (jobsAfter !== jobsBefore) {
 
 for (const profile of activeProfiles) {
   const html = fs.readFileSync(path.join(site, "viec-lam", profile.slug, "index.html"), "utf8");
-  if (monthlySupport.test(html)) throw new Error(`${profile.slug}: vẫn còn hỗ trợ 7,5 triệu đồng/tháng`);
-  monthlySupport.lastIndex = 0;
-  if (wrongIncome.test(html)) throw new Error(`${profile.slug}: vẫn còn cách ghi thu nhập cũ`);
-  wrongIncome.lastIndex = 0;
-  if (!html.includes(master.income_commitment)) throw new Error(`${profile.slug}: thiếu mức thu nhập hiện hành có điều kiện định mức`);
+  if (totalOnlySupport.test(html) || totalCourseSupport.test(html)) throw new Error(`${profile.slug}: còn cách hiểu 7,5 triệu là tổng cả khóa`);
+  totalOnlySupport.lastIndex = 0;
+  totalCourseSupport.lastIndex = 0;
+  if (legacyIncomeNorm.test(html)) throw new Error(`${profile.slug}: còn điều kiện thu nhập cũ theo định mức`);
+  legacyIncomeNorm.lastIndex = 0;
+  if (!html.includes("7,5 triệu đồng/tháng")) throw new Error(`${profile.slug}: thiếu hỗ trợ 7,5 triệu đồng/tháng`);
+  if (!html.includes(facts.after_training.income)) throw new Error(`${profile.slug}: thiếu thu nhập bình quân 20–25 triệu đồng/tháng`);
 }
 
 console.log(JSON.stringify({
   status: "current-recruitment-copy-v10-normalized",
+  canonicalFactsVersion: facts.version,
   activeOccupations: activeProfiles.length,
-  supportMeaning: "7.5M total during training",
-  incomeCommitment: master.income_commitment,
+  supportMeaning: livingSupport,
+  income: incomeStatement,
   machineFeedsNormalized: ["jobs.json", "jobs.xml", "jooble.xml"],
   touched,
 }, null, 2));
