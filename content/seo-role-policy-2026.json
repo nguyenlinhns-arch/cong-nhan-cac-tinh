@@ -1,22 +1,27 @@
 {
   "updated_at": "2026-08-23",
-  "core_intent": "tuyển thợ mỏ Quảng Ninh",
+  "strategy": "one primary organic recruitment page + one distinct job-intent page + one noindex paid landing",
   "pages": {
     "/": {
       "role": "organic-core",
-      "index": true
+      "index": true,
+      "primary_intent": "tuyển thợ mỏ, thợ lò Quảng Ninh"
     },
     "/tuyen-tho-mo-quang-ninh/": {
       "role": "paid-landing",
-      "index": false
+      "index": false,
+      "primary_intent": "Google Ads conversion landing"
     },
     "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/": {
-      "role": "job-hub",
-      "index": true
+      "role": "organic-job-intent",
+      "index": true,
+      "primary_intent": "việc làm công nhân mỏ hầm lò Quảng Ninh"
     },
     "/viec-lam-nganh-than/quang-ninh/": {
-      "role": "province-hub",
-      "index": true
+      "role": "legacy-redirect",
+      "index": false,
+      "canonical": "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
+      "redirect_to": "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/"
     }
   }
 }
