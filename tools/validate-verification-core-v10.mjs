@@ -30,7 +30,6 @@ for (const marker of [
 const reelBlock = kcn.match(/<div class="kcn-reel">([\s\S]*?)<\/div>/i)?.[1] || "";
 if (!reelBlock) errors.push("KCN: thiếu khối kcn-reel");
 if (/<iframe\b/i.test(reelBlock)) errors.push("KCN: iframe Facebook vẫn tải ngay trong HTML ban đầu");
-if (!new RegExp(`"dateModified"\\s*:\\s*"${contentModified}"`).test(kcn)) errors.push(`KCN: dateModified chưa là ${contentModified}`);
 
 const kcnCss = read("kcn-comparison.css");
 for (const marker of [".kcn-reel-facade{", ".kcn-reel-facade__play{", ".kcn-reel-facade:focus-visible{"]) {
@@ -40,7 +39,6 @@ for (const marker of [".kcn-reel-facade{", ".kcn-reel-facade__play{", ".kcn-reel
 const stories = read("cau-chuyen-cong-nhan/index.html");
 if (!stories.includes(`Xem ${priorityCount} địa bàn ưu tiên`)) errors.push("Câu chuyện công nhân: CTA chưa ghi đúng phạm vi địa bàn ưu tiên");
 if (stories.includes("Xem toàn bộ trang tỉnh")) errors.push("Câu chuyện công nhân: còn CTA gây hiểu nhầm toàn bộ tỉnh");
-if (!new RegExp(`"dateModified"\\s*:\\s*"${contentModified}"`).test(stories)) errors.push(`Câu chuyện công nhân: dateModified chưa là ${contentModified}`);
 
 const verificationPages = [
   "chon-kcn-hay-lam-mo/index.html",
@@ -52,6 +50,7 @@ const verificationPages = [
 ];
 for (const relative of verificationPages) {
   const html = read(relative);
+  if (!new RegExp(`"dateModified"\\s*:\\s*"${contentModified}"`).test(html)) errors.push(`${relative}: dateModified chưa là ${contentModified}`);
   if (!new RegExp(`"lastReviewed"\\s*:\\s*"${reviewDate}"`).test(html)) errors.push(`${relative}: lastReviewed chưa là ${reviewDate}`);
   if (html.includes('/verification-portal.js?v=1')) errors.push(`${relative}: còn verification-portal.js v1`);
   if (!html.includes('/verification-portal.js?v=2')) errors.push(`${relative}: thiếu verification-portal.js v2`);
@@ -77,6 +76,7 @@ if (errors.length) {
     shareToolsVersion: 2,
     reviewedAt: reviewDate,
     contentModified,
+    pagesWithCurrentDates: verificationPages.length,
     errors: 0,
   }, null, 2));
 }
