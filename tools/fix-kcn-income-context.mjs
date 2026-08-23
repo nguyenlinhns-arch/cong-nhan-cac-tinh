@@ -8,17 +8,22 @@ let html = fs.readFileSync(target, "utf8");
 const replacements = [
   [
     "Nghề mỏ không dành cho người chỉ nhìn thấy mức 20–25 triệu đồng",
-    "Nghề mỏ không dành cho người chỉ nhìn thấy mức 20–25 triệu đồng/tháng",
+    "Nghề mỏ không dành cho người chỉ nhìn thấy mức 20–25 triệu đồng/tháng khi hoàn thành định mức lao động",
   ],
   [
     "Nghề mỏ có Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. không?",
-    "Nghề mỏ có Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. không?",
+    "Nghề mỏ có thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động không?",
   ],
 ];
 
+let changed = 0;
 for (const [before, after] of replacements) {
-  if (!html.includes(before)) throw new Error(`Missing KCN income text: ${before}`);
-  html = html.replace(before, after);
+  if (html.includes(before)) {
+    html = html.replace(before, after);
+    changed += 1;
+  } else if (!html.includes(after)) {
+    throw new Error(`Missing KCN income text in both legacy and canonical form: ${before}`);
+  }
 }
 
 for (const forbidden of [
@@ -39,7 +44,8 @@ fs.writeFileSync(target, html);
 console.log(JSON.stringify({
   status: "income-context-fixed",
   page: "/chon-kcn-hay-lam-mo/",
-  replacements: replacements.length,
+  replacementsConfigured: replacements.length,
+  replacementsApplied: changed,
   income_nodes: incomeNodes.length,
   invalid_income_nodes: invalidIncomeNodes.length,
 }, null, 2));
