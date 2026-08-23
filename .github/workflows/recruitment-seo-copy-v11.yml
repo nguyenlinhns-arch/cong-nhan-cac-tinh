@@ -7,6 +7,7 @@ on:
       - 'tools/normalize-recruitment-seo-copy-v11.mjs'
       - 'tools/generate-province-pages-2026.mjs'
       - 'tools/build-worker-first-home.mjs'
+      - 'tools/sync-home-freshness.mjs'
       - 'content/daily-seo-articles.json'
       - 'tuyen-tho-mo/app.js'
       - '.github/workflows/recruitment-seo-copy-v11.yml'
@@ -51,6 +52,7 @@ jobs:
           node --check tools/generate-province-pages-2026.mjs
           node --check tools/build-worker-first-home.mjs
           node --check tools/normalize-recruitment-seo-copy-v11.mjs
+          node --check tools/sync-home-freshness.mjs
           if grep -RIlE 'href="[^" ]*cong-nhan-mo-ham-lo-quang-ninh/\?province=' tuyen-tho-mo/viec-lam-nganh-than --include='*.html' | grep -q .; then
             echo 'Crawlable province query URL remains in local pages' >&2
             exit 1
@@ -61,12 +63,18 @@ jobs:
           fi
           grep -q 'data-prefill-province="${name}"' tools/generate-province-pages-2026.mjs
           grep -q 'seo-topic-cluster' tools/generate-province-pages-2026.mjs
-          grep -q 'lastReviewed: "2026-08-23"' tools/generate-province-pages-2026.mjs
+          grep -Eq 'dateModified: "[0-9]{4}-[0-9]{2}-[0-9]{2}"' tools/generate-province-pages-2026.mjs
+          grep -Eq 'lastReviewed: "[0-9]{4}-[0-9]{2}-[0-9]{2}"' tools/generate-province-pages-2026.mjs
           grep -q 'data-prefill-province=' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
           grep -q 'Thu nhập theo định mức' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
           grep -q 'Ba trang nên xem trước khi đăng ký' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
-          grep -q '"dateModified":"2026-08-23"' tuyen-tho-mo/index.html
-          grep -q '"lastReviewed":"2026-08-23"' tuyen-tho-mo/index.html
+          grep -Eq '"dateModified":"[0-9]{4}-[0-9]{2}-[0-9]{2}"' tuyen-tho-mo/index.html
+          grep -Eq '"lastReviewed":"[0-9]{4}-[0-9]{2}-[0-9]{2}"' tuyen-tho-mo/index.html
+          grep -q 'Xem 26 địa bàn ưu tiên' tuyen-tho-mo/index.html
+          if grep -q 'Xem đủ 26 tỉnh, thành' tuyen-tho-mo/index.html; then
+            echo 'Stale province-count label remains on homepage' >&2
+            exit 1
+          fi
 
       - name: Commit normalized SEO source and published pages
         shell: bash
