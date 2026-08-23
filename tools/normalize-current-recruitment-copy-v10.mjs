@@ -25,7 +25,10 @@ if (!master.benefits.some((item) => String(item).includes(livingSupport))) {
 }
 
 const totalCourseSupport = /7[,.]5 triệu(?: đồng)?(?:\s*\/\s*tháng)?\s*(?:là\s+)?tổng(?:\s+cả)?\s+khóa/giu;
-const supportWithoutMonth = /7[,.]5 triệu(?: đồng)?(?!\s*\/\s*tháng)/giu;
+// Put the negative look-ahead immediately after "triệu" so the optional
+// "đồng" token cannot backtrack and accidentally turn an already-correct
+// "7,5 triệu đồng/tháng" into a duplicated "/tháng" string.
+const supportWithoutMonth = /7[,.]5 triệu(?!\s*(?:đồng\s*)?\/\s*tháng)(?: đồng)?/giu;
 const averageIncome = /(?:thu nhập\s+)?bình quân\s+20[–-]25 triệu(?: đồng)?\s*\/\s*tháng(?:\s*,?\s*tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất)?/giu;
 const variableIncomeSuffix = /20[–-]25 triệu(?: đồng)?\s*\/\s*tháng\s*,?\s*tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất/giu;
 
@@ -88,7 +91,7 @@ if (jobsAfter !== jobsBefore) {
 for (const relative of currentPages) {
   const html = fs.readFileSync(path.join(site, relative), "utf8");
   totalCourseSupport.lastIndex = 0;
-  if (totalCourseSupport.test(html)) throw new Error(`${relative}: còn cách hiểu 7,5 triệu đồng/tháng trong thời gian học`);
+  if (totalCourseSupport.test(html)) throw new Error(`${relative}: còn cách hiểu 7,5 triệu là tổng cả khóa`);
   totalCourseSupport.lastIndex = 0;
   averageIncome.lastIndex = 0;
   if (averageIncome.test(html)) throw new Error(`${relative}: còn cách ghi thu nhập bình quân cũ`);
@@ -113,5 +116,6 @@ console.log(JSON.stringify({
   income: incomeStatement,
   forbiddenLegacyPhrases: facts.forbidden_legacy_phrases || [],
   machineFeedsNormalized: ["jobs.json", "jobs.xml", "jooble.xml"],
+  idempotentMonthlySupport: true,
   touched,
 }, null, 2));
