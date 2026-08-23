@@ -49,6 +49,7 @@ for (const [slug] of entries) {
 }
 fs.writeFileSync(llmsPath, llms);
 
+await import("./editorial-field-report-seo-title-v8.mjs");
 await import("./editorial-field-report-social-meta-v8.mjs");
 await import("./editorial-field-report-authority-v8.mjs");
 
