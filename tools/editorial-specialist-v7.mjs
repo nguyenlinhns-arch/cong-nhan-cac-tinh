@@ -30,6 +30,10 @@ function cleanText(value = "") {
       "Đào tạo an toàn trước khi vào lò bắt đầu từ những việc rất cụ thể")
     .replace(/Quy mô hội thi cho thấy tay nghề trong ngành Than được nhìn bằng năng lực có thể quan sát và kiểm chứng/giu,
       "Tay nghề thợ mỏ trong thời kỳ mỏ thông minh được nhìn bằng năng lực có thể quan sát và kiểm chứng qua quy mô hội thi")
+    .replace(/Giá trị của khóa học 2–3 tháng nằm ở việc giúp người chưa có nghề bước vào sản xuất với nền tảng đúng: biết việc, biết giới hạn, biết phối hợp và biết dừng khi điều kiện không còn an toàn\. Phần còn lại được xây tiếp bằng thực tế tại doanh nghiệp và thái độ học nghề của chính người lao động\./giu,
+      "Người đang cân nhắc khóa học 2–3 tháng nên tự hỏi mình có thể đi học đủ, giữ kỷ luật thực hành và tiếp tục học nghề tại doanh nghiệp hay không. Giá trị của khóa học nằm ở việc giúp người chưa có nghề bước vào sản xuất với nền tảng đúng: biết việc, biết giới hạn, biết phối hợp và biết dừng khi điều kiện không còn an toàn. Phần còn lại được xây tiếp bằng thực tế tại doanh nghiệp và thái độ học nghề của chính người lao động.")
+    .replace(/Một khóa học nghề tạo điểm xuất phát; tay nghề thật được hình thành bằng hàng nghìn lần làm đúng, sửa lỗi và tích lũy kinh nghiệm\. Hội thi thợ giỏi cho thấy con đường phát triển nghề nghiệp có thể đo được, và người mới có thể bắt đầu con đường đó ngay từ thái độ trong buổi thực hành đầu tiên\./giu,
+      "Người mới nên ưu tiên làm đúng, hỏi lại khi chưa rõ và sửa lỗi ngay trong buổi thực hành. Một khóa học nghề tạo điểm xuất phát; tay nghề thật được hình thành bằng hàng nghìn lần làm đúng, sửa lỗi và tích lũy kinh nghiệm. Hội thi thợ giỏi cho thấy con đường phát triển nghề nghiệp có thể đo được, và người mới có thể bắt đầu con đường đó ngay từ thái độ trong buổi thực hành đầu tiên.")
     .replace(/nhu cầu nhân lực không chỉ nằm ở khai thác trực tiếp mà còn trải sang/giu,
       "nhu cầu nhân lực trải từ khai thác trực tiếp sang")
     .replace(/Sự thay đổi lớn nhất của mỏ hầm lò không nằm ở việc có thêm máy móc/giu,
