@@ -100,6 +100,10 @@ if (invalid.length) {
 console.log(`${CHECK_ONLY ? "Validated" : "Updated"} the shared Thầy Linh – Tuyển Thợ Mỏ brand across ${htmlFiles.length} HTML files; changed ${changed.length}.`);
 
 if (!CHECK_ONLY) {
+  // Keep the homepage journey compact while exposing the original field-report
+  // collection as a first-class destination from the existing proof block.
+  await import("./home-field-report-entry-v9.mjs");
+
   // Source-level corrections run before any newsroom rendering so broken or
   // self-referential source prose cannot leak into later HTML cleanup passes.
   await import("./editorial-source-fixes-v8.mjs");
@@ -141,6 +145,7 @@ if (!CHECK_ONLY) {
   // improves trust without turning the article back into a dashboard.
   await import("./editorial-content-origin-v9.mjs");
 
+  await runValidator("./validate-home-field-report-entry-v9.mjs", "Kiểm định lối vào phóng sự trang chủ v9");
   await runValidator("./validate-editorial-source-v5.mjs", "Kiểm định nguồn bài v5");
   await runValidator("./validate-editorial-story-v3.mjs", "Kiểm định bài nguồn newsroom");
   await runValidator("./validate-editorial-authority.mjs", "Kiểm định tác giả và trách nhiệm biên tập");
