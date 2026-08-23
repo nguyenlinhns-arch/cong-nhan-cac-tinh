@@ -11,6 +11,9 @@ const REVIEW_DATE = new Intl.DateTimeFormat('en-CA', {
 }).format(new Date());
 const PROVINCE_GENERATOR = path.join(ROOT, 'tools', 'generate-province-pages-2026.mjs');
 const DAILY_DATA = path.join(ROOT, 'content', 'daily-seo-articles.json');
+const CANONICAL_FACTS_PATH = path.join(SITE, 'data', 'recruitment-facts-2026.json');
+const CANONICAL_FACTS_URL = 'https://thaylinhtuyenthomo.vn/data/recruitment-facts-2026.json';
+const canonicalFacts = JSON.parse(fs.readFileSync(CANONICAL_FACTS_PATH, 'utf8'));
 
 const exactReplacements = [
   [
@@ -120,6 +123,9 @@ function normalizeDailyData() {
   raw = normalizeText(raw);
   const data = JSON.parse(raw);
   if (String(data.updated_at || '') < REVIEW_DATE) data.updated_at = REVIEW_DATE;
+  data.canonical_facts_version = canonicalFacts.version;
+  data.canonical_facts_confirmed_at = canonicalFacts.confirmed_at;
+  data.canonical_facts_url = CANONICAL_FACTS_URL;
   writeIfChanged(DAILY_DATA, JSON.stringify(data, null, 2) + '\n');
 }
 
@@ -151,4 +157,9 @@ for (const file of auditTargets) {
   }
 }
 
-console.log(JSON.stringify({status: 'ok', review_date: REVIEW_DATE, clean_internal_province_links: true, homepage_freshness_owner: 'sync-home-freshness.mjs'}, null, 2));
+const daily = JSON.parse(fs.readFileSync(DAILY_DATA, 'utf8'));
+if (daily.canonical_facts_version !== canonicalFacts.version) throw new Error('Daily SEO registry facts version mismatch');
+if (daily.canonical_facts_confirmed_at !== canonicalFacts.confirmed_at) throw new Error('Daily SEO registry facts timestamp mismatch');
+if (daily.canonical_facts_url !== CANONICAL_FACTS_URL) throw new Error('Daily SEO registry canonical facts URL mismatch');
+
+console.log(JSON.stringify({status: 'ok', review_date: REVIEW_DATE, canonical_facts_version: canonicalFacts.version, clean_internal_province_links: true, homepage_freshness_owner: 'sync-home-freshness.mjs'}, null, 2));
