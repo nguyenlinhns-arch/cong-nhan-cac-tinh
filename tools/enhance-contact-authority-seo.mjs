@@ -185,7 +185,7 @@ const contactPage = `<!doctype html>
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:alt" content="Thầy Linh – Tuyển thợ mỏ, lương 25 triệu mỗi tháng khi hoàn thành định mức lao động">
+  <meta property="og:image:alt" content="Thầy Linh – Tuyển thợ mỏ, thu nhập bình quân 20–25 triệu/tháng">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Đi làm mỏ than Quảng Ninh liên hệ ai?">
   <meta name="twitter:description" content="Liên hệ Thầy Linh qua Zalo/điện thoại ${PHONE_DISPLAY} để kiểm tra điều kiện và được hướng dẫn lộ trình.">

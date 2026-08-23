@@ -71,10 +71,10 @@ html = replaceOnce(html, '<meta property="og:title" content="Tuyển thợ mỏ 
 html = replaceOnce(html, '<meta property="og:description" content="Một hành trình rõ ràng từ kiểm tra điều kiện, học nghề tại Quang Hanh đến nhận việc ngành Than ở Quảng Ninh.">', '<meta property="og:description" content="Kiểm tra điều kiện, xem công việc thực tế, học nghề tại Quang Hanh và đăng ký nhận việc ngành Than ở Quảng Ninh.">', "Open Graph description");
 html = replaceOnce(html, `<meta property="og:image" content="https://thaylinhtuyenthomo.vn/assets/${retiredSocialImage}">`, '<meta property="og:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">\n  <meta property="og:image:secure_url" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">', "Open Graph recruitment thumbnail");
 html = replaceOnce(html, '<meta property="og:image:type" content="image/webp">', '<meta property="og:image:type" content="image/jpeg">', "Open Graph thumbnail type");
-html = replaceOnce(html, '<meta property="og:image:alt" content="Thầy Linh – Học nghề mỏ, làm việc tại Quảng Ninh">', '<meta property="og:image:alt" content="Thầy Linh – Tuyển thợ mỏ, lương 25 triệu mỗi tháng khi hoàn thành định mức lao động">', "Open Graph thumbnail alternative text");
+html = replaceOnce(html, '<meta property="og:image:alt" content="Thầy Linh – Học nghề mỏ, làm việc tại Quảng Ninh">', '<meta property="og:image:alt" content="Thầy Linh – Tuyển thợ mỏ, thu nhập bình quân 20–25 triệu/tháng">', "Open Graph thumbnail alternative text");
 html = replaceOnce(html, '<meta name="twitter:title" content="Tuyển thợ mỏ tháng 8/2026 – từ học nghề đến nhận việc">', '<meta name="twitter:title" content="Tuyển thợ mỏ, thợ lò tại Quảng Ninh">', "Twitter title");
 html = replaceOnce(html, '<meta name="twitter:description" content="Xem hành trình học nghề mỏ tại Quang Hanh, quyền lợi, hồ sơ và việc làm ngành Than tại Quảng Ninh.">', '<meta name="twitter:description" content="Xem điều kiện, video công việc thực tế, quyền lợi học nghề và cách đăng ký làm việc ngành Than tại Quảng Ninh.">', "Twitter description");
-html = replaceOnce(html, `<meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/${retiredSocialImage}">`, '<meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">\n  <meta name="twitter:image:alt" content="Thầy Linh – Tuyển thợ mỏ, lương 25 triệu mỗi tháng khi hoàn thành định mức lao động">', "Twitter recruitment thumbnail");
+html = replaceOnce(html, `<meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/${retiredSocialImage}">`, '<meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">\n  <meta name="twitter:image:alt" content="Thầy Linh – Tuyển thợ mỏ, thu nhập bình quân 20–25 triệu/tháng">', "Twitter recruitment thumbnail");
 html = replaceOnce(html, '"name":"Tuyển thợ mỏ tháng 8/2026: hành trình học nghề đến nhận việc"', '"name":"Tuyển thợ mỏ, thợ lò tại Quảng Ninh"', "WebPage structured title");
 html = replaceOnce(html, '"description":"Hành trình tuyển thợ mỏ tháng 8/2026 từ kiểm tra điều kiện, học nghề tại Quang Hanh đến nhận việc ngành Than ở Quảng Ninh; thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất."', '"description":"Tuyển thợ mỏ, thợ lò tại Quảng Ninh: kiểm tra điều kiện, xem công việc thực tế, học nghề tại Quang Hanh và nhận việc ngành Than; thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất."', "WebPage structured description");
 html = replaceOnce(html, '<p class="eyebrow">Thông tin tuyển sinh tháng 8/2026</p>', '<p class="eyebrow">Thông tin tuyển sinh nghề mỏ đang áp dụng</p>', "Homepage status eyebrow");
@@ -300,7 +300,7 @@ for (const marker of [
   '/home-worker-journey.js?v=2',
   "Tuyển thợ mỏ, thợ lò tại Quảng Ninh",
   "og-cover-luong-25-trieu-v4.jpg",
-  "lương 25 triệu mỗi tháng khi hoàn thành định mức lao động",
+  "thu nhập bình quân 20–25 triệu/tháng",
   "Thông tin tuyển sinh nghề mỏ đang áp dụng",
   "Xem công việc thợ mỏ qua người thật, việc thật",
   "Hành trình học nghề mỏ và nhận việc tại Quảng Ninh",
