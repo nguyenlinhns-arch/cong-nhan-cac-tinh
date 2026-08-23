@@ -7,9 +7,9 @@
 
   window.THAY_LINH_RECRUITMENT = Object.freeze({
     // Giữ phiên bản truyền tải tương thích với web app CRM đang chạy.
-    // Các trường Google Ads được nối thêm nhưng không thay đổi schema bắt buộc hiện có.
+    // Thuộc tính quảng cáo được nối thêm nhưng không thay đổi schema bắt buộc hiện có.
     schemaVersion: 2,
-    updatedAt: "2026-08-23T10:38:00+07:00",
+    updatedAt: "2026-08-23T11:35:00+07:00",
     canonicalFactsPath: "/data/recruitment-facts-2026.json",
     endpoint: ENDPOINT,
     timeoutMs: 12000,
@@ -70,23 +70,51 @@
     return "job";
   }
 
+  function pick(params, stored, ...keys) {
+    for (const key of keys) {
+      const value = params.get(key) || stored[key];
+      if (typeof value === "string" && value.trim()) return value.trim().slice(0, 500);
+    }
+    return "";
+  }
+
   function enrichApplication(payload) {
     if (!payload || typeof payload !== "object") return payload;
     const stored = readStoredAttribution();
     const params = new URLSearchParams(location.search);
-    const term = params.get("utm_term") || stored.utm_term || stored.first_utm_term || "";
-    const campaign = params.get("utm_campaign") || stored.utm_campaign || "";
-    const content = params.get("utm_content") || stored.utm_content || "";
+    const term = pick(params, stored, "utm_term") || stored.first_utm_term || "";
+    const campaign = pick(params, stored, "utm_campaign");
+    const content = pick(params, stored, "utm_content");
     const pageIntent = document.documentElement.dataset.googlePaidIntent || normalizeIntent(`${term} ${campaign} ${content}`);
     const phoneE164 = normalizePhoneE164(payload.phone);
+
+    const fbclid = pick(params, stored, "fbclid");
+    const metaCampaignId = pick(params, stored, "fb_campaign_id", "meta_campaign_id", "campaign_id");
+    const metaAdsetId = pick(params, stored, "fb_adset_id", "meta_adset_id", "adset_id");
+    const metaAdId = pick(params, stored, "fb_ad_id", "meta_ad_id", "ad_id");
+    const metaPlacement = pick(params, stored, "fb_placement", "meta_placement", "placement");
+    const metaCampaignName = pick(params, stored, "fb_campaign", "meta_campaign", "campaign_name");
+    const metaAdsetName = pick(params, stored, "fb_adset", "meta_adset", "adset_name");
+    const metaAdName = pick(params, stored, "fb_ad", "meta_ad", "ad_name");
+    const metaSiteSource = pick(params, stored, "site_source_name", "fb_source");
+    const inferredFacebook = /^(facebook|fb|instagram|ig)$/i.test(String(payload.source || params.get("utm_source") || metaSiteSource || ""));
 
     return {
       ...payload,
       phone_e164: phoneE164,
       utm_term: term,
-      gclid: params.get("gclid") || stored.gclid || "",
-      gbraid: params.get("gbraid") || stored.gbraid || "",
-      wbraid: params.get("wbraid") || stored.wbraid || "",
+      gclid: pick(params, stored, "gclid"),
+      gbraid: pick(params, stored, "gbraid"),
+      wbraid: pick(params, stored, "wbraid"),
+      fbclid,
+      meta_campaign_id: metaCampaignId,
+      meta_adset_id: metaAdsetId,
+      meta_ad_id: metaAdId,
+      meta_placement: metaPlacement,
+      meta_campaign_name: metaCampaignName,
+      meta_adset_name: metaAdsetName,
+      meta_ad_name: metaAdName,
+      meta_site_source: metaSiteSource,
       first_source: stored.first_utm_source || "",
       first_medium: stored.first_utm_medium || "",
       first_campaign: stored.first_utm_campaign || "",
@@ -95,6 +123,7 @@
       first_landing_path: stored.first_landing_path || "",
       paid_search_intent: pageIntent,
       google_ads_import_ready: Boolean(phoneE164 || stored.gclid || stored.gbraid || stored.wbraid || params.get("gclid") || params.get("gbraid") || params.get("wbraid")),
+      facebook_ads_import_ready: Boolean(inferredFacebook && (phoneE164 || fbclid || metaAdId || metaCampaignId)),
     };
   }
 
