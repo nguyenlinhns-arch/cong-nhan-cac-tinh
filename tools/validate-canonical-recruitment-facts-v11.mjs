@@ -77,7 +77,7 @@ for (const phrase of forbidden) {
 }
 if (!String(usageNote || "").includes(livingSupport)) add("recruitment-current usage_note thiếu hỗ trợ canonical");
 if (!String(usageNote || "").includes(incomeCommitment)) add("recruitment-current usage_note thiếu thu nhập canonical");
-if (!/tổng cả khóa/iu.test(String(usageNote || ""))) add("recruitment-current usage_note chưa cảnh báo cách hiểu 7,5 triệu đồng/tháng trong thời gian học");
+if (!/tổng cả khóa/iu.test(String(usageNote || ""))) add("recruitment-current usage_note chưa cảnh báo cách hiểu sai '7,5 triệu là tổng cả khóa'");
 
 const shareTools = fs.readFileSync(path.join(site, "share-tools.js"), "utf8");
 for (const marker of [
