@@ -1,0 +1,89 @@
+name: Verify province facts
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/recruitment-facts-2026.json'
+      - 'content/recruitment-review-v10.json'
+      - 'tuyen-tho-mo/data/recruitment-facts-2026.json'
+      - 'tuyen-tho-mo/viec-lam-nganh-than/**'
+      - 'tools/generate-province-pages-2026.mjs'
+      - 'tools/normalize-province-current-facts-v11.mjs'
+      - 'tools/validate-province-current-facts-v11.mjs'
+      - 'tools/validate-province-metadata-facts-v11.mjs'
+      - '.github/workflows/verify-province-facts.yml'
+  workflow_run:
+    workflows: ["Deploy GitHub Pages"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-province-facts
+  cancel-in-progress: true
+
+jobs:
+  validate-source:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Normalize generated province pages in runner
+        run: node tools/normalize-province-current-facts-v11.mjs
+      - name: Validate province policy copy
+        run: node tools/validate-province-current-facts-v11.mjs
+      - name: Validate province metadata and JSON-LD
+        run: node tools/validate-province-metadata-facts-v11.mjs
+
+  verify-live-samples:
+    if: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify both province-template families live
+        shell: bash
+        env:
+          BASE: https://thaylinhtuyenthomo.vn
+        run: |
+          set -euo pipefail
+          samples=(gia-lai quang-ngai thanh-hoa ho-chi-minh)
+          for attempt in $(seq 1 24); do
+            ok=1
+            for slug in "${samples[@]}"; do
+              file="$(mktemp)"
+              nonce="${GITHUB_SHA}-${GITHUB_RUN_ID}-${slug}-${attempt}-$(date +%s)"
+              if ! curl --fail --silent --show-error --location --max-time 20 "${BASE}/viec-lam-nganh-than/${slug}/?release=${nonce}" -o "$file"; then
+                ok=0
+                continue
+              fi
+              set +e
+              FILE="$file" SLUG="$slug" node <<'NODE'
+              const fs=require('node:fs');
+              const html=fs.readFileSync(process.env.FILE,'utf8');
+              const slug=process.env.SLUG;
+              const failures=[];
+              if (!html.includes('Kỹ thuật cơ điện mỏ hầm lò')) failures.push('missing electrical-mine occupation');
+              if (!/(?:cơ điện mỏ[^<\n]{0,100}(?:học|đào tạo)[^<\n]{0,40}10 tháng|Kỹ thuật cơ điện mỏ hầm lò[\s\S]{0,180}10 tháng)/iu.test(html)) failures.push('missing 10-month electrical-mine duration');
+              if (/7[,.]5\s*triệu/iu.test(html) && !/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(html)) failures.push('7.5M missing /month');
+              for (const match of html.matchAll(/20\s*[–-]\s*25\s*triệu/giu)) {
+                const i=match.index||0;
+                const window=html.slice(Math.max(0,i-220),Math.min(html.length,i+340));
+                if (!/hoàn thành định mức lao động/iu.test(window)) { failures.push('20-25M missing labor-norm condition'); break; }
+              }
+              if (!/"lastReviewed"\s*:\s*"2026-08-23"/.test(html)) failures.push('lastReviewed not current');
+              if (!html.includes('"reviewedBy":{"@id":"https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/#person"}')) failures.push('reviewedBy missing');
+              if (failures.length) { console.error(JSON.stringify({slug,failures},null,2)); process.exit(2); }
+              NODE
+              status=$?
+              set -e
+              if [ "$status" -ne 0 ]; then ok=0; fi
+            done
+            if [ "$ok" -eq 1 ]; then exit 0; fi
+            sleep 5
+          done
+          echo "Province live samples did not expose canonical facts after retries." >&2
+          exit 1
