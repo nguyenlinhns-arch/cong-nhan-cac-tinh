@@ -9,9 +9,13 @@ const activeProfiles = master.occupation_profiles.filter((profile) => profile.ac
 const touched = [];
 
 const livingSupport = facts.study_benefits?.living_support || "";
-const incomeStatement = `${facts.after_training?.income || ""}, ${String(facts.after_training?.income_note || "").replace(/^./u, (char) => char.toLocaleLowerCase("vi"))}`;
+const incomeStatement = facts.after_training?.income_commitment
+  || `${facts.after_training?.income || ""} ${facts.after_training?.income_condition || ""}`.trim();
 if (livingSupport !== "7,5 triệu đồng/tháng trong thời gian học") {
   throw new Error(`normalize-current-recruitment-copy-v10: living_support canonical không hợp lệ: ${livingSupport}`);
+}
+if (incomeStatement !== "20–25 triệu đồng/tháng khi hoàn thành định mức lao động") {
+  throw new Error(`normalize-current-recruitment-copy-v10: income canonical không hợp lệ: ${incomeStatement}`);
 }
 if (master.income_commitment !== incomeStatement) {
   throw new Error(`normalize-current-recruitment-copy-v10: master income lệch canonical facts: ${master.income_commitment} <> ${incomeStatement}`);
@@ -20,15 +24,17 @@ if (!master.benefits.some((item) => String(item).includes(livingSupport))) {
   throw new Error("normalize-current-recruitment-copy-v10: master benefits chưa chứa hỗ trợ 7,5 triệu đồng/tháng");
 }
 
-const totalOnlySupport = /7[,.]5 triệu đồng(?!\s*\/\s*tháng)(?:\s+trong thời gian học)?/giu;
-const totalCourseSupport = /7[,.]5 triệu(?: đồng)?\s+(?:là\s+)?tổng(?:\s+cả)?\s+khóa/giu;
-const legacyIncomeNorm = /(?:Cam kết\s+)?(?:thu nhập\s+)?20[–-]25 triệu(?: đồng)?\/tháng khi hoàn thành định mức lao động/giu;
+const totalCourseSupport = /7[,.]5 triệu(?: đồng)?(?:\s*\/\s*tháng)?\s*(?:là\s+)?tổng(?:\s+cả)?\s+khóa/giu;
+const supportWithoutMonth = /7[,.]5 triệu(?: đồng)?(?!\s*\/\s*tháng)/giu;
+const averageIncome = /(?:thu nhập\s+)?bình quân\s+20[–-]25 triệu(?: đồng)?\s*\/\s*tháng(?:\s*,?\s*tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất)?/giu;
+const variableIncomeSuffix = /20[–-]25 triệu(?: đồng)?\s*\/\s*tháng\s*,?\s*tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất/giu;
 
 function normalizeString(value) {
   return String(value)
     .replace(totalCourseSupport, livingSupport)
-    .replace(totalOnlySupport, "7,5 triệu đồng/tháng")
-    .replace(legacyIncomeNorm, incomeStatement);
+    .replace(supportWithoutMonth, "7,5 triệu đồng/tháng")
+    .replace(averageIncome, incomeStatement)
+    .replace(variableIncomeSuffix, incomeStatement);
 }
 
 function normalizeNode(node) {
@@ -82,16 +88,19 @@ if (jobsAfter !== jobsBefore) {
 for (const relative of currentPages) {
   const html = fs.readFileSync(path.join(site, relative), "utf8");
   totalCourseSupport.lastIndex = 0;
-  if (totalCourseSupport.test(html)) throw new Error(`${relative}: còn cách hiểu 7,5 triệu đồng/tháng trong thời gian học`);
+  if (totalCourseSupport.test(html)) throw new Error(`${relative}: còn cách hiểu 7,5 triệu là tổng cả khóa`);
   totalCourseSupport.lastIndex = 0;
-  legacyIncomeNorm.lastIndex = 0;
-  if (legacyIncomeNorm.test(html)) throw new Error(`${relative}: còn điều kiện thu nhập cũ theo định mức`);
-  legacyIncomeNorm.lastIndex = 0;
+  averageIncome.lastIndex = 0;
+  if (averageIncome.test(html)) throw new Error(`${relative}: còn cách ghi thu nhập bình quân cũ`);
+  averageIncome.lastIndex = 0;
+  variableIncomeSuffix.lastIndex = 0;
+  if (variableIncomeSuffix.test(html)) throw new Error(`${relative}: còn cách ghi thu nhập tùy đơn vị/vị trí/ngày công/năng suất`);
+  variableIncomeSuffix.lastIndex = 0;
   if (/7[,.]5 triệu/iu.test(html) && !/7[,.]5 triệu(?: đồng)?\s*\/\s*tháng/iu.test(html)) {
     throw new Error(`${relative}: có nhắc 7,5 triệu nhưng thiếu đơn vị /tháng`);
   }
-  if (/20[–-]25 triệu/iu.test(html) && !html.includes(facts.after_training.income)) {
-    throw new Error(`${relative}: có nhắc 20–25 triệu nhưng thiếu cách ghi thu nhập bình quân hiện hành`);
+  if (/20[–-]25 triệu/iu.test(html) && !/hoàn thành định mức lao động/iu.test(html)) {
+    throw new Error(`${relative}: có nhắc 20–25 triệu nhưng thiếu điều kiện hoàn thành định mức lao động`);
   }
 }
 
@@ -102,6 +111,7 @@ console.log(JSON.stringify({
   currentPages: currentPages.length,
   supportMeaning: livingSupport,
   income: incomeStatement,
+  forbiddenLegacyPhrases: facts.forbidden_legacy_phrases || [],
   machineFeedsNormalized: ["jobs.json", "jobs.xml", "jooble.xml"],
   touched,
 }, null, 2));
