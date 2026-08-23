@@ -48,7 +48,7 @@ function add(relative, message) {
 }
 
 const forbiddenCurrentCopy = [
-  [/7[,.]5\s*triệu(?:\s*đồng)?(?:\s*\/\s*tháng)?\s+(?:là\s+)?tổng(?:\s+cả)?\s+khóa/iu, "còn cách hiểu sai 7,5 triệu đồng/tháng trong thời gian học"],
+  [/7[,.]5\s*triệu(?:\s*đồng)?(?:\s*\/\s*tháng)?\s+(?:là\s+)?tổng(?:\s+cả)?\s+khóa/iu, "còn cách hiểu sai 7,5 triệu là tổng cả khóa"],
   [/7[,.]5\s*triệu\s*đồng(?!\s*\/\s*tháng)\s+trong thời gian học/iu, "hỗ trợ 7,5 triệu trong thời gian học nhưng thiếu /tháng"],
   [/\bbình quân\s+20[–-]25\s*triệu/iu, "còn cách ghi thu nhập bình quân đã bị loại"],
   [/tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất/iu, "còn điều kiện thu nhập legacy tùy đơn vị/vị trí/ngày công/năng suất"],
