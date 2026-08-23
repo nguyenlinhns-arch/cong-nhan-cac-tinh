@@ -24,9 +24,22 @@ const releaseDate = new Intl.DateTimeFormat("en-CA", {
   month: "2-digit",
   day: "2-digit",
 }).format(new Date());
+
+function dailySlugFromRegistryItem(item) {
+  try {
+    const pathname = new URL(String(item?.canonical_url || "")).pathname.replace(/\/+$/g, "");
+    return pathname.match(/\/giai-dap-nghe-mo\/([^/]+)$/i)?.[1] || "";
+  } catch {
+    return "";
+  }
+}
+
 const releasedDailySlugs = new Set((dailyFeed.articles || [])
-  .filter((item) => !item.publish_on || item.publish_on <= releaseDate)
-  .map((item) => String(item.slug || "").trim())
+  .filter((item) => {
+    const effective = String(item?.publish_on || item?.date_published || "").slice(0, 10);
+    return !effective || effective <= releaseDate;
+  })
+  .map(dailySlugFromRegistryItem)
   .filter(Boolean));
 
 const notes = {
@@ -110,8 +123,7 @@ function insertNote(html, origin) {
 }
 
 function dailySlugFromRelative(rel) {
-  const match = rel.match(/^giai-dap-nghe-mo\/([^/]+)\/index\.html$/i);
-  return match?.[1] || "";
+  return rel.match(/^giai-dap-nghe-mo\/([^/]+)\/index\.html$/i)?.[1] || "";
 }
 
 function classifyArticle(rel, html) {
@@ -141,12 +153,11 @@ function classifyCore(rel) {
 }
 
 function addFieldReportNav(html) {
-  if (!html.includes("network-nav") || html.includes('href="/phong-su/">Phóng sự</a>')) return html;
-  if (html.includes('<a href="/chuyen-nguoi-tho/">Người thợ</a>')) {
-    stats.navLinked += 1;
-    return html.replace('<a href="/chuyen-nguoi-tho/">Người thợ</a>', '<a href="/chuyen-nguoi-tho/">Người thợ</a><a href="/phong-su/">Phóng sự</a>');
-  }
-  return html;
+  if (!html.includes("network-nav") || /<a\b[^>]*href=["']\/phong-su\/["'][^>]*>Phóng sự<\/a>/i.test(html)) return html;
+  const workerLink = html.match(/<a\b[^>]*href=["']\/chuyen-nguoi-tho\/["'][^>]*>Người thợ<\/a>/i)?.[0];
+  if (!workerLink) return html;
+  stats.navLinked += 1;
+  return html.replace(workerLink, `${workerLink}<a href="/phong-su/">Phóng sự</a>`);
 }
 
 for (const file of walk(root)) {
