@@ -104,6 +104,10 @@ if (!CHECK_ONLY) {
   // collection as a first-class destination from the existing proof block.
   await import("./home-field-report-entry-v9.mjs");
 
+  // Keep homepage freshness metadata aligned with the newest released content
+  // instead of leaving stale hard-coded review dates in the WebPage schema.
+  await import("./sync-home-freshness.mjs");
+
   // Source-level corrections run before any newsroom rendering so broken or
   // self-referential source prose cannot leak into later HTML cleanup passes.
   await import("./editorial-source-fixes-v8.mjs");
