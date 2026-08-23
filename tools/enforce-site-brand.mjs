@@ -124,6 +124,10 @@ if (!CHECK_ONLY) {
   await import("./editorial-copy-finalizer.mjs?after-authority-v6=1");
   await import("./editorial-newspaper-v6.mjs");
 
+  // Break the remaining exact long-sentence aliases in selected articles before
+  // SEO/schema synchronization, preserving each local story's own voice.
+  await import("./editorial-uniqueness-rewrite-v9.mjs");
+
   // Synchronize metadata and internal links against the exact final copy.
   await import("./optimize-article-keywords.mjs?after-editorial-v6=1");
 
