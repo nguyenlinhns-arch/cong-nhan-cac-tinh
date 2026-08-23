@@ -1,0 +1,83 @@
+name: Validate paid-search facts
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/recruitment-facts-2026.json'
+      - 'operations/job-posting-master-2026.json'
+      - 'tuyen-tho-mo/data/recruitment-facts-2026.json'
+      - 'tuyen-tho-mo/ad-landing-pages.json'
+      - 'tuyen-tho-mo/google-search-intent.js'
+      - 'tuyen-tho-mo/analytics.js'
+      - 'tuyen-tho-mo/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html'
+      - 'tools/validate-paid-search-runtime-v11.mjs'
+      - '.github/workflows/validate-paid-search-facts.yml'
+  workflow_run:
+    workflows: ["Deploy GitHub Pages"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-paid-search-facts
+  cancel-in-progress: true
+
+jobs:
+  validate-source:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate repository paid-search policy copy
+        run: node tools/validate-paid-search-runtime-v11.mjs
+
+  verify-live:
+    if: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify live paid-search assets do not carry legacy policy
+        shell: bash
+        env:
+          BASE: https://thaylinhtuyenthomo.vn
+        run: |
+          set -euo pipefail
+          intent="$(mktemp)"
+          runtime="$(mktemp)"
+          landing="$(mktemp)"
+          for attempt in $(seq 1 24); do
+            nonce="${GITHUB_SHA}-${GITHUB_RUN_ID}-${attempt}-$(date +%s)"
+            if curl --fail --silent --show-error --location --max-time 20 "${BASE}/ad-landing-pages.json?release=${nonce}" -o "$intent" \
+              && curl --fail --silent --show-error --location --max-time 20 "${BASE}/google-search-intent.js?release=${nonce}" -o "$runtime" \
+              && curl --fail --silent --show-error --location --max-time 20 "${BASE}/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=google&utm_medium=cpc&utm_campaign=facts_v8_check&utm_term=hoc+nghe+mo&release=${nonce}" -o "$landing"; then
+              set +e
+              INTENT="$intent" RUNTIME="$runtime" LANDING="$landing" node <<'NODE'
+              const fs = require('node:fs');
+              const texts = [
+                ['intent', fs.readFileSync(process.env.INTENT, 'utf8')],
+                ['runtime', fs.readFileSync(process.env.RUNTIME, 'utf8')],
+                ['landing', fs.readFileSync(process.env.LANDING, 'utf8')],
+              ];
+              const failures=[];
+              for (const [label,text] of texts) {
+                if (/7[,.]5\s*triệu/iu.test(text) && !/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(text)) failures.push(`${label}: 7.5M missing /month`);
+                if (/20\s*[–-]\s*25\s*triệu/iu.test(text) && !/hoàn thành định mức lao động/iu.test(text)) failures.push(`${label}: 20-25M missing labor-norm condition`);
+                for (const legacy of ['Bình quân 20–25 triệu','tùy đơn vị, vị trí, ngày công và năng suất','7,5 triệu là tổng cả khóa','Hai nghề đang tiếp nhận']) {
+                  if (text.toLocaleLowerCase('vi').includes(legacy.toLocaleLowerCase('vi'))) failures.push(`${label}: legacy ${legacy}`);
+                }
+              }
+              if (failures.length) { console.error(JSON.stringify({status:'paid-search-live-invalid',failures},null,2)); process.exit(2); }
+              console.log(JSON.stringify({status:'paid-search-live-ready'},null,2));
+              NODE
+              status=$?
+              set -e
+              if [ "$status" -eq 0 ]; then exit 0; fi
+            fi
+            sleep 5
+          done
+          echo "Paid-search live assets did not pass canonical-facts checks." >&2
+          exit 1
