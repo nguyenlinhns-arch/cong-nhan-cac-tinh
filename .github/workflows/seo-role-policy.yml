@@ -30,14 +30,40 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+
       - name: Apply SEO page role policy
         run: node tools/apply-seo-role-policy.mjs
-      - name: Verify paid landing is not indexed
+
+      - name: Verify distinct organic and paid roles
+        shell: bash
         run: |
-          grep -q 'name="robots" content="noindex,follow' tuyen-tho-mo/tuyen-tho-mo-quang-ninh/index.html
-          grep -q 'name="robots" content="index,follow' tuyen-tho-mo/index.html
-          grep -q 'name="robots" content="index,follow' tuyen-tho-mo/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html
+          node <<'NODE'
+          const fs = require('node:fs');
+          const home = fs.readFileSync('tuyen-tho-mo/index.html','utf8');
+          const paid = fs.readFileSync('tuyen-tho-mo/tuyen-tho-mo-quang-ninh/index.html','utf8');
+          const job = fs.readFileSync('tuyen-tho-mo/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html','utf8');
+          const legacy = fs.readFileSync('tuyen-tho-mo/viec-lam-nganh-than/quang-ninh/index.html','utf8');
+
+          if (!/name="robots" content="index,follow/i.test(home)) process.exit(1);
+          if (!/name="robots" content="noindex,follow/i.test(paid)) process.exit(1);
+          if (!/name="robots" content="index,follow/i.test(job)) process.exit(1);
+          if (!/name="robots" content="noindex,follow/i.test(legacy)) process.exit(1);
+
+          if (!job.includes('<title>Việc làm công nhân mỏ hầm lò Quảng Ninh | 3 nghề 2026</title>')) process.exit(1);
+          if (!job.includes('Việc làm công nhân mỏ hầm lò Quảng Ninh:')) process.exit(1);
+          if (!legacy.includes('rel="canonical" href="https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/"')) process.exit(1);
+          if (!legacy.includes("location.replace('/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/')")) process.exit(1);
+
+          const policy = JSON.parse(fs.readFileSync('content/seo-role-policy-2026.json','utf8'));
+          if (policy.pages['/'].role !== 'organic-core') process.exit(1);
+          if (policy.pages['/tuyen-tho-mo-quang-ninh/'].role !== 'paid-landing') process.exit(1);
+          if (policy.pages['/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/'].role !== 'organic-job-intent') process.exit(1);
+          if (policy.pages['/viec-lam-nganh-than/quang-ninh/'].role !== 'legacy-redirect') process.exit(1);
+          console.log('SEO role policy verified.');
+          NODE
+
       - name: Commit role policy
+        shell: bash
         run: |
           if git diff --quiet; then exit 0; fi
           git config user.name 'thaylinh-marketing-bot'
