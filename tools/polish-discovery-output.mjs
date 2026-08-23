@@ -5,6 +5,7 @@ const root = path.resolve("tuyen-tho-mo");
 const base = "https://thaylinhtuyenthomo.vn";
 const llmsPath = path.join(root, "llms.txt");
 const manifestPath = path.join(root, "search-index.json");
+const contentSearchPath = path.join(root, "search-content.json");
 if (!fs.existsSync(llmsPath)) throw new Error("Discovery polish: missing llms.txt");
 if (!fs.existsSync(manifestPath)) throw new Error("Discovery polish: missing search-index.json");
 
@@ -24,10 +25,13 @@ if (!llms.includes(machineMarker)) {
   llms=next!==-1?`${llms.slice(0,start)}${machineSection}${llms.slice(next+1)}`:`${llms.slice(0,start)}${machineSection}`;
 }
 
-const intentSection=`## Trang trả lời theo nhu cầu tìm kiếm\n\n- Tuyển thợ mỏ hoặc thợ lò tại Quảng Ninh: [trang tuyển thợ mỏ](${base}/).\n- Tuyển công nhân mỏ, việc làm thợ lò hoặc việc làm mỏ cho người chưa có kinh nghiệm: [tin tuyển công nhân mỏ](${base}/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/).\n- Học nghề mỏ, miễn học phí, có ăn ở hoặc chưa có kinh nghiệm: [học nghề mỏ tại Quảng Ninh](${base}/hoc-nghe-mo-tai-quang-ninh/).\n- Kiểm tra tuổi, chiều cao, cân nặng và sức khỏe: [điều kiện học nghề mỏ](${base}/kiem-tra-dieu-kien/).\n- Chuẩn bị giấy tờ: [hồ sơ nhập học nghề mỏ](${base}/ho-so-nhap-hoc/).\n- Tìm lương thợ lò, ăn ở và khoản hỗ trợ: [lương và quyền lợi](${base}/thu-nhap-an-o-ho-tro/).\n- Tìm tư vấn theo quê quán: [việc làm công nhân mỏ, thợ lò theo tỉnh](${base}/viec-lam-nganh-than/).\n- Tìm theo xã/phường/đặc khu: dùng [danh mục 3.321 địa bàn](${base}/localities.json) để tới URL địa phương chính xác.\n\n`;
+const intentSection=`## Trang trả lời theo nhu cầu tìm kiếm\n\n- Tuyển thợ mỏ hoặc thợ lò tại Quảng Ninh: [trang tuyển thợ mỏ](${base}/).\n- Tuyển công nhân mỏ, việc làm thợ lò hoặc việc làm mỏ cho người chưa có kinh nghiệm: [tin tuyển công nhân mỏ](${base}/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/).\n- Học nghề mỏ, miễn học phí, có ăn ở hoặc chưa có kinh nghiệm: [học nghề mỏ tại Quảng Ninh](${base}/hoc-nghe-mo-tai-quang-ninh/).\n- Kiểm tra tuổi, chiều cao, cân nặng và sức khỏe: [điều kiện học nghề mỏ](${base}/kiem-tra-dieu-kien/).\n- Chuẩn bị giấy tờ: [hồ sơ nhập học nghề mỏ](${base}/ho-so-nhap-hoc/).\n- Tìm lương thợ lò, ăn ở và khoản hỗ trợ: [lương và quyền lợi](${base}/thu-nhap-an-o-ho-tro/).\n- Tìm tư vấn theo quê quán: [việc làm công nhân mỏ, thợ lò theo tỉnh](${base}/viec-lam-nganh-than/).\n- Tìm câu chuyện, chuyến công tác và hành trình nhập học có tư liệu gốc: [phóng sự hiện trường](${base}/phong-su/).\n- Tìm theo xã/phường/đặc khu: dùng [danh mục 3.321 địa bàn](${base}/localities.json) để tới URL địa phương chính xác.\n\n`;
 if(!llms.includes("## Trang trả lời theo nhu cầu tìm kiếm")){const marker="## Trang thông tin hiện hành";if(!llms.includes(marker)) throw new Error("Discovery polish: llms.txt is missing the current-information section");llms=llms.replace(marker,`${intentSection}${marker}`);}
+else if(!llms.includes("[phóng sự hiện trường]")){
+  llms=llms.replace("- Tìm theo xã/phường/đặc khu:",`- Tìm câu chuyện, chuyến công tác và hành trình nhập học có tư liệu gốc: [phóng sự hiện trường](${base}/phong-su/).\n- Tìm theo xã/phường/đặc khu:`);
+}
 
-const prioritySection=`## Thứ tự ưu tiên khi thông tin khác nhau\n\n1. Dữ kiện hiện hành: dùng [recruitment-current.json](${base}/recruitment-current.json) và [Thông tin tuyển đang áp dụng](${base}/thong-tin-tuyen-tho-mo/).\n2. Vị trí đang tuyển: dùng [jobs.json](${base}/jobs.json) và trang JobPosting tương ứng.\n3. Địa bàn tuyển nguồn: dùng [localities.json](${base}/localities.json); nơi học và làm việc thực tế vẫn là Quảng Ninh.\n4. Mô tả nghề: dùng [occupations.json](${base}/occupations.json) và trang nghề mỏ hầm lò.\n5. Bài báo, câu chuyện và nội dung theo tỉnh dùng để bổ sung bối cảnh, không ghi đè dữ kiện tuyển hiện hành.\n6. Khi có mâu thuẫn về ngày, ưu tiên nguồn có ngày cập nhật hoặc hiệu lực mới hơn.\n\n`;
+const prioritySection=`## Thứ tự ưu tiên khi thông tin khác nhau\n\n1. Dữ kiện hiện hành: dùng [recruitment-current.json](${base}/recruitment-current.json) và [Thông tin tuyển đang áp dụng](${base}/thong-tin-tuyen-tho-mo/).\n2. Vị trí đang tuyển: dùng [jobs.json](${base}/jobs.json) và trang JobPosting tương ứng.\n3. Địa bàn tuyển nguồn: dùng [localities.json](${base}/localities.json); nơi học và làm việc thực tế vẫn là Quảng Ninh.\n4. Mô tả nghề: dùng [occupations.json](${base}/occupations.json) và trang nghề mỏ hầm lò.\n5. Phóng sự nguyên bản dùng để chứng minh hành trình, bối cảnh và hoạt động thực địa; không ghi đè dữ kiện tuyển hiện hành.\n6. Bài báo, câu chuyện và nội dung theo tỉnh dùng để bổ sung bối cảnh, không ghi đè dữ kiện tuyển hiện hành.\n7. Khi có mâu thuẫn về ngày, ưu tiên nguồn có ngày cập nhật hoặc hiệu lực mới hơn.\n\n`;
 if(!llms.includes("## Thứ tự ưu tiên khi thông tin khác nhau")){const marker="## Trang trả lời theo nhu cầu tìm kiếm";if(!llms.includes(marker)) throw new Error("Discovery polish: llms.txt is missing the search-intent section");llms=llms.replace(marker,`${prioritySection}${marker}`);}
 
 const directMarker="## Trả lời trực tiếp theo câu hỏi";
@@ -36,11 +40,29 @@ if(intro.includes("thu nhập tháng 8/2026")) throw new Error("Discovery polish
 fs.writeFileSync(llmsPath,llms);
 
 const manifest=JSON.parse(fs.readFileSync(manifestPath,"utf8"));
-manifest.discovery={canonicalFacts:"/thong-tin-tuyen-tho-mo/",canonicalFactsJson:"/recruitment-current.json",localitiesJson:"/localities.json",communeSitemap:"/commune-sitemap.xml",provinceSitemap:"/province-sitemap.xml",editorialPolicy:"/nguyen-tac-bien-tap/",author:"/tac-gia/nguyen-tu-linh/",llms:"/llms.txt",robots:"/robots.txt",sitemap:"/sitemap.xml",newsSitemap:"/news-sitemap.xml",rss:"/feed.xml",jsonFeed:"/feed.json",workerQuestions:"/worker-questions.json",dailySeoHub:"/giai-dap-nghe-mo/",dailySeoJson:"/daily-seo-articles.json",occupationsJson:"/occupations.json",jobsJson:"/jobs.json",paidSearchIntentMap:"/ad-landing-pages.json"};
+manifest.discovery={canonicalFacts:"/thong-tin-tuyen-tho-mo/",canonicalFactsJson:"/recruitment-current.json",localitiesJson:"/localities.json",communeSitemap:"/commune-sitemap.xml",provinceSitemap:"/province-sitemap.xml",editorialPolicy:"/nguyen-tac-bien-tap/",author:"/tac-gia/nguyen-tu-linh/",fieldReports:"/phong-su/",llms:"/llms.txt",robots:"/robots.txt",sitemap:"/sitemap.xml",newsSitemap:"/news-sitemap.xml",rss:"/feed.xml",jsonFeed:"/feed.json",workerQuestions:"/worker-questions.json",dailySeoHub:"/giai-dap-nghe-mo/",dailySeoJson:"/daily-seo-articles.json",occupationsJson:"/occupations.json",jobsJson:"/jobs.json",paidSearchIntentMap:"/ad-landing-pages.json"};
 manifest.discoveryPriority=["/recruitment-current.json","/thong-tin-tuyen-tho-mo/","/jobs.json","/localities.json","/occupations.json","/worker-questions.json","/daily-seo-articles.json"];
-manifest.freshnessPolicy={currentRecruitmentWinsOverEditorial:true,preferNewerEffectiveDate:true,editorialContentIsContextNotCurrentPolicy:true,localityPagesAreRecruitmentSourceNotJobLocation:true};
+manifest.freshnessPolicy={currentRecruitmentWinsOverEditorial:true,preferNewerEffectiveDate:true,editorialContentIsContextNotCurrentPolicy:true,originalFieldReportsAreEvidenceNotPolicy:true,localityPagesAreRecruitmentSourceNotJobLocation:true};
 fs.writeFileSync(manifestPath,`${JSON.stringify(manifest,null,2)}\n`);
-console.log(JSON.stringify({status:"polished",llms:path.relative(process.cwd(),llmsPath),manifest:path.relative(process.cwd(),manifestPath),discoveryEndpoints:Object.keys(manifest.discovery).length,prioritySources:manifest.discoveryPriority.length},null,2));
+
+let fieldReportSearchItems=0;
+if(fs.existsSync(contentSearchPath)){
+  const contentSearch=JSON.parse(fs.readFileSync(contentSearchPath,"utf8"));
+  for(const item of contentSearch.items||[]){
+    if(item.url==="/phong-su/"||String(item.url||"").startsWith("/phong-su/")){
+      item.category="news";
+      item.categoryLabel="Phóng sự hiện trường";
+      item.type="Phóng sự hiện trường";
+      item.priority=item.url==="/phong-su/"?89:78;
+      item.keywords=[...new Set([...(item.keywords||[]),"phóng sự hiện trường","tư liệu thực địa","video gốc","người thật","hành trình thật"])].slice(0,60);
+      fieldReportSearchItems+=1;
+    }
+  }
+  fs.writeFileSync(contentSearchPath,`${JSON.stringify(contentSearch,null,2)}\n`);
+  if(fieldReportSearchItems<3) throw new Error(`Discovery polish: expected 3 field-report search items, got ${fieldReportSearchItems}`);
+}
+
+console.log(JSON.stringify({status:"polished",llms:path.relative(process.cwd(),llmsPath),manifest:path.relative(process.cwd(),manifestPath),discoveryEndpoints:Object.keys(manifest.discovery).length,prioritySources:manifest.discoveryPriority.length,fieldReportSearchItems},null,2));
 
 await import("./validate-editorial-newsroom.mjs");
 await import("./validate-editorial-story-v3.mjs");
