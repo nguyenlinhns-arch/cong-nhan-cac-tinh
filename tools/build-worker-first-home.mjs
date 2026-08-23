@@ -132,7 +132,7 @@ const redesignedMain = `  <main id="noi-dung" class="home-funnel">
         <figure class="home-v6-hero__visual">
           <img src="/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" alt="Công nhân thợ lò mặc bảo hộ xanh, đội mũ chuẩn bị thiết bị trước ca làm việc" loading="eager" fetchpriority="high" decoding="async" width="1200" height="736">
           <figcaption><small>HỌC NGHỀ TẠI QUANG HANH</small><strong>Được đào tạo trước khi nhận việc tại Quảng Ninh</strong></figcaption>
-          <div class="home-v6-income"><small>THU NHẬP BÌNH QUÂN</small><strong>20–25 triệu/tháng</strong></div>
+          <div class="home-v6-income"><small>HOÀN THÀNH ĐỊNH MỨC LAO ĐỘNG</small><strong>20–25 triệu/tháng</strong></div>
         </figure>
       </div>
     </section>
@@ -166,7 +166,7 @@ const redesignedMain = `  <main id="noi-dung" class="home-funnel">
             <li><b>02</b><span><strong>So chi phí ban đầu</strong>Nghề mỏ có lộ trình học nghề, miễn học phí, bố trí ăn ở và hỗ trợ trong thời gian học.</span></li>
             <li><b>03</b><span><strong>So đường dài</strong>Nhìn vào tay nghề, cơ hội nhận việc và khoản tiền còn lại sau chi phí sinh hoạt.</span></li>
           </ol>
-          <div class="home-v6-decision__actions"><a href="/chon-kcn-hay-lam-mo/">Xem bài so sánh đầy đủ</a><a href="#tu-kiem-tra">Tôi muốn kiểm tra điều kiện</a></div>
+          <div class="home-v6-decision__actions"><a href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/">Xem việc làm công nhân mỏ hầm lò</a><a href="/chon-kcn-hay-lam-mo/">Xem bài so sánh đầy đủ</a><a href="#tu-kiem-tra">Tôi muốn kiểm tra điều kiện</a></div>
         </div>
       </div>
     </section>
@@ -239,7 +239,7 @@ ${payrollCard}
     </section>
 
     <section class="home-province-quick" aria-labelledby="home-province-title">
-      <div class="container home-province-quick__inner"><div><p class="home-step">Theo địa phương</p><h2 id="home-province-title">Tìm việc làm ngành Than theo tỉnh đang sống</h2></div><nav class="home-province-quick__links" aria-label="Tỉnh tuyển thợ mỏ được quan tâm"><a href="/viec-lam-nganh-than/thanh-hoa/">Thanh Hóa</a><a href="/viec-lam-nganh-than/nghe-an/">Nghệ An</a><a href="/viec-lam-nganh-than/ha-tinh/">Hà Tĩnh</a><a href="/viec-lam-nganh-than/quang-tri/">Quảng Trị</a><a href="/viec-lam-nganh-than/quang-ngai/">Quảng Ngãi</a><a href="/viec-lam-nganh-than/gia-lai/">Gia Lai</a><a href="/viec-lam-nganh-than/dak-lak/">Đắk Lắk</a><a href="/viec-lam-nganh-than/lai-chau/">Lai Châu</a><a class="home-province-quick__all" href="/viec-lam-nganh-than/">Xem đủ 26 tỉnh, thành →</a></nav></div>
+      <div class="container home-province-quick__inner"><div><p class="home-step">Theo địa phương</p><h2 id="home-province-title">Tìm việc làm ngành Than theo tỉnh đang sống</h2></div><nav class="home-province-quick__links" aria-label="Tỉnh tuyển thợ mỏ được quan tâm"><a href="/viec-lam-nganh-than/thanh-hoa/">Thanh Hóa</a><a href="/viec-lam-nganh-than/nghe-an/">Nghệ An</a><a href="/viec-lam-nganh-than/ha-tinh/">Hà Tĩnh</a><a href="/viec-lam-nganh-than/quang-tri/">Quảng Trị</a><a href="/viec-lam-nganh-than/quang-ngai/">Quảng Ngãi</a><a href="/viec-lam-nganh-than/gia-lai/">Gia Lai</a><a href="/viec-lam-nganh-than/dak-lak/">Đắk Lắk</a><a href="/viec-lam-nganh-than/lai-chau/">Lai Châu</a><a class="home-province-quick__all" href="/viec-lam-nganh-than/">Xem 26 địa bàn ưu tiên →</a></nav></div>
     </section>
 
 ${registerBlock}
@@ -274,7 +274,8 @@ const reelSchema = {
   author: {"@id": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/#person"},
 };
 html = html.replace("</head>", `  <script type="application/ld+json" data-home-reel-schema>${JSON.stringify(reelSchema)}</script>\n</head>`);
-html = html.replace('"dateModified":"2026-08-03"', '"dateModified":"2026-08-04"');
+html = html.replace(/"dateModified":"\d{4}-\d{2}-\d{2}"/, '"dateModified":"2026-08-23"');
+html = html.replace(/"lastReviewed":"\d{4}-\d{2}-\d{2}"/, '"lastReviewed":"2026-08-23"');
 
 html = replaceOnce(html, "</head>", `  <style data-home-worker-journey>\n${journeyCss}\n  </style>\n</head>`, "Inline worker journey styles");
 html = replaceOnce(html, "</body>", '  <script src="/home-worker-journey.js?v=2" defer></script>\n</body>', "Worker journey behavior");
@@ -314,6 +315,10 @@ for (const marker of [
   'id="nghe-dang-tuyen"',
   "Kỹ thuật cơ điện mỏ hầm lò",
   "home-v6-mobile-contact",
+  "HOÀN THÀNH ĐỊNH MỨC LAO ĐỘNG",
+  "Xem 26 địa bàn ưu tiên",
+  '"dateModified":"2026-08-23"',
+  '"lastReviewed":"2026-08-23"',
 ]) {
   if (!html.includes(marker)) throw new Error(`Trang chủ sau tối ưu thiếu marker: ${marker}`);
 }
@@ -321,9 +326,11 @@ for (const staleMarker of [
   "<title>Tuyển thợ mỏ, thợ lò tháng 8/2026",
   '<p class="eyebrow">Thông tin tuyển sinh tháng 8/2026</p>',
   "<h1>Tuyển thợ mỏ tháng 8/2026.",
+  "THU NHẬP BÌNH QUÂN",
+  "Xem đủ 26 tỉnh, thành",
   retiredSocialImage,
 ]) {
-  if (html.includes(staleMarker)) throw new Error(`Trang chủ còn mốc tháng không phù hợp nội dung lâu dài: ${staleMarker}`);
+  if (html.includes(staleMarker)) throw new Error(`Trang chủ còn mốc hoặc thông điệp cũ: ${staleMarker}`);
 }
 
 const homepageImageSources = [...html.matchAll(/<img\b[^>]*\bsrc="([^"]+)"[^>]*>/gi)]
