@@ -75,9 +75,6 @@ jobs:
             ]
           };
 
-          fs.mkdirSync('content', {recursive: true});
-          fs.writeFileSync('content/recruitment-facts-2026.json', JSON.stringify(facts, null, 2) + '\n');
-
           const replacements = [
             ['THU NHẬP CAM KẾT', 'THU NHẬP BÌNH QUÂN'],
             ['cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động', 'thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất'],
@@ -93,6 +90,7 @@ jobs:
             ['7,5 triệu là tổng hỗ trợ sinh hoạt trong thời gian học theo chính sách hiện hành, không phải lương và không phải học phí hoàn lại.', '7,5 triệu đồng/tháng là hỗ trợ sinh hoạt trong thời gian học theo thông tin chuẩn hiện hành, không phải tiền lương sau khi đi làm.']
           ];
 
+          const canonicalFactsPath = path.normalize('content/recruitment-facts-2026.json');
           const roots = ['content', 'tools', 'operations', 'tuyen-tho-mo'];
           const allowed = new Set(['.html', '.js', '.mjs', '.json', '.md', '.txt', '.xml']);
           let changedFiles = 0;
@@ -105,6 +103,7 @@ jobs:
             }
           }
           function normalizeFile(file) {
+            if (path.normalize(file) === canonicalFactsPath) return;
             let text;
             try { text = fs.readFileSync(file, 'utf8'); } catch { return; }
             let next = text;
@@ -132,7 +131,9 @@ jobs:
             fs.writeFileSync(masterPath, JSON.stringify(master, null, 2) + '\n');
           }
 
-          console.log(JSON.stringify({facts: 'content/recruitment-facts-2026.json', changedFiles}, null, 2));
+          fs.mkdirSync('content', {recursive: true});
+          fs.writeFileSync(canonicalFactsPath, JSON.stringify(facts, null, 2) + '\n');
+          console.log(JSON.stringify({facts: canonicalFactsPath, changedFiles}, null, 2));
           NODE
 
       - name: Verify canonical facts
@@ -143,6 +144,7 @@ jobs:
           const facts = JSON.parse(fs.readFileSync('content/recruitment-facts-2026.json','utf8'));
           if (facts.study_benefits.living_support !== '7,5 triệu đồng/tháng trong thời gian học') process.exit(1);
           if (facts.after_training.income !== 'Bình quân 20–25 triệu đồng/tháng') process.exit(1);
+          if (!facts.forbidden_legacy_phrases.includes('THU NHẬP CAM KẾT')) process.exit(1);
           const master = JSON.parse(fs.readFileSync('operations/job-posting-master-2026.json','utf8'));
           if (!master.income_reference.includes('20–25 triệu đồng/tháng')) process.exit(1);
           if (!master.benefits.some(x => x.includes('7,5 triệu đồng/tháng'))) process.exit(1);
