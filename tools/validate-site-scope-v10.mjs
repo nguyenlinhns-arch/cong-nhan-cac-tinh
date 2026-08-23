@@ -101,3 +101,5 @@ if (errors.length) {
     errors: 0,
   }, null, 2));
 }
+
+await import("./validate-verification-core-v10.mjs");
