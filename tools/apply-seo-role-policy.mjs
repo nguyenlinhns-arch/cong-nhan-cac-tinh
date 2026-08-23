@@ -118,7 +118,7 @@ function setJobIntent(file) {
 
 function writeLegacyRedirect(file) {
   const html = `<!doctype html>
-<html lang="vi">
+<html lang="vi" data-legacy-redirect>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
