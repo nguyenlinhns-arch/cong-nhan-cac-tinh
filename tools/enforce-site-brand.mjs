@@ -138,6 +138,7 @@ if (!CHECK_ONLY) {
   await runValidator("./validate-editorial-prose-v4.mjs", "Kiểm định văn xuôi nhà báo và chuyên gia");
   await runValidator("./validate-editorial-specialist-v6.mjs", "Kiểm định 10 bài chuyên sâu v6");
   await runValidator("./validate-editorial-continuous-v4b.mjs", "Kiểm định văn phong hiển thị v5");
+  await runValidator("./validate-worker-profile-source-v8.mjs", "Kiểm định source-fix chân dung người thợ v8");
   await runValidator("./validate-editorial-newspaper-v6.mjs", "Kiểm định bố cục báo chuyên ngành v6");
   await runValidator("./validate-editorial-field-report-v8.mjs", "Kiểm định phóng sự hiện trường v8");
 
