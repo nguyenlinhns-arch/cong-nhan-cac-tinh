@@ -164,7 +164,7 @@ const simpleMain = `  <main id="noi-dung" class="home-funnel">
         </div>
         <figure class="hero-visual">
           <img src="/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" alt="Công nhân thợ lò mặc bảo hộ xanh, đội mũ chuẩn bị thiết bị trước ca làm việc" loading="eager" fetchpriority="high" decoding="async" width="1200" height="736">
-          <div class="hero-visual__income" id="quyen-loi"><small>THU NHẬP BÌNH QUÂN</small><strong>20–25 triệu/tháng khi hoàn thành định mức lao động</strong></div>
+          <div class="hero-visual__income" id="quyen-loi"><small>THU NHẬP BÌNH QUÂN</small><strong>20–25 triệu/tháng</strong></div>
           <figcaption><small>HỌC NGHỀ TẠI QUANG HANH</small><strong>2–3 tháng · miễn học phí · có ăn ở</strong></figcaption>
         </figure>
       </div>

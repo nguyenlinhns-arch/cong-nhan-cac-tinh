@@ -241,7 +241,7 @@ const pages = [
     slug: "thu-nhap-an-o-ho-tro",
     kind: "benefits",
     title: "Lương thợ lò, ăn ở và hỗ trợ học nghề mỏ",
-    description: "Lương thợ lò 20–25 triệu đồng/tháng khi hoàn thành định mức lao động; miễn học phí, có ba bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng.",
+    description: "Lương thợ lò 20–25 triệu đồng/tháng khi hoàn thành định mức lao động; miễn học phí, có ba bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng.",
     eyebrow: "Đọc đủ điều kiện áp dụng",
     heading: "Lương thợ lò, ăn ở và hỗ trợ học nghề mỏ",
     lead: "Xem rõ mức lương thợ lò sau đào tạo, điều kiện hoàn thành định mức lao động, chính sách miễn học phí, ăn ở và hỗ trợ trước khi đăng ký.",

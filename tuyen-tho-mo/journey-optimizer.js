@@ -225,7 +225,7 @@
       message: "Thầy Linh trực tiếp kiểm tra điều kiện và hướng dẫn hồ sơ cho lao động theo tỉnh.",
     },
     benefits: {
-      facts: ["20–25 triệu/tháng khi hoàn thành định mức lao động", "Ăn 3 bữa/ngày và ở ký túc xá khi học", "Hỗ trợ 7,5 triệu đồng/tháng trong thời gian học"],
+      facts: ["20–25 triệu/tháng", "Ăn 3 bữa/ngày và ở ký túc xá khi học", "Hỗ trợ 7,5 triệu đồng/tháng trong thời gian học"],
       message: "Hỏi trực tiếp để xác nhận nghề, lịch học và đợt tiếp nhận phù hợp.",
     },
     dossier: {
@@ -245,7 +245,7 @@
       message: "Tin ngành giúp kiểm chứng; bước tiếp theo vẫn là kiểm tra điều kiện cá nhân.",
     },
     home: {
-      facts: ["Nam 18–40 tuổi", "Học nghề 2–3 tháng với nghề chính", "20–25 triệu/tháng khi hoàn thành định mức lao động"],
+      facts: ["Nam 18–40 tuổi", "Học nghề 2–3 tháng với nghề chính", "20–25 triệu/tháng"],
       message: "Thầy Linh trực tiếp kiểm tra điều kiện và hướng dẫn hồ sơ.",
     },
   });

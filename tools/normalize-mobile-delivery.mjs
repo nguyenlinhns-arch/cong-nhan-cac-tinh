@@ -46,7 +46,7 @@ function shortenDescription(html, max = 160) {
 
 function normalizeIncomeWording(value) {
   return String(value)
-    .replaceAll("CAM KẾT THU NHẬP", "THU NHẬP")
+    .replaceAll("THU NHẬP BÌNH QUÂN", "THU NHẬP")
     .replace(/mức thu nhập được cam kết/giu, "mức thu nhập")
     .replace(/được cam kết mức thu nhập/giu, "có mức thu nhập")
     .replace(/được cam kết thu nhập/giu, "có mức thu nhập")

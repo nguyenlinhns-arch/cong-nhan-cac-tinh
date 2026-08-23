@@ -200,7 +200,7 @@ writePage("trung-tam-nghe-mo", page({pathName: "/trung-tam-nghe-mo/", title: "Tr
 
 const currentFactsPath = "/thong-tin-tuyen-tho-mo/";
 const currentFactsTitle = "Tuyển thợ mỏ tháng 8/2026: 15 câu hỏi";
-const currentFactsDescription = "Tuyển thợ mỏ 2026: nam 18–40 tuổi; khai thác, xây dựng học 2–3 tháng, cơ điện học 10 tháng; thu nhập 20–25 triệu/tháng khi hoàn thành định mức lao động.";
+const currentFactsDescription = "Tuyển thợ mỏ 2026: nam 18–40 tuổi; khai thác, xây dựng học 2–3 tháng, cơ điện học 10 tháng; thu nhập 20–25 triệu/tháng.";
 const currentFactsFaq = buildRecruitmentAnswers(recruitment);
 const currentFactsCanonical = `${base}${currentFactsPath}`;
 const currentFactsSchema = {
@@ -261,7 +261,7 @@ const currentFactsQuickDecisions = [
   {
     label: "03",
     title: "Trong lúc học được hỗ trợ gì?",
-    text: "Miễn kinh phí đào tạo theo chỉ tiêu, ăn 3 bữa/ngày, ở ký túc xá khép kín và hỗ trợ 7,5 triệu đồng.",
+    text: "Miễn kinh phí đào tạo theo chỉ tiêu, ăn 3 bữa/ngày, ở ký túc xá khép kín và hỗ trợ 7,5 triệu đồng/tháng.",
     href: "#mien-kinh-phi-dao-tao",
     action: "Xem quyền lợi học nghề",
     attrs: "",

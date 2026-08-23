@@ -59,7 +59,7 @@
       facts: [
         ["Điều kiện cơ bản", "Nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg; sức khỏe phù hợp công việc hầm lò."],
         ["Thời gian học", "Khai thác và xây dựng mỏ: 2–3 tháng. Cơ điện mỏ: 10 tháng."],
-        ["Trong thời gian học", "Miễn học phí theo chỉ tiêu, bố trí 3 bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng."],
+        ["Trong thời gian học", "Miễn học phí theo chỉ tiêu, bố trí 3 bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng."],
         ["Sau đào tạo", "Làm việc tại các đơn vị ngành Than thuộc TKV ở Quảng Ninh."],
         ["Thu nhập", "Cam kết 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."],
       ],
@@ -96,7 +96,7 @@
         ["Thu nhập", "Cam kết 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."],
         ["Bằng chứng", "Có kho bảng lương công khai theo từng doanh nghiệp để người lao động đối chiếu."],
         ["Chưa có nghề", "Được đào tạo từ đầu trước khi nhận việc nếu hoàn thành chương trình và đạt yêu cầu."],
-        ["Trong thời gian học", "Miễn học phí theo chỉ tiêu, bố trí ăn ở và hỗ trợ 7,5 triệu đồng."],
+        ["Trong thời gian học", "Miễn học phí theo chỉ tiêu, bố trí ăn ở và hỗ trợ 7,5 triệu đồng/tháng."],
         ["Điều kiện cơ bản", "Nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg; kết quả cuối cùng căn cứ khám tuyển."],
       ],
       proof: [

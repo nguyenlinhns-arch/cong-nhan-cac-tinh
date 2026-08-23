@@ -787,7 +787,7 @@ export const existingNews = [
     description: "Tuyển thợ mỏ tháng 8/2026: nam 18–40 tuổi, học nghề 2–3 tháng, được hỗ trợ, bố trí việc làm; thu nhập bình quân 20–25 triệu/tháng.",
     lead: "Từ lớp học nghề đến vị trí sản xuất tại Quảng Ninh, người lao động được chuẩn bị từng bước về kỹ năng, an toàn, chỗ ở và công việc sau đào tạo.",
     keyword: "tuyển thợ mỏ tháng 8/2026",
-    keywords: ["tuyển thợ mỏ tháng 8/2026", "tuyển thợ lò", "học nghề mỏ", "thu nhập 20–25 triệu/tháng khi hoàn thành định mức lao động", "việc làm TKV Quảng Ninh"],
+    keywords: ["tuyển thợ mỏ tháng 8/2026", "tuyển thợ lò", "học nghề mỏ", "thu nhập 20–25 triệu/tháng", "việc làm TKV Quảng Ninh"],
     image: "https://thaylinhtuyenthomo.vn/assets/news/tuyen-tho-mo-thang-8-2026-og-1200x630.png",
     imageAlt: "Tuyển thợ mỏ tháng 8/2026 với cam kết thu nhập 20–25 triệu đồng mỗi tháng khi hoàn thành định mức lao động",
     imageSource: "Ảnh bài Cách làm mới trong công tác đào tạo nghề mỏ hầm lò – Vinacomin",
