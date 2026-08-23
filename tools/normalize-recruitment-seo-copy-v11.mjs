@@ -5,6 +5,8 @@ const ROOT = path.resolve(import.meta.dirname, '..');
 const SITE = path.join(ROOT, 'tuyen-tho-mo');
 const REVIEW_DATE = '2026-08-23';
 const PROVINCE_GENERATOR = path.join(ROOT, 'tools', 'generate-province-pages-2026.mjs');
+const HOME_BUILDER = path.join(ROOT, 'tools', 'build-worker-first-home.mjs');
+const HOME_OUTPUT = path.join(SITE, 'index.html');
 const DAILY_DATA = path.join(ROOT, 'content', 'daily-seo-articles.json');
 
 const exactReplacements = [
@@ -109,6 +111,25 @@ function normalizeProvinceGenerator() {
   writeIfChanged(PROVINCE_GENERATOR, source);
 }
 
+function normalizeHomepageBuilder() {
+  let source = fs.readFileSync(HOME_BUILDER, 'utf8');
+  source = source.replace(
+    /html = html\.replace\('\"dateModified\":\"2026-08-03\"', '\"dateModified\":\"2026-08-04\"'\);/u,
+    `html = html.replace(/"dateModified":"\\d{4}-\\d{2}-\\d{2}"/, '"dateModified":"${REVIEW_DATE}"');\nhtml = html.replace(/"lastReviewed":"\\d{4}-\\d{2}-\\d{2}"/, '"lastReviewed":"${REVIEW_DATE}"');`
+  );
+  source = normalizeText(source);
+  writeIfChanged(HOME_BUILDER, source);
+}
+
+function normalizeHomepageOutput() {
+  if (!fs.existsSync(HOME_OUTPUT)) return;
+  let html = fs.readFileSync(HOME_OUTPUT, 'utf8');
+  html = normalizeText(html);
+  html = html.replace(/"dateModified":"\d{4}-\d{2}-\d{2}"/, `"dateModified":"${REVIEW_DATE}"`);
+  html = html.replace(/"lastReviewed":"\d{4}-\d{2}-\d{2}"/, `"lastReviewed":"${REVIEW_DATE}"`);
+  writeIfChanged(HOME_OUTPUT, html);
+}
+
 function normalizeDailyData() {
   if (!fs.existsSync(DAILY_DATA)) return;
   let raw = fs.readFileSync(DAILY_DATA, 'utf8');
@@ -119,6 +140,8 @@ function normalizeDailyData() {
 }
 
 normalizeProvinceGenerator();
+normalizeHomepageBuilder();
+normalizeHomepageOutput();
 normalizeDailyData();
 
 const publishExtensions = new Set(['.html', '.json', '.xml', '.txt']);
@@ -135,7 +158,7 @@ const checks = [
   [/khi hoàn thành định mức lao động\.\s*khi hoàn thành định mức lao động/iu, 'duplicated income condition'],
 ];
 
-const auditTargets = [PROVINCE_GENERATOR, DAILY_DATA];
+const auditTargets = [PROVINCE_GENERATOR, HOME_BUILDER, HOME_OUTPUT, DAILY_DATA];
 walk(SITE, (file) => {
   if (path.extname(file).toLowerCase() === '.html') auditTargets.push(file);
 });
@@ -145,5 +168,8 @@ for (const file of auditTargets) {
     if (pattern.test(text)) throw new Error(`${label}: ${path.relative(ROOT, file)}`);
   }
 }
+const homeHtml = fs.readFileSync(HOME_OUTPUT, 'utf8');
+if (!homeHtml.includes(`"dateModified":"${REVIEW_DATE}"`)) throw new Error('Homepage dateModified is stale');
+if (!homeHtml.includes(`"lastReviewed":"${REVIEW_DATE}"`)) throw new Error('Homepage lastReviewed is stale');
 
-console.log(JSON.stringify({status: 'ok', review_date: REVIEW_DATE, clean_internal_province_links: true}, null, 2));
+console.log(JSON.stringify({status: 'ok', review_date: REVIEW_DATE, clean_internal_province_links: true, homepage_freshness: true}, null, 2));
