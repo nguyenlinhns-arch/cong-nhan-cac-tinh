@@ -2,10 +2,11 @@ import fs from "node:fs";
 import path from "node:path";
 
 // Pages always calls this step after province generation. Normalize both province
-// template families, re-apply the canonical page-role policy, then rebuild the
-// province sitemap so noindex/redirect roles and sitemap membership cannot drift.
+// template families, re-apply the canonical page-role policy, preserve the real
+// worker-journey reels on the rebuilt homepage, then rebuild province discovery.
 await import("./normalize-province-current-facts-v11.mjs");
 await import("./apply-seo-role-policy.mjs");
+await import("./add-home-journey-reels.mjs");
 await import("../tuyen-tho-mo/scripts/update-ai-locality-discovery.mjs");
 
 const root = path.resolve("tuyen-tho-mo");
@@ -118,4 +119,4 @@ const manifest=JSON.parse(fs.readFileSync(manifestPath,"utf8"));
 manifest.counts.provinces=provinceItems.length;
 manifest.counts.total=Number(manifest.counts.core||0)+provinceItems.length+Number(manifest.counts.content||0);
 fs.writeFileSync(manifestPath,`${JSON.stringify(manifest,null,2)}\n`);
-console.log(JSON.stringify({target:"tuyen-tho-mo/search-provinces.json",provinces:provinceItems.length,public_provinces:provinceItems.length-internalItems.length,internal_provinces:internalItems.length,locality_evidence_phrases:localityEvidencePhrases,locality_aliases:localityAliases,province_directory_links:provinces.length,removed_noindex_from_main_sitemap:removedNoindexFromMainSitemap,added,refreshed,provinceFactsNormalized:true,seoRolePolicyApplied:true,provinceSitemapRebuilt:true,mainSitemapScrubbed:true},null,2));
+console.log(JSON.stringify({target:"tuyen-tho-mo/search-provinces.json",provinces:provinceItems.length,public_provinces:provinceItems.length-internalItems.length,internal_provinces:internalItems.length,locality_evidence_phrases:localityEvidencePhrases,locality_aliases:localityAliases,province_directory_links:provinces.length,removed_noindex_from_main_sitemap:removedNoindexFromMainSitemap,added,refreshed,provinceFactsNormalized:true,seoRolePolicyApplied:true,homepageJourneyReelsApplied:true,provinceSitemapRebuilt:true,mainSitemapScrubbed:true},null,2));
