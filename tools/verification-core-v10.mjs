@@ -6,6 +6,7 @@ const site = path.join(root, "tuyen-tho-mo");
 const review = JSON.parse(fs.readFileSync(path.join(root, "content", "recruitment-review-v10.json"), "utf8"));
 const priority = JSON.parse(fs.readFileSync(path.join(site, "data", "provinces-2026.json"), "utf8"));
 const reviewDate = review.reviewed_at;
+const contentModified = review.verification_content_modified || reviewDate;
 const priorityCount = priority.provinces.length;
 const touched = new Set();
 
@@ -20,6 +21,10 @@ function setLastReviewed(html) {
     return html.replace(/"lastReviewed"\s*:\s*"\d{4}-\d{2}-\d{2}"/g, `"lastReviewed":"${reviewDate}"`);
   }
   return html.replace(/"dateModified"\s*:\s*"(\d{4}-\d{2}-\d{2})"/, `"dateModified":"$1","lastReviewed":"${reviewDate}"`);
+}
+
+function setDateModified(html) {
+  return html.replace(/"dateModified"\s*:\s*"\d{4}-\d{2}-\d{2}"/, `"dateModified":"${contentModified}"`);
 }
 
 function mutate(relative, transform) {
@@ -42,6 +47,11 @@ const verificationPages = [
   "an-toan-ky-luat-moi-truong/index.html",
 ];
 for (const relative of verificationPages) mutate(relative, setLastReviewed);
+for (const relative of ["chon-kcn-hay-lam-mo/index.html", "cau-chuyen-cong-nhan/index.html"]) mutate(relative, setDateModified);
+
+const oldPolicy = "Nội dung giúp người lao động tự đối chiếu trước khi liên hệ. Bộ kiểm tra trên website chỉ là sàng lọc sơ bộ; không lưu câu trả lời sức khỏe và không thay thế khám tuyển. Quảng cáo dẫn về các trang này phải được vận hành theo nhóm việc làm/Special Ad Category khi Meta yêu cầu.";
+const publicPolicy = "Nội dung giúp người lao động tự đối chiếu trước khi liên hệ. Bộ kiểm tra trên website chỉ là sàng lọc sơ bộ, không lưu câu trả lời sức khỏe và không thay thế khám tuyển. Khi dữ kiện tuyển sinh thay đổi, website ưu tiên thông tin có ngày hiệu lực mới hơn và công khai ngày rà soát.";
+for (const relative of verificationPages) mutate(relative, (html) => html.replaceAll(oldPolicy, publicPolicy));
 
 mutate("cau-chuyen-cong-nhan/index.html", (html) => html
   .replace("Xem toàn bộ trang tỉnh", `Xem ${priorityCount} địa bàn ưu tiên`));
@@ -78,10 +88,12 @@ mutate("chia-se-thong-tin/index.html", (html) => html.replaceAll("/share-tools.j
 console.log(JSON.stringify({
   status: "verification-core-v10-ready",
   reviewedAt: reviewDate,
+  contentModified,
   priorityLocalities: priorityCount,
   verificationPortalVersion: 2,
   shareToolsVersion: 2,
   kcnSpecialistRewriteRestored: true,
   kcnVideoClickToPlay: true,
+  publicPolicyClean: true,
   touched: [...touched].sort(),
 }, null, 2));
