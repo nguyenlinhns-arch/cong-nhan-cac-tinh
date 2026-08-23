@@ -7,9 +7,22 @@ const stats = {checked:0, firsthand:0, sourcedEditorial:0, expertExplainer:0, cu
 const policyLink = "/nguyen-tac-bien-tap/#phan-loai-nguon";
 const releaseDate = new Intl.DateTimeFormat("en-CA", {timeZone:"Asia/Bangkok",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
 const daily = JSON.parse(fs.readFileSync(path.join(root, "daily-seo-articles.json"), "utf8"));
+
+function dailySlugFromRegistryItem(item) {
+  try {
+    const pathname = new URL(String(item?.canonical_url || "")).pathname.replace(/\/+$/g, "");
+    return pathname.match(/\/giai-dap-nghe-mo\/([^/]+)$/i)?.[1] || "";
+  } catch {
+    return "";
+  }
+}
+
 const releasedDailySlugs = new Set((daily.articles || [])
-  .filter((item) => !item.publish_on || item.publish_on <= releaseDate)
-  .map((item) => String(item.slug || "").trim())
+  .filter((item) => {
+    const effective = String(item?.publish_on || item?.date_published || "").slice(0,10);
+    return !effective || effective <= releaseDate;
+  })
+  .map(dailySlugFromRegistryItem)
   .filter(Boolean));
 
 function walk(directory, output = []) {
@@ -134,7 +147,7 @@ for (const relative of networkPages) {
   if (!fs.existsSync(file)) continue;
   const html = fs.readFileSync(file, "utf8");
   if (html.includes("network-nav")) {
-    if (!html.includes('href="/phong-su/">Phóng sự</a>')) errors.push(`${relative}: network-nav chưa có Phóng sự`);
+    if (!/<a\b[^>]*href=["']\/phong-su\/["'][^>]*>Phóng sự<\/a>/i.test(html)) errors.push(`${relative}: network-nav chưa có Phóng sự`);
     else stats.networkNav += 1;
   }
 }
