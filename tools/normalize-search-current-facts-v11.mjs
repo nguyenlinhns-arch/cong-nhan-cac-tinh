@@ -67,3 +67,5 @@ console.log(JSON.stringify({
   support,
   income,
 }, null, 2));
+
+await import("./normalize-ai-current-facts-v11.mjs");
