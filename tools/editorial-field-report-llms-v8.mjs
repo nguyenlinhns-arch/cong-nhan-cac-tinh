@@ -21,7 +21,6 @@ let llms = fs.readFileSync(llmsPath, "utf8");
 const start = "<!-- field-report-v8:start -->";
 const end = "<!-- field-report-v8:end -->";
 
-// Remove the previous managed block without depending on regex escaping or line endings.
 const existingStart = llms.indexOf(start);
 if (existingStart >= 0) {
   const existingEnd = llms.indexOf(end, existingStart);
@@ -36,7 +35,7 @@ const lines = entries.map(([slug, report]) => {
   const canonical = `${base}/phong-su/${config.slug}/`;
   return `- [${report.title}](${canonical}): ${config.description}`;
 });
-const block = `${start}\n## Phóng sự hiện trường nguyên bản\n\n- [Chuyên mục phóng sự hiện trường](${base}/phong-su/): ghi chép từ video, chuyến công tác và dữ liệu thực địa do Thầy Linh – Tuyển Thợ Mỏ trực tiếp công bố.\n${lines.join("\n")}\n${end}`;
+const block = `${start}\n## Phóng sự hiện trường nguyên bản\n\n- [Chuyên mục phóng sự hiện trường](${base}/phong-su/): ghi chép từ video, chuyến công tác và dữ liệu thực địa do Thầy Linh – Tuyển Thợ Mỏ trực tiếp công bố.\n- [RSS phóng sự](${base}/phong-su/feed.xml) và [JSON Feed phóng sự](${base}/phong-su/feed.json): kênh phân phối riêng cho nội dung nguyên bản, tách khỏi feed bài biên tập từ nguồn ngoài.\n${lines.join("\n")}\n${end}`;
 const anchor = "## Dữ liệu máy đọc và nguồn cập nhật";
 if (llms.includes(anchor)) llms = llms.replace(anchor, `${block}\n\n${anchor}`);
 else llms = `${llms}\n\n${block}`;
@@ -47,8 +46,12 @@ for (const [slug] of entries) {
   const canonical = `${base}/phong-su/${pages[slug].slug}/`;
   if (!llms.includes(canonical)) throw new Error(`Field report v8: llms.txt thiếu ${canonical}`);
 }
+for (const feedUrl of [`${base}/phong-su/feed.xml`, `${base}/phong-su/feed.json`]) {
+  if (!llms.includes(feedUrl)) throw new Error(`Field report v8: llms.txt thiếu feed ${feedUrl}`);
+}
 fs.writeFileSync(llmsPath, llms);
 
+await import("./generate-editorial-field-report-feed-v8.mjs");
 await import("./editorial-field-report-seo-title-v8.mjs");
 await import("./editorial-field-report-social-meta-v8.mjs");
 await import("./editorial-field-report-authority-v8.mjs");
@@ -56,5 +59,7 @@ await import("./editorial-field-report-authority-v8.mjs");
 console.log(JSON.stringify({
   status: "field-report-v8-llms-ready",
   hub: `${base}/phong-su/`,
+  rss: `${base}/phong-su/feed.xml`,
+  jsonFeed: `${base}/phong-su/feed.json`,
   articles: entries.map(([slug]) => `${base}/phong-su/${pages[slug].slug}/`),
 }, null, 2));
