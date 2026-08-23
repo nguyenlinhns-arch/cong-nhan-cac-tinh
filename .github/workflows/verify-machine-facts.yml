@@ -1,0 +1,106 @@
+name: Verify machine-readable facts
+
+on:
+  workflow_run:
+    workflows: ["Deploy GitHub Pages"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-machine-readable-facts
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read canonical policy version
+        id: facts
+        shell: bash
+        run: |
+          node <<'NODE' >> "$GITHUB_OUTPUT"
+          const f=require('./content/recruitment-facts-2026.json');
+          console.log(`version=${f.version}`);
+          console.log(`confirmed_at=${f.confirmed_at}`);
+          console.log(`support=${f.study_benefits.living_support}`);
+          console.log(`income=${f.after_training.income_commitment}`);
+          NODE
+      - name: Verify machine endpoints live
+        shell: bash
+        env:
+          BASE: https://thaylinhtuyenthomo.vn
+          VERSION: ${{ steps.facts.outputs.version }}
+          CONFIRMED_AT: ${{ steps.facts.outputs.confirmed_at }}
+          SUPPORT: ${{ steps.facts.outputs.support }}
+          INCOME: ${{ steps.facts.outputs.income }}
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 24); do
+            dir="$(mktemp -d)"
+            nonce="${GITHUB_SHA}-${GITHUB_RUN_ID}-${attempt}-$(date +%s)"
+            ok=1
+            for spec in \
+              "facts:data/recruitment-facts-2026.json" \
+              "current:recruitment-current.json" \
+              "jobs:jobs.json" \
+              "daily:daily-seo-articles.json" \
+              "worker:worker-questions.json" \
+              "manifest:search-index.json" \
+              "core:search-core.json"; do
+              name="${spec%%:*}"; rel="${spec#*:}"
+              if ! curl --fail --silent --show-error --location --max-time 20 "${BASE}/${rel}?release=${nonce}" -o "$dir/$name.json"; then ok=0; fi
+            done
+            if [ "$ok" -eq 1 ]; then
+              set +e
+              DIR="$dir" VERSION="$VERSION" CONFIRMED_AT="$CONFIRMED_AT" SUPPORT="$SUPPORT" INCOME="$INCOME" node <<'NODE'
+              const fs=require('node:fs');
+              const dir=process.env.DIR;
+              const version=Number(process.env.VERSION);
+              const confirmedAt=process.env.CONFIRMED_AT;
+              const support=process.env.SUPPORT;
+              const income=process.env.INCOME;
+              const read=(n)=>JSON.parse(fs.readFileSync(`${dir}/${n}.json`,'utf8'));
+              const facts=read('facts'), current=read('current'), jobs=read('jobs'), daily=read('daily'), worker=read('worker'), manifest=read('manifest'), core=read('core');
+              const failures=[];
+              if (facts.version!==version) failures.push('facts version');
+              if (facts.confirmed_at!==confirmedAt) failures.push('facts confirmed_at');
+              if (facts.study_benefits?.living_support!==support) failures.push('facts support');
+              if (facts.after_training?.income_commitment!==income) failures.push('facts income');
+              if (current.canonical_facts!=='https://thaylinhtuyenthomo.vn/data/recruitment-facts-2026.json') failures.push('current canonical_facts');
+              if (current.benefits_during_training?.living_support!==support) failures.push('current support');
+              if (current.after_training?.income_commitment!==income) failures.push('current income');
+              if ((jobs.jobs||[]).length!==3) failures.push(`jobs count ${(jobs.jobs||[]).length}`);
+              for (const job of jobs.jobs||[]) {
+                const text=JSON.stringify(job);
+                if (!text.includes('7,5 triệu đồng/tháng')) failures.push(`${job.id}: jobs support`);
+                if (!text.includes('hoàn thành định mức lao động')) failures.push(`${job.id}: jobs income condition`);
+              }
+              if (daily.canonical_facts_version!==version || daily.canonical_facts_confirmed_at!==confirmedAt) failures.push('daily facts metadata');
+              if (worker.canonical_facts_version!==version) failures.push('worker facts metadata');
+              if (manifest.canonicalFactsVersion!==version || manifest.canonicalFactsConfirmedAt!==confirmedAt) failures.push('search manifest facts metadata');
+              if (manifest.discovery?.canonicalFactsJson!=='/data/recruitment-facts-2026.json') failures.push('search manifest facts URL');
+              for (const url of ['/#dieu-kien','/#thoi-gian-hoc','/#ho-tro-hoc-nghe','/#quyen-loi']) {
+                const item=(core.items||[]).find((x)=>x.url===url);
+                if (!item || item.canonicalFactsVersion!==version) failures.push(`search core ${url}`);
+              }
+              const all=JSON.stringify({current,jobs,daily,worker,manifest,core});
+              for (const legacy of ['Bình quân 20–25 triệu','tùy đơn vị, vị trí, ngày công và năng suất','7,5 triệu là tổng cả khóa','Hai nghề đang tiếp nhận']) {
+                if (all.toLocaleLowerCase('vi').includes(legacy.toLocaleLowerCase('vi'))) failures.push(`legacy ${legacy}`);
+              }
+              if (failures.length) { console.error(JSON.stringify({status:'machine-facts-invalid',failures},null,2)); process.exit(2); }
+              console.log(JSON.stringify({status:'machine-facts-ready',version,support,income},null,2));
+              NODE
+              status=$?
+              set -e
+              if [ "$status" -eq 0 ]; then exit 0; fi
+            fi
+            sleep 5
+          done
+          echo "Machine-readable endpoints did not converge to canonical facts." >&2
+          exit 1
