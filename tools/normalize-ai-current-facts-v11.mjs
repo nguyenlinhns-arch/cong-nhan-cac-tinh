@@ -41,7 +41,7 @@ text = nextHeading === -1
   ? `${text.slice(0, currentStart)}${currentSection}`
   : `${text.slice(0, currentStart)}${currentSection}${text.slice(nextHeading + 1)}`;
 
-for (const legacy of ["bình quân 20–25 triệu", "tùy đơn vị, vị trí, ngày công và năng suất", "7,5 triệu là tổng cả khóa"]) {
+for (const legacy of ["bình quân 20–25 triệu", "tùy đơn vị, vị trí, ngày công và năng suất", "7,5 triệu đồng/tháng trong thời gian học"]) {
   if (text.toLocaleLowerCase("vi").includes(legacy)) throw new Error(`AI facts: llms.txt còn legacy phrase ${legacy}`);
 }
 for (const marker of [factsUrl, currentUrl, support, income, `facts v${facts.version}`]) {
