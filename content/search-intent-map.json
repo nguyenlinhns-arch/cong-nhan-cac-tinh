@@ -1,16 +1,25 @@
 {
-  "version": 1,
+  "version": 2,
   "locale": "vi-VN",
-  "principle": "Mỗi nhu cầu tìm kiếm chính có một trang trả lời ưu tiên; từ khóa được dùng tự nhiên trong tiêu đề, H1, mô tả và nội dung hữu ích.",
+  "principle": "Mỗi nhu cầu tìm kiếm chính có một trang trả lời ưu tiên; từ khóa được dùng tự nhiên trong tiêu đề, H1, mô tả và nội dung hữu ích. Trang chủ là hub học nghề và việc làm; truy vấn tuyển thợ mỏ Quảng Ninh thuộc landing chuyên dụng.",
   "clusters": [
     {
-      "id": "recruitment-home",
+      "id": "career-home",
       "landing": "/",
-      "primary": "tuyển thợ mỏ",
+      "primary": "học nghề mỏ và việc làm ngành Than",
+      "variants": ["tuyển thợ mỏ", "thông tin học nghề mỏ", "việc làm ngành Than"],
+      "titleTerms": ["học nghề mỏ", "việc làm ngành Than"],
+      "h1Terms": ["học nghề mỏ", "việc làm ngành Than"],
+      "visibleTerms": ["học nghề", "việc làm"]
+    },
+    {
+      "id": "quang-ninh-recruitment",
+      "landing": "/tuyen-tho-mo-quang-ninh/",
+      "primary": "tuyển thợ mỏ Quảng Ninh",
       "variants": ["tuyển thợ lò Quảng Ninh", "việc làm thợ mỏ Quảng Ninh"],
-      "titleTerms": ["tuyển thợ mỏ"],
+      "titleTerms": ["tuyển thợ mỏ", "Quảng Ninh"],
       "h1Terms": ["tuyển thợ mỏ", "Quảng Ninh"],
-      "visibleTerms": ["học nghề"]
+      "visibleTerms": ["người chưa có kinh nghiệm", "học nghề từ đầu"]
     },
     {
       "id": "mine-worker-job",
