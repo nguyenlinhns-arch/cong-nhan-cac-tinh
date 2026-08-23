@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "updated_at": "2026-08-23T11:35:00+07:00",
+  "purpose": "Đưa tương tác Facebook có đủ thông tin tuyển sinh vào MASTER CRM, chống trùng theo số điện thoại và giữ được campaign/ad attribution.",
+  "master_spreadsheet": "CRM Tuyển dụng tự động - Thầy Linh",
+  "master_sheet": "Ứng viên",
+  "staging_sheet": "FACEBOOK_INBOX",
+  "dedupe_key": "phone_normalized",
+  "sync_rule": {
+    "required_before_master_create": [
+      "phone",
+      "birth_year",
+      "height_cm",
+      "weight_kg",
+      "health_screen"
+    ],
+    "health_screen_allowed": [
+      "Sức khỏe tốt, sẵn sàng khám tuyển",
+      "Cần trao đổi thêm trước khi khám",
+      "Chưa cung cấp"
+    ],
+    "do_not_auto_create_when": [
+      "missing_phone",
+      "missing_birth_year",
+      "missing_height",
+      "missing_weight",
+      "health_screen_is_unknown"
+    ],
+    "duplicate_behavior": "Gộp vào hồ sơ MASTER có cùng số điện thoại; không tạo ứng viên mới."
+  },
+  "facebook_sources": [
+    "Messenger",
+    "Lead Ads",
+    "Bình luận",
+    "Website từ Facebook",
+    "Nhập tay"
+  ],
+  "master_fields": {
+    "source": "Facebook",
+    "medium": "Nguồn tương tác",
+    "campaign": "Facebook Campaign",
+    "content": "Facebook Ad",
+    "birth_year": "Năm sinh khai báo",
+    "psid": "Facebook PSID",
+    "lead_id": "Facebook Lead ID",
+    "ad_id": "Facebook Ad ID",
+    "adset_id": "Facebook Ad Set ID",
+    "campaign_id": "Facebook Campaign ID",
+    "ad_name": "Facebook Ad",
+    "adset_name": "Facebook Ad Set",
+    "campaign_name": "Facebook Campaign",
+    "referral": "Facebook Referral",
+    "intake_mode": "Facebook Intake",
+    "fbclid": "FBCLID",
+    "placement": "Meta Placement"
+  },
+  "pipeline_defaults": {
+    "classification": "Quan Tâm",
+    "stage": "Đã gửi thông tin",
+    "owner": "Nguyễn Tử Linh",
+    "first_response_sla_hours": 2
+  },
+  "measurement": {
+    "primary": [
+      "Facebook lead có SĐT",
+      "Ứng viên đủ điều kiện",
+      "Hồ sơ hoàn thiện",
+      "Đã nhập học"
+    ],
+    "optimization_rule": "Không tối ưu chỉ theo chi phí tin nhắn; ưu tiên chi phí/ứng viên đủ điều kiện và chi phí/người nhập học theo campaign/ad."
+  }
+}
