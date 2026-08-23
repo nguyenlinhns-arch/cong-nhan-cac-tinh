@@ -12,6 +12,7 @@ on:
       - 'tools/normalize-province-current-facts-v11.mjs'
       - 'tools/validate-province-current-facts-v11.mjs'
       - 'tools/validate-province-metadata-facts-v11.mjs'
+      - 'tools/enhance-all-province-search.mjs'
       - '.github/workflows/verify-province-facts.yml'
   workflow_run:
     workflows: ["Deploy GitHub Pages"]
@@ -50,6 +51,7 @@ jobs:
           BASE: https://thaylinhtuyenthomo.vn
         run: |
           set -euo pipefail
+          facts_date="$(node -p "require('./tuyen-tho-mo/data/recruitment-facts-2026.json').confirmed_at.slice(0,10)")"
           samples=(gia-lai quang-ngai thanh-hoa ho-chi-minh)
           for attempt in $(seq 1 24); do
             ok=1
@@ -61,10 +63,11 @@ jobs:
                 continue
               fi
               set +e
-              FILE="$file" SLUG="$slug" node <<'NODE'
+              FILE="$file" SLUG="$slug" FACTS_DATE="$facts_date" node <<'NODE'
               const fs=require('node:fs');
               const html=fs.readFileSync(process.env.FILE,'utf8');
               const slug=process.env.SLUG;
+              const factsDate=process.env.FACTS_DATE;
               const failures=[];
               if (!html.includes('Kỹ thuật cơ điện mỏ hầm lò')) failures.push('missing electrical-mine occupation');
               if (!/(?:cơ điện mỏ[^<\n]{0,100}(?:học|đào tạo)[^<\n]{0,40}10 tháng|Kỹ thuật cơ điện mỏ hầm lò[\s\S]{0,180}10 tháng)/iu.test(html)) failures.push('missing 10-month electrical-mine duration');
@@ -74,9 +77,11 @@ jobs:
                 const window=html.slice(Math.max(0,i-220),Math.min(html.length,i+340));
                 if (!/hoàn thành định mức lao động/iu.test(window)) { failures.push('20-25M missing labor-norm condition'); break; }
               }
-              if (!/"lastReviewed"\s*:\s*"2026-08-23"/.test(html)) failures.push('lastReviewed not current');
+              const reviewed=html.match(/"lastReviewed"\s*:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1] || '';
+              if (!reviewed || reviewed < factsDate) failures.push(`lastReviewed ${reviewed || 'missing'} older than canonical facts ${factsDate}`);
               if (!html.includes('"reviewedBy":{"@id":"https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/#person"}')) failures.push('reviewedBy missing');
-              if (failures.length) { console.error(JSON.stringify({slug,failures},null,2)); process.exit(2); }
+              if (/cong-nhan-mo-ham-lo-quang-ninh\/\?province=/iu.test(html)) failures.push('crawlable province query URL remains');
+              if (failures.length) { console.error(JSON.stringify({slug,factsDate,failures},null,2)); process.exit(2); }
               NODE
               status=$?
               set -e
