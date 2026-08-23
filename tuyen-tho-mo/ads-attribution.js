@@ -1,6 +1,11 @@
 (()=>{
   'use strict';
-  const KEYS=['gclid','gbraid','wbraid','gad_source','gad_campaignid','utm_source','utm_medium','utm_campaign','utm_term','utm_content','tl_campaign','tl_adgroup','tl_creative','tl_matchtype','tl_device','tl_network','tl_intent'];
+  const KEYS=[
+    'gclid','gbraid','wbraid','gad_source','gad_campaignid',
+    'fbclid','fb_campaign_id','fb_adset_id','fb_ad_id','fb_placement','fb_campaign','fb_adset','fb_ad','site_source_name',
+    'utm_source','utm_medium','utm_campaign','utm_term','utm_content',
+    'tl_campaign','tl_adgroup','tl_creative','tl_matchtype','tl_device','tl_network','tl_intent'
+  ];
   const STORAGE_KEY='thaylinh_ads_attribution_v1';
   const CONSENT_KEY='thaylinh_measurement_consent_v1';
   const MAX_AGE=90*24*60*60*1000;
