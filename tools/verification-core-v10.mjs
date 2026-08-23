@@ -9,12 +9,11 @@ const reviewDate = review.reviewed_at;
 const priorityCount = priority.provinces.length;
 const touched = new Set();
 
-function walk(directory) {
-  return fs.readdirSync(directory, {withFileTypes: true}).flatMap((entry) => {
-    const full = path.join(directory, entry.name);
-    return entry.isDirectory() ? walk(full) : [full];
-  });
-}
+// Rebuild the six verification pages and immediately restore the specialist
+// KCN comparison before applying shared review/cache/performance normalization.
+// fix-kcn-income-context imports rewrite-kcn-comparison, which in turn imports
+// build-verification-portal, so this single import preserves the intended order.
+await import(`./fix-kcn-income-context.mjs?verification-core-v10=${Date.now()}`);
 
 function setLastReviewed(html) {
   if (/"lastReviewed"\s*:\s*"\d{4}-\d{2}-\d{2}"/.test(html)) {
@@ -34,12 +33,15 @@ function mutate(relative, transform) {
   }
 }
 
-for (const relative of [
-  "ho-so-nhap-hoc/index.html",
-  "an-toan-ky-luat-moi-truong/index.html",
+const verificationPages = [
   "chon-kcn-hay-lam-mo/index.html",
   "cau-chuyen-cong-nhan/index.html",
-]) mutate(relative, setLastReviewed);
+  "kiem-tra-dieu-kien/index.html",
+  "ho-so-nhap-hoc/index.html",
+  "thu-nhap-an-o-ho-tro/index.html",
+  "an-toan-ky-luat-moi-truong/index.html",
+];
+for (const relative of verificationPages) mutate(relative, setLastReviewed);
 
 mutate("cau-chuyen-cong-nhan/index.html", (html) => html
   .replace("Xem toàn bộ trang tỉnh", `Xem ${priorityCount} địa bàn ưu tiên`));
@@ -55,19 +57,23 @@ mutate("chon-kcn-hay-lam-mo/index.html", (html) => {
   return next;
 });
 
-// Bust the shared verification script everywhere it is used so mobile visitors
-// immediately receive the Messenger fix and click-to-play handler.
-for (const file of walk(site).filter((file) => file.endsWith(".html") && !file.includes(`${path.sep}nhap-hoc${path.sep}`))) {
+const portalConsumers = [
+  ...verificationPages,
+  "hoc-nghe-mo-tai-quang-ninh/index.html",
+  "lien-he-di-lam-mo-than-quang-ninh/index.html",
+];
+for (const relative of portalConsumers) {
+  const file = path.join(site, relative);
+  if (!fs.existsSync(file)) continue;
   const before = fs.readFileSync(file, "utf8");
-  let after = before.replaceAll("/verification-portal.js?v=1", "/verification-portal.js?v=2");
-  if (file.endsWith(`${path.sep}chia-se-thong-tin${path.sep}index.html`)) {
-    after = after.replaceAll("/share-tools.js?v=1", "/share-tools.js?v=2");
-  }
+  const after = before.replaceAll("/verification-portal.js?v=1", "/verification-portal.js?v=2");
   if (after !== before) {
     fs.writeFileSync(file, after);
-    touched.add(path.relative(site, file).split(path.sep).join("/"));
+    touched.add(relative);
   }
 }
+
+mutate("chia-se-thong-tin/index.html", (html) => html.replaceAll("/share-tools.js?v=1", "/share-tools.js?v=2"));
 
 console.log(JSON.stringify({
   status: "verification-core-v10-ready",
@@ -75,6 +81,7 @@ console.log(JSON.stringify({
   priorityLocalities: priorityCount,
   verificationPortalVersion: 2,
   shareToolsVersion: 2,
+  kcnSpecialistRewriteRestored: true,
   kcnVideoClickToPlay: true,
   touched: [...touched].sort(),
 }, null, 2));
