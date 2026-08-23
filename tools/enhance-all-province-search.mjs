@@ -13,6 +13,8 @@ const indexPath = path.join(root, "search-provinces.json");
 const manifestPath = path.join(root, "search-index.json");
 const provincePath = path.join(root, "data", "provinces-2026.json");
 const coveragePath = path.join(root, "local-coverage.json");
+const mainSitemapPath = path.join(root, "sitemap.xml");
+const publicBase = "https://thaylinhtuyenthomo.vn";
 const searchIndex = JSON.parse(fs.readFileSync(indexPath, "utf8"));
 const provinceData = JSON.parse(fs.readFileSync(provincePath, "utf8"));
 const prioritized = Array.isArray(provinceData.provinces) ? provinceData.provinces : [];
@@ -20,7 +22,7 @@ const coverage = fs.existsSync(coveragePath) ? JSON.parse(fs.readFileSync(covera
 const ALL_NAMES = Object.freeze({
   "ha-noi":"Hà Nội","ho-chi-minh":"TP Hồ Chí Minh","da-nang":"Đà Nẵng","hai-phong":"Hải Phòng","can-tho":"Cần Thơ","hue":"Huế",
   "an-giang":"An Giang","bac-ninh":"Bắc Ninh","ca-mau":"Cà Mau","cao-bang":"Cao Bằng","dak-lak":"Đắk Lắk","dien-bien":"Điện Biên",
-  "dong-nai":"Đồng Nai","dong-thap":"Đồng Tháp","gia-lai":"Gia Lai","ha-tinh":"Hà Tĩnh","hai-phong":"Hải Phòng","hung-yen":"Hưng Yên","khanh-hoa":"Khánh Hòa",
+  "dong-nai":"Đồng Nai","dong-thap":"Đồng Tháp","gia-lai":"Gia Lai","ha-tinh":"Hà Tĩnh","hung-yen":"Hưng Yên","khanh-hoa":"Khánh Hòa",
   "lai-chau":"Lai Châu","lam-dong":"Lâm Đồng","lang-son":"Lạng Sơn","lao-cai":"Lào Cai","nghe-an":"Nghệ An","ninh-binh":"Ninh Bình",
   "phu-tho":"Phú Thọ","quang-ngai":"Quảng Ngãi","quang-ninh":"Quảng Ninh","quang-tri":"Quảng Trị","son-la":"Sơn La","tay-ninh":"Tây Ninh",
   "thai-nguyen":"Thái Nguyên","thanh-hoa":"Thanh Hóa","tuyen-quang":"Tuyên Quang","vinh-long":"Vĩnh Long"
@@ -75,6 +77,27 @@ function ensureLocalityDirectoryLink(province) {
   }
 }
 
+function removeNoindexProvinceUrlsFromMainSitemap() {
+  if (!fs.existsSync(mainSitemapPath)) throw new Error("Main sitemap is missing before province cleanup");
+  let sitemap = fs.readFileSync(mainSitemapPath, "utf8");
+  let removed = 0;
+  for (const province of provinces) {
+    const file = path.join(root, "viec-lam-nganh-than", province.slug, "index.html");
+    const html = fs.readFileSync(file, "utf8");
+    if (!/<meta\s+name=["']robots["']\s+content=["'][^"']*noindex/i.test(html)) continue;
+    const canonical = `${publicBase}/viec-lam-nganh-than/${province.slug}/`;
+    const escaped = canonical.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const pattern = new RegExp(`\\s*<url><loc>${escaped}<\\/loc>[\\s\\S]*?<\\/url>`, "g");
+    const before = sitemap;
+    sitemap = sitemap.replace(pattern, "");
+    if (sitemap !== before) removed += 1;
+  }
+  fs.writeFileSync(mainSitemapPath, sitemap);
+  return removed;
+}
+
+const removedNoindexFromMainSitemap = removeNoindexProvinceUrlsFromMainSitemap();
+
 searchIndex.items = searchIndex.items.filter(item => item.category !== "province" || /^\/viec-lam-nganh-than\/[^/]+\/$/u.test(item.url || ""));
 let added=0,refreshed=0,expectedInternal=0,localityEvidencePhrases=0,localityAliases=0;
 for (const province of provinces) {
@@ -95,4 +118,4 @@ const manifest=JSON.parse(fs.readFileSync(manifestPath,"utf8"));
 manifest.counts.provinces=provinceItems.length;
 manifest.counts.total=Number(manifest.counts.core||0)+provinceItems.length+Number(manifest.counts.content||0);
 fs.writeFileSync(manifestPath,`${JSON.stringify(manifest,null,2)}\n`);
-console.log(JSON.stringify({target:"tuyen-tho-mo/search-provinces.json",provinces:provinceItems.length,public_provinces:provinceItems.length-internalItems.length,internal_provinces:internalItems.length,locality_evidence_phrases:localityEvidencePhrases,locality_aliases:localityAliases,province_directory_links:provinces.length,added,refreshed,provinceFactsNormalized:true,seoRolePolicyApplied:true,provinceSitemapRebuilt:true},null,2));
+console.log(JSON.stringify({target:"tuyen-tho-mo/search-provinces.json",provinces:provinceItems.length,public_provinces:provinceItems.length-internalItems.length,internal_provinces:internalItems.length,locality_evidence_phrases:localityEvidencePhrases,locality_aliases:localityAliases,province_directory_links:provinces.length,removed_noindex_from_main_sitemap:removedNoindexFromMainSitemap,added,refreshed,provinceFactsNormalized:true,seoRolePolicyApplied:true,provinceSitemapRebuilt:true,mainSitemapScrubbed:true},null,2));
