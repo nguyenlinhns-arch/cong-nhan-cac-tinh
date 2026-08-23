@@ -94,7 +94,7 @@ jobs:
           grep -q 'Kỹ thuật cơ điện mỏ hầm lò' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
           grep -q '10 tháng' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
           grep -q '"reviewedBy":{"@id":"https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/#person"}' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
-          grep -q 'Xem 26 địa bàn ưu tiên' tuyen-tho-mo/index.html
+          grep -q 'href="/viec-lam-nganh-than/"' tuyen-tho-mo/index.html
           if grep -q 'Xem đủ 26 tỉnh, thành' tuyen-tho-mo/index.html; then
             echo 'Stale province-count label remains on homepage' >&2
             exit 1
