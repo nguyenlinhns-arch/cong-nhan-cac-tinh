@@ -1,0 +1,22 @@
+{
+  "updated_at": "2026-08-23",
+  "core_intent": "tuyển thợ mỏ Quảng Ninh",
+  "pages": {
+    "/": {
+      "role": "organic-core",
+      "index": true
+    },
+    "/tuyen-tho-mo-quang-ninh/": {
+      "role": "paid-landing",
+      "index": false
+    },
+    "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/": {
+      "role": "job-hub",
+      "index": true
+    },
+    "/viec-lam-nganh-than/quang-ninh/": {
+      "role": "province-hub",
+      "index": true
+    }
+  }
+}
