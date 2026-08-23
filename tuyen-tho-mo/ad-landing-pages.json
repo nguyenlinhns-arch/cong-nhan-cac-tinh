@@ -4,6 +4,7 @@
   "strategy": "single_canonical_recruitment_landing_with_paid_search_intent_adaptation",
   "primary_landing_url": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
   "canonical_facts_url": "https://thaylinhtuyenthomo.vn/data/recruitment-facts-2026.json",
+  "canonical_facts_json": "/data/recruitment-facts-2026.json",
   "canonical_facts_version": 8,
   "canonical_facts_confirmed_at": "2026-08-23T11:34:00+07:00",
   "current_policy": {

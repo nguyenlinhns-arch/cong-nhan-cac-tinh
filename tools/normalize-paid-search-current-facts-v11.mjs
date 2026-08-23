@@ -44,9 +44,24 @@ function walkStrings(value, visit, pointer = "$") {
 
 const data = JSON.parse(fs.readFileSync(target, "utf8"));
 normalizeNode(data);
-data.canonicalFactsVersion = facts.version;
-data.canonicalFactsConfirmedAt = facts.confirmed_at;
-data.canonicalFactsJson = "/data/recruitment-facts-2026.json";
+
+const canonicalFactsJson = "/data/recruitment-facts-2026.json";
+const canonicalFactsUrl = `https://thaylinhtuyenthomo.vn${canonicalFactsJson}`;
+data.updated_at = String(facts.confirmed_at).slice(0, 10);
+data.canonical_facts_version = facts.version;
+data.canonical_facts_confirmed_at = facts.confirmed_at;
+data.canonical_facts_json = canonicalFactsJson;
+data.canonical_facts_url = canonicalFactsUrl;
+data.current_policy = {
+  training: {...facts.training},
+  living_support: support,
+  income_commitment: income,
+};
+// Remove the retired camelCase aliases so paid-search has one provenance schema.
+delete data.canonicalFactsVersion;
+delete data.canonicalFactsConfirmedAt;
+delete data.canonicalFactsJson;
+delete data.canonicalFactsUrl;
 
 const errors = [];
 walkStrings(data, (value, pointer) => {
@@ -58,8 +73,13 @@ walkStrings(data, (value, pointer) => {
   if (/hai\s+nghề\s+(?:đang\s+)?(?:tuyển|tiếp nhận)/iu.test(text)) errors.push(`${pointer}: còn mô hình hai nghề`);
 });
 
-if (data.canonicalFactsVersion !== facts.version) errors.push("Thiếu canonicalFactsVersion");
-if (data.canonicalFactsJson !== "/data/recruitment-facts-2026.json") errors.push("Sai canonicalFactsJson");
+if (data.canonical_facts_version !== facts.version) errors.push("Thiếu canonical_facts_version");
+if (data.canonical_facts_confirmed_at !== facts.confirmed_at) errors.push("Sai canonical_facts_confirmed_at");
+if (data.canonical_facts_json !== canonicalFactsJson) errors.push("Sai canonical_facts_json");
+if (data.canonical_facts_url !== canonicalFactsUrl) errors.push("Sai canonical_facts_url");
+if (JSON.stringify(data.current_policy?.training) !== JSON.stringify(facts.training)) errors.push("Paid-search training policy lệch facts");
+if (data.current_policy?.living_support !== support) errors.push("Paid-search support policy lệch facts");
+if (data.current_policy?.income_commitment !== income) errors.push("Paid-search income policy lệch facts");
 
 if (errors.length) {
   console.error(JSON.stringify({status:"paid-search-current-facts-v11-invalid", canonicalFactsVersion:facts.version, errors}, null, 2));

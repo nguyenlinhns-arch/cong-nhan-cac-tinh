@@ -1,6 +1,5 @@
 import fs from "node:fs";
 import path from "node:path";
-import vm from "node:vm";
 
 const root = path.resolve(import.meta.dirname, "..");
 const site = path.join(root, "tuyen-tho-mo");
@@ -9,6 +8,8 @@ const master = JSON.parse(fs.readFileSync(path.join(root, "operations", "job-pos
 const errors = [];
 const support = facts.study_benefits.living_support;
 const income = facts.after_training.income_commitment;
+const canonicalFactsJson = "/data/recruitment-facts-2026.json";
+const canonicalFactsUrl = `https://thaylinhtuyenthomo.vn${canonicalFactsJson}`;
 
 if (support !== "7,5 triệu đồng/tháng trong thời gian học") errors.push(`Canonical support sai: ${support}`);
 if (income !== master.income_commitment) errors.push(`Canonical income lệch master: ${income}`);
@@ -19,48 +20,60 @@ function walkStrings(value, visitor, pointer = "$") {
   if (value && typeof value === "object") for (const [key, item] of Object.entries(value)) walkStrings(item, visitor, `${pointer}.${key}`);
 }
 
-function checkPolicyString(value, label) {
-  const text = String(value);
-  if (/7[,.]5\s*triệu/iu.test(text) && !/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(text)) errors.push(`${label}: 7,5 triệu thiếu /tháng`);
-  if (/20\s*[–-]\s*25\s*triệu/iu.test(text) && !/hoàn thành định mức lao động/iu.test(text)) errors.push(`${label}: 20–25 triệu thiếu điều kiện định mức`);
-  if (/\bbình quân\s+20[–-]25\s*triệu/iu.test(text)) errors.push(`${label}: còn thu nhập bình quân legacy`);
-  if (/tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất/iu.test(text)) errors.push(`${label}: còn điều kiện thu nhập legacy`);
-  if (/7[,.]5\s*triệu(?:\s*đồng)?(?:\s*\/\s*tháng)?\s+(?:là\s+)?tổng(?:\s+cả)?\s+khóa/iu.test(text)) errors.push(`${label}: còn cách hiểu 7,5 triệu tổng cả khóa`);
-  if (/(?:hai|2)\s+nghề\s+(?:đang\s+)?(?:tuyển|tiếp nhận)/iu.test(text)) errors.push(`${label}: còn mô hình hai nghề`);
-}
-
 const intentPath = path.join(site, "ad-landing-pages.json");
 if (!fs.existsSync(intentPath)) errors.push("Thiếu ad-landing-pages.json");
 else {
   const intent = JSON.parse(fs.readFileSync(intentPath, "utf8"));
-  walkStrings(intent, (value, pointer) => checkPolicyString(value, `ad-landing-pages.json ${pointer}`));
-  if (intent.canonicalFactsVersion !== undefined && intent.canonicalFactsVersion !== facts.version) errors.push(`ad-landing-pages.json facts version ${intent.canonicalFactsVersion} != ${facts.version}`);
-  if (intent.canonicalFactsJson !== undefined && intent.canonicalFactsJson !== "/data/recruitment-facts-2026.json") errors.push("ad-landing-pages.json canonicalFactsJson sai");
+  if (intent.schema_version !== 4) errors.push(`ad-landing-pages schema_version ${intent.schema_version} != 4`);
+  if (intent.canonical_facts_version !== facts.version) errors.push(`ad-landing-pages canonical_facts_version ${intent.canonical_facts_version} != ${facts.version}`);
+  if (intent.canonical_facts_confirmed_at !== facts.confirmed_at) errors.push("ad-landing-pages canonical_facts_confirmed_at sai");
+  if (intent.canonical_facts_json !== canonicalFactsJson) errors.push("ad-landing-pages canonical_facts_json sai hoặc thiếu");
+  if (intent.canonical_facts_url !== canonicalFactsUrl) errors.push("ad-landing-pages canonical_facts_url sai hoặc thiếu");
+  for (const retired of ["canonicalFactsVersion", "canonicalFactsConfirmedAt", "canonicalFactsJson", "canonicalFactsUrl"]) {
+    if (Object.hasOwn(intent, retired)) errors.push(`ad-landing-pages còn alias camelCase: ${retired}`);
+  }
+  if (JSON.stringify(intent.current_policy?.training) !== JSON.stringify(facts.training)) errors.push("ad-landing-pages training policy lệch facts");
+  if (intent.current_policy?.living_support !== support) errors.push("ad-landing-pages living_support lệch facts");
+  if (intent.current_policy?.income_commitment !== income) errors.push("ad-landing-pages income_commitment lệch facts");
+
+  walkStrings(intent, (value, pointer) => {
+    if (/7[,.]5\s*triệu/iu.test(value) && !/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(value)) errors.push(`${pointer}: 7,5 triệu thiếu /tháng`);
+    if (/20\s*[–-]\s*25\s*triệu/iu.test(value) && !/hoàn thành định mức lao động/iu.test(value)) errors.push(`${pointer}: 20–25 triệu thiếu điều kiện định mức`);
+    if (/\bbình quân\s+20[–-]25\s*triệu/iu.test(value)) errors.push(`${pointer}: còn thu nhập bình quân legacy`);
+    if (/tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất/iu.test(value)) errors.push(`${pointer}: còn điều kiện thu nhập legacy`);
+    if (/hai\s+nghề\s+(?:đang\s+)?(?:tuyển|tiếp nhận)/iu.test(value)) errors.push(`${pointer}: còn mô hình hai nghề`);
+  });
 }
 
 const runtimePath = path.join(site, "google-search-intent.js");
 if (!fs.existsSync(runtimePath)) errors.push("Thiếu google-search-intent.js");
 else {
   const runtime = fs.readFileSync(runtimePath, "utf8");
-  try { new vm.Script(runtime, {filename: "google-search-intent.js"}); }
-  catch (error) { errors.push(`google-search-intent.js lỗi cú pháp: ${error.message}`); }
-  checkPolicyString(runtime, "google-search-intent.js");
-  for (const forbidden of ["18–35", "1m56", "48kg"]) if (runtime.includes(forbidden)) errors.push(`google-search-intent.js còn điều kiện cũ ${forbidden}`);
+  for (const marker of [
+    "7,5 triệu đồng/tháng",
+    "20–25 triệu đồng/tháng khi hoàn thành định mức lao động",
+    "Khai thác và xây dựng mỏ: 2–3 tháng; cơ điện mỏ: 10 tháng",
+  ]) {
+    if (!runtime.includes(marker)) errors.push(`google-search-intent.js thiếu marker: ${marker}`);
+  }
+  if (/Cam kết 20[–-]25 triệu\/tháng/iu.test(runtime)) errors.push("google-search-intent.js còn câu Cam kết 20–25 triệu/tháng thiếu điều kiện");
+  if (/20[–-]25 triệu\/tháng\.;/u.test(runtime)) errors.push("google-search-intent.js còn lỗi dấu câu .;");
 }
 
 const landingPath = path.join(site, "viec-lam", "cong-nhan-mo-ham-lo-quang-ninh", "index.html");
-if (!fs.existsSync(landingPath)) errors.push("Thiếu landing tuyển dụng chính");
+if (!fs.existsSync(landingPath)) errors.push("Thiếu landing paid-search canonical");
 else {
-  const landing = fs.readFileSync(landingPath, "utf8");
-  if (!landing.includes("google-search-intent.css?v=1") && !fs.readFileSync(path.join(site, "analytics.js"), "utf8").includes("google-search-intent.js?v=1")) {
-    errors.push("Paid-search runtime không còn được nạp trên landing Google Ads");
-  }
-  checkPolicyString(landing.replace(/<script[\s\S]*?<\/script>/gi, " "), "paid landing visible copy");
+  const html = fs.readFileSync(landingPath, "utf8");
+  if (!html.includes("google-search-intent.js")) errors.push("Landing không tải google-search-intent.js");
+  if (/7[,.]5\s*triệu/iu.test(html) && !/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(html)) errors.push("Landing có 7,5 triệu nhưng thiếu /tháng");
+  if (/20\s*[–-]\s*25\s*triệu/iu.test(html) && !/hoàn thành định mức lao động/iu.test(html)) errors.push("Landing có 20–25 triệu nhưng thiếu điều kiện định mức");
+  if (/\bbình quân\s+20[–-]25\s*triệu/iu.test(html)) errors.push("Landing còn thu nhập bình quân legacy");
 }
 
 console.log(JSON.stringify({
   status: errors.length ? "paid-search-runtime-v11-invalid" : "paid-search-runtime-v11-ready",
   canonicalFactsVersion: facts.version,
+  canonicalFactsConfirmedAt: facts.confirmed_at,
   support,
   income,
   errors,

@@ -1,6 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 
+// Normalize paid-search provenance in the same build pass so all outward-facing
+// recruitment distribution channels converge before validation and deployment.
+await import("./normalize-paid-search-current-facts-v11.mjs");
+if (process.exitCode && process.exitCode !== 0) process.exit(process.exitCode);
+
 const root = path.resolve(import.meta.dirname, "..");
 const site = path.join(root, "tuyen-tho-mo");
 const facts = JSON.parse(fs.readFileSync(path.join(root, "content", "recruitment-facts-2026.json"), "utf8"));
