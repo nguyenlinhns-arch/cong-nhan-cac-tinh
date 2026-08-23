@@ -236,7 +236,7 @@ if (!llms.includes(`[Thông tin tuyển đang áp dụng](${base}/thong-tin-tuye
 for (const marker of [machineFactsUrl, canonicalFacts.study_benefits.living_support, canonicalFacts.after_training.income_commitment, `facts v${canonicalFacts.version}`]) {
   if (!llms.includes(marker)) errors.push(`llms.txt is missing canonical facts marker: ${marker}`);
 }
-for (const legacy of ["bình quân 20–25 triệu", "tùy đơn vị, vị trí, ngày công và năng suất", "7,5 triệu là tổng cả khóa"]) {
+for (const legacy of ["bình quân 20–25 triệu", "tùy đơn vị, vị trí, ngày công và năng suất", "7,5 triệu đồng/tháng trong thời gian học"]) {
   if (llms.toLocaleLowerCase("vi").includes(legacy)) errors.push(`llms.txt contains legacy recruitment phrase: ${legacy}`);
 }
 
