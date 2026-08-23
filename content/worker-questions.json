@@ -112,7 +112,7 @@
     {
       "group": "Thu nhập và lựa chọn",
       "question": "Lương thợ lò được tính thế nào?",
-      "answer": "Chương trình đang áp dụng Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.",
+      "answer": "Chương trình đang áp dụng Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "path": "/thu-nhap-an-o-ho-tro/"
     },
     {
@@ -321,7 +321,7 @@
             "Địa điểm học và địa điểm làm việc sau đào tạo.",
             "Điều kiện để được công nhận tốt nghiệp và tiếp nhận.",
             "Loại hợp đồng lao động cùng chế độ bảo hiểm.",
-            "Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất."
+            "Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."
           ]
         },
         {

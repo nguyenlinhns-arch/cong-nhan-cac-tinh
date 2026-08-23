@@ -42,8 +42,8 @@
   },
   "after_training": {
     "work_location": "Các đơn vị ngành Than thuộc TKV tại Quảng Ninh",
-    "income_commitment": "Bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất",
-    "income_reference": "Bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất"
+    "income_commitment": "20–25 triệu đồng/tháng khi hoàn thành định mức lao động",
+    "income_reference": "20–25 triệu đồng/tháng khi hoàn thành định mức lao động"
   },
   "primary_pages": {
     "job": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
@@ -53,5 +53,5 @@
     "worker_stories": "https://thaylinhtuyenthomo.vn/cau-chuyen-cong-nhan/",
     "contact": "https://thaylinhtuyenthomo.vn/lien-he-di-lam-mo-than-quang-ninh/"
   },
-  "usage_note": "Dùng bộ dữ liệu này để đối chiếu thông tin tuyển đang áp dụng. Hai mốc đã được xác nhận: hỗ trợ 7,5 triệu đồng/tháng trong thời gian học; thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất. Không dùng các mốc cũ 6 triệu, 18–25 triệu hoặc cách hiểu 7,5 triệu là tổng cả khóa."
+  "usage_note": "Dùng bộ dữ liệu này để đối chiếu thông tin tuyển đang áp dụng. Hai mốc đã được xác nhận: hỗ trợ 7,5 triệu đồng/tháng trong thời gian học; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. Không dùng 6 triệu, 18–25 triệu, cách diễn đạt “bình quân 20–25 triệu” hoặc 7,5 triệu đồng/tháng trong thời gian học."
 }

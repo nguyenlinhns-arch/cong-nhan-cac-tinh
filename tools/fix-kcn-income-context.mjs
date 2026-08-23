@@ -11,8 +11,8 @@ const replacements = [
     "Nghề mỏ không dành cho người chỉ nhìn thấy mức 20–25 triệu đồng/tháng",
   ],
   [
-    "Nghề mỏ có Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất không?",
-    "Nghề mỏ có Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất không?",
+    "Nghề mỏ có Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. không?",
+    "Nghề mỏ có Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. không?",
   ],
 ];
 
@@ -23,7 +23,7 @@ for (const [before, after] of replacements) {
 
 for (const forbidden of [
   ">Nghề mỏ không dành cho người chỉ nhìn thấy mức 20–25 triệu đồng<",
-  ">Nghề mỏ có Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất không?<",
+  ">Nghề mỏ có Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. không?<",
 ]) {
   if (html.includes(forbidden)) throw new Error(`Incomplete income context remains: ${forbidden}`);
 }

@@ -146,7 +146,7 @@
     "income:salary": {
       eyebrow: "LƯƠNG THỢ LÒ · QUẢNG NINH",
       title: "Lương thợ lò bao nhiêu một tháng?",
-      lead: "Chương trình đang áp dụng Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất; website có bảng lương để đối chiếu.",
+      lead: "Chương trình đang áp dụng Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.; website có bảng lương để đối chiếu.",
       primary: "Kiểm tra điều kiện & đăng ký",
       proof: [["/luong-tho-lo-bao-nhieu/", "Xem giải thích mức lương"], ["/bang-luong/", "Xem bảng lương thực tế"], ["/thu-nhap-an-o-ho-tro/", "Xem quyền lợi đầy đủ"]],
     },

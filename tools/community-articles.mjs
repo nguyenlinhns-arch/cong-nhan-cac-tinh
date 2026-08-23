@@ -51,7 +51,7 @@ const polishDamHaArticle = (article) => {
           title: "Thu nhập thợ lò Than Thống Nhất trên 26 triệu đồng/tháng",
           paragraphs: [
             "Mức thu nhập hiện tại của thợ lò tại Than Thống Nhất đạt trên 26 triệu đồng/người/tháng, đi kèm các chế độ bảo hiểm và phúc lợi. Con số thực tế này cho thấy sức hút của việc làm ngành Than đối với người lao động có sức khỏe, tay nghề và khả năng duy trì năng suất ổn định.",
-            "Với chương trình tuyển sinh đang áp dụng, người lao động hoàn thành định mức lao động được Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất. Đây là nền tảng để người đăng ký cân nhắc học nghề mỏ và xây dựng kế hoạch làm việc lâu dài tại Quảng Ninh.",
+            "Với chương trình tuyển sinh đang áp dụng, người lao động hoàn thành định mức lao động được Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. Đây là nền tảng để người đăng ký cân nhắc học nghề mỏ và xây dựng kế hoạch làm việc lâu dài tại Quảng Ninh.",
           ],
         };
       }

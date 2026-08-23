@@ -19,7 +19,7 @@ const faqItems = [
   ["dia-diem-hoc", "Học nghề mỏ ở đâu tại Quảng Ninh?", "Địa điểm nhập học là Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh. Chỉ đến sau khi được xác nhận lịch tiếp nhận."],
   ["ho-so-nhap-hoc", "Hồ sơ nhập học nghề mỏ cần những gì?", "Khi có lịch nhập học, người lao động mang căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Đăng ký ban đầu chưa cần gửi ảnh giấy tờ."],
   ["noi-lam-viec", "Học xong làm việc ở đâu?", "Người học hoàn thành đào tạo và đạt yêu cầu được bố trí làm việc tại các đơn vị ngành Than ở Quảng Ninh theo nhu cầu tiếp nhận."],
-  ["thu-nhap", "Thu nhập thợ mỏ sau đào tạo là bao nhiêu?", "Thông tin tuyển sinh đang áp dụng Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất."],
+  ["thu-nhap", "Thu nhập thợ mỏ sau đào tạo là bao nhiêu?", "Thông tin tuyển sinh đang áp dụng Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."],
 ];
 
 function escapeHtml(value = "") {

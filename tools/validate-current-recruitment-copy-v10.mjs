@@ -47,7 +47,7 @@ function add(relative, message) {
 }
 
 const forbiddenCurrentCopy = [
-  [/7[,.]5\s*triệu(?:\s*đồng)?\s+(?:là\s+)?tổng(?:\s+cả)?\s+khóa/iu, "còn cách hiểu sai 7,5 triệu là tổng cả khóa"],
+  [/7[,.]5\s*triệu(?:\s*đồng)?\s+(?:là\s+)?tổng(?:\s+cả)?\s+khóa/iu, "còn cách hiểu sai 7,5 triệu đồng/tháng trong thời gian học"],
   [/7[,.]5\s*triệu\s*đồng(?!\s*\/\s*tháng)\s+trong thời gian học/iu, "hỗ trợ 7,5 triệu trong thời gian học nhưng thiếu /tháng"],
   [/(?:cam kết\s+)?(?:thu nhập\s+)?20[–-]25\s*triệu(?:\s*đồng)?\/tháng khi hoàn thành định mức lao động/iu, "còn cách ghi thu nhập cũ theo định mức lao động"],
   [/(?:hai|2)\s+nghề\s+(?:đang\s+)?(?:tuyển|tiếp nhận)/iu, "còn mô hình cũ hai nghề"],
@@ -102,11 +102,11 @@ for (const marker of [
   "2–3 tháng",
   "10 tháng",
   "7,5 triệu đồng/tháng trong thời gian học",
-  "Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất",
+  "Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
 ]) {
   if (!shareTools.includes(marker)) add("share-tools.js", `thiếu nội dung chia sẻ chuẩn: ${marker}`);
 }
-if (/7[,.]5\s*triệu(?:\s*đồng)?\s+(?:là\s+)?tổng(?:\s+cả)?\s+khóa/iu.test(shareTools)) add("share-tools.js", "gói chia sẻ còn hiểu sai 7,5 triệu là tổng cả khóa");
+if (/7[,.]5\s*triệu(?:\s*đồng)?\s+(?:là\s+)?tổng(?:\s+cả)?\s+khóa/iu.test(shareTools)) add("share-tools.js", "gói chia sẻ còn hiểu sai 7,5 triệu đồng/tháng trong thời gian học");
 
 const machineFeeds = ["jobs.json", "jobs.xml", "jooble.xml"];
 for (const relative of machineFeeds) {
@@ -129,7 +129,7 @@ for (const profile of activeProfiles) {
   }
   if (job.training_duration !== profile.training_duration_current) add("jobs.json", `${profile.id} sai thời gian học`);
   if (!String(job.description || "").includes("7,5 triệu đồng/tháng")) add("jobs.json", `${profile.id} chưa mô tả hỗ trợ 7,5 triệu đồng/tháng`);
-  if (!String(job.description || "").includes(incomeBase)) add("jobs.json", `${profile.id} thiếu thu nhập bình quân 20–25 triệu đồng/tháng`);
+  if (!String(job.description || "").includes(incomeBase)) add("jobs.json", `${profile.id} thiếu Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.`);
   if (!String(job.compensation?.note || "").includes(incomeBase)) add("jobs.json", `${profile.id} compensation.note lệch thu nhập canonical`);
 }
 
