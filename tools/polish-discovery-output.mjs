@@ -54,7 +54,11 @@ if(fs.existsSync(contentSearchPath)){
       item.categoryLabel="Phóng sự hiện trường";
       item.type="Phóng sự hiện trường";
       item.priority=item.url==="/phong-su/"?89:78;
-      item.keywords=[...new Set([...(item.keywords||[]),"phóng sự hiện trường","tư liệu thực địa","video gốc","người thật","hành trình thật"])].slice(0,60);
+      const place=item.url.includes("gia-lai")?"Gia Lai":item.url.includes("quang-ngai")?"Quảng Ngãi":"nghề mỏ";
+      // Title and description are already indexed. Keep only the compact intent
+      // vocabulary here so the new editorial section does not inflate the
+      // mobile search payload with duplicated H2/H3 text.
+      item.keywords=["phóng sự hiện trường","tư liệu thực địa","video gốc","người thật","hành trình thật",place];
       fieldReportSearchItems+=1;
     }
   }
