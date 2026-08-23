@@ -33,6 +33,14 @@ function normalize(html) {
       `<h3>Học 2–3 hoặc 10 tháng theo nghề</h3><p>Khai thác và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng, cùng nội dung an toàn và thực hành theo nghề.</p>`)
     .replace(/<summary>Thời gian học bao lâu\?<\/summary><p>Nghề khai thác mỏ và xây dựng mỏ học 2[–-]3 tháng\. Lịch cụ thể phụ thuộc từng đợt tiếp nhận\.<\/p>/giu,
       `<summary>Thời gian học bao lâu?</summary><p>Khai thác và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng. Lịch cụ thể phụ thuộc từng đợt tiếp nhận.</p>`)
+    .replace(/<p>Đào tạo nghề cơ điện mỏ theo kế hoạch tuyển sinh\.<\/p>/giu,
+      `<p>Đào tạo 10 tháng theo kế hoạch tuyển sinh.</p>`)
+    .replace(/<h3>Kỹ thuật cơ điện mỏ hầm lò<\/h3><p>Đào tạo nghề cơ điện mỏ theo kế hoạch tuyển sinh\.<\/p>/giu,
+      `<h3>Kỹ thuật cơ điện mỏ hầm lò</h3><p>Cơ điện mỏ học 10 tháng theo kế hoạch tuyển sinh.</p>`)
+    .replace(/<h3>Kỹ thuật cơ điện mỏ hầm lò<\/h3><p>Đào tạo 10 tháng theo kế hoạch tuyển sinh\.<\/p>/giu,
+      `<h3>Kỹ thuật cơ điện mỏ hầm lò</h3><p>Cơ điện mỏ học 10 tháng theo kế hoạch tuyển sinh.</p>`)
+    .replace(/<strong>Hỗ trợ học nghề<\/strong><p>Miễn học phí, bố trí ăn ở và hỗ trợ trong thời gian học\.<\/p>/giu,
+      `<strong>Hỗ trợ học nghề</strong><p>Miễn học phí, bố trí ăn ở và hỗ trợ ${support}.</p>`)
     .replace(/Xem thông tin tháng \d{1,2}\/\d{4} →/giu, "Xem thông tin đang áp dụng →")
     .replace(/học nghề trong 2[–-]3 tháng và chuẩn bị cho công việc tại Quảng Ninh/giu,
       "học nghề 2–3 hoặc 10 tháng theo nghề và chuẩn bị cho công việc tại Quảng Ninh")
@@ -69,10 +77,12 @@ for (const file of files) {
       break;
     }
   }
-  if (!html.includes("cơ điện mỏ học 10 tháng")) errors.push(`${relative}: chưa có câu cơ điện mỏ học 10 tháng`);
+  const hasElectricalDuration = /cơ điện mỏ[^<\n]{0,100}(?:học|đào tạo)[^<\n]{0,40}10 tháng/iu.test(html)
+    || /Kỹ thuật cơ điện mỏ hầm lò[\s\S]{0,180}10 tháng/iu.test(html);
+  if (!hasElectricalDuration) errors.push(`${relative}: chưa nêu cơ điện mỏ học/đào tạo 10 tháng`);
 }
 
-if (files.length < 26) errors.push(`Province facts: chỉ tìm thấy ${files.length} landing tỉnh, cần ít nhất 26`);
+if (files.length !== 34) errors.push(`Province facts: dự kiến 34 landing tỉnh/thành, thực tế ${files.length}`);
 
 if (errors.length) {
   console.error(JSON.stringify({status:"province-current-facts-v11-invalid", canonicalFactsVersion:facts.version, pages:files.length, changed:changed.length, errors}, null, 2));
