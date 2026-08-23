@@ -2,7 +2,7 @@
   "use strict";
 
   const ZALO_URL = "https://zalo.me/0963048585";
-  const MESSENGER_URL = "https://www.messenger.com/t/thaylinhtuyenthomo.vn";
+  const MESSENGER_URL = "https://m.me/thaylinhtuyenthomo";
   const PHONE_URL = "tel:+84963048585";
   const CONDITION_URL = "/kiem-tra-dieu-kien/";
   const requiredConditionFields = ["age_range", "height_range", "weight_range", "health_screen"];
