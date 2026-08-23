@@ -8,6 +8,7 @@ const SITE = path.join(ROOT, "tuyen-tho-mo");
 const BASE = "https://thaylinhtuyenthomo.vn";
 const SOURCE_ROOT = path.resolve(import.meta.dirname, "..");
 const content = JSON.parse(fs.readFileSync(path.join(SOURCE_ROOT, "content", "worker-questions.json"), "utf8"));
+const facts = JSON.parse(fs.readFileSync(path.join(SITE, "data", "recruitment-facts-2026.json"), "utf8"));
 const errors = [];
 
 function load(relativePath) {
@@ -40,6 +41,17 @@ function graph(source, label) {
   }
 }
 
+const canonicalAnswers = new Map([
+  ["Học nghề mỏ mất bao lâu?", `Khai thác mỏ hầm lò và xây dựng mỏ hầm lò học ${facts.training.khai_thac_mo}; kỹ thuật cơ điện mỏ hầm lò học ${facts.training.co_dien_mo}. Lịch cụ thể được xác nhận theo từng đợt.`],
+  ["Công việc thợ mỏ hầm lò là làm gì?", "Ba nghề đang tiếp nhận là kỹ thuật khai thác mỏ hầm lò, kỹ thuật xây dựng mỏ hầm lò và kỹ thuật cơ điện mỏ hầm lò. Người học được đào tạo thao tác, thiết bị, an toàn và phối hợp tổ đội trước khi nhận việc."],
+  ["Lương thợ lò được tính thế nào?", `Thu nhập đang áp dụng là ${facts.after_training.income_commitment}.`],
+  ["Trong thời gian học có được ăn ở và hỗ trợ không?", `Người học thuộc chỉ tiêu được bố trí 3 bữa/ngày, ký túc xá khép kín và hỗ trợ ${facts.study_benefits.living_support} theo chính sách đợt tuyển.`],
+]);
+const expectedQuestions = content.questions.map((item) => ({
+  ...item,
+  answer: canonicalAnswers.get(item.question) || item.answer,
+}));
+
 if (content.questions.length !== 20) errors.push("Nguồn nội dung phải có đúng 20 câu hỏi");
 if (content.pages.length !== 5) errors.push("Nguồn nội dung phải có đúng 5 trang chuyên sâu");
 
@@ -48,10 +60,11 @@ const hub = load(hubRelative);
 requireText(hub, "<h1>" + content.hub.title + "</h1>", "trang trung tâm");
 requireText(hub, "href='/lien-he-di-lam-mo-than-quang-ninh/'", "trang trung tâm");
 requireText(hub, "/worker-questions.css?v=1", "trang trung tâm");
-for (const question of content.questions) {
+for (const question of expectedQuestions) {
   requireText(hub, question.question, "trang trung tâm");
   requireText(hub, question.answer, "trang trung tâm");
 }
+if (hub.includes("Hai hướng đang tuyển là khai thác mỏ hầm lò và xây dựng mỏ hầm lò")) errors.push("trang trung tâm: còn mô hình hai nghề");
 const hubGraph = graph(hub, "trang trung tâm");
 for (const type of ["CollectionPage", "FAQPage", "ItemList", "BreadcrumbList", "Person", "Organization"]) {
   const found = hubGraph.some(function (node) {
@@ -101,6 +114,15 @@ for (const page of content.pages) {
 const feed = JSON.parse(load("worker-questions.json") || "{}");
 if ((feed.questions || []).length !== 20) errors.push("worker-questions.json phải có 20 câu hỏi");
 if (feed.canonical_hub !== BASE + content.hub.path) errors.push("worker-questions.json sai URL trung tâm");
+if (feed.canonical_facts_version !== facts.version) errors.push(`worker-questions.json chưa gắn facts v${facts.version}`);
+for (const question of expectedQuestions) {
+  const item = (feed.questions || []).find((entry) => entry.question === question.question);
+  if (!item || item.direct_answer !== question.answer) errors.push(`worker-questions.json lệch câu: ${question.question}`);
+}
+const feedText = JSON.stringify(feed).toLocaleLowerCase("vi");
+for (const legacy of ["hai hướng đang tuyển là khai thác mỏ hầm lò và xây dựng mỏ hầm lò", "bình quân 20–25 triệu", "tùy đơn vị, vị trí, ngày công và năng suất"]) {
+  if (feedText.includes(legacy)) errors.push(`worker-questions.json còn legacy: ${legacy}`);
+}
 
 const home = load("index.html");
 requireText(home, "data-worker-question-hub", "trang chủ");
@@ -133,6 +155,8 @@ console.log(JSON.stringify({
   questions: content.questions.length,
   deep_pages: content.pages.length,
   hub_pages: 1,
+  canonicalFactsVersion: facts.version,
+  canonicalOverrides: canonicalAnswers.size,
   errors: errors.length,
 }, null, 2));
 if (errors.length) {
