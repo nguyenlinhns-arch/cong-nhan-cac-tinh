@@ -1,0 +1,61 @@
+name: Validate recruitment distribution v11
+
+on:
+  pull_request:
+    paths:
+      - 'content/recruitment-facts-2026.json'
+      - 'operations/job-posting-master-2026.json'
+      - 'tuyen-tho-mo/data/recruitment-facts-2026.json'
+      - 'tuyen-tho-mo/ad-landing-pages.json'
+      - 'tuyen-tho-mo/google-search-intent.js'
+      - 'tuyen-tho-mo/jobs.json'
+      - 'tuyen-tho-mo/jobs.xml'
+      - 'tuyen-tho-mo/jooble.xml'
+      - 'tuyen-tho-mo/viec-lam/**'
+      - 'tuyen-tho-mo/viec-lam-nganh-than/**'
+      - 'tools/generate-job-board-pages.mjs'
+      - 'tools/generate-province-pages-2026.mjs'
+      - 'tools/normalize-machine-feeds-current-facts-v11.mjs'
+      - 'tools/validate-*-v11.mjs'
+      - 'tools/validate-workflow-safety.mjs'
+      - '.github/workflows/pages.yml'
+      - '.github/workflows/recruitment-distribution-v11-pr.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: recruitment-distribution-v11-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Rebuild facts-dependent outputs
+        run: |
+          set -euo pipefail
+          node tools/generate-province-pages-2026.mjs
+          node tools/generate-job-board-pages.mjs
+          node tools/normalize-machine-feeds-current-facts-v11.mjs
+
+      - name: Run recruitment distribution gates
+        run: |
+          set -euo pipefail
+          node tools/validate-workflow-safety.mjs
+          node tools/validate-job-postings.mjs
+
+      - name: Confirm canonical sources are read-only
+        run: |
+          set -euo pipefail
+          git diff --exit-code -- \
+            content/recruitment-facts-2026.json \
+            operations/job-posting-master-2026.json \
+            tuyen-tho-mo/data/recruitment-facts-2026.json

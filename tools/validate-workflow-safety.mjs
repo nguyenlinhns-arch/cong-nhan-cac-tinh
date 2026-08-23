@@ -11,6 +11,8 @@ const allowedContentWriters = new Set([
   "sync-vinacomin-youtube.yml",
   "generate-local-coverage.yml",
   "recruitment-facts-normalize.yml",
+  "recruitment-seo-copy-v11.yml",
+  "seo-role-policy.yml",
 ]);
 const retiredPaths = [
   ".deploy",
@@ -47,6 +49,9 @@ for (const name of workflows) {
   }
   if (/git\s+push\s+origin\s+HEAD:main/i.test(text) && !allowedContentWriters.has(name)) {
     errors.push(`${name}: không được tự đẩy trực tiếp vào main`);
+  }
+  if (allowedContentWriters.has(name) && /git\s+add\s+(?:\.|-A)(?:\s|$)/mi.test(text)) {
+    errors.push(`${name}: writer được phép nhưng không được git add toàn bộ repository`);
   }
 }
 
@@ -104,6 +109,24 @@ if (!fs.existsSync(liveVerifyPath)) {
   }
 }
 
+const distributionPrPath = path.join(workflowRoot, "recruitment-distribution-v11-pr.yml");
+if (!fs.existsSync(distributionPrPath)) {
+  errors.push("Thiếu workflow recruitment-distribution-v11-pr.yml");
+} else {
+  const text = fs.readFileSync(distributionPrPath, "utf8");
+  if (!/pull_request:/u.test(text)) errors.push("recruitment-distribution-v11-pr.yml: thiếu pull_request gate");
+  if (!/^\s*contents:\s*read\s*$/mi.test(text)) errors.push("recruitment-distribution-v11-pr.yml: phải chỉ contents: read");
+  if (/git\s+(?:commit|push)/i.test(text)) errors.push("recruitment-distribution-v11-pr.yml: PR gate không được ghi repository");
+  for (const marker of [
+    "generate-job-board-pages.mjs",
+    "normalize-machine-feeds-current-facts-v11.mjs",
+    "validate-workflow-safety.mjs",
+    "validate-job-postings.mjs",
+  ]) {
+    if (!text.includes(marker)) errors.push(`recruitment-distribution-v11-pr.yml: thiếu bước ${marker}`);
+  }
+}
+
 const publicReceipts = fs.readdirSync(siteRoot)
   .filter((name) => /(?:RECEIPT|PUBLISH_V110|ACTIONS_HEALTH).*\.md$/i.test(name));
 for (const name of publicReceipts) errors.push(`Tệp vận hành cũ đang bị xuất bản công khai: tuyen-tho-mo/${name}`);
@@ -116,9 +139,11 @@ console.log(JSON.stringify({
   }),
   facts_sync_allowlist: factsSyncAllowedPaths,
   live_recruitment_verifier: fs.existsSync(liveVerifyPath),
+  distribution_pr_gate: fs.existsSync(distributionPrPath),
   retired_bootstrap_present: retiredPaths.filter(hasFiles),
   public_receipts: publicReceipts,
   errors,
 }, null, 2));
 
 if (errors.length) process.exit(1);
+await import("./validate-recruitment-distribution-v11.mjs");

@@ -1,0 +1,63 @@
+import fs from "node:fs";
+import path from "node:path";
+
+const root = path.resolve(import.meta.dirname, "..");
+const site = path.join(root, "tuyen-tho-mo");
+const facts = JSON.parse(fs.readFileSync(path.join(root, "content", "recruitment-facts-2026.json"), "utf8"));
+const publicFacts = JSON.parse(fs.readFileSync(path.join(site, "data", "recruitment-facts-2026.json"), "utf8"));
+const master = JSON.parse(fs.readFileSync(path.join(root, "operations", "job-posting-master-2026.json"), "utf8"));
+
+const canonicalFactsJson = "/data/recruitment-facts-2026.json";
+const canonicalFactsUrl = `https://thaylinhtuyenthomo.vn${canonicalFactsJson}`;
+const errors = [];
+
+if (facts.version !== publicFacts.version) errors.push(`Facts version lệch public copy: ${facts.version} != ${publicFacts.version}`);
+if (facts.confirmed_at !== publicFacts.confirmed_at) errors.push(`Facts confirmed_at lệch public copy: ${facts.confirmed_at} != ${publicFacts.confirmed_at}`);
+if (master.updated_at !== facts.confirmed_at) errors.push(`job-posting-master.updated_at ${master.updated_at} != facts.confirmed_at ${facts.confirmed_at}`);
+if (master.income_commitment !== facts.after_training.income_commitment) errors.push("Income commitment trong master lệch facts canonical");
+if (!String(master.benefits || []).includes("7,5 triệu đồng/tháng")) errors.push("Master không còn hỗ trợ 7,5 triệu đồng/tháng");
+
+if (errors.length) {
+  console.error(JSON.stringify({ status: "machine-feed-normalize-blocked", errors }, null, 2));
+  process.exit(1);
+}
+
+const jobsPath = path.join(site, "jobs.json");
+const jobs = JSON.parse(fs.readFileSync(jobsPath, "utf8"));
+jobs.canonical_facts_version = facts.version;
+jobs.canonical_facts_confirmed_at = facts.confirmed_at;
+jobs.canonical_facts_json = canonicalFactsJson;
+jobs.canonical_facts_url = canonicalFactsUrl;
+jobs.updated_at = facts.confirmed_at;
+fs.writeFileSync(jobsPath, `${JSON.stringify(jobs, null, 2)}\n`);
+
+function stampXml(relative, { generatedAt = false } = {}) {
+  const file = path.join(site, relative);
+  let text = fs.readFileSync(file, "utf8");
+  const match = text.match(/<jobs\b[^>]*>/u);
+  if (!match) throw new Error(`${relative}: thiếu thẻ <jobs>`);
+  let tag = match[0];
+  const setAttr = (name, value) => {
+    const encoded = String(value).replaceAll("&", "&amp;").replaceAll('"', "&quot;");
+    const re = new RegExp(`\\s${name}="[^"]*"`, "u");
+    if (re.test(tag)) tag = tag.replace(re, ` ${name}="${encoded}"`);
+    else tag = tag.replace(/>$/u, ` ${name}="${encoded}">`);
+  };
+  if (generatedAt) setAttr("generatedAt", facts.confirmed_at);
+  setAttr("canonicalFactsVersion", facts.version);
+  setAttr("canonicalFactsConfirmedAt", facts.confirmed_at);
+  setAttr("canonicalFactsJson", canonicalFactsJson);
+  setAttr("canonicalFactsUrl", canonicalFactsUrl);
+  text = text.replace(match[0], tag);
+  fs.writeFileSync(file, text);
+}
+
+stampXml("jobs.xml", { generatedAt: true });
+stampXml("jooble.xml");
+
+console.log(JSON.stringify({
+  status: "machine-feeds-normalized-v11",
+  canonicalFactsVersion: facts.version,
+  canonicalFactsConfirmedAt: facts.confirmed_at,
+  feeds: ["jobs.json", "jobs.xml", "jooble.xml"],
+}, null, 2));

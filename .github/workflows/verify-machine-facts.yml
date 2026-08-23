@@ -49,12 +49,14 @@ jobs:
               "facts:data/recruitment-facts-2026.json" \
               "current:recruitment-current.json" \
               "jobs:jobs.json" \
+              "jobs_xml:jobs.xml" \
+              "jooble:jooble.xml" \
               "daily:daily-seo-articles.json" \
               "worker:worker-questions.json" \
               "manifest:search-index.json" \
               "core:search-core.json"; do
               name="${spec%%:*}"; rel="${spec#*:}"
-              if ! curl --fail --silent --show-error --location --max-time 20 "${BASE}/${rel}?release=${nonce}" -o "$dir/$name.json"; then ok=0; fi
+              if ! curl --fail --silent --show-error --location --max-time 20 "${BASE}/${rel}?release=${nonce}" -o "$dir/$name.data"; then ok=0; fi
             done
             if [ "$ok" -eq 1 ]; then
               set +e
@@ -65,31 +67,50 @@ jobs:
               const confirmedAt=process.env.CONFIRMED_AT;
               const support=process.env.SUPPORT;
               const income=process.env.INCOME;
-              const read=(n)=>JSON.parse(fs.readFileSync(`${dir}/${n}.json`,'utf8'));
+              const canonicalJson='/data/recruitment-facts-2026.json';
+              const canonicalUrl='https://thaylinhtuyenthomo.vn/data/recruitment-facts-2026.json';
+              const read=(n)=>JSON.parse(fs.readFileSync(`${dir}/${n}.data`,'utf8'));
               const facts=read('facts'), current=read('current'), jobs=read('jobs'), daily=read('daily'), worker=read('worker'), manifest=read('manifest'), core=read('core');
+              const jobsXml=fs.readFileSync(`${dir}/jobs_xml.data`,'utf8');
+              const jooble=fs.readFileSync(`${dir}/jooble.data`,'utf8');
               const failures=[];
               if (facts.version!==version) failures.push('facts version');
               if (facts.confirmed_at!==confirmedAt) failures.push('facts confirmed_at');
               if (facts.study_benefits?.living_support!==support) failures.push('facts support');
               if (facts.after_training?.income_commitment!==income) failures.push('facts income');
-              if (current.canonical_facts!=='https://thaylinhtuyenthomo.vn/data/recruitment-facts-2026.json') failures.push('current canonical_facts');
+              if (current.canonical_facts!==canonicalUrl) failures.push('current canonical_facts');
               if (current.benefits_during_training?.living_support!==support) failures.push('current support');
               if (current.after_training?.income_commitment!==income) failures.push('current income');
+              if (jobs.canonical_facts_version!==version) failures.push('jobs facts version');
+              if (jobs.canonical_facts_confirmed_at!==confirmedAt) failures.push('jobs facts confirmed_at');
+              if (jobs.canonical_facts_json!==canonicalJson) failures.push('jobs facts json');
+              if (jobs.canonical_facts_url!==canonicalUrl) failures.push('jobs facts url');
+              if (jobs.updated_at!==confirmedAt) failures.push('jobs updated_at');
               if ((jobs.jobs||[]).length!==3) failures.push(`jobs count ${(jobs.jobs||[]).length}`);
               for (const job of jobs.jobs||[]) {
                 const text=JSON.stringify(job);
                 if (!text.includes('7,5 triệu đồng/tháng')) failures.push(`${job.id}: jobs support`);
                 if (!text.includes('hoàn thành định mức lao động')) failures.push(`${job.id}: jobs income condition`);
               }
+              for (const [name,text,generated] of [['jobs.xml',jobsXml,true],['jooble.xml',jooble,false]]) {
+                const root=text.match(/<jobs\b[^>]*>/)?.[0]||'';
+                if (!root.includes(`canonicalFactsVersion="${version}"`)) failures.push(`${name} facts version`);
+                if (!root.includes(`canonicalFactsConfirmedAt="${confirmedAt}"`)) failures.push(`${name} facts confirmed_at`);
+                if (!root.includes(`canonicalFactsJson="${canonicalJson}"`)) failures.push(`${name} facts json`);
+                if (!root.includes(`canonicalFactsUrl="${canonicalUrl}"`)) failures.push(`${name} facts url`);
+                if (generated && !root.includes(`generatedAt="${confirmedAt}"`)) failures.push(`${name} generatedAt`);
+                if ((text.match(/<job\s+id=/g)||[]).length!==3) failures.push(`${name} jobs count`);
+                if (!text.includes('hoàn thành định mức lao động')) failures.push(`${name} income condition`);
+              }
               if (daily.canonical_facts_version!==version || daily.canonical_facts_confirmed_at!==confirmedAt) failures.push('daily facts metadata');
               if (worker.canonical_facts_version!==version) failures.push('worker facts metadata');
               if (manifest.canonicalFactsVersion!==version || manifest.canonicalFactsConfirmedAt!==confirmedAt) failures.push('search manifest facts metadata');
-              if (manifest.discovery?.canonicalFactsJson!=='/data/recruitment-facts-2026.json') failures.push('search manifest facts URL');
+              if (manifest.discovery?.canonicalFactsJson!==canonicalJson) failures.push('search manifest facts URL');
               for (const url of ['/#dieu-kien','/#thoi-gian-hoc','/#ho-tro-hoc-nghe','/#quyen-loi']) {
                 const item=(core.items||[]).find((x)=>x.url===url);
                 if (!item || item.canonicalFactsVersion!==version) failures.push(`search core ${url}`);
               }
-              const all=JSON.stringify({current,jobs,daily,worker,manifest,core});
+              const all=JSON.stringify({current,jobs,daily,worker,manifest,core})+jobsXml+jooble;
               for (const legacy of ['Bình quân 20–25 triệu','tùy đơn vị, vị trí, ngày công và năng suất','7,5 triệu là tổng cả khóa','Hai nghề đang tiếp nhận']) {
                 if (all.toLocaleLowerCase('vi').includes(legacy.toLocaleLowerCase('vi'))) failures.push(`legacy ${legacy}`);
               }
