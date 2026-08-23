@@ -34,8 +34,8 @@ for (const hook of [
 
 for (const supportMarker of [
   "https://zalo.me/0963048585",
-  "https://www.messenger.com/t/thaylinhtuyenthomo.vn",
-  "tel:0963048585",
+  "https://m.me/thaylinhtuyenthomo",
+  "tel:+84963048585",
 ]) requireText(campaign, supportMarker, "central application support");
 
 if (campaign.includes("data-copy-application") || campaign.includes("Sao chép lại tin nhắn")) {
@@ -176,6 +176,7 @@ console.log(JSON.stringify({
   applicationPage: "viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html",
   crmAcknowledgementRequired: true,
   directPersonalDataTracking: 0,
+  canonicalMessenger: "https://m.me/thaylinhtuyenthomo",
   verifiedLeadAnalytics: ["ga4:generate_lead", "meta:Lead"],
   fallbackLeadSeparated: true,
   attributedCrossPageApplications,
