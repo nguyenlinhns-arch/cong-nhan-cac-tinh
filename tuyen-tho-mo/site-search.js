@@ -12,7 +12,7 @@
   const popular = [
     { url: "/#dieu-kien", title: "Điều kiện tuyển thợ mỏ 2026", description: "Nam 18–40 tuổi; kiểm tra chiều cao, cân nặng và sức khỏe trước.", type: "Trả lời nhanh", category: "entry", priority: 210 },
     { url: "/#ho-so", title: "Hồ sơ nhập học cần gì?", description: "CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có.", type: "Trả lời nhanh", category: "entry", priority: 210 },
-    { url: "/#quyen-loi", title: "Thu nhập và quyền lợi", description: "Cam kết 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.", type: "Trả lời nhanh", category: "work", priority: 210 },
+    { url: "/#quyen-loi", title: "Thu nhập và quyền lợi", description: "Cam kết 20–25 triệu đồng/tháng.", type: "Trả lời nhanh", category: "work", priority: 210 },
     { url: "/#thoi-gian-hoc", title: "Học nghề mỏ bao lâu?", description: "Khai thác và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng.", type: "Trả lời nhanh", category: "training", priority: 210 },
     { url: "/#dia-diem", title: "Học và nhập học ở đâu?", description: "Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, Quảng Ninh.", type: "Trả lời nhanh", category: "entry", priority: 210 },
   ];

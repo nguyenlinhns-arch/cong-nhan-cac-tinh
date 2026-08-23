@@ -33,7 +33,7 @@ const faqSchema = {
       name: "Thu nhập nghề mỏ hiện nay được thông tin như thế nào?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Thông tin tuyển sinh đang áp dụng Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+        text: "Thông tin tuyển sinh đang áp dụng Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.",
       },
     },
     {
@@ -114,7 +114,7 @@ const heroAndBody = `    <section class="verification-page__hero kcn-hero">
           <tr><td><strong>Cách bắt đầu</strong></td><td>Ứng tuyển trực tiếp vào vị trí; điều kiện, thử việc và kinh nghiệm do từng doanh nghiệp quy định.</td><td>Kiểm tra điều kiện đầu vào, nhập học nghề, hoàn thành đào tạo rồi được bố trí làm việc tại đơn vị ngành Than ở Quảng Ninh.</td></tr>
           <tr><td><strong>Thời gian chuẩn bị</strong></td><td>Tùy lịch tuyển, thời gian thử việc và yêu cầu của nhà máy.</td><td>Khai thác hoặc xây dựng mỏ hầm lò khoảng 2–3 tháng; cơ điện mỏ khoảng 10 tháng.</td></tr>
           <tr><td><strong>Chi phí ban đầu</strong></td><td>Phải hỏi rõ có hỗ trợ nhà ở, bữa ăn, xe đưa đón hay phải tự túc toàn bộ.</td><td>Miễn kinh phí đào tạo theo chỉ tiêu; ăn 3 bữa/ngày, ở ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học.</td></tr>
-          <tr><td><strong>Thu nhập</strong></td><td>Cần tách rõ lương cơ bản, phụ cấp, tiền tăng ca và số ngày công; sau đó trừ chi phí sinh hoạt thực tế.</td><td><strong>Cam kết 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.</strong></td></tr>
+          <tr><td><strong>Thu nhập</strong></td><td>Cần tách rõ lương cơ bản, phụ cấp, tiền tăng ca và số ngày công; sau đó trừ chi phí sinh hoạt thực tế.</td><td><strong>Cam kết 20–25 triệu đồng/tháng.</strong></td></tr>
           <tr><td><strong>Tính chất công việc</strong></td><td>Thường làm theo ca, dây chuyền, máy móc hoặc công đoạn sản xuất; nhịp độ và mức độ lặp lại tùy vị trí.</td><td>Làm việc trong môi trường mỏ hầm lò theo tổ đội; yêu cầu thể lực, phối hợp, tay nghề và tuân thủ quy trình an toàn.</td></tr>
           <tr><td><strong>Điều kiện sức khỏe</strong></td><td>Do từng doanh nghiệp và vị trí quy định.</td><td>Nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg, sức khỏe tốt, không cận thị, không mắc bệnh tim mạch, huyết áp hoặc bệnh về mắt ảnh hưởng công việc; <strong>khám tuyển là căn cứ cuối cùng.</strong></td></tr>
           <tr><td><strong>Con đường dài hạn</strong></td><td>Phụ thuộc nghề đang làm, khả năng học thêm, chuyển vị trí và chính sách của doanh nghiệp.</td><td>Phát triển theo tay nghề, bậc thợ, kinh nghiệm tổ đội và yêu cầu sử dụng lao động của đơn vị.</td></tr>
@@ -173,7 +173,7 @@ const heroAndBody = `    <section class="verification-page__hero kcn-hero">
         <p class="verification-page__eyebrow">Câu hỏi thường gặp</p>
         <h2>Những điều cần rõ trước khi quyết định</h2>
         <div class="kcn-faq">
-          <details><summary>Nghề mỏ có Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động không?</summary><p>Có. Thông tin tuyển sinh đang áp dụng cam kết 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.</p></details>
+          <details><summary>Nghề mỏ có Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất không?</summary><p>Có. Thông tin tuyển sinh đang áp dụng cam kết 20–25 triệu đồng/tháng.</p></details>
           <details><summary>Trong thời gian học có phải tự lo tiền ăn và chỗ ở không?</summary><p>Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, ăn 3 bữa/ngày, ở ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học.</p></details>
           <details><summary>Không có bằng THPT có đăng ký được không?</summary><p>Có thể đăng ký sơ bộ. Hồ sơ cần CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; trường hợp chưa có bằng sẽ được hướng dẫn theo hệ đào tạo phù hợp.</p></details>
           <details><summary>Chỉ cần đủ chiều cao, cân nặng là chắc chắn được học?</summary><p>Không. Các chỉ số trên chỉ là điều kiện sàng lọc sơ bộ. Tình trạng sức khỏe và khám tuyển là căn cứ cuối cùng.</p></details>
@@ -184,7 +184,7 @@ const heroAndBody = `    <section class="verification-page__hero kcn-hero">
 
     <section class="verification-page__section kcn-conclusion">
       <div class="container kcn-conclusion-inner">
-        <div><p class="verification-page__eyebrow">Kết luận</p><h2>Không có nghề tốt nhất cho tất cả — chỉ có lựa chọn phù hợp nhất với hoàn cảnh của bạn</h2><p>Chọn khu công nghiệp khi ưu tiên gần nhà và đã kiểm chứng được thu nhập thực nhận. Cân nhắc nghề mỏ khi đủ sức khỏe, chấp nhận kỷ luật và làm việc tại Quảng Ninh, đồng thời muốn học một nghề có lộ trình rõ ràng và mức thu nhập cam kết 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.</p></div>
+        <div><p class="verification-page__eyebrow">Kết luận</p><h2>Không có nghề tốt nhất cho tất cả — chỉ có lựa chọn phù hợp nhất với hoàn cảnh của bạn</h2><p>Chọn khu công nghiệp khi ưu tiên gần nhà và đã kiểm chứng được thu nhập thực nhận. Cân nhắc nghề mỏ khi đủ sức khỏe, chấp nhận kỷ luật và làm việc tại Quảng Ninh, đồng thời muốn học một nghề có lộ trình rõ ràng và mức thu nhập cam kết 20–25 triệu đồng/tháng.</p></div>
         <div class="kcn-conclusion-card"><strong>Chưa cần quyết định ngay.</strong><p>Hãy kiểm tra điều kiện trước, xem các câu chuyện công nhân cùng quê và hỏi đúng trường hợp của mình.</p><a href="/kiem-tra-dieu-kien/" data-verification-action="condition" data-context="kcn-conclusion">Kiểm tra điều kiện</a><a href="https://zalo.me/0963048585" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="kcn-conclusion">Nhắn Zalo cho Thầy Linh</a></div>
       </div>
     </section>`;
@@ -214,7 +214,7 @@ html = `${html.slice(0, mainStart)}${heroAndBody}\n${html.slice(policyStart)}`;
 for (const marker of [
   reelUrl,
   "khu công nghiệp",
-  "20–25 triệu đồng/tháng khi hoàn thành định mức lao động",
+  "20–25 triệu đồng/tháng",
   "khám tuyển là căn cứ cuối cùng",
   "/kcn-comparison.css?v=1",
   "Bài toán 30 ngày",

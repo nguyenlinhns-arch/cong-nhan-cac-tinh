@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const INCOME = '20–25 triệu đồng/tháng khi hoàn thành định mức lao động';
+const INCOME = '20–25 triệu đồng/tháng';
 const SUPPORT = '7,5 triệu đồng/tháng trong thời gian học';
 const UPDATED_AT = '2026-08-23T11:08:00+07:00';
 const SELF = path.normalize('tools/enforce-confirmed-recruitment-facts.mjs');
@@ -34,7 +34,7 @@ const facts = {
   after_training: {
     work_location: 'Các đơn vị ngành Than thuộc TKV tại Quảng Ninh',
     income: INCOME,
-    income_note: 'Điều kiện áp dụng: hoàn thành định mức lao động.',
+    income_note: 'Tùy đơn vị, vị trí, ngày công và năng suất.',
     employment: 'Có hợp đồng lao động, bảo hiểm, thưởng, xe đưa đón và chế độ theo từng đơn vị'
   },
   contact: {
@@ -45,25 +45,25 @@ const facts = {
   forbidden_legacy_phrases: [
     '6 triệu',
     '18–25 triệu',
-    '7,5 triệu là tổng cả khóa',
+    '7,5 triệu đồng/tháng trong thời gian học',
     'THU NHẬP SAU ĐÀO TẠO',
     'THU NHẬP SAU ĐÀO TẠO',
-    'Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động'
+    'Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất'
   ]
 };
 
 const exactReplacements = [
   ['<div class="home-v6-income"><small>THU NHẬP BÌNH QUÂN</small><strong>20–25 triệu/tháng</strong></div>', '<div class="home-v6-income"><small>HOÀN THÀNH ĐỊNH MỨC LAO ĐỘNG</small><strong>20–25 triệu/tháng</strong></div>'],
-  ['<div class="home-v6-income"><small>THU NHẬP SAU ĐÀO TẠO</small><strong>20–25 triệu đồng/tháng khi hoàn thành định mức lao động</strong></div>', '<div class="home-v6-income"><small>HOÀN THÀNH ĐỊNH MỨC LAO ĐỘNG</small><strong>20–25 triệu/tháng</strong></div>'],
+  ['<div class="home-v6-income"><small>THU NHẬP SAU ĐÀO TẠO</small><strong>20–25 triệu đồng/tháng</strong></div>', '<div class="home-v6-income"><small>HOÀN THÀNH ĐỊNH MỨC LAO ĐỘNG</small><strong>20–25 triệu/tháng</strong></div>'],
   ['7,5 triệu đồng/tháng là mức hỗ trợ sinh hoạt trong thời gian học theo thông tin chuẩn hiện hành; không phải tiền lương sau khi đi làm.', '7,5 triệu đồng/tháng là mức hỗ trợ sinh hoạt trong thời gian học theo thông tin chuẩn hiện hành; không phải tiền lương sau khi đi làm.'],
   ['7,5 triệu đồng/tháng là hỗ trợ sinh hoạt trong thời gian học theo thông tin chuẩn hiện hành, không phải tiền lương sau khi đi làm.', '7,5 triệu đồng/tháng là hỗ trợ sinh hoạt trong thời gian học theo thông tin chuẩn hiện hành, không phải tiền lương sau khi đi làm.'],
   ['<div><dt>Hỗ trợ trong thời gian học</dt><dd>7,5 triệu đồng/tháng</dd></div>', '<div><dt>Hỗ trợ trong thời gian học</dt><dd>7,5 triệu đồng/tháng</dd></div>'],
   ['<strong>7,5 triệu/tháng</strong>Hỗ trợ trong thời gian học', '<strong>7,5 triệu/tháng</strong>Hỗ trợ trong thời gian học'],
-  ['Mức thu nhập 20–25 triệu đồng/tháng áp dụng khi hoàn thành định mức lao động.', 'Mức thu nhập 20–25 triệu đồng/tháng áp dụng khi hoàn thành định mức lao động.'],
-  ['Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.', 'Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.'],
-  ['Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động', 'Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động'],
-  ['20–25 triệu đồng/tháng khi hoàn thành định mức lao động', INCOME],
-  ['Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động', 'Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động'],
+  ['Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.', 'Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.'],
+  ['Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.', 'Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.'],
+  ['Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất', 'Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất'],
+  ['20–25 triệu đồng/tháng', INCOME],
+  ['Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất', 'Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất'],
   ['<article><small>01</small><strong>Miễn học phí</strong><p>Miễn học phí theo chỉ tiêu.</p></article>', '<article><small>01</small><strong>Miễn học phí</strong><p>Miễn học phí theo chỉ tiêu.</p></article>'],
   ['<article><small>02</small><strong>Ăn 3 bữa · ở KTX</strong><p>Được bố trí ăn 3 bữa/ngày và ở ký túc xá trong thời gian học.</p></article>', '<article><small>02</small><strong>Ăn 3 bữa · ở KTX</strong><p>Được bố trí ăn 3 bữa/ngày và ở ký túc xá trong thời gian học.</p></article>'],
   ['<article class="benefit-grid__accent"><small>04</small><strong>Thực tập sản xuất</strong><p>Được bố trí thực tập theo chương trình; chế độ thực tế theo đơn vị và đợt tiếp nhận.</p></article>', '<article class="benefit-grid__accent"><small>04</small><strong>Thực tập sản xuất</strong><p>Được bố trí thực tập theo chương trình; chế độ thực tế theo đơn vị và đợt tiếp nhận.</p></article>'],
@@ -74,11 +74,11 @@ const regexReplacements = [
   [/THU NHẬP SAU ĐÀO TẠO/gu, 'THU NHẬP SAU ĐÀO TẠO'],
   [/THU NHẬP SAU ĐÀO TẠO/gu, 'THU NHẬP SAU ĐÀO TẠO'],
   [/THU NHẬP BÌNH QUÂN/gu, 'THU NHẬP SAU ĐÀO TẠO'],
-  [/Cam kết thu nhập\s+20[–-]25 triệu(?: đồng)?\/tháng(?: khi hoàn thành định mức lao động)?/giu, 'Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động'],
-  [/Thu nhập bình quân\s+20[–-]25 triệu(?: đồng)?\/tháng(?:,?\s*tùy đơn vị, vị trí, ngày công và năng suất)?/giu, 'Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động'],
-  [/Bình quân\s+20[–-]25 triệu(?: đồng)?\/tháng/giu, '20–25 triệu đồng/tháng khi hoàn thành định mức lao động'],
-  [/Thu nhập\s+20[–-]25 triệu(?: đồng)?\/tháng khi hoàn thành định mức lao động/giu, 'Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động'],
-  [/20[–-]25 triệu\/tháng khi hoàn thành định mức lao động/giu, '20–25 triệu đồng/tháng khi hoàn thành định mức lao động'],
+  [/Cam kết thu nhập\s+20[–-]25 triệu(?: đồng)?\/tháng(?: khi hoàn thành định mức lao động)?/giu, 'Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất'],
+  [/Thu nhập bình quân\s+20[–-]25 triệu(?: đồng)?\/tháng(?:,?\s*tùy đơn vị, vị trí, ngày công và năng suất)?/giu, 'Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất'],
+  [/Bình quân\s+20[–-]25 triệu(?: đồng)?\/tháng/giu, '20–25 triệu đồng/tháng'],
+  [/Thu nhập\s+20[–-]25 triệu(?: đồng)?\/tháng khi hoàn thành định mức lao động/giu, 'Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất'],
+  [/20[–-]25 triệu\/tháng khi hoàn thành định mức lao động/giu, '20–25 triệu đồng/tháng'],
   [/7,5 triệu đồng\/tháng(?:\/tháng)+/giu, '7,5 triệu đồng/tháng'],
   [/7,5 triệu đồng\/tháng\s+đồng/giu, '7,5 triệu đồng/tháng'],
   [/Hỗ trợ 7,5 triệu đồng/tháng(?!\/tháng)/gu, 'Hỗ trợ 7,5 triệu đồng/tháng'],
@@ -168,7 +168,7 @@ if (/Thu nhập bình quân\s+20[–-]25 triệu/iu.test(critical)) {
 if (/7,5 triệu đồng\/tháng(?:\/tháng|\s+đồng)/iu.test(critical)) {
   throw new Error('Malformed 7.5m/month wording detected.');
 }
-if (!critical.includes('20–25 triệu đồng/tháng khi hoàn thành định mức lao động')) {
+if (!critical.includes('20–25 triệu đồng/tháng')) {
   throw new Error('Confirmed income condition missing from critical pages.');
 }
 if (!home.includes('HOÀN THÀNH ĐỊNH MỨC LAO ĐỘNG')) {

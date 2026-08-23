@@ -149,7 +149,7 @@ const pages = [
           <tr><td>Cách vào nghề</td><td>Thường tuyển trực tiếp theo vị trí; yêu cầu bằng cấp và kinh nghiệm tùy nhà máy.</td><td>Được kiểm tra điều kiện đầu vào, đào tạo nghề trước khi doanh nghiệp tiếp nhận công việc.</td></tr>
           <tr><td>Tính chất công việc</td><td>Ca kíp, dây chuyền hoặc vận hành máy; mức độ lặp lại và áp lực sản lượng tùy vị trí.</td><td>Làm việc theo tổ đội trong môi trường mỏ hầm lò; yêu cầu thể lực, phối hợp và tuân thủ quy trình an toàn.</td></tr>
           <tr><td>Điều kiện sức khỏe</td><td>Do từng doanh nghiệp quy định.</td><td>Nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg và phù hợp yêu cầu sức khỏe; khám tuyển là căn cứ cuối cùng.</td></tr>
-          <tr><td>Thu nhập</td><td>Biến động theo địa phương, nhà máy, tăng ca, tay nghề và vị trí; cần đọc đúng hợp đồng của nơi tuyển.</td><td>Thông tin tuyển sinh đang áp dụng nêu cam kết 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.</td></tr>
+          <tr><td>Thu nhập</td><td>Biến động theo địa phương, nhà máy, tăng ca, tay nghề và vị trí; cần đọc đúng hợp đồng của nơi tuyển.</td><td>Thông tin tuyển sinh đang áp dụng nêu cam kết 20–25 triệu đồng/tháng.</td></tr>
           <tr><td>Học và ăn ở ban đầu</td><td>Tùy chính sách từng doanh nghiệp; có nơi tự túc, có nơi hỗ trợ một phần.</td><td>Miễn kinh phí đào tạo, ăn 3 bữa/ngày, ở ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học.</td></tr>
           <tr><td>Kỷ luật</td><td>Tuân thủ giờ ca, nội quy nhà máy và tiêu chuẩn chất lượng.</td><td>Kỷ luật ca kíp, bảo hộ, quy trình kỹ thuật và mệnh lệnh an toàn là yêu cầu bắt buộc.</td></tr>
         </tbody></table></div>
@@ -241,7 +241,7 @@ const pages = [
     slug: "thu-nhap-an-o-ho-tro",
     kind: "benefits",
     title: "Lương thợ lò, ăn ở và hỗ trợ học nghề mỏ",
-    description: "Lương thợ lò 20–25 triệu đồng/tháng khi hoàn thành định mức lao động; miễn học phí, có ba bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng.",
+    description: "Lương thợ lò 20–25 triệu đồng/tháng; miễn học phí, có ba bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng.",
     eyebrow: "Đọc đủ điều kiện áp dụng",
     heading: "Lương thợ lò, ăn ở và hỗ trợ học nghề mỏ",
     lead: "Xem rõ mức lương thợ lò sau đào tạo, điều kiện hoàn thành định mức lao động, chính sách miễn học phí, ăn ở và hỗ trợ trước khi đăng ký.",
@@ -250,7 +250,7 @@ const pages = [
       <div class="container">
         <h2>Những thông tin đang áp dụng</h2>
         <div class="verification-card-grid">
-          <article class="verification-card"><h3>Lương thợ lò sau đào tạo</h3><p><strong>20–25 triệu đồng/tháng khi hoàn thành định mức lao động.</strong></p><p>Mức này gắn với yêu cầu công việc và định mức, không phải khoản trả cho người chưa đi làm hoặc chưa hoàn thành nhiệm vụ.</p></article>
+          <article class="verification-card"><h3>Lương thợ lò sau đào tạo</h3><p><strong>20–25 triệu đồng/tháng.</strong></p><p>Mức này gắn với yêu cầu công việc và định mức, không phải khoản trả cho người chưa đi làm hoặc chưa hoàn thành nhiệm vụ.</p></article>
           <article class="verification-card"><h3>Miễn học phí</h3><p>Người học không phải đóng kinh phí đào tạo theo chỉ tiêu tuyển sinh đang áp dụng.</p><p>Khai thác mỏ và xây dựng mỏ học khoảng 2–3 tháng; cơ điện mỏ học khoảng 10 tháng.</p></article>
           <article class="verification-card"><h3>Ăn và ở khi học</h3><p>Được phục vụ 3 bữa/ngày và bố trí ở ký túc xá trong thời gian học.</p></article>
           <article class="verification-card"><h3>Hỗ trợ sinh hoạt</h3><p>Được hỗ trợ tổng cộng 7,5 triệu đồng trong thời gian học theo thông tin tuyển sinh đang áp dụng.</p></article>

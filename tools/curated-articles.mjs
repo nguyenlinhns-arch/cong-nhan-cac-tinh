@@ -287,7 +287,7 @@ export const curatedArticles = [
         title: "Thu nhập cao được xây từ tay nghề và kỷ luật",
         paragraphs: [
           "Thu nhập của thợ lò gắn với giá trị công việc, số ngày công, năng suất và điều kiện lao động đặc thù. Khi cơ giới hóa tiến sâu hơn vào hầm lò, người thợ vừa cần sức khỏe, vừa phải biết vận hành thiết bị, phối hợp tổ đội, xử lý tình huống và tuân thủ quy trình an toàn.",
-          "Vì thế, 2–3 tháng học nghề là giai đoạn đặt nền móng. Người học nghiêm túc sẽ hiểu thiết bị sớm hơn, thích nghi nhanh hơn và có điều kiện tích lũy tay nghề sau khi vào doanh nghiệp. Người lao động được Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+          "Vì thế, 2–3 tháng học nghề là giai đoạn đặt nền móng. Người học nghiêm túc sẽ hiểu thiết bị sớm hơn, thích nghi nhanh hơn và có điều kiện tích lũy tay nghề sau khi vào doanh nghiệp. Người lao động được Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.",
         ],
       },
       {
@@ -784,7 +784,7 @@ export const existingNews = [
     section: "Tuyển dụng thợ mỏ",
     title: "Tuyển thợ mỏ tháng 8/2026: học nghề bài bản, việc làm rõ ràng",
     seoTitle: "Tuyển thợ mỏ tháng 8/2026 | Học nghề 2–3 tháng",
-    description: "Tuyển thợ mỏ tháng 8/2026: nam 18–40 tuổi, học nghề 2–3 tháng, được hỗ trợ, bố trí việc làm; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+    description: "Tuyển thợ mỏ tháng 8/2026: nam 18–40 tuổi, học nghề 2–3 tháng, được hỗ trợ, bố trí việc làm; Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.",
     lead: "Từ lớp học nghề đến vị trí sản xuất tại Quảng Ninh, người lao động được chuẩn bị từng bước về kỹ năng, an toàn, chỗ ở và công việc sau đào tạo.",
     keyword: "tuyển thợ mỏ tháng 8/2026",
     keywords: ["tuyển thợ mỏ tháng 8/2026", "tuyển thợ lò", "học nghề mỏ", "thu nhập 20–25 triệu/tháng", "việc làm TKV Quảng Ninh"],

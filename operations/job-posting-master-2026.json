@@ -1,6 +1,6 @@
 {
-  "version": 10,
-  "updated_at": "2026-08-23T11:08:00+07:00",
+  "version": 11,
+  "updated_at": "2026-08-23T10:38:00+07:00",
   "effective_from": "2026-08-01",
   "source_notice": "Thông báo số 10/TB-CĐTKV ngày 02/04/2026 và nội dung tuyển tháng 8/2026 cập nhật ngày 01/08/2026",
   "status": "open",
@@ -114,8 +114,8 @@
     "nguy hiểm"
   ],
   "training_duration": "2–3 tháng",
-  "income_commitment": "20–25 triệu đồng/tháng khi hoàn thành định mức lao động",
-  "income_reference": "20–25 triệu đồng/tháng khi hoàn thành định mức lao động",
+  "income_commitment": "Bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất",
+  "income_reference": "Bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất",
   "criteria": {
     "gender": "Nam",
     "age_min": 18,
@@ -143,7 +143,7 @@
   ],
   "benefits": [
     "Miễn toàn bộ kinh phí đào tạo theo chỉ tiêu",
-    "Hỗ trợ 7,5 triệu đồng/tháng trong thời gian học theo chính sách đợt tuyển",
+    "Hỗ trợ 7,5 triệu đồng/tháng trong thời gian học",
     "Bố trí 3 bữa/ngày trong thời gian học, mức ăn 90.000 đồng/ngày theo chính sách đợt tuyển",
     "Miễn phí ký túc xá khép kín",
     "Thực tập hưởng 85–100% lương công nhân trong cùng dây chuyền",
@@ -160,7 +160,7 @@
     "missing_diploma": "Chưa có bằng vẫn có thể đăng ký để được hướng dẫn đối chiếu theo hệ đào tạo",
     "safety": "Không gửi giấy tờ gốc qua bưu điện; chỉ đến nhập học sau khi được xác nhận lịch"
   },
-  "description_plain": "Trường Cao đẳng Than - Khoáng sản Việt Nam phối hợp tuyển lao động nam, cử đi học nghề để làm việc tại các doanh nghiệp thuộc Tập đoàn Công nghiệp Than - Khoáng sản Việt Nam ở Quảng Ninh. Nghề tuyển: kỹ thuật khai thác mỏ hầm lò, kỹ thuật xây dựng mỏ hầm lò và kỹ thuật cơ điện mỏ hầm lò. Khai thác mỏ và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng. Điều kiện tháng 8/2026: nam 18–40 tuổi, cao từ 1,53 m, nặng từ 47 kg, có sức khỏe tốt, không cận thị và không mắc bệnh tim mạch, huyết áp hoặc bệnh về mắt ảnh hưởng đến công việc; đọc và viết thành thạo, không yêu cầu kinh nghiệm. Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ba bữa/ngày với mức ăn 90.000 đồng/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học theo chính sách đợt tuyển. Trong thời gian thực tập tại doanh nghiệp, người học được hưởng 85–100% lương công nhân trong cùng dây chuyền theo quy định. Sau tốt nghiệp đạt yêu cầu, người lao động được doanh nghiệp tiếp nhận ký hợp đồng, bố trí việc làm với mức Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. Đăng ký ban đầu chưa cần hồ sơ; khi có lịch nhập học, mang căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Chưa có bằng vẫn có thể đăng ký để được hướng dẫn đối chiếu theo hệ đào tạo. Địa chỉ liên hệ, tư vấn: số 8 Chu Văn An, phường Hạ Long, Quảng Ninh. Địa điểm nhập học: Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh. Tiếp nhận liên tục trong năm 2026. Ứng tuyển tại website hoặc liên hệ Nguyễn Tử Linh – Trưởng phòng Tuyển sinh Miền Trung, điện thoại/Zalo 096 304 8585.",
+  "description_plain": "Trường Cao đẳng Than - Khoáng sản Việt Nam phối hợp tuyển lao động nam, cử đi học nghề để làm việc tại các doanh nghiệp thuộc Tập đoàn Công nghiệp Than - Khoáng sản Việt Nam ở Quảng Ninh. Nghề tuyển: kỹ thuật khai thác mỏ hầm lò, kỹ thuật xây dựng mỏ hầm lò và kỹ thuật cơ điện mỏ hầm lò. Khai thác mỏ và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng. Điều kiện tháng 8/2026: nam 18–40 tuổi, cao từ 1,53 m, nặng từ 47 kg, có sức khỏe tốt, không cận thị và không mắc bệnh tim mạch, huyết áp hoặc bệnh về mắt ảnh hưởng đến công việc; đọc và viết thành thạo, không yêu cầu kinh nghiệm. Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ba bữa/ngày với mức ăn 90.000 đồng/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học theo chính sách đợt tuyển. Trong thời gian thực tập tại doanh nghiệp, người học được hưởng 85–100% lương công nhân trong cùng dây chuyền theo quy định. Sau tốt nghiệp đạt yêu cầu, người lao động được doanh nghiệp tiếp nhận ký hợp đồng, bố trí việc làm với mức Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất. Đăng ký ban đầu chưa cần hồ sơ; khi có lịch nhập học, mang căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Chưa có bằng vẫn có thể đăng ký để được hướng dẫn đối chiếu theo hệ đào tạo. Địa chỉ liên hệ, tư vấn: số 8 Chu Văn An, phường Hạ Long, Quảng Ninh. Địa điểm nhập học: Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh. Tiếp nhận liên tục trong năm 2026. Ứng tuyển tại website hoặc liên hệ Nguyễn Tử Linh – Trưởng phòng Tuyển sinh Miền Trung, điện thoại/Zalo 096 304 8585.",
   "contact": {
     "name": "Nguyễn Tử Linh",
     "title": "Trưởng phòng Tuyển sinh Miền Trung",

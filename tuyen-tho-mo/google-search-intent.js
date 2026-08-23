@@ -61,7 +61,7 @@
         ["Thời gian học", "Khai thác và xây dựng mỏ: 2–3 tháng. Cơ điện mỏ: 10 tháng."],
         ["Trong thời gian học", "Miễn học phí theo chỉ tiêu, bố trí 3 bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng."],
         ["Sau đào tạo", "Làm việc tại các đơn vị ngành Than thuộc TKV ở Quảng Ninh."],
-        ["Thu nhập", "Cam kết 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."],
+        ["Thu nhập", "Cam kết 20–25 triệu đồng/tháng."],
       ],
       proof: [
         ["/cau-chuyen-cong-nhan/", "Xem công nhân thật theo tỉnh"],
@@ -93,7 +93,7 @@
       lead: "Website công khai thông tin thu nhập, quyền lợi và bảng lương để người lao động đối chiếu trước khi đăng ký.",
       primary: "Kiểm tra điều kiện & đăng ký",
       facts: [
-        ["Thu nhập", "Cam kết 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."],
+        ["Thu nhập", "Cam kết 20–25 triệu đồng/tháng."],
         ["Bằng chứng", "Có kho bảng lương công khai theo từng doanh nghiệp để người lao động đối chiếu."],
         ["Chưa có nghề", "Được đào tạo từ đầu trước khi nhận việc nếu hoàn thành chương trình và đạt yêu cầu."],
         ["Trong thời gian học", "Miễn học phí theo chỉ tiêu, bố trí ăn ở và hỗ trợ 7,5 triệu đồng/tháng."],
@@ -146,7 +146,7 @@
     "income:salary": {
       eyebrow: "LƯƠNG THỢ LÒ · QUẢNG NINH",
       title: "Lương thợ lò bao nhiêu một tháng?",
-      lead: "Chương trình đang áp dụng Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động; website có bảng lương để đối chiếu.",
+      lead: "Chương trình đang áp dụng Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất; website có bảng lương để đối chiếu.",
       primary: "Kiểm tra điều kiện & đăng ký",
       proof: [["/luong-tho-lo-bao-nhieu/", "Xem giải thích mức lương"], ["/bang-luong/", "Xem bảng lương thực tế"], ["/thu-nhap-an-o-ho-tro/", "Xem quyền lợi đầy đủ"]],
     },

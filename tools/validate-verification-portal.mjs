@@ -100,7 +100,7 @@ for (const marker of [
 ]) if (!conditionPage.toLowerCase().includes(marker.toLowerCase())) errors.push(`Trang kiểm tra thiếu ${marker}`);
 
 const comparisonPage = read("chon-kcn-hay-lam-mo/index.html");
-for (const marker of ["khu công nghiệp", "20–25 triệu đồng/tháng khi hoàn thành định mức lao động", "khám tuyển là căn cứ cuối cùng"]) {
+for (const marker of ["khu công nghiệp", "20–25 triệu đồng/tháng", "khám tuyển là căn cứ cuối cùng"]) {
   if (!comparisonPage.toLowerCase().includes(marker.toLowerCase())) errors.push(`Trang so sánh thiếu ${marker}`);
 }
 

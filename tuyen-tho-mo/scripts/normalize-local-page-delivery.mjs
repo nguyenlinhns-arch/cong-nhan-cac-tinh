@@ -66,7 +66,7 @@ function ensureProvinceQuality(html){
   if(!html.includes('rel="author" href="/tac-gia/nguyen-tu-linh/"')) html=html.replace('</head>','<link rel="author" href="/tac-gia/nguyen-tu-linh/"></head>');
   html=enrichProvinceSchema(html);
   if(!/href=["'](?:\.\.\/\.\.\/|\/)thong-tin-tuyen-tho-mo\//i.test(html)) html=html.replace('</main>','<section class="section"><p><a href="/thong-tin-tuyen-tho-mo/">Xem thông tin tuyển thợ mỏ đang áp dụng →</a></p></section></main>');
-  html=html.replace(/20\s*[–-]\s*25\s*triệu(?:\s*đồng)?\/tháng(?!\s*khi hoàn thành định mức lao động)/giu,'20–25 triệu đồng/tháng khi hoàn thành định mức lao động');
+  html=html.replace(/20\s*[–-]\s*25\s*triệu(?:\s*đồng)?\/tháng(?!\s*khi hoàn thành định mức lao động)/giu,'20–25 triệu đồng/tháng');
   return html;
 }
 function ensureApplicationAttribution(html,contentKey){
