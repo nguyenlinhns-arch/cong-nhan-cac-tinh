@@ -40,6 +40,14 @@ const exactReplacements = [
     /<strong>CAM KẾT THU NHẬP<\/strong>/gu,
     '<strong>THU NHẬP THEO ĐỊNH MỨC</strong>'
   ],
+  [
+    /khi hoàn thành định mức lao động\.\s*khi hoàn thành định mức lao động\./giu,
+    'khi hoàn thành định mức lao động.'
+  ],
+  [
+    /khi hoàn thành định mức lao động\s+khi hoàn thành định mức lao động/giu,
+    'khi hoàn thành định mức lao động'
+  ],
 ];
 
 function normalizeText(text) {
@@ -124,6 +132,7 @@ const checks = [
   [/<strong>Cam kết thu nhập<\/strong>/iu, 'legacy income heading'],
   [/Chương trình đang áp dụng (?:cam kết thu nhập|Thu nhập) 20[–-]25/iu, 'legacy daily SEO income phrase'],
   [/Mức thu nhập được cam kết theo chính sách đang áp dụng/iu, 'legacy job income explanation'],
+  [/khi hoàn thành định mức lao động\.\s*khi hoàn thành định mức lao động/iu, 'duplicated income condition'],
 ];
 
 const auditTargets = [PROVINCE_GENERATOR, DAILY_DATA];
