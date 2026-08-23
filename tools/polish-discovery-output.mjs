@@ -6,15 +6,33 @@ const base = "https://thaylinhtuyenthomo.vn";
 const llmsPath = path.join(root, "llms.txt");
 const manifestPath = path.join(root, "search-index.json");
 const contentSearchPath = path.join(root, "search-content.json");
+const canonicalFactsPath = path.join(root, "data", "recruitment-facts-2026.json");
+const currentRecruitmentPath = path.join(root, "recruitment-current.json");
 if (!fs.existsSync(llmsPath)) throw new Error("Discovery polish: missing llms.txt");
 if (!fs.existsSync(manifestPath)) throw new Error("Discovery polish: missing search-index.json");
+if (!fs.existsSync(canonicalFactsPath)) throw new Error("Discovery polish: missing canonical recruitment facts JSON");
+if (!fs.existsSync(currentRecruitmentPath)) throw new Error("Discovery polish: missing recruitment-current.json");
+
+const canonicalFacts = JSON.parse(fs.readFileSync(canonicalFactsPath, "utf8"));
+const currentRecruitment = JSON.parse(fs.readFileSync(currentRecruitmentPath, "utf8"));
+const canonicalFactsUrl = `${base}/data/recruitment-facts-2026.json`;
+const currentRecruitmentUrl = `${base}/recruitment-current.json`;
+const support = canonicalFacts.study_benefits?.living_support || "";
+const income = canonicalFacts.after_training?.income_commitment
+  || `${canonicalFacts.after_training?.income || ""} ${canonicalFacts.after_training?.income_condition || ""}`.trim();
+if (Number(canonicalFacts.version) < 8 || canonicalFacts.status !== "confirmed_by_user") {
+  throw new Error(`Discovery polish: canonical facts chưa đạt v8 confirmed_by_user (${canonicalFacts.version}/${canonicalFacts.status})`);
+}
+if (support !== "7,5 triệu đồng/tháng trong thời gian học") throw new Error(`Discovery polish: support canonical sai: ${support}`);
+if (income !== "20–25 triệu đồng/tháng khi hoàn thành định mức lao động") throw new Error(`Discovery polish: income canonical sai: ${income}`);
+if (currentRecruitment.canonical_facts !== canonicalFactsUrl) throw new Error("Discovery polish: recruitment-current không trỏ về canonical facts JSON");
 
 let llms = fs.readFileSync(llmsPath, "utf8");
 llms = llms
   .replace("[Thông tin tuyển đang áp dụng](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/): điều kiện, học nghề, hồ sơ, địa chỉ và thu nhập tháng 8/2026.","[Thông tin tuyển đang áp dụng](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/): điều kiện, học nghề, hồ sơ, địa chỉ và thu nhập hiện hành; ngày cập nhật được công bố ngay trong trang.")
   .replace("[Tuyển thợ mỏ tháng 8/2026: 15 câu hỏi](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/): trang chuẩn để đối chiếu điều kiện, thời gian học, chế độ, hồ sơ, địa chỉ và thu nhập đang áp dụng.","[Thông tin tuyển thợ mỏ đang áp dụng: 15 câu hỏi](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/): trang chuẩn để đối chiếu điều kiện, thời gian học, chế độ, hồ sơ, địa chỉ và thu nhập; dữ kiện có ngày hiệu lực và dấu vết kiểm chứng.");
 
-const machineSection = `## Dữ liệu máy đọc và nguồn cập nhật\n\n- [Thông tin tuyển hiện hành dạng JSON](${base}/recruitment-current.json): nguồn máy đọc ưu tiên cao nhất cho điều kiện, thời gian học, quyền lợi, nơi làm việc và thu nhập đang áp dụng.\n- [Danh mục 3.321 địa bàn tuyển nguồn](${base}/localities.json): toàn bộ xã, phường, đặc khu hiện hành, tỉnh/thành, URL chuẩn và đường đăng ký giữ nguồn địa bàn.\n- [Sitemap 3.321 địa bàn](${base}/commune-sitemap.xml): URL cấp xã/phường/đặc khu dành cho crawler.\n- [Sitemap 34 tỉnh/thành](${base}/province-sitemap.xml): URL landing cấp tỉnh/thành.\n- [Sitemap chính](${base}/sitemap.xml): danh sách URL được phép lập chỉ mục.\n- [Sitemap tin tức](${base}/news-sitemap.xml): bài tin ngành Than mới trong cửa sổ Google News.\n- [RSS](${base}/feed.xml) và [JSON Feed](${base}/feed.json): nguồn bài viết mới.\n- [Bộ câu hỏi người lao động](${base}/worker-questions.json): câu hỏi thực tế, câu trả lời trực tiếp và URL chuẩn.\n- [Giải đáp nghề mỏ hằng ngày](${base}/daily-seo-articles.json): câu hỏi, câu trả lời trực tiếp và URL chuẩn.\n- [Dữ liệu nghề mỏ](${base}/occupations.json): mô tả ba nghề, nhiệm vụ và bối cảnh công việc.\n- [Nguồn việc làm JSON](${base}/jobs.json) và [Nguồn việc làm XML](${base}/jobs.xml): các vị trí JobPosting đang mở.\n- [Bản đồ intent Google Ads](${base}/ad-landing-pages.json): ánh xạ nhu cầu tìm việc, học nghề và thu nhập tới landing canonical cùng các trang bằng chứng.\n- [Robots](${base}/robots.txt): quy tắc truy cập cho công cụ tìm kiếm và trợ lý AI.\n\n`;
+const machineSection = `## Dữ liệu máy đọc và nguồn cập nhật\n\n- [Facts tuyển sinh canonical v${canonicalFacts.version}](${canonicalFactsUrl}): nguồn máy đọc ưu tiên số 1 cho điều kiện, ba nghề, thời gian học, quyền lợi và thu nhập đang áp dụng; xác nhận ${String(canonicalFacts.confirmed_at || "").slice(0, 10).split("-").reverse().join("/")}.\n- [Thông tin tuyển hiện hành dạng JSON](${currentRecruitmentUrl}): bản tóm tắt dẫn xuất để đối chiếu nhanh; không được ghi đè facts canonical.\n- [Danh mục 3.321 địa bàn tuyển nguồn](${base}/localities.json): toàn bộ xã, phường, đặc khu hiện hành, tỉnh/thành, URL chuẩn và đường đăng ký giữ nguồn địa bàn.\n- [Sitemap 3.321 địa bàn](${base}/commune-sitemap.xml): URL cấp xã/phường/đặc khu dành cho crawler.\n- [Sitemap 34 tỉnh/thành](${base}/province-sitemap.xml): URL landing cấp tỉnh/thành.\n- [Sitemap chính](${base}/sitemap.xml): danh sách URL được phép lập chỉ mục.\n- [Sitemap tin tức](${base}/news-sitemap.xml): bài tin ngành Than mới trong cửa sổ Google News.\n- [RSS](${base}/feed.xml) và [JSON Feed](${base}/feed.json): nguồn bài viết mới.\n- [Bộ câu hỏi người lao động](${base}/worker-questions.json): câu hỏi thực tế, câu trả lời trực tiếp và URL chuẩn.\n- [Giải đáp nghề mỏ hằng ngày](${base}/daily-seo-articles.json): câu hỏi, câu trả lời trực tiếp và URL chuẩn.\n- [Dữ liệu nghề mỏ](${base}/occupations.json): mô tả ba nghề, nhiệm vụ và bối cảnh công việc.\n- [Nguồn việc làm JSON](${base}/jobs.json) và [Nguồn việc làm XML](${base}/jobs.xml): các vị trí JobPosting đang mở.\n- [Bản đồ intent Google Ads](${base}/ad-landing-pages.json): ánh xạ nhu cầu tìm việc, học nghề và thu nhập tới landing canonical cùng các trang bằng chứng.\n- [Robots](${base}/robots.txt): quy tắc truy cập cho công cụ tìm kiếm và trợ lý AI.\n\n`;
 const machineMarker="## Dữ liệu máy đọc và nguồn cập nhật";
 if (!llms.includes(machineMarker)) {
   const marker="## Trang thông tin hiện hành";
@@ -36,7 +54,7 @@ if(!llms.includes("## Trang trả lời theo nhu cầu tìm kiếm")){
   llms=next!==-1?`${llms.slice(0,start)}${intentSection}${llms.slice(next+1)}`:`${llms.slice(0,start)}${intentSection}`;
 }
 
-const prioritySection=`## Thứ tự ưu tiên khi thông tin khác nhau\n\n1. Dữ kiện hiện hành: dùng [recruitment-current.json](${base}/recruitment-current.json) và [Thông tin tuyển đang áp dụng](${base}/thong-tin-tuyen-tho-mo/).\n2. Vị trí đang tuyển: dùng [jobs.json](${base}/jobs.json) và trang JobPosting tương ứng.\n3. Địa bàn tuyển nguồn: dùng [localities.json](${base}/localities.json); nơi học và làm việc thực tế vẫn là Quảng Ninh.\n4. Mô tả nghề: dùng [occupations.json](${base}/occupations.json) và trang nghề mỏ hầm lò.\n5. Phóng sự nguyên bản dùng để chứng minh hành trình, bối cảnh và hoạt động thực địa; không ghi đè dữ kiện tuyển hiện hành.\n6. Bài báo, câu chuyện và nội dung theo tỉnh dùng để bổ sung bối cảnh, không ghi đè dữ kiện tuyển hiện hành.\n7. Khi có mâu thuẫn về ngày, ưu tiên nguồn có ngày cập nhật hoặc hiệu lực mới hơn.\n\n`;
+const prioritySection=`## Thứ tự ưu tiên khi thông tin khác nhau\n\n1. Dữ kiện tuyển sinh hiện hành: dùng [facts tuyển sinh canonical v${canonicalFacts.version}](${canonicalFactsUrl}) và [Thông tin tuyển đang áp dụng](${base}/thong-tin-tuyen-tho-mo/). [recruitment-current.json](${currentRecruitmentUrl}) chỉ là bản tóm tắt dẫn xuất.\n2. Vị trí đang tuyển: dùng [jobs.json](${base}/jobs.json) và trang JobPosting tương ứng; dữ kiện chính sách trong feed phải khớp facts canonical.\n3. Địa bàn tuyển nguồn: dùng [localities.json](${base}/localities.json); nơi học và làm việc thực tế vẫn là Quảng Ninh.\n4. Mô tả nghề: dùng [occupations.json](${base}/occupations.json) và trang nghề mỏ hầm lò.\n5. Phóng sự nguyên bản dùng để chứng minh hành trình, bối cảnh và hoạt động thực địa; không ghi đè dữ kiện tuyển hiện hành.\n6. Bài báo, câu chuyện và nội dung theo tỉnh dùng để bổ sung bối cảnh, không ghi đè dữ kiện tuyển hiện hành.\n7. Khi có mâu thuẫn về chính sách tuyển sinh, facts canonical được người dùng xác nhận là nguồn ưu tiên; ngày hiệu lực và ngày rà soát vẫn được giữ tách biệt.\n\n`;
 const priorityMarker="## Thứ tự ưu tiên khi thông tin khác nhau";
 if(!llms.includes(priorityMarker)){
   const marker="## Trang trả lời theo nhu cầu tìm kiếm";
@@ -47,7 +65,7 @@ if(!llms.includes(priorityMarker)){
   llms=next!==-1?`${llms.slice(0,start)}${prioritySection}${llms.slice(next+1)}`:`${llms.slice(0,start)}${prioritySection}`;
 }
 
-const originSection=`## Cách đọc nhãn nguồn nội dung\n\n- \`current-recruitment-policy\`: dữ kiện vận hành/tuyển sinh hiện hành; dùng cho điều kiện, hồ sơ, thời gian học, quyền lợi, nơi tiếp nhận và vị trí đang tuyển.\n- \`current-recruitment-context\`: bối cảnh theo tỉnh/xã/phường/đặc khu; địa bàn là nơi tuyển nguồn, không phải mặc định là nơi học hoặc nơi làm việc.\n- \`current-explainer\`: câu trả lời hiện hành được phát hành trong registry giải đáp; phải nhường ưu tiên cho nguồn tuyển sinh mới hơn nếu có thay đổi.\n- \`firsthand\`: phóng sự/ghi chép từ video, ảnh, chuyến công tác hoặc dữ liệu thực địa do người viết trực tiếp ghi nhận; dùng làm bằng chứng hành trình và bối cảnh, không thay thế chính sách tuyển sinh.\n- \`sourced-editorial\`: bài biên tập từ nguồn báo chí, đơn vị hoặc cơ quan nhà nước; dùng cho bối cảnh, nhân vật và sự kiện theo thời điểm của nguồn.\n- \`expert-explainer\`: bài giải thích/phân tích chuyên môn; kết luận chỉ áp dụng trong phạm vi điều kiện và nguồn được nêu.\n- Quy tắc đầy đủ: [Nguyên tắc biên tập và phân loại nguồn](${base}/nguyen-tac-bien-tap/#phan-loai-nguon).\n\n`;
+const originSection=`## Cách đọc nhãn nguồn nội dung\n\n- \`current-recruitment-policy\`: dữ kiện vận hành/tuyển sinh hiện hành; dùng cho điều kiện, hồ sơ, thời gian học, quyền lợi, nơi tiếp nhận và vị trí đang tuyển.\n- \`current-recruitment-context\`: bối cảnh theo tỉnh/xã/phường/đặc khu; địa bàn là nơi tuyển nguồn, không phải mặc định là nơi học hoặc nơi làm việc.\n- \`current-explainer\`: câu trả lời hiện hành được phát hành trong registry giải đáp; phải nhường ưu tiên cho facts canonical mới hơn nếu có thay đổi.\n- \`firsthand\`: phóng sự/ghi chép từ video, ảnh, chuyến công tác hoặc dữ liệu thực địa do người viết trực tiếp ghi nhận; dùng làm bằng chứng hành trình và bối cảnh, không thay thế chính sách tuyển sinh.\n- \`sourced-editorial\`: bài biên tập từ nguồn báo chí, đơn vị hoặc cơ quan nhà nước; dùng cho bối cảnh, nhân vật và sự kiện theo thời điểm của nguồn.\n- \`expert-explainer\`: bài giải thích/phân tích chuyên môn; kết luận chỉ áp dụng trong phạm vi điều kiện và nguồn được nêu.\n- Quy tắc đầy đủ: [Nguyên tắc biên tập và phân loại nguồn](${base}/nguyen-tac-bien-tap/#phan-loai-nguon).\n\n`;
 const originMarker="## Cách đọc nhãn nguồn nội dung";
 if(!llms.includes(originMarker)){
   if(!llms.includes(priorityMarker)) throw new Error("Discovery polish: llms.txt is missing priority section for origin taxonomy");
@@ -63,12 +81,41 @@ const intro=directIndex===-1?llms:llms.slice(0,directIndex);
 if(intro.includes("thu nhập tháng 8/2026")) throw new Error("Discovery polish: llms.txt opening still presents month-specific information as evergreen");
 if(!llms.includes("`current-recruitment-policy`")||!llms.includes("`firsthand`")) throw new Error("Discovery polish: llms.txt missing content-origin taxonomy");
 if(!llms.includes(`${base}/tuyen-tho-mo-quang-ninh/`)) throw new Error("Discovery polish: Quang Ninh recruitment intent is not assigned to the dedicated landing");
+for (const marker of [canonicalFactsUrl, currentRecruitmentUrl, support, income, `canonical v${canonicalFacts.version}`]) {
+  if (!llms.toLocaleLowerCase("vi").includes(marker.toLocaleLowerCase("vi"))) throw new Error(`Discovery polish: llms.txt thiếu marker canonical ${marker}`);
+}
 fs.writeFileSync(llmsPath,llms);
 
 const manifest=JSON.parse(fs.readFileSync(manifestPath,"utf8"));
-manifest.discovery={canonicalFacts:"/thong-tin-tuyen-tho-mo/",canonicalFactsJson:"/recruitment-current.json",localitiesJson:"/localities.json",communeSitemap:"/commune-sitemap.xml",provinceSitemap:"/province-sitemap.xml",editorialPolicy:"/nguyen-tac-bien-tap/",author:"/tac-gia/nguyen-tu-linh/",fieldReports:"/phong-su/",llms:"/llms.txt",robots:"/robots.txt",sitemap:"/sitemap.xml",newsSitemap:"/news-sitemap.xml",rss:"/feed.xml",jsonFeed:"/feed.json",workerQuestions:"/worker-questions.json",dailySeoHub:"/giai-dap-nghe-mo/",dailySeoJson:"/daily-seo-articles.json",occupationsJson:"/occupations.json",jobsJson:"/jobs.json",paidSearchIntentMap:"/ad-landing-pages.json",quangNinhRecruitment:"/tuyen-tho-mo-quang-ninh/"};
-manifest.discoveryPriority=["/recruitment-current.json","/thong-tin-tuyen-tho-mo/","/tuyen-tho-mo-quang-ninh/","/jobs.json","/localities.json","/occupations.json","/worker-questions.json","/daily-seo-articles.json"];
-manifest.freshnessPolicy={currentRecruitmentWinsOverEditorial:true,preferNewerEffectiveDate:true,editorialContentIsContextNotCurrentPolicy:true,originalFieldReportsAreEvidenceNotPolicy:true,localityPagesAreRecruitmentSourceNotJobLocation:true};
+manifest.discovery={
+  canonicalFacts:"/thong-tin-tuyen-tho-mo/",
+  canonicalFactsJson:"/data/recruitment-facts-2026.json",
+  currentRecruitmentJson:"/recruitment-current.json",
+  localitiesJson:"/localities.json",
+  communeSitemap:"/commune-sitemap.xml",
+  provinceSitemap:"/province-sitemap.xml",
+  editorialPolicy:"/nguyen-tac-bien-tap/",
+  author:"/tac-gia/nguyen-tu-linh/",
+  fieldReports:"/phong-su/",
+  llms:"/llms.txt",
+  robots:"/robots.txt",
+  sitemap:"/sitemap.xml",
+  newsSitemap:"/news-sitemap.xml",
+  rss:"/feed.xml",
+  jsonFeed:"/feed.json",
+  workerQuestions:"/worker-questions.json",
+  dailySeoHub:"/giai-dap-nghe-mo/",
+  dailySeoJson:"/daily-seo-articles.json",
+  occupationsJson:"/occupations.json",
+  jobsJson:"/jobs.json",
+  paidSearchIntentMap:"/ad-landing-pages.json",
+  quangNinhRecruitment:"/tuyen-tho-mo-quang-ninh/",
+};
+manifest.canonicalFactsVersion=canonicalFacts.version;
+manifest.canonicalFactsConfirmedAt=canonicalFacts.confirmed_at;
+manifest.currentRecruitmentSchemaVersion=currentRecruitment.schema_version;
+manifest.discoveryPriority=["/data/recruitment-facts-2026.json","/thong-tin-tuyen-tho-mo/","/recruitment-current.json","/tuyen-tho-mo-quang-ninh/","/jobs.json","/localities.json","/occupations.json","/worker-questions.json","/daily-seo-articles.json"];
+manifest.freshnessPolicy={canonicalFactsWinsOverDerivedAndEditorial:true,currentRecruitmentIsDerivedSummary:true,preferNewerEffectiveDate:true,editorialContentIsContextNotCurrentPolicy:true,originalFieldReportsAreEvidenceNotPolicy:true,localityPagesAreRecruitmentSourceNotJobLocation:true};
 manifest.contentOriginTaxonomy={
   policy:"/nguyen-tac-bien-tap/#phan-loai-nguon",
   currentRecruitmentPolicy:"current-recruitment-policy",
@@ -98,7 +145,11 @@ if(fs.existsSync(contentSearchPath)){
   if(fieldReportSearchItems<3) throw new Error(`Discovery polish: expected 3 field-report search items, got ${fieldReportSearchItems}`);
 }
 
-console.log(JSON.stringify({status:"polished",llms:path.relative(process.cwd(),llmsPath),manifest:path.relative(process.cwd(),manifestPath),discoveryEndpoints:Object.keys(manifest.discovery).length,prioritySources:manifest.discoveryPriority.length,contentOriginTypes:Object.keys(manifest.contentOriginTaxonomy).length-1,fieldReportSearchItems},null,2));
+if (manifest.discovery.canonicalFactsJson !== "/data/recruitment-facts-2026.json") throw new Error("Discovery polish: manifest canonicalFactsJson bị hạ về derived source");
+if (manifest.discoveryPriority[0] !== "/data/recruitment-facts-2026.json") throw new Error("Discovery polish: canonical facts JSON chưa đứng đầu discoveryPriority");
+if (manifest.canonicalFactsVersion !== canonicalFacts.version) throw new Error("Discovery polish: manifest facts version lệch canonical");
+
+console.log(JSON.stringify({status:"polished",canonicalFactsVersion:canonicalFacts.version,canonicalFactsConfirmedAt:canonicalFacts.confirmed_at,llms:path.relative(process.cwd(),llmsPath),manifest:path.relative(process.cwd(),manifestPath),discoveryEndpoints:Object.keys(manifest.discovery).length,prioritySources:manifest.discoveryPriority.length,contentOriginTypes:Object.keys(manifest.contentOriginTaxonomy).length-1,fieldReportSearchItems},null,2));
 
 await import("./validate-editorial-newsroom.mjs");
 await import("./validate-editorial-story-v3.mjs");
