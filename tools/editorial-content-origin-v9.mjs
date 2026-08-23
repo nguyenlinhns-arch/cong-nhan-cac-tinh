@@ -12,6 +12,7 @@ const stats = {
   expertExplainer: 0,
   currentExplainer: 0,
   currentPolicyMeta: 0,
+  currentContextMeta: 0,
   navLinked: 0,
 };
 
@@ -148,7 +149,7 @@ function classifyCore(rel) {
     "viec-lam-nganh-than/index.html",
   ].includes(rel)) return "current-recruitment-policy";
   if (/^viec-lam\/[^/]+\/index\.html$/i.test(rel)) return "current-recruitment-policy";
-  if (/^viec-lam-nganh-than\/[^/]+\/index\.html$/i.test(rel)) return "current-recruitment-context";
+  if (/^viec-lam-nganh-than\/.+\/index\.html$/i.test(rel)) return "current-recruitment-context";
   return "";
 }
 
@@ -186,6 +187,8 @@ for (const file of walk(root)) {
     if (articleOrigin === "sourced-editorial") stats.sourcedEditorial += 1;
     if (articleOrigin === "expert-explainer") stats.expertExplainer += 1;
     if (articleOrigin === "current-explainer") stats.currentExplainer += 1;
+  } else if (coreOrigin === "current-recruitment-context") {
+    stats.currentContextMeta += 1;
   } else {
     stats.currentPolicyMeta += 1;
   }
