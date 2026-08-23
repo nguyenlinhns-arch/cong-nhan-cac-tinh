@@ -48,6 +48,22 @@ function setRobots(file, value) {
   fs.writeFileSync(file, html);
 }
 
+function setHomeIntent(file) {
+  let html = mustRead(file);
+  html = html.replace(
+    /<div class="home-v6-income">[\s\S]*?<\/div>/i,
+    '<div class="home-v6-income"><small>HOÀN THÀNH ĐỊNH MỨC LAO ĐỘNG</small><strong>20–25 triệu/tháng</strong></div>'
+  );
+
+  const decisionActions = '<div class="home-v6-decision__actions">';
+  const contextualJobLink = `<a href="${JOB_PATH}">Xem việc làm công nhân mỏ hầm lò</a>`;
+  if (!html.includes(contextualJobLink) && html.includes(decisionActions)) {
+    html = html.replace(decisionActions, `${decisionActions}${contextualJobLink}`);
+  }
+
+  fs.writeFileSync(file, html);
+}
+
 function setJobIntent(file) {
   let html = mustRead(file);
   html = html.replace(/<title>[^<]*<\/title>/i, '<title>Việc làm công nhân mỏ hầm lò Quảng Ninh | 3 nghề 2026</title>');
@@ -55,6 +71,13 @@ function setJobIntent(file) {
   html = html.replace(/<meta property="og:title" content="[^"]*">/i, '<meta property="og:title" content="Việc làm công nhân mỏ hầm lò Quảng Ninh 2026">');
   html = html.replace(/<meta name="twitter:title" content="[^"]*">/i, '<meta name="twitter:title" content="Việc làm công nhân mỏ hầm lò Quảng Ninh 2026">');
   html = html.replace(/<h1 id="job-title">[\s\S]*?<\/h1>/i, '<h1 id="job-title">Việc làm công nhân mỏ hầm lò Quảng Ninh: <br><em>3 nghề</em>, đào tạo từ đầu</h1>');
+
+  const breadcrumb = '<nav class="breadcrumb" aria-label="Đường dẫn trang"><a href="../../">Trang chủ</a><span>›</span><strong>Việc làm ngành mỏ 2026</strong></nav>';
+  const organicLink = '<p class="job-organic-parent"><a href="/">Xem trang tuyển thợ mỏ, thợ lò Quảng Ninh →</a></p>';
+  if (!html.includes('job-organic-parent') && html.includes(breadcrumb)) {
+    html = html.replace(breadcrumb, `${breadcrumb}\n    ${organicLink}`);
+  }
+
   fs.writeFileSync(file, html);
 }
 
@@ -95,6 +118,7 @@ const jobFile = path.join(root, 'viec-lam', 'cong-nhan-mo-ham-lo-quang-ninh', 'i
 const legacyProvinceFile = path.join(root, 'viec-lam-nganh-than', 'quang-ninh', 'index.html');
 
 setRobots(homeFile, 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
+setHomeIntent(homeFile);
 setRobots(paidFile, 'noindex,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
 setRobots(jobFile, 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
 setJobIntent(jobFile);
