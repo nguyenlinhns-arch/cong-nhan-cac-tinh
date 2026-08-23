@@ -21,7 +21,7 @@ const editorialOverrides = {
   },
   "truong-cao-dang-tkv-thao-go-diem-nghen-tuyen-sinh-nghe-mo-2026": {
     lede: "Chiều 19/08/2026, Thường trực Đảng ủy Than Quảng Ninh làm việc với Đảng ủy Trường Cao đẳng Than - Khoáng sản Việt Nam về tuyển sinh nghề mỏ, quản lý học sinh và chất lượng đào tạo.",
-    nutgraph: "Trọng tâm không chỉ là tăng số người vào học. Cuộc làm việc đặt ra yêu cầu giữ người học qua đào tạo và thực tập, đồng thời làm rõ trách nhiệm phối hợp giữa Nhà trường, doanh nghiệp và địa phương.",
+    nutgraph: "Cuộc làm việc đặt tuyển sinh trong toàn bộ lộ trình từ tiếp cận người học tới đào tạo và thực tập. Việc giữ người học và phân định trách nhiệm giữa Nhà trường, doanh nghiệp, địa phương trở thành tiêu chí quan trọng bên cạnh số lượng tuyển mới.",
     heading1: "Tuyển được người mới chỉ là điểm bắt đầu",
     heading2: "Chất lượng đào tạo phải được đo tới giai đoạn thực tập",
   },
@@ -33,13 +33,13 @@ const editorialOverrides = {
   },
   "gia-dinh-ba-the-he-tho-mo-thong-nhat": {
     lede: "Chiếc bánh mì bố mang về sau ca ba từng là món quà tuổi thơ của Nguyễn Duy Khánh. Nhiều năm sau, ký ức ấy theo anh xuống hầm lò, nối tiếp con đường mà ông nội và cha đã đi trước.",
-    nutgraph: "Ba thế hệ trong một gia đình ở Cẩm Phả cùng làm nghề mỏ, nhưng mỗi thế hệ bước vào nghề trong một điều kiện khác nhau. Điều được truyền lại không chỉ là công việc, mà còn là kỷ luật, lòng tự trọng và trách nhiệm với gia đình.",
+    nutgraph: "Ba thế hệ trong một gia đình ở Cẩm Phả cùng làm nghề mỏ, nhưng mỗi thế hệ bước vào nghề trong một điều kiện khác nhau. Gia đình truyền lại cả kinh nghiệm nghề nghiệp, kỷ luật, lòng tự trọng và trách nhiệm với nhau.",
     heading1: "Từ người ông rời quê đến nếp nhà vùng mỏ",
     heading2: "Nghề được nối tiếp bằng lựa chọn của thế hệ sau",
   },
   "bao-lac-cao-bang-tu-van-hoc-nghe-mo": {
     lede: "Ngày 19/04/2025, đoàn công tác xã Hưng Đạo, huyện Bảo Lạc đến Phân hiệu Hoành Bồ làm việc với Trường Cao đẳng Than - Khoáng sản Việt Nam về kết quả tư vấn nghề mỏ trong quý I và kế hoạch chín tháng còn lại.",
-    nutgraph: "Điểm đáng chú ý của cuộc làm việc là cách đưa thông tin trở lại cấp xã, thôn thay vì dừng ở một hội nghị tập trung. Hiệu quả cuối cùng vẫn cần được đo bằng số người hoàn thiện hồ sơ, nhập học và tiếp tục theo nghề.",
+    nutgraph: "Cuộc làm việc hướng hoạt động tư vấn trở lại cấp xã, thôn để thông tin tiếp tục đến đúng địa bàn sau hội nghị tập trung. Hiệu quả cuối cùng cần được đo bằng số người hoàn thiện hồ sơ, nhập học và tiếp tục theo nghề.",
     heading1: "Tư vấn chỉ hiệu quả khi trở lại đúng địa bàn",
     heading2: "Kết quả phải được theo dõi tới ngày nhập học",
   },
@@ -51,13 +51,13 @@ const editorialOverrides = {
   },
   "viec-lam-nganh-than-thang-8-2026": {
     lede: "Trong đợt tuyển sinh tháng 8/2026, nam 18-40 tuổi đủ điều kiện sức khỏe có thể đăng ký học nghề mỏ tại Quảng Ninh. Hai nghề khai thác và xây dựng mỏ học 2-3 tháng; nghề cơ điện mỏ học 10 tháng.",
-    nutgraph: "Đây không chỉ là một tin tuyển. Lộ trình gồm kiểm tra điều kiện, nhận lịch, học nghề, thực tập và được doanh nghiệp tiếp nhận khi hoàn thành chương trình; quyền lợi và đầu mối được xác nhận theo từng đợt.",
+    nutgraph: "Thông tin tuyển sinh mô tả một lộ trình cụ thể: kiểm tra điều kiện, nhận lịch, học nghề, thực tập và được doanh nghiệp tiếp nhận khi hoàn thành chương trình; quyền lợi và đầu mối được xác nhận theo từng đợt.",
     heading1: "Từ đăng ký đến lớp học phải có lịch trình rõ ràng",
     heading2: "Việc làm sau đào tạo gắn với kết quả học tập",
   },
   "phuc-loi-tho-mo-tkv-2026": {
     lede: "Trong 6 tháng đầu năm 2026, các chương trình chăm lo người lao động của Công đoàn TKV trải từ nhà ở, khám sức khỏe, bữa ăn đến đối thoại tại nơi làm việc. 108 mái ấm và hơn 71.000 lượt khám sức khỏe là hai dữ kiện nổi bật.",
-    nutgraph: "Phúc lợi không chỉ là khoản hỗ trợ sau khó khăn. Với ngành sản xuất theo ca, chất lượng nhà ở, dinh dưỡng, chăm sóc sức khỏe và khả năng phản hồi kiến nghị ảnh hưởng trực tiếp đến sức khỏe, ngày công và khả năng gắn bó của người thợ.",
+    nutgraph: "Phúc lợi bao gồm hỗ trợ sau khó khăn và những điều kiện giúp người lao động duy trì sức khỏe, ngày công và khả năng gắn bó. Với ngành sản xuất theo ca, nhà ở, dinh dưỡng, chăm sóc sức khỏe và khả năng phản hồi kiến nghị đều tác động trực tiếp tới đời sống người thợ.",
     heading1: "Chăm lo đời sống bắt đầu từ những nhu cầu thiết yếu",
     heading2: "Đối thoại giúp phúc lợi đi tới đúng vấn đề",
   },
@@ -68,6 +68,19 @@ const editorialOverrides = {
     heading2: "Người trẻ cần chuẩn bị cho một nghề học liên tục",
   },
 };
+
+const forbiddenOverridePatterns = [
+  [/\bĐáng\s+chú\s+ý(?:\s+là)?\b/iu, "Đáng chú ý"],
+  [/\bĐây\s+không\s+chỉ\s+là\b/iu, "Đây không chỉ là"],
+  [/\bTrọng\s+tâm\s+không\s+chỉ\s+là\b/iu, "Trọng tâm không chỉ là"],
+  [/\bkhông\s+chỉ\b[^.!?]{0,120}\bmà\s+còn\b/iu, "không chỉ… mà còn"],
+];
+for (const [slug, override] of Object.entries(editorialOverrides)) {
+  const text = Object.values(override).join(" ");
+  for (const [pattern, label] of forbiddenOverridePatterns) {
+    if (pattern.test(text)) throw new Error(`${slug}: source override còn khuôn câu “${label}”`);
+  }
+}
 
 const escapeHtml = (value = "") => String(value)
   .replaceAll("&", "&amp;")
