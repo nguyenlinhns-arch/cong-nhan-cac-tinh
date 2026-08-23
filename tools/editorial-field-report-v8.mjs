@@ -78,6 +78,7 @@ for (const [slug, report] of Object.entries(reports)) {
 }
 
 await import("./generate-editorial-field-report-pages-v8.mjs");
+await import("./editorial-field-report-llms-v8.mjs");
 
 console.log(JSON.stringify({
   status: "editorial-field-report-v8-complete",
