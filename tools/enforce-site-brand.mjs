@@ -132,6 +132,11 @@ if (!CHECK_ONLY) {
   // never invent direct quotes. They are regenerated after every province build.
   await import("./editorial-field-report-v8.mjs");
 
+  // Every reader-facing article and core recruitment page declares where its
+  // information comes from. The visible note is deliberately compact so it
+  // improves trust without turning the article back into a dashboard.
+  await import("./editorial-content-origin-v9.mjs");
+
   await runValidator("./validate-editorial-source-v5.mjs", "Kiểm định nguồn bài v5");
   await runValidator("./validate-editorial-story-v3.mjs", "Kiểm định bài nguồn newsroom");
   await runValidator("./validate-editorial-authority.mjs", "Kiểm định tác giả và trách nhiệm biên tập");
@@ -141,6 +146,7 @@ if (!CHECK_ONLY) {
   await runValidator("./validate-worker-profile-source-v8.mjs", "Kiểm định source-fix chân dung người thợ v8");
   await runValidator("./validate-editorial-newspaper-v6.mjs", "Kiểm định bố cục báo chuyên ngành v6");
   await runValidator("./validate-editorial-field-report-v8.mjs", "Kiểm định phóng sự hiện trường v8");
+  await runValidator("./validate-editorial-content-origin-v9.mjs", "Kiểm định nguồn nội dung toàn website v9");
 
   // The old SEO gate predates specialist-v6 and assumes every evergreen article
   // keeps a visible FAQ. Apply a narrow compatibility layer only after the new
