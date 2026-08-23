@@ -10,7 +10,12 @@ const priorityCount = priority.provinces.length;
 const activeProfiles = recruitment.occupation_profiles.filter((profile) => profile.active_intake);
 const occupationCount = activeProfiles.length;
 const reviewDate = review.reviewed_at;
+const contentModifiedDate = review.verification_content_modified || reviewDate;
+const policyEffectiveDate = review.policy_effective_from || recruitment.effective_from;
 const displayReviewDate = reviewDate.split("-").reverse().join("/");
+const displayPolicyDate = policyEffectiveDate.split("-").reverse().join("/");
+const evergreenFactsTitle = "Thông tin tuyển thợ mỏ đang áp dụng: 15 câu hỏi";
+const evergreenFactsHeading = "Thông tin tuyển thợ mỏ đang áp dụng: trả lời 15 câu hỏi";
 const errors = [];
 
 const read = (relative) => fs.readFileSync(path.join(site, relative), "utf8");
@@ -61,7 +66,18 @@ requireText(training, "nghề cơ điện mỏ hầm lò học 10 tháng", "Tran
 if (/cơ điện mỏ có (?:lộ trình|chương trình) dài hơn/i.test(training)) errors.push("Trang học nghề: còn mô tả mơ hồ thay vì thời gian cơ điện 10 tháng");
 
 const facts = read("thong-tin-tuyen-tho-mo/index.html");
-requireText(facts, `<time datetime="${reviewDate}">${displayReviewDate}</time>`, "Trang thông tin tuyển đang áp dụng");
+requireText(facts, `<title>${evergreenFactsTitle} | Thầy Linh</title>`, "Trang thông tin tuyển đang áp dụng");
+requireText(facts, `content="${evergreenFactsTitle}"`, "Meta xã hội trang thông tin tuyển");
+requireText(facts, `<h1>${evergreenFactsHeading}</h1>`, "H1 trang thông tin tuyển");
+requireText(facts, `HIỆU LỰC <time datetime="${policyEffectiveDate}">${displayPolicyDate}</time>`, "Ngày hiệu lực trang thông tin tuyển");
+requireText(facts, `<strong>Rà soát gần nhất</strong><span><time datetime="${reviewDate}">${displayReviewDate}</time>; đối chiếu thông tin tuyển đang áp dụng.`, "Ngày rà soát trang thông tin tuyển");
+requireText(facts, "Ba nghề đang tiếp nhận là", "FAQ nghề đang tuyển");
+requireText(facts, "cơ điện mỏ học 10 tháng", "FAQ thời gian học");
+for (const profile of activeProfiles) requireText(facts, profile.title.toLocaleLowerCase("vi"), "FAQ ba nghề");
+if (/Tuyển thợ mỏ tháng \d{1,2}\/\d{4}: (?:15 câu hỏi|trả lời 15 câu hỏi)/.test(facts)) errors.push("Trang thông tin tuyển: title/H1 còn phụ thuộc tháng cụ thể");
+if (/Hai nghề đang tiếp nhận|Thời gian học hai nghề đang tuyển/.test(facts)) errors.push("Trang thông tin tuyển: FAQ còn mô hình cũ hai nghề");
+if (!new RegExp(`"dateModified"\\s*:\\s*"${contentModifiedDate}"`).test(facts)) errors.push(`Trang thông tin tuyển: dateModified chưa là ${contentModifiedDate}`);
+if (!new RegExp(`"lastReviewed"\\s*:\\s*"${reviewDate}"`).test(facts)) errors.push(`Trang thông tin tuyển: lastReviewed chưa là ${reviewDate}`);
 
 const reviewPaths = [
   "thong-tin-tuyen-tho-mo/index.html",
@@ -97,6 +113,9 @@ if (errors.length) {
     priorityLocalities: priorityCount,
     activeOccupations: occupationCount,
     itemListItems: expectedItems,
+    factsEvergreen: true,
+    factsPolicyEffective: policyEffectiveDate,
+    factsModifiedAt: contentModifiedDate,
     reviewedAt: reviewDate,
     errors: 0,
   }, null, 2));
