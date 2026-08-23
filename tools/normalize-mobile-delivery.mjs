@@ -118,11 +118,13 @@ function normalizeJsonStrings(node) {
   return node;
 }
 
-function normalizeSearchJson(file, {removeRetiredProvince = false} = {}) {
+function normalizeSearchJson(file, {redirectRetiredProvince = false} = {}) {
   if (!fs.existsSync(file)) return null;
   const data = JSON.parse(fs.readFileSync(file, "utf8"));
-  if (removeRetiredProvince && Array.isArray(data.items)) {
-    data.items = data.items.filter((item) => item?.url !== RETIRED_QN_PATH);
+  if (redirectRetiredProvince && Array.isArray(data.items)) {
+    for (const item of data.items) {
+      if (item?.url === RETIRED_QN_PATH) item.url = PRIMARY_QN_PATH;
+    }
   }
   normalizeJsonStrings(data);
   fs.writeFileSync(file, `${JSON.stringify(data, null, 2)}\n`);
@@ -242,7 +244,7 @@ if (fs.existsSync(llmsPath)) {
 }
 
 const coreCount = normalizeSearchJson(path.join(root, "search-core.json"));
-const provinceCount = normalizeSearchJson(path.join(root, "search-provinces.json"), {removeRetiredProvince: true});
+const provinceCount = normalizeSearchJson(path.join(root, "search-provinces.json"), {redirectRetiredProvince: true});
 const contentCount = normalizeSearchJson(path.join(root, "search-content.json"));
 const searchIndexPath = path.join(root, "search-index.json");
 let searchIndexNormalized = false;
