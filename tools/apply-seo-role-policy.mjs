@@ -6,6 +6,9 @@ const SITE = 'https://thaylinhtuyenthomo.vn';
 const HOME = `${SITE}/`;
 const JOB_PATH = '/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/';
 const JOB_URL = `${SITE}${JOB_PATH}`;
+const INCOME = '20–25 triệu đồng/tháng';
+const INCOME_SHORT = '20–25 triệu/tháng';
+const INCOME_CONDITION = 'khi hoàn thành định mức lao động';
 
 const policy = {
   updated_at: '2026-08-23',
@@ -48,8 +51,17 @@ function setRobots(file, value) {
   fs.writeFileSync(file, html);
 }
 
+function normalizeIncome(html) {
+  return html
+    .replace(/Thu nhập\s+bình quân\s+20[–-]25 triệu đồng\/tháng(?:,?\s*tùy đơn vị, vị trí, ngày công và năng suất)?\.?/giu, `Thu nhập ${INCOME} ${INCOME_CONDITION}.`)
+    .replace(/Bình quân\s+20[–-]25 triệu đồng\/tháng/giu, `${INCOME} ${INCOME_CONDITION}`)
+    .replace(/Thu nhập\s+20[–-]25 triệu đồng\/tháng,?\s*tùy đơn vị, vị trí, ngày công và năng suất\.?/giu, `Thu nhập ${INCOME} ${INCOME_CONDITION}.`)
+    .replace(/20[–-]25 triệu đồng\/tháng,?\s*tùy đơn vị, vị trí, ngày công và năng suất/giu, `${INCOME} ${INCOME_CONDITION}`)
+    .replace(/Cam kết thu nhập\s+20[–-]25 triệu đồng\/tháng cho người lao động đáp ứng điều kiện\.?/giu, `Thu nhập ${INCOME} ${INCOME_CONDITION}.`);
+}
+
 function setHomeIntent(file) {
-  let html = mustRead(file);
+  let html = normalizeIncome(mustRead(file));
   html = html.replace(
     /<div class="home-v6-income">[\s\S]*?<\/div>/i,
     '<div class="home-v6-income"><small>HOÀN THÀNH ĐỊNH MỨC LAO ĐỘNG</small><strong>20–25 triệu/tháng</strong></div>'
@@ -64,13 +76,33 @@ function setHomeIntent(file) {
   fs.writeFileSync(file, html);
 }
 
+function setPaidIntent(file) {
+  const html = normalizeIncome(mustRead(file));
+  fs.writeFileSync(file, html);
+}
+
 function setJobIntent(file) {
-  let html = mustRead(file);
+  let html = normalizeIncome(mustRead(file));
   html = html.replace(/<title>[^<]*<\/title>/i, '<title>Việc làm công nhân mỏ hầm lò Quảng Ninh | 3 nghề 2026</title>');
   html = html.replace(/<meta name="description" content="[^"]*">/i, '<meta name="description" content="Thông tin việc làm công nhân mỏ hầm lò tại Quảng Ninh: 3 nghề khai thác, xây dựng và cơ điện mỏ; người chưa có kinh nghiệm được đào tạo trước khi nhận việc.">');
   html = html.replace(/<meta property="og:title" content="[^"]*">/i, '<meta property="og:title" content="Việc làm công nhân mỏ hầm lò Quảng Ninh 2026">');
   html = html.replace(/<meta name="twitter:title" content="[^"]*">/i, '<meta name="twitter:title" content="Việc làm công nhân mỏ hầm lò Quảng Ninh 2026">');
   html = html.replace(/<h1 id="job-title">[\s\S]*?<\/h1>/i, '<h1 id="job-title">Việc làm công nhân mỏ hầm lò Quảng Ninh: <br><em>3 nghề</em>, đào tạo từ đầu</h1>');
+  html = html.replace(/"name":"Tuyển công nhân mỏ, thợ lò tại Quảng Ninh năm 2026"/i, '"name":"Việc làm công nhân mỏ hầm lò Quảng Ninh năm 2026"');
+  html = html.replace(/"dateModified":"[^"]*"/i, '"dateModified":"2026-08-23"');
+  html = html.replace(/"lastReviewed":"[^"]*"/i, '"lastReviewed":"2026-08-23"');
+  html = html.replace(
+    /(<span class="income-qualified"><b[^>]*>)[\s\S]*?(<\/b><\/span>)/i,
+    `$1${INCOME_SHORT}<br><small style="font-size:10px;font-weight:700">hoàn thành định mức</small>$2`
+  );
+  html = html.replace(
+    /<div><dt>Thu nhập sau đào tạo<\/dt><dd>[\s\S]*?<\/dd><\/div>/i,
+    `<div><dt>Thu nhập sau đào tạo</dt><dd>${INCOME_SHORT} khi hoàn thành định mức</dd></div>`
+  );
+  html = html.replace(
+    /("name":"Thu nhập sau đào tạo là bao nhiêu\?","acceptedAnswer":\{"@type":"Answer","text":")[^"]*("\}\})/i,
+    `$1Thu nhập ${INCOME} ${INCOME_CONDITION}.$2`
+  );
 
   const breadcrumb = '<nav class="breadcrumb" aria-label="Đường dẫn trang"><a href="../../">Trang chủ</a><span>›</span><strong>Việc làm ngành mỏ 2026</strong></nav>';
   const organicLink = '<p class="job-organic-parent"><a href="/">Xem trang tuyển thợ mỏ, thợ lò Quảng Ninh →</a></p>';
@@ -120,6 +152,7 @@ const legacyProvinceFile = path.join(root, 'viec-lam-nganh-than', 'quang-ninh', 
 setRobots(homeFile, 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
 setHomeIntent(homeFile);
 setRobots(paidFile, 'noindex,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
+setPaidIntent(paidFile);
 setRobots(jobFile, 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
 setJobIntent(jobFile);
 writeLegacyRedirect(legacyProvinceFile);
