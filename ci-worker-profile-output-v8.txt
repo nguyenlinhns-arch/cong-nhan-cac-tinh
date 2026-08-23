@@ -1,1 +1,2 @@
 temporary CI trigger for final worker-profile output validation
+retry after semantic output gate stabilization
