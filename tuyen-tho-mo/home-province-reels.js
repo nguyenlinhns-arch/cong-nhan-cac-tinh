@@ -7,7 +7,7 @@
   if (!document.querySelector("link[data-home-province-reels-css]")) {
     const css = document.createElement("link");
     css.rel = "stylesheet";
-    css.href = "/home-province-reels.css?v=20260822-3";
+    css.href = "/home-province-reels.css?v=20260823-1";
     css.dataset.homeProvinceReelsCss = "";
     document.head.append(css);
   }
@@ -37,6 +37,7 @@
   section.className = "home-province-reels";
   section.id = "hanh-trinh-dia-phuong";
   section.dataset.homeProvinceReels = "";
+  section.dataset.journeySection = "province_reels";
   section.setAttribute("aria-labelledby", "home-province-reels-title");
   section.innerHTML = `
     <div class="container">
@@ -48,7 +49,10 @@
         ${reels.map((reel, index) => `
           <article class="home-province-reel">
             <div class="home-province-reel__media" data-province-reel-host>
-              <iframe title="${reel.title}" src="${reel.embedUrl.replaceAll("&", "&amp;")}" width="500" height="889" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <button class="home-province-reel__facade" type="button" data-province-reel-play="${index}" aria-label="Phát video ${reel.title}">
+                <span class="home-province-reel__play" aria-hidden="true">▶</span>
+                <span class="home-province-reel__watch">Bấm để xem video · ${reel.province}</span>
+              </button>
             </div>
             <div class="home-province-reel__copy">
               <small>${reel.province}</small>
@@ -102,6 +106,29 @@
   };
 
   section.addEventListener("click", (event) => {
+    const play = event.target.closest?.("[data-province-reel-play]");
+    if (play) {
+      const index = Number(play.dataset.provinceReelPlay);
+      const reel = reels[index];
+      const host = play.closest("[data-province-reel-host]");
+      if (reel && host) {
+        const frame = document.createElement("iframe");
+        frame.title = reel.title;
+        frame.src = reel.embedUrl;
+        frame.width = "500";
+        frame.height = "889";
+        frame.scrolling = "no";
+        frame.frameBorder = "0";
+        frame.loading = "eager";
+        frame.allowFullscreen = true;
+        frame.allow = "autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share";
+        frame.referrerPolicy = "strict-origin-when-cross-origin";
+        host.replaceChildren(frame);
+        track("home_province_reel_play", { video: index + 1, province: reel.province });
+      }
+      return;
+    }
+
     const link = event.target.closest?.("[data-province-reel-link]");
     if (link) track("home_province_reel_click", { destination: link.dataset.provinceReelLink || "unknown" });
     const action = event.target.closest?.("[data-province-reel-action]");
