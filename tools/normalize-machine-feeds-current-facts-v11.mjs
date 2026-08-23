@@ -9,6 +9,8 @@ await import("./prepare-province-legacy-templates-v11.mjs");
 if (process.exitCode && process.exitCode !== 0) process.exit(process.exitCode);
 await import("./normalize-province-current-facts-v11.mjs");
 if (process.exitCode && process.exitCode !== 0) process.exit(process.exitCode);
+await import("./normalize-province-internal-links-v11.mjs");
+if (process.exitCode && process.exitCode !== 0) process.exit(process.exitCode);
 
 const root = path.resolve(import.meta.dirname, "..");
 const site = path.join(root, "tuyen-tho-mo");
