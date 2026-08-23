@@ -1,12 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
 
-// This validator is the final SEO gate in the Pages pipeline. Run the systemic
-// normalizers first so generated output, freshness metadata and province crawl
-// signals are checked in the exact state that will be published.
-await import("./normalize-recruitment-seo-copy-v11.mjs");
+// Final Pages SEO gate: freshness may update generated/excluded delivery files,
+// while province integrity is read-only. Source normalization is committed by
+// recruitment-seo-copy-v11 before a clean deployment is accepted.
 await import("./sync-home-freshness.mjs");
-await import("../tuyen-tho-mo/scripts/update-ai-locality-discovery.mjs");
 await import("./validate-province-indexing-integrity-v11.mjs");
 
 const root = path.resolve(import.meta.dirname, "..");
@@ -171,5 +169,5 @@ if (machineFeed.canonical_facts_url !== "https://thaylinhtuyenthomo.vn/data/recr
 if (!fs.readFileSync(path.join(site, "index.html"), "utf8").includes("home-daily-seo")) errors.push("Trang chủ thiếu khối giải đáp mới mỗi ngày");
 if (!fs.readFileSync(path.join(site, "cam-nang-nghe-mo", "index.html"), "utf8").includes("daily-seo-guide:start")) errors.push("Cẩm nang thiếu liên kết tới chuỗi SEO hằng ngày");
 
-console.log(JSON.stringify({releaseDate, canonicalFactsVersion: canonicalFacts.version, planned: data.articles.length, released: released.length, future: future.length, errors: errors.length, sampleErrors: errors.slice(0, 30), editorialGuard: "newsroom-v2-facts-v8", finalSeoGate: "normalize+freshness+province-integrity"}, null, 2));
+console.log(JSON.stringify({releaseDate, canonicalFactsVersion: canonicalFacts.version, planned: data.articles.length, released: released.length, future: future.length, errors: errors.length, sampleErrors: errors.slice(0, 30), editorialGuard: "newsroom-v2-facts-v8", finalSeoGate: "freshness+province-integrity"}, null, 2));
 if (errors.length) process.exitCode = 1;
