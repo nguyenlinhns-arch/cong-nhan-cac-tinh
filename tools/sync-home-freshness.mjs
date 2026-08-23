@@ -10,6 +10,7 @@ const dailyHubPath = path.join(site, "giai-dap-nghe-mo", "index.html");
 const sitemapPath = path.join(site, "sitemap.xml");
 const recruitmentPath = path.join(site, "recruitment-current.json");
 const fieldReportsPath = path.join(root, "content", "editorial-field-reports-v8.json");
+const reviewPath = path.join(root, "content", "recruitment-review-v10.json");
 const bangkokToday = new Intl.DateTimeFormat("en-CA", {
   timeZone: "Asia/Bangkok",
   year: "numeric",
@@ -39,16 +40,22 @@ if (!fs.existsSync(fieldReportsPath)) throw new Error("sync-home-freshness: thi�
 const fieldReports = JSON.parse(fs.readFileSync(fieldReportsPath, "utf8"));
 const fieldReportDate = maxDate(Object.values(fieldReports).map((report) => report?.dateModified));
 
-// Homepage freshness follows the newest substantive source actually surfaced
-// on the homepage: current recruitment facts, daily answers, industry news or
-// the original field-report collection linked from the proof section.
-const latestDate = maxDate([communityDate, dailyDate, recruitmentDate, fieldReportDate]);
-if (!latestDate) throw new Error("sync-home-freshness: không xác định được ngày cập nhật trang chủ");
+if (!fs.existsSync(reviewPath)) throw new Error("sync-home-freshness: thiếu recruitment-review-v10.json");
+const review = JSON.parse(fs.readFileSync(reviewPath, "utf8"));
+const recruitmentReviewDate = validDate(review.reviewed_at) ? review.reviewed_at : "";
+if (!recruitmentReviewDate) throw new Error("sync-home-freshness: reviewed_at tuyển sinh không hợp lệ");
+
+// dateModified follows the newest substantive content actually surfaced on the
+// homepage. lastReviewed may be newer when the recruitment facts were checked
+// again without a policy/content change, so the two signals remain semantically distinct.
+const homepageModifiedDate = maxDate([communityDate, dailyDate, recruitmentDate, fieldReportDate]);
+const homepageReviewDate = maxDate([homepageModifiedDate, recruitmentReviewDate]);
+if (!homepageModifiedDate || !homepageReviewDate) throw new Error("sync-home-freshness: không xác định được độ mới trang chủ");
 
 let html = fs.readFileSync(homepagePath, "utf8");
 const freshnessPattern = /"dateModified":"\d{4}-\d{2}-\d{2}","lastReviewed":"\d{4}-\d{2}-\d{2}"/;
 if (!freshnessPattern.test(html)) throw new Error("sync-home-freshness: không tìm thấy cặp dateModified/lastReviewed trong schema trang chủ");
-html = html.replace(freshnessPattern, `"dateModified":"${latestDate}","lastReviewed":"${latestDate}"`);
+html = html.replace(freshnessPattern, `"dateModified":"${homepageModifiedDate}","lastReviewed":"${homepageReviewDate}"`);
 fs.writeFileSync(homepagePath, html);
 
 // The daily-answer hub and sitemap must describe the newest published answer,
@@ -70,10 +77,12 @@ fs.writeFileSync(sitemapPath, sitemap);
 
 console.log(JSON.stringify({
   status: "site-freshness-synced",
-  homepageDate: latestDate,
+  homepageModifiedDate,
+  homepageReviewDate,
   communityDate,
   dailyAnswerDate: dailyDate,
   recruitmentDate: recruitmentDate || null,
+  recruitmentReviewDate,
   fieldReportDate: fieldReportDate || null,
   dailySource: dailyFeed.articles?.[0]?.canonical_url || null,
 }, null, 2));
