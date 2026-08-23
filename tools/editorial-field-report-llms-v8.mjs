@@ -57,6 +57,7 @@ await import("./generate-editorial-field-report-feed-v8.mjs");
 await import("./editorial-field-report-seo-title-v8.mjs");
 await import("./editorial-field-report-social-meta-v8.mjs");
 await import("./editorial-field-report-authority-v8.mjs");
+await import("./validate-editorial-field-report-authority-v8.mjs");
 
 console.log(JSON.stringify({
   status: "field-report-v8-llms-ready",
