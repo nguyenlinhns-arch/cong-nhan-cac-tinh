@@ -1,0 +1,194 @@
+name: SEO consolidation 2026-08-23
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/seo-consolidation-20260823.yml
+
+permissions:
+  contents: write
+
+jobs:
+  consolidate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Consolidate search intent and income wording
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+
+          const root = process.cwd();
+          const siteRoot = path.join(root, 'tuyen-tho-mo');
+          const homepage = path.join(siteRoot, 'index.html');
+          const primary = path.join(siteRoot, 'tuyen-tho-mo-quang-ninh', 'index.html');
+          const duplicate = path.join(siteRoot, 'viec-lam-nganh-than', 'quang-ninh', 'index.html');
+          const detail = path.join(siteRoot, 'viec-lam', 'cong-nhan-mo-ham-lo-quang-ninh', 'index.html');
+          const sitemap = path.join(siteRoot, 'sitemap.xml');
+          const masterPath = path.join(root, 'operations', 'job-posting-master-2026.json');
+          const primaryUrl = 'https://thaylinhtuyenthomo.vn/tuyen-tho-mo-quang-ninh/';
+          const duplicateUrl = 'https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/quang-ninh/';
+
+          for (const f of [homepage, primary, duplicate, detail, sitemap, masterPath]) {
+            if (!fs.existsSync(f)) throw new Error(`Required file missing: ${f}`);
+          }
+
+          function replaceAll(text, from, to) {
+            return text.split(from).join(to);
+          }
+
+          function writeIfChanged(file, next) {
+            const prev = fs.readFileSync(file, 'utf8');
+            if (prev !== next) {
+              fs.writeFileSync(file, next);
+              console.log(`updated ${path.relative(root, file)}`);
+              return true;
+            }
+            return false;
+          }
+
+          function walk(dir, out = []) {
+            for (const entry of fs.readdirSync(dir, {withFileTypes: true})) {
+              const full = path.join(dir, entry.name);
+              if (entry.isDirectory()) walk(full, out);
+              else out.push(full);
+            }
+            return out;
+          }
+
+          // 1) Fix the authoritative source so future generators cannot restore the old claim wording.
+          const master = JSON.parse(fs.readFileSync(masterPath, 'utf8'));
+          let keyHits = 0;
+          function rewriteIncomeKeys(obj) {
+            if (!obj || typeof obj !== 'object') return;
+            for (const [key, value] of Object.entries(obj)) {
+              if (key === 'income_commitment' || key === 'income_reference') {
+                obj[key] = 'Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động';
+                keyHits++;
+              } else if (value && typeof value === 'object') {
+                rewriteIncomeKeys(value);
+              }
+            }
+          }
+          rewriteIncomeKeys(master);
+          if (keyHits < 2) throw new Error(`Expected both income source keys, found ${keyHits}`);
+          if (Object.prototype.hasOwnProperty.call(master, 'updated_at')) master.updated_at = '2026-08-23';
+          writeIfChanged(masterPath, JSON.stringify(master, null, 2) + '\n');
+
+          // 2) Reposition homepage as the broad hub instead of competing with the Quang Ninh recruitment landing.
+          let home = fs.readFileSync(homepage, 'utf8');
+          const homePairs = [
+            ['<title>Tuyển thợ mỏ, thợ lò Quảng Ninh | Học nghề, nhận việc</title>', '<title>Học nghề mỏ &amp; việc làm ngành Than 2026 | Thầy Linh</title>'],
+            ['<meta name="description" content="Tuyển thợ mỏ, thợ lò tại Quảng Ninh: nam 18–40 tuổi; học nghề tại Quang Hanh, miễn học phí, có ăn ở và được bố trí việc làm sau đào tạo.">', '<meta name="description" content="Hướng dẫn học nghề mỏ, điều kiện, hồ sơ, quyền lợi và việc làm ngành Than năm 2026. Chọn thông tin theo nhu cầu và địa phương để đăng ký đúng lộ trình.">'],
+            ['<meta name="keywords" content="tuyển thợ mỏ, tuyển thợ lò Quảng Ninh, học nghề mỏ Quang Hanh, việc làm ngành Than, việc làm TKV, hồ sơ học nghề mỏ">', '<meta name="keywords" content="học nghề mỏ, việc làm ngành Than, hồ sơ học nghề mỏ, điều kiện thợ lò, tuyển thợ mỏ theo tỉnh">'],
+            ['<meta property="og:title" content="Tuyển thợ mỏ, thợ lò tại Quảng Ninh">', '<meta property="og:title" content="Học nghề mỏ &amp; việc làm ngành Than – Thầy Linh">'],
+            ['<meta property="og:description" content="Kiểm tra điều kiện, xem công việc thực tế, học nghề tại Quang Hanh và đăng ký nhận việc ngành Than ở Quảng Ninh.">', '<meta property="og:description" content="Tìm hiểu nghề mỏ, điều kiện, hồ sơ, quyền lợi và lộ trình từ học nghề đến việc làm ngành Than.">'],
+            ['<meta name="twitter:title" content="Tuyển thợ mỏ, thợ lò tại Quảng Ninh">', '<meta name="twitter:title" content="Học nghề mỏ &amp; việc làm ngành Than – Thầy Linh">'],
+            ['<meta name="twitter:description" content="Xem điều kiện, video công việc thực tế, quyền lợi học nghề và cách đăng ký làm việc ngành Than tại Quảng Ninh.">', '<meta name="twitter:description" content="Tìm hiểu nghề mỏ, điều kiện, hồ sơ, quyền lợi và lộ trình từ học nghề đến việc làm ngành Than.">'],
+            ['"name":"Tuyển thợ mỏ, thợ lò tại Quảng Ninh"', '"name":"Học nghề mỏ và việc làm ngành Than – Thầy Linh"'],
+            ['"description":"Tuyển thợ mỏ, thợ lò tại Quảng Ninh: kiểm tra điều kiện, xem công việc thực tế, học nghề tại Quang Hanh và nhận việc ngành Than; cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."', '"description":"Hướng dẫn học nghề mỏ, điều kiện, hồ sơ, quyền lợi và lộ trình từ học nghề đến việc làm ngành Than năm 2026."'],
+            ['<h1 id="home-v6-title">Tuyển thợ mỏ Quảng Ninh.<span>Bắt đầu từ đây.</span></h1>', '<h1 id="home-v6-title">Học nghề mỏ và việc làm ngành Than.<span>Bắt đầu từ đây.</span></h1>'],
+            ['<p class="home-v6-hero__lead">Muốn đi làm mỏ than Quảng Ninh? Xem công việc thực tế, chọn nghề phù hợp, kiểm tra điều kiện và được Thầy Linh hướng dẫn từ lúc đăng ký đến khi nhận việc.</p>', '<p class="home-v6-hero__lead">Tìm hiểu nghề mỏ, chọn nghề phù hợp, kiểm tra điều kiện và hồ sơ trước khi đăng ký. Nếu mục tiêu là làm việc tại Quảng Ninh, xem <a href="/tuyen-tho-mo-quang-ninh/">trang tuyển thợ mỏ Quảng Ninh 2026</a>.</p>']
+          ];
+          for (const [from, to] of homePairs) home = replaceAll(home, from, to);
+          writeIfChanged(homepage, home);
+
+          // 3) Retire the overlapping Quang Ninh province page from the index while preserving it for users.
+          let dup = fs.readFileSync(duplicate, 'utf8');
+          dup = replaceAll(dup, '<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">', '<meta name="robots" content="noindex,follow,max-image-preview:large,max-snippet:-1">');
+          dup = replaceAll(dup, '<title>Tuyển thợ mỏ tại Quảng Ninh | Học nghề 2–3 tháng – Thầy Linh</title>', '<title>Học nghề mỏ &amp; việc làm ngành Than tại Quảng Ninh | Thầy Linh</title>');
+          dup = replaceAll(dup, '<meta property="og:title" content="Tuyển thợ mỏ tại Quảng Ninh – học nghề 2–3 tháng">', '<meta property="og:title" content="Học nghề mỏ &amp; việc làm ngành Than tại Quảng Ninh">');
+          dup = replaceAll(dup, '<meta name="twitter:title" content="Tuyển thợ mỏ tại Quảng Ninh – học nghề 2–3 tháng">', '<meta name="twitter:title" content="Học nghề mỏ &amp; việc làm ngành Than tại Quảng Ninh">');
+          dup = replaceAll(dup, duplicateUrl, primaryUrl);
+          writeIfChanged(duplicate, dup);
+
+          // 4) Remove internal votes for the retired page and send them to the primary landing instead.
+          const textExt = new Set(['.html', '.json', '.xml', '.txt']);
+          for (const file of walk(siteRoot)) {
+            if (!textExt.has(path.extname(file))) continue;
+            if (file === duplicate) continue;
+            let text = fs.readFileSync(file, 'utf8');
+            const before = text;
+            text = replaceAll(text, 'href="/viec-lam-nganh-than/quang-ninh/"', 'href="/tuyen-tho-mo-quang-ninh/"');
+            text = replaceAll(text, `href="${duplicateUrl}"`, `href="${primaryUrl}"`);
+            if (text !== before) fs.writeFileSync(file, text);
+          }
+
+          // 5) Remove the retired URL from sitemap.xml.
+          let map = fs.readFileSync(sitemap, 'utf8');
+          map = map.replace(/\s*<url>\s*<loc>https:\/\/thaylinhtuyenthomo\.vn\/viec-lam-nganh-than\/quang-ninh\/<\/loc>[\s\S]*?<\/url>/g, '');
+          writeIfChanged(sitemap, map);
+
+          // 6) Neutralize the old income-claim wording in generated public text without changing the amount/condition.
+          const phraseRules = [
+            [/được cam kết thu nhập 20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động/gi, 'có mức thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động'],
+            [/cam kết thu nhập 20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động/gi, 'thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động'],
+            [/cam kết 20[–-]25 triệu\/tháng khi hoàn thành định mức lao động/gi, 'thu nhập 20–25 triệu/tháng khi hoàn thành định mức lao động'],
+            [/CAM KẾT THU NHẬP/g, 'THU NHẬP'],
+            [/Có cam kết mức thu nhập không\?/g, 'Mức thu nhập áp dụng là bao nhiêu?'],
+            [/Có\. Cam kết thu nhập 20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động\./g, 'Mức thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.']
+          ];
+          for (const file of walk(siteRoot)) {
+            if (!textExt.has(path.extname(file))) continue;
+            let text = fs.readFileSync(file, 'utf8');
+            const before = text;
+            for (const [rx, replacement] of phraseRules) text = text.replace(rx, replacement);
+            if (text !== before) fs.writeFileSync(file, text);
+          }
+
+          // 7) Patch exact legacy strings in generator/source text only when they exist, avoiding broad policy changes.
+          for (const dirName of ['tools', 'content']) {
+            const dir = path.join(root, dirName);
+            if (!fs.existsSync(dir)) continue;
+            for (const file of walk(dir)) {
+              if (!['.mjs', '.js', '.json'].includes(path.extname(file))) continue;
+              let text = fs.readFileSync(file, 'utf8');
+              const before = text;
+              text = replaceAll(text, 'CAM KẾT THU NHẬP', 'THU NHẬP');
+              text = text.replace(/được cam kết thu nhập 20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động/gi, 'có mức thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động');
+              text = text.replace(/cam kết thu nhập 20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động/gi, 'thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động');
+              if (text !== before) fs.writeFileSync(file, text);
+            }
+          }
+
+          // 8) Fail closed on the SEO invariants we intend to establish.
+          const finalHome = fs.readFileSync(homepage, 'utf8');
+          const finalPrimary = fs.readFileSync(primary, 'utf8');
+          const finalDup = fs.readFileSync(duplicate, 'utf8');
+          const finalDetail = fs.readFileSync(detail, 'utf8');
+          const finalMap = fs.readFileSync(sitemap, 'utf8');
+          const finalMaster = fs.readFileSync(masterPath, 'utf8');
+
+          if (!finalHome.includes('<title>Học nghề mỏ &amp; việc làm ngành Than 2026 | Thầy Linh</title>')) throw new Error('Homepage title not consolidated');
+          if (!finalHome.includes('href="/tuyen-tho-mo-quang-ninh/"')) throw new Error('Homepage does not link to primary Quang Ninh landing');
+          if (!finalPrimary.includes('<link rel="canonical" href="https://thaylinhtuyenthomo.vn/tuyen-tho-mo-quang-ninh/">')) throw new Error('Primary landing canonical changed unexpectedly');
+          if (!finalDup.includes('name="robots" content="noindex,follow')) throw new Error('Duplicate province page is not noindex,follow');
+          if (!finalDup.includes(`<link rel="canonical" href="${primaryUrl}">`)) throw new Error('Duplicate province page canonical not consolidated');
+          if (finalMap.includes(duplicateUrl)) throw new Error('Retired duplicate remains in sitemap');
+          if (!finalDetail.includes('<link rel="canonical" href="https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/">')) throw new Error('Detailed job page canonical changed unexpectedly');
+          if (!finalDetail.includes("URLSearchParams") || !finalDetail.includes("province")) throw new Error('Province prefill behavior disappeared');
+          if (/cam kết(?: mức)? thu nhập 20[–-]25/i.test(finalHome + finalPrimary + finalDup + finalDetail)) throw new Error('Old income claim remains on core pages');
+          if (!finalMaster.includes('Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động')) throw new Error('Authoritative income source not updated');
+          if (!finalHome.includes('G-PZRRY10JNN') || !finalHome.includes('1382247304000287')) throw new Error('Tracking IDs changed or disappeared');
+
+          console.log('SEO consolidation audit PASS');
+          NODE
+
+      - name: Commit audited changes
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No changes required"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add operations/job-posting-master-2026.json tuyen-tho-mo tools content
+          git commit -m "seo: consolidate Quang Ninh search intent"
+          git push
