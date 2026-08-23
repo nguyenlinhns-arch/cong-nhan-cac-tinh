@@ -6,6 +6,7 @@ on:
     paths:
       - 'tools/normalize-recruitment-seo-copy-v11.mjs'
       - 'tools/generate-province-pages-2026.mjs'
+      - 'tools/build-worker-first-home.mjs'
       - 'content/daily-seo-articles.json'
       - 'tuyen-tho-mo/app.js'
       - '.github/workflows/recruitment-seo-copy-v11.yml'
@@ -36,6 +37,9 @@ jobs:
       - name: Regenerate province pages from normalized source
         run: node tools/generate-province-pages-2026.mjs
 
+      - name: Rebuild homepage from normalized source
+        run: node tools/build-worker-first-home.mjs
+
       - name: Normalize regenerated output
         run: node tools/normalize-recruitment-seo-copy-v11.mjs
 
@@ -45,13 +49,14 @@ jobs:
           set -euo pipefail
           node --check tuyen-tho-mo/app.js
           node --check tools/generate-province-pages-2026.mjs
+          node --check tools/build-worker-first-home.mjs
           node --check tools/normalize-recruitment-seo-copy-v11.mjs
           if grep -RIlE 'href="[^" ]*cong-nhan-mo-ham-lo-quang-ninh/\?province=' tuyen-tho-mo/viec-lam-nganh-than --include='*.html' | grep -q .; then
             echo 'Crawlable province query URL remains in local pages' >&2
             exit 1
           fi
-          if grep -RIlE '<strong>Cam kết thu nhập</strong>|được Thu nhập 20|Mức thu nhập được cam kết theo chính sách đang áp dụng' tuyen-tho-mo --include='*.html' | grep -q .; then
-            echo 'Legacy recruitment copy remains in published HTML' >&2
+          if grep -RIlE '<strong>Cam kết thu nhập</strong>|được Thu nhập 20|Mức thu nhập được cam kết theo chính sách đang áp dụng|khi hoàn thành định mức lao động\. khi hoàn thành định mức lao động\.' tuyen-tho-mo --include='*.html' | grep -q .; then
+            echo 'Legacy or duplicated recruitment copy remains in published HTML' >&2
             exit 1
           fi
           grep -q 'data-prefill-province="${name}"' tools/generate-province-pages-2026.mjs
@@ -60,6 +65,8 @@ jobs:
           grep -q 'data-prefill-province=' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
           grep -q 'Thu nhập theo định mức' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
           grep -q 'Ba trang nên xem trước khi đăng ký' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
+          grep -q '"dateModified":"2026-08-23"' tuyen-tho-mo/index.html
+          grep -q '"lastReviewed":"2026-08-23"' tuyen-tho-mo/index.html
 
       - name: Commit normalized SEO source and published pages
         shell: bash
@@ -67,6 +74,6 @@ jobs:
           if git diff --quiet; then exit 0; fi
           git config user.name 'thaylinh-marketing-bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add tools/generate-province-pages-2026.mjs content/daily-seo-articles.json tuyen-tho-mo
-          git commit -m 'seo: normalize recruitment copy and clean province links [seo-copy-sync]'
+          git add tools/generate-province-pages-2026.mjs tools/build-worker-first-home.mjs content/daily-seo-articles.json tuyen-tho-mo
+          git commit -m 'seo: normalize recruitment copy, freshness and clean province links [seo-copy-sync]'
           git push
