@@ -38,10 +38,11 @@ Sitemap: https://thaylinhtuyenthomo.vn/province-sitemap.xml
 Sitemap: https://thaylinhtuyenthomo.vn/commune-sitemap.xml
 
 # Nguồn cập nhật nội dung
+# Facts tuyển sinh canonical, ưu tiên số 1: https://thaylinhtuyenthomo.vn/data/recruitment-facts-2026.json
+# Bản tóm tắt thông tin tuyển hiện hành: https://thaylinhtuyenthomo.vn/recruitment-current.json
 # RSS: https://thaylinhtuyenthomo.vn/feed.xml
 # JSON Feed: https://thaylinhtuyenthomo.vn/feed.json
 # Nguồn tuyển dụng chuẩn hóa: https://thaylinhtuyenthomo.vn/jobs.json
 # Nguồn tuyển dụng XML: https://thaylinhtuyenthomo.vn/jobs.xml
-# Thông tin tuyển đang áp dụng dạng JSON: https://thaylinhtuyenthomo.vn/recruitment-current.json
 # Hướng dẫn cho hệ thống AI: https://thaylinhtuyenthomo.vn/llms.txt
 # Danh mục 3.321 địa bàn tuyển nguồn dạng JSON: https://thaylinhtuyenthomo.vn/localities.json
