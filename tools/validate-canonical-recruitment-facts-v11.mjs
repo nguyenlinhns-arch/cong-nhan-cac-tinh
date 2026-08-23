@@ -6,10 +6,12 @@ const site = path.join(root, "tuyen-tho-mo");
 const factsPath = path.join(site, "data", "recruitment-facts-2026.json");
 const masterPath = path.join(root, "operations", "job-posting-master-2026.json");
 const currentPath = path.join(site, "recruitment-current.json");
+const reviewPath = path.join(root, "content", "recruitment-review-v10.json");
 
 const facts = JSON.parse(fs.readFileSync(factsPath, "utf8"));
 const master = JSON.parse(fs.readFileSync(masterPath, "utf8"));
 const current = JSON.parse(fs.readFileSync(currentPath, "utf8"));
+const review = JSON.parse(fs.readFileSync(reviewPath, "utf8"));
 const errors = [];
 
 const add = (message) => errors.push(message);
@@ -21,6 +23,11 @@ if (Number(facts.version) < 8) add(`recruitment-facts version quá cũ: ${facts.
 if (facts.status !== "confirmed_by_user") add(`recruitment-facts chưa ở trạng thái confirmed_by_user: ${facts.status}`);
 if (Number(master.version) < 12) add(`job-posting master version quá cũ: ${master.version}`);
 if (!String(facts.confirmed_at || "").startsWith("2026-08-23")) add(`confirmed_at không phải mốc xác nhận hiện hành 23/08/2026: ${facts.confirmed_at}`);
+eq(master.updated_at, facts.confirmed_at, "master.updated_at vs facts.confirmed_at");
+eq(current.updated_at, String(facts.confirmed_at || "").slice(0, 10), "recruitment-current.updated_at");
+eq(review.canonical_facts_version, facts.version, "review canonical_facts_version");
+eq(review.canonical_facts_confirmed_at, facts.confirmed_at, "review canonical_facts_confirmed_at");
+eq(review.job_master_version, master.version, "review job_master_version");
 
 for (const [key, masterValue] of [
   ["gender", master.criteria.gender],
@@ -61,18 +68,16 @@ eq(current.contact?.messenger, "https://m.me/thaylinhtuyenthomo", "recruitment-c
 eq(String(current.contact?.phone || "").replace(/\s+/g, ""), "0963048585", "recruitment-current phone");
 
 const forbidden = Array.isArray(facts.forbidden_legacy_phrases) ? facts.forbidden_legacy_phrases : [];
-const currentText = JSON.stringify(current);
+const {usage_note: usageNote, ...currentWithoutUsage} = current;
+const currentPolicyText = JSON.stringify(currentWithoutUsage).toLocaleLowerCase("vi");
 for (const phrase of forbidden) {
-  if (phrase && currentText.toLocaleLowerCase("vi").includes(String(phrase).toLocaleLowerCase("vi"))) {
-    // usage_note may name legacy values to explicitly prohibit them; only flag
-    // forbidden phrases outside that explanatory field.
-    const clone = structuredClone(current);
-    delete clone.usage_note;
-    if (JSON.stringify(clone).toLocaleLowerCase("vi").includes(String(phrase).toLocaleLowerCase("vi"))) {
-      add(`recruitment-current còn legacy phrase ngoài usage_note: ${phrase}`);
-    }
+  if (phrase && currentPolicyText.includes(String(phrase).toLocaleLowerCase("vi"))) {
+    add(`recruitment-current còn legacy phrase ngoài usage_note: ${phrase}`);
   }
 }
+if (!String(usageNote || "").includes(livingSupport)) add("recruitment-current usage_note thiếu hỗ trợ canonical");
+if (!String(usageNote || "").includes(incomeCommitment)) add("recruitment-current usage_note thiếu thu nhập canonical");
+if (!/tổng cả khóa/iu.test(String(usageNote || ""))) add("recruitment-current usage_note chưa cảnh báo cách hiểu 7,5 triệu là tổng cả khóa");
 
 const shareTools = fs.readFileSync(path.join(site, "share-tools.js"), "utf8");
 for (const marker of [
@@ -94,8 +99,8 @@ for (const phrase of ["bình quân 20–25 triệu", "tùy đơn vị, vị trí
 const supplementPath = path.join(root, "content", "daily-seo-supplements-20260823.json");
 if (fs.existsSync(supplementPath)) {
   const supplement = fs.readFileSync(supplementPath, "utf8");
-  if (!supplement.includes("7,5 triệu đồng/tháng trong thời gian học")) add("SEO 23/08 thiếu hỗ trợ 7,5 triệu đồng/tháng");
-  if (!supplement.includes("20–25 triệu đồng/tháng khi hoàn thành định mức lao động")) add("SEO 23/08 thiếu thu nhập canonical");
+  if (!supplement.includes(livingSupport)) add("SEO 23/08 thiếu hỗ trợ 7,5 triệu đồng/tháng");
+  if (!supplement.includes(incomeCommitment)) add("SEO 23/08 thiếu thu nhập canonical");
   for (const phrase of ["bình quân 20–25 triệu", "tùy đơn vị, vị trí, ngày công và năng suất"]) {
     if (supplement.toLocaleLowerCase("vi").includes(phrase)) add(`SEO 23/08 còn legacy phrase: ${phrase}`);
   }
@@ -106,6 +111,7 @@ if (errors.length) {
     status: "canonical-recruitment-facts-v11-invalid",
     factsVersion: facts.version,
     masterVersion: master.version,
+    reviewSchemaVersion: review.schema_version,
     errors,
   }, null, 2));
   process.exitCode = 1;
@@ -114,6 +120,7 @@ if (errors.length) {
     status: "canonical-recruitment-facts-v11-ready",
     factsVersion: facts.version,
     masterVersion: master.version,
+    reviewSchemaVersion: review.schema_version,
     confirmedAt: facts.confirmed_at,
     activeOccupations: activeProfiles.length,
     support: livingSupport,
