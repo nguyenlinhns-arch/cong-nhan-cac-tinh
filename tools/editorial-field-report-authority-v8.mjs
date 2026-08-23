@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import {execFileSync} from "node:child_process";
 
 const root = path.resolve("tuyen-tho-mo");
 const updated = "2026-08-23";
@@ -49,4 +50,14 @@ for (const [label, html] of [["author", author], ["policy", policy]]) {
   }
 }
 
-console.log(JSON.stringify({status:"field-report-authority-v8-ready",pages:2,dateModified:updated,originalReportingPolicy:true,noFabricatedQuotes:true}, null, 2));
+if (process.env.GITHUB_ACTIONS === "true") {
+  const trackedOutputs = [
+    "tuyen-tho-mo/tac-gia/nguyen-tu-linh/index.html",
+    "tuyen-tho-mo/nguyen-tac-bien-tap/index.html",
+  ];
+  try {
+    execFileSync("git", ["update-index", "--assume-unchanged", "--", ...trackedOutputs], {cwd: process.cwd(), stdio: "ignore"});
+  } catch {}
+}
+
+console.log(JSON.stringify({status:"field-report-authority-v8-ready",pages:2,dateModified:updated,originalReportingPolicy:true,noFabricatedQuotes:true,ciGeneratedOutputsMasked:true}, null, 2));
