@@ -71,7 +71,7 @@ for (const legacy of [
   "Hai hướng đang tuyển là khai thác mỏ hầm lò và xây dựng mỏ hầm lò",
   "bình quân 20–25 triệu",
   "tùy đơn vị, vị trí, ngày công và năng suất",
-  "7,5 triệu là tổng cả khóa",
+  "7,5 triệu đồng/tháng trong thời gian học",
 ]) if (outputText.toLocaleLowerCase("vi").includes(legacy.toLocaleLowerCase("vi"))) throw new Error(`Worker questions còn legacy: ${legacy}`);
 
 if (process.env.GITHUB_ACTIONS === "true") {
