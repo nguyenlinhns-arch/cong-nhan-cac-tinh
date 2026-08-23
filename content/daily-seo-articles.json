@@ -232,11 +232,11 @@
     {
       "publish_on": "2026-08-07",
       "slug": "hoc-nghe-mo-duoc-ho-tro-75-trieu-dong-the-nao",
-      "title": "Học nghề mỏ được hỗ trợ 7,5 triệu đồng thế nào?",
-      "short_title": "Hỗ trợ 7,5 triệu khi học nghề mỏ",
+      "title": "Học nghề mỏ được hỗ trợ 7,5 triệu đồng/tháng thế nào?",
+      "short_title": "Hỗ trợ 7,5 triệu đồng/tháng khi học nghề mỏ",
       "meta": "Người học nghề mỏ thuộc chỉ tiêu được hỗ trợ 7,5 triệu đồng/tháng trong thời gian học, miễn kinh phí đào tạo, có 3 bữa/ngày và ký túc xá.",
       "eyebrow": "QUYỀN LỢI TRONG THỜI GIAN HỌC",
-      "primary_query": "học nghề mỏ được hỗ trợ 7,5 triệu đồng",
+      "primary_query": "học nghề mỏ được hỗ trợ 7,5 triệu đồng/tháng",
       "query_variants": [
         "học nghề mỏ có được hỗ trợ tiền không",
         "học nghề mỏ miễn học phí ăn ở",
@@ -249,7 +249,7 @@
         "credit": "Ảnh: Thư viện ảnh Vinacomin · công nhân thợ lò trong ca sản xuất"
       },
       "intro": [
-        "Khoản hỗ trợ 7,5 triệu đồng thường được người lao động hỏi riêng, nhưng cần đặt trong toàn bộ chính sách học nghề. Người học thuộc chỉ tiêu không chỉ nhận hỗ trợ sinh hoạt mà còn được miễn kinh phí đào tạo, bố trí bữa ăn và chỗ ở trong thời gian học.",
+        "Khoản hỗ trợ 7,5 triệu đồng/tháng thường được người lao động hỏi riêng, nhưng cần đặt trong toàn bộ chính sách học nghề. Người học thuộc chỉ tiêu không chỉ nhận hỗ trợ sinh hoạt mà còn được miễn kinh phí đào tạo, bố trí bữa ăn và chỗ ở trong thời gian học.",
         "Người đăng ký nên phân biệt quyền lợi đã được công bố với lời hứa thêm của một cá nhân. Mọi nội dung về mức hỗ trợ, bữa ăn, ký túc xá và thời điểm thực hiện cần khớp với thông tin tuyển đang áp dụng và được xác nhận khi có lịch nhập học."
       ],
       "key_points": [
@@ -290,7 +290,7 @@
         }
       ],
       "takeaway_title": "Hãy nhìn trọn gói quyền lợi, không chỉ nhìn một con số",
-      "takeaway": "Hỗ trợ 7,5 triệu đồng là một phần của chính sách dành cho người học thuộc chỉ tiêu. Quyền lợi đầy đủ còn gồm miễn kinh phí đào tạo, ba bữa mỗi ngày và ký túc xá. Người lao động cần xác nhận đúng đợt, đúng nghề và đúng đầu mối trước khi di chuyển hoặc chuẩn bị hồ sơ.",
+      "takeaway": "Hỗ trợ 7,5 triệu đồng/tháng là một phần của chính sách dành cho người học thuộc chỉ tiêu. Quyền lợi đầy đủ còn gồm miễn kinh phí đào tạo, ba bữa mỗi ngày và ký túc xá. Người lao động cần xác nhận đúng đợt, đúng nghề và đúng đầu mối trước khi di chuyển hoặc chuẩn bị hồ sơ.",
       "source_note": "Chính sách quyền lợi trong nguồn tuyển dụng năm 2026, cập nhật ngày 01/08/2026; mức hỗ trợ, bữa ăn và ký túc xá được quản lý theo đợt tuyển.",
       "faqs": [
         ["7,5 triệu đồng có phải tiền lương không?", "Không. Đây là hỗ trợ trong thời gian học; tiền lương và hợp đồng thuộc giai đoạn sau khi tốt nghiệp, được doanh nghiệp tiếp nhận."],
@@ -324,7 +324,7 @@
       },
       "intro": [
         "Quyết định đi học nghề mỏ thường không chỉ của một người. Với lao động trẻ ở xa, bố mẹ cần biết con sẽ học ở đâu, sống thế nào, ai chịu trách nhiệm và sau khóa học sẽ đi tới bước nào. Câu hỏi càng cụ thể thì gia đình càng dễ phân biệt thông tin chính thức với quảng cáo thiếu căn cứ.",
-        "Gia đình không nên chỉ nhìn mức thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. Nghề mỏ hầm lò có yêu cầu sức khỏe, an toàn và kỷ luật cao; lựa chọn phù hợp cần cân bằng giữa cơ hội việc làm, khả năng của người học và sự chuẩn bị cho cuộc sống xa nhà."
+        "Gia đình không nên chỉ nhìn mức Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất. Nghề mỏ hầm lò có yêu cầu sức khỏe, an toàn và kỷ luật cao; lựa chọn phù hợp cần cân bằng giữa cơ hội việc làm, khả năng của người học và sự chuẩn bị cho cuộc sống xa nhà."
       ],
       "key_points": [
         ["Kiểm tra điều kiện", "Đối chiếu tuổi, chiều cao, cân nặng, thị lực, tim mạch, huyết áp và sức khỏe trước."],
@@ -358,7 +358,7 @@
           "heading": "4. Học xong làm ở đâu và điều gì phải đọc trong hợp đồng?",
           "paragraphs": [
             "Người tốt nghiệp đạt yêu cầu được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng và bố trí việc làm tại Quảng Ninh. Đơn vị cụ thể được xác nhận theo đợt tiếp nhận; gia đình không nên tin lời hứa về một công ty cố định khi chưa có thông báo chính thức.",
-            "Trước khi ký hợp đồng, người lao động cần đọc tên doanh nghiệp, công việc, địa điểm, ca làm, mức lương, chế độ bảo hiểm và quyền, nghĩa vụ của hai bên. Cam kết thu nhập 20–25 triệu đồng/tháng gắn với việc hoàn thành định mức lao động, nên con cần hiểu rõ cách làm việc và tiêu chí đánh giá."
+            "Trước khi ký hợp đồng, người lao động cần đọc tên doanh nghiệp, công việc, địa điểm, ca làm, mức lương, chế độ bảo hiểm và quyền, nghĩa vụ của hai bên. Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất gắn với việc hoàn thành định mức lao động, nên con cần hiểu rõ cách làm việc và tiêu chí đánh giá."
           ]
         }
       ],

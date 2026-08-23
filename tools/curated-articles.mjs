@@ -279,7 +279,7 @@ export const curatedArticles = [
       {
         title: "Cánh cửa vào nghề chỉ kéo dài 2–3 tháng",
         paragraphs: [
-          "Chương trình hiện hành đào tạo nghề khai thác mỏ và xây dựng mỏ trong 2–3 tháng. Người học được miễn kinh phí đào tạo, bố trí 3 bữa mỗi ngày, ký túc xá và hỗ trợ 7,5 triệu đồng theo chính sách đợt tuyển. Với lao động ở xa, những quyền lợi này giúp quãng thời gian chuyển nghề bớt áp lực về chi phí.",
+          "Chương trình hiện hành đào tạo nghề khai thác mỏ và xây dựng mỏ trong 2–3 tháng. Người học được miễn kinh phí đào tạo, bố trí 3 bữa mỗi ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng theo chính sách đợt tuyển. Với lao động ở xa, những quyền lợi này giúp quãng thời gian chuyển nghề bớt áp lực về chi phí.",
           "Trong lớp học và giờ thực hành, học viên làm quen kiến thức nghề, thiết bị, quy trình an toàn và tác phong công nghiệp. Sau khi hoàn thành chương trình, đáp ứng yêu cầu và được doanh nghiệp tiếp nhận, người học bước vào công việc tại Quảng Ninh với một nghề cụ thể trong tay.",
         ],
       },

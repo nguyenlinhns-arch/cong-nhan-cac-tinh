@@ -296,7 +296,7 @@ const stories = [
         title: "Cơ hội thoát việc làm bấp bênh",
         paragraphs: [
           "Đối với lao động trẻ chưa có nghề, công việc thời vụ thường dễ vào nhưng khó tạo lộ trình tăng tay nghề và thu nhập. Học nghề mỏ mở ra một hướng khác: được đào tạo trước khi vào sản xuất, có môi trường công nghiệp và cơ hội tích lũy kỹ năng theo thời gian.",
-          "Người lao động cần đáp ứng tiêu chuẩn sức khỏe, tuân thủ kỷ luật và hoàn thành định mức lao động. Chính sách đang áp dụng cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức.",
+          "Người lao động cần đáp ứng tiêu chuẩn sức khỏe, tuân thủ kỷ luật và hoàn thành định mức lao động. Chính sách đang áp dụng Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất khi hoàn thành định mức.",
         ],
       },
     ],

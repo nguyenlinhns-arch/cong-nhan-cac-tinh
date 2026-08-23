@@ -97,7 +97,7 @@
         "• Ba nghề đang tiếp nhận: khai thác và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng.",
         "• Miễn kinh phí đào tạo theo chỉ tiêu; bố trí 3 bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học.",
         "• Sau tốt nghiệp đạt yêu cầu được doanh nghiệp tiếp nhận làm việc.",
-        "• Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+        "• Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.",
         "",
         `Xem thông tin đầy đủ${isGeneral ? "" : ` cho ${name}`}: ${pageUrl}`,
         `Ứng tuyển trực tiếp, chưa cần hồ sơ: ${applyUrl}`,

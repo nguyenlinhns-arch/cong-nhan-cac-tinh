@@ -77,7 +77,7 @@ const directAnswers = [
   {
     url: "/#quyen-loi",
     title: "Thu nhập và quyền lợi của thợ mỏ",
-    description: "Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động; người lao động được đào tạo nghề trước khi bố trí việc làm.",
+    description: "Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất; người lao động được đào tạo nghề trước khi bố trí việc làm.",
     keywords: ["thu nhập", "lương", "quyền lợi", "20 25 triệu", "định mức lao động"],
     category: "work",
     categoryLabel: "Công việc & lương",

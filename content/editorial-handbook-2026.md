@@ -76,7 +76,7 @@ Một đoạn phân tích tốt trả lời ba câu hỏi:
 
 Không dùng từ tuyệt đối như “chắc chắn”, “100%”, “không có rủi ro” nếu không có căn cứ pháp lý và điều kiện áp dụng tương ứng.
 
-## 10. Viết đúng cam kết thu nhập 20–25 triệu đồng/tháng
+## 10. Viết đúng Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất
 
 Thông tin tuyển sinh đang áp dụng xác định người lao động **được thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất**. Không tự ý làm yếu thông tin bằng các câu “thu nhập tham khảo”, “không phải cam kết” hoặc “không có mức cố định”.
 

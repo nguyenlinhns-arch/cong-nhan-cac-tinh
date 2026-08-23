@@ -333,7 +333,7 @@ const searchItems = pages.map((page, index) => ({
     "cau-chuyen-cong-nhan": ["câu chuyện công nhân", "video công nhân theo tỉnh", "người thật việc thật", "phỏng vấn thợ mỏ"],
     "kiem-tra-dieu-kien": ["kiểm tra điều kiện", "đủ điều kiện làm mỏ", "tuổi chiều cao cân nặng", "sức khỏe thợ mỏ"],
     "ho-so-nhap-hoc": ["hồ sơ nhập học", "CCCD", "giấy khai sinh", "bằng THCS THPT", "địa chỉ nhập học"],
-    "thu-nhap-an-o-ho-tro": ["lương thợ lò", "lương thợ lò bao nhiêu", "thu nhập thợ mỏ", "ăn ở khi học", "hỗ trợ 7,5 triệu", "ký túc xá", "miễn học phí"],
+    "thu-nhap-an-o-ho-tro": ["lương thợ lò", "lương thợ lò bao nhiêu", "thu nhập thợ mỏ", "ăn ở khi học", "hỗ trợ 7,5 triệu đồng/tháng", "ký túc xá", "miễn học phí"],
     "an-toan-ky-luat-moi-truong": ["an toàn nghề mỏ", "môi trường hầm lò", "kỷ luật thợ mỏ", "bảo hộ lao động", "ca kíp"],
   }[page.slug],
   category: {

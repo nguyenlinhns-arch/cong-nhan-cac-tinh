@@ -80,8 +80,8 @@ for (const marker of [
   '"@type":"FAQPage"',
   "Khu C – Phân hiệu Đào tạo Cẩm Phả",
   "Học nghề chính khoảng 2–3 tháng",
-  "Hỗ trợ 7,5 triệu đồng",
-  "Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động",
+  "Hỗ trợ 7,5 triệu đồng/tháng",
+  "Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất",
 ]) if (!fullInfo.includes(marker)) errors.push(`Trang học nghề đầy đủ thiếu ${marker}`);
 
 for (const marker of [

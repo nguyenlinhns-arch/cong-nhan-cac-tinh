@@ -56,7 +56,7 @@ export function buildRecruitmentAnswers(recruitment) {
     },
     {
       id: "ho-tro-75-trieu",
-      question: "Khoản hỗ trợ 7,5 triệu đồng được áp dụng thế nào?",
+      question: "Khoản hỗ trợ 7,5 triệu đồng/tháng được áp dụng thế nào?",
       answer: "Người học thuộc chỉ tiêu được hỗ trợ 7,5 triệu đồng/tháng trong thời gian học theo chính sách đợt tuyển. Cán bộ tiếp nhận sẽ xác nhận cách thực hiện cùng lịch nhập học.",
       href: "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
       linkLabel: "Xem đầy đủ quyền lợi",

@@ -53,7 +53,7 @@ const structured = {
       "@id": `${pageUrl}#webpage`,
       url: pageUrl,
       name: "Nghề mỏ hầm lò gồm những nghề gì? Mô tả công việc",
-      description: "Mô tả công việc của nghề khai thác, xây dựng và cơ điện mỏ hầm lò; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      description: "Mô tả công việc của nghề khai thác, xây dựng và cơ điện mỏ hầm lò; Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.",
       inLanguage: "vi-VN",
       dateModified: master.effective_from,
       isPartOf: { "@id": `${base}/#website` },
@@ -102,10 +102,10 @@ const structured = {
 const page = `<!doctype html>
 <html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#063f48">
 <title>Nghề mỏ hầm lò gồm những nghề gì? Mô tả công việc</title>
-<meta name="description" content="Mô tả công việc của nghề khai thác, xây dựng và cơ điện mỏ hầm lò; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.">
+<meta name="description" content="Mô tả công việc của nghề khai thác, xây dựng và cơ điện mỏ hầm lò; Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><meta name="author" content="Nguyễn Tử Linh"><link rel="author" href="/tac-gia/nguyen-tu-linh/"><link rel="canonical" href="${pageUrl}">
 <link rel="icon" href="/favicon.ico"><link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48"><link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"><link rel="manifest" href="/manifest.webmanifest">
-<meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="Ba nghề mỏ hầm lò: công việc cụ thể"><meta property="og:description" content="Mô tả ba nghề mỏ hầm lò; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."><meta property="og:url" content="${pageUrl}"><meta property="og:image" content="${base}/assets/og-cover-luong-25-trieu-v4.jpg">
+<meta property="og:type" content="website"><meta property="og:locale" content="vi_VN"><meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ"><meta property="og:title" content="Ba nghề mỏ hầm lò: công việc cụ thể"><meta property="og:description" content="Mô tả ba nghề mỏ hầm lò; Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất."><meta property="og:url" content="${pageUrl}"><meta property="og:image" content="${base}/assets/og-cover-luong-25-trieu-v4.jpg">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Ba nghề mỏ hầm lò: công việc cụ thể"><meta name="twitter:description" content="Mô tả công việc nghề khai thác, xây dựng và cơ điện mỏ hầm lò."><meta name="twitter:image" content="${base}/assets/og-cover-luong-25-trieu-v4.jpg">
 <link rel="stylesheet" href="/content-network.css?v=2"><link rel="stylesheet" href="/worker-questions.css?v=2"><link rel="stylesheet" href="/mobile-core.css?v=1"><link rel="stylesheet" href="/fonts.css?v=2"><link rel="stylesheet" href="/mobile-polish-20260803.css?v=3"><link rel="stylesheet" href="/site-shell-20260803.css?v=3">
 <script type="application/ld+json">${JSON.stringify(structured)}</script></head>

@@ -539,7 +539,7 @@ const historicalLocalityItems = [
     whyItMatters: "Nguồn nêu rõ cả nhóm lao động ưu tiên, chính sách học tập và mức thu nhập hiện tại tại doanh nghiệp, cho phép tư vấn với bối cảnh cụ thể.",
     depth: [
       "Đầm Hà là địa bàn trong Quảng Ninh, nhưng nhóm thanh niên dân tộc thiểu số và lao động nông thôn vẫn có thể thiếu thông tin về nghề hầm lò. Hội nghị năm 2026 đưa công nghệ, an toàn, dinh dưỡng, phúc lợi và đào tạo vào cùng một cuộc đối thoại, giúp người nghe nhìn đầy đủ cả công việc lẫn điều kiện sống.",
-      "Mức trên 26 triệu đồng được Than Thống Nhất công bố cho thấy cơ hội thu nhập của lực lượng thợ đang làm việc. Chính sách tuyển sinh hiện hành cam kết thu nhập 20–25 triệu đồng/tháng khi người lao động hoàn thành định mức lao động.",
+      "Mức trên 26 triệu đồng được Than Thống Nhất công bố cho thấy cơ hội thu nhập của lực lượng thợ đang làm việc. Chính sách tuyển sinh hiện hành Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất khi người lao động hoàn thành định mức lao động.",
     ],
     historyTitle: "Ba bên cùng xây kế hoạch phát triển nguồn nhân lực",
     history: "Hội nghị giới thiệu tuyển sinh cùng công nghệ, an toàn vệ sinh lao động, chế độ dinh dưỡng, phúc lợi và nhu cầu nhân lực của Than Thống Nhất. Nhà trường tư vấn quyền lợi học nghề; địa phương đặt trọng tâm vào thanh niên dân tộc thiểu số, lao động nông thôn và người chưa có việc ổn định.",

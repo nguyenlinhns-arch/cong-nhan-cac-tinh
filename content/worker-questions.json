@@ -70,7 +70,7 @@
     {
       "group": "Đi từ tỉnh xa",
       "question": "Đi học và làm mỏ cần chuẩn bị bao nhiêu tiền?",
-      "answer": "Không có một con số chung. Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ăn ở và hỗ trợ 7,5 triệu đồng; chỉ nên dự trù đi lại, giấy tờ và chi tiêu cá nhân sau khi có lịch.",
+      "answer": "Không có một con số chung. Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ăn ở và hỗ trợ 7,5 triệu đồng/tháng; chỉ nên dự trù đi lại, giấy tờ và chi tiêu cá nhân sau khi có lịch.",
       "path": "/di-lam-mo-than-can-chuan-bi-bao-nhieu-tien/"
     },
     {
@@ -321,7 +321,7 @@
             "Địa điểm học và địa điểm làm việc sau đào tạo.",
             "Điều kiện để được công nhận tốt nghiệp và tiếp nhận.",
             "Loại hợp đồng lao động cùng chế độ bảo hiểm.",
-            "Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."
+            "Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất."
           ]
         },
         {
@@ -358,7 +358,7 @@
         ["Miễn kinh phí đào tạo", "Áp dụng cho người học thuộc chỉ tiêu của chương trình."],
         ["Bố trí 3 bữa/ngày", "Chính sách ăn trong thời gian học được xác nhận theo đợt tuyển."],
         ["Ký túc xá khép kín", "Giúp giảm khoản thuê trọ trong giai đoạn học nghề."],
-        ["Hỗ trợ 7,5 triệu đồng", "Khoản hỗ trợ trong khóa học theo chính sách đang áp dụng."]
+        ["Hỗ trợ 7,5 triệu đồng/tháng", "Khoản hỗ trợ trong khóa học theo chính sách đang áp dụng."]
       ],
       "sections": [
         {
@@ -391,7 +391,7 @@
       "faqs": [
         ["Có phải đóng học phí trước không?", "Người học thuộc chỉ tiêu được miễn kinh phí đào tạo. Hãy xác nhận điều kiện trước, không chuyển tiền cho trung gian."],
         ["Có phải tự thuê trọ trong thời gian học không?", "Chương trình đang áp dụng bố trí ký túc xá khép kín cho người học thuộc chỉ tiêu."],
-        ["Hỗ trợ 7,5 triệu nhận lúc nào?", "Thời điểm và cách chi trả cần được xác nhận theo chính sách của đợt tiếp nhận cụ thể."],
+        ["Hỗ trợ 7,5 triệu đồng/tháng nhận lúc nào?", "Thời điểm và cách chi trả cần được xác nhận theo chính sách của đợt tiếp nhận cụ thể."],
         ["Tỉnh xa có nên đi ngay để tiết kiệm thời gian không?", "Không. Đi khi chưa có lịch dễ phát sinh vé xe, ăn ở và giấy tờ không cần thiết."]
       ],
       "related": [

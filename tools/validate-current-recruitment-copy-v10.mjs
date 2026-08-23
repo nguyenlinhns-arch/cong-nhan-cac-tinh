@@ -48,7 +48,7 @@ for (const relative of corePages) {
   const text = normalizeText(html);
 
   const forbidden = [
-    [/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu, "hỗ trợ 7,5 triệu bị ghi thành theo tháng"],
+    [/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu, "hỗ trợ 7,5 triệu đồng/tháng bị ghi thành theo tháng"],
     [/(?:hai|2)\s+nghề\s+(?:đang\s+)?(?:tuyển|tiếp nhận)/iu, "còn mô hình cũ hai nghề"],
     [/thời gian học hai nghề đang tuyển/iu, "còn mô tả thời gian của mô hình hai nghề"],
     [/18\s*[–-]\s*35\s*tuổi/iu, "còn mốc tuổi cũ 18–35"],
