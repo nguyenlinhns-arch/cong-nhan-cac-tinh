@@ -82,7 +82,11 @@ function setHomeIntent(file) {
 }
 
 function setPaidIntent(file) {
-  const html = normalizeIncome(mustRead(file));
+  let html = normalizeIncome(mustRead(file));
+  html = html.replace(
+    /<span><strong>20[–-]25 triệu\/tháng<\/strong>[^<]*<\/span>/i,
+    '<span><strong>20–25 triệu/tháng</strong>Hoàn thành định mức lao động</span>'
+  );
   fs.writeFileSync(file, html);
 }
 
