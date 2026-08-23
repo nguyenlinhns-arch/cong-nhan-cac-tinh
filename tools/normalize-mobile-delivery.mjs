@@ -55,10 +55,21 @@ function normalizeIncomeWording(value) {
     .replace(/cam kết\s+20[–-]25\s+triệu(?:\s+đồng)?\/tháng/giu, "thu nhập 20–25 triệu đồng/tháng");
 }
 
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 function consolidateQuangNinhReferences(value) {
+  const boundary = `(?=$|[?#\"'\\s<>()])`;
   return String(value)
-    .replaceAll(RETIRED_QN_URL, PRIMARY_QN_URL)
-    .replaceAll(RETIRED_QN_PATH, PRIMARY_QN_PATH);
+    .replace(new RegExp(`${escapeRegExp(RETIRED_QN_URL)}${boundary}`, "g"), PRIMARY_QN_URL)
+    .replace(new RegExp(`${escapeRegExp(RETIRED_QN_PATH)}${boundary}`, "g"), PRIMARY_QN_PATH);
+}
+
+function ensureProvincePrimaryLink(html) {
+  if (html.includes(`href="${PRIMARY_QN_PATH}"`) || html.includes(`href='${PRIMARY_QN_PATH}'`)) return html;
+  const bridge = `<p class="local-primary-link">Nơi học và làm việc là Quảng Ninh. <a href="${PRIMARY_QN_PATH}">Xem thông tin tuyển thợ mỏ Quảng Ninh 2026</a> trước khi đăng ký.</p>`;
+  return html.replace(/(<p class=["']local-hero__lead["']>[\s\S]*?<\/p>)/i, `$1\n        ${bridge}`);
 }
 
 function normalizeHomepageSeo(html) {
@@ -151,6 +162,7 @@ let provinceDescriptionsShortened = 0;
 let incomeWordingNormalized = 0;
 let quangNinhReferencesConsolidated = 0;
 let homepageSeoNormalized = 0;
+let provincePrimaryLinksAdded = 0;
 
 // A second pass closes the small window where another build step has just
 // materialized late province pages before validation starts.
@@ -186,6 +198,11 @@ for (const file of collectHtml(root)) {
   if (mobileCountBefore > 1) duplicateMobileCssRemoved += mobileCountBefore - 1;
 
   const relative = path.relative(root, file).split(path.sep).join("/");
+  if (/^viec-lam-nganh-than\/[^/]+\/index\.html$/.test(relative) && relative !== "viec-lam-nganh-than/quang-ninh/index.html") {
+    const old = html;
+    html = ensureProvincePrimaryLink(html);
+    if (html !== old) provincePrimaryLinksAdded += 1;
+  }
   if (relative === "viec-lam-nganh-than/can-tho/index.html" || relative === "viec-lam-nganh-than/vinh-long/index.html") {
     const old = html;
     html = shortenDescription(html, 160);
@@ -270,6 +287,7 @@ console.log(JSON.stringify({
   duplicate_mobile_css_removed: duplicateMobileCssRemoved,
   province_descriptions_shortened: provinceDescriptionsShortened,
   homepage_seo_normalized: homepageSeoNormalized,
+  province_primary_links_added: provincePrimaryLinksAdded,
   income_wording_normalized_pages: incomeWordingNormalized,
   quang_ninh_references_consolidated_pages: quangNinhReferencesConsolidated,
   retired_quang_ninh_removed_from_sitemap: sitemapRedirectRemoved,
