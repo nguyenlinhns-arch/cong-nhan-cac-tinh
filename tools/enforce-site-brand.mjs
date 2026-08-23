@@ -50,6 +50,14 @@ function maskDuplicateLegacySeoValidation() {
   } catch {}
 }
 
+// Daily SEO supplements are deliberately small source files. Merge them into
+// the legacy registry inside the build runner, then regenerate the daily series
+// before enumerating HTML so new pages go through the same brand/editorial gates.
+if (!CHECK_ONLY) {
+  await import("./prepare-daily-seo-supplements.mjs");
+  await import(`./generate-daily-seo-series.mjs?with-supplements=${Date.now()}`);
+}
+
 // /nhap-hoc is a separate operational dashboard and does not share the
 // recruitment portal's header, brand shell or editorial pipeline.
 const htmlFiles = walk(SITE).filter((file) => file.endsWith(".html") && !relativePath(file).startsWith("nhap-hoc/"));
@@ -133,7 +141,7 @@ if (!CHECK_ONLY) {
   await import("./editorial-newspaper-v6.mjs");
 
   // Break the remaining exact long-sentence aliases in selected articles before
-  // SEO/schema synchronization, preserving each local story's own voice.
+  // SEO/schema synchronization, preserving each story's own voice.
   await import("./editorial-uniqueness-rewrite-v9.mjs");
 
   // Finish the uniqueness pass with punctuation-level cleanup on the exact
