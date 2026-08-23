@@ -13,6 +13,7 @@ on:
       - 'tuyen-tho-mo/data/recruitment-facts-2026.json'
       - 'operations/job-posting-master-2026.json'
       - 'tuyen-tho-mo/app.js'
+      - 'tuyen-tho-mo/viec-lam-nganh-than/**'
       - '.github/workflows/recruitment-seo-copy-v11.yml'
   workflow_dispatch:
 
@@ -21,7 +22,7 @@ permissions:
 
 concurrency:
   group: recruitment-seo-copy-v11
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   normalize:
@@ -46,6 +47,9 @@ jobs:
 
       - name: Normalize regenerated output
         run: node tools/normalize-recruitment-seo-copy-v11.mjs
+
+      - name: Refresh province sitemap from indexable output
+        run: node tuyen-tho-mo/scripts/update-ai-locality-discovery.mjs
 
       - name: Verify URL, copy and schema guardrails
         shell: bash
@@ -79,6 +83,7 @@ jobs:
             exit 1
           fi
           node -e "const d=require('./content/daily-seo-articles.json');const f=require('./tuyen-tho-mo/data/recruitment-facts-2026.json');if(d.canonical_facts_version!==f.version||d.canonical_facts_confirmed_at!==f.confirmed_at)process.exit(1)"
+          node tools/validate-province-indexing-integrity-v11.mjs
 
       - name: Commit normalized SEO source and published pages
         shell: bash
@@ -87,5 +92,5 @@ jobs:
           git config user.name 'thaylinh-marketing-bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add tools/generate-province-pages-2026.mjs tools/build-worker-first-home.mjs content/daily-seo-articles.json tuyen-tho-mo
-          git commit -m 'seo: normalize recruitment copy, freshness and clean province links [seo-copy-sync]'
+          git commit -m 'seo: normalize recruitment copy, freshness, sitemap and clean province links [seo-copy-sync]'
           git push
