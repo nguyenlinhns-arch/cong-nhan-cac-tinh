@@ -1,0 +1,26 @@
+name: Validate Facebook CRM bridge
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'operations/apps-script-facebook/**'
+      - 'operations/facebook-crm-mapping-2026.json'
+      - 'tuyen-tho-mo/recruitment-config.js'
+      - 'tools/validate-facebook-crm-bridge.mjs'
+      - '.github/workflows/facebook-crm-bridge-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate bridge contract and syntax
+        run: node tools/validate-facebook-crm-bridge.mjs
