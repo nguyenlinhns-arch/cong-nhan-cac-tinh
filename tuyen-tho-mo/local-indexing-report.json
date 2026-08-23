@@ -1,0 +1,9 @@
+{
+  "generated_at": "2026-08-23T04:00:10.619Z",
+  "policy": "Chỉ index trang xã/phường có bằng chứng tuyển sinh lịch sử tổng hợp, tối thiểu 5 hồ sơ; các trang còn lại noindex,follow.",
+  "current_localities": 3321,
+  "indexable_localities": 288,
+  "noindex_localities": 3033,
+  "sitemap_urls": 288,
+  "privacy_threshold": 5
+}
