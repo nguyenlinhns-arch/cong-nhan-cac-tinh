@@ -30,6 +30,7 @@ const hubs = [
   ["viec-lam-nganh-than/index.html", "/viec-lam-nganh-than/"],
   ["cam-nang-nghe-mo/index.html", "/cam-nang-nghe-mo/"],
   ["chuyen-nguoi-tho/index.html", "/chuyen-nguoi-tho/"],
+  ["phong-su/index.html", "/phong-su/"],
   ["chia-se-thong-tin/index.html", "/chia-se-thong-tin/"],
   ["tac-gia/nguyen-tu-linh/index.html", "/tac-gia/nguyen-tu-linh/"],
   ["nguyen-tac-bien-tap/index.html", "/nguyen-tac-bien-tap/"],
@@ -101,8 +102,15 @@ const dailySeoPages = 1 + (Array.isArray(dailySeoFeed.articles) ? dailySeoFeed.a
 // one-to-one feed additions dynamically so daily source-led publishing does
 // not make the locality coverage gate stale.
 const editorialDelta = Math.max(0, articles.length - 69);
+// Field-report v8 materializes one dedicated hub plus one standalone page for
+// each original field report. Their existence/content is enforced separately
+// by validate-editorial-field-report-v8.mjs; count them here as first-class
+// permanent content instead of treating new journalism as an unexpected file.
+const fieldReportDataPath = path.resolve("content", "editorial-field-reports-v8.json");
+const fieldReportCount = fs.existsSync(fieldReportDataPath) ? Object.keys(JSON.parse(fs.readFileSync(fieldReportDataPath,"utf8"))).length : 0;
+const fieldReportPages = fieldReportCount ? 1 + fieldReportCount : 0;
 // Add one permanent page for the local temporary-recruitment landing page.
-const permanentContentBaseline = 186 + editorialDelta + dailySeoPages;
+const permanentContentBaseline = 186 + editorialDelta + dailySeoPages + fieldReportPages;
 const expectedHtmlFiles = (permanentContentBaseline + 1) + materializedDelta;
 const expectedContentFiles = permanentContentBaseline + materializedDelta;
 if (htmlFiles.length !== expectedHtmlFiles) fail(`Website: cần ${expectedHtmlFiles} tệp HTML sau khi materialize 3.321 địa bàn, nhận ${htmlFiles.length}`);
@@ -117,5 +125,5 @@ for (const file of contentFiles) {
   if (!isAdsLanding && !html.includes('/mobile-core.js?v=1')) fail(`${relative}: chưa nạp /mobile-core.js?v=1`);
 }
 
-console.log(JSON.stringify({html:htmlFiles.length,content_pages:contentFiles.length,hubs:hubs.length,verification_pages:verificationPages.length,daily_seo_pages:dailySeoPages,provinces:provinceEntries.length,locality_hubs:localityHubs,locality_pages:localityPages,articles:articles.length,errors:errors.length,sampleErrors:errors.slice(0,40)},null,2));
+console.log(JSON.stringify({html:htmlFiles.length,content_pages:contentFiles.length,hubs:hubs.length,verification_pages:verificationPages.length,daily_seo_pages:dailySeoPages,field_report_pages:fieldReportPages,provinces:provinceEntries.length,locality_hubs:localityHubs,locality_pages:localityPages,articles:articles.length,errors:errors.length,sampleErrors:errors.slice(0,40)},null,2));
 if (errors.length) process.exitCode = 1;
