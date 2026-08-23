@@ -8,6 +8,7 @@
   "dedupe_key": "phone_normalized",
   "sync_rule": {
     "required_before_master_create": [
+      "full_name",
       "phone",
       "birth_year",
       "height_cm",
@@ -20,6 +21,7 @@
       "Chưa cung cấp"
     ],
     "do_not_auto_create_when": [
+      "missing_full_name",
       "missing_phone",
       "missing_birth_year",
       "missing_height",
