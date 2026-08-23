@@ -46,8 +46,7 @@ const verificationPages = [
   "thu-nhap-an-o-ho-tro/index.html",
   "an-toan-ky-luat-moi-truong/index.html",
 ];
-for (const relative of verificationPages) mutate(relative, setLastReviewed);
-for (const relative of ["chon-kcn-hay-lam-mo/index.html", "cau-chuyen-cong-nhan/index.html"]) mutate(relative, setDateModified);
+for (const relative of verificationPages) mutate(relative, (html) => setDateModified(setLastReviewed(html)));
 
 const oldPolicy = "Nội dung giúp người lao động tự đối chiếu trước khi liên hệ. Bộ kiểm tra trên website chỉ là sàng lọc sơ bộ; không lưu câu trả lời sức khỏe và không thay thế khám tuyển. Quảng cáo dẫn về các trang này phải được vận hành theo nhóm việc làm/Special Ad Category khi Meta yêu cầu.";
 const publicPolicy = "Nội dung giúp người lao động tự đối chiếu trước khi liên hệ. Bộ kiểm tra trên website chỉ là sàng lọc sơ bộ, không lưu câu trả lời sức khỏe và không thay thế khám tuyển. Khi dữ kiện tuyển sinh thay đổi, website ưu tiên thông tin có ngày hiệu lực mới hơn và công khai ngày rà soát.";
