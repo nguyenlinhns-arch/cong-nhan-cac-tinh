@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "confirmed_at": "2026-08-23T10:38:00+07:00",
   "status": "confirmed",
   "candidate": {
@@ -24,7 +24,8 @@
   "after_training": {
     "work_location": "Các đơn vị ngành Than thuộc TKV tại Quảng Ninh",
     "income": "Bình quân 20–25 triệu đồng/tháng",
-    "income_note": "Tùy đơn vị, vị trí, ngày công và năng suất"
+    "income_note": "Tùy đơn vị, vị trí, ngày công và năng suất",
+    "employment": "Có hợp đồng lao động, bảo hiểm, thưởng, xe đưa đón và chế độ theo từng đơn vị"
   },
   "contact": {
     "brand": "Thầy Linh – Tuyển Thợ Mỏ",
