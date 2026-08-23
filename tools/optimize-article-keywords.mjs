@@ -124,6 +124,7 @@ function firstCopy(html) {
 function coreText(html) {
   let markup = articleMarkup(html);
   for (const pattern of [
+    /<div\b[^>]*class=["'][^"']*\barticle-origin-v9\b[^"']*["'][^>]*>[\s\S]*?<\/div>/gi,
     /<div\b[^>]*class=["'][^"']*\barticle-source-footer\b[^"']*["'][^>]*>[\s\S]*?<\/div>/gi,
     /<p\b[^>]*class=["'][^"']*\barticle-(?:source-note|topic-hub|seo-line)\b[^"']*["'][^>]*>[\s\S]*?<\/p>/gi,
     /<nav\b[^>]*class=["'][^"']*\barticle-nav\b[^"']*["'][^>]*>[\s\S]*?<\/nav>/gi,
