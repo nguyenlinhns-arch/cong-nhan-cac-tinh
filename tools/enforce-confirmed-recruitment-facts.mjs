@@ -43,12 +43,12 @@ const facts = {
     phone: '096 304 8585',
     cta: 'Gửi năm sinh – chiều cao/cân nặng – tình trạng sức khỏe để Thầy Linh kiểm tra điều kiện.'
   },
-  forbidden_legacy_phrases: ['6 triệu', '18–25 triệu', '7,5 triệu là tổng cả khóa']
+  forbidden_legacy_phrases: ['6 triệu', '18–25 triệu', '7,5 triệu đồng/tháng trong thời gian học']
 };
 
 const regexReplacements = [
-  [/CAM KẾT THU NHẬP/gu, 'THU NHẬP BÌNH QUÂN'],
-  [/THU NHẬP CAM KẾT/gu, 'THU NHẬP BÌNH QUÂN'],
+  [/THU NHẬP BÌNH QUÂN/gu, 'THU NHẬP BÌNH QUÂN'],
+  [/THU NHẬP BÌNH QUÂN/gu, 'THU NHẬP BÌNH QUÂN'],
   [/HOÀN THÀNH ĐỊNH MỨC LAO ĐỘNG/gu, 'THU NHẬP BÌNH QUÂN'],
   [/Thu nhập\s+20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động/giu, 'Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất'],
   [/Mức thu nhập\s+20[–-]25 triệu đồng\/tháng áp dụng khi hoàn thành định mức lao động\.?/giu, 'Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.'],
@@ -57,8 +57,8 @@ const regexReplacements = [
   [/Điều kiện áp dụng:\s*hoàn thành định mức lao động\.?/giu, INCOME_NOTE + '.'],
   [/7,5 triệu là tổng (?:mức hỗ trợ )?cả khóa/giu, SUPPORT],
   [/7,5 triệu đồng\/tháng(?:\/tháng|\s+đồng)+/giu, '7,5 triệu đồng/tháng'],
-  [/Hỗ trợ 7,5 triệu đồng(?!\/tháng)/gu, 'Hỗ trợ 7,5 triệu đồng/tháng'],
-  [/hỗ trợ 7,5 triệu đồng(?!\/tháng)/gu, 'hỗ trợ 7,5 triệu đồng/tháng']
+  [/Hỗ trợ 7,5 triệu đồng/tháng(?!\/tháng)/gu, 'Hỗ trợ 7,5 triệu đồng/tháng'],
+  [/hỗ trợ 7,5 triệu đồng/tháng(?!\/tháng)/gu, 'hỗ trợ 7,5 triệu đồng/tháng']
 ];
 
 const exactReplacements = [
@@ -67,7 +67,7 @@ const exactReplacements = [
   ['<div><dt>Hỗ trợ trong thời gian học</dt><dd>7,5 triệu đồng</dd></div>', '<div><dt>Hỗ trợ trong thời gian học</dt><dd>7,5 triệu đồng/tháng</dd></div>'],
   ['<strong>7,5 triệu</strong>Hỗ trợ trong thời gian học', '<strong>7,5 triệu/tháng</strong>Hỗ trợ trong thời gian học'],
   ['Mức thu nhập được cam kết theo chính sách đang áp dụng.', 'Thu nhập bình quân; tùy đơn vị, vị trí, ngày công và năng suất.'],
-  ['Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.', 'Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.'],
+  ['Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.', 'Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.'],
   ['<article><small>01</small><strong>Miễn học phí</strong><p>Được miễn toàn bộ kinh phí đào tạo theo chương trình.</p></article>', '<article><small>01</small><strong>Miễn học phí</strong><p>Miễn học phí theo chỉ tiêu.</p></article>'],
   ['<article><small>02</small><strong>Ăn, ở miễn phí</strong><p>Ba bữa/ngày, 7 ngày/tuần, mức ăn 90.000 đồng/ngày; ký túc xá khép kín.</p></article>', '<article><small>02</small><strong>Ăn 3 bữa · ở KTX</strong><p>Được bố trí ăn 3 bữa/ngày và ở ký túc xá trong thời gian học.</p></article>'],
   ['<article class="benefit-grid__accent"><small>04</small><strong>85–100% lương khi thực tập</strong><p>So với công nhân trong cùng dây chuyền sản xuất, kèm chế độ theo quy định.</p></article>', '<article class="benefit-grid__accent"><small>04</small><strong>Thực tập sản xuất</strong><p>Được bố trí thực tập theo chương trình; chế độ thực tế theo đơn vị và đợt tiếp nhận.</p></article>'],
@@ -137,6 +137,6 @@ const criticalFiles = [
   'tuyen-tho-mo/tuyen-tho-mo-quang-ninh/index.html'
 ].filter(fs.existsSync);
 const critical = criticalFiles.map(x => fs.readFileSync(x, 'utf8')).join('\n');
-if (/7,5 triệu là tổng cả khóa|18[–-]25 triệu|6 triệu/iu.test(critical)) throw new Error('Legacy recruitment fact remains on a critical public page');
+if (/7,5 triệu đồng/tháng trong thời gian học|18[–-]25 triệu|6 triệu/iu.test(critical)) throw new Error('Legacy recruitment fact remains on a critical public page');
 
 console.log(JSON.stringify({status:'ok', changedFiles, income:INCOME, income_note:INCOME_NOTE, support:SUPPORT}, null, 2));
