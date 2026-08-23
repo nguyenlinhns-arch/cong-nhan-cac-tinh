@@ -4,3 +4,4 @@ retry after content-network page count update
 retry after Open Graph and Twitter metadata
 final retry after canonical Twitter and editorial authority transparency
 final confirmation after explicit no-fabricated-quotes policy
+final confirmation after field-report search and AI classification
