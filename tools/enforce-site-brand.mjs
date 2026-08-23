@@ -132,6 +132,11 @@ if (!CHECK_ONLY) {
   // SEO/schema synchronization, preserving each local story's own voice.
   await import("./editorial-uniqueness-rewrite-v9.mjs");
 
+  // Finish the uniqueness pass with punctuation-level cleanup on the exact
+  // source article that still used a long dash, then assert that the final body
+  // copy is clean before metadata and internal links are synchronized.
+  await import("./editorial-uniqueness-punctuation-v9.mjs");
+
   // Synchronize metadata and internal links against the exact final copy.
   await import("./optimize-article-keywords.mjs?after-editorial-v6=1");
 
