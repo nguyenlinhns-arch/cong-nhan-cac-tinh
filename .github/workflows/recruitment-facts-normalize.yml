@@ -26,22 +26,145 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
 
-      - name: Enforce confirmed recruitment facts
-        run: node tools/enforce-confirmed-recruitment-facts.mjs
+      - name: Normalize user-confirmed recruitment facts
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+
+          const SUPPORT = '7,5 triệu đồng/tháng trong thời gian học';
+          const INCOME = 'Bình quân 20–25 triệu đồng/tháng';
+          const INCOME_NOTE = 'Tùy đơn vị, vị trí, ngày công và năng suất';
+          const CONFIRMED_AT = '2026-08-23T10:38:00+07:00';
+
+          const facts = {
+            version: 7,
+            confirmed_at: CONFIRMED_AT,
+            status: 'confirmed_by_user',
+            candidate: {
+              gender: 'Nam', age_min: 18, age_max: 40,
+              height_min_cm: 153, weight_min_kg: 47,
+              health: 'Sức khỏe tốt; kiểm tra mắt, huyết áp, tim mạch và các bệnh ảnh hưởng công việc hầm lò'
+            },
+            training: { khai_thac_mo: '2–3 tháng', xay_dung_mo: '2–3 tháng', co_dien_mo: '10 tháng' },
+            study_benefits: {
+              tuition: 'Miễn học phí theo chỉ tiêu',
+              meals: 'Ăn 3 bữa/ngày',
+              accommodation: 'Ở ký túc xá',
+              living_support: SUPPORT
+            },
+            after_training: {
+              work_location: 'Các đơn vị ngành Than thuộc TKV tại Quảng Ninh',
+              income: INCOME,
+              income_note: INCOME_NOTE,
+              employment: 'Có hợp đồng lao động, bảo hiểm, thưởng, xe đưa đón và chế độ theo từng đơn vị'
+            },
+            contact: {
+              brand: 'Thầy Linh – Tuyển Thợ Mỏ',
+              phone: '096 304 8585',
+              cta: 'Gửi năm sinh – chiều cao/cân nặng – tình trạng sức khỏe để Thầy Linh kiểm tra điều kiện.'
+            },
+            forbidden_legacy_phrases: ['6 triệu', '18–25 triệu', '7,5 triệu là tổng cả khóa']
+          };
+
+          const canonical = 'content/recruitment-facts-2026.json';
+          const publicFacts = 'tuyen-tho-mo/data/recruitment-facts-2026.json';
+          fs.mkdirSync(path.dirname(canonical), {recursive:true});
+          fs.mkdirSync(path.dirname(publicFacts), {recursive:true});
+          fs.writeFileSync(canonical, JSON.stringify(facts, null, 2) + '\n');
+          fs.writeFileSync(publicFacts, JSON.stringify(facts, null, 2) + '\n');
+
+          const currentPath = 'tuyen-tho-mo/recruitment-current.json';
+          if (fs.existsSync(currentPath)) {
+            const current = JSON.parse(fs.readFileSync(currentPath,'utf8'));
+            current.updated_at = '2026-08-23';
+            current.benefits_during_training ||= {};
+            current.benefits_during_training.living_support = SUPPORT;
+            current.after_training ||= {};
+            current.after_training.income_commitment = `${INCOME}, ${INCOME_NOTE.toLocaleLowerCase('vi')}`;
+            current.after_training.income_reference = current.after_training.income_commitment;
+            current.usage_note = 'Dùng bộ dữ liệu này để đối chiếu thông tin tuyển đang áp dụng. Hai mốc người dùng đã xác nhận: hỗ trợ 7,5 triệu đồng/tháng trong thời gian học; thu nhập 20–25 triệu đồng/tháng. Không dùng 6 triệu, 18–25 triệu hoặc 7,5 triệu là tổng cả khóa.';
+            fs.writeFileSync(currentPath, JSON.stringify(current,null,2)+'\n');
+          }
+
+          const masterPath = 'operations/job-posting-master-2026.json';
+          if (fs.existsSync(masterPath)) {
+            const master = JSON.parse(fs.readFileSync(masterPath,'utf8'));
+            master.version = Math.max(Number(master.version||0), 11);
+            master.updated_at = CONFIRMED_AT;
+            master.income_commitment = `${INCOME}, ${INCOME_NOTE.toLocaleLowerCase('vi')}`;
+            master.income_reference = master.income_commitment;
+            master.canonical_facts = canonical;
+            if (Array.isArray(master.benefits)) master.benefits = master.benefits.map(x => /7,5\s*triệu/i.test(x) ? `Hỗ trợ ${SUPPORT}` : x);
+            fs.writeFileSync(masterPath, JSON.stringify(master,null,2)+'\n');
+          }
+
+          const roots = ['content','tools','operations','tuyen-tho-mo'];
+          const exts = new Set(['.html','.js','.mjs','.json','.md','.txt','.xml']);
+          const skip = new Set([path.normalize(canonical), path.normalize(publicFacts)]);
+          const replacements = [
+            [/Thu nhập\s+20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động/giu, `Thu nhập ${INCOME.toLocaleLowerCase('vi')}, ${INCOME_NOTE.toLocaleLowerCase('vi')}`],
+            [/Mức thu nhập\s+20[–-]25 triệu đồng\/tháng áp dụng khi hoàn thành định mức lao động\.?/giu, `Thu nhập ${INCOME.toLocaleLowerCase('vi')}, ${INCOME_NOTE.toLocaleLowerCase('vi')}.`],
+            [/20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động/giu, '20–25 triệu đồng/tháng'],
+            [/20[–-]25 triệu\/tháng khi hoàn thành định mức lao động/giu, '20–25 triệu/tháng'],
+            [/Điều kiện áp dụng:\s*hoàn thành định mức lao động\.?/giu, INCOME_NOTE + '.'],
+            [/CAM KẾT THU NHẬP/gu, 'THU NHẬP BÌNH QUÂN'],
+            [/THU NHẬP CAM KẾT/gu, 'THU NHẬP BÌNH QUÂN'],
+            [/7,5 triệu là tổng (?:mức hỗ trợ )?cả khóa/giu, SUPPORT],
+            [/7,5 triệu đồng\/tháng(?:\/tháng|\s+đồng)+/giu, '7,5 triệu đồng/tháng'],
+            [/Hỗ trợ 7,5 triệu đồng(?!\/tháng)/gu, 'Hỗ trợ 7,5 triệu đồng/tháng'],
+            [/hỗ trợ 7,5 triệu đồng(?!\/tháng)/gu, 'hỗ trợ 7,5 triệu đồng/tháng']
+          ];
+
+          function normalizeFile(file) {
+            const nf = path.normalize(file);
+            if (skip.has(nf)) return;
+            let s; try { s = fs.readFileSync(file,'utf8'); } catch { return; }
+            let n = s;
+            for (const [re,to] of replacements) n = n.replace(re,to);
+            if (n !== s) fs.writeFileSync(file,n);
+          }
+          function walk(dir) {
+            if (!fs.existsSync(dir)) return;
+            for (const ent of fs.readdirSync(dir,{withFileTypes:true})) {
+              const p = path.join(dir,ent.name);
+              if (ent.isDirectory()) walk(p);
+              else if (exts.has(path.extname(ent.name).toLowerCase())) normalizeFile(p);
+            }
+          }
+          roots.forEach(walk);
+
+          // Re-write canonical files last so generic normalization can never alter them.
+          fs.writeFileSync(canonical, JSON.stringify(facts, null, 2) + '\n');
+          fs.writeFileSync(publicFacts, JSON.stringify(facts, null, 2) + '\n');
+          NODE
+
+      - name: Verify user-confirmed facts
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs=require('node:fs');
+          const f=JSON.parse(fs.readFileSync('content/recruitment-facts-2026.json','utf8'));
+          if(f.study_benefits.living_support!=='7,5 triệu đồng/tháng trong thời gian học') process.exit(1);
+          if(f.after_training.income!=='Bình quân 20–25 triệu đồng/tháng') process.exit(1);
+          if(f.after_training.income_note!=='Tùy đơn vị, vị trí, ngày công và năng suất') process.exit(1);
+          const critical=[
+            'tuyen-tho-mo/index.html',
+            'tuyen-tho-mo/tuyen-tho-mo-quang-ninh/index.html',
+            'tuyen-tho-mo/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html'
+          ].filter(fs.existsSync).map(x=>fs.readFileSync(x,'utf8')).join('\n');
+          if(/7,5 triệu là tổng cả khóa|18[–-]25 triệu|6 triệu/iu.test(critical)) process.exit(1);
+          console.log('User-confirmed recruitment facts verified.');
+          NODE
 
       - name: Commit normalized facts
         shell: bash
         run: |
-          if git diff --quiet; then
-            echo 'No normalization changes required.'
-            exit 0
-          fi
+          if git diff --quiet; then exit 0; fi
           git config user.name 'thaylinh-marketing-bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add content tools operations tuyen-tho-mo
-          git commit -m 'chore: sync confirmed recruitment facts [facts-sync]'
+          git commit -m 'chore: sync user-confirmed recruitment facts [facts-sync]'
           git push
