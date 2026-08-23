@@ -50,12 +50,14 @@ if (!fs.existsSync(runtimePath)) errors.push("Thiếu google-search-intent.js");
 else {
   const runtime = fs.readFileSync(runtimePath, "utf8");
   for (const marker of [
+    `CANONICAL_FACTS_VERSION = ${facts.version}`,
     "7,5 triệu đồng/tháng",
     "20–25 triệu đồng/tháng khi hoàn thành định mức lao động",
-    "Khai thác và xây dựng mỏ: 2–3 tháng; cơ điện mỏ: 10 tháng",
   ]) {
     if (!runtime.includes(marker)) errors.push(`google-search-intent.js thiếu marker: ${marker}`);
   }
+  const trainingPattern = /(?:Khai thác\s+(?:và|,)\s*xây dựng mỏ|Khai thác,\s*xây dựng mỏ)\s*:\s*2[–-]3 tháng\s*[.;]\s*Cơ điện mỏ\s*:\s*10 tháng/iu;
+  if (!trainingPattern.test(runtime)) errors.push("google-search-intent.js chưa thể hiện đủ khai thác/xây dựng 2–3 tháng và cơ điện 10 tháng trong cùng facts block");
   if (/Cam kết 20[–-]25 triệu\/tháng/iu.test(runtime)) errors.push("google-search-intent.js còn câu Cam kết 20–25 triệu/tháng thiếu điều kiện");
   if (/20[–-]25 triệu\/tháng\.;/u.test(runtime)) errors.push("google-search-intent.js còn lỗi dấu câu .;");
 }
@@ -64,7 +66,7 @@ const landingPath = path.join(site, "viec-lam", "cong-nhan-mo-ham-lo-quang-ninh"
 if (!fs.existsSync(landingPath)) errors.push("Thiếu landing paid-search canonical");
 else {
   const html = fs.readFileSync(landingPath, "utf8");
-  if (!html.includes("google-search-intent.js")) errors.push("Landing không tải google-search-intent.js");
+  if (!/<script\b[^>]*src=["']\/google-search-intent\.js\?v=11["'][^>]*defer[^>]*><\/script>/iu.test(html)) errors.push("Landing chưa tải google-search-intent.js?v=11 bằng defer");
   if (/7[,.]5\s*triệu/iu.test(html) && !/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(html)) errors.push("Landing có 7,5 triệu nhưng thiếu /tháng");
   if (/20\s*[–-]\s*25\s*triệu/iu.test(html) && !/hoàn thành định mức lao động/iu.test(html)) errors.push("Landing có 20–25 triệu nhưng thiếu điều kiện định mức");
   if (/\bbình quân\s+20[–-]25\s*triệu/iu.test(html)) errors.push("Landing còn thu nhập bình quân legacy");

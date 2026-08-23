@@ -31,11 +31,12 @@ if (errors.length) {
   process.exit(1);
 }
 
-// The legacy job-board generator is still authoritative for page structure.
-// Normalize the few policy-copy fragments it emits so visible/metadata copy
-// cannot regress while that generator is being progressively simplified.
+// The job-board generator owns structural HTML. Normalize policy copy and load
+// the paid-search intent adapter on the canonical campaign landing after every
+// rebuild so Google Ads traffic cannot silently lose its fast-answer layer.
+const paidLanding = path.join(site, "viec-lam", "cong-nhan-mo-ham-lo-quang-ninh", "index.html");
 const jobPagePaths = [
-  path.join(site, "viec-lam", "cong-nhan-mo-ham-lo-quang-ninh", "index.html"),
+  paidLanding,
   ...master.occupation_profiles.filter((profile) => profile.active_intake).map((profile) => path.join(site, "viec-lam", profile.slug, "index.html")),
 ];
 for (const file of jobPagePaths) {
@@ -46,6 +47,11 @@ for (const file of jobPagePaths) {
     .replace(/7[,.]5 triệu đồng\/tháng theo chính sách/giu, "7,5 triệu đồng/tháng trong thời gian học")
     .replace(/(20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động)\.\s*;/giu, "$1;")
     .replace(/\.\s*;/g, ";");
+  if (file === paidLanding && !text.includes("google-search-intent.js")) {
+    const closeBody = text.match(/\s*<\/body>/i)?.[0];
+    if (!closeBody) throw new Error("Paid-search landing thiếu </body> để gắn intent runtime");
+    text = text.replace(closeBody, `\n  <script src="/google-search-intent.js?v=11" defer></script>${closeBody}`);
+  }
   fs.writeFileSync(file, text);
 }
 
@@ -88,5 +94,6 @@ console.log(JSON.stringify({
   canonicalFactsConfirmedAt: facts.confirmed_at,
   provincePages: 34,
   jobPagesNormalized: jobPagePaths.length,
+  paidSearchRuntime: "/google-search-intent.js?v=11",
   feeds: ["jobs.json", "jobs.xml", "jooble.xml"],
 }, null, 2));
