@@ -22,7 +22,7 @@ let text = fs.readFileSync(target, "utf8");
 text = text
   .replace(/(?:Thu nhập\s+)?bình quân\s+20[–-]25\s*triệu(?:\s*đồng)?\/tháng(?:,?\s*tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất)?/giu, income)
   .replace(/20[–-]25\s*triệu(?:\s*đồng)?\/tháng,?\s*tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất/giu, income)
-  .replace(/7[,.]5\s*triệu(?:\s*đồng)?(?!\s*\/\s*tháng)\s+trong thời gian học/giu, support)
+  .replace(/7[,.]5\s*triệu(?!\s*(?:đồng\s*)?\/\s*tháng)(?:\s*đồng)?\s+trong thời gian học/giu, support)
   .replace(/Hai hướng đang tuyển là khai thác mỏ hầm lò và xây dựng mỏ hầm lò\./g,
     "Ba nghề đang tiếp nhận là kỹ thuật khai thác mỏ hầm lò, kỹ thuật xây dựng mỏ hầm lò và kỹ thuật cơ điện mỏ hầm lò.");
 
@@ -41,7 +41,7 @@ text = nextHeading === -1
   ? `${text.slice(0, currentStart)}${currentSection}`
   : `${text.slice(0, currentStart)}${currentSection}${text.slice(nextHeading + 1)}`;
 
-for (const legacy of ["bình quân 20–25 triệu", "tùy đơn vị, vị trí, ngày công và năng suất", "7,5 triệu đồng/tháng trong thời gian học"]) {
+for (const legacy of ["bình quân 20–25 triệu", "tùy đơn vị, vị trí, ngày công và năng suất", "7,5 triệu là tổng cả khóa"]) {
   if (text.toLocaleLowerCase("vi").includes(legacy)) throw new Error(`AI facts: llms.txt còn legacy phrase ${legacy}`);
 }
 for (const marker of [factsUrl, currentUrl, support, income, `facts v${facts.version}`]) {
@@ -56,4 +56,5 @@ console.log(JSON.stringify({
   income,
   policyEffective: review.policy_effective_from,
   reviewedAt: review.reviewed_at,
+  monthlySupportIdempotent: true,
 }, null, 2));
