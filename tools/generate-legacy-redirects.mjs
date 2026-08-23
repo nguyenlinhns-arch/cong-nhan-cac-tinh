@@ -16,16 +16,12 @@ function escapeHtml(value) {
 function render(route) {
   const targetUrl = `${base}${route.to}`;
   const isQuestion = route.kind === "duplicate-question";
-  const isQuangNinhProvinceConsolidation = route.from === "/viec-lam-nganh-than/quang-ninh/";
   const title = isQuestion
     ? `${route.label} Nội dung đã được hợp nhất`
     : `Thông tin việc làm ngành Than tại ${route.label} đã chuyển địa chỉ`;
   const description = isQuestion
     ? `Câu trả lời về “${route.label}” đã được hợp nhất tại trang thông tin chính để người lao động không gặp nội dung trùng lặp.`
     : `Đường dẫn cũ được chuyển tới trang thông tin việc làm ngành Than tại ${route.label} trên Thầy Linh Tuyển Thợ Mỏ.`;
-  const localityContinuity = isQuangNinhProvinceConsolidation
-    ? `<p class="legacy-locality-continuity"><strong>Thầy Linh</strong> <small>Tuyển Thợ Mỏ</small> · <a href="/viec-lam-nganh-than/quang-ninh/xa-phuong/">Tra cứu tuyển nguồn theo xã/phường Quảng Ninh</a></p>`
-    : "";
   return `<!doctype html>
 <html lang="vi">
 <head>
@@ -52,7 +48,6 @@ function render(route) {
       <h1>${isQuestion ? escapeHtml(route.label) : `Thông tin tại ${escapeHtml(route.label)} đã chuyển sang địa chỉ mới`}</h1>
       <p>${isQuestion ? "Website đang chuyển bạn tới câu trả lời chính để tránh hai trang cùng giải thích một vấn đề." : "Website đang chuyển bạn tới trang thông tin việc làm ngành Than hiện hành."}</p>
       <a class="button" href="${route.to}">${isQuestion ? "Mở câu trả lời chính" : "Mở trang mới"}</a>
-      ${localityContinuity}
     </article>
   </main>
   <script>location.replace(${JSON.stringify(route.to)} + location.search + location.hash);</script>
@@ -63,10 +58,36 @@ function render(route) {
 `;
 }
 
-for (const route of config.routes) {
-  const directory = path.join(root, route.from.replace(/^\/+|\/+$/g, ""));
-  fs.mkdirSync(directory, {recursive: true});
-  fs.writeFileSync(path.join(directory, "index.html"), render(route));
+function shouldProtectCanonicalProvince(route, output) {
+  if (!/^\/viec-lam-nganh-than\/[^/]+\/$/u.test(route.from)) return false;
+  if (!fs.existsSync(output)) return false;
+  const existing = fs.readFileSync(output, "utf8");
+  const expectedCanonical = `${base}${route.from}`;
+  const canonical = existing.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i)?.[1] || "";
+  const robots = existing.match(/<meta\s+name=["']robots["']\s+content=["']([^"']+)["']/i)?.[1] || "";
+  const isCurrentCanonical = canonical === expectedCanonical && /(?:^|,)\s*index(?:,|$)/i.test(robots) && !/noindex/i.test(robots);
+  return isCurrentCanonical;
 }
 
-console.log(JSON.stringify({legacyRedirects: config.routes.length}, null, 2));
+let written = 0;
+let skippedCanonical = 0;
+const skipped = [];
+for (const route of config.routes) {
+  const directory = path.join(root, route.from.replace(/^\/+|\/+$/g, ""));
+  const output = path.join(directory, "index.html");
+  if (shouldProtectCanonicalProvince(route, output)) {
+    skippedCanonical += 1;
+    skipped.push(route.from);
+    continue;
+  }
+  fs.mkdirSync(directory, {recursive: true});
+  fs.writeFileSync(output, render(route));
+  written += 1;
+}
+
+console.log(JSON.stringify({
+  configuredLegacyRoutes: config.routes.length,
+  legacyRedirectsWritten: written,
+  protectedCanonicalProvincePages: skippedCanonical,
+  skipped,
+}, null, 2));

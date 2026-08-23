@@ -5,6 +5,8 @@ import path from "node:path";
 // normalizers are deterministic build steps; validators remain read-only.
 await import("./normalize-paid-search-current-facts-v11.mjs");
 if (process.exitCode && process.exitCode !== 0) process.exit(process.exitCode);
+await import("./prepare-province-legacy-templates-v11.mjs");
+if (process.exitCode && process.exitCode !== 0) process.exit(process.exitCode);
 await import("./normalize-province-current-facts-v11.mjs");
 if (process.exitCode && process.exitCode !== 0) process.exit(process.exitCode);
 
