@@ -9,6 +9,7 @@ const dailyFeedPath = path.join(site, "daily-seo-articles.json");
 const dailyHubPath = path.join(site, "giai-dap-nghe-mo", "index.html");
 const sitemapPath = path.join(site, "sitemap.xml");
 const recruitmentPath = path.join(site, "recruitment-current.json");
+const fieldReportsPath = path.join(root, "content", "editorial-field-reports-v8.json");
 const bangkokToday = new Intl.DateTimeFormat("en-CA", {
   timeZone: "Asia/Bangkok",
   year: "numeric",
@@ -34,7 +35,14 @@ if (!fs.existsSync(recruitmentPath)) throw new Error("sync-home-freshness: thi�
 const recruitment = JSON.parse(fs.readFileSync(recruitmentPath, "utf8"));
 const recruitmentDate = validDate(recruitment.updated_at) ? recruitment.updated_at : "";
 
-const latestDate = maxDate([communityDate, dailyDate, recruitmentDate]);
+if (!fs.existsSync(fieldReportsPath)) throw new Error("sync-home-freshness: thiếu editorial-field-reports-v8.json");
+const fieldReports = JSON.parse(fs.readFileSync(fieldReportsPath, "utf8"));
+const fieldReportDate = maxDate(Object.values(fieldReports).map((report) => report?.dateModified));
+
+// Homepage freshness follows the newest substantive source actually surfaced
+// on the homepage: current recruitment facts, daily answers, industry news or
+// the original field-report collection linked from the proof section.
+const latestDate = maxDate([communityDate, dailyDate, recruitmentDate, fieldReportDate]);
 if (!latestDate) throw new Error("sync-home-freshness: không xác định được ngày cập nhật trang chủ");
 
 let html = fs.readFileSync(homepagePath, "utf8");
@@ -66,5 +74,6 @@ console.log(JSON.stringify({
   communityDate,
   dailyAnswerDate: dailyDate,
   recruitmentDate: recruitmentDate || null,
+  fieldReportDate: fieldReportDate || null,
   dailySource: dailyFeed.articles?.[0]?.canonical_url || null,
 }, null, 2));
