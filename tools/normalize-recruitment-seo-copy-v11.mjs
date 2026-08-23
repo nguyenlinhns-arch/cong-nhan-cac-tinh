@@ -29,6 +29,10 @@ const exactReplacements = [
     'Mức thu nhập đang áp dụng là 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.'
   ],
   [
+    /Nguồn tuyển đang áp dụng Thu nhập 20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động\./gu,
+    'Mức thu nhập đang áp dụng là 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.'
+  ],
+  [
     /Mức thu nhập được cam kết theo chính sách đang áp dụng\./giu,
     'Mức thu nhập áp dụng khi hoàn thành định mức lao động.'
   ],
@@ -39,6 +43,22 @@ const exactReplacements = [
   [
     /được cam kết thu nhập 20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động/giu,
     'có mức thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động'
+  ],
+  [
+    /mức Thu nhập/gu,
+    'mức thu nhập'
+  ],
+  [
+    /Thu nhập 20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động\.\s*gắn với việc hoàn thành định mức lao động, nên/giu,
+    'Mức thu nhập 20–25 triệu đồng/tháng áp dụng khi hoàn thành định mức lao động, nên'
+  ],
+  [
+    /Điều kiện ["“]khi hoàn thành định mức lao động["”] phải được đọc cùng con số, không tách riêng thành mức chắc chắn nhận ngay từ tháng đầu\./giu,
+    'Con số này phải luôn được đọc đầy đủ cùng điều kiện “khi hoàn thành định mức lao động”.'
+  ],
+  [
+    /Thu nhập thực tế còn gắn với công việc, kết quả lao động và quy định của doanh nghiệp\./giu,
+    'Cách tính và xác nhận hoàn thành định mức được thực hiện theo quy định của doanh nghiệp.'
   ],
   [
     /mức thu nhập cam kết khi hoàn thành định mức/giu,
@@ -140,10 +160,13 @@ walk(SITE, (file) => {
 
 const checks = [
   [/được Thu nhập 20[–-]25/iu, 'awkward capitalized income phrase'],
+  [/mức Thu nhập/iu, 'awkward capitalized income noun phrase'],
   [/<strong>Cam kết thu nhập<\/strong>/iu, 'legacy income heading'],
   [/Chương trình đang áp dụng (?:cam kết thu nhập|Thu nhập) 20[–-]25/iu, 'legacy daily SEO income phrase'],
+  [/Nguồn tuyển đang áp dụng Thu nhập 20[–-]25/iu, 'awkward source-income phrase'],
   [/Mức thu nhập được cam kết theo chính sách đang áp dụng/iu, 'legacy job income explanation'],
   [/khi hoàn thành định mức lao động\.\s*khi hoàn thành định mức lao động/iu, 'duplicated income condition'],
+  [/Thu nhập 20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động\.\s*gắn với việc hoàn thành định mức lao động/iu, 'duplicated editorial income condition'],
 ];
 
 const auditTargets = [PROVINCE_GENERATOR, DAILY_DATA];
