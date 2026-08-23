@@ -15,6 +15,25 @@ if (!alreadyFacade) {
   html = html.replace(devicePattern, `$1${facade}$2`);
 }
 
+// Earlier homepage builders may already materialize the click-to-play button
+// but without the inline 9:16 guard. Repair that state instead of failing the
+// whole deploy. Keeping the ratio on the element makes the initial layout
+// deterministic even before deferred CSS has loaded.
+html = html.replace(/<button\b[^>]*\bdata-facebook-reel-facade\b[^>]*>/i, (tag) => {
+  if (/\bstyle="[^"]*"/i.test(tag)) {
+    return tag.replace(/\bstyle="([^"]*)"/i, (_match, style) => {
+      const cleaned = style
+        .replace(/(?:^|;)\s*aspect-ratio\s*:[^;]*/gi, "")
+        .replace(/(?:^|;)\s*height\s*:[^;]*/gi, "")
+        .replace(/^;+|;+$/g, "")
+        .trim();
+      const prefix = cleaned ? `${cleaned};` : "";
+      return `style="${prefix}height:auto;aspect-ratio:9/16"`;
+    });
+  }
+  return tag.replace(/>$/, ' style="height:auto;aspect-ratio:9/16">');
+});
+
 const device = html.match(/<div class="home-v6-reel__device">[\s\S]*?<\/div>/i)?.[0] || "";
 if (!device.includes("data-facebook-reel-facade")) throw new Error("KCN reel v10: chưa tạo được facade click-to-play");
 if (/<iframe\b/i.test(device)) throw new Error("KCN reel v10: iframe Facebook vẫn tải ngay ở HTML ban đầu");
