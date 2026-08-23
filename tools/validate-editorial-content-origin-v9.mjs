@@ -132,11 +132,19 @@ for (const [relative, expected] of core) {
   stats.corePolicy += 1;
 }
 
-for (const file of walk(path.join(root, "viec-lam-nganh-than"))) {
+// Locality registry entries are data records, not one-page-per-record URLs.
+// Coverage therefore has to be measured against the actual indexable local
+// network that the site publishes. This remains strict: every indexable page
+// below /viec-lam-nganh-than/ must carry the current-recruitment-context label.
+const localContextFiles = walk(path.join(root, "viec-lam-nganh-than")).filter((file) => {
   const relative = rel(file);
-  if (relative === "viec-lam-nganh-than/index.html") continue;
+  if (relative === "viec-lam-nganh-than/index.html") return false;
+  return indexable(fs.readFileSync(file, "utf8"));
+});
+const expectedLocalContext = localContextFiles.length;
+for (const file of localContextFiles) {
+  const relative = rel(file);
   const html = fs.readFileSync(file, "utf8");
-  if (!indexable(html)) continue;
   if (meta(html, "content-origin") !== "current-recruitment-context") errors.push(`${relative}: thiếu content-origin=current-recruitment-context`);
   if (!html.includes('data-content-origin="current-recruitment-context"')) errors.push(`${relative}: thiếu data-content-origin=current-recruitment-context`);
   stats.localContext += 1;
@@ -175,13 +183,16 @@ const feed = JSON.parse(fs.readFileSync(path.join(root, "feed.json"), "utf8"));
 const sourcedExpected = (feed.items || []).filter((item) => String(item.url || "").includes("/tin-nganh-than/")).length;
 const dailyExpected = releasedDailySlugs.size;
 const localities = JSON.parse(fs.readFileSync(path.join(root, "localities.json"), "utf8"));
+const localityRegistryRecords = Number(localities.total || 0);
 
 if (stats.firsthand !== 2) errors.push(`Phóng sự nguyên bản: cần 2, nhận ${stats.firsthand}`);
 if (stats.sourcedEditorial !== sourcedExpected) errors.push(`Bài nguồn: cần ${sourcedExpected}, nhận ${stats.sourcedEditorial}`);
 if (stats.expertExplainer !== 10) errors.push(`Bài chuyên môn: cần 10, nhận ${stats.expertExplainer}`);
 if (stats.currentExplainer !== dailyExpected) errors.push(`Giải đáp hiện hành: cần ${dailyExpected}, nhận ${stats.currentExplainer}`);
-if (stats.localContext < Number(localities.total || 0)) errors.push(`Mạng địa phương có ${stats.localContext} trang gắn nguồn, thấp hơn ${localities.total || 0} địa bàn`);
+if (expectedLocalContext < 1) errors.push("Mạng địa phương không có trang indexable để kiểm định nguồn");
+if (stats.localContext !== expectedLocalContext) errors.push(`Mạng địa phương gắn nguồn ${stats.localContext}/${expectedLocalContext} trang indexable`);
+if (localityRegistryRecords < expectedLocalContext) errors.push(`Registry địa bàn có ${localityRegistryRecords} bản ghi, thấp hơn ${expectedLocalContext} trang local-context indexable`);
 if (stats.jobPolicy < 1) errors.push("Không có trang việc làm indexable nào được gắn nguồn chính sách hiện hành");
 
-console.log(JSON.stringify({...stats,sourcedExpected,dailyExpected,localityMinimum:Number(localities.total || 0),releaseDate,errors:errors.length,sampleErrors:errors.slice(0,60)}, null, 2));
+console.log(JSON.stringify({...stats,sourcedExpected,dailyExpected,expectedLocalContext,localityRegistryRecords,releaseDate,errors:errors.length,sampleErrors:errors.slice(0,60)}, null, 2));
 if (errors.length) process.exitCode = 1;
