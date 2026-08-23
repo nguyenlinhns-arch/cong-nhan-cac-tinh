@@ -7,6 +7,7 @@ const read = relative => fs.readFileSync(path.join(root, relative), "utf8");
 const campaign = read("viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html");
 const application = read("job-application.js");
 const config = read("recruitment-config.js");
+const analyticsVendors = read("analytics-vendors.js");
 const privacy = read("quyen-rieng.html");
 const master = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
 
@@ -30,6 +31,12 @@ for (const hook of [
   "job-application.js?v=10",
   "analytics.js?v=6",
 ]) requireText(campaign, hook, "central application page");
+
+for (const supportMarker of [
+  "https://zalo.me/0963048585",
+  "https://www.messenger.com/t/thaylinhtuyenthomo.vn",
+  "tel:0963048585",
+]) requireText(campaign, supportMarker, "central application support");
 
 if (campaign.includes("data-copy-application") || campaign.includes("Sao chép lại tin nhắn")) {
   errors.push("central application page: removed copy-message control returned");
@@ -72,9 +79,39 @@ for (const attributionField of [
   "tl_campaign", "tl_adgroup", "tl_creative", "tl_matchtype", "tl_device", "tl_network", "tl_intent",
 ]) requireText(application, `${attributionField}: source.${attributionField}`, "application attribution payload");
 
-for (const marker of ["deliverApplication(application)", "Content-Type\": \"text/plain", "application_saved", "values.consent === \"on\"", "String(values.website || \"\")"]) {
-  requireText(application, marker, "secure application delivery");
+for (const marker of [
+  "deliverApplication(application)",
+  "Content-Type\": \"text/plain",
+  "application_saved",
+  "values.consent === \"on\"",
+  "String(values.website || \"\")",
+  "const response = await fetch(endpoint",
+  "if (!response.ok)",
+  "reply?.ok",
+  "reply.code !== payload.code",
+  'track("Lead"',
+  "attempt.leadTracked = true",
+]) requireText(application, marker, "secure application delivery");
+
+if (/mode\s*:\s*["']no-cors["']/.test(application)) {
+  errors.push("secure application delivery: no-cors must not be used because CRM acknowledgement cannot be verified");
 }
+
+for (const marker of [
+  'if (item.event === "Lead")',
+  'if (params.action === "application_saved")',
+  'gtagEvent("generate_lead", params)',
+  'window.fbq("track", "Lead"',
+  'gtagEvent("lead_fallback_created", params)',
+  'window.fbq("trackCustom", "LeadFallbackCreated"',
+]) requireText(analyticsVendors, marker, "verified lead analytics");
+
+for (const marker of [
+  "script.google.com/macros/s/",
+  'phone: "0963048585"',
+  'zalo: "https://zalo.me/0963048585"',
+]) requireText(config, marker, "recruitment configuration");
+
 const draftFields = application.match(/const DRAFT_FIELDS = \[([^\]]+)\]/)?.[1] || "";
 for (const safeField of ["province", "height", "weight", "education", "trade"]) {
   if (!draftFields.includes(`"${safeField}"`)) errors.push(`application draft: missing safe field ${safeField}`);
@@ -137,7 +174,10 @@ for (const file of htmlFiles) {
 
 console.log(JSON.stringify({
   applicationPage: "viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html",
+  crmAcknowledgementRequired: true,
   directPersonalDataTracking: 0,
+  verifiedLeadAnalytics: ["ga4:generate_lead", "meta:Lead"],
+  fallbackLeadSeparated: true,
   attributedCrossPageApplications,
   errors: errors.length,
   sampleErrors: errors.slice(0, 20),
