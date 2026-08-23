@@ -6,3 +6,4 @@ retry after word-count UI exclusion and audit cleanup
 retry after article-specific uniqueness rewrites
 retry after homepage field-report integration
 retry after editorial policy anchor and local origin coverage
+final retry with AI content-origin taxonomy
