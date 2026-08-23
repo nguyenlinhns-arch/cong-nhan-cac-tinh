@@ -93,7 +93,7 @@ for (const marker of [
   canonicalFacts.after_training.income_commitment,
 ]) requireText(llmsOpening, marker, "llms.txt");
 if (llmsOpening.includes("thu nhập tháng 8/2026")) errors.push("llms.txt: phần mở đầu còn khóa nội dung lâu dài vào tháng 8/2026");
-for (const legacy of ["bình quân 20–25 triệu", "tùy đơn vị, vị trí, ngày công và năng suất", "7,5 triệu đồng/tháng trong thời gian học"]) {
+for (const legacy of ["bình quân 20–25 triệu", "tùy đơn vị, vị trí, ngày công và năng suất", "7,5 triệu là tổng cả khóa"]) {
   if (llmsOpening.toLocaleLowerCase("vi").includes(legacy)) errors.push(`llms.txt: còn legacy phrase ${legacy}`);
 }
 
