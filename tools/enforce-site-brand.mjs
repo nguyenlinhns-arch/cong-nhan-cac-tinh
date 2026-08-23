@@ -159,6 +159,7 @@ if (!CHECK_ONLY) {
   await import("./editorial-content-origin-v9.mjs");
 
   await runValidator("./validate-home-field-report-entry-v9.mjs", "Kiểm định lối vào phóng sự trang chủ v9");
+  await runValidator("./validate-home-province-reels-facade.mjs", "Kiểm định video Gia Lai/Quảng Ngãi click-to-play");
   await runValidator("./validate-editorial-policy-anchor-v9.mjs", "Kiểm định anchor nguồn và không dựng lời v9");
   await runValidator("./validate-editorial-source-v5.mjs", "Kiểm định nguồn bài v5");
   await runValidator("./validate-editorial-story-v3.mjs", "Kiểm định bài nguồn newsroom");
