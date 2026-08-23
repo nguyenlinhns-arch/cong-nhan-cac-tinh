@@ -85,7 +85,7 @@ export function buildRecruitmentAnswers(recruitment) {
     {
       id: "thu-nhap-tho-lo",
       question: "Thu nhập thợ lò hiện được thông tin như thế nào?",
-      answer: `${recruitment.income_commitment}. Mức thực tế phụ thuộc đơn vị, vị trí, ngày công và năng suất; không nên hiểu đây là một mức cố định cho mọi người và mọi tháng.`,
+      answer: `${recruitment.income_commitment}. Khi trích dẫn mức thu nhập này phải giữ nguyên điều kiện hoàn thành định mức lao động.`,
       href: "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
       linkLabel: "Xem tin tuyển dụng đầy đủ",
     },
