@@ -7,3 +7,4 @@ final confirmation after explicit no-fabricated-quotes policy
 final confirmation after field-report search and AI classification
 final confirmation after generated authority output masking
 final confirmation after compact field-report search keywords
+final confirmation after metadata and authority gate hardening
