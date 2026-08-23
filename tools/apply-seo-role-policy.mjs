@@ -9,9 +9,12 @@ const JOB_URL = `${SITE}${JOB_PATH}`;
 const INCOME = '20–25 triệu đồng/tháng';
 const INCOME_SHORT = '20–25 triệu/tháng';
 const INCOME_CONDITION = 'khi hoàn thành định mức lao động';
+const REVIEW_DATE = new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'Asia/Bangkok', year: 'numeric', month: '2-digit', day: '2-digit'
+}).format(new Date());
 
 const policy = {
-  updated_at: '2026-08-23',
+  updated_at: REVIEW_DATE,
   strategy: 'one primary organic recruitment page + one distinct job-intent page + one noindex paid landing',
   pages: {
     '/': {
@@ -89,8 +92,8 @@ function setJobIntent(file) {
   html = html.replace(/<meta name="twitter:title" content="[^"]*">/i, '<meta name="twitter:title" content="Việc làm công nhân mỏ hầm lò Quảng Ninh 2026">');
   html = html.replace(/<h1 id="job-title">[\s\S]*?<\/h1>/i, '<h1 id="job-title">Việc làm công nhân mỏ hầm lò Quảng Ninh: <br><em>3 nghề</em>, đào tạo từ đầu</h1>');
   html = html.replace(/"name":"Tuyển công nhân mỏ, thợ lò tại Quảng Ninh năm 2026"/i, '"name":"Việc làm công nhân mỏ hầm lò Quảng Ninh năm 2026"');
-  html = html.replace(/"dateModified":"[^"]*"/i, '"dateModified":"2026-08-23"');
-  html = html.replace(/"lastReviewed":"[^"]*"/i, '"lastReviewed":"2026-08-23"');
+  html = html.replace(/"dateModified":"[^"]*"/i, `"dateModified":"${REVIEW_DATE}"`);
+  html = html.replace(/"lastReviewed":"[^"]*"/i, `"lastReviewed":"${REVIEW_DATE}"`);
   html = html.replace(
     /(<span class="income-qualified"><b[^>]*>)[\s\S]*?(<\/b><\/span>)/i,
     `$1${INCOME_SHORT}<br><small style="font-size:10px;font-weight:700">hoàn thành định mức</small>$2`
@@ -159,4 +162,4 @@ writeLegacyRedirect(legacyProvinceFile);
 
 fs.mkdirSync('content', { recursive: true });
 fs.writeFileSync('content/seo-role-policy-2026.json', JSON.stringify(policy, null, 2) + '\n');
-console.log(JSON.stringify({ status: 'ok', home: HOME, job: JOB_URL, policy }, null, 2));
+console.log(JSON.stringify({ status: 'ok', home: HOME, job: JOB_URL, reviewDate: REVIEW_DATE, policy }, null, 2));
