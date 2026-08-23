@@ -11,6 +11,13 @@
     schemaVersion: 2,
     endpoint: ENDPOINT,
     timeoutMs: 12000,
+    contact: Object.freeze({
+      phone: "0963048585",
+      phoneE164: "+84963048585",
+      phoneUrl: "tel:+84963048585",
+      zalo: "https://zalo.me/0963048585",
+      messenger: "https://m.me/thaylinhtuyenthomo",
+    }),
     criteria: Object.freeze({
       ageMin: 18,
       ageMax: 40,
