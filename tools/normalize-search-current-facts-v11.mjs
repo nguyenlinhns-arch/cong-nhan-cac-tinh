@@ -20,44 +20,49 @@ const answers = new Map([
 if (income !== master.income_commitment) throw new Error("Search facts: income canonical lệch master");
 if (support !== "7,5 triệu đồng/tháng trong thời gian học") throw new Error("Search facts: living support canonical không đúng");
 
-function normalizeFile(relative) {
-  const file = path.join(site, relative);
-  if (!fs.existsSync(file)) throw new Error(`Search facts: thiếu ${relative}`);
-  const data = JSON.parse(fs.readFileSync(file, "utf8"));
-  if (!Array.isArray(data.items)) throw new Error(`Search facts: ${relative} thiếu items`);
-  let updated = 0;
-  for (const item of data.items) {
-    const description = answers.get(item.url);
-    if (!description) continue;
-    item.description = description;
-    item.canonicalFactsVersion = facts.version;
-    updated += 1;
-  }
-  if (updated !== answers.size) throw new Error(`Search facts: ${relative} chỉ cập nhật ${updated}/${answers.size} câu facts`);
-  fs.writeFileSync(file, `${JSON.stringify(data, null, 2)}\n`);
-  return updated;
+const corePath = path.join(site, "search-core.json");
+if (!fs.existsSync(corePath)) throw new Error("Search facts: thiếu search-core.json");
+const core = JSON.parse(fs.readFileSync(corePath, "utf8"));
+if (!Array.isArray(core.items)) throw new Error("Search facts: search-core.json thiếu items");
+let coreUpdated = 0;
+for (const item of core.items) {
+  const description = answers.get(item.url);
+  if (!description) continue;
+  item.description = description;
+  item.canonicalFactsVersion = facts.version;
+  coreUpdated += 1;
 }
+if (coreUpdated !== answers.size) throw new Error(`Search facts: search-core chỉ cập nhật ${coreUpdated}/${answers.size} câu facts`);
+fs.writeFileSync(corePath, `${JSON.stringify(core, null, 2)}\n`);
 
-const manifestUpdated = normalizeFile("search-index.json");
-const coreUpdated = normalizeFile("search-core.json");
+const manifestPath = path.join(site, "search-index.json");
+if (!fs.existsSync(manifestPath)) throw new Error("Search facts: thiếu search-index.json");
+const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+if (manifest.version !== 4 || manifest.strategy !== "answer-first-tiered") throw new Error("Search facts: search-index manifest không đúng schema v4 phân tầng");
+manifest.discovery ||= {};
+manifest.discovery.canonicalFacts = "/thong-tin-tuyen-tho-mo/";
+manifest.discovery.canonicalFactsJson = "/data/recruitment-facts-2026.json";
+manifest.discovery.currentRecruitmentJson = "/recruitment-current.json";
+manifest.canonicalFactsVersion = facts.version;
+manifest.canonicalFactsConfirmedAt = facts.confirmed_at;
+fs.writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 
-for (const relative of ["search-index.json", "search-core.json"]) {
-  const data = JSON.parse(fs.readFileSync(path.join(site, relative), "utf8"));
-  for (const [url, expected] of answers) {
-    const item = data.items.find((entry) => entry.url === url);
-    if (!item || item.description !== expected) throw new Error(`Search facts: ${relative} lệch ${url}`);
-    if (item.canonicalFactsVersion !== facts.version) throw new Error(`Search facts: ${relative} ${url} thiếu facts version ${facts.version}`);
-  }
-  const text = JSON.stringify(data);
-  if (/bình quân\s+20[–-]25\s*triệu/iu.test(text)) throw new Error(`Search facts: ${relative} còn thu nhập bình quân legacy`);
-  if (/tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất/iu.test(text)) throw new Error(`Search facts: ${relative} còn điều kiện thu nhập legacy`);
-  if (/7[,.]5\s*triệu(?:\s*đồng)?\s+(?:là\s+)?tổng(?:\s+cả)?\s+khóa/iu.test(text)) throw new Error(`Search facts: ${relative} còn cách hiểu 7,5 triệu tổng cả khóa`);
+for (const [url, expected] of answers) {
+  const item = core.items.find((entry) => entry.url === url);
+  if (!item || item.description !== expected) throw new Error(`Search facts: search-core lệch ${url}`);
+  if (item.canonicalFactsVersion !== facts.version) throw new Error(`Search facts: search-core ${url} thiếu facts version ${facts.version}`);
 }
+const coreText = JSON.stringify(core);
+if (/bình quân\s+20[–-]25\s*triệu/iu.test(coreText)) throw new Error("Search facts: search-core còn thu nhập bình quân legacy");
+if (/tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất/iu.test(coreText)) throw new Error("Search facts: search-core còn điều kiện thu nhập legacy");
+if (/7[,.]5\s*triệu(?:\s*đồng)?\s+(?:là\s+)?tổng(?:\s+cả)?\s+khóa/iu.test(coreText)) throw new Error("Search facts: search-core còn cách hiểu 7,5 triệu tổng cả khóa");
+if (manifest.canonicalFactsVersion !== facts.version) throw new Error("Search facts: manifest thiếu canonicalFactsVersion");
+if (manifest.discovery.canonicalFactsJson !== "/data/recruitment-facts-2026.json") throw new Error("Search facts: manifest thiếu canonicalFactsJson");
 
 console.log(JSON.stringify({
   status: "search-current-facts-v11-ready",
   canonicalFactsVersion: facts.version,
-  manifestUpdated,
+  manifestUpdated: true,
   coreUpdated,
   support,
   income,
