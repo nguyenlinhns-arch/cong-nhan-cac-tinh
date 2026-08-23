@@ -296,7 +296,7 @@ const stories = [
         title: "Cơ hội thoát việc làm bấp bênh",
         paragraphs: [
           "Đối với lao động trẻ chưa có nghề, công việc thời vụ thường dễ vào nhưng khó tạo lộ trình tăng tay nghề và thu nhập. Học nghề mỏ mở ra một hướng khác: được đào tạo trước khi vào sản xuất, có môi trường công nghiệp và cơ hội tích lũy kỹ năng theo thời gian.",
-          "Người lao động cần đáp ứng tiêu chuẩn sức khỏe, tuân thủ kỷ luật và hoàn thành định mức lao động. Chính sách đang áp dụng Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất khi hoàn thành định mức.",
+          "Người lao động cần đáp ứng tiêu chuẩn sức khỏe, tuân thủ kỷ luật và hoàn thành định mức lao động. Chính sách đang áp dụng Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động khi hoàn thành định mức.",
         ],
       },
     ],
@@ -931,7 +931,7 @@ const localStoryFrames = [
     ],
     sections: [
       {title: "Một con đường đã có người đi trước", paragraphs: [`${item.opportunity} Người mới vì thế dễ tìm hiểu từ chính đồng hương: học những gì, những tháng đầu thích nghi ra sao và điều gì giúp họ đứng vững trong tổ đội.`, `Sự phối hợp của ${item.partners} nối bốn chặng vốn thường rời nhau: tư vấn, tuyển chọn, đào tạo và tiếp nhận. Khi từng chặng có người phụ trách, quyết định rời quê đến Quảng Ninh bớt mơ hồ và có thêm điểm tựa.`], bullets: item.bullets},
-      {title: "Học để làm được việc trong tổ đội", paragraphs: [`Với người trẻ ${item.locality}, nghề mỏ mở ra cơ hội việc làm có tay nghề và thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất. Lớp học là nơi người mới làm quen thiết bị, quy trình an toàn, tác phong ca kíp và cách phối hợp với đồng đội trước khi bước vào môi trường sản xuất.`, `Tại ${item.locality}, người đăng ký nên hỏi rõ nghề đang mở, đơn vị dự kiến bố trí, yêu cầu định mức lao động và lịch tiếp nhận. Nội dung này được tư vấn rõ trước khi nhập học.`]},
+      {title: "Học để làm được việc trong tổ đội", paragraphs: [`Với người trẻ ${item.locality}, nghề mỏ mở ra cơ hội việc làm có tay nghề và Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. Lớp học là nơi người mới làm quen thiết bị, quy trình an toàn, tác phong ca kíp và cách phối hợp với đồng đội trước khi bước vào môi trường sản xuất.`, `Tại ${item.locality}, người đăng ký nên hỏi rõ nghề đang mở, đơn vị dự kiến bố trí, yêu cầu định mức lao động và lịch tiếp nhận. Nội dung này được tư vấn rõ trước khi nhập học.`]},
       {title: "Gia đình cùng nhìn về một hướng", paragraphs: [`Trước khi làm hồ sơ, gia đình tại ${item.locality} nên cùng người lao động đo lại thể lực, kiểm tra thị lực, sức khỏe và trao đổi thẳng về việc học, ở ký túc xá rồi làm việc xa nhà. Sự đồng thuận ấy thường là nguồn động viên quan trọng trong giai đoạn đầu.`, `${item.caution} Thông tin này cần được hỏi lại ở buổi tư vấn hiện hành, cùng với thời gian học, chế độ sinh hoạt và lịch tiếp nhận. Chuẩn bị kỹ không làm cơ hội kém hấp dẫn; trái lại, nó giúp người chọn nghề bước đi vững vàng hơn.`]},
       {title: "Mục tiêu mới phải đi tới tận nơi làm việc", paragraphs: [`${item.target} Kết quả cần theo dõi là số người hoàn thành khóa học, nhận việc và trưởng thành thành công nhân có tay nghề.`, `Sự liên lạc của địa phương, quá trình theo sát của Nhà trường và hỗ trợ hòa nhập từ ${item.enterprise} sẽ giúp mô hình tại ${item.locality} tạo nguồn việc làm ổn định cho nhiều gia đình.`]},
     ],
@@ -1532,7 +1532,7 @@ const expandedStories = [
     resultSummary: "Giai đoạn 2021–2025, Phong Thổ tuyển 297 lao động, đạt 123% chỉ tiêu; Tam Đường có 168 học sinh nhập học, đạt 112% chỉ tiêu.",
     evidence: "Riêng Sì Lở Lầu được báo cáo có 165 học viên theo học, còn Khun Há nhận bằng khen và phần thưởng 25 triệu đồng vì kết quả phối hợp.",
     opportunity: "Thanh niên dân tộc thiểu số được tiếp cận thông tin ngay tại xã và có thể nghe kinh nghiệm từ người địa phương đã đi học, đi làm.",
-    caution: "Chính sách đang áp dụng miễn phí ba bữa/ngày với mức ăn 90.000 đồng/ngày và thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.",
+    caution: "Chính sách đang áp dụng miễn phí ba bữa/ngày với mức ăn 90.000 đồng/ngày và Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
     target: "Quy chế mới hướng tới duy trì nguồn học nghề và việc làm ổn định, nhưng bài nguồn không nêu một chỉ tiêu năm chung cho cả hai xã.",
     focusTitle: "165 học viên từ một xã vùng cao",
     focus: [

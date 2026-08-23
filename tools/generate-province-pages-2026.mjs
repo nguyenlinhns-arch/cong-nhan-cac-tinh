@@ -79,7 +79,7 @@ function provincePage(province) {
   const localContext = provinceEditorialAngles[slug]
     || `Từ ${name}, người lao động có thể kiểm tra điều kiện từ xa, học nghề trong 2–3 tháng và chuẩn bị cho công việc tại Quảng Ninh theo một lộ trình rõ ràng.`;
   const hasLocalEvidence = Boolean(story || reportage);
-  const description = `Tuyển thợ mỏ tại ${name}: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; thu nhập bình quân 20–25 triệu/tháng.`;
+  const description = `Tuyển thợ mỏ tại ${name}: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.`;
   const localStories = [
     story ? {
       title: story,
@@ -200,7 +200,7 @@ function provincePage(province) {
       <div class="local-hero__copy">
         <p class="eyebrow">TUYỂN THỢ MỎ TẠI ${name.toLocaleUpperCase("vi")}</p>
         <h1 id="local-title">Tuyển thợ mỏ tại ${name}: <br><em>học nghề, làm việc tại Quảng Ninh</em></h1>
-        <p class="local-hero__lead">Người phù hợp được đào tạo nghề, hỗ trợ ăn ở trong khóa học và được thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.</p>
+        <p class="local-hero__lead">Người phù hợp được đào tạo nghề, hỗ trợ ăn ở trong khóa học và được Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.</p>
         <div class="location-clarity"><div><small>NƠI TUYỂN NGUỒN</small><strong>${name}</strong></div><span>→</span><div><small>NƠI HỌC & LÀM VIỆC</small><strong>Quảng Ninh</strong></div></div>
         <div class="contact-pair">
           <a class="contact-button contact-button--zalo" href="${applicationUrl}" data-contact="application" data-context="province-${slug}"><span class="contact-icon contact-icon--text">✓</span><span><small>Biểu mẫu một phút</small><strong>Kiểm tra điều kiện</strong></span></a>
@@ -241,7 +241,7 @@ ${storySection}
   </main>
 
   <section class="final-cta" aria-labelledby="final-title"><div><p class="eyebrow eyebrow--light">TƯ VẤN TUYỂN THỢ MỎ TẠI ${name.toLocaleUpperCase("vi")}</p><h2 id="final-title">Gửi 3 thông tin để kiểm tra điều kiện</h2><p>Năm sinh · Chiều cao/cân nặng · Tình trạng sức khỏe hiện tại.</p></div><div class="contact-pair"><a class="contact-button contact-button--zalo" href="${applicationUrl}" data-contact="application"><span class="contact-icon contact-icon--text">✓</span><span><small>Biểu mẫu một phút</small><strong>Ứng tuyển nhanh</strong></span></a><a class="contact-button contact-button--messenger" href="https://zalo.me/0963048585" target="_blank" rel="noopener noreferrer" data-contact="zalo"><span class="contact-icon contact-icon--text">Z</span><span><small>Kênh dự phòng</small><strong>Zalo 096 304 8585</strong></span></a></div></section>
-  <footer class="site-footer"><div class="footer-brand"><img class="brand-mark" src="/assets/thay-linh-avatar.webp?v=3" alt="" width="45" height="45"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Tư vấn học nghề mỏ và việc làm ngành Than tại Quảng Ninh.</p></div></div><div class="footer-links"><a href="../../#theo-tinh">Tất cả tỉnh, thành</a><a href="../../thong-tin-tuyen-tho-mo/">15 câu hỏi tuyển thợ mỏ</a><a href="../../#dieu-kien">Điều kiện tuyển</a><a href="../../tin-nganh-than/">Cẩm nang nghề mỏ</a><a href="../../nguyen-tac-bien-tap/">Nguyên tắc biên tập</a><a href="../../quyen-rieng.html">Quyền riêng tư</a></div><p class="footer-note">Điều kiện cập nhật tháng 8/2026. Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.</p></footer>
+  <footer class="site-footer"><div class="footer-brand"><img class="brand-mark" src="/assets/thay-linh-avatar.webp?v=3" alt="" width="45" height="45"><div><strong>Thầy Linh – Tuyển Thợ Mỏ</strong><p>Tư vấn học nghề mỏ và việc làm ngành Than tại Quảng Ninh.</p></div></div><div class="footer-links"><a href="../../#theo-tinh">Tất cả tỉnh, thành</a><a href="../../thong-tin-tuyen-tho-mo/">15 câu hỏi tuyển thợ mỏ</a><a href="../../#dieu-kien">Điều kiện tuyển</a><a href="../../tin-nganh-than/">Cẩm nang nghề mỏ</a><a href="../../nguyen-tac-bien-tap/">Nguyên tắc biên tập</a><a href="../../quyen-rieng.html">Quyền riêng tư</a></div><p class="footer-note">Điều kiện cập nhật tháng 8/2026. Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.</p></footer>
   <div class="mobile-contact" aria-label="Liên hệ nhanh"><a class="mobile-contact__zalo" href="${applicationUrl}" data-contact="application"><b>✓</b><span>Ứng tuyển</span></a><a class="mobile-contact__messenger" href="https://zalo.me/0963048585" target="_blank" rel="noopener noreferrer" data-contact="zalo"><b>Z</b><span>Nhắn Zalo</span></a></div>
   <div class="toast" role="status" aria-live="polite" data-toast hidden></div>
   <script src="../../app.js?v=4" defer></script>

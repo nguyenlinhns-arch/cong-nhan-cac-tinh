@@ -33,7 +33,7 @@ const faqSchema = {
       name: "Thu nhập nghề mỏ hiện nay được thông tin như thế nào?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Thông tin tuyển sinh đang áp dụng thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.",
+        text: "Thông tin tuyển sinh đang áp dụng Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       },
     },
     {
@@ -173,7 +173,7 @@ const heroAndBody = `    <section class="verification-page__hero kcn-hero">
         <p class="verification-page__eyebrow">Câu hỏi thường gặp</p>
         <h2>Những điều cần rõ trước khi quyết định</h2>
         <div class="kcn-faq">
-          <details><summary>Nghề mỏ có Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất không?</summary><p>Có. Thông tin tuyển sinh đang áp dụng cam kết 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.</p></details>
+          <details><summary>Nghề mỏ có Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động không?</summary><p>Có. Thông tin tuyển sinh đang áp dụng cam kết 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.</p></details>
           <details><summary>Trong thời gian học có phải tự lo tiền ăn và chỗ ở không?</summary><p>Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, ăn 3 bữa/ngày, ở ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học.</p></details>
           <details><summary>Không có bằng THPT có đăng ký được không?</summary><p>Có thể đăng ký sơ bộ. Hồ sơ cần CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; trường hợp chưa có bằng sẽ được hướng dẫn theo hệ đào tạo phù hợp.</p></details>
           <details><summary>Chỉ cần đủ chiều cao, cân nặng là chắc chắn được học?</summary><p>Không. Các chỉ số trên chỉ là điều kiện sàng lọc sơ bộ. Tình trạng sức khỏe và khám tuyển là căn cứ cuối cùng.</p></details>
