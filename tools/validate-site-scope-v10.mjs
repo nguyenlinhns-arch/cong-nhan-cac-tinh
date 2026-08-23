@@ -46,9 +46,19 @@ const share = read("chia-se-thong-tin/index.html");
 requireText(share, `theo ${priorityCount} địa bàn ưu tiên và toàn quốc`, "Bộ chia sẻ");
 requireText(share, `>${priorityCount + 1} GÓI NỘI DUNG<`, "Bộ chia sẻ");
 
+const shareTools = read("share-tools.js");
+requireText(shareTools, "Ba nghề đang tiếp nhận: khai thác và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng.", "Gói chia sẻ tự động");
+requireText(shareTools, "Không yêu cầu kinh nghiệm làm mỏ sẵn có", "Gói chia sẻ tự động");
+if (shareTools.includes("Học nghề khai thác mỏ hoặc xây dựng mỏ trong 2–3 tháng.")) errors.push("Gói chia sẻ tự động: còn nội dung cũ chỉ có hai nghề");
+
 const job = read("viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html");
 requireText(job, "khai thác, xây dựng hoặc cơ điện mỏ hầm lò", "Tin tuyển dụng chính");
 if (job.includes(">34 tỉnh, thành<")) errors.push("Tin tuyển dụng chính: menu còn dùng 34 tỉnh, thành như thể có 34 trang địa phương ưu tiên");
+
+const training = read("hoc-nghe-mo-tai-quang-ninh/index.html");
+requireText(training, "Khai thác/xây dựng 2–3 tháng · cơ điện 10 tháng", "Trang học nghề");
+requireText(training, "nghề cơ điện mỏ hầm lò học 10 tháng", "Trang học nghề");
+if (/cơ điện mỏ có (?:lộ trình|chương trình) dài hơn/i.test(training)) errors.push("Trang học nghề: còn mô tả mơ hồ thay vì thời gian cơ điện 10 tháng");
 
 const facts = read("thong-tin-tuyen-tho-mo/index.html");
 requireText(facts, `<time datetime="${reviewDate}">${displayReviewDate}</time>`, "Trang thông tin tuyển đang áp dụng");
