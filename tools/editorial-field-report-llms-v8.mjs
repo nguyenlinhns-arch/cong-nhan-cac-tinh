@@ -49,6 +49,8 @@ for (const [slug] of entries) {
 }
 fs.writeFileSync(llmsPath, llms);
 
+await import("./editorial-field-report-social-meta-v8.mjs");
+
 console.log(JSON.stringify({
   status: "field-report-v8-llms-ready",
   hub: `${base}/phong-su/`,
