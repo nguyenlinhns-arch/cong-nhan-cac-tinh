@@ -15,6 +15,20 @@ const stats = {
   navLinked: 0,
 };
 
+const dailyFeedPath = path.join(root, "daily-seo-articles.json");
+if (!fs.existsSync(dailyFeedPath)) throw new Error("editorial-content-origin-v9: thiếu daily-seo-articles.json");
+const dailyFeed = JSON.parse(fs.readFileSync(dailyFeedPath, "utf8"));
+const releaseDate = new Intl.DateTimeFormat("en-CA", {
+  timeZone: "Asia/Bangkok",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+}).format(new Date());
+const releasedDailySlugs = new Set((dailyFeed.articles || [])
+  .filter((item) => !item.publish_on || item.publish_on <= releaseDate)
+  .map((item) => String(item.slug || "").trim())
+  .filter(Boolean));
+
 const notes = {
   firsthand: {
     label: "Tư liệu trực tiếp",
@@ -95,11 +109,17 @@ function insertNote(html, origin) {
   return next;
 }
 
+function dailySlugFromRelative(rel) {
+  const match = rel.match(/^giai-dap-nghe-mo\/([^/]+)\/index\.html$/i);
+  return match?.[1] || "";
+}
+
 function classifyArticle(rel, html) {
   if (/^phong-su\/[^/]+\/index\.html$/i.test(rel)) return "firsthand";
   if (/^tin-nganh-than\/20\d{2}\//i.test(rel)) return "sourced-editorial";
   if (/^bai-viet\/[^/]+\/index\.html$/i.test(rel)) return "expert-explainer";
-  if (/^giai-dap-nghe-mo\/[^/]+\/index\.html$/i.test(rel) && rel !== "giai-dap-nghe-mo/index.html") return "current-explainer";
+  const dailySlug = dailySlugFromRelative(rel);
+  if (dailySlug && releasedDailySlugs.has(dailySlug)) return "current-explainer";
   if (html.includes('data-editorial-original="field-report-v8"') && rel.startsWith("phong-su/")) return "firsthand";
   return "";
 }
@@ -165,6 +185,10 @@ for (const file of walk(root)) {
   }
 }
 
+if (stats.currentExplainer !== releasedDailySlugs.size) {
+  throw new Error(`editorial-content-origin-v9: giải đáp hiện hành ${stats.currentExplainer}/${releasedDailySlugs.size}`);
+}
+
 if (process.env.GITHUB_ACTIONS === "true" && changed.length) {
   for (let index = 0; index < changed.length; index += 150) {
     const batch = changed.slice(index, index + 150).map((item) => `tuyen-tho-mo/${item}`);
@@ -178,5 +202,7 @@ console.log(JSON.stringify({
   status: "editorial-content-origin-v9-ready",
   changedFiles: changed.length,
   ...stats,
+  currentExplainerRegistry: releasedDailySlugs.size,
+  releaseDate,
   policy: policyHref,
 }, null, 2));
