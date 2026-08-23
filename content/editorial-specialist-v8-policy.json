@@ -1,0 +1,12 @@
+{
+  "dieu-kien-tuyen-tho-lo-2026": {"genre":"explainer","readerDecision":"Tự kiểm tra điều kiện ban đầu trước khi đi Quảng Ninh","mustContain":["18","40","1,53","47","khám"],"decisionSignals":["nên","cần","quyết định"]},
+  "ho-so-hoc-nghe-mo-can-gi": {"genre":"explainer","readerDecision":"Biết chuẩn bị giấy tờ gì và khi nào cần chuẩn bị","mustContain":["CCCD","giấy khai sinh","THCS","THPT"],"decisionSignals":["nên","cần","trước khi"]},
+  "hoc-nghe-khai-thac-mo-2-3-thang": {"genre":"explainer","readerDecision":"Hiểu 2–3 tháng học nghề thực sự gồm những gì","mustContain":["2–3 tháng","thực hành","an toàn"],"decisionSignals":["cần","phải","người học"]},
+  "dao-tao-an-toan-truoc-khi-vao-lo": {"genre":"explainer","readerDecision":"Hiểu điều gì phải biết trước ca sản xuất đầu tiên","mustContain":["an toàn","bảo hộ","tổ đội"],"decisionSignals":["phải","cần","dừng"]},
+  "hoc-thuc-hanh-nghe-mo-ham-lo": {"genre":"explainer","readerDecision":"Hiểu tay nghề hình thành bằng thực hành và sửa lỗi ra sao","mustContain":["thực hành","tay nghề","an toàn"],"decisionSignals":["cần","người học","làm đúng"]},
+  "nghe-tho-lo-co-on-dinh-khong": {"genre":"analysis","readerDecision":"Đánh giá độ ổn định nghề bằng dữ liệu sản xuất và điều kiện cá nhân","mustContain":["19,7","22,77","đơn vị tiếp nhận"],"limitSignals":["phụ thuộc","không thể","không thay thế","cần phân biệt"]},
+  "13500-tho-lo-thu-nhap-tren-300-trieu-2025": {"genre":"analysis","readerDecision":"Đọc đúng dữ liệu thu nhập và không biến số liệu thành lời hứa chung","mustContain":["13.507","300 triệu","57%","16,5%"],"limitSignals":["không phải","không đồng nghĩa","cần được đọc đúng","điều cần tránh"]},
+  "an-toan-mua-mua-bao-2026": {"genre":"analysis","readerDecision":"Hiểu vì sao sản lượng phải phụ thuộc trạng thái an toàn của hiện trường","mustContain":["2,712","7,75","24.445","mưa"],"limitSignals":["chỉ","không","phải được","dựa trên"]},
+  "co-gioi-hoa-khai-thac-ham-lo": {"genre":"analysis","readerDecision":"Hiểu cơ giới hóa thay đổi kỹ năng và cơ hội nghề nghiệp thế nào","mustContain":["4,6 triệu","11,08 triệu","15 lò chợ","2030"],"limitSignals":["không","nhưng","vẫn","giới hạn"]},
+  "san-xuat-sach-hon-nganh-than": {"genre":"analysis","readerDecision":"Đánh giá sản xuất sạch bằng chỉ số vận hành thay vì khẩu hiệu","mustContain":["92,9%","18,9%","120–150","85.000"],"limitSignals":["chỉ","phụ thuộc","không thể","phải"]}
+}
