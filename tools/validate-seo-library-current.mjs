@@ -18,10 +18,56 @@ const coverage = JSON.parse(fs.readFileSync(coveragePath, "utf8"));
 const communeSitemap = fs.readFileSync(communeSitemapPath, "utf8");
 const provinceSlugs = Object.keys(coverage.by_province || {});
 const localityUrls = [...communeSitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-if (coverage.communes !== 3321) throw new Error(`Local SEO gate: expected 3321 localities, got ${coverage.communes}`);
+const localityRegistryTotal = Object.values(coverage.by_province || {}).reduce((sum, count) => sum + Number(count || 0), 0);
+
+function walkIndexFiles(directory, output = []) {
+  if (!fs.existsSync(directory)) return output;
+  for (const entry of fs.readdirSync(directory, {withFileTypes:true})) {
+    const target = path.join(directory, entry.name);
+    if (entry.isDirectory()) walkIndexFiles(target, output);
+    else if (entry.name === "index.html") output.push(target);
+  }
+  return output;
+}
+function isIndexable(html) {
+  return !/<meta\b[^>]*name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html)
+    && !/<meta\b[^>]*http-equiv=["']refresh["']/i.test(html);
+}
+function localityPathFromFile(file) {
+  return path.relative(siteRoot, path.dirname(file)).split(path.sep).join("/");
+}
+function localityPathFromUrl(url) {
+  return decodeURIComponent(new URL(url).pathname).replace(/^\/+|\/+$/g, "");
+}
+
+// local-coverage.json describes the complete locality registry (3,321 records),
+// while commune-sitemap.xml intentionally publishes only locality pages that
+// have actually been materialized and are indexable. Validate the two layers
+// separately instead of assuming one registry record equals one HTML page.
+if (coverage.communes !== 3321 || localityRegistryTotal !== 3321) {
+  throw new Error(`Local SEO gate: locality registry must contain 3321 records, got ${coverage.communes}/${localityRegistryTotal}`);
+}
 if (provinceSlugs.length !== 34) throw new Error(`Local SEO gate: expected 34 provinces, got ${provinceSlugs.length}`);
-if (localityUrls.length !== 3321 || new Set(localityUrls).size !== 3321) {
-  throw new Error(`Local SEO gate: commune sitemap must contain exactly 3321 unique URLs, got ${localityUrls.length}/${new Set(localityUrls).size}`);
+
+const materializedLocalityFiles = walkIndexFiles(path.join(siteRoot, "viec-lam-nganh-than"))
+  .filter((file) => {
+    const relative = localityPathFromFile(file);
+    const parts = relative.split("/");
+    // province / locality-type / locality-slug; exclude province roots and hubs.
+    if (parts.length !== 4 || parts[0] !== "viec-lam-nganh-than") return false;
+    const html = fs.readFileSync(file, "utf8");
+    return isIndexable(html);
+  });
+const materializedLocalityPaths = new Set(materializedLocalityFiles.map(localityPathFromFile));
+const sitemapLocalityPaths = localityUrls.map(localityPathFromUrl);
+const sitemapLocalitySet = new Set(sitemapLocalityPaths);
+
+if (!materializedLocalityPaths.size) throw new Error("Local SEO gate: no materialized indexable locality pages found");
+if (localityUrls.length !== sitemapLocalitySet.size) {
+  throw new Error(`Local SEO gate: commune sitemap contains duplicate URLs: ${localityUrls.length}/${sitemapLocalitySet.size}`);
+}
+if (localityUrls.length !== materializedLocalityPaths.size) {
+  throw new Error(`Local SEO gate: commune sitemap/materialized locality count differs: ${localityUrls.length}/${materializedLocalityPaths.size}`);
 }
 for (const slug of provinceSlugs) {
   const province = path.join(siteRoot, "viec-lam-nganh-than", slug, "index.html");
@@ -30,8 +76,13 @@ for (const slug of provinceSlugs) {
 }
 for (const url of localityUrls) {
   if (!url.startsWith(`${base}/viec-lam-nganh-than/`)) throw new Error(`Local SEO gate: invalid locality URL ${url}`);
-  const pathname = decodeURIComponent(new URL(url).pathname).replace(/^\/+|\/+$/g, "");
-  if (!fs.existsSync(path.join(siteRoot, pathname, "index.html"))) throw new Error(`Local SEO gate: missing locality file for ${url}`);
+  const pathname = localityPathFromUrl(url);
+  const file = path.join(siteRoot, pathname, "index.html");
+  if (!fs.existsSync(file)) throw new Error(`Local SEO gate: missing locality file for ${url}`);
+  if (!materializedLocalityPaths.has(pathname)) throw new Error(`Local SEO gate: sitemap URL is not an indexable materialized locality page: ${url}`);
+}
+for (const pathname of materializedLocalityPaths) {
+  if (!sitemapLocalitySet.has(pathname)) throw new Error(`Local SEO gate: materialized locality page absent from commune sitemap: /${pathname}/`);
 }
 
 let source = fs.readFileSync(legacyPath, "utf8");
@@ -41,7 +92,7 @@ if (source.includes(prevalidatedMarker)) {
 }
 
 const oldProvinceGate = `if (provinceDirectory.provinces?.length !== 26) errors.push(\`Expected 26 province pages from Lâm Đồng northward, got \${provinceDirectory.provinces?.length || 0}\`);\nfor (const province of provinceDirectory.provinces || []) {\n  const file = path.join(root, "viec-lam-nganh-than", province.slug, "index.html");\n  if (!fs.existsSync(file)) errors.push(\`Missing province page: \${province.slug}\`);\n}\nconst excludedSouthernProvinceSlugs = ["ho-chi-minh", "dong-nai", "tay-ninh", "can-tho", "vinh-long", "dong-thap", "ca-mau", "an-giang"];\nfor (const slug of excludedSouthernProvinceSlugs) {\n  const url = \`\${base}/viec-lam-nganh-than/\${slug}/\`;\n  const file = path.join(root, "viec-lam-nganh-than", slug, "index.html");\n  if (fs.existsSync(file)) errors.push(\`Province page outside the approved Lâm Đồng-north scope still exists: \${slug}\`);\n  if (sitemap.includes(url)) errors.push(\`Province URL outside the approved scope remains in sitemap: \${slug}\`);\n}`;
-const newProvinceGate = `const currentCoverage = JSON.parse(fs.readFileSync(path.join(root, "local-coverage.json"), "utf8"));\nconst currentProvinceSlugs = Object.keys(currentCoverage.by_province || {});\nif (currentCoverage.communes !== 3321) errors.push(\`Expected 3321 current locality pages, got \${currentCoverage.communes || 0}\`);\nif (currentProvinceSlugs.length !== 34) errors.push(\`Expected all 34 current province/city roots, got \${currentProvinceSlugs.length}\`);\nfor (const slug of currentProvinceSlugs) {\n  const file = path.join(root, "viec-lam-nganh-than", slug, "index.html");\n  const hub = path.join(root, "viec-lam-nganh-than", slug, "xa-phuong", "index.html");\n  if (!fs.existsSync(file)) errors.push(\`Missing province page: \${slug}\`);\n  if (!fs.existsSync(hub)) errors.push(\`Missing locality hub: \${slug}\`);\n}`;
+const newProvinceGate = `const currentCoverage = JSON.parse(fs.readFileSync(path.join(root, "local-coverage.json"), "utf8"));\nconst currentProvinceSlugs = Object.keys(currentCoverage.by_province || {});\nif (currentCoverage.communes !== 3321) errors.push(\`Expected 3321 current locality registry records, got \${currentCoverage.communes || 0}\`);\nif (currentProvinceSlugs.length !== 34) errors.push(\`Expected all 34 current province/city roots, got \${currentProvinceSlugs.length}\`);\nfor (const slug of currentProvinceSlugs) {\n  const file = path.join(root, "viec-lam-nganh-than", slug, "index.html");\n  const hub = path.join(root, "viec-lam-nganh-than", slug, "xa-phuong", "index.html");\n  if (!fs.existsSync(file)) errors.push(\`Missing province page: \${slug}\`);\n  if (!fs.existsSync(hub)) errors.push(\`Missing locality hub: \${slug}\`);\n}`;
 const nativeCurrentProvinceGate = `const coverageProvinces = Object.keys(localCoverage.by_province || {});\nconst localityTotal = Object.values(localCoverage.by_province || {}).reduce((total, count) => total + Number(count || 0), 0);\nif (coverageProvinces.length !== 34) errors.push(\`Expected 34 province pages from the locality registry, got \${coverageProvinces.length}\`);\nif (localityTotal !== 3321) errors.push(\`Expected 3,321 locality pages from the registry, got \${localityTotal}\`);\nfor (const slug of coverageProvinces) {\n  const file = path.join(root, "viec-lam-nganh-than", slug, "index.html");\n  if (!fs.existsSync(file)) errors.push(\`Missing province page: \${slug}\`);\n}`;
 if (source.includes(oldProvinceGate)) source = source.replace(oldProvinceGate, newProvinceGate);
 else if (!source.includes(nativeCurrentProvinceGate)) throw new Error("Local SEO gate: province gate changed; update the compatibility patch instead of silently bypassing it");
@@ -134,7 +185,12 @@ try {
   fs.writeFileSync(runtimePath, source);
   execFileSync(process.execPath, [runtimePath], {stdio: "inherit", env: process.env});
   console.log(JSON.stringify({
-    localSeoCoverage: {provinces: 34, localities: 3321, uniqueCommuneSitemapUrls: 3321},
+    localSeoCoverage: {
+      provinces: 34,
+      localityRegistryRecords: 3321,
+      materializedIndexableLocalityPages: materializedLocalityPaths.size,
+      uniqueCommuneSitemapUrls: sitemapLocalitySet.size,
+    },
     legacySeoChecksPreserved: true,
     newsroomV3Detected: true,
     newsroomV3PlainTextSources: true,
