@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   enforce:
-    if: ${{ !contains(github.event.head_commit.message || '', '[seo-role-sync]') }}
+    if: ${{ !contains(github.event.head_commit.message || '', '[seo-role-sync]') && !contains(github.event.head_commit.message || '', '[seo-copy-sync]') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -57,7 +57,9 @@ jobs:
           if (!job.includes('Việc làm công nhân mỏ hầm lò Quảng Ninh:')) process.exit(1);
           if (!job.includes('20–25 triệu/tháng khi hoàn thành định mức')) process.exit(1);
           if (!legacy.includes('rel="canonical" href="https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/"')) process.exit(1);
-          if (!legacy.includes("location.replace('/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/')")) process.exit(1);
+          if (!legacy.includes("location.replace('/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/'")) process.exit(1);
+          if (!legacy.includes('data-legacy-redirect')) process.exit(1);
+          if (!legacy.includes('/mobile-core.css?v=1') || !legacy.includes('/mobile-core.js?v=1')) process.exit(1);
           if (!home.includes('facebook.com/reel/988978737487363')) process.exit(1);
           if (!home.includes('facebook.com/reel/1015675787556708')) process.exit(1);
           if (!home.includes('id="hanh-trinh-tu-que"')) process.exit(1);
