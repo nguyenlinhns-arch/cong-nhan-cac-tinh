@@ -2,6 +2,7 @@
   "use strict";
 
   const ZALO_URL = "https://zalo.me/0963048585";
+  const MESSENGER_URL = "https://www.messenger.com/t/thaylinhtuyenthomo.vn";
   const PHONE_URL = "tel:+84963048585";
   const CONDITION_URL = "/kiem-tra-dieu-kien/";
   const requiredConditionFields = ["age_range", "height_range", "weight_range", "health_screen"];
@@ -158,6 +159,28 @@
     });
   }
 
+  function mountFacebookReel(button) {
+    if (!button || button.dataset.facebookMounted === "true") return;
+    const embedUrl = String(button.dataset.facebookEmbed || "").replaceAll("&amp;", "&");
+    if (!/^https:\/\/www\.facebook\.com\/plugins\/video\.php\?/i.test(embedUrl)) return;
+    const host = button.parentElement;
+    if (!host) return;
+    const frame = document.createElement("iframe");
+    frame.title = button.getAttribute("aria-label")?.replace(/^Phát video\s*/i, "Video ") || "Video Facebook";
+    frame.src = embedUrl;
+    frame.width = "360";
+    frame.height = "640";
+    frame.scrolling = "no";
+    frame.frameBorder = "0";
+    frame.loading = "eager";
+    frame.allowFullscreen = true;
+    frame.allow = "autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share";
+    frame.referrerPolicy = "strict-origin-when-cross-origin";
+    button.dataset.facebookMounted = "true";
+    host.replaceChildren(frame);
+    trackExact("verification_video_play", { context: button.dataset.context || "facebook_reel" });
+  }
+
   function selectedConditionValues(form) {
     return Object.fromEntries(requiredConditionFields.map(name => [name, form.querySelector(`input[name="${name}"]:checked`)?.value || ""]));
   }
@@ -222,6 +245,13 @@
   }
 
   document.addEventListener("click", event => {
+    const reelButton = event.target.closest?.("[data-facebook-reel-facade]");
+    if (reelButton) {
+      event.preventDefault();
+      mountFacebookReel(reelButton);
+      return;
+    }
+
     const link = event.target.closest?.("a");
     if (link) {
       const channel = contactChannel(link);
