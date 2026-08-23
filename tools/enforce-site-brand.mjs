@@ -148,6 +148,11 @@ if (!CHECK_ONLY) {
   await runValidator("./validate-editorial-field-report-v8.mjs", "Kiểm định phóng sự hiện trường v8");
   await runValidator("./validate-editorial-content-origin-v9.mjs", "Kiểm định nguồn nội dung toàn website v9");
 
+  // Cross-article uniqueness is initially an audit rather than a destructive
+  // auto-fix. The report identifies long repeated sentences so source-level
+  // rewrites can preserve each story's own voice.
+  await import("./audit-editorial-uniqueness-v9.mjs");
+
   // The old SEO gate predates specialist-v6 and assumes every evergreen article
   // keeps a visible FAQ. Apply a narrow compatibility layer only after the new
   // specialist validator has already verified the exact reader-facing copy.
