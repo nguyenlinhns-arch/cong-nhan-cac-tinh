@@ -9,6 +9,8 @@
     // Giữ phiên bản truyền tải tương thích với web app CRM đang chạy.
     // Các trường Google Ads được nối thêm nhưng không thay đổi schema bắt buộc hiện có.
     schemaVersion: 2,
+    updatedAt: "2026-08-23T10:38:00+07:00",
+    canonicalFactsPath: "/data/recruitment-facts-2026.json",
     endpoint: ENDPOINT,
     timeoutMs: 12000,
     contact: Object.freeze({
