@@ -12,9 +12,16 @@ const activeProfiles = recruitment.occupation_profiles.filter((profile) => profi
 const occupationCount = activeProfiles.length;
 const packageCount = priorityCount + 1;
 const reviewDate = review.reviewed_at;
+const contentModifiedDate = review.verification_content_modified || reviewDate;
+const policyEffectiveDate = review.policy_effective_from || recruitment.effective_from;
 const displayReviewDate = reviewDate.split("-").reverse().join("/");
+const displayPolicyDate = policyEffectiveDate.split("-").reverse().join("/");
+const currentFactsEvergreenTitle = "Thông tin tuyển thợ mỏ đang áp dụng: 15 câu hỏi";
+const currentFactsEvergreenHeading = "Thông tin tuyển thợ mỏ đang áp dụng: trả lời 15 câu hỏi";
 
 if (!/^\d{4}-\d{2}-\d{2}$/.test(reviewDate)) throw new Error(`site-scope-v10: reviewed_at không hợp lệ: ${reviewDate}`);
+if (!/^\d{4}-\d{2}-\d{2}$/.test(contentModifiedDate)) throw new Error(`site-scope-v10: verification_content_modified không hợp lệ: ${contentModifiedDate}`);
+if (!/^\d{4}-\d{2}-\d{2}$/.test(policyEffectiveDate)) throw new Error(`site-scope-v10: policy_effective_from không hợp lệ: ${policyEffectiveDate}`);
 if (priorityCount < 1) throw new Error("site-scope-v10: không có địa bàn ưu tiên");
 if (occupationCount < 1) throw new Error("site-scope-v10: không có nghề đang tiếp nhận");
 
@@ -38,7 +45,7 @@ function setLastReviewed(html) {
 }
 
 function setDateModified(html) {
-  return html.replace(/"dateModified"\s*:\s*"\d{4}-\d{2}-\d{2}"/, `"dateModified":"${reviewDate}"`);
+  return html.replace(/"dateModified"\s*:\s*"\d{4}-\d{2}-\d{2}"/, `"dateModified":"${contentModifiedDate}"`);
 }
 
 function normalizeProvinceNav(html) {
@@ -51,7 +58,8 @@ mutate("index.html", (html) => normalizeProvinceNav(html)
 mutate("trung-tam-nghe-mo/index.html", (html) => setDateModified(setLastReviewed(html
   .replace(/Thông tin theo \d+ tỉnh/g, `Thông tin theo ${priorityCount} địa bàn ưu tiên`)
   .replace(/\b\d+ trang tỉnh\b/g, `${priorityCount} trang địa phương ưu tiên`)
-  .replace(/điều kiện, \d+ tỉnh/g, `điều kiện, ${priorityCount} địa bàn ưu tiên`))));
+  .replace(/điều kiện, \d+ tỉnh/g, `điều kiện, ${priorityCount} địa bàn ưu tiên`)
+  .replace(/thu nhập tháng \d{1,2}\/\d{4}/g, "thu nhập đang áp dụng"))));
 
 mutate("viec-lam-nganh-than/index.html", (html) => setDateModified(setLastReviewed(normalizeProvinceNav(html)
   .replace(/\b\d+ trang tư vấn theo tỉnh\b/g, `${priorityCount} trang địa phương ưu tiên`)
@@ -64,8 +72,16 @@ mutate("chia-se-thong-tin/index.html", (html) => setDateModified(setLastReviewed
   .replace(/>\d+ GÓI NỘI DUNG</g, `>${packageCount} GÓI NỘI DUNG<`))));
 
 mutate("thong-tin-tuyen-tho-mo/index.html", (html) => {
-  let next = html.replace(/<time datetime="\d{4}-\d{2}-\d{2}">\d{2}\/\d{2}\/\d{4}<\/time>(; áp dụng cho thông tin tuyển)/g,
-    `<time datetime="${reviewDate}">${displayReviewDate}</time>$1`);
+  let next = html
+    .replace(/Tuyển thợ mỏ tháng \d{1,2}\/\d{4}: 15 câu hỏi/g, currentFactsEvergreenTitle)
+    .replace(/Tuyển thợ mỏ tháng \d{1,2}\/\d{4}: trả lời 15 câu hỏi/g, currentFactsEvergreenHeading)
+    .replace(/Thông tin đang áp dụng trong tháng \d{1,2}\/\d{4}/g, "Thông tin tuyển đang áp dụng")
+    .replace(/CẬP NHẬT\s*<time datetime="\d{4}-\d{2}-\d{2}">\d{2}\/\d{2}\/\d{4}<\/time>/g,
+      `HIỆU LỰC <time datetime="${policyEffectiveDate}">${displayPolicyDate}</time>`)
+    .replace(/(<strong>Rà soát gần nhất<\/strong><span>)<time datetime="\d{4}-\d{2}-\d{2}">\d{2}\/\d{2}\/\d{4}<\/time>;\s*áp dụng cho thông tin tuyển tháng \d{1,2}\/\d{4}\./g,
+      `$1<time datetime="${reviewDate}">${displayReviewDate}</time>; đối chiếu thông tin tuyển đang áp dụng.`)
+    .replace(/(<strong>Rà soát gần nhất<\/strong><span>)<time datetime="\d{4}-\d{2}-\d{2}">\d{2}\/\d{2}\/\d{4}<\/time>;\s*đối chiếu thông tin tuyển đang áp dụng\./g,
+      `$1<time datetime="${reviewDate}">${displayReviewDate}</time>; đối chiếu thông tin tuyển đang áp dụng.`);
   next = setLastReviewed(next);
   return setDateModified(next);
 });
@@ -107,6 +123,9 @@ console.log(JSON.stringify({
   activeOccupations: occupationCount,
   sharePackages: packageCount,
   reviewedAt: reviewDate,
+  contentModifiedDate,
+  policyEffectiveDate,
+  currentFactsEvergreen: true,
   touched: [...touched].sort(),
 }, null, 2));
 
