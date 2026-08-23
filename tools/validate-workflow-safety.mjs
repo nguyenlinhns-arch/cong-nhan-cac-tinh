@@ -101,12 +101,13 @@ if (!fs.existsSync(liveVerifyPath)) {
     "/data/recruitment-facts-2026.json",
     "7,5 triệu đồng/tháng",
     "hoàn thành định mức lao động",
-    "Xem 26 địa bàn ưu tiên",
+    'href="/viec-lam-nganh-than/"',
     "data-facebook-reel-facade",
     "canonical_facts_version",
   ]) {
     if (!text.includes(marker)) errors.push(`verify-live-recruitment-facts.yml: thiếu kiểm tra live ${marker}`);
   }
+  if (!text.includes("Xem đủ 26 tỉnh, thành")) errors.push("verify-live-recruitment-facts.yml: thiếu guard loại bỏ nhãn phạm vi tỉnh cũ");
 }
 
 const distributionPrPath = path.join(workflowRoot, "recruitment-distribution-v11-pr.yml");
