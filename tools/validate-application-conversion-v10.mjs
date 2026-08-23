@@ -28,8 +28,8 @@ requireMarker(analytics, 'gtagEvent("lead_fallback_created", params)', "Fallback
 requireMarker(landing, 'data-application-form', "Landing form");
 requireMarker(landing, 'name="consent"', "Landing consent");
 requireMarker(landing, 'https://zalo.me/0963048585', "Landing support");
-requireMarker(landing, 'https://www.messenger.com/t/thaylinhtuyenthomo.vn', "Landing support");
-requireMarker(landing, 'tel:0963048585', "Landing support");
+requireMarker(landing, 'https://m.me/thaylinhtuyenthomo', "Landing support");
+requireMarker(landing, 'tel:+84963048585', "Landing support");
 
 if (/mode\s*:\s*["']no-cors["']/.test(application)) {
   errors.push("Application delivery: không được dùng no-cors vì không xác minh được CRM đã nhận hồ sơ");
@@ -43,6 +43,8 @@ if (errors.length) {
     status: "application-conversion-v10-ready",
     crmResponseVerified: true,
     leadDeduped: true,
+    canonicalMessenger: "https://m.me/thaylinhtuyenthomo",
+    canonicalPhone: "tel:+84963048585",
     ga4Lead: "generate_lead",
     metaLead: "Lead",
     fallbackSeparated: true,
