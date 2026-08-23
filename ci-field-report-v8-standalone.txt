@@ -1,1 +1,2 @@
 temporary CI trigger for standalone field-report v8 pages
+retry after llms discovery sync
