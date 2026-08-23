@@ -1,6 +1,6 @@
 {
-  "version": 7,
-  "confirmed_at": "2026-08-23T10:38:00+07:00",
+  "version": 8,
+  "confirmed_at": "2026-08-23T11:34:00+07:00",
   "status": "confirmed_by_user",
   "candidate": {
     "gender": "Nam",
@@ -23,8 +23,9 @@
   },
   "after_training": {
     "work_location": "Các đơn vị ngành Than thuộc TKV tại Quảng Ninh",
-    "income": "Bình quân 20–25 triệu đồng/tháng",
-    "income_note": "Tùy đơn vị, vị trí, ngày công và năng suất",
+    "income": "20–25 triệu đồng/tháng",
+    "income_condition": "khi hoàn thành định mức lao động",
+    "income_commitment": "20–25 triệu đồng/tháng khi hoàn thành định mức lao động",
     "employment": "Có hợp đồng lao động, bảo hiểm, thưởng, xe đưa đón và chế độ theo từng đơn vị"
   },
   "contact": {
@@ -35,6 +36,8 @@
   "forbidden_legacy_phrases": [
     "6 triệu",
     "18–25 triệu",
-    "7,5 triệu là tổng cả khóa"
+    "7,5 triệu là tổng cả khóa",
+    "Bình quân 20–25 triệu",
+    "Tùy đơn vị, vị trí, ngày công và năng suất"
   ]
 }
