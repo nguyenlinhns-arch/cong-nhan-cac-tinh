@@ -20,32 +20,45 @@ Nếu thiếu, dữ liệu chỉ nằm ở `FACEBOOK_INBOX`; hệ thống không
 ## Sheet đã chuẩn bị
 
 - `FACEBOOK_INBOX`: staging riêng cho Messenger/Lead Ads.
+- `FACEBOOK_ADS`: chi tiêu và chỉ số Meta theo ngày/campaign/ad, ghép với kết quả CRM.
 - `Ứng viên`: đã có thêm các cột Facebook: năm sinh khai báo, PSID, Lead ID, Ad ID, Ad Set ID, Campaign ID, tên Ad/Ad Set/Campaign, referral, intake mode, FBCLID và placement.
+- `KPI_MARKETING`: đã có khối `FACEBOOK → MASTER CRM` để nhìn số Inbox, số đang thiếu thông tin, số sẵn sàng và số đã vào MASTER.
 
 ## Kích hoạt Apps Script một lần
 
-Tạo một Apps Script riêng cho bridge Facebook (không thay deployment đang nhận form Website), dán `Code.gs` trong thư mục này và cấu hình Script Properties:
+Tạo một Apps Script riêng cho bridge Facebook (không thay deployment đang nhận form Website), tạo hai file và dán nội dung tương ứng từ thư mục này:
+
+- `Code.gs`
+- `Insights.gs`
+
+Cấu hình Script Properties:
 
 - `SPREADSHEET_ID`: ID MASTER CRM.
 - `META_VERIFY_TOKEN`: chuỗi tự đặt để Meta xác minh webhook.
 - `META_PAGE_ID`: Page ID của `Thầy Linh – Tuyển Thợ Mỏ`.
 - `META_PAGE_ACCESS_TOKEN`: token Page; dùng để đọc tên người nhắn và lấy Lead Ads nếu Page/app có quyền tương ứng.
-- `META_ADS_ACCESS_TOKEN`: tùy chọn; token có `ads_read` để đổi Ad ID thành Campaign/Ad Set/Ad.
+- `META_ADS_ACCESS_TOKEN`: token có quyền đọc quảng cáo/insights và đổi Ad ID thành Campaign/Ad Set/Ad.
+- `META_AD_ACCOUNT_ID`: ID tài khoản quảng cáo, có thể nhập có hoặc không có tiền tố `act_`.
+- `META_INSIGHTS_DAYS`: tùy chọn, mặc định 60 ngày.
 - `META_GRAPH_VERSION`: tùy chọn; mặc định trong code là `v26.0`, thay khi Meta nâng phiên bản.
 - `DEFAULT_OWNER`: tùy chọn; mặc định `Nguyễn Tử Linh`.
 
 Sau đó:
 
 1. Chạy `setupFacebookCRMBridge()` và cấp quyền.
-2. Deploy → New deployment → Web app; Execute as chủ sở hữu; URL phải nhận được POST từ Meta.
-3. Trong Meta App → Webhooks/Page, dùng URL Web App làm Callback URL và dùng đúng `META_VERIFY_TOKEN`.
-4. Subscribe tối thiểu các sự kiện Messenger cần thiết; với Lead Ads cần quyền và subscription `leadgen` phù hợp.
-5. Gửi một tin nhắn thử theo CTA: `2000 - cao 1m65 - 60kg - sức khỏe tốt - 0963...`.
-6. Xác nhận dòng xuất hiện ở `FACEBOOK_INBOX`. Khi đủ 6/6, trigger 5 phút sẽ tạo/gộp hồ sơ vào `Ứng viên`.
+2. Chạy `setupFacebookAdsInsights()` để tạo lịch đồng bộ Ads hằng ngày.
+3. Deploy → New deployment → Web app; Execute as chủ sở hữu; URL phải nhận được POST từ Meta.
+4. Trong Meta App → Webhooks/Page, dùng URL Web App làm Callback URL và dùng đúng `META_VERIFY_TOKEN`.
+5. Subscribe các sự kiện Messenger cần thiết; với Lead Ads cần quyền và subscription `leadgen` phù hợp.
+6. Gửi một tin nhắn thử theo CTA: `2000 - cao 1m65 - 60kg - sức khỏe tốt - 0963...`.
+7. Xác nhận dòng xuất hiện ở `FACEBOOK_INBOX`. Khi đủ 6/6, trigger 5 phút sẽ tạo/gộp hồ sơ vào `Ứng viên`.
+8. Chạy `syncFacebookAdsInsights()` một lần để kiểm tra `FACEBOOK_ADS` có chi tiêu và Campaign/Ad ID.
 
 ## Chế độ chưa có Meta token
 
 `FACEBOOK_INBOX` vẫn dùng được như bảng nhập nhanh nội bộ. Nhân viên điền các trường ứng viên đã chủ động cung cấp qua Messenger. Sau khi bridge Apps Script được cài, `syncFacebookInbox()` tự gộp sang MASTER CRM mỗi 5 phút. Không cần tạo lại dữ liệu khi sau này bật webhook.
+
+Website cũng đã giữ các trường `fbclid`, Campaign ID, Ad Set ID, Ad ID và placement trong payload khi quảng cáo Facebook dẫn người dùng về form Website. Vì vậy luồng Facebook → Website → Form có thể giữ attribution ngay cả khi chưa bật webhook Messenger.
 
 ## Quy tắc an toàn dữ liệu
 
@@ -58,8 +71,10 @@ Sau đó:
 
 ## Đo lường
 
-Khi Campaign/Ad ID có dữ liệu, MASTER CRM giữ chúng đến kết quả cuối. KPI cần đọc theo `Facebook Campaign / Facebook Ad`:
+`FACEBOOK_ADS` ghép chi tiêu theo **ngày tạo lead + Ad ID** với kết quả hiện tại của đúng cohort ứng viên đó. Một người nhập học sau nhiều ngày vẫn được trả kết quả về quảng cáo đã tạo ra người đó, thay vì gán vào ngày nhập học.
+
+Phễu đo:
 
 `Tin nhắn → đủ 6 trường → hồ sơ MASTER → đủ điều kiện → hoàn thiện hồ sơ → nhập học`.
 
-Không lấy giá tin nhắn làm KPI cuối; KPI cuối là chi phí/ứng viên đủ điều kiện và chi phí/người nhập học.
+Không lấy giá tin nhắn làm KPI cuối; KPI cuối là **chi phí/ứng viên đủ điều kiện** và **chi phí/người nhập học** theo Campaign/Ad.
