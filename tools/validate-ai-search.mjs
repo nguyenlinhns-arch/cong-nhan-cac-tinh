@@ -6,13 +6,24 @@ import {buildRecruitmentAnswers} from "./recruitment-answers.mjs";
 const root = path.resolve("tuyen-tho-mo");
 const base = "https://thaylinhtuyenthomo.vn";
 const factsUrl = `${base}/thong-tin-tuyen-tho-mo/`;
+const machineFactsUrl = `${base}/data/recruitment-facts-2026.json`;
 const authorId = `${base}/tac-gia/nguyen-tu-linh/#person`;
 const organizationId = `${base}/#organization`;
 const policyUrl = `${base}/nguyen-tac-bien-tap/`;
 const master = JSON.parse(fs.readFileSync(path.resolve("operations/job-posting-master-2026.json"), "utf8"));
+const canonicalFacts = JSON.parse(fs.readFileSync(path.join(root, "data", "recruitment-facts-2026.json"), "utf8"));
+const review = JSON.parse(fs.readFileSync(path.resolve("content/recruitment-review-v10.json"), "utf8"));
 const recruitmentAnswers = buildRecruitmentAnswers(master);
 const editorial = JSON.parse(fs.readFileSync(path.resolve("content/editorial-sources.json"), "utf8"));
+const reviewDate = review.reviewed_at;
+const contentModifiedDate = review.verification_content_modified || reviewDate;
 const errors = [];
+
+if (canonicalFacts.version !== review.canonical_facts_version) errors.push(`AI gate facts version mismatch: ${canonicalFacts.version} != ${review.canonical_facts_version}`);
+if (canonicalFacts.confirmed_at !== review.canonical_facts_confirmed_at) errors.push("AI gate facts confirmation timestamp does not match review metadata");
+if (master.version !== review.job_master_version) errors.push(`AI gate master version mismatch: ${master.version} != ${review.job_master_version}`);
+if (canonicalFacts.study_benefits?.living_support !== "7,5 triệu đồng/tháng trong thời gian học") errors.push("AI gate canonical monthly support is incomplete");
+if (canonicalFacts.after_training?.income_commitment !== master.income_commitment) errors.push("AI gate canonical income does not match master");
 
 function collectFiles(directory, predicate, output = []) {
   for (const entry of fs.readdirSync(directory, {withFileTypes: true})) {
@@ -56,6 +67,14 @@ function assertQualifiedIncome(text, label) {
   }
 }
 
+function assertMonthlySupport(text, label) {
+  const normalized = String(text).replace(/\s+/g, " ").trim();
+  if (!/7[,.]5\s*triệu/iu.test(normalized)) return;
+  if (!/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(normalized)) {
+    errors.push(`${label}: chuỗi chứa hỗ trợ 7,5 triệu nhưng thiếu đơn vị /tháng`);
+  }
+}
+
 function walkStrings(value, visit, pointer = "$") {
   if (typeof value === "string") visit(value, pointer);
   else if (Array.isArray(value)) value.forEach((item, index) => walkStrings(item, visit, `${pointer}[${index}]`));
@@ -74,17 +93,20 @@ function validateIncomeContexts(html, label) {
     if (!text) continue;
     textIndex += 1;
     assertQualifiedIncome(text, `${label} (nút văn bản ${textIndex})`);
+    assertMonthlySupport(text, `${label} (nút văn bản ${textIndex})`);
   }
   let attributeIndex = 0;
   for (const tag of withoutScripts.matchAll(/<[^>]+>/g)) {
     for (const attribute of tag[0].matchAll(/\b([:\w-]+)=["']([^"']*)["']/g)) {
       attributeIndex += 1;
       assertQualifiedIncome(attribute[2], `${label} (thuộc tính ${attribute[1]} ${attributeIndex})`);
+      assertMonthlySupport(attribute[2], `${label} (thuộc tính ${attribute[1]} ${attributeIndex})`);
     }
   }
   const documents = parseJsonLd(html, `${label} income validation`);
   documents.forEach((document, index) => walkStrings(document, (value, pointer) => {
     assertQualifiedIncome(value, `${label} (JSON-LD ${index + 1} ${pointer})`);
+    assertMonthlySupport(value, `${label} (JSON-LD ${index + 1} ${pointer})`);
   }));
 }
 
@@ -174,6 +196,8 @@ else {
     "1m53",
     "47 kg",
     "2–3 tháng",
+    "10 tháng",
+    canonicalFacts.study_benefits.living_support,
     "20–25 triệu đồng/tháng",
     "hoàn thành định mức lao động",
     ...master.dossier.admission_documents,
@@ -188,8 +212,8 @@ else {
   const webpage = nodes.find((node) => node?.["@type"] === "WebPage" && node.url === factsUrl);
   const faq = nodes.find((node) => node?.["@type"] === "FAQPage");
   if (!webpage) errors.push("Current-facts page is missing canonical WebPage schema");
-  if (webpage?.dateModified !== master.effective_from) errors.push("Current-facts WebPage dateModified does not match the master policy");
-  if (webpage?.lastReviewed !== master.effective_from || webpage?.reviewedBy?.["@id"] !== authorId) errors.push("Current-facts review date or accountable reviewer is incomplete");
+  if (webpage?.dateModified !== contentModifiedDate) errors.push(`Current-facts WebPage dateModified must be ${contentModifiedDate}`);
+  if (webpage?.lastReviewed !== reviewDate || webpage?.reviewedBy?.["@id"] !== authorId) errors.push(`Current-facts review date must be ${reviewDate} with accountable reviewer`);
   if (webpage?.citation?.name !== master.source_notice) errors.push("Current-facts WebPage citation does not match the master source notice");
   if (webpage?.publishingPrinciples !== policyUrl) errors.push("Current-facts page is not linked to the editorial policy");
   if (webpage?.author?.["@id"] !== authorId || webpage?.publisher?.["@id"] !== organizationId) errors.push("Current-facts page has incomplete author or publisher provenance");
@@ -206,8 +230,14 @@ const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
 if (!sitemap.includes(`<loc>${base}/thong-tin-tuyen-tho-mo/</loc>`)) errors.push("Current-facts page is missing from sitemap.xml");
 if (!sitemap.includes(`<loc>${policyUrl}</loc>`)) errors.push("Editorial policy is missing from sitemap.xml");
 const llms = fs.readFileSync(path.join(root, "llms.txt"), "utf8");
-if (!llms.includes(`[Thông tin tuyển đang áp dụng](${base}/thong-tin-tuyen-tho-mo/)`) && !llms.includes(`[Thông tin tuyển thợ mỏ tháng 8/2026](${base}/thong-tin-tuyen-tho-mo/)`)) {
+if (!llms.includes(`[Thông tin tuyển đang áp dụng](${base}/thong-tin-tuyen-tho-mo/)`) && !llms.includes(`[Thông tin tuyển thợ mỏ đang áp dụng: 15 câu hỏi](${base}/thong-tin-tuyen-tho-mo/)`)) {
   errors.push("llms.txt does not identify the canonical current-facts page");
+}
+for (const marker of [machineFactsUrl, canonicalFacts.study_benefits.living_support, canonicalFacts.after_training.income_commitment, `facts v${canonicalFacts.version}`]) {
+  if (!llms.includes(marker)) errors.push(`llms.txt is missing canonical facts marker: ${marker}`);
+}
+for (const legacy of ["bình quân 20–25 triệu", "tùy đơn vị, vị trí, ngày công và năng suất", "7,5 triệu là tổng cả khóa"]) {
+  if (llms.toLocaleLowerCase("vi").includes(legacy)) errors.push(`llms.txt contains legacy recruitment phrase: ${legacy}`);
 }
 
 const home = fs.readFileSync(path.join(root, "index.html"), "utf8");
@@ -230,7 +260,7 @@ if (homeOrganization?.publishingPrinciples !== policyUrl) errors.push("Home Orga
 if (homeOrganization?.founder?.["@id"] !== authorId) errors.push("Home Organization is not linked to the accountable Person");
 if (!homeOrganization?.address?.streetAddress || homeOrganization?.address?.addressRegion !== "Quảng Ninh") errors.push("Home Organization has incomplete contact-address provenance");
 if (homeWebPage?.author?.["@id"] !== authorId || homeWebPage?.publisher?.["@id"] !== organizationId || homeWebPage?.publishingPrinciples !== policyUrl) errors.push("Home WebPage has incomplete author, publisher, or editorial-policy provenance");
-if (homeWebPage?.lastReviewed !== master.effective_from || homeWebPage?.reviewedBy?.["@id"] !== authorId) errors.push("Home WebPage review date or accountable reviewer is incomplete");
+if (homeWebPage?.lastReviewed !== reviewDate || homeWebPage?.reviewedBy?.["@id"] !== authorId) errors.push(`Home WebPage review date must be ${reviewDate} with accountable reviewer`);
 if (!home.includes('href="nguyen-tac-bien-tap/"')) errors.push("Home page does not visibly link to the editorial policy");
 
 const policyPath = path.join(root, "nguyen-tac-bien-tap", "index.html");
@@ -317,7 +347,7 @@ for (const slug of master.occupation_profiles.filter((profile) => profile.active
   const webpage = nodes.find((node) => node?.["@type"] === "WebPage");
   if (!job?.["@id"] || job?.mainEntityOfPage?.["@id"] !== webpage?.["@id"] || webpage?.mainEntity?.["@id"] !== job?.["@id"]) errors.push(`${slug}: JobPosting and WebPage are not linked`);
   if (webpage?.author?.["@id"] !== authorId || webpage?.publisher?.["@id"] !== `${base}/#organization` || webpage?.publishingPrinciples !== policyUrl) errors.push(`${slug}: job-page entity provenance is incomplete`);
-  if (webpage?.lastReviewed !== master.effective_from || webpage?.reviewedBy?.["@id"] !== authorId) errors.push(`${slug}: job-page review date or accountable reviewer is incomplete`);
+  if (webpage?.lastReviewed !== reviewDate || webpage?.reviewedBy?.["@id"] !== authorId) errors.push(`${slug}: job-page review date must be ${reviewDate}`);
   if (!/href=["'](?:\.\.\/\.\.\/|\/)thong-tin-tuyen-tho-mo\//i.test(html)) errors.push(`${slug}: job page does not link to the canonical current-facts page`);
 }
 
@@ -325,7 +355,7 @@ const campaignJob = fs.readFileSync(path.join(root, "viec-lam", "cong-nhan-mo-ha
 if (!/href=["'](?:\.\.\/\.\.\/|\/)thong-tin-tuyen-tho-mo\//i.test(campaignJob)) errors.push("Campaign job page does not link to the canonical current-facts page");
 const campaignNodes = graphNodes(parseJsonLd(campaignJob, "campaign job page"));
 const campaignWebPage = campaignNodes.find((node) => node?.["@type"] === "WebPage");
-if (campaignWebPage?.lastReviewed !== master.effective_from || campaignWebPage?.reviewedBy?.["@id"] !== authorId) errors.push("Campaign job page review date or accountable reviewer is incomplete");
+if (campaignWebPage?.lastReviewed !== reviewDate || campaignWebPage?.reviewedBy?.["@id"] !== authorId) errors.push(`Campaign job page review date must be ${reviewDate}`);
 
 const analytics = fs.readFileSync(path.join(root, "analytics.js"), "utf8") + fs.readFileSync(path.join(root, "analytics-vendors.js"), "utf8");
 for (const marker of ["ai_referral_visit", "chatgpt", "copilot", "perplexity", "gemini", "claude"]) {
@@ -394,6 +424,9 @@ for (const file of indexableFiles) {
 
 console.log(JSON.stringify({
   factsPage: fs.existsSync(factsPath),
+  canonicalFactsVersion: canonicalFacts.version,
+  reviewDate,
+  contentModifiedDate,
   articlePages: articleFiles.length,
   sourcedArticles,
   provincePages: provinceFiles.length,
