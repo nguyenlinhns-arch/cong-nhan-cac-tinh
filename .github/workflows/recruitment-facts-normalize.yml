@@ -35,7 +35,7 @@ jobs:
           const path = require('node:path');
 
           const facts = {
-            version: 2,
+            version: 3,
             confirmed_at: '2026-08-23T10:38:00+07:00',
             status: 'confirmed',
             candidate: {
@@ -76,34 +76,43 @@ jobs:
             ]
           };
 
-          const replacements = [
-            ['CAM KẾT THU NHẬP', 'THU NHẬP BÌNH QUÂN'],
-            ['THU NHẬP CAM KẾT', 'THU NHẬP BÌNH QUÂN'],
-            ['20–25 triệu/tháng khi hoàn thành định mức lao động', '20–25 triệu/tháng'],
-            ['cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động', 'thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất'],
-            ['cam kết 20–25 triệu/tháng khi hoàn thành định mức lao động', 'thu nhập bình quân 20–25 triệu/tháng'],
-            ['Hỗ trợ 7,5 triệu đồng/tháng đồng', 'Hỗ trợ 7,5 triệu đồng/tháng'],
-            ['hỗ trợ 7,5 triệu đồng/tháng đồng', 'hỗ trợ 7,5 triệu đồng/tháng'],
-            ['Hỗ trợ sinh hoạt 7,5 triệu đồng', 'Hỗ trợ 7,5 triệu đồng/tháng'],
-            ['hỗ trợ sinh hoạt 7,5 triệu đồng', 'hỗ trợ 7,5 triệu đồng/tháng'],
-            ['Hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển', 'Hỗ trợ 7,5 triệu đồng/tháng trong thời gian học theo chính sách đợt tuyển'],
-            ['Hỗ trợ 7,5 triệu đồng trong thời gian học', 'Hỗ trợ 7,5 triệu đồng/tháng trong thời gian học'],
-            ['hỗ trợ 7,5 triệu đồng trong thời gian học', 'hỗ trợ 7,5 triệu đồng/tháng trong thời gian học'],
-            ['hỗ trợ 7,5 triệu trong thời gian học', 'hỗ trợ 7,5 triệu đồng/tháng trong thời gian học'],
-            ['Hỗ trợ sinh hoạt 7,5 triệu', 'Hỗ trợ 7,5 triệu đồng/tháng'],
-            ['hỗ trợ sinh hoạt 7,5 triệu', 'hỗ trợ 7,5 triệu đồng/tháng'],
-            ['7,5 triệu sinh hoạt phí', '7,5 triệu đồng/tháng'],
-            ['Hỗ trợ 7,5 triệu đồng.', 'Hỗ trợ 7,5 triệu đồng/tháng.'],
-            ['hỗ trợ 7,5 triệu đồng.', 'hỗ trợ 7,5 triệu đồng/tháng.'],
-            ['hỗ trợ 7,5 triệu.', 'hỗ trợ 7,5 triệu đồng/tháng.'],
+          const exactReplacements = [
             ['7,5 triệu là tổng mức hỗ trợ sinh hoạt trong thời gian học, không phải lương tháng, học phí hoàn lại hay khoản chắc chắn trả một lần.', '7,5 triệu đồng/tháng là mức hỗ trợ sinh hoạt trong thời gian học theo thông tin chuẩn hiện hành; không phải tiền lương sau khi đi làm.'],
             ['7,5 triệu là tổng hỗ trợ sinh hoạt trong thời gian học theo chính sách hiện hành, không phải lương và không phải học phí hoàn lại.', '7,5 triệu đồng/tháng là hỗ trợ sinh hoạt trong thời gian học theo thông tin chuẩn hiện hành, không phải tiền lương sau khi đi làm.']
           ];
 
+          const regexReplacements = [
+            [/CAM KẾT THU NHẬP/gu, 'THU NHẬP BÌNH QUÂN'],
+            [/THU NHẬP CAM KẾT/gu, 'THU NHẬP BÌNH QUÂN'],
+            [/Cam kết thu nhập\s+20[–-]25 triệu(?: đồng)?\/tháng(?: khi hoàn thành định mức lao động)?/giu, 'Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất'],
+            [/Thu nhập\s+20[–-]25 triệu(?: đồng)?\/tháng khi hoàn thành định mức lao động/giu, 'Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất'],
+            [/20[–-]25 triệu\/tháng khi hoàn thành định mức lao động/giu, '20–25 triệu/tháng'],
+            [/7,5 triệu đồng\/tháng(?:\/tháng)+/giu, '7,5 triệu đồng/tháng'],
+            [/7,5 triệu đồng\/tháng\s+đồng/giu, '7,5 triệu đồng/tháng'],
+            [/Hỗ trợ sinh hoạt 7,5 triệu đồng(?!\/tháng)/gu, 'Hỗ trợ 7,5 triệu đồng/tháng'],
+            [/hỗ trợ sinh hoạt 7,5 triệu đồng(?!\/tháng)/gu, 'hỗ trợ 7,5 triệu đồng/tháng'],
+            [/Hỗ trợ sinh hoạt 7,5 triệu(?!\s+đồng\/tháng)/gu, 'Hỗ trợ 7,5 triệu đồng/tháng'],
+            [/hỗ trợ sinh hoạt 7,5 triệu(?!\s+đồng\/tháng)/gu, 'hỗ trợ 7,5 triệu đồng/tháng'],
+            [/Hỗ trợ 7,5 triệu đồng(?!\/tháng)/gu, 'Hỗ trợ 7,5 triệu đồng/tháng'],
+            [/hỗ trợ 7,5 triệu đồng(?!\/tháng)/gu, 'hỗ trợ 7,5 triệu đồng/tháng'],
+            [/Hỗ trợ 7,5 triệu(?!\s+đồng\/tháng)/gu, 'Hỗ trợ 7,5 triệu đồng/tháng'],
+            [/hỗ trợ 7,5 triệu(?!\s+đồng\/tháng)/gu, 'hỗ trợ 7,5 triệu đồng/tháng'],
+            [/7,5 triệu sinh hoạt phí/giu, '7,5 triệu đồng/tháng hỗ trợ sinh hoạt']
+          ];
+
           const canonicalFactsPath = path.normalize('content/recruitment-facts-2026.json');
+          const publicFactsPath = path.normalize(path.join('tuyen-tho-mo', 'data', 'recruitment-facts-2026.json'));
           const roots = ['content', 'tools', 'operations', 'tuyen-tho-mo'];
           const allowed = new Set(['.html', '.js', '.mjs', '.json', '.md', '.txt', '.xml']);
           let changedFiles = 0;
+
+          function normalizeText(text) {
+            let next = text;
+            for (const [from, to] of exactReplacements) next = next.split(from).join(to);
+            for (const [pattern, to] of regexReplacements) next = next.replace(pattern, to);
+            return next;
+          }
+
           function walk(dir) {
             if (!fs.existsSync(dir)) return;
             for (const entry of fs.readdirSync(dir, {withFileTypes: true})) {
@@ -112,23 +121,25 @@ jobs:
               else if (allowed.has(path.extname(entry.name).toLowerCase())) normalizeFile(p);
             }
           }
+
           function normalizeFile(file) {
-            if (path.normalize(file) === canonicalFactsPath) return;
+            const normalized = path.normalize(file);
+            if (normalized === canonicalFactsPath || normalized === publicFactsPath) return;
             let text;
             try { text = fs.readFileSync(file, 'utf8'); } catch { return; }
-            let next = text;
-            for (const [from, to] of replacements) next = next.split(from).join(to);
+            const next = normalizeText(text);
             if (next !== text) {
               fs.writeFileSync(file, next);
               changedFiles += 1;
             }
           }
+
           for (const root of roots) walk(root);
 
           const masterPath = 'operations/job-posting-master-2026.json';
           if (fs.existsSync(masterPath)) {
             const master = JSON.parse(fs.readFileSync(masterPath, 'utf8'));
-            master.version = Math.max(Number(master.version || 0), 6);
+            master.version = Math.max(Number(master.version || 0), 7);
             master.updated_at = '2026-08-23T10:38:00+07:00';
             master.income_commitment = 'Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất';
             master.income_reference = master.income_commitment;
@@ -144,8 +155,8 @@ jobs:
           fs.mkdirSync('content', {recursive: true});
           fs.writeFileSync(canonicalFactsPath, JSON.stringify(facts, null, 2) + '\n');
           fs.mkdirSync(path.join('tuyen-tho-mo', 'data'), {recursive: true});
-          fs.writeFileSync(path.join('tuyen-tho-mo', 'data', 'recruitment-facts-2026.json'), JSON.stringify(facts, null, 2) + '\n');
-          console.log(JSON.stringify({facts: canonicalFactsPath, publicFacts: 'tuyen-tho-mo/data/recruitment-facts-2026.json', changedFiles}, null, 2));
+          fs.writeFileSync(publicFactsPath, JSON.stringify(facts, null, 2) + '\n');
+          console.log(JSON.stringify({facts: canonicalFactsPath, publicFacts: publicFactsPath, changedFiles}, null, 2));
           NODE
 
       - name: Verify canonical facts
@@ -156,15 +167,23 @@ jobs:
           const facts = JSON.parse(fs.readFileSync('content/recruitment-facts-2026.json','utf8'));
           if (facts.study_benefits.living_support !== '7,5 triệu đồng/tháng trong thời gian học') process.exit(1);
           if (facts.after_training.income !== 'Bình quân 20–25 triệu đồng/tháng') process.exit(1);
-          if (!facts.forbidden_legacy_phrases.includes('CAM KẾT THU NHẬP')) process.exit(1);
           const publicFacts = JSON.parse(fs.readFileSync('tuyen-tho-mo/data/recruitment-facts-2026.json','utf8'));
           if (JSON.stringify(publicFacts) !== JSON.stringify(facts)) process.exit(1);
+          const current = JSON.parse(fs.readFileSync('tuyen-tho-mo/recruitment-current.json','utf8'));
+          if (current.benefits_during_training?.living_support !== '7,5 triệu đồng/tháng trong thời gian học') process.exit(1);
+          if (!String(current.after_training?.income_reference || current.after_training?.income_commitment || '').includes('20–25 triệu đồng/tháng')) process.exit(1);
           const master = JSON.parse(fs.readFileSync('operations/job-posting-master-2026.json','utf8'));
           if (!master.income_reference.includes('20–25 triệu đồng/tháng')) process.exit(1);
           if (!master.benefits.some(x => x.includes('7,5 triệu đồng/tháng'))) process.exit(1);
-          const homeBuilder = fs.readFileSync('tools/build-worker-first-home.mjs','utf8');
-          if (homeBuilder.includes('CAM KẾT THU NHẬP')) process.exit(1);
-          if (homeBuilder.includes('7,5 triệu đồng/tháng đồng')) process.exit(1);
+
+          const critical = [
+            'tuyen-tho-mo/index.html',
+            'tuyen-tho-mo/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html',
+            'tuyen-tho-mo/tuyen-tho-mo-quang-ninh/index.html'
+          ].filter(fs.existsSync).map(file => fs.readFileSync(file,'utf8')).join('\n');
+          if (/CAM KẾT THU NHẬP|THU NHẬP CAM KẾT|Cam kết thu nhập/iu.test(critical)) process.exit(1);
+          if (/7,5 triệu đồng\/tháng(?:\/tháng|\s+đồng)/iu.test(critical)) process.exit(1);
+          if (/20[–-]25 triệu(?: đồng)?\/tháng khi hoàn thành định mức lao động/iu.test(critical)) process.exit(1);
           console.log('Canonical recruitment facts verified.');
           NODE
 
