@@ -83,3 +83,4 @@ if (errors.length) {
 }
 
 await import("./validate-current-recruitment-copy-v10.mjs");
+await import("./validate-canonical-recruitment-facts-v11.mjs");
