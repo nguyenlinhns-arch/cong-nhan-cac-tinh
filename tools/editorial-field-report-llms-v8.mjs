@@ -16,6 +16,8 @@ const pages = {
   },
 };
 
+await import("./validate-editorial-field-report-source-registry-v8.mjs");
+
 if (!fs.existsSync(llmsPath)) throw new Error("Field report v8: thiếu tuyen-tho-mo/llms.txt");
 let llms = fs.readFileSync(llmsPath, "utf8");
 const start = "<!-- field-report-v8:start -->";
