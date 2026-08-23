@@ -12,7 +12,7 @@
     { "from": "/quang-tri/", "to": "/viec-lam-nganh-than/quang-tri/", "label": "Quảng Trị" },
     { "from": "/son-la/", "to": "/viec-lam-nganh-than/son-la/", "label": "Sơn La" },
     { "from": "/tuyen-quang-ha-giang/", "to": "/viec-lam-nganh-than/tuyen-quang/", "label": "Tuyên Quang – Hà Giang" },
-    { "from": "/viec-lam-nganh-than/quang-ninh/", "to": "/tuyen-tho-mo-quang-ninh/", "label": "Quảng Ninh" },
+    { "from": "/viec-lam-nganh-than/quang-ninh/", "to": "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/", "label": "Quảng Ninh" },
     { "from": "/giai-dap-nghe-mo/hoc-nghe-mo-co-mat-tien-khong/", "to": "/hoc-nghe-mo-co-mat-tien-khong/", "label": "Học nghề mỏ có mất tiền không?", "kind": "duplicate-question" },
     { "from": "/giai-dap-nghe-mo/hoc-tho-lo-bao-lau/", "to": "/hoc-tho-lo-bao-lau/", "label": "Học thợ lò bao lâu?", "kind": "duplicate-question" },
     { "from": "/giai-dap-nghe-mo/hoc-tho-lo-co-duoc-an-o-khong/", "to": "/hoc-tho-lo-co-duoc-an-o-khong/", "label": "Học thợ lò có được ăn ở không?", "kind": "duplicate-question" },
