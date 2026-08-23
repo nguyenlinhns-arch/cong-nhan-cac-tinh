@@ -20,14 +20,14 @@ if (!master.benefits.some((item) => String(item).includes(livingSupport))) {
   throw new Error("normalize-current-recruitment-copy-v10: master benefits chưa chứa hỗ trợ 7,5 triệu đồng/tháng");
 }
 
-const totalOnlySupport = /7[,.]5 triệu đồng(?!\s*\/\s*tháng)\s+trong thời gian học/giu;
+const totalOnlySupport = /7[,.]5 triệu đồng(?!\s*\/\s*tháng)(?:\s+trong thời gian học)?/giu;
 const totalCourseSupport = /7[,.]5 triệu(?: đồng)?\s+(?:là\s+)?tổng(?:\s+cả)?\s+khóa/giu;
 const legacyIncomeNorm = /(?:Cam kết\s+)?(?:thu nhập\s+)?20[–-]25 triệu(?: đồng)?\/tháng khi hoàn thành định mức lao động/giu;
 
 function normalizeString(value) {
   return String(value)
-    .replace(totalOnlySupport, livingSupport)
     .replace(totalCourseSupport, livingSupport)
+    .replace(totalOnlySupport, "7,5 triệu đồng/tháng")
     .replace(legacyIncomeNorm, incomeStatement);
 }
 
@@ -49,7 +49,24 @@ function mutateText(relative) {
   }
 }
 
-for (const profile of activeProfiles) mutateText(`viec-lam/${profile.slug}/index.html`);
+const currentPages = [
+  "index.html",
+  "thong-tin-tuyen-tho-mo/index.html",
+  "trung-tam-nghe-mo/index.html",
+  "viec-lam-nganh-than/index.html",
+  "chia-se-thong-tin/index.html",
+  "viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html",
+  "hoc-nghe-mo-tai-quang-ninh/index.html",
+  "kiem-tra-dieu-kien/index.html",
+  "ho-so-nhap-hoc/index.html",
+  "thu-nhap-an-o-ho-tro/index.html",
+  "an-toan-ky-luat-moi-truong/index.html",
+  "chon-kcn-hay-lam-mo/index.html",
+  "cau-chuyen-cong-nhan/index.html",
+  "lien-he-di-lam-mo-than-quang-ninh/index.html",
+  ...activeProfiles.map((profile) => `viec-lam/${profile.slug}/index.html`),
+];
+for (const relative of currentPages) mutateText(relative);
 for (const relative of ["jobs.xml", "jooble.xml"]) mutateText(relative);
 
 const jobsPath = path.join(site, "jobs.json");
@@ -62,21 +79,27 @@ if (jobsAfter !== jobsBefore) {
   touched.push("jobs.json");
 }
 
-for (const profile of activeProfiles) {
-  const html = fs.readFileSync(path.join(site, "viec-lam", profile.slug, "index.html"), "utf8");
-  if (totalOnlySupport.test(html) || totalCourseSupport.test(html)) throw new Error(`${profile.slug}: còn cách hiểu 7,5 triệu là tổng cả khóa`);
-  totalOnlySupport.lastIndex = 0;
+for (const relative of currentPages) {
+  const html = fs.readFileSync(path.join(site, relative), "utf8");
   totalCourseSupport.lastIndex = 0;
-  if (legacyIncomeNorm.test(html)) throw new Error(`${profile.slug}: còn điều kiện thu nhập cũ theo định mức`);
+  if (totalCourseSupport.test(html)) throw new Error(`${relative}: còn cách hiểu 7,5 triệu là tổng cả khóa`);
+  totalCourseSupport.lastIndex = 0;
   legacyIncomeNorm.lastIndex = 0;
-  if (!html.includes("7,5 triệu đồng/tháng")) throw new Error(`${profile.slug}: thiếu hỗ trợ 7,5 triệu đồng/tháng`);
-  if (!html.includes(facts.after_training.income)) throw new Error(`${profile.slug}: thiếu thu nhập bình quân 20–25 triệu đồng/tháng`);
+  if (legacyIncomeNorm.test(html)) throw new Error(`${relative}: còn điều kiện thu nhập cũ theo định mức`);
+  legacyIncomeNorm.lastIndex = 0;
+  if (/7[,.]5 triệu/iu.test(html) && !/7[,.]5 triệu(?: đồng)?\s*\/\s*tháng/iu.test(html)) {
+    throw new Error(`${relative}: có nhắc 7,5 triệu nhưng thiếu đơn vị /tháng`);
+  }
+  if (/20[–-]25 triệu/iu.test(html) && !html.includes(facts.after_training.income)) {
+    throw new Error(`${relative}: có nhắc 20–25 triệu nhưng thiếu cách ghi thu nhập bình quân hiện hành`);
+  }
 }
 
 console.log(JSON.stringify({
   status: "current-recruitment-copy-v10-normalized",
   canonicalFactsVersion: facts.version,
   activeOccupations: activeProfiles.length,
+  currentPages: currentPages.length,
   supportMeaning: livingSupport,
   income: incomeStatement,
   machineFeedsNormalized: ["jobs.json", "jobs.xml", "jooble.xml"],
