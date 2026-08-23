@@ -5,14 +5,25 @@ const workflowRoot = path.resolve(".github", "workflows");
 const siteRoot = path.resolve("tuyen-tho-mo");
 const errors = [];
 // Only workflows that generate audited first-party site content may write back.
-// generate-local-coverage validates the exact 3,321/34 coverage, crawler files,
-// unique titles/canonicals and locality feed before its commit step.
-const allowedContentWriters = new Set(["sync-vinacomin-youtube.yml", "generate-local-coverage.yml"]);
+// recruitment-facts-normalize is a special source-only writer and is validated
+// below against an exact five-file allowlist plus a forbidden-path guard.
+const allowedContentWriters = new Set([
+  "sync-vinacomin-youtube.yml",
+  "generate-local-coverage.yml",
+  "recruitment-facts-normalize.yml",
+]);
 const retiredPaths = [
   ".deploy",
   ".publish-v110-fixed-trigger",
   ".github/workflows/archive-integrity.yml",
   ".github/workflows/publish-thay-linh-v110-fixed.yml",
+];
+const factsSyncAllowedPaths = [
+  "content/recruitment-facts-2026.json",
+  "content/recruitment-review-v10.json",
+  "operations/job-posting-master-2026.json",
+  "tuyen-tho-mo/data/recruitment-facts-2026.json",
+  "tuyen-tho-mo/recruitment-current.json",
 ];
 
 function hasFiles(target) {
@@ -39,6 +50,60 @@ for (const name of workflows) {
   }
 }
 
+const factsSyncPath = path.join(workflowRoot, "recruitment-facts-normalize.yml");
+if (!fs.existsSync(factsSyncPath)) {
+  errors.push("Thiếu workflow recruitment-facts-normalize.yml");
+} else {
+  const text = fs.readFileSync(factsSyncPath, "utf8");
+  for (const marker of [
+    "Sync only canonical recruitment sources",
+    "Verify canonical source agreement",
+    "Ensure facts-sync never edits code or published HTML",
+    "facts-sync attempted to modify forbidden path",
+    "[facts-sync]",
+  ]) {
+    if (!text.includes(marker)) errors.push(`recruitment-facts-normalize.yml: thiếu guard ${marker}`);
+  }
+  for (const relative of factsSyncAllowedPaths) {
+    if (!text.includes(relative)) errors.push(`recruitment-facts-normalize.yml: thiếu nguồn allowlist ${relative}`);
+  }
+  for (const forbiddenPattern of [
+    /readdirSync\([^\n]*rootDir/,
+    /function\s+walk\s*\([^)]*\)[\s\S]{0,500}tools/,
+    /git\s+add\s+\./,
+    /git\s+add\s+-A/,
+    /git\s+add[^\n]*(?:tools\/|\.github\/workflows\/pages\.yml|tuyen-tho-mo\/[^\s]*\.html)/,
+  ]) {
+    if (forbiddenPattern.test(text)) errors.push(`recruitment-facts-normalize.yml: phát hiện cơ chế ghi rộng bị cấm: ${forbiddenPattern}`);
+  }
+  const allowedCase = factsSyncAllowedPaths.join("|");
+  if (!text.includes(`case \"$file\" in`)) errors.push("recruitment-facts-normalize.yml: thiếu case allowlist cho git diff");
+  if (!text.includes("git diff --name-only")) errors.push("recruitment-facts-normalize.yml: thiếu kiểm tra danh sách file thay đổi");
+  if (!/^\s*contents:\s*write\s*$/mi.test(text)) errors.push("recruitment-facts-normalize.yml: cần contents: write để đồng bộ đúng 5 nguồn");
+  if (!text.includes("git push")) errors.push("recruitment-facts-normalize.yml: thiếu bước push source-sync đã audit");
+  void allowedCase;
+}
+
+const liveVerifyPath = path.join(workflowRoot, "verify-live-recruitment-facts.yml");
+if (!fs.existsSync(liveVerifyPath)) {
+  errors.push("Thiếu workflow verify-live-recruitment-facts.yml");
+} else {
+  const text = fs.readFileSync(liveVerifyPath, "utf8");
+  if (!/workflow_run:[\s\S]*Deploy GitHub Pages/.test(text)) errors.push("verify-live-recruitment-facts.yml: chưa chạy sau Deploy GitHub Pages");
+  if (!/^\s*contents:\s*read\s*$/mi.test(text)) errors.push("verify-live-recruitment-facts.yml: chỉ được contents: read");
+  if (/git\s+(?:commit|push)/i.test(text)) errors.push("verify-live-recruitment-facts.yml: hậu kiểm live không được ghi repository");
+  for (const marker of [
+    "/data/recruitment-facts-2026.json",
+    "7,5 triệu đồng/tháng",
+    "hoàn thành định mức lao động",
+    "Xem 26 địa bàn ưu tiên",
+    "data-facebook-reel-facade",
+    "canonical_facts_version",
+  ]) {
+    if (!text.includes(marker)) errors.push(`verify-live-recruitment-facts.yml: thiếu kiểm tra live ${marker}`);
+  }
+}
+
 const publicReceipts = fs.readdirSync(siteRoot)
   .filter((name) => /(?:RECEIPT|PUBLISH_V110|ACTIONS_HEALTH).*\.md$/i.test(name));
 for (const name of publicReceipts) errors.push(`Tệp vận hành cũ đang bị xuất bản công khai: tuyen-tho-mo/${name}`);
@@ -49,6 +114,8 @@ console.log(JSON.stringify({
     const text = fs.readFileSync(path.join(workflowRoot, name), "utf8");
     return /^\s*contents:\s*write\s*$/mi.test(text);
   }),
+  facts_sync_allowlist: factsSyncAllowedPaths,
+  live_recruitment_verifier: fs.existsSync(liveVerifyPath),
   retired_bootstrap_present: retiredPaths.filter(hasFiles),
   public_receipts: publicReceipts,
   errors,
