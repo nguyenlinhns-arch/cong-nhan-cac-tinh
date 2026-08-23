@@ -14,6 +14,7 @@ const richHomeCss = read("home-rich-media.css");
 const robots = read("robots.txt");
 const llms = read("llms.txt");
 const searchManifest = JSON.parse(read("search-index.json"));
+const canonicalFacts = JSON.parse(read("data/recruitment-facts-2026.json"));
 
 try { new vm.Script(shell, {filename: "site-shell-20260803.js"}); }
 catch (error) { errors.push(`site-shell-20260803.js: lỗi cú pháp ${error.message}`); }
@@ -85,12 +86,22 @@ for (const marker of [
   "[tin tuyển công nhân mỏ](https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/)",
   "[lương và quyền lợi](https://thaylinhtuyenthomo.vn/thu-nhap-an-o-ho-tro/)",
   "Thông tin tuyển thợ mỏ đang áp dụng: 15 câu hỏi",
+  `Facts tuyển sinh canonical v${canonicalFacts.version}`,
+  "https://thaylinhtuyenthomo.vn/data/recruitment-facts-2026.json",
+  "https://thaylinhtuyenthomo.vn/recruitment-current.json",
+  canonicalFacts.study_benefits.living_support,
+  canonicalFacts.after_training.income_commitment,
 ]) requireText(llmsOpening, marker, "llms.txt");
 if (llmsOpening.includes("thu nhập tháng 8/2026")) errors.push("llms.txt: phần mở đầu còn khóa nội dung lâu dài vào tháng 8/2026");
+for (const legacy of ["bình quân 20–25 triệu", "tùy đơn vị, vị trí, ngày công và năng suất", "7,5 triệu là tổng cả khóa"]) {
+  if (llmsOpening.toLocaleLowerCase("vi").includes(legacy)) errors.push(`llms.txt: còn legacy phrase ${legacy}`);
+}
 
 const discovery = searchManifest.discovery || {};
 for (const [key, expected] of Object.entries({
   canonicalFacts: "/thong-tin-tuyen-tho-mo/",
+  canonicalFactsJson: "/data/recruitment-facts-2026.json",
+  currentRecruitmentJson: "/recruitment-current.json",
   llms: "/llms.txt",
   robots: "/robots.txt",
   sitemap: "/sitemap.xml",
@@ -101,6 +112,8 @@ for (const [key, expected] of Object.entries({
 })) {
   if (discovery[key] !== expected) errors.push(`search-index.json discovery.${key}: dự kiến ${expected}, thực tế ${discovery[key] || "thiếu"}`);
 }
+if (searchManifest.canonicalFactsVersion !== canonicalFacts.version) errors.push(`search-index.json canonicalFactsVersion: dự kiến ${canonicalFacts.version}, thực tế ${searchManifest.canonicalFactsVersion || "thiếu"}`);
+if (searchManifest.canonicalFactsConfirmedAt !== canonicalFacts.confirmed_at) errors.push("search-index.json canonicalFactsConfirmedAt không khớp facts canonical");
 
 const conditionPage = read("kiem-tra-dieu-kien/index.html");
 const comparePage = read("chon-kcn-hay-lam-mo/index.html");
@@ -122,6 +135,7 @@ console.log(JSON.stringify({
   mobilePolishBytes: Buffer.byteLength(polishCss),
   shellBytes: Buffer.byteLength(shell),
   aiAgents: 10,
+  canonicalFactsVersion: canonicalFacts.version,
   discoveryEndpoints: Object.keys(discovery).length,
   mobilePrimaryContexts: 4,
   errors: errors.length,
