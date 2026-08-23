@@ -35,7 +35,7 @@ jobs:
           const path = require('node:path');
 
           const facts = {
-            version: 3,
+            version: 4,
             confirmed_at: '2026-08-23T10:38:00+07:00',
             status: 'confirmed',
             candidate: {
@@ -78,7 +78,11 @@ jobs:
 
           const exactReplacements = [
             ['7,5 triệu là tổng mức hỗ trợ sinh hoạt trong thời gian học, không phải lương tháng, học phí hoàn lại hay khoản chắc chắn trả một lần.', '7,5 triệu đồng/tháng là mức hỗ trợ sinh hoạt trong thời gian học theo thông tin chuẩn hiện hành; không phải tiền lương sau khi đi làm.'],
-            ['7,5 triệu là tổng hỗ trợ sinh hoạt trong thời gian học theo chính sách hiện hành, không phải lương và không phải học phí hoàn lại.', '7,5 triệu đồng/tháng là hỗ trợ sinh hoạt trong thời gian học theo thông tin chuẩn hiện hành, không phải tiền lương sau khi đi làm.']
+            ['7,5 triệu là tổng hỗ trợ sinh hoạt trong thời gian học theo chính sách hiện hành, không phải lương và không phải học phí hoàn lại.', '7,5 triệu đồng/tháng là hỗ trợ sinh hoạt trong thời gian học theo thông tin chuẩn hiện hành, không phải tiền lương sau khi đi làm.'],
+            ['<div><dt>Hỗ trợ trong thời gian học</dt><dd>7,5 triệu đồng</dd></div>', '<div><dt>Hỗ trợ trong thời gian học</dt><dd>7,5 triệu đồng/tháng</dd></div>'],
+            ['<strong>7,5 triệu</strong>Hỗ trợ trong thời gian học', '<strong>7,5 triệu/tháng</strong>Hỗ trợ trong thời gian học'],
+            ['Mức thu nhập được cam kết theo chính sách đang áp dụng.', 'Thu nhập bình quân; tùy đơn vị, vị trí, ngày công và năng suất.'],
+            ['lương 25 triệu mỗi tháng khi hoàn thành định mức lao động', 'thu nhập bình quân 20–25 triệu/tháng']
           ];
 
           const regexReplacements = [
@@ -139,7 +143,7 @@ jobs:
           const masterPath = 'operations/job-posting-master-2026.json';
           if (fs.existsSync(masterPath)) {
             const master = JSON.parse(fs.readFileSync(masterPath, 'utf8'));
-            master.version = Math.max(Number(master.version || 0), 7);
+            master.version = Math.max(Number(master.version || 0), 8);
             master.updated_at = '2026-08-23T10:38:00+07:00';
             master.income_commitment = 'Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất';
             master.income_reference = master.income_commitment;
@@ -176,14 +180,17 @@ jobs:
           if (!master.income_reference.includes('20–25 triệu đồng/tháng')) process.exit(1);
           if (!master.benefits.some(x => x.includes('7,5 triệu đồng/tháng'))) process.exit(1);
 
-          const critical = [
-            'tuyen-tho-mo/index.html',
-            'tuyen-tho-mo/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html',
-            'tuyen-tho-mo/tuyen-tho-mo-quang-ninh/index.html'
-          ].filter(fs.existsSync).map(file => fs.readFileSync(file,'utf8')).join('\n');
+          const home = fs.readFileSync('tuyen-tho-mo/index.html','utf8');
+          const job = fs.readFileSync('tuyen-tho-mo/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html','utf8');
+          const paid = fs.readFileSync('tuyen-tho-mo/tuyen-tho-mo-quang-ninh/index.html','utf8');
+          const critical = [home, job, paid].join('\n');
           if (/CAM KẾT THU NHẬP|THU NHẬP CAM KẾT|Cam kết thu nhập/iu.test(critical)) process.exit(1);
           if (/7,5 triệu đồng\/tháng(?:\/tháng|\s+đồng)/iu.test(critical)) process.exit(1);
           if (/20[–-]25 triệu(?: đồng)?\/tháng khi hoàn thành định mức lao động/iu.test(critical)) process.exit(1);
+          if (!home.includes('Hỗ trợ 7,5 triệu đồng/tháng')) process.exit(1);
+          if (!job.includes('<dt>Hỗ trợ trong thời gian học</dt><dd>7,5 triệu đồng/tháng</dd>')) process.exit(1);
+          if (!paid.includes('<strong>7,5 triệu/tháng</strong>Hỗ trợ trong thời gian học')) process.exit(1);
+          if (job.includes('Mức thu nhập được cam kết theo chính sách đang áp dụng.')) process.exit(1);
           console.log('Canonical recruitment facts verified.');
           NODE
 
