@@ -1,0 +1,1 @@
+Temporary validation marker for full pipeline check after updating the electromechanical FAQ income wording.
