@@ -16,8 +16,8 @@ function normalizeString(value) {
   return String(value)
     .replace(monthlySupport, "7,5 triệu đồng trong thời gian học")
     .replace(wrongIncome, master.income_commitment)
-    .replace(fullIncome, "20–25 triệu đồng/tháng khi hoàn thành định mức lao động")
-    .replace(shortIncome, "20–25 triệu/tháng khi hoàn thành định mức lao động");
+    .replace(fullIncome, "20–25 triệu đồng/tháng")
+    .replace(shortIncome, "20–25 triệu/tháng");
 }
 
 function normalizeNode(node) {
