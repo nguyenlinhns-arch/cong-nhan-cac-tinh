@@ -33,8 +33,9 @@ ledger.updated_at = latest;
 fs.writeFileSync(ledgerPath, `${JSON.stringify(ledger, null, 2)}\n`);
 
 // The library generator is the single point shared by Pages and PR validation.
-// Repair technical image dimensions and prepare the legacy SEO benchmark here
-// so both pipelines validate exactly the same generated site state.
+// Resolve AVIF intrinsic sizes first, then repair all remaining image formats.
+await import("./prepare-avif-image-dimensions-v11.mjs");
+if (process.exitCode && process.exitCode !== 0) process.exit(process.exitCode);
 await import("./editorial-image-dimensions-guard.mjs");
 if (process.exitCode && process.exitCode !== 0) process.exit(process.exitCode);
 await import("./prepare-legacy-seo-runtime-v11.mjs");
