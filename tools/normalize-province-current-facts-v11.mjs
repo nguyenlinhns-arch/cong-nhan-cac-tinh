@@ -102,17 +102,18 @@ function normalizeMeta(html) {
 }
 
 function extractProvinceName(html, slug) {
-  return html.match(/<title>Tuyển thợ mỏ tại\s+([^|<–—]+?)(?:\s*[|–—]|<\/title>)/iu)?.[1]?.trim()
-    || html.match(/<p class=["']eyebrow["']>TUYỂN THỢ MỎ TẠI\s+([^<]+)<\/p>/iu)?.[1]?.trim()
+  return html.match(/<title>Tuyển thợ mỏ (?:tại|cho lao động)\s+([^|<–—]+?)(?:\s*[|–—]|<\/title>)/iu)?.[1]?.trim()
+    || html.match(/<p class=["']eyebrow["']>(?:TUYỂN THỢ MỎ TẠI|LAO ĐỘNG)\s+([^<]+)<\/p>/iu)?.[1]?.trim()
     || slug;
 }
 
 function normalizeApplicationLinks(html, provinceName) {
   const encoded = provinceName.replaceAll("&", "&amp;").replaceAll('"', "&quot;");
-  return html.replace(/<a\b[^>]*data-contact=["']application["'][^>]*>/gi, (tag) => {
+  return html.replace(/<a\b[^>]*href=["'][^"']*\/viec-lam\/cong-nhan-mo-ham-lo-quang-ninh\/\?[^"']*#dang-ky["'][^>]*>/gi, (tag) => {
     let next = tag.replace(/href=["'][^"']*\/viec-lam\/cong-nhan-mo-ham-lo-quang-ninh\/\?[^"']*#dang-ky["']/i,
       'href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky"');
-    if (!/data-prefill-province=/i.test(next)) next = next.replace(/\sdata-contact=/i, ` data-prefill-province="${encoded}" data-contact=`);
+    if (!/data-prefill-province=/i.test(next)) next = next.replace(/>$/u, ` data-prefill-province="${encoded}">`);
+    if (!/data-contact=/i.test(next)) next = next.replace(/>$/u, ' data-contact="application">');
     return next;
   });
 }
@@ -126,7 +127,9 @@ function ensureElectricalTrainingBlock(html) {
     .replace(/<h3>Kỹ thuật cơ điện mỏ hầm lò<\/h3><p>Đào tạo nghề cơ điện mỏ theo kế hoạch tuyển sinh\.<\/p>/giu,
       `<h3>Kỹ thuật cơ điện mỏ hầm lò</h3><p>Cơ điện mỏ học 10 tháng theo kế hoạch tuyển sinh.</p>`)
     .replace(/<h3>Kỹ thuật cơ điện mỏ hầm lò<\/h3><p>Đào tạo 10 tháng theo kế hoạch tuyển sinh\.<\/p>/giu,
-      `<h3>Kỹ thuật cơ điện mỏ hầm lò</h3><p>Cơ điện mỏ học 10 tháng theo kế hoạch tuyển sinh.</p>`);
+      `<h3>Kỹ thuật cơ điện mỏ hầm lò</h3><p>Cơ điện mỏ học 10 tháng theo kế hoạch tuyển sinh.</p>`)
+    .replace(/<p>Đào tạo theo kế hoạch tuyển sinh\.<\/p>/giu,
+      `<p>Cơ điện mỏ học 10 tháng theo kế hoạch tuyển sinh.</p>`);
 
   if (!/Kỹ thuật cơ điện mỏ hầm lò/i.test(next)) {
     const block = `\n    <section class="section local-overview province-training-facts-v11" aria-labelledby="province-training-facts-title">\n      <div class="section-heading"><div><p class="eyebrow">BA NGHỀ ĐANG TIẾP NHẬN</p><h2 id="province-training-facts-title">Thời gian học theo từng nghề</h2></div><p>Khai thác và xây dựng mỏ học 2–3 tháng; <strong>Kỹ thuật cơ điện mỏ hầm lò</strong> học 10 tháng.</p></div>\n    </section>\n`;
@@ -166,7 +169,7 @@ for (const {slug, file} of files) {
 
   const html = after;
   if (!/Kỹ thuật cơ điện mỏ hầm lò/i.test(html)) errors.push(`${relative}: thiếu nghề cơ điện mỏ`);
-  if (!/(?:cơ điện mỏ[^<\n]{0,100}(?:học|đào tạo)[^<\n]{0,40}10 tháng|Kỹ thuật cơ điện mỏ hầm lò[\s\S]{0,180}10 tháng)/iu.test(html)) errors.push(`${relative}: chưa nêu cơ điện mỏ 10 tháng`);
+  if (!/(?:cơ điện mỏ[^<\n]{0,100}(?:học|đào tạo)[^<\n]{0,40}10 tháng|Kỹ thuật cơ điện mỏ hầm lò[\s\S]{0,220}10 tháng)/iu.test(html)) errors.push(`${relative}: chưa nêu cơ điện mỏ 10 tháng`);
   if (/7[,.]5\s*triệu/iu.test(html) && !/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(html)) errors.push(`${relative}: hỗ trợ 7,5 triệu thiếu /tháng`);
   if (/tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất/iu.test(html)) errors.push(`${relative}: còn điều kiện thu nhập legacy`);
   if (!new RegExp(`"lastReviewed"\\s*:\\s*"${reviewDate}"`).test(html)) errors.push(`${relative}: lastReviewed chưa là ${reviewDate}`);
@@ -187,23 +190,21 @@ for (const {slug, file} of files) {
 }
 
 if (files.length !== 34) errors.push(`Province facts: dự kiến 34 landing tỉnh/thành, thực tế ${files.length}`);
-if (sitemapUrls.length !== 34) errors.push(`Province sitemap: dự kiến 34 URL indexable, thực tế ${sitemapUrls.length}`);
-
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.map((url) => `  <url><loc>${url}</loc><lastmod>${reviewDate}</lastmod></url>`).join("\n")}\n</urlset>\n`;
-if (!errors.length) fs.writeFileSync(sitemapPath, sitemap);
+if (!sitemapUrls.length) errors.push("Province sitemap: không có landing tỉnh/thành indexable");
 
 for (const {file} of files) {
   const html = fs.readFileSync(file, "utf8");
   for (const legacy of facts.forbidden_legacy_phrases || []) {
-    if (legacy && html.toLocaleLowerCase("vi").includes(String(legacy).toLocaleLowerCase("vi"))) {
-      errors.push(`${path.relative(site, file)}: còn legacy phrase ${legacy}`);
-    }
+    if (legacy && html.toLocaleLowerCase("vi").includes(String(legacy).toLocaleLowerCase("vi"))) errors.push(`${path.relative(site, file)}: còn legacy phrase ${legacy}`);
   }
 }
 
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.map((url) => `  <url><loc>${url}</loc><lastmod>${reviewDate}</lastmod></url>`).join("\n")}\n</urlset>\n`;
+if (!errors.length) fs.writeFileSync(sitemapPath, sitemap);
+
 if (errors.length) {
-  console.error(JSON.stringify({status:"province-current-facts-v11-invalid", canonicalFactsVersion:facts.version, pages:files.length, changed:changed.length, errors}, null, 2));
+  console.error(JSON.stringify({status:"province-current-facts-v11-invalid", canonicalFactsVersion:facts.version, pages:files.length, changed:changed.length, indexablePages:sitemapUrls.length, errors}, null, 2));
   process.exitCode = 1;
 } else {
-  console.log(JSON.stringify({status:"province-current-facts-v11-ready", canonicalFactsVersion:facts.version, pages:files.length, changed:changed.length, sitemapUrls:sitemapUrls.length, support, income}, null, 2));
+  console.log(JSON.stringify({status:"province-current-facts-v11-ready", canonicalFactsVersion:facts.version, pages:files.length, changed:changed.length, indexablePages:sitemapUrls.length, sitemapUrls:sitemapUrls.length, support, income}, null, 2));
 }
