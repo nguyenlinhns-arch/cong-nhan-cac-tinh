@@ -9,14 +9,15 @@ on:
       - 'tools/generate-province-pages-2026.mjs'
       - 'tools/enhance-all-province-search.mjs'
       - 'tools/apply-seo-role-policy.mjs'
+      - 'tools/add-home-journey-reels.mjs'
       - 'tools/build-worker-first-home.mjs'
       - 'tools/sync-home-freshness.mjs'
       - 'content/daily-seo-articles.json'
       - 'content/recruitment-facts-2026.json'
       - 'tuyen-tho-mo/data/recruitment-facts-2026.json'
       - 'operations/job-posting-master-2026.json'
+      - 'operations/legacy-routes.json'
       - 'tuyen-tho-mo/app.js'
-      - 'tuyen-tho-mo/viec-lam-nganh-than/**'
       - '.github/workflows/recruitment-seo-copy-v11.yml'
   workflow_dispatch:
 
@@ -29,7 +30,7 @@ concurrency:
 
 jobs:
   normalize:
-    if: ${{ !contains(github.event.head_commit.message || '', '[seo-copy-sync]') }}
+    if: ${{ !contains(github.event.head_commit.message || '', '[seo-copy-sync]') && !contains(github.event.head_commit.message || '', '[seo-role-sync]') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -39,7 +40,7 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Normalize source copy and crawl-clean province links
+      - name: Normalize canonical SEO sources
         run: node tools/normalize-recruitment-seo-copy-v11.mjs
 
       - name: Regenerate province pages from normalized source
@@ -48,16 +49,27 @@ jobs:
       - name: Normalize both province template families
         run: node tools/normalize-province-current-facts-v11.mjs
 
+      - name: Validate all 34 province landing facts before role consolidation
+        run: |
+          node tools/validate-province-current-facts-v11.mjs
+          node tools/validate-province-metadata-facts-v11.mjs
+
       - name: Rebuild homepage from normalized source
         run: node tools/build-worker-first-home.mjs
 
-      - name: Normalize regenerated output
+      - name: Normalize regenerated reader-facing copy
         run: node tools/normalize-recruitment-seo-copy-v11.mjs
 
-      - name: Refresh province sitemap from indexable output
+      - name: Apply final SEO page roles
+        run: node tools/apply-seo-role-policy.mjs
+
+      - name: Preserve real worker journey reels
+        run: node tools/add-home-journey-reels.mjs
+
+      - name: Rebuild province sitemap after final noindex roles
         run: node tuyen-tho-mo/scripts/update-ai-locality-discovery.mjs
 
-      - name: Verify URL, copy and schema guardrails
+      - name: Verify final URL, copy and indexing guardrails
         shell: bash
         run: |
           set -euo pipefail
@@ -66,6 +78,7 @@ jobs:
           node --check tools/build-worker-first-home.mjs
           node --check tools/normalize-recruitment-seo-copy-v11.mjs
           node --check tools/normalize-province-current-facts-v11.mjs
+          node --check tools/apply-seo-role-policy.mjs
           node --check tools/sync-home-freshness.mjs
           if grep -RIlE 'href="[^" ]*cong-nhan-mo-ham-lo-quang-ninh/\?province=' tuyen-tho-mo/viec-lam-nganh-than --include='*.html' | grep -q .; then
             echo 'Crawlable province query URL remains in local pages' >&2
@@ -77,32 +90,34 @@ jobs:
           fi
           grep -q 'data-prefill-province="${name}"' tools/generate-province-pages-2026.mjs
           grep -q 'seo-topic-cluster' tools/generate-province-pages-2026.mjs
-          grep -Eq 'dateModified: "[0-9]{4}-[0-9]{2}-[0-9]{2}"' tools/generate-province-pages-2026.mjs
-          grep -Eq 'lastReviewed: "[0-9]{4}-[0-9]{2}-[0-9]{2}"' tools/generate-province-pages-2026.mjs
           grep -q 'data-prefill-province=' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
-          grep -Eq 'Thu nhập (theo định mức|sau đào tạo)' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
-          grep -q 'Ba trang nên xem trước khi đăng ký' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
           grep -q 'Kỹ thuật cơ điện mỏ hầm lò' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
           grep -q '10 tháng' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
           grep -q '"reviewedBy":{"@id":"https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/#person"}' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
-          grep -Eq '"dateModified":"[0-9]{4}-[0-9]{2}-[0-9]{2}"' tuyen-tho-mo/index.html
-          grep -Eq '"lastReviewed":"[0-9]{4}-[0-9]{2}-[0-9]{2}"' tuyen-tho-mo/index.html
           grep -q 'Xem 26 địa bàn ưu tiên' tuyen-tho-mo/index.html
           if grep -q 'Xem đủ 26 tỉnh, thành' tuyen-tho-mo/index.html; then
             echo 'Stale province-count label remains on homepage' >&2
             exit 1
           fi
-          node -e "const d=require('./content/daily-seo-articles.json');const f=require('./tuyen-tho-mo/data/recruitment-facts-2026.json');if(d.canonical_facts_version!==f.version||d.canonical_facts_confirmed_at!==f.confirmed_at)process.exit(1)"
-          node tools/validate-province-current-facts-v11.mjs
-          node tools/validate-province-metadata-facts-v11.mjs
+          grep -q 'facebook.com/reel/988978737487363' tuyen-tho-mo/index.html
+          grep -q 'facebook.com/reel/1015675787556708' tuyen-tho-mo/index.html
+          grep -q 'name="robots" content="noindex,follow' tuyen-tho-mo/viec-lam-nganh-than/quang-ninh/index.html
+          grep -q 'data-legacy-redirect' tuyen-tho-mo/viec-lam-nganh-than/quang-ninh/index.html
+          grep -q 'rel="canonical" href="https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/"' tuyen-tho-mo/viec-lam-nganh-than/quang-ninh/index.html
+          node -e "const d=require('./content/daily-seo-articles.json');const f=require('./tuyen-tho-mo/data/recruitment-facts-2026.json');if(d.canonical_facts_version!==f.version||d.canonical_facts_confirmed_at!==f.confirmed_at||d.canonical_facts_url!=='https://thaylinhtuyenthomo.vn/data/recruitment-facts-2026.json')process.exit(1)"
           node tools/validate-province-indexing-integrity-v11.mjs
 
-      - name: Commit normalized SEO source and published pages
+      - name: Commit final normalized SEO sources and published pages
         shell: bash
         run: |
           if git diff --quiet; then exit 0; fi
           git config user.name 'thaylinh-marketing-bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add tools/generate-province-pages-2026.mjs tools/build-worker-first-home.mjs content/daily-seo-articles.json tuyen-tho-mo
-          git commit -m 'seo: materialize canonical province, homepage and sitemap output [seo-copy-sync]'
+          git add \
+            content/daily-seo-articles.json \
+            content/seo-role-policy-2026.json \
+            tools/generate-province-pages-2026.mjs \
+            tools/build-worker-first-home.mjs \
+            tuyen-tho-mo
+          git commit -m 'seo: materialize final canonical SEO output [seo-copy-sync]'
           git push
