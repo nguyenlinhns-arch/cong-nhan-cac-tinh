@@ -140,6 +140,10 @@ if (!CHECK_ONLY) {
   // never invent direct quotes. They are regenerated after every province build.
   await import("./editorial-field-report-v8.mjs");
 
+  // Publish the reader-facing source taxonomy and the no-fabricated-quotes rule
+  // on the author and editorial-policy pages before provenance badges link there.
+  await import("./editorial-field-report-authority-v8.mjs");
+
   // Every reader-facing article and core recruitment page declares where its
   // information comes from. The visible note is deliberately compact so it
   // improves trust without turning the article back into a dashboard.
