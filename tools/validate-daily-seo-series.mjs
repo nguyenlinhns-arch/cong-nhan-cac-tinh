@@ -60,29 +60,38 @@ const proseText = (article) => [
   ...(article.faqs || []).flat(),
 ].filter(Boolean).join(" ");
 
-function walkStrings(value, visitor, pointer = "$") {
-  if (typeof value === "string") return visitor(value, pointer);
-  if (Array.isArray(value)) return value.forEach((item, index) => walkStrings(item, visitor, `${pointer}[${index}]`));
-  if (value && typeof value === "object") {
-    for (const [key, item] of Object.entries(value)) walkStrings(item, visitor, `${pointer}.${key}`);
-  }
+function policyClaims(article) {
+  const claims = [
+    ["meta", article.meta],
+    ["direct_answer", article.direct_answer],
+    ...(article.intro || []).map((value, index) => [`intro[${index}]`, value]),
+    ...(article.key_points || []).map((item, index) => [`key_points[${index}].text`, item?.[1]]),
+    ...(article.sections || []).flatMap((section, sectionIndex) => [
+      ...(section.paragraphs || []).map((value, index) => [`sections[${sectionIndex}].paragraphs[${index}]`, value]),
+      ...(section.items || []).map((value, index) => [`sections[${sectionIndex}].items[${index}]`, value]),
+    ]),
+    ["takeaway", article.takeaway],
+    ...(article.faqs || []).map((item, index) => [`faqs[${index}].answer`, item?.[1]]),
+    ["source_note", article.source_note],
+  ];
+  return claims.filter(([, value]) => typeof value === "string" && value.trim());
 }
 
 function validateFactsStrings(article) {
-  walkStrings(article, (value, pointer) => {
+  for (const [pointer, value] of policyClaims(article)) {
     const text = String(value);
     if (/7[,.]5\s*triệu/iu.test(text) && !/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(text)) {
-      errors.push(`${article.slug} ${pointer}: nhắc 7,5 triệu nhưng thiếu /tháng`);
+      errors.push(`${article.slug} ${pointer}: mệnh đề nhắc 7,5 triệu nhưng thiếu /tháng`);
     }
     if (/20\s*[–-]\s*25\s*triệu/iu.test(text) && !/hoàn thành định mức lao động/iu.test(text)) {
-      errors.push(`${article.slug} ${pointer}: nhắc 20–25 triệu nhưng thiếu điều kiện hoàn thành định mức lao động`);
+      errors.push(`${article.slug} ${pointer}: mệnh đề nhắc 20–25 triệu nhưng thiếu điều kiện hoàn thành định mức lao động`);
     }
     for (const legacy of canonicalFacts.forbidden_legacy_phrases || []) {
       if (legacy && text.toLocaleLowerCase("vi").includes(String(legacy).toLocaleLowerCase("vi"))) {
         errors.push(`${article.slug} ${pointer}: còn legacy phrase ${legacy}`);
       }
     }
-  });
+  }
 }
 
 // Source registry metadata was introduced after the article registry already existed.
@@ -180,5 +189,5 @@ if (machineFeed.canonical_facts_url !== "https://thaylinhtuyenthomo.vn/data/recr
 if (!fs.readFileSync(path.join(site, "index.html"), "utf8").includes("home-daily-seo")) errors.push("Trang chủ thiếu khối giải đáp mới mỗi ngày");
 if (!fs.readFileSync(path.join(site, "cam-nang-nghe-mo", "index.html"), "utf8").includes("daily-seo-guide:start")) errors.push("Cẩm nang thiếu liên kết tới chuỗi SEO hằng ngày");
 
-console.log(JSON.stringify({releaseDate, canonicalFactsVersion: canonicalFacts.version, sourceRegistryFactsMode: sourceFactsMetadataPresent ? "strict" : "legacy-compatible", planned: data.articles.length, released: released.length, future: future.length, errors: errors.length, sampleErrors: errors.slice(0, 30), editorialGuard: "newsroom-v2-facts-v8", finalSeoGate: "freshness+province-integrity"}, null, 2));
+console.log(JSON.stringify({releaseDate, canonicalFactsVersion: canonicalFacts.version, sourceRegistryFactsMode: sourceFactsMetadataPresent ? "strict" : "legacy-compatible", planned: data.articles.length, released: released.length, future: future.length, errors: errors.length, sampleErrors: errors.slice(0, 30), editorialGuard: "newsroom-v2-facts-v8", finalSeoGate: "freshness+province-integrity", policyFactScope: "claim-bearing-fields"}, null, 2));
 if (errors.length) process.exitCode = 1;
