@@ -1,0 +1,163 @@
+name: Normalize recruitment facts 2026
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/**'
+      - 'tools/**'
+      - 'operations/**'
+      - 'tuyen-tho-mo/**'
+      - '.github/workflows/recruitment-facts-normalize.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: recruitment-facts-normalize
+  cancel-in-progress: true
+
+jobs:
+  normalize:
+    if: ${{ !contains(github.event.head_commit.message || '', '[facts-sync]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Normalize confirmed recruitment facts
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+
+          const facts = {
+            version: 1,
+            confirmed_at: '2026-08-23T10:38:00+07:00',
+            status: 'confirmed',
+            candidate: {
+              gender: 'Nam',
+              age_min: 18,
+              age_max: 40,
+              height_min_cm: 153,
+              weight_min_kg: 47,
+              health: 'Sức khỏe tốt; kiểm tra mắt, huyết áp, tim mạch và các bệnh ảnh hưởng công việc hầm lò'
+            },
+            training: {
+              khai_thac_mo: '2–3 tháng',
+              xay_dung_mo: '2–3 tháng',
+              co_dien_mo: '10 tháng'
+            },
+            study_benefits: {
+              tuition: 'Miễn học phí theo chỉ tiêu',
+              meals: 'Ăn 3 bữa/ngày',
+              accommodation: 'Ở ký túc xá',
+              living_support: '7,5 triệu đồng/tháng trong thời gian học'
+            },
+            after_training: {
+              work_location: 'Các đơn vị ngành Than thuộc TKV tại Quảng Ninh',
+              income: 'Bình quân 20–25 triệu đồng/tháng',
+              income_note: 'Tùy đơn vị, vị trí, ngày công và năng suất'
+            },
+            contact: {
+              brand: 'Thầy Linh – Tuyển Thợ Mỏ',
+              phone: '096 304 8585',
+              cta: 'Gửi năm sinh – chiều cao/cân nặng – tình trạng sức khỏe để Thầy Linh kiểm tra điều kiện.'
+            },
+            forbidden_legacy_phrases: [
+              '6 triệu',
+              '18–25 triệu',
+              '7,5 triệu là tổng cả khóa',
+              'THU NHẬP CAM KẾT'
+            ]
+          };
+
+          fs.mkdirSync('content', {recursive: true});
+          fs.writeFileSync('content/recruitment-facts-2026.json', JSON.stringify(facts, null, 2) + '\n');
+
+          const replacements = [
+            ['THU NHẬP CAM KẾT', 'THU NHẬP BÌNH QUÂN'],
+            ['cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động', 'thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất'],
+            ['cam kết 20–25 triệu/tháng khi hoàn thành định mức lao động', 'thu nhập bình quân 20–25 triệu/tháng'],
+            ['Hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển', 'Hỗ trợ 7,5 triệu đồng/tháng trong thời gian học theo chính sách đợt tuyển'],
+            ['Hỗ trợ 7,5 triệu đồng trong thời gian học', 'Hỗ trợ 7,5 triệu đồng/tháng trong thời gian học'],
+            ['hỗ trợ 7,5 triệu đồng trong thời gian học', 'hỗ trợ 7,5 triệu đồng/tháng trong thời gian học'],
+            ['hỗ trợ 7,5 triệu trong thời gian học', 'hỗ trợ 7,5 triệu đồng/tháng trong thời gian học'],
+            ['Hỗ trợ sinh hoạt 7,5 triệu', 'Hỗ trợ 7,5 triệu đồng/tháng'],
+            ['7,5 triệu sinh hoạt phí', '7,5 triệu đồng/tháng'],
+            ['hỗ trợ 7,5 triệu.', 'hỗ trợ 7,5 triệu đồng/tháng.'],
+            ['7,5 triệu là tổng mức hỗ trợ sinh hoạt trong thời gian học, không phải lương tháng, học phí hoàn lại hay khoản chắc chắn trả một lần.', '7,5 triệu đồng/tháng là mức hỗ trợ sinh hoạt trong thời gian học theo thông tin chuẩn hiện hành; không phải tiền lương sau khi đi làm.'],
+            ['7,5 triệu là tổng hỗ trợ sinh hoạt trong thời gian học theo chính sách hiện hành, không phải lương và không phải học phí hoàn lại.', '7,5 triệu đồng/tháng là hỗ trợ sinh hoạt trong thời gian học theo thông tin chuẩn hiện hành, không phải tiền lương sau khi đi làm.']
+          ];
+
+          const roots = ['content', 'tools', 'operations', 'tuyen-tho-mo'];
+          const allowed = new Set(['.html', '.js', '.mjs', '.json', '.md', '.txt', '.xml']);
+          let changedFiles = 0;
+          function walk(dir) {
+            if (!fs.existsSync(dir)) return;
+            for (const entry of fs.readdirSync(dir, {withFileTypes: true})) {
+              const p = path.join(dir, entry.name);
+              if (entry.isDirectory()) walk(p);
+              else if (allowed.has(path.extname(entry.name).toLowerCase())) normalizeFile(p);
+            }
+          }
+          function normalizeFile(file) {
+            let text;
+            try { text = fs.readFileSync(file, 'utf8'); } catch { return; }
+            let next = text;
+            for (const [from, to] of replacements) next = next.split(from).join(to);
+            if (next !== text) {
+              fs.writeFileSync(file, next);
+              changedFiles += 1;
+            }
+          }
+          for (const root of roots) walk(root);
+
+          const masterPath = 'operations/job-posting-master-2026.json';
+          if (fs.existsSync(masterPath)) {
+            const master = JSON.parse(fs.readFileSync(masterPath, 'utf8'));
+            master.version = Math.max(Number(master.version || 0), 5);
+            master.updated_at = '2026-08-23T10:38:00+07:00';
+            master.income_commitment = 'Thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất';
+            master.income_reference = master.income_commitment;
+            if (Array.isArray(master.benefits)) {
+              master.benefits = master.benefits.map(item => /Hỗ trợ\s+7,5\s+triệu/i.test(item)
+                ? 'Hỗ trợ 7,5 triệu đồng/tháng trong thời gian học theo chính sách đợt tuyển'
+                : item);
+            }
+            master.canonical_facts = 'content/recruitment-facts-2026.json';
+            fs.writeFileSync(masterPath, JSON.stringify(master, null, 2) + '\n');
+          }
+
+          console.log(JSON.stringify({facts: 'content/recruitment-facts-2026.json', changedFiles}, null, 2));
+          NODE
+
+      - name: Verify canonical facts
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const facts = JSON.parse(fs.readFileSync('content/recruitment-facts-2026.json','utf8'));
+          if (facts.study_benefits.living_support !== '7,5 triệu đồng/tháng trong thời gian học') process.exit(1);
+          if (facts.after_training.income !== 'Bình quân 20–25 triệu đồng/tháng') process.exit(1);
+          const master = JSON.parse(fs.readFileSync('operations/job-posting-master-2026.json','utf8'));
+          if (!master.income_reference.includes('20–25 triệu đồng/tháng')) process.exit(1);
+          if (!master.benefits.some(x => x.includes('7,5 triệu đồng/tháng'))) process.exit(1);
+          console.log('Canonical recruitment facts verified.');
+          NODE
+
+      - name: Commit normalized facts
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo 'No normalization changes required.'
+            exit 0
+          fi
+          git config user.name 'thaylinh-marketing-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add content tools operations tuyen-tho-mo
+          git commit -m 'chore: sync confirmed recruitment facts [facts-sync]'
+          git push
