@@ -6,3 +6,4 @@ final retry after canonical Twitter and editorial authority transparency
 final confirmation after explicit no-fabricated-quotes policy
 final confirmation after field-report search and AI classification
 final confirmation after generated authority output masking
+final confirmation after compact field-report search keywords
