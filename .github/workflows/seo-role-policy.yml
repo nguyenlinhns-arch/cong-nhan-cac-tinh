@@ -1,0 +1,47 @@
+name: Enforce recruitment SEO page roles
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/apply-seo-role-policy.mjs'
+      - 'tuyen-tho-mo/index.html'
+      - 'tuyen-tho-mo/tuyen-tho-mo-quang-ninh/index.html'
+      - 'tuyen-tho-mo/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html'
+      - 'tuyen-tho-mo/viec-lam-nganh-than/quang-ninh/index.html'
+      - '.github/workflows/seo-role-policy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: recruitment-seo-role-policy
+  cancel-in-progress: true
+
+jobs:
+  enforce:
+    if: ${{ !contains(github.event.head_commit.message || '', '[seo-role-sync]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Apply SEO page role policy
+        run: node tools/apply-seo-role-policy.mjs
+      - name: Verify paid landing is not indexed
+        run: |
+          grep -q 'name="robots" content="noindex,follow' tuyen-tho-mo/tuyen-tho-mo-quang-ninh/index.html
+          grep -q 'name="robots" content="index,follow' tuyen-tho-mo/index.html
+          grep -q 'name="robots" content="index,follow' tuyen-tho-mo/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html
+      - name: Commit role policy
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name 'thaylinh-marketing-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add content/seo-role-policy-2026.json tuyen-tho-mo/index.html tuyen-tho-mo/tuyen-tho-mo-quang-ninh/index.html tuyen-tho-mo/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html tuyen-tho-mo/viec-lam-nganh-than/quang-ninh/index.html
+          git commit -m 'seo: enforce recruitment page roles [seo-role-sync]'
+          git push
