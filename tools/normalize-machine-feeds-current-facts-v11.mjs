@@ -1,9 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 
-// Normalize paid-search provenance in the same build pass so all outward-facing
-// recruitment distribution channels converge before validation and deployment.
+// Converge the outward-facing paid-search and province surfaces first. These
+// normalizers are deterministic build steps; validators remain read-only.
 await import("./normalize-paid-search-current-facts-v11.mjs");
+if (process.exitCode && process.exitCode !== 0) process.exit(process.exitCode);
+await import("./normalize-province-current-facts-v11.mjs");
 if (process.exitCode && process.exitCode !== 0) process.exit(process.exitCode);
 
 const root = path.resolve(import.meta.dirname, "..");
@@ -25,6 +27,24 @@ if (!String(master.benefits || []).includes("7,5 triệu đồng/tháng")) error
 if (errors.length) {
   console.error(JSON.stringify({ status: "machine-feed-normalize-blocked", errors }, null, 2));
   process.exit(1);
+}
+
+// The legacy job-board generator is still authoritative for page structure.
+// Normalize the few policy-copy fragments it emits so visible/metadata copy
+// cannot regress while that generator is being progressively simplified.
+const jobPagePaths = [
+  path.join(site, "viec-lam", "cong-nhan-mo-ham-lo-quang-ninh", "index.html"),
+  ...master.occupation_profiles.filter((profile) => profile.active_intake).map((profile) => path.join(site, "viec-lam", profile.slug, "index.html")),
+];
+for (const file of jobPagePaths) {
+  if (!fs.existsSync(file)) continue;
+  let text = fs.readFileSync(file, "utf8");
+  text = text
+    .replace(/7[,.]5 triệu đồng(?!\s*\/\s*tháng)/giu, "7,5 triệu đồng/tháng")
+    .replace(/7[,.]5 triệu đồng\/tháng theo chính sách/giu, "7,5 triệu đồng/tháng trong thời gian học")
+    .replace(/(20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động)\.\s*;/giu, "$1;")
+    .replace(/\.\s*;/g, ";");
+  fs.writeFileSync(file, text);
 }
 
 const jobsPath = path.join(site, "jobs.json");
@@ -64,5 +84,7 @@ console.log(JSON.stringify({
   status: "machine-feeds-normalized-v11",
   canonicalFactsVersion: facts.version,
   canonicalFactsConfirmedAt: facts.confirmed_at,
+  provincePages: 34,
+  jobPagesNormalized: jobPagePaths.length,
   feeds: ["jobs.json", "jobs.xml", "jooble.xml"],
 }, null, 2));
