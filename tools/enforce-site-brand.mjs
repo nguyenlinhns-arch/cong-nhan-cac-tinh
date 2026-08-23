@@ -57,6 +57,11 @@ if (!CHECK_ONLY) {
   await import("./prepare-daily-seo-supplements.mjs");
   await import(`./generate-daily-seo-series.mjs?with-supplements=${Date.now()}`);
   await import("./home-kcn-reel-facade-v10.mjs");
+
+  // Keep nationwide candidate scope distinct from the smaller set of locality
+  // pages the website prioritizes. This also synchronizes the shared review date
+  // and removes stale two-role / province-count wording from generated outputs.
+  await import("./normalize-site-scope-v10.mjs");
 }
 
 // /nhap-hoc is a separate operational dashboard and does not share the
@@ -170,6 +175,7 @@ if (!CHECK_ONLY) {
   await runValidator("./validate-home-field-report-entry-v9.mjs", "Kiểm định lối vào phóng sự trang chủ v9");
   await runValidator("./validate-home-kcn-reel-facade-v10.mjs", "Kiểm định video Làm mỏ hay KCN click-to-play");
   await runValidator("./validate-home-province-reels-facade.mjs", "Kiểm định video Gia Lai/Quảng Ngãi click-to-play");
+  await runValidator("./validate-site-scope-v10.mjs", "Kiểm định phạm vi tuyển và địa bàn ưu tiên v10");
   await runValidator("./validate-editorial-policy-anchor-v9.mjs", "Kiểm định anchor nguồn và không dựng lời v9");
   await runValidator("./validate-editorial-source-v5.mjs", "Kiểm định nguồn bài v5");
   await runValidator("./validate-editorial-story-v3.mjs", "Kiểm định bài nguồn newsroom");
