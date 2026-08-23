@@ -1,0 +1,127 @@
+name: Verify live recruitment facts
+
+on:
+  workflow_run:
+    workflows: ["Deploy GitHub Pages"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-live-recruitment-facts
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read canonical facts
+        id: facts
+        shell: bash
+        run: |
+          node <<'NODE' >> "$GITHUB_OUTPUT"
+          const fs = require('node:fs');
+          const facts = JSON.parse(fs.readFileSync('content/recruitment-facts-2026.json', 'utf8'));
+          const support = facts.study_benefits.living_support;
+          const income = facts.after_training.income_commitment || `${facts.after_training.income} ${facts.after_training.income_condition}`.trim();
+          console.log(`version=${facts.version}`);
+          console.log(`confirmed_at=${facts.confirmed_at}`);
+          console.log(`support=${support}`);
+          console.log(`income=${income}`);
+          NODE
+
+      - name: Verify canonical facts and core pages are live
+        shell: bash
+        env:
+          BASE: https://thaylinhtuyenthomo.vn
+          FACTS_VERSION: ${{ steps.facts.outputs.version }}
+          SUPPORT: ${{ steps.facts.outputs.support }}
+          INCOME: ${{ steps.facts.outputs.income }}
+        run: |
+          set -euo pipefail
+          facts_file="$(mktemp)"
+          home_file="$(mktemp)"
+          facts_page="$(mktemp)"
+          kcn_file="$(mktemp)"
+          worker_questions="$(mktemp)"
+          llms_file="$(mktemp)"
+
+          for attempt in $(seq 1 30); do
+            nonce="${GITHUB_SHA}-${GITHUB_RUN_ID}-${attempt}-$(date +%s)"
+            if curl --fail --silent --show-error --location --max-time 20 "${BASE}/data/recruitment-facts-2026.json?release=${nonce}" -o "$facts_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${BASE}/?release=${nonce}" -o "$home_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${BASE}/thong-tin-tuyen-tho-mo/?release=${nonce}" -o "$facts_page" \
+              && curl --fail --silent --show-error --location --max-time 20 "${BASE}/chon-kcn-hay-lam-mo/?release=${nonce}" -o "$kcn_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${BASE}/worker-questions.json?release=${nonce}" -o "$worker_questions" \
+              && curl --fail --silent --show-error --location --max-time 20 "${BASE}/llms.txt?release=${nonce}" -o "$llms_file"; then
+              FACTS_FILE="$facts_file" HOME_FILE="$home_file" FACTS_PAGE="$facts_page" KCN_FILE="$kcn_file" WORKER_QUESTIONS="$worker_questions" LLMS_FILE="$llms_file" FACTS_VERSION="$FACTS_VERSION" SUPPORT="$SUPPORT" INCOME="$INCOME" node <<'NODE'
+              const fs = require('node:fs');
+              const facts = JSON.parse(fs.readFileSync(process.env.FACTS_FILE, 'utf8'));
+              const home = fs.readFileSync(process.env.HOME_FILE, 'utf8');
+              const factsPage = fs.readFileSync(process.env.FACTS_PAGE, 'utf8');
+              const kcn = fs.readFileSync(process.env.KCN_FILE, 'utf8');
+              const worker = JSON.parse(fs.readFileSync(process.env.WORKER_QUESTIONS, 'utf8'));
+              const llms = fs.readFileSync(process.env.LLMS_FILE, 'utf8');
+              const expectedVersion = Number(process.env.FACTS_VERSION);
+              const support = process.env.SUPPORT;
+              const income = process.env.INCOME;
+              const failures = [];
+
+              if (facts.version !== expectedVersion) failures.push(`facts version ${facts.version} != ${expectedVersion}`);
+              if (facts.study_benefits?.living_support !== support) failures.push('live facts support mismatch');
+              if (facts.after_training?.income_commitment !== income) failures.push('live facts income mismatch');
+
+              for (const [label, text] of [['home', home], ['facts page', factsPage]]) {
+                if (!text.includes('7,5 triệu đồng/tháng')) failures.push(`${label}: missing 7.5M/month`);
+                if (!text.includes('hoàn thành định mức lao động')) failures.push(`${label}: missing labor-norm condition`);
+                if (!text.includes('Kỹ thuật cơ điện mỏ hầm lò') && !text.includes('cơ điện mỏ')) failures.push(`${label}: missing electrical-mine occupation`);
+              }
+              if (!home.includes('Xem 26 địa bàn ưu tiên')) failures.push('home: priority-locality label not updated');
+              if (home.includes('Xem đủ 26 tỉnh, thành')) failures.push('home: stale 26-province label remains');
+              if (!factsPage.includes('Thông tin tuyển thợ mỏ đang áp dụng')) failures.push('facts page: evergreen title missing');
+              if (!factsPage.includes('7,5 triệu đồng/tháng')) failures.push('facts page: monthly support missing');
+
+              if (!kcn.includes('data-facebook-reel-facade')) failures.push('KCN: click-to-play facade missing');
+              const reelBlock = kcn.match(/<div class="kcn-reel">([\s\S]*?)<\/div>/i)?.[1] || '';
+              if (/<iframe\b/i.test(reelBlock)) failures.push('KCN: Facebook iframe loads before click');
+
+              if (worker.canonical_facts_version !== expectedVersion) failures.push('worker questions: facts version mismatch');
+              const workerText = JSON.stringify(worker);
+              if (!workerText.includes('cơ điện mỏ hầm lò học 10 tháng')) failures.push('worker questions: 10-month electrical-mine answer missing');
+              if (!workerText.includes('7,5 triệu đồng/tháng')) failures.push('worker questions: monthly support missing');
+              if (!workerText.includes('hoàn thành định mức lao động')) failures.push('worker questions: income condition missing');
+
+              if (!llms.includes(`Facts tuyển sinh canonical v${expectedVersion}`)) failures.push('llms: canonical facts version missing');
+              if (!llms.includes('/data/recruitment-facts-2026.json')) failures.push('llms: canonical facts URL missing');
+              if (!llms.includes('7,5 triệu đồng/tháng')) failures.push('llms: monthly support missing');
+              if (!llms.includes('hoàn thành định mức lao động')) failures.push('llms: income condition missing');
+
+              for (const legacy of ['Bình quân 20–25 triệu', 'tùy đơn vị, vị trí, ngày công và năng suất', '7,5 triệu là tổng cả khóa']) {
+                for (const [label, text] of [['home', home], ['facts page', factsPage], ['worker questions', workerText], ['llms', llms]]) {
+                  if (text.toLocaleLowerCase('vi').includes(legacy.toLocaleLowerCase('vi'))) failures.push(`${label}: legacy phrase ${legacy}`);
+                }
+              }
+
+              if (failures.length) {
+                console.error(JSON.stringify({status:'live-recruitment-facts-not-ready', failures}, null, 2));
+                process.exit(2);
+              }
+              console.log(JSON.stringify({status:'live-recruitment-facts-ready', factsVersion:expectedVersion, support, income}, null, 2));
+              NODE
+              status=$?
+              if [ "$status" -eq 0 ]; then
+                echo "Live recruitment facts verified on attempt $attempt."
+                exit 0
+              fi
+            fi
+            sleep 5
+          done
+
+          echo "Live website did not expose the canonical recruitment release after retries." >&2
+          exit 1
