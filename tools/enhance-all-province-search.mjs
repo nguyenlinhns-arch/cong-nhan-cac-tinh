@@ -2,10 +2,11 @@ import fs from "node:fs";
 import path from "node:path";
 
 // Pages always calls this step after province generation. Normalize both province
-// template families and then re-apply the canonical page-role policy so the
-// legacy Quảng Ninh province URL cannot become indexable again after a rebuild.
+// template families, re-apply the canonical page-role policy, then rebuild the
+// province sitemap so noindex/redirect roles and sitemap membership cannot drift.
 await import("./normalize-province-current-facts-v11.mjs");
 await import("./apply-seo-role-policy.mjs");
+await import("../tuyen-tho-mo/scripts/update-ai-locality-discovery.mjs");
 
 const root = path.resolve("tuyen-tho-mo");
 const indexPath = path.join(root, "search-provinces.json");
@@ -19,7 +20,7 @@ const coverage = fs.existsSync(coveragePath) ? JSON.parse(fs.readFileSync(covera
 const ALL_NAMES = Object.freeze({
   "ha-noi":"Hà Nội","ho-chi-minh":"TP Hồ Chí Minh","da-nang":"Đà Nẵng","hai-phong":"Hải Phòng","can-tho":"Cần Thơ","hue":"Huế",
   "an-giang":"An Giang","bac-ninh":"Bắc Ninh","ca-mau":"Cà Mau","cao-bang":"Cao Bằng","dak-lak":"Đắk Lắk","dien-bien":"Điện Biên",
-  "dong-nai":"Đồng Nai","dong-thap":"Đồng Tháp","gia-lai":"Gia Lai","ha-tinh":"Hà Tĩnh","hung-yen":"Hưng Yên","khanh-hoa":"Khánh Hòa",
+  "dong-nai":"Đồng Nai","dong-thap":"Đồng Tháp","gia-lai":"Gia Lai","ha-tinh":"Hà Tĩnh","hai-phong":"Hải Phòng","hung-yen":"Hưng Yên","khanh-hoa":"Khánh Hòa",
   "lai-chau":"Lai Châu","lam-dong":"Lâm Đồng","lang-son":"Lạng Sơn","lao-cai":"Lào Cai","nghe-an":"Nghệ An","ninh-binh":"Ninh Bình",
   "phu-tho":"Phú Thọ","quang-ngai":"Quảng Ngãi","quang-ninh":"Quảng Ninh","quang-tri":"Quảng Trị","son-la":"Sơn La","tay-ninh":"Tây Ninh",
   "thai-nguyen":"Thái Nguyên","thanh-hoa":"Thanh Hóa","tuyen-quang":"Tuyên Quang","vinh-long":"Vĩnh Long"
@@ -94,4 +95,4 @@ const manifest=JSON.parse(fs.readFileSync(manifestPath,"utf8"));
 manifest.counts.provinces=provinceItems.length;
 manifest.counts.total=Number(manifest.counts.core||0)+provinceItems.length+Number(manifest.counts.content||0);
 fs.writeFileSync(manifestPath,`${JSON.stringify(manifest,null,2)}\n`);
-console.log(JSON.stringify({target:"tuyen-tho-mo/search-provinces.json",provinces:provinceItems.length,public_provinces:provinceItems.length-internalItems.length,internal_provinces:internalItems.length,locality_evidence_phrases:localityEvidencePhrases,locality_aliases:localityAliases,province_directory_links:provinces.length,added,refreshed,provinceFactsNormalized:true,seoRolePolicyApplied:true},null,2));
+console.log(JSON.stringify({target:"tuyen-tho-mo/search-provinces.json",provinces:provinceItems.length,public_provinces:provinceItems.length-internalItems.length,internal_provinces:internalItems.length,locality_evidence_phrases:localityEvidencePhrases,locality_aliases:localityAliases,province_directory_links:provinces.length,added,refreshed,provinceFactsNormalized:true,seoRolePolicyApplied:true,provinceSitemapRebuilt:true},null,2));
