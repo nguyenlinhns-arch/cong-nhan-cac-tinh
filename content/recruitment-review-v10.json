@@ -17,5 +17,5 @@
     "địa điểm nhập học và đầu mối tư vấn",
     "thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động"
   ],
-  "note": "Ngày reviewed_at là ngày website đối chiếu lại thông tin đang áp dụng; không đồng nghĩa chính sách tuyển thay đổi vào ngày này. verification_content_modified chỉ đổi khi nội dung lõi của cổng kiểm chứng thực sự thay đổi. canonical_facts_version và job_master_version phải khớp nguồn đang dùng trong build."
+  "note": "reviewed_at là ngày website đối chiếu facts canonical đã được người dùng xác nhận; workflow facts-sync chỉ đồng bộ các nguồn dữ liệu canonical/derived và không được sửa tools, validator hoặc HTML phát hành."
 }
