@@ -15,6 +15,7 @@ const touched = new Set();
 // fix-kcn-income-context imports rewrite-kcn-comparison, which in turn imports
 // build-verification-portal, so this single import preserves the intended order.
 await import(`./fix-kcn-income-context.mjs?verification-core-v10=${Date.now()}`);
+await import(`./sync-recruitment-config-cache-v10.mjs?verification-core-v10=${Date.now()}`);
 
 function setLastReviewed(html) {
   if (/"lastReviewed"\s*:\s*"\d{4}-\d{2}-\d{2}"/.test(html)) {
@@ -89,6 +90,7 @@ console.log(JSON.stringify({
   reviewedAt: reviewDate,
   contentModified,
   priorityLocalities: priorityCount,
+  recruitmentConfigVersion: 4,
   verificationPortalVersion: 2,
   shareToolsVersion: 2,
   kcnSpecialistRewriteRestored: true,
