@@ -4,10 +4,11 @@ on:
   push:
     branches: [main]
     paths:
-      - 'content/**'
-      - 'tools/**'
-      - 'operations/**'
-      - 'tuyen-tho-mo/**'
+      - 'content/recruitment-facts-2026.json'
+      - 'content/recruitment-review-v10.json'
+      - 'operations/job-posting-master-2026.json'
+      - 'tuyen-tho-mo/data/recruitment-facts-2026.json'
+      - 'tuyen-tho-mo/recruitment-current.json'
       - '.github/workflows/recruitment-facts-normalize.yml'
   workflow_dispatch:
 
@@ -27,152 +28,157 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Normalize user-confirmed recruitment facts
+      - name: Sync only canonical recruitment sources
         shell: bash
         run: |
+          set -euo pipefail
           node <<'NODE'
           const fs = require('node:fs');
           const path = require('node:path');
 
-          const SUPPORT = '7,5 triệu đồng/tháng trong thời gian học';
-          const INCOME = '20–25 triệu đồng/tháng';
-          const INCOME_CONDITION = 'khi hoàn thành định mức lao động';
-          const CONFIRMED_AT = '2026-08-23T11:34:00+07:00';
-
-          const facts = {
-            version: 8,
-            confirmed_at: CONFIRMED_AT,
-            status: 'confirmed_by_user',
-            candidate: {
-              gender: 'Nam', age_min: 18, age_max: 40,
-              height_min_cm: 153, weight_min_kg: 47,
-              health: 'Sức khỏe tốt; kiểm tra mắt, huyết áp, tim mạch và các bệnh ảnh hưởng công việc hầm lò'
-            },
-            training: { khai_thac_mo: '2–3 tháng', xay_dung_mo: '2–3 tháng', co_dien_mo: '10 tháng' },
-            study_benefits: {
-              tuition: 'Miễn học phí theo chỉ tiêu',
-              meals: 'Ăn 3 bữa/ngày',
-              accommodation: 'Ở ký túc xá',
-              living_support: SUPPORT
-            },
-            after_training: {
-              work_location: 'Các đơn vị ngành Than thuộc TKV tại Quảng Ninh',
-              income: INCOME,
-              income_condition: INCOME_CONDITION,
-              income_commitment: `${INCOME} ${INCOME_CONDITION}`,
-              employment: 'Có hợp đồng lao động, bảo hiểm, thưởng, xe đưa đón và chế độ theo từng đơn vị'
-            },
-            contact: {
-              brand: 'Thầy Linh – Tuyển Thợ Mỏ',
-              phone: '096 304 8585',
-              cta: 'Gửi năm sinh – chiều cao/cân nặng – tình trạng sức khỏe để Thầy Linh kiểm tra điều kiện.'
-            },
-            forbidden_legacy_phrases: [
-              '6 triệu',
-              '18–25 triệu',
-              '7,5 triệu là tổng cả khóa',
-              'Bình quân 20–25 triệu',
-              'tùy đơn vị, vị trí, ngày công và năng suất'
-            ]
-          };
-
-          const canonical = 'content/recruitment-facts-2026.json';
-          const publicFacts = 'tuyen-tho-mo/data/recruitment-facts-2026.json';
-          fs.mkdirSync(path.dirname(canonical), {recursive:true});
-          fs.mkdirSync(path.dirname(publicFacts), {recursive:true});
-          fs.writeFileSync(canonical, JSON.stringify(facts, null, 2) + '\n');
-          fs.writeFileSync(publicFacts, JSON.stringify(facts, null, 2) + '\n');
-
+          const canonicalPath = 'content/recruitment-facts-2026.json';
+          const publicFactsPath = 'tuyen-tho-mo/data/recruitment-facts-2026.json';
           const currentPath = 'tuyen-tho-mo/recruitment-current.json';
-          if (fs.existsSync(currentPath)) {
-            const current = JSON.parse(fs.readFileSync(currentPath,'utf8'));
-            current.updated_at = '2026-08-23';
-            current.benefits_during_training ||= {};
-            current.benefits_during_training.living_support = SUPPORT;
-            current.after_training ||= {};
-            current.after_training.income_commitment = `${INCOME} ${INCOME_CONDITION}`;
-            current.after_training.income_reference = current.after_training.income_commitment;
-            current.usage_note = 'Dùng bộ dữ liệu này để đối chiếu thông tin tuyển đang áp dụng. Hai mốc đã được xác nhận: hỗ trợ 7,5 triệu đồng/tháng trong thời gian học; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. Không dùng 6 triệu, 18–25 triệu, cách diễn đạt “bình quân 20–25 triệu” hoặc 7,5 triệu là tổng cả khóa.';
-            fs.writeFileSync(currentPath, JSON.stringify(current,null,2)+'\n');
-          }
-
           const masterPath = 'operations/job-posting-master-2026.json';
-          if (fs.existsSync(masterPath)) {
-            const master = JSON.parse(fs.readFileSync(masterPath,'utf8'));
-            master.version = Math.max(Number(master.version||0), 12);
-            master.updated_at = CONFIRMED_AT;
-            master.income_commitment = `${INCOME} ${INCOME_CONDITION}`;
-            master.income_reference = master.income_commitment;
-            master.canonical_facts = canonical;
-            if (Array.isArray(master.benefits)) master.benefits = master.benefits.map(x => /7,5\s*triệu/i.test(x) ? `Hỗ trợ ${SUPPORT}` : x);
-            fs.writeFileSync(masterPath, JSON.stringify(master,null,2)+'\n');
-          }
+          const reviewPath = 'content/recruitment-review-v10.json';
 
-          const roots = ['content','tools','operations','tuyen-tho-mo'];
-          const exts = new Set(['.html','.js','.mjs','.json','.md','.txt','.xml']);
-          const skip = new Set([path.normalize(canonical), path.normalize(publicFacts)]);
-          const replacements = [
-            [/Thu nhập\s+bình quân\s+20[–-]25 triệu đồng\/tháng(?:,?\s*tùy đơn vị, vị trí, ngày công và năng suất)?\.?/giu, `Thu nhập ${INCOME} ${INCOME_CONDITION}.`],
-            [/Bình quân\s+20[–-]25 triệu đồng\/tháng/giu, `${INCOME} ${INCOME_CONDITION}`],
-            [/Thu nhập\s+20[–-]25 triệu đồng\/tháng,?\s*tùy đơn vị, vị trí, ngày công và năng suất\.?/giu, `Thu nhập ${INCOME} ${INCOME_CONDITION}.`],
-            [/20[–-]25 triệu đồng\/tháng,?\s*tùy đơn vị, vị trí, ngày công và năng suất/giu, `${INCOME} ${INCOME_CONDITION}`],
-            [/20[–-]25 triệu\/tháng,?\s*tùy đơn vị, vị trí, ngày công và năng suất/giu, `20–25 triệu/tháng ${INCOME_CONDITION}`],
-            [/Cam kết thu nhập\s+20[–-]25 triệu đồng\/tháng cho người lao động đáp ứng điều kiện\.?/giu, `Thu nhập ${INCOME} ${INCOME_CONDITION}.`],
-            [/CAM KẾT THU NHẬP/gu, 'THU NHẬP KHI HOÀN THÀNH ĐỊNH MỨC'],
-            [/THU NHẬP CAM KẾT/gu, 'THU NHẬP KHI HOÀN THÀNH ĐỊNH MỨC'],
-            [/7,5 triệu là tổng (?:mức hỗ trợ )?cả khóa/giu, SUPPORT],
-            [/7,5 triệu đồng\/tháng(?:\/tháng|\s+đồng)+/giu, '7,5 triệu đồng/tháng'],
-            [/Hỗ trợ 7,5 triệu đồng(?!\/tháng)/gu, 'Hỗ trợ 7,5 triệu đồng/tháng'],
-            [/hỗ trợ 7,5 triệu đồng(?!\/tháng)/gu, 'hỗ trợ 7,5 triệu đồng/tháng']
-          ];
+          if (!fs.existsSync(canonicalPath)) throw new Error(`Missing canonical facts: ${canonicalPath}`);
+          const facts = JSON.parse(fs.readFileSync(canonicalPath, 'utf8'));
+          if (facts.status !== 'confirmed_by_user') throw new Error(`Canonical facts are not user-confirmed: ${facts.status}`);
+          if (!/^\d{4}-\d{2}-\d{2}T/.test(String(facts.confirmed_at || ''))) throw new Error('Canonical facts confirmed_at is invalid');
+          if (!Number.isInteger(Number(facts.version)) || Number(facts.version) < 1) throw new Error('Canonical facts version is invalid');
 
-          function normalizeFile(file) {
-            const nf = path.normalize(file);
-            if (skip.has(nf)) return;
-            let s; try { s = fs.readFileSync(file,'utf8'); } catch { return; }
-            let n = s;
-            for (const [re,to] of replacements) n = n.replace(re,to);
-            if (n !== s) fs.writeFileSync(file,n);
-          }
-          function walk(dir) {
-            if (!fs.existsSync(dir)) return;
-            for (const ent of fs.readdirSync(dir,{withFileTypes:true})) {
-              const p = path.join(dir,ent.name);
-              if (ent.isDirectory()) walk(p);
-              else if (exts.has(path.extname(ent.name).toLowerCase())) normalizeFile(p);
-            }
-          }
-          roots.forEach(walk);
+          const support = facts.study_benefits?.living_support;
+          const income = facts.after_training?.income_commitment
+            || `${facts.after_training?.income || ''} ${facts.after_training?.income_condition || ''}`.trim();
+          if (!support) throw new Error('Canonical living_support is missing');
+          if (!income) throw new Error('Canonical income_commitment is missing');
+          const confirmedDate = String(facts.confirmed_at).slice(0, 10);
 
-          // Re-write canonical files last so generic normalization can never alter them.
-          fs.writeFileSync(canonical, JSON.stringify(facts, null, 2) + '\n');
-          fs.writeFileSync(publicFacts, JSON.stringify(facts, null, 2) + '\n');
+          fs.mkdirSync(path.dirname(publicFactsPath), {recursive: true});
+          fs.writeFileSync(publicFactsPath, `${JSON.stringify(facts, null, 2)}\n`);
+
+          if (!fs.existsSync(masterPath)) throw new Error(`Missing master: ${masterPath}`);
+          const master = JSON.parse(fs.readFileSync(masterPath, 'utf8'));
+          master.updated_at = facts.confirmed_at;
+          master.canonical_facts = canonicalPath;
+          master.income_commitment = income;
+          master.income_reference = income;
+          master.criteria ||= {};
+          for (const key of ['gender', 'age_min', 'age_max', 'height_min_cm', 'weight_min_kg']) {
+            if (facts.candidate?.[key] !== undefined) master.criteria[key] = facts.candidate[key];
+          }
+          const durations = new Map([
+            ['Kỹ thuật khai thác mỏ hầm lò', facts.training?.khai_thac_mo],
+            ['Kỹ thuật xây dựng mỏ hầm lò', facts.training?.xay_dung_mo],
+            ['Kỹ thuật cơ điện mỏ hầm lò', facts.training?.co_dien_mo],
+          ]);
+          for (const profile of master.occupation_profiles || []) {
+            if (durations.has(profile.title) && durations.get(profile.title)) profile.training_duration_current = durations.get(profile.title);
+          }
+          if (Array.isArray(master.benefits)) {
+            const replacement = `Hỗ trợ ${support}`;
+            let found = false;
+            master.benefits = master.benefits.map((item) => {
+              if (/Hỗ trợ\s+7,5\s*triệu/iu.test(String(item))) {
+                found = true;
+                return replacement;
+              }
+              return item;
+            });
+            if (!found) master.benefits.push(replacement);
+          }
+          fs.writeFileSync(masterPath, `${JSON.stringify(master, null, 2)}\n`);
+
+          if (!fs.existsSync(currentPath)) throw new Error(`Missing recruitment-current: ${currentPath}`);
+          const current = JSON.parse(fs.readFileSync(currentPath, 'utf8'));
+          current.schema_version = Math.max(Number(current.schema_version || 1), 2);
+          current.updated_at = confirmedDate;
+          current.canonical_facts = 'https://thaylinhtuyenthomo.vn/data/recruitment-facts-2026.json';
+          current.eligibility ||= {};
+          for (const key of ['gender', 'age_min', 'age_max', 'height_min_cm', 'weight_min_kg']) {
+            if (facts.candidate?.[key] !== undefined) current.eligibility[key] = facts.candidate[key];
+          }
+          const currentTraining = new Map((current.training || []).map((item) => [item.trade, item]));
+          for (const [trade, duration] of durations) {
+            if (!duration) continue;
+            const item = currentTraining.get(trade);
+            if (item) item.duration = duration;
+            else (current.training ||= []).push({trade, duration});
+          }
+          current.benefits_during_training ||= {};
+          current.benefits_during_training.living_support = support;
+          current.after_training ||= {};
+          current.after_training.income_commitment = income;
+          current.after_training.income_reference = income;
+          current.usage_note = `Dùng bộ dữ liệu này để đối chiếu thông tin tuyển đang áp dụng. Hai mốc đã được xác nhận: hỗ trợ ${support}; thu nhập ${income}. Các cụm trong forbidden_legacy_phrases của facts canonical chỉ dùng để phát hiện dữ liệu cũ, không được tự động thay thế trong mã validator.`;
+          fs.writeFileSync(currentPath, `${JSON.stringify(current, null, 2)}\n`);
+
+          const review = fs.existsSync(reviewPath)
+            ? JSON.parse(fs.readFileSync(reviewPath, 'utf8'))
+            : {};
+          review.schema_version = Math.max(Number(review.schema_version || 1), 2);
+          review.reviewed_at = confirmedDate;
+          review.verification_content_modified ||= confirmedDate;
+          review.policy_effective_from ||= master.effective_from || confirmedDate;
+          review.canonical_facts_version = facts.version;
+          review.canonical_facts_confirmed_at = facts.confirmed_at;
+          review.job_master_version = master.version;
+          review.candidate_scope = master.candidate_scope || review.candidate_scope;
+          review.note = 'reviewed_at là ngày website đối chiếu facts canonical đã được người dùng xác nhận; workflow facts-sync chỉ đồng bộ các nguồn dữ liệu canonical/derived và không được sửa tools, validator hoặc HTML phát hành.';
+          fs.writeFileSync(reviewPath, `${JSON.stringify(review, null, 2)}\n`);
           NODE
 
-      - name: Verify user-confirmed facts
+      - name: Verify canonical source agreement
         shell: bash
         run: |
+          set -euo pipefail
           node <<'NODE'
-          const fs=require('node:fs');
-          const f=JSON.parse(fs.readFileSync('content/recruitment-facts-2026.json','utf8'));
-          if(f.study_benefits.living_support!=='7,5 triệu đồng/tháng trong thời gian học') process.exit(1);
-          if(f.after_training.income!=='20–25 triệu đồng/tháng') process.exit(1);
-          if(f.after_training.income_condition!=='khi hoàn thành định mức lao động') process.exit(1);
-          const critical=[
-            'tuyen-tho-mo/index.html',
-            'tuyen-tho-mo/tuyen-tho-mo-quang-ninh/index.html',
-            'tuyen-tho-mo/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html'
-          ].filter(fs.existsSync).map(x=>fs.readFileSync(x,'utf8')).join('\n');
-          if(/7,5 triệu là tổng cả khóa|18[–-]25 triệu|6 triệu|Bình quân\s+20[–-]25 triệu|tùy đơn vị, vị trí, ngày công và năng suất/iu.test(critical)) process.exit(1);
-          console.log('User-confirmed recruitment facts verified.');
+          const fs = require('node:fs');
+          const facts = JSON.parse(fs.readFileSync('content/recruitment-facts-2026.json', 'utf8'));
+          const publicFacts = JSON.parse(fs.readFileSync('tuyen-tho-mo/data/recruitment-facts-2026.json', 'utf8'));
+          const master = JSON.parse(fs.readFileSync('operations/job-posting-master-2026.json', 'utf8'));
+          const current = JSON.parse(fs.readFileSync('tuyen-tho-mo/recruitment-current.json', 'utf8'));
+          const review = JSON.parse(fs.readFileSync('content/recruitment-review-v10.json', 'utf8'));
+          const support = facts.study_benefits.living_support;
+          const income = facts.after_training.income_commitment || `${facts.after_training.income} ${facts.after_training.income_condition}`.trim();
+          if (JSON.stringify(publicFacts) !== JSON.stringify(facts)) throw new Error('Public facts do not mirror canonical facts');
+          if (master.updated_at !== facts.confirmed_at) throw new Error('Master timestamp mismatch');
+          if (master.income_commitment !== income) throw new Error('Master income mismatch');
+          if (!master.benefits.some((item) => String(item).includes(support))) throw new Error('Master support mismatch');
+          if (current.benefits_during_training?.living_support !== support) throw new Error('recruitment-current support mismatch');
+          if (current.after_training?.income_commitment !== income) throw new Error('recruitment-current income mismatch');
+          if (review.canonical_facts_version !== facts.version) throw new Error('Review facts version mismatch');
+          if (review.canonical_facts_confirmed_at !== facts.confirmed_at) throw new Error('Review facts timestamp mismatch');
+          if (review.job_master_version !== master.version) throw new Error('Review master version mismatch');
+          console.log(JSON.stringify({status:'canonical-source-agreement-ready', factsVersion:facts.version, masterVersion:master.version, support, income}, null, 2));
           NODE
 
-      - name: Commit normalized facts
+      - name: Ensure facts-sync never edits code or published HTML
+        shell: bash
+        run: |
+          set -euo pipefail
+          changed="$(git diff --name-only)"
+          if [ -z "$changed" ]; then exit 0; fi
+          echo "$changed"
+          while IFS= read -r file; do
+            case "$file" in
+              content/recruitment-facts-2026.json|content/recruitment-review-v10.json|operations/job-posting-master-2026.json|tuyen-tho-mo/data/recruitment-facts-2026.json|tuyen-tho-mo/recruitment-current.json) ;;
+              *) echo "facts-sync attempted to modify forbidden path: $file" >&2; exit 1 ;;
+            esac
+          done <<< "$changed"
+
+      - name: Commit synchronized canonical sources
         shell: bash
         run: |
           if git diff --quiet; then exit 0; fi
           git config user.name 'thaylinh-marketing-bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add content tools operations tuyen-tho-mo
+          git add \
+            content/recruitment-facts-2026.json \
+            content/recruitment-review-v10.json \
+            operations/job-posting-master-2026.json \
+            tuyen-tho-mo/data/recruitment-facts-2026.json \
+            tuyen-tho-mo/recruitment-current.json
           git commit -m 'chore: sync user-confirmed recruitment facts [facts-sync]'
           git push
