@@ -9,6 +9,9 @@ on:
       - 'tools/build-worker-first-home.mjs'
       - 'tools/sync-home-freshness.mjs'
       - 'content/daily-seo-articles.json'
+      - 'content/recruitment-facts-2026.json'
+      - 'tuyen-tho-mo/data/recruitment-facts-2026.json'
+      - 'operations/job-posting-master-2026.json'
       - 'tuyen-tho-mo/app.js'
       - '.github/workflows/recruitment-seo-copy-v11.yml'
   workflow_dispatch:
@@ -75,6 +78,7 @@ jobs:
             echo 'Stale province-count label remains on homepage' >&2
             exit 1
           fi
+          node -e "const d=require('./content/daily-seo-articles.json');const f=require('./tuyen-tho-mo/data/recruitment-facts-2026.json');if(d.canonical_facts_version!==f.version||d.canonical_facts_confirmed_at!==f.confirmed_at)process.exit(1)"
 
       - name: Commit normalized SEO source and published pages
         shell: bash
