@@ -1,1 +1,2 @@
 temporary CI trigger for field-report v8 prose rewrite
+retry after validator-driven Gia Lai corrections
