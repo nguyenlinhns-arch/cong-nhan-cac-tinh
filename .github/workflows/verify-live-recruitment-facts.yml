@@ -60,6 +60,7 @@ jobs:
               && curl --fail --silent --show-error --location --max-time 20 "${BASE}/chon-kcn-hay-lam-mo/?release=${nonce}" -o "$kcn_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${BASE}/worker-questions.json?release=${nonce}" -o "$worker_questions" \
               && curl --fail --silent --show-error --location --max-time 20 "${BASE}/llms.txt?release=${nonce}" -o "$llms_file"; then
+              set +e
               FACTS_FILE="$facts_file" HOME_FILE="$home_file" FACTS_PAGE="$facts_page" KCN_FILE="$kcn_file" WORKER_QUESTIONS="$worker_questions" LLMS_FILE="$llms_file" FACTS_VERSION="$FACTS_VERSION" SUPPORT="$SUPPORT" INCOME="$INCOME" node <<'NODE'
               const fs = require('node:fs');
               const facts = JSON.parse(fs.readFileSync(process.env.FACTS_FILE, 'utf8'));
@@ -115,6 +116,7 @@ jobs:
               console.log(JSON.stringify({status:'live-recruitment-facts-ready', factsVersion:expectedVersion, support, income}, null, 2));
               NODE
               status=$?
+              set -e
               if [ "$status" -eq 0 ]; then
                 echo "Live recruitment facts verified on attempt $attempt."
                 exit 0
