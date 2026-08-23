@@ -2,3 +2,4 @@ temporary CI trigger for whole-site content-origin v9
 retry with release-registry classification
 retry with canonical-url registry and flexible network nav
 retry with uniqueness audit enabled
+retry after word-count UI exclusion and audit cleanup
