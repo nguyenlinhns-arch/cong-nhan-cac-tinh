@@ -109,3 +109,7 @@ console.log(JSON.stringify({
   reviewedAt: reviewDate,
   touched: [...touched].sort(),
 }, null, 2));
+
+// Keep the verification pages, shared mobile contact bar and high-cost embeds
+// aligned with this scope pass so the main pipeline only needs one entry point.
+await import("./verification-core-v10.mjs");
