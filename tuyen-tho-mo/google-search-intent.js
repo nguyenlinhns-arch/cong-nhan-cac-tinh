@@ -2,6 +2,9 @@
   "use strict";
 
   const JOB_PATH = "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/";
+  const CANONICAL_FACTS_VERSION = 8;
+  const CANONICAL_SUPPORT = "7,5 triệu đồng/tháng trong thời gian học";
+  const CANONICAL_INCOME = "20–25 triệu đồng/tháng khi hoàn thành định mức lao động";
   const params = new URLSearchParams(location.search);
   const hasGoogleClickId = Boolean(params.get("gclid") || params.get("gbraid") || params.get("wbraid"));
   const source = String(params.get("utm_source") || "").toLowerCase();
@@ -59,9 +62,9 @@
       facts: [
         ["Điều kiện cơ bản", "Nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg; sức khỏe phù hợp công việc hầm lò."],
         ["Thời gian học", "Khai thác và xây dựng mỏ: 2–3 tháng. Cơ điện mỏ: 10 tháng."],
-        ["Trong thời gian học", "Miễn học phí theo chỉ tiêu, bố trí 3 bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng."],
+        ["Trong thời gian học", `Miễn học phí theo chỉ tiêu, bố trí 3 bữa/ngày, ký túc xá và hỗ trợ ${CANONICAL_SUPPORT}.`],
         ["Sau đào tạo", "Làm việc tại các đơn vị ngành Than thuộc TKV ở Quảng Ninh."],
-        ["Thu nhập", "Cam kết 20–25 triệu đồng/tháng."],
+        ["Thu nhập", `${CANONICAL_INCOME}.`],
       ],
       proof: [
         ["/cau-chuyen-cong-nhan/", "Xem công nhân thật theo tỉnh"],
@@ -77,7 +80,7 @@
       facts: [
         ["Học phí", "Miễn học phí theo chỉ tiêu tuyển đang áp dụng."],
         ["Ăn và ở", "Bố trí 3 bữa/ngày và ký túc xá trong thời gian học."],
-        ["Hỗ trợ sinh hoạt", "Hỗ trợ 7,5 triệu đồng/tháng trong thời gian học theo chính sách đợt tuyển."],
+        ["Hỗ trợ sinh hoạt", `Hỗ trợ ${CANONICAL_SUPPORT} theo chính sách đợt tuyển.`],
         ["Thời gian học", "Khai thác, xây dựng mỏ: 2–3 tháng. Cơ điện mỏ: 10 tháng."],
         ["Sau đào tạo", "Hoàn thành chương trình và đạt yêu cầu thì được bố trí việc tại các đơn vị ngành Than thuộc TKV ở Quảng Ninh."],
       ],
@@ -93,10 +96,10 @@
       lead: "Website công khai thông tin thu nhập, quyền lợi và bảng lương để người lao động đối chiếu trước khi đăng ký.",
       primary: "Kiểm tra điều kiện & đăng ký",
       facts: [
-        ["Thu nhập", "Cam kết 20–25 triệu đồng/tháng."],
+        ["Thu nhập", `${CANONICAL_INCOME}.`],
         ["Bằng chứng", "Có kho bảng lương công khai theo từng doanh nghiệp để người lao động đối chiếu."],
         ["Chưa có nghề", "Được đào tạo từ đầu trước khi nhận việc nếu hoàn thành chương trình và đạt yêu cầu."],
-        ["Trong thời gian học", "Miễn học phí theo chỉ tiêu, bố trí ăn ở và hỗ trợ 7,5 triệu đồng/tháng."],
+        ["Trong thời gian học", `Miễn học phí theo chỉ tiêu, bố trí ăn ở và hỗ trợ ${CANONICAL_SUPPORT}.`],
         ["Điều kiện cơ bản", "Nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg; kết quả cuối cùng căn cứ khám tuyển."],
       ],
       proof: [
@@ -118,7 +121,7 @@
     "training:benefits": {
       eyebrow: "HỌC NGHỀ MỎ · HỌC PHÍ VÀ HỖ TRỢ",
       title: "Học thợ lò có miễn phí không?",
-      lead: "Người học thuộc chỉ tiêu được miễn học phí, bố trí ăn ở và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học theo chính sách đang áp dụng.",
+      lead: `Người học thuộc chỉ tiêu được miễn học phí, bố trí ăn ở và hỗ trợ ${CANONICAL_SUPPORT} theo chính sách đang áp dụng.`,
       primary: "Kiểm tra điều kiện học miễn phí",
       proof: [["/hoc-tho-lo-co-mien-phi-khong/", "Xem giải thích học phí"], ["/thu-nhap-an-o-ho-tro/", "Xem ăn ở và hỗ trợ"], ["/thong-tin-tuyen-tho-mo/", "Đối chiếu chính sách hiện hành"]],
     },
@@ -132,7 +135,7 @@
     "training:duration": {
       eyebrow: "HỌC NGHỀ MỎ · THỜI GIAN ĐÀO TẠO",
       title: "Học thợ lò bao lâu thì đi làm?",
-      lead: "Khai thác và xây dựng mỏ hầm lò học khoảng 2–3 tháng; cơ điện mỏ khoảng 10 tháng. Người học phải đạt yêu cầu trước khi được tiếp nhận làm việc.",
+      lead: "Khai thác và xây dựng mỏ hầm lò học khoảng 2–3 tháng; cơ điện mỏ 10 tháng. Người học phải đạt yêu cầu trước khi được tiếp nhận làm việc.",
       primary: "Kiểm tra điều kiện học nghề",
       proof: [["/hoc-tho-lo-bao-lau/", "Xem thời gian học"], ["/hoc-nghe-mo-tai-quang-ninh/", "Xem từng nghề đào tạo"], ["/thong-tin-tuyen-tho-mo/", "Xem thông tin tuyển hiện hành"]],
     },
@@ -146,7 +149,7 @@
     "income:salary": {
       eyebrow: "LƯƠNG THỢ LÒ · QUẢNG NINH",
       title: "Lương thợ lò bao nhiêu một tháng?",
-      lead: "Chương trình đang áp dụng Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.; website có bảng lương để đối chiếu.",
+      lead: `Thu nhập đang áp dụng là ${CANONICAL_INCOME}; website có bảng lương để đối chiếu.`,
       primary: "Kiểm tra điều kiện & đăng ký",
       proof: [["/luong-tho-lo-bao-nhieu/", "Xem giải thích mức lương"], ["/bang-luong/", "Xem bảng lương thực tế"], ["/thu-nhap-an-o-ho-tro/", "Xem quyền lợi đầy đủ"]],
     },
@@ -161,6 +164,7 @@
       window.tlTrack?.(name, {
         page_path: location.pathname,
         landing_type: "google_paid_search",
+        canonical_facts_version: CANONICAL_FACTS_VERSION,
         content: `paid_search_intent_${intent}_${subIntent}`,
         utm_term: String(params.get("utm_term") || "").slice(0, 100),
         ...payload,
@@ -173,6 +177,7 @@
     document.documentElement.dataset.googlePaidSearch = "true";
     document.documentElement.dataset.googlePaidIntent = intent;
     document.documentElement.dataset.googlePaidSubIntent = subIntent;
+    document.documentElement.dataset.canonicalFactsVersion = String(CANONICAL_FACTS_VERSION);
 
     const hero = document.querySelector(".job-hero");
     if (!hero) return;
@@ -185,6 +190,7 @@
     section.className = "google-search-intent";
     section.dataset.googleSearchIntent = intent;
     section.dataset.googleSearchSubIntent = subIntent;
+    section.dataset.canonicalFactsVersion = String(CANONICAL_FACTS_VERSION);
     section.setAttribute("aria-labelledby", "google-search-intent-title");
     section.innerHTML = `
       <div class="google-search-intent__inner">
