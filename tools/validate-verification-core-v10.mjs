@@ -13,7 +13,7 @@ const read = (relative) => fs.readFileSync(path.join(site, relative), "utf8");
 
 const portal = read("verification-portal.js");
 for (const marker of [
-  'const MESSENGER_URL = "https://www.messenger.com/t/thaylinhtuyenthomo.vn"',
+  'const MESSENGER_URL = "https://m.me/thaylinhtuyenthomo"',
   "data-facebook-reel-facade",
   "mountFacebookReel",
   'trackExact("verification_video_play"',
@@ -69,6 +69,7 @@ if (errors.length) {
   console.log(JSON.stringify({
     status: "verification-core-v10-ready",
     messengerMobileFixed: true,
+    messengerUrl: "https://m.me/thaylinhtuyenthomo",
     kcnSpecialistRewriteRestored: true,
     kcnClickToPlay: true,
     publicPolicyClean: true,
