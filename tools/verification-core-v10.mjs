@@ -15,6 +15,11 @@ const touched = new Set();
 // fix-kcn-income-context imports rewrite-kcn-comparison, which in turn imports
 // build-verification-portal, so this single import preserves the intended order.
 await import(`./fix-kcn-income-context.mjs?verification-core-v10=${Date.now()}`);
+
+// The job-board generator still has historical presentation strings in a few
+// templates. Normalize all three active role pages and machine-readable job
+// feeds against the current master before search/discovery artifacts are built.
+await import(`./normalize-current-recruitment-copy-v10.mjs?verification-core-v10=${Date.now()}`);
 await import(`./sync-recruitment-config-cache-v10.mjs?verification-core-v10=${Date.now()}`);
 
 function setLastReviewed(html) {
@@ -116,6 +121,8 @@ console.log(JSON.stringify({
   recruitmentConfigVersion: 4,
   verificationPortalVersion: 2,
   shareToolsVersion: 2,
+  currentRecruitmentCopyNormalized: true,
+  machineJobFeedsNormalized: true,
   kcnSpecialistRewriteRestored: true,
   kcnVideoClickToPlay: true,
   publicPolicyClean: true,
