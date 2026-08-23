@@ -87,6 +87,9 @@ dailyHub = dailyHub.replace(hubModifiedPattern, `"dateModified":"${dailyDate}"`)
 fs.writeFileSync(dailyHubPath, dailyHub);
 
 let sitemap = fs.readFileSync(sitemapPath, "utf8");
+const homepageSitemapPattern = /(<loc>https:\/\/thaylinhtuyenthomo\.vn\/<\/loc><lastmod>)\d{4}-\d{2}-\d{2}(?:T[^<]+)?(<\/lastmod>)/;
+if (!homepageSitemapPattern.test(sitemap)) throw new Error("sync-home-freshness: sitemap thiếu lastmod của trang chủ");
+sitemap = sitemap.replace(homepageSitemapPattern, `$1${homepageModifiedDate}$2`);
 const dailyHubSitemapPattern = /(<loc>https:\/\/thaylinhtuyenthomo\.vn\/giai-dap-nghe-mo\/<\/loc><lastmod>)\d{4}-\d{2}-\d{2}(<\/lastmod>)/;
 if (!dailyHubSitemapPattern.test(sitemap)) throw new Error("sync-home-freshness: sitemap thiếu lastmod của hub giải đáp");
 sitemap = sitemap.replace(dailyHubSitemapPattern, `$1${dailyDate}$2`);
@@ -97,6 +100,7 @@ console.log(JSON.stringify({
   canonicalFactsVersion: canonicalFacts.version,
   homepageModifiedDate,
   homepageReviewDate,
+  homepageSitemapLastmod: homepageModifiedDate,
   communityDate,
   dailyAnswerDate: dailyDate,
   recruitmentDate: recruitmentDate || null,
