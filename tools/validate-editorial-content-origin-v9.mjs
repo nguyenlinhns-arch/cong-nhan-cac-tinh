@@ -3,7 +3,7 @@ import path from "node:path";
 
 const root = path.resolve("tuyen-tho-mo");
 const errors = [];
-const stats = {checked:0, firsthand:0, sourcedEditorial:0, expertExplainer:0, currentExplainer:0, corePolicy:0, networkNav:0};
+const stats = {checked:0, firsthand:0, sourcedEditorial:0, expertExplainer:0, currentExplainer:0, corePolicy:0, localContext:0, jobPolicy:0, networkNav:0};
 const policyLink = "/nguyen-tac-bien-tap/#phan-loai-nguon";
 const releaseDate = new Intl.DateTimeFormat("en-CA", {timeZone:"Asia/Bangkok",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
 const daily = JSON.parse(fs.readFileSync(path.join(root, "daily-seo-articles.json"), "utf8"));
@@ -132,6 +132,25 @@ for (const [relative, expected] of core) {
   stats.corePolicy += 1;
 }
 
+for (const file of walk(path.join(root, "viec-lam-nganh-than"))) {
+  const relative = rel(file);
+  if (relative === "viec-lam-nganh-than/index.html") continue;
+  const html = fs.readFileSync(file, "utf8");
+  if (!indexable(html)) continue;
+  if (meta(html, "content-origin") !== "current-recruitment-context") errors.push(`${relative}: thiếu content-origin=current-recruitment-context`);
+  if (!html.includes('data-content-origin="current-recruitment-context"')) errors.push(`${relative}: thiếu data-content-origin=current-recruitment-context`);
+  stats.localContext += 1;
+}
+
+for (const file of walk(path.join(root, "viec-lam"))) {
+  const html = fs.readFileSync(file, "utf8");
+  if (!indexable(html)) continue;
+  const relative = rel(file);
+  if (meta(html, "content-origin") !== "current-recruitment-policy") errors.push(`${relative}: thiếu content-origin=current-recruitment-policy`);
+  if (!html.includes('data-content-origin="current-recruitment-policy"')) errors.push(`${relative}: thiếu data-content-origin=current-recruitment-policy`);
+  stats.jobPolicy += 1;
+}
+
 const networkPages = [
   "trung-tam-nghe-mo/index.html",
   "thong-tin-tuyen-tho-mo/index.html",
@@ -155,11 +174,14 @@ for (const relative of networkPages) {
 const feed = JSON.parse(fs.readFileSync(path.join(root, "feed.json"), "utf8"));
 const sourcedExpected = (feed.items || []).filter((item) => String(item.url || "").includes("/tin-nganh-than/")).length;
 const dailyExpected = releasedDailySlugs.size;
+const localities = JSON.parse(fs.readFileSync(path.join(root, "localities.json"), "utf8"));
 
 if (stats.firsthand !== 2) errors.push(`Phóng sự nguyên bản: cần 2, nhận ${stats.firsthand}`);
 if (stats.sourcedEditorial !== sourcedExpected) errors.push(`Bài nguồn: cần ${sourcedExpected}, nhận ${stats.sourcedEditorial}`);
 if (stats.expertExplainer !== 10) errors.push(`Bài chuyên môn: cần 10, nhận ${stats.expertExplainer}`);
 if (stats.currentExplainer !== dailyExpected) errors.push(`Giải đáp hiện hành: cần ${dailyExpected}, nhận ${stats.currentExplainer}`);
+if (stats.localContext < Number(localities.total || 0)) errors.push(`Mạng địa phương có ${stats.localContext} trang gắn nguồn, thấp hơn ${localities.total || 0} địa bàn`);
+if (stats.jobPolicy < 1) errors.push("Không có trang việc làm indexable nào được gắn nguồn chính sách hiện hành");
 
-console.log(JSON.stringify({...stats,sourcedExpected,dailyExpected,releaseDate,errors:errors.length,sampleErrors:errors.slice(0,60)}, null, 2));
+console.log(JSON.stringify({...stats,sourcedExpected,dailyExpected,localityMinimum:Number(localities.total || 0),releaseDate,errors:errors.length,sampleErrors:errors.slice(0,60)}, null, 2));
 if (errors.length) process.exitCode = 1;
