@@ -129,6 +129,10 @@ console.log(JSON.stringify({
   touched: [...touched].sort(),
 }, null, 2));
 
+// Worker-question pages are generated earlier in the workflow. Normalize their
+// AI-facing JSON and visible answers now, before search-index generation.
+await import("./normalize-worker-question-facts-v11.mjs");
+
 // Keep the verification pages, shared mobile contact bar and high-cost embeds
 // aligned with this scope pass so the main pipeline only needs one entry point.
 await import("./verification-core-v10.mjs");
