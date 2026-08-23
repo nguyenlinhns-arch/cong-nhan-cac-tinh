@@ -5,6 +5,12 @@ const root = path.resolve("tuyen-tho-mo");
 const errors = [];
 const stats = {checked:0, firsthand:0, sourcedEditorial:0, expertExplainer:0, currentExplainer:0, corePolicy:0, networkNav:0};
 const policyLink = "/nguyen-tac-bien-tap/#phan-loai-nguon";
+const releaseDate = new Intl.DateTimeFormat("en-CA", {timeZone:"Asia/Bangkok",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
+const daily = JSON.parse(fs.readFileSync(path.join(root, "daily-seo-articles.json"), "utf8"));
+const releasedDailySlugs = new Set((daily.articles || [])
+  .filter((item) => !item.publish_on || item.publish_on <= releaseDate)
+  .map((item) => String(item.slug || "").trim())
+  .filter(Boolean));
 
 function walk(directory, output = []) {
   if (!fs.existsSync(directory)) return output;
@@ -23,12 +29,19 @@ function meta(html, name) {
     || html.match(new RegExp(`<meta\\b[^>]*content=["']([^"']+)["'][^>]*name=["']${escaped}["'][^>]*>`, "i"))?.[1]
     || "";
 }
-
+function indexable(html) {
+  return !/<meta\b[^>]*name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html)
+    && !/<meta\b[^>]*http-equiv=["']refresh["']/i.test(html);
+}
+function dailySlug(relative) {
+  return relative.match(/^giai-dap-nghe-mo\/([^/]+)\/index\.html$/i)?.[1] || "";
+}
 function expectedOrigin(relative) {
   if (/^phong-su\/[^/]+\/index\.html$/i.test(relative)) return "firsthand";
   if (/^tin-nganh-than\/20\d{2}\//i.test(relative)) return "sourced-editorial";
   if (/^bai-viet\/[^/]+\/index\.html$/i.test(relative)) return "expert-explainer";
-  if (/^giai-dap-nghe-mo\/[^/]+\/index\.html$/i.test(relative) && relative !== "giai-dap-nghe-mo/index.html") return "current-explainer";
+  const slug = dailySlug(relative);
+  if (slug && releasedDailySlugs.has(slug)) return "current-explainer";
   return "";
 }
 
@@ -37,7 +50,12 @@ const articleFiles = [
   ...walk(path.join(root, "tin-nganh-than")),
   ...walk(path.join(root, "bai-viet")),
   ...walk(path.join(root, "giai-dap-nghe-mo")),
-].filter((file) => expectedOrigin(rel(file)));
+].filter((file) => {
+  const relative = rel(file);
+  if (!expectedOrigin(relative)) return false;
+  const html = fs.readFileSync(file, "utf8");
+  return indexable(html);
+});
 
 for (const file of articleFiles) {
   stats.checked += 1;
@@ -69,6 +87,16 @@ for (const file of articleFiles) {
     stats.currentExplainer += 1;
     if (!html.includes("Giải đáp hiện hành")) errors.push(`${relative}: thiếu nhãn giải đáp hiện hành`);
     if (!/thông-tin-tuyen-tho-mo|Thông tin tuyển|dữ kiện tuyển sinh/iu.test(html)) errors.push(`${relative}: giải đáp hiện hành chưa nối về nguồn tuyển sinh`);
+  }
+}
+
+for (const file of walk(path.join(root, "giai-dap-nghe-mo"))) {
+  const relative = rel(file);
+  const slug = dailySlug(relative);
+  if (!slug || releasedDailySlugs.has(slug)) continue;
+  const html = fs.readFileSync(file, "utf8");
+  if (meta(html, "content-origin") === "current-explainer" || html.includes('data-content-origin-note="current-explainer"')) {
+    errors.push(`${relative}: trang ngoài registry phát hành không được gắn nhãn giải đáp hiện hành`);
   }
 }
 
@@ -113,14 +141,12 @@ for (const relative of networkPages) {
 
 const feed = JSON.parse(fs.readFileSync(path.join(root, "feed.json"), "utf8"));
 const sourcedExpected = (feed.items || []).filter((item) => String(item.url || "").includes("/tin-nganh-than/")).length;
-const daily = JSON.parse(fs.readFileSync(path.join(root, "daily-seo-articles.json"), "utf8"));
-const releaseDate = new Intl.DateTimeFormat("en-CA", {timeZone:"Asia/Bangkok",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
-const dailyExpected = (daily.articles || []).filter((item) => !item.publish_on || item.publish_on <= releaseDate).length;
+const dailyExpected = releasedDailySlugs.size;
 
 if (stats.firsthand !== 2) errors.push(`Phóng sự nguyên bản: cần 2, nhận ${stats.firsthand}`);
 if (stats.sourcedEditorial !== sourcedExpected) errors.push(`Bài nguồn: cần ${sourcedExpected}, nhận ${stats.sourcedEditorial}`);
 if (stats.expertExplainer !== 10) errors.push(`Bài chuyên môn: cần 10, nhận ${stats.expertExplainer}`);
 if (stats.currentExplainer !== dailyExpected) errors.push(`Giải đáp hiện hành: cần ${dailyExpected}, nhận ${stats.currentExplainer}`);
 
-console.log(JSON.stringify({...stats,sourcedExpected,dailyExpected,errors:errors.length,sampleErrors:errors.slice(0,60)}, null, 2));
+console.log(JSON.stringify({...stats,sourcedExpected,dailyExpected,releaseDate,errors:errors.length,sampleErrors:errors.slice(0,60)}, null, 2));
 if (errors.length) process.exitCode = 1;
