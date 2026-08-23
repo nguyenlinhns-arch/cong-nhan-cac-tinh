@@ -33,6 +33,7 @@ for (const marker of [
   'href="/bang-luong/"',
   'href="/cau-chuyen-cong-nhan/"',
   'href="/hoi-dap-di-lam-mo-than-quang-ninh/"',
+  'href="/tuyen-tho-mo-quang-ninh/"',
 ]) requireText(home, marker, "Trang chủ mới");
 
 const heroActions = home.match(/<div class="home-v6-actions">([\s\S]*?)<\/div>/)?.[1] || "";
@@ -50,7 +51,13 @@ for (const id of order) {
 
 const h1s = [...home.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)];
 if (h1s.length !== 1) errors.push(`Trang chủ mới: cần đúng 1 H1, hiện có ${h1s.length}`);
-if (!/Tuyển thợ mỏ Quảng Ninh/.test(h1s[0]?.[1] || "")) errors.push("Trang chủ mới: H1 thiếu từ khóa tuyển thợ mỏ Quảng Ninh");
+const homepageH1 = h1s[0]?.[1] || "";
+if (!/Học nghề mỏ/i.test(homepageH1) || !/việc làm ngành Than/i.test(homepageH1)) {
+  errors.push("Trang chủ mới: H1 phải thể hiện vai trò hub học nghề mỏ và việc làm ngành Than");
+}
+if (/Tuyển thợ mỏ Quảng Ninh/i.test(homepageH1)) {
+  errors.push("Trang chủ mới: không được tranh H1 tuyển thợ mỏ Quảng Ninh với landing chuyên dụng");
+}
 
 const reelFacade = home.match(/<button\b[^>]+data-facebook-reel-facade[^>]*>/i)?.[0] || "";
 if (!reelFacade) errors.push("Video Reel: thiếu lớp xem trước bấm-để-phát");
@@ -92,6 +99,8 @@ console.log(JSON.stringify({
   dailyAnswerCards,
   homepageImages: homepageImageSources.length,
   duplicateHomepageImages,
+  seoRole: "learning-and-career-hub",
+  primaryRecruitmentLanding: "/tuyen-tho-mo-quang-ninh/",
   errors: errors.length,
   sampleErrors: errors.slice(0, 20),
 }, null, 2));
