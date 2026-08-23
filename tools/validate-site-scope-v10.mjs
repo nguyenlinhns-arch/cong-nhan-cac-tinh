@@ -122,3 +122,4 @@ if (errors.length) {
 }
 
 await import("./validate-verification-core-v10.mjs");
+await import("./validate-province-current-facts-v11.mjs");
