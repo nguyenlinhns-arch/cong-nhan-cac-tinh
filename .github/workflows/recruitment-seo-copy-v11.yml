@@ -5,7 +5,10 @@ on:
     branches: [main]
     paths:
       - 'tools/normalize-recruitment-seo-copy-v11.mjs'
+      - 'tools/normalize-province-current-facts-v11.mjs'
       - 'tools/generate-province-pages-2026.mjs'
+      - 'tools/enhance-all-province-search.mjs'
+      - 'tools/apply-seo-role-policy.mjs'
       - 'tools/build-worker-first-home.mjs'
       - 'tools/sync-home-freshness.mjs'
       - 'content/daily-seo-articles.json'
@@ -42,6 +45,9 @@ jobs:
       - name: Regenerate province pages from normalized source
         run: node tools/generate-province-pages-2026.mjs
 
+      - name: Normalize both province template families
+        run: node tools/normalize-province-current-facts-v11.mjs
+
       - name: Rebuild homepage from normalized source
         run: node tools/build-worker-first-home.mjs
 
@@ -59,6 +65,7 @@ jobs:
           node --check tools/generate-province-pages-2026.mjs
           node --check tools/build-worker-first-home.mjs
           node --check tools/normalize-recruitment-seo-copy-v11.mjs
+          node --check tools/normalize-province-current-facts-v11.mjs
           node --check tools/sync-home-freshness.mjs
           if grep -RIlE 'href="[^" ]*cong-nhan-mo-ham-lo-quang-ninh/\?province=' tuyen-tho-mo/viec-lam-nganh-than --include='*.html' | grep -q .; then
             echo 'Crawlable province query URL remains in local pages' >&2
@@ -73,8 +80,11 @@ jobs:
           grep -Eq 'dateModified: "[0-9]{4}-[0-9]{2}-[0-9]{2}"' tools/generate-province-pages-2026.mjs
           grep -Eq 'lastReviewed: "[0-9]{4}-[0-9]{2}-[0-9]{2}"' tools/generate-province-pages-2026.mjs
           grep -q 'data-prefill-province=' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
-          grep -q 'Thu nhập theo định mức' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
+          grep -Eq 'Thu nhập (theo định mức|sau đào tạo)' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
           grep -q 'Ba trang nên xem trước khi đăng ký' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
+          grep -q 'Kỹ thuật cơ điện mỏ hầm lò' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
+          grep -q '10 tháng' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
+          grep -q '"reviewedBy":{"@id":"https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/#person"}' tuyen-tho-mo/viec-lam-nganh-than/gia-lai/index.html
           grep -Eq '"dateModified":"[0-9]{4}-[0-9]{2}-[0-9]{2}"' tuyen-tho-mo/index.html
           grep -Eq '"lastReviewed":"[0-9]{4}-[0-9]{2}-[0-9]{2}"' tuyen-tho-mo/index.html
           grep -q 'Xem 26 địa bàn ưu tiên' tuyen-tho-mo/index.html
@@ -83,6 +93,8 @@ jobs:
             exit 1
           fi
           node -e "const d=require('./content/daily-seo-articles.json');const f=require('./tuyen-tho-mo/data/recruitment-facts-2026.json');if(d.canonical_facts_version!==f.version||d.canonical_facts_confirmed_at!==f.confirmed_at)process.exit(1)"
+          node tools/validate-province-current-facts-v11.mjs
+          node tools/validate-province-metadata-facts-v11.mjs
           node tools/validate-province-indexing-integrity-v11.mjs
 
       - name: Commit normalized SEO source and published pages
@@ -92,5 +104,5 @@ jobs:
           git config user.name 'thaylinh-marketing-bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add tools/generate-province-pages-2026.mjs tools/build-worker-first-home.mjs content/daily-seo-articles.json tuyen-tho-mo
-          git commit -m 'seo: normalize recruitment copy, freshness, sitemap and clean province links [seo-copy-sync]'
+          git commit -m 'seo: materialize canonical province, homepage and sitemap output [seo-copy-sync]'
           git push
