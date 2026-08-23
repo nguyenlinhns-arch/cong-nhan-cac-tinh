@@ -1,18 +1,30 @@
 import fs from 'node:fs';
 
 const bridge = fs.readFileSync('operations/apps-script-facebook/Code.gs', 'utf8');
+const insights = fs.readFileSync('operations/apps-script-facebook/Insights.gs', 'utf8');
 const mapping = JSON.parse(fs.readFileSync('operations/facebook-crm-mapping-2026.json', 'utf8'));
 const config = fs.readFileSync('tuyen-tho-mo/recruitment-config.js', 'utf8');
 const errors = [];
 
+try { new Function(`${bridge}\n${insights}`); } catch (error) { errors.push(`Apps Script syntax: ${error.message}`); }
+
 for (const fn of ['setupFacebookCRMBridge','doGet','doPost','syncFacebookInbox','enrichFacebookMetadata','processMessengerEvent_','processLeadgenChange_']) {
   if (!new RegExp(`function\\s+${fn}\\s*\\(`).test(bridge)) errors.push(`Missing function ${fn}`);
+}
+for (const fn of ['setupFacebookAdsInsights','syncFacebookAdsInsights','buildFacebookOutcomeIndex_']) {
+  if (!new RegExp(`function\\s+${fn}\\s*\\(`).test(insights)) errors.push(`Missing insights function ${fn}`);
 }
 for (const property of ['SPREADSHEET_ID','META_VERIFY_TOKEN','META_PAGE_ID','META_PAGE_ACCESS_TOKEN','META_ADS_ACCESS_TOKEN']) {
   if (!bridge.includes(property)) errors.push(`Missing Script Property ${property}`);
 }
+for (const property of ['META_AD_ACCOUNT_ID','META_INSIGHTS_DAYS']) {
+  if (!insights.includes(property)) errors.push(`Missing insights Script Property ${property}`);
+}
 for (const header of ['FACEBOOK_INBOX','Facebook PSID','Facebook Lead ID','Facebook Ad ID','Facebook Ad Set ID','Facebook Campaign ID','Facebook Intake','Meta Placement']) {
   if (!bridge.includes(header)) errors.push(`Missing Facebook field ${header}`);
+}
+for (const header of ['FACEBOOK_ADS','CP/Đủ điều kiện','CP/Nhập học','Messaging conversations']) {
+  if (!insights.includes(header)) errors.push(`Missing Facebook Ads metric ${header}`);
 }
 for (const safety of [
   "findMasterPhoneRow_", "Trùng SĐT - đã gộp", "count + '/6'", "Chờ đủ thông tin",
@@ -35,6 +47,7 @@ console.log(JSON.stringify({
   messengerReady: true,
   leadAdsReady: true,
   phoneDedupeReady: true,
+  metaInsightsReady: true,
   websiteFacebookAttributionReady: true,
   errors: errors.length,
   sampleErrors: errors.slice(0, 20)
