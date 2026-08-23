@@ -1,6 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 
+// Pages always calls this step after province generation. Normalize both province
+// template families here so search indexing, sitemap state and the published HTML
+// are built from the same canonical recruitment facts.
+await import("./normalize-province-current-facts-v11.mjs");
+
 const root = path.resolve("tuyen-tho-mo");
 const indexPath = path.join(root, "search-provinces.json");
 const manifestPath = path.join(root, "search-index.json");
@@ -88,4 +93,4 @@ const manifest=JSON.parse(fs.readFileSync(manifestPath,"utf8"));
 manifest.counts.provinces=provinceItems.length;
 manifest.counts.total=Number(manifest.counts.core||0)+provinceItems.length+Number(manifest.counts.content||0);
 fs.writeFileSync(manifestPath,`${JSON.stringify(manifest,null,2)}\n`);
-console.log(JSON.stringify({target:"tuyen-tho-mo/search-provinces.json",provinces:provinceItems.length,public_provinces:provinceItems.length-internalItems.length,internal_provinces:internalItems.length,locality_evidence_phrases:localityEvidencePhrases,locality_aliases:localityAliases,province_directory_links:provinces.length,added,refreshed},null,2));
+console.log(JSON.stringify({target:"tuyen-tho-mo/search-provinces.json",provinces:provinceItems.length,public_provinces:provinceItems.length-internalItems.length,internal_provinces:internalItems.length,locality_evidence_phrases:localityEvidencePhrases,locality_aliases:localityAliases,province_directory_links:provinces.length,added,refreshed,provinceFactsNormalized:true},null,2));
