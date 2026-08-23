@@ -2,6 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 
+await import("./normalize-search-current-facts-v11.mjs");
+
 const root = path.resolve("tuyen-tho-mo");
 const errors = [];
 const read = (name) => fs.readFileSync(path.join(root, name), "utf8");
@@ -57,6 +59,17 @@ if (coreIndex.items.length < 20) errors.push("search-core.json: thiếu câu tr�
 if (provinceIndex.items.filter((item) => item.category === "province").length !== 34) errors.push("search-provinces.json: chưa đủ 34 tỉnh/thành");
 if (contentIndex.items.length < 60) errors.push("search-content.json: thiếu kho bài chuyên sâu");
 
+const canonicalFacts = JSON.parse(read("data/recruitment-facts-2026.json"));
+for (const url of ["/#dieu-kien", "/#thoi-gian-hoc", "/#ho-tro-hoc-nghe", "/#quyen-loi"]) {
+  const item = coreIndex.items.find((entry) => entry.url === url);
+  if (!item) errors.push(`search-core.json: thiếu câu facts ${url}`);
+  else if (item.canonicalFactsVersion !== canonicalFacts.version) errors.push(`search-core.json: ${url} chưa gắn facts v${canonicalFacts.version}`);
+}
+const incomeAnswer = coreIndex.items.find((entry) => entry.url === "/#quyen-loi")?.description || "";
+if (!incomeAnswer.includes(canonicalFacts.after_training.income_commitment)) errors.push("search-core.json: câu thu nhập lệch canonical facts");
+const supportAnswer = coreIndex.items.find((entry) => entry.url === "/#ho-tro-hoc-nghe")?.description || "";
+if (!supportAnswer.includes(canonicalFacts.study_benefits.living_support)) errors.push("search-core.json: câu hỗ trợ lệch canonical facts");
+
 const fontCss = read("fonts.css");
 const weights = [...fontCss.matchAll(/font-weight:\s*(\d+)/g)].map((match) => Number(match[1]));
 for (const weight of weights) if (![400, 700, 800].includes(weight)) errors.push(`fonts.css: còn độ đậm ${weight}`);
@@ -92,6 +105,7 @@ if (modularPages < 110) errors.push(`Chỉ ${modularPages} trang dùng mobile-co
 console.log(JSON.stringify({
   html: htmlCount,
   modularPages,
+  canonicalFactsVersion: canonicalFacts.version,
   budgets: Object.fromEntries(Object.keys(budgets).map((name) => [name, bytes(name)])),
   searchItems: {core: coreIndex.items.length, provinces: provinceIndex.items.length, content: contentIndex.items.length},
   fontFiles: fontFiles.length,
