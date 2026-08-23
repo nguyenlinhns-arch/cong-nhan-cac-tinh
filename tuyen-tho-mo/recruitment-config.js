@@ -3,6 +3,7 @@
 
   const ENDPOINT = "https://script.google.com/macros/s/AKfycbzDWAttjmaWu9K4XRkzmouKpQARs1BvrLOQkPMpCyouyH91CMFiOB75RV0fyaCLhJPI/exec";
   const ATTRIBUTION_KEY = "thaylinh_attribution";
+  const ADS_ATTRIBUTION_KEY = "thaylinh_ads_attribution_v1";
   const CONSENT_KEY = "thaylinh_measurement_consent_v1";
 
   window.THAY_LINH_RECRUITMENT = Object.freeze({
@@ -43,8 +44,12 @@
   function readStoredAttribution() {
     if (localStorage.getItem(CONSENT_KEY) !== "granted") return {};
     try {
-      const value = JSON.parse(localStorage.getItem(ATTRIBUTION_KEY) || "{}");
-      return value && typeof value === "object" ? value : {};
+      const legacy = JSON.parse(localStorage.getItem(ATTRIBUTION_KEY) || "{}");
+      const paid = JSON.parse(localStorage.getItem(ADS_ATTRIBUTION_KEY) || "{}");
+      return {
+        ...(legacy && typeof legacy === "object" ? legacy : {}),
+        ...(paid && typeof paid === "object" ? paid : {}),
+      };
     } catch (_) {
       return {};
     }
