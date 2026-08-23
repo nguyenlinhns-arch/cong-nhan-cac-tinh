@@ -35,12 +35,12 @@ jobs:
           const path = require('node:path');
 
           const SUPPORT = '7,5 triệu đồng/tháng trong thời gian học';
-          const INCOME = 'Bình quân 20–25 triệu đồng/tháng';
-          const INCOME_NOTE = 'Tùy đơn vị, vị trí, ngày công và năng suất';
-          const CONFIRMED_AT = '2026-08-23T10:38:00+07:00';
+          const INCOME = '20–25 triệu đồng/tháng';
+          const INCOME_CONDITION = 'khi hoàn thành định mức lao động';
+          const CONFIRMED_AT = '2026-08-23T11:34:00+07:00';
 
           const facts = {
-            version: 7,
+            version: 8,
             confirmed_at: CONFIRMED_AT,
             status: 'confirmed_by_user',
             candidate: {
@@ -58,7 +58,8 @@ jobs:
             after_training: {
               work_location: 'Các đơn vị ngành Than thuộc TKV tại Quảng Ninh',
               income: INCOME,
-              income_note: INCOME_NOTE,
+              income_condition: INCOME_CONDITION,
+              income_commitment: `${INCOME} ${INCOME_CONDITION}`,
               employment: 'Có hợp đồng lao động, bảo hiểm, thưởng, xe đưa đón và chế độ theo từng đơn vị'
             },
             contact: {
@@ -66,7 +67,13 @@ jobs:
               phone: '096 304 8585',
               cta: 'Gửi năm sinh – chiều cao/cân nặng – tình trạng sức khỏe để Thầy Linh kiểm tra điều kiện.'
             },
-            forbidden_legacy_phrases: ['6 triệu', '18–25 triệu', '7,5 triệu là tổng cả khóa']
+            forbidden_legacy_phrases: [
+              '6 triệu',
+              '18–25 triệu',
+              '7,5 triệu là tổng cả khóa',
+              'Bình quân 20–25 triệu',
+              'tùy đơn vị, vị trí, ngày công và năng suất'
+            ]
           };
 
           const canonical = 'content/recruitment-facts-2026.json';
@@ -83,18 +90,18 @@ jobs:
             current.benefits_during_training ||= {};
             current.benefits_during_training.living_support = SUPPORT;
             current.after_training ||= {};
-            current.after_training.income_commitment = `${INCOME}, ${INCOME_NOTE.toLocaleLowerCase('vi')}`;
+            current.after_training.income_commitment = `${INCOME} ${INCOME_CONDITION}`;
             current.after_training.income_reference = current.after_training.income_commitment;
-            current.usage_note = 'Dùng bộ dữ liệu này để đối chiếu thông tin tuyển đang áp dụng. Hai mốc người dùng đã xác nhận: hỗ trợ 7,5 triệu đồng/tháng trong thời gian học; thu nhập 20–25 triệu đồng/tháng. Không dùng 6 triệu, 18–25 triệu hoặc 7,5 triệu là tổng cả khóa.';
+            current.usage_note = 'Dùng bộ dữ liệu này để đối chiếu thông tin tuyển đang áp dụng. Hai mốc đã được xác nhận: hỗ trợ 7,5 triệu đồng/tháng trong thời gian học; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. Không dùng 6 triệu, 18–25 triệu, cách diễn đạt “bình quân 20–25 triệu” hoặc 7,5 triệu là tổng cả khóa.';
             fs.writeFileSync(currentPath, JSON.stringify(current,null,2)+'\n');
           }
 
           const masterPath = 'operations/job-posting-master-2026.json';
           if (fs.existsSync(masterPath)) {
             const master = JSON.parse(fs.readFileSync(masterPath,'utf8'));
-            master.version = Math.max(Number(master.version||0), 11);
+            master.version = Math.max(Number(master.version||0), 12);
             master.updated_at = CONFIRMED_AT;
-            master.income_commitment = `${INCOME}, ${INCOME_NOTE.toLocaleLowerCase('vi')}`;
+            master.income_commitment = `${INCOME} ${INCOME_CONDITION}`;
             master.income_reference = master.income_commitment;
             master.canonical_facts = canonical;
             if (Array.isArray(master.benefits)) master.benefits = master.benefits.map(x => /7,5\s*triệu/i.test(x) ? `Hỗ trợ ${SUPPORT}` : x);
@@ -105,13 +112,14 @@ jobs:
           const exts = new Set(['.html','.js','.mjs','.json','.md','.txt','.xml']);
           const skip = new Set([path.normalize(canonical), path.normalize(publicFacts)]);
           const replacements = [
-            [/Thu nhập\s+20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động/giu, `Thu nhập ${INCOME.toLocaleLowerCase('vi')}, ${INCOME_NOTE.toLocaleLowerCase('vi')}`],
-            [/Mức thu nhập\s+20[–-]25 triệu đồng\/tháng áp dụng khi hoàn thành định mức lao động\.?/giu, `Thu nhập ${INCOME.toLocaleLowerCase('vi')}, ${INCOME_NOTE.toLocaleLowerCase('vi')}.`],
-            [/20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động/giu, '20–25 triệu đồng/tháng'],
-            [/20[–-]25 triệu\/tháng khi hoàn thành định mức lao động/giu, '20–25 triệu/tháng'],
-            [/Điều kiện áp dụng:\s*hoàn thành định mức lao động\.?/giu, INCOME_NOTE + '.'],
-            [/CAM KẾT THU NHẬP/gu, 'THU NHẬP BÌNH QUÂN'],
-            [/THU NHẬP CAM KẾT/gu, 'THU NHẬP BÌNH QUÂN'],
+            [/Thu nhập\s+bình quân\s+20[–-]25 triệu đồng\/tháng(?:,?\s*tùy đơn vị, vị trí, ngày công và năng suất)?\.?/giu, `Thu nhập ${INCOME} ${INCOME_CONDITION}.`],
+            [/Bình quân\s+20[–-]25 triệu đồng\/tháng/giu, `${INCOME} ${INCOME_CONDITION}`],
+            [/Thu nhập\s+20[–-]25 triệu đồng\/tháng,?\s*tùy đơn vị, vị trí, ngày công và năng suất\.?/giu, `Thu nhập ${INCOME} ${INCOME_CONDITION}.`],
+            [/20[–-]25 triệu đồng\/tháng,?\s*tùy đơn vị, vị trí, ngày công và năng suất/giu, `${INCOME} ${INCOME_CONDITION}`],
+            [/20[–-]25 triệu\/tháng,?\s*tùy đơn vị, vị trí, ngày công và năng suất/giu, `20–25 triệu/tháng ${INCOME_CONDITION}`],
+            [/Cam kết thu nhập\s+20[–-]25 triệu đồng\/tháng cho người lao động đáp ứng điều kiện\.?/giu, `Thu nhập ${INCOME} ${INCOME_CONDITION}.`],
+            [/CAM KẾT THU NHẬP/gu, 'THU NHẬP KHI HOÀN THÀNH ĐỊNH MỨC'],
+            [/THU NHẬP CAM KẾT/gu, 'THU NHẬP KHI HOÀN THÀNH ĐỊNH MỨC'],
             [/7,5 triệu là tổng (?:mức hỗ trợ )?cả khóa/giu, SUPPORT],
             [/7,5 triệu đồng\/tháng(?:\/tháng|\s+đồng)+/giu, '7,5 triệu đồng/tháng'],
             [/Hỗ trợ 7,5 triệu đồng(?!\/tháng)/gu, 'Hỗ trợ 7,5 triệu đồng/tháng'],
@@ -148,14 +156,14 @@ jobs:
           const fs=require('node:fs');
           const f=JSON.parse(fs.readFileSync('content/recruitment-facts-2026.json','utf8'));
           if(f.study_benefits.living_support!=='7,5 triệu đồng/tháng trong thời gian học') process.exit(1);
-          if(f.after_training.income!=='Bình quân 20–25 triệu đồng/tháng') process.exit(1);
-          if(f.after_training.income_note!=='Tùy đơn vị, vị trí, ngày công và năng suất') process.exit(1);
+          if(f.after_training.income!=='20–25 triệu đồng/tháng') process.exit(1);
+          if(f.after_training.income_condition!=='khi hoàn thành định mức lao động') process.exit(1);
           const critical=[
             'tuyen-tho-mo/index.html',
             'tuyen-tho-mo/tuyen-tho-mo-quang-ninh/index.html',
             'tuyen-tho-mo/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html'
           ].filter(fs.existsSync).map(x=>fs.readFileSync(x,'utf8')).join('\n');
-          if(/7,5 triệu là tổng cả khóa|18[–-]25 triệu|6 triệu/iu.test(critical)) process.exit(1);
+          if(/7,5 triệu là tổng cả khóa|18[–-]25 triệu|6 triệu|Bình quân\s+20[–-]25 triệu|tùy đơn vị, vị trí, ngày công và năng suất/iu.test(critical)) process.exit(1);
           console.log('User-confirmed recruitment facts verified.');
           NODE
 
