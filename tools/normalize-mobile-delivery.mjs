@@ -134,6 +134,12 @@ function removeRetiredSitemapUrl(xml) {
   return xml.replace(new RegExp(`<url>\\s*<loc>${escaped}<\\/loc>[\\s\\S]*?<\\/url>\\s*`, "g"), "");
 }
 
+function ensurePrimarySitemapUrl(xml) {
+  if (xml.includes(`<loc>${PRIMARY_QN_URL}</loc>`)) return xml;
+  const entry = `  <url><loc>${PRIMARY_QN_URL}</loc><lastmod>2026-08-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>\n`;
+  return xml.replace(/<\/urlset>\s*$/i, `${entry}</urlset>\n`);
+}
+
 let changed = 0;
 let viewportFixed = 0;
 let assetsFixed = 0;
@@ -212,13 +218,15 @@ for (const file of collectHtml(root)) {
 }
 
 let sitemapRedirectRemoved = false;
+let primaryQuangNinhAddedToSitemap = false;
 const sitemapPath = path.join(root, "sitemap.xml");
 if (fs.existsSync(sitemapPath)) {
   const before = fs.readFileSync(sitemapPath, "utf8");
-  const after = removeRetiredSitemapUrl(before);
+  const after = ensurePrimarySitemapUrl(removeRetiredSitemapUrl(before));
   if (after !== before) {
     fs.writeFileSync(sitemapPath, after);
-    sitemapRedirectRemoved = true;
+    sitemapRedirectRemoved = before.includes(`<loc>${RETIRED_QN_URL}</loc>`) && !after.includes(`<loc>${RETIRED_QN_URL}</loc>`);
+    primaryQuangNinhAddedToSitemap = !before.includes(`<loc>${PRIMARY_QN_URL}</loc>`) && after.includes(`<loc>${PRIMARY_QN_URL}</loc>`);
   }
 }
 
@@ -263,6 +271,7 @@ console.log(JSON.stringify({
   income_wording_normalized_pages: incomeWordingNormalized,
   quang_ninh_references_consolidated_pages: quangNinhReferencesConsolidated,
   retired_quang_ninh_removed_from_sitemap: sitemapRedirectRemoved,
+  primary_quang_ninh_added_to_sitemap: primaryQuangNinhAddedToSitemap,
   llms_normalized: llmsNormalized,
   search_index_normalized: searchIndexNormalized,
   search_counts: {core: coreCount, provinces: provinceCount, content: contentCount},
