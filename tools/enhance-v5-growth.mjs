@@ -15,11 +15,11 @@ const faqItems = [
   ["can-thi", "Bị cận thị có học nghề mỏ hầm lò được không?", "Điều kiện đang công bố yêu cầu không cận thị và không mắc bệnh về mắt ảnh hưởng công việc. Trường hợp chưa rõ cần trao đổi trước và thực hiện khám tuyển."],
   ["khong-co-bang", "Không có bằng THPT có đăng ký được không?", "Người lao động vẫn có thể gửi thông tin đăng ký sơ bộ. Khi nhập học mang bằng THCS hoặc THPT nếu có; trường hợp chưa có bằng sẽ được hướng dẫn theo hồ sơ thực tế."],
   ["hoc-bao-lau", "Học nghề mỏ bao lâu?", "Nghề khai thác và xây dựng mỏ hầm lò thường đào tạo khoảng 2–3 tháng. Nghề cơ điện mỏ có thời gian đào tạo khoảng 10 tháng."],
-  ["hoc-phi-an-o", "Học nghề mỏ có mất học phí và tự lo ăn ở không?", "Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ba bữa ăn mỗi ngày, ở ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học."],
+  ["hoc-phi-an-o", "Học nghề mỏ có mất học phí và tự lo ăn ở không?", "Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ba bữa ăn mỗi ngày, ở ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học."],
   ["dia-diem-hoc", "Học nghề mỏ ở đâu tại Quảng Ninh?", "Địa điểm nhập học là Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh. Chỉ đến sau khi được xác nhận lịch tiếp nhận."],
   ["ho-so-nhap-hoc", "Hồ sơ nhập học nghề mỏ cần những gì?", "Khi có lịch nhập học, người lao động mang căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Đăng ký ban đầu chưa cần gửi ảnh giấy tờ."],
   ["noi-lam-viec", "Học xong làm việc ở đâu?", "Người học hoàn thành đào tạo và đạt yêu cầu được bố trí làm việc tại các đơn vị ngành Than ở Quảng Ninh theo nhu cầu tiếp nhận."],
-  ["thu-nhap", "Thu nhập thợ mỏ sau đào tạo là bao nhiêu?", "Thông tin tuyển sinh đang áp dụng cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động."],
+  ["thu-nhap", "Thu nhập thợ mỏ sau đào tạo là bao nhiêu?", "Thông tin tuyển sinh đang áp dụng thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất."],
 ];
 
 function escapeHtml(value = "") {

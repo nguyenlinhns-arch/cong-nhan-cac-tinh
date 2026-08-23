@@ -78,7 +78,7 @@ Không dùng từ tuyệt đối như “chắc chắn”, “100%”, “không
 
 ## 10. Viết đúng cam kết thu nhập 20–25 triệu đồng/tháng
 
-Thông tin tuyển sinh đang áp dụng xác định người lao động **được cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động**. Không tự ý làm yếu thông tin bằng các câu “thu nhập tham khảo”, “không phải cam kết” hoặc “không có mức cố định”.
+Thông tin tuyển sinh đang áp dụng xác định người lao động **được thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất**. Không tự ý làm yếu thông tin bằng các câu “thu nhập tham khảo”, “không phải cam kết” hoặc “không có mức cố định”.
 
 Khi dùng số liệu thu nhập lịch sử hoặc trường hợp người thợ có thu nhập cao hơn, phải ghi rõ năm, đơn vị hoặc nhân vật và tách khỏi cam kết đang áp dụng. Thu nhập trên 300 triệu đồng/năm của năm 2025 là dữ liệu thực tế của một nhóm lao động; nó không thay thế điều kiện hoàn thành định mức trong chương trình tuyển hiện hành.
 

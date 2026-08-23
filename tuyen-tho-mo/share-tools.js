@@ -95,7 +95,7 @@
         "• Nam 18–40 tuổi; cao từ 1m53; nặng từ 47kg; sức khỏe tốt.",
         "• Không yêu cầu kinh nghiệm làm mỏ sẵn có; được đào tạo từ đầu trước khi nhận việc.",
         "• Ba nghề đang tiếp nhận: khai thác và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng.",
-        "• Miễn kinh phí đào tạo theo chỉ tiêu; bố trí 3 bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học.",
+        "• Miễn kinh phí đào tạo theo chỉ tiêu; bố trí 3 bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học.",
         "• Sau tốt nghiệp đạt yêu cầu được doanh nghiệp tiếp nhận làm việc.",
         "• Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
         "",

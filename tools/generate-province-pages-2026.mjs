@@ -79,7 +79,7 @@ function provincePage(province) {
   const localContext = provinceEditorialAngles[slug]
     || `Từ ${name}, người lao động có thể kiểm tra điều kiện từ xa, học nghề trong 2–3 tháng và chuẩn bị cho công việc tại Quảng Ninh theo một lộ trình rõ ràng.`;
   const hasLocalEvidence = Boolean(story || reportage);
-  const description = `Tuyển thợ mỏ tại ${name}: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; cam kết 20–25 triệu/tháng khi hoàn thành định mức lao động.`;
+  const description = `Tuyển thợ mỏ tại ${name}: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; thu nhập bình quân 20–25 triệu/tháng.`;
   const localStories = [
     story ? {
       title: story,
@@ -200,7 +200,7 @@ function provincePage(province) {
       <div class="local-hero__copy">
         <p class="eyebrow">TUYỂN THỢ MỎ TẠI ${name.toLocaleUpperCase("vi")}</p>
         <h1 id="local-title">Tuyển thợ mỏ tại ${name}: <br><em>học nghề, làm việc tại Quảng Ninh</em></h1>
-        <p class="local-hero__lead">Người phù hợp được đào tạo nghề, hỗ trợ ăn ở trong khóa học và được cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.</p>
+        <p class="local-hero__lead">Người phù hợp được đào tạo nghề, hỗ trợ ăn ở trong khóa học và được thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.</p>
         <div class="location-clarity"><div><small>NƠI TUYỂN NGUỒN</small><strong>${name}</strong></div><span>→</span><div><small>NƠI HỌC & LÀM VIỆC</small><strong>Quảng Ninh</strong></div></div>
         <div class="contact-pair">
           <a class="contact-button contact-button--zalo" href="${applicationUrl}" data-contact="application" data-context="province-${slug}"><span class="contact-icon contact-icon--text">✓</span><span><small>Biểu mẫu một phút</small><strong>Kiểm tra điều kiện</strong></span></a>

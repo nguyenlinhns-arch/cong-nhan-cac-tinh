@@ -93,7 +93,7 @@ const directAnswers = [
   {
     url: "/#ho-tro-hoc-nghe",
     title: "Trong thời gian học được hỗ trợ gì?",
-    description: "Miễn kinh phí đào tạo, ăn 3 bữa/ngày, ở ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học.",
+    description: "Miễn kinh phí đào tạo, ăn 3 bữa/ngày, ở ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học.",
     keywords: ["hỗ trợ", "miễn học phí", "học có mất tiền không", "đóng tiền", "ăn ở", "3 bữa", "ký túc xá", "KTX", "7,5 triệu", "7.5 triệu"],
     category: "welfare",
     categoryLabel: "Đời sống & phúc lợi",

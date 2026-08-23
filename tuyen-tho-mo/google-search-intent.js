@@ -77,7 +77,7 @@
       facts: [
         ["Học phí", "Miễn học phí theo chỉ tiêu tuyển đang áp dụng."],
         ["Ăn và ở", "Bố trí 3 bữa/ngày và ký túc xá trong thời gian học."],
-        ["Hỗ trợ sinh hoạt", "Hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển."],
+        ["Hỗ trợ sinh hoạt", "Hỗ trợ 7,5 triệu đồng/tháng trong thời gian học theo chính sách đợt tuyển."],
         ["Thời gian học", "Khai thác, xây dựng mỏ: 2–3 tháng. Cơ điện mỏ: 10 tháng."],
         ["Sau đào tạo", "Hoàn thành chương trình và đạt yêu cầu thì được bố trí việc tại các đơn vị ngành Than thuộc TKV ở Quảng Ninh."],
       ],
@@ -118,7 +118,7 @@
     "training:benefits": {
       eyebrow: "HỌC NGHỀ MỎ · HỌC PHÍ VÀ HỖ TRỢ",
       title: "Học thợ lò có miễn phí không?",
-      lead: "Người học thuộc chỉ tiêu được miễn học phí, bố trí ăn ở và hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đang áp dụng.",
+      lead: "Người học thuộc chỉ tiêu được miễn học phí, bố trí ăn ở và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học theo chính sách đang áp dụng.",
       primary: "Kiểm tra điều kiện học miễn phí",
       proof: [["/hoc-tho-lo-co-mien-phi-khong/", "Xem giải thích học phí"], ["/thu-nhap-an-o-ho-tro/", "Xem ăn ở và hỗ trợ"], ["/thong-tin-tuyen-tho-mo/", "Đối chiếu chính sách hiện hành"]],
     },
@@ -146,7 +146,7 @@
     "income:salary": {
       eyebrow: "LƯƠNG THỢ LÒ · QUẢNG NINH",
       title: "Lương thợ lò bao nhiêu một tháng?",
-      lead: "Chương trình đang áp dụng cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động; website có bảng lương để đối chiếu.",
+      lead: "Chương trình đang áp dụng thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất; website có bảng lương để đối chiếu.",
       primary: "Kiểm tra điều kiện & đăng ký",
       proof: [["/luong-tho-lo-bao-nhieu/", "Xem giải thích mức lương"], ["/bang-luong/", "Xem bảng lương thực tế"], ["/thu-nhap-an-o-ho-tro/", "Xem quyền lợi đầy đủ"]],
     },

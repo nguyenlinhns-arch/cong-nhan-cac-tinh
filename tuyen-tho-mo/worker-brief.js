@@ -6,8 +6,8 @@
   const facts = [
     ["conditions", "Điều kiện", "Nam 18–40 tuổi", "Cao từ 1m53, nặng từ 47kg; sức khỏe tốt, không cận thị, bệnh tim mạch, huyết áp hoặc bệnh về mắt ảnh hưởng công việc.", "/#dieu-kien"],
     ["training", "Thời gian học", "Nghề chính học 2–3 tháng", "Khai thác mỏ và xây dựng mỏ học khoảng 2–3 tháng; cơ điện mỏ học 10 tháng.", "/#thoi-gian-hoc"],
-    ["support", "Hỗ trợ khi học", "Miễn kinh phí đào tạo, có ăn ở", "Ăn 3 bữa/ngày, ở ký túc xá và được hỗ trợ 7,5 triệu đồng trong thời gian học.", "/#ho-tro-hoc-nghe"],
-    ["work", "Việc làm và thu nhập", "Làm việc tại Quảng Ninh", "Được bố trí việc làm sau đào tạo; cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.", "/#noi-lam-viec"],
+    ["support", "Hỗ trợ khi học", "Miễn kinh phí đào tạo, có ăn ở", "Ăn 3 bữa/ngày, ở ký túc xá và được hỗ trợ 7,5 triệu đồng/tháng trong thời gian học.", "/#ho-tro-hoc-nghe"],
+    ["work", "Việc làm và thu nhập", "Làm việc tại Quảng Ninh", "Được bố trí việc làm sau đào tạo; thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.", "/#noi-lam-viec"],
     ["dossier", "Hồ sơ", "Chuẩn bị 3 nhóm giấy tờ", "Căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; chưa có bằng vẫn đăng ký được.", "/#ho-so"],
     ["address", "Nơi nhập học", "Khu C – Quang Hanh, Quảng Ninh", "Phân hiệu Đào tạo Cẩm Phả; chỉ đến sau khi được xác nhận lịch tiếp nhận.", "/#dia-diem"],
   ];

@@ -150,7 +150,7 @@ const pages = [
           <tr><td>Tính chất công việc</td><td>Ca kíp, dây chuyền hoặc vận hành máy; mức độ lặp lại và áp lực sản lượng tùy vị trí.</td><td>Làm việc theo tổ đội trong môi trường mỏ hầm lò; yêu cầu thể lực, phối hợp và tuân thủ quy trình an toàn.</td></tr>
           <tr><td>Điều kiện sức khỏe</td><td>Do từng doanh nghiệp quy định.</td><td>Nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg và phù hợp yêu cầu sức khỏe; khám tuyển là căn cứ cuối cùng.</td></tr>
           <tr><td>Thu nhập</td><td>Biến động theo địa phương, nhà máy, tăng ca, tay nghề và vị trí; cần đọc đúng hợp đồng của nơi tuyển.</td><td>Thông tin tuyển sinh đang áp dụng nêu cam kết 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.</td></tr>
-          <tr><td>Học và ăn ở ban đầu</td><td>Tùy chính sách từng doanh nghiệp; có nơi tự túc, có nơi hỗ trợ một phần.</td><td>Miễn kinh phí đào tạo, ăn 3 bữa/ngày, ở ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học.</td></tr>
+          <tr><td>Học và ăn ở ban đầu</td><td>Tùy chính sách từng doanh nghiệp; có nơi tự túc, có nơi hỗ trợ một phần.</td><td>Miễn kinh phí đào tạo, ăn 3 bữa/ngày, ở ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học.</td></tr>
           <tr><td>Kỷ luật</td><td>Tuân thủ giờ ca, nội quy nhà máy và tiêu chuẩn chất lượng.</td><td>Kỷ luật ca kíp, bảo hộ, quy trình kỹ thuật và mệnh lệnh an toàn là yêu cầu bắt buộc.</td></tr>
         </tbody></table></div>
         <div class="verification-decision">

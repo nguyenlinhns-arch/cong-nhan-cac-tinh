@@ -58,7 +58,7 @@
     {
       "group": "Học nghề và hồ sơ",
       "question": "Trong thời gian học có được ăn ở và hỗ trợ không?",
-      "answer": "Người học thuộc chỉ tiêu được bố trí 3 bữa/ngày, ký túc xá khép kín và hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển.",
+      "answer": "Người học thuộc chỉ tiêu được bố trí 3 bữa/ngày, ký túc xá khép kín và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học theo chính sách đợt tuyển.",
       "path": "/thu-nhap-an-o-ho-tro/"
     },
     {
@@ -112,7 +112,7 @@
     {
       "group": "Thu nhập và lựa chọn",
       "question": "Lương thợ lò được tính thế nào?",
-      "answer": "Chương trình đang áp dụng cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "answer": "Chương trình đang áp dụng thu nhập bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất.",
       "path": "/thu-nhap-an-o-ho-tro/"
     },
     {
@@ -352,7 +352,7 @@
       "short_title": "Chi phí ban đầu khi học nghề mỏ",
       "meta": "Đi làm mỏ than cần chuẩn bị bao nhiêu tiền? Khoản được hỗ trợ, khoản cá nhân cần dự trù và cách tránh đóng tiền khi chưa có lịch.",
       "eyebrow": "CHI PHÍ BAN ĐẦU",
-      "answer": "Không có một con số chung vì chi phí đi lại và nhu cầu cá nhân khác nhau. Theo chính sách đang áp dụng, người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí 3 bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học. Chỉ nên dự trù tiền đi lại, giấy tờ, khám theo hướng dẫn và chi tiêu cá nhân sau khi được xác nhận lịch.",
+      "answer": "Không có một con số chung vì chi phí đi lại và nhu cầu cá nhân khác nhau. Theo chính sách đang áp dụng, người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí 3 bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học. Chỉ nên dự trù tiền đi lại, giấy tờ, khám theo hướng dẫn và chi tiêu cá nhân sau khi được xác nhận lịch.",
       "note": "Không chuyển tiền đặt cọc cho người trung gian. Hãy xác minh qua Thầy Linh trước khi phát sinh bất kỳ khoản chi nào.",
       "facts": [
         ["Miễn kinh phí đào tạo", "Áp dụng cho người học thuộc chỉ tiêu của chương trình."],

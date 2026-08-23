@@ -225,7 +225,7 @@
       message: "Thầy Linh trực tiếp kiểm tra điều kiện và hướng dẫn hồ sơ cho lao động theo tỉnh.",
     },
     benefits: {
-      facts: ["20–25 triệu/tháng khi hoàn thành định mức lao động", "Ăn 3 bữa/ngày và ở ký túc xá khi học", "Hỗ trợ 7,5 triệu đồng trong thời gian học"],
+      facts: ["20–25 triệu/tháng khi hoàn thành định mức lao động", "Ăn 3 bữa/ngày và ở ký túc xá khi học", "Hỗ trợ 7,5 triệu đồng/tháng trong thời gian học"],
       message: "Hỏi trực tiếp để xác nhận nghề, lịch học và đợt tiếp nhận phù hợp.",
     },
     dossier: {
