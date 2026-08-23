@@ -77,7 +77,7 @@ const directAnswers = [
   {
     url: "/#quyen-loi",
     title: "Thu nhập và quyền lợi của thợ mỏ",
-    description: "Cam kết thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động; người lao động được đào tạo nghề trước khi bố trí việc làm.",
+    description: "Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động; người lao động được đào tạo nghề trước khi bố trí việc làm.",
     keywords: ["thu nhập", "lương", "quyền lợi", "20 25 triệu", "định mức lao động"],
     category: "work",
     categoryLabel: "Công việc & lương",
@@ -220,7 +220,10 @@ const files = {
 
 fs.writeFileSync(path.join(root, files.core), `${JSON.stringify({ version: 4, tier: "core", items: coreItems }, null, 2)}\n`);
 fs.writeFileSync(path.join(root, files.provinces), `${JSON.stringify({ version: 4, tier: "provinces", items: provinceItems }, null, 2)}\n`);
-fs.writeFileSync(path.join(root, files.content), `${JSON.stringify({ version: 4, tier: "content", items: contentItems }, null, 2)}\n`);
+// Content is fetched on demand on mobile, so keep the exact same data but omit
+// pretty-print whitespace. This preserves all 152 entries/keywords while
+// reducing transfer size below the performance budget.
+fs.writeFileSync(path.join(root, files.content), `${JSON.stringify({ version: 4, tier: "content", items: contentItems })}\n`);
 fs.writeFileSync(path.join(root, "search-index.json"), `${JSON.stringify({
   version: 4,
   strategy: "answer-first-tiered",
