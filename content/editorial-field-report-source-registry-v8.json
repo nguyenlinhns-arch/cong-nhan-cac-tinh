@@ -1,0 +1,35 @@
+{
+  "gia-lai": {
+    "editorialClass": "original_reporting",
+    "sourceType": "first_party_field_material",
+    "sourceOwner": "Thầy Linh – Tuyển Thợ Mỏ",
+    "evidenceUrl": "https://www.facebook.com/reel/988978737487363",
+    "evidenceScope": [
+      "video hiện trường chuyến công tác tại Ia RDeh",
+      "ghi chép chuyến công tác",
+      "số liệu công tác sử dụng tại chương trình tư vấn"
+    ],
+    "allowedClaims": [
+      "chi tiết quan sát được trong video hoặc ghi chép công tác",
+      "dữ kiện chương trình đã được xác nhận trong hồ sơ biên tập"
+    ],
+    "quotePolicy": "no_unverified_direct_quotes",
+    "inferencePolicy": "label_as_analysis_not_character_quote"
+  },
+  "quang-ngai": {
+    "editorialClass": "original_reporting",
+    "sourceType": "first_party_field_material",
+    "sourceOwner": "Thầy Linh – Tuyển Thợ Mỏ",
+    "evidenceUrl": "https://www.facebook.com/reel/1015675787556708",
+    "evidenceScope": [
+      "video hành trình từ Quảng Ngãi tới Quảng Ninh",
+      "các chặng rời quê, tới nơi tiếp nhận và nhập học có trong tư liệu"
+    ],
+    "allowedClaims": [
+      "chi tiết hành trình có thể đối chiếu với video gốc",
+      "hướng dẫn kiểm chứng trước khi người lao động lên đường"
+    ],
+    "quotePolicy": "no_unverified_direct_quotes",
+    "inferencePolicy": "label_as_analysis_not_character_quote"
+  }
+}
