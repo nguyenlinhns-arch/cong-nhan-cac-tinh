@@ -9,6 +9,7 @@ const dailyFeedPath = path.join(site, "daily-seo-articles.json");
 const dailyHubPath = path.join(site, "giai-dap-nghe-mo", "index.html");
 const sitemapPath = path.join(site, "sitemap.xml");
 const recruitmentPath = path.join(site, "recruitment-current.json");
+const canonicalFactsPath = path.join(site, "data", "recruitment-facts-2026.json");
 const fieldReportsPath = path.join(root, "content", "editorial-field-reports-v8.json");
 const reviewPath = path.join(root, "content", "recruitment-review-v10.json");
 const bangkokToday = new Intl.DateTimeFormat("en-CA", {
@@ -36,6 +37,15 @@ if (!fs.existsSync(recruitmentPath)) throw new Error("sync-home-freshness: thi�
 const recruitment = JSON.parse(fs.readFileSync(recruitmentPath, "utf8"));
 const recruitmentDate = validDate(recruitment.updated_at) ? recruitment.updated_at : "";
 
+if (!fs.existsSync(canonicalFactsPath)) throw new Error("sync-home-freshness: thiếu recruitment-facts-2026.json");
+const canonicalFacts = JSON.parse(fs.readFileSync(canonicalFactsPath, "utf8"));
+if (!Number.isInteger(Number(canonicalFacts.version)) || Number(canonicalFacts.version) < 8) {
+  throw new Error(`sync-home-freshness: canonical facts version không hợp lệ: ${canonicalFacts.version}`);
+}
+if (recruitment.canonical_facts !== "https://thaylinhtuyenthomo.vn/data/recruitment-facts-2026.json") {
+  throw new Error("sync-home-freshness: recruitment-current chưa trỏ tới canonical facts public");
+}
+
 if (!fs.existsSync(fieldReportsPath)) throw new Error("sync-home-freshness: thiếu editorial-field-reports-v8.json");
 const fieldReports = JSON.parse(fs.readFileSync(fieldReportsPath, "utf8"));
 const fieldReportDate = maxDate(Object.values(fieldReports).map((report) => report?.dateModified));
@@ -43,12 +53,16 @@ const fieldReportDate = maxDate(Object.values(fieldReports).map((report) => repo
 if (!fs.existsSync(reviewPath)) throw new Error("sync-home-freshness: thiếu recruitment-review-v10.json");
 const review = JSON.parse(fs.readFileSync(reviewPath, "utf8"));
 const recruitmentReviewDate = validDate(review.reviewed_at) ? review.reviewed_at : "";
+const verificationModifiedDate = validDate(review.verification_content_modified) ? review.verification_content_modified : "";
 if (!recruitmentReviewDate) throw new Error("sync-home-freshness: reviewed_at tuyển sinh không hợp lệ");
+if (!verificationModifiedDate) throw new Error("sync-home-freshness: verification_content_modified không hợp lệ");
+if (review.canonical_facts_version !== canonicalFacts.version) throw new Error("sync-home-freshness: review facts version không khớp canonical facts");
+if (review.canonical_facts_confirmed_at !== canonicalFacts.confirmed_at) throw new Error("sync-home-freshness: review facts timestamp không khớp canonical facts");
 
-// dateModified follows the newest substantive content actually surfaced on the
-// homepage. lastReviewed may be newer when the recruitment facts were checked
-// again without a policy/content change, so the two signals remain semantically distinct.
-const homepageModifiedDate = maxDate([communityDate, dailyDate, recruitmentDate, fieldReportDate]);
+// dateModified follows content that is actually surfaced on the homepage.
+// lastReviewed follows the most recent verification pass. This prevents a pure
+// re-check from pretending that the reader-facing homepage content was edited.
+const homepageModifiedDate = maxDate([communityDate, dailyDate, verificationModifiedDate, fieldReportDate]);
 const homepageReviewDate = maxDate([homepageModifiedDate, recruitmentReviewDate]);
 if (!homepageModifiedDate || !homepageReviewDate) throw new Error("sync-home-freshness: không xác định được độ mới trang chủ");
 
@@ -58,9 +72,12 @@ if (!freshnessPattern.test(html)) throw new Error("sync-home-freshness: không t
 html = html.replace(freshnessPattern, `"dateModified":"${homepageModifiedDate}","lastReviewed":"${homepageReviewDate}"`);
 fs.writeFileSync(homepagePath, html);
 
-// The daily-answer hub and sitemap must describe the newest published answer,
-// not merely the date on which a scheduled build happened to run.
+// The daily-answer hub and machine feed must describe the newest published
+// answer and explicitly declare the facts version used to normalize policy copy.
 dailyFeed.updated_at = dailyDate;
+dailyFeed.canonical_facts_version = canonicalFacts.version;
+dailyFeed.canonical_facts_confirmed_at = canonicalFacts.confirmed_at;
+dailyFeed.canonical_facts_url = "https://thaylinhtuyenthomo.vn/data/recruitment-facts-2026.json";
 fs.writeFileSync(dailyFeedPath, `${JSON.stringify(dailyFeed, null, 2)}\n`);
 
 let dailyHub = fs.readFileSync(dailyHubPath, "utf8");
@@ -77,12 +94,14 @@ fs.writeFileSync(sitemapPath, sitemap);
 
 console.log(JSON.stringify({
   status: "site-freshness-synced",
+  canonicalFactsVersion: canonicalFacts.version,
   homepageModifiedDate,
   homepageReviewDate,
   communityDate,
   dailyAnswerDate: dailyDate,
   recruitmentDate: recruitmentDate || null,
   recruitmentReviewDate,
+  verificationModifiedDate,
   fieldReportDate: fieldReportDate || null,
   dailySource: dailyFeed.articles?.[0]?.canonical_url || null,
 }, null, 2));
