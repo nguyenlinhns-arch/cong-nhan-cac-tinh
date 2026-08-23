@@ -80,3 +80,5 @@ if (errors.length) {
     errors: 0,
   }, null, 2));
 }
+
+await import("./validate-current-recruitment-copy-v10.mjs");
