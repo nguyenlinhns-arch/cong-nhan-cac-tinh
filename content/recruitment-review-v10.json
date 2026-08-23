@@ -1,18 +1,21 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "reviewed_at": "2026-08-23",
   "policy_effective_from": "2026-08-01",
   "verification_content_modified": "2026-08-23",
+  "canonical_facts_version": 8,
+  "canonical_facts_confirmed_at": "2026-08-23T11:34:00+07:00",
+  "job_master_version": 12,
   "priority_locality_scope": "26 địa bàn ưu tiên từ Lâm Đồng trở ra phía Bắc",
   "candidate_scope": "Toàn quốc – 34 tỉnh, thành",
   "reviewed_topics": [
     "điều kiện tuổi và thể lực",
     "ba nghề đang tiếp nhận",
     "thời gian đào tạo",
-    "quyền lợi trong thời gian học",
+    "quyền lợi trong thời gian học, gồm hỗ trợ 7,5 triệu đồng/tháng",
     "hồ sơ nhập học",
     "địa điểm nhập học và đầu mối tư vấn",
-    "cam kết thu nhập sau đào tạo"
+    "thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động"
   ],
-  "note": "Ngày reviewed_at là ngày website đối chiếu lại thông tin đang áp dụng; không đồng nghĩa chính sách tuyển thay đổi vào ngày này. verification_content_modified chỉ đổi khi nội dung lõi của cổng kiểm chứng thực sự thay đổi."
+  "note": "Ngày reviewed_at là ngày website đối chiếu lại thông tin đang áp dụng; không đồng nghĩa chính sách tuyển thay đổi vào ngày này. verification_content_modified chỉ đổi khi nội dung lõi của cổng kiểm chứng thực sự thay đổi. canonical_facts_version và job_master_version phải khớp nguồn đang dùng trong build."
 }
