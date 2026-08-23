@@ -12,7 +12,7 @@
 
   if (!document.querySelector("script[data-home-province-reels-loader]")) {
     const provinceReels = document.createElement("script");
-    provinceReels.src = "/home-province-reels.js?v=20260822-3";
+    provinceReels.src = "/home-province-reels.js?v=20260823-1";
     provinceReels.defer = true;
     provinceReels.dataset.homeProvinceReelsLoader = "";
     document.head.append(provinceReels);
