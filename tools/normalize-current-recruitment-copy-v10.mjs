@@ -91,7 +91,7 @@ if (jobsAfter !== jobsBefore) {
 for (const relative of currentPages) {
   const html = fs.readFileSync(path.join(site, relative), "utf8");
   totalCourseSupport.lastIndex = 0;
-  if (totalCourseSupport.test(html)) throw new Error(`${relative}: còn cách hiểu 7,5 triệu đồng/tháng trong thời gian học`);
+  if (totalCourseSupport.test(html)) throw new Error(`${relative}: còn cách hiểu sai 7,5 triệu là tổng cả khóa`);
   totalCourseSupport.lastIndex = 0;
   averageIncome.lastIndex = 0;
   if (averageIncome.test(html)) throw new Error(`${relative}: còn cách ghi thu nhập bình quân cũ`);
