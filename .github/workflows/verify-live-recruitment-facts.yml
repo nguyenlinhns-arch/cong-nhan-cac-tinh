@@ -83,8 +83,9 @@ jobs:
                 if (!text.includes('hoàn thành định mức lao động')) failures.push(`${label}: missing labor-norm condition`);
                 if (!text.includes('Kỹ thuật cơ điện mỏ hầm lò') && !text.includes('cơ điện mỏ')) failures.push(`${label}: missing electrical-mine occupation`);
               }
-              if (!home.includes('Xem 26 địa bàn ưu tiên')) failures.push('home: priority-locality label not updated');
+              if (!home.includes('href="/viec-lam-nganh-than/"')) failures.push('home: locality navigation link missing');
               if (home.includes('Xem đủ 26 tỉnh, thành')) failures.push('home: stale 26-province label remains');
+              if (!home.includes('facebook.com/reel/988978737487363') || !home.includes('facebook.com/reel/1015675787556708')) failures.push('home: worker journey reels missing');
               if (!factsPage.includes('Thông tin tuyển thợ mỏ đang áp dụng')) failures.push('facts page: evergreen title missing');
               if (!factsPage.includes('7,5 triệu đồng/tháng')) failures.push('facts page: monthly support missing');
 
