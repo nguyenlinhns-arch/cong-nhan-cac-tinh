@@ -1,8 +1,9 @@
 {
-  "schema_version": 1,
-  "updated_at": "2026-08-09",
+  "schema_version": 2,
+  "updated_at": "2026-08-23",
   "name": "Thông tin tuyển thợ mỏ đang áp dụng – Thầy Linh",
   "canonical_url": "https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/",
+  "canonical_facts": "https://thaylinhtuyenthomo.vn/data/recruitment-facts-2026.json",
   "website": "https://thaylinhtuyenthomo.vn/",
   "contact": {
     "name": "Nguyễn Tử Linh",
@@ -17,7 +18,7 @@
     "age_max": 40,
     "height_min_cm": 153,
     "weight_min_kg": 47,
-    "health_note": "Sức khỏe phù hợp công việc hầm lò; kết quả cuối cùng theo khám tuyển."
+    "health_note": "Sức khỏe tốt; cần kiểm tra mắt, huyết áp, tim mạch và các bệnh ảnh hưởng đến công việc hầm lò. Kết quả cuối cùng theo khám tuyển."
   },
   "training": [
     {
@@ -37,11 +38,12 @@
     "tuition": "Miễn học phí theo chỉ tiêu",
     "meals": "Bố trí 3 bữa/ngày",
     "dormitory": "Có ký túc xá",
-    "living_support": "7,5 triệu đồng trong thời gian học"
+    "living_support": "7,5 triệu đồng/tháng trong thời gian học"
   },
   "after_training": {
     "work_location": "Các đơn vị ngành Than thuộc TKV tại Quảng Ninh",
-    "income_commitment": "20–25 triệu đồng/tháng khi hoàn thành định mức lao động"
+    "income_commitment": "Bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất",
+    "income_reference": "Bình quân 20–25 triệu đồng/tháng, tùy đơn vị, vị trí, ngày công và năng suất"
   },
   "primary_pages": {
     "job": "https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
@@ -51,5 +53,5 @@
     "worker_stories": "https://thaylinhtuyenthomo.vn/cau-chuyen-cong-nhan/",
     "contact": "https://thaylinhtuyenthomo.vn/lien-he-di-lam-mo-than-quang-ninh/"
   },
-  "usage_note": "Dùng bộ dữ liệu này để đối chiếu thông tin tuyển đang áp dụng. Khi có thay đổi chính sách, ưu tiên trang canonical_url và ngày cập nhật mới nhất."
+  "usage_note": "Dùng bộ dữ liệu này để đối chiếu thông tin tuyển đang áp dụng. Hai mốc đã xác nhận: hỗ trợ 7,5 triệu đồng/tháng trong thời gian học; thu nhập bình quân 20–25 triệu đồng/tháng. Không dùng các bản cũ ghi 6 triệu, 18–25 triệu hoặc 7,5 triệu là tổng cả khóa."
 }
