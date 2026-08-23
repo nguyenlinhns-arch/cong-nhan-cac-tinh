@@ -3,3 +3,4 @@ retry after llms discovery sync
 retry after content-network page count update
 retry after Open Graph and Twitter metadata
 final retry after canonical Twitter and editorial authority transparency
+final confirmation after explicit no-fabricated-quotes policy
