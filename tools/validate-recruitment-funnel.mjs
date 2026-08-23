@@ -27,7 +27,7 @@ for (const hook of [
   "data-application-draft-status",
   "autocomplete=\"address-level1\"",
   "<noscript>",
-  "recruitment-config.js?v=3",
+  "recruitment-config.js?v=4",
   "job-application.js?v=10",
   "analytics.js?v=6",
 ]) requireText(campaign, hook, "central application page");
@@ -109,7 +109,10 @@ for (const marker of [
 for (const marker of [
   "script.google.com/macros/s/",
   'phone: "0963048585"',
+  'phoneE164: "+84963048585"',
+  'phoneUrl: "tel:+84963048585"',
   'zalo: "https://zalo.me/0963048585"',
+  'messenger: "https://m.me/thaylinhtuyenthomo"',
 ]) requireText(config, marker, "recruitment configuration");
 
 const draftFields = application.match(/const DRAFT_FIELDS = \[([^\]]+)\]/)?.[1] || "";
@@ -133,7 +136,7 @@ for (const marker of ["Bản nháp trên thiết bị", "tối đa 24 giờ", "k
 
 for (const slug of master.occupation_profiles.filter((profile) => profile.active_intake).map((profile) => profile.slug)) {
   const role = read(`viec-lam/${slug}/index.html`);
-  for (const marker of ["data-application-form", "data-form-context=\"job_", "directApply\":true", "job-application.js?v=10", "data-application-draft-status", "application-result-title", "<noscript>"]) {
+  for (const marker of ["data-application-form", "data-form-context=\"job_", "directApply\":true", "job-application.js?v=10", "data-application-draft-status", "application-result-title", "<noscript>", "recruitment-config.js?v=4"]) {
     requireText(role, marker, `${slug} direct application`);
   }
   if (role.includes("data-copy-application") || role.includes("Sao chép lại tin nhắn")) errors.push(`${slug}: removed copy-message control returned`);
@@ -176,6 +179,7 @@ console.log(JSON.stringify({
   applicationPage: "viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html",
   crmAcknowledgementRequired: true,
   directPersonalDataTracking: 0,
+  recruitmentConfigVersion: 4,
   canonicalMessenger: "https://m.me/thaylinhtuyenthomo",
   verifiedLeadAnalytics: ["ga4:generate_lead", "meta:Lead"],
   fallbackLeadSeparated: true,
