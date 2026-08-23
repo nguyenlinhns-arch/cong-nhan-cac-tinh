@@ -23,6 +23,9 @@ const discoverySources = [
   "tuyen-tho-mo/llms.txt",
   "tuyen-tho-mo/sitemap.xml",
   "tuyen-tho-mo/news-sitemap.xml",
+  "tuyen-tho-mo/jobs-sitemap.xml",
+  "tuyen-tho-mo/province-sitemap.xml",
+  "tuyen-tho-mo/commune-sitemap.xml",
 ];
 const dailySeoSources = [
   "content/daily-seo-articles.json",
@@ -30,6 +33,12 @@ const dailySeoSources = [
   "tuyen-tho-mo/daily-seo-articles.json",
 ];
 const broadSeoSources = [
+  "content/recruitment-facts-2026.json",
+  "content/recruitment-review-v10.json",
+  "operations/job-posting-master-2026.json",
+  "tuyen-tho-mo/data/recruitment-facts-2026.json",
+  "tuyen-tho-mo/recruitment-current.json",
+  "tools/normalize-recruitment-seo-copy-v11.mjs",
   "tools/enforce-search-quality.mjs",
   "tools/generate-seo-library.mjs",
   "tools/generate-seo-library-base.mjs",
@@ -64,11 +73,15 @@ function currentDailySeoUrls() {
 }
 
 function currentSitemapUrls() {
-  const sitemapPath = path.resolve("tuyen-tho-mo", "sitemap.xml");
-  if (!fs.existsSync(sitemapPath)) return [`${base}/`];
-  const sitemap = fs.readFileSync(sitemapPath, "utf8");
-  return [...sitemap.matchAll(/<loc>(https:\/\/thaylinhtuyenthomo\.vn\/[^<]*)<\/loc>/g)]
-    .map((match) => match[1]);
+  const sitemapFiles = ["sitemap.xml", "province-sitemap.xml", "jobs-sitemap.xml"];
+  const urls = [];
+  for (const filename of sitemapFiles) {
+    const sitemapPath = path.resolve("tuyen-tho-mo", filename);
+    if (!fs.existsSync(sitemapPath)) continue;
+    const sitemap = fs.readFileSync(sitemapPath, "utf8");
+    urls.push(...[...sitemap.matchAll(/<loc>(https:\/\/thaylinhtuyenthomo\.vn\/[^<]*)<\/loc>/g)].map((match) => match[1]));
+  }
+  return urls.length ? [...new Set(urls)] : [`${base}/`];
 }
 
 function matchesSource(file, source) {
