@@ -18,6 +18,15 @@ const llms = fs.readFileSync(path.join(site, "llms.txt"), "utf8");
 const hub = fs.readFileSync(path.join(site, "giai-dap-nghe-mo", "index.html"), "utf8");
 const errors = [];
 const occupationTerms = ["khai thác mỏ", "xây dựng mỏ", "cơ điện mỏ"];
+const newsroomBannedPhrases = [
+  /bài nguồn(?: ngày)?/iu,
+  /nguồn cho biết/iu,
+  /nguồn nêu/iu,
+  /theo nguồn(?: tin)?/iu,
+  /bài báo cho biết/iu,
+  /bài viết nguồn/iu,
+  /nội dung nguồn/iu,
+];
 const allowedBlueWorkerImages = new Set([
   ...approvedWorkerImages.images.map((image) => `https://thaylinhtuyenthomo.vn/assets/${image.asset}`),
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
@@ -34,6 +43,15 @@ const unique = (items, label) => {
     seen.add(item);
   }
 };
+const proseText = (article) => [
+  article.direct_answer,
+  ...(article.intro || []),
+  ...(article.key_points || []).flat(),
+  ...(article.sections || []).flatMap((section) => [section.heading, ...(section.paragraphs || []), ...(section.items || [])]),
+  article.takeaway_title,
+  article.takeaway,
+  ...(article.faqs || []).flat(),
+].filter(Boolean).join(" ");
 
 unique(data.articles.map((article) => article.slug), "Slug");
 unique(data.articles.map((article) => article.publish_on), "Ngày xuất bản");
@@ -44,8 +62,28 @@ for (const article of data.articles) {
   if (!allowedBlueWorkerImages.has(article.image.src)) errors.push(`${article.slug}: ảnh không phải công nhân Vinacomin mặc áo xanh, đội mũ`);
   if (article.meta.length < 100 || article.meta.length > 165) errors.push(`${article.slug}: meta description dài ${article.meta.length} ký tự`);
   if (article.direct_answer.length < 90 || article.direct_answer.length > 330) errors.push(`${article.slug}: câu trả lời trực tiếp cần 90–330 ký tự`);
+  if ((article.intro || []).length < 2) errors.push(`${article.slug}: mở bài cần ít nhất 2 đoạn để đặt bối cảnh và trả lời nhu cầu người đọc`);
+  if ((article.key_points || []).length < 4) errors.push(`${article.slug}: cần ít nhất 4 ý chính có giải thích`);
   if ((article.sections || []).length < 3) errors.push(`${article.slug}: cần ít nhất 3 mục giải thích`);
+  for (const [index, section] of (article.sections || []).entries()) {
+    if ((section.paragraphs || []).length < 2 && (section.items || []).length < 3) {
+      errors.push(`${article.slug}: mục ${index + 1} còn quá vụn, cần ít nhất 2 đoạn văn hoặc 3 ý có diễn giải`);
+    }
+    for (const paragraph of section.paragraphs || []) {
+      if (String(paragraph).trim().length < 120) errors.push(`${article.slug}: mục ${index + 1} có đoạn văn quá ngắn, dễ thành nội dung liệt kê`);
+    }
+  }
   if ((article.faqs || []).length < 3) errors.push(`${article.slug}: cần ít nhất 3 FAQ`);
+  if ((article.related || []).length < 3) errors.push(`${article.slug}: cần ít nhất 3 liên kết đọc tiếp để tạo cụm chủ đề`);
+  if (!article.source_note || String(article.source_note).trim().length < 40) errors.push(`${article.slug}: thiếu căn cứ biên soạn đủ rõ`);
+  if (!article.takeaway || String(article.takeaway).trim().length < 150) errors.push(`${article.slug}: kết luận còn quá ngắn, chưa đủ giá trị quyết định`);
+  const prose = proseText(article);
+  for (const banned of newsroomBannedPhrases) {
+    if (banned.test(prose)) errors.push(`${article.slug}: văn phong máy móc bị cấm (${banned})`);
+  }
+  if (/cam kết thu nhập/iu.test(prose)) errors.push(`${article.slug}: không dùng nhãn marketing “cam kết thu nhập” trong bài biên tập`);
+  if (/được Thu nhập 20[–-]25/iu.test(prose)) errors.push(`${article.slug}: lỗi viết hoa/văn phạm ở câu thu nhập`);
+  if (/khi hoàn thành định mức lao động\.\s*khi hoàn thành định mức lao động/iu.test(prose)) errors.push(`${article.slug}: lặp điều kiện thu nhập`);
 }
 
 for (const article of released) {
@@ -91,5 +129,5 @@ if (machineFeed.articles.length !== released.length) errors.push("Dữ liệu m�
 if (!fs.readFileSync(path.join(site, "index.html"), "utf8").includes("home-daily-seo")) errors.push("Trang chủ thiếu khối giải đáp mới mỗi ngày");
 if (!fs.readFileSync(path.join(site, "cam-nang-nghe-mo", "index.html"), "utf8").includes("daily-seo-guide:start")) errors.push("Cẩm nang thiếu liên kết tới chuỗi SEO hằng ngày");
 
-console.log(JSON.stringify({releaseDate, planned: data.articles.length, released: released.length, future: future.length, errors: errors.length, sampleErrors: errors.slice(0, 30)}, null, 2));
+console.log(JSON.stringify({releaseDate, planned: data.articles.length, released: released.length, future: future.length, errors: errors.length, sampleErrors: errors.slice(0, 30), editorialGuard: "newsroom-v2"}, null, 2));
 if (errors.length) process.exitCode = 1;
