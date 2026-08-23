@@ -16,11 +16,13 @@ const touched = new Set();
 // build-verification-portal, so this single import preserves the intended order.
 await import(`./fix-kcn-income-context.mjs?verification-core-v10=${Date.now()}`);
 
-// The job-board generator still has historical presentation strings in a few
-// templates. Normalize all three active role pages and machine-readable job
-// feeds against the current master before search/discovery artifacts are built.
+// Normalize all reader-facing current-policy copy and job feeds from the
+// user-confirmed canonical facts before search/discovery artifacts are built.
 await import(`./normalize-current-recruitment-copy-v10.mjs?verification-core-v10=${Date.now()}`);
-await import(`./sync-recruitment-config-cache-v10.mjs?verification-core-v10=${Date.now()}`);
+
+// recruitment-config cache normalization deliberately happens later in
+// normalize-mobile-delivery.mjs. Keeping it there avoids broad early HTML drift
+// while still guaranteeing v4 before funnel validators and deployment.
 
 function setLastReviewed(html) {
   if (/"lastReviewed"\s*:\s*"\d{4}-\d{2}-\d{2}"/.test(html)) {
@@ -118,7 +120,7 @@ console.log(JSON.stringify({
   reviewedAt: reviewDate,
   contentModified,
   priorityLocalities: priorityCount,
-  recruitmentConfigVersion: 4,
+  recruitmentConfigVersion: "normalized-later-to-v4",
   verificationPortalVersion: 2,
   shareToolsVersion: 2,
   currentRecruitmentCopyNormalized: true,
