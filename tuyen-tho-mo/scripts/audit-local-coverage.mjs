@@ -6,8 +6,8 @@ const report=JSON.parse(fs.readFileSync(path.join(ROOT,'local-coverage.json'),'u
 if(report.communes!==3321) throw new Error(`Sai tổng số địa bàn: ${report.communes}`);
 const provinces=Object.entries(report.by_province||{});
 if(provinces.length!==34) throw new Error(`Sai số tỉnh thành: ${provinces.length}`);
-let files=0,evidencePages=0,evidenceRecords=0;
-const canonicals=new Set(),titles=new Set();
+let files=0,evidencePages=0,evidenceRecords=0,noindexPages=0;
+const canonicals=new Set(),titles=new Set(),indexableCanonicals=new Set();
 for(const [slug,count] of provinces){
   const hub=path.join(ROOT,'viec-lam-nganh-than',slug,'xa-phuong','index.html');
   if(!fs.existsSync(hub)) throw new Error(`${slug}: thiếu hub xã/phường`);
@@ -25,6 +25,7 @@ for(const [slug,count] of provinces){
     if(/"@type"\s*:\s*"JobPosting"/u.test(html)) throw new Error(`${slug}/${key}: không được khai JobPosting giả tại địa phương`);
     const canonical=html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i)?.[1];
     const title=html.match(/<title>([^<]+)<\/title>/i)?.[1];
+    const robots=html.match(/<meta\s+name=["']robots["']\s+content=["']([^"']+)["']/i)?.[1]||'';
     if(!canonical||canonicals.has(canonical)) throw new Error(`${slug}/${key}: canonical thiếu hoặc trùng`);
     if(!title||titles.has(title)) throw new Error(`${slug}/${key}: title thiếu hoặc trùng`);
     canonicals.add(canonical); titles.add(title);
@@ -32,11 +33,16 @@ for(const [slug,count] of provinces){
       evidencePages++;
       const n=Number(html.match(/data-evidence-count="(\d+)"/i)?.[1]||0);
       if(n<5) throw new Error(`${slug}/${key}: dữ liệu lịch sử dưới ngưỡng 5 hồ sơ`);
+      if(/\bnoindex\b/i.test(robots)||!/\bindex\b/i.test(robots)) throw new Error(`${slug}/${key}: có bằng chứng nhưng chưa được index`);
+      indexableCanonicals.add(canonical);
       evidenceRecords+=n;
       for(const marker of ['số liệu tổng hợp hồ sơ tuyển sinh','không phải xác nhận người đó hiện vẫn làm việc','không đưa họ tên','data-local-history-schema','"@type":"Dataset"']) if(!html.includes(marker)) throw new Error(`${slug}/${key}: bằng chứng địa phương thiếu bảo vệ ${marker}`);
       const block=html.match(/<section class="section local-worker-history"[\s\S]*?<\/section>/iu)?.[0]||'';
       if(/\b(ngày sinh|cccd|căn cước|số điện thoại)\s*[:：]/iu.test(block)) throw new Error(`${slug}/${key}: có dấu hiệu PII trong khối dữ liệu địa phương`);
       if(/\bđang\s+làm\s+(việc\s+)?tại\b/iu.test(block)) throw new Error(`${slug}/${key}: khẳng định việc làm hiện tại không có căn cứ`);
+    }else{
+      noindexPages++;
+      if(!/\bnoindex\b/i.test(robots)||!/\bfollow\b/i.test(robots)) throw new Error(`${slug}/${key}: chưa có bằng chứng nhưng chưa noindex,follow`);
     }
     files++;
   }
@@ -46,7 +52,10 @@ for(const [slug,count] of provinces){
 if(files!==3321) throw new Error(`Chỉ kiểm được ${files}/3321 trang`);
 const sitemap=fs.readFileSync(path.join(ROOT,'commune-sitemap.xml'),'utf8');
 const urls=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
-if(urls.length!==3321||new Set(urls).size!==3321) throw new Error(`Sitemap có ${urls.length} URL, unique ${new Set(urls).size}`);
+const urlSet=new Set(urls);
+if(urls.length!==evidencePages||urlSet.size!==evidencePages) throw new Error(`Sitemap địa bàn có ${urls.length} URL, cần đúng ${evidencePages} trang có bằng chứng`);
+for(const url of urlSet) if(!indexableCanonicals.has(url)) throw new Error(`Sitemap chứa trang không đủ bằng chứng: ${url}`);
+for(const url of indexableCanonicals) if(!urlSet.has(url)) throw new Error(`Thiếu trang đủ bằng chứng trong sitemap: ${url}`);
 const feed=JSON.parse(fs.readFileSync(path.join(ROOT,'localities.json'),'utf8'));
 if(feed.total!==3321||feed.localities?.length!==3321) throw new Error(`Feed địa bàn sai tổng số: ${feed.total}/${feed.localities?.length}`);
 if(new Set(feed.localities.map(x=>x.url)).size!==3321) throw new Error('Feed địa bàn có URL trùng');
@@ -57,4 +66,12 @@ if(fs.existsSync(evidenceReportPath)){
   if(ev.written!==evidencePages) throw new Error(`Báo cáo bằng chứng lệch: ${ev.written}/${evidencePages}`);
   if(ev.privacy_threshold!==5) throw new Error('Ngưỡng riêng tư dữ liệu địa phương không đúng');
 }
-console.log(JSON.stringify({status:'ok',communes:files,provinces:provinces.length,sitemap_urls:urls.length,locality_feed:feed.total,unique_titles:titles.size,unique_canonicals:canonicals.size,evidence_pages:evidencePages,evidence_records:evidenceRecords,privacy_threshold:5},null,2));
+const indexingReportPath=path.join(ROOT,'local-indexing-report.json');
+if(fs.existsSync(indexingReportPath)){
+  const idx=JSON.parse(fs.readFileSync(indexingReportPath,'utf8'));
+  if(idx.current_localities!==files) throw new Error(`Báo cáo index sai tổng: ${idx.current_localities}/${files}`);
+  if(idx.indexable_localities!==evidencePages) throw new Error(`Báo cáo index sai trang đủ bằng chứng: ${idx.indexable_localities}/${evidencePages}`);
+  if(idx.noindex_localities!==noindexPages) throw new Error(`Báo cáo noindex lệch: ${idx.noindex_localities}/${noindexPages}`);
+  if(idx.sitemap_urls!==urls.length) throw new Error(`Báo cáo sitemap lệch: ${idx.sitemap_urls}/${urls.length}`);
+}
+console.log(JSON.stringify({status:'ok',communes:files,provinces:provinces.length,sitemap_urls:urls.length,locality_feed:feed.total,unique_titles:titles.size,unique_canonicals:canonicals.size,evidence_pages:evidencePages,noindex_pages:noindexPages,evidence_records:evidenceRecords,privacy_threshold:5},null,2));
