@@ -18,17 +18,33 @@ const master = JSON.parse(fs.readFileSync(path.join(root, "operations", "job-pos
 
 const canonicalFactsJson = "/data/recruitment-facts-2026.json";
 const canonicalFactsUrl = `https://thaylinhtuyenthomo.vn${canonicalFactsJson}`;
+const canonicalIncome = facts.after_training.income_commitment;
 const errors = [];
 
 if (facts.version !== publicFacts.version) errors.push(`Facts version lệch public copy: ${facts.version} != ${publicFacts.version}`);
 if (facts.confirmed_at !== publicFacts.confirmed_at) errors.push(`Facts confirmed_at lệch public copy: ${facts.confirmed_at} != ${publicFacts.confirmed_at}`);
 if (master.updated_at !== facts.confirmed_at) errors.push(`job-posting-master.updated_at ${master.updated_at} != facts.confirmed_at ${facts.confirmed_at}`);
-if (master.income_commitment !== facts.after_training.income_commitment) errors.push("Income commitment trong master lệch facts canonical");
+if (master.income_commitment !== canonicalIncome) errors.push("Income commitment trong master lệch facts canonical");
 if (!String(master.benefits || []).includes("7,5 triệu đồng/tháng")) errors.push("Master không còn hỗ trợ 7,5 triệu đồng/tháng");
 
 if (errors.length) {
   console.error(JSON.stringify({ status: "machine-feed-normalize-blocked", errors }, null, 2));
   process.exit(1);
+}
+
+function normalizeVisibleIncome(html) {
+  return html.replace(/>([^<>]*20[–-]25\s*triệu[^<>]*)</giu, (full, nodeText) => {
+    if (/hoàn thành định mức lao động/iu.test(nodeText)) return full;
+    let normalized = nodeText
+      .replace(/20[–-]25\s*triệu\s*đồng\s*\/\s*tháng/giu, canonicalIncome)
+      .replace(/20[–-]25\s*triệu\s*\/\s*tháng/giu, canonicalIncome)
+      .replace(/20[–-]25\s*triệu\s*đồng(?!\s*\/\s*tháng)/giu, canonicalIncome)
+      .replace(/20[–-]25\s*triệu(?!\s*(?:đồng|\/))/giu, canonicalIncome);
+    if (!/hoàn thành định mức lao động/iu.test(normalized)) {
+      normalized = `${normalized.replace(/[.\s]+$/u, "")} khi hoàn thành định mức lao động.`;
+    }
+    return `>${normalized}<`;
+  });
 }
 
 // The job-board generator owns structural HTML. Normalize policy copy and load
@@ -47,6 +63,9 @@ for (const file of jobPagePaths) {
     .replace(/7[,.]5 triệu đồng\/tháng theo chính sách/giu, "7,5 triệu đồng/tháng trong thời gian học")
     .replace(/(20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động)\.\s*;/giu, "$1;")
     .replace(/\.\s*;/g, ";");
+  text = normalizeVisibleIncome(text)
+    .replace(/(khi hoàn thành định mức lao động)(?:[\s.,;:]+khi hoàn thành định mức lao động)+/giu, "$1")
+    .replace(/định mức lao động\.\s*;/giu, "định mức lao động;");
   if (file === paidLanding && !text.includes("google-search-intent.js")) {
     const closeBody = text.match(/\s*<\/body>/i)?.[0];
     if (!closeBody) throw new Error("Paid-search landing thiếu </body> để gắn intent runtime");
