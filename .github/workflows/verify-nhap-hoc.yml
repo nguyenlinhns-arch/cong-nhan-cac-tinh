@@ -22,7 +22,7 @@ jobs:
         with:
           ref: ${{ github.event.workflow_run.head_sha }}
 
-      - name: Verify /nhap-hoc live matches deployed commit
+      - name: Verify /nhap-hoc live matches deployed aggregate
         shell: bash
         env:
           LIVE_URL: https://thaylinhtuyenthomo.vn/nhap-hoc
@@ -32,43 +32,30 @@ jobs:
 
           live_index="$(mktemp)"
           live_app="$(mktemp)"
-          live_data="$(mktemp)"
-          live_details="$(mktemp)"
-          live_extra="$(mktemp)"
-          expected_data="$(mktemp)"
-          actual_data="$(mktemp)"
-          expected_details="$(mktemp)"
-          actual_details="$(mktemp)"
-          expected_extra="$(mktemp)"
-          actual_extra="$(mktemp)"
+          live_report="$(mktemp)"
+          expected_report="$(mktemp)"
+          actual_report="$(mktemp)"
 
-          jq -S . tuyen-tho-mo/nhap-hoc/data.json > "$expected_data"
-          jq -S . tuyen-tho-mo/nhap-hoc/report-details.json > "$expected_details"
-          jq -S . tuyen-tho-mo/nhap-hoc/report-extra.json > "$expected_extra"
+          jq -S . tuyen-tho-mo/nhap-hoc/live-report.json > "$expected_report"
 
           for attempt in $(seq 1 36); do
             if curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}/?run=${DEPLOY_SHA}" -o "$live_index" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}/app.js?run=${DEPLOY_SHA}" -o "$live_app" \
-              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}/data.json?run=${DEPLOY_SHA}" -o "$live_data" \
-              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}/report-details.json?run=${DEPLOY_SHA}" -o "$live_details" \
-              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}/report-extra.json?run=${DEPLOY_SHA}" -o "$live_extra"; then
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}/live-report.json?run=${DEPLOY_SHA}" -o "$live_report" \
+              && jq -S . "$live_report" > "$actual_report"; then
 
-              if jq -S . "$live_data" > "$actual_data" \
-                && jq -S . "$live_details" > "$actual_details" \
-                && jq -S . "$live_extra" > "$actual_extra" \
-                && cmp -s tuyen-tho-mo/nhap-hoc/index.html "$live_index" \
+              if cmp -s tuyen-tho-mo/nhap-hoc/index.html "$live_index" \
                 && cmp -s tuyen-tho-mo/nhap-hoc/app.js "$live_app" \
-                && cmp -s "$expected_data" "$actual_data" \
-                && cmp -s "$expected_details" "$actual_details" \
-                && cmp -s "$expected_extra" "$actual_extra" \
-                && [ "$(jq -r '.summary.source_system_status' "$live_data")" = "HỆ THỐNG NGUỒN OK" ] \
-                && [ "$(jq -r '.summary.total_records == (.summary.active_records + .summary.inactive_records)' "$live_data")" = "true" ] \
-                && [ "$(jq -r '.summary.new_since_cutoff' "$live_data")" = "$(jq -r '.audit.aug_admissions' "$live_details")" ]; then
+                && cmp -s "$expected_report" "$actual_report" \
+                && [ "$(jq -r '.schema_version' "$live_report")" = "1" ] \
+                && [ "$(jq -r '.summary.base_3107 + .summary.aug_net == .summary.system_total' "$live_report")" = "true" ] \
+                && [ "$(jq -r '.summary.system_total - .summary.deleted == .summary.remaining' "$live_report")" = "true" ] \
+                && [ "$(jq -r '.summary.system_total + .summary.retakes == .summary.including_retakes' "$live_report")" = "true" ]; then
                   echo "Admissions dashboard live readback PASS on attempt ${attempt}."
                   echo "Deployed SHA: ${DEPLOY_SHA}"
-                  echo "Master: $(jq -r '.summary.total_records' "$live_data")"
-                  echo "August: $(jq -r '.summary.new_since_cutoff' "$live_data")"
-                  echo "Snapshot: $(jq -r '.snapshot_date' "$live_details")"
+                  echo "Snapshot: $(jq -r '.snapshot_date' "$live_report")"
+                  echo "Official total: $(jq -r '.summary.system_total' "$live_report")"
+                  echo "Today: $(jq -r '.summary.today_count' "$live_report")"
                   exit 0
               fi
             fi
@@ -77,5 +64,5 @@ jobs:
             sleep 10
           done
 
-          echo "ERROR: /nhap-hoc did not match deployed commit ${DEPLOY_SHA}."
+          echo "ERROR: /nhap-hoc did not match deployed live aggregate for ${DEPLOY_SHA}."
           exit 1
