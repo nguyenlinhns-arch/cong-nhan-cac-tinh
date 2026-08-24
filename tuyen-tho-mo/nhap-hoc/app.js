@@ -5,29 +5,15 @@
   const tabs = [...document.querySelectorAll('.tab-btn')];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
   const num = v => Number(v || 0);
-  const fmt = v => num(v).toLocaleString('vi-VN');
-  const pct = v => `${Number(v || 0).toLocaleString('vi-VN',{maximumFractionDigits:1})}%`;
-  const cell = (v, cls='') => `<td class="${cls}">${esc(typeof v === 'number' ? fmt(v) : v)}</td>`;
-  const th = (v, cls='') => `<th class="${cls}">${esc(v)}</th>`;
+  const fmt = v => Number(v).toLocaleString('vi-VN', { maximumFractionDigits: 1 });
+  const pct = v => v == null || v === '' ? '' : `${Number(v).toLocaleString('vi-VN',{minimumFractionDigits:1,maximumFractionDigits:1})}%`;
+  const display = v => v == null || v === '' ? '' : (typeof v === 'number' ? fmt(v) : v);
+  const cell = (v, cls='') => `<td class="${cls}">${esc(display(v))}</td>`;
+  const th = (v, cls='', attrs='') => `<th class="${cls}" ${attrs}>${esc(v)}</th>`;
   const rowClass = i => i % 2 ? 'row-alt' : '';
-  const key = v => String(v || '').trim();
-  const hasNum = v => v !== null && v !== undefined && v !== '' && Number.isFinite(Number(v));
-
-  // Gốc 31/07/2026 đã khóa trong biểu TH KQ: [Trường tuyển, DN tuyển].
-  // Chỉ dùng làm fallback trong thời gian live-report chưa có dv_extra; khi feed mới có dv_extra thì ưu tiên số từ Sheet.
-  const DV_BASE = {
-    'Phòng TSDN1':[1,544],'Phòng TSDN2':[0,0],'Phòng TSDN3':[0,21],'Phòng KT-NV':[1,0],
-    'Phòng Chiến Lược':[144,0],'Phòng TSĐB1':[32,0],'Phòng TSĐB2':[34,0],'Phòng TSĐB':[56,0],
-    'Phòng TSTB1':[45,0],'Phòng TSTB2':[208,0],'Phòng TSMT':[170,0],'TS PH Hoành Bồ':[200,0],
-    'TS PH Cẩm Phả':[325,0],'TS PH Hữu Nghị':[173,0],'TS PH Việt Bắc':[172,0],
-    'TS HTĐT Hồng Cẩm':[0,0],'TS PH Móng Cái':[0,0],'Trường TKV':[0,0]
-  };
-  const DV_2025 = {
-    'Phòng TSDN1':427,'Phòng TSDN2':0,'Phòng TSDN3':27,'Phòng KT-NV':0,'Phòng Chiến Lược':167,
-    'Phòng TSĐB1':110,'Phòng TSĐB2':118,'Phòng TSĐB':0,'Phòng TSTB1':208,'Phòng TSTB2':154,
-    'Phòng TSMT':333,'TS PH Hoành Bồ':192,'TS PH Cẩm Phả':495,'TS PH Hữu Nghị':321,
-    'TS PH Việt Bắc':124,'TS HTĐT Hồng Cẩm':8,'TS PH Móng Cái':0,'Trường TKV':0
-  };
+  const blankZero = v => num(v) === 0 ? '' : num(v);
+  const dashIfZero = v => num(v) === 0 ? '-' : num(v);
+  const sum = (rows, key) => rows.reduce((a,r)=>a+num(r[key]),0);
 
   function status(){
     const d=state.data,s=d.summary;
@@ -37,28 +23,68 @@
   function table(head,body,cls=''){return `<div class="native-table-wrap"><table class="native-report ${cls}"><thead>${head}</thead><tbody>${body}</tbody></table></div>`;}
   function shell(title,subtitle,html,cls){root.className=`report-sheet report-${cls}`;root.innerHTML=`<div class="dashboard-card"><div class="dashboard-title"><h2>${esc(title)}</h2><p>${esc(subtitle)}</p></div>${status()}${html}${note()}</div>`;}
 
-  function dvExtraMap(){const m=new Map();(state.data.dv_extra||[]).forEach(x=>m.set(key(x.name),x));return m;}
-  function dvCurrent(r, extraMap){
-    const k=key(r.name), e=extraMap.get(k)||{}, b=DV_BASE[k]||[0,0];
-    return {
-      school: hasNum(e.current_school) ? num(e.current_school) : b[0]+num(r.school_aug),
-      company: hasNum(e.current_company) ? num(e.current_company) : b[1]+num(r.company_aug),
-      prior: hasNum(e.prior_total) ? num(e.prior_total) : num(DV_2025[k])
-    };
+  function validateDvFeed(rows, extras){
+    if (!Array.isArray(extras) || extras.length !== rows.length) return false;
+    const required=['hsc_aug','lt_aug','xsc_aug','vht_aug','electric_aug','school_aug','company_aug','aug_total','tckt_aug','sckt_aug','db_electric_aug','east_aug','b_aug','current_total','deleted','remaining','retakes','including_retakes'];
+    return rows.every((r,i)=>required.every(k=>Object.prototype.hasOwnProperty.call(r,k)) && extras[i] && String(extras[i].name||'').trim()===String(r.name||'').trim());
   }
+
   function renderDv(){
-    const rows=state.data.dv,s=state.data.summary,extras=dvExtraMap();
-    const head=`<tr>${['TT','Đơn vị tuyển sinh','T8 SC khai thác','T8 liên thông','T8 XDM','T8 cơ điện','T8 Trường tuyển','T8 DN tuyển','Cộng T8','Đến nay Trường tuyển','Đến nay DN tuyển','Tổng hệ A','Xóa tên','Còn lại','KH 2026','Tỷ lệ','TKV 2025','Tổng 2025','So sánh 2026/2025','Tái tuyển','Tổng gồm tái tuyển'].map(x=>th(x)).join('')}</tr>`;
-    let schoolNow=0,companyNow=0,priorSum=0;
+    const rows=state.data.dv, extras=state.data.dv_extra, s=state.data.summary;
+    if (!validateDvFeed(rows,extras)) {
+      root.innerHTML='<div class="loading-cell">Dữ liệu theo đơn vị chưa đủ cấu phần để đối chiếu từng cột. Trang sẽ tự thử lại.</div>';
+      return;
+    }
+
+    const head = `
+      <tr>
+        ${th('TT','','rowspan="3"')}${th('ĐƠN VỊ TUYỂN SINH','','rowspan="3"')}
+        ${th('Quý 3.2026','grp-q3','colspan="13"')}
+        ${th(`Tổng nhập đến ${state.data.snapshot_date}`,'grp-current','colspan="7"')}
+        ${th('Tổng nhập hệ A đến 31/7/2025','grp-prior','colspan="2"')}
+        ${th('So sánh kết quả tuyển HS TKV năm 2026 cùng kỳ năm 2025','grp-compare','rowspan="3"')}
+        ${th('Số học sinh tái tuyển 2026','grp-retake','rowspan="3"')}
+        ${th('Tổng số nhập bao gồm cả tái tuyển','grp-total','rowspan="3"')}
+      </tr>
+      <tr>
+        ${th('Tháng 8.2026','grp-q3','colspan="13"')}
+        ${th('Công hệ A TKV trong đó','grp-current','colspan="2"')}
+        ${th('CỘNG HỆ A TKV','grp-current','rowspan="2"')}
+        ${th('Học sinh xóa tên','grp-current','rowspan="2"')}
+        ${th('Số học sinh còn lại','grp-current','rowspan="2"')}
+        ${th('KH điều hành TKV năm 2026','grp-current','rowspan="2"')}
+        ${th('TỶ LỆ hoàn thành TKV (%)','grp-current','rowspan="2"')}
+        ${th('TKV','grp-prior','rowspan="2"')}${th('Tổng','grp-prior','rowspan="2"')}
+      </tr>
+      <tr>
+        ${th('Sơ cấp khai thác')}${th('TC CĐ liên thông')}${th('SCN XDM')}${th('VHTBĐ')}${th('Cơ điện lò')}${th('Trường tuyển')}${th('DN tuyển')}${th('Cộng Hệ A TKV')}${th('TCKT')}${th('SCKT')}${th('Cơ điện lò')}${th('Cộng Hệ A Đông bắc')}${th('Hệ B - TC + CĐ')}
+        ${th('Trường tuyển')}${th('DN tuyển')}
+      </tr>`;
+
     const bodyRows=rows.map((r,i)=>{
-      const x=dvCurrent(r,extras); schoolNow+=x.school; companyNow+=x.company; priorSum+=x.prior;
-      const yoy=x.prior>0?pct(num(r.current_total)/x.prior*100):'';
-      return `<tr class="${rowClass(i)}">${cell(i+1)}${cell(r.name)}${cell(r.hsc_aug)}${cell(r.lt_aug)}${cell(r.xsc_aug)}${cell(r.electric_aug)}${cell(r.school_aug)}${cell(r.company_aug)}${cell(r.aug_total)}${cell(x.school)}${cell(x.company)}${cell(r.current_total)}${cell(r.deleted)}${cell(r.remaining)}${cell(r.plan)}${cell(pct(r.pct))}${cell(x.prior)}${cell(x.prior)}${cell(yoy)}${cell(r.retakes)}${cell(r.including_retakes)}</tr>`;
+      const e=extras[i];
+      return `<tr class="${rowClass(i)}">
+        ${cell(i+1)}${cell(r.name)}
+        ${cell(blankZero(r.hsc_aug))}${cell(blankZero(r.lt_aug))}${cell(blankZero(r.xsc_aug))}${cell(blankZero(r.vht_aug))}${cell(blankZero(r.electric_aug))}
+        ${cell(blankZero(r.school_aug))}${cell(blankZero(r.company_aug))}${cell(r.aug_total)}${cell(r.tckt_aug)}${cell(r.sckt_aug)}${cell(r.db_electric_aug)}${cell(r.east_aug)}${cell(r.b_aug)}
+        ${cell(e.current_school)}${cell(e.current_company)}${cell(r.current_total)}${cell(r.deleted)}${cell(r.remaining)}${cell(r.plan)}${cell(r.pct == null ? '' : pct(r.pct))}
+        ${cell(e.prior_tkv)}${cell(e.prior_total)}${cell(e.yoy_pct == null ? '' : pct(e.yoy_pct))}${cell(r.retakes ? r.retakes : '')}${cell(r.including_retakes ? r.including_retakes : '-')}
+      </tr>`;
     }).join('');
-    const totals=rows.reduce((a,r)=>{for(const k of ['hsc_aug','lt_aug','xsc_aug','electric_aug','school_aug','company_aug'])a[k]+=num(r[k]);return a;},{hsc_aug:0,lt_aug:0,xsc_aug:0,electric_aug:0,school_aug:0,company_aug:0});
-    const plan=rows.reduce((a,r)=>a+num(r.plan),0), completion=plan?pct(num(s.remaining)/plan*100):'', yoy=priorSum?pct(num(s.system_total)/priorSum*100):'';
-    const totalRow=`<tr class="summary-row">${cell('')}${cell('TỔNG CỘNG NHẬP')}${cell(totals.hsc_aug)}${cell(totals.lt_aug)}${cell(totals.xsc_aug)}${cell(totals.electric_aug)}${cell(totals.school_aug)}${cell(totals.company_aug)}${cell(s.aug_net)}${cell(schoolNow)}${cell(companyNow)}${cell(s.system_total)}${cell(s.deleted)}${cell(s.remaining)}${cell(plan)}${cell(completion)}${cell(priorSum)}${cell(priorSum)}${cell(yoy)}${cell(s.retakes)}${cell(s.including_retakes)}</tr>`;
-    shell('TỔNG HỢP THEO ĐƠN VỊ TUYỂN SINH',`Số liệu đến ${state.data.snapshot_date}`,table(head,bodyRows+totalRow),'dv');
+
+    const schoolNow=extras.reduce((a,r)=>a+num(r.current_school),0);
+    const companyNow=extras.reduce((a,r)=>a+num(r.current_company),0);
+    const priorTkv=extras.reduce((a,r)=>a+(r.prior_tkv==null?0:num(r.prior_tkv)),0);
+    const priorTotal=extras.reduce((a,r)=>a+(r.prior_total==null?0:num(r.prior_total)),0);
+    const plan=rows.reduce((a,r)=>a+(r.plan==null?0:num(r.plan)),0);
+    const totalRow=`<tr class="summary-row">
+      ${cell('')}${cell('TỔNG CỘNG NHẬP')}
+      ${cell(sum(rows,'hsc_aug'))}${cell(sum(rows,'lt_aug'))}${cell(sum(rows,'xsc_aug'))}${cell(sum(rows,'vht_aug'))}${cell(sum(rows,'electric_aug'))}
+      ${cell(sum(rows,'school_aug'))}${cell(sum(rows,'company_aug'))}${cell(s.aug_net)}${cell(sum(rows,'tckt_aug'))}${cell(sum(rows,'sckt_aug'))}${cell(sum(rows,'db_electric_aug'))}${cell(sum(rows,'east_aug'))}${cell(sum(rows,'b_aug'))}
+      ${cell(schoolNow)}${cell(companyNow)}${cell(s.system_total)}${cell(s.deleted)}${cell(s.remaining)}${cell(plan)}${cell(pct(plan?s.remaining/plan*100:null))}
+      ${cell(priorTkv)}${cell(priorTotal)}${cell(pct(priorTotal?s.system_total/priorTotal*100:null))}${cell(s.retakes)}${cell(s.including_retakes)}
+    </tr>`;
+    shell('TỔNG HỢP THEO ĐƠN VỊ TUYỂN SINH',`Số liệu đến ${state.data.snapshot_date}`,table(head,bodyRows+totalRow,'dv-exact'),'dv');
   }
 
   function renderPh(){const rows=state.data.ph;const head=`<tr>${['TT','Phân hiệu / Trung tâm','T8 SC khai thác','T8 liên thông','T8 XDM','T8 cơ điện','T8 hệ A','Hiện tại SC khai thác','Hiện tại liên thông','Hiện tại XDM','Hiện tại cơ điện','Hệ A hiện tại','Hệ B','Tổng A+B'].map(x=>th(x)).join('')}</tr>`;const body=rows.map((r,i)=>`<tr class="${rowClass(i)}">${cell(i+1)}${cell(r.name)}${cell(r.month8[1])}${cell(r.month8[2])}${cell(r.month8[3])}${cell(r.month8[5])}${cell(r.month8[9])}${cell(r.current[1])}${cell(r.current[2])}${cell(r.current[3])}${cell(r.current[5])}${cell(r.current[9])}${cell(r.current[11])}${cell(r.current[12])}</tr>`).join('');const sums=(w,i)=>rows.reduce((a,r)=>a+num(r[w][i]),0);const total=`<tr class="summary-row">${cell('')}${cell('TỔNG CỘNG')}${cell(sums('month8',1))}${cell(sums('month8',2))}${cell(sums('month8',3))}${cell(sums('month8',5))}${cell(sums('month8',9))}${cell(sums('current',1))}${cell(sums('current',2))}${cell(sums('current',3))}${cell(sums('current',5))}${cell(sums('current',9))}${cell(sums('current',11))}${cell(sums('current',12))}</tr>`;shell('TỔNG HỢP THEO PHÂN HIỆU / TRUNG TÂM',`Mốc 31/07/2026 + biến động đến ${state.data.snapshot_date}`,table(head,body+total),'ph');}
