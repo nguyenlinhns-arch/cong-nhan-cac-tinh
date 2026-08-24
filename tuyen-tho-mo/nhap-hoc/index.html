@@ -10,113 +10,52 @@
   <title>TH Kết quả nhập học năm 2026 | CĐ TKV</title>
   <link rel="stylesheet" href="./styles.css?v=20260820-25" />
   <style>
-    /* 2026-08-20: bảng gọn hơn, tab phân cấp rõ và dễ nhìn */
     .agency-block{font-size:14px!important;line-height:1.28!important}
     .report-header h1{font-size:23px!important;line-height:1.18!important;margin:7px 0!important}
     .report-header p{font-size:14px!important;line-height:1.3!important}
     .dashboard-title h2{font-size:21px!important;line-height:1.2!important}
     .dashboard-title p{font-size:13.5px!important;line-height:1.3!important}
     .report-status{font-size:13.5px!important;line-height:1.35!important;padding:8px 11px!important}
-
-    .report-tabs{
-      gap:6px!important;
-      padding:6px!important;
-      background:#f1f5f9!important;
-      border:1px solid #d7e0ea!important;
-      border-radius:10px!important;
-      overflow-x:auto!important;
-    }
-    .tab-btn{
-      font-size:13px!important;
-      font-weight:700!important;
-      line-height:1.2!important;
-      padding:9px 13px!important;
-      background:#ffffff!important;
-      color:#334155!important;
-      border:1px solid #cbd5e1!important;
-      border-radius:8px!important;
-      box-shadow:none!important;
-      white-space:nowrap!important;
-      transition:background .15s ease,color .15s ease,border-color .15s ease,box-shadow .15s ease!important;
-    }
-    .tab-btn:hover{
-      background:#eaf2f8!important;
-      color:#0f4c81!important;
-      border-color:#9fb7cc!important;
-    }
-    .tab-btn.active{
-      background:#0f4c81!important;
-      color:#ffffff!important;
-      border-color:#0f4c81!important;
-      box-shadow:0 2px 6px rgba(15,76,129,.22)!important;
-    }
-
+    .report-status span{margin-left:12px!important}
+    .report-tabs{gap:6px!important;padding:6px!important;background:#f1f5f9!important;border:1px solid #d7e0ea!important;border-radius:10px!important;overflow-x:auto!important}
+    .tab-btn{font-size:13px!important;font-weight:700!important;line-height:1.2!important;padding:9px 13px!important;background:#fff!important;color:#334155!important;border:1px solid #cbd5e1!important;border-radius:8px!important;box-shadow:none!important;white-space:nowrap!important;transition:background .15s ease,color .15s ease,border-color .15s ease,box-shadow .15s ease!important}
+    .tab-btn:hover{background:#eaf2f8!important;color:#0f4c81!important;border-color:#9fb7cc!important}
+    .tab-btn.active{background:#0f4c81!important;color:#fff!important;border-color:#0f4c81!important;box-shadow:0 2px 6px rgba(15,76,129,.22)!important}
     .native-report{font-size:13.5px!important;line-height:1.24!important}
-    .native-report th,.native-report td{
-      font-size:13.5px!important;
-      line-height:1.22!important;
-      padding:5px 5px!important;
-      height:34px!important;
-    }
+    .native-report th,.native-report td{font-size:13.5px!important;line-height:1.22!important;padding:5px!important;height:34px!important}
     .native-report thead th{font-size:13px!important;font-weight:800!important}
     .native-report tbody td{font-weight:600}
     .native-report tbody td:nth-child(2){font-size:14px!important;font-weight:700!important}
     .native-report .summary-row td{font-size:14.5px!important;font-weight:800!important}
-
-    .source-note,.dv-note{font-size:13.5px!important;line-height:1.35!important}
-    .dv-campus,.dv-progress,.progress-wrap .dv-progress{font-size:13px!important}
-    .progress-title{font-size:13.5px!important}
-    .progress-notes{font-size:13px!important}
-    .dv-sync-wait{font-size:13px!important;padding:8px 10px!important;text-align:center!important;color:#64748b!important}
-
+    .source-note{font-size:13.5px!important;line-height:1.35!important}
     .report-dv .native-report{min-width:2100px!important}
     .report-ph .native-report{min-width:1900px!important}
-    .report-dn .native-report{min-width:3100px!important}
+    .report-dn .native-report{min-width:1900px!important}
     .report-tinh .native-report{min-width:1550px!important}
     .report-qc .native-report{min-width:1850px!important}
-    .report-dv .native-report .w-unit{width:205px!important}
-    .report-ph .native-report .w-name-ph{width:225px!important}
-    .report-dn .native-report .w-name-dn{width:280px!important;min-width:280px!important}
-    .report-tinh .native-report .w-name-tinh{width:205px!important}
-    .report-qc .native-report .w-name-qc{width:280px!important}
-
     @media(max-width:900px){
       .report-header{padding:9px 7px!important}
-      .agency-block{font-size:13px!important;line-height:1.28!important}
-      .report-header h1{font-size:20px!important;line-height:1.18!important}
-      .report-header p{font-size:13px!important;line-height:1.32!important}
+      .agency-block{font-size:13px!important}
+      .report-header h1{font-size:20px!important}
+      .report-header p{font-size:13px!important}
       .report-tabs{gap:5px!important;padding:5px!important;border-radius:8px!important}
       .tab-btn{font-size:13.5px!important;padding:10px 12px!important;border-radius:7px!important}
       .dashboard-title{padding:8px 6px!important}
-      .dashboard-title h2{font-size:19px!important;line-height:1.2!important}
+      .dashboard-title h2{font-size:19px!important}
       .dashboard-title p{font-size:13px!important}
-      .report-status{font-size:13px!important;line-height:1.35!important}
-
-      .native-report{font-size:14.5px!important;line-height:1.25!important}
-      .native-report th,.native-report td{
-        font-size:14.5px!important;
-        line-height:1.24!important;
-        padding:7px 5px!important;
-        height:40px!important;
-      }
-      .native-report thead th{font-size:13.5px!important;line-height:1.2!important}
+      .report-status{font-size:13px!important}
+      .report-status span{display:block!important;margin:3px 0 0!important}
+      .native-report{font-size:14.5px!important}
+      .native-report th,.native-report td{font-size:14.5px!important;line-height:1.24!important;padding:7px 5px!important;height:40px!important}
+      .native-report thead th{font-size:13.5px!important}
       .native-report tbody td:nth-child(2){font-size:15px!important}
       .native-report .summary-row td{font-size:15.5px!important}
-
       .report-dv .native-report{min-width:2300px!important}
       .report-ph .native-report{min-width:2050px!important}
-      .report-dn .native-report{min-width:3350px!important}
+      .report-dn .native-report{min-width:2100px!important}
       .report-tinh .native-report{min-width:1700px!important}
       .report-qc .native-report{min-width:2000px!important}
-      .report-dv .native-report .w-unit{width:220px!important}
-      .report-ph .native-report .w-name-ph{width:240px!important}
-      .report-dn .native-report .w-name-dn{width:295px!important;min-width:295px!important}
-      .report-tinh .native-report .w-name-tinh{width:220px!important}
-      .report-qc .native-report .w-name-qc{width:295px!important}
-      .source-note,.dv-note{font-size:13.5px!important}
-      .dv-campus,.dv-progress,.progress-wrap .dv-progress{font-size:13px!important}
-      .progress-title{font-size:13.5px!important}
-      .progress-notes{font-size:13px!important}
+      .source-note{font-size:13.5px!important}
     }
   </style>
 </head>
@@ -128,9 +67,8 @@
         <strong>TRUNG TÂM TUYỂN SINH - GIỚI THIỆU VIỆC LÀM</strong>
       </div>
       <h1>TỔNG HỢP KẾT QUẢ NHẬP HỌC NĂM 2026</h1>
-      <p>Mốc số liệu 31/07/2026 · Cộng phát sinh từ DSHS Nhập học tổng từ 01/08/2026</p>
+      <p>Mốc chuẩn 31/07/2026 · Tự động cộng/trừ biến động từ DSHS NHẬP HỌC TỔNG từ 01/08/2026</p>
     </header>
-
     <nav class="report-tabs" aria-label="Chọn biểu tổng hợp">
       <button class="tab-btn active" data-report="dv">1. THEO ĐƠN VỊ TUYỂN SINH</button>
       <button class="tab-btn" data-report="ph">2. THEO PHÂN HIỆU / TRUNG TÂM</button>
@@ -138,12 +76,10 @@
       <button class="tab-btn" data-report="tinh">4. HỌC SINH TRONG TỈNH</button>
       <button class="tab-btn" data-report="qc">5. ĐƠN VỊ KÝ QUY CHẾ</button>
     </nav>
-
     <section class="report-sheet" id="reportContent" aria-live="polite">
       <div class="loading-cell">Đang tải biểu tổng hợp…</div>
     </section>
   </main>
-  <script src="./active-overlay.js?v=20260820-2"></script>
-  <script src="./app.js?v=20260820-35"></script>
+  <script src="./app.js?v=20260824-live1"></script>
 </body>
 </html>
