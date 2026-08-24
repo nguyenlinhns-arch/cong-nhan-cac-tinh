@@ -22,7 +22,7 @@ jobs:
         with:
           ref: ${{ github.event.workflow_run.head_sha }}
 
-      - name: Verify /nhap-hoc live matches deployed aggregate
+      - name: Verify /nhap-hoc live matches every report component
         shell: bash
         env:
           LIVE_URL: https://thaylinhtuyenthomo.vn/nhap-hoc
@@ -47,16 +47,51 @@ jobs:
               if cmp -s tuyen-tho-mo/nhap-hoc/index.html "$live_index" \
                 && cmp -s tuyen-tho-mo/nhap-hoc/app.js "$live_app" \
                 && cmp -s "$expected_report" "$actual_report" \
-                && [ "$(jq -r '.schema_version' "$live_report")" = "1" ] \
-                && [ "$(jq -r '.summary.base_3107 + .summary.aug_net == .summary.system_total' "$live_report")" = "true" ] \
-                && [ "$(jq -r '.summary.system_total - .summary.deleted == .summary.remaining' "$live_report")" = "true" ] \
-                && [ "$(jq -r '.summary.system_total + .summary.retakes == .summary.including_retakes' "$live_report")" = "true" ] \
-                && [ "$(jq -r 'if (.dv_extra|type)=="array" then ((.dv_extra|length)==(.dv|length) and (([.dv_extra[].current_school]|add)+([.dv_extra[].current_company]|add)==.summary.system_total)) else true end' "$live_report")" = "true" ]; then
-                  echo "Admissions dashboard live readback PASS on attempt ${attempt}."
+                && jq -e '
+                  def nz: . // 0;
+                  def trimmed: gsub("^\\s+|\\s+$"; "");
+                  def reqkeys: [
+                    "hsc_aug","lt_aug","xsc_aug","vht_aug","electric_aug",
+                    "school_aug","company_aug","aug_total","tckt_aug","sckt_aug",
+                    "db_electric_aug","east_aug","b_aug","current_total","deleted",
+                    "remaining","plan","pct","retakes","including_retakes"
+                  ];
+                  .schema_version == 1
+                  and (.snapshot_date | type == "string" and length > 0)
+                  and (.summary.base_3107 + .summary.aug_net == .summary.system_total)
+                  and (.summary.system_total - .summary.deleted == .summary.remaining)
+                  and (.summary.system_total + .summary.retakes == .summary.including_retakes)
+                  and ((.dv|type)=="array" and (.dv|length)==18)
+                  and ((.dv_extra|type)=="array" and (.dv_extra|length)==(.dv|length))
+                  and ((.ph|type)=="array" and (.ph|length)>0)
+                  and ((.dn|type)=="array" and (.dn|length)>0)
+                  and ((.tinh|type)=="array")
+                  and ((.qc|type)=="array")
+                  and ([.dv[] | (reqkeys - (keys_unsorted)) | length == 0] | all)
+                  and ([range(0; .dv|length) as $i |
+                        ((.dv[$i].name|trimmed) == (.dv_extra[$i].name|trimmed))
+                        and ((.dv[$i].school_aug|nz) + (.dv[$i].company_aug|nz) == (.dv[$i].aug_total|nz))
+                        and ((.dv_extra[$i].current_school|nz) + (.dv_extra[$i].current_company|nz) == (.dv[$i].current_total|nz))
+                      ] | all)
+                  and (([.dv[].school_aug]|add) + ([.dv[].company_aug]|add) == .summary.aug_net)
+                  and (([.dv_extra[].current_school]|add) + ([.dv_extra[].current_company]|add) == .summary.system_total)
+                  and ([.dv[].current_total]|add == .summary.system_total)
+                  and ([.dv[].deleted]|add == .summary.deleted)
+                  and ([.dv[].remaining]|add == .summary.remaining)
+                  and ([.dv[].retakes]|add == .summary.retakes)
+                  and ([.dv[].including_retakes]|add == .summary.including_retakes)
+                  and ([.ph[].current[9]]|add == .summary.system_total)
+                  and ([.dn[].current_total]|add == .summary.system_total)
+                  and (([paths(scalars) as $p | ($p[-1]|tostring|ascii_downcase)] |
+                         map(select(test("student_name|full_name|ho_ten|cccd|cmnd|phone|phone_number|mobile|date_of_birth|dob|birth_date|student_id|email"))) |
+                         length) == 0)
+                ' "$live_report" >/dev/null; then
+                  echo "Admissions dashboard column-by-column readback PASS on attempt ${attempt}."
                   echo "Deployed SHA: ${DEPLOY_SHA}"
                   echo "Snapshot: $(jq -r '.snapshot_date' "$live_report")"
-                  echo "Official total: $(jq -r '.summary.system_total' "$live_report")"
-                  echo "Today: $(jq -r '.summary.today_count' "$live_report")"
+                  echo "T8 school/company/net: $(jq -r '([.dv[].school_aug]|add|tostring) + "/" + ([.dv[].company_aug]|add|tostring) + "/" + (.summary.aug_net|tostring)' "$live_report")"
+                  echo "Current school/company/total: $(jq -r '([.dv_extra[].current_school]|add|tostring) + "/" + ([.dv_extra[].current_company]|add|tostring) + "/" + (.summary.system_total|tostring)' "$live_report")"
+                  echo "Deleted/remaining/retakes/incl: $(jq -r '(.summary.deleted|tostring) + "/" + (.summary.remaining|tostring) + "/" + (.summary.retakes|tostring) + "/" + (.summary.including_retakes|tostring)' "$live_report")"
                   exit 0
               fi
             fi
@@ -65,5 +100,5 @@ jobs:
             sleep 10
           done
 
-          echo "ERROR: /nhap-hoc did not match deployed live aggregate for ${DEPLOY_SHA}."
+          echo "ERROR: /nhap-hoc did not match deployed report column by column for ${DEPLOY_SHA}."
           exit 1
