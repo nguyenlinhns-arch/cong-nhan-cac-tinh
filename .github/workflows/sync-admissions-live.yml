@@ -1,0 +1,126 @@
+name: Sync live admissions aggregate
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/10 * * * *"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/sync-admissions-live.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-live-admissions
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Read and validate aggregate from Google Sheets
+        shell: bash
+        env:
+          SHEET_EXPORT_URL: "https://docs.google.com/spreadsheets/d/1eaWBK0Ty_jK7RmLjLqQBLalZ6wG5zUpPpjyCflPoQ-c/gviz/tq?tqx=out:csv&gid=2026082423&range=A140"
+        run: |
+          set -euo pipefail
+          tmp_csv="$(mktemp)"
+          mkdir -p tuyen-tho-mo/nhap-hoc
+          curl --fail --silent --show-error --location --retry 3 --retry-delay 2 --max-time 30 \
+            "${SHEET_EXPORT_URL}&cache_bust=$(date +%s)" -o "$tmp_csv"
+
+          python3 - "$tmp_csv" <<'PY'
+          import csv
+          import json
+          import pathlib
+          import sys
+
+          source = pathlib.Path(sys.argv[1])
+          target = pathlib.Path("tuyen-tho-mo/nhap-hoc/live-report.json")
+
+          with source.open("r", encoding="utf-8-sig", newline="") as fh:
+              rows = list(csv.reader(fh))
+          if not rows or not rows[0] or not rows[0][0].strip():
+              raise SystemExit("Google Sheets export returned no aggregate JSON")
+
+          raw = rows[0][0].strip()
+          try:
+              data = json.loads(raw)
+          except json.JSONDecodeError as exc:
+              preview = raw[:160].replace("\n", " ")
+              raise SystemExit(f"Invalid aggregate JSON from Google Sheets: {exc}; preview={preview!r}")
+
+          if data.get("schema_version") != 1:
+              raise SystemExit("Unexpected admissions aggregate schema_version")
+          if not data.get("snapshot_date"):
+              raise SystemExit("Missing snapshot_date")
+
+          summary = data.get("summary") or {}
+          required_summary = {
+              "base_3107", "aug_net", "system_total", "deleted", "remaining",
+              "retakes", "including_retakes", "today_count", "in_province_aug",
+              "in_province_total", "qc_aug", "qc_total"
+          }
+          missing = sorted(required_summary - set(summary))
+          if missing:
+              raise SystemExit(f"Missing summary fields: {', '.join(missing)}")
+
+          if summary["base_3107"] + summary["aug_net"] != summary["system_total"]:
+              raise SystemExit("Official total does not reconcile: base_3107 + aug_net != system_total")
+          if summary["system_total"] - summary["deleted"] != summary["remaining"]:
+              raise SystemExit("Official remaining total does not reconcile")
+          if summary["system_total"] + summary["retakes"] != summary["including_retakes"]:
+              raise SystemExit("Official total including retakes does not reconcile")
+
+          for section in ("dv", "ph", "dn", "tinh", "qc"):
+              if not isinstance(data.get(section), list):
+                  raise SystemExit(f"Missing or invalid section: {section}")
+
+          ph_total = sum((row.get("current") or [0] * 10)[9] for row in data["ph"])
+          dn_total = sum(row.get("current_total", 0) for row in data["dn"])
+          if ph_total != summary["system_total"]:
+              raise SystemExit(f"Campus total mismatch: {ph_total} != {summary['system_total']}")
+          if dn_total != summary["system_total"]:
+              raise SystemExit(f"Company total mismatch: {dn_total} != {summary['system_total']}")
+
+          forbidden_keys = {
+              "student_name", "full_name", "ho_ten", "cccd", "cmnd", "phone",
+              "phone_number", "mobile", "date_of_birth", "dob", "birth_date",
+              "student_id", "email"
+          }
+
+          def scan(obj, path="$"):
+              if isinstance(obj, dict):
+                  for key, value in obj.items():
+                      if str(key).lower() in forbidden_keys:
+                          raise SystemExit(f"Public aggregate contains forbidden personal field at {path}.{key}")
+                      scan(value, f"{path}.{key}")
+              elif isinstance(obj, list):
+                  for i, value in enumerate(obj):
+                      scan(value, f"{path}[{i}]")
+
+          scan(data)
+          target.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+          print(f"Validated admissions aggregate for {data['snapshot_date']}: {summary['system_total']} official admissions")
+          PY
+
+      - name: Commit aggregate only when changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- tuyen-tho-mo/nhap-hoc/live-report.json; then
+            echo "Admissions aggregate is unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tuyen-tho-mo/nhap-hoc/live-report.json
+          git commit -m "chore(nhap-hoc): sync live aggregate"
+          git push
