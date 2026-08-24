@@ -50,7 +50,8 @@ jobs:
                 && [ "$(jq -r '.schema_version' "$live_report")" = "1" ] \
                 && [ "$(jq -r '.summary.base_3107 + .summary.aug_net == .summary.system_total' "$live_report")" = "true" ] \
                 && [ "$(jq -r '.summary.system_total - .summary.deleted == .summary.remaining' "$live_report")" = "true" ] \
-                && [ "$(jq -r '.summary.system_total + .summary.retakes == .summary.including_retakes' "$live_report")" = "true" ]; then
+                && [ "$(jq -r '.summary.system_total + .summary.retakes == .summary.including_retakes' "$live_report")" = "true" ] \
+                && [ "$(jq -r 'if (.dv_extra|type)=="array" then ((.dv_extra|length)==(.dv|length) and (([.dv_extra[].current_school]|add)+([.dv_extra[].current_company]|add)==.summary.system_total)) else true end' "$live_report")" = "true" ]; then
                   echo "Admissions dashboard live readback PASS on attempt ${attempt}."
                   echo "Deployed SHA: ${DEPLOY_SHA}"
                   echo "Snapshot: $(jq -r '.snapshot_date' "$live_report")"
