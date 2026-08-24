@@ -19,38 +19,68 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    env:
+      SPREADSHEET_ID: "1eaWBK0Ty_jK7RmLjLqQBLalZ6wG5zUpPpjyCflPoQ-c"
+      AGGREGATE_RANGE: "WEB_GITHUB_EXPORT!A140"
+      GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_INDEXING_SERVICE_ACCOUNT_JSON }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Read and validate aggregate from Google Sheets
+      - name: Install Google auth client
+        run: python3 -m pip install --disable-pip-version-check --quiet google-auth requests
+
+      - name: Read and validate aggregate from private Google Sheet
         shell: bash
-        env:
-          SHEET_EXPORT_URL: "https://docs.google.com/spreadsheets/d/1eaWBK0Ty_jK7RmLjLqQBLalZ6wG5zUpPpjyCflPoQ-c/gviz/tq?tqx=out:csv&gid=2026082423&range=A140"
         run: |
           set -euo pipefail
-          tmp_csv="$(mktemp)"
           mkdir -p tuyen-tho-mo/nhap-hoc
-          curl --fail --silent --show-error --location --retry 3 --retry-delay 2 --max-time 30 \
-            "${SHEET_EXPORT_URL}&cache_bust=$(date +%s)" -o "$tmp_csv"
 
-          python3 - "$tmp_csv" <<'PY'
-          import csv
+          python3 <<'PY'
           import json
+          import os
           import pathlib
-          import sys
+          from urllib.parse import quote
 
-          source = pathlib.Path(sys.argv[1])
+          import requests
+          from google.auth.transport.requests import Request
+          from google.oauth2 import service_account
+
           target = pathlib.Path("tuyen-tho-mo/nhap-hoc/live-report.json")
+          raw_credentials = os.environ.get("GOOGLE_SERVICE_ACCOUNT_JSON", "").strip()
+          if not raw_credentials:
+              raise SystemExit("GOOGLE_INDEXING_SERVICE_ACCOUNT_JSON is not configured")
 
-          with source.open("r", encoding="utf-8-sig", newline="") as fh:
-              rows = list(csv.reader(fh))
-          if not rows or not rows[0] or not rows[0][0].strip():
-              raise SystemExit("Google Sheets export returned no aggregate JSON")
+          try:
+              info = json.loads(raw_credentials)
+          except json.JSONDecodeError as exc:
+              raise SystemExit(f"Google service account secret is not valid JSON: {exc}")
 
-          raw = rows[0][0].strip()
+          credentials = service_account.Credentials.from_service_account_info(
+              info,
+              scopes=["https://www.googleapis.com/auth/spreadsheets.readonly"],
+          )
+          credentials.refresh(Request())
+
+          spreadsheet_id = os.environ["SPREADSHEET_ID"]
+          cell_range = quote(os.environ["AGGREGATE_RANGE"], safe="")
+          url = f"https://sheets.googleapis.com/v4/spreadsheets/{spreadsheet_id}/values/{cell_range}"
+          response = requests.get(
+              url,
+              headers={"Authorization": f"Bearer {credentials.token}"},
+              timeout=30,
+          )
+          if response.status_code != 200:
+              detail = response.text[:500].replace("\n", " ")
+              raise SystemExit(f"Google Sheets API returned HTTP {response.status_code}: {detail}")
+
+          values = response.json().get("values") or []
+          if not values or not values[0] or not str(values[0][0]).strip():
+              raise SystemExit("Google Sheets API returned no aggregate JSON")
+
+          raw = str(values[0][0]).strip()
           try:
               data = json.loads(raw)
           except json.JSONDecodeError as exc:
