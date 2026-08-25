@@ -2,7 +2,7 @@ name: Verify live admissions dashboard
 
 on:
   workflow_run:
-    workflows: ["Deploy GitHub Pages"]
+    workflows: ["Deploy GitHub Pages", "Deploy Admissions Dashboard"]
     types: [completed]
 
 permissions:
