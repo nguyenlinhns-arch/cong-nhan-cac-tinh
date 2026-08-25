@@ -1,0 +1,96 @@
+name: Deploy Admissions Dashboard
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tuyen-tho-mo/nhap-hoc/**'
+      - '.github/workflows/deploy-admissions.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: admissions-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Validate admissions aggregate
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path('tuyen-tho-mo/nhap-hoc/live-report.json')
+          data = json.loads(path.read_text(encoding='utf-8'))
+          s = data['summary']
+
+          assert data.get('schema_version') == 1
+          assert s['base_3107'] + s.get('aug_net', 0) + s.get('sep_net', 0) + s.get('oct_net', 0) + s.get('nov_net', 0) + s.get('dec_net', 0) == s['system_total']
+          assert s['system_total'] - s['deleted'] == s['remaining']
+          assert s['system_total'] + s['retakes'] == s['including_retakes']
+          assert len(data.get('dv', [])) == 18
+          assert len(data.get('dv_extra', [])) == 18
+          assert len(data.get('ph', [])) == 6
+          assert len(data.get('dn', [])) == 21
+          assert sum(1 for r in data['dn'] if r.get('group') == 'TKV') == 15
+          assert sum(1 for r in data['dn'] if r.get('group') == 'DONG_BAC') == 6
+          assert sum(r.get('current_total', 0) for r in data['dn'] if r.get('group') == 'TKV') == s['system_total']
+          assert all(len(r.get('months', [])) == 12 for r in data.get('tinh', []))
+          assert all(len(r.get('months', [])) == 12 for r in data.get('qc', []))
+          assert all(all(k in r for k in ('month8','month9','month10','month11','month12','current')) for r in data['ph'])
+
+          forbidden = ('student_name','full_name','ho_ten','cccd','cmnd','phone','phone_number','mobile','date_of_birth','dob','birth_date','student_id','email')
+          text = path.read_text(encoding='utf-8').lower()
+          assert not any(f'"{k}"' in text for k in forbidden)
+          print('Admissions aggregate validation: PASS')
+          print('Snapshot:', data.get('snapshot_date'))
+          print('System total:', s['system_total'])
+          PY
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./tuyen-tho-mo
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Verify live admissions dashboard
+        shell: bash
+        run: |
+          expected_total="$(python -c "import json; print(json.load(open('tuyen-tho-mo/nhap-hoc/live-report.json', encoding='utf-8'))['summary']['system_total'])")"
+          expected_aug="$(python -c "import json; print(json.load(open('tuyen-tho-mo/nhap-hoc/live-report.json', encoding='utf-8'))['summary']['aug_net'])")"
+          for attempt in $(seq 1 18); do
+            live="$(mktemp)"
+            page="$(mktemp)"
+            if curl --fail --silent --show-error --location --max-time 20 "https://thaylinhtuyenthomo.vn/nhap-hoc/live-report.json?run=${GITHUB_SHA}" -o "$live" \
+              && curl --fail --silent --show-error --location --max-time 20 "https://thaylinhtuyenthomo.vn/nhap-hoc/?run=${GITHUB_SHA}" -o "$page"; then
+              if python - "$live" "$expected_total" "$expected_aug" <<'PY'
+          import json, sys
+          path, total, aug = sys.argv[1], int(sys.argv[2]), int(sys.argv[3])
+          d = json.load(open(path, encoding='utf-8'))
+          s = d['summary']
+          ok = s['system_total'] == total and s['aug_net'] == aug
+          raise SystemExit(0 if ok else 1)
+          PY
+              then
+                echo "Live admissions dashboard verified: aug=$expected_aug total=$expected_total"
+                exit 0
+              fi
+            fi
+            sleep 10
+          done
+          echo "Admissions dashboard did not match deployed aggregate in time."
+          exit 1
