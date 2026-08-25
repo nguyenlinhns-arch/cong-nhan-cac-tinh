@@ -6,6 +6,7 @@ on:
     paths:
       - 'tuyen-tho-mo/nhap-hoc/**'
       - '.github/workflows/deploy-admissions.yml'
+      - '.github/workflows/verify-nhap-hoc.yml'
   workflow_dispatch:
 
 permissions:
