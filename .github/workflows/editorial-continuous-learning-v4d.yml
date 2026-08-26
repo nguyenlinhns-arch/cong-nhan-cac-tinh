@@ -50,6 +50,11 @@ jobs:
       - name: Build the same editorial library used by Pages
         shell: bash
         run: |
+          node tools/generate-province-pages-2026.mjs
+          node tools/generate-legacy-redirects.mjs
+          node tools/generate-job-board-pages.mjs
+          node tools/normalize-machine-feeds-current-facts-v11.mjs
+          node tools/generate-occupation-profiles.mjs
           node tools/generate-content-network.mjs
           node tools/generate-seo-library.mjs
           node tools/generate-daily-seo-series.mjs
