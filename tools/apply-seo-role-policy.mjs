@@ -9,6 +9,7 @@ const JOB_URL = `${SITE}${JOB_PATH}`;
 const INCOME = '20–25 triệu đồng/tháng';
 const INCOME_SHORT = '20–25 triệu/tháng';
 const INCOME_CONDITION = 'khi hoàn thành định mức lao động';
+const INCOME_SHORT_COMMITMENT = `${INCOME_SHORT} ${INCOME_CONDITION}`;
 const review = JSON.parse(fs.readFileSync(path.resolve('content/recruitment-review-v10.json'), 'utf8'));
 const REVIEW_DATE = review.reviewed_at;
 const MODIFIED_DATE = review.verification_content_modified || REVIEW_DATE;
@@ -82,7 +83,7 @@ function setHomeIntent(file) {
   });
   html = html.replace(
     /<div class="home-v6-income">[\s\S]*?<\/div>/i,
-    '<div class="home-v6-income"><small>HOÀN THÀNH ĐỊNH MỨC LAO ĐỘNG</small><strong>20–25 triệu/tháng</strong></div>'
+    `<div class="home-v6-income"><small>HOÀN THÀNH ĐỊNH MỨC LAO ĐỘNG</small><strong>${INCOME_SHORT_COMMITMENT}</strong></div>`
   );
 
   const decisionActions = '<div class="home-v6-decision__actions">';
@@ -97,8 +98,8 @@ function setHomeIntent(file) {
 function setPaidIntent(file) {
   let html = normalizeIncome(mustRead(file));
   html = html.replace(
-    /<span><strong>20[–-]25 triệu\/tháng<\/strong>[^<]*<\/span>/i,
-    '<span><strong>20–25 triệu/tháng</strong>Hoàn thành định mức lao động</span>'
+    /<span><strong>20[–-]25 triệu\/tháng(?: khi hoàn thành định mức lao động)?<\/strong>[^<]*<\/span>/i,
+    `<span><strong>${INCOME_SHORT_COMMITMENT}</strong></span>`
   );
   fs.writeFileSync(file, html);
 }
@@ -115,11 +116,15 @@ function setJobIntent(file) {
   html = html.replace(/"lastReviewed":"[^"]*"/i, `"lastReviewed":"${REVIEW_DATE}"`);
   html = html.replace(
     /(<span class="income-qualified"><b[^>]*>)[\s\S]*?(<\/b><\/span>)/i,
-    `$1${INCOME_SHORT} khi hoàn thành định mức lao động$2`
+    `$1${INCOME_SHORT_COMMITMENT}$2`
   );
   html = html.replace(
     /<div><dt>Thu nhập sau đào tạo<\/dt><dd>[\s\S]*?<\/dd><\/div>/i,
-    `<div><dt>Thu nhập sau đào tạo</dt><dd>${INCOME_SHORT} khi hoàn thành định mức lao động</dd></div>`
+    `<div><dt>Thu nhập sau đào tạo</dt><dd>${INCOME_SHORT_COMMITMENT}</dd></div>`
+  );
+  html = html.replace(
+    /(<strong class="qualified-income"[^>]*>)[\s\S]*?(<\/strong>)/i,
+    `$1${INCOME_SHORT_COMMITMENT}$2`
   );
   html = html.replace(
     /("name":"Thu nhập sau đào tạo là bao nhiêu\?","acceptedAnswer":\{"@type":"Answer","text":")[^"]*("\}\})/i,
