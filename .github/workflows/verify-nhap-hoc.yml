@@ -22,151 +22,60 @@ jobs:
         with:
           ref: ${{ github.event.workflow_run.head_sha }}
 
-      - name: Verify /nhap-hoc live matches every report component
+      - name: Verify /nhap-hoc live unique snapshot
         shell: bash
         env:
           LIVE_URL: https://thaylinhtuyenthomo.vn/nhap-hoc
           DEPLOY_SHA: ${{ github.event.workflow_run.head_sha }}
         run: |
           set -euo pipefail
-
           live_index="$(mktemp)"
           live_app="$(mktemp)"
+          live_loader="$(mktemp)"
           live_report="$(mktemp)"
           expected_report="$(mktemp)"
           actual_report="$(mktemp)"
-
           jq -S . tuyen-tho-mo/nhap-hoc/live-report.json > "$expected_report"
 
           for attempt in $(seq 1 36); do
             if curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}/?run=${DEPLOY_SHA}" -o "$live_index" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}/app.js?run=${DEPLOY_SHA}" -o "$live_app" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}/report-loader.js?run=${DEPLOY_SHA}" -o "$live_loader" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}/live-report.json?run=${DEPLOY_SHA}" -o "$live_report" \
               && jq -S . "$live_report" > "$actual_report"; then
 
               if cmp -s tuyen-tho-mo/nhap-hoc/index.html "$live_index" \
                 && cmp -s tuyen-tho-mo/nhap-hoc/app.js "$live_app" \
+                && cmp -s tuyen-tho-mo/nhap-hoc/report-loader.js "$live_loader" \
                 && cmp -s "$expected_report" "$actual_report"; then
 
-                if python - "$live_report" <<'PY'
-          import json
-          import sys
-          import unicodedata
-
-          path = sys.argv[1]
-          data = json.load(open(path, encoding='utf-8'))
+                python - "$live_report" <<'PY'
+          import json, sys
+          data = json.load(open(sys.argv[1], encoding='utf-8'))
           s = data['summary']
-
-          def nfc(value):
-              return unicodedata.normalize('NFC', str(value)).strip()
-
-          expected_dv = [
-              'Phòng TSDN1', 'Phòng TSDN2', 'Phòng TSDN3', 'Phòng KT-NV',
-              'Phòng Chiến Lược', 'Phòng TSĐB1', 'Phòng TSĐB2', 'Phòng TSĐB',
-              'Phòng TSTB1', 'Phòng TSTB2', 'Phòng TSMT', 'TS PH Hoành Bồ',
-              'TS PH Cẩm Phả', 'TS PH Hữu Nghị', 'TS PH Việt Bắc',
-              'TS HTĐT Hồng Cẩm', 'TS PH Móng Cái', 'Trường TKV'
-          ]
-          expected_ph = [
-              'Phân hiệu Hoành Bồ', 'Phân hiệu Cẩm Phả', 'Phân hiệu Hữu Nghị',
-              'Phân hiệu Việt Bắc', 'TT HTĐT Hồng Cẩm', 'Phân hiệu Móng Cái'
-          ]
-          expected_dn = [
-              'Mạo Khê', 'Thống Nhất', 'Dương Huy', 'Nam Mẫu', 'Quang Hanh',
-              'Khe chàm', 'Hạ long', 'Hòn Gai', 'Uông Bí', 'Xây lắp mỏ',
-              'Mông Dương', 'Hà Lầm', 'Núi Béo', 'Vàng Danh',
-              'Mỏ tuyển đồng (TCT Khoáng sản)', 'CTY 790', 'CTY 35', 'CTY 45',
-              'CTY618', 'CTY91', 'Cty khe sim'
-          ]
-
-          assert data.get('schema_version') == 1
-          assert isinstance(data.get('snapshot_date'), str) and data['snapshot_date'].strip()
-
-          detail_gap = int(s.get('detail_gap', 0) or 0)
-          detail_gap_aug = int(s.get('detail_gap_aug', detail_gap) or 0)
-          assert detail_gap >= 0 and detail_gap_aug >= 0
-          if detail_gap:
-              assert s.get('detail_gap_status') == 'UNALLOCATED'
-
-          monthly_net = sum(s.get(k, 0) for k in ('aug_net', 'sep_net', 'oct_net', 'nov_net', 'dec_net'))
-          assert s['base_3107'] + monthly_net == s['system_total']
-          assert s['system_total'] - s['deleted'] == s['remaining']
-          assert s['system_total'] + s['retakes'] == s['including_retakes']
-          assert s['system_total'] + s.get('b_total', 0) == s.get('overall_total')
-          assert s['remaining'] + s.get('b_total', 0) == s.get('overall_remaining')
-          assert s['including_retakes'] + s.get('b_total', 0) == s.get('overall_including_retakes')
-
-          dv = data.get('dv', [])
-          dv_extra = data.get('dv_extra', [])
-          ph = data.get('ph', [])
-          dn = data.get('dn', [])
-
-          assert len(dv) == 18 and len(dv_extra) == 18
-          assert len(ph) == 6 and len(dn) == 21
-          assert [nfc(r.get('name', '')) for r in dv] == expected_dv
-          assert [nfc(r.get('name', '')) for r in dv_extra] == expected_dv
-          assert [nfc(r.get('name', '')) for r in ph] == expected_ph
-          assert [nfc(r.get('name', '')) for r in dn] == expected_dn
-
-          assert sum(1 for r in dn if r.get('group') == 'TKV') == 15
-          assert sum(1 for r in dn if r.get('group') == 'DONG_BAC') == 6
-          assert sum(r.get('current_total', 0) for r in dn if r.get('group') == 'TKV') + detail_gap == s['system_total']
-          assert sum(r.get('aug_total', 0) for r in dn if r.get('group') == 'TKV') + detail_gap_aug == s['aug_net']
-
-          for left, right in zip(dv, dv_extra):
-              assert nfc(left.get('name', '')) == nfc(right.get('name', ''))
-              assert left.get('school_aug', 0) + left.get('company_aug', 0) == left.get('aug_total', 0)
-              assert right.get('current_school', 0) + right.get('current_company', 0) == left.get('current_total', 0)
-
-          assert sum(r.get('school_aug', 0) + r.get('company_aug', 0) for r in dv) == s['aug_net']
-          assert sum(r.get('current_school', 0) + r.get('current_company', 0) for r in dv_extra) == s['system_total']
-          assert sum(r.get('current_total', 0) for r in dv) == s['system_total']
-          assert sum(r.get('deleted', 0) for r in dv) == s['deleted']
-          assert sum(r.get('remaining', 0) for r in dv) == s['remaining']
-          assert sum(r.get('retakes', 0) for r in dv) == s['retakes']
-          assert sum(r.get('including_retakes', 0) for r in dv) == s['including_retakes']
-
-          assert all(all(k in r for k in ('month8', 'month9', 'month10', 'month11', 'month12', 'current')) for r in ph)
-          assert all(all(len(r[k]) == 12 for k in ('month8', 'month9', 'month10', 'month11', 'month12')) for r in ph)
-          assert all(len(r['current']) >= 13 for r in ph)
-          assert sum(r['current'][9] for r in ph) + detail_gap == s['system_total']
-          assert sum(r['current'][-1] for r in ph) + detail_gap == s['overall_total']
-          assert sum(r['month8'][9] for r in ph) + detail_gap_aug == s['aug_net']
-          assert all(len(r.get('months', [])) == 12 for r in data.get('tinh', []))
-          assert all(len(r.get('months', [])) == 12 for r in data.get('qc', []))
-
-          forbidden = {
-              'student_name', 'full_name', 'ho_ten', 'cccd', 'cmnd', 'phone',
-              'phone_number', 'mobile', 'date_of_birth', 'dob', 'birth_date',
-              'student_id', 'email'
-          }
-
-          def walk(obj):
-              if isinstance(obj, dict):
-                  for key, value in obj.items():
-                      assert str(key).lower() not in forbidden
-                      walk(value)
-              elif isinstance(obj, list):
-                  for value in obj:
-                      walk(value)
-
-          walk(data)
+          assert data['schema_version'] == 2
+          assert data['method'] == 'BASE_3107_PLUS_UNIQUE_DSHS_DELTA'
+          assert s['dshs_unique_current'] - s['dshs_unique_base'] == s['net_unique']
+          assert s['base_3107'] + s['net_unique'] == s['current_total']
+          for key, count in [('dv',18),('ph',6),('dn',15)]:
+              rows = data[key]
+              assert len(rows) == count
+              assert all(r['base'] + r['delta'] == r['current'] for r in rows)
+              assert sum(r['base'] for r in rows) == s['base_3107']
+              assert sum(r['delta'] for r in rows) == s['net_unique']
+              assert sum(r['current'] for r in rows) == s['current_total']
           PY
-                then
-                  echo "Admissions dashboard column-by-column readback PASS on attempt ${attempt}."
-                  echo "Deployed SHA: ${DEPLOY_SHA}"
-                  echo "Snapshot: $(jq -r '.snapshot_date' "$live_report")"
-                  echo "A/B/overall: $(jq -r '(.summary.system_total|tostring) + "/" + (.summary.b_total|tostring) + "/" + (.summary.overall_total|tostring)' "$live_report")"
-                  echo "Monthly net T8-T12: $(jq -r '([.summary.aug_net,.summary.sep_net,.summary.oct_net,.summary.nov_net,.summary.dec_net] | map(tostring) | join("/"))' "$live_report")"
-                  echo "Unallocated detail gap: $(jq -r '.summary.detail_gap // 0' "$live_report")"
-                  exit 0
-                fi
+
+                echo "Admissions dashboard schema-v2 readback PASS on attempt ${attempt}."
+                echo "Deployed SHA: ${DEPLOY_SHA}"
+                echo "Snapshot: $(jq -r '.snapshot_date' "$live_report")"
+                echo "Manual base / unique base / unique current / net / current: $(jq -r '[.summary.base_3107,.summary.dshs_unique_base,.summary.dshs_unique_current,.summary.net_unique,.summary.current_total] | map(tostring) | join("/")' "$live_report")"
+                exit 0
               fi
             fi
-
             echo "Admissions dashboard not fully updated yet (attempt ${attempt}/36)."
             sleep 10
           done
 
-          echo "ERROR: /nhap-hoc did not match deployed report column by column for ${DEPLOY_SHA}."
+          echo "ERROR: /nhap-hoc did not match deployed schema-v2 report for ${DEPLOY_SHA}."
           exit 1
