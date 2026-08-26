@@ -115,8 +115,8 @@ function provincePage(province) {
         name: `Tuyển thợ mỏ tại ${name} – học nghề 2–3 tháng`,
         description,
         inLanguage: "vi-VN",
-        dateModified: "2026-08-23",
-        lastReviewed: "2026-08-23",
+        dateModified: "2026-08-26",
+        lastReviewed: "2026-08-26",
         isPartOf: { "@id": websiteId },
         author: { "@id": personId },
         publisher: { "@id": organizationId },
@@ -265,7 +265,7 @@ for (const province of provinces) {
 }
 
 const data = {
-  updated_at: "2026-08-23",
+  updated_at: "2026-08-26",
   source_scope: "26 tỉnh, thành từ Lâm Đồng trở ra phía Bắc theo phạm vi tuyển sinh ưu tiên của website",
   provinces: provinces.map(({story, storyLink, ...province}) => province),
 };

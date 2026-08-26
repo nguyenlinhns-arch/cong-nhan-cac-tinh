@@ -17,20 +17,7 @@
         "Hơn 13.500 thợ lò thu nhập trên 300 triệu đồng/năm",
         "Nghề thợ lò có ổn định không? Câu trả lời từ ngành Than 2026",
         "Người thợ trong mỏ hiện đại",
-        "Mỏ hầm lò bước vào thời đại cơ giới hóa: người thợ trẻ cần gì?",
-        "Tay nghề được rèn như thế nào?",
-        "Từ học viên đến thợ giỏi: tay nghề trong thời kỳ mỏ thông minh",
-        "An toàn là một phần của tay nghề",
-        "An toàn hầm lò được đào tạo thế nào trước ca sản xuất đầu tiên?",
-        "Giữ nhịp sản xuất an toàn trong mùa mưa bão 2026",
-        "Cuộc sống phía sau mỗi ca làm",
-        "Sau ca làm: đời sống thợ mỏ được chăm lo ra sao?",
-        "Công nghệ thay đổi cách làm mỏ",
-        "Ngành Than xanh hơn từ những thay đổi dưới mỏ",
-        "Từ quê nhà đến vùng mỏ",
-        "Bốn xã Tuyên Quang mở đường học nghề mỏ, việc làm TKV",
-        "Hải Lạng kết nối học nghề mỏ với việc làm tại Than Dương Huy",
-        "Bằng Thành, Phúc Lộc kết nối thanh niên với nghề thợ lò TKV"
+        "Mỏ hầm lò bước vào thời đại cơ giới hóa: người thợ trẻ cần gì?"
       ],
       "category": "technology",
       "categoryLabel": "An toàn & công nghệ",
@@ -52,8 +39,7 @@
         "Hai mươi bảy khoảnh khắc kể chuyện thợ mỏ Vàng Danh",
         "Lý Văn Dỉ: hết ca lò lại trở về làm cha của ba con nhỏ",
         "Những người giữ tinh thần Kỷ luật – Đồng tâm ở mỏ Hà Lầm",
-        "Phạm Đình Duẩn và mười lăm giờ cứu đồng đội dưới lò",
-        "Vùng than và người thợ qua ống kính TTXVN"
+        "Phạm Đình Duẩn và mười lăm giờ cứu đồng đội dưới lò"
       ],
       "category": "news",
       "categoryLabel": "Chuyện người thợ",
@@ -63,7 +49,7 @@
     {
       "url": "/chia-se-thong-tin/",
       "title": "Bộ chia sẻ thông tin nghề mỏ",
-      "description": "Công cụ tạo nội dung tuyển học nghề mỏ theo 26 tỉnh và toàn quốc, kèm liên kết UTM để cộng tác viên chia sẻ đúng thông tin và đo nguồn liên hệ.",
+      "description": "Công cụ tạo nội dung tuyển học nghề mỏ theo 26 địa bàn ưu tiên và toàn quốc, kèm liên kết UTM để cộng tác viên chia sẻ đúng thông tin và đo nguồn liên hệ.",
       "keywords": [
         "Tạo gói tuyển dụng theo từng tỉnh trong vài giây",
         "Chọn địa phương, sao chép và gửi đúng thông tin",
@@ -82,12 +68,35 @@
         "Nội dung được kiểm chứng như thế nào trước khi xuất bản?",
         "Người đọc biết rõ ai chịu trách nhiệm cho từng thông tin",
         "Dữ kiện tuyển sinh và câu chuyện báo chí không được trộn lẫn",
-        "Sửa một dữ kiện phải sửa từ nguồn gốc, không vá riêng từng trang"
+        "Sửa một dữ kiện phải sửa từ nguồn gốc, không vá riêng từng trang",
+        "Phóng sự trực tiếp không được trình bày như bài tổng hợp, và bài tổng hợp không được giả làm hiện trường",
+        "Không dựng lời nhân vật để bài viết “hay hơn”"
       ],
       "category": "guide",
       "categoryLabel": "Nguồn và kiểm chứng",
       "type": "Nguồn và kiểm chứng",
       "priority": 65
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/21/than-nui-beo-thanh-nien-ca-thanh-tim-hieu-nghe-mo-2026/",
+      "title": "22 thanh niên Ca Thành tìm hiểu nghề mỏ tại Than Núi Béo",
+      "description": "22 thanh niên xã Ca Thành, Cao Bằng tham quan Than Núi Béo, tìm hiểu nghề thợ lò, điều kiện làm việc và lộ trình học nghề mỏ năm 2026.",
+      "keywords": [
+        "thanh niên Ca Thành học nghề mỏ 2026",
+        "tuyển sinh nghề mỏ Cao Bằng",
+        "Than Núi Béo tuyển thợ lò",
+        "việc làm ngành Than",
+        "Trường Cao đẳng TKV",
+        "học nghề mỏ Quảng Ninh",
+        "22 thanh niên Ca Thành tìm hiểu nghề mỏ tại Than Núi Béo",
+        "Thanh niên Ca Thành học nghề mỏ từ trải nghiệm khai trường",
+        "Phối hợp ba bên cần nối tiếp sau chuyến tham quan",
+        "Câu hỏi thường gặp"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
     },
     {
       "url": "/tin-nganh-than/2026/08/01/cao-bang-phoi-hop-tuyen-lao-dong-nghe-mo-2018/",
@@ -101,29 +110,10 @@
         "việc làm TKV Nguyên Bình",
         "Trường Cao đẳng TKV",
         "Ba huyện Cao Bằng phối hợp tuyển lao động nghề mỏ từ 2018",
-        "Mục tiêu 5–10 người cho mỗi xã, thị trấn",
+        "Ba huyện cùng xây một hành lang đưa lao động vào nghề",
         "Chỉ tiêu cấp xã nên đi cùng người hỗ trợ cụ thể",
-        "Thông tin cần biết trước khi đăng ký",
-        "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
-      ],
-      "category": "news",
-      "categoryLabel": "Tin ngành Than",
-      "type": "Tin ngành Than",
-      "priority": 60
-    },
-    {
-      "url": "/tin-nganh-than/2026/08/01/nhung-nguoi-tho-lo-gieo-no-luc/",
-      "title": "Ba người thợ lò và ba cách làm nên uy tín nghề nghiệp",
-      "description": "Phan Văn Đạo, Hán Cao Phi và Lê Văn Biên được đồng nghiệp ghi nhận nhờ sức bền, chuyên môn, tinh thần kèm cặp thợ trẻ và sáng kiến trong sản xuất.",
-      "keywords": [
-        "người thợ lò giỏi Quảng Ninh",
-        "Phan Văn Đạo thợ lò",
-        "Hán Cao Phi cơ điện mỏ",
-        "Lê Văn Biên thợ mỏ",
-        "Ba người thợ lò và ba cách làm nên uy tín nghề nghiệp",
-        "Hán Cao Phi làm chủ phần việc phía sau sản xuất",
-        "Thông tin cần biết trước khi đăng ký",
-        "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
+        "Câu hỏi thường gặp",
+        "Thông tin cần biết trước khi đăng ký"
       ],
       "category": "news",
       "categoryLabel": "Tin ngành Than",
@@ -140,27 +130,9 @@
         "người thợ mỏ Quảng Ninh",
         "truyền thống ngành Than",
         "Ba thế hệ giữ lửa nghề mỏ trong một gia đình",
-        "Người cha biến sự nghiêm khắc thành hành trang",
-        "Thông tin cần biết trước khi đăng ký",
-        "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
-      ],
-      "category": "news",
-      "categoryLabel": "Tin ngành Than",
-      "type": "Tin ngành Than",
-      "priority": 60
-    },
-    {
-      "url": "/tin-nganh-than/2026/08/01/bao-lac-cao-bang-tu-van-hoc-nghe-mo/",
-      "title": "Bảo Lạc đưa tư vấn học nghề mỏ đến từng xã, từng thôn",
-      "description": "Huyện Bảo Lạc phối hợp Trường Cao đẳng TKV tư vấn học nghề, giải quyết việc làm; kế hoạch 2025 đặt mục tiêu trên 60 học sinh toàn huyện.",
-      "keywords": [
-        "học nghề mỏ Bảo Lạc",
-        "Cao Bằng",
-        "việc làm TKV Bảo Lạc",
-        "Trường Cao đẳng TKV",
-        "Bảo Lạc đưa tư vấn học nghề mỏ đến từng xã, từng thôn",
-        "Khoảng cách từ 144 lượt tư vấn tới 4 người đang học",
-        "Mục tiêu trên 60 người cần được theo đến ngày nhận việc",
+        "Từ người ông rời quê đến nếp nhà vùng mỏ",
+        "Nghề được nối tiếp bằng lựa chọn của thế hệ sau",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -180,8 +152,9 @@
         "việc làm TKV Bát Xát",
         "Trường Cao đẳng TKV",
         "Bát Xát kết nối 10 xã với chương trình học nghề mỏ năm 2017",
-        "Biên bản ghi nhớ nối tuyển sinh với nơi tiếp nhận",
+        "Mười xã cùng tham gia từ khâu tìm hiểu",
         "Bài học về tư vấn nghề từ một chuyến khảo sát",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -193,15 +166,16 @@
     {
       "url": "/tin-nganh-than/2026/08/01/bang-thanh-phuc-loc-hoc-nghe-tho-lo-tkv/",
       "title": "Bằng Thành, Phúc Lộc kết nối thanh niên với nghề thợ lò TKV",
-      "description": "Hai xã Bằng Thành và Phúc Lộc phối hợp Trường Cao đẳng TKV, Than Hòn Gai đào tạo nghề và giải quyết việc làm cho lao động địa phương.",
+      "description": "Học nghề thợ lò Thái Nguyên: Hai xã Bằng Thành và Phúc Lộc phối hợp Trường Cao đẳng TKV, Than Hòn Gai đào tạo nghề và giải quyết việc làm cho lao động địa…",
       "keywords": [
         "học nghề thợ lò Thái Nguyên",
         "tuyển thợ mỏ Bằng Thành",
         "việc làm TKV Phúc Lộc",
         "Than Hòn Gai tuyển dụng",
         "Bằng Thành, Phúc Lộc kết nối thanh niên với nghề thợ lò TKV",
-        "Vì sao Than Hòn Gai tham gia từ khâu tuyển sinh?",
+        "Từ chỉ tiêu tuyển sinh đến trách nhiệm với người học",
         "Cơ hội thoát việc làm bấp bênh",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -219,8 +193,9 @@
         "việc làm TKV Bình Liêu",
         "Trường Cao đẳng TKV",
         "Bình Liêu đặt mục tiêu 60–70 lao động học nghề mỏ mỗi năm",
-        "Gần 90% số người được tuyển đã đi hết khóa",
+        "Từ 321 người đi học đến một cộng đồng nghề ở Bình Liêu",
         "Mục tiêu 60–70 người phải đi cùng chất lượng việc làm",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -230,18 +205,19 @@
       "priority": 60
     },
     {
-      "url": "/tin-nganh-than/2026/08/01/ma-khac-huynh-nguoi-mo-duong-trong-long-dat/",
-      "title": "Bỏ việc cơ quan, người đàn ông chọn làm việc ở mỏ than",
-      "description": "Bùi Văn Tuyên và Ma Khắc Huỳnh đến với vùng mỏ từ hai hoàn cảnh khác nhau, rồi cùng trưởng thành trong nhịp ca và tổ đội của Than Hòn Gai.",
+      "url": "/tin-nganh-than/2026/08/11/che-tao-may-khen-thuong-con-nguoi-lao-dong-2026/",
+      "title": "Chế tạo máy TKV khen thưởng 229 con người lao động",
+      "description": "Công ty Cổ phần Chế tạo máy khen thưởng 229 con người lao động, trong đó 7 em đạt giải cấp tỉnh, với tổng tiền gần 140 triệu đồng.",
       "keywords": [
-        "người lao động chọn nghề mỏ Quảng Ninh",
-        "Bùi Văn Tuyên thợ lò",
-        "thợ đào lò Ma Khắc Huỳnh",
-        "Than Hòn Gai",
-        "Bỏ việc cơ quan, người đàn ông chọn làm việc ở mỏ than",
-        "Ma Khắc Huỳnh chọn nghề từ khi còn ngồi trên ghế phổ thông",
-        "Thông tin cần biết trước khi đăng ký",
-        "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
+        "Chế tạo máy TKV khen thưởng con người lao động 2026",
+        "phúc lợi gia đình công nhân",
+        "con công nhân TKV học giỏi",
+        "an sinh xã hội ngành Than",
+        "đời sống người lao động Cẩm Phả",
+        "Chế tạo máy TKV khen thưởng 229 con người lao động",
+        "Chế tạo máy TKV khen thưởng con người lao động theo kết quả rõ ràng",
+        "Cách làm minh bạch giúp chương trình có tác động lâu dài",
+        "Câu hỏi thường gặp"
       ],
       "category": "news",
       "categoryLabel": "Tin ngành Than",
@@ -249,19 +225,40 @@
       "priority": 60
     },
     {
-      "url": "/tin-nganh-than/2026/08/01/tuyen-quang-phoi-hop-tuyen-sinh-nghe-mo-2025-2030/",
-      "title": "Bốn xã Tuyên Quang mở đường học nghề mỏ, việc làm TKV",
-      "description": "Bốn xã Ngọc Long, Đường Thượng, Thàng Tín, Trung Thịnh phối hợp Trường Cao đẳng TKV và doanh nghiệp tuyển sinh nghề mỏ giai đoạn 2025–2030.",
+      "url": "/tin-nganh-than/2026/08/21/cong-ty-vat-tu-do-dau-cuu-thanh-nien-xung-phong-2026/",
+      "title": "Công ty Vật tư đỡ đầu cựu thanh niên xung phong từ quý III/2026",
+      "description": "Công ty Cổ phần Vật tư nhận hỗ trợ thường xuyên cựu thanh niên xung phong tại Hải Ninh với mức 1.000.000 đồng hằng tháng từ quý III/2026.",
       "keywords": [
-        "tuyển sinh nghề mỏ Tuyên Quang",
-        "việc làm TKV Tuyên Quang",
-        "học nghề thợ lò",
-        "Trường Cao đẳng TKV",
-        "Bốn xã Tuyên Quang mở đường học nghề mỏ, việc làm TKV",
-        "Vì sao lao động Tuyên Quang phù hợp với cơ hội này?",
-        "Người muốn đăng ký nên đi theo đường chính thức",
-        "Thông tin cần biết trước khi đăng ký",
-        "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
+        "Công ty Vật tư đỡ đầu cựu thanh niên xung phong 2026",
+        "TKV hỗ trợ cộng đồng",
+        "an sinh xã hội ngành Than",
+        "hỗ trợ cựu thanh niên xung phong",
+        "xã Hải Ninh Quảng Ninh",
+        "Công ty Vật tư đỡ đầu cựu thanh niên xung phong từ quý III/2026",
+        "Khoản hỗ trợ định kỳ cần cơ chế theo dõi rõ",
+        "Hoạt động tri ân bổ sung cho mạng lưới an sinh địa phương",
+        "Câu hỏi thường gặp"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/09/co-dien-uong-bi-on-dinh-viec-lam-nguoi-lao-dong-2026/",
+      "title": "Cơ điện Uông Bí ổn định việc làm cho người lao động",
+      "description": "Cơ điện Uông Bí khôi phục việc làm cho 100% lao động, bổ sung khối lượng 12,6 tỷ đồng và được Công đoàn TKV hỗ trợ 150 triệu đồng.",
+      "keywords": [
+        "việc làm Cơ điện Uông Bí 2026",
+        "việc làm ngành Than",
+        "tuyển lao động kỹ thuật",
+        "thợ cơ khí lành nghề",
+        "Công đoàn TKV",
+        "thu nhập người lao động Uông Bí",
+        "Cơ điện Uông Bí ổn định việc làm cho người lao động",
+        "Việc làm Cơ điện Uông Bí phục hồi nhờ khối lượng mới",
+        "Ổn định đơn hàng là cách giữ việc làm bền vững",
+        "Câu hỏi thường gặp"
       ],
       "category": "news",
       "categoryLabel": "Tin ngành Than",
@@ -270,7 +267,7 @@
     },
     {
       "url": "/tin-nganh-than/2026/08/01/dam-ha-than-thong-nhat-dao-tao-viec-lam-2026/",
-      "title": "Đầm Hà hợp tác Than Thống Nhất đào tạo việc làm 2026–2030",
+      "title": "Đầm Hà hợp tác Than Thống Nhất đào tạo nghề mỏ, tạo việc làm",
       "description": "Xã Đầm Hà, Than Thống Nhất và Trường Cao đẳng TKV ký hợp tác đào tạo nghề, giải quyết việc làm cho lao động địa phương giai đoạn 2026–2030.",
       "keywords": [
         "đào tạo nghề mỏ Đầm Hà 2026",
@@ -279,8 +276,9 @@
         "việc làm TKV Đầm Hà",
         "Trường Cao đẳng TKV",
         "Đầm Hà hợp tác Than Thống Nhất đào tạo việc làm 2026–2030",
-        "Thu nhập thợ lò Than Thống Nhất trên 26 triệu đồng/tháng",
-        "Đầm Hà cần theo người học từ thôn tới tổ đội",
+        "Ba bên cùng chịu trách nhiệm cho một lộ trình",
+        "Người lao động cần nhìn rõ toàn bộ chặng đường",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -299,7 +297,9 @@
         "học nghề mỏ Quảng Ninh",
         "tuyển thợ lò 2026",
         "Điền Xá hợp tác với Than Khe Chàm đào tạo nghề, tạo việc làm",
-        "Đào tạo phải đi cùng giữ chân lao động",
+        "Liên kết gần địa bàn tạo thuận lợi gì",
+        "Cách đánh giá một cơ hội việc làm ngành Than",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -318,8 +318,9 @@
         "tuyển thợ mỏ Quảng Ninh",
         "Trường Cao đẳng TKV",
         "Hải Lạng kết nối học nghề mỏ với việc làm tại Than Dương Huy",
-        "Mục tiêu trên 50 lao động mỗi năm cần triển khai ra sao?",
+        "Kết quả 5 năm nói lên điều gì",
         "Cách kiểm tra thông tin tuyển sinh tại Hải Lạng",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -338,7 +339,30 @@
         "cuộc sống thợ lò Quảng Ninh",
         "nhiếp ảnh Phạm Cường",
         "Hai mươi bảy khoảnh khắc kể chuyện thợ mỏ Vàng Danh",
-        "Bàn tay con người vẫn hiện rõ giữa cơ giới hóa",
+        "Cái bắt tay đặt an toàn ở vị trí đầu tiên",
+        "Nụ cười tạo nhịp nghỉ giữa không gian sâu",
+        "Câu hỏi thường gặp",
+        "Thông tin cần biết trước khi đăng ký",
+        "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/01/anh-tho-mo-khe-cham-qua-ong-kinh-ttxvn/",
+      "title": "Hình ảnh người thợ mỏ Khe Chàm qua ống kính TTXVN",
+      "description": "Bộ ảnh TTXVN đi từ khai trường Cọc Sáu, cảng Hòn Nét, nghiên cứu an toàn mỏ đến chân dung người thợ hầm lò tại Khe Chàm.",
+      "keywords": [
+        "hình ảnh người thợ mỏ Khe Chàm",
+        "ảnh vùng than Quảng Ninh",
+        "TTXVN ngành Than",
+        "công nhân khai thác hầm lò",
+        "Vùng than và người thợ qua ống kính TTXVN",
+        "Khai trường cho thấy quy mô của một ngành công nghiệp",
+        "Gương mặt Khe Chàm đưa câu chuyện trở lại với con người",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -356,10 +380,73 @@
         "việc làm TKV Hoành Mô",
         "Trường Cao đẳng TKV",
         "Hoành Mô đặt mục tiêu trên 40 lao động học nghề mỏ mỗi năm",
-        "152 người đã đi từ buổi tư vấn tới việc làm",
+        "Ba bên cùng giữ một lời hứa về việc làm",
         "Từ 152 người có việc đến mục tiêu mới",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/01/bao-lac-cao-bang-tu-van-hoc-nghe-mo/",
+      "title": "Học nghề mỏ Bảo Lạc: tư vấn tại xã, thôn",
+      "description": "Huyện Bảo Lạc phối hợp Trường Cao đẳng TKV tư vấn học nghề, giải quyết việc làm; kế hoạch 2025 đặt mục tiêu trên 60 học sinh toàn huyện.",
+      "keywords": [
+        "học nghề mỏ Bảo Lạc",
+        "Cao Bằng",
+        "việc làm TKV Bảo Lạc",
+        "Trường Cao đẳng TKV",
+        "Bảo Lạc đưa tư vấn học nghề mỏ đến từng xã, từng thôn",
+        "Tư vấn chỉ hiệu quả khi trở lại đúng địa bàn",
+        "Kết quả phải được theo dõi tới ngày nhập học",
+        "Câu hỏi thường gặp",
+        "Thông tin cần biết trước khi đăng ký",
+        "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/21/kho-van-cam-pha-ho-tro-cuu-thanh-nien-xung-phong-2026/",
+      "title": "Kho vận Cẩm Phả hỗ trợ cựu nữ thanh niên xung phong",
+      "description": "Kho vận và Cảng Cẩm Phả khảo sát nhà ở, nhu cầu sinh hoạt để hỗ trợ dài hạn cựu nữ thanh niên xung phong có hoàn cảnh khó khăn tại Cửa Ông.",
+      "keywords": [
+        "Kho vận Cẩm Phả hỗ trợ cựu thanh niên xung phong",
+        "TKV hỗ trợ cộng đồng",
+        "an sinh xã hội ngành Than",
+        "sửa nhà cựu thanh niên xung phong",
+        "Cửa Ông Quảng Ninh",
+        "Kho vận Cẩm Phả hỗ trợ cựu nữ thanh niên xung phong",
+        "Khảo sát tại nhà giúp xác định đúng nhu cầu cần ưu tiên",
+        "Trách nhiệm cộng đồng được đo bằng kết quả sau khảo sát",
+        "Câu hỏi thường gặp"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/21/kho-van-da-bac-ho-tro-nu-cong-nhan-phat-trien-kinh-te-2026/",
+      "title": "Kho vận Đá Bạc hỗ trợ 3 nữ công nhân phát triển mô hình nuôi gà",
+      "description": "Ba nữ công nhân Kho vận Đá Bạc được hỗ trợ mô hình 300 con gà; sau gần một năm, tổng lợi nhuận được công bố đạt 56,45 triệu đồng.",
+      "keywords": [
+        "Kho vận Đá Bạc hỗ trợ nữ công nhân 2026",
+        "mô hình nuôi gà công nhân",
+        "nữ công nhân khó khăn TKV",
+        "an sinh xã hội ngành Than",
+        "phát triển kinh tế gia đình",
+        "công nhân Uông Bí Mạo Khê",
+        "Kho vận Đá Bạc hỗ trợ 3 nữ công nhân phát triển mô hình nuôi gà",
+        "Kho vận Đá Bạc hỗ trợ nữ công nhân theo chuỗi đầu vào",
+        "Khả năng tự tái đàn quyết định tính bền vững",
+        "Câu hỏi thường gặp"
       ],
       "category": "news",
       "categoryLabel": "Tin ngành Than",
@@ -375,8 +462,9 @@
         "việc làm TKV Lục Hồn",
         "Trường Cao đẳng TKV",
         "Lục Hồn nối đào tạo nghề với việc làm tại Than Hạ Long",
-        "Ba thôn vượt chỉ tiêu và sức lan tỏa từ người đi trước",
+        "Lục Hồn đã biến lựa chọn cá nhân thành hướng đi của cả xã",
         "Giai đoạn mới được đo bằng người làm việc bền vững",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -395,8 +483,9 @@
         "việc làm TKV Lương Minh và Quảng Tân",
         "Trường Cao đẳng TKV",
         "Lương Minh, Quảng Tân ký phối hợp ba bên về nghề mỏ",
-        "Hợp tác đi xa hơn một đợt tuyển người",
+        "Hai xã cùng nối một đường từ hộ gia đình tới doanh nghiệp",
         "Thước đo sau ký kết là những công nhân bám nghề",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -415,7 +504,9 @@
         "Phân hiệu Hoành Bồ",
         "việc làm ngành Than",
         "Lương Minh: từ 31 hội nghị tư vấn đến 37 học sinh nhập học",
-        "Lợi thế của Phân hiệu Hoành Bồ",
+        "Vì sao tỷ lệ chuyển đổi cần được nhìn thẳng",
+        "Từ nhập học đến việc làm còn một chặng quan trọng",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -434,7 +525,9 @@
         "Than Núi Béo",
         "gia đình công nhân mỏ",
         "Lý Văn Dỉ: hết ca lò lại trở về làm cha của ba con nhỏ",
-        "Khoảng cách được nối bằng những cuộc gọi sau ca",
+        "Từ nương rẫy Cao Bằng tới đường lò Núi Béo",
+        "Căn nhà sàn giữ lại điều anh cố gắng vì nó",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -453,7 +546,9 @@
         "hầm lò sâu Quảng Ninh",
         "đời sống thợ lò",
         "Một ngày trong lò than sâu của người thợ Dương Huy",
-        "Lò chợ vận hành như một nhà máy dưới lòng đất",
+        "Ánh đèn mũ dẫn đường qua nhiều tầng sâu",
+        "Giờ nghỉ ngắn giữ sức cho nửa ca còn lại",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -472,8 +567,9 @@
         "việc làm TKV Mù Cang Chải",
         "Trường Cao đẳng TKV",
         "Mù Cang Chải đặt mục tiêu 60–100 người học nghề mỏ năm 2024",
-        "Mục tiêu 60–100 người được đặt trên nền kết quả sẵn có",
+        "Một trăm tám mươi tư người qua bốn mốc thời gian",
         "Tư vấn ở vùng cao cần có gia đình cùng tham gia",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -493,8 +589,9 @@
         "việc làm TKV Mường Khương và Bát Xát",
         "Trường Cao đẳng TKV",
         "Mường Khương, Bát Xát rà hiệu quả tuyển lao động TKV năm 2024",
-        "Bát Xát có 62 hội nghị và hơn 1.000 lượt người tham gia",
+        "Hai huyện, hai bức tranh tuyển sinh khác nhau",
         "Số hội nghị lớn cần chuyển thành hồ sơ phù hợp",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -514,8 +611,9 @@
         "việc làm TKV Mường Lát và Lang Chánh",
         "Trường Cao đẳng TKV",
         "Mường Lát, Lang Chánh ký kết đào tạo việc làm TKV năm 2020",
-        "Kết quả tuyển sinh được đặt cạnh năng lực tiếp nhận",
+        "Từ 16 người năm 2018 lên 51 người năm 2019",
         "Tăng số tuyển nhưng không bỏ qua khả năng bám nghề",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -534,8 +632,9 @@
         "tuyển thợ mỏ Cao Bằng",
         "đào tạo nghề TKV",
         "Nam Tuấn liên kết ba bên đào tạo nghề mỏ, bố trí việc làm",
-        "Chuyến tham quan trước đó tạo niềm tin thế nào?",
-        "Lợi ích với địa phương nhìn từ người có nghề"
+        "Đào tạo theo địa chỉ khác gì tuyển sinh thông thường",
+        "Lợi ích với địa phương nhìn từ người có nghề",
+        "Câu hỏi thường gặp"
       ],
       "category": "news",
       "categoryLabel": "Tin ngành Than",
@@ -553,8 +652,51 @@
         "việc làm TKV Nguyên Bình",
         "Trường Cao đẳng TKV",
         "Nguyên Bình tổng kết 158 lao động học và làm tại TKV năm 2022",
-        "Một trăm năm mươi tám người đang học hoặc làm việc",
+        "Năm mươi hai hội nghị tạo ra một đường tuyển có địa chỉ",
         "Người đã thành công là nguồn tư vấn thuyết phục nhất",
+        "Câu hỏi thường gặp",
+        "Thông tin cần biết trước khi đăng ký",
+        "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/01/ma-khac-huynh-nguoi-mo-duong-trong-long-dat/",
+      "title": "Người lao động chọn nghề mỏ Quảng Ninh: hai câu chuyện",
+      "description": "Người lao động chọn nghề mỏ Quảng Ninh: Bùi Văn Tuyên và Ma Khắc Huỳnh đến với vùng mỏ từ hai hoàn cảnh khác nhau, rồi cùng trưởng thành trong nhịp ca và tổ…",
+      "keywords": [
+        "người lao động chọn nghề mỏ Quảng Ninh",
+        "Bùi Văn Tuyên thợ lò",
+        "thợ đào lò Ma Khắc Huỳnh",
+        "Than Hòn Gai",
+        "Bỏ việc cơ quan, người đàn ông chọn làm việc ở mỏ than",
+        "Bùi Văn Tuyên bước ra khỏi công việc quen thuộc ở quê nhà",
+        "Trước khi xuống lò, mọi người cùng trở về một quy trình chung",
+        "Câu hỏi thường gặp",
+        "Thông tin cần biết trước khi đăng ký",
+        "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/01/nhung-nguoi-tho-lo-gieo-no-luc/",
+      "title": "Người thợ lò giỏi Quảng Ninh: ba chân dung",
+      "description": "Người thợ lò giỏi Quảng Ninh: Phan Văn Đạo, Hán Cao Phi và Lê Văn Biên được đồng nghiệp ghi nhận nhờ sức bền, chuyên môn, tinh thần kèm cặp thợ trẻ và sáng…",
+      "keywords": [
+        "người thợ lò giỏi Quảng Ninh",
+        "Phan Văn Đạo thợ lò",
+        "Hán Cao Phi cơ điện mỏ",
+        "Lê Văn Biên thợ mỏ",
+        "Ba người thợ lò và ba cách làm nên uy tín nghề nghiệp",
+        "Phan Văn Đạo giữ nhịp bằng sức bền và kinh nghiệm",
+        "Lê Văn Biên biến tay nghề thành năng lực truyền nghề",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -573,7 +715,9 @@
         "Phạm Văn An cứu hộ",
         "chuyện người thợ mỏ",
         "Những người giữ tinh thần Kỷ luật – Đồng tâm ở mỏ Hà Lầm",
-        "Phạm Văn An đi cứu hộ với suy nghĩ của người từng mất mát",
+        "Học công nghệ mới bằng trách nhiệm với cả công trường",
+        "Nguyễn Trọng Thái mở sâu đường lò và mở rộng cách làm",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -592,7 +736,9 @@
         "cứu hộ hầm lò",
         "Anh hùng Lao động ngành Than",
         "Phạm Đình Duẩn và mười lăm giờ cứu đồng đội dưới lò",
-        "Mười lăm giờ cần sức bền cùng sự tỉnh táo",
+        "Mệnh lệnh đầu tiên là tổ chức lực lượng thật nhanh",
+        "Sáng kiến và cứu hộ cùng bắt đầu từ hiểu hiện trường",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -612,8 +758,9 @@
         "chăm lo thợ mỏ",
         "an sinh xã hội ngành Than",
         "Phúc lợi thợ mỏ Mỏ Việt Bắc dành cho 47 lao động",
-        "Ngưỡng 31% cần được hiểu đúng theo hồ sơ chuyên môn",
-        "Thông tin phúc lợi giúp ứng viên nhìn nghề mỏ đầy đủ hơn"
+        "Phúc lợi thợ mỏ Mỏ Việt Bắc 2026 hướng tới đúng nhóm cần phục hồi",
+        "Thông tin phúc lợi giúp ứng viên nhìn nghề mỏ đầy đủ hơn",
+        "Câu hỏi thường gặp"
       ],
       "category": "news",
       "categoryLabel": "Tin ngành Than",
@@ -623,7 +770,7 @@
     {
       "url": "/tin-nganh-than/2026/07/30/phuc-loi-tho-mo-tkv-2026/",
       "title": "Sau ca làm: đời sống thợ mỏ được chăm lo ra sao?",
-      "description": "Từ 108 mái ấm, hơn 71.000 lượt khám sức khỏe đến bữa cơm công đoàn: bức tranh đời sống và phúc lợi thợ mỏ TKV trong năm 2026.",
+      "description": "Phúc lợi thợ mỏ TKV 2026: Số liệu 6 tháng đầu năm 2026 về nhà ở, khám sức khỏe, bữa ăn, nghỉ dưỡng và đối thoại với người lao động TKV.",
       "keywords": [
         "phúc lợi thợ mỏ TKV 2026",
         "đời sống công nhân mỏ",
@@ -631,7 +778,8 @@
         "nhà ở công nhân Quảng Ninh",
         "việc làm ngành Than",
         "Sau ca làm: đời sống thợ mỏ được chăm lo ra sao?",
-        "Sức khỏe và bữa ăn được chăm lo theo từng nhu cầu",
+        "Chăm lo đời sống bắt đầu từ những nhu cầu thiết yếu",
+        "Đối thoại giúp phúc lợi đi tới đúng vấn đề",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -651,8 +799,9 @@
         "việc làm TKV Sì Lở Lầu và Khun Há",
         "Trường Cao đẳng TKV",
         "Sì Lở Lầu, Khun Há kết nối thanh niên vùng cao với nghề mỏ",
-        "165 học viên từ một xã vùng cao",
+        "Từ bản làng Lai Châu đến lớp học nghề",
         "Giữ người sau tuyển sinh mới là thành công",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -672,10 +821,97 @@
         "việc làm TKV Sông Mã",
         "Trường Cao đẳng TKV",
         "Sông Mã mở đường học nghề mỏ cho lao động Sơn La từ 2016",
-        "Gần 400 lao động Sơn La đã tạo nền tảng kiểm chứng",
+        "Một chuyến đi để chính quyền cơ sở nhìn tận nơi",
         "Từ bảy xã đến một mạng lưới thông tin tại cơ sở",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/07/31/tai-co-cau-tkv-2026-viec-lam-tho-mo/",
+      "title": "Tái cơ cấu TKV 2026: cơ hội cho người thợ trẻ",
+      "description": "Tái cơ cấu TKV 2026–2030 tác động đến việc làm, kỹ năng thợ lò, an toàn và cơ giới hóa ra sao; người lao động cần chuẩn bị gì.",
+      "keywords": [
+        "tái cơ cấu TKV 2026",
+        "việc làm ngành Than",
+        "tuyển thợ lò",
+        "cơ giới hóa khai thác",
+        "an toàn lao động mỏ",
+        "tuyển sinh nghề mỏ 2026",
+        "TKV Quảng Ninh",
+        "TKV bước vào giai đoạn mới: cơ hội nào cho người thợ trẻ?",
+        "Cơ giới hóa làm thay đổi cơ cấu kỹ năng",
+        "Người trẻ cần chuẩn bị cho một nghề học liên tục",
+        "Thông tin cần biết trước khi đăng ký"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/10/thai-nguyen-phoi-hop-tuyen-sinh-nghe-mo-2026/",
+      "title": "Thái Nguyên phối hợp tuyển sinh nghề mỏ, kết nối việc làm",
+      "description": "Thái Nguyên, Trường Cao đẳng TKV và Than Hòn Gai phối hợp tư vấn tuyển sinh nghề mỏ, theo sát người lao động từ đăng ký đến việc làm.",
+      "keywords": [
+        "tuyển sinh nghề mỏ Thái Nguyên 2026",
+        "học nghề mỏ Thái Nguyên",
+        "việc làm ngành Than",
+        "Than Hòn Gai tuyển sinh",
+        "Trường Cao đẳng TKV",
+        "lao động Ba Bể",
+        "tuyển sinh nghề mỏ xã Ba Bể",
+        "Thái Nguyên phối hợp tuyển sinh nghề mỏ, kết nối việc làm",
+        "Tuyển sinh nghề mỏ Thái Nguyên đi vào từng gia đình",
+        "Bốn xã cần đo kết quả bằng người học ổn định",
+        "Câu hỏi thường gặp"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/14/bua-com-cong-doan-than-cao-son-2026/",
+      "title": "Than Cao Sơn phục vụ 1.720 suất Bữa cơm Công đoàn",
+      "description": "Bữa cơm Công đoàn Than Cao Sơn phục vụ 1.720 suất cho người lao động ca 1, ca 2 tại khai trường và tổ chức mâm cơm chung ở văn phòng.",
+      "keywords": [
+        "Bữa cơm Công đoàn Than Cao Sơn 2026",
+        "1.720 suất ăn thợ mỏ",
+        "phúc lợi người lao động Than Cao Sơn",
+        "bữa ăn ca ngành Than",
+        "đời sống thợ mỏ",
+        "TKV Quảng Ninh",
+        "Than Cao Sơn phục vụ 1.720 suất Bữa cơm Công đoàn",
+        "Bữa cơm Công đoàn Than Cao Sơn 2026 đến nhiều vị trí sản xuất",
+        "Phúc lợi cần được đánh giá bằng việc chăm lo hằng ngày",
+        "Câu hỏi thường gặp"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/11/than-duong-huy-khu-tap-the-cong-nhan-2026/",
+      "title": "Than Dương Huy cải thiện khu tập thể cho 142 công nhân",
+      "description": "Than Dương Huy ghi nhận 19 ý kiến của 142 công nhân về phòng ở, nhà ăn, thiết chế văn hóa và nâng cấp khu tập thể an toàn, văn minh.",
+      "keywords": [
+        "khu tập thể công nhân Than Dương Huy 2026",
+        "nhà ở thợ mỏ Quảng Ninh",
+        "đời sống công nhân mỏ",
+        "phúc lợi thợ mỏ",
+        "nhà ăn công nhân",
+        "an sinh xã hội TKV",
+        "Than Dương Huy cải thiện khu tập thể cho 142 công nhân",
+        "Khu tập thể công nhân Than Dương Huy được nhìn từ người đang ở",
+        "Kế hoạch cải thiện cần có thứ tự ưu tiên và thời hạn",
+        "Câu hỏi thường gặp"
       ],
       "category": "news",
       "categoryLabel": "Tin ngành Than",
@@ -692,9 +928,32 @@
         "việc làm Quảng Long",
         "học nghề mỏ hầm lò",
         "Than Dương Huy đưa tư vấn nghề mỏ tới hai thôn xã Đường Hoa",
-        "Địa bàn gần mỏ vẫn cần hướng nghiệp nghiêm túc",
+        "Tư vấn tại thôn giúp lọc thông tin sai",
+        "Cách biến một buổi tư vấn thành quyết định nghề nghiệp",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/11/than-duong-huy-ho-tro-con-cong-nhan-2026/",
+      "title": "Than Dương Huy mở rộng hỗ trợ học tập cho con công nhân",
+      "description": "Than Dương Huy thưởng 1.125 học sinh, hỗ trợ trẻ mầm non và duy trì học bổng 1–3 triệu đồng cho con người lao động theo từng bậc học.",
+      "keywords": [
+        "Than Dương Huy hỗ trợ con công nhân 2026",
+        "học bổng con thợ mỏ",
+        "phúc lợi gia đình công nhân",
+        "con công nhân TKV",
+        "hỗ trợ trẻ mầm non",
+        "an sinh xã hội ngành Than",
+        "Than Dương Huy mở rộng hỗ trợ học tập cho con công nhân",
+        "Than Dương Huy hỗ trợ con công nhân theo nhiều giai đoạn",
+        "Người lao động cần đối chiếu điều kiện từng chính sách",
+        "Câu hỏi thường gặp"
       ],
       "category": "news",
       "categoryLabel": "Tin ngành Than",
@@ -712,8 +971,135 @@
         "đời sống thợ lò Quảng Ninh",
         "việc làm ngành Than",
         "Than Hà Lầm chăm lo phục hồi sức khỏe thợ lò",
-        "Quy mô chăm lo tháng 7/2026 cho thấy nhiều lớp phúc lợi",
-        "Sức khỏe là điều kiện để thợ lò gắn bó bền vững với nghề"
+        "Phục hồi sức khỏe thợ lò Than Hà Lầm bắt đầu từ đánh giá thể trạng",
+        "Sức khỏe là điều kiện để thợ lò gắn bó bền vững với nghề",
+        "Câu hỏi thường gặp"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/21/than-ha-long-ho-tro-xay-sua-nha-gia-dinh-chinh-sach-2026/",
+      "title": "Than Hạ Long hỗ trợ 183 triệu đồng sửa nhà chính sách",
+      "description": "TKV và Than Hạ Long hỗ trợ tổng giá trị 183 triệu đồng để gia đình một nguyên thợ lò tại Hải Phòng xây, sửa nhà và ổn định cuộc sống.",
+      "keywords": [
+        "Than Hạ Long hỗ trợ xây sửa nhà 2026",
+        "TKV hỗ trợ gia đình chính sách",
+        "nhà ở gia đình thợ lò",
+        "Quỹ Phúc lợi TKV",
+        "an sinh xã hội ngành Than",
+        "Kinh Môn Hải Phòng",
+        "Than Hạ Long hỗ trợ 183 triệu đồng sửa nhà chính sách",
+        "Than Hạ Long hỗ trợ xây sửa nhà từ ba nguồn lực",
+        "Minh bạch kinh phí giúp chương trình an sinh có sức thuyết phục",
+        "Câu hỏi thường gặp"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/21/than-ha-tu-ho-tro-nu-cong-nhan-phat-trien-kinh-te-2026/",
+      "title": "Than Hà Tu hỗ trợ 12 nữ công nhân phát triển kinh tế gia đình",
+      "description": "Than Hà Tu nghiệm thu mô hình chăn nuôi của 12 nữ công nhân khó khăn, tạo sinh kế phù hợp để tăng nguồn thu và ổn định đời sống gia đình.",
+      "keywords": [
+        "Than Hà Tu hỗ trợ nữ công nhân 2026",
+        "nữ công nhân khó khăn",
+        "TKV an sinh xã hội",
+        "mô hình chăn nuôi công nhân",
+        "đời sống người lao động ngành Than",
+        "việc làm ngành Than Quảng Ninh",
+        "Than Hà Tu hỗ trợ 12 nữ công nhân phát triển kinh tế gia đình",
+        "Than Hà Tu hỗ trợ nữ công nhân bằng mô hình sinh kế tại hộ",
+        "Sinh kế bền vững cần kỹ thuật và kế hoạch chi phí",
+        "Câu hỏi thường gặp"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/14/hoc-sinh-thuc-tap-than-khe-cham-2026/",
+      "title": "Than Khe Chàm tiếp nhận học sinh Nam Tuấn thực tập sản xuất",
+      "description": "Than Khe Chàm tiếp nhận học sinh xã Nam Tuấn, Cao Bằng vào giai đoạn thực tập sản xuất và hỗ trợ 1,78 triệu đồng mỗi học sinh.",
+      "keywords": [
+        "học sinh thực tập Than Khe Chàm 2026",
+        "học nghề mỏ Nam Tuấn",
+        "tuyển sinh nghề mỏ Cao Bằng",
+        "thực tập sản xuất mỏ",
+        "việc làm ngành Than",
+        "Trường Cao đẳng TKV",
+        "Than Khe Chàm tiếp nhận học sinh Nam Tuấn thực tập sản xuất",
+        "Học sinh thực tập Than Khe Chàm 2026 chuyển từ lý thuyết sang thực hành",
+        "Người học từ Nam Tuấn cần giữ liên hệ ba đầu mối",
+        "Câu hỏi thường gặp"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/14/than-mao-khe-do-dau-cuu-thanh-nien-xung-phong-2026/",
+      "title": "Than Mạo Khê đỡ đầu cựu thanh niên xung phong khó khăn",
+      "description": "Than Mạo Khê trao hỗ trợ ban đầu 3 triệu đồng và nhận đỡ đầu nữ cựu thanh niên xung phong tại Đông Triều với mức 1.000.000 đồng hằng tháng.",
+      "keywords": [
+        "Than Mạo Khê đỡ đầu cựu thanh niên xung phong 2026",
+        "TKV hỗ trợ cộng đồng",
+        "an sinh xã hội ngành Than",
+        "đền ơn đáp nghĩa Đông Triều",
+        "văn hóa thợ mỏ",
+        "hỗ trợ thường xuyên cựu thanh niên xung phong",
+        "Than Mạo Khê đỡ đầu cựu thanh niên xung phong khó khăn",
+        "Than Mạo Khê đỡ đầu cựu thanh niên xung phong theo kế hoạch dài hạn",
+        "Trách nhiệm xã hội cần minh bạch và đúng đối tượng",
+        "Câu hỏi thường gặp"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/13/than-mao-khe-nghi-duong-nguoi-lao-dong-2026/",
+      "title": "Than Mạo Khê tri ân 83 lao động xuất sắc tại Hạ Long",
+      "description": "Than Mạo Khê tổ chức kỳ nghỉ Hạ Long cho 83 lao động xuất sắc trong nhóm 252 thợ mỏ tiêu biểu, ghi nhận thành tích sản xuất và an toàn năm 2026.",
+      "keywords": [
+        "Than Mạo Khê nghỉ dưỡng người lao động 2026",
+        "83 công nhân Than Mạo Khê",
+        "252 thợ mỏ tiêu biểu",
+        "phúc lợi thợ mỏ",
+        "an toàn lao động mỏ",
+        "đời sống công nhân TKV",
+        "Than Mạo Khê tri ân 83 lao động xuất sắc tại Hạ Long",
+        "Than Mạo Khê nghỉ dưỡng người lao động gắn với an toàn",
+        "Ghi nhận đúng cách góp phần giữ người lao động",
+        "Câu hỏi thường gặp"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/09/than-mong-duong-phoi-hop-tuyen-sinh-dao-tao-2026/",
+      "title": "Than Mông Dương phối hợp tuyển sinh, đào tạo thợ mỏ",
+      "description": "Than Mông Dương và Trường Cao đẳng TKV mở rộng tuyển sinh nghề mỏ, theo dõi thực tập và đào tạo nhân lực gắn nhu cầu sản xuất.",
+      "keywords": [
+        "Than Mông Dương tuyển sinh nghề mỏ 2026",
+        "học nghề mỏ",
+        "tuyển sinh nghề mỏ",
+        "việc làm ngành Than",
+        "Trường Cao đẳng TKV",
+        "tuyển thợ lò Quảng Ninh",
+        "Than Mông Dương phối hợp tuyển sinh, đào tạo thợ mỏ",
+        "Than Mông Dương tuyển sinh nghề mỏ theo nhu cầu thực",
+        "Ba bên cùng chịu trách nhiệm về chất lượng nguồn nhân lực",
+        "Câu hỏi thường gặp"
       ],
       "category": "news",
       "categoryLabel": "Tin ngành Than",
@@ -731,8 +1117,29 @@
         "TKV chăm lo người lao động",
         "khuyến học Quảng Ninh",
         "Than Nam Mẫu tuyên dương 1.672 con công nhân học giỏi",
-        "Hơn 534 triệu đồng khuyến học được phân bổ theo chương trình",
-        "Phúc lợi gia đình góp phần giữ ổn định đời sống người thợ mỏ"
+        "Than Nam Mẫu tuyên dương con công nhân 2026 theo từng cấp học",
+        "Phúc lợi gia đình góp phần giữ ổn định đời sống người thợ mỏ",
+        "Câu hỏi thường gặp"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/21/than-nui-beo-ho-tro-cuu-thanh-nien-xung-phong-2026/",
+      "title": "Than Núi Béo hỗ trợ thường xuyên cựu nữ thanh niên xung phong",
+      "description": "Than Núi Béo khảo sát hoàn cảnh và thống nhất hỗ trợ thường xuyên cựu nữ thanh niên xung phong sống đơn thân tại Việt Hưng, Quảng Ninh.",
+      "keywords": [
+        "Than Núi Béo hỗ trợ cựu thanh niên xung phong",
+        "TKV an sinh xã hội",
+        "hỗ trợ người có công Quảng Ninh",
+        "cộng đồng thợ mỏ",
+        "phường Việt Hưng",
+        "Than Núi Béo hỗ trợ thường xuyên cựu nữ thanh niên xung phong",
+        "Than Núi Béo khảo sát hoàn cảnh trước khi hỗ trợ định kỳ",
+        "Chăm lo người có công cần gắn với điều kiện sống thực tế",
+        "Câu hỏi thường gặp"
       ],
       "category": "news",
       "categoryLabel": "Tin ngành Than",
@@ -750,8 +1157,9 @@
         "việc làm TKV Quảng La",
         "Trường Cao đẳng TKV",
         "Than Núi Béo kết nối 19 trưởng thôn Quảng La tuyển nghề mỏ",
-        "Doanh nghiệp trực tiếp nói về nghề cần tuyển",
+        "Mười chín trưởng thôn tạo thành mạng lưới thông tin gần dân",
         "Từ cuộc gặp trưởng thôn tới buổi tư vấn cho từng gia đình",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -771,10 +1179,74 @@
         "việc làm TKV Khánh Xuân và Ca Thành",
         "Trường Cao đẳng TKV",
         "Than Núi Béo ký phối hợp tuyển sinh với hai xã Cao Bằng",
-        "Mô hình ba bên đi sát hơn tới lao động Cao Bằng",
+        "Ba ngày làm việc cho hai quy chế có địa chỉ",
         "Mỗi xã cần biến quy chế thành lịch hành động",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/13/than-nui-beo-nghi-duong-gia-dinh-tho-lo-2026/",
+      "title": "Than Núi Béo tổ chức nghỉ dưỡng cho 60 gia đình thợ lò",
+      "description": "Than Núi Béo tổ chức nghỉ dưỡng cho 60 gia đình thợ lò tiêu biểu trong tháng 7–8/2026, chia sáu đoàn tới Sa Pa, Ninh Bình và Hạ Long.",
+      "keywords": [
+        "Than Núi Béo nghỉ dưỡng gia đình thợ lò 2026",
+        "phúc lợi thợ mỏ",
+        "gia đình thợ lò",
+        "đời sống công nhân Than Núi Béo",
+        "nghỉ dưỡng công nhân TKV",
+        "việc làm ngành Than Quảng Ninh",
+        "Than Núi Béo tổ chức nghỉ dưỡng cho 60 gia đình thợ lò",
+        "Than Núi Béo nghỉ dưỡng gia đình thợ lò theo tiêu chí công khai",
+        "Phúc lợi thợ mỏ cần được nhìn trong tổng thể việc làm",
+        "Câu hỏi thường gặp"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/09/than-nui-hong-bao-dam-viec-lam-thu-nhap-2026/",
+      "title": "Than Núi Hồng bố trí việc làm khi dự án chậm cấp phép",
+      "description": "Than Núi Hồng linh hoạt bố trí lao động khi dự án mở rộng chưa được cấp phép; Công đoàn TKV tặng 20 suất quà trị giá 20 triệu đồng.",
+      "keywords": [
+        "việc làm Than Núi Hồng 2026",
+        "việc làm ngành Than",
+        "thu nhập người lao động mỏ",
+        "Công đoàn TKV hỗ trợ người lao động",
+        "Mỏ Núi Hồng VVMI",
+        "an sinh người lao động TKV",
+        "Than Núi Hồng bố trí việc làm khi dự án chậm cấp phép",
+        "Việc làm Than Núi Hồng bị tác động từ thủ tục dự án",
+        "Người lao động cần được tham gia khi phương án thay đổi",
+        "Câu hỏi thường gặp"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/11/than-quang-hanh-chong-nong-cho-tho-mo-2026/",
+      "title": "Than Quang Hanh tăng chống nóng, bảo vệ sức khỏe thợ mỏ",
+      "description": "Than Quang Hanh cấp bình giữ nhiệt, đá lạnh sạch và C sủi cho người lao động; phân tích ý nghĩa chống nóng và an toàn trong từng ca sản xuất.",
+      "keywords": [
+        "Than Quang Hanh chống nóng cho thợ mỏ 2026",
+        "phúc lợi thợ mỏ",
+        "sức khỏe người lao động ngành Than",
+        "an toàn lao động mỏ",
+        "bình giữ nhiệt cho công nhân",
+        "việc làm ngành Than Quảng Ninh",
+        "Than Quang Hanh tăng chống nóng, bảo vệ sức khỏe thợ mỏ",
+        "Than Quang Hanh chống nóng cho thợ mỏ ngay trong ca",
+        "Chăm lo sức khỏe góp phần giữ nhịp sản xuất an toàn",
+        "Câu hỏi thường gặp"
       ],
       "category": "news",
       "categoryLabel": "Tin ngành Than",
@@ -792,10 +1264,32 @@
         "việc làm TKV Đường Thượng",
         "Trường Cao đẳng TKV",
         "Than Quang Hanh tư vấn nghề mỏ tại 20 thôn xã Đường Thượng",
-        "Ba nhóm nghề để người trẻ lựa chọn",
+        "Hai ngày đi qua 20 thôn để nói rõ ba nghề",
         "Tuyển đúng người để doanh nghiệp giữ được người",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/12/than-thong-nhat-cap-ao-bao-ho-mua-dong-2026/",
+      "title": "Than Thống Nhất chuẩn bị áo bảo hộ mùa đông cho công nhân",
+      "description": "Than Thống Nhất dự kiến cấp áo bảo hộ mùa đông trong tháng 10/2026; người lao động cần đăng ký đúng cỡ để bảo đảm sức khỏe và an toàn khi làm việc.",
+      "keywords": [
+        "Than Thống Nhất cấp áo bảo hộ mùa đông 2026",
+        "áo bảo hộ thợ mỏ",
+        "phúc lợi công nhân Than Thống Nhất",
+        "sức khỏe người lao động ngành Than",
+        "an toàn lao động mỏ",
+        "việc làm ngành Than Quảng Ninh",
+        "Than Thống Nhất chuẩn bị áo bảo hộ mùa đông cho công nhân",
+        "Than Thống Nhất cấp áo bảo hộ mùa đông 2026 theo danh sách thực tế",
+        "Phúc lợi công nhân cần được kiểm chứng bằng kết quả cấp phát",
+        "Câu hỏi thường gặp"
       ],
       "category": "news",
       "categoryLabel": "Tin ngành Than",
@@ -813,8 +1307,9 @@
         "TKV hỗ trợ cộng đồng",
         "cựu thanh niên xung phong có hoàn cảnh khó khăn tại Cẩm Phả",
         "Than Thống Nhất đỡ đầu cựu thanh niên xung phong tại Cẩm Phả",
-        "Bốn triệu đồng gồm hỗ trợ quý III/2026 và một phần quà",
+        "Than Thống Nhất đỡ đầu cựu thanh niên xung phong theo địa chỉ cụ thể",
         "Từ truyền thống tri ân đến trách nhiệm của doanh nghiệp vùng mỏ",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -833,8 +1328,9 @@
         "việc làm TKV Lai Châu",
         "Trường Cao đẳng TKV",
         "Than Thống Nhất mở đợt tư vấn nghề mỏ tại Lai Châu năm 2026",
-        "Vì sao một tuần làm việc tại địa bàn có ý nghĩa?",
+        "Một tuần ở Lai Châu thay cho một lời mời trên mạng",
         "Từ nguồn tuyển mới đến lực lượng thợ có tay nghề",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -852,8 +1348,9 @@
         "TKV an sinh xã hội",
         "TKV hỗ trợ cộng đồng",
         "gia đình chính sách ngành Than năm 2026",
-        "Sự hy sinh trong sản xuất than cần được ghi nhớ như một phần lịch sử ngành",
-        "Điều nên được theo dõi sau dịp kỷ niệm"
+        "Than Thống Nhất tri ân gia đình có thân nhân hy sinh bằng cuộc gặp trực tiếp",
+        "Điều nên được theo dõi sau dịp kỷ niệm",
+        "Câu hỏi thường gặp"
       ],
       "category": "news",
       "categoryLabel": "Tin ngành Than",
@@ -870,7 +1367,9 @@
         "an toàn hầm lò",
         "nghề thợ mỏ",
         "Theo chân một ca thợ mỏ ở Dương Huy",
-        "Mỗi bước xuống sâu đều có một lớp kiểm soát",
+        "Ca làm được chuẩn bị từ trên mặt đất",
+        "Kỷ luật giữ nhịp cho cả tổ đội dưới lò",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -889,7 +1388,9 @@
         "an sinh xã hội TKV",
         "hỗ trợ nhà ở vùng khó khăn",
         "Thợ mỏ TKV chung tay xóa nhà tạm cho đồng bào Tây Nguyên",
-        "Tinh thần thợ mỏ được thể hiện ngoài khai trường",
+        "Vì sao hỗ trợ nhà ở tạo tác động lâu dài",
+        "Cần minh bạch để lòng tốt đến đúng nơi",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -908,30 +1409,9 @@
         "việc làm TKV tỉnh Lai Châu",
         "Trường Cao đẳng TKV",
         "Tỉnh Đoàn Lai Châu kết nối 300–400 thanh niên với nghề mỏ",
-        "Gần 1.500 thanh niên Lai Châu đã tạo nên một cộng đồng nghề",
+        "Ba tổ chức cùng mở rộng cánh cửa cho thanh niên",
         "300–400 cơ hội chỉ có ý nghĩa khi người trẻ trưởng thành",
-        "Thông tin cần biết trước khi đăng ký",
-        "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
-      ],
-      "category": "news",
-      "categoryLabel": "Tin ngành Than",
-      "type": "Tin ngành Than",
-      "priority": 60
-    },
-    {
-      "url": "/tin-nganh-than/2026/07/31/tai-co-cau-tkv-2026-viec-lam-tho-mo/",
-      "title": "TKV bước vào giai đoạn mới: cơ hội nào cho người thợ trẻ?",
-      "description": "Giai đoạn 2026–2030, TKV đặt tuyển dụng, đào tạo, giữ chân thợ lò và cơ giới hóa trong cùng chiến lược phát triển hiện đại.",
-      "keywords": [
-        "tái cơ cấu TKV 2026",
-        "việc làm ngành Than",
-        "tuyển thợ lò",
-        "cơ giới hóa khai thác",
-        "an toàn lao động mỏ",
-        "tuyển sinh nghề mỏ 2026",
-        "TKV Quảng Ninh",
-        "TKV bước vào giai đoạn mới: cơ hội nào cho người thợ trẻ?",
-        "Người thợ chuyển từ làm nặng sang làm chủ thiết bị",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -951,8 +1431,9 @@
         "TKV hỗ trợ cộng đồng",
         "người có công với cách mạng và gia đình chính sách",
         "TKV dành 20 tỷ đồng chăm lo người có công năm 2026",
-        "Truyền thống biết ơn trong văn hóa ngành Than",
+        "Hai mươi tỷ đồng cho một chương trình tri ân toàn quốc",
         "Đúng người, đúng nhu cầu mới là thước đo",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -971,7 +1452,9 @@
         "việc làm thợ mỏ Hà Giang",
         "công trình phúc lợi Đồng Văn",
         "TKV đồng hành Đồng Văn: công trình phúc lợi gắn với nghề mỏ",
-        "Thách thức riêng của nguồn lao động Đồng Văn",
+        "Vì sao an sinh và việc làm nên đi cùng nhau",
+        "Người vùng cao cần được bảo vệ khỏi tuyển dụng mập mờ",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -983,7 +1466,7 @@
     {
       "url": "/tin-nganh-than/2026/08/01/tkv-ho-tro-10-ty-mien-nui-phia-bac-mua-lu/",
       "title": "TKV hỗ trợ 10 tỷ đồng cho bốn tỉnh miền núi phía Bắc",
-      "description": "TKV hỗ trợ Cao Bằng, Thái Nguyên mỗi tỉnh 3 tỷ đồng; Lạng Sơn, Lào Cai mỗi tỉnh 2 tỷ đồng để khắc phục hậu quả thiên tai năm 2025.",
+      "description": "Gói hỗ trợ bốn tỉnh miền núi phía Bắc: TKV hỗ trợ Cao Bằng, Thái Nguyên mỗi tỉnh 3 tỷ đồng; Lạng Sơn, Lào Cai mỗi tỉnh 2 tỷ đồng để khắc phục hậu quả thiên tai…",
       "keywords": [
         "gói hỗ trợ bốn tỉnh miền núi phía Bắc",
         "TKV hỗ trợ miền núi phía Bắc 10 tỷ đồng",
@@ -993,10 +1476,9 @@
         "Thái Nguyên",
         "Lạng Sơn và Lào Cai bị thiên tai",
         "TKV hỗ trợ 10 tỷ đồng cho bốn tỉnh miền núi phía Bắc",
-        "Từ mỗi ca than đến sự sẻ chia với miền núi phía Bắc",
+        "Bảng phân bổ 3–3–2–2 kể câu chuyện ưu tiên",
         "Minh bạch làm cho sự hỗ trợ bền lòng tin",
-        "Thông tin cần biết trước khi đăng ký",
-        "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
+        "Câu hỏi thường gặp"
       ],
       "category": "news",
       "categoryLabel": "Tin ngành Than",
@@ -1013,7 +1495,9 @@
         "TKV hỗ trợ Lâm Đồng",
         "TKV hỗ trợ Đắk Lắk Gia Lai Khánh Hòa",
         "TKV hỗ trợ 12 tỷ đồng giúp bốn tỉnh khắc phục mưa lũ",
-        "Hỗ trợ kịp thời quan trọng ở thời điểm nào?",
+        "Bảng phân bổ nói lên ưu tiên cứu trợ",
+        "Người dân cần tìm thông tin hỗ trợ ở đâu",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -1033,8 +1517,9 @@
         "TKV hỗ trợ cộng đồng",
         "hộ khó khăn về nhà ở tại Lâm Đồng",
         "TKV hỗ trợ 5 tỷ đồng xóa nhà tạm, nhà dột nát tại Lâm Đồng",
-        "Tinh thần người thợ đi xa hơn vùng mỏ",
+        "Năm tỷ đồng được kỳ vọng hóa thành những mái nhà an toàn",
         "Đúng hộ, đúng nhu cầu, đúng tiến độ",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -1053,7 +1538,9 @@
         "TKV an sinh xã hội",
         "khắc phục bão số 3",
         "TKV hỗ trợ 70 tỷ đồng khắc phục hậu quả bão Yagi",
-        "Khôi phục đời sống phải đi cùng khôi phục sản xuất",
+        "70 tỷ đồng được phân bổ cụ thể thế nào",
+        "Một gói hỗ trợ lớn cần được đọc bằng dữ liệu",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -1073,8 +1560,9 @@
         "TKV hỗ trợ cộng đồng",
         "đồng bào bị ảnh hưởng bởi bão Bualoi",
         "TKV ủng hộ 10 tỷ đồng khắc phục hậu quả bão Bualoi",
-        "Mười tỷ đồng và tinh thần sẻ chia của người thợ",
+        "Sau bão, tốc độ của nguồn hỗ trợ có ý nghĩa quyết định",
         "Một đầu mối rõ để lòng tốt đến đúng nơi",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -1084,9 +1572,30 @@
       "priority": 60
     },
     {
+      "url": "/tin-nganh-than/2026/08/22/truong-cao-dang-tkv-thao-go-diem-nghen-tuyen-sinh-nghe-mo-2026/",
+      "title": "Trường Cao đẳng TKV tháo gỡ điểm nghẽn tuyển sinh nghề mỏ",
+      "description": "Đảng ủy Than Quảng Ninh và Trường Cao đẳng TKV tập trung tháo gỡ khó khăn tuyển sinh nghề mỏ, quản lý học sinh và nâng chất lượng đào tạo.",
+      "keywords": [
+        "Trường Cao đẳng TKV tuyển sinh nghề mỏ 2026",
+        "tháo gỡ điểm nghẽn tuyển sinh",
+        "đào tạo thợ lò Quảng Ninh",
+        "việc làm ngành Than",
+        "phối hợp Nhà trường doanh nghiệp địa phương",
+        "quản lý học sinh thực tập",
+        "Trường Cao đẳng TKV tháo gỡ điểm nghẽn tuyển sinh nghề mỏ",
+        "Tuyển được người mới chỉ là điểm bắt đầu",
+        "Chất lượng đào tạo phải được đo tới giai đoạn thực tập",
+        "Câu hỏi thường gặp"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
       "url": "/tin-nganh-than/2026/08/01/tua-chua-dien-bien-phoi-hop-hoc-nghe-mo-2024/",
       "title": "Tủa Chùa ghi nhận 121 lao động vào học nghề TKV đến 2024",
-      "description": "Tủa Chùa và Trường Cao đẳng TKV rà kết quả 121 lao động vào học từ năm 2020, đồng thời bàn mục tiêu tuyển 40–60 người mỗi năm.",
+      "description": "Học nghề mỏ Tủa Chùa Điện Biên: Tủa Chùa và Trường Cao đẳng TKV rà kết quả 121 lao động vào học từ năm 2020, đồng thời bàn mục tiêu tuyển 40–60 người mỗi năm.",
       "keywords": [
         "học nghề mỏ Tủa Chùa Điện Biên",
         "học nghề mỏ Tủa Chùa",
@@ -1094,8 +1603,9 @@
         "việc làm TKV Tủa Chùa",
         "Trường Cao đẳng TKV",
         "Tủa Chùa ghi nhận 121 lao động vào học nghề TKV đến 2024",
-        "Tủa Chùa nằm trong kết quả 988 người của Điện Biên",
+        "Năm năm tạo thành một nguồn lao động đều đặn",
         "Mục tiêu cao hơn đòi hỏi tư vấn sâu hơn",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -1107,7 +1617,7 @@
     {
       "url": "/tin-nganh-than/2026/08/01/doan-thanh-nien-tkv-25-hoc-bong-thap-sang-uoc-mo/",
       "title": "Tuổi trẻ TKV trao 25 học bổng “Thắp sáng ước mơ”",
-      "description": "Đoàn Thanh niên TKV trao 25 suất học bổng tổng trị giá 50 triệu đồng cho học sinh hoàn cảnh khó khăn, tiếp sức các em trong năm học 2025–2026.",
+      "description": "Chương trình học bổng “Thắp sáng ước mơ”: Đoàn Thanh niên TKV trao 25 suất học bổng tổng trị giá 50 triệu đồng cho học sinh hoàn cảnh khó khăn, tiếp sức các em…",
       "keywords": [
         "chương trình học bổng “Thắp sáng ước mơ”",
         "Đoàn Thanh niên TKV trao 25 học bổng",
@@ -1115,8 +1625,9 @@
         "TKV hỗ trợ cộng đồng",
         "học sinh có hoàn cảnh khó khăn",
         "Tuổi trẻ TKV trao 25 học bổng “Thắp sáng ước mơ”",
-        "Tuổi trẻ TKV trao đi niềm tin vào nỗ lực học tập",
+        "Hai triệu đồng có thể giữ nhịp đến trường cho một em nhỏ",
         "Minh bạch và đồng hành để ước mơ đi xa",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -1135,7 +1646,9 @@
         "Đoàn Thanh niên TKV an sinh",
         "hỗ trợ học sinh vùng cao",
         "Tuổi trẻ TKV xây giếng nước sạch cho liên trường ở Lai Châu",
-        "Thanh niên ngành Than đóng góp bằng năng lực tổ chức",
+        "Vì sao một giếng khoan có ý nghĩa với ba cấp học",
+        "Công trình nhỏ cần được duy trì lâu dài",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -1145,9 +1658,72 @@
       "priority": 60
     },
     {
+      "url": "/tin-nganh-than/2026/08/14/tuyen-sinh-nghe-mo-dong-ngu-2026/",
+      "title": "Tuyển sinh nghề mỏ Đông Ngũ 2026: hợp tác với Than Mông Dương",
+      "description": "Xã Đông Ngũ, Trường Cao đẳng TKV và Than Mông Dương ký hợp tác tuyển sinh nghề mỏ, đào tạo và giải quyết việc làm giai đoạn 2026–2030.",
+      "keywords": [
+        "tuyển sinh nghề mỏ Đông Ngũ 2026",
+        "học nghề mỏ Quảng Ninh",
+        "việc làm Than Mông Dương",
+        "Trường Cao đẳng TKV",
+        "tuyển thợ lò Quảng Ninh",
+        "đào tạo nghề cho lao động Đông Ngũ",
+        "Tuyển sinh nghề mỏ Đông Ngũ 2026: hợp tác với Than Mông Dương",
+        "Tuyển sinh nghề mỏ Đông Ngũ 2026 có đầu mối ba bên",
+        "Tiếp nhận sau tốt nghiệp vẫn có điều kiện rõ ràng",
+        "Câu hỏi thường gặp"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/01/tuyen-quang-phoi-hop-tuyen-sinh-nghe-mo-2025-2030/",
+      "title": "Tuyển sinh nghề mỏ Tuyên Quang giai đoạn 2025–2030",
+      "description": "Bốn xã Ngọc Long, Đường Thượng, Thàng Tín, Trung Thịnh phối hợp Trường Cao đẳng TKV và doanh nghiệp tuyển sinh nghề mỏ giai đoạn 2025–2030.",
+      "keywords": [
+        "tuyển sinh nghề mỏ Tuyên Quang",
+        "việc làm TKV Tuyên Quang",
+        "học nghề thợ lò",
+        "Trường Cao đẳng TKV",
+        "Bốn xã Tuyên Quang mở đường học nghề mỏ, việc làm TKV",
+        "Mô hình ba bên giải quyết điều gì",
+        "Người muốn đăng ký nên đi theo đường chính thức",
+        "Câu hỏi thường gặp",
+        "Thông tin cần biết trước khi đăng ký",
+        "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/09/tuyen-than-cua-ong-phuc-loi-nguoi-lao-dong-2026/",
+      "title": "Tuyển than Cửa Ông mở rộng phúc lợi người lao động",
+      "description": "Tuyển than Cửa Ông triển khai phúc lợi người lao động 2026 với chăm sóc sức khỏe, nghỉ dưỡng, quà tặng và đào tạo chuyển nghề.",
+      "keywords": [
+        "phúc lợi Tuyển than Cửa Ông 2026",
+        "phúc lợi thợ mỏ",
+        "thu nhập người lao động TKV",
+        "chăm sóc sức khỏe công nhân",
+        "đời sống thợ mỏ Quảng Ninh",
+        "đào tạo chuyển nghề",
+        "Tuyển than Cửa Ông mở rộng phúc lợi người lao động",
+        "Phúc lợi Tuyển than Cửa Ông bắt đầu từ sức khỏe",
+        "Phúc lợi bền vững phải gắn với kỹ năng và an toàn",
+        "Câu hỏi thường gặp"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
       "url": "/tin-nganh-than/2026/08/01/viec-lam-nganh-than-thang-8-2026/",
       "title": "Tuyển thợ mỏ tháng 8/2026 | Học nghề 2–3 tháng",
-      "description": "Nam 18–40 tuổi có thể học nghề mỏ 2–3 tháng, được hỗ trợ trong thời gian học, bố trí việc làm và Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "description": "Tuyển thợ mỏ tháng 8/2026: nam 18–40 tuổi, học nghề 2–3 tháng, được hỗ trợ, bố trí việc làm; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ tháng 8/2026",
         "tuyển thợ lò",
@@ -1156,18 +1732,8 @@
         "việc làm TKV Quảng Ninh",
         "lương thợ mỏ 25 triệu",
         "Tuyển thợ mỏ tháng 8/2026: học nghề bài bản, việc làm rõ ràng",
-        "Từ lớp học đến ca sản xuất đầu tiên",
-        "Nhẹ gánh chi phí để tập trung học nghề",
-        "Học xong có việc, hoàn thành định mức lao động đạt 20–25 triệu đồng/tháng",
-        "Sức khỏe phù hợp là điều kiện đầu tiên",
-        "Độ tuổi",
-        "Thể lực",
-        "Sức khỏe",
-        "Thị lực và bệnh lý",
-        "Chuẩn bị hồ sơ sau khi kiểm tra điều kiện",
-        "Địa chỉ đến làm thủ tục nhập học",
-        "Quy trình đăng ký gọn trong năm bước",
-        "Nghề mỏ hợp với người biết giữ kỷ luật và quý trọng tay nghề",
+        "Từ đăng ký đến lớp học phải có lịch trình rõ ràng",
+        "Việc làm sau đào tạo gắn với kết quả học tập",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -1186,8 +1752,9 @@
         "việc làm TKV Vị Xuyên",
         "Trường Cao đẳng TKV",
         "Vị Xuyên mở rộng tuyến học nghề mỏ, việc làm TKV 2025–2030",
-        "211 người của Vị Xuyên trong bức tranh 2.046 lao động Hà Giang",
+        "Từ Vị Xuyên đến những tổ đội ở Hà Lầm, Núi Béo",
         "Mục tiêu 60–80 người và bài toán bám nghề",
+        "Câu hỏi thường gặp",
         "Thông tin cần biết trước khi đăng ký",
         "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
       ],
@@ -1197,18 +1764,42 @@
       "priority": 60
     },
     {
-      "url": "/tin-nganh-than/2026/08/01/anh-tho-mo-khe-cham-qua-ong-kinh-ttxvn/",
-      "title": "Vùng than và người thợ qua ống kính TTXVN",
-      "description": "Bộ ảnh TTXVN đi từ khai trường Cọc Sáu, cảng Hòn Nét, nghiên cứu an toàn mỏ đến chân dung người thợ hầm lò tại Khe Chàm.",
+      "url": "/tin-nganh-than/2026/08/13/viec-lam-cong-ty-xay-lap-mo-2026/",
+      "title": "Xây lắp mỏ duy trì việc làm cho hơn 2.000 lao động",
+      "description": "Công ty Xây lắp mỏ có 2.038 lao động cuối tháng 6/2026; lương bình quân 20,683 triệu đồng/tháng, riêng thợ lò đạt 23,3 triệu đồng.",
       "keywords": [
-        "hình ảnh người thợ mỏ Khe Chàm",
-        "ảnh vùng than Quảng Ninh",
-        "TTXVN ngành Than",
-        "công nhân khai thác hầm lò",
-        "Vùng than và người thợ qua ống kính TTXVN",
-        "Cảng và phòng nghiên cứu nối mỏ với bên ngoài",
-        "Thông tin cần biết trước khi đăng ký",
-        "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
+        "việc làm Công ty Xây lắp mỏ 2026",
+        "tuyển thợ lò",
+        "lương thợ lò Xây lắp mỏ",
+        "tuyển dụng ngành Than",
+        "nhà ở công nhân mỏ",
+        "việc làm ngành Than Quảng Ninh",
+        "Xây lắp mỏ duy trì việc làm cho hơn 2.000 lao động",
+        "Việc làm Công ty Xây lắp mỏ 2026 chịu tác động của địa bàn thi công",
+        "Nhà ở công nhân xa gia đình là một phần của bài toán nhân lực",
+        "Câu hỏi thường gặp"
+      ],
+      "category": "news",
+      "categoryLabel": "Tin ngành Than",
+      "type": "Tin ngành Than",
+      "priority": 60
+    },
+    {
+      "url": "/tin-nganh-than/2026/08/22/xay-lap-mo-ho-tro-gia-dinh-cong-nhan-kho-khan-2026/",
+      "title": "Xây lắp mỏ hỗ trợ gia đình công nhân có hoàn cảnh khó khăn",
+      "description": "Công ty Xây lắp mỏ thăm hỏi gia đình công nhân khó khăn; tập thể Phân xưởng Đào lò 15 quyên góp 31,5 triệu đồng để cùng chia sẻ.",
+      "keywords": [
+        "Xây lắp mỏ hỗ trợ gia đình công nhân khó khăn",
+        "Công đoàn TKV hỗ trợ người lao động",
+        "31",
+        "5 triệu đồng hỗ trợ công nhân",
+        "an sinh xã hội ngành Than",
+        "nghĩa tình thợ mỏ",
+        "Phân xưởng Đào lò 15",
+        "Xây lắp mỏ hỗ trợ gia đình công nhân có hoàn cảnh khó khăn",
+        "Nhiều đầu mối cùng hỗ trợ một gia đình công nhân",
+        "Giá trị của sự đồng hành nằm ở chặng sau chuyến thăm",
+        "Câu hỏi thường gặp"
       ],
       "category": "news",
       "categoryLabel": "Tin ngành Than",
@@ -1225,17 +1816,9 @@
         "thu nhập thợ mỏ TKV",
         "việc làm ngành Than",
         "Hơn 13.500 thợ lò thu nhập trên 300 triệu đồng/năm",
-        "13.507 người đưa thu nhập cao thành kết quả có quy mô",
-        "Từ con số 13.507 đến những gương mặt có thật",
-        "Cánh cửa vào nghề chỉ kéo dài 2–3 tháng",
-        "Thu nhập cao được xây từ tay nghề và kỷ luật",
-        "Ai có thể viết tiếp một câu chuyện như anh Hưng, anh Sình?",
-        "Từ học nghề tới nhóm thợ có thu nhập cao",
-        "Thu nhập cao được xây bằng tay nghề và kỷ luật",
-        "Câu hỏi thường gặp",
-        "Học nghề mỏ 2–3 tháng có gắn với việc làm không?",
-        "Người mới có thể phấn đấu tới mức trên 300 triệu đồng/năm không?",
-        "Tôi ở tỉnh xa thì đăng ký bằng cách nào?"
+        "Hơn một nửa lực lượng thợ lò vượt mốc 300 triệu đồng",
+        "Thu nhập được xây từ ngày công, năng suất và tay nghề",
+        "Người mới nên đọc con số thu nhập như thế nào"
       ],
       "category": "work",
       "categoryLabel": "Công việc & lương",
@@ -1252,16 +1835,9 @@
         "tự động hóa ngành Than",
         "kỹ năng thợ mỏ",
         "Mỏ hầm lò bước vào thời đại cơ giới hóa: người thợ trẻ cần gì?",
-        "Những con số của một cuộc chuyển mình",
-        "Ca sản xuất bớt nặng sức, tăng hàm lượng kỹ thuật",
-        "Máy móc mở ra những vai trò nghề nghiệp mới",
-        "Người mới nên học gì ngoài thao tác nghề?",
-        "Bốn năng lực để bước vào mỏ hiện đại",
-        "Công nghệ làm nghề mỏ đáng học hơn",
-        "Câu hỏi thường gặp",
-        "Mỏ thông minh có còn cần thợ khai thác không?",
-        "Người không giỏi máy tính có theo nghề được không?",
-        "Cơ giới hóa có bảo đảm tuyệt đối an toàn không?"
+        "Cơ giới hóa đang thay đổi cấu trúc kỹ năng",
+        "Dữ liệu hỗ trợ quyết định nhưng không thay thế kinh nghiệm hiện trường",
+        "Người trẻ có lợi thế nếu giữ được khả năng học liên tục"
       ],
       "category": "technology",
       "categoryLabel": "An toàn & công nghệ",
@@ -1278,16 +1854,9 @@
         "thông gió khí mỏ",
         "sức khỏe thợ lò",
         "An toàn hầm lò được đào tạo thế nào trước ca sản xuất đầu tiên?",
-        "An toàn được đầu tư bằng công nghệ và con người",
-        "An toàn hiện diện từ lúc nhận ca đến khi bàn giao",
-        "Công nghệ hỗ trợ an toàn như thế nào?",
-        "Sức khỏe được chăm sóc trong suốt hành trình nghề nghiệp",
-        "Bốn nhịp an toàn trong một ca làm việc",
-        "Kỷ luật bảo vệ người thợ và cả tổ đội",
-        "Câu hỏi thường gặp",
-        "Học an toàn xong, người mới vào lò theo cách nào?",
-        "Máy móc hiện đại hỗ trợ an toàn ra sao?",
-        "Khi sức khỏe thay đổi, người thợ nên làm gì?"
+        "An toàn được học như một chuỗi hành động trong ca",
+        "Công nghệ giúp cảnh báo sớm, tổ đội quyết định phản ứng",
+        "Sức khỏe tiếp tục được theo dõi sau bước đầu vào"
       ],
       "category": "technology",
       "categoryLabel": "An toàn & công nghệ",
@@ -1304,16 +1873,8 @@
         "học nghề mỏ 2–3 tháng",
         "sức khỏe thợ lò",
         "Điều kiện tuyển thợ lò năm 2026: cánh cửa mở với ai?",
-        "Bốn tiêu chuẩn cần tự đối chiếu trước khi đăng ký",
-        "Sức khỏe quyết định khả năng theo nghề",
-        "Tổ đội chỉ mạnh khi từng người đủ sức bền",
-        "Thông tin ban đầu mở ra bước tư vấn phù hợp",
-        "Bắt đầu bằng một lần khai thông tin trung thực",
-        "Sức khỏe là hành trang đầu tiên của người thợ",
-        "Câu hỏi thường gặp",
-        "Đủ chiều cao và cân nặng là có thể đăng ký ngay không?",
-        "Bị cận thị có thể học nghề mỏ không?",
-        "Người ở tỉnh xa bắt đầu bằng cách nào?"
+        "Sàng lọc ban đầu và khám tuyển là hai việc khác nhau",
+        "Người ở xa nên kiểm tra gì trước khi lên đường"
       ],
       "category": "training",
       "categoryLabel": "Học nghề",
@@ -1323,23 +1884,16 @@
     {
       "url": "/bai-viet/an-toan-mua-mua-bao-2026/",
       "title": "Giữ nhịp sản xuất an toàn trong mùa mưa bão 2026",
-      "description": "Mưa lớn và giông lốc tác động trực tiếp đến khai trường, bãi thải, thoát nước và vận tải. Những nguyên tắc người lao động cần hiểu năm 2026.",
+      "description": "An toàn mỏ mùa mưa bão 2026: Mưa lớn và giông lốc tác động trực tiếp đến khai trường, bãi thải, thoát nước và vận tải. Những nguyên tắc người lao động cần hiểu…",
       "keywords": [
         "an toàn mỏ mùa mưa bão 2026",
         "phòng chống thiên tai ngành Than",
         "an toàn bãi thải mỏ",
         "sản xuất than tháng 7 2026",
         "Giữ nhịp sản xuất an toàn trong mùa mưa bão 2026",
-        "Quy mô công việc trong một tháng cao điểm",
-        "Một cơn mưa tác động đến cả chuỗi sản xuất",
-        "Tiến độ bền vững luôn bắt đầu từ hiện trường an toàn",
-        "Người mới học cách quan sát từ những dấu hiệu nhỏ",
-        "Bốn nhịp ứng phó trước, trong và sau mưa",
-        "An toàn là sức mạnh giữ mỏ vận hành bền bỉ",
-        "Câu hỏi thường gặp",
-        "Sau mưa, công việc được khôi phục theo cách nào?",
-        "An toàn mùa mưa liên quan đến những bộ phận nào?",
-        "Người lao động làm gì khi thấy dấu hiệu bất thường?"
+        "Một trận mưa có thể tác động tới cả chuỗi sản xuất",
+        "Sau mưa, nguy cơ chưa kết thúc ngay",
+        "Kỷ luật thông tin giữ cho ca sản xuất an toàn"
       ],
       "category": "technology",
       "categoryLabel": "An toàn & công nghệ",
@@ -1356,20 +1910,13 @@
         "học khai thác mỏ",
         "việc làm ngành Than",
         "2–3 tháng học nghề mỏ: người mới được chuẩn bị ra sao?",
-        "2–3 tháng học nghề được dùng vào việc gì?",
-        "Từ lớp học đến nhịp làm việc dưới mỏ",
-        "Kỷ luật học tập là bài kiểm tra nghề nghiệp đầu tiên",
-        "Chuẩn bị thể lực và tâm thế cho một nghề mới",
-        "Chuẩn bị để tận dụng trọn khóa học",
-        "Một khóa học ngắn, một nghề theo được lâu dài",
-        "Câu hỏi thường gặp",
-        "Khóa 2–3 tháng học những nội dung gì?",
-        "Sau khóa học, thu nhập được hình thành ra sao?",
-        "Đi học đều có quan trọng không?"
+        "Khóa học đặt nền cho người chưa có nghề",
+        "Thực hành và an toàn được học trong cùng một quy trình",
+        "Tay nghề tiếp tục được tích lũy sau khóa học"
       ],
-      "category": "work",
-      "categoryLabel": "Công việc & lương",
-      "type": "Công việc & lương",
+      "category": "technology",
+      "categoryLabel": "An toàn & công nghệ",
+      "type": "An toàn & công nghệ",
       "priority": 50
     },
     {
@@ -1382,16 +1929,8 @@
         "tuyển thợ mỏ Quảng Ninh",
         "nhập học nghề mỏ",
         "Hồ sơ học nghề mỏ năm 2026: đăng ký trước, chuẩn bị sau",
-        "Ba giấy tờ cần nhớ, một nguyên tắc cần giữ",
-        "Giấy tờ cần thống nhất thông tin cơ bản",
-        "Chuẩn bị từ quê nhà để chuyến đi không bị động",
-        "Hồ sơ hoàn tất, người học có thể tập trung cho nghề",
-        "Kiểm tra điều kiện trước khi làm giấy tờ",
-        "Đúng giấy tờ, đúng lịch, giảm tối đa việc đi lại",
-        "Câu hỏi thường gặp",
-        "Chưa có bằng tốt nghiệp văn hóa thì làm thế nào?",
-        "Có cần gửi căn cước công dân gốc qua bưu điện không?",
-        "Khi nào nên bắt đầu làm hồ sơ?"
+        "Ba loại giấy tờ cốt lõi khi đến làm thủ tục",
+        "Một lịch tiếp nhận rõ giúp hồ sơ trở nên đơn giản"
       ],
       "category": "training",
       "categoryLabel": "Học nghề",
@@ -1401,23 +1940,16 @@
     {
       "url": "/bai-viet/san-xuat-sach-hon-nganh-than/",
       "title": "Ngành Than xanh hơn từ những thay đổi dưới mỏ",
-      "description": "Ngành Than đầu tư xử lý nước, giảm bụi, cơ giới hóa và tái sử dụng đất đá thải; nhiều chỉ số cho thấy thay đổi môi trường đang diễn ra.",
+      "description": "Sản xuất sạch hơn trong ngành Than: Ngành Than đầu tư xử lý nước, giảm bụi, cơ giới hóa và tái sử dụng đất đá thải; nhiều chỉ số cho thấy thay đổi môi trường…",
       "keywords": [
         "sản xuất sạch hơn trong ngành Than",
         "môi trường mỏ Quảng Ninh",
         "xử lý nước thải mỏ",
         "kinh tế tuần hoàn ngành Than",
         "Ngành Than xanh hơn từ những thay đổi dưới mỏ",
-        "Những chỉ số cho thấy thay đổi đang diễn ra",
-        "Dòng nước sau khai thác quay trở lại sản xuất",
-        "Bụi, nhiên liệu và dữ liệu vận tải",
-        "Đất đá thải mở ra một vòng đời mới",
-        "Bốn cách nhận ra một mỏ vận hành có trách nhiệm",
-        "Người thợ trẻ bước vào một ngành đang đổi mới",
-        "Câu hỏi thường gặp",
-        "Sản xuất sạch hơn trong ngành Than được đo bằng gì?",
-        "Nước thải mỏ sau xử lý được dùng vào việc gì?",
-        "Tái sử dụng đất đá thải mang lại lợi ích gì?"
+        "Nước thải mỏ đang được quản lý như một dòng tài nguyên",
+        "Bụi, nhiên liệu và vận tải được kiểm soát bằng dữ liệu",
+        "Đất đá thải chỉ trở thành tài nguyên khi có đường sử dụng rõ ràng"
       ],
       "category": "technology",
       "categoryLabel": "An toàn & công nghệ",
@@ -1427,23 +1959,16 @@
     {
       "url": "/bai-viet/nghe-tho-lo-co-on-dinh-khong/",
       "title": "Nghề thợ lò có ổn định không? Dữ liệu 2026",
-      "description": "Nửa đầu năm 2026 TKV sản xuất khoảng 19,7 triệu tấn than sạch và cấp 22,77 triệu tấn cho điện. Những con số nói gì về việc làm thợ lò?",
+      "description": "Nghề thợ lò có ổn định không: Nửa đầu năm 2026 TKV sản xuất khoảng 19,7 triệu tấn than sạch và cấp 22,77 triệu tấn cho điện. Những con số nói gì về việc làm…",
       "keywords": [
         "nghề thợ lò có ổn định không",
         "việc làm ngành Than 2026",
         "TKV 6 tháng đầu năm 2026",
         "tuyển thợ mỏ Quảng Ninh",
         "Nghề thợ lò có ổn định không? Câu trả lời từ ngành Than 2026",
-        "Quy mô sản xuất đứng sau mỗi vị trí việc làm",
-        "Nhu cầu năng lượng tạo nền cho việc làm",
-        "Doanh nghiệp biến nhu cầu thành một công việc cụ thể",
-        "Người có tay nghề tự tạo thêm sự ổn định cho mình",
-        "Bốn điều tạo nên một nghề nghiệp bền vững",
-        "Ổn định là khi ngành cần người và người có giá trị",
-        "Câu hỏi thường gặp",
-        "Sản lượng than lớn mang lại ý nghĩa gì cho người tìm việc?",
-        "Người lao động nên kiểm tra điều gì ở đơn vị tiếp nhận?",
-        "Cơ giới hóa tạo cơ hội nào cho người trẻ?"
+        "Sản lượng lớn tạo nền cho nhu cầu nhân lực kỹ thuật",
+        "Công nghệ làm thay đổi cách một vị trí trở nên bền vững",
+        "Trước khi nhận việc, cần hỏi rõ điều gì"
       ],
       "category": "technology",
       "categoryLabel": "An toàn & công nghệ",
@@ -1453,27 +1978,20 @@
     {
       "url": "/bai-viet/hoc-thuc-hanh-nghe-mo-ham-lo/",
       "title": "Tay nghề thợ mỏ thời mỏ thông minh",
-      "description": "Hội thi thợ giỏi TKV 2026 có 501 thí sinh ở 27 nghề, cho thấy giá trị của thực hành, kỷ luật và khả năng làm chủ công nghệ.",
+      "description": "Tay nghề thợ mỏ trong thời kỳ mỏ thông minh: Hội thi thợ giỏi TKV 2026 có 501 thí sinh ở 27 nghề, cho thấy giá trị của thực hành, kỷ luật và khả năng làm chủ…",
       "keywords": [
         "tay nghề thợ mỏ trong thời kỳ mỏ thông minh",
         "hội thi thợ giỏi TKV 2026",
         "đào tạo nghề mỏ",
         "thực hành nghề mỏ",
         "Từ học viên đến thợ giỏi: tay nghề trong thời kỳ mỏ thông minh",
-        "Một hội thi cho thấy nghề mỏ coi trọng điều gì",
-        "Thợ giỏi làm việc bằng cả đôi tay và tư duy",
-        "Mỗi lỗi nhỏ được sửa là một bước trưởng thành",
-        "Lộ trình nâng bậc bắt đầu ngay trong lớp học",
-        "Bốn thói quen của người muốn tiến xa",
-        "Tay nghề biến sức lao động thành giá trị",
-        "Câu hỏi thường gặp",
-        "Sau khóa học 2–3 tháng, tay nghề phát triển tiếp thế nào?",
-        "Một người thợ giỏi được đánh giá bằng điều gì?",
-        "Công nghệ mới mang lại cơ hội gì?"
+        "Tay nghề bắt đầu từ khả năng làm đúng và giải thích được vì sao",
+        "Lỗi nhỏ trong lớp học cần được sửa trước khi thành thói quen",
+        "Nâng bậc là một quá trình tiếp tục sau khi nhận việc"
       ],
-      "category": "technology",
-      "categoryLabel": "An toàn & công nghệ",
-      "type": "An toàn & công nghệ",
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Học nghề",
       "priority": 50
     },
     {
@@ -1485,12 +2003,13 @@
         "Nguyễn Tử Linh",
         "Thông tin phải giúp người lao động ra quyết định tốt hơn",
         "Nội dung mới do Nguyễn Tử Linh chịu trách nhiệm",
-        "Than Hà Lầm chăm lo phục hồi sức khỏe thợ lò",
-        "Phúc lợi thợ mỏ Mỏ Việt Bắc dành cho 47 lao động",
-        "Than Nam Mẫu tuyên dương 1.672 con công nhân học giỏi",
-        "Than Thống Nhất tri ân gia đình có thân nhân hy sinh",
-        "Than Thống Nhất đỡ đầu cựu thanh niên xung phong tại Cẩm Phả",
-        "Đầm Hà hợp tác Than Thống Nhất đào tạo nghề mỏ, tạo việc làm"
+        "Trường Cao đẳng TKV tháo gỡ điểm nghẽn tuyển sinh nghề mỏ",
+        "Xây lắp mỏ hỗ trợ gia đình công nhân có hoàn cảnh khó khăn",
+        "Kho vận Đá Bạc hỗ trợ 3 nữ công nhân phát triển mô hình nuôi gà",
+        "22 thanh niên Ca Thành tìm hiểu nghề mỏ tại Than Núi Béo",
+        "Than Hạ Long hỗ trợ 183 triệu đồng sửa nhà chính sách",
+        "Công ty Vật tư đỡ đầu cựu thanh niên xung phong từ quý III/2026",
+        "Ba loại nội dung được ghi nguồn theo ba cách khác nhau"
       ],
       "category": "guide",
       "categoryLabel": "Người biên soạn",
@@ -1512,20 +2031,7 @@
         "Học nghề và hồ sơ",
         "Đi làm mỏ có cần bằng cấp hoặc kinh nghiệm không?",
         "Học nghề mỏ mất bao lâu?",
-        "Học nghề mỏ có mất học phí không?",
-        "Trong thời gian học có được ăn ở và hỗ trợ không?",
-        "Hồ sơ nhập học nghề mỏ gồm những gì?",
-        "Đi từ tỉnh xa",
-        "Đi học và làm mỏ cần chuẩn bị bao nhiêu tiền?",
-        "Người ở tỉnh xa đăng ký đi làm mỏ thế nào?",
-        "Địa điểm nhập học nghề mỏ ở đâu?",
-        "Công việc sau đào tạo",
-        "Học xong nghề mỏ sẽ làm ở công ty nào?",
-        "Công việc thợ mỏ hầm lò là làm gì?",
-        "Thợ mỏ làm mấy tiếng một ngày?",
-        "Làm mỏ than có được đóng bảo hiểm không?",
-        "Thu nhập và lựa chọn",
-        "Lương thợ lò được tính thế nào?"
+        "Học nghề mỏ có mất học phí không?"
       ],
       "category": "technology",
       "categoryLabel": "An toàn & công nghệ",
@@ -1553,35 +2059,215 @@
     },
     {
       "url": "/bang-luong/",
-      "title": "Bảng lương công nhân ngành Than theo công ty, theo quý",
-      "description": "Kho bảng lương công nhân ngành Than theo công ty và theo quý: dữ liệu ngày công, lương sản phẩm, tổng thu nhập; bản công khai đã ẩn thông tin cá nhân.",
+      "title": "Bảng lương công nhân ngành Than theo công ty, theo kỳ",
+      "description": "Kho bảng lương công nhân ngành Than theo công ty và kỳ dữ liệu. Mở trực tiếp tệp hoặc thư mục tài liệu gốc trên Google Drive.",
       "keywords": [
-        "Bảng lương công nhân ngành Than theo công ty, theo quý",
-        "Bảng lương mới cập nhật",
-        "Công ty Cổ phần Than Vàng Danh - Vinacomin",
-        "PDF gốc được giữ để đối chiếu, website chỉ hiển thị bản an toàn"
+        "Bảng lương các công ty ngành Than",
+        "Chọn công ty và kỳ bảng lương",
+        "Than Hà Lầm",
+        "Than Vàng Danh",
+        "Than Thống Nhất",
+        "Than Dương Huy",
+        "Than Hạ Long",
+        "Xây lắp mỏ"
       ],
-      "category": "technology",
-      "categoryLabel": "An toàn & công nghệ",
-      "type": "An toàn & công nghệ",
+      "category": "work",
+      "categoryLabel": "Công việc & lương",
+      "type": "Công việc & lương",
       "priority": 10
     },
     {
-      "url": "/bang-luong/vang-danh/quy-2-2026/",
-      "title": "Bảng lương Than Vàng Danh quý II/2026 | Lương thợ lò",
-      "description": "Xem bảng lương thợ lò Công ty Than Vàng Danh quý II/2026: ngày công, lương sản phẩm và tổng thu nhập tháng 4, 5, 6; bản PDF đã ẩn danh.",
+      "url": "/bang-luong/duong-huy/quy-3-2025/",
+      "title": "Bảng lương Than Dương Huy quý III/2025",
+      "description": "Mở thư mục Google Drive bảng lương tháng 7, 8 và 9/2025 của học sinh thực tập thợ lò, cơ điện lò tại Công ty Than Dương Huy.",
       "keywords": [
-        "Bảng lương thợ lò Than Vàng Danh quý II/2026",
-        "Thông tin chính của bảng lương",
-        "Xem bảng lương thực tế",
-        "Cách đọc các cột trong bảng",
-        "Thông tin nguồn",
+        "Bảng lương Than Dương Huy quý III/2025",
+        "Mở tài liệu bảng lương Than Dương Huy",
+        "Thông tin tài liệu",
+        "Kiểm tra điều kiện học nghề mỏ",
+        "Tóm tắt"
+      ],
+      "category": "work",
+      "categoryLabel": "Công việc & lương",
+      "type": "Công việc & lương",
+      "priority": 10
+    },
+    {
+      "url": "/bang-luong/ha-lam/quy-2-2026/",
+      "title": "Bảng lương Than Hà Lầm quý II/2026 | Google Drive",
+      "description": "Mở file PDF bảng lương công nhân Công ty Cổ phần Than Hà Lầm - Vinacomin quý II/2026, gồm dữ liệu tháng 4, 5 và 6/2026 trên Google Drive.",
+      "keywords": [
+        "Bảng lương công nhân Than Hà Lầm quý II/2026",
+        "Mở file bảng lương Than Hà Lầm",
+        "Thông tin tài liệu",
         "Bạn muốn kiểm tra điều kiện học nghề mỏ?",
         "Tóm tắt nhanh"
       ],
       "category": "work",
       "categoryLabel": "Công việc & lương",
       "type": "Công việc & lương",
+      "priority": 10
+    },
+    {
+      "url": "/bang-luong/ha-long/9-thang-2025/",
+      "title": "Bảng lương Than Hạ Long 9 tháng năm 2025",
+      "description": "Mở tệp Excel Google Drive tổng hợp tiền lương lao động hầm lò từ tháng 1 đến tháng 9/2025 của Công ty Than Hạ Long - TKV.",
+      "keywords": [
+        "Bảng lương Than Hạ Long 9 tháng năm 2025",
+        "Mở tệp bảng lương Than Hạ Long",
+        "Thông tin tài liệu",
+        "Kiểm tra điều kiện học nghề mỏ",
+        "Tóm tắt"
+      ],
+      "category": "work",
+      "categoryLabel": "Công việc & lương",
+      "type": "Công việc & lương",
+      "priority": 10
+    },
+    {
+      "url": "/bang-luong/thong-nhat/9-thang-2025/",
+      "title": "Bảng lương Than Thống Nhất 9 tháng năm 2025",
+      "description": "Mở tệp Excel Google Drive tổng hợp thu nhập 9 tháng năm 2025 của lao động khai thác, cơ điện Công ty Than Thống Nhất - TKV.",
+      "keywords": [
+        "Bảng lương Than Thống Nhất 9 tháng năm 2025",
+        "Mở tệp bảng lương Than Thống Nhất",
+        "Thông tin tài liệu",
+        "Kiểm tra điều kiện học nghề mỏ",
+        "Tóm tắt"
+      ],
+      "category": "work",
+      "categoryLabel": "Công việc & lương",
+      "type": "Công việc & lương",
+      "priority": 10
+    },
+    {
+      "url": "/bang-luong/thong-nhat/quy-3-2025/",
+      "title": "Bảng lương Than Thống Nhất quý III/2025",
+      "description": "Mở thư mục Google Drive bảng lương Than Thống Nhất tháng 7, 8 và 9/2025 của lao động nghề khai thác, cơ điện mỏ hầm lò.",
+      "keywords": [
+        "Bảng lương Than Thống Nhất quý III/2025",
+        "Mở tài liệu bảng lương Than Thống Nhất",
+        "Thông tin tài liệu",
+        "Kiểm tra điều kiện học nghề mỏ",
+        "Tóm tắt"
+      ],
+      "category": "work",
+      "categoryLabel": "Công việc & lương",
+      "type": "Công việc & lương",
+      "priority": 10
+    },
+    {
+      "url": "/bang-luong/vang-danh/9-thang-2025/",
+      "title": "Bảng lương Than Vàng Danh 9 tháng năm 2025",
+      "description": "Mở thư mục Google Drive tổng hợp thu nhập 9 tháng năm 2025 của lao động miền Trung đang làm việc trong mỏ hầm lò Than Vàng Danh.",
+      "keywords": [
+        "Bảng lương Than Vàng Danh 9 tháng năm 2025",
+        "Mở tài liệu bảng lương Than Vàng Danh",
+        "Thông tin tài liệu",
+        "Kiểm tra điều kiện học nghề mỏ",
+        "Tóm tắt"
+      ],
+      "category": "work",
+      "categoryLabel": "Công việc & lương",
+      "type": "Công việc & lương",
+      "priority": 10
+    },
+    {
+      "url": "/bang-luong/vang-danh/quy-2-2026/",
+      "title": "Bảng lương Than Vàng Danh quý II/2026 | File Google Drive",
+      "description": "Mở file PDF bảng lương thợ lò Công ty Than Vàng Danh quý II/2026 trên Google Drive: dữ liệu tháng 4, 5 và 6/2026.",
+      "keywords": [
+        "Bảng lương thợ lò Than Vàng Danh quý II/2026",
+        "Mở file bảng lương Than Vàng Danh",
+        "Thông tin tài liệu",
+        "Bạn muốn kiểm tra điều kiện học nghề mỏ?",
+        "Tóm tắt nhanh"
+      ],
+      "category": "work",
+      "categoryLabel": "Công việc & lương",
+      "type": "Công việc & lương",
+      "priority": 10
+    },
+    {
+      "url": "/bang-luong/xay-lap-mo/9-thang-2025/",
+      "title": "Bảng lương Xây lắp mỏ 9 tháng năm 2025",
+      "description": "Mở tệp Excel Google Drive tổng hợp ngày công, tiền lương từ tháng 1 đến tháng 9/2025 của lao động tại các phân xưởng đào lò Xây lắp mỏ.",
+      "keywords": [
+        "Bảng lương Xây lắp mỏ 9 tháng năm 2025",
+        "Mở tệp bảng lương Xây lắp mỏ",
+        "Thông tin tài liệu",
+        "Kiểm tra điều kiện học nghề mỏ",
+        "Tóm tắt"
+      ],
+      "category": "work",
+      "categoryLabel": "Công việc & lương",
+      "type": "Công việc & lương",
+      "priority": 10
+    },
+    {
+      "url": "/giai-dap-nghe-mo/bi-can-thi-nhe-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "title": "Bị cận thị nhẹ có đăng ký học nghề mỏ được không?",
+      "description": "Bị cận thị nhẹ có đăng ký học nghề mỏ được không? Xem điều kiện mắt hiện hành, cách khai đúng số kính và vai trò của khám sức khỏe tuyển dụng.",
+      "keywords": [
+        "Bị cận thị nhẹ có đăng ký học nghề mỏ được không?",
+        "Tình trạng mắt cần được khai trung thực ngay từ đầu",
+        "Cận thị là điểm loại trừ hiện hành",
+        "Khai đúng tình trạng mắt",
+        "Khám tuyển là căn cứ cuối cùng",
+        "Chưa cần gửi hồ sơ y tế",
+        "Tin nhắn đầu tiên nên cung cấp thông tin gì?",
+        "Ba sai lầm dễ làm mất thời gian trước ngày khám",
+        "Khai thật về mắt trước khi chuẩn bị đường đi",
+        "Ba câu hỏi thường gặp",
+        "Thông tin liên quan"
+      ],
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Học nghề",
+      "priority": 10
+    },
+    {
+      "url": "/giai-dap-nghe-mo/bi-huyet-ap-cao-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "title": "Bị huyết áp cao có đăng ký học nghề mỏ được không?",
+      "description": "Bị huyết áp cao có đăng ký học nghề mỏ được không? Xem cách khai tình trạng, ý nghĩa của sàng lọc ban đầu và vai trò của khám tuyển.",
+      "keywords": [
+        "Bị huyết áp cao có đăng ký học nghề mỏ được không?",
+        "Khai đúng huyết áp trước khi chuẩn bị hồ sơ và đường đi",
+        "Không tự kết luận từ một lần đo",
+        "Khai đúng tình trạng đang biết",
+        "Khám tuyển là căn cứ cuối cùng",
+        "Giữ thông tin y tế riêng tư",
+        "Tin nhắn đầu tiên nên nói gì về huyết áp?",
+        "Bốn việc không nên làm trước khi khám tuyển",
+        "Ba câu hỏi thường gặp",
+        "Thông tin liên quan",
+        "Kiểm tra điều kiện trước khi chuẩn bị hồ sơ"
+      ],
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Học nghề",
+      "priority": 10
+    },
+    {
+      "url": "/giai-dap-nghe-mo/cao-duoi-1m53-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "title": "Cao dưới 1m53 có đăng ký học nghề mỏ được không?",
+      "description": "Cao dưới 1m53 có đăng ký học nghề mỏ được không? Đối chiếu mốc 1m53, cách đo lại chiều cao và bước cần làm trước khi đi khám.",
+      "keywords": [
+        "Cao dưới 1m53 có đăng ký học nghề mỏ được không?",
+        "Mốc 1m53 cần được đo đúng, không làm tròn",
+        "Mốc sơ bộ là từ 1m53",
+        "Đo lại đúng tư thế",
+        "Không tự làm tròn số",
+        "Kiểm tra từ xa trước",
+        "Người ở tỉnh xa cần gửi thông tin gì trước khi làm hồ sơ?",
+        "Vì sao cần kiểm tra cả cân nặng và sức khỏe dù đã đủ chiều cao?",
+        "Đo đúng, khai thật rồi mới chuẩn bị đường đi",
+        "Ba câu hỏi thường gặp",
+        "Thông tin liên quan"
+      ],
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Học nghề",
       "priority": 10
     },
     {
@@ -1600,6 +2286,138 @@
       "priority": 10
     },
     {
+      "url": "/giai-dap-nghe-mo/chua-co-bang-cap-3-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "title": "Chưa có bằng cấp 3 có đăng ký học nghề mỏ được không?",
+      "description": "Chưa có bằng cấp 3 vẫn có thể đăng ký học nghề mỏ để được đối chiếu theo hệ đào tạo; chưa cần gửi giấy tờ và không nên tự kết luận đủ điều kiện.",
+      "keywords": [
+        "Chưa có bằng cấp 3 có đăng ký học nghề mỏ được không?",
+        "Đừng tự loại mình chỉ vì chưa có bằng cấp 3",
+        "Vẫn đăng ký kiểm tra được",
+        "Không hứa chắc tiếp nhận",
+        "Chưa gửi ảnh giấy tờ",
+        "Khai đúng tình trạng",
+        "Tin nhắn đầu tiên nên ghi gì để được trả lời đúng?",
+        "Chuẩn bị hồ sơ đúng lúc giúp tránh mất công",
+        "Ba câu hỏi thường gặp",
+        "Thông tin liên quan",
+        "Kiểm tra điều kiện trước khi chuẩn bị hồ sơ"
+      ],
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Học nghề",
+      "priority": 10
+    },
+    {
+      "url": "/giai-dap-nghe-mo/chua-du-18-tuoi-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "title": "Chưa đủ 18 tuổi có đăng ký học nghề mỏ được không?",
+      "description": "Chưa đủ 18 tuổi có đăng ký học nghề mỏ được không? Đối chiếu mốc từ 18 tuổi và những việc nên chuẩn bị trước khi đủ điều kiện.",
+      "keywords": [
+        "Chưa đủ 18 tuổi có đăng ký học nghề mỏ được không?",
+        "Chỉ đăng ký chính thức khi đã đủ 18 tuổi",
+        "Mốc tối thiểu là đủ 18 tuổi",
+        "Có thể tìm hiểu trước",
+        "Không khai sai năm sinh",
+        "Đủ tuổi phải kiểm tra lại",
+        "Khi vừa đủ 18 tuổi, cần kiểm tra lại theo thứ tự nào?",
+        "Đủ 18 tuổi có đồng nghĩa chắc chắn được nhận không?",
+        "Chờ đủ 18 tuổi, nhưng có thể chuẩn bị hiểu biết ngay từ bây giờ",
+        "Ba câu hỏi thường gặp",
+        "Thông tin liên quan"
+      ],
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Học nghề",
+      "priority": 10
+    },
+    {
+      "url": "/giai-dap-nghe-mo/co-dien-mo-hoc-10-thang-co-nen-dang-ky-khong/",
+      "title": "Cơ điện mỏ học 10 tháng: ai nên chọn nghề này?",
+      "description": "Cơ điện mỏ học 10 tháng, dài hơn khai thác và xây dựng mỏ. Xem ai phù hợp, công việc sau đào tạo và những điều cần hỏi trước khi đăng ký.",
+      "keywords": [
+        "Cơ điện mỏ học 10 tháng: ai nên chọn nghề này?",
+        "Chọn cơ điện mỏ vì hợp công việc, không vì tên nghề",
+        "Học 10 tháng",
+        "Công việc thiên về thiết bị",
+        "Không so nghề chỉ bằng thời gian",
+        "Xác nhận theo đợt tuyển",
+        "Vì sao không nên chỉ nhìn con số 10 tháng?",
+        "Học 10 tháng thì quyền lợi trong thời gian học được hiểu thế nào?",
+        "Bốn câu nên hỏi trước khi chốt nghề cơ điện mỏ",
+        "Ba câu hỏi thường gặp",
+        "Thông tin liên quan"
+      ],
+      "category": "work",
+      "categoryLabel": "Công việc & lương",
+      "type": "Công việc & lương",
+      "priority": 10
+    },
+    {
+      "url": "/giai-dap-nghe-mo/dang-ky-hoc-nghe-mo-ban-dau-co-can-gui-anh-cccd-khong/",
+      "title": "Đăng ký học nghề mỏ ban đầu có cần gửi ảnh CCCD không?",
+      "description": "Đăng ký học nghề mỏ ban đầu chưa cần gửi ảnh CCCD hay giấy tờ. Xem thông tin cần khai, lúc mang hồ sơ gốc và cách đăng ký an toàn.",
+      "keywords": [
+        "Đăng ký học nghề mỏ ban đầu có cần gửi ảnh CCCD không?",
+        "Chưa cần gửi giấy tờ ở bước đăng ký đầu tiên",
+        "Chưa cần gửi ảnh CCCD",
+        "Chỉ khai thông tin cơ bản",
+        "Mang hồ sơ khi có lịch",
+        "Không gửi giấy tờ gốc",
+        "Khi nào mới cần CCCD, giấy khai sinh và bằng cấp?",
+        "Làm đúng theo năm bước từ kiểm tra đến nhập học",
+        "Đăng ký trước, hồ sơ mang theo sau khi có lịch",
+        "Ba câu hỏi thường gặp",
+        "Thông tin liên quan"
+      ],
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Học nghề",
+      "priority": 10
+    },
+    {
+      "url": "/giai-dap-nghe-mo/dang-ky-hoc-nghe-mo-co-mat-phi-moi-gioi-khong/",
+      "title": "Đăng ký học nghề mỏ có mất phí môi giới không?",
+      "description": "Đăng ký học nghề mỏ qua đầu mối công khai không có khoản phí môi giới trong thông tin tuyển. Không chuyển tiền giữ chỗ; hãy xác minh người phụ trách.",
+      "keywords": [
+        "Đăng ký học nghề mỏ có mất phí môi giới không?",
+        "Đăng ký đúng không bắt đầu bằng chuyển tiền",
+        "Không có phí môi giới",
+        "Chưa cần gửi giấy tờ",
+        "Không chuyển tiền cá nhân",
+        "Đối chiếu đầu mối",
+        "Quy trình đăng ký đúng không bắt đầu bằng chuyển tiền",
+        "Cách xác minh người tuyển sinh trong ba phút",
+        "Nếu đã gửi giấy tờ hoặc chuyển tiền thì làm gì?",
+        "Không chuyển tiền để đổi lấy một lời hứa giữ suất",
+        "Ba câu hỏi thường gặp"
+      ],
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Học nghề",
+      "priority": 10
+    },
+    {
+      "url": "/giai-dap-nghe-mo/di-kham-suc-khoe-hoc-nghe-mo-truoc-hay-sau-khi-dang-ky/",
+      "title": "Đi khám sức khỏe học nghề mỏ trước hay sau khi đăng ký?",
+      "description": "Đi khám sức khỏe học nghề mỏ trước hay sau khi đăng ký? Xem đúng thứ tự kiểm tra sơ bộ, chờ xác nhận lịch rồi khám tuyển trực tiếp.",
+      "keywords": [
+        "Đi khám sức khỏe học nghề mỏ trước hay sau khi đăng ký?",
+        "Đăng ký trước để biết đúng bước khám cần làm",
+        "Đăng ký sơ bộ trước",
+        "Không tự chọn nơi khám",
+        "Khám theo lịch xác nhận",
+        "Kết quả y tế là cuối cùng",
+        "Trước khi có lịch khám, người lao động nên chuẩn bị gì?",
+        "Thứ tự năm bước giúp người ở tỉnh xa tránh đi lại thừa",
+        "Ba câu hỏi thường gặp",
+        "Thông tin liên quan",
+        "Kiểm tra điều kiện trước khi chuẩn bị hồ sơ"
+      ],
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Học nghề",
+      "priority": 10
+    },
+    {
       "url": "/di-lam-mo-than-can-chuan-bi-bao-nhieu-tien/",
       "title": "Đi làm mỏ than cần chuẩn bị bao nhiêu tiền?",
       "description": "Thông tin học nghề mỏ và việc làm ngành Than tại Quảng Ninh.",
@@ -1614,13 +2432,33 @@
         "Cách tính phù hợp hơn là lập danh sách, không đoán một con số",
         "Ba dấu hiệu cần dừng lại và xác minh",
         "Thông tin được đối chiếu như thế nào?",
-        "Người lao động cũng thường hỏi",
-        "Ba nội dung nên xem cùng",
-        "Kiểm tra điều kiện trước khi chuẩn bị hồ sơ"
+        "Người lao động cũng thường hỏi"
       ],
       "category": "welfare",
       "categoryLabel": "Đời sống & phúc lợi",
       "type": "Đời sống & phúc lợi",
+      "priority": 10
+    },
+    {
+      "url": "/giai-dap-nghe-mo/di-lam-mo-than-co-can-kinh-nghiem-khong/",
+      "title": "Đi làm mỏ than có cần kinh nghiệm không?",
+      "description": "Đi làm mỏ than không yêu cầu kinh nghiệm sẵn có. Người phù hợp được học khai thác, xây dựng mỏ 2–3 tháng hoặc cơ điện mỏ 10 tháng rồi mới nhận việc tại TKV.",
+      "keywords": [
+        "Đi làm mỏ than có cần kinh nghiệm không?",
+        "Người chưa có nghề được đào tạo từ đầu",
+        "Không cần kinh nghiệm cũ",
+        "Phải học nghề",
+        "An toàn là phần bắt buộc",
+        "Đạt yêu cầu mới nhận việc",
+        "Nhà tuyển dụng kiểm tra điều gì thay cho kinh nghiệm?",
+        "Đào tạo từ đầu bù khoảng trống kinh nghiệm như thế nào?",
+        "Người từng làm việc khác có lợi thế gì?",
+        "Không cần kinh nghiệm, nhưng phải qua đào tạo và đánh giá",
+        "Ba câu hỏi thường gặp"
+      ],
+      "category": "technology",
+      "categoryLabel": "An toàn & công nghệ",
+      "type": "An toàn & công nghệ",
       "priority": 10
     },
     {
@@ -1638,8 +2476,7 @@
         "Nhắn gì để được kiểm tra nhanh?",
         "Tư vấn trước, nhập học sau khi có lịch",
         "Google và AI có thể đối chiếu cùng một câu trả lời",
-        "20 câu hỏi cần biết trước khi đi làm mỏ",
-        "Kiểm tra điều kiện trước khi chuẩn bị hồ sơ"
+        "20 câu hỏi cần biết trước khi đi làm mỏ"
       ],
       "category": "training",
       "categoryLabel": "Học nghề",
@@ -1652,12 +2489,160 @@
       "description": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
       "keywords": [
         "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
-        "1 câu trả lời có thể tra cứu",
-        "Lộ trình đi làm mỏ than Quảng Ninh từ đăng ký đến nhận việc"
+        "17 câu trả lời có thể tra cứu",
+        "Đi khám sức khỏe học nghề mỏ trước hay sau khi đăng ký?",
+        "Cơ điện mỏ học 10 tháng: ai nên chọn nghề này?",
+        "Đăng ký học nghề mỏ ban đầu có cần gửi ảnh CCCD không?",
+        "Sau khi học nghề mỏ có được ký hợp đồng lao động không?",
+        "Chưa đủ 18 tuổi có đăng ký học nghề mỏ được không?",
+        "Cao dưới 1m53 có đăng ký học nghề mỏ được không?",
+        "Nặng dưới 47 kg có đăng ký học nghề mỏ được không?",
+        "Bị huyết áp cao có đăng ký học nghề mỏ được không?",
+        "Bị cận thị nhẹ có đăng ký học nghề mỏ được không?"
+      ],
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Học nghề",
+      "priority": 10
+    },
+    {
+      "url": "/hoc-nghe-mo-co-mat-tien-khong/",
+      "title": "Học nghề mỏ có mất tiền không? Chi phí cần biết",
+      "description": "Học nghề mỏ có mất tiền không? Người học thuộc chỉ tiêu được miễn học phí, có ăn ở và hỗ trợ 7,5 triệu đồng/tháng; cần dự trù đi lại, giấy tờ và chi tiêu cá nhân.",
+      "keywords": [
+        "Học nghề mỏ có mất tiền không?",
+        "Khoản nào được hỗ trợ?",
+        "Khoản nào nên tự dự trù?",
+        "Cách giảm chi phí không cần thiết"
+      ],
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Học nghề",
+      "priority": 10
+    },
+    {
+      "url": "/giai-dap-nghe-mo/hoc-nghe-mo-duoc-ho-tro-75-trieu-dong-the-nao/",
+      "title": "Học nghề mỏ được hỗ trợ 7,5 triệu đồng/tháng thế nào?",
+      "description": "Người học nghề mỏ thuộc chỉ tiêu được hỗ trợ 7,5 triệu đồng/tháng trong thời gian học, miễn kinh phí đào tạo, có 3 bữa/ngày và ký túc xá.",
+      "keywords": [
+        "Học nghề mỏ được hỗ trợ 7,5 triệu đồng/tháng thế nào?",
+        "Khoản hỗ trợ nằm trong chính sách học nghề",
+        "7,5 triệu đồng/tháng",
+        "Miễn kinh phí đào tạo",
+        "Ba bữa mỗi ngày",
+        "Ký túc xá khép kín",
+        "Khoản 7,5 triệu đồng/tháng được hiểu trong phạm vi nào?",
+        "Ăn và ở được bố trí ra sao trong thời gian học?",
+        "Ba dấu hiệu cần dừng lại để xác minh",
+        "Hãy nhìn trọn gói quyền lợi, không chỉ nhìn một con số",
+        "Ba câu hỏi thường gặp"
+      ],
+      "category": "welfare",
+      "categoryLabel": "Đời sống & phúc lợi",
+      "type": "Đời sống & phúc lợi",
+      "priority": 10
+    },
+    {
+      "url": "/hoc-tho-lo-bao-lau/",
+      "title": "Học thợ lò bao lâu thì đi làm?",
+      "description": "Học thợ lò bao lâu? Khai thác và xây dựng mỏ hầm lò khoảng 2–3 tháng; cơ điện mỏ khoảng 10 tháng. Hoàn thành và đạt yêu cầu rồi mới được tiếp nhận làm việc.",
+      "keywords": [
+        "Học thợ lò bao lâu thì đi làm?",
+        "Vì sao cơ điện mỏ học lâu hơn?",
+        "Học xong có vào làm ngay không?",
+        "Trong thời gian học có hỗ trợ không?"
+      ],
+      "category": "guide",
+      "categoryLabel": "Thông tin nghề mỏ",
+      "type": "Thông tin nghề mỏ",
+      "priority": 10
+    },
+    {
+      "url": "/hoc-tho-lo-can-bang-cap-gi/",
+      "title": "Học thợ lò cần bằng cấp gì? Điều kiện học nghề mỏ",
+      "description": "Học thợ lò cần bằng cấp gì? Giải thích điều kiện học vấn, trường hợp chưa có bằng, hồ sơ cần mang và cách kiểm tra điều kiện trước khi đến Quảng Ninh.",
+      "keywords": [
+        "Học thợ lò cần bằng cấp gì?",
+        "Có bằng THCS hoặc THPT thì chuẩn bị thế nào?",
+        "Chưa có bằng thì sao?",
+        "Bằng cấp không phải điều kiện duy nhất"
+      ],
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Học nghề",
+      "priority": 10
+    },
+    {
+      "url": "/hoc-tho-lo-co-duoc-an-o-khong/",
+      "title": "Học thợ lò có được ăn ở không?",
+      "description": "Học thợ lò có được ăn ở không? Người học thuộc chỉ tiêu được bố trí 3 bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học.",
+      "keywords": [
+        "Học thợ lò có được ăn ở không?",
+        "Người tỉnh xa có cần tự thuê trọ?",
+        "Được bố trí ăn trong bao lâu?"
+      ],
+      "category": "guide",
+      "categoryLabel": "Thông tin nghề mỏ",
+      "type": "Thông tin nghề mỏ",
+      "priority": 10
+    },
+    {
+      "url": "/hoc-tho-lo-co-mien-phi-khong/",
+      "title": "Học thợ lò có miễn phí không? Học viên được hỗ trợ gì?",
+      "description": "Học thợ lò có miễn phí không? Người học thuộc chỉ tiêu được miễn học phí, có 3 bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học.",
+      "keywords": [
+        "Học thợ lò có miễn phí không?",
+        "“Miễn phí” nên hiểu chính xác thế nào?",
+        "Ăn ở và hỗ trợ trong thời gian học"
+      ],
+      "category": "guide",
+      "categoryLabel": "Thông tin nghề mỏ",
+      "type": "Thông tin nghề mỏ",
+      "priority": 10
+    },
+    {
+      "url": "/hoc-tho-lo-lien-he-ai/",
+      "title": "Học thợ lò liên hệ ai? Cách đăng ký đúng từ đầu",
+      "description": "Học thợ lò liên hệ ai? Liên hệ Thầy Linh 096 304 8585 để kiểm tra điều kiện, chọn nghề, nhận lịch và hướng dẫn hồ sơ trước khi đến Quảng Ninh.",
+      "keywords": [
+        "Học thợ lò liên hệ ai?",
+        "Vì sao nên liên hệ trước khi chuẩn bị hồ sơ?",
+        "Học nghề nào để trở thành thợ lò?",
+        "Trong thời gian học được hỗ trợ gì?"
+      ],
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Học nghề",
+      "priority": 10
+    },
+    {
+      "url": "/hoc-tho-lo-o-dau-quang-ninh/",
+      "title": "Học thợ lò ở đâu Quảng Ninh? Địa điểm nhập học",
+      "description": "Học thợ lò ở đâu Quảng Ninh? Địa điểm làm thủ tục hiện hành: Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh; cần xác nhận lịch trước khi đến.",
+      "keywords": [
+        "Học thợ lò ở đâu Quảng Ninh?",
+        "Tại sao phải xác nhận lịch?",
+        "Đến học cần chuẩn bị gì?",
+        "Người tỉnh xa có được bố trí ăn ở?"
       ],
       "category": "entry",
       "categoryLabel": "Điều kiện & hồ sơ",
       "type": "Điều kiện & hồ sơ",
+      "priority": 10
+    },
+    {
+      "url": "/hoc-tho-mo-lien-he-ai/",
+      "title": "Học thợ mỏ liên hệ ai? Điều kiện và cách đăng ký",
+      "description": "Học thợ mỏ liên hệ ai? Liên hệ Thầy Linh 096 304 8585 để kiểm tra điều kiện, chọn nghề khai thác, xây dựng hoặc cơ điện mỏ và nhận lịch nhập học.",
+      "keywords": [
+        "Học thợ mỏ liên hệ ai?",
+        "Học “thợ mỏ” là học nghề nào?",
+        "Điều kiện sơ bộ",
+        "Vì sao nên liên hệ từ xa?"
+      ],
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Học nghề",
       "priority": 10
     },
     {
@@ -1675,14 +2660,29 @@
         "Sáu thông tin phải rõ trước ngày nhập học",
         "Công việc thợ mỏ hầm lò là làm gì?",
         "Thông tin được đối chiếu như thế nào?",
-        "Người lao động cũng thường hỏi",
-        "Ba nội dung nên xem cùng",
-        "Kiểm tra điều kiện trước khi chuẩn bị hồ sơ"
+        "Người lao động cũng thường hỏi"
       ],
       "category": "work",
       "categoryLabel": "Công việc & lương",
       "type": "Công việc & lương",
       "priority": 10
+    },
+    {
+      "url": "/phong-su/ia-rdeh-gia-lai-con-duong-den-vung-mo/",
+      "title": "Ia RDeh, Gia Lai: con đường đến vùng mỏ",
+      "description": "Ghi chép hiện trường tại Ia RDeh, Gia Lai: tư vấn nghề mỏ, phối hợp ba bên và câu chuyện gia đình công nhân Kso Sới.",
+      "keywords": [
+        "phóng sự hiện trường",
+        "tư liệu thực địa",
+        "video gốc",
+        "người thật",
+        "hành trình thật",
+        "Gia Lai"
+      ],
+      "category": "news",
+      "categoryLabel": "Phóng sự hiện trường",
+      "type": "Phóng sự hiện trường",
+      "priority": 78
     },
     {
       "url": "/lam-mo-than-co-duoc-dong-bao-hiem-khong/",
@@ -1699,9 +2699,7 @@
         "Bốn mục cần kiểm tra ngay khi nhận hợp đồng",
         "Nếu chưa thấy quá trình đóng bảo hiểm thì làm gì?",
         "Thông tin được đối chiếu như thế nào?",
-        "Người lao động cũng thường hỏi",
-        "Ba nội dung nên xem cùng",
-        "Kiểm tra điều kiện trước khi chuẩn bị hồ sơ"
+        "Người lao động cũng thường hỏi"
       ],
       "category": "welfare",
       "categoryLabel": "Đời sống & phúc lợi",
@@ -1709,24 +2707,118 @@
       "priority": 10
     },
     {
+      "url": "/lam-tho-lo-co-nguy-hiem-khong/",
+      "title": "Làm thợ lò có nguy hiểm không? Hiểu đúng về an toàn",
+      "description": "Làm thợ lò có nguy hiểm không? Giải thích thẳng về rủi ro nghề nghiệp, đào tạo an toàn, bảo hộ, sức khỏe và điều cần cân nhắc trước khi chọn nghề.",
+      "keywords": [
+        "Làm thợ lò có nguy hiểm không?",
+        "Rủi ro đến từ đâu?",
+        "Đào tạo an toàn có vai trò gì?",
+        "Sức khỏe quan trọng ra sao?",
+        "Có nên chọn nghề chỉ vì thu nhập?"
+      ],
+      "category": "technology",
+      "categoryLabel": "An toàn & công nghệ",
+      "type": "An toàn & công nghệ",
+      "priority": 10
+    },
+    {
       "url": "/giai-dap-nghe-mo/lo-trinh-di-lam-mo-than-quang-ninh-tu-dang-ky-den-nhan-viec/",
-      "title": "Lộ trình đi làm mỏ than Quảng Ninh từ đăng ký đến nhận việc",
+      "title": "Lộ trình làm mỏ Quảng Ninh: đăng ký đến nhận việc",
       "description": "Lộ trình đi làm mỏ than Quảng Ninh gồm 5 bước: kiểm tra điều kiện, xác nhận lịch, học nghề 2–3 hoặc 10 tháng theo nghề, thực tập và nhận việc tại TKV.",
       "keywords": [
-        "Lộ trình đi làm mỏ than Quảng Ninh từ đăng ký đến nhận việc",
-        "Điều cần hiểu trước tiên",
+        "Lộ trình làm mỏ Quảng Ninh: đăng ký đến nhận việc",
+        "Năm bước từ đăng ký đến khi nhận việc",
         "Kiểm tra từ xa trước",
         "Chỉ đi khi có lịch",
         "Học nghề trước khi làm",
         "Tốt nghiệp rồi nhận việc",
         "Bước 1: đối chiếu điều kiện trước khi làm hồ sơ",
-        "Bước 2: nhận lịch và chuẩn bị đúng giấy tờ cần thiết",
         "Bước 3 và 4: học nghề, rèn an toàn và thực tập",
         "Bước 5: tốt nghiệp, ký hợp đồng và bố trí công việc",
         "Bắt đầu bằng kiểm tra điều kiện, không bắt đầu bằng chuyến xe",
-        "Câu hỏi liên quan",
-        "Ba trang nên xem cùng",
-        "Chưa cần lên Quảng Ninh ngay"
+        "Ba câu hỏi thường gặp"
+      ],
+      "category": "technology",
+      "categoryLabel": "An toàn & công nghệ",
+      "type": "An toàn & công nghệ",
+      "priority": 10
+    },
+    {
+      "url": "/luong-tho-lo-bao-nhieu/",
+      "title": "Lương thợ lò bao nhiêu một tháng?",
+      "description": "Lương thợ lò bao nhiêu? Mức đang công bố 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. Xem bảng lương và quyền lợi để đối chiếu.",
+      "keywords": [
+        "Lương thợ lò bao nhiêu một tháng?",
+        "Nên hiểu mức thu nhập này thế nào?",
+        "Vì sao nên xem bảng lương?",
+        "Có nên chọn nghề chỉ vì lương?"
+      ],
+      "category": "work",
+      "categoryLabel": "Công việc & lương",
+      "type": "Công việc & lương",
+      "priority": 10
+    },
+    {
+      "url": "/giai-dap-nghe-mo/nam-40-tuoi-con-dang-ky-lam-mo-than-duoc-khong/",
+      "title": "Nam 40 tuổi còn đăng ký làm mỏ than được không?",
+      "description": "Nam 40 tuổi vẫn nằm trong độ tuổi đăng ký học nghề mỏ theo đợt tuyển 2026, nhưng phải đối chiếu ngày sinh, thể lực, sức khỏe và lịch tiếp nhận.",
+      "keywords": [
+        "Nam 40 tuổi còn đăng ký làm mỏ than được không?",
+        "Tuổi phải đi cùng sức khỏe và thể lực",
+        "Độ tuổi 18–40",
+        "Phải đối chiếu ngày sinh",
+        "Sức khỏe là điều kiện riêng",
+        "Kiểm tra trước khi đi",
+        "Mốc 40 tuổi được tính như thế nào?",
+        "40 tuổi học nghề mới có quá muộn không?",
+        "Bốn thông tin nên gửi trong tin nhắn đầu tiên",
+        "40 tuổi vẫn có thể đăng ký, nhưng cần kiểm tra sớm và trung thực",
+        "Ba câu hỏi thường gặp"
+      ],
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Học nghề",
+      "priority": 10
+    },
+    {
+      "url": "/giai-dap-nghe-mo/nang-duoi-47-kg-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "title": "Nặng dưới 47 kg có đăng ký học nghề mỏ được không?",
+      "description": "Nặng dưới 47 kg có đăng ký học nghề mỏ được không? Đối chiếu mốc 47 kg, cách cân lại chính xác và bước cần làm trước khi đi khám.",
+      "keywords": [
+        "Nặng dưới 47 kg có đăng ký học nghề mỏ được không?",
+        "Mốc 47 kg là điều kiện kiểm tra ban đầu",
+        "Mốc sơ bộ là từ 47 kg",
+        "Cân lại trước khi kết luận",
+        "Không tăng cân cấp tốc",
+        "Kiểm tra từ xa trước",
+        "Người ở tỉnh xa nên nhắn gì trước khi chuẩn bị hồ sơ?",
+        "Vì sao không nên cố tăng cân thật nhanh để kịp một đợt tuyển?",
+        "Cân đúng, khai thật rồi mới chuẩn bị đường đi",
+        "Ba câu hỏi thường gặp",
+        "Thông tin liên quan"
+      ],
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Học nghề",
+      "priority": 10
+    },
+    {
+      "url": "/giai-dap-nghe-mo/nen-hoc-khai-thac-mo-hay-xay-dung-mo-ham-lo/",
+      "title": "Nên học khai thác mỏ hay xây dựng mỏ hầm lò?",
+      "description": "So sánh khai thác mỏ và xây dựng mỏ hầm lò: nội dung công việc, cách chọn nghề theo sức khỏe, thao tác, nhu cầu tiếp nhận và tư vấn trước khi học.",
+      "keywords": [
+        "Nên học khai thác mỏ hay xây dựng mỏ hầm lò?",
+        "Chọn nghề theo công việc, không chọn theo tên gọi",
+        "Khai thác mỏ",
+        "Xây dựng mỏ",
+        "Cùng yêu cầu an toàn",
+        "Chọn theo hồ sơ thật",
+        "Khai thác mỏ hầm lò làm những gì?",
+        "Bốn tiêu chí để chọn nghề phù hợp hơn",
+        "Không nên chọn nghề chỉ bằng một câu hỏi về lương",
+        "Chọn nghề phù hợp để học được và làm được lâu dài",
+        "Ba câu hỏi thường gặp"
       ],
       "category": "technology",
       "categoryLabel": "An toàn & công nghệ",
@@ -1770,13 +2862,119 @@
         "Ba việc giúp tránh mất tiền và mất công",
         "Hai địa điểm có mục đích khác nhau",
         "Thông tin được đối chiếu như thế nào?",
-        "Người lao động cũng thường hỏi",
-        "Ba nội dung nên xem cùng",
-        "Kiểm tra điều kiện trước khi chuẩn bị hồ sơ"
+        "Người lao động cũng thường hỏi"
       ],
       "category": "entry",
       "categoryLabel": "Điều kiện & hồ sơ",
       "type": "Điều kiện & hồ sơ",
+      "priority": 10
+    },
+    {
+      "url": "/phong-su/",
+      "title": "Phóng sự hiện trường nghề mỏ",
+      "description": "Phóng sự, ghi chép và video thực địa về hành trình học nghề mỏ, nhập học và đời sống người lao động từ các tỉnh tới Quảng Ninh.",
+      "keywords": [
+        "phóng sự hiện trường",
+        "tư liệu thực địa",
+        "video gốc",
+        "người thật",
+        "hành trình thật",
+        "nghề mỏ"
+      ],
+      "category": "news",
+      "categoryLabel": "Phóng sự hiện trường",
+      "type": "Phóng sự hiện trường",
+      "priority": 89
+    },
+    {
+      "url": "/giai-dap-nghe-mo/phu-huynh-can-biet-gi-khi-con-di-hoc-nghe-mo/",
+      "title": "Phụ huynh cần biết gì khi con đi học nghề mỏ?",
+      "description": "Phụ huynh nên kiểm tra 6 việc trước khi con học nghề mỏ: điều kiện, người phụ trách, nơi học, chi phí, nội dung đào tạo và việc làm sau tốt nghiệp.",
+      "keywords": [
+        "Phụ huynh cần biết gì khi con đi học nghề mỏ?",
+        "Gia đình cần kiểm tra đủ thông tin trước ngày con đi",
+        "Kiểm tra điều kiện",
+        "Biết người phụ trách",
+        "Biết nơi học và nơi làm",
+        "Hiểu cả quyền và trách nhiệm",
+        "1. Sức khỏe của con có thực sự phù hợp không?",
+        "3. Trong 2–3 tháng học, con được hỗ trợ và phải tuân thủ gì?",
+        "4. Học xong làm ở đâu và điều gì phải đọc trong hợp đồng?",
+        "Gia đình yên tâm hơn khi mọi câu trả lời đều có thể đối chiếu",
+        "Ba câu hỏi thường gặp"
+      ],
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Học nghề",
+      "priority": 10
+    },
+    {
+      "url": "/phong-su/quang-ngai-hanh-trinh-den-vung-mo-quang-ninh/",
+      "title": "Quảng Ngãi đến Quảng Ninh: hành trình nhập học",
+      "description": "Ghi chép hành trình từ Quảng Ngãi tới Quảng Ninh: rời quê, đến nơi tiếp nhận, nhập học và kiểm chứng lộ trình học nghề mỏ.",
+      "keywords": [
+        "phóng sự hiện trường",
+        "tư liệu thực địa",
+        "video gốc",
+        "người thật",
+        "hành trình thật",
+        "Quảng Ngãi"
+      ],
+      "category": "news",
+      "categoryLabel": "Phóng sự hiện trường",
+      "type": "Phóng sự hiện trường",
+      "priority": 78
+    },
+    {
+      "url": "/giai-dap-nghe-mo/sau-khi-hoc-nghe-mo-co-duoc-ky-hop-dong-lao-dong-khong/",
+      "title": "Sau khi học nghề mỏ có được ký hợp đồng lao động không?",
+      "description": "Sau khi học nghề mỏ có được ký hợp đồng lao động không? Hiểu đúng thời điểm ký, điều kiện tốt nghiệp và bước tiếp nhận việc làm.",
+      "keywords": [
+        "Sau khi học nghề mỏ có được ký hợp đồng lao động không?",
+        "Hợp đồng được ký sau khi hoàn thành đào tạo",
+        "Có lộ trình ký hợp đồng",
+        "Không ký ở bước đăng ký",
+        "Phải hoàn thành và đạt yêu cầu",
+        "Đơn vị được xác nhận sau",
+        "Người học cần đạt những gì trước bước tiếp nhận việc làm?",
+        "Ký hợp đồng rồi thì thu nhập và quyền lợi được hiểu thế nào?",
+        "Có hợp đồng sau đào tạo, nhưng phải đúng thứ tự",
+        "Ba câu hỏi thường gặp",
+        "Thông tin liên quan"
+      ],
+      "category": "work",
+      "categoryLabel": "Công việc & lương",
+      "type": "Công việc & lương",
+      "priority": 10
+    },
+    {
+      "url": "/tho-lo-la-nghe-gi/",
+      "title": "Thợ lò là nghề gì? Khác gì với thợ mỏ?",
+      "description": "Thợ lò là nghề gì, khác gì với thợ mỏ? Giải thích công việc hầm lò, các nghề khai thác, xây dựng, cơ điện và yêu cầu trước khi vào nghề.",
+      "keywords": [
+        "Thợ lò là nghề gì? Khác gì với thợ mỏ?",
+        "Thợ lò làm những công việc nào?",
+        "Vì sao phải học trước khi xuống lò?",
+        "Ai có thể đăng ký?"
+      ],
+      "category": "work",
+      "categoryLabel": "Công việc & lương",
+      "type": "Công việc & lương",
+      "priority": 10
+    },
+    {
+      "url": "/tho-mo-la-nghe-gi/",
+      "title": "Thợ mỏ là nghề gì? Công việc và lộ trình vào nghề",
+      "description": "Thợ mỏ là nghề gì? Giải thích công việc khai thác, xây dựng, cơ điện mỏ hầm lò, môi trường làm việc, đào tạo và lộ trình vào nghề tại Quảng Ninh.",
+      "keywords": [
+        "Thợ mỏ là nghề gì?",
+        "Thợ mỏ không chỉ là người trực tiếp khai thác than",
+        "Người chưa làm mỏ có vào nghề được không?",
+        "Nên tìm hiểu gì trước khi đăng ký?"
+      ],
+      "category": "work",
+      "categoryLabel": "Công việc & lương",
+      "type": "Công việc & lương",
       "priority": 10
     },
     {
@@ -1794,13 +2992,47 @@
         "Một ca thường đi qua bốn nhịp công việc",
         "Năm câu phải hỏi doanh nghiệp trước khi nhận việc",
         "Thông tin được đối chiếu như thế nào?",
-        "Người lao động cũng thường hỏi",
-        "Ba nội dung nên xem cùng",
-        "Kiểm tra điều kiện trước khi chuẩn bị hồ sơ"
+        "Người lao động cũng thường hỏi"
       ],
       "category": "work",
       "categoryLabel": "Công việc & lương",
       "type": "Công việc & lương",
+      "priority": 10
+    },
+    {
+      "url": "/tho-mo-co-nhung-che-do-gi/",
+      "title": "Thợ mỏ, thợ lò có những chế độ gì?",
+      "description": "Thợ mỏ, thợ lò có những chế độ gì? Phân biệt quyền lợi khi học nghề và sau khi ký hợp đồng: học phí, ăn ở, hỗ trợ, lương, bảo hiểm và ca làm.",
+      "keywords": [
+        "Thợ mỏ, thợ lò có những chế độ gì?",
+        "Trong thời gian học nghề",
+        "Sau khi đi làm",
+        "Ca làm và môi trường"
+      ],
+      "category": "training",
+      "categoryLabel": "Học nghề",
+      "type": "Học nghề",
+      "priority": 10
+    },
+    {
+      "url": "/tuyen-dung-dia-ban/",
+      "title": "Tuyển lao động thời vụ tuyển sinh tại địa phương",
+      "description": "Tuyển lao động thời vụ hỗ trợ công tác tuyển sinh nghề mỏ tại Quảng Ngãi và Gia Lai. Làm việc tại địa phương, thu nhập theo kết quả, có hướng dẫn nghiệp vụ.",
+      "keywords": [
+        "TUYỂN LAO ĐỘNG THỜI VỤ",
+        "Bạn sẽ làm gì tại địa bàn?",
+        "Tiếp nhận & tìm nguồn",
+        "Gọi & sàng lọc",
+        "Đi gặp thực tế",
+        "Follow-up đến nhập học",
+        "Ưu tiên người có khả năng đi địa bàn",
+        "Quy trình tuyển",
+        "Điền thông tin để được liên hệ",
+        "Thông tin cần biết"
+      ],
+      "category": "entry",
+      "categoryLabel": "Điều kiện & hồ sơ",
+      "type": "Điều kiện & hồ sơ",
       "priority": 10
     },
     {
@@ -1818,9 +3050,7 @@
         "Thư viện video TKV",
         "Phó TGĐ Tập đoàn Nguyễn Văn Tuân kiểm tra sản xuất và làm việc với Công ty CP Than Cao Sơn - TKV",
         "Video TKV vừa công bố",
-        "Kiểm tra điều kiện trước khi chuẩn bị hồ sơ",
-        "Thông tin cần biết trước khi đăng ký",
-        "Gửi 3 thông tin để Thầy Linh kiểm tra trước"
+        "Kiểm tra điều kiện trước khi chuẩn bị hồ sơ"
       ],
       "category": "technology",
       "categoryLabel": "An toàn & công nghệ",

@@ -31,7 +31,7 @@ const section = `
       <div class="container">
         <div class="home-origin-reels__head">
           <small>HÀNH TRÌNH TỪ QUÊ ĐẾN VÙNG MỎ</small>
-          <h2>Người thật, chuyến đi thật, con đường việc làm thật</h2>
+          <h2 id="home-origin-reels-title">Người thật, chuyến đi thật, con đường việc làm thật</h2>
           <p>Hai hành trình thực tế giúp người lao động ở tỉnh xa hình dung rõ hơn từ lúc được tư vấn tại quê nhà đến khi học nghề và kết nối việc làm tại Quảng Ninh.</p>
         </div>
         <div class="home-origin-reels__grid">

@@ -1,7 +1,7 @@
 {
   "version": 2,
   "locale": "vi-VN",
-  "principle": "Mỗi nhu cầu tìm kiếm chính có một trang trả lời ưu tiên; từ khóa được dùng tự nhiên trong tiêu đề, H1, mô tả và nội dung hữu ích. Trang chủ là hub học nghề và việc làm; truy vấn tuyển thợ mỏ Quảng Ninh thuộc landing chuyên dụng.",
+  "principle": "Mỗi nhu cầu tìm kiếm chính có một trang trả lời ưu tiên; từ khóa được dùng tự nhiên trong tiêu đề, H1, mô tả và nội dung hữu ích. Trang chủ là hub học nghề và việc làm; trang việc làm chuyên biệt sở hữu truy vấn công nhân mỏ tại Quảng Ninh.",
   "clusters": [
     {
       "id": "career-home",
@@ -13,21 +13,12 @@
       "visibleTerms": ["học nghề", "việc làm"]
     },
     {
-      "id": "quang-ninh-recruitment",
-      "landing": "/tuyen-tho-mo-quang-ninh/",
-      "primary": "tuyển thợ mỏ Quảng Ninh",
-      "variants": ["tuyển thợ lò Quảng Ninh", "việc làm thợ mỏ Quảng Ninh"],
-      "titleTerms": ["tuyển thợ mỏ", "Quảng Ninh"],
-      "h1Terms": ["tuyển thợ mỏ", "Quảng Ninh"],
-      "visibleTerms": ["người chưa có kinh nghiệm", "học nghề từ đầu"]
-    },
-    {
       "id": "mine-worker-job",
       "landing": "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
-      "primary": "tuyển công nhân mỏ",
-      "variants": ["việc làm công nhân mỏ", "việc làm thợ lò", "việc làm mỏ không cần kinh nghiệm", "tuyển lao động ngành Than"],
-      "titleTerms": ["tuyển công nhân mỏ", "Quảng Ninh"],
-      "h1Terms": ["tuyển công nhân mỏ", "Quảng Ninh"],
+      "primary": "việc làm công nhân mỏ",
+      "variants": ["tuyển công nhân mỏ", "việc làm thợ lò", "việc làm mỏ không cần kinh nghiệm", "tuyển lao động ngành Than", "tuyển thợ mỏ Quảng Ninh", "tuyển thợ lò Quảng Ninh"],
+      "titleTerms": ["việc làm công nhân mỏ", "Quảng Ninh"],
+      "h1Terms": ["việc làm công nhân mỏ", "Quảng Ninh"],
       "visibleTerms": ["chưa có kinh nghiệm", "đào tạo từ đầu"]
     },
     {
@@ -97,7 +88,7 @@
   "provincePattern": {
     "path": "/viec-lam-nganh-than/{province}/",
     "primary": "tuyển thợ mỏ tại {province}",
-    "minimumIndexablePages": 17,
+    "minimumIndexablePages": 16,
     "titleTerms": ["tuyển thợ mỏ tại {province}"],
     "h1Terms": ["tuyển thợ mỏ tại {province}", "Quảng Ninh"]
   }

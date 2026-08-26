@@ -88,6 +88,28 @@ function normalizeJsonLd(html, label) {
   });
 }
 
+function ensureReviewJsonLd(html, slug) {
+  if (new RegExp(`"lastReviewed"\\s*:\\s*"${reviewDate}"`).test(html)
+      && html.includes(`"reviewedBy":{"@id":"${authorId}"}`)) return html;
+  const canonical = html.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i)?.[1]
+    || `${base}${slug}/`;
+  const name = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1]?.replace(/\s+/g, " ").trim()
+    || `Tuyển thợ mỏ tại ${slug}`;
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${canonical}#webpage`,
+    url: canonical,
+    name,
+    dateModified: modifiedDate,
+    lastReviewed: reviewDate,
+    reviewedBy: {"@id": authorId},
+    author: {"@id": authorId},
+    isPartOf: {"@id": "https://thaylinhtuyenthomo.vn/#website"},
+  };
+  return html.replace(/<\/head>/i, `  <script type="application/ld+json">${JSON.stringify(data)}</script>\n</head>`);
+}
+
 function normalizeMeta(html) {
   let next = html.replace(/(<title>)([\s\S]*?)(<\/title>)/i, (m, a, value, b) => `${a}${normalizeMetadataText(value)}${b}`);
   const metaPatterns = [
@@ -107,13 +129,14 @@ function extractProvinceName(html, slug) {
     || slug;
 }
 
-function normalizeApplicationLinks(html, provinceName) {
+function normalizeApplicationLinks(html, provinceName, slug) {
   const encoded = provinceName.replaceAll("&", "&amp;").replaceAll('"', "&quot;");
-  return html.replace(/<a\b[^>]*href=["'][^"']*\/viec-lam\/cong-nhan-mo-ham-lo-quang-ninh\/\?[^"']*#dang-ky["'][^>]*>/gi, (tag) => {
-    let next = tag.replace(/href=["'][^"']*\/viec-lam\/cong-nhan-mo-ham-lo-quang-ninh\/\?[^"']*#dang-ky["']/i,
+  return html.replace(/<a\b[^>]*href=["'][^"']*\/viec-lam\/cong-nhan-mo-ham-lo-quang-ninh\/(?:\?[^"']*)?#dang-ky["'][^>]*>/gi, (tag) => {
+    let next = tag.replace(/href=["'][^"']*\/viec-lam\/cong-nhan-mo-ham-lo-quang-ninh\/(?:\?[^"']*)?#dang-ky["']/i,
       'href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky"');
     if (!/data-prefill-province=/i.test(next)) next = next.replace(/>$/u, ` data-prefill-province="${encoded}">`);
     if (!/data-contact=/i.test(next)) next = next.replace(/>$/u, ' data-contact="application">');
+    if (!/data-context=/i.test(next)) next = next.replace(/>$/u, ` data-context="province-${slug}">`);
     return next;
   });
 }
@@ -152,7 +175,8 @@ function normalize(html, slug) {
   next = normalizeMeta(next);
   next = ensureElectricalTrainingBlock(next);
   next = normalizeJsonLd(next, slug);
-  next = normalizeApplicationLinks(next, extractProvinceName(next, slug));
+  next = ensureReviewJsonLd(next, slug);
+  next = normalizeApplicationLinks(next, extractProvinceName(next, slug), slug.replace(/\/index\.html$/u, ""));
   return next;
 }
 

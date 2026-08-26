@@ -6,6 +6,7 @@ const site = path.join(root, "tuyen-tho-mo");
 const provinceRoot = path.join(site, "viec-lam-nganh-than");
 const facts = JSON.parse(fs.readFileSync(path.join(site, "data", "recruitment-facts-2026.json"), "utf8"));
 const review = JSON.parse(fs.readFileSync(path.join(root, "content", "recruitment-review-v10.json"), "utf8"));
+const rolePolicy = JSON.parse(fs.readFileSync(path.join(root, "content", "seo-role-policy-2026.json"), "utf8"));
 const errors = [];
 const authorId = "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/#person";
 
@@ -40,7 +41,12 @@ for (const entry of dirs) {
   const description = field(html, /<meta\s+name=["']description["']\s+content=["']([^"']*)["']/i);
   const ogDescription = field(html, /<meta\s+property=["']og:description["']\s+content=["']([^"']*)["']/i);
   const twitterDescription = field(html, /<meta\s+name=["']twitter:description["']\s+content=["']([^"']*)["']/i);
-  if (canonical !== `https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/${entry.name}/`) errors.push(`${label}: canonical sai ${canonical}`);
+  const route = `/viec-lam-nganh-than/${entry.name}/`;
+  const policyCanonical = rolePolicy.pages?.[route]?.canonical;
+  const expectedCanonical = policyCanonical
+    ? `https://thaylinhtuyenthomo.vn${policyCanonical}`
+    : `https://thaylinhtuyenthomo.vn${route}`;
+  if (canonical !== expectedCanonical) errors.push(`${label}: canonical sai ${canonical}`);
   if (!title) errors.push(`${label}: thiếu title`);
   if (!description) errors.push(`${label}: thiếu meta description`);
   for (const [name, value] of [["title", title], ["description", description], ["og:description", ogDescription], ["twitter:description", twitterDescription]]) checkPolicy(value, `${label} ${name}`);

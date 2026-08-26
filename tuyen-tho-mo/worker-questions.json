@@ -1,6 +1,6 @@
 {
-  "version": "1.0",
-  "updated_at": "2026-08-03",
+  "version": "1.1",
+  "updated_at": "2026-08-23",
   "publisher": {
     "name": "Thầy Linh – Tuyển Thợ Mỏ",
     "responsible_person": "Nguyễn Tử Linh",
@@ -48,9 +48,10 @@
     },
     {
       "question": "Học nghề mỏ mất bao lâu?",
-      "direct_answer": "Khai thác mỏ hầm lò và xây dựng mỏ hầm lò thường học 2–3 tháng theo chương trình đang tuyển; lịch cụ thể được xác nhận theo từng đợt.",
+      "direct_answer": "Khai thác mỏ hầm lò và xây dựng mỏ hầm lò học 2–3 tháng; kỹ thuật cơ điện mỏ hầm lò học 10 tháng. Lịch cụ thể được xác nhận theo từng đợt.",
       "category": "Học nghề và hồ sơ",
-      "canonical_url": "https://thaylinhtuyenthomo.vn/hoc-nghe-mo-tai-quang-ninh/"
+      "canonical_url": "https://thaylinhtuyenthomo.vn/hoc-nghe-mo-tai-quang-ninh/",
+      "canonical_facts_version": 8
     },
     {
       "question": "Học nghề mỏ có mất học phí không?",
@@ -62,7 +63,8 @@
       "question": "Trong thời gian học có được ăn ở và hỗ trợ không?",
       "direct_answer": "Người học thuộc chỉ tiêu được bố trí 3 bữa/ngày, ký túc xá khép kín và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học theo chính sách đợt tuyển.",
       "category": "Học nghề và hồ sơ",
-      "canonical_url": "https://thaylinhtuyenthomo.vn/thu-nhap-an-o-ho-tro/"
+      "canonical_url": "https://thaylinhtuyenthomo.vn/thu-nhap-an-o-ho-tro/",
+      "canonical_facts_version": 8
     },
     {
       "question": "Hồ sơ nhập học nghề mỏ gồm những gì?",
@@ -96,9 +98,10 @@
     },
     {
       "question": "Công việc thợ mỏ hầm lò là làm gì?",
-      "direct_answer": "Hai hướng đang tuyển là khai thác mỏ hầm lò và xây dựng mỏ hầm lò. Người học được đào tạo thao tác, thiết bị, an toàn và phối hợp tổ đội trước khi nhận việc.",
+      "direct_answer": "Ba nghề đang tiếp nhận là kỹ thuật khai thác mỏ hầm lò, kỹ thuật xây dựng mỏ hầm lò và kỹ thuật cơ điện mỏ hầm lò. Người học được đào tạo thao tác, thiết bị, an toàn và phối hợp tổ đội trước khi nhận việc.",
       "category": "Công việc sau đào tạo",
-      "canonical_url": "https://thaylinhtuyenthomo.vn/hoc-xong-nghe-mo-lam-o-cong-ty-nao/#cong-viec"
+      "canonical_url": "https://thaylinhtuyenthomo.vn/hoc-xong-nghe-mo-lam-o-cong-ty-nao/#cong-viec",
+      "canonical_facts_version": 8
     },
     {
       "question": "Thợ mỏ làm mấy tiếng một ngày?",
@@ -114,9 +117,10 @@
     },
     {
       "question": "Lương thợ lò được tính thế nào?",
-      "direct_answer": "Chương trình đang áp dụng Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "direct_answer": "Thu nhập đang áp dụng là 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "category": "Thu nhập và lựa chọn",
-      "canonical_url": "https://thaylinhtuyenthomo.vn/thu-nhap-an-o-ho-tro/"
+      "canonical_url": "https://thaylinhtuyenthomo.vn/thu-nhap-an-o-ho-tro/",
+      "canonical_facts_version": 8
     },
     {
       "question": "Làm thợ lò có an toàn không?",
@@ -130,5 +134,7 @@
       "category": "Thu nhập và lựa chọn",
       "canonical_url": "https://thaylinhtuyenthomo.vn/chon-kcn-hay-lam-mo/"
     }
-  ]
+  ],
+  "canonical_facts_version": 8,
+  "canonical_facts_url": "https://thaylinhtuyenthomo.vn/data/recruitment-facts-2026.json"
 }

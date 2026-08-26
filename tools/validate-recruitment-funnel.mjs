@@ -162,14 +162,19 @@ collectHtmlFiles(root);
 let attributedCrossPageApplications = 0;
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, "utf8");
-  for (const match of html.matchAll(/<a\b[^>]*href=["']([^"']*#dang-ky)["'][^>]*>/gi)) {
-    const [, rawHref] = match;
+  for (const match of html.matchAll(/(<a\b[^>]*href=["']([^"']*#dang-ky)["'][^>]*>)/gi)) {
+    const [, tag, rawHref] = match;
     if (rawHref.startsWith("#")) continue;
     const href = rawHref.replaceAll("&amp;", "&");
     const url = new URL(href, "https://thaylinhtuyenthomo.vn/");
     const relative = path.relative(root, file);
-    for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content"]) {
-      if (!url.searchParams.get(key)) errors.push(`${relative}: cross-page application link is missing ${key}`);
+    const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content"];
+    const hasExplicitUtm = utmKeys.some((key) => url.searchParams.get(key));
+    if (hasExplicitUtm) {
+      for (const key of utmKeys) if (!url.searchParams.get(key)) errors.push(`${relative}: cross-page application link is missing ${key}`);
+    } else {
+      if (!/\bdata-contact=["']application["']/i.test(tag)) errors.push(`${relative}: clean application link is missing data-contact=application`);
+      if (!/\bdata-context=["'][^"']+["']/i.test(tag)) errors.push(`${relative}: clean application link is missing data-context for preserved attribution`);
     }
     attributedCrossPageApplications += 1;
   }

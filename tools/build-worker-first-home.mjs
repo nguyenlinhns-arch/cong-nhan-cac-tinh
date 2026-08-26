@@ -17,7 +17,19 @@ let html = fs.readFileSync(file, "utf8");
 // contract. This is deterministic and idempotent across PR and Pages builds.
 html = html
   .replace(/\/home-critical\.css\?v=\d+/gu, "/home-critical.css?v=2")
-  .replace(/\/home-content\.css\?v=\d+/gu, "/home-content.css?v=3");
+  .replace(/\/home-content\.css\?v=\d+/gu, "/home-content.css?v=3")
+  .replace(
+    /\s*<link\s+rel=["']preload["']\s+href=["']\/home-content\.css\?v=3["']\s+as=["']style["']\s+onload=["'][^"']*["']\s*\/?>/giu,
+    "",
+  )
+  .replace(
+    /\s*<script\s+data-home-content-loader>[\s\S]*?<\/script>/giu,
+    "",
+  )
+  .replace(
+    /(<link\s+rel=["']stylesheet["']\s+href=["']\/home-critical\.css\?v=2["']\s*\/?>)/iu,
+    '$1\n  <script data-home-content-loader>addEventListener("load",()=>{const link=document.createElement("link");link.rel="stylesheet";link.href="/home-content.css?v=3";document.head.append(link)},{once:true})</script>',
+  );
 fs.writeFileSync(file, html);
 
 const required = [
@@ -30,6 +42,10 @@ const required = [
   "20–25 triệu",
   "/home-critical.css?v=2",
   "/home-content.css?v=3",
+  "home-library__card--payroll",
+  "home-library__grid--four",
+  'href="/bang-luong/"',
+  "Bảng lương các công ty theo quý",
 ];
 const missing = required.filter((marker) => !html.includes(marker));
 if (missing.length) {

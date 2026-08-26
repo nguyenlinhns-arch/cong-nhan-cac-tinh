@@ -16,37 +16,90 @@
     "living_support": "7,5 triệu đồng/tháng trong thời gian học",
     "income_commitment": "20–25 triệu đồng/tháng khi hoàn thành định mức lao động"
   },
-  "intent_detection": ["utm_term", "utm_content", "utm_campaign", "gclid", "gbraid", "wbraid"],
+  "intent_detection": [
+    "utm_term",
+    "utm_content",
+    "utm_campaign",
+    "gclid",
+    "gbraid",
+    "wbraid"
+  ],
   "intents": [
     {
       "intent": "job",
-      "query_examples": ["tuyen tho mo quang ninh", "tuyen tho lo quang ninh", "viec lam mo quang ninh"],
-      "supporting_urls": ["https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/", "https://thaylinhtuyenthomo.vn/cau-chuyen-cong-nhan/"]
+      "query_examples": [
+        "tuyen tho mo quang ninh",
+        "tuyen tho lo quang ninh",
+        "viec lam mo quang ninh"
+      ],
+      "supporting_urls": [
+        "https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/",
+        "https://thaylinhtuyenthomo.vn/cau-chuyen-cong-nhan/"
+      ]
     },
     {
       "intent": "training",
-      "query_examples": ["hoc nghe mo mien phi", "hoc nghe mo co an o", "hoc tho lo quang ninh"],
-      "supporting_urls": ["https://thaylinhtuyenthomo.vn/hoc-nghe-mo-tai-quang-ninh/", "https://thaylinhtuyenthomo.vn/ho-so-nhap-hoc/"]
+      "query_examples": [
+        "hoc nghe mo mien phi",
+        "hoc nghe mo co an o",
+        "hoc tho lo quang ninh"
+      ],
+      "supporting_urls": [
+        "https://thaylinhtuyenthomo.vn/hoc-nghe-mo-tai-quang-ninh/",
+        "https://thaylinhtuyenthomo.vn/ho-so-nhap-hoc/"
+      ]
     },
     {
       "intent": "income",
-      "query_examples": ["luong tho lo 25 trieu", "viec lam tho lo luong cao", "luong cong nhan mo quang ninh"],
-      "supporting_urls": ["https://thaylinhtuyenthomo.vn/bang-luong/", "https://thaylinhtuyenthomo.vn/thu-nhap-an-o-ho-tro/"]
+      "query_examples": [
+        "luong tho lo 25 trieu",
+        "viec lam tho lo luong cao",
+        "luong cong nhan mo quang ninh"
+      ],
+      "supporting_urls": [
+        "https://thaylinhtuyenthomo.vn/bang-luong/",
+        "https://thaylinhtuyenthomo.vn/thu-nhap-an-o-ho-tro/"
+      ]
     }
   ],
   "measurement": {
     "web_primary_event": "generate_lead",
-    "quality_events": ["condition_pass", "qualified_lead"],
-    "paid_search_events": ["google_paid_search_fast_answer_view", "google_paid_search_fast_answer_click"],
+    "quality_events": [
+      "condition_pass",
+      "qualified_lead"
+    ],
+    "paid_search_events": [
+      "google_paid_search_fast_answer_view",
+      "google_paid_search_fast_answer_click"
+    ],
     "crm_attribution_fields": [
-      "phone_e164", "utm_term", "gclid", "gbraid", "wbraid",
-      "first_source", "first_medium", "first_campaign", "first_content", "first_term",
-      "first_landing_path", "paid_search_intent", "google_ads_import_ready"
+      "phone_e164",
+      "utm_term",
+      "gclid",
+      "gbraid",
+      "wbraid",
+      "first_source",
+      "first_medium",
+      "first_campaign",
+      "first_content",
+      "first_term",
+      "first_landing_path",
+      "paid_search_intent",
+      "google_ads_import_ready"
     ],
     "recommended_offline_stages": [
-      {"crm_status": "Đủ điều kiện", "google_ads_action": "Qualified lead"},
-      {"crm_status": "Nộp hồ sơ", "google_ads_action": "Application completed"},
-      {"crm_status": "Nhập học", "google_ads_action": "Enrollment"}
+      {
+        "crm_status": "Đủ điều kiện",
+        "google_ads_action": "Qualified lead"
+      },
+      {
+        "crm_status": "Nộp hồ sơ",
+        "google_ads_action": "Application completed"
+      },
+      {
+        "crm_status": "Nhập học",
+        "google_ads_action": "Enrollment"
+      }
     ],
     "import_destination": "Google Ads Data Manager",
     "privacy_rule": "Google click attribution is added to the CRM payload only when website measurement consent is granted."

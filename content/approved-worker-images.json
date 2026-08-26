@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-22T07:41:00+07:00",
+  "updated_at": "2026-08-26T08:28:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -106,6 +106,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/4B3054D32C6E4759B6D66DF81300A191101B472F5DE46DEE02F49E0013D55227.jpg",
       "provider": "Vinacomin",
       "description": "Nhóm học sinh nghề mỏ mặc bảo hộ xanh và đội mũ trong chuyến tham quan thực tế tại Than Khe Chàm"
+    },
+    {
+      "asset": "vinacomin-cong-nhan-kham-suc-khoe-kho-van.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/cong-ty-kho-van-va-cang-cam-pha-1522-cbcnv-cong-ty-duoc-kham-suc-khoe-dinh-ky-nam-2025",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2025/T04/29/KV4.jpg",
+      "provider": "Vinacomin",
+      "description": "Nhân viên y tế kiểm tra sức khỏe cho công nhân Kho vận và cảng Cẩm Phả trong đợt khám định kỳ năm 2025"
     }
   ]
 }

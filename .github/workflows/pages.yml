@@ -67,6 +67,13 @@ jobs:
           node tools/polish-discovery-output.mjs
           node tools/enhance-application-prefill-note.mjs
           node tools/enhance-top-block-hotfix.mjs
+          node tools/normalize-province-current-facts-v11.mjs
+          node tools/normalize-recruitment-seo-copy-v11.mjs
+          node tools/apply-seo-role-policy.mjs
+          node tools/add-home-journey-reels.mjs
+          node tools/normalize-recruitment-seo-copy-v11.mjs
+          node tools/enforce-blue-worker-illustrations.mjs
+          node tuyen-tho-mo/scripts/update-ai-locality-discovery.mjs
           node tools/normalize-mobile-delivery.mjs
           node tools/validate-modular-delivery.mjs
           node tools/validate-editorial-sources.mjs
@@ -102,7 +109,7 @@ jobs:
           node tools/validate-recruitment-funnel.mjs
           node tools/test-recruitment-application.mjs
           node tools/validate-crm-automation.mjs
-          node tools/validate-seo-library.mjs
+          node tools/validate-seo-library-current.mjs
           node tools/validate-payroll-library.mjs
           node tools/enforce-blue-worker-illustrations.mjs --check
           node tools/enforce-site-brand.mjs --check

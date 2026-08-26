@@ -209,9 +209,9 @@ const coreUrlSet = new Set(coreItems.map((item) => item.url));
 const contentItems = items
   .filter((item) => item.category !== "province" && !coreUrlSet.has(item.url))
   // Keep the downloadable content tier lean on mobile. Title, description and
-  // the first 12 headings/keywords preserve the strongest intent signals;
+  // the first 11 headings/keywords preserve the strongest intent signals;
   // later headings are usually navigation or repeated FAQ wording.
-  .map((item) => compact(item, 12));
+  .map((item) => compact(item, 11));
 const files = {
   core: "search-core.json",
   provinces: "search-provinces.json",

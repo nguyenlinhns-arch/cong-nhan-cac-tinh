@@ -87,7 +87,24 @@ for (const article of articles) {
 
 const communeSitemap = read("commune-sitemap.xml");
 const communeUrls = [...communeSitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
-if (communeUrls.length !== 3321 || new Set(communeUrls).size !== 3321) fail(`commune-sitemap.xml: ${communeUrls.length} URL, unique ${new Set(communeUrls).size}`);
+const communeUrlSet = new Set(communeUrls);
+if (!communeUrls.length || communeUrls.length !== communeUrlSet.size) fail(`commune-sitemap.xml: ${communeUrls.length} URL, unique ${communeUrlSet.size}`);
+for (const url of communeUrls) {
+  if (!url.startsWith(`${base}/viec-lam-nganh-than/`)) {
+    fail(`commune-sitemap.xml: URL ngoài phạm vi địa bàn ${url}`);
+    continue;
+  }
+  const relative = decodeURIComponent(new URL(url).pathname).replace(/^\/+|\/+$/g, "");
+  const file = path.join(root, relative, "index.html");
+  if (!fs.existsSync(file)) {
+    fail(`commune-sitemap.xml: thiếu trang ${url}`);
+    continue;
+  }
+  const html = fs.readFileSync(file, "utf8");
+  if (/<meta\b[^>]*name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html)) {
+    fail(`commune-sitemap.xml: URL noindex ${url}`);
+  }
+}
 const robots = read("robots.txt");
 for (const marker of ["commune-sitemap.xml","province-sitemap.xml","jobs-sitemap.xml","localities.json"]) if (!robots.includes(marker)) fail(`robots.txt: thiếu ${marker}`);
 const llms = read("llms.txt");

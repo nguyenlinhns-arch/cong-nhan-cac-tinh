@@ -3,9 +3,169 @@
   "tier": "provinces",
   "items": [
     {
+      "url": "/viec-lam-nganh-than/an-giang/",
+      "title": "Tuyển thợ mỏ cho lao động An Giang | Việc làm TKV Quảng Ninh",
+      "description": "Tuyển thợ mỏ cho lao động An Giang, gồm nhu cầu tìm việc từ khu vực An Giang và Kiên Giang trước sắp xếp: đăng ký từ xa, học nghề và làm việc tại Quảng Ninh.",
+      "keywords": [
+        "An Giang",
+        "tuyển thợ mỏ An Giang",
+        "việc làm ngành than An Giang"
+      ],
+      "aliases": [
+        "An Giang"
+      ],
+      "category": "province",
+      "categoryLabel": "Việc làm theo tỉnh",
+      "type": "Việc làm theo tỉnh",
+      "priority": 45,
+      "searchScope": "internal",
+      "localityEvidenceCount": 0,
+      "localityAliasCount": 0
+    },
+    {
+      "url": "/viec-lam-nganh-than/ca-mau/",
+      "title": "Tuyển thợ mỏ cho lao động Cà Mau | Việc làm TKV Quảng Ninh",
+      "description": "Tuyển thợ mỏ cho lao động Cà Mau, gồm nhu cầu tìm việc từ khu vực Cà Mau và Bạc Liêu trước sắp xếp: đăng ký từ xa, học nghề và làm việc tại Quảng Ninh.",
+      "keywords": [
+        "Cà Mau",
+        "tuyển thợ mỏ Cà Mau",
+        "việc làm ngành than Cà Mau"
+      ],
+      "aliases": [
+        "Cà Mau"
+      ],
+      "category": "province",
+      "categoryLabel": "Việc làm theo tỉnh",
+      "type": "Việc làm theo tỉnh",
+      "priority": 45,
+      "searchScope": "internal",
+      "localityEvidenceCount": 0,
+      "localityAliasCount": 0
+    },
+    {
+      "url": "/viec-lam-nganh-than/can-tho/",
+      "title": "Tuyển thợ mỏ cho lao động Cần Thơ | Việc làm TKV Quảng Ninh",
+      "description": "Tuyển thợ mỏ cho lao động Cần Thơ, gồm nhu cầu tìm việc từ khu vực Cần Thơ, Hậu Giang và Sóc Trăng trước sắp xếp: đăng ký từ xa, học nghề và làm việc tại Quảng Ninh.",
+      "keywords": [
+        "Cần Thơ",
+        "tuyển thợ mỏ Cần Thơ",
+        "việc làm ngành than Cần Thơ"
+      ],
+      "aliases": [
+        "Cần Thơ"
+      ],
+      "category": "province",
+      "categoryLabel": "Việc làm theo tỉnh",
+      "type": "Việc làm theo tỉnh",
+      "priority": 45,
+      "searchScope": "internal",
+      "localityEvidenceCount": 0,
+      "localityAliasCount": 0
+    },
+    {
+      "url": "/viec-lam-nganh-than/dong-nai/",
+      "title": "Tuyển thợ mỏ cho lao động Đồng Nai | Việc làm TKV Quảng Ninh",
+      "description": "Tuyển thợ mỏ cho lao động Đồng Nai, gồm nhu cầu tìm việc từ khu vực Đồng Nai và Bình Phước trước sắp xếp: đăng ký từ xa, học nghề và làm việc tại Quảng Ninh.",
+      "keywords": [
+        "Đồng Nai",
+        "tuyển thợ mỏ Đồng Nai",
+        "việc làm ngành than Đồng Nai"
+      ],
+      "aliases": [
+        "Đồng Nai"
+      ],
+      "category": "province",
+      "categoryLabel": "Việc làm theo tỉnh",
+      "type": "Việc làm theo tỉnh",
+      "priority": 45,
+      "searchScope": "internal",
+      "localityEvidenceCount": 0,
+      "localityAliasCount": 0
+    },
+    {
+      "url": "/viec-lam-nganh-than/dong-thap/",
+      "title": "Tuyển thợ mỏ cho lao động Đồng Tháp | Việc làm TKV Quảng Ninh",
+      "description": "Tuyển thợ mỏ cho lao động Đồng Tháp, gồm nhu cầu tìm việc từ khu vực Đồng Tháp và Tiền Giang trước sắp xếp: đăng ký từ xa, học nghề và làm việc tại Quảng Ninh.",
+      "keywords": [
+        "Đồng Tháp",
+        "tuyển thợ mỏ Đồng Tháp",
+        "việc làm ngành than Đồng Tháp"
+      ],
+      "aliases": [
+        "Đồng Tháp"
+      ],
+      "category": "province",
+      "categoryLabel": "Việc làm theo tỉnh",
+      "type": "Việc làm theo tỉnh",
+      "priority": 45,
+      "searchScope": "internal",
+      "localityEvidenceCount": 0,
+      "localityAliasCount": 0
+    },
+    {
+      "url": "/viec-lam-nganh-than/tay-ninh/",
+      "title": "Tuyển thợ mỏ cho lao động Tây Ninh | Việc làm TKV Quảng Ninh",
+      "description": "Tuyển thợ mỏ cho lao động Tây Ninh, gồm nhu cầu tìm việc từ khu vực Tây Ninh và Long An trước sắp xếp: đăng ký từ xa, học nghề và làm việc tại Quảng Ninh.",
+      "keywords": [
+        "Tây Ninh",
+        "tuyển thợ mỏ Tây Ninh",
+        "việc làm ngành than Tây Ninh"
+      ],
+      "aliases": [
+        "Tây Ninh"
+      ],
+      "category": "province",
+      "categoryLabel": "Việc làm theo tỉnh",
+      "type": "Việc làm theo tỉnh",
+      "priority": 45,
+      "searchScope": "internal",
+      "localityEvidenceCount": 0,
+      "localityAliasCount": 0
+    },
+    {
+      "url": "/viec-lam-nganh-than/ho-chi-minh/",
+      "title": "Tuyển thợ mỏ cho lao động TP Hồ Chí Minh | Việc làm TKV Quảng…",
+      "description": "Thông tin tuyển thợ mỏ dành cho lao động TP Hồ Chí Minh: học nghề mỏ tại Quảng Ninh, miễn kinh phí đào tạo theo chỉ tiêu, hỗ trợ ăn ở và đăng ký trực tiếp.",
+      "keywords": [
+        "TP Hồ Chí Minh",
+        "tuyển thợ mỏ TP Hồ Chí Minh",
+        "việc làm ngành than TP Hồ Chí Minh"
+      ],
+      "aliases": [
+        "TP Hồ Chí Minh"
+      ],
+      "category": "province",
+      "categoryLabel": "Việc làm theo tỉnh",
+      "type": "Việc làm theo tỉnh",
+      "priority": 45,
+      "searchScope": "internal",
+      "localityEvidenceCount": 0,
+      "localityAliasCount": 0
+    },
+    {
+      "url": "/viec-lam-nganh-than/vinh-long/",
+      "title": "Tuyển thợ mỏ cho lao động Vĩnh Long | Việc làm TKV Quảng Ninh",
+      "description": "Tuyển thợ mỏ cho lao động Vĩnh Long, gồm nhu cầu tìm việc từ khu vực Vĩnh Long, Bến Tre và Trà Vinh trước sắp xếp: đăng ký từ xa, học nghề và làm việc tại Quảng Ninh.",
+      "keywords": [
+        "Vĩnh Long",
+        "tuyển thợ mỏ Vĩnh Long",
+        "việc làm ngành than Vĩnh Long"
+      ],
+      "aliases": [
+        "Vĩnh Long"
+      ],
+      "category": "province",
+      "categoryLabel": "Việc làm theo tỉnh",
+      "type": "Việc làm theo tỉnh",
+      "priority": 45,
+      "searchScope": "internal",
+      "localityEvidenceCount": 0,
+      "localityAliasCount": 0
+    },
+    {
       "url": "/viec-lam-nganh-than/bac-ninh/",
-      "title": "Tuyển thợ mỏ tại Bắc Ninh | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Bắc Ninh: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Bắc Ninh | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Bắc Ninh: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Bắc Ninh",
         "tuyển dụng ngành than Bắc Ninh",
@@ -31,8 +191,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/cao-bang/",
-      "title": "Tuyển thợ mỏ tại Cao Bằng | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Cao Bằng: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Cao Bằng | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Cao Bằng: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Cao Bằng",
         "tuyển dụng ngành than Cao Bằng",
@@ -43,7 +203,7 @@
         "Từ kiểm tra điều kiện đến ngày nhận việc",
         "Mở cửa cho người chưa có nghề",
         "Yên tâm học nghề",
-        "Rèn tay nghề trong 2–3 tháng",
+        "Học nghề theo từng nhóm nghề",
         "Bắt đầu công việc đúng nghề",
         "Một câu chuyện đã có dữ kiện và người đi trước",
         "Cao Bằng",
@@ -68,8 +228,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/da-nang/",
-      "title": "Tuyển thợ mỏ tại Đà Nẵng | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Đà Nẵng: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Đà Nẵng | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Đà Nẵng: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Đà Nẵng",
         "tuyển dụng ngành than Đà Nẵng",
@@ -95,8 +255,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/dak-lak/",
-      "title": "Tuyển thợ mỏ tại Đắk Lắk | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Đắk Lắk: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Đắk Lắk | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Đắk Lắk: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Đắk Lắk",
         "tuyển dụng ngành than Đắk Lắk",
@@ -109,7 +269,7 @@
         "Từ kiểm tra điều kiện đến ngày nhận việc",
         "Mở cửa cho người chưa có nghề",
         "Yên tâm học nghề",
-        "Rèn tay nghề trong 2–3 tháng",
+        "Học nghề theo từng nhóm nghề",
         "Đắk Lắk",
         "Phú Yên",
         "Đắk Lắk nhận thêm nguồn lực phục hồi sau mưa lũ",
@@ -130,8 +290,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/dien-bien/",
-      "title": "Tuyển thợ mỏ tại Điện Biên | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Điện Biên: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Điện Biên | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Điện Biên: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Điện Biên",
         "tuyển dụng ngành than Điện Biên",
@@ -142,7 +302,7 @@
         "Từ kiểm tra điều kiện đến ngày nhận việc",
         "Mở cửa cho người chưa có nghề",
         "Yên tâm học nghề",
-        "Rèn tay nghề trong 2–3 tháng",
+        "Học nghề theo từng nhóm nghề",
         "Bắt đầu công việc đúng nghề",
         "Những câu chuyện giúp người lao động nhìn nghề rõ hơn",
         "Điện Biên",
@@ -168,8 +328,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/gia-lai/",
-      "title": "Tuyển thợ mỏ tại Gia Lai | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Gia Lai: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Gia Lai | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Gia Lai: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Gia Lai",
         "tuyển dụng ngành than Gia Lai",
@@ -182,7 +342,7 @@
         "Từ kiểm tra điều kiện đến ngày nhận việc",
         "Mở cửa cho người chưa có nghề",
         "Yên tâm học nghề",
-        "Rèn tay nghề trong 2–3 tháng",
+        "Học nghề theo từng nhóm nghề",
         "Gia Lai",
         "Bình Định",
         "K'Bang",
@@ -216,8 +376,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/ha-noi/",
-      "title": "Tuyển thợ mỏ tại Hà Nội | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Hà Nội: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Hà Nội | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Hà Nội: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Hà Nội",
         "tuyển dụng ngành than Hà Nội",
@@ -239,8 +399,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/ha-tinh/",
-      "title": "Tuyển thợ mỏ tại Hà Tĩnh | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Hà Tĩnh: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Hà Tĩnh | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Hà Tĩnh: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Hà Tĩnh",
         "tuyển dụng ngành than Hà Tĩnh",
@@ -251,7 +411,7 @@
         "Từ kiểm tra điều kiện đến ngày nhận việc",
         "Mở cửa cho người chưa có nghề",
         "Yên tâm học nghề",
-        "Rèn tay nghề trong 2–3 tháng",
+        "Học nghề theo từng nhóm nghề",
         "Bắt đầu công việc đúng nghề",
         "Một câu chuyện đã có dữ kiện và người đi trước",
         "Hà Tĩnh",
@@ -271,8 +431,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/hai-phong/",
-      "title": "Tuyển thợ mỏ tại Hải Phòng | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Hải Phòng: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Hải Phòng | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Hải Phòng: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Hải Phòng",
         "tuyển dụng ngành than Hải Phòng",
@@ -298,8 +458,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/hue/",
-      "title": "Tuyển thợ mỏ tại Huế | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Huế: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Huế | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Huế: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Huế",
         "tuyển dụng ngành than Huế",
@@ -321,8 +481,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/hung-yen/",
-      "title": "Tuyển thợ mỏ tại Hưng Yên | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Hưng Yên: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Hưng Yên | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Hưng Yên: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Hưng Yên",
         "tuyển dụng ngành than Hưng Yên",
@@ -348,8 +508,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/khanh-hoa/",
-      "title": "Tuyển thợ mỏ tại Khánh Hòa | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Khánh Hòa: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Khánh Hòa | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Khánh Hòa: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Khánh Hòa",
         "tuyển dụng ngành than Khánh Hòa",
@@ -362,7 +522,7 @@
         "Từ kiểm tra điều kiện đến ngày nhận việc",
         "Mở cửa cho người chưa có nghề",
         "Yên tâm học nghề",
-        "Rèn tay nghề trong 2–3 tháng",
+        "Học nghề theo từng nhóm nghề",
         "Khánh Hòa",
         "Ninh Thuận",
         "Khánh Hòa trong gói hỗ trợ 12 tỷ đồng sau mưa lũ",
@@ -383,8 +543,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/lai-chau/",
-      "title": "Tuyển thợ mỏ tại Lai Châu | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Lai Châu: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Lai Châu | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Lai Châu: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Lai Châu",
         "tuyển dụng ngành than Lai Châu",
@@ -395,7 +555,7 @@
         "Từ kiểm tra điều kiện đến ngày nhận việc",
         "Mở cửa cho người chưa có nghề",
         "Yên tâm học nghề",
-        "Rèn tay nghề trong 2–3 tháng",
+        "Học nghề theo từng nhóm nghề",
         "Bắt đầu công việc đúng nghề",
         "Những câu chuyện giúp người lao động nhìn nghề rõ hơn",
         "Lai Châu",
@@ -417,8 +577,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/lang-son/",
-      "title": "Tuyển thợ mỏ tại Lạng Sơn | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Lạng Sơn: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Lạng Sơn | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Lạng Sơn: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Lạng Sơn",
         "tuyển dụng ngành than Lạng Sơn",
@@ -440,8 +600,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/lao-cai/",
-      "title": "Tuyển thợ mỏ tại Lào Cai | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Lào Cai: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Lào Cai | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Lào Cai: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Lào Cai",
         "tuyển dụng ngành than Lào Cai",
@@ -454,7 +614,7 @@
         "Từ kiểm tra điều kiện đến ngày nhận việc",
         "Mở cửa cho người chưa có nghề",
         "Yên tâm học nghề",
-        "Rèn tay nghề trong 2–3 tháng",
+        "Học nghề theo từng nhóm nghề",
         "Lào Cai",
         "Yên Bái",
         "Bát Xát",
@@ -480,8 +640,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/lam-dong/",
-      "title": "Tuyển thợ mỏ tại Lâm Đồng | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Lâm Đồng: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Lâm Đồng | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Lâm Đồng: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Lâm Đồng",
         "tuyển dụng ngành than Lâm Đồng",
@@ -517,8 +677,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/nghe-an/",
-      "title": "Tuyển thợ mỏ tại Nghệ An | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Nghệ An: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Nghệ An | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Nghệ An: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Nghệ An",
         "tuyển dụng ngành than Nghệ An",
@@ -529,7 +689,7 @@
         "Từ kiểm tra điều kiện đến ngày nhận việc",
         "Mở cửa cho người chưa có nghề",
         "Yên tâm học nghề",
-        "Rèn tay nghề trong 2–3 tháng",
+        "Học nghề theo từng nhóm nghề",
         "Bắt đầu công việc đúng nghề",
         "Một câu chuyện đã có dữ kiện và người đi trước",
         "Nghệ An",
@@ -553,8 +713,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/ninh-binh/",
-      "title": "Tuyển thợ mỏ tại Ninh Bình | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Ninh Bình: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Ninh Bình | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Ninh Bình: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Ninh Bình",
         "tuyển dụng ngành than Ninh Bình",
@@ -584,8 +744,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/phu-tho/",
-      "title": "Tuyển thợ mỏ tại Phú Thọ | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Phú Thọ: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Phú Thọ | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Phú Thọ: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Phú Thọ",
         "tuyển dụng ngành than Phú Thọ",
@@ -615,8 +775,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/quang-ngai/",
-      "title": "Tuyển thợ mỏ tại Quảng Ngãi | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Quảng Ngãi: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Quảng Ngãi | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Quảng Ngãi: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Quảng Ngãi",
         "tuyển dụng ngành than Quảng Ngãi",
@@ -629,7 +789,7 @@
         "Từ kiểm tra điều kiện đến ngày nhận việc",
         "Mở cửa cho người chưa có nghề",
         "Yên tâm học nghề",
-        "Rèn tay nghề trong 2–3 tháng",
+        "Học nghề theo từng nhóm nghề",
         "Quảng Ngãi",
         "Kon Tum",
         "Anh Đinh Văn Ne, người Quảng Ngãi, chia sẻ mức lương thực tế khoảng 23–25 triệu đồng/tháng trong nghề mỏ.",
@@ -648,46 +808,9 @@
       "localityAliasCount": 0
     },
     {
-      "url": "/viec-lam-nganh-than/quang-ninh/",
-      "title": "Tuyển thợ mỏ tại Quảng Ninh | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Quảng Ninh: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
-      "keywords": [
-        "tuyển thợ mỏ Quảng Ninh",
-        "tuyển dụng ngành than Quảng Ninh",
-        "học nghề mỏ Quảng Ninh",
-        "việc làm thợ lò Quảng Ninh",
-        "Tuyển thợ mỏ tại Quảng Ninh: học nghề, làm việc tại Quảng Ninh",
-        "Gửi 3 thông tin",
-        "Từ kiểm tra điều kiện đến ngày nhận việc",
-        "Mở cửa cho người chưa có nghề",
-        "Yên tâm học nghề",
-        "Rèn tay nghề trong 2–3 tháng",
-        "Bắt đầu công việc đúng nghề",
-        "Một câu chuyện đã có dữ kiện và người đi trước",
-        "Quảng Ninh",
-        "Bình Liêu",
-        "Bình Liêu: gần 90% người được tuyển đã đi hết khóa học",
-        "Dữ liệu 321 người được tuyển, 289 người tốt nghiệp cho thấy một tuyến học nghề – việc làm đã thành hình ngay trong tỉnh.",
-        "việc làm ngành than Quảng Ninh",
-        "tuyển thợ mỏ Bình Liêu",
-        "việc làm ngành than Bình Liêu"
-      ],
-      "category": "province",
-      "categoryLabel": "Việc làm theo tỉnh",
-      "type": "Việc làm theo tỉnh",
-      "priority": 45,
-      "aliases": [
-        "Quảng Ninh",
-        "Bình Liêu"
-      ],
-      "searchScope": "public",
-      "localityEvidenceCount": 2,
-      "localityAliasCount": 1
-    },
-    {
       "url": "/viec-lam-nganh-than/quang-tri/",
-      "title": "Tuyển thợ mỏ tại Quảng Trị | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Quảng Trị: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Quảng Trị | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Quảng Trị: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Quảng Trị",
         "tuyển dụng ngành than Quảng Trị",
@@ -700,7 +823,7 @@
         "Từ kiểm tra điều kiện đến ngày nhận việc",
         "Mở cửa cho người chưa có nghề",
         "Yên tâm học nghề",
-        "Rèn tay nghề trong 2–3 tháng",
+        "Học nghề theo từng nhóm nghề",
         "Quảng Trị",
         "Quảng Bình",
         "Hướng Hóa",
@@ -724,8 +847,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/son-la/",
-      "title": "Tuyển thợ mỏ tại Sơn La | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Sơn La: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Sơn La | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Sơn La: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Sơn La",
         "tuyển dụng ngành than Sơn La",
@@ -736,7 +859,7 @@
         "Từ kiểm tra điều kiện đến ngày nhận việc",
         "Mở cửa cho người chưa có nghề",
         "Yên tâm học nghề",
-        "Rèn tay nghề trong 2–3 tháng",
+        "Học nghề theo từng nhóm nghề",
         "Bắt đầu công việc đúng nghề",
         "Những câu chuyện giúp người lao động nhìn nghề rõ hơn",
         "Sơn La",
@@ -762,8 +885,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/thai-nguyen/",
-      "title": "Tuyển thợ mỏ tại Thái Nguyên | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Thái Nguyên: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Thái Nguyên | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Thái Nguyên: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Thái Nguyên",
         "tuyển dụng ngành than Thái Nguyên",
@@ -776,7 +899,7 @@
         "Từ kiểm tra điều kiện đến ngày nhận việc",
         "Mở cửa cho người chưa có nghề",
         "Yên tâm học nghề",
-        "Rèn tay nghề trong 2–3 tháng",
+        "Học nghề theo từng nhóm nghề",
         "Thái Nguyên",
         "Bắc Kạn",
         "Bằng Thành",
@@ -805,8 +928,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/thanh-hoa/",
-      "title": "Tuyển thợ mỏ tại Thanh Hóa | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Thanh Hóa: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Thanh Hóa | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Thanh Hóa: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Thanh Hóa",
         "tuyển dụng ngành than Thanh Hóa",
@@ -817,7 +940,7 @@
         "Từ kiểm tra điều kiện đến ngày nhận việc",
         "Mở cửa cho người chưa có nghề",
         "Yên tâm học nghề",
-        "Rèn tay nghề trong 2–3 tháng",
+        "Học nghề theo từng nhóm nghề",
         "Bắt đầu công việc đúng nghề",
         "Những câu chuyện giúp người lao động nhìn nghề rõ hơn",
         "Thanh Hóa",
@@ -847,8 +970,8 @@
     },
     {
       "url": "/viec-lam-nganh-than/tuyen-quang/",
-      "title": "Tuyển thợ mỏ tại Tuyên Quang | Học nghề 2–3 tháng",
-      "description": "Tuyển thợ mỏ tại Tuyên Quang: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
+      "title": "Tuyển thợ mỏ tại Tuyên Quang | học 2–3/10 tháng theo nghề",
+      "description": "Tuyển thợ mỏ tại Tuyên Quang: nam 18–40 tuổi, học 2–3/10 tháng theo nghề, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
       "keywords": [
         "tuyển thợ mỏ Tuyên Quang",
         "tuyển dụng ngành than Tuyên Quang",
@@ -861,7 +984,7 @@
         "Từ kiểm tra điều kiện đến ngày nhận việc",
         "Mở cửa cho người chưa có nghề",
         "Yên tâm học nghề",
-        "Rèn tay nghề trong 2–3 tháng",
+        "Học nghề theo từng nhóm nghề",
         "Tuyên Quang",
         "Hà Giang",
         "Bốn xã cùng mở đường học nghề mỏ giai đoạn 2025–2030",
@@ -879,6 +1002,43 @@
       "searchScope": "public",
       "localityEvidenceCount": 2,
       "localityAliasCount": 0
+    },
+    {
+      "url": "/tuyen-tho-mo-quang-ninh/",
+      "title": "Việc làm ngành Than Quảng Ninh – chuyển đến trang công nhân mỏ",
+      "description": "Trang cũ đã được hợp nhất về trang việc làm công nhân mỏ hầm lò Quảng Ninh để tránh nội dung trùng lặp.",
+      "keywords": [
+        "tuyển thợ mỏ Quảng Ninh",
+        "tuyển dụng ngành than Quảng Ninh",
+        "học nghề mỏ Quảng Ninh",
+        "việc làm thợ lò Quảng Ninh",
+        "Tuyển thợ mỏ tại Quảng Ninh: học nghề, làm việc tại Quảng Ninh",
+        "Gửi 3 thông tin",
+        "Từ kiểm tra điều kiện đến ngày nhận việc",
+        "Mở cửa cho người chưa có nghề",
+        "Yên tâm học nghề",
+        "Học nghề theo từng nhóm nghề",
+        "Bắt đầu công việc đúng nghề",
+        "Một câu chuyện đã có dữ kiện và người đi trước",
+        "Quảng Ninh",
+        "Bình Liêu",
+        "Bình Liêu: gần 90% người được tuyển đã đi hết khóa học",
+        "Dữ liệu 321 người được tuyển, 289 người tốt nghiệp cho thấy một tuyến học nghề – việc làm đã thành hình ngay trong tỉnh.",
+        "việc làm ngành than Quảng Ninh",
+        "tuyển thợ mỏ Bình Liêu",
+        "việc làm ngành than Bình Liêu"
+      ],
+      "category": "province",
+      "categoryLabel": "Việc làm theo tỉnh",
+      "type": "Việc làm theo tỉnh",
+      "priority": 45,
+      "aliases": [
+        "Quảng Ninh",
+        "Bình Liêu"
+      ],
+      "searchScope": "internal",
+      "localityEvidenceCount": 2,
+      "localityAliasCount": 1
     }
   ]
 }

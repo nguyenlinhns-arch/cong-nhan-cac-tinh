@@ -17,6 +17,14 @@ const canonicalFacts = JSON.parse(fs.readFileSync(CANONICAL_FACTS_PATH, 'utf8'))
 
 const exactReplacements = [
   [
+    /người lao động hoàn thành định mức lao động được Thu nhập 20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động/gu,
+    'người lao động có mức thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động'
+  ],
+  [
+    /được Thu nhập/gu,
+    'có mức thu nhập'
+  ],
+  [
     /Người phù hợp được đào tạo nghề, hỗ trợ ăn ở trong khóa học và được Thu nhập 20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động\./gu,
     'Người phù hợp được đào tạo nghề, hỗ trợ ăn ở trong khóa học và có mức thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.'
   ],
@@ -81,7 +89,12 @@ const exactReplacements = [
 function normalizeText(text) {
   let next = text;
   for (const [pattern, replacement] of exactReplacements) next = next.replace(pattern, replacement);
-  return next;
+  return next
+    .replace(/20[–-]25 triệu đồng\/tháng(?!(?:(?:\s|<[^>]*>){0,5})khi hoàn thành định mức lao động)/gu,
+      '20–25 triệu đồng/tháng khi hoàn thành định mức lao động')
+    .replace(/20[–-]25 triệu\/tháng(?!(?:(?:\s|<[^>]*>){0,5})khi hoàn thành định mức lao động)/gu,
+      '20–25 triệu/tháng khi hoàn thành định mức lao động')
+    .replace(/7[,.]5 triệu đồng(?!\/tháng)/gu, '7,5 triệu đồng/tháng');
 }
 
 function writeIfChanged(file, next) {
@@ -159,8 +172,8 @@ walk(SITE, (file) => {
 });
 
 const checks = [
-  [/được Thu nhập 20[–-]25/iu, 'awkward capitalized income phrase'],
-  [/mức Thu nhập/iu, 'awkward capitalized income noun phrase'],
+  [/được Thu nhập 20[–-]25/u, 'awkward capitalized income phrase'],
+  [/mức Thu nhập/u, 'awkward capitalized income noun phrase'],
   [/<strong>Cam kết thu nhập<\/strong>/iu, 'legacy income heading'],
   [/Chương trình đang áp dụng (?:cam kết thu nhập|Thu nhập) 20[–-]25/iu, 'legacy daily SEO income phrase'],
   [/Nguồn tuyển đang áp dụng Thu nhập 20[–-]25/iu, 'awkward source-income phrase'],

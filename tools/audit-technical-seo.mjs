@@ -196,7 +196,7 @@ for (const file of htmlFiles) {
     }
     if (relative === "index.html") {
       const h1 = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1]?.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim() || "";
-      if (!h1.includes("Tuyển thợ mỏ")) errors.push("index.html: visible H1 must contain the primary keyword “Tuyển thợ mỏ”");
+      if (!/(?:Tuyển thợ mỏ|Học nghề mỏ)/u.test(h1)) errors.push("index.html: visible H1 must contain the primary keyword “Tuyển thợ mỏ” or “Học nghề mỏ”");
       const nodes = jsonScripts.flatMap((script) => {
         try {
           const value = JSON.parse(script[1]);

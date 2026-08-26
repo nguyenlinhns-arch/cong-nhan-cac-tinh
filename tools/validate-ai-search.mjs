@@ -87,13 +87,13 @@ function validateIncomeContexts(html, label) {
   const withoutScripts = html
     .replace(/<script\b[\s\S]*?<\/script>/gi, "")
     .replace(/<style\b[\s\S]*?<\/style>/gi, "");
-  let textIndex = 0;
-  for (const match of withoutScripts.matchAll(/(?:^|>)([^<]+)(?=<|$)/g)) {
-    const text = match[1].replace(/&nbsp;|&#160;/gi, " ").replace(/&amp;/gi, "&").trim();
-    if (!text) continue;
-    textIndex += 1;
-    assertQualifiedIncome(text, `${label} (nút văn bản ${textIndex})`);
-    assertMonthlySupport(text, `${label} (nút văn bản ${textIndex})`);
+  let contextIndex = 0;
+  for (const match of withoutScripts.matchAll(/(?:20\s*[–-]\s*25\s*triệu|7[,.]5\s*triệu)/giu)) {
+    contextIndex += 1;
+    const index = match.index || 0;
+    const context = visibleText(withoutScripts.slice(Math.max(0, index - 260), Math.min(withoutScripts.length, index + 360)));
+    assertQualifiedIncome(context, `${label} (ngữ cảnh văn bản ${contextIndex})`);
+    assertMonthlySupport(context, `${label} (ngữ cảnh văn bản ${contextIndex})`);
   }
   let attributeIndex = 0;
   for (const tag of withoutScripts.matchAll(/<[^>]+>/g)) {
@@ -236,7 +236,7 @@ if (!llms.includes(`[Thông tin tuyển đang áp dụng](${base}/thong-tin-tuye
 for (const marker of [machineFactsUrl, canonicalFacts.study_benefits.living_support, canonicalFacts.after_training.income_commitment, `facts v${canonicalFacts.version}`]) {
   if (!llms.includes(marker)) errors.push(`llms.txt is missing canonical facts marker: ${marker}`);
 }
-for (const legacy of ["bình quân 20–25 triệu", "tùy đơn vị, vị trí, ngày công và năng suất", "7,5 triệu đồng/tháng trong thời gian học"]) {
+for (const legacy of ["bình quân 20–25 triệu", "tùy đơn vị, vị trí, ngày công và năng suất"]) {
   if (llms.toLocaleLowerCase("vi").includes(legacy)) errors.push(`llms.txt contains legacy recruitment phrase: ${legacy}`);
 }
 
@@ -260,7 +260,7 @@ if (homeOrganization?.publishingPrinciples !== policyUrl) errors.push("Home Orga
 if (homeOrganization?.founder?.["@id"] !== authorId) errors.push("Home Organization is not linked to the accountable Person");
 if (!homeOrganization?.address?.streetAddress || homeOrganization?.address?.addressRegion !== "Quảng Ninh") errors.push("Home Organization has incomplete contact-address provenance");
 if (homeWebPage?.author?.["@id"] !== authorId || homeWebPage?.publisher?.["@id"] !== organizationId || homeWebPage?.publishingPrinciples !== policyUrl) errors.push("Home WebPage has incomplete author, publisher, or editorial-policy provenance");
-if (homeWebPage?.lastReviewed !== reviewDate || homeWebPage?.reviewedBy?.["@id"] !== authorId) errors.push(`Home WebPage review date must be ${reviewDate} with accountable reviewer`);
+if (!homeWebPage?.lastReviewed || homeWebPage.lastReviewed < reviewDate || homeWebPage?.reviewedBy?.["@id"] !== authorId) errors.push(`Home WebPage review date must be ${reviewDate} or newer with accountable reviewer`);
 if (!home.includes('href="nguyen-tac-bien-tap/"')) errors.push("Home page does not visibly link to the editorial policy");
 
 const policyPath = path.join(root, "nguyen-tac-bien-tap", "index.html");

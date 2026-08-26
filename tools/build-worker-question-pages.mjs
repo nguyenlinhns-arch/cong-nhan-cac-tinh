@@ -245,7 +245,7 @@ write("tuyen-tho-mo/worker-questions.json", JSON.stringify(machineFeed, null, 2)
 
 let home = read("tuyen-tho-mo/index.html");
 // worker-questions.css đã nằm trong home-content.css để không chặn lần vẽ đầu tiên.
-home = home.replace(/\n    <section class="home-worker-questions"[\s\S]*?<\/section>\n(?=\n    <nav class="home-content-shortcuts")/, "");
+home = home.replace(/\n\s*<section\b[^>]*data-worker-question-hub[^>]*>[\s\S]*?<\/section>\s*/g, "\n");
 const homeBlock = "\n    <section class=\"home-worker-questions\" aria-labelledby=\"home-worker-questions-title\" data-worker-question-hub><div class=\"container\"><div class=\"home-worker-questions__head\"><div><p class=\"home-step\">Người lao động thường hỏi</p><h2 id=\"home-worker-questions-title\">Tìm đúng câu trả lời trước khi quyết định đi làm mỏ</h2></div><a href=\"" + HUB_PATH + "\">Xem đủ 20 câu hỏi →</a></div><div class=\"home-worker-questions__grid\"><a href=\"/lien-he-di-lam-mo-than-quang-ninh/\">Muốn đi làm mỏ than Quảng Ninh thì liên hệ với ai?</a><a href=\"/nguoi-tinh-xa-dang-ky-di-lam-mo-the-nao/\">Người ở tỉnh xa đăng ký thế nào?</a><a href=\"/di-lam-mo-than-can-chuan-bi-bao-nhieu-tien/\">Cần chuẩn bị bao nhiêu tiền?</a><a href=\"/hoc-xong-nghe-mo-lam-o-cong-ty-nao/#cong-viec\">Công việc thợ mỏ hầm lò là làm gì?</a><a href=\"/tho-mo-lam-may-tieng-mot-ngay/\">Thợ mỏ làm mấy tiếng một ngày?</a><a href=\"/lam-mo-than-co-duoc-dong-bao-hiem-khong/\">Làm mỏ than có được đóng bảo hiểm không?</a></div></div></section>\n";
 home = replaceRequired(home, "\n    <nav class=\"home-content-shortcuts", homeBlock + "\n    <nav class=\"home-content-shortcuts", "cụm hỏi đáp trên trang chủ");
 if (!home.includes("\"name\":\"20 câu hỏi trước khi đi làm mỏ\"")) {

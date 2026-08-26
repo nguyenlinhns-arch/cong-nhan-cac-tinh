@@ -8,22 +8,63 @@
   },
   "counts": {
     "core": 24,
-    "provinces": 26,
-    "content": 86,
-    "total": 136
+    "provinces": 34,
+    "content": 152,
+    "total": 210
   },
   "discovery": {
     "canonicalFacts": "/thong-tin-tuyen-tho-mo/",
+    "canonicalFactsJson": "/data/recruitment-facts-2026.json",
+    "currentRecruitmentJson": "/recruitment-current.json",
+    "localitiesJson": "/localities.json",
+    "communeSitemap": "/commune-sitemap.xml",
+    "provinceSitemap": "/province-sitemap.xml",
     "editorialPolicy": "/nguyen-tac-bien-tap/",
     "author": "/tac-gia/nguyen-tu-linh/",
+    "fieldReports": "/phong-su/",
     "llms": "/llms.txt",
     "robots": "/robots.txt",
     "sitemap": "/sitemap.xml",
     "newsSitemap": "/news-sitemap.xml",
     "rss": "/feed.xml",
     "jsonFeed": "/feed.json",
+    "workerQuestions": "/worker-questions.json",
     "dailySeoHub": "/giai-dap-nghe-mo/",
     "dailySeoJson": "/daily-seo-articles.json",
-    "jobsJson": "/jobs.json"
+    "occupationsJson": "/occupations.json",
+    "jobsJson": "/jobs.json",
+    "paidSearchIntentMap": "/ad-landing-pages.json",
+    "quangNinhRecruitment": "/tuyen-tho-mo-quang-ninh/"
+  },
+  "canonicalFactsVersion": 8,
+  "canonicalFactsConfirmedAt": "2026-08-23T11:34:00+07:00",
+  "currentRecruitmentSchemaVersion": 2,
+  "discoveryPriority": [
+    "/data/recruitment-facts-2026.json",
+    "/thong-tin-tuyen-tho-mo/",
+    "/recruitment-current.json",
+    "/tuyen-tho-mo-quang-ninh/",
+    "/jobs.json",
+    "/localities.json",
+    "/occupations.json",
+    "/worker-questions.json",
+    "/daily-seo-articles.json"
+  ],
+  "freshnessPolicy": {
+    "canonicalFactsWinsOverDerivedAndEditorial": true,
+    "currentRecruitmentIsDerivedSummary": true,
+    "preferNewerEffectiveDate": true,
+    "editorialContentIsContextNotCurrentPolicy": true,
+    "originalFieldReportsAreEvidenceNotPolicy": true,
+    "localityPagesAreRecruitmentSourceNotJobLocation": true
+  },
+  "contentOriginTaxonomy": {
+    "policy": "/nguyen-tac-bien-tap/#phan-loai-nguon",
+    "currentRecruitmentPolicy": "current-recruitment-policy",
+    "currentRecruitmentContext": "current-recruitment-context",
+    "currentExplainer": "current-explainer",
+    "firsthand": "firsthand",
+    "sourcedEditorial": "sourced-editorial",
+    "expertExplainer": "expert-explainer"
   }
 }

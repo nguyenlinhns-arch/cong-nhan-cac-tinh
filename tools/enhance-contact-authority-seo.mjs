@@ -282,7 +282,7 @@ const homeAnswer = `
       </div>
     </section>
 `;
-home = home.replace(/\n    <section class="home-contact-answer"[\s\S]*?<\/section>\n(?=\n    <nav class="home-content-shortcuts")/, "");
+home = home.replace(/\n\s*<section\b[^>]*data-contact-authority-answer[^>]*>[\s\S]*?<\/section>\s*/g, "\n");
 home = replaceRequired(home, '\n    <nav class="home-content-shortcuts', `${homeAnswer}\n    <nav class="home-content-shortcuts`, "câu trả lời liên hệ trên trang chủ");
 home = home.replace(
   '"hasPart":[{"@type":"CollectionPage","name":"Cẩm nang nghề mỏ"',

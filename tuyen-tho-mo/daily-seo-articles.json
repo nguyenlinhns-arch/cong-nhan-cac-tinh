@@ -1,9 +1,113 @@
 {
   "version": "1.0",
-  "updated_at": "2026-08-07",
+  "updated_at": "2026-08-26",
   "canonical_hub": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/",
   "publisher": "Thầy Linh – Tuyển Thợ Mỏ",
   "articles": [
+    {
+      "title": "Đi khám sức khỏe học nghề mỏ trước hay sau khi đăng ký?",
+      "primary_query": "đi khám sức khỏe học nghề mỏ trước hay sau khi đăng ký",
+      "direct_answer": "Hãy đăng ký và kiểm tra điều kiện sơ bộ từ xa trước; chưa cần tự đi khám ở một nơi bất kỳ chỉ để nộp kết quả. Khi thông tin ban đầu phù hợp và lịch tiếp nhận được xác nhận, người lao động mới đi khám tuyển trực tiếp theo hướng dẫn. Kết quả khám tuyển là căn cứ cuối cùng, còn biểu mẫu trực tuyến không thay thế kết luận y tế.",
+      "date_published": "2026-08-26",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/di-kham-suc-khoe-hoc-nghe-mo-truoc-hay-sau-khi-dang-ky/",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 quy định đăng ký ban đầu là bước sàng lọc từ xa, chưa yêu cầu ảnh giấy tờ; điều kiện sức khỏe được xác nhận qua khám tuyển và hồ sơ thực tế. Nguồn không công bố cơ sở khám, chi phí hoặc danh mục xét nghiệm cố định nên bài không tự bổ sung các chi tiết này."
+    },
+    {
+      "title": "Cơ điện mỏ học 10 tháng: ai nên chọn nghề này?",
+      "primary_query": "cơ điện mỏ học 10 tháng có nên đăng ký không",
+      "direct_answer": "Cơ điện mỏ hiện có thời gian đào tạo 10 tháng, dài hơn khai thác và xây dựng mỏ 2–3 tháng. Nghề phù hợp với người chấp nhận học dài hơn để đi theo công việc lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống cơ khí, điện cùng thiết bị mỏ. Trước khi chọn, cần hỏi rõ nội dung học, lịch nhập học và nhu cầu tiếp nhận của đợt tuyển.",
+      "date_published": "2026-08-23",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/co-dien-mo-hoc-10-thang-co-nen-dang-ky-khong/",
+      "source_note": "Thông tin tuyển sinh năm 2026 đang áp dụng trên website; dữ kiện quyền lợi và thu nhập đối chiếu theo recruitment-facts-2026.json, mô tả ba nghề được chuẩn hóa theo Hướng dẫn số 554/HD-CĐTKV của Trường Cao đẳng Than – Khoáng sản Việt Nam."
+    },
+    {
+      "title": "Đăng ký học nghề mỏ ban đầu có cần gửi ảnh CCCD không?",
+      "primary_query": "đăng ký học nghề mỏ ban đầu có cần gửi ảnh CCCD không",
+      "direct_answer": "Không. Đăng ký học nghề mỏ ban đầu hiện chưa yêu cầu nộp hoặc gửi ảnh CCCD, giấy khai sinh hay bằng cấp. Người lao động chỉ cần cung cấp thông tin cơ bản để kiểm tra điều kiện sơ bộ. Hồ sơ gốc được chuẩn bị và mang theo sau khi đã được xác nhận phù hợp, nhận đúng lịch cùng hướng dẫn nhập học; không gửi giấy tờ gốc qua bưu điện.",
+      "date_published": "2026-08-22",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/dang-ky-hoc-nghe-mo-ban-dau-co-can-gui-anh-cccd-khong/",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 quy định đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ; hồ sơ nhập học hiện gồm CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Người chưa có bằng cấp vẫn có thể đăng ký để được hướng dẫn."
+    },
+    {
+      "title": "Sau khi học nghề mỏ có được ký hợp đồng lao động không?",
+      "primary_query": "sau khi học nghề mỏ có được ký hợp đồng lao động không",
+      "direct_answer": "Có, nhưng không ký ngay khi gửi đăng ký hoặc vừa nhập học. Theo thông tin tuyển hiện hành, người học phải hoàn thành chương trình và đạt yêu cầu; sau đó doanh nghiệp thuộc TKV mới tiếp nhận, ký hợp đồng lao động và bố trí việc làm tại Quảng Ninh. Đơn vị, thời điểm và thủ tục cụ thể được xác nhận ở bước tiếp nhận.",
+      "date_published": "2026-08-21",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/sau-khi-hoc-nghe-mo-co-duoc-ky-hop-dong-lao-dong-khong/",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 quy định người tốt nghiệp đạt yêu cầu được doanh nghiệp tiếp nhận, ký hợp đồng lao động và bố trí việc làm; doanh nghiệp, thời điểm và thủ tục cụ thể được xác nhận theo đợt tiếp nhận thực tế."
+    },
+    {
+      "title": "Chưa đủ 18 tuổi có đăng ký học nghề mỏ được không?",
+      "primary_query": "chưa đủ 18 tuổi có đăng ký học nghề mỏ được không",
+      "direct_answer": "Chưa thuộc nhóm tiếp nhận của đợt tuyển hiện hành nếu chưa đủ 18 tuổi. Điều kiện đang áp dụng là nam từ 18 đến 40 tuổi; người sắp đủ 18 có thể tìm hiểu trước, nhưng chỉ nên làm bước đăng ký chính thức khi đã đủ tuổi và thông tin tuyển lúc đó vẫn còn hiệu lực.",
+      "date_published": "2026-08-16",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/chua-du-18-tuoi-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 quy định độ tuổi tiếp nhận là nam từ 18 đến 40 tuổi; các điều kiện và lịch tiếp nhận cần được đối chiếu lại tại thời điểm đăng ký."
+    },
+    {
+      "title": "Cao dưới 1m53 có đăng ký học nghề mỏ được không?",
+      "primary_query": "cao dưới 1m53 có đăng ký học nghề mỏ được không",
+      "direct_answer": "Chưa đạt mốc kiểm tra sơ bộ nếu chiều cao đo đúng hiện dưới 1m53. Điều kiện tuyển đang áp dụng yêu cầu nam cao từ 1m53; người lao động nên đo lại chính xác, gửi số đo thật để được đối chiếu và chỉ chuẩn bị hồ sơ hoặc di chuyển sau khi có lịch. Khám tuyển vẫn là căn cứ xác nhận cuối cùng.",
+      "date_published": "2026-08-15",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/cao-duoi-1m53-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 quy định nam cao từ 1m53; việc tiếp nhận cuối cùng còn phụ thuộc tuổi, cân nặng, các điều kiện sức khỏe khác, khám tuyển và hồ sơ thực tế."
+    },
+    {
+      "title": "Nặng dưới 47 kg có đăng ký học nghề mỏ được không?",
+      "primary_query": "nặng dưới 47 kg có đăng ký học nghề mỏ được không",
+      "direct_answer": "Chưa đạt mốc kiểm tra sơ bộ nếu cân nặng hiện tại dưới 47 kg. Điều kiện tuyển đang áp dụng yêu cầu nam nặng từ 47 kg; người lao động nên cân lại đúng cách, gửi số đo thật để được hướng dẫn và chỉ chuẩn bị hồ sơ hoặc di chuyển sau khi có lịch. Khám tuyển vẫn là căn cứ xác nhận cuối cùng.",
+      "date_published": "2026-08-14",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/nang-duoi-47-kg-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 quy định nam nặng từ 47 kg; việc tiếp nhận cuối cùng còn phụ thuộc các điều kiện khác, khám sức khỏe tuyển dụng và hồ sơ thực tế."
+    },
+    {
+      "title": "Bị huyết áp cao có đăng ký học nghề mỏ được không?",
+      "primary_query": "bị huyết áp cao có đăng ký học nghề mỏ được không",
+      "direct_answer": "Điều kiện tuyển hiện hành loại trừ trường hợp huyết áp không phù hợp, nhưng không đưa một ngưỡng đo để người lao động tự kết luận. Người từng được chẩn đoán tăng huyết áp, đang dùng thuốc hoặc có kết quả bất thường cần khai đúng; chỉ khám sức khỏe tuyển dụng mới xác nhận mức độ phù hợp.",
+      "date_published": "2026-08-13",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/bi-huyet-ap-cao-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 ghi huyết áp không phù hợp trong nhóm loại trừ sức khỏe; kết quả tiếp nhận cuối cùng căn cứ khám sức khỏe tuyển dụng và hồ sơ thực tế."
+    },
+    {
+      "title": "Bị cận thị nhẹ có đăng ký học nghề mỏ được không?",
+      "primary_query": "bị cận thị nhẹ có đăng ký học nghề mỏ được không",
+      "direct_answer": "Theo điều kiện tuyển hiện hành, cận thị thuộc nhóm sức khỏe không phù hợp với chỉ tiêu nghề mỏ hầm lò. Người cận nhẹ vẫn nên khai đúng số kính và liên hệ để được hướng dẫn khám; không tự kết luận đủ điều kiện và không che giấu tình trạng mắt.",
+      "date_published": "2026-08-12",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/bi-can-thi-nhe-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 ghi cận thị trong nhóm loại trừ sức khỏe; kết quả tiếp nhận cuối cùng căn cứ khám sức khỏe tuyển dụng và hồ sơ thực tế."
+    },
+    {
+      "title": "Chưa có bằng cấp 3 có đăng ký học nghề mỏ được không?",
+      "primary_query": "chưa có bằng cấp 3 có đăng ký học nghề mỏ được không",
+      "direct_answer": "Có thể đăng ký để được kiểm tra và hướng dẫn theo hệ đào tạo phù hợp. Chưa có bằng cấp 3 không đồng nghĩa tự động bị loại, nhưng cũng không bảo đảm chắc chắn được tiếp nhận. Bước đầu chưa cần gửi ảnh giấy tờ; khi có lịch, hãy mang bằng THCS hoặc THPT nếu có để đối chiếu hồ sơ.",
+      "date_published": "2026-08-11",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/chua-co-bang-cap-3-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "source_note": "Quy định về trình độ và hồ sơ trong nguồn tuyển năm 2026: đọc, viết thành thạo; trình độ đối chiếu theo hệ đào tạo; mang bằng THCS hoặc THPT nếu có khi được hướng dẫn nhập học."
+    },
+    {
+      "title": "Đăng ký học nghề mỏ có mất phí môi giới không?",
+      "primary_query": "đăng ký học nghề mỏ có mất phí môi giới không",
+      "direct_answer": "Thông tin tuyển đang áp dụng không có khoản phí môi giới hoặc phí giữ chỗ khi đăng ký qua đầu mối công khai. Bước đầu chưa cần nộp hồ sơ hay chuyển tiền. Nếu có người yêu cầu chuyển khoản vào tài khoản cá nhân để giữ suất, hãy dừng lại và xác minh trực tiếp với Thầy Linh qua số 096 304 8585.",
+      "date_published": "2026-08-10",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/dang-ky-hoc-nghe-mo-co-mat-phi-moi-gioi-khong/",
+      "source_note": "Quy trình hồ sơ và chính sách miễn kinh phí đào tạo trong nguồn tuyển năm 2026; thông tin người phụ trách được công khai trên website."
+    },
+    {
+      "title": "Nam 40 tuổi còn đăng ký làm mỏ than được không?",
+      "primary_query": "40 tuổi có đi làm mỏ than được không",
+      "direct_answer": "Có thể. Đợt tuyển năm 2026 đang tiếp nhận nam từ đủ 18 đến 40 tuổi, nên người 40 tuổi vẫn nằm trong phạm vi sơ bộ. Tuy nhiên phải đối chiếu ngày sinh tại thời điểm đăng ký, đạt mốc chiều cao từ 1m53, cân nặng từ 47 kg và đáp ứng yêu cầu khám sức khỏe.",
+      "date_published": "2026-08-09",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/nam-40-tuoi-con-dang-ky-lam-mo-than-duoc-khong/",
+      "source_note": "Điều kiện tuổi, thể lực và sức khỏe trong thông tin tuyển năm 2026, hiệu lực từ ngày 01/08/2026."
+    },
+    {
+      "title": "Phụ huynh cần biết gì khi con đi học nghề mỏ?",
+      "primary_query": "phụ huynh cần biết gì khi con đi học nghề mỏ",
+      "direct_answer": "Phụ huynh nên kiểm tra 6 việc: con có đủ tuổi, thể lực và sức khỏe; người tư vấn là ai; địa điểm nhập học cụ thể; học nghề gì và bao lâu; quyền lợi ăn ở, hỗ trợ; doanh nghiệp và cách bố trí việc làm sau tốt nghiệp. Chỉ cho con di chuyển khi đã có lịch tiếp nhận được xác nhận.",
+      "date_published": "2026-08-08",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/phu-huynh-can-biet-gi-khi-con-di-hoc-nghe-mo/",
+      "source_note": "Thông tin tuyển năm 2026 và hồ sơ công khai của người phụ trách tuyển sinh trên website Thầy Linh – Tuyển Thợ Mỏ."
+    },
     {
       "title": "Học nghề mỏ được hỗ trợ 7,5 triệu đồng/tháng thế nào?",
       "primary_query": "học nghề mỏ được hỗ trợ 7,5 triệu đồng/tháng",
@@ -29,12 +133,15 @@
       "source_note": "Nguồn tuyển dụng thống nhất năm 2026 của Trường Cao đẳng Than – Khoáng sản Việt Nam; mục kinh nghiệm ghi rõ không yêu cầu kinh nghiệm."
     },
     {
-      "title": "Lộ trình đi làm mỏ than Quảng Ninh từ đăng ký đến nhận việc",
+      "title": "Lộ trình làm mỏ Quảng Ninh: đăng ký đến nhận việc",
       "primary_query": "lộ trình đi làm mỏ than Quảng Ninh",
       "direct_answer": "Lộ trình đúng gồm 5 bước: kiểm tra điều kiện sơ bộ từ xa; nhận hướng dẫn và lịch tiếp nhận; đến Quảng Ninh làm thủ tục; học khai thác hoặc xây dựng mỏ 2–3 tháng, cơ điện mỏ 10 tháng rồi thực tập; sau khi tốt nghiệp đạt yêu cầu, được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng và bố trí việc làm.",
       "date_published": "2026-08-04",
       "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/lo-trinh-di-lam-mo-than-quang-ninh-tu-dang-ky-den-nhan-viec/",
       "source_note": "Thông báo số 10/TB-CĐTKV ngày 02/04/2026 và nội dung tuyển năm 2026 cập nhật ngày 01/08/2026."
     }
-  ]
+  ],
+  "canonical_facts_version": 8,
+  "canonical_facts_confirmed_at": "2026-08-23T11:34:00+07:00",
+  "canonical_facts_url": "https://thaylinhtuyenthomo.vn/data/recruitment-facts-2026.json"
 }

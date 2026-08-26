@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-04T08:46:00+07:00",
+  "updated_at": "2026-08-22T08:19:00+07:00",
   "policy": "Mỗi bài công khai ghi một dòng Nguồn bằng chữ và một câu SEO ở cuối bài; URL chỉ dùng cho kiểm chứng nội bộ, không đặt liên kết ra ngoài.",
   "articles": [
     {
@@ -808,6 +808,344 @@
           "title": "Than Nam Mẫu gặp mặt, tuyên dương con cán bộ, công nhân viên đạt thành tích cao trong học tập",
           "date": "02/08/2026",
           "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/45999/Than-Nam-Mau-gap-mat-tuyen-duong-con-can-bo-cong-nhan-vien-đat-thanh-tich-cao-trong-hoc-tap"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-nui-hong-bao-dam-viec-lam-thu-nhap-2026",
+      "title": "Than Núi Hồng bố trí việc làm khi dự án chậm cấp phép",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Công đoàn TKV nắm bắt tình hình sản xuất, đời sống, việc làm của người lao động tại Công ty than Núi Hồng",
+          "date": "07/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46021/Cong-đoan-TKV-nam-bat-tinh-hinh-san-xuat-đoi-song-viec-lam-cua-nguoi-lao-đong-tai-Cong-ty-than-Nui-Hong"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-mong-duong-phoi-hop-tuyen-sinh-dao-tao-2026",
+      "title": "Than Mông Dương phối hợp tuyển sinh, đào tạo thợ mỏ",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Than Mông Dương tăng cường phối hợp tuyển sinh, đào tạo và ổn định nguồn nhân lực",
+          "date": "06/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46019/Than-Mong-Duong-tang-cuong-phoi-hop-tuyen-sinh-đao-tao-va-on-đinh-nguon-nhan-luc"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "co-dien-uong-bi-on-dinh-viec-lam-nguoi-lao-dong-2026",
+      "title": "Cơ điện Uông Bí ổn định việc làm cho người lao động",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Công đoàn TKV nắm bắt tình hình sản xuất, đời sống người lao động tại Công ty CP Cơ điện Uông Bí",
+          "date": "06/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46018/Cong-đoan-TKV-nam-bat-tinh-hinh-san-xuat-đoi-song-nguoi-lao-đong-tai-Cong-ty-CP-Co-đien-Uong-Bi"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "tuyen-than-cua-ong-phuc-loi-nguoi-lao-dong-2026",
+      "title": "Tuyển than Cửa Ông mở rộng phúc lợi người lao động",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Công đoàn Tuyển than Cửa Ông: Chăm lo, đồng hành cùng người lao động bằng những việc làm thiết thực",
+          "date": "06/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46017/Cong-đoan-Tuyen-than-Cua-Ong-Cham-lo-đong-hanh-cung-nguoi-lao-đong-bang-nhung-viec-lam-thiet-thuc"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "thai-nguyen-phoi-hop-tuyen-sinh-nghe-mo-2026",
+      "title": "Thái Nguyên phối hợp tuyển sinh nghề mỏ, kết nối việc làm",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Tăng cường phối hợp tư vấn tuyển sinh, đào tạo nghề và giải quyết việc làm cho người lao động tại tỉnh Thái Nguyên",
+          "date": "09/08/2026",
+          "url": "https://caodangtkv.edu.vn/tang-cuong-phoi-hop-tu-van-tuyen-sinh-dao-tao-nghe-va-giai-quyet-viec-lam-cho-nguoi-lao-dong-tai-tinh-thai-nguyen/"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-quang-hanh-chong-nong-cho-tho-mo-2026",
+      "title": "Than Quang Hanh tăng chống nóng, bảo vệ sức khỏe thợ mỏ",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Công ty Than Quang Hanh cấp phát đá lạnh, C sủi và bình giữ nhiệt cho người lao động",
+          "date": "10/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46025/Cong-ty-Than-Quang-Hanh-cap-phat-đa-lanh-c-sui-va-binh-giu-nhiet-cho-nguoi-lao-đong"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "che-tao-may-khen-thuong-con-nguoi-lao-dong-2026",
+      "title": "Chế tạo máy TKV khen thưởng 229 con người lao động",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Công ty Cổ phần Chế tạo máy: Tuyên dương con CB, CN, NLĐ đạt thành tích cao năm học 2025 - 2026",
+          "date": "10/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46026/Cong-ty-Co-phan-Che-tao-may-Tuyen-duong-con-CB-CN-NLĐ-đat-thanh-tich-cao-nam-hoc-2025---2026"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-duong-huy-ho-tro-con-cong-nhan-2026",
+      "title": "Than Dương Huy mở rộng hỗ trợ học tập cho con công nhân",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Than Dương Huy: Chăm lo thiết thực cho con của CBCNV",
+          "date": "10/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46030/Than-Duong-Huy-Cham-lo-thiet-thuc-cho-con-cua-CBCNV"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-duong-huy-khu-tap-the-cong-nhan-2026",
+      "title": "Than Dương Huy cải thiện khu tập thể cho 142 công nhân",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Than Dương Huy: Quyết tâm xây dựng khu tập thể công nhân sạch đẹp, văn minh",
+          "date": "10/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46031/Than-Duong-Huy-Quyet-tam-xay-dung-khu-tap-the-cong-nhan-sach-đep-van-minh"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-thong-nhat-cap-ao-bao-ho-mua-dong-2026",
+      "title": "Than Thống Nhất chuẩn bị áo bảo hộ mùa đông cho công nhân",
+      "sources": [
+        {
+          "publisher": "Công ty Than Thống Nhất – TKV",
+          "title": "Lan tỏa nghĩa tình trong Gia đình Thợ Mỏ Thống Nhất",
+          "date": "08/08/2026",
+          "url": "https://www.thanthongnhat.vn/tin-san-xuat/lan-toa-nghia-tinh-trong-gia-dinh-tho-mo-thong-nhat-15701.html"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-nui-beo-nghi-duong-gia-dinh-tho-lo-2026",
+      "title": "Than Núi Béo tổ chức nghỉ dưỡng cho 60 gia đình thợ lò",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "60 gia đình thợ lò Than Núi Béo được đi tham quan, nghỉ dưỡng",
+          "date": "10/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46028/60-gia-đinh-tho-lo-Than-Nui-Beo-đuoc-đi-tham-quan-nghi-duong"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-mao-khe-nghi-duong-nguoi-lao-dong-2026",
+      "title": "Than Mạo Khê tri ân 83 lao động xuất sắc tại Hạ Long",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Chuyến đi gắn kết yêu thương của những thợ mỏ Than Mạo Khê xuất sắc",
+          "date": "10/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46029/Chuyen-đi-gan-ket-yeu-thuong-cua-nhung-tho-mo-Than-Mao-Khe-xuat-sac"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "viec-lam-cong-ty-xay-lap-mo-2026",
+      "title": "Xây lắp mỏ duy trì việc làm cho hơn 2.000 lao động",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Chủ tịch Công đoàn TKV Lê Thanh Xuân làm việc tại Công ty Xây lắp mỏ",
+          "date": "12/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46032/Chu-tich-Cong-đoan-TKV-Le-Thanh-Xuan-lam-viec-tai-Cong-ty-Xay-lap-mo"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "tuyen-sinh-nghe-mo-dong-ngu-2026",
+      "title": "Tuyển sinh nghề mỏ Đông Ngũ 2026: hợp tác với Than Mông Dương",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Ký kết hợp tác 3 bên, mở rộng cơ hội học nghề và việc làm cho lao động xã Đông Ngũ, tỉnh Quảng Ninh",
+          "date": "12/08/2026",
+          "url": "https://caodangtkv.edu.vn/ky-ket-hop-tac-3-ben-mo-rong-co-hoi-hoc-nghe-va-viec-lam-cho-lao-dong-xa-dong-ngu-tinh-quang-ninh/"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "hoc-sinh-thuc-tap-than-khe-cham-2026",
+      "title": "Than Khe Chàm tiếp nhận học sinh Nam Tuấn thực tập sản xuất",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Than Khe Chàm: Bàn giao, tiếp nhận và bố trí học sinh thực tập sản xuất tại các đơn vị trong Công ty",
+          "date": "13/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46037/Than-Khe-Cham-Ban-giao-tiep-nhan-va-bo-tri-hoc-sinh-thuc-tap-san-xuat-tai-cac-đon-vi-trong-Cong-ty"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "bua-com-cong-doan-than-cao-son-2026",
+      "title": "Than Cao Sơn phục vụ 1.720 suất Bữa cơm Công đoàn",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Ấm áp Bữa cơm công đoàn Than Cao Sơn",
+          "date": "13/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46035/Am-ap-Bua-com-cong-đoan-Than-Cao-Son"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-mao-khe-do-dau-cuu-thanh-nien-xung-phong-2026",
+      "title": "Than Mạo Khê đỡ đầu cựu thanh niên xung phong khó khăn",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Than Mạo Khê nhận đỡ đầu nữ cựu Thanh niên xung phong có hoàn cảnh khó khăn",
+          "date": "13/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46034/Than-Mao-Khe-nhan-đo-đau-nu-cuu-Thanh-nien-xung-phong-co-hoan-canh-kho-khan"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-ha-tu-ho-tro-nu-cong-nhan-phat-trien-kinh-te-2026",
+      "title": "Than Hà Tu hỗ trợ 12 nữ công nhân phát triển kinh tế gia đình",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Nghiệm thu giai đoạn 4 Đề án “Hỗ trợ nữ CNLĐ khó khăn phát triển kinh tế gia đình” tại Công ty CP Than Hà Tu",
+          "date": "13/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46040/Nghiem-thu-giai-doan-4-De-an-Ho-tro-nu-CNLD-kho-khan-phat-trien-kinh-te-gia-dinh-tai-Cong-ty-CP-Than-Ha-Tu"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "kho-van-cam-pha-ho-tro-cuu-thanh-nien-xung-phong-2026",
+      "title": "Kho vận Cẩm Phả hỗ trợ cựu nữ thanh niên xung phong",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Đoàn công tác Công ty khảo sát, hỗ trợ gia đình nữ thanh niên xung phong đơn thân",
+          "date": "13/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46042/Doan-cong-tac-Cong-ty-khao-sat-ho-tro-gia-dinh-nu-thanh-nien-xung-phong-don-than"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-nui-beo-ho-tro-cuu-thanh-nien-xung-phong-2026",
+      "title": "Than Núi Béo hỗ trợ thường xuyên cựu nữ thanh niên xung phong",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Than Núi Béo thăm, khảo sát gia cảnh khó khăn cựu nữ thanh niên xung phong",
+          "date": "13/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46043/Than-Nui-Beo-tham-khao-sat-gia-canh-kho-khan-cuu-nu-thanh-nien-xung-phong"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "cong-ty-vat-tu-do-dau-cuu-thanh-nien-xung-phong-2026",
+      "title": "Công ty Vật tư đỡ đầu cựu thanh niên xung phong từ quý III/2026",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Công ty Cổ phần Vật tư đồng hành chăm lo đời sống cựu thanh niên xung phong",
+          "date": "15/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46053/Cong-ty-Co-phan-Vat-tu-dong-hanh-cham-lo-doi-song-cuu-thanh-nien-xung-phong"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-ha-long-ho-tro-xay-sua-nha-gia-dinh-chinh-sach-2026",
+      "title": "Than Hạ Long hỗ trợ 183 triệu đồng sửa nhà chính sách",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Than Hạ Long trao kinh phí hỗ trợ xây, sửa nhà cho gia đình chính sách",
+          "date": "15/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46054/Than-Ha-Long-trao-kinh-phi-ho-tro-xay-sua-nha-cho-gia-dinh-chinh-sach"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-nui-beo-thanh-nien-ca-thanh-tim-hieu-nghe-mo-2026",
+      "title": "22 thanh niên Ca Thành tìm hiểu nghề mỏ tại Than Núi Béo",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Than Núi Béo gặp mặt đoàn cán bộ và thanh niên xã Ca Thành, tỉnh Cao Bằng",
+          "date": "17/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46058/Than-Nui-Beo-gap-mat-doan-can-bo-va-thanh-nien-xa-Ca-Thanh-tinh-Cao-Bang"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "kho-van-da-bac-ho-tro-nu-cong-nhan-phat-trien-kinh-te-2026",
+      "title": "Kho vận Đá Bạc hỗ trợ 3 nữ công nhân phát triển mô hình nuôi gà",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Hiệu quả thiết thực từ mô hình hỗ trợ nữ CNLĐ khó khăn phát triển kinh tế gia đình",
+          "date": "19/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46069/Hieu-qua-thiet-thuc-tu-mo-hinh-ho-tro-nu-CNLD-kho-khan-phat-trien-kinh-te-gia-dinh"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "xay-lap-mo-ho-tro-gia-dinh-cong-nhan-kho-khan-2026",
+      "title": "Xây lắp mỏ hỗ trợ gia đình công nhân có hoàn cảnh khó khăn",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Công ty Xây lắp mỏ thăm hỏi, động viên gia đình công nhân có hoàn cảnh đặc biệt khó khăn",
+          "date": "21/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46074/Cong-ty-Xay-lap-mo-tham-hoi-đong-vien-gia-đinh-cong-nhan-co-hoan-canh-đac-biet-kho-khan"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "truong-cao-dang-tkv-thao-go-diem-nghen-tuyen-sinh-nghe-mo-2026",
+      "title": "Trường Cao đẳng TKV tháo gỡ điểm nghẽn tuyển sinh nghề mỏ",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Thường trực Đảng ủy Than Quảng Ninh làm việc với Đảng ủy Trường Cao đẳng Than – Khoáng sản Việt Nam: Tập trung tháo gỡ điểm nghẽn tuyển sinh, nâng cao chất lượng đào tạo và đẩy mạnh chuyển đổi số",
+          "date": "21/08/2026",
+          "url": "https://caodangtkv.edu.vn/thuong-truc-dang-uy-than-quang-ninh-lam-viec-voi-dang-uy-truong-cao-dang-than-khoang-san-viet-nam-tap-trung-thao-go-diem-nghen-tuyen-sinh-nang-cao-chat-luong-dao-tao-va-day-manh-chuyen-doi-so/"
         }
       ],
       "public_source_urls": false

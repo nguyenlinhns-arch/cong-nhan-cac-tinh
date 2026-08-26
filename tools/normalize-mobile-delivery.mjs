@@ -202,11 +202,14 @@ for (const file of collectHtml(root)) {
     const old = html;
     html = ensureProvincePrimaryLink(html);
     if (html !== old) provincePrimaryLinksAdded += 1;
-  }
-  if (relative === "viec-lam-nganh-than/can-tho/index.html" || relative === "viec-lam-nganh-than/vinh-long/index.html") {
-    const old = html;
+    const beforeDescription = html;
     html = shortenDescription(html, 160);
-    if (html !== old) provinceDescriptionsShortened += 1;
+    if (html !== beforeDescription) provinceDescriptionsShortened += 1;
+  }
+  if (relative === "viec-lam-nganh-than/index.html") {
+    const beforeDescription = html;
+    html = shortenDescription(html, 160);
+    if (html !== beforeDescription) provinceDescriptionsShortened += 1;
   }
 
   if (relative === "index.html") {
@@ -241,7 +244,12 @@ let primaryQuangNinhAddedToSitemap = false;
 const sitemapPath = path.join(root, "sitemap.xml");
 if (fs.existsSync(sitemapPath)) {
   const before = fs.readFileSync(sitemapPath, "utf8");
-  const after = ensurePrimarySitemapUrl(removeRetiredSitemapUrl(before));
+  // The primary Quảng Ninh landing is intentionally noindex for paid-search
+  // traffic, so it must not be reintroduced into the organic sitemap here.
+  const after = removeRetiredSitemapUrl(before).replace(
+    new RegExp(`<url>\\s*<loc>${escapeRegExp(PRIMARY_QN_URL)}<\\/loc>[\\s\\S]*?<\\/url>\\s*`, "g"),
+    "",
+  );
   if (after !== before) {
     fs.writeFileSync(sitemapPath, after);
     sitemapRedirectRemoved = before.includes(`<loc>${RETIRED_QN_URL}</loc>`) && !after.includes(`<loc>${RETIRED_QN_URL}</loc>`);

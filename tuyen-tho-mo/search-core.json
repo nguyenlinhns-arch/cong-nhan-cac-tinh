@@ -191,7 +191,7 @@
         "Kiểm tra điều kiện trong 30 giây",
         "Xem công việc thợ mỏ qua người thật, việc thật",
         "Nghe người trong nghề kể về công việc và cuộc sống",
-        "Hành trình học nghề mỏ và nhận việc tại Quảng Ninh"
+        "Người thật, chuyến đi thật, con đường việc làm thật"
       ],
       "category": "recruitment",
       "categoryLabel": "Tuyển thợ mỏ",
@@ -199,40 +199,13 @@
       "priority": 100
     },
     {
-      "url": "/trung-tam-nghe-mo/",
-      "title": "Trung tâm nghề mỏ",
-      "description": "Trung tâm thông tin học nghề mỏ, việc làm ngành Than, 26 trang tỉnh, cẩm nang và câu chuyện người thợ; mọi đường dẫn quy về một biểu mẫu ứng tuyển rõ nguồn.",
-      "keywords": [
-        "Từ tìm hiểu nghề đến ứng tuyển trong một mạng thông tin thống nhất",
-        "Tìm đúng thông tin theo nhu cầu của từng người lao động",
-        "Thông tin tuyển đang áp dụng",
-        "Việc làm đang tuyển",
-        "Thông tin theo 26 tỉnh",
-        "Cẩm nang nhập nghề",
-        "Chuyện người thợ",
-        "Kho tin ngành Than",
-        "Bộ chia sẻ theo tỉnh",
-        "Nguyên tắc biên tập",
-        "Những nội dung nên đọc trước khi đăng ký",
-        "Than Hà Lầm chăm lo phục hồi sức khỏe thợ lò",
-        "Phúc lợi thợ mỏ Mỏ Việt Bắc dành cho 47 lao động",
-        "Than Nam Mẫu tuyên dương 1.672 con công nhân học giỏi",
-        "Than Thống Nhất tri ân gia đình có thân nhân hy sinh",
-        "Than Thống Nhất đỡ đầu cựu thanh niên xung phong tại Cẩm Phả"
-      ],
-      "category": "guide",
-      "categoryLabel": "Trung tâm nghề mỏ",
-      "type": "Trung tâm nghề mỏ",
-      "priority": 99
-    },
-    {
       "url": "/thong-tin-tuyen-tho-mo/",
-      "title": "Tuyển thợ mỏ tháng 8/2026: 15 câu hỏi",
-      "description": "Tuyển thợ mỏ 2026: nam 18–40 tuổi; khai thác, xây dựng học 2–3 tháng, cơ điện học 10 tháng; thu nhập 20–25 triệu/tháng.",
+      "title": "Thông tin tuyển thợ mỏ đang áp dụng: 15 câu hỏi",
+      "description": "Tuyển thợ mỏ 2026: nam 18–40 tuổi; khai thác, xây dựng học 2–3 tháng, cơ điện học 10 tháng; thu nhập 20–25 triệu/tháng khi hoàn thành định mức lao động.",
       "keywords": [
-        "Tuyển thợ mỏ tháng 8/2026: trả lời 15 câu hỏi",
+        "Thông tin tuyển thợ mỏ đang áp dụng: trả lời 15 câu hỏi",
         "Bốn câu trả lời trước khi đọc chi tiết",
-        "Thông tin đang áp dụng trong tháng 8/2026",
+        "Thông tin tuyển đang áp dụng",
         "Dữ kiện có ngày rà soát, căn cứ và người chịu trách nhiệm",
         "Mười lăm câu hỏi người lao động thường cần biết",
         "Chọn câu hỏi cần tra cứu",
@@ -250,6 +223,33 @@
       "category": "recruitment",
       "categoryLabel": "Thông tin đang áp dụng",
       "type": "Thông tin đang áp dụng",
+      "priority": 99
+    },
+    {
+      "url": "/trung-tam-nghe-mo/",
+      "title": "Trung tâm nghề mỏ",
+      "description": "Trung tâm thông tin học nghề mỏ, việc làm ngành Than, 26 trang địa phương ưu tiên, cẩm nang và câu chuyện người thợ; mọi đường dẫn quy về một biểu mẫu ứng tuyển rõ nguồn.",
+      "keywords": [
+        "Từ tìm hiểu nghề đến ứng tuyển trong một mạng thông tin thống nhất",
+        "Tìm đúng thông tin theo nhu cầu của từng người lao động",
+        "Thông tin tuyển đang áp dụng",
+        "Việc làm đang tuyển",
+        "Thông tin theo 26 địa bàn ưu tiên",
+        "Cẩm nang nhập nghề",
+        "Chuyện người thợ",
+        "Kho tin ngành Than",
+        "Bộ chia sẻ theo tỉnh",
+        "Nguyên tắc biên tập",
+        "Những nội dung nên đọc trước khi đăng ký",
+        "Trường Cao đẳng TKV tháo gỡ điểm nghẽn tuyển sinh nghề mỏ",
+        "Xây lắp mỏ hỗ trợ gia đình công nhân có hoàn cảnh khó khăn",
+        "Kho vận Đá Bạc hỗ trợ 3 nữ công nhân phát triển mô hình nuôi gà",
+        "22 thanh niên Ca Thành tìm hiểu nghề mỏ tại Than Núi Béo",
+        "Than Hạ Long hỗ trợ 183 triệu đồng sửa nhà chính sách"
+      ],
+      "category": "guide",
+      "categoryLabel": "Trung tâm nghề mỏ",
+      "type": "Trung tâm nghề mỏ",
       "priority": 99
     },
     {
@@ -335,8 +335,8 @@
     },
     {
       "url": "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
-      "title": "Tuyển công nhân mỏ Quảng Ninh: 3 nghề | 2026",
-      "description": "Tuyển khai thác, xây dựng và cơ điện mỏ hầm lò cho nam 18–40 tuổi, chưa cần kinh nghiệm; học 2–3 hoặc 10 tháng, có ăn ở và nhận việc tại Quảng Ninh.",
+      "title": "Việc làm công nhân mỏ hầm lò Quảng Ninh | 3 nghề 2026",
+      "description": "Thông tin việc làm công nhân mỏ hầm lò tại Quảng Ninh: 3 nghề khai thác, xây dựng và cơ điện mỏ; người chưa có kinh nghiệm được đào tạo trước khi nhận việc.",
       "keywords": [
         "tuyển công nhân mỏ Quảng Ninh",
         "tuyển cơ điện mỏ",
@@ -344,7 +344,7 @@
         "việc làm mỏ không cần kinh nghiệm",
         "học nghề mỏ",
         "việc làm TKV",
-        "Tuyển công nhân mỏ Quảng Ninh: 3 nghề hầm lò , đào tạo từ đầu",
+        "Việc làm công nhân mỏ hầm lò Quảng Ninh: 3 nghề , đào tạo từ đầu",
         "Lao động học nghề mỏ hầm lò",
         "Việc làm công nhân mỏ cho người chưa có kinh nghiệm",
         "Kỹ thuật khai thác mỏ hầm lò",
@@ -363,7 +363,7 @@
     {
       "url": "/viec-lam-nganh-than/",
       "title": "Việc làm công nhân mỏ, thợ lò theo tỉnh",
-      "description": "Việc làm công nhân mỏ, thợ lò và cơ điện mỏ tại Quảng Ninh cho nam 18–40 tuổi; xem ba nghề đang tuyển và thông tin tư vấn dành cho người lao động tại 26 tỉnh.",
+      "description": "Việc làm công nhân mỏ, thợ lò và cơ điện mỏ tại Quảng Ninh cho nam 18–40 tuổi; xem ba nghề đang tuyển và thông tin tư vấn dành cho người lao động tại 26 địa bàn ưu tiên.",
       "keywords": [
         "Việc làm công nhân mỏ, thợ lò theo tỉnh",
         "Ba hướng nghề mỏ hầm lò tại Quảng Ninh",
@@ -371,7 +371,7 @@
         "Kỹ thuật xây dựng mỏ hầm lò",
         "Kỹ thuật cơ điện mỏ hầm lò",
         "Học nghề trước, nhận việc sau",
-        "Chọn một trong 26 tỉnh, thành",
+        "Chọn 26 địa bàn ưu tiên",
         "Tây Nguyên & Nam Trung Bộ",
         "Bắc Trung Bộ",
         "Đồng bằng & Đông Bắc",
@@ -400,7 +400,9 @@
         "Ngành Than xanh hơn từ những thay đổi dưới mỏ",
         "Giữ nhịp sản xuất an toàn trong mùa mưa bão 2026",
         "Giải đáp theo đúng cách người lao động tìm kiếm",
-        "Lộ trình đi làm mỏ than Quảng Ninh từ đăng ký đến nhận việc"
+        "Đi khám sức khỏe học nghề mỏ trước hay sau khi đăng ký?",
+        "Cơ điện mỏ học 10 tháng: ai nên chọn nghề này?",
+        "Đăng ký học nghề mỏ ban đầu có cần gửi ảnh CCCD không?"
       ],
       "category": "guide",
       "categoryLabel": "Cẩm nang nghề mỏ",
@@ -432,26 +434,9 @@
       "priority": 10
     },
     {
-      "url": "/chon-kcn-hay-lam-mo/",
-      "title": "Chọn làm khu công nghiệp hay học nghề mỏ",
-      "description": "So sánh thẳng thắn công việc khu công nghiệp và nghề mỏ về điều kiện, đào tạo, thu nhập, ăn ở, kỷ luật và mức độ phù hợp.",
-      "keywords": [
-        "Chọn KCN hay làm mỏ: đừng quyết định chỉ bằng một con số lương",
-        "So sánh theo điều người lao động thực sự quan tâm",
-        "KCN có thể phù hợp hơn khi…",
-        "Nghề mỏ có thể phù hợp hơn khi…",
-        "Kiểm chứng",
-        "Liên hệ"
-      ],
-      "category": "work",
-      "categoryLabel": "Công việc & lương",
-      "type": "Công việc & lương",
-      "priority": 10
-    },
-    {
       "url": "/hoc-nghe-mo-tai-quang-ninh/",
       "title": "Học nghề mỏ tại Quảng Ninh: điều kiện, ăn ở, hồ sơ 2026",
-      "description": "Thông tin học nghề mỏ tại Quảng Ninh năm 2026: điều kiện, thời gian 2–3 tháng, miễn kinh phí đào tạo, ăn ở, hỗ trợ, hồ sơ và thu nhập.",
+      "description": "Thông tin học nghề mỏ tại Quảng Ninh năm 2026: khai thác/xây dựng 2–3 tháng, cơ điện 10 tháng; có hỗ trợ ăn ở và hồ sơ rõ ràng.",
       "keywords": [
         "Học nghề mỏ tại Quảng Ninh: từ kiểm tra điều kiện đến ngày nhận việc",
         "1. Ai phù hợp đăng ký?",
@@ -495,6 +480,33 @@
       "priority": 10
     },
     {
+      "url": "/chon-kcn-hay-lam-mo/",
+      "title": "KCN hay làm mỏ? So sánh lương, chi phí, công việc",
+      "description": "Làm khu công nghiệp hay học nghề mỏ? So sánh tiền còn lại, chi phí ban đầu, điều kiện sức khỏe, lộ trình đào tạo và cơ hội làm việc tại Quảng Ninh.",
+      "keywords": [
+        "Chọn KCN hay làm mỏ: đừng chỉ hỏi lương bao nhiêu, hãy hỏi mỗi tháng còn lại bao nhiêu",
+        "Hai công việc không thể so bằng một dòng “lương tháng”",
+        "So sánh một công việc bằng cả cuộc sống đi kèm",
+        "Mỗi tháng còn lại bao nhiêu?",
+        "Bắt đầu có tốn tiền không?",
+        "Sức khỏe có theo được không?",
+        "Ba năm nữa mình có nghề gì?",
+        "Làm khu công nghiệp và học nghề mỏ khác nhau ở đâu?",
+        "Đừng so lương quảng cáo — hãy so khoản tiền có thể gửi về nhà",
+        "Nếu chọn khu công nghiệp",
+        "Nếu chọn học nghề mỏ",
+        "Ai nên chọn KCN, ai nên cân nhắc nghề mỏ?",
+        "Khu công nghiệp có thể phù hợp hơn khi…",
+        "Nghề mỏ có thể phù hợp hơn khi…",
+        "Nghề mỏ không dành cho người chỉ nhìn thấy mức 20–25 triệu đồng/tháng khi hoàn thành định mức lao động",
+        "Từ lúc tìm hiểu đến khi đi làm gồm 6 bước rõ ràng"
+      ],
+      "category": "work",
+      "categoryLabel": "Công việc & lương",
+      "type": "Công việc & lương",
+      "priority": 10
+    },
+    {
       "url": "/kiem-tra-dieu-kien/",
       "title": "Kiểm tra điều kiện học nghề mỏ",
       "description": "Tự kiểm tra sơ bộ độ tuổi, chiều cao, cân nặng và sức khỏe trước khi đăng ký học nghề mỏ; website không lưu câu trả lời.",
@@ -512,7 +524,7 @@
     {
       "url": "/thu-nhap-an-o-ho-tro/",
       "title": "Lương thợ lò, ăn ở và hỗ trợ học nghề mỏ",
-      "description": "Lương thợ lò 20–25 triệu đồng/tháng; miễn học phí, có ba bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng.",
+      "description": "Lương thợ lò 20–25 triệu đồng/tháng khi hoàn thành định mức lao động; miễn học phí, có ba bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng.",
       "keywords": [
         "Lương thợ lò, ăn ở và hỗ trợ học nghề mỏ",
         "Những thông tin đang áp dụng",
