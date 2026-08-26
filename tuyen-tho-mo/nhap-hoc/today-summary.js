@@ -8,6 +8,15 @@
   const pct = (actual, plan) => plan > 0 ? (num(actual) / plan * 100).toLocaleString('vi-VN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '0,00';
   const pad2 = v => String(Math.max(0, num(v))).padStart(2, '0');
 
+  function normalizeTodayLabel() {
+    if (!report) return;
+    root.querySelectorAll('.report-status span').forEach(span => {
+      if (/^Nhập học ngày/i.test(span.textContent || '')) {
+        span.innerHTML = `Nhập học ngày hôm nay: <b>${fmt(report.summary?.today_count)}</b>`;
+      }
+    });
+  }
+
   function buildBlock(data) {
     const s = data?.summary || {};
     const ph = s.today_ph || {};
@@ -31,7 +40,7 @@
       <div class="today-summary-title">Nhập học ngày hôm nay: <b>${fmt(s.today_count)}</b> học sinh (Bỏ <b>${pad2(s.today_dropout)}</b> HS)</div>
       <div class="today-summary-scroll">
         <table class="today-campus-table">
-          <thead><tr><th>Trong đó nhập tại</th>${campus.map(([,label]) => `<th>${label}</th>`).join('')}<th>Tổng nhập</th></tr></thead>
+          <thead><tr><th>Trong đó nhập tại</th>${campus.map(([,label]) => `<th>${label}</th>`).join('')}<th>Tổng nhập hôm nay</th></tr></thead>
           <tbody><tr><td></td>${campus.map(([code]) => `<td>${num(ph[code]) || ''}</td>`).join('')}<td>${fmt(s.today_count)}</td></tr></tbody>
         </table>
         <div class="today-progress-heading">Lũy kế kết quả thực hiện đến thời điểm báo cáo</div>
@@ -51,7 +60,9 @@
   }
 
   function inject() {
-    if (!report || !root.classList.contains('report-dv')) return;
+    if (!report) return;
+    normalizeTodayLabel();
+    if (!root.classList.contains('report-dv')) return;
     const card = root.querySelector('.dashboard-card');
     if (!card) return;
     const current = card.querySelector('.today-summary-block');
