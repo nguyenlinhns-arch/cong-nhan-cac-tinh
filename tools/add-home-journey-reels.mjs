@@ -40,15 +40,16 @@ const section = `
       </div>
     </section>
 `;
+const sectionMarkup = section.trim();
 
 const sectionPattern = /\n\s*<section class="home-origin-reels"[\s\S]*?<\/section>\n/i;
 if (sectionPattern.test(html)) {
-  html = html.replace(sectionPattern, `\n${section}\n`);
+  html = html.replace(sectionPattern, `\n    ${sectionMarkup}\n`);
 } else {
   const marker = '<section class="home-journey"';
   const pos = html.indexOf(marker);
   if (pos < 0) throw new Error('Homepage journey marker not found.');
-  html = html.slice(0, pos) + section + '\n    ' + html.slice(pos);
+  html = html.slice(0, pos) + `    ${sectionMarkup}\n    ` + html.slice(pos);
 }
 
 const schemaId = 'home-origin-reels-schema';

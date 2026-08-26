@@ -3,15 +3,12 @@ import path from 'node:path';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const SITE = path.join(ROOT, 'tuyen-tho-mo');
-const REVIEW_DATE = new Intl.DateTimeFormat('en-CA', {
-  timeZone: 'Asia/Bangkok',
-  year: 'numeric',
-  month: '2-digit',
-  day: '2-digit',
-}).format(new Date());
+const REVIEW_DATE = JSON.parse(fs.readFileSync(path.join(ROOT, 'content', 'recruitment-review-v10.json'), 'utf8')).reviewed_at;
 const PROVINCE_GENERATOR = path.join(ROOT, 'tools', 'generate-province-pages-2026.mjs');
 const DAILY_DATA = path.join(ROOT, 'content', 'daily-seo-articles.json');
 const CANONICAL_FACTS_PATH = path.join(SITE, 'data', 'recruitment-facts-2026.json');
+const RECRUITMENT_CURRENT_PATH = path.join(SITE, 'recruitment-current.json');
+const PAID_SEARCH_LANDING = path.join(SITE, 'viec-lam', 'cong-nhan-mo-ham-lo-quang-ninh', 'index.html');
 const CANONICAL_FACTS_URL = 'https://thaylinhtuyenthomo.vn/data/recruitment-facts-2026.json';
 const canonicalFacts = JSON.parse(fs.readFileSync(CANONICAL_FACTS_PATH, 'utf8'));
 
@@ -77,12 +74,12 @@ const exactReplacements = [
     '<strong>THU NHẬP THEO ĐỊNH MỨC</strong>'
   ],
   [
-    /khi hoàn thành định mức lao động\.\s*khi hoàn thành định mức lao động\./giu,
-    'khi hoàn thành định mức lao động.'
+    /(khi hoàn thành định mức lao động)[\s.,;:]+khi hoàn thành định mức lao động(?=[\s.,;:<]|$)/giu,
+    '$1'
   ],
   [
-    /khi hoàn thành định mức lao động\s+khi hoàn thành định mức lao động/giu,
-    'khi hoàn thành định mức lao động'
+    /,?\s*tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất/giu,
+    ''
   ],
 ];
 
@@ -107,7 +104,24 @@ function writeIfChanged(file, next) {
 
 function normalizeFile(file) {
   const current = fs.readFileSync(file, 'utf8');
-  return writeIfChanged(file, normalizeText(current));
+  if (file === CANONICAL_FACTS_PATH) {
+    const data = JSON.parse(current);
+    data.after_training.income = data.after_training.income_commitment;
+    return writeIfChanged(file, JSON.stringify(data, null, 2) + '\n');
+  }
+  const protectedUsageNote = file === RECRUITMENT_CURRENT_PATH
+    ? JSON.parse(current).usage_note
+    : null;
+  let next = normalizeText(current);
+  if (protectedUsageNote) {
+    const data = JSON.parse(next);
+    data.usage_note = protectedUsageNote;
+    next = JSON.stringify(data, null, 2) + '\n';
+  }
+  if (file === PAID_SEARCH_LANDING && !next.includes('/google-search-intent.js?v=11')) {
+    next = next.replace(/<\/body>/iu, '  <script src="/google-search-intent.js?v=11" defer></script>\n</body>');
+  }
+  return writeIfChanged(file, next);
 }
 
 function walk(dir, visitor) {
@@ -155,7 +169,8 @@ function normalizeDailyData() {
   let raw = fs.readFileSync(DAILY_DATA, 'utf8');
   raw = normalizeText(raw);
   const data = JSON.parse(raw);
-  if (String(data.updated_at || '') < REVIEW_DATE) data.updated_at = REVIEW_DATE;
+  const latestArticleDate = (data.articles || []).reduce((latest, article) => String(article.date || '') > latest ? String(article.date) : latest, '');
+  if (latestArticleDate && String(data.updated_at || '') < latestArticleDate) data.updated_at = latestArticleDate;
   data.canonical_facts_version = canonicalFacts.version;
   data.canonical_facts_confirmed_at = canonicalFacts.confirmed_at;
   data.canonical_facts_url = CANONICAL_FACTS_URL;

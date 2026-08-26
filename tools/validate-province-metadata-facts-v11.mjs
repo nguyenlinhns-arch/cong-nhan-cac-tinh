@@ -43,7 +43,8 @@ for (const entry of dirs) {
   const twitterDescription = field(html, /<meta\s+name=["']twitter:description["']\s+content=["']([^"']*)["']/i);
   const route = `/viec-lam-nganh-than/${entry.name}/`;
   const policyCanonical = rolePolicy.pages?.[route]?.canonical;
-  const expectedCanonical = policyCanonical
+  const policyIsMaterialized = policyCanonical && /data-legacy-redirect/iu.test(html);
+  const expectedCanonical = policyIsMaterialized
     ? `https://thaylinhtuyenthomo.vn${policyCanonical}`
     : `https://thaylinhtuyenthomo.vn${route}`;
   if (canonical !== expectedCanonical) errors.push(`${label}: canonical sai ${canonical}`);

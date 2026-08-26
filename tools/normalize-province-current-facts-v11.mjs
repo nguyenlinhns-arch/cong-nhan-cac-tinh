@@ -151,6 +151,8 @@ function ensureElectricalTrainingBlock(html) {
       `<h3>Kỹ thuật cơ điện mỏ hầm lò</h3><p>Cơ điện mỏ học 10 tháng theo kế hoạch tuyển sinh.</p>`)
     .replace(/<h3>Kỹ thuật cơ điện mỏ hầm lò<\/h3><p>Đào tạo 10 tháng theo kế hoạch tuyển sinh\.<\/p>/giu,
       `<h3>Kỹ thuật cơ điện mỏ hầm lò</h3><p>Cơ điện mỏ học 10 tháng theo kế hoạch tuyển sinh.</p>`)
+    .replace(/<p>Đào tạo nghề cơ điện mỏ theo kế hoạch tuyển sinh\.<\/p>/giu,
+      `<p>Cơ điện mỏ học 10 tháng theo kế hoạch tuyển sinh.</p>`)
     .replace(/<p>Đào tạo theo kế hoạch tuyển sinh\.<\/p>/giu,
       `<p>Cơ điện mỏ học 10 tháng theo kế hoạch tuyển sinh.</p>`);
 

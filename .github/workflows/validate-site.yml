@@ -64,6 +64,7 @@ jobs:
           node tools/enforce-blue-worker-illustrations.mjs
           node tuyen-tho-mo/scripts/update-ai-locality-discovery.mjs
           node tools/normalize-mobile-delivery.mjs
+          node tools/enforce-blue-worker-illustrations.mjs
           node tools/validate-modular-delivery.mjs
           node tools/validate-editorial-sources.mjs
           node tools/validate-daily-community-images-20260804.mjs
