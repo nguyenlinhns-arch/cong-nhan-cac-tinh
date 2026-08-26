@@ -28,7 +28,7 @@
     el.className = 'today-summary-block';
     el.dataset.snapshot = String(data?.snapshot_date || '');
     el.innerHTML = `
-      <div class="today-summary-title">Nhập học ngày ${String(data?.snapshot_date || '')}: <b>${fmt(s.today_count)}</b> học sinh (Bỏ <b>${pad2(s.today_dropout)}</b> HS)</div>
+      <div class="today-summary-title">Nhập học ngày hôm nay: <b>${fmt(s.today_count)}</b> học sinh (Bỏ <b>${pad2(s.today_dropout)}</b> HS)</div>
       <div class="today-summary-scroll">
         <table class="today-campus-table">
           <thead><tr><th>Trong đó nhập tại</th>${campus.map(([,label]) => `<th>${label}</th>`).join('')}<th>Tổng nhập</th></tr></thead>
