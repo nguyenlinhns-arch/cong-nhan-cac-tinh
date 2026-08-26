@@ -67,6 +67,12 @@ jobs:
           assert data.get('schema_version') == 1
           assert isinstance(data.get('snapshot_date'), str) and data['snapshot_date'].strip()
 
+          detail_gap = int(s.get('detail_gap', 0) or 0)
+          detail_gap_aug = int(s.get('detail_gap_aug', detail_gap) or 0)
+          assert detail_gap >= 0 and detail_gap_aug >= 0
+          if detail_gap:
+              assert s.get('detail_gap_status') == 'UNALLOCATED'
+
           monthly_net = sum(s.get(k, 0) for k in ('aug_net', 'sep_net', 'oct_net', 'nov_net', 'dec_net'))
           assert s['base_3107'] + monthly_net == s['system_total']
           assert s['system_total'] - s['deleted'] == s['remaining']
@@ -93,7 +99,8 @@ jobs:
 
           assert sum(1 for r in dn if r.get('group') == 'TKV') == 15
           assert sum(1 for r in dn if r.get('group') == 'DONG_BAC') == 6
-          assert sum(r.get('current_total', 0) for r in dn if r.get('group') == 'TKV') == s['system_total']
+          assert sum(r.get('current_total', 0) for r in dn if r.get('group') == 'TKV') + detail_gap == s['system_total']
+          assert sum(r.get('aug_total', 0) for r in dn if r.get('group') == 'TKV') + detail_gap_aug == s['aug_net']
 
           for left, right in zip(dv, dv_extra):
               assert nfc(left.get('name', '')) == nfc(right.get('name', ''))
@@ -111,8 +118,9 @@ jobs:
           assert all(all(k in r for k in ('month8', 'month9', 'month10', 'month11', 'month12', 'current')) for r in ph)
           assert all(all(len(r[k]) == 12 for k in ('month8', 'month9', 'month10', 'month11', 'month12')) for r in ph)
           assert all(len(r['current']) >= 13 for r in ph)
-          assert sum(r['current'][9] for r in ph) == s['system_total']
-          assert sum(r['current'][-1] for r in ph) == s['overall_total']
+          assert sum(r['current'][9] for r in ph) + detail_gap == s['system_total']
+          assert sum(r['current'][-1] for r in ph) + detail_gap == s['overall_total']
+          assert sum(r['month8'][9] for r in ph) + detail_gap_aug == s['aug_net']
 
           assert all(len(r.get('months', [])) == 12 for r in data.get('tinh', []))
           assert all(len(r.get('months', [])) == 12 for r in data.get('qc', []))
@@ -128,6 +136,7 @@ jobs:
           print('Admissions aggregate validation: PASS')
           print('Snapshot:', data.get('snapshot_date'))
           print('A total:', s['system_total'])
+          print('Detail gap:', detail_gap)
           print('B total:', b_total)
           print('Overall total:', s['overall_total'])
           print('Monthly net:', monthly_net)
