@@ -1,0 +1,29 @@
+.today-summary-block{padding:16px 22px 22px;font-family:"Times New Roman",serif;color:#111;background:#fff;border-top:1px solid #ddd}
+.today-summary-title{text-align:center;color:#e00000;font-size:15px;font-weight:400;line-height:1.3;margin:0 0 14px}
+.today-summary-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.today-campus-table,.today-progress-table{border-collapse:collapse;background:#fff}
+.today-campus-table{min-width:760px;margin:0 0 16px}
+.today-campus-table th,.today-campus-table td,.today-progress-table th,.today-progress-table td{border:1px solid #111;padding:7px 10px;text-align:center;vertical-align:middle;font-size:13.5px;line-height:1.2;background:#fff!important}
+.today-campus-table th{font-weight:700}
+.today-campus-table th:first-child{color:#001ec8;min-width:150px}
+.today-campus-table td:first-child{color:#001ec8;font-weight:700;text-align:center}
+.today-campus-table th:last-child,.today-campus-table td:last-child{font-weight:800}
+.today-progress-heading{color:#001ec8;font-weight:700;text-align:center;font-size:14px;line-height:1.25;margin:4px 0 12px;max-width:620px}
+.today-progress-layout{display:flex;align-items:flex-start;gap:16px;min-width:760px}
+.today-progress-table{min-width:520px}
+.today-progress-table th{color:#001ec8;font-weight:700}
+.today-progress-table td:first-child{color:#001ec8;font-weight:700;text-align:left;white-space:nowrap}
+.today-progress-table td:nth-child(2),.today-progress-table td:nth-child(3),.today-progress-table td:nth-child(4){color:#001ec8;font-weight:700}
+.today-progress-notes{padding-top:42px;color:#e00000;font-size:13px;line-height:39px;white-space:nowrap}
+.today-progress-notes div{height:39px}
+@media(max-width:900px){
+  .today-summary-block{padding:14px 8px 18px}
+  .today-summary-title{font-size:14px;text-align:left;white-space:nowrap}
+  .today-campus-table{min-width:760px}
+  .today-campus-table th,.today-campus-table td,.today-progress-table th,.today-progress-table td{font-size:13px;padding:8px 9px}
+  .today-progress-heading{font-size:13.5px;text-align:left;min-width:520px}
+  .today-progress-layout{min-width:790px;gap:12px}
+  .today-progress-table{min-width:540px}
+  .today-progress-notes{font-size:12.5px;line-height:41px;padding-top:44px}
+  .today-progress-notes div{height:41px}
+}
