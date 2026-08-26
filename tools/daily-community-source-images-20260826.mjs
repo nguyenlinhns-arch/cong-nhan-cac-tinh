@@ -1,0 +1,22 @@
+export const dailyCommunitySourceImages20260826 = Object.freeze({
+  "khau-vai-phoi-hop-dao-tao-nghe-viec-lam-2026": Object.freeze({
+    sourceUrl: "https://caodangtkv.edu.vn/tang-cuong-phoi-hop-dao-tao-nghe-giai-quyet-viec-lam-cho-lao-dong-xa-khau-vai-tinh-tuyen-quang/",
+    sourcePostId: 7482,
+    sourceMediaId: 7485,
+    image: "https://caodangtkv.edu.vn/wp-content/uploads/2026/08/f10848512.jpg",
+    alt: "Hội nghị phối hợp đào tạo nghề và giải quyết việc làm cho lao động xã Khâu Vai tại Trường Cao đẳng TKV",
+    credit: "Ảnh đại diện bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
+  }),
+  "than-duong-huy-phuc-loi-gia-dinh-tho-lo-2026": Object.freeze({
+    sourceUrl: "https://congdoantkv.vn/tin-tuc/chi-tiet/46080/Than-Duong-Huy-Quan-tam-cham-lo-nguoi-lao-đong-bang-nhung-viec-lam-thiet-thuc",
+    image: "https://congdoantkv.vn/data/images/news/09_08_2026_16953_185.jpg",
+    alt: "Gia đình người lao động Than Dương Huy tham gia chương trình nghỉ dưỡng phúc lợi năm 2026",
+    credit: "Ảnh đại diện bài gốc · Công đoàn Than – Khoáng sản Việt Nam",
+  }),
+  "than-thong-nhat-nghi-duong-cuoi-tuan-nguoi-lao-dong-2026": Object.freeze({
+    sourceUrl: "https://www.thanthongnhat.vn/tin-san-xuat/cong-ty-than-thong-nhat-tkv-cham-lo-suc-khoe-nguoi-lao-dong-qua-chuong-trinh-phuc-loi-tho-mo-nghi-duong-cuoi-tuan-15710.html",
+    image: "https://www.thanthongnhat.vn/uploads/news/2026_08/p1.jpg",
+    alt: "Người lao động Than Thống Nhất tham gia chương trình Phúc lợi Thợ mỏ nghỉ dưỡng cuối tuần năm 2026",
+    credit: "Ảnh đầu bài gốc · Công ty Than Thống Nhất – TKV",
+  }),
+});

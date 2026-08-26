@@ -27,7 +27,11 @@ text = text
     "Ba nghề đang tiếp nhận là kỹ thuật khai thác mỏ hầm lò, kỹ thuật xây dựng mỏ hầm lò và kỹ thuật cơ điện mỏ hầm lò.");
 
 const machineHeading = "## Dữ liệu máy đọc và nguồn cập nhật\n\n";
-if (!text.includes(machineHeading)) throw new Error("AI facts: llms.txt thiếu mục dữ liệu máy đọc");
+if (!text.includes(machineHeading)) {
+  const currentHeading = "## Trang thông tin hiện hành";
+  if (!text.includes(currentHeading)) throw new Error("AI facts: llms.txt thiếu mục thông tin hiện hành để tạo dữ liệu máy đọc");
+  text = text.replace(currentHeading, `${machineHeading}${currentHeading}`);
+}
 text = text
   .replace(/^- \[Facts tuyển sinh canonical[^\n]*\n/gm, "")
   .replace(/^- \[Thông tin tuyển hiện hành dạng JSON[^\n]*\n/gm, "")

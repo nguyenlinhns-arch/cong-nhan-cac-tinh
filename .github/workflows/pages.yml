@@ -59,10 +59,13 @@ jobs:
           node tools/enhance-home-copy-actions.mjs
           node tools/enhance-contact-authority-seo.mjs
           node tools/build-worker-question-pages.mjs
+          node tools/normalize-worker-question-facts-v11.mjs
+          node tools/prepare-daily-seo-supplements.mjs
           node tools/generate-daily-seo-series.mjs
           node tools/enforce-blue-worker-illustrations.mjs
           node tools/enforce-site-brand.mjs
           node tools/build-search-index.mjs
+          node tools/normalize-search-current-facts-v11.mjs
           node tools/enhance-all-province-search.mjs
           node tools/polish-discovery-output.mjs
           node tools/enhance-application-prefill-note.mjs
@@ -87,6 +90,7 @@ jobs:
           node tools/validate-daily-community-images-20260814.mjs
           node tools/validate-daily-community-images-20260821.mjs
           node tools/validate-daily-community-images-20260822.mjs
+          node tools/validate-daily-community-images-20260826.mjs
           node tools/validate-home-copy-actions.mjs
           node tools/validate-homepage-redesign.mjs
           node tools/validate-top-block-hotfix.mjs

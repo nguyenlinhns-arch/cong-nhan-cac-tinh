@@ -118,6 +118,7 @@ for (const [field, values] of [
 const latest = base.articles.map((article) => article.publish_on).filter(Boolean).sort().at(-1);
 if (latest) base.updated_at = latest;
 base.canonical_facts_version = facts.version;
+base.canonical_facts_confirmed_at = facts.confirmed_at;
 base.canonical_facts_url = "https://thaylinhtuyenthomo.vn/data/recruitment-facts-2026.json";
 fs.writeFileSync(basePath, `${JSON.stringify(base, null, 2)}\n`);
 

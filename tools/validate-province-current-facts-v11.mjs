@@ -8,6 +8,7 @@ const facts = JSON.parse(fs.readFileSync(path.join(site, "data", "recruitment-fa
 const review = JSON.parse(fs.readFileSync(path.join(root, "content", "recruitment-review-v10.json"), "utf8"));
 const authorId = "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/#person";
 const errors = [];
+let indexablePages = 0;
 
 const files = fs.readdirSync(provinceRoot, {withFileTypes: true})
   .filter((entry) => entry.isDirectory())
@@ -16,6 +17,8 @@ const files = fs.readdirSync(provinceRoot, {withFileTypes: true})
 
 for (const {slug, file} of files) {
   const html = fs.readFileSync(file, "utf8");
+  if (/<meta\s+name=["']robots["']\s+content=["'][^"']*noindex/i.test(html)) continue;
+  indexablePages += 1;
   const label = `viec-lam-nganh-than/${slug}/`;
   if (!/Kỹ thuật cơ điện mỏ hầm lò/i.test(html)) errors.push(`${label}: thiếu nghề cơ điện mỏ`);
   if (!/(?:cơ điện mỏ[^<\n]{0,100}(?:học|đào tạo)[^<\n]{0,40}10 tháng|Kỹ thuật cơ điện mỏ hầm lò[\s\S]{0,180}10 tháng)/iu.test(html)) {
@@ -47,6 +50,7 @@ console.log(JSON.stringify({
   canonicalFactsVersion: facts.version,
   reviewedAt: review.reviewed_at,
   pages: files.length,
+  indexablePages,
   support: facts.study_benefits.living_support,
   income: facts.after_training.income_commitment,
   errors,

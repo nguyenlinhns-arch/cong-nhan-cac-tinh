@@ -15,6 +15,7 @@ import {dailyCommunityArticles20260813} from "./daily-community-articles-2026081
 import {dailyCommunityArticles20260814} from "./daily-community-articles-20260814.mjs";
 import {dailyCommunityArticles20260821} from "./daily-community-articles-20260821.mjs";
 import {dailyCommunityArticles20260822} from "./daily-community-articles-20260822.mjs";
+import {dailyCommunityArticles20260826} from "./daily-community-articles-20260826.mjs";
 
 export const dailyCommunityArticles = [
   ...dailyCommunityArticles20260803,
@@ -27,6 +28,7 @@ export const dailyCommunityArticles = [
   ...dailyCommunityArticles20260814,
   ...dailyCommunityArticles20260821,
   ...dailyCommunityArticles20260822,
+  ...dailyCommunityArticles20260826,
 ].map(applyJournalisticSourceEditing)
   .map(applyEditorialSourceOverridesV5)
   .map(applyEditorialSourceOverridesV5b)
