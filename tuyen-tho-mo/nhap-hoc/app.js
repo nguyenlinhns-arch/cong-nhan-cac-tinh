@@ -20,7 +20,11 @@
     const d=state.data,s=d.summary,net=netSinceBase(s);
     return `<div class="report-status"><b>BÁO CÁO NGÀY ${esc(d.snapshot_date)}</b><span>Gốc 31/07: <b>${fmt(s.base_3107)}</b></span><span>Biến động từ 01/08: <b>${net>=0?'+':''}${fmt(net)}</b></span><span>Hệ A hiện tại: <b>${fmt(s.system_total)}</b></span><span>Nhập học ngày ${esc(d.snapshot_date)}: <b>${fmt(s.today_count)}</b></span></div>`;
   }
-  function note(){return `<div class="source-note"><b>Nguồn:</b> Biểu TH KQ Nhập Học Năm 2026. Mốc 31/07/2026 được khóa làm gốc; từ 01/08 hệ thống tự cộng/trừ từng tháng từ DSHS NHẬP HỌC TỔNG. Website chỉ công khai số liệu tổng hợp, không công khai dữ liệu cá nhân học sinh.</div>`;}
+  function note(){
+    const gap=Math.max(0,num(state.data?.summary?.detail_gap));
+    const reconciliation=gap?` <b>Đối soát:</b> ${fmt(gap)} HS TSĐB đã có trong biểu TH chuẩn nhưng chưa có dòng DSHS chi tiết; website hiển thị riêng phần chờ đồng bộ, không tự gán vào doanh nghiệp.`:'';
+    return `<div class="source-note"><b>Nguồn:</b> Biểu TH KQ Nhập Học Năm 2026. Mốc 31/07/2026 được khóa làm gốc; từ 01/08 hệ thống tự cộng/trừ từng tháng từ DSHS NHẬP HỌC TỔNG. Website chỉ công khai số liệu tổng hợp, không công khai dữ liệu cá nhân học sinh.${reconciliation}</div>`;
+  }
   function table(head,body,cls=''){return `<div class="native-table-wrap"><table class="native-report ${cls}"><thead>${head}</thead><tbody>${body}</tbody></table></div>`;}
   function shell(title,subtitle,html,cls){root.className=`report-sheet report-${cls}`;root.innerHTML=`<div class="dashboard-card"><div class="dashboard-title"><h2>${esc(title)}</h2><p>${esc(subtitle)}</p></div>${status()}${html}${note()}</div>`;}
 
@@ -43,7 +47,16 @@
   }
 
   function renderPh(){
-    const rows=state.data.ph, rm=reportMonth();
+    const sourceRows=state.data.ph, s=state.data.summary, rm=reportMonth();
+    const detailGap=Math.max(0,num(s.detail_gap));
+    const gapAug=Math.max(0,num(s.detail_gap_aug||detailGap));
+    const gapHsc=Math.max(0,num(s.detail_gap_hsc||gapAug));
+    const pending=detailGap?{
+      name:'Chờ đồng bộ chi tiết (TSĐB)',
+      month8:[0,gapHsc,0,0,0,0,0,0,0,gapAug,0,0],
+      current:[0,gapHsc,0,0,0,0,0,0,0,detailGap,0,0,detailGap]
+    }:null;
+    const rows=pending?[...sourceRows,pending]:sourceRows;
     const future=Array.from({length:Math.max(0,rm-8)},(_,i)=>i+9);
     const headers=['TT','Phân hiệu / Trung tâm','T8 SC khai thác','T8 liên thông','T8 XDM','T8 cơ điện','T8 hệ A',...future.map(m=>`T${m} hệ A`),'Hiện tại SC khai thác','Hiện tại liên thông','Hiện tại XDM','Hiện tại cơ điện','Hệ A hiện tại','Hệ B','Tổng A+B'];
     const head=`<tr>${headers.map(x=>th(x)).join('')}</tr>`;
@@ -56,7 +69,12 @@
 
   function dnSubtotal(rows,label){const m=Array(9).fill(0);rows.forEach(r=>(r.month8||[]).forEach((v,i)=>m[i]+=num(v)));return `<tr class="summary-row">${cell('')}${cell(label)}${m.map(v=>cell(v)).join('')}${cell(rows.reduce((a,r)=>a+num(r.aug_total),0))}${cell(rows.reduce((a,r)=>a+num(r.current_total),0))}</tr>`;}
   function renderDn(){
-    const rows=state.data.dn||[], tkv=rows.filter(r=>r.group==='TKV'), db=rows.filter(r=>r.group==='DONG_BAC');
+    const sourceRows=state.data.dn||[], s=state.data.summary;
+    const detailGap=Math.max(0,num(s.detail_gap));
+    const gapAug=Math.max(0,num(s.detail_gap_aug||detailGap));
+    const gapHsc=Math.max(0,num(s.detail_gap_hsc||gapAug));
+    const pending=detailGap?{name:'Chưa phân doanh nghiệp (TSĐB)',group:'TKV',month8:[0,0,0,gapHsc,0,gapAug,0,0,0],aug_total:gapAug,current_total:detailGap}:null;
+    const rows=pending?[...sourceRows,pending]:sourceRows, tkv=rows.filter(r=>r.group==='TKV'), db=rows.filter(r=>r.group==='DONG_BAC');
     const head=`<tr>${['TT','Doanh nghiệp','T8 CĐ - Trường','T8 CĐ - DN','T8 CĐ tổng','T8 SC - Trường','T8 SC - DN','T8 SC tổng','T8 LT - Trường','T8 LT - DN','T8 LT tổng','Cộng T8','Tổng hiện tại'].map(x=>th(x)).join('')}</tr>`;
     const makeRows=(arr,start=0)=>arr.map((r,i)=>`<tr class="${rowClass(i)}">${cell(start+i+1)}${cell(r.name)}${(r.month8||Array(9).fill(0)).map(v=>cell(v)).join('')}${cell(r.aug_total)}${cell(r.current_total)}</tr>`).join('');
     const body=makeRows(tkv)+dnSubtotal(tkv,'I / TỔNG TKV')+makeRows(db,tkv.length)+dnSubtotal(db,'II / ĐÔNG BẮC')+dnSubtotal(rows,'CỘNG TOÀN TRƯỜNG');
