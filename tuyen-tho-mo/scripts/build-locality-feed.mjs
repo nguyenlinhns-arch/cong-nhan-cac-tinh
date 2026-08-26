@@ -14,7 +14,7 @@ for(const provinceSlug of Object.keys(report.by_province||{})){
     const locality=label.replace(/^(xã|phường|đặc khu)\s+/iu,'').replace(/\s*\(mã\s+\d+\)\s*$/iu,'').trim();
     const url=`https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/${provinceSlug}/${type}/${slug}/`;
     const codeParam=code?`&locality_code=${encodeURIComponent(code)}`:'';
-    items.push({name:`${type} ${locality}`,locality,locality_code:code,type,province,province_slug:provinceSlug,url,parent:`https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/${provinceSlug}/`,application_url:`https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?province=${encodeURIComponent(province)}&locality=${encodeURIComponent(locality)}${codeParam}&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky`});
+    items.push({name:`${type} ${locality}`,locality,locality_code:code,type,province,province_slug:provinceSlug,url,parent:`https://thaylinhtuyenthomo.vn/viec-lam-nganh-than/${provinceSlug}/`,application_url:`https://thaylinhtuyenthomo.vn/kiem-tra-dieu-kien/?province=${encodeURIComponent(province)}&locality=${encodeURIComponent(locality)}${codeParam}&utm_source=locality_feed&utm_medium=referral&utm_campaign=commune_jobs#dang-ky`});
   }
 }
 if(items.length!==3321) throw new Error(`Feed chỉ có ${items.length}/3321 địa bàn`);

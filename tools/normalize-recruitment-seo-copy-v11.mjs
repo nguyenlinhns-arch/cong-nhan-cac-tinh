@@ -113,6 +113,15 @@ function normalizeFile(file) {
     ? JSON.parse(current).usage_note
     : null;
   let next = normalizeText(current);
+  if (path.extname(file).toLowerCase() === '.html') {
+    next = next.replace(
+      /href="\/viec-lam\/cong-nhan-mo-ham-lo-quang-ninh\/\?([^"]*)"/giu,
+      'href="/kiem-tra-dieu-kien/?$1"'
+    ).replace(
+      /href='\/viec-lam\/cong-nhan-mo-ham-lo-quang-ninh\/\?([^']*)'/giu,
+      "href='/kiem-tra-dieu-kien/?$1'"
+    );
+  }
   if (protectedUsageNote) {
     const data = JSON.parse(next);
     data.usage_note = protectedUsageNote;
