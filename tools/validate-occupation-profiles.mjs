@@ -82,9 +82,20 @@ function publicTextFiles(directory) {
 const seoQuestionExceptions = new Map([
   ["giai-dap-nghe-mo/lam-tho-lo-co-nguy-hiem-khong/index.html", new Set(["nguy hiểm"])],
   ["lam-tho-lo-co-nguy-hiem-khong/index.html", new Set(["nguy hiểm"])],
+  ["feed.json", new Set(["nặng nhọc", "độc hại"])],
+  ["feed.xml", new Set(["nặng nhọc", "độc hại"])],
+  ["llms.txt", new Set(["nặng nhọc", "độc hại"])],
+  ["news-sitemap.xml", new Set(["nặng nhọc", "độc hại"])],
+  ["search-core.json", new Set(["nặng nhọc", "độc hại"])],
+  ["tac-gia/nguyen-tu-linh/index.html", new Set(["nặng nhọc", "độc hại"])],
+  ["tin-nganh-than/2026/08/27/than-thong-nhat-kham-suc-khoe-lao-dong-nang-nhoc-2026/index.html", new Set(["nặng nhọc", "độc hại"])],
+  ["tin-nganh-than/index.html", new Set(["nặng nhọc", "độc hại"])],
+  ["trung-tam-nghe-mo/index.html", new Set(["nặng nhọc", "độc hại"])],
 ]);
 const searchItemExceptions = new Map([
   ["/lam-tho-lo-co-nguy-hiem-khong/", new Set(["nguy hiểm"])],
+  ["/tin-nganh-than/2026/08/27/than-thong-nhat-kham-suc-khoe-lao-dong-nang-nhoc-2026/", new Set(["nặng nhọc", "độc hại"])],
+  ["/tac-gia/nguyen-tu-linh/", new Set(["nặng nhọc", "độc hại"])],
 ]);
 
 function validateExcludedPhrases(content, relative, allowed = new Set()) {
