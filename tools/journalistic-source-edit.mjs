@@ -87,6 +87,11 @@ function firstSentences(value = "", limit = 235) {
   return `${text.slice(0, limit).replace(/\s+\S*$/u, "").replace(/[,:;\s]+$/u, "")}…`;
 }
 
+function dedupeAdjacentSentences(value = "") {
+  const sentences = cleanCopy(value).split(/(?<=[.!?])\s+/u).filter(Boolean);
+  return sentences.filter((sentence, index) => !index || visible(sentence) !== visible(sentences[index - 1])).join(" ");
+}
+
 function dedupe(items = []) {
   const seen = new Set();
   return items.filter((item) => {
@@ -132,12 +137,14 @@ function strengthenLead(currentLead, candidates = []) {
     const context = candidates.find((item) => item && consequenceSignal.test(visible(item)) && overlap(lead, item) < 0.72);
     if (context) {
       const contextSentence = firstSentences(context, 170).split(/(?<=[.!?])\s+/u)[0];
-      const combined = `${lead.replace(/\s+$/u, "")} ${contextSentence}`.trim();
-      if (wordCount(combined) <= 72 && combined.length <= 360) lead = combined;
+      if (contextSentence && overlap(lead, contextSentence) < 0.72) {
+        const combined = `${lead.replace(/\s+$/u, "")} ${contextSentence}`.trim();
+        if (wordCount(combined) <= 72 && combined.length <= 360) lead = combined;
+      }
     }
   }
 
-  return cleanCopy(lead);
+  return dedupeAdjacentSentences(lead);
 }
 
 function editSection(section = {}) {
