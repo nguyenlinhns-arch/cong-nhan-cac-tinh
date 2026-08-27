@@ -41,7 +41,7 @@
     {
       "url": "/#dieu-kien",
       "title": "Điều kiện đăng ký học nghề mỏ là gì?",
-      "description": "Nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg, sức khỏe tốt; không cận thị, bệnh tim mạch, huyết áp hoặc bệnh về mắt.",
+      "description": "Nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg. Sức khỏe tốt; kiểm tra mắt, huyết áp, tim mạch và các bệnh ảnh hưởng công việc hầm lò. Khám tuyển là căn cứ xác nhận cuối cùng.",
       "keywords": [
         "điều kiện",
         "bao nhiêu tuổi",
@@ -53,7 +53,8 @@
       "category": "entry",
       "categoryLabel": "Điều kiện & hồ sơ",
       "type": "Trả lời nhanh",
-      "priority": 200
+      "priority": 200,
+      "canonicalFactsVersion": 8
     },
     {
       "url": "/#noi-lam-viec",
@@ -132,12 +133,13 @@
       "category": "training",
       "categoryLabel": "Học nghề",
       "type": "Trả lời nhanh",
-      "priority": 200
+      "priority": 200,
+      "canonicalFactsVersion": 8
     },
     {
       "url": "/#quyen-loi",
       "title": "Thu nhập và quyền lợi của thợ mỏ",
-      "description": "Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.; người lao động được đào tạo nghề trước khi bố trí việc làm.",
+      "description": "Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động; người lao động được đào tạo nghề trước khi bố trí việc làm.",
       "keywords": [
         "thu nhập",
         "lương",
@@ -148,12 +150,13 @@
       "category": "work",
       "categoryLabel": "Công việc & lương",
       "type": "Trả lời nhanh",
-      "priority": 200
+      "priority": 200,
+      "canonicalFactsVersion": 8
     },
     {
       "url": "/#ho-tro-hoc-nghe",
       "title": "Trong thời gian học được hỗ trợ gì?",
-      "description": "Miễn kinh phí đào tạo, ăn 3 bữa/ngày, ở ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học.",
+      "description": "Miễn học phí theo chỉ tiêu; ăn 3 bữa/ngày, ở ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học.",
       "keywords": [
         "hỗ trợ",
         "miễn học phí",
@@ -169,20 +172,20 @@
       "category": "welfare",
       "categoryLabel": "Đời sống & phúc lợi",
       "type": "Trả lời nhanh",
-      "priority": 200
+      "priority": 200,
+      "canonicalFactsVersion": 8
     },
     {
       "url": "/",
-      "title": "Tuyển thợ mỏ, thợ lò Quảng Ninh | Học nghề, nhận việc",
-      "description": "Tuyển thợ mỏ, thợ lò tại Quảng Ninh: nam 18–40 tuổi; học nghề tại Quang Hanh, miễn học phí, có ăn ở và được bố trí việc làm sau đào tạo.",
+      "title": "Học nghề mỏ & việc làm ngành Than 2026",
+      "description": "Hướng dẫn học nghề mỏ, điều kiện, hồ sơ, quyền lợi và việc làm ngành Than năm 2026. Chọn thông tin theo nhu cầu và địa phương để đăng ký đúng lộ trình.",
       "keywords": [
-        "tuyển thợ mỏ",
-        "tuyển thợ lò Quảng Ninh",
-        "học nghề mỏ Quang Hanh",
+        "học nghề mỏ",
         "việc làm ngành Than",
-        "việc làm TKV",
         "hồ sơ học nghề mỏ",
-        "Tuyển thợ mỏ Quảng Ninh. Bắt đầu từ đây.",
+        "điều kiện thợ lò",
+        "tuyển thợ mỏ theo tỉnh",
+        "Học nghề mỏ và việc làm ngành Than. Bắt đầu từ đây.",
         "Làm mỏ hay làm KCN?",
         "Chọn nghề theo công việc bạn muốn học",
         "Kỹ thuật khai thác mỏ hầm lò",
@@ -191,7 +194,8 @@
         "Kiểm tra điều kiện trong 30 giây",
         "Xem công việc thợ mỏ qua người thật, việc thật",
         "Nghe người trong nghề kể về công việc và cuộc sống",
-        "Người thật, chuyến đi thật, con đường việc làm thật"
+        "Người thật, chuyến đi thật, con đường việc làm thật",
+        "Hành trình học nghề mỏ và nhận việc tại Quảng Ninh"
       ],
       "category": "recruitment",
       "categoryLabel": "Tuyển thợ mỏ",
@@ -241,11 +245,11 @@
         "Bộ chia sẻ theo tỉnh",
         "Nguyên tắc biên tập",
         "Những nội dung nên đọc trước khi đăng ký",
+        "Than Thống Nhất tổ chức nghỉ dưỡng cuối tuần cho người lao động",
+        "Than Dương Huy tổ chức nghỉ dưỡng cho 90 gia đình thợ lò",
+        "Khâu Vai phối hợp đào tạo nghề mỏ, kết nối việc làm ngành Than",
         "Trường Cao đẳng TKV tháo gỡ điểm nghẽn tuyển sinh nghề mỏ",
-        "Xây lắp mỏ hỗ trợ gia đình công nhân có hoàn cảnh khó khăn",
-        "Kho vận Đá Bạc hỗ trợ 3 nữ công nhân phát triển mô hình nuôi gà",
-        "22 thanh niên Ca Thành tìm hiểu nghề mỏ tại Than Núi Béo",
-        "Than Hạ Long hỗ trợ 183 triệu đồng sửa nhà chính sách"
+        "Xây lắp mỏ hỗ trợ gia đình công nhân có hoàn cảnh khó khăn"
       ],
       "category": "guide",
       "categoryLabel": "Trung tâm nghề mỏ",
@@ -400,9 +404,9 @@
         "Ngành Than xanh hơn từ những thay đổi dưới mỏ",
         "Giữ nhịp sản xuất an toàn trong mùa mưa bão 2026",
         "Giải đáp theo đúng cách người lao động tìm kiếm",
+        "Mất CCCD gốc có đăng ký học nghề mỏ được không?",
         "Đi khám sức khỏe học nghề mỏ trước hay sau khi đăng ký?",
-        "Cơ điện mỏ học 10 tháng: ai nên chọn nghề này?",
-        "Đăng ký học nghề mỏ ban đầu có cần gửi ảnh CCCD không?"
+        "Cơ điện mỏ học 10 tháng: ai nên chọn nghề này?"
       ],
       "category": "guide",
       "categoryLabel": "Cẩm nang nghề mỏ",

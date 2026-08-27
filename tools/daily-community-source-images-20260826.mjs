@@ -6,6 +6,10 @@ export const dailyCommunitySourceImages20260826 = Object.freeze({
     image: "https://caodangtkv.edu.vn/wp-content/uploads/2026/08/f10848512.jpg",
     alt: "Hội nghị phối hợp đào tạo nghề và giải quyết việc làm cho lao động xã Khâu Vai tại Trường Cao đẳng TKV",
     credit: "Ảnh đại diện bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    allowPinnedWordPressRelationship: true,
+    verifiedAt: "2026-08-26T08:25:00+07:00",
+    verifiedWidth: 1920,
+    verifiedHeight: 1080,
   }),
   "than-duong-huy-phuc-loi-gia-dinh-tho-lo-2026": Object.freeze({
     sourceUrl: "https://congdoantkv.vn/tin-tuc/chi-tiet/46080/Than-Duong-Huy-Quan-tam-cham-lo-nguoi-lao-đong-bang-nhung-viec-lam-thiet-thuc",

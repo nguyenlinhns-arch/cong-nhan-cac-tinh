@@ -1,9 +1,17 @@
 {
   "version": "1.0",
-  "updated_at": "2026-08-26",
+  "updated_at": "2026-08-27",
   "canonical_hub": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/",
   "publisher": "Thầy Linh – Tuyển Thợ Mỏ",
   "articles": [
+    {
+      "title": "Mất CCCD gốc có đăng ký học nghề mỏ được không?",
+      "primary_query": "mất CCCD gốc có đăng ký học nghề mỏ được không",
+      "direct_answer": "Có thể đăng ký và kiểm tra điều kiện sơ bộ dù đang mất CCCD gốc, vì bước đầu chưa yêu cầu nộp hoặc gửi ảnh giấy tờ. Tuy nhiên, CCCD bản gốc nằm trong hồ sơ cần mang khi nhập học. Hãy nói rõ tình trạng giấy tờ, chờ hướng dẫn và chỉ di chuyển khi đã được xác nhận lịch cùng cách bổ sung hồ sơ.",
+      "date_published": "2026-08-27",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/mat-cccd-goc-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ; hồ sơ nhập học gồm CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; không gửi giấy tờ gốc qua bưu điện."
+    },
     {
       "title": "Đi khám sức khỏe học nghề mỏ trước hay sau khi đăng ký?",
       "primary_query": "đi khám sức khỏe học nghề mỏ trước hay sau khi đăng ký",

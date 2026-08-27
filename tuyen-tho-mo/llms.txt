@@ -36,6 +36,7 @@
 
 - Trang trung tâm: [Giải đáp nghề mỏ Quảng Ninh mỗi ngày](https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/).
 - Dữ liệu máy đọc: [daily-seo-articles.json](https://thaylinhtuyenthomo.vn/daily-seo-articles.json).
+- [Mất CCCD gốc có đăng ký học nghề mỏ được không?](https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/mat-cccd-goc-co-dang-ky-hoc-nghe-mo-duoc-khong/): Có thể đăng ký và kiểm tra điều kiện sơ bộ dù đang mất CCCD gốc, vì bước đầu chưa yêu cầu nộp hoặc gửi ảnh giấy tờ. Tuy nhiên, CCCD bản gốc nằm trong hồ sơ cần mang khi nhập học. Hãy nói rõ tình trạng giấy tờ, chờ hướng dẫn và chỉ di chuyển khi đã được xác nhận lịch cùng cách bổ sung hồ sơ.
 - [Đi khám sức khỏe học nghề mỏ trước hay sau khi đăng ký?](https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/di-kham-suc-khoe-hoc-nghe-mo-truoc-hay-sau-khi-dang-ky/): Hãy đăng ký và kiểm tra điều kiện sơ bộ từ xa trước; chưa cần tự đi khám ở một nơi bất kỳ chỉ để nộp kết quả. Khi thông tin ban đầu phù hợp và lịch tiếp nhận được xác nhận, người lao động mới đi khám tuyển trực tiếp theo hướng dẫn. Kết quả khám tuyển là căn cứ cuối cùng, còn biểu mẫu trực tuyến không thay thế kết luận y tế.
 - [Cơ điện mỏ học 10 tháng: ai nên chọn nghề này?](https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/co-dien-mo-hoc-10-thang-co-nen-dang-ky-khong/): Cơ điện mỏ hiện có thời gian đào tạo 10 tháng, dài hơn khai thác và xây dựng mỏ 2–3 tháng. Nghề phù hợp với người chấp nhận học dài hơn để đi theo công việc lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống cơ khí, điện cùng thiết bị mỏ. Trước khi chọn, cần hỏi rõ nội dung học, lịch nhập học và nhu cầu tiếp nhận của đợt tuyển.
 - [Đăng ký học nghề mỏ ban đầu có cần gửi ảnh CCCD không?](https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/dang-ky-hoc-nghe-mo-ban-dau-co-can-gui-anh-cccd-khong/): Không. Đăng ký học nghề mỏ ban đầu hiện chưa yêu cầu nộp hoặc gửi ảnh CCCD, giấy khai sinh hay bằng cấp. Người lao động chỉ cần cung cấp thông tin cơ bản để kiểm tra điều kiện sơ bộ. Hồ sơ gốc được chuẩn bị và mang theo sau khi đã được xác nhận phù hợp, nhận đúng lịch cùng hướng dẫn nhập học; không gửi giấy tờ gốc qua bưu điện.
@@ -58,6 +59,8 @@
 
 - [Facts tuyển sinh canonical v8](https://thaylinhtuyenthomo.vn/data/recruitment-facts-2026.json): nguồn máy đọc ưu tiên số 1 cho điều kiện, ba nghề, thời gian học, quyền lợi và thu nhập đang áp dụng; xác nhận 23/08/2026.
 - [Thông tin tuyển hiện hành dạng JSON](https://thaylinhtuyenthomo.vn/recruitment-current.json): bản tóm tắt dẫn xuất để đối chiếu nhanh; không được ghi đè facts canonical.
+- [Danh mục 3.321 địa bàn tuyển nguồn](https://thaylinhtuyenthomo.vn/localities.json): tên xã/phường/đặc khu, tỉnh/thành, URL chuẩn và đường đăng ký có giữ chính xác nguồn địa bàn.
+
 - [Danh mục 3.321 địa bàn tuyển nguồn](https://thaylinhtuyenthomo.vn/localities.json): toàn bộ xã, phường, đặc khu hiện hành, tỉnh/thành, URL chuẩn và đường đăng ký giữ nguồn địa bàn.
 - [Sitemap 3.321 địa bàn](https://thaylinhtuyenthomo.vn/commune-sitemap.xml): URL cấp xã/phường/đặc khu dành cho crawler.
 - [Sitemap 34 tỉnh/thành](https://thaylinhtuyenthomo.vn/province-sitemap.xml): URL landing cấp tỉnh/thành.
@@ -105,8 +108,11 @@
 
 ## Trang thông tin hiện hành
 
-- [Thông tin tuyển thợ mỏ đang áp dụng: 15 câu hỏi](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/): trang chuẩn để đối chiếu điều kiện, thời gian học, chế độ, hồ sơ, địa chỉ và thu nhập; dữ kiện có ngày hiệu lực và dấu vết kiểm chứng.
-- Ngày cập nhật: 01/08/2026.
+- [Thông tin tuyển thợ mỏ đang áp dụng: 15 câu hỏi](https://thaylinhtuyenthomo.vn/thong-tin-tuyen-tho-mo/): trang chuẩn cho người đọc để đối chiếu điều kiện, thời gian học, chế độ, hồ sơ, địa chỉ và thu nhập.
+- Hiệu lực chính sách hiện hành: 01/08/2026.
+- Rà soát facts gần nhất: 23/08/2026, facts v8.
+- Hỗ trợ trong thời gian học: 7,5 triệu đồng/tháng trong thời gian học.
+- Thu nhập sau đào tạo: 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.
 
 ## Trả lời trực tiếp theo câu hỏi
 
@@ -161,6 +167,9 @@
 
 ## Kho kiến thức ngành mỏ
 
+- [Than Thống Nhất tổ chức nghỉ dưỡng cuối tuần cho người lao động](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/26/than-thong-nhat-nghi-duong-cuoi-tuan-nguoi-lao-dong-2026/): Năm 2026, chương trình Than Thống Nhất nghỉ dưỡng cuối tuần kết hợp nghỉ ngơi, tắm khoáng và hoạt động tập thể, giúp người lao động tái tạo sức khỏe sau ca sản xuất.
+- [Than Dương Huy tổ chức nghỉ dưỡng cho 90 gia đình thợ lò](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/26/than-duong-huy-phuc-loi-gia-dinh-tho-lo-2026/): Công đoàn Than – Khoáng sản Việt Nam ngày 25/08/2026 công bố chương trình Than Dương Huy nghỉ dưỡng gia đình thợ lò 2026. Chương trình giúp 90 gia đình với trên 360 người có hành trình 4 ngày 3 đêm tại Sa Pa hoặc Hạ Long.
+- [Khâu Vai phối hợp đào tạo nghề mỏ, kết nối việc làm ngành Than](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/26/khau-vai-phoi-hop-dao-tao-nghe-viec-lam-2026/): Trường Cao đẳng Than – Khoáng sản Việt Nam ngày 22/08/2026 thông tin về hội nghị đánh giá mô hình Khâu Vai phối hợp đào tạo nghề mỏ 2026. Đoàn địa phương được tìm hiểu môi trường sản xuất, nhu cầu tuyển dụng, chế độ và cơ hội nghề nghiệp tại doanh nghiệp; đồng thời tham quan ký túc xá, giảng đường và xưởng…
 - [Trường Cao đẳng TKV tháo gỡ điểm nghẽn tuyển sinh nghề mỏ](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/22/truong-cao-dang-tkv-thao-go-diem-nghen-tuyen-sinh-nghe-mo-2026/): Trường Cao đẳng TKV tuyển sinh nghề mỏ năm 2026 được đặt trong cả chuỗi từ tạo nguồn, đào tạo đến thực tập tại buổi làm việc ngày 19/08; trọng tâm là tháo gỡ khó khăn tuyển sinh và giữ người học đi hết lộ trình.
 - [Xây lắp mỏ hỗ trợ gia đình công nhân có hoàn cảnh khó khăn](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/22/xay-lap-mo-ho-tro-gia-dinh-cong-nhan-kho-khan-2026/): Sáng 16/08/2026, Công ty Xây lắp mỏ - TKV cùng Công đoàn và Phân xưởng Đào lò 15 đến thăm một gia đình công nhân tại Hải Phòng; riêng đồng nghiệp trong phân xưởng quyên góp 31,5 triệu đồng hỗ trợ.
 - [Kho vận Đá Bạc hỗ trợ 3 nữ công nhân phát triển mô hình nuôi gà](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/08/21/kho-van-da-bac-ho-tro-nu-cong-nhan-phat-trien-kinh-te-2026/): Kho vận Đá Bạc hỗ trợ nữ công nhân năm 2026 bằng mô hình 300 con gà cho ba hộ; sau gần một năm, tổng doanh thu được công bố đạt 102,5 triệu đồng và tổng lợi nhuận 56,45 triệu đồng. Các con số tài chính là kết quả gộp của ba hộ trong một chu kỳ gần một năm, không phải thu nhập cố định của từng người.
@@ -262,6 +271,3 @@
 - [Ở Ia RDeh, con đường đến vùng mỏ bắt đầu từ một cuộc gặp ngay tại xã](https://thaylinhtuyenthomo.vn/phong-su/ia-rdeh-gia-lai-con-duong-den-vung-mo/): Ghi chép hiện trường tại Ia RDeh, Gia Lai: tư vấn nghề mỏ, phối hợp ba bên và câu chuyện gia đình công nhân Kso Sới.
 - [Một chuyến đi từ Quảng Ngãi cho thấy điều tin tuyển dụng thường bỏ sót](https://thaylinhtuyenthomo.vn/phong-su/quang-ngai-hanh-trinh-den-vung-mo-quang-ninh/): Ghi chép hành trình từ Quảng Ngãi tới Quảng Ninh: rời quê, đến nơi tiếp nhận, nhập học và kiểm chứng lộ trình học nghề mỏ.
 <!-- field-report-v8:end -->
-
-
-- [Danh mục 3.321 địa bàn tuyển nguồn](https://thaylinhtuyenthomo.vn/localities.json): tên xã/phường/đặc khu, tỉnh/thành, URL chuẩn và đường đăng ký có giữ chính xác nguồn địa bàn.

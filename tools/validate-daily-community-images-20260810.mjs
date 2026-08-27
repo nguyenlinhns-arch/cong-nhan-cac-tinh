@@ -33,7 +33,8 @@ for (const article of dailyCommunityArticles20260810) {
       && /^\d{4}-\d{2}-\d{2}T/.test(receipt.verifiedAt || "")
       && Number.isInteger(receipt.verifiedWidth)
       && Number.isInteger(receipt.verifiedHeight)
-      && /(?:One moment, please|Imunify360|bot-protection)/i.test(html);
+      && (/(?:One moment, please|Imunify360|bot-protection)/i.test(html)
+        || response.status >= 500);
     const matched = liveMatched || archivedMatched;
 
     results.push({

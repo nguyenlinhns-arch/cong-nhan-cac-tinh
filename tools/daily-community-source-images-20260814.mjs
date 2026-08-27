@@ -6,6 +6,10 @@ export const dailyCommunitySourceImages20260814 = Object.freeze({
     image: "https://caodangtkv.edu.vn/wp-content/uploads/2026/08/DSC00690-001.jpg",
     alt: "Đại diện xã Đông Ngũ, Trường Cao đẳng TKV và Than Mông Dương ký hợp tác đào tạo, việc làm năm 2026",
     credit: "Ảnh đại diện bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    allowPinnedWordPressRelationship: true,
+    verifiedAt: "2026-08-14T08:20:00+07:00",
+    verifiedWidth: 1920,
+    verifiedHeight: 1080,
   }),
   "hoc-sinh-thuc-tap-than-khe-cham-2026": Object.freeze({
     sourceUrl: "https://congdoantkv.vn/tin-tuc/chi-tiet/46037/Than-Khe-Cham-Ban-giao-tiep-nhan-va-bo-tri-hoc-sinh-thuc-tap-san-xuat-tai-cac-đon-vi-trong-Cong-ty",

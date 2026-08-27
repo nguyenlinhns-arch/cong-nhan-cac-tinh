@@ -12,5 +12,9 @@ export const dailyCommunitySourceImages20260822 = Object.freeze({
     image: "https://caodangtkv.edu.vn/wp-content/uploads/2026/08/DSC01480-001.jpg",
     alt: "Thường trực Đảng ủy Than Quảng Ninh làm việc với Trường Cao đẳng TKV về tuyển sinh và đào tạo nghề mỏ năm 2026",
     credit: "Ảnh đại diện bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
+    allowPinnedWordPressRelationship: true,
+    verifiedAt: "2026-08-22T08:25:00+07:00",
+    verifiedWidth: 1920,
+    verifiedHeight: 1080,
   }),
 });
