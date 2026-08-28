@@ -23,6 +23,7 @@ export const dailyCommunitySourceImages20260827 = Object.freeze({
 });
 
 export const publishedDailyCommunitySourceImages20260827 = Object.freeze({
+  "nam-hang-hong-thu-hop-tac-dao-tao-nghe-viec-lam-2026": dailyCommunitySourceImages20260827["nam-hang-hong-thu-hop-tac-dao-tao-nghe-viec-lam-2026"],
   "than-duong-huy-giam-sat-che-do-nguoi-lao-dong-2026": dailyCommunitySourceImages20260827["than-duong-huy-giam-sat-che-do-nguoi-lao-dong-2026"],
   "than-thong-nhat-kham-suc-khoe-lao-dong-nang-nhoc-2026": dailyCommunitySourceImages20260827["than-thong-nhat-kham-suc-khoe-lao-dong-nang-nhoc-2026"],
 });

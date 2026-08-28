@@ -7,9 +7,9 @@ const withImage = (slug, article) => {
 };
 
 export const laiChauTrainingArticle20260827 = withImage("nam-hang-hong-thu-hop-tac-dao-tao-nghe-viec-lam-2026", {
-  updated: "2026-08-27T08:20:00+07:00",
-  published: "2026-08-27T08:20:00+07:00",
-  urlPath: "tin-nganh-than/2026/08/27/nam-hang-hong-thu-hop-tac-dao-tao-nghe-viec-lam-2026",
+  updated: "2026-08-28T08:15:00+07:00",
+  published: "2026-08-28T08:15:00+07:00",
+  urlPath: "tin-nganh-than/2026/08/28/nam-hang-hong-thu-hop-tac-dao-tao-nghe-viec-lam-2026",
   related: ["lai-chau-phoi-hop-dao-tao-nghe-tho-lo-2025-2030", "tuyen-sinh-nghe-mo-thai-nguyen-2026", "khau-vai-phoi-hop-dao-tao-nghe-viec-lam-2026", "dam-ha-than-thong-nhat-dao-tao-viec-lam-2026"],
   section: "Kết nối địa phương",
   title: "Nậm Hàng, Hồng Thu hợp tác đào tạo nghề và việc làm ngành Than",
@@ -130,6 +130,7 @@ export const thongNhatOccupationalHealthArticle20260827 = withImage("than-thong-
 });
 
 export const dailyCommunityArticles20260827 = [
+  laiChauTrainingArticle20260827,
   duongHuyWorkerRightsArticle20260827,
   thongNhatOccupationalHealthArticle20260827,
 ];

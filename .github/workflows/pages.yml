@@ -92,6 +92,7 @@ jobs:
           node tools/validate-daily-community-images-20260822.mjs
           node tools/validate-daily-community-images-20260826.mjs
           node tools/validate-daily-community-images-20260827.mjs
+          node tools/validate-daily-community-images-20260828.mjs
           node tools/validate-home-copy-actions.mjs
           node tools/validate-homepage-redesign.mjs
           node tools/validate-top-block-hotfix.mjs
