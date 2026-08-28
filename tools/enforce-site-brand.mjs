@@ -170,7 +170,10 @@ if (!CHECK_ONLY) {
   // Every reader-facing article and core recruitment page declares where its
   // information comes from. The visible note is deliberately compact so it
   // improves trust without turning the article back into a dashboard.
-  await import("./editorial-content-origin-v9.mjs");
+  // Some build modules import the origin pass while assembling article pages.
+  // Force a fresh run here, after every newsroom and field-report renderer has
+  // finished, so late-created pages cannot miss their provenance declaration.
+  await import(`./editorial-content-origin-v9.mjs?after-render=${Date.now()}`);
 
   await runValidator("./validate-home-field-report-entry-v9.mjs", "Kiểm định lối vào phóng sự trang chủ v9");
   await runValidator("./validate-home-kcn-reel-facade-v10.mjs", "Kiểm định video Làm mỏ hay KCN click-to-play");
