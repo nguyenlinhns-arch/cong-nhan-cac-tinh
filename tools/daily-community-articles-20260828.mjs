@@ -19,7 +19,7 @@ export const duongHuyStormSupportArticle20260828 = withImage("than-duong-huy-ung
   keywords: ["Than Dương Huy ứng phó bão NARRA 2026", "an toàn thợ mỏ mùa mưa bão", "Công đoàn Than Dương Huy", "hỗ trợ người lao động", "an toàn lao động mỏ", "việc làm ngành Than Quảng Ninh"],
   facts: [["Từ 24/08/2026", "Thời điểm Công ty kích hoạt phương án ứng phó bão số 4 – NARRA."], ["24 giờ", "Thời gian lực lượng Phòng Điều khiển sản xuất duy trì ứng trực."], ["Nhiều vị trí trọng yếu", "Các điểm được phân công lực lượng kiểm soát nguy cơ mất an toàn."], ["27/08/2026", "Ngày Công đoàn Công ty thăm hỏi, động viên và tặng quà lực lượng ứng cứu."]],
   intro: [
-    "Công đoàn Than – Khoáng sản Việt Nam ngày 27/08/2026 thông tin về chương trình <strong>Than Dương Huy ứng phó bão NARRA 2026</strong>. Trước diễn biến phức tạp của bão số 4 từ ngày 24/08, Công ty đã kích hoạt phương án bảo vệ người lao động, công trình và hệ thống sản xuất của mỏ.",
+    "Công đoàn Than – Khoáng sản Việt Nam ngày 27/08/2026 thông tin về chương trình <strong>Than Dương Huy ứng phó bão NARRA 2026</strong>. Trước diễn biến phức tạp của bão số 4 từ ngày 24/08, Công ty đã kích hoạt phương án bảo vệ người lao động, công trình và hệ thống sản xuất của mỏ để giảm nguy cơ mất an toàn khi mưa lớn kéo dài.",
     "Lực lượng chuyên môn được phân công ứng trực tại các vị trí trọng yếu, thực hiện bơm thoát nước, duy trì lưới điện, kiểm soát khu vực có nguy cơ mất an toàn và bảo vệ tài sản, thiết bị. Nguồn chính thức cho biết các khu vực chịu ảnh hưởng cơ bản đã được kiểm soát và hoạt động khắc phục tiếp tục được triển khai.",
     "Ngày 27/08, Công đoàn Công ty đến thăm hỏi, động viên và tặng quà các đơn vị, cán bộ công nhân viên đang túc trực, ứng cứu. Bài nguồn không công bố tổng số người hoặc giá trị quà, vì vậy nội dung chỉ ghi nhận đúng phạm vi hỗ trợ đã được xác nhận.",
   ],
@@ -62,7 +62,7 @@ export const honGaiWorkerHolidayArticle20260828 = withImage("tuyen-than-hon-gai-
   intro: [
     "Công đoàn Than – Khoáng sản Việt Nam ngày 27/08/2026 công bố chương trình <strong>Tuyển than Hòn Gai nghỉ mát người lao động 2026</strong>. Trong tháng 8, Công ty tổ chức ba đoàn tham quan, nghỉ mát tại miền Trung cho hơn 100 cán bộ, công nhân viên và người lao động.",
     "Các đoàn diễn ra từ ngày 10 đến 26/08, gồm hai đoàn theo hành trình Huế – Đà Nẵng và một đoàn Quy Nhơn – Tuy Hòa. Chương trình được thực hiện theo nghị quyết liên tịch giữa Giám đốc và Ban Chấp hành Công đoàn Công ty về phúc lợi nghỉ mát năm 2026.",
-    "Nguồn cũng nêu kế hoạch tháng 9 gồm ba đoàn khác, trong đó một đoàn Nha Trang – Đà Lạt và hai đoàn Phú Quốc. Đây mới là kế hoạch dự kiến, chưa được diễn đạt thành kết quả đã hoàn thành.",
+    "Nguồn cũng nêu kế hoạch tháng 9 gồm ba đoàn khác, trong đó một đoàn Nha Trang – Đà Lạt và hai đoàn Phú Quốc. Đây mới là kế hoạch dự kiến cho tháng 9, chưa phải kết quả đã hoàn thành hoặc quyền lợi được xác nhận cho từng người lao động.",
   ],
   sections: [
     {title: "Phúc lợi được tổ chức theo nhiều đợt để mở rộng cơ hội tham gia", paragraphs: [

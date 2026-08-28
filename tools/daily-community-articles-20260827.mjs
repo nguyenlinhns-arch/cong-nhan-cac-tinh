@@ -26,7 +26,7 @@ export const laiChauTrainingArticle20260827 = withImage("nam-hang-hong-thu-hop-t
   sections: [
     {title: "Ba bên phân công trách nhiệm từ tuyển sinh đến việc làm", paragraphs: [
       "Địa phương có vai trò rà soát nhu cầu đến từng thôn, bản và đưa thông tin chính thức tới người dân. Nhà trường tư vấn nghề, tổ chức đào tạo, quản lý học viên; Than Thống Nhất cung cấp nhu cầu nhân lực, môi trường thực tập và điều kiện tiếp nhận sau đào tạo.",
-      "Sự phân công này giúp người lao động biết rõ phải hỏi ai ở từng chặng. Giá trị của biên bản không chỉ nằm ở lễ ký, mà ở việc ba đầu mối trao đổi thường xuyên, xử lý sớm khó khăn về hồ sơ, học tập, sinh hoạt và thực tập.",
+      "Sự phân công này giúp người lao động biết rõ phải hỏi ai ở từng chặng của hành trình học nghề và tìm việc. Giá trị của biên bản không chỉ nằm ở lễ ký, mà ở việc ba đầu mối trao đổi thường xuyên, xử lý sớm khó khăn về hồ sơ, học tập, sinh hoạt và thực tập.",
     ]},
     {title: "Thông tin cần đi sâu hơn tới thanh niên vùng cao", paragraphs: [
       "Các bên thừa nhận hoạt động tư vấn ở một số thôn, bản chưa thường xuyên; thông tin về học nghề, việc làm và chế độ chưa đến đầy đủ với thanh niên. Khoảng cách địa lý và tâm lý ngại đi xa cũng khiến một buổi giới thiệu chung khó chuyển thành quyết định bền vững.",
