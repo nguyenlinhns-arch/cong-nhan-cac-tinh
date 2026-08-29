@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-26T08:28:00+07:00",
+  "updated_at": "2026-08-29T08:07:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -113,6 +113,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2025/T04/29/KV4.jpg",
       "provider": "Vinacomin",
       "description": "Nhân viên y tế kiểm tra sức khỏe cho công nhân Kho vận và cảng Cẩm Phả trong đợt khám định kỳ năm 2025"
+    },
+    {
+      "asset": "vinacomin-hoc-sinh-vang-danh-thuc-hanh.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/hoc-sinh-nghe-mo-ham-lo-hao-hung-trai-nghiem-thuc-te-tai-mo-than-vang-danh",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/297B149E93C37BD84052201FEA7F4734670DC13F6E3893D5AD0B129CE5F91CC6.jpg",
+      "provider": "Vinacomin",
+      "description": "Nhóm học sinh nghề mỏ mặc bảo hộ, đội mũ trong chuyến tham quan thực tế tại Than Vàng Danh"
     }
   ]
 }
