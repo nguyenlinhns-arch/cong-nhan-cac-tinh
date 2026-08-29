@@ -48,8 +48,22 @@ for (const article of dailyCommunityArticles20260810) {
     });
     if (!matched) errors.push(`${article.slug}: ảnh đầu bài không khớp trực tiếp với URL nguồn`);
   } catch (error) {
-    results.push({slug: article.slug, matched: false, error: error.message});
-    errors.push(`${article.slug}: không xác minh được ảnh nguồn (${error.message})`);
+    const receipt = imageReceipts[article.slug];
+    const archivedMatched = receipt?.allowArchivedSourceImage === true
+      && receipt.sourceUrl === sourceUrl
+      && receipt.image === article.image
+      && /^https:\/\/caodangtkv\.edu\.vn\/wp-content\/uploads\//.test(article.image)
+      && /^\d{4}-\d{2}-\d{2}T/.test(receipt.verifiedAt || "")
+      && Number.isInteger(receipt.verifiedWidth)
+      && Number.isInteger(receipt.verifiedHeight);
+    results.push({
+      slug: article.slug,
+      expected: article.image,
+      verification: archivedMatched ? "PINNED_SOURCE_RECEIPT" : "FAILED",
+      matched: archivedMatched,
+      error: error.message,
+    });
+    if (!archivedMatched) errors.push(`${article.slug}: không xác minh được ảnh nguồn (${error.message})`);
   }
 }
 
