@@ -4,6 +4,8 @@ import path from "node:path";
 const root = path.resolve("tuyen-tho-mo");
 const ledger = JSON.parse(fs.readFileSync(path.resolve("content", "editorial-sources.json"), "utf8"));
 const imageSources = JSON.parse(fs.readFileSync(path.join(root, "assets", "articles", "sources.json"), "utf8"));
+const rss = fs.readFileSync(path.join(root, "feed.xml"), "utf8");
+const rssItems = [...rss.matchAll(/<item>[\s\S]*?<\/item>/g)].map((match) => match[0]);
 const expectedArticleCount = 105;
 const errors = [];
 const articleFiles = [];
@@ -29,6 +31,8 @@ walk(path.join(root, "bai-viet"));
 if (!Array.isArray(ledger.articles) || ledger.articles.length !== expectedArticleCount) errors.push(`Sổ nguồn phải có ${expectedArticleCount} bài, hiện có ${ledger.articles?.length || 0}`);
 if (Object.keys(imageSources).length !== expectedArticleCount) errors.push(`Sổ nguồn ảnh phải có ${expectedArticleCount} bài, hiện có ${Object.keys(imageSources).length}`);
 if (articleFiles.length !== expectedArticleCount) errors.push(`Website phải có ${expectedArticleCount} bài, hiện tìm thấy ${articleFiles.length}`);
+if (rssItems.length !== expectedArticleCount) errors.push(`RSS phải có ${expectedArticleCount} bài, hiện có ${rssItems.length}`);
+if (!rss.includes('xmlns:media="http://search.yahoo.com/mrss/"')) errors.push("RSS thiếu namespace Media RSS");
 
 const bySlug = new Map(articleFiles.map((item) => {
   const canonical = item.html.match(/<link rel="canonical" href="[^"]+\/([^/]+)\/">/i)?.[1] || "";
@@ -47,6 +51,11 @@ for (const article of ledger.articles || []) {
   }
   const image = imageSources[article.slug];
   if (!image?.provider || !image?.source_url || !image?.album_title) errors.push(`${label}: nguồn ảnh chưa đầy đủ`);
+  const canonical = file.html.match(/<link rel="canonical" href="([^"]+)"/i)?.[1] || "";
+  const ogImage = file.html.match(/<meta property="og:image" content="([^"]+)"/i)?.[1] || "";
+  const rssItem = rssItems.find((item) => item.includes(`<guid>${canonical}</guid>`)) || "";
+  if (!rssItem) errors.push(`${label}: RSS thiếu URL bài`);
+  else if (!ogImage || !rssItem.includes(`<media:content url="${htmlEsc(ogImage)}" medium="image"/>`)) errors.push(`${label}: ảnh RSS không khớp ảnh Open Graph`);
   const hasTraditionalSourceLine = file.html.includes("<strong>Nguồn:</strong>");
   const hasJournalisticSourceLine = /<p class="article-source-note">[\s\S]*?<\/p>/i.test(file.html);
   if (!hasTraditionalSourceLine && !hasJournalisticSourceLine) errors.push(`${label}: trang chưa hiển thị dòng nguồn`);
@@ -75,6 +84,7 @@ console.log(JSON.stringify({
   sourceLedgers: ledger.articles?.length || 0,
   imageLedgers: Object.keys(imageSources).length,
   articlesWithVisibleSource: articleFiles.filter(({html}) => html.includes("<strong>Nguồn:</strong>") || /<p class="article-source-note">[\s\S]*?<\/p>/i.test(html)).length,
+  rssImages: rssItems.filter((item) => item.includes("<media:content ")).length,
   errors: errors.length,
   sampleErrors: errors.slice(0, 25),
 }, null, 2));
