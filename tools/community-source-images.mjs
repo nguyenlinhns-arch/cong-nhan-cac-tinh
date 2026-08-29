@@ -11,6 +11,7 @@ import {dailyCommunitySourceImages20260822} from "./daily-community-source-image
 import {dailyCommunitySourceImages20260826} from "./daily-community-source-images-20260826.mjs";
 import {publishedDailyCommunitySourceImages20260827} from "./daily-community-source-images-20260827.mjs";
 import {dailyCommunitySourceImages20260828} from "./daily-community-source-images-20260828.mjs";
+import {dailyCommunitySourceImages20260829} from "./daily-community-source-images-20260829.mjs";
 
 export const communitySourceImages = Object.freeze({
   ...baseCommunitySourceImages,
@@ -26,4 +27,5 @@ export const communitySourceImages = Object.freeze({
   ...dailyCommunitySourceImages20260826,
   ...publishedDailyCommunitySourceImages20260827,
   ...dailyCommunitySourceImages20260828,
+  ...dailyCommunitySourceImages20260829,
 });

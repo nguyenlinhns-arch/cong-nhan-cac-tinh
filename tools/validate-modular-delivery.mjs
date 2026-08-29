@@ -21,7 +21,7 @@ const budgets = {
   "voice-assist.js": 15_000,
   "search-core.json": 40_000,
   "search-provinces.json": 60_000,
-  "search-content.json": 165_000,
+  "search-content.json": 172_000,
 };
 for (const [name, limit] of Object.entries(budgets)) requireBudget(name, limit);
 for (const name of ["mobile-core.js", "site-search.js", "worker-brief.js", "voice-assist.js", "analytics.js", "analytics-vendors.js", "consent-analytics.js", "job-application.js", "worker-info-finder.js"]) {
