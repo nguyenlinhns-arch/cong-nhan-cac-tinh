@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-29T08:07:00+07:00",
+  "updated_at": "2026-08-30T08:15:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -120,6 +120,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/297B149E93C37BD84052201FEA7F4734670DC13F6E3893D5AD0B129CE5F91CC6.jpg",
       "provider": "Vinacomin",
       "description": "Nhóm học sinh nghề mỏ mặc bảo hộ, đội mũ trong chuyến tham quan thực tế tại Than Vàng Danh"
+    },
+    {
+      "asset": "vinacomin-hoi-nghi-tuyen-dung-than-ha-long.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/than-ha-long-day-manh-tuyen-sinh-nghe-mo-ham-lo",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/09AEBE704BD3A0A494260AA48A3E53F8AE277B1879BAAF7AD1B33FFED106DA1D.jpg",
+      "provider": "Vinacomin",
+      "description": "Người lao động tham dự hội nghị tuyển dụng của Công ty Than Hạ Long - TKV"
     }
   ]
 }

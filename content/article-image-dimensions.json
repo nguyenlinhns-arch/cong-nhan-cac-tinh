@@ -223,6 +223,10 @@
     800,
     533
   ],
+  "https://www.thanthongnhat.vn/uploads/news/2026_05/z2.jpg": [
+    800,
+    533
+  ],
   "https://www.thanthongnhat.vn/uploads/news/2026_07/1785233493309_8368402457751477522_8368402457751477522_8eaf52b2957a4ca191b34eeec66355f2.jpg": [
     800,
     368
@@ -586,5 +590,9 @@
   "https://cdn-images.vtv.vn/thumb_w/1200/2017/thu-gian-tan-ca-1512105263384.jpg": [
     1200,
     800
+  ],
+  "https://thaylinhtuyenthomo.vn/assets/vinacomin-hoi-nghi-tuyen-dung-than-ha-long.webp": [
+    1270,
+    715
   ]
 }
