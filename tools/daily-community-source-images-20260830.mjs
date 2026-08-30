@@ -6,6 +6,7 @@ export const dailyCommunitySourceImages20260830 = Object.freeze({
     verifiedAt: "2026-08-30T08:56:00+07:00",
     verifiedWidth: 634,
     verifiedHeight: 430,
+    verifiedSha256: "ef6e33374895930e8e2b97e783ee3ef4fcbacd4c15df9215db9eb7868be1ea08",
     alt: "Người lao động Than Thống Nhất nhận quà chăm lo dịp Quốc khánh năm 2026",
     credit: "Ảnh đại diện bài gốc · Công ty Than Thống Nhất – TKV",
   }),
