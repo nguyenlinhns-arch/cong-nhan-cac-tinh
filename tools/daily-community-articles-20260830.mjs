@@ -3,7 +3,7 @@ import {dailyCommunitySourceImages20260830 as images} from "./daily-community-so
 const withImage = (slug, article) => {
   const image = images[slug];
   if (!image || article.sources?.[0]?.url !== image.sourceUrl) throw new Error(`Ảnh bài ${slug} không khớp URL nguồn.`);
-  return {...article, slug, image: image.image, imageAlt: image.alt, imageSource: image.credit, schemaType: "NewsArticle", hideSourceUrlsInSchema: true, suppressImageLabel: true};
+  return {...article, slug, image: image.image, imageAlt: image.alt, imageSource: image.credit, sourceImageChecksum: image.verifiedSha256, schemaType: "NewsArticle", hideSourceUrlsInSchema: true, suppressImageLabel: true};
 };
 
 export const thongNhatNationalDayGiftArticle20260830 = withImage("than-thong-nhat-trao-qua-quoc-khanh-nguoi-lao-dong-2026", {
