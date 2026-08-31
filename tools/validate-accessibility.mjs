@@ -47,7 +47,7 @@ for (const file of htmlFiles) {
 
   const bypass = tags(html, "a").find((item) => {
     const classes = classList(item.class);
-    return classes.includes("skip-link") || classes.includes("network-skip");
+    return classes.includes("skip-link") || classes.includes("network-skip") || classes.includes("skip");
   });
   if (!bypass) {
     errors.push(`${relative}: missing keyboard bypass link`);
