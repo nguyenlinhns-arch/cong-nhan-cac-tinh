@@ -44,6 +44,20 @@ requireMarkers("lien-he-di-lam-mo-than-quang-ninh/index.html",['Nguyễn Tử Li
 requireMarkers("nghe-mo-ham-lo/index.html",['Kỹ thuật khai thác mỏ hầm lò','Kỹ thuật xây dựng mỏ hầm lò','Kỹ thuật cơ điện mỏ hầm lò']);
 requireMarkers("tuyen-tho-mo-quang-ninh/index.html",['Tuyển thợ lò Quảng Ninh','Việc làm ngành Than tại Quảng Ninh','/ads-attribution.js?v=1','/analytics.js?v=6','data-contact="zalo"','data-track="phone_click"','/quyen-rieng.html']);
 
+const seasonalRecruitmentPages = ["tuyen-tho-mo-thang-9-2026/index.html"];
+for (const file of seasonalRecruitmentPages) {
+  requireMarkers(file,[
+    '<link rel="canonical" href="https://thaylinhtuyenthomo.vn/tuyen-tho-mo-thang-9-2026/">',
+    'Khu C – Phân hiệu Đào tạo Cẩm Phả',
+    'Phường Quang Hanh, tỉnh Quảng Ninh',
+    '/analytics.js?v=6',
+    '/mobile-core.css?v=1',
+    '/mobile-core.js?v=1',
+    'data-contact="zalo"',
+    'data-contact="phone"',
+  ]);
+}
+
 const coverage = JSON.parse(read("local-coverage.json"));
 const localityFeed = JSON.parse(read("localities.json"));
 if (coverage.communes !== 3321) fail(`Phủ địa bàn: cần 3.321, nhận ${coverage.communes}`);
@@ -126,8 +140,10 @@ const editorialDelta = Math.max(0, articles.length - 69);
 const fieldReportDataPath = path.resolve("content", "editorial-field-reports-v8.json");
 const fieldReportCount = fs.existsSync(fieldReportDataPath) ? Object.keys(JSON.parse(fs.readFileSync(fieldReportDataPath,"utf8"))).length : 0;
 const fieldReportPages = fieldReportCount ? 1 + fieldReportCount : 0;
-// Add one permanent page for the local temporary-recruitment landing page.
-const permanentContentBaseline = 186 + editorialDelta + dailySeoPages + fieldReportPages;
+// Seasonal recruitment/share pages are registered explicitly so the count gate
+// stays strict while allowing approved one-off pages to become first-class content.
+const seasonalRecruitmentDelta = seasonalRecruitmentPages.filter((file) => fs.existsSync(path.join(root,file))).length;
+const permanentContentBaseline = 186 + editorialDelta + dailySeoPages + fieldReportPages + seasonalRecruitmentDelta;
 const expectedHtmlFiles = (permanentContentBaseline + 1) + materializedDelta;
 const expectedContentFiles = permanentContentBaseline + materializedDelta;
 if (htmlFiles.length !== expectedHtmlFiles) fail(`Website: cần ${expectedHtmlFiles} tệp HTML sau khi materialize 3.321 địa bàn, nhận ${htmlFiles.length}`);
@@ -142,5 +158,5 @@ for (const file of contentFiles) {
   if (!isAdsLanding && !html.includes('/mobile-core.js?v=1')) fail(`${relative}: chưa nạp /mobile-core.js?v=1`);
 }
 
-console.log(JSON.stringify({html:htmlFiles.length,content_pages:contentFiles.length,hubs:hubs.length,verification_pages:verificationPages.length,daily_seo_pages:dailySeoPages,field_report_pages:fieldReportPages,provinces:provinceEntries.length,locality_hubs:localityHubs,locality_pages:localityPages,articles:articles.length,errors:errors.length,sampleErrors:errors.slice(0,40)},null,2));
+console.log(JSON.stringify({html:htmlFiles.length,content_pages:contentFiles.length,hubs:hubs.length,verification_pages:verificationPages.length,daily_seo_pages:dailySeoPages,field_report_pages:fieldReportPages,seasonal_recruitment_pages:seasonalRecruitmentDelta,provinces:provinceEntries.length,locality_hubs:localityHubs,locality_pages:localityPages,articles:articles.length,errors:errors.length,sampleErrors:errors.slice(0,40)},null,2));
 if (errors.length) process.exitCode = 1;
