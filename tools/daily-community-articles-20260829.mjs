@@ -94,7 +94,7 @@ export const daBacStemArticle20260829 = withImage("kho-van-da-bac-tang-phong-hoc
   urlPath: "tin-nganh-than/2026/08/29/kho-van-da-bac-tang-phong-hoc-stem-ba-che-2026",
   related: ["kho-van-da-bac-ho-tro-nu-cong-nhan-phat-trien-kinh-te-2026", "than-ha-long-ho-tro-xay-sua-nha-gia-dinh-chinh-sach-2026", "tkv-ung-ho-20-ty-cham-lo-nguoi-co-cong-2026", "phuc-loi-tho-mo-tkv-2026"],
   section: "An sinh xã hội",
-  title: "Kho vận Đá Bạc trao phòng học STEM trị giá 50 triệu đồng tại Ba Chẽ",
+  title: "Kho vận Đá Bạc trao phòng học STEM 50 triệu đồng tại Ba Chẽ",
   description: "Kho vận Đá Bạc trao công trình Phòng học STEM cho em trị giá 50 triệu đồng cho Trường THCS Ba Chẽ và hỗ trợ học sinh khó khăn.",
   lead: "Phòng học STEM là khoản đầu tư cho hoạt động trải nghiệm; hiệu quả lâu dài phụ thuộc cách nhà trường bảo quản công cụ và đưa các bài học khoa học vào chương trình thường xuyên.",
   keyword: "Kho vận Đá Bạc tặng phòng học STEM Ba Chẽ 2026",
