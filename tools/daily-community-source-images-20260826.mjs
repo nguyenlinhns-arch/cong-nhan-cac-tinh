@@ -20,6 +20,11 @@ export const dailyCommunitySourceImages20260826 = Object.freeze({
   "than-thong-nhat-nghi-duong-cuoi-tuan-nguoi-lao-dong-2026": Object.freeze({
     sourceUrl: "https://www.thanthongnhat.vn/tin-san-xuat/cong-ty-than-thong-nhat-tkv-cham-lo-suc-khoe-nguoi-lao-dong-qua-chuong-trinh-phuc-loi-tho-mo-nghi-duong-cuoi-tuan-15710.html",
     image: "https://www.thanthongnhat.vn/uploads/news/2026_08/p1.jpg",
+    allowArchivedSourceImage: true,
+    verifiedAt: "2026-08-26T08:25:00+07:00",
+    verifiedWidth: 800,
+    verifiedHeight: 532,
+    verifiedSha256: "81e4d79396733c747f85e0c0664e62e07c0c95a4fc8a145b95827001cc1cabad",
     alt: "Người lao động Than Thống Nhất tham gia chương trình Phúc lợi Thợ mỏ nghỉ dưỡng cuối tuần năm 2026",
     credit: "Ảnh đầu bài gốc · Công ty Than Thống Nhất – TKV",
   }),

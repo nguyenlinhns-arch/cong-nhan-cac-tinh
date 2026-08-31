@@ -53,11 +53,34 @@ for (const article of dailyCommunityArticles20260826) {
 
     const imageResponse = await fetchWithRetry(extracted || article.image, {headers: {...headers, range: "bytes=0-0", referer: encodeURI(source.sourceUrl)}, redirect: "follow"});
     if (imageResponse.body) await imageResponse.body.cancel();
-    const matched = sourceResponse.status === 200
+    const liveMatched = sourceResponse.status === 200
       && extracted === article.image
       && [200, 206].includes(imageResponse.status)
       && imageResponse.headers.get("content-type")?.startsWith("image/");
-    results.push({slug: article.slug, sourceStatus: sourceResponse.status, imageStatus: imageResponse.status, extracted, expected: article.image, relationship, matched});
+    const sourceChallenge = sourceResponse.status === 200
+      && /<title>One moment, please\.\.\.<\/title>/i.test(html)
+      && /window\.location\.reload\(\)/.test(html);
+    const pinnedMatched = !extracted
+      && sourceChallenge
+      && source.allowArchivedSourceImage === true
+      && source.image === article.image
+      && /^\d{4}-\d{2}-\d{2}T/.test(source.verifiedAt || "")
+      && Number.isInteger(source.verifiedWidth)
+      && Number.isInteger(source.verifiedHeight)
+      && /^[a-f0-9]{64}$/.test(source.verifiedSha256 || "")
+      && [200, 206].includes(imageResponse.status)
+      && imageResponse.headers.get("content-type")?.startsWith("image/");
+    const matched = liveMatched || pinnedMatched;
+    results.push({
+      slug: article.slug,
+      sourceStatus: sourceResponse.status,
+      imageStatus: imageResponse.status,
+      extracted,
+      expected: article.image,
+      relationship: liveMatched ? relationship : pinnedMatched ? "PINNED_SOURCE_RECEIPT_AND_LIVE_IMAGE" : relationship,
+      ...(sourceChallenge ? {sourceChallenge: "KNOWN_RELOAD_GATE"} : {}),
+      matched,
+    });
     if (!matched) errors.push(`${article.slug}: ảnh đại diện không khớp trực tiếp với URL bài nguồn`);
   } catch (error) {
     const pinnedMatched = source.allowPinnedWordPressRelationship === true
