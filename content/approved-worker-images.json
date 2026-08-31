@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-30T08:15:00+07:00",
+  "updated_at": "2026-08-31T07:33:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -127,6 +127,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/09AEBE704BD3A0A494260AA48A3E53F8AE277B1879BAAF7AD1B33FFED106DA1D.jpg",
       "provider": "Vinacomin",
       "description": "Người lao động tham dự hội nghị tuyển dụng của Công ty Than Hạ Long - TKV"
+    },
+    {
+      "asset": "vinacomin-hoc-sinh-luong-minh-hoi-nghi-tuyen-sinh.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/hoi-nghi-so-ket-cong-tac-tuyen-sinh-dao-tao-va-giai-quyet-viec-lam-tai-xa-luong-minh",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/AFF110993B2C76D0E50C6E54DBDC7B2102FE34A1297C728ECDAB5A54B4F0816C.jpg",
+      "provider": "Vinacomin",
+      "description": "Nhóm học sinh nghề mỏ tại hội nghị sơ kết tuyển sinh, đào tạo và giải quyết việc làm ở xã Lương Minh"
     }
   ]
 }
