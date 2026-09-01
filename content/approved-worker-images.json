@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-31T08:06:00+07:00",
+  "updated_at": "2026-09-01T08:27:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -141,6 +141,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/F6A48FD779C34FD6668B1E8E8369C1AF862BB0CA7F62C33B2C7CF5C29C91A404.jpg",
       "provider": "Vinacomin",
       "description": "Toàn cảnh khu nhà ở và sân thể thao của Công ty Than Dương Huy - TKV tại Quảng Ninh"
+    },
+    {
+      "asset": "vinacomin-phoi-hop-dao-tao-khau-vai.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/tang-cuong-phoi-hop-dao-tao-nghe-giai-quyet-viec-lam-cho-lao-dong-xa-khau-vai-tinh-tuyen-quang",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/E172DA93B11A3AC96BA13BB310C6EC26EE1F8DC583A3AB673977106AC52CF1CB.jpg",
+      "provider": "Vinacomin",
+      "description": "Người lao động và cán bộ tuyển sinh tại hội nghị phối hợp đào tạo nghề ở xã Khâu Vai, tỉnh Tuyên Quang"
     }
   ]
 }
