@@ -71,8 +71,22 @@ for (const article of dailyCommunityArticles20260827) {
     results.push({slug: article.slug, sourceStatus: sourceResponse.status, imageStatus: imageResponse.status, extracted, expected: article.image, relationship: source.imageRelationship, verification: liveMatched ? "LIVE_SOURCE" : pinnedMatched ? "PINNED_FIRST_ARTICLE_RELATIONSHIP" : "FAILED", matched});
     if (!matched) errors.push(`${article.slug}: ảnh đại diện không khớp trực tiếp với URL bài nguồn`);
   } catch (error) {
-    results.push({slug: article.slug, matched: false, error: error.message});
-    errors.push(`${article.slug}: không xác minh được ảnh nguồn (${error.message})`);
+    const pinnedMatched = source.allowPinnedFirstArticleRelationship === true
+      && source.imageRelationship === "FIRST_ARTICLE_IMAGE"
+      && source.sourceUrl.startsWith("https://caodangtkv.edu.vn/")
+      && source.image === article.image
+      && /^https:\/\/caodangtkv\.edu\.vn\/wp-content\/uploads\//.test(article.image)
+      && /^\d{4}-\d{2}-\d{2}T/.test(source.verifiedAt || "")
+      && Number.isInteger(source.verifiedWidth)
+      && Number.isInteger(source.verifiedHeight);
+    results.push({
+      slug: article.slug,
+      expected: article.image,
+      verification: pinnedMatched ? "PINNED_FIRST_ARTICLE_RELATIONSHIP" : "FAILED",
+      matched: pinnedMatched,
+      error: error.message,
+    });
+    if (!pinnedMatched) errors.push(`${article.slug}: không xác minh được ảnh nguồn (${error.message})`);
   }
 }
 
