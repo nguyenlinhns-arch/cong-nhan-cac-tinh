@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-02",
+  "updated_at": "2026-09-03",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -2682,6 +2682,125 @@
         [
           "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=ky_tuc_xa_tinh_xa#dang-ky",
           "Gửi thông tin để kiểm tra điều kiện và nhận lịch"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-09-03",
+      "slug": "dang-lam-cong-ty-co-dang-ky-hoc-nghe-mo-truoc-duoc-khong",
+      "title": "Đang làm công ty có đăng ký học nghề mỏ trước được không?",
+      "short_title": "Đang làm công ty có đăng ký nghề mỏ trước không",
+      "meta": "Đang làm công ty có đăng ký học nghề mỏ trước được không? Xem lúc nên gửi thông tin, lúc mới sắp xếp nghỉ việc và cách tránh mất thu nhập.",
+      "eyebrow": "ĐĂNG KÝ TRƯỚC KHI CHUYỂN VIỆC",
+      "primary_query": "đang làm công ty có đăng ký học nghề mỏ trước được không",
+      "query_variants": [
+        "đang đi làm có đăng ký học thợ lò được không",
+        "có phải nghỉ việc rồi mới đăng ký nghề mỏ không",
+        "khi nào nên nghỉ công ty để đi học nghề mỏ"
+      ],
+      "direct_answer": "Có thể đăng ký kiểm tra điều kiện trước khi nghỉ công ty. Bước ban đầu chỉ cần gửi thông tin cơ bản, chưa phải nộp giấy tờ hay di chuyển. Chỉ nên chốt ngày nghỉ, bàn giao công việc và mua vé sau khi được xác nhận đủ điều kiện sơ bộ cùng lịch nhập học cụ thể.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-hoc-sinh-nghe-mo-nui-beo-ca-thanh.webp",
+        "alt": "Học sinh nghề mỏ của Than Núi Béo mặc bảo hộ trong chương trình phối hợp đào tạo tại xã Ca Thành",
+        "credit": "Ảnh: Vinacomin · chương trình phối hợp tuyển sinh, đào tạo nghề mỏ của Than Núi Béo tại xã Ca Thành"
+      },
+      "intro": [
+        "Người đang làm ở nhà máy, công trường hoặc công ty dịch vụ thường không muốn bỏ việc quá sớm chỉ để chờ một lịch học chưa chắc chắn. Đây là lo lắng hợp lý. Quy trình hiện hành cho phép người lao động gửi đăng ký ban đầu từ xa để kiểm tra tuổi, chiều cao, cân nặng, sức khỏe và nhu cầu học nghề trước; bước này chưa yêu cầu nghỉ việc, gửi ảnh giấy tờ hay đến Quảng Ninh.",
+        "Điểm cần tách rõ là đăng ký sơ bộ không đồng nghĩa đã có suất học hoặc ngày nhập học. Sau khi được kiểm tra điều kiện, người đăng ký còn phải nhận lịch dành cho chính mình. Vì vậy, cách chuyển việc ít rủi ro hơn là giữ công việc hiện tại trong lúc hỏi thông tin, chỉ thu xếp nghỉ và di chuyển khi ngày, giờ, địa điểm tiếp nhận đã rõ, đồng thời tự đối chiếu nghĩa vụ với hợp đồng đang có."
+      ],
+      "key_points": [
+        [
+          "Được đăng ký khi đang đi làm",
+          "Bước đầu thực hiện từ xa và chưa yêu cầu người lao động phải chấm dứt công việc hiện tại."
+        ],
+        [
+          "Đăng ký chưa phải lịch nhập học",
+          "Cần chờ kiểm tra điều kiện và xác nhận ngày, giờ, địa điểm tiếp nhận cho chính mình."
+        ],
+        [
+          "Không nghỉ việc chỉ theo lời hẹn chung",
+          "Chỉ sắp xếp bàn giao khi đã có lịch rõ; website không thay thế hợp đồng hoặc quy định tại công ty hiện tại."
+        ],
+        [
+          "Giữ giấy tờ gốc",
+          "Đăng ký ban đầu chưa cần gửi ảnh giấy tờ; bản gốc chỉ mang theo khi có hướng dẫn nhập học."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Đang làm công ty có đăng ký học nghề mỏ trước được không?",
+          "paragraphs": [
+            "Có. Người đang có việc vẫn có thể gửi thông tin đăng ký ban đầu để được kiểm tra sơ bộ. Dữ liệu tuyển sinh hiện hành chỉ cần đối chiếu những thông tin thiết yếu như giới tính, tuổi, chiều cao, cân nặng, tình trạng sức khỏe, nơi đang ở và số liên hệ. Kinh nghiệm làm mỏ không phải điều kiện bắt buộc, nên việc đang làm một ngành khác không tự động làm mất cơ hội đăng ký.",
+            "Bước đăng ký này được thực hiện trước khi chuẩn bị hồ sơ. Người lao động chưa phải gửi ảnh CCCD, giấy khai sinh, bằng cấp hoặc giao bất kỳ giấy tờ gốc nào. Cũng chưa cần xin nghỉ để đến địa chỉ tư vấn. Mục tiêu của bước đầu là biết mình có phù hợp với mốc tuyển đang áp dụng hay cần trao đổi thêm trước khi lên kế hoạch chuyển việc.",
+            "Tuy nhiên, một tin nhắn đã gửi hoặc kết quả kiểm tra trên website không phải quyết định nhập học. Khám tuyển, đối chiếu hồ sơ và lịch tiếp nhận thực tế vẫn là các căn cứ tiếp theo. Nếu chưa nhận được ngày, giờ và địa điểm rõ ràng cho trường hợp của mình, người đăng ký nên coi quá trình vẫn đang ở bước tìm hiểu."
+          ]
+        },
+        {
+          "heading": "Có phải nghỉ việc rồi mới đăng ký nghề mỏ không?",
+          "paragraphs": [
+            "Không có yêu cầu phải nghỉ việc trước khi gửi đăng ký sơ bộ. Nghỉ quá sớm có thể tạo ra khoảng trống thu nhập trong lúc người lao động còn chờ kiểm tra điều kiện, lịch học hoặc hướng dẫn hồ sơ. Với người ở tỉnh xa, quyết định vội còn kéo theo tiền vé, chỗ ở tạm và chi phí sinh hoạt chưa cần thiết.",
+            "Điều nên làm trước là gửi thông tin chính xác và giữ điện thoại có thể nhận cuộc gọi hoặc Zalo. Khi được phản hồi, hãy hỏi đủ bốn ý: điều kiện sơ bộ đã phù hợp chưa, nghề nào đang tiếp nhận, ngày nào nhập học và làm thủ tục ở đâu. Chỉ khi các thông tin này thống nhất, người lao động mới có cơ sở tính ngày làm cuối, thời gian bàn giao và hành trình đến Quảng Ninh.",
+            "Website không biết nội dung hợp đồng lao động hiện tại, thời hạn báo trước, phép còn lại hoặc quy trình bàn giao của từng công ty. Vì vậy, Thầy Linh có thể xác nhận lộ trình tuyển sinh nhưng không thể quyết định thay cách chấm dứt công việc cũ. Người đăng ký cần đọc hợp đồng, trao đổi với bộ phận phụ trách và thực hiện đúng nghĩa vụ của mình trước khi rời việc."
+          ]
+        },
+        {
+          "heading": "Ba mốc để chuyển việc mà không tự tạo khoảng chờ",
+          "items": [
+            "Mốc 1 — đăng ký khi vẫn đang làm: gửi họ tên, năm sinh, địa phương, chiều cao, cân nặng, tình trạng sức khỏe và số liên hệ; chưa gửi ảnh giấy tờ, chưa mua vé.",
+            "Mốc 2 — nhận xác nhận: làm rõ điều kiện sơ bộ, nghề và thời gian đào tạo, ngày giờ nhập học, địa điểm làm thủ tục cùng đầu mối phụ trách; không dùng một thông báo chung cho trường hợp cá nhân.",
+            "Mốc 3 — thu xếp chuyển việc: đối chiếu hợp đồng hiện tại, bàn giao, chuẩn bị giấy tờ theo hướng dẫn rồi mới mua vé và di chuyển; nếu lịch thay đổi phải xác nhận lại trước khi rời nhà."
+          ]
+        },
+        {
+          "heading": "Cần chuẩn bị gì trong lúc vẫn còn đi làm?",
+          "paragraphs": [
+            "Trước hết, hãy tự đo lại chiều cao và cân nặng, ghi đúng năm sinh và nói rõ tình trạng sức khỏe có liên quan đến mắt, huyết áp hoặc tim mạch. Chương trình hiện hành dành cho nam từ đủ 18 đến 40 tuổi, cao từ 1m53, nặng từ 47 kg, sức khỏe phù hợp và phải đáp ứng yêu cầu khám tuyển. Việc khai đúng ngay đầu giúp tránh xin nghỉ rồi mới phát hiện một điều kiện cơ bản chưa phù hợp.",
+            "Tiếp theo, hãy xem mình có thể dành thời gian cho nghề nào. Khai thác mỏ hầm lò và xây dựng mỏ hầm lò có thời gian đào tạo hiện hành 2–3 tháng; cơ điện mỏ hầm lò là 10 tháng. Không nên chọn chỉ dựa vào thời gian ngắn hơn. Cần hỏi công việc, yêu cầu học và nhu cầu tiếp nhận của đợt tuyển để quyết định phù hợp với khả năng chuyển nghề của mình.",
+            "Cuối cùng, chuẩn bị danh sách giấy tờ nhưng tiếp tục tự giữ bản gốc. Khi có lịch nhập học, hồ sơ hiện hành gồm CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Người chưa có bằng vẫn có thể đăng ký trước để được hướng dẫn đối chiếu theo hệ đào tạo. Không gửi giấy tờ gốc qua nhà xe, bưu điện hoặc cho người hứa làm thủ tục thay."
+          ]
+        },
+        {
+          "heading": "Dấu hiệu cho thấy chưa nên chốt ngày nghỉ",
+          "paragraphs": [
+            "Chưa nên chốt ngày nghỉ nếu người liên hệ chỉ nói đang tuyển nhưng không xác nhận lịch cho chính bạn; nếu địa điểm nhập học còn mơ hồ; nếu yêu cầu chuyển tiền giữ suất hoặc gửi giấy tờ gốc; hoặc nếu thông tin về nghề và thời gian học thay đổi qua từng lần trao đổi. Những điểm chưa rõ này cần được hỏi lại qua đầu mối công khai trên website.",
+            "Một lịch đủ để lên kế hoạch phải gắn với người đăng ký và có ngày, giờ, địa điểm làm thủ tục. Địa chỉ tư vấn tại Số 8 Chu Văn An, phường Hạ Long không nên bị hiểu là nơi có thể tự đến nhập học. Địa điểm làm thủ tục nhập học hiện hành là Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh, nhưng chỉ đến sau khi lịch đã được xác nhận.",
+            "Nếu công ty hiện tại cần thời gian bàn giao dài hơn khoảng thời gian từ lúc nhận lịch tới ngày nhập học, hãy báo tình huống thật với Thầy Linh thay vì tự bỏ việc hoặc tự đổi ngày đến. Việc tư vấn cần dựa trên lịch thực tế; website không xác nhận việc giữ suất hay thay đổi đợt tiếp nhận khi chưa có thông báo cụ thể."
+          ]
+        }
+      ],
+      "takeaway_title": "Đăng ký trước, nghỉ việc sau khi lịch đã rõ",
+      "takeaway": "Người đang làm công ty có thể đăng ký học nghề mỏ trước để được kiểm tra điều kiện mà chưa cần nghỉ việc, gửi giấy tờ hoặc đến Quảng Ninh. Hãy phân biệt đăng ký sơ bộ với lịch nhập học. Chỉ thu xếp bàn giao, chuẩn bị hồ sơ và mua vé sau khi đã nhận đủ ngày, giờ, địa điểm cùng đầu mối xác nhận; đồng thời tự thực hiện đúng nghĩa vụ trong hợp đồng lao động hiện tại.",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ; không yêu cầu kinh nghiệm; chỉ đến nhập học sau khi được xác nhận lịch; điều kiện và giấy tờ được đối chiếu theo dữ liệu tuyển sinh hiện hành. Website không xác nhận thời hạn báo trước hoặc thủ tục nghỉ tại công ty hiện tại.",
+      "faqs": [
+        [
+          "Đang làm công ty có thể gửi đăng ký nghề mỏ buổi tối không?",
+          "Có thể gửi biểu mẫu hoặc thông tin cơ bản để đầu mối tiếp nhận kiểm tra sau. Việc gửi đăng ký không đồng nghĩa đã có lịch nhập học; hãy chờ phản hồi dành cho trường hợp của mình."
+        ],
+        [
+          "Có phải báo nghỉ công ty trước khi kiểm tra điều kiện không?",
+          "Không. Nên kiểm tra tuổi, chiều cao, cân nặng, sức khỏe và nhận tư vấn trước; chỉ thu xếp nghỉ sau khi lịch nhập học đã rõ."
+        ],
+        [
+          "Đang có hợp đồng lao động thì Thầy Linh có làm thủ tục nghỉ thay không?",
+          "Không. Đầu mối tuyển sinh hướng dẫn điều kiện và lịch học nghề; người lao động phải tự đối chiếu hợp đồng, báo trước và bàn giao với công ty hiện tại."
+        ],
+        [
+          "Đăng ký trước có phải gửi ảnh CCCD để giữ suất không?",
+          "Không. Bước ban đầu chưa cần gửi ảnh giấy tờ và không nên giao bản gốc. Khi có lịch nhập học, mang hồ sơ theo hướng dẫn."
+        ]
+      ],
+      "related": [
+        [
+          "/giai-dap-nghe-mo/dang-ky-hoc-nghe-mo-co-phai-cho-khai-giang-khong/",
+          "Phân biệt đăng ký liên tục với lịch khai giảng"
+        ],
+        [
+          "/giai-dap-nghe-mo/chua-co-lich-nhap-hoc-nghe-mo-co-nen-mua-ve-khong/",
+          "Xem khi nào mới nên mua vé đi Quảng Ninh"
+        ],
+        [
+          "/kiem-tra-dieu-kien/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=dang_lam_cong_ty#dang-ky",
+          "Kiểm tra điều kiện trước khi thu xếp nghỉ việc"
         ]
       ]
     }
