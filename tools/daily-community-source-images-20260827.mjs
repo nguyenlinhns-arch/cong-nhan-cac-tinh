@@ -7,6 +7,7 @@ export const dailyCommunitySourceImages20260827 = Object.freeze({
     verifiedAt: "2026-08-29T08:26:00+07:00",
     verifiedWidth: 1920,
     verifiedHeight: 1080,
+    verifiedSha256: "247e11c9039e6ef81697257dc43debcdc89e1f6552e359830efb9308a89c01b7",
     alt: "Đại diện Trường Cao đẳng TKV, Than Thống Nhất và địa phương tại hội nghị hợp tác đào tạo nghề ở Lai Châu",
     credit: "Ảnh đầu bài gốc · Trường Cao đẳng Than – Khoáng sản Việt Nam",
   }),

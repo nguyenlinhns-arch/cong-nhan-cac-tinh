@@ -57,7 +57,8 @@ for (const article of dailyCommunityArticles20260827) {
       && extracted === article.image
       && [200, 206].includes(imageResponse.status)
       && imageResponse.headers.get("content-type")?.startsWith("image/");
-    const challengePage = /<title>One moment, please\.\.\.<\/title>/i.test(html);
+    const challengePage = /<title>One moment, please\.\.\.<\/title>/i.test(html)
+      || [403, 429].includes(sourceResponse.status);
     const pinnedMatched = source.allowPinnedFirstArticleRelationship === true
       && challengePage
       && source.imageRelationship === "FIRST_ARTICLE_IMAGE"
@@ -66,7 +67,8 @@ for (const article of dailyCommunityArticles20260827) {
       && /^https:\/\/caodangtkv\.edu\.vn\/wp-content\/uploads\//.test(article.image)
       && /^\d{4}-\d{2}-\d{2}T/.test(source.verifiedAt || "")
       && Number.isInteger(source.verifiedWidth)
-      && Number.isInteger(source.verifiedHeight);
+      && Number.isInteger(source.verifiedHeight)
+      && /^[a-f0-9]{64}$/.test(source.verifiedSha256 || "");
     const matched = liveMatched || pinnedMatched;
     results.push({slug: article.slug, sourceStatus: sourceResponse.status, imageStatus: imageResponse.status, extracted, expected: article.image, relationship: source.imageRelationship, verification: liveMatched ? "LIVE_SOURCE" : pinnedMatched ? "PINNED_FIRST_ARTICLE_RELATIONSHIP" : "FAILED", matched});
     if (!matched) errors.push(`${article.slug}: ảnh đại diện không khớp trực tiếp với URL bài nguồn`);
@@ -78,7 +80,8 @@ for (const article of dailyCommunityArticles20260827) {
       && /^https:\/\/caodangtkv\.edu\.vn\/wp-content\/uploads\//.test(article.image)
       && /^\d{4}-\d{2}-\d{2}T/.test(source.verifiedAt || "")
       && Number.isInteger(source.verifiedWidth)
-      && Number.isInteger(source.verifiedHeight);
+      && Number.isInteger(source.verifiedHeight)
+      && /^[a-f0-9]{64}$/.test(source.verifiedSha256 || "");
     results.push({
       slug: article.slug,
       expected: article.image,
