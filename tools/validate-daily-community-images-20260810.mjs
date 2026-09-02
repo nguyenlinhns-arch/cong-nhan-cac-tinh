@@ -33,7 +33,9 @@ for (const article of dailyCommunityArticles20260810) {
       && /^\d{4}-\d{2}-\d{2}T/.test(receipt.verifiedAt || "")
       && Number.isInteger(receipt.verifiedWidth)
       && Number.isInteger(receipt.verifiedHeight)
+      && /^[a-f0-9]{64}$/.test(receipt.verifiedSha256 || "")
       && (/(?:One moment, please|Imunify360|bot-protection)/i.test(html)
+        || [403, 429].includes(response.status)
         || response.status >= 500);
     const matched = liveMatched || archivedMatched;
 
@@ -55,7 +57,8 @@ for (const article of dailyCommunityArticles20260810) {
       && /^https:\/\/caodangtkv\.edu\.vn\/wp-content\/uploads\//.test(article.image)
       && /^\d{4}-\d{2}-\d{2}T/.test(receipt.verifiedAt || "")
       && Number.isInteger(receipt.verifiedWidth)
-      && Number.isInteger(receipt.verifiedHeight);
+      && Number.isInteger(receipt.verifiedHeight)
+      && /^[a-f0-9]{64}$/.test(receipt.verifiedSha256 || "");
     results.push({
       slug: article.slug,
       expected: article.image,

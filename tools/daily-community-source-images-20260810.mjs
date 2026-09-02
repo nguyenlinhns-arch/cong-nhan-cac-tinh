@@ -8,5 +8,6 @@ export const dailyCommunitySourceImages20260810 = Object.freeze({
     verifiedAt: "2026-08-10T08:36:00+07:00",
     verifiedWidth: 1920,
     verifiedHeight: 1080,
+    verifiedSha256: "e29c66d0f0b9c645c7c45460ee2b51d27b84cd3b431643097344bd8003b62c14",
   }),
 });
