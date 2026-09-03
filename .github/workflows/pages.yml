@@ -77,6 +77,9 @@ jobs:
           node tools/normalize-recruitment-seo-copy-v11.mjs
           node tools/enforce-blue-worker-illustrations.mjs
           node tuyen-tho-mo/scripts/update-ai-locality-discovery.mjs
+          # Reconcile titles/schema after the downstream editorial normalizers;
+          # the shell/mobile passes below then decorate that final HTML.
+          node tools/enforce-site-brand.mjs
           node tools/enhance-top-block-hotfix.mjs
           node tools/normalize-mobile-delivery.mjs
           node tools/enforce-blue-worker-illustrations.mjs

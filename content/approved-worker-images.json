@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-01T08:27:00+07:00",
+  "updated_at": "2026-09-03T07:37:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -155,6 +155,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/6341F48815D783868B4F4395C4B9179543452A5782E76D86F45FA25D2E93F5EE.jpg",
       "provider": "Vinacomin",
       "description": "Học sinh nghề mỏ của Than Núi Béo mặc bảo hộ trong chương trình phối hợp tuyển sinh, đào tạo với xã Ca Thành, tỉnh Cao Bằng"
+    },
+    {
+      "asset": "vinacomin-hoi-nghi-tuyen-dung-quang-la.webp",
+      "source_article_url": "https://vinacomin.vn/vi/video-category/than-nui-beo-to-chuc-hoi-nghi-phoi-hop-tuyen-dung-lao-dong-tai-xa-quang-la-quang-ninh",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/Media/2025/T10/29/%E1%BA%A3nh%20Than%20N%C3%BAi%20B%C3%A9o%20t%E1%BB%95%20ch%E1%BB%A9c%20h%E1%BB%99i%20ngh%E1%BB%8B%20ph%E1%BB%91i%20h%E1%BB%A3p%20tuy%E1%BB%83n%20d%E1%BB%A5ng%20lao%20%C4%91%E1%BB%99ng%20t%E1%BA%A1i%20x%C3%A3%20Qu%E1%BA%A3ng%20La.jpg",
+      "provider": "Vinacomin",
+      "description": "Người lao động dự hội nghị phối hợp tuyển dụng của Than Núi Béo tại xã Quảng La, Quảng Ninh"
     }
   ]
 }
