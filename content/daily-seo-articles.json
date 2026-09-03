@@ -1,6 +1,3 @@
-Warning: truncated output (original token count: 71463)
-Total output lines: 2931
-
 {
   "version": "1.0",
   "updated_at": "2026-09-04",
@@ -756,7 +753,1638 @@ Total output lines: 2931
         "học hết lớp 9 có đăng ký nghề mỏ được không",
         "mất bằng cấp 3 đăng ký học nghề mỏ thế nào"
       ],
-      "direct_answer": "Có th…41463 tokens truncated…n nặng, tình trạng sức khỏe và số điện thoại. Đây là bước sàng lọc, chưa phải nộp hồ sơ. Vì vậy không cần chụp hai mặt CCCD, không cần gửi giấy khai sinh hoặc bằng cấp và không cần chuyển bất kỳ giấy tờ gốc nào.",
+      "direct_answer": "Có thể đăng ký để được kiểm tra và hướng dẫn theo hệ đào tạo phù hợp. Chưa có bằng cấp 3 không đồng nghĩa tự động bị loại, nhưng cũng không bảo đảm chắc chắn được tiếp nhận. Bước đầu chưa cần gửi ảnh giấy tờ; khi có lịch, hãy mang bằng THCS hoặc THPT nếu có để đối chiếu hồ sơ.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-hoc-vien-quang-hanh-ao-xanh-doi-mu.webp",
+        "alt": "Nhóm học viên nghề mỏ mặc bảo hộ xanh, đội mũ tại khu thực hành Than Quang Hanh",
+        "credit": "Ảnh: Thư viện ảnh Vinacomin · học viên nghề mỏ tại Than Quang Hanh"
+      },
+      "intro": [
+        "Nhiều người lao động chỉ học hết lớp 9, chưa nhận bằng THPT hoặc đã làm thất lạc bằng nên tự bỏ qua cơ hội trước khi hỏi. Nguồn tuyển đang áp dụng không yêu cầu người đăng ký phải gửi bằng ngay ở bước đầu. Trình độ cụ thể được đối chiếu theo hệ đào tạo, vì vậy việc đúng nhất là đăng ký kiểm tra trước và nói rõ giấy tờ mình đang có.",
+        "Cần phân biệt ba trường hợp: có bằng THCS nhưng chưa học xong THPT; đã tốt nghiệp nhưng đang mất bằng; và hiện không còn giấy tờ văn hóa để đối chiếu. Mỗi trường hợp có cách hướng dẫn khác nhau. Không nên khai mình có bằng khi chưa có, cũng không cần đi công chứng hàng loạt trước khi nhận lịch và danh sách hồ sơ chính xác."
+      ],
+      "key_points": [
+        [
+          "Vẫn đăng ký kiểm tra được",
+          "Người chưa có bằng cấp 3 có thể gửi thông tin ban đầu để được đối chiếu theo hệ đào tạo."
+        ],
+        [
+          "Không hứa chắc tiếp nhận",
+          "Kết quả còn phụ thuộc trình độ thực tế, giấy tờ có thể đối chiếu, điều kiện sức khỏe và đợt tuyển hiện hành."
+        ],
+        [
+          "Chưa gửi ảnh giấy tờ",
+          "Bước đầu chỉ cần thông tin cá nhân và thể lực; giấy tờ được hướng dẫn sau khi có lịch."
+        ],
+        [
+          "Khai đúng tình trạng",
+          "Nói rõ đã học đến lớp nào, có bằng THCS hay không và giấy tờ bị thiếu hay thất lạc để được hướng dẫn đúng."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Chưa có bằng cấp 3 có đăng ký học nghề mỏ được không?",
+          "paragraphs": [
+            "Câu trả lời an toàn là có thể đăng ký để được kiểm tra, không phải khẳng định chắc chắn được nhập học. Thông tin hiện hành ghi trình độ cụ thể cần đối chiếu theo hệ đào tạo; hồ sơ khi có lịch mang bằng THCS hoặc THPT nếu có. Vì vậy, người chưa có bằng THPT vẫn nên nói rõ quá trình học và giấy tờ hiện giữ thay vì tự kết luận mình không đủ điều kiện.",
+            "Đầu mối tuyển sinh cần nhìn cả độ tuổi, khả năng đọc viết, sức khỏe, nghề đăng ký và chương trình phù hợp. Hai người cùng chưa có bằng cấp 3 có thể nhận hướng dẫn khác nhau nếu một người có bằng THCS còn người kia chưa thể cung cấp giấy tờ văn hóa. Việc mô tả đúng ngay từ đầu giúp tránh đi lại, công chứng hoặc làm lại giấy tờ không cần thiết."
+          ]
+        },
+        {
+          "heading": "Phân biệt chưa học xong, chưa nhận bằng và bị mất bằng",
+          "paragraphs": [
+            "Nếu đã tốt nghiệp nhưng chưa nhận hoặc làm mất bằng, hãy nói rõ tên trường, năm tốt nghiệp và loại bằng để người phụ trách hướng dẫn cách đối chiếu. Không nên ghi là chưa có trình độ chỉ vì bản giấy đang thất lạc. Đồng thời, không tự dùng ảnh chụp mờ hoặc giấy tờ của người khác để thay thế, vì thông tin cá nhân phải thống nhất khi làm thủ tục.",
+            "Nếu mới học hết lớp 9 hoặc chưa hoàn thành THPT, hãy cho biết bằng THCS hiện có hay không. Nếu đã nghỉ học sớm và không còn bằng, vẫn có thể gửi thông tin để được tư vấn, nhưng cần chờ kết quả đối chiếu theo hệ đào tạo. Website không thay cơ sở đào tạo quyết định trường hợp hồ sơ cụ thể và không thể cấp lại giấy tờ văn hóa."
+          ]
+        },
+        {
+          "heading": "Tin nhắn đầu tiên nên ghi gì để được trả lời đúng?",
+          "items": [
+            "Năm sinh, tỉnh hoặc huyện đang sống, chiều cao, cân nặng và tình trạng sức khỏe hiện tại.",
+            "Đã học hết lớp mấy, có bằng THCS hoặc THPT hay chưa và bản giấy còn giữ được không.",
+            "Nếu bị mất bằng, nêu loại bằng, trường đã học và năm hoàn thành; chưa cần gửi ảnh căn cước hay giấy tờ khác.",
+            "Hỏi rõ hệ đào tạo phù hợp, giấy tờ cần mang và thời điểm chỉ nên chuẩn bị sau khi được xác nhận lịch."
+          ]
+        },
+        {
+          "heading": "Chuẩn bị hồ sơ đúng lúc giúp tránh mất công",
+          "paragraphs": [
+            "Bước đăng ký sơ bộ không yêu cầu nộp hồ sơ. Khi đã được kiểm tra điều kiện và có lịch, giấy tờ hiện hành gồm căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Người lao động tự giữ bản gốc, không gửi qua bưu điện và không đăng ảnh giấy tờ cá nhân lên nơi công khai.",
+            "Trước ngày đi, hãy đọc lại họ tên, ngày sinh và quê quán trên các giấy tờ để phát hiện chỗ không thống nhất. Nếu cần xin xác nhận hoặc làm lại giấy tờ, hãy hỏi đúng loại tài liệu được chấp nhận trước khi thực hiện. Cách này thực tế hơn việc nghe người quen rồi chuẩn bị nhiều bản công chứng nhưng không đúng yêu cầu của hệ đào tạo."
+          ]
+        }
+      ],
+      "takeaway_title": "Đừng tự loại mình chỉ vì chưa có bằng cấp 3",
+      "takeaway": "Người chưa có bằng THPT vẫn có thể đăng ký để được đối chiếu theo hệ đào tạo. Hãy nói đúng đã học đến lớp nào, bằng nào đang có hoặc bị mất, rồi chờ hướng dẫn hồ sơ. Chỉ chuẩn bị giấy tờ và di chuyển khi đã được xác nhận điều kiện sơ bộ cùng lịch tiếp nhận.",
+      "source_note": "Quy định về trình độ và hồ sơ trong nguồn tuyển năm 2026: đọc, viết thành thạo; trình độ đối chiếu theo hệ đào tạo; mang bằng THCS hoặc THPT nếu có khi được hướng dẫn nhập học.",
+      "faqs": [
+        [
+          "Chỉ có bằng THCS thì có đăng ký được không?",
+          "Có thể đăng ký để được đối chiếu theo hệ đào tạo. Hãy nói rõ bằng đang có; kết quả tiếp nhận phụ thuộc hồ sơ và đợt tuyển cụ thể."
+        ],
+        [
+          "Mất bằng THPT có phải xin lại trước khi nhắn không?",
+          "Chưa cần tự làm lại trước. Hãy nêu rõ trường, năm tốt nghiệp và tình trạng mất bằng để được hướng dẫn đúng loại giấy tờ cần đối chiếu."
+        ],
+        [
+          "Bước đầu có phải gửi ảnh bằng và căn cước không?",
+          "Không. Bước đầu chỉ cần thông tin sàng lọc cơ bản; giấy tờ được chuẩn bị sau khi có hướng dẫn và lịch tiếp nhận."
+        ],
+        [
+          "Không có bằng nào thì chắc chắn được nhận không?",
+          "Không thể khẳng định. Bạn vẫn có thể đăng ký hỏi, nhưng cơ sở đào tạo phải đối chiếu trình độ, hệ học và hồ sơ thực tế trước khi tiếp nhận."
+        ]
+      ],
+      "related": [
+        [
+          "/ho-so-nhap-hoc/",
+          "Hồ sơ nhập học cần chuẩn bị"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Tự kiểm tra điều kiện sơ bộ"
+        ],
+        [
+          "/lien-he-di-lam-mo-than-quang-ninh/",
+          "Liên hệ người phụ trách để đối chiếu"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-08-12",
+      "slug": "bi-can-thi-nhe-co-dang-ky-hoc-nghe-mo-duoc-khong",
+      "title": "Bị cận thị nhẹ có đăng ký học nghề mỏ được không?",
+      "short_title": "Cận thị nhẹ đăng ký nghề mỏ thế nào",
+      "meta": "Bị cận thị nhẹ có đăng ký học nghề mỏ được không? Xem điều kiện mắt hiện hành, cách khai đúng số kính và vai trò của khám sức khỏe tuyển dụng.",
+      "eyebrow": "THỊ LỰC VÀ KHÁM SỨC KHỎE NGHỀ MỎ",
+      "primary_query": "bị cận thị nhẹ có đăng ký học nghề mỏ được không",
+      "query_variants": [
+        "cận 1 độ có làm thợ lò được không",
+        "đeo kính có học nghề mỏ được không",
+        "khám mắt tuyển thợ mỏ thế nào"
+      ],
+      "direct_answer": "Theo điều kiện tuyển hiện hành, cận thị thuộc nhóm sức khỏe không phù hợp với chỉ tiêu nghề mỏ hầm lò. Người cận nhẹ vẫn nên khai đúng số kính và liên hệ để được hướng dẫn khám; không tự kết luận đủ điều kiện và không che giấu tình trạng mắt.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-cong-nhan-dia-chat-mo-an-toan.webp",
+        "alt": "Tổ đội công nhân Địa chất mỏ TKV đội mũ bảo hộ tại công trường",
+        "credit": "Ảnh: Vinacomin · tổ đội Công ty CP Địa chất mỏ – TKV"
+      },
+      "intro": [
+        "Cận thị nhẹ thường khiến người lao động phân vân vì sinh hoạt hằng ngày vẫn bình thường, nhưng môi trường hầm lò đòi hỏi khả năng quan sát biển báo, thiết bị, đường đi và tín hiệu an toàn trong điều kiện ánh sáng đặc thù. Nguồn tuyển năm 2026 đang áp dụng ghi cận thị trong nhóm loại trừ sức khỏe. Vì vậy, câu trả lời không nên dựa vào cảm giác nhìn rõ khi đeo kính hoặc kinh nghiệm của một người quen đã từng đi làm.",
+        "Điều người đăng ký cần làm là mô tả trung thực tình trạng mắt ngay từ bước tư vấn: đang đeo kính hay không, số kính gần nhất, một hay hai mắt bị cận và lần khám gần đây. Thông tin này giúp người phụ trách hướng dẫn đúng bước, nhưng không thay thế kết quả khám sức khỏe tuyển dụng. Website chỉ hỗ trợ sàng lọc ban đầu, không chẩn đoán bệnh và không quyết định đủ sức khỏe thay cơ sở khám."
+      ],
+      "key_points": [
+        [
+          "Cận thị là điểm loại trừ hiện hành",
+          "Thông tin tuyển đang áp dụng không phân biệt cận nhẹ hay nặng để tự xác nhận đủ điều kiện."
+        ],
+        [
+          "Khai đúng tình trạng mắt",
+          "Nêu số kính gần nhất và việc đang đeo kính; không bỏ trống hoặc chọn sức khỏe tốt khi biết mình bị cận."
+        ],
+        [
+          "Khám tuyển là căn cứ cuối cùng",
+          "Tự kiểm tra trên website và trao đổi qua điện thoại chỉ là bước sơ bộ trước khám sức khỏe."
+        ],
+        [
+          "Chưa cần gửi hồ sơ y tế",
+          "Không đăng ảnh đơn kính, phiếu khám hoặc thông tin sức khỏe chi tiết lên biểu mẫu công khai."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Bị cận thị nhẹ có đăng ký học nghề mỏ được không?",
+          "paragraphs": [
+            "Người bị cận vẫn có thể gửi thông tin để được tư vấn, nhưng không nên hiểu việc gửi đăng ký là đã đạt điều kiện. Theo bộ dữ liệu tuyển dụng hiện hành, cận thị nằm trong nhóm sức khỏe không phù hợp với chỉ tiêu nghề mỏ hầm lò. Nguồn này không đặt một mốc số độ để người lao động tự chia thành cận nhẹ được nhận và cận nặng bị loại. Vì vậy, dù chỉ đeo kính khi lái xe hoặc nhìn bảng xa, người đăng ký vẫn cần khai là có cận thị.",
+            "Cách trả lời an toàn nhất là tách rõ hai việc. Thứ nhất, người lao động có thể liên hệ để đầu mối biết hoàn cảnh và hướng dẫn bước tiếp theo. Thứ hai, chỉ kết quả khám sức khỏe theo yêu cầu tuyển dụng mới là căn cứ xác nhận. Không ai nên hứa chắc qua điện thoại rằng cận bao nhiêu độ sẽ được nhận, vì thị lực còn liên quan từng mắt, khả năng nhìn có chỉnh kính và những chỉ số chuyên môn mà website không đo được."
+          ]
+        },
+        {
+          "heading": "Vì sao không nên giấu việc đang đeo kính?",
+          "paragraphs": [
+            "Một số người sợ bị loại nên bỏ kính trước khi tư vấn hoặc chỉ nói mình nhìn bình thường. Cách làm này có thể khiến họ chuẩn bị hồ sơ, mua vé và di chuyển rồi mới phát hiện không phù hợp ở bước khám. Khai đúng từ đầu giúp tiết kiệm thời gian, chi phí và tránh kỳ vọng sai. Việc trung thực về sức khỏe cũng phù hợp với yêu cầu kỷ luật của môi trường sản xuất hầm lò.",
+            "Thị lực không chỉ liên quan việc đọc chữ trên bảng. Người làm việc cần nhận biết tín hiệu, vật cản, khoảng cách và thay đổi trong khu vực sản xuất. Vì vậy, không nên lấy việc vẫn dùng điện thoại, đi xe hoặc làm công việc ngoài trời làm bằng chứng rằng mắt chắc chắn phù hợp nghề mỏ. Ngược lại, cũng không nên tự kết luận mình vĩnh viễn không còn hướng học nghề nào; đầu mối có thể giải thích phạm vi chỉ tiêu đang tuyển và bước kiểm tra cần thiết mà không hứa thay cơ sở khám."
+          ]
+        },
+        {
+          "heading": "Tin nhắn đầu tiên nên cung cấp thông tin gì?",
+          "items": [
+            "Năm sinh, tỉnh đang sinh sống, chiều cao và cân nặng để kiểm tra các điều kiện cơ bản trước.",
+            "Nói rõ đang bị cận một mắt hay hai mắt, có đeo kính thường xuyên không và số kính gần nhất nếu còn nhớ.",
+            "Nếu vừa khám mắt, chỉ cần nêu kết luận ngắn; chưa gửi ảnh đơn kính, phiếu khám hoặc hồ sơ y tế qua biểu mẫu website.",
+            "Hỏi rõ bước tiếp theo là trao đổi thêm hay khám sức khỏe; không mua vé và không lên Quảng Ninh khi chưa được xác nhận lịch."
+          ]
+        },
+        {
+          "heading": "Ba sai lầm dễ làm mất thời gian trước ngày khám",
+          "paragraphs": [
+            "Sai lầm thứ nhất là dùng kết quả đo kính từ nhiều năm trước. Số kính và thị lực có thể thay đổi, nên nếu được hướng dẫn khám, hãy dùng kết quả hiện tại. Sai lầm thứ hai là tự tháo kính vài ngày với hy vọng khi đo sẽ hết cận; việc không đeo kính không làm thay đổi tật khúc xạ. Sai lầm thứ ba là nghe một trường hợp truyền miệng rồi áp dụng cho mình, trong khi tiêu chí tuyển và hồ sơ sức khỏe có thể khác theo thời điểm.",
+            "Trước khi đi khám, người lao động nên ngủ đủ, mang kính đang sử dụng và trả lời đúng câu hỏi của nhân viên y tế. Không dùng thuốc, mẹo dân gian hoặc giấy khám của người khác để thay đổi kết quả. Nếu kết quả không phù hợp chỉ tiêu đang tuyển, hãy yêu cầu giải thích rõ và giữ lại hồ sơ của mình; không trả tiền cho người hứa có thể bỏ qua bước khám hoặc sửa kết luận sức khỏe."
+          ]
+        }
+      ],
+      "takeaway_title": "Khai thật về mắt trước khi chuẩn bị đường đi",
+      "takeaway": "Cận thị, kể cả được xem là nhẹ trong sinh hoạt, đang thuộc nhóm sức khỏe không phù hợp theo điều kiện tuyển nghề mỏ hầm lò hiện hành. Người lao động vẫn có thể liên hệ để được hướng dẫn đúng quy trình, nhưng phải khai số kính trung thực và chờ kết quả khám tuyển; không che giấu, không tự chẩn đoán và không di chuyển khi chưa có lịch.",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 ghi cận thị trong nhóm loại trừ sức khỏe; kết quả tiếp nhận cuối cùng căn cứ khám sức khỏe tuyển dụng và hồ sơ thực tế.",
+      "faqs": [
+        [
+          "Cận 0,5 hoặc 1 độ có chắc chắn được nhận không?",
+          "Không thể xác nhận theo một con số truyền miệng. Điều kiện hiện hành liệt kê cận thị là điểm loại trừ; kết quả cuối cùng phải theo khám tuyển."
+        ],
+        [
+          "Đang đeo kính nhưng nhìn rõ có cần khai không?",
+          "Có. Hãy nói rõ đang đeo kính và số kính gần nhất. Nhìn rõ khi đã chỉnh kính không đồng nghĩa tự động đạt yêu cầu tuyển dụng."
+        ],
+        [
+          "Có phải gửi ảnh đơn kính hoặc phiếu khám qua website không?",
+          "Không. Bước đầu chỉ cần mô tả ngắn tình trạng mắt; không gửi thông tin sức khỏe chi tiết hoặc giấy tờ y tế lên biểu mẫu công khai."
+        ],
+        [
+          "Có nên lên Quảng Ninh trước rồi mới khám không?",
+          "Không nên tự di chuyển. Hãy trao đổi tình trạng cận thị, chờ hướng dẫn và chỉ đi khi đã được xác nhận rõ lịch cùng bước cần thực hiện."
+        ]
+      ],
+      "related": [
+        [
+          "/kiem-tra-dieu-kien/",
+          "Tự kiểm tra điều kiện sơ bộ"
+        ],
+        [
+          "/thong-tin-tuyen-tho-mo/#can-thi-suc-khoe",
+          "Đối chiếu điều kiện cận thị và sức khỏe"
+        ],
+        [
+          "/lien-he-di-lam-mo-than-quang-ninh/",
+          "Liên hệ người phụ trách để được hướng dẫn"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-08-13",
+      "slug": "bi-huyet-ap-cao-co-dang-ky-hoc-nghe-mo-duoc-khong",
+      "title": "Bị huyết áp cao có đăng ký học nghề mỏ được không?",
+      "short_title": "Huyết áp cao đăng ký nghề mỏ thế nào",
+      "meta": "Bị huyết áp cao có đăng ký học nghề mỏ được không? Xem cách khai tình trạng, ý nghĩa của sàng lọc ban đầu và vai trò của khám tuyển.",
+      "eyebrow": "HUYẾT ÁP VÀ KHÁM SỨC KHỎE NGHỀ MỎ",
+      "primary_query": "bị huyết áp cao có đăng ký học nghề mỏ được không",
+      "query_variants": [
+        "cao huyết áp có làm thợ lò được không",
+        "đang uống thuốc huyết áp có học nghề mỏ được không",
+        "khám huyết áp tuyển thợ mỏ thế nào"
+      ],
+      "direct_answer": "Điều kiện tuyển hiện hành loại trừ trường hợp huyết áp không phù hợp, nhưng không đưa một ngưỡng đo để người lao động tự kết luận. Người từng được chẩn đoán tăng huyết áp, đang dùng thuốc hoặc có kết quả bất thường cần khai đúng; chỉ khám sức khỏe tuyển dụng mới xác nhận mức độ phù hợp.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-kham-huyet-ap-cong-nhan.webp",
+        "alt": "Nhân viên y tế đo huyết áp cho công nhân TKV trong đợt khám sức khỏe định kỳ",
+        "credit": "Ảnh: Vinacomin · khám sức khỏe định kỳ cho người lao động TKV"
+      },
+      "intro": [
+        "Huyết áp là một trong những vấn đề người lao động thường ngại nói khi hỏi về nghề mỏ. Có người từng được bác sĩ chẩn đoán tăng huyết áp, có người đang dùng thuốc đều hằng ngày, cũng có người chỉ thấy một lần đo cao sau khi đi đường xa hoặc thức khuya. Ba trường hợp này không nên được tự gộp thành một kết luận đủ hay không đủ sức khỏe.",
+        "Nguồn tuyển đang áp dụng ghi rõ trường hợp huyết áp không phù hợp thuộc nhóm loại trừ sức khỏe, nhưng không công bố một con số để website hoặc người tư vấn tự chẩn đoán. Vì vậy, bước đúng là khai trung thực tình trạng đã biết, nhận hướng dẫn kiểm tra và chờ kết luận khám tuyển. Đăng ký hỏi không đồng nghĩa đã được xác nhận sức khỏe; ngược lại, một lần đo tại nhà cũng không phải căn cứ để tự bỏ cuộc hoặc tự điều chỉnh thuốc."
+      ],
+      "key_points": [
+        [
+          "Không tự kết luận từ một lần đo",
+          "Website không dùng một chỉ số huyết áp đơn lẻ để xác nhận đủ hoặc không đủ điều kiện."
+        ],
+        [
+          "Khai đúng tình trạng đang biết",
+          "Nói rõ đã từng được chẩn đoán, đang theo dõi hoặc đang dùng thuốc; không che giấu để vượt bước sàng lọc."
+        ],
+        [
+          "Khám tuyển là căn cứ cuối cùng",
+          "Người tư vấn chỉ kiểm tra sơ bộ; cơ sở khám mới đánh giá tình trạng sức khỏe theo yêu cầu tuyển dụng."
+        ],
+        [
+          "Giữ thông tin y tế riêng tư",
+          "Chưa gửi ảnh đơn thuốc, sổ khám hoặc kết quả xét nghiệm lên biểu mẫu công khai ở bước đầu."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Bị huyết áp cao có đăng ký học nghề mỏ được không?",
+          "paragraphs": [
+            "Người có vấn đề huyết áp vẫn có thể liên hệ để được hướng dẫn đúng quy trình, nhưng không nên hiểu việc gửi đăng ký là đã đạt yêu cầu sức khỏe. Điều kiện hiện hành dùng cách diễn đạt \"huyết áp không phù hợp\" và không đặt một mốc số đo công khai để người lao động tự chia thành mức được nhận hoặc bị loại. Kết quả cuối cùng cần căn cứ vào khám sức khỏe tuyển dụng và hồ sơ thực tế.",
+            "Nếu đã từng được bác sĩ chẩn đoán tăng huyết áp, đang tái khám hoặc đang dùng thuốc, hãy nói đúng ngay ở bước tư vấn. Việc che giấu có thể khiến người lao động chuẩn bị hồ sơ, mua vé và đi xa rồi mới phát hiện không phù hợp. Khai đúng giúp người phụ trách hướng dẫn bước tiếp theo, nhưng không biến cuộc trao đổi qua điện thoại thành một kết luận y khoa."
+          ]
+        },
+        {
+          "heading": "Vì sao một lần đo cao chưa đủ để tự quyết định?",
+          "paragraphs": [
+            "Một chỉ số đo tại nhà, tại hiệu thuốc hoặc sau khi vừa vận động chỉ phản ánh đúng thời điểm đó. Website không biết thiết bị có phù hợp, cách đo có đúng hay người đo có đang dùng thuốc theo chỉ định hay không. Vì vậy, bài viết này không đưa ra ngưỡng để người đọc tự chẩn đoán, tự đổi liều thuốc hoặc cố làm thay đổi kết quả trước ngày khám.",
+            "Ngược lại, người thấy chỉ số bình thường trong một lần đo cũng không nên khẳng định bệnh đã hết hoặc bỏ qua tiền sử. Nếu đang được bác sĩ theo dõi, hãy tiếp tục làm theo hướng dẫn chuyên môn. Khi cơ sở tuyển dụng yêu cầu khám, nhân viên y tế sẽ quyết định cách đo, đánh giá và tài liệu cần đối chiếu; người tư vấn tuyển sinh không thay thế bước này."
+          ]
+        },
+        {
+          "heading": "Tin nhắn đầu tiên nên nói gì về huyết áp?",
+          "items": [
+            "Gửi năm sinh, địa phương đang sống, chiều cao và cân nặng để đối chiếu các điều kiện cơ bản trước.",
+            "Nói ngắn gọn đã từng được chẩn đoán huyết áp cao hay chỉ mới có một lần đo bất thường; nếu đang điều trị thì nói rõ là đang theo dõi theo chỉ định.",
+            "Chưa gửi ảnh đơn thuốc, kết quả khám, sổ bệnh hoặc giấy tờ y tế lên biểu mẫu website; chỉ cung cấp tài liệu khi có hướng dẫn phù hợp và kênh tiếp nhận rõ ràng.",
+            "Hỏi rõ bước tiếp theo là tư vấn thêm hay khám sức khỏe; chỉ chuẩn bị hồ sơ và di chuyển sau khi được xác nhận lịch."
+          ]
+        },
+        {
+          "heading": "Bốn việc không nên làm trước khi khám tuyển",
+          "paragraphs": [
+            "Không tự ngừng thuốc, đổi liều hoặc dùng thuốc của người khác với mục đích làm đẹp chỉ số. Không mượn kết quả khám của người khác và không trả tiền cho người hứa có thể bỏ qua tiêu chuẩn sức khỏe. Không giấu tiền sử chỉ vì lo bị từ chối. Những cách này có thể tạo kỳ vọng sai, phát sinh chi phí và làm mất an toàn cho chính người lao động.",
+            "Trước ngày khám, hãy làm theo hướng dẫn của cơ sở y tế hoặc người phụ trách lịch tiếp nhận. Nếu đang điều trị, giữ lại thông tin thuốc và lịch theo dõi của mình để xuất trình khi được yêu cầu, nhưng không đăng công khai. Người ở tỉnh xa không nên tự mua vé lên Quảng Ninh chỉ để hỏi trực tiếp; sàng lọc từ xa trước giúp biết mình cần chuẩn bị gì và tránh một chuyến đi không cần thiết."
+          ]
+        }
+      ],
+      "takeaway_title": "Khai đúng huyết áp trước khi chuẩn bị hồ sơ và đường đi",
+      "takeaway": "Điều kiện tuyển hiện hành loại trừ trường hợp huyết áp không phù hợp, nhưng website không thể xác nhận bằng một con số đo đơn lẻ. Người từng được chẩn đoán, đang dùng thuốc hoặc có kết quả bất thường nên nói đúng ngay từ đầu, không tự thay đổi điều trị và chờ kết luận khám tuyển trước khi chuẩn bị hồ sơ hoặc di chuyển.",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 ghi huyết áp không phù hợp trong nhóm loại trừ sức khỏe; kết quả tiếp nhận cuối cùng căn cứ khám sức khỏe tuyển dụng và hồ sơ thực tế.",
+      "faqs": [
+        [
+          "Một lần đo huyết áp cao có chắc chắn bị loại không?",
+          "Không thể kết luận từ một lần đo. Điều kiện hiện hành yêu cầu huyết áp phù hợp; cơ sở khám tuyển mới đánh giá tình trạng cụ thể."
+        ],
+        [
+          "Đang uống thuốc huyết áp có cần nói khi đăng ký không?",
+          "Có. Hãy nói ngắn gọn rằng đang được theo dõi hoặc dùng thuốc theo chỉ định; không tự ngừng thuốc để đi khám."
+        ],
+        [
+          "Có phải gửi ảnh đơn thuốc hoặc kết quả khám qua website không?",
+          "Không. Bước đầu chỉ cần mô tả ngắn tình trạng; chưa gửi tài liệu y tế hoặc thông tin sức khỏe chi tiết lên biểu mẫu công khai."
+        ],
+        [
+          "Huyết áp đo bình thường ở nhà có được xác nhận đủ sức khỏe không?",
+          "Chưa. Một lần đo tại nhà không thay thế khám tuyển. Hãy khai đúng tiền sử và thực hiện bước khám khi được hướng dẫn."
+        ]
+      ],
+      "related": [
+        [
+          "/kiem-tra-dieu-kien/",
+          "Tự kiểm tra điều kiện sơ bộ"
+        ],
+        [
+          "/thong-tin-tuyen-tho-mo/#can-thi-suc-khoe",
+          "Đối chiếu điều kiện sức khỏe hiện hành"
+        ],
+        [
+          "/lien-he-di-lam-mo-than-quang-ninh/",
+          "Liên hệ người phụ trách trước khi đi"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-08-14",
+      "slug": "nang-duoi-47-kg-co-dang-ky-hoc-nghe-mo-duoc-khong",
+      "title": "Nặng dưới 47 kg có đăng ký học nghề mỏ được không?",
+      "short_title": "Dưới 47 kg đăng ký nghề mỏ thế nào",
+      "meta": "Nặng dưới 47 kg có đăng ký học nghề mỏ được không? Đối chiếu mốc 47 kg, cách cân lại chính xác và bước cần làm trước khi đi khám.",
+      "eyebrow": "CÂN NẶNG VÀ ĐIỀU KIỆN HỌC NGHỀ MỎ",
+      "primary_query": "nặng dưới 47 kg có đăng ký học nghề mỏ được không",
+      "query_variants": [
+        "46 kg có đi làm thợ lò được không",
+        "cân nặng tối thiểu để học nghề mỏ",
+        "thiếu cân có đăng ký làm thợ mỏ được không"
+      ],
+      "direct_answer": "Chưa đạt mốc kiểm tra sơ bộ nếu cân nặng hiện tại dưới 47 kg. Điều kiện tuyển đang áp dụng yêu cầu nam nặng từ 47 kg; người lao động nên cân lại đúng cách, gửi số đo thật để được hướng dẫn và chỉ chuẩn bị hồ sơ hoặc di chuyển sau khi có lịch. Khám tuyển vẫn là căn cứ xác nhận cuối cùng.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-cong-nhan-nhan-ho-so-kham-suc-khoe.webp",
+        "alt": "Công nhân Tuyển than Cửa Ông nhận hồ sơ trong đợt khám sức khỏe định kỳ",
+        "credit": "Ảnh: Vinacomin · khám sức khỏe định kỳ tại Tuyển than Cửa Ông"
+      },
+      "intro": [
+        "Nhiều người lao động tự cân ở nhà thấy 45 hoặc 46 kg rồi hỏi có nên nộp hồ sơ ngay hay cố đi Quảng Ninh để khám. Với nguồn tuyển đang áp dụng, câu trả lời cần rõ ràng: mốc kiểm tra ban đầu là nam nặng từ 47 kg. Nếu số đo hiện tại thực sự dưới 47 kg thì chưa đạt mốc sơ bộ này, dù tuổi và chiều cao có thể phù hợp.",
+        "Điều đó không có nghĩa người tư vấn được tự kết luận toàn bộ sức khỏe qua một con số. Cân nặng cần được đo đúng, các điều kiện khác vẫn phải đối chiếu và khám tuyển mới xác nhận kết quả cuối cùng. Cách ít tốn kém nhất là cân lại chính xác, gửi số đo thật cùng năm sinh, nơi ở, chiều cao và tình trạng sức khỏe; chưa mua vé, chưa làm nhiều bản hồ sơ và không dùng cách tăng cân cấp tốc để đối phó một lần kiểm tra."
+      ],
+      "key_points": [
+        [
+          "Mốc sơ bộ là từ 47 kg",
+          "Người có cân nặng thực tế dưới 47 kg chưa đạt điều kiện cân nặng đang áp dụng."
+        ],
+        [
+          "Cân lại trước khi kết luận",
+          "Dùng cân ổn định, đặt trên nền phẳng và ghi số đo hiện tại thay vì ước lượng hoặc dùng số cũ."
+        ],
+        [
+          "Không tăng cân cấp tốc",
+          "Không tự dùng thuốc, thực phẩm không rõ nguồn gốc hoặc cố làm sai số cân chỉ để vượt một lần kiểm tra."
+        ],
+        [
+          "Kiểm tra từ xa trước",
+          "Gửi thông tin thật để được đối chiếu; chỉ chuẩn bị hồ sơ và di chuyển khi đã được xác nhận bước tiếp theo."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Nặng dưới 47 kg có đăng ký học nghề mỏ được không?",
+          "paragraphs": [
+            "Người lao động vẫn có thể liên hệ để hỏi và nhận hướng dẫn, nhưng nếu cân nặng đo đúng đang dưới 47 kg thì chưa đạt mốc sàng lọc ban đầu của đợt tuyển hiện hành. Cụm từ \"từ 47 kg\" có nghĩa 47 kg là mức bắt đầu được đối chiếu, không phải 46 kg có thể tự làm tròn thành 47 kg. Người tư vấn cần ghi đúng số thực tế để tránh người đăng ký chuẩn bị hồ sơ và đi xa trong khi điều kiện cơ bản chưa phù hợp.",
+            "Cân nặng cũng không thay thế các yêu cầu khác. Người đạt 47 kg vẫn phải nằm trong độ tuổi 18–40, cao từ 1m53 và đáp ứng yêu cầu sức khỏe; kết quả khám tuyển là căn cứ cuối cùng. Ngược lại, website không đưa ra lời hứa rằng chỉ cần tăng lên đúng 47 kg là chắc chắn được tiếp nhận, vì khám sức khỏe còn đánh giá thể trạng và các nội dung liên quan đến công việc hầm lò."
+          ]
+        },
+        {
+          "heading": "Cách cân lại để tránh sai số trước khi gửi thông tin",
+          "paragraphs": [
+            "Nếu số cân dao động gần mốc 47 kg, hãy kiểm tra lại bằng một chiếc cân hoạt động ổn định, đặt trên nền cứng và phẳng. Đứng cân bằng, không dựa vào tường hoặc cầm thêm đồ vật. Có thể đo lại vào cùng một thời điểm trong hai ngày để nhận biết cân có cho kết quả bất thường, nhưng không cần cân liên tục nhiều lần rồi chỉ chọn con số cao nhất để báo.",
+            "Nên gửi số đo đang thấy trên cân và nói rõ nếu cân tại nhà không ổn định. Không dùng cân nặng trên căn cước, hồ sơ cũ hoặc trí nhớ từ vài tháng trước. Nếu người phụ trách yêu cầu đo lại tại cơ sở y tế hoặc tại nơi tiếp nhận, hãy thực hiện theo hướng dẫn; số khai ban đầu chỉ giúp sàng lọc và không thay cho kết quả khám."
+          ]
+        },
+        {
+          "heading": "Người ở tỉnh xa nên nhắn gì trước khi chuẩn bị hồ sơ?",
+          "items": [
+            "Gửi năm sinh, tỉnh hoặc huyện đang sống, chiều cao và cân nặng vừa đo; không tự làm tròn số cân.",
+            "Nêu ngắn gọn tình trạng sức khỏe hiện tại, đặc biệt nếu có cận thị, bệnh tim mạch, vấn đề huyết áp hoặc bệnh mắt đã biết.",
+            "Hỏi rõ mình đang được hướng dẫn theo dõi thêm hay đã có lịch kiểm tra; không hiểu một tin nhắn trả lời là giấy xác nhận đủ sức khỏe.",
+            "Chưa gửi ảnh căn cước, hồ sơ y tế hoặc chuyển tiền cho người hứa có thể bỏ qua mốc cân nặng và bước khám tuyển."
+          ]
+        },
+        {
+          "heading": "Vì sao không nên cố tăng cân thật nhanh để kịp một đợt tuyển?",
+          "paragraphs": [
+            "Mục tiêu của điều kiện thể lực là đánh giá sự phù hợp với quá trình học và công việc, không phải tạo ra một con số đẹp trong một buổi cân. Việc ăn uống quá mức trong thời gian ngắn, tự dùng thuốc hoặc sản phẩm tăng cân không rõ nguồn gốc có thể ảnh hưởng sức khỏe nhưng vẫn không bảo đảm kết quả khám. Website không tư vấn phác đồ tăng cân và người tư vấn tuyển sinh không thay thế bác sĩ hoặc chuyên gia dinh dưỡng.",
+            "Nếu cân nặng đang dưới mốc, hãy nói thật và nhận hướng dẫn cho trường hợp hiện tại. Người muốn cải thiện thể trạng nên ưu tiên ăn uống, nghỉ ngơi và vận động hợp lý; nếu sụt cân không rõ nguyên nhân hoặc có bệnh đang điều trị thì nên trao đổi với cơ sở y tế. Chỉ đăng ký lại hoặc thực hiện bước tiếp theo khi số đo thực tế và các điều kiện liên quan đã được đối chiếu, không vay tiền hay mua vé chỉ vì một lời hứa truyền miệng."
+          ]
+        }
+      ],
+      "takeaway_title": "Cân đúng, khai thật rồi mới chuẩn bị đường đi",
+      "takeaway": "Mốc cân nặng sơ bộ hiện hành là từ 47 kg. Người đang dưới 47 kg chưa đạt điều kiện cân nặng ban đầu; hãy cân lại chính xác, gửi số đo thật và chờ hướng dẫn trước khi làm hồ sơ hoặc lên Quảng Ninh. Không làm tròn số, không tăng cân cấp tốc và không coi việc chạm đúng 47 kg là bảo đảm đạt khám tuyển.",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 quy định nam nặng từ 47 kg; việc tiếp nhận cuối cùng còn phụ thuộc các điều kiện khác, khám sức khỏe tuyển dụng và hồ sơ thực tế.",
+      "faqs": [
+        [
+          "Nặng 46,8 kg có được làm tròn thành 47 kg không?",
+          "Không nên tự làm tròn khi khai thông tin. Hãy báo đúng số đo và làm theo hướng dẫn cân, kiểm tra của nơi tiếp nhận."
+        ],
+        [
+          "Đạt đúng 47 kg có chắc chắn đủ điều kiện không?",
+          "Chưa. 47 kg mới là mốc cân nặng sơ bộ; người đăng ký còn phải đáp ứng tuổi, chiều cao và yêu cầu khám sức khỏe."
+        ],
+        [
+          "Có cần lên Quảng Ninh để cân lại không?",
+          "Không nên tự đi chỉ để cân. Hãy cân lại tại nơi thuận tiện, gửi thông tin từ xa và chỉ di chuyển sau khi được xác nhận lịch."
+        ],
+        [
+          "Có nên dùng thuốc hoặc sản phẩm tăng cân trước khám không?",
+          "Không tự dùng sản phẩm chỉ để thay đổi số cân. Nếu cần cải thiện thể trạng hoặc đang sụt cân, hãy ưu tiên tư vấn y tế phù hợp."
+        ]
+      ],
+      "related": [
+        [
+          "/kiem-tra-dieu-kien/",
+          "Tự kiểm tra điều kiện tuổi, chiều cao và cân nặng"
+        ],
+        [
+          "/thong-tin-tuyen-tho-mo/#chieu-cao-can-nang",
+          "Đối chiếu mốc chiều cao và cân nặng hiện hành"
+        ],
+        [
+          "/lien-he-di-lam-mo-than-quang-ninh/",
+          "Liên hệ người phụ trách trước khi đi"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-08-15",
+      "slug": "cao-duoi-1m53-co-dang-ky-hoc-nghe-mo-duoc-khong",
+      "title": "Cao dưới 1m53 có đăng ký học nghề mỏ được không?",
+      "short_title": "Dưới 1m53 đăng ký nghề mỏ thế nào",
+      "meta": "Cao dưới 1m53 có đăng ký học nghề mỏ được không? Đối chiếu mốc 1m53, cách đo lại chiều cao và bước cần làm trước khi đi khám.",
+      "eyebrow": "CHIỀU CAO VÀ ĐIỀU KIỆN HỌC NGHỀ MỎ",
+      "primary_query": "cao dưới 1m53 có đăng ký học nghề mỏ được không",
+      "query_variants": [
+        "cao 1m52 có đi làm thợ lò được không",
+        "chiều cao tối thiểu để học nghề mỏ",
+        "thấp hơn 1m53 có đăng ký làm thợ mỏ được không"
+      ],
+      "direct_answer": "Chưa đạt mốc kiểm tra sơ bộ nếu chiều cao đo đúng hiện dưới 1m53. Điều kiện tuyển đang áp dụng yêu cầu nam cao từ 1m53; người lao động nên đo lại chính xác, gửi số đo thật để được đối chiếu và chỉ chuẩn bị hồ sơ hoặc di chuyển sau khi có lịch. Khám tuyển vẫn là căn cứ xác nhận cuối cùng.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-cong-nhan-do-huyet-ap-kham-suc-khoe.webp",
+        "alt": "Nhân viên y tế kiểm tra huyết áp cho công nhân Tuyển than Cửa Ông trong đợt khám sức khỏe định kỳ",
+        "credit": "Ảnh: Vinacomin · khám sức khỏe định kỳ tại Tuyển than Cửa Ông"
+      },
+      "intro": [
+        "Nhiều người lao động tự đo ở nhà được 1m52 hoặc gần 1m53 rồi hỏi có nên làm hồ sơ, mua vé lên Quảng Ninh hay chờ kiểm tra lại. Với nguồn tuyển đang áp dụng, câu trả lời cần nói thẳng: mốc kiểm tra ban đầu là nam cao từ 1m53. Nếu chiều cao thực tế sau khi đo đúng vẫn dưới 1m53 thì chưa đạt điều kiện sơ bộ này, dù tuổi và cân nặng có thể phù hợp.",
+        "Một lần đo vội không nên là căn cứ duy nhất, nhưng cũng không được tự làm tròn số để vượt mốc. Người đăng ký nên đo lại trong tư thế chuẩn, báo đúng kết quả cùng năm sinh, nơi ở, cân nặng và tình trạng sức khỏe. Đây là cách kiểm tra từ xa ít tốn kém nhất; khám tuyển và hồ sơ thực tế mới xác nhận kết quả cuối cùng, nên chưa có lịch thì chưa cần đi xa hoặc chuẩn bị nhiều bản giấy tờ."
+      ],
+      "key_points": [
+        [
+          "Mốc sơ bộ là từ 1m53",
+          "Người có chiều cao thực tế dưới 1m53 chưa đạt điều kiện chiều cao đang áp dụng."
+        ],
+        [
+          "Đo lại đúng tư thế",
+          "Đứng chân trần, lưng thẳng trên nền phẳng và dùng thước cố định thay vì ước lượng."
+        ],
+        [
+          "Không tự làm tròn số",
+          "Số đo 1m52 hoặc 1m529 không được tự ghi thành 1m53 để vượt bước sàng lọc."
+        ],
+        [
+          "Kiểm tra từ xa trước",
+          "Gửi thông tin thật để được đối chiếu; chỉ làm hồ sơ và di chuyển khi đã được xác nhận bước tiếp theo."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Cao dưới 1m53 có đăng ký học nghề mỏ được không?",
+          "paragraphs": [
+            "Người lao động vẫn có thể liên hệ để hỏi và nhận hướng dẫn, nhưng nếu chiều cao đo đúng đang dưới 1m53 thì chưa đạt mốc sàng lọc ban đầu của đợt tuyển hiện hành. Cụm từ \"từ 1m53\" có nghĩa 1m53 là mức bắt đầu được đối chiếu; 1m52 không được tự làm tròn thành 1m53. Báo đúng số đo giúp người phụ trách tư vấn đúng ngay từ đầu và tránh cho người đăng ký mất chi phí chuẩn bị hồ sơ hoặc đi xa khi điều kiện cơ bản chưa phù hợp.",
+            "Chiều cao cũng không thay thế những yêu cầu còn lại. Người đạt 1m53 vẫn phải là nam trong độ tuổi 18–40, nặng từ 47 kg và đáp ứng yêu cầu sức khỏe; kết quả khám tuyển là căn cứ cuối cùng. Website không hứa rằng chỉ cần chạm đúng mốc 1m53 là chắc chắn được tiếp nhận, bởi quá trình khám còn đánh giá thể trạng và các nội dung sức khỏe liên quan đến học tập, làm việc trong môi trường hầm lò."
+          ]
+        },
+        {
+          "heading": "Cách đo lại chiều cao để tránh sai số trước khi đăng ký",
+          "paragraphs": [
+            "Nên đo trên nền cứng và phẳng, không đo trên thảm hoặc nền dốc. Bỏ giày dép, mũ và vật làm tóc cao; đứng thẳng, hai chân ổn định, mắt nhìn ngang. Lưng và đầu giữ tự nhiên, không nhón gót, không rướn cổ. Dùng thước đo chiều cao cố định là tốt nhất; nếu đo tại nhà, có thể dùng một vật phẳng đặt vuông góc với tường rồi đánh dấu và đo lại từ nền lên điểm đó.",
+            "Nếu kết quả sát mốc, hãy đo lại ở nơi có dụng cụ phù hợp như cơ sở y tế hoặc nhà thuốc có thước chiều cao. Có thể kiểm tra hai lần để phát hiện thao tác sai, nhưng không nên đo liên tục rồi chỉ chọn con số cao nhất để khai. Hãy gửi đúng số đang đo được và nói rõ nếu dụng cụ tại nhà không chắc chắn; thông tin ban đầu phục vụ sàng lọc, không thay cho phép đo và kết luận khi khám tuyển."
+          ]
+        },
+        {
+          "heading": "Người ở tỉnh xa cần gửi thông tin gì trước khi làm hồ sơ?",
+          "items": [
+            "Gửi năm sinh, tỉnh hoặc huyện đang sống, chiều cao vừa đo và cân nặng hiện tại; không tự làm tròn số.",
+            "Nêu ngắn gọn tình trạng sức khỏe, đặc biệt nếu có cận thị, bệnh tim mạch, vấn đề huyết áp hoặc bệnh mắt đã biết.",
+            "Hỏi rõ mình mới được hướng dẫn đo lại hay đã có lịch tiếp nhận; một tin nhắn trao đổi không phải giấy xác nhận đủ sức khỏe.",
+            "Chưa gửi ảnh căn cước, hồ sơ y tế hoặc chuyển tiền cho người hứa có thể bỏ qua mốc chiều cao và bước khám tuyển."
+          ]
+        },
+        {
+          "heading": "Nếu kết quả vẫn dưới 1m53 thì nên làm gì tiếp theo?",
+          "paragraphs": [
+            "Nếu đã đo lại bằng dụng cụ phù hợp mà kết quả vẫn dưới 1m53, hãy coi đó là thông tin thật để dừng bước chuẩn bị hồ sơ cho đợt tuyển hiện hành. Không vay tiền, mua vé hoặc nhờ người sửa số đo vì lời hứa rằng có thể bỏ qua điều kiện. Người phụ trách tuyển sinh không có quyền tự hạ mốc chiều cao và website cũng không hướng dẫn cách đối phó một lần kiểm tra.",
+            "Người đăng ký có thể lưu lại thông tin liên hệ và chỉ hỏi lại khi có thông báo tuyển dụng chính thức thay đổi; không nên dựa vào lời truyền miệng trên mạng. Nếu số đo bất thường so với hồ sơ y tế hoặc các lần đo gần đây, hãy kiểm tra tại cơ sở có dụng cụ chuẩn. Việc đo lại nhằm xác định đúng tình trạng hiện tại, không phải tìm cách tạo ra một con số phù hợp."
+          ]
+        },
+        {
+          "heading": "Vì sao cần kiểm tra cả cân nặng và sức khỏe dù đã đủ chiều cao?",
+          "paragraphs": [
+            "Mốc 1m53 chỉ là một phần của bước kiểm tra sơ bộ. Người đăng ký còn phải đối chiếu cân nặng từ 47 kg, độ tuổi và các yêu cầu sức khỏe. Vì vậy, không nên chỉ gửi một con số chiều cao rồi hiểu câu trả lời là mình đã đủ toàn bộ điều kiện. Công cụ kiểm tra trên website giúp rà các thông tin cơ bản trước, sau đó người phụ trách mới hướng dẫn lịch và giấy tờ nếu trường hợp phù hợp.",
+            "Khai đúng ngay từ đầu giúp bảo vệ chính người lao động. Người ở xa biết mình nên dừng, đo lại hay tiếp tục; người tư vấn không phải dựa vào dữ liệu sai; nơi tiếp nhận có thông tin nhất quán với hồ sơ và kết quả khám. Khi đã được xác nhận bước tiếp theo, người lao động mới chuẩn bị căn cước bản gốc, giấy khai sinh và bằng cấp nếu có theo hướng dẫn hiện hành."
+          ]
+        }
+      ],
+      "takeaway_title": "Đo đúng, khai thật rồi mới chuẩn bị đường đi",
+      "takeaway": "Mốc chiều cao sơ bộ hiện hành là từ 1m53. Người đo đúng vẫn dưới 1m53 chưa đạt điều kiện chiều cao ban đầu; hãy báo số thật và chờ hướng dẫn trước khi làm hồ sơ hoặc lên Quảng Ninh. Không nhón chân, không tự làm tròn số và không coi việc chạm đúng 1m53 là bảo đảm đạt khám tuyển.",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 quy định nam cao từ 1m53; việc tiếp nhận cuối cùng còn phụ thuộc tuổi, cân nặng, các điều kiện sức khỏe khác, khám tuyển và hồ sơ thực tế.",
+      "faqs": [
+        [
+          "Cao 1m52,8 có được làm tròn thành 1m53 không?",
+          "Không nên tự làm tròn khi khai thông tin. Hãy báo đúng số đo và làm theo hướng dẫn đo, kiểm tra của nơi tiếp nhận."
+        ],
+        [
+          "Đạt đúng 1m53 có chắc chắn đủ điều kiện không?",
+          "Chưa. 1m53 mới là mốc chiều cao sơ bộ; người đăng ký còn phải đáp ứng tuổi, cân nặng và yêu cầu khám sức khỏe."
+        ],
+        [
+          "Có cần lên Quảng Ninh chỉ để đo lại chiều cao không?",
+          "Không nên tự đi chỉ để đo. Hãy đo lại tại nơi có dụng cụ phù hợp, gửi thông tin từ xa và chỉ di chuyển sau khi được xác nhận lịch."
+        ],
+        [
+          "Đo ở nhà và đo tại nơi khám khác nhau thì lấy số nào?",
+          "Hãy nói rõ cả hai kết quả và tuân theo phép đo của nơi khám, tiếp nhận. Số đo ở nhà chỉ hỗ trợ kiểm tra sơ bộ."
+        ]
+      ],
+      "related": [
+        [
+          "/kiem-tra-dieu-kien/",
+          "Tự kiểm tra tuổi, chiều cao và cân nặng"
+        ],
+        [
+          "/thong-tin-tuyen-tho-mo/#chieu-cao-can-nang",
+          "Đối chiếu mốc chiều cao và cân nặng hiện hành"
+        ],
+        [
+          "/lien-he-di-lam-mo-than-quang-ninh/",
+          "Liên hệ người phụ trách trước khi đi"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-08-16",
+      "slug": "chua-du-18-tuoi-co-dang-ky-hoc-nghe-mo-duoc-khong",
+      "title": "Chưa đủ 18 tuổi có đăng ký học nghề mỏ được không?",
+      "short_title": "Chưa đủ 18 tuổi đăng ký nghề mỏ thế nào",
+      "meta": "Chưa đủ 18 tuổi có đăng ký học nghề mỏ được không? Đối chiếu mốc từ 18 tuổi và những việc nên chuẩn bị trước khi đủ điều kiện.",
+      "eyebrow": "TUỔI TỐI THIỂU VÀ ĐIỀU KIỆN HỌC NGHỀ MỎ",
+      "primary_query": "chưa đủ 18 tuổi có đăng ký học nghề mỏ được không",
+      "query_variants": [
+        "17 tuổi có học nghề mỏ được không",
+        "bao nhiêu tuổi được đăng ký làm thợ mỏ",
+        "sắp đủ 18 tuổi có đăng ký nghề mỏ được không"
+      ],
+      "direct_answer": "Chưa thuộc nhóm tiếp nhận của đợt tuyển hiện hành nếu chưa đủ 18 tuổi. Điều kiện đang áp dụng là nam từ 18 đến 40 tuổi; người sắp đủ 18 có thể tìm hiểu trước, nhưng chỉ nên làm bước đăng ký chính thức khi đã đủ tuổi và thông tin tuyển lúc đó vẫn còn hiệu lực.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-hoc-sinh-trai-nghiem-nghe-mo.webp",
+        "alt": "Nhóm học sinh nghề mỏ mặc bảo hộ xanh, đội mũ trong chuyến trải nghiệm sản xuất than hầm lò",
+        "credit": "Ảnh: Vinacomin · học sinh nghề mỏ trải nghiệm sản xuất than hầm lò"
+      },
+      "intro": [
+        "Người 17 tuổi hoặc chỉ còn ít tháng nữa mới đủ 18 thường muốn đăng ký sớm để giữ chỗ, chuẩn bị hồ sơ hoặc lên Quảng Ninh ngay khi có đợt tiếp nhận. Với nguồn tuyển đang áp dụng, mốc tuổi cần hiểu rõ là nam từ 18 đến 40 tuổi. Người chưa đủ 18 chưa thuộc nhóm tiếp nhận hiện hành, dù chiều cao, cân nặng và sức khỏe có thể phù hợp.",
+        "Chưa đủ tuổi không có nghĩa phải bỏ qua việc tìm hiểu. Người lao động có thể đọc trước về ba nghề đang tuyển, thời gian học, nơi học, công việc sau đào tạo và giấy tờ cần mang khi có lịch. Tuy nhiên, không nên khai tăng tuổi, dùng giấy tờ của người khác, gửi căn cước trước khi được yêu cầu hoặc mua vé chỉ vì một lời hứa giữ suất. Khi đã đủ 18, cần đối chiếu lại thông báo đang còn hiệu lực vì điều kiện và lịch tiếp nhận có thể được cập nhật theo từng đợt."
+      ],
+      "key_points": [
+        [
+          "Mốc tối thiểu là đủ 18 tuổi",
+          "Người chưa đủ 18 chưa thuộc độ tuổi tiếp nhận của thông tin tuyển đang áp dụng."
+        ],
+        [
+          "Có thể tìm hiểu trước",
+          "Đọc trước về nghề, khóa học, sức khỏe và hồ sơ nhưng chưa coi việc hỏi thông tin là một suất đã được xác nhận."
+        ],
+        [
+          "Không khai sai năm sinh",
+          "Tuổi phải khớp giấy tờ thật; không sửa số, mượn giấy tờ hoặc nhờ người hứa bỏ qua điều kiện."
+        ],
+        [
+          "Đủ tuổi phải kiểm tra lại",
+          "Khi tròn 18 tuổi, đối chiếu lại thông báo hiện hành rồi mới chuẩn bị hồ sơ và di chuyển."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Chưa đủ 18 tuổi có đăng ký học nghề mỏ được không?",
+          "paragraphs": [
+            "Theo bộ dữ liệu tuyển dụng năm 2026, độ tuổi đang tiếp nhận là nam từ 18 đến 40 tuổi. Vì vậy, người 17 tuổi, kể cả chỉ còn một thời gian ngắn nữa mới đủ 18, chưa đạt mốc tuổi sơ bộ tại thời điểm hiện tại. Website không tự hạ tuổi và người tư vấn cũng không có quyền xác nhận ngoại lệ khi chưa có thông báo chính thức thay đổi điều kiện.",
+            "Người chưa đủ 18 vẫn có thể xem thông tin để định hướng, nhưng một cuộc gọi hoặc tin nhắn hỏi trước không phải là hồ sơ đã được duyệt. Không nên hiểu lời mời tìm hiểu nghề, tham quan hoặc tư vấn hướng nghiệp là quyết định tiếp nhận vào khóa học. Khi đến tuổi, người đăng ký còn phải đối chiếu chiều cao từ 1m53, cân nặng từ 47 kg, sức khỏe và các yêu cầu khác của đợt tuyển đang còn hiệu lực."
+          ]
+        },
+        {
+          "heading": "Sắp đủ 18 tuổi nên chuẩn bị gì mà không tốn chi phí sớm?",
+          "paragraphs": [
+            "Việc hữu ích nhất là đọc rõ ba hướng nghề: kỹ thuật khai thác mỏ hầm lò, kỹ thuật xây dựng mỏ hầm lò và kỹ thuật cơ điện mỏ hầm lò. Hai nghề khai thác và xây dựng mỏ đang có thời gian học 2–3 tháng; cơ điện mỏ học 10 tháng. Người tìm hiểu nên xem mô tả công việc, bối cảnh làm việc theo ca và yêu cầu phối hợp tổ đội để biết mình có thật sự muốn theo nghề hay không.",
+            "Có thể tự đo chiều cao, cân nặng và ghi lại những vấn đề sức khỏe đã biết để sau này khai đúng ở bước kiểm tra sơ bộ. Chưa cần công chứng nhiều bản giấy tờ, gửi ảnh căn cước, chuyển tiền hoặc đặt vé. Hồ sơ nhập học hiện hành gồm căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có, nhưng chỉ chuẩn bị theo hướng dẫn sau khi đã đủ điều kiện ban đầu và được xác nhận lịch."
+          ]
+        },
+        {
+          "heading": "Khi vừa đủ 18 tuổi, cần kiểm tra lại theo thứ tự nào?",
+          "items": [
+            "Mở trang thông tin tuyển hiện hành để xác nhận đợt tuyển vẫn tiếp nhận nam từ 18 đến 40 tuổi và xem ngày cập nhật gần nhất.",
+            "Dùng công cụ kiểm tra điều kiện, khai đúng năm sinh, nơi ở, chiều cao, cân nặng và tình trạng sức khỏe đang biết.",
+            "Chờ người phụ trách xác nhận bước tiếp theo; không coi việc gửi biểu mẫu là giấy báo nhập học hoặc cam kết chắc chắn đạt khám tuyển.",
+            "Chỉ chuẩn bị giấy tờ và di chuyển tới Quảng Ninh khi đã có lịch, địa điểm và đầu mối tiếp nhận rõ ràng."
+          ]
+        },
+        {
+          "heading": "Vì sao không nên khai tăng tuổi hoặc nhờ người giữ chỗ?",
+          "paragraphs": [
+            "Năm sinh sẽ được đối chiếu với giấy tờ thật khi làm thủ tục. Khai tăng tuổi, dùng giấy tờ của người khác hoặc sửa ảnh giấy tờ chỉ tạo ra thông tin không nhất quán và có thể khiến người đăng ký mất thời gian, chi phí đi lại. Website không yêu cầu gửi ảnh giấy tờ ở bước ban đầu và không có cơ chế trả tiền để bỏ qua mốc tuổi.",
+            "Cũng không có lý do phải vay tiền hay chuyển khoản cho người hứa giữ suất đến ngày đủ 18. Nguồn tuyển hiện hành cho phép đăng ký ban đầu từ xa và người học chỉ đi khi có lịch. Nếu còn thiếu thời gian để đủ tuổi, hãy dùng khoảng thời gian đó để tìm hiểu nghề, duy trì thể trạng, trao đổi với gia đình và theo dõi thông báo chính thức thay vì cố hoàn thành một hồ sơ chưa đủ điều kiện."
+          ]
+        },
+        {
+          "heading": "Đủ 18 tuổi có đồng nghĩa chắc chắn được nhận không?",
+          "paragraphs": [
+            "Không. Tuổi chỉ là một trong các điều kiện sàng lọc ban đầu. Người vừa đủ 18 vẫn cần là nam, cao từ 1m53, nặng từ 47 kg, đọc và viết thành thạo, có sức khỏe phù hợp và đáp ứng kết quả khám tuyển. Việc chưa có kinh nghiệm không phải rào cản vì chương trình có đào tạo nghề trước khi bố trí việc làm, nhưng không điều kiện đơn lẻ nào bảo đảm tiếp nhận.",
+            "Sau khi được xác nhận phù hợp sơ bộ, người đăng ký mới nhận hướng dẫn về hồ sơ và lịch nhập học. Người tốt nghiệp đạt yêu cầu được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng và bố trí việc làm tại Quảng Ninh. Đơn vị cụ thể, lịch học và các bước tiếp nhận phải theo thông tin của đợt hiện hành, không nên suy đoán từ nội dung cũ hoặc lời truyền miệng."
+          ]
+        }
+      ],
+      "takeaway_title": "Chờ đủ 18 tuổi, nhưng có thể chuẩn bị hiểu biết ngay từ bây giờ",
+      "takeaway": "Điều kiện tuyển hiện hành tiếp nhận nam từ 18 đến 40 tuổi, nên người chưa đủ 18 chưa thuộc nhóm đăng ký chính thức. Hãy tìm hiểu nghề, tự đối chiếu thể lực và theo dõi thông báo; không khai sai tuổi, không gửi giấy tờ hoặc chuyển tiền để giữ chỗ. Khi đủ 18, kiểm tra lại điều kiện đang áp dụng rồi mới thực hiện bước tiếp theo.",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 quy định độ tuổi tiếp nhận là nam từ 18 đến 40 tuổi; các điều kiện và lịch tiếp nhận cần được đối chiếu lại tại thời điểm đăng ký.",
+      "faqs": [
+        [
+          "17 tuổi 11 tháng có đăng ký chính thức được chưa?",
+          "Chưa thuộc mốc từ 18 tuổi của đợt tuyển hiện hành. Có thể tìm hiểu trước và kiểm tra lại thông tin khi đã đủ 18 tuổi."
+        ],
+        [
+          "Có được khai tăng một tuổi để gửi hồ sơ trước không?",
+          "Không. Năm sinh phải khớp giấy tờ thật; không sửa thông tin hoặc dùng giấy tờ của người khác để vượt điều kiện."
+        ],
+        [
+          "Chưa đủ 18 tuổi có cần công chứng hồ sơ trước không?",
+          "Chưa cần. Đăng ký ban đầu hiện không yêu cầu nộp giấy tờ; chỉ chuẩn bị hồ sơ sau khi đủ điều kiện sơ bộ và có lịch hướng dẫn."
+        ],
+        [
+          "Đủ 18 tuổi là chắc chắn được học nghề mỏ phải không?",
+          "Không. Tuổi chỉ là một điều kiện; còn phải đối chiếu chiều cao, cân nặng, sức khỏe và kết quả khám tuyển."
+        ]
+      ],
+      "related": [
+        [
+          "/kiem-tra-dieu-kien/",
+          "Tự kiểm tra tuổi và thể lực sơ bộ"
+        ],
+        [
+          "/thong-tin-tuyen-tho-mo/#do-tuoi",
+          "Đối chiếu độ tuổi tuyển hiện hành"
+        ],
+        [
+          "/nghe-mo-ham-lo/",
+          "Tìm hiểu ba nghề mỏ đang tuyển"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-08-21",
+      "slug": "sau-khi-hoc-nghe-mo-co-duoc-ky-hop-dong-lao-dong-khong",
+      "title": "Sau khi học nghề mỏ có được ký hợp đồng lao động không?",
+      "short_title": "Học nghề mỏ xong có được ký hợp đồng không",
+      "meta": "Sau khi học nghề mỏ có được ký hợp đồng lao động không? Hiểu đúng thời điểm ký, điều kiện tốt nghiệp và bước tiếp nhận việc làm.",
+      "eyebrow": "HỢP ĐỒNG LAO ĐỘNG SAU KHI HỌC NGHỀ MỎ",
+      "primary_query": "sau khi học nghề mỏ có được ký hợp đồng lao động không",
+      "query_variants": [
+        "học nghề mỏ xong có hợp đồng không",
+        "khi nào học viên nghề mỏ được ký hợp đồng",
+        "tốt nghiệp nghề mỏ có được bố trí việc làm không"
+      ],
+      "direct_answer": "Có, nhưng không ký ngay khi gửi đăng ký hoặc vừa nhập học. Theo thông tin tuyển hiện hành, người học phải hoàn thành chương trình và đạt yêu cầu; sau đó doanh nghiệp thuộc TKV mới tiếp nhận, ký hợp đồng lao động và bố trí việc làm tại Quảng Ninh. Đơn vị, thời điểm và thủ tục cụ thể được xác nhận ở bước tiếp nhận.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-khe-cham-bao-ho-xanh.webp",
+        "alt": "Công nhân thợ lò Khe Chàm mặc bảo hộ xanh, đội mũ và đèn lò tại khu giao ca",
+        "credit": "Ảnh: Vinacomin · gương sáng thợ lò tại Công ty Than Khe Chàm"
+      },
+      "intro": [
+        "Nhiều người lao động hỏi rất thẳng: học vài tháng rồi có chắc được ký hợp đồng hay chỉ được giới thiệu việc làm? Với thông tin tuyển đang áp dụng, câu trả lời là người tốt nghiệp đạt yêu cầu được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng lao động và bố trí việc làm tại Quảng Ninh. Tuy nhiên, ba việc này diễn ra sau quá trình học và đánh giá, không phải ngay lúc điền biểu mẫu, trao đổi qua Zalo hoặc đến làm thủ tục nhập học.",
+        "Phân biệt đúng từng mốc giúp người đăng ký tránh hai hiểu lầm: coi tin nhắn tư vấn là một hợp đồng đã có hiệu lực, hoặc cho rằng chỉ cần có tên trong lớp là chắc chắn được nhận vào một công ty cụ thể. Trước khi đi, người lao động nên kiểm tra điều kiện, nhận lịch chính thức và hiểu rõ nghề mình học. Trong thời gian đào tạo cần hoàn thành chương trình, rèn an toàn, tác phong và đạt các yêu cầu liên quan; doanh nghiệp, thời điểm ký và hồ sơ tiếp nhận sẽ được xác nhận ở bước sau."
+      ],
+      "key_points": [
+        [
+          "Có lộ trình ký hợp đồng",
+          "Người tốt nghiệp đạt yêu cầu được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng và bố trí việc làm."
+        ],
+        [
+          "Không ký ở bước đăng ký",
+          "Gửi biểu mẫu, nhắn Zalo hoặc được xác nhận nhập học chưa phải là ký hợp đồng lao động."
+        ],
+        [
+          "Phải hoàn thành và đạt yêu cầu",
+          "Việc tiếp nhận diễn ra sau khi người học hoàn thành chương trình và đáp ứng kết quả cần thiết."
+        ],
+        [
+          "Đơn vị được xác nhận sau",
+          "Không tự suy đoán công ty cụ thể; tên đơn vị và thủ tục phải theo thông tin tiếp nhận chính thức."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Sau khi học nghề mỏ có được ký hợp đồng lao động không?",
+          "paragraphs": [
+            "Có. Bộ dữ liệu tuyển dụng năm 2026 ghi rõ quyền lợi sau đào tạo: người tốt nghiệp đạt yêu cầu được doanh nghiệp tiếp nhận, ký hợp đồng lao động và bố trí việc làm. Nơi làm việc là tại các doanh nghiệp thuộc TKV ở Quảng Ninh. Cách diễn đạt \"đạt yêu cầu\" rất quan trọng, bởi nó cho biết hợp đồng là kết quả của cả quá trình đào tạo và tiếp nhận, không phải lời hứa vô điều kiện ngay từ bước tư vấn ban đầu.",
+            "Người đăng ký không nên yêu cầu một bản hợp đồng lao động khi mới gửi năm sinh, chiều cao, cân nặng và tình trạng sức khỏe. Ở giai đoạn đó, người phụ trách chỉ kiểm tra sơ bộ và hướng dẫn bước tiếp theo. Khi có lịch nhập học, người học làm thủ tục với cơ sở đào tạo; sau khi hoàn thành chương trình và được xác nhận đạt yêu cầu, doanh nghiệp sử dụng lao động mới thực hiện thủ tục tiếp nhận và hợp đồng theo hồ sơ thực tế."
+          ]
+        },
+        {
+          "heading": "Ba mốc dễ bị nhầm: đăng ký, nhập học và ký hợp đồng",
+          "paragraphs": [
+            "Đăng ký ban đầu là bước gửi thông tin để kiểm tra điều kiện. Người lao động chưa cần nộp ảnh giấy tờ và cũng chưa có quan hệ lao động với doanh nghiệp ở bước này. Xác nhận lịch nhập học cho biết người đăng ký cần đến đâu, vào thời gian nào và mang giấy tờ gì; nó vẫn không phải hợp đồng lao động. Người học còn phải tham gia chương trình nghề, thực hành, rèn kỷ luật và hoàn thành các yêu cầu của khóa học.",
+            "Ký hợp đồng là bước sau đào tạo đối với người tốt nghiệp đạt yêu cầu và được doanh nghiệp tiếp nhận. Vì vậy, không nên dùng các cụm từ \"đã trúng tuyển vào công ty\" hoặc \"đã có biên chế\" chỉ dựa trên một tin nhắn tư vấn. Cũng không nên chuyển tiền cho người hứa có thể ký hợp đồng trước hoặc chọn chắc chắn một doanh nghiệp khi chưa có thông báo tiếp nhận chính thức."
+          ]
+        },
+        {
+          "heading": "Người học cần đạt những gì trước bước tiếp nhận việc làm?",
+          "items": [
+            "Hoàn thành chương trình của nghề đã đăng ký và đáp ứng kết quả đào tạo theo yêu cầu.",
+            "Tuân thủ nội quy, quy trình an toàn, thời gian học và các bước thực hành được hướng dẫn.",
+            "Có hồ sơ, thông tin cá nhân và kết quả liên quan thống nhất với nội dung đã khai ban đầu.",
+            "Thực hiện thủ tục tiếp nhận theo thông báo; không tự đến một công ty bất kỳ để yêu cầu ký hợp đồng."
+          ]
+        },
+        {
+          "heading": "Có được tự chọn công ty sẽ ký hợp đồng không?",
+          "paragraphs": [
+            "Thông tin hiện hành xác định phạm vi là các doanh nghiệp thuộc TKV tại Quảng Ninh, nhưng không cho phép website tự gán trước một đơn vị cho từng người. Doanh nghiệp cụ thể phụ thuộc kế hoạch tiếp nhận, nghề đào tạo, hồ sơ và kết quả của người học. Vì vậy, người tư vấn có thể giải thích lộ trình chung nhưng không nên hứa bằng miệng rằng một người chắc chắn sẽ ký với công ty A hoặc làm ở công trường B khi chưa có căn cứ chính thức.",
+            "Trước ngày tiếp nhận, người học nên hỏi rõ tên doanh nghiệp, đầu mối, địa điểm, giấy tờ cần mang và thời gian làm thủ tục. Nếu thông tin chỉ đến từ một tài khoản lạ, không khớp lịch đã được hướng dẫn hoặc yêu cầu gửi giấy tờ gốc qua bưu điện, hãy dừng lại để xác minh. Nguồn tuyển hiện hành không yêu cầu gửi giấy tờ gốc từ xa và người lao động chỉ nên di chuyển khi đã được xác nhận lịch."
+          ]
+        },
+        {
+          "heading": "Ký hợp đồng rồi thì thu nhập và quyền lợi được hiểu thế nào?",
+          "paragraphs": [
+            "Hợp đồng là căn cứ để xác định công việc, quyền và nghĩa vụ giữa người lao động với doanh nghiệp tiếp nhận. Các chế độ bảo hiểm và quyền lợi được thực hiện theo loại hợp đồng cùng quy định hiện hành. Người lao động cần đọc nội dung thực tế trước khi ký, hỏi lại những điểm chưa rõ và giữ bản hợp đồng của mình; không dựa hoàn toàn vào ảnh chụp quảng cáo hoặc lời kể của người khác.",
+            "Mức thu nhập đang áp dụng là 20–25 triệu đồng/tháng khi hoàn thành định mức lao động. Điều kiện \"khi hoàn thành định mức lao động\" phải được đọc cùng con số, không tách riêng thành mức chắc chắn nhận ngay từ tháng đầu. Cách tính và xác nhận hoàn thành định mức được thực hiện theo quy định của doanh nghiệp. Bài viết này giải thích lộ trình ký hợp đồng, không thay thế nội dung hợp đồng cụ thể tại thời điểm tiếp nhận."
+          ]
+        }
+      ],
+      "takeaway_title": "Có hợp đồng sau đào tạo, nhưng phải đúng thứ tự",
+      "takeaway": "Người tốt nghiệp nghề mỏ đạt yêu cầu được doanh nghiệp thuộc TKV tiếp nhận, ký hợp đồng lao động và bố trí việc làm tại Quảng Ninh. Đăng ký tư vấn hay nhập học chưa phải là ký hợp đồng. Hãy hoàn thành chương trình, chờ thông báo tiếp nhận và đọc kỹ hồ sơ thực tế; không trả tiền cho lời hứa ký trước hoặc tự gán một công ty khi chưa có xác nhận.",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 quy định người tốt nghiệp đạt yêu cầu được doanh nghiệp tiếp nhận, ký hợp đồng lao động và bố trí việc làm; doanh nghiệp, thời điểm và thủ tục cụ thể được xác nhận theo đợt tiếp nhận thực tế.",
+      "faqs": [
+        [
+          "Vừa gửi đăng ký có được ký hợp đồng ngay không?",
+          "Không. Đăng ký ban đầu chỉ để kiểm tra điều kiện và hướng dẫn; hợp đồng được thực hiện sau khi người học tốt nghiệp đạt yêu cầu và được doanh nghiệp tiếp nhận."
+        ],
+        [
+          "Nhập học nghề mỏ có đồng nghĩa đã là công nhân TKV không?",
+          "Chưa. Người nhập học đang ở giai đoạn đào tạo; chỉ sau khi tốt nghiệp đạt yêu cầu và hoàn tất tiếp nhận mới thực hiện hợp đồng lao động."
+        ],
+        [
+          "Có được chọn trước công ty sẽ làm việc không?",
+          "Không nên tự coi một đơn vị là chắc chắn. Doanh nghiệp cụ thể phải được xác nhận theo kế hoạch tiếp nhận, nghề đào tạo và hồ sơ thực tế."
+        ],
+        [
+          "Ai ký hợp đồng lao động với người tốt nghiệp?",
+          "Doanh nghiệp tiếp nhận người lao động thực hiện thủ tục ký hợp đồng; cơ sở đào tạo và người tư vấn không thay doanh nghiệp ký hợp đồng lao động."
+        ]
+      ],
+      "related": [
+        [
+          "/giai-dap-nghe-mo/lo-trinh-di-lam-mo-than-quang-ninh-tu-dang-ky-den-nhan-viec/",
+          "Xem toàn bộ lộ trình từ đăng ký đến nhận việc"
+        ],
+        [
+          "/thong-tin-tuyen-tho-mo/",
+          "Đối chiếu chính sách tuyển đang áp dụng"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi nhập học"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-08-22",
+      "slug": "dang-ky-hoc-nghe-mo-ban-dau-co-can-gui-anh-cccd-khong",
+      "title": "Đăng ký học nghề mỏ ban đầu có cần gửi ảnh CCCD không?",
+      "short_title": "Đăng ký ban đầu có cần gửi ảnh CCCD không",
+      "meta": "Đăng ký học nghề mỏ ban đầu chưa cần gửi ảnh CCCD hay giấy tờ. Xem thông tin cần khai, lúc mang hồ sơ gốc và cách đăng ký an toàn.",
+      "eyebrow": "GIẤY TỜ Ở BƯỚC ĐĂNG KÝ HỌC NGHỀ MỎ",
+      "primary_query": "đăng ký học nghề mỏ ban đầu có cần gửi ảnh CCCD không",
+      "query_variants": [
+        "đăng ký học nghề mỏ có cần ảnh căn cước không",
+        "gửi hồ sơ học nghề mỏ qua mạng cần gì",
+        "đăng ký nghề mỏ ban đầu cần giấy tờ gì"
+      ],
+      "direct_answer": "Không. Đăng ký học nghề mỏ ban đầu hiện chưa yêu cầu nộp hoặc gửi ảnh CCCD, giấy khai sinh hay bằng cấp. Người lao động chỉ cần cung cấp thông tin cơ bản để kiểm tra điều kiện sơ bộ. Hồ sơ gốc được chuẩn bị và mang theo sau khi đã được xác nhận phù hợp, nhận đúng lịch cùng hướng dẫn nhập học; không gửi giấy tờ gốc qua bưu điện.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-hoc-sinh-khe-cham-tham-quan-thuc-te.webp",
+        "alt": "Nhóm học sinh nghề mỏ mặc bảo hộ xanh và đội mũ trong chuyến tham quan thực tế tại Than Khe Chàm",
+        "credit": "Ảnh: Vinacomin · học sinh nghề mỏ tham quan thực tế tại Than Khe Chàm"
+      },
+      "intro": [
+        "Nhiều người lao động vừa thấy thông tin tuyển đã được đề nghị chụp hai mặt căn cước, bằng cấp hoặc giấy khai sinh để gửi qua mạng. Với quy trình đang áp dụng trên website này, việc đó chưa cần thiết ở bước đầu. Đăng ký ban đầu chỉ nhằm ghi nhận nhu cầu và đối chiếu sơ bộ những điều kiện thiết yếu trước khi người đăng ký mất thời gian đi lại hoặc chuẩn bị cả bộ hồ sơ.",
+        "Tách hai giai đoạn giúp người lao động dễ làm đúng hơn: trước hết khai thông tin cơ bản trên biểu mẫu để người phụ trách kiểm tra; sau khi phù hợp và có lịch xác nhận mới chuẩn bị hồ sơ nhập học. CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có là giấy tờ cần mang theo ở bước làm thủ tục theo hướng dẫn, không phải ảnh bắt buộc phải tải lên khi mới tìm hiểu. Nếu chưa có bằng cấp, người lao động vẫn có thể đăng ký để được hướng dẫn trường hợp cụ thể."
+      ],
+      "key_points": [
+        [
+          "Chưa cần gửi ảnh CCCD",
+          "Biểu mẫu đăng ký ban đầu không yêu cầu tải ảnh CCCD, giấy khai sinh hoặc bằng cấp."
+        ],
+        [
+          "Chỉ khai thông tin cơ bản",
+          "Cung cấp đúng thông tin để đối chiếu tuổi, thể lực, sức khỏe, nơi ở và nhu cầu nghề nghiệp."
+        ],
+        [
+          "Mang hồ sơ khi có lịch",
+          "Chỉ chuẩn bị và mang giấy tờ theo hướng dẫn sau khi được xác nhận điều kiện sơ bộ."
+        ],
+        [
+          "Không gửi giấy tờ gốc",
+          "Không chuyển giấy tờ gốc qua bưu điện và không đi khi chưa nhận lịch được xác nhận."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Đăng ký học nghề mỏ ban đầu có cần gửi ảnh CCCD không?",
+          "paragraphs": [
+            "Không. Nguồn thông tin tuyển dụng hiện hành quy định đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ. Người lao động có thể tự kiểm tra điều kiện rồi dùng biểu mẫu đăng ký để gửi các thông tin cơ bản. Website không có ô tải ảnh CCCD, giấy khai sinh, bằng cấp hoặc ảnh hồ sơ. Vì vậy, nếu mới ở bước tìm hiểu mà một tài khoản lạ yêu cầu gửi ngay toàn bộ ảnh giấy tờ, người đăng ký nên dừng lại và xác minh đúng đầu mối trước khi tiếp tục.",
+            "Việc chưa yêu cầu ảnh giấy tờ không có nghĩa hồ sơ nhập học được bỏ qua. Đây chỉ là cách sắp xếp đúng thứ tự: kiểm tra sơ bộ trước, chuẩn bị giấy tờ sau. Khi người phụ trách đã đối chiếu thông tin, xác nhận trường hợp phù hợp và thông báo lịch cụ thể, người đăng ký mới cần mang hồ sơ theo hướng dẫn để làm thủ tục. Cách này giảm việc gửi tài liệu cá nhân quá sớm và tránh chuẩn bị hoặc công chứng không cần thiết khi chưa biết mình có phù hợp hay không."
+          ]
+        },
+        {
+          "heading": "Bước đăng ký ban đầu cần cung cấp thông tin gì?",
+          "paragraphs": [
+            "Biểu mẫu hiện hành hỏi họ tên, số điện thoại, ngày sinh, tỉnh đang ở, chiều cao, cân nặng, tình trạng sức khỏe chung, trình độ học vấn và nghề quan tâm. Các trường này phục vụ việc liên hệ và đối chiếu sơ bộ với điều kiện tuyển đang áp dụng. Người đăng ký nên đo lại chiều cao, cân nặng, nhập đúng năm sinh và chọn thông tin học vấn đúng thực tế. Số điện thoại cần là số đang sử dụng để không bỏ lỡ cuộc gọi xác nhận.",
+            "Phần sức khỏe chỉ cần phản ánh tình trạng chung theo lựa chọn của biểu mẫu; không ghi bệnh án chi tiết, kết quả xét nghiệm hoặc thông tin riêng tư không được hỏi. Kiểm tra trực tuyến không thay thế khám sức khỏe chính thức. Nếu có vấn đề cần trao đổi riêng, người lao động có thể đề nghị người phụ trách hướng dẫn bước tiếp theo thay vì đưa nội dung dài vào ô thông tin. Không điền dữ liệu của người khác, không dùng giấy tờ mượn và không khai sai để vượt qua điều kiện sơ bộ."
+          ]
+        },
+        {
+          "heading": "Khi nào mới cần CCCD, giấy khai sinh và bằng cấp?",
+          "paragraphs": [
+            "Sau khi thông tin ban đầu được kiểm tra và người đăng ký nhận lịch nhập học đã xác nhận, hồ sơ hiện hành cần CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Người lao động nên đọc lại hướng dẫn cho đúng đợt, chuẩn bị giấy tờ rõ ràng và tự mang theo khi đến làm thủ tục. Không gửi giấy tờ gốc qua bưu điện. Nếu được yêu cầu bổ sung bản sao hoặc loại giấy tờ nào khác, cần hỏi rõ số lượng và thời điểm trước khi thực hiện.",
+            "Trường hợp chưa có bằng THPT không đồng nghĩa phải tự loại mình ngay. Nguồn chuẩn cho phép người chưa có bằng cấp đăng ký ban đầu để được hướng dẫn. Điều quan trọng là khai đúng trình độ hiện có, không chọn một mục cao hơn thực tế và không tự làm giấy tờ thay thế. Trang hồ sơ nhập học của website luôn là nơi đối chiếu danh mục đang áp dụng; bài này chỉ giải thích vì sao ảnh giấy tờ chưa phải yêu cầu ở lần đăng ký đầu tiên."
+          ]
+        },
+        {
+          "heading": "Cách nhận biết yêu cầu gửi giấy tờ quá sớm",
+          "paragraphs": [
+            "Một quy trình phù hợp phải cho người lao động biết rõ đang ở bước nào, ai là người xác nhận và mục đích của từng thông tin. Ở website này, biểu mẫu không tải tệp và không yêu cầu ảnh CCCD. Nếu có người chủ động nhắn từ một tài khoản chưa xác minh, thúc giục gửi hai mặt căn cước, yêu cầu chuyển tiền giữ chỗ hoặc hứa bỏ qua điều kiện tuyển, đó không phải bước được mô tả trong quy trình hiện hành. Người lao động nên giữ lại nội dung trao đổi và kiểm tra lại qua kênh liên hệ công khai trên website.",
+            "Không chụp giấy tờ cùng mã xác thực, thông tin tài khoản ngân hàng hoặc dữ liệu không liên quan đến hồ sơ tuyển. Cũng không đăng ảnh giấy tờ vào bình luận công khai. Khi thật sự cần đối chiếu hồ sơ tại buổi làm thủ tục, chỉ xuất trình cho đúng người tiếp nhận theo lịch. Mọi thay đổi về giấy tờ phải được thông báo rõ trong nguồn tuyển chính thức; một lời nhắn riêng lẻ không nên được coi là căn cứ thay đổi quy trình."
+          ]
+        },
+        {
+          "heading": "Làm đúng theo năm bước từ kiểm tra đến nhập học",
+          "items": [
+            "Mở trang kiểm tra điều kiện để tự đối chiếu tuổi, chiều cao, cân nặng và tình trạng sức khỏe sơ bộ.",
+            "Điền biểu mẫu đăng ký bằng thông tin thật; chưa tải hoặc gửi ảnh CCCD và các giấy tờ khác.",
+            "Chờ người phụ trách liên hệ, hỏi lại điểm chưa rõ và chỉ xác nhận kế hoạch khi đã có lịch cụ thể.",
+            "Đối chiếu trang hồ sơ nhập học, chuẩn bị CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có.",
+            "Tự mang hồ sơ tới đúng nơi, đúng thời gian đã được xác nhận; không gửi giấy tờ gốc từ xa và không di chuyển chỉ dựa trên lời nhắn chưa kiểm chứng."
+          ]
+        }
+      ],
+      "takeaway_title": "Đăng ký trước, hồ sơ mang theo sau khi có lịch",
+      "takeaway": "Bước đăng ký học nghề mỏ ban đầu chưa cần gửi ảnh CCCD hoặc giấy tờ. Hãy khai đúng thông tin cơ bản để kiểm tra điều kiện, chờ xác nhận rồi mới chuẩn bị hồ sơ theo lịch. CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có được mang theo khi làm thủ tục; không gửi giấy tờ gốc qua bưu điện, không gửi ảnh cho tài khoản chưa xác minh và không chuyển tiền để giữ chỗ.",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 quy định đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ; hồ sơ nhập học hiện gồm CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Người chưa có bằng cấp vẫn có thể đăng ký để được hướng dẫn.",
+      "faqs": [
+        [
+          "Biểu mẫu đăng ký có chỗ tải ảnh CCCD không?",
+          "Không. Biểu mẫu hiện hành chỉ thu thập thông tin cơ bản để liên hệ và kiểm tra điều kiện sơ bộ, không có trường tải ảnh giấy tờ."
+        ],
+        [
+          "Khi nào tôi phải mang CCCD bản gốc?",
+          "Sau khi được xác nhận điều kiện sơ bộ và nhận lịch hướng dẫn nhập học, hãy chuẩn bị rồi tự mang CCCD bản gốc cùng hồ sơ cần thiết đến đúng nơi."
+        ],
+        [
+          "Chưa có bằng cấp 3 thì có được đăng ký ban đầu không?",
+          "Có thể đăng ký để được hướng dẫn. Hãy khai đúng trình độ hiện có; hồ sơ dùng bằng THCS hoặc THPT nếu có theo hướng dẫn đang áp dụng."
+        ],
+        [
+          "Có nên gửi giấy tờ cho người nhắn tin trước không?",
+          "Không gửi khi chưa xác minh đúng đầu mối và mục đích. Quy trình ban đầu trên website không yêu cầu ảnh giấy tờ, không yêu cầu gửi giấy tờ gốc qua bưu điện."
+        ]
+      ],
+      "related": [
+        [
+          "/kiem-tra-dieu-kien/",
+          "Tự kiểm tra điều kiện trước khi đăng ký"
+        ],
+        [
+          "/ho-so-nhap-hoc/",
+          "Xem hồ sơ cần mang khi có lịch nhập học"
+        ],
+        [
+          "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=dang_ky_cccd#dang-ky",
+          "Mở biểu mẫu đăng ký hiện hành"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-08-23",
+      "slug": "co-dien-mo-hoc-10-thang-co-nen-dang-ky-khong",
+      "title": "Cơ điện mỏ học 10 tháng: ai nên chọn nghề này?",
+      "short_title": "Cơ điện mỏ học 10 tháng có nên chọn không",
+      "meta": "Cơ điện mỏ học 10 tháng, dài hơn khai thác và xây dựng mỏ. Xem ai phù hợp, công việc sau đào tạo và những điều cần hỏi trước khi đăng ký.",
+      "eyebrow": "CHỌN NGHỀ CƠ ĐIỆN MỎ HẦM LÒ",
+      "primary_query": "cơ điện mỏ học 10 tháng có nên đăng ký không",
+      "query_variants": [
+        "học cơ điện mỏ 10 tháng có lâu không",
+        "ai nên học kỹ thuật cơ điện mỏ hầm lò",
+        "cơ điện mỏ học gì và làm công việc gì"
+      ],
+      "direct_answer": "Cơ điện mỏ hiện có thời gian đào tạo 10 tháng, dài hơn khai thác và xây dựng mỏ 2–3 tháng. Nghề phù hợp với người chấp nhận học dài hơn để đi theo công việc lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống cơ khí, điện cùng thiết bị mỏ. Trước khi chọn, cần hỏi rõ nội dung học, lịch nhập học và nhu cầu tiếp nhận của đợt tuyển.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-cong-nhan-co-gioi-hoa-trong-ham-lo.webp",
+        "alt": "Công nhân TKV vận hành thiết bị cơ giới trong hầm lò",
+        "credit": "Ảnh: Thư viện ảnh Vinacomin · công nhân TKV vận hành thiết bị cơ giới trong hầm lò"
+      },
+      "intro": [
+        "Khi ba nghề cùng dẫn tới cơ hội làm việc trong ngành Than, thời gian đào tạo thường là điểm khiến người đăng ký phân vân nhất. Kỹ thuật khai thác mỏ hầm lò và kỹ thuật xây dựng mỏ hầm lò đang có lộ trình học 2–3 tháng, trong khi kỹ thuật cơ điện mỏ hầm lò là 10 tháng. Chênh lệch này đủ lớn để người lao động phải tính tới thời gian xa nhà, khả năng theo học liên tục và mục tiêu nghề nghiệp của mình, thay vì chọn chỉ vì nghe tên nghề có vẻ nhẹ hay nặng hơn.",
+        "Điều quan trọng là không dùng độ dài khóa học để suy ra nghề nào tốt hơn. Mỗi nghề phục vụ một nhóm công việc khác nhau. Với cơ điện mỏ, thông tin nghề đang công khai trên website xác định nhóm công việc gồm lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống cơ khí, điện cùng thiết bị mỏ. Người cân nhắc nghề này nên nhìn vào chính nội dung công việc, khả năng học kỹ thuật và nhu cầu tiếp nhận thực tế của đợt tuyển."
+      ],
+      "key_points": [
+        [
+          "Học 10 tháng",
+          "Thời gian đào tạo hiện công bố của kỹ thuật cơ điện mỏ hầm lò là 10 tháng."
+        ],
+        [
+          "Công việc thiên về thiết bị",
+          "Hướng nghề gắn với lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống cơ khí, điện cùng thiết bị mỏ."
+        ],
+        [
+          "Không so nghề chỉ bằng thời gian",
+          "Khóa học dài hay ngắn không tự quyết định nghề tốt hơn; cần so nội dung công việc và khả năng theo học."
+        ],
+        [
+          "Xác nhận theo đợt tuyển",
+          "Lịch nhập học, chỉ tiêu và đơn vị tiếp nhận cần được hỏi lại trước khi chuẩn bị hồ sơ hoặc di chuyển."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Vì sao không nên chỉ nhìn con số 10 tháng?",
+          "paragraphs": [
+            "Mười tháng là một cam kết thời gian đáng kể với người đang cần việc sớm. Tuy nhiên, quyết định hợp lý không phải là lập tức loại cơ điện mỏ vì khóa học dài hơn. Người đăng ký cần đặt câu hỏi ngược lại: sau thời gian học đó mình sẽ theo nhóm công việc nào, bản thân có hứng thú với máy móc và thiết bị hay không, và mình có thể duy trì việc học đều trong suốt khóa hay không. Nếu câu trả lời chưa rõ, nên tìm hiểu công việc trước rồi mới chọn nghề.",
+            "Website không khẳng định 10 tháng đồng nghĩa với thu nhập cao hơn, công việc nhẹ hơn hoặc chắc chắn dễ bố trí hơn. Những kết luận như vậy cần căn cứ vào vị trí việc làm và chính sách của doanh nghiệp tại thời điểm tiếp nhận. Điều có thể xác nhận ở bước tư vấn là thời gian đào tạo hiện hành, nhóm công việc của nghề và lộ trình chung từ học nghề tới khi tốt nghiệp đạt yêu cầu rồi được doanh nghiệp tiếp nhận."
+          ]
+        },
+        {
+          "heading": "Ai thường phù hợp hơn với hướng cơ điện mỏ?",
+          "paragraphs": [
+            "Người có hứng thú với máy móc, điện, cơ khí và việc tìm nguyên nhân khi thiết bị gặp trục trặc thường có cơ sở tốt hơn để cân nhắc cơ điện mỏ. Điều này không có nghĩa phải biết sửa máy từ trước. Nguồn tuyển hiện hành không yêu cầu kinh nghiệm làm mỏ sẵn có; chương trình đào tạo là bước để người học hình thành kiến thức và kỹ năng nghề trước khi làm việc. Điểm cần tự đánh giá là khả năng học kỹ thuật, tuân thủ quy trình và kiên trì với khóa học dài hơn.",
+            "Ngược lại, nếu mục tiêu lớn nhất là rút ngắn thời gian học để sớm bước sang giai đoạn thực tập và nhận việc, người lao động nên đồng thời xem kỹ hai nghề khai thác và xây dựng mỏ có thời gian 2–3 tháng. Chọn nhanh không đồng nghĩa chọn đúng. Cả ba hướng đều cần sức khỏe phù hợp với môi trường hầm lò, ý thức an toàn và khả năng làm việc theo tổ đội; khác biệt nên được nhìn từ nhiệm vụ nghề nghiệp chứ không phải từ lời truyền miệng."
+          ]
+        },
+        {
+          "heading": "Học 10 tháng thì quyền lợi trong thời gian học được hiểu thế nào?",
+          "paragraphs": [
+            "Thông tin tuyển đang áp dụng nêu người học thuộc chỉ tiêu được miễn học phí, bố trí ba bữa mỗi ngày, có ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học. Mức hỗ trợ được tính theo tháng trong thời gian học; thời điểm và cách chi trả cần được xác nhận theo hướng dẫn của đợt tuyển. Người đăng ký cơ điện mỏ càng cần hỏi rõ lịch thực hiện vì thời gian đào tạo dài hơn hai nghề còn lại.",
+            "Trước khi lên Quảng Ninh, nên xác nhận ngày nhập học, địa điểm tiếp nhận, nghề ghi trên hồ sơ, giấy tờ phải mang và người phụ trách. Bước đăng ký ban đầu chưa yêu cầu gửi ảnh căn cước hoặc giấy tờ. Khi đã được kiểm tra điều kiện sơ bộ và có lịch, hồ sơ hiện hành gồm căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Không chuyển giấy tờ gốc qua bưu điện và không trả tiền để đổi lấy lời hứa giữ suất."
+          ]
+        },
+        {
+          "heading": "Bốn câu nên hỏi trước khi chốt nghề cơ điện mỏ",
+          "paragraphs": [
+            "Thứ nhất, đợt tuyển mình đang tham gia có còn chỉ tiêu cơ điện mỏ hay không. Thứ hai, thời gian nhập học và thời gian đào tạo dự kiến được xác nhận thế nào. Thứ ba, nội dung công việc sau đào tạo tập trung vào những hệ thống và thiết bị nào ở mức người đăng ký cần biết trước. Thứ tư, sau khi tốt nghiệp đạt yêu cầu, quy trình doanh nghiệp tiếp nhận và bố trí việc làm được thực hiện ra sao. Bốn câu hỏi này giúp biến một lựa chọn nghe tên nghề thành một quyết định có thông tin.",
+            "Nếu vẫn phân vân giữa ba nghề, hãy mô tả trung thực mục tiêu của mình cho người tư vấn: muốn đi làm sớm, thích làm việc với thiết bị, đã từng học điện cơ khí hay chưa, và có thể dành bao lâu cho giai đoạn đào tạo. Người tư vấn có thể giải thích lộ trình nhưng không nên quyết định thay người lao động. Lựa chọn cuối cùng cần dựa trên điều kiện sức khỏe, khả năng theo học, nội dung công việc và thông tin tiếp nhận đang còn hiệu lực tại thời điểm đăng ký."
+          ]
+        }
+      ],
+      "takeaway_title": "Chọn cơ điện mỏ vì hợp công việc, không vì tên nghề",
+      "takeaway": "Kỹ thuật cơ điện mỏ hầm lò đang có thời gian đào tạo 10 tháng và hướng tới công việc lắp đặt, vận hành, bảo dưỡng, sửa chữa hệ thống cơ khí, điện cùng thiết bị mỏ. Người đăng ký nên cân nhắc khả năng học kỹ thuật và thời gian theo học, đồng thời hỏi lại chỉ tiêu, lịch nhập học và lộ trình tiếp nhận của đúng đợt tuyển. Không có căn cứ để kết luận nghề tốt hơn chỉ vì khóa học dài hơn.",
+      "source_note": "Thông tin tuyển sinh năm 2026 đang áp dụng trên website; dữ kiện quyền lợi và thu nhập đối chiếu theo recruitment-facts-2026.json, mô tả ba nghề được chuẩn hóa theo Hướng dẫn số 554/HD-CĐTKV của Trường Cao đẳng Than – Khoáng sản Việt Nam.",
+      "faqs": [
+        [
+          "Cơ điện mỏ hiện học bao lâu?",
+          "Thời gian đang công bố là 10 tháng. Lịch nhập học và tiến độ cụ thể cần xác nhận theo đợt tuyển."
+        ],
+        [
+          "Chưa biết điện hoặc cơ khí có đăng ký được không?",
+          "Nguồn tuyển hiện hành không yêu cầu kinh nghiệm làm mỏ sẵn có. Hãy khai đúng nền tảng của mình và hỏi rõ yêu cầu đầu vào của đợt tuyển."
+        ],
+        [
+          "Học 10 tháng có chắc thu nhập cao hơn hai nghề 2–3 tháng không?",
+          "Không nên kết luận như vậy. Thu nhập đang áp dụng là 20–25 triệu đồng/tháng khi hoàn thành định mức lao động; thời gian học không tự quyết định mức thu nhập."
+        ],
+        [
+          "Có nên chọn cơ điện mỏ nếu muốn đi làm thật sớm?",
+          "Nếu ưu tiên lớn nhất là rút ngắn thời gian đào tạo, hãy so thêm hai nghề khai thác và xây dựng mỏ 2–3 tháng trước khi quyết định."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
+          "Xem công việc kỹ thuật cơ điện mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/nen-hoc-khai-thac-mo-hay-xay-dung-mo-ham-lo/",
+          "So sánh khai thác và xây dựng mỏ"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi chọn nghề"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-08-26",
+      "slug": "di-kham-suc-khoe-hoc-nghe-mo-truoc-hay-sau-khi-dang-ky",
+      "title": "Đi khám sức khỏe học nghề mỏ trước hay sau khi đăng ký?",
+      "short_title": "Khám sức khỏe trước hay sau đăng ký",
+      "meta": "Đi khám sức khỏe học nghề mỏ trước hay sau khi đăng ký? Xem đúng thứ tự kiểm tra sơ bộ, chờ xác nhận lịch rồi khám tuyển trực tiếp.",
+      "eyebrow": "THỨ TỰ ĐĂNG KÝ VÀ KHÁM SỨC KHỎE NGHỀ MỎ",
+      "primary_query": "đi khám sức khỏe học nghề mỏ trước hay sau khi đăng ký",
+      "query_variants": [
+        "đăng ký nghề mỏ rồi mới khám sức khỏe phải không",
+        "có cần tự đi khám sức khỏe trước khi học nghề mỏ không",
+        "quy trình khám tuyển sức khỏe nghề mỏ"
+      ],
+      "direct_answer": "Hãy đăng ký và kiểm tra điều kiện sơ bộ từ xa trước; chưa cần tự đi khám ở một nơi bất kỳ chỉ để nộp kết quả. Khi thông tin ban đầu phù hợp và lịch tiếp nhận được xác nhận, người lao động mới đi khám tuyển trực tiếp theo hướng dẫn. Kết quả khám tuyển là căn cứ cuối cùng, còn biểu mẫu trực tuyến không thay thế kết luận y tế.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-cong-nhan-kham-suc-khoe-kho-van.webp",
+        "alt": "Nhân viên y tế kiểm tra sức khỏe cho công nhân Kho vận và cảng Cẩm Phả trong đợt khám định kỳ",
+        "credit": "Ảnh: Vinacomin · khám sức khỏe công nhân Kho vận và cảng Cẩm Phả"
+      },
+      "intro": [
+        "Người lao động ở tỉnh xa thường phân vân nên tự đi khám sức khỏe tại quê, xin giấy xác nhận rồi mới đăng ký hay phải lên Quảng Ninh khám ngay. Thứ tự an toàn và ít tốn kém hơn là đăng ký, khai đúng thông tin để sàng lọc sơ bộ từ xa trước. Chỉ khi trường hợp phù hợp ban đầu và có lịch được xác nhận, người đăng ký mới thực hiện bước khám tuyển trực tiếp theo hướng dẫn của đợt tiếp nhận.",
+        "Kiểm tra trên website không phải khám bệnh và cũng không tạo giấy chứng nhận đủ sức khỏe. Nó chỉ giúp phát hiện sớm những điểm cần hỏi lại như tuổi, chiều cao, cân nặng, thị lực, tim mạch, huyết áp hoặc bệnh mắt đã biết. Người lao động không nên mua vé, tự làm một gói khám không rõ yêu cầu hoặc gửi hồ sơ y tế chi tiết cho tài khoản lạ trước khi biết chính xác bước tiếp theo."
+      ],
+      "key_points": [
+        [
+          "Đăng ký sơ bộ trước",
+          "Khai thông tin thật để đối chiếu điều kiện trước khi mất chi phí đi lại hoặc khám không đúng yêu cầu."
+        ],
+        [
+          "Không tự chọn nơi khám",
+          "Chưa có lịch thì không cần tự làm một gói khám bất kỳ với kỳ vọng thay thế khám tuyển."
+        ],
+        [
+          "Khám theo lịch xác nhận",
+          "Khi phù hợp sơ bộ, người phụ trách mới hướng dẫn thời gian và bước khám tuyển trực tiếp."
+        ],
+        [
+          "Kết quả y tế là cuối cùng",
+          "Biểu mẫu và tư vấn từ xa không chẩn đoán bệnh, không bảo đảm chắc chắn đạt sức khỏe."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Đi khám sức khỏe học nghề mỏ trước hay sau khi đăng ký?",
+          "paragraphs": [
+            "Người lao động nên hoàn thành bước đăng ký và kiểm tra điều kiện sơ bộ trước. Ở bước này, hãy cung cấp đúng năm sinh, nơi đang sống, chiều cao, cân nặng và tình trạng sức khỏe đã biết. Người phụ trách dựa trên dữ liệu đó để nhận diện trường hợp cần dừng, cần hỏi thêm hoặc có thể chuyển sang bước xác nhận lịch. Đây là một cuộc đối chiếu ban đầu, không phải quyết định đủ sức khỏe và không thay thế việc khám trực tiếp.",
+            "Sau khi thông tin phù hợp sơ bộ và người lao động nhận được lịch cùng hướng dẫn rõ ràng, bước khám tuyển mới được thực hiện theo quy trình tiếp nhận. Cách sắp xếp này đặc biệt quan trọng với người ở xa vì tránh việc tự đi khám nhiều nơi, chuẩn bị kết quả không đúng yêu cầu hoặc lên Quảng Ninh khi lịch chưa được xác nhận. Website không công bố một cơ sở khám hay danh mục xét nghiệm cố định khi bộ dữ liệu hiện hành chưa nêu những chi tiết đó."
+          ]
+        },
+        {
+          "heading": "Kiểm tra sức khỏe trực tuyến khác khám tuyển thế nào?",
+          "paragraphs": [
+            "Công cụ trực tuyến chỉ thu thập một số thông tin để sàng lọc: người đăng ký có thuộc nhóm tuổi đang tiếp nhận hay không, có đạt mốc chiều cao và cân nặng hay không, đồng thời có vấn đề sức khỏe đã biết cần trao đổi thêm hay không. Một câu trả lời phù hợp ở bước này chỉ có nghĩa người lao động có thể tiếp tục chờ hướng dẫn; nó không phải giấy báo trúng tuyển, không phải kết luận y khoa và không bảo đảm được nhận vào học.",
+            "Khám tuyển là bước đánh giá trực tiếp do đơn vị có chuyên môn thực hiện theo yêu cầu của quá trình tiếp nhận. Kết quả thực tế có thể khác với tự đánh giá ở nhà. Vì vậy, người đang đeo kính, có bệnh tim mạch, huyết áp không ổn định, bệnh mắt hoặc vấn đề sức khỏe khác phải khai trung thực. Không tự ngừng thuốc, thay đổi số kính hoặc che giấu tiền sử chỉ để cố vượt qua bước sàng lọc."
+          ]
+        },
+        {
+          "heading": "Trước khi có lịch khám, người lao động nên chuẩn bị gì?",
+          "items": [
+            "Đo lại chiều cao và cân nặng bằng dụng cụ phù hợp, ghi đúng kết quả thay vì ước lượng hoặc tự làm tròn số.",
+            "Ghi nhớ tình trạng sức khỏe đang biết, thuốc đang dùng và số kính gần nhất nếu có để trao đổi trung thực khi được hỏi.",
+            "Dùng biểu mẫu hiện hành để đăng ký; không tải hồ sơ y tế chi tiết, ảnh CCCD hoặc kết quả xét nghiệm vào nơi không được yêu cầu.",
+            "Lưu đúng đầu mối liên hệ công khai và chờ xác nhận thời gian, địa điểm cùng việc cần mang trước khi đặt vé hoặc di chuyển.",
+            "Đọc lại trang thông tin tuyển đang áp dụng vì một lời nhắn riêng không đủ để thay đổi điều kiện hoặc quy trình chính thức."
+          ]
+        },
+        {
+          "heading": "Có giấy khám sức khỏe ở quê rồi có dùng thay khám tuyển được không?",
+          "paragraphs": [
+            "Không nên tự cho rằng một giấy khám sức khỏe đã có sẽ thay thế bước khám tuyển. Bộ dữ liệu hiện hành không quy định rằng mọi giấy khám tại địa phương đều được chấp nhận, cũng không nêu danh mục xét nghiệm để người lao động tự làm trước. Nếu đang có kết quả khám gần đây, hãy giữ lại và nói với người phụ trách; chỉ sử dụng hoặc bổ sung khi nhận hướng dẫn cụ thể cho trường hợp của mình.",
+            "Điều này không phủ nhận giá trị chăm sóc sức khỏe cá nhân. Nếu đang có triệu chứng, bệnh cần theo dõi hoặc bác sĩ đã hẹn tái khám, người lao động vẫn nên khám và điều trị vì sức khỏe của mình, không chờ quy trình tuyển sinh. Tuy nhiên, khám bệnh cá nhân và khám tuyển phục vụ tiếp nhận là hai mục đích khác nhau; một kết quả thuận lợi ở nơi khám trước không phải lời hứa chắc chắn đạt yêu cầu nghề mỏ."
+          ]
+        },
+        {
+          "heading": "Thứ tự năm bước giúp người ở tỉnh xa tránh đi lại thừa",
+          "paragraphs": [
+            "Bước một là tự đối chiếu điều kiện trên website. Bước hai là gửi đăng ký bằng thông tin thật. Bước ba là chờ người phụ trách kiểm tra, trao đổi điểm chưa rõ và xác nhận lịch. Bước bốn mới là di chuyển, làm thủ tục và khám tuyển theo hướng dẫn. Bước năm là tiếp tục quy trình nhập học nếu kết quả cùng hồ sơ đạt yêu cầu. Mỗi bước phải được hoàn thành trước khi hiểu rằng mình đã chuyển sang bước tiếp theo.",
+            "Nếu chỉ nhận một tin nhắn mơ hồ như “cứ lên rồi tính”, người lao động nên hỏi lại ngày, nơi tiếp nhận và đầu mối phụ trách trước khi đi. Không chuyển tiền để mua kết quả khám, không nhờ người hứa bỏ qua điều kiện và không gửi bệnh án chi tiết qua kênh chưa xác minh. Mục tiêu của sàng lọc từ xa là giúp người phù hợp đi đúng thời điểm, đồng thời giúp người chưa phù hợp tránh tốn chi phí vô ích."
+          ]
+        }
+      ],
+      "takeaway_title": "Đăng ký trước để biết đúng bước khám cần làm",
+      "takeaway": "Thứ tự phù hợp là kiểm tra điều kiện và đăng ký từ xa trước, chờ người phụ trách xác nhận trường hợp cùng lịch tiếp nhận, sau đó mới khám tuyển trực tiếp theo hướng dẫn. Không tự làm một gói khám bất kỳ để thay thế kết quả tuyển, không đi xa khi chưa có lịch và không coi câu trả lời của biểu mẫu là kết luận đủ sức khỏe. Nếu đang có bệnh hoặc triệu chứng cần chăm sóc, hãy khám vì sức khỏe cá nhân và khai trung thực khi tham gia quy trình.",
+      "source_note": "Bộ dữ liệu tuyển dụng năm 2026 quy định đăng ký ban đầu là bước sàng lọc từ xa, chưa yêu cầu ảnh giấy tờ; điều kiện sức khỏe được xác nhận qua khám tuyển và hồ sơ thực tế. Nguồn không công bố cơ sở khám, chi phí hoặc danh mục xét nghiệm cố định nên bài không tự bổ sung các chi tiết này.",
+      "faqs": [
+        [
+          "Chưa đăng ký có cần tự đi khám sức khỏe trước không?",
+          "Không cần tự làm một gói khám chỉ để đăng ký. Hãy gửi thông tin sơ bộ trước và chờ hướng dẫn nếu trường hợp phù hợp."
+        ],
+        [
+          "Biểu mẫu báo phù hợp có nghĩa chắc chắn đạt khám tuyển không?",
+          "Không. Biểu mẫu chỉ sàng lọc thông tin ban đầu; kết quả khám trực tiếp và hồ sơ thực tế mới là căn cứ xác nhận."
+        ],
+        [
+          "Đã có giấy khám sức khỏe ở quê thì phải gửi ngay không?",
+          "Không gửi ngay khi chưa được yêu cầu. Hãy giữ lại, báo với người phụ trách và làm theo hướng dẫn cụ thể của đợt tiếp nhận."
+        ],
+        [
+          "Có nên mua vé lên Quảng Ninh để khám khi chưa có lịch không?",
+          "Không nên. Hãy chờ xác nhận rõ thời gian, địa điểm và đầu mối tiếp nhận để tránh đi lại hoặc chuẩn bị không đúng bước."
+        ]
+      ],
+      "related": [
+        [
+          "/kiem-tra-dieu-kien/",
+          "Tự kiểm tra điều kiện sức khỏe sơ bộ"
+        ],
+        [
+          "/thong-tin-tuyen-tho-mo/#can-thi-suc-khoe",
+          "Đối chiếu yêu cầu sức khỏe đang áp dụng"
+        ],
+        [
+          "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=kham_suc_khoe_truoc_sau#dang-ky",
+          "Đăng ký để được kiểm tra trước khi đi"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-08-27",
+      "slug": "mat-cccd-goc-co-dang-ky-hoc-nghe-mo-duoc-khong",
+      "title": "Mất CCCD gốc có đăng ký học nghề mỏ được không?",
+      "short_title": "Mất CCCD gốc có đăng ký được không",
+      "meta": "Mất CCCD gốc vẫn có thể đăng ký học nghề mỏ ban đầu. Xem việc có thể làm ngay, giấy tờ cần bổ sung và khi nào mới nên đi nhập học.",
+      "eyebrow": "XỬ LÝ HỒ SƠ KHI MẤT CCCD GỐC",
+      "primary_query": "mất CCCD gốc có đăng ký học nghề mỏ được không",
+      "query_variants": [
+        "mất căn cước có đăng ký học nghề mỏ được không",
+        "chưa có CCCD gốc có đi học nghề mỏ được không",
+        "mất CCCD cần làm gì trước khi nhập học nghề mỏ"
+      ],
+      "direct_answer": "Có thể đăng ký và kiểm tra điều kiện sơ bộ dù đang mất CCCD gốc, vì bước đầu chưa yêu cầu nộp hoặc gửi ảnh giấy tờ. Tuy nhiên, CCCD bản gốc nằm trong hồ sơ cần mang khi nhập học. Hãy nói rõ tình trạng giấy tờ, chờ hướng dẫn và chỉ di chuyển khi đã được xác nhận lịch cùng cách bổ sung hồ sơ.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-do-van-do-trong-ham-lo.webp",
+        "alt": "Công nhân thợ lò Đỗ Văn Độ mặc bảo hộ xanh và đội mũ tại vị trí làm việc trong hầm lò",
+        "credit": "Ảnh: Vinacomin · người thợ mỏ Đỗ Văn Độ tại vị trí làm việc"
+      },
+      "intro": [
+        "Mất căn cước thường khiến người lao động nghĩ rằng phải dừng toàn bộ việc tìm hiểu và đăng ký học nghề mỏ. Thực tế, quy trình hiện hành tách rõ bước kiểm tra ban đầu với bước làm thủ tục nhập học. Lúc mới đăng ký, người lao động chỉ cung cấp thông tin cơ bản để đối chiếu tuổi, thể lực, sức khỏe, nơi ở và nhu cầu nghề nghiệp; chưa phải tải ảnh CCCD, giấy khai sinh hay bằng cấp.",
+        "Điều cần lưu ý là đăng ký được không đồng nghĩa đã đủ hồ sơ để nhập học. Danh mục giấy tờ cần mang theo khi có lịch gồm CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Vì vậy, người đang mất CCCD nên báo đúng tình trạng ngay từ đầu, chủ động xử lý giấy tờ theo hướng dẫn của cơ quan có thẩm quyền và không tự mua vé lên Quảng Ninh khi chưa biết hồ sơ của mình sẽ được tiếp nhận thế nào."
+      ],
+      "key_points": [
+        [
+          "Vẫn đăng ký sơ bộ được",
+          "Bước đầu chưa yêu cầu nộp hoặc gửi ảnh giấy tờ nên mất CCCD không cản việc kiểm tra điều kiện từ xa."
+        ],
+        [
+          "Chưa đủ hồ sơ nhập học",
+          "CCCD bản gốc là giấy tờ cần mang khi làm thủ tục, vì vậy phải báo rõ nếu chưa có."
+        ],
+        [
+          "Không dùng ảnh cũ để thay bản gốc",
+          "Ảnh chụp hoặc bản photocopy không được bài viết này coi là giấy tờ thay thế khi nguồn chuẩn không quy định như vậy."
+        ],
+        [
+          "Chờ xác nhận trước khi đi",
+          "Chỉ chuẩn bị hành trình sau khi người phụ trách xác nhận lịch, địa điểm và cách xử lý hồ sơ còn thiếu."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Mất CCCD gốc có đăng ký học nghề mỏ được không?",
+          "paragraphs": [
+            "Có thể thực hiện bước đăng ký ban đầu. Biểu mẫu hiện hành không yêu cầu tải ảnh căn cước hoặc nộp hồ sơ ngay; mục tiêu là kiểm tra sơ bộ người đăng ký có nằm trong nhóm tuổi đang tiếp nhận, đạt mốc chiều cao và cân nặng, đồng thời có tình trạng sức khỏe cần trao đổi thêm hay không. Hãy khai đúng họ tên, năm sinh, nơi ở và nói rõ rằng CCCD gốc đang bị mất để người phụ trách hiểu đầy đủ trường hợp.",
+            "Sau khi gửi thông tin, người lao động cần chờ phản hồi thay vì hiểu rằng mình đã được nhận vào học. Việc phù hợp ở bước sơ bộ chỉ mở ra bước hướng dẫn tiếp theo. Hồ sơ thực tế, lịch tiếp nhận và kết quả khám tuyển vẫn phải được đối chiếu trước khi hoàn tất nhập học. Cách làm này giúp người ở xa không tốn tiền đi lại trong khi giấy tờ quan trọng vẫn chưa sẵn sàng."
+          ]
+        },
+        {
+          "heading": "Đăng ký ban đầu và nhập học là hai thời điểm khác nhau",
+          "paragraphs": [
+            "Ở thời điểm đăng ký, thông tin cần nhất là dữ liệu giúp sàng lọc: năm sinh, tỉnh đang sống, chiều cao, cân nặng và tình trạng sức khỏe hiện tại. Người lao động chưa cần gửi CCCD, giấy khai sinh hoặc bằng cấp qua mạng. Đây cũng là lý do trường hợp mất căn cước vẫn có thể bắt đầu bằng việc hỏi và kiểm tra điều kiện, thay vì chờ có đủ mọi giấy tờ mới liên hệ.",
+            "Ở thời điểm nhập học, yêu cầu thay đổi vì người tiếp nhận phải đối chiếu hồ sơ trực tiếp. Nguồn chuẩn hiện hành liệt kê CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Bài viết không tự coi ảnh chụp, bản photocopy, giấy báo mất hay một loại giấy tờ khác là vật thay thế cho CCCD bản gốc, bởi bộ dữ liệu tuyển dụng không công bố quy tắc thay thế đó. Trường hợp cụ thể cần được xác nhận trước."
+          ]
+        },
+        {
+          "heading": "Mất CCCD gốc: nên làm gì trước khi lên Quảng Ninh?",
+          "items": [
+            "Gửi đăng ký bằng thông tin thật và ghi rõ tình trạng CCCD đang bị mất; không dùng số hoặc giấy tờ của người khác để hoàn thành biểu mẫu.",
+            "Liên hệ đúng Nguyễn Tử Linh qua số điện thoại hoặc Zalo 096 304 8585 để hỏi bước hồ sơ cần làm, nhưng không gửi giấy tờ gốc qua bưu điện.",
+            "Chủ động hỏi cơ quan có thẩm quyền về việc cấp lại hoặc xử lý căn cước bị mất; website tuyển sinh không thay thế hướng dẫn hành chính của cơ quan đó.",
+            "Chỉ đặt vé và di chuyển sau khi đã được xác nhận ngày, địa điểm tiếp nhận, giấy tờ phải mang và cách xử lý phần hồ sơ còn thiếu.",
+            "Giữ lại nội dung xác nhận lịch để đối chiếu; nếu chỉ nhận lời nhắn mơ hồ hoặc yêu cầu chuyển tiền giữ chỗ, hãy dừng lại và kiểm tra đầu mối công khai."
+          ]
+        },
+        {
+          "heading": "Có ảnh CCCD hoặc bản photocopy thì đã đủ chưa?",
+          "paragraphs": [
+            "Không nên tự kết luận đã đủ. Ảnh chụp hai mặt hoặc bản photocopy có thể giúp người lao động nhớ thông tin, nhưng danh mục hồ sơ đang áp dụng vẫn nêu CCCD bản gốc ở bước nhập học. Khi chưa có hướng dẫn chính thức cho tình huống mất giấy tờ, việc mang một bản sao lên Quảng Ninh không bảo đảm hồ sơ sẽ được tiếp nhận hoặc thay thế được yêu cầu đối chiếu trực tiếp.",
+            "Cách an toàn là nói rõ mình đang có những gì, thiếu những gì và chờ câu trả lời cho đúng trường hợp. Nếu được yêu cầu bổ sung một giấy tờ hoặc thực hiện một thủ tục cụ thể, hãy xác nhận lại tên giấy tờ, thời điểm cần có và nơi nộp trước khi làm. Không chỉnh sửa ảnh giấy tờ, không mượn căn cước của người khác và không gửi dữ liệu cá nhân cho tài khoản chưa xác minh."
+          ]
+        },
+        {
+          "heading": "Một lộ trình ngắn để không lỡ việc vì thiếu giấy tờ",
+          "paragraphs": [
+            "Bước một, kiểm tra điều kiện và gửi đăng ký từ xa. Bước hai, thông báo ngay việc mất CCCD gốc. Bước ba, tiếp nhận hướng dẫn về lịch và hồ sơ cần hoàn thiện. Bước bốn, xử lý giấy tờ với cơ quan có thẩm quyền và chỉ chuẩn bị hành trình khi đã biết rõ yêu cầu. Bước năm, mang hồ sơ theo hướng dẫn tới đúng địa điểm tiếp nhận tại Quang Hanh nếu lịch đã được xác nhận.",
+            "Thứ tự này không tạo ngoại lệ cho hồ sơ và cũng không hứa rằng người chưa có CCCD gốc chắc chắn được nhập học. Giá trị của nó nằm ở việc người lao động vẫn có thể bắt đầu kiểm tra điều kiện ngay, đồng thời biết rõ nút thắt cần giải quyết trước khi đi xa. Nếu lịch dự kiến đến gần mà giấy tờ chưa xong, hãy báo lại để được hướng dẫn thay vì tự đến và hy vọng xử lý tại chỗ."
+          ]
+        }
+      ],
+      "takeaway_title": "Đăng ký trước, nhưng phải xử lý CCCD trước bước nhập học",
+      "takeaway": "Mất CCCD gốc không ngăn người lao động gửi thông tin để kiểm tra điều kiện sơ bộ, vì bước đăng ký ban đầu chưa yêu cầu nộp hoặc gửi ảnh giấy tờ. Tuy nhiên, CCCD bản gốc vẫn nằm trong danh mục hồ sơ cần mang khi nhập học. Hãy khai đúng tình trạng, chủ động xử lý giấy tờ với cơ quan có thẩm quyền, chờ hướng dẫn cụ thể và chỉ lên Quảng Ninh khi đã được xác nhận lịch cùng cách hoàn thiện hồ sơ.",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ; hồ sơ nhập học gồm CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; không gửi giấy tờ gốc qua bưu điện.",
+      "faqs": [
+        [
+          "Mất CCCD nhưng còn ảnh chụp hai mặt thì đăng ký được không?",
+          "Bước đăng ký ban đầu không yêu cầu tải ảnh CCCD, nên hãy khai thông tin thật và báo rõ tình trạng giấy tờ. Ảnh chụp không được bài viết coi là vật thay thế bản gốc khi nhập học."
+        ],
+        [
+          "Có thể gửi giấy báo mất CCCD thay cho bản gốc không?",
+          "Bộ dữ liệu tuyển hiện hành không quy định giấy báo mất là giấy tờ thay thế. Hãy hỏi đúng đầu mối và chỉ thực hiện theo hướng dẫn cho trường hợp cụ thể."
+        ],
+        [
+          "Đang chờ cấp lại CCCD có nên mua vé lên Quảng Ninh không?",
+          "Chưa nên nếu lịch và cách xử lý hồ sơ chưa được xác nhận. Hãy báo tình trạng giấy tờ, chờ hướng dẫn rồi mới sắp xếp di chuyển."
+        ],
+        [
+          "Hồ sơ nhập học nghề mỏ ngoài CCCD còn gì?",
+          "Theo thông tin đang áp dụng, cần mang giấy khai sinh và bằng THCS hoặc THPT nếu có, cùng CCCD bản gốc; chỉ chuẩn bị theo lịch đã được xác nhận."
+        ]
+      ],
+      "related": [
+        [
+          "/ho-so-nhap-hoc/",
+          "Xem danh mục hồ sơ nhập học"
+        ],
+        [
+          "/giai-dap-nghe-mo/dang-ky-hoc-nghe-mo-ban-dau-co-can-gui-anh-cccd-khong/",
+          "Phân biệt đăng ký ban đầu và gửi ảnh CCCD"
+        ],
+        [
+          "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=mat_cccd_goc#dang-ky",
+          "Đăng ký để được kiểm tra trước khi đi"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-08-28",
+      "slug": "hoc-nghe-mo-di-thuc-tap-co-duoc-tra-luong-khong",
+      "title": "Học nghề mỏ đi thực tập có được trả lương không?",
+      "short_title": "Thực tập nghề mỏ có được trả lương không",
+      "meta": "Học nghề mỏ đi thực tập được hưởng 85–100% lương công nhân cùng dây chuyền theo quy định. Xem cách hiểu đúng và điều cần hỏi trước khi đi.",
+      "eyebrow": "THU NHẬP TRONG GIAI ĐOẠN THỰC TẬP",
+      "primary_query": "học nghề mỏ đi thực tập có được trả lương không",
+      "query_variants": [
+        "thực tập nghề mỏ có lương không",
+        "học thợ lò đi thực tập được hưởng bao nhiêu lương",
+        "lương thực tập học nghề mỏ tính thế nào"
+      ],
+      "direct_answer": "Có. Trong thời gian thực tập tại doanh nghiệp, người học nghề mỏ được hưởng 85–100% lương công nhân trong cùng dây chuyền theo quy định hiện hành. Đây không phải một mức tiền cố định cho mọi người; tỷ lệ, kỳ tính và số tiền thực nhận cần được đối chiếu với vị trí thực tập, dây chuyền và hướng dẫn của đợt tiếp nhận.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-pham-dinh-duan-van-hanh-thiet-bi.webp",
+        "alt": "Công nhân TKV mặc bảo hộ và vận hành thiết bị trong hầm lò",
+        "credit": "Ảnh: Vinacomin · công nhân TKV vận hành thiết bị trong hầm lò"
+      },
+      "intro": [
+        "Người lao động thường nghe hai thông tin là hỗ trợ 7,5 triệu đồng/tháng mỗi tháng trong thời gian học và hưởng lương khi đi thực tập, rồi hiểu rằng đây là cùng một khoản hoặc chắc chắn được nhận đồng thời. Nguồn tuyển sinh hiện hành tách hai giai đoạn: trong thời gian học, người học thuộc chỉ tiêu được hưởng chính sách đào tạo, ăn ở và hỗ trợ; khi thực tập tại doanh nghiệp, người học được hưởng 85–100% lương công nhân trong cùng dây chuyền theo quy định.",
+        "Vì lương thực tập được tham chiếu theo công nhân cùng dây chuyền, website không quy đổi thành một con số tiền mặt chung và không hứa mức thực nhận cho từng người. Cách đúng là xác nhận nghề học, đơn vị và vị trí thực tập, thời điểm bắt đầu, tỷ lệ áp dụng cùng kỳ thanh toán trước khi dự tính chi tiêu hoặc gửi thông tin cho gia đình."
+      ],
+      "key_points": [
+        [
+          "Có hưởng lương thực tập",
+          "Mức hưởng được nêu là 85–100% lương công nhân trong cùng dây chuyền theo quy định."
+        ],
+        [
+          "Không phải số tiền cố định",
+          "Tiền thực nhận phụ thuộc dây chuyền, vị trí, thời gian thực tập và cách áp dụng của doanh nghiệp."
+        ],
+        [
+          "Khác hỗ trợ khi học",
+          "Khoản hỗ trợ 7,5 triệu đồng/tháng thuộc chính sách trong thời gian học, không nên tự gộp với lương thực tập."
+        ],
+        [
+          "Cần xác nhận trước",
+          "Hỏi rõ mốc chuyển sang thực tập, tỷ lệ hưởng và kỳ thanh toán theo đợt tiếp nhận thực tế."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học nghề mỏ đi thực tập có được trả lương không?",
+          "paragraphs": [
+            "Có. Thông tin tuyển sinh đang áp dụng nêu rằng trong thời gian thực tập tại doanh nghiệp, người học được hưởng 85–100% lương công nhân trong cùng dây chuyền theo quy định. Điều này giúp phân biệt giai đoạn thực hành công việc tại doanh nghiệp với thời gian học lý thuyết, rèn kỹ năng và chuẩn bị điều kiện trước đó.",
+            "Cụm từ “cùng dây chuyền” rất quan trọng. Nó cho biết mức tham chiếu gắn với công việc và dây chuyền nơi người học thực tập, chứ không phải một mức lương duy nhất áp dụng giống nhau cho mọi nghề, mọi doanh nghiệp hoặc mọi thời điểm. Người đăng ký không nên lấy thu nhập sau khi tốt nghiệp hoặc con số của một công nhân cụ thể để suy ra lương thực tập của mình."
+          ]
+        },
+        {
+          "heading": "Phân biệt hỗ trợ 7,5 triệu đồng/tháng và lương thực tập nghề mỏ",
+          "paragraphs": [
+            "Trong thời gian học, người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ba bữa mỗi ngày, ký túc xá khép kín và hỗ trợ 7,5 triệu đồng/tháng theo chính sách đợt tuyển. Đây là nhóm quyền lợi phục vụ giai đoạn học nghề. Khi chuyển sang thực tập tại doanh nghiệp, nguồn chuẩn dùng một cách diễn đạt khác: hưởng 85–100% lương công nhân trong cùng dây chuyền theo quy định.",
+            "Hai thông tin này không nên cộng cơ học thành một tổng thu nhập tháng. Nguồn tuyển không khẳng định mọi khoản được chi đồng thời, cũng không công bố một lịch thanh toán giống nhau cho tất cả đợt. Trước khi lên kế hoạch tiền sinh hoạt hoặc gửi tiền về nhà, người học cần hỏi ngày bắt đầu thực tập, khoản nào còn áp dụng, tỷ lệ lương được hưởng và thời điểm chi trả."
+          ]
+        },
+        {
+          "heading": "Vì sao chưa thể nói chính xác lương thực tập là bao nhiêu tiền?",
+          "paragraphs": [
+            "Tỷ lệ 85–100% mới là nguyên tắc được công bố; số tiền cụ thể còn gắn với lương của công nhân trong cùng dây chuyền và thời gian thực tế được tính trong kỳ. Nghề khai thác mỏ, xây dựng mỏ và cơ điện mỏ có nhiệm vụ khác nhau. Nơi thực tập, vị trí được phân công, số ngày tham gia và quy định của doanh nghiệp cũng có thể làm cho kết quả thực nhận không giống nhau.",
+            "Bởi vậy, một lời hứa kiểu “đi thực tập chắc chắn nhận một số tiền cố định” sẽ thiếu căn cứ. Câu trả lời đáng tin cậy phải đi kèm tên đơn vị, nghề, dây chuyền, tỷ lệ áp dụng, mốc thời gian và bảng đối chiếu hoặc hướng dẫn của doanh nghiệp. Nếu chưa có những dữ kiện đó, chỉ nên sử dụng mức 85–100% như phạm vi chính sách, không coi là cam kết số tiền."
+          ]
+        },
+        {
+          "heading": "Năm câu cần hỏi trước khi bắt đầu thực tập",
+          "items": [
+            "Tôi bắt đầu thực tập từ ngày nào và thực tập tại doanh nghiệp, bộ phận hoặc dây chuyền nào?",
+            "Vị trí thực tập thuộc nghề khai thác mỏ, xây dựng mỏ hay cơ điện mỏ; công việc được hướng dẫn ra sao?",
+            "Tỷ lệ 85%, mức cao hơn hay 100% được xác định theo điều kiện nào trong đợt này?",
+            "Kỳ tính và ngày dự kiến thanh toán lương thực tập được doanh nghiệp hướng dẫn thế nào?",
+            "Trong giai đoạn chuyển từ học sang thực tập, các chính sách ăn, ở và hỗ trợ được áp dụng ra sao?"
+          ]
+        },
+        {
+          "heading": "Cách người ở xa dự trù tài chính an toàn",
+          "paragraphs": [
+            "Người ở tỉnh xa nên chuẩn bị một khoản chi tiêu cá nhân phù hợp cho giai đoạn đầu, nhưng không cần tự đặt ra con số quá lớn khi chính sách học nghề đã có ăn, ở và hỗ trợ cho người thuộc chỉ tiêu. Điều quan trọng hơn là chỉ di chuyển sau khi có lịch, hỏi rõ giấy tờ cần mang và ghi lại thông tin về mốc chuyển sang thực tập.",
+            "Không vay hoặc cam kết chi tiêu dựa trên mức lương thực tập chưa được doanh nghiệp xác nhận. Khi nhận thông báo hoặc bảng thanh toán, hãy đối chiếu thời gian thực tập, tỷ lệ hưởng và dây chuyền tham chiếu. Nếu nội dung chưa rõ, hỏi người phụ trách đào tạo hoặc doanh nghiệp tiếp nhận thay vì dựa vào lời kể của người học ở một đợt khác."
+          ]
+        }
+      ],
+      "takeaway_title": "Có lương thực tập, nhưng phải hiểu đúng cách tính",
+      "takeaway": "Người học nghề mỏ thực tập tại doanh nghiệp được hưởng 85–100% lương công nhân trong cùng dây chuyền theo quy định. Đây là phạm vi chính sách, không phải lời hứa một số tiền cố định cho mọi người. Hãy phân biệt lương thực tập với hỗ trợ 7,5 triệu đồng/tháng trong thời gian học và xác nhận nghề, dây chuyền, tỷ lệ cùng kỳ thanh toán của đợt thực tế trước khi dự trù thu nhập.",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ba bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học; khi thực tập tại doanh nghiệp được hưởng 85–100% lương công nhân trong cùng dây chuyền theo quy định.",
+      "faqs": [
+        [
+          "Thực tập nghề mỏ có chắc chắn hưởng đủ 100% lương không?",
+          "Không nên mặc định. Chính sách công bố phạm vi 85–100% lương công nhân trong cùng dây chuyền; tỷ lệ thực tế cần được xác nhận theo đợt, vị trí và quy định của doanh nghiệp."
+        ],
+        [
+          "Lương thực tập có cộng thêm 7,5 triệu đồng/tháng hỗ trợ học nghề không?",
+          "Nguồn chuẩn không nói hai khoản luôn được chi đồng thời. Hỗ trợ 7,5 triệu đồng/tháng thuộc giai đoạn học; khi chuyển sang thực tập cần hỏi rõ những chính sách nào còn áp dụng."
+        ],
+        [
+          "Khi nào người học bắt đầu được tính lương thực tập?",
+          "Mốc tính bắt đầu khi người học được bố trí thực tập tại doanh nghiệp theo kế hoạch. Ngày cụ thể phải được xác nhận trong lịch của đợt tiếp nhận."
+        ],
+        [
+          "Lương thực tập có giống thu nhập sau khi ký hợp đồng không?",
+          "Không nên đồng nhất. Lương thực tập tham chiếu 85–100% công nhân cùng dây chuyền; thu nhập sau tốt nghiệp và ký hợp đồng được xác định theo công việc, định mức và hồ sơ lao động thực tế."
+        ]
+      ],
+      "related": [
+        [
+          "/thu-nhap-an-o-ho-tro/",
+          "Xem toàn bộ chính sách thu nhập, ăn ở và hỗ trợ"
+        ],
+        [
+          "/hoc-nghe-mo-tai-quang-ninh/",
+          "Tìm hiểu lộ trình học nghề mỏ tại Quảng Ninh"
+        ],
+        [
+          "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=luong_thuc_tap#dang-ky",
+          "Đăng ký để kiểm tra điều kiện trước khi đi"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-08-29",
+      "slug": "dang-ky-hoc-nghe-mo-co-phai-cho-khai-giang-khong",
+      "title": "Đăng ký học nghề mỏ có phải chờ khai giảng không?",
+      "short_title": "Đăng ký nghề mỏ có phải chờ khai giảng",
+      "meta": "Đăng ký học nghề mỏ có phải chờ khai giảng không? Chương trình tiếp nhận liên tục năm 2026 nhưng người đăng ký vẫn phải chờ xác nhận lịch.",
+      "eyebrow": "LỊCH TIẾP NHẬN VÀ NHẬP HỌC NGHỀ MỎ",
+      "primary_query": "đăng ký học nghề mỏ có phải chờ khai giảng không",
+      "query_variants": [
+        "đăng ký học nghề mỏ bao lâu thì nhập học",
+        "học nghề mỏ có tuyển liên tục không",
+        "khi nào có lịch nhập học nghề mỏ"
+      ],
+      "direct_answer": "Chương trình đang tiếp nhận liên tục trong năm 2026, nên người phù hợp không phải chờ một mùa tuyển sinh duy nhất. Tuy nhiên, gửi đăng ký chưa đồng nghĩa có thể đến nhập học ngay. Người lao động vẫn phải chờ xác nhận điều kiện sơ bộ, ngày, địa điểm và đầu mối tiếp nhận của đợt cụ thể rồi mới chuẩn bị hồ sơ, di chuyển.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-hoc-sinh-vang-danh-thuc-hanh.webp",
+        "alt": "Học sinh nghề mỏ mặc bảo hộ và đội mũ tham quan thực tế trong hầm lò Than Vàng Danh",
+        "credit": "Ảnh: Vinacomin · học sinh nghề mỏ tham quan thực tế tại Than Vàng Danh"
+      },
+      "intro": [
+        "Cụm từ “tiếp nhận liên tục” dễ tạo ra hai cách hiểu trái ngược. Có người nghĩ phải đợi một lễ khai giảng cố định trong năm mới được đăng ký; người khác lại tưởng điền biểu mẫu hôm nay thì ngày mai có thể tự đến trường. Cả hai cách hiểu đều chưa đúng với quy trình đang áp dụng.",
+        "Người lao động có thể gửi thông tin ban đầu trong thời gian chương trình còn tiếp nhận. Sau đó, đầu mối phụ trách cần đối chiếu điều kiện và xác nhận lịch của đợt phù hợp. Chỉ khi đã biết rõ ngày, giờ, địa điểm, người liên hệ và giấy tờ cần mang thì người ở xa mới nên đặt vé, xin nghỉ việc hoặc di chuyển tới Quảng Ninh."
+      ],
+      "key_points": [
+        [
+          "Tiếp nhận liên tục",
+          "Người phù hợp có thể đăng ký trong năm 2026, không phải chờ một mùa tuyển sinh duy nhất."
+        ],
+        [
+          "Không tự đến bất kỳ ngày nào",
+          "Đăng ký ban đầu chưa phải giấy hẹn; cần chờ xác nhận lịch của đợt tiếp nhận cụ thể."
+        ],
+        [
+          "Lịch phải đủ thông tin",
+          "Trước khi đi, cần biết ngày, giờ, địa điểm, đầu mối tiếp nhận và giấy tờ phải mang."
+        ],
+        [
+          "Không có số ngày chờ cố định",
+          "Dữ liệu hiện hành không công bố một thời hạn chờ hoặc lịch khai giảng giống nhau cho mọi người."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Đăng ký học nghề mỏ có phải chờ khai giảng không?",
+          "paragraphs": [
+            "Có thể phải chờ lịch tiếp nhận của đợt phù hợp, nhưng không phải chờ một mùa khai giảng duy nhất trong năm. Chương trình đang tiếp nhận liên tục trong năm 2026. Điều đó cho phép người lao động gửi thông tin để được kiểm tra điều kiện và xếp vào quy trình tư vấn khi có nhu cầu thực tế.",
+            "Điểm cần nhớ là “đang nhận đăng ký” khác với “đã có lịch nhập học”. Người đăng ký chỉ nên coi lịch là xác nhận khi có đủ ngày, giờ, địa điểm, người phụ trách và hướng dẫn hồ sơ. Nếu mới điền biểu mẫu hoặc chỉ nhận một câu trả lời chung, chưa nên tự mua vé hay mang giấy tờ gốc đến trường."
+          ]
+        },
+        {
+          "heading": "Phân biệt mở đăng ký và xác nhận lịch nhập học nghề mỏ",
+          "paragraphs": [
+            "Mở đăng ký nghĩa là đầu mối vẫn tiếp nhận thông tin của người có nhu cầu. Bước này chủ yếu giúp đối chiếu tuổi, chiều cao, cân nặng, tình trạng sức khỏe và nơi đang sinh sống. Người lao động chưa cần gửi ảnh căn cước công dân ở bước ban đầu và cũng chưa phải hoàn thiện toàn bộ hồ sơ nhập học.",
+            "Xác nhận lịch là bước sau, khi người phụ trách đã kiểm tra sơ bộ và có thông tin đủ cụ thể cho đợt tiếp nhận. Lịch cần giúp người lao động biết mình đến đâu, gặp ai, vào thời điểm nào và mang theo giấy tờ gì. Hai bước tách biệt giúp người ở tỉnh xa tránh một chuyến đi không cần thiết, đồng thời bảo vệ giấy tờ cá nhân khỏi những lời mời không rõ người chịu trách nhiệm."
+          ]
+        },
+        {
+          "heading": "Từ lúc đăng ký đến khi đi nhập học gồm những bước nào?",
+          "items": [
+            "Gửi thông tin ban đầu gồm năm sinh, nơi ở, chiều cao, cân nặng, tình trạng sức khỏe và số điện thoại liên hệ chính chủ.",
+            "Chờ đối chiếu điều kiện sơ bộ; nếu có điểm cần làm rõ, trả lời trung thực trước khi chuẩn bị chuyến đi.",
+            "Nhận xác nhận ngày, giờ, địa điểm và đầu mối tiếp nhận của đợt cụ thể; ghi lại thông tin để đối chiếu khi cần.",
+            "Chuẩn bị căn cước công dân bản gốc, giấy khai sinh, bằng THCS hoặc THPT nếu có theo hướng dẫn hiện hành; không gửi giấy tờ gốc qua bưu điện.",
+            "Chỉ đặt vé và di chuyển sau khi lịch đã rõ. Khi tới nơi, thực hiện thủ tục và khám tuyển theo hướng dẫn; kết quả sơ bộ qua điện thoại không thay thế kết quả chính thức."
+          ]
+        },
+        {
+          "heading": "Vì sao chưa thể hứa chính xác đăng ký bao lâu thì nhập học?",
+          "paragraphs": [
+            "Bộ dữ liệu tuyển sinh hiện hành xác nhận việc tiếp nhận liên tục trong năm 2026 nhưng không công bố số ngày chờ cố định, lịch khai giảng cho từng lớp hoặc một hạn trả lời giống nhau cho tất cả hồ sơ. Vì vậy, câu trả lời kiểu “đăng ký xong chắc chắn đi sau ba ngày” hoặc “ngày nào cũng nhập học được” đều vượt quá thông tin đã được xác nhận.",
+            "Thời điểm phù hợp còn cần gắn với việc kiểm tra điều kiện, lịch tiếp nhận thực tế và hướng dẫn của người phụ trách. Một người cần bổ sung thông tin sức khỏe sẽ có tiến trình khác người đã cung cấp đầy đủ. Người ở xa cũng cần thời gian chuẩn bị giấy tờ và hành trình. Cách an toàn nhất là hỏi trực tiếp tình trạng đăng ký của chính mình, thay vì lấy lịch của một người ở đợt trước làm cam kết cho đợt sau."
+          ]
+        },
+        {
+          "heading": "Người ở xa nên làm gì trong lúc chờ lịch khai giảng nghề mỏ?",
+          "paragraphs": [
+            "Trước hết, hãy giữ điện thoại có thể nhận cuộc gọi và kiểm tra lại số đã gửi. Chuẩn bị sẵn danh sách giấy tờ nhưng chưa giao bản gốc cho bất kỳ trung gian nào. Nếu đang đi làm, chỉ xin nghỉ hoặc chốt ngày di chuyển sau khi có lịch cụ thể; việc này tránh mất thu nhập và chi phí đi lại vì một thông báo chưa hoàn chỉnh.",
+            "Khi nhận lịch, hãy đối chiếu tên người phụ trách Nguyễn Tử Linh, địa điểm Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh và nội dung giấy tờ cần mang. Không chuyển tiền giữ chỗ theo lời mời thiếu căn cứ. Nếu ngày, nơi gặp hoặc đầu mối chưa rõ, liên hệ lại qua kênh đăng ký trên website để xác nhận trước khi khởi hành."
+          ]
+        }
+      ],
+      "takeaway_title": "Đăng ký sớm, nhưng chỉ đi khi lịch đã được xác nhận",
+      "takeaway": "Chương trình học nghề mỏ tiếp nhận liên tục trong năm 2026, vì vậy người phù hợp không phải chờ một mùa tuyển sinh cố định mới được gửi thông tin. Tuy nhiên, biểu mẫu đăng ký không phải giấy hẹn nhập học. Hãy chờ xác nhận đầy đủ ngày, giờ, địa điểm, đầu mối và hồ sơ của đợt cụ thể rồi mới đặt vé, xin nghỉ việc hoặc mang giấy tờ gốc tới Quảng Ninh.",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: chương trình tiếp nhận liên tục trong năm 2026; đăng ký ban đầu chưa cần hồ sơ; người lao động chỉ đến nhập học sau khi được xác nhận lịch. Bộ dữ liệu không công bố số ngày chờ hoặc lịch khai giảng cố định.",
+      "faqs": [
+        [
+          "Điền biểu mẫu đăng ký xong có thể đi Quảng Ninh ngay không?",
+          "Chưa. Hãy chờ xác nhận điều kiện sơ bộ, ngày, giờ, địa điểm, người phụ trách và giấy tờ cần mang rồi mới di chuyển."
+        ],
+        [
+          "Tiếp nhận liên tục có nghĩa là ngày nào cũng nhập học được không?",
+          "Không nên hiểu như vậy. Tiếp nhận liên tục là vẫn nhận nhu cầu đăng ký trong năm; lịch nhập học phải được xác nhận theo đợt thực tế."
+        ],
+        [
+          "Đăng ký học nghề mỏ bao nhiêu ngày thì có lịch?",
+          "Hiện không có số ngày chờ cố định được công bố. Thời điểm cần được xác nhận theo tình trạng kiểm tra thông tin và đợt tiếp nhận cụ thể."
+        ],
+        [
+          "Có cần chuyển tiền giữ chỗ trong lúc chờ lịch không?",
+          "Quy trình hiện hành không công bố khoản giữ chỗ ở bước đăng ký ban đầu. Không chuyển tiền cho trung gian; hãy xác minh trực tiếp qua đầu mối trên website."
+        ]
+      ],
+      "related": [
+        [
+          "/nguoi-tinh-xa-dang-ky-di-lam-mo-the-nao/",
+          "Xem cách người tỉnh xa đăng ký và chuẩn bị chuyến đi"
+        ],
+        [
+          "/ho-so-nhap-hoc/",
+          "Kiểm tra giấy tờ cần mang khi đã có lịch"
+        ],
+        [
+          "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=cho_lich_khai_giang#dang-ky",
+          "Gửi thông tin để kiểm tra điều kiện và nhận lịch"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-08-30",
+      "slug": "dang-ky-hoc-nghe-mo-qua-zalo-can-gui-thong-tin-gi",
+      "title": "Đăng ký học nghề mỏ qua Zalo cần gửi thông tin gì?",
+      "short_title": "Đăng ký nghề mỏ qua Zalo cần gửi gì",
+      "meta": "Đăng ký học nghề mỏ qua Zalo cần gửi thông tin gì? Xem 7 mục cần khai ban đầu, nội dung chưa nên gửi và cách nhận hướng dẫn đúng trường hợp.",
+      "eyebrow": "ĐĂNG KÝ VÀ KIỂM TRA ĐIỀU KIỆN TỪ XA",
+      "primary_query": "đăng ký học nghề mỏ qua Zalo cần gửi thông tin gì",
+      "query_variants": [
+        "nhắn Zalo đăng ký học nghề mỏ cần ghi gì",
+        "tư vấn nghề mỏ qua Zalo cần cung cấp thông tin nào",
+        "đăng ký thợ lò qua điện thoại cần chuẩn bị gì"
+      ],
+      "direct_answer": "Để đăng ký học nghề mỏ qua Zalo, người lao động nên gửi 7 thông tin bằng chữ: họ tên, năm sinh, nơi đang ở, chiều cao, cân nặng, tình trạng sức khỏe và số điện thoại chính chủ. Bước đầu chưa cần gửi ảnh CCCD hoặc giấy tờ gốc. Sau khi kiểm tra sơ bộ, Thầy Linh mới hướng dẫn hồ sơ và lịch phù hợp.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-hoi-nghi-tuyen-dung-than-ha-long.webp",
+        "alt": "Người lao động tham dự hội nghị tuyển dụng của Công ty Than Hạ Long TKV",
+        "credit": "Ảnh: Vinacomin · hội nghị tuyển dụng lao động của Than Hạ Long"
+      },
+      "intro": [
+        "Trong thực tế tư vấn tuyển sinh, tin nhắn chỉ ghi “em muốn đi mỏ” chưa đủ để xác định người hỏi có phù hợp hay cần bổ sung điểm nào. Người phụ trách phải hỏi lại nhiều lần, còn người lao động dễ chờ lâu hoặc hiểu nhầm rằng mình đã hoàn thành đăng ký. Một tin nhắn đầu tiên đủ ý giúp việc kiểm tra sơ bộ diễn ra nhanh và rõ ràng hơn.",
+        "Bảy mục cần gửi đều là thông tin ngắn có thể gõ trực tiếp trong một tin nhắn. Chưa cần chụp căn cước công dân, bằng cấp hay giấy khai sinh ở bước đầu. Cách làm này vừa giảm việc gửi dữ liệu cá nhân không cần thiết, vừa giúp người ở tỉnh xa biết mình nên tiếp tục chuẩn bị gì trước khi đặt vé hoặc xin nghỉ việc."
+      ],
+      "key_points": [
+        [
+          "Gửi đủ 7 mục bằng chữ",
+          "Họ tên, năm sinh, nơi đang ở, chiều cao, cân nặng, sức khỏe và số điện thoại giúp đối chiếu điều kiện ban đầu."
+        ],
+        [
+          "Chưa gửi ảnh giấy tờ",
+          "Bước đăng ký ban đầu chưa yêu cầu ảnh CCCD, giấy khai sinh, bằng cấp hoặc bản gốc của bất kỳ giấy tờ nào."
+        ],
+        [
+          "Khai sức khỏe trung thực",
+          "Nêu rõ tình trạng mắt, tim mạch, huyết áp và vấn đề đang điều trị; tư vấn từ xa không thay thế kết quả khám tuyển."
+        ],
+        [
+          "Chờ lịch được xác nhận",
+          "Tin nhắn đăng ký chưa phải giấy hẹn nhập học; chỉ di chuyển khi đã rõ ngày, giờ, địa điểm và đầu mối tiếp nhận."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Đăng ký học nghề mỏ qua Zalo cần gửi thông tin gì?",
+          "paragraphs": [
+            "Tin nhắn đầu tiên nên ghi đủ họ tên, năm sinh, xã hoặc phường và tỉnh đang sinh sống, chiều cao, cân nặng, tình trạng sức khỏe cùng số điện thoại chính chủ. Họ tên giúp xưng hô và tránh nhầm người; năm sinh dùng để đối chiếu mốc tuổi; nơi ở giúp dự kiến hành trình và cách liên hệ; chiều cao, cân nặng và sức khỏe phục vụ sàng lọc sơ bộ theo điều kiện hiện hành.",
+            "Số điện thoại nên là số người đăng ký đang sử dụng và có thể nghe máy. Nếu nhắn bằng tài khoản Zalo của người thân, cần ghi rõ ai là người đăng ký và số nào sẽ nhận cuộc gọi. Việc cung cấp đủ ngay từ đầu không có nghĩa đã được nhận chính thức; đây chỉ là dữ liệu ban đầu để người phụ trách biết trường hợp nào có thể tiếp tục và trường hợp nào cần hỏi thêm."
+          ]
+        },
+        {
+          "heading": "Mẫu tin nhắn đăng ký học nghề mỏ qua Zalo dễ kiểm tra",
+          "paragraphs": [
+            "Có thể trình bày theo một mẫu ngắn: “Em là Nguyễn Văn A, sinh năm 2002, hiện ở xã…, tỉnh…; cao 1m65, nặng 58kg; sức khỏe hiện tại…, có hoặc không có vấn đề về mắt, tim mạch, huyết áp; số điện thoại 09… Em muốn được kiểm tra điều kiện học nghề mỏ”. Viết mỗi mục trên một dòng càng dễ đọc, nhất là khi đường truyền yếu hoặc người tư vấn đang xử lý nhiều trường hợp.",
+            "Không cần viết câu chuyện quá dài, nhưng cũng không nên bỏ trống phần sức khỏe bằng một chữ “tốt” nếu đang có bệnh, đang dùng thuốc hoặc từng được bác sĩ lưu ý. Kinh nghiệm tư vấn cho thấy hai dữ liệu hay thiếu nhất là nơi đang ở và số điện thoại chính chủ; thiếu hai mục này khiến việc gọi lại, hướng dẫn di chuyển và xác nhận lịch dễ bị gián đoạn."
+          ]
+        },
+        {
+          "heading": "Thông tin nào chưa nên gửi trong tin nhắn đầu tiên?",
+          "paragraphs": [
+            "Đăng ký ban đầu chưa cần gửi ảnh mặt trước, mặt sau CCCD; chưa cần ảnh giấy khai sinh, bằng THCS hoặc THPT; càng không gửi giấy tờ gốc qua bưu điện. Người lao động cũng không nên gửi mật khẩu, mã xác thực, thông tin tài khoản ngân hàng hoặc ảnh chứa dữ liệu của người thân. Những nội dung đó không phục vụ việc đối chiếu tuổi, thể lực và sức khỏe ở bước đầu.",
+            "Nếu có người yêu cầu chuyển tiền giữ chỗ, gửi toàn bộ giấy tờ ngay hoặc đi tới một địa điểm chưa được xác nhận, hãy dừng lại và kiểm tra đầu mối trên website. Quy trình hiện hành tách bước gửi thông tin sơ bộ với bước chuẩn bị hồ sơ nhập học. Chỉ sau khi điều kiện ban đầu đã được trao đổi và lịch tiếp nhận được xác nhận, người đăng ký mới chuẩn bị giấy tờ theo hướng dẫn cụ thể."
+          ]
+        },
+        {
+          "heading": "Sau khi gửi Zalo, người đăng ký học nghề mỏ cần chờ gì?",
+          "paragraphs": [
+            "Người phụ trách sẽ đối chiếu sơ bộ giới tính, độ tuổi, chiều cao, cân nặng, khả năng đọc viết và thông tin sức khỏe với đợt tuyển đang áp dụng. Nếu một mục chưa rõ, người đăng ký có thể được hỏi lại trước khi nhận hướng dẫn tiếp theo. Kết quả trao đổi qua tin nhắn chỉ giúp sàng lọc ban đầu, không thay thế khám sức khỏe hoặc thủ tục tiếp nhận chính thức.",
+            "Chương trình tiếp nhận liên tục trong năm 2026 nhưng tin nhắn đã gửi chưa đồng nghĩa có thể tự đến nhập học ngay. Người ở xa chỉ nên đặt vé và mang giấy tờ gốc khi đã nhận đủ ngày, giờ, địa điểm, người phụ trách cùng danh sách giấy tờ cần mang. Nếu chưa thấy phản hồi, có thể nhắn lại đúng một luồng hội thoại hoặc gọi số trên website, tránh gửi nhiều tài khoản khiến thông tin bị tách rời."
+          ]
+        },
+        {
+          "heading": "Ba lỗi thường làm chậm việc kiểm tra điều kiện qua Zalo",
+          "items": [
+            "Chỉ nhắn “em muốn đăng ký” nhưng không ghi năm sinh, chiều cao và cân nặng, khiến người phụ trách phải hỏi lại toàn bộ dữ liệu cơ bản.",
+            "Nói sức khỏe tốt nhưng bỏ qua tình trạng cận thị, bệnh về mắt, tim mạch, huyết áp hoặc thuốc đang sử dụng, làm kết quả tư vấn sơ bộ thiếu căn cứ.",
+            "Dùng Zalo của người thân mà không để lại số điện thoại chính chủ, hoặc đổi tài khoản liên tục, khiến việc đối chiếu tin nhắn và xác nhận lịch dễ nhầm lẫn.",
+            "Tự gửi ảnh giấy tờ có dữ liệu cá nhân dù chưa được yêu cầu, trong khi bước đầu chỉ cần thông tin bằng chữ để kiểm tra điều kiện."
+          ]
+        }
+      ],
+      "takeaway_title": "Một tin nhắn đủ ý giúp kiểm tra nhanh mà vẫn bảo vệ giấy tờ",
+      "takeaway": "Khi đăng ký học nghề mỏ qua Zalo, hãy gửi một lần đủ họ tên, năm sinh, nơi đang ở, chiều cao, cân nặng, tình trạng sức khỏe và số điện thoại chính chủ. Chưa cần gửi ảnh CCCD, bằng cấp, giấy khai sinh hoặc giấy tờ gốc. Sau khi được kiểm tra sơ bộ, hãy chờ hướng dẫn hồ sơ và lịch tiếp nhận cụ thể rồi mới chuẩn bị chuyến đi tới Quảng Ninh.",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: điều kiện sơ bộ gồm tuổi, chiều cao, cân nặng, sức khỏe và khả năng đọc viết; đăng ký ban đầu chưa cần gửi ảnh giấy tờ; chỉ đến nhập học sau khi lịch được xác nhận.",
+      "faqs": [
+        [
+          "Nhắn Zalo đăng ký học nghề mỏ có cần gửi ảnh CCCD không?",
+          "Không cần ở bước đầu. Hãy gửi thông tin bằng chữ để kiểm tra sơ bộ; giấy tờ chỉ chuẩn bị theo hướng dẫn sau khi có lịch phù hợp."
+        ],
+        [
+          "Dùng Zalo của bố mẹ để đăng ký thay có được không?",
+          "Có thể nhắn hỏi thay, nhưng cần ghi rõ họ tên người đăng ký và số điện thoại chính chủ để người phụ trách liên hệ, tránh nhầm hồ sơ."
+        ],
+        [
+          "Khai sức khỏe trong tin nhắn thế nào cho đúng?",
+          "Nêu trung thực tình trạng mắt, tim mạch, huyết áp, bệnh đang điều trị và thuốc đang dùng nếu có. Tin nhắn chỉ phục vụ sàng lọc, không thay khám tuyển."
+        ],
+        [
+          "Gửi đủ thông tin qua Zalo có được coi là đã nhập học không?",
+          "Không. Đây là bước đăng ký và kiểm tra sơ bộ; người lao động cần chờ xác nhận lịch, địa điểm, đầu mối và giấy tờ trước khi di chuyển."
+        ]
+      ],
+      "related": [
+        [
+          "/kiem-tra-dieu-kien/",
+          "Tự kiểm tra tuổi, chiều cao, cân nặng và sức khỏe"
+        ],
+        [
+          "/giai-dap-nghe-mo/dang-ky-hoc-nghe-mo-ban-dau-co-can-gui-anh-cccd-khong/",
+          "Xem vì sao bước đầu chưa cần gửi ảnh CCCD"
+        ],
+        [
+          "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=dang_ky_qua_zalo#dang-ky",
+          "Gửi thông tin để được kiểm tra điều kiện"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-08-31",
+      "slug": "di-nhap-hoc-nghe-mo-co-phai-mang-cccd-ban-goc-khong",
+      "title": "Đi nhập học nghề mỏ có phải mang CCCD bản gốc không?",
+      "short_title": "Nhập học nghề mỏ có cần CCCD gốc",
+      "meta": "Đi nhập học nghề mỏ có phải mang CCCD bản gốc không? Xem đúng thời điểm cần mang, việc chưa nên làm và cách xử lý khi giấy tờ chưa sẵn sàng.",
+      "eyebrow": "GIẤY TỜ TRONG NGÀY NHẬP HỌC",
+      "primary_query": "đi nhập học nghề mỏ có phải mang CCCD bản gốc không",
+      "query_variants": [
+        "nhập học nghề mỏ cần mang căn cước gốc không",
+        "đi học thợ lò có cần CCCD bản gốc không",
+        "ngày nhập học nghề mỏ mang giấy tờ gì"
+      ],
+      "direct_answer": "Có. Khi đã được xác nhận lịch và đến làm thủ tục nhập học nghề mỏ, người đăng ký cần mang CCCD bản gốc. Bước đăng ký ban đầu chưa cần gửi ảnh giấy tờ và không gửi CCCD gốc qua bưu điện. Nếu bản gốc chưa sẵn sàng, hãy báo Thầy Linh trước khi di chuyển để được hướng dẫn.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-hoc-sinh-luong-minh-hoi-nghi-tuyen-sinh.webp",
+        "alt": "Học sinh nghề mỏ tại hội nghị tuyển sinh, đào tạo và giải quyết việc làm ở xã Lương Minh",
+        "credit": "Ảnh: Vinacomin · hội nghị tuyển sinh, đào tạo và giải quyết việc làm tại xã Lương Minh"
+      },
+      "intro": [
+        "Nhiều người ở tỉnh xa nghe yêu cầu “mang CCCD gốc” rồi vội gửi giấy tờ qua xe khách, bưu điện hoặc nhờ người khác cầm đi trước. Đây không phải cách làm đúng. CCCD bản gốc chỉ cần được chính người đăng ký mang theo khi đã có lịch tiếp nhận rõ ràng và đến làm thủ tục nhập học; nó không phải thứ phải gửi đi để giữ chỗ.",
+        "Kinh nghiệm tư vấn cho thấy cần tách ba thời điểm: hỏi và kiểm tra điều kiện, nhận xác nhận lịch, rồi mới đến nhập học. Tách đúng ba bước giúp người lao động bảo vệ giấy tờ, tránh đi lại sớm và biết phải làm gì nếu CCCD đang thất lạc, hư hỏng hoặc chưa thể mang theo."
+      ],
+      "key_points": [
+        [
+          "Ngày nhập học cần bản gốc",
+          "CCCD bản gốc nằm trong danh mục giấy tờ cần mang khi người đăng ký đến làm thủ tục nhập học theo lịch đã xác nhận."
+        ],
+        [
+          "Đăng ký ban đầu chưa cần",
+          "Bước nhắn Zalo hoặc gọi kiểm tra điều kiện không yêu cầu gửi ảnh CCCD, bản sao hay giấy tờ gốc."
+        ],
+        [
+          "Không gửi qua bưu điện",
+          "Người đăng ký tự giữ giấy tờ gốc và chỉ mang theo khi trực tiếp đến đúng địa điểm, đúng lịch tiếp nhận."
+        ],
+        [
+          "Báo trước nếu chưa có",
+          "Nếu CCCD gốc đang mất hoặc chưa sẵn sàng, cần liên hệ Thầy Linh trước khi mua vé hoặc di chuyển, không tự đoán giấy tờ thay thế."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Đi nhập học nghề mỏ có phải mang CCCD bản gốc không?",
+          "paragraphs": [
+            "Có, nhưng chỉ khi người đăng ký đã được kiểm tra sơ bộ, được xác nhận lịch và trực tiếp đến làm thủ tục nhập học. Danh mục tuyển hiện hành của website nêu CCCD bản gốc là giấy tờ trong hồ sơ nhập học. Giấy khai sinh và bằng THCS hoặc THPT nếu có cũng thuộc nhóm giấy tờ được hướng dẫn chuẩn bị; từng trường hợp cần đối chiếu theo danh sách nhận được trước chuyến đi.",
+            "Việc mang bản gốc không đồng nghĩa phải giao giấy tờ cho một người trung gian từ trước. Người đăng ký nên tự bảo quản CCCD trong suốt hành trình, tới đúng địa điểm tiếp nhận và xuất trình khi làm thủ tục theo hướng dẫn. Nếu lịch, địa chỉ hoặc người tiếp nhận còn chưa rõ, chưa nên mang giấy tờ đi khỏi nơi ở chỉ vì đã nhắn tin đăng ký."
+          ]
+        },
+        {
+          "heading": "Phân biệt đăng ký ban đầu với ngày làm thủ tục nhập học",
+          "paragraphs": [
+            "Ở bước đầu, người lao động chỉ cần cung cấp thông tin cơ bản bằng chữ để được kiểm tra: họ tên, năm sinh, nơi đang ở, chiều cao, cân nặng, tình trạng sức khỏe và số điện thoại. Đây là bước sàng lọc, chưa phải nộp hồ sơ. Vì vậy không cần chụp hai mặt CCCD, không cần gửi giấy khai sinh hoặc bằng cấp và không cần chuyển bất kỳ giấy tờ gốc nào.",
             "Ngày nhập học là giai đoạn khác. Khi đã có ngày, giờ, địa điểm và đầu mối xác nhận, người đăng ký mới chuẩn bị giấy tờ theo danh sách. Cách tách này đặc biệt quan trọng với người ở xa: nếu điều kiện chưa được đối chiếu hoặc lịch chưa chốt, công chứng, gửi giấy tờ và mua vé quá sớm đều có thể tạo thêm chi phí và rủi ro không cần thiết."
           ]
         },
