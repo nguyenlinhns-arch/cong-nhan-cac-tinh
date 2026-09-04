@@ -6,7 +6,7 @@ const ledger = JSON.parse(fs.readFileSync(path.resolve("content", "editorial-sou
 const imageSources = JSON.parse(fs.readFileSync(path.join(root, "assets", "articles", "sources.json"), "utf8"));
 const rss = fs.readFileSync(path.join(root, "feed.xml"), "utf8");
 const rssItems = [...rss.matchAll(/<item>[\s\S]*?<\/item>/g)].map((match) => match[0]);
-const expectedArticleCount = 115;
+const expectedArticleCount = 117;
 const errors = [];
 const articleFiles = [];
 const htmlEsc = (value = "") => String(value)

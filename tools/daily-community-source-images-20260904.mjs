@@ -1,0 +1,25 @@
+export const dailyCommunitySourceImages20260904 = Object.freeze({
+  "than-mao-khe-cham-lo-nguoi-lao-dong-quoc-khanh-2026": Object.freeze({
+    sourceUrl: "https://congdoantkv.vn/tin-tuc/chi-tiet/46099/Cong-ty-Than-Mao-Khe-nhieu-hoat-%C4%91ong-thiet-thuc-dip-Quoc-khanh-29",
+    image: "https://congdoantkv.vn/data/images/news/03_09_2026_162711_604.jpg",
+    imageRelationship: "OPEN_GRAPH",
+    verifiedAt: "2026-09-04T08:35:00+07:00",
+    verifiedWidth: 1701,
+    verifiedHeight: 1190,
+    verifiedSha256: "0c283a26d29a8fc98a7993652b485a369d82139225793a2612abc566e6fc8842",
+    alt: "Người lao động Công ty Than Mạo Khê trong chuỗi hoạt động chăm lo dịp Quốc khánh năm 2026",
+    credit: "Ảnh đại diện bài gốc · Công đoàn Than – Khoáng sản Việt Nam",
+  }),
+  "than-thong-nhat-nghi-mat-90-gia-dinh-nguoi-lao-dong-2026": Object.freeze({
+    sourceUrl: "https://www.thanthongnhat.vn/tin-san-xuat/lan-toa-yeu-thuong-tu-hanh-trinh-nghi-mat-cua-90-gia-dinh-nguoi-lao-dong-tieu-bieu-cong-ty-than-thong-nhat-tkv-15731.html",
+    image: "https://www.thanthongnhat.vn/uploads/news/2026_08/g1.jpg",
+    imageRelationship: "FIRST_CONTENT_IMAGE",
+    allowPinnedFirstContentRelationship: true,
+    verifiedAt: "2026-09-04T08:35:00+07:00",
+    verifiedWidth: 800,
+    verifiedHeight: 600,
+    verifiedSha256: "0625425380ef7d2a5ed3c9bfe025ec5b455aae447b973a1729c2889c07b7c890",
+    alt: "Các gia đình người lao động tiêu biểu Than Thống Nhất tham gia chương trình nghỉ mát năm 2026",
+    credit: "Ảnh đầu bài gốc · Công ty Than Thống Nhất – TKV",
+  }),
+});
