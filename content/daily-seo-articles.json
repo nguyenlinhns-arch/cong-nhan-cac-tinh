@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-04",
+  "updated_at": "2026-09-05",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -2921,6 +2921,126 @@
         [
           "/kiem-tra-dieu-kien/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=ho_khau_tinh_khac#dang-ky",
           "Kiểm tra điều kiện từ tỉnh, thành đang ở"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-09-05",
+      "slug": "kham-suc-khoe-khong-dat-co-hoc-nghe-mo-duoc-khong",
+      "title": "Khám sức khỏe không đạt có học nghề mỏ được không?",
+      "short_title": "Khám sức khỏe không đạt có học nghề mỏ được không",
+      "meta": "Khám sức khỏe không đạt có học nghề mỏ được không? Xem vai trò của kết quả khám tuyển, việc cần làm và lúc mới nên di chuyển.",
+      "eyebrow": "KẾT QUẢ KHÁM TUYỂN",
+      "primary_query": "khám sức khỏe không đạt có học nghề mỏ được không",
+      "query_variants": [
+        "khám tuyển thợ lò không đạt thì làm gì",
+        "không đủ sức khỏe có đăng ký nghề mỏ được không",
+        "trượt khám sức khỏe nghề mỏ có được nhập học không"
+      ],
+      "direct_answer": "Nếu kết quả khám tuyển kết luận chưa đáp ứng yêu cầu sức khỏe, hồ sơ chưa thể được xác nhận đủ điều kiện học nghề mỏ hầm lò trong đợt đó. Anh vẫn có thể gửi thông tin để được kiểm tra ban đầu, nhưng kết quả khám tuyển là căn cứ cuối cùng; không nên mua vé, nghỉ việc hoặc giấu bệnh khi chưa có hướng dẫn rõ.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-kham-suc-khoe-than-vang-danh-2026.webp",
+        "alt": "Bác sĩ kiểm tra sức khỏe cho người lao động Than Vàng Danh trong đợt khám định kỳ năm 2026",
+        "credit": "Ảnh: Vinacomin · Than Vàng Danh khám sức khỏe định kỳ cho người lao động năm 2026"
+      },
+      "intro": [
+        "Người lao động thường hỏi câu này sau khi đo huyết áp cao, phát hiện vấn đề về mắt hoặc từng được cơ sở y tế khuyên theo dõi thêm. Có người vì sợ mất cơ hội nên muốn bỏ qua thông tin sức khỏe; có người lại tự kết luận mình không bao giờ còn cơ hội dù chưa trải qua đúng quy trình khám tuyển. Cả hai cách đều dễ dẫn tới quyết định tốn kém hoặc không an toàn.",
+        "Thông tin tuyển sinh hiện hành yêu cầu sức khỏe tốt và đáp ứng khám tuyển; đồng thời nêu các vấn đề cần đặc biệt lưu ý như cận thị, bệnh tim mạch, huyết áp không phù hợp hoặc bệnh về mắt ảnh hưởng công việc. Bước khai thông tin từ xa chỉ là sàng lọc ban đầu. Người tư vấn không thể thay bác sĩ kết luận đủ sức khỏe, và một lần tự đo ở nhà cũng không thay thế kết quả khám tuyển chính thức."
+      ],
+      "key_points": [
+        [
+          "Kết quả khám là căn cứ cuối cùng",
+          "Đủ tuổi, chiều cao và cân nặng chưa có nghĩa chắc chắn đủ sức khỏe cho nghề mỏ hầm lò."
+        ],
+        [
+          "Có thể hỏi trước khi đi khám",
+          "Người lao động nên khai trung thực tình trạng đã biết để được hướng dẫn bước tiếp theo và tránh đi lại không cần thiết."
+        ],
+        [
+          "Không tự suy diễn cách thay thế",
+          "Nguồn chuẩn không công bố cơ chế tự động khám lại, bảo lưu kết quả hoặc đổi sang vị trí khác khi không đạt."
+        ],
+        [
+          "Chỉ di chuyển khi đã được xác nhận",
+          "Không mua vé hoặc nghỉ công việc hiện tại chỉ dựa trên lời hẹn chung khi tình trạng sức khỏe còn chưa rõ."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Khám sức khỏe không đạt có học nghề mỏ được không?",
+          "paragraphs": [
+            "Không thể xác nhận nhập học nghề mỏ hầm lò nếu kết quả khám tuyển hiện tại kết luận người đăng ký chưa đáp ứng yêu cầu sức khỏe. Đây là nghề có môi trường và quy trình an toàn đặc thù, vì vậy sức khỏe không phải một thủ tục hình thức có thể bỏ qua. Mốc tuổi, chiều cao, cân nặng chỉ giúp kiểm tra ban đầu; kết quả khám tuyển mới là căn cứ cuối cùng để tiếp tục hồ sơ.",
+            "Điều này không có nghĩa người lao động phải tự loại mình ngay khi chưa khám hoặc chỉ vì một chỉ số đo tại nhà. Huyết áp, thị lực và những vấn đề sức khỏe khác cần được cơ sở chuyên môn đánh giá đúng thời điểm, đúng quy trình. Khi mới tìm hiểu, hãy báo trung thực tình trạng đã biết cho Thầy Linh để nhận hướng dẫn phù hợp, thay vì cố đoán kết quả hoặc lên Quảng Ninh trước.",
+            "Website không thay thế chẩn đoán y khoa và không thể xác nhận trước rằng một trường hợp cụ thể sẽ đạt. Nếu đã có phiếu hoặc kết luận khám tuyển, người lao động cần dùng chính kết quả đó khi trao đổi. Nếu chỉ mới có kết quả khám cá nhân ở nơi khác, hãy nói rõ đây chưa phải kết quả của quy trình tuyển sinh để tránh nhầm hai loại giấy tờ."
+          ]
+        },
+        {
+          "heading": "Phân biệt kiểm tra ban đầu với kết quả khám tuyển",
+          "paragraphs": [
+            "Kiểm tra ban đầu được thực hiện từ xa để biết người đăng ký có nằm trong phạm vi tiếp nhận cơ bản hay không. Thông tin cần khai gồm năm sinh, chiều cao, cân nặng, nơi đang ở và tình trạng sức khỏe đã biết. Bước này giúp phát hiện sớm điểm cần hỏi thêm, nhưng không phải giấy xác nhận đủ sức khỏe và không bảo đảm chắc chắn được nhập học.",
+            "Khám tuyển là bước chuyên môn. Kết quả được lập sau khi kiểm tra theo yêu cầu của đợt tiếp nhận và mới có giá trị kết luận đối với hồ sơ. Người tư vấn có thể giải thích quy trình, nhưng không được sửa kết quả, hạ tiêu chuẩn hoặc hứa chắc rằng một bệnh lý sẽ được bỏ qua. Người đăng ký cũng không nên xin người khác khai thay hoặc giấu thuốc đang sử dụng.",
+            "Trong thực tế tư vấn, tách rõ hai bước này giúp người ở tỉnh xa tránh nghỉ việc và mua vé quá sớm. Một tin nhắn xác nhận rằng tuổi, chiều cao và cân nặng phù hợp chỉ là kết quả sơ bộ. Trước chuyến đi, cần hỏi lại ngày giờ, địa điểm, đầu mối tiếp nhận và việc khám sức khỏe được bố trí ở giai đoạn nào cho chính trường hợp của mình."
+          ]
+        },
+        {
+          "heading": "Bốn việc nên làm khi khám tuyển nghề mỏ không đạt",
+          "items": [
+            "Đọc đúng kết luận trên phiếu hoặc thông báo tiếp nhận, không chỉ dựa vào lời kể lại; ghi rõ chỉ tiêu hoặc nội dung nào cần được giải thích thêm.",
+            "Báo kết quả trung thực cho Thầy Linh và hỏi đợt hiện hành có hướng dẫn bước tiếp theo nào cho trường hợp đó hay không; không tự coi lời khuyên chung là xác nhận được nhập học.",
+            "Nếu cần chăm sóc hoặc kiểm tra lại sức khỏe, thực hiện theo chỉ dẫn của cơ sở y tế có thẩm quyền; website không kê thuốc, không chỉ cách làm thay đổi tạm thời chỉ số để vượt khám.",
+            "Giữ nguyên công việc và kế hoạch đi lại đang có cho tới khi nhận được thông tin rõ; không chuyển tiền, đặt vé hoặc giao giấy tờ gốc để đổi lấy lời hứa xử lý kết quả khám."
+          ]
+        },
+        {
+          "heading": "Vì sao không nên giấu bệnh hoặc tìm cách vượt khám?",
+          "paragraphs": [
+            "Mục tiêu của khám tuyển không phải làm khó người đăng ký mà là xác định mức độ phù hợp với công việc theo ca và môi trường hầm lò. Nếu che giấu bệnh sử, thuốc đang dùng hoặc kết quả đã có, người lao động có thể tự đặt mình và tổ đội vào tình huống không an toàn. Hồ sơ thiếu nhất quán cũng có thể làm quá trình đối chiếu kéo dài hơn.",
+            "Không nên ngừng thuốc, dùng chất kích thích hoặc áp dụng mẹo trên mạng chỉ để một chỉ số tạm thời trông khác đi. Những việc đó có thể ảnh hưởng sức khỏe và không tạo ra bằng chứng rằng cơ thể phù hợp lâu dài với nghề. Cách an toàn là khám đúng, cung cấp thông tin đúng và nghe giải thích từ người có chuyên môn.",
+            "Cũng không nên nhờ tài khoản trung gian hứa can thiệp kết quả khám hoặc giữ chỗ. Quy trình đăng ký ban đầu trên website không thu phí môi giới, chưa yêu cầu gửi ảnh giấy tờ và không cho phép một cá nhân thay thế kết luận khám tuyển. Khi nhận yêu cầu bất thường, hãy dừng lại và xác minh qua đầu mối công khai."
+          ]
+        },
+        {
+          "heading": "Khi nào mới nên tiếp tục chuẩn bị nhập học?",
+          "paragraphs": [
+            "Người lao động chỉ nên bước sang chuẩn bị hồ sơ và chuyến đi khi đã được thông báo rõ rằng tình trạng của mình có thể tiếp tục theo quy trình hiện hành. Nếu đã có kết quả không đạt, cần chờ hướng dẫn cụ thể; nguồn tuyển dụng chuẩn không nêu rằng mọi trường hợp đều được khám lại, chờ một thời gian cố định hoặc tự động chuyển sang nghề khác. Vì vậy bài viết không đưa ra lời hứa thay cho đơn vị tiếp nhận.",
+            "Khi được xác nhận tiếp tục, hãy kiểm tra lại ngày, giờ, địa điểm nhập học và danh sách giấy tờ. Hồ sơ hiện hành gồm CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Giấy tờ gốc do người đăng ký tự mang theo, không gửi qua bưu điện, nhà xe hoặc người nhận làm thủ tục thay.",
+            "Nếu chưa từng khám tuyển và chỉ đang lo vì tiền sử sức khỏe, bước hợp lý nhất là gửi thông tin trung thực để được sàng lọc trước. Nếu đã có kết luận không đạt, bước hợp lý là hỏi đúng đầu mối về tình trạng hồ sơ. Hai trường hợp này khác nhau và không nên dùng câu trả lời của người khác để quyết định cho mình."
+          ]
+        }
+      ],
+      "takeaway_title": "Không đạt khám tuyển thì chưa thể xác nhận đủ điều kiện",
+      "takeaway": "Người có kết quả khám tuyển chưa đáp ứng yêu cầu sức khỏe chưa thể được xác nhận đủ điều kiện học nghề mỏ hầm lò trong đợt đó. Kiểm tra sơ bộ từ xa không thay thế khám tuyển, và website không thể hứa khám lại hoặc đổi nghề khi nguồn chuẩn chưa công bố. Hãy khai trung thực, giữ lại kết quả, hỏi đúng đầu mối về bước tiếp theo và chỉ chuẩn bị hồ sơ, nghỉ việc hoặc di chuyển khi tình trạng của chính mình đã được xác nhận rõ.",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: ứng viên phải có sức khỏe tốt, đáp ứng yêu cầu khám tuyển; các vấn đề cần lưu ý gồm cận thị, bệnh tim mạch, huyết áp không phù hợp và bệnh về mắt ảnh hưởng công việc. Kết quả khám tuyển là căn cứ cuối cùng. Nguồn chuẩn không công bố cơ chế tự động khám lại, bảo lưu kết quả hoặc chuyển nghề khi không đạt.",
+      "faqs": [
+        [
+          "Chưa khám sức khỏe có được đăng ký học nghề mỏ trước không?",
+          "Có thể gửi thông tin để kiểm tra sơ bộ trước. Tuy nhiên, đăng ký ban đầu không phải xác nhận đủ sức khỏe; kết quả khám tuyển vẫn là căn cứ cuối cùng."
+        ],
+        [
+          "Đo huyết áp cao một lần có chắc chắn bị loại không?",
+          "Không nên tự kết luận chỉ từ một lần đo. Hãy khai đúng tình trạng đã biết và thực hiện khám theo hướng dẫn; website không thay bác sĩ đánh giá mức độ phù hợp."
+        ],
+        [
+          "Khám tuyển không đạt có được xin khám lại không?",
+          "Nguồn tuyển dụng hiện hành không công bố quy tắc khám lại áp dụng chung. Người có kết quả cụ thể cần liên hệ Thầy Linh để hỏi hướng dẫn của đúng đợt, không tự mua vé đi khám lại."
+        ],
+        [
+          "Có nên giấu bệnh để được nhập học nghề mỏ không?",
+          "Không. Khai trung thực giúp bảo vệ người lao động và tổ đội; không ai trên website có quyền bỏ qua hoặc sửa kết luận khám tuyển."
+        ]
+      ],
+      "related": [
+        [
+          "/kiem-tra-dieu-kien/",
+          "Đối chiếu điều kiện sức khỏe đang áp dụng"
+        ],
+        [
+          "/giai-dap-nghe-mo/di-kham-suc-khoe-hoc-nghe-mo-truoc-hay-sau-khi-dang-ky/",
+          "Xem đúng thời điểm đi khám sức khỏe"
+        ],
+        [
+          "/kiem-tra-dieu-kien/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=kham_suc_khoe_khong_dat#dang-ky",
+          "Gửi thông tin để được kiểm tra sơ bộ"
         ]
       ]
     }

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-03T07:37:00+07:00",
+  "updated_at": "2026-09-04T07:44:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -162,6 +162,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/images/Media/2025/T10/29/%E1%BA%A3nh%20Than%20N%C3%BAi%20B%C3%A9o%20t%E1%BB%95%20ch%E1%BB%A9c%20h%E1%BB%99i%20ngh%E1%BB%8B%20ph%E1%BB%91i%20h%E1%BB%A3p%20tuy%E1%BB%83n%20d%E1%BB%A5ng%20lao%20%C4%91%E1%BB%99ng%20t%E1%BA%A1i%20x%C3%A3%20Qu%E1%BA%A3ng%20La.jpg",
       "provider": "Vinacomin",
       "description": "Người lao động dự hội nghị phối hợp tuyển dụng của Than Núi Béo tại xã Quảng La, Quảng Ninh"
+    },
+    {
+      "asset": "vinacomin-kham-suc-khoe-than-vang-danh-2026.webp",
+      "source_article_url": "https://vinacomin.vn/vi/news/slug/than-vang-danh-to-chuc-kham-suc-khoe-dinh-ky-cho-hon-4500-nguoi-lao-dong",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/54A3D6581DF39F43C23BF9D15333137B3BA64E16AD53187556E61F113B34EEBE.jpg",
+      "provider": "Vinacomin",
+      "description": "Bác sĩ kiểm tra sức khỏe người lao động Than Vàng Danh trong đợt khám định kỳ năm 2026"
     }
   ]
 }
