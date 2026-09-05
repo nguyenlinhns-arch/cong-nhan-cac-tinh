@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-05",
+  "updated_at": "2026-09-06",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -3041,6 +3041,126 @@
         [
           "/kiem-tra-dieu-kien/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=kham_suc_khoe_khong_dat#dang-ky",
           "Gửi thông tin để được kiểm tra sơ bộ"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-09-06",
+      "slug": "chua-co-giay-khai-sinh-co-dang-ky-hoc-nghe-mo-duoc-khong",
+      "title": "Chưa có giấy khai sinh có đăng ký học nghề mỏ được không?",
+      "short_title": "Chưa có giấy khai sinh có đăng ký nghề mỏ được không",
+      "meta": "Chưa có giấy khai sinh có đăng ký học nghề mỏ được không? Có thể kiểm tra điều kiện trước, nhưng phải làm rõ giấy tờ trước ngày nhập học.",
+      "eyebrow": "GIẤY TỜ ĐĂNG KÝ VÀ NHẬP HỌC",
+      "primary_query": "chưa có giấy khai sinh có đăng ký học nghề mỏ được không",
+      "query_variants": [
+        "mất giấy khai sinh có đăng ký học nghề mỏ được không",
+        "đăng ký học thợ lò có cần giấy khai sinh không",
+        "chưa chuẩn bị giấy khai sinh có được kiểm tra điều kiện trước không"
+      ],
+      "direct_answer": "Có thể đăng ký và kiểm tra điều kiện ban đầu dù chưa có giấy khai sinh, vì bước đầu chưa yêu cầu nộp giấy tờ. Tuy nhiên, giấy khai sinh thuộc hồ sơ nhập học. Anh cần báo đúng tình trạng và nhận hướng dẫn rõ trước khi mua vé hoặc đến Quảng Ninh; không tự dùng giấy khác thay thế.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-ung-vien-cam-ho-so-lai-chau-2026.webp",
+        "alt": "Ứng viên cầm hồ sơ tại hội nghị tư vấn tuyển sinh nghề mỏ của Than Thống Nhất ở Lai Châu",
+        "credit": "Ảnh: Vinacomin · ứng viên tại hội nghị tư vấn tuyển sinh nghề mỏ của Than Thống Nhất ở Lai Châu"
+      },
+      "intro": [
+        "Giấy khai sinh thường chỉ được người lao động nhớ tới khi đã nhận lịch và bắt đầu soạn hồ sơ. Trong tư vấn thực tế, có người đang ở tỉnh xa mới phát hiện giấy bị mất, chữ mờ hoặc không biết đợt tiếp nhận cần chuẩn bị theo hình thức nào. Nếu tự chờ đủ mọi giấy tờ rồi mới hỏi, họ có thể bỏ lỡ thời gian kiểm tra điều kiện; nhưng nếu tự đi Quảng Ninh khi hồ sơ còn thiếu, chuyến đi cũng có thể phát sinh việc phải bổ sung.",
+        "Quy trình hiện hành tách rõ hai thời điểm. Đăng ký ban đầu chỉ dùng thông tin cơ bản để sàng lọc tuổi, thể hình, sức khỏe, nơi ở và nhu cầu nghề nghiệp; chưa cần nộp hay gửi ảnh giấy tờ. Khi đã được xác nhận lịch nhập học, hồ sơ cần đối chiếu gồm CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Vì vậy, thiếu giấy khai sinh không chặn việc hỏi và đăng ký trước, nhưng không nên bị hiểu là giấy này đã được miễn khỏi hồ sơ nhập học."
+      ],
+      "key_points": [
+        [
+          "Vẫn đăng ký ban đầu được",
+          "Bước kiểm tra sơ bộ chưa yêu cầu nộp hoặc gửi ảnh CCCD, giấy khai sinh hay bằng cấp."
+        ],
+        [
+          "Giấy khai sinh thuộc hồ sơ nhập học",
+          "Người đã có lịch cần chuẩn bị giấy này cùng CCCD bản gốc và bằng THCS hoặc THPT nếu có."
+        ],
+        [
+          "Không tự dùng giấy khác thay thế",
+          "Nguồn tuyển chuẩn không công bố loại giấy thay thế hoặc việc được miễn giấy khai sinh cho mọi trường hợp."
+        ],
+        [
+          "Báo thiếu trước khi di chuyển",
+          "Người ở xa cần nhận hướng dẫn cho chính hồ sơ của mình rồi mới đặt vé và đến làm thủ tục."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Chưa có giấy khai sinh có đăng ký học nghề mỏ được không?",
+          "paragraphs": [
+            "Có. Người chưa có giấy khai sinh trong tay vẫn có thể gửi thông tin để kiểm tra điều kiện ban đầu. Nguồn tuyển đang áp dụng quy định bước đăng ký đầu tiên chưa cần nộp hồ sơ hoặc gửi ảnh giấy tờ. Mục tiêu của bước này là biết người đăng ký có nằm trong phạm vi tuổi, chiều cao, cân nặng, sức khỏe và yêu cầu đọc viết hay không, trước khi họ chuẩn bị cả bộ hồ sơ hoặc lên kế hoạch đi xa.",
+            "Câu trả lời này chỉ áp dụng cho bước đăng ký và sàng lọc ban đầu. Khi đến giai đoạn nhập học, giấy khai sinh có tên trong danh mục giấy tờ cần chuẩn bị. Vì vậy, đăng ký được không đồng nghĩa hồ sơ nhập học đã đủ. Người đang mất giấy, chưa tìm thấy giấy hoặc chưa rõ tình trạng giấy cần nói ngay với Thầy Linh để được đối chiếu trước khi nhận lịch di chuyển.",
+            "Bộ dữ liệu chuẩn không nêu rằng ảnh chụp trong điện thoại, bản photocopy, CCCD hoặc một giấy tờ cá nhân khác mặc nhiên thay thế giấy khai sinh. Bài viết vì thế không tự hứa rằng thiếu giấy vẫn hoàn tất thủ tục, cũng không đặt thêm yêu cầu về bản gốc hay bản sao khi nguồn hiện hành chưa xác định. Danh sách cụ thể phải được xác nhận theo đợt tiếp nhận của chính người đăng ký."
+          ]
+        },
+        {
+          "heading": "Phân biệt đăng ký sơ bộ với hồ sơ nhập học nghề mỏ",
+          "paragraphs": [
+            "Đăng ký sơ bộ có thể thực hiện từ xa. Người lao động gửi họ tên, năm sinh, nơi đang ở, chiều cao, cân nặng, tình trạng sức khỏe và số điện thoại đang dùng. Đây là các dữ liệu giúp người phụ trách hỏi đúng vấn đề và hạn chế một chuyến đi không cần thiết. Ở thời điểm này, website không có yêu cầu tải ảnh giấy khai sinh, CCCD hay bằng cấp.",
+            "Hồ sơ nhập học được chuẩn bị sau khi người đăng ký đã qua bước kiểm tra ban đầu và nhận lịch rõ ngày, giờ, địa điểm, đầu mối tiếp nhận. Danh mục hiện hành gồm CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Người chưa có bằng vẫn có thể đăng ký để được hướng dẫn theo hệ đào tạo, nhưng nguồn chuẩn không đưa ra ngoại lệ tương tự cho giấy khai sinh.",
+            "Tách hai giai đoạn giúp người lao động không phải gửi dữ liệu cá nhân cho tài khoản lạ khi mới tìm hiểu. Nó cũng giúp người ở tỉnh xa biết sớm giấy nào đang thiếu để hỏi trước, thay vì tới nơi mới phát hiện hồ sơ chưa thể đối chiếu. Người phụ trách có thể hướng dẫn quy trình, nhưng không được tự xóa giấy tờ khỏi danh mục hoặc cam kết nhận thay cho đơn vị làm thủ tục."
+          ]
+        },
+        {
+          "heading": "Bốn việc cần làm khi chưa có giấy khai sinh",
+          "items": [
+            "Gửi thông tin đăng ký ban đầu bằng chữ để kiểm tra tuổi, thể hình, sức khỏe và nơi đang ở; chưa cần chụp hoặc tải giấy tờ lên website.",
+            "Nói rõ mình đang mất giấy, chưa tìm thấy hay chỉ chưa kịp chuẩn bị; không khai rằng hồ sơ đã đủ để nhận lịch nhanh hơn.",
+            "Hỏi đúng đầu mối xem đợt tiếp nhận của mình cần chuẩn bị giấy khai sinh theo hướng dẫn nào; không tự lấy giấy tờ của người thân hoặc tài liệu không đúng thông tin cá nhân để thay thế.",
+            "Chỉ đặt vé và mang hồ sơ đến Quảng Ninh sau khi đã biết tình trạng giấy tờ của mình được xử lý ra sao, cùng ngày giờ và nơi tiếp nhận cụ thể."
+          ]
+        },
+        {
+          "heading": "Vì sao không nên gửi ảnh giấy khai sinh ngay khi mới hỏi?",
+          "paragraphs": [
+            "Giấy khai sinh chứa dữ liệu nhận dạng cá nhân và không cần thiết cho việc đối chiếu chiều cao, cân nặng hay tình trạng sức khỏe ở bước đầu. Gửi ảnh quá sớm qua nhiều tài khoản làm tăng nguy cơ lộ thông tin, đồng thời khiến người lao động khó biết bản nào đã được dùng và ai đang giữ dữ liệu của mình. Quy trình trên website chủ động không yêu cầu tải ảnh giấy tờ khi đăng ký ban đầu.",
+            "Nếu một tài khoản chưa được xác minh yêu cầu gửi ngay ảnh giấy khai sinh, ảnh hai mặt CCCD và chuyển tiền giữ chỗ, người đăng ký nên dừng lại. Việc kiểm tra điều kiện trước không thu phí môi giới và không cần giao giấy tờ gốc. Khi đã có lịch, người lao động tự giữ hồ sơ và mang theo theo danh sách được hướng dẫn; không gửi giấy tờ gốc qua bưu điện, nhà xe hoặc người nhận làm thay.",
+            "Kinh nghiệm xử lý hồ sơ cho thấy cách tốt nhất là dùng một luồng liên hệ duy nhất và ghi rõ tình trạng từng giấy. Người phụ trách sẽ dễ đối chiếu hơn khi người đăng ký nói đúng “đã có”, “đang thiếu” hoặc “chưa rõ cần loại nào”, thay vì gửi nhiều ảnh rời rạc trước khi được yêu cầu."
+          ]
+        },
+        {
+          "heading": "Khi nào người thiếu giấy khai sinh mới nên đi nhập học?",
+          "paragraphs": [
+            "Chỉ nên chuẩn bị chuyến đi sau khi ba việc đã rõ: điều kiện sơ bộ phù hợp, lịch nhập học đã được xác nhận và vấn đề giấy khai sinh đã có hướng dẫn dành cho hồ sơ của mình. Thiếu một trong ba thông tin này, người ở xa có thể phải chờ, bổ sung hoặc quay về, trong khi vé xe và ngày nghỉ việc đã phát sinh.",
+            "Trước khi đi, hãy đối chiếu lại CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có với tin nhắn hướng dẫn. Nếu giấy khai sinh vẫn chưa sẵn sàng, cần hỏi lại trước ngày khởi hành; không lấy câu trả lời của người nhập học ở đợt khác làm bảo đảm cho trường hợp hiện tại. Website không công bố thời hạn bổ sung chung và không hứa tiếp nhận hồ sơ thiếu giấy.",
+            "Nếu mới tìm hiểu và chưa có lịch, bước hợp lý nhất là kiểm tra điều kiện trước. Nếu đã nhận lịch nhưng phát hiện thiếu giấy, bước hợp lý là báo ngay cho Thầy Linh và chờ xác nhận tiếp theo. Hai tình huống này khác nhau: một bên vẫn đang sàng lọc, bên kia đã chuẩn bị làm thủ tục trực tiếp và cần độ chính xác cao hơn về giấy tờ."
+          ]
+        }
+      ],
+      "takeaway_title": "Có thể đăng ký trước, nhưng phải làm rõ giấy khai sinh trước ngày đi",
+      "takeaway": "Người chưa có giấy khai sinh vẫn có thể gửi thông tin để kiểm tra điều kiện học nghề mỏ, vì bước đăng ký ban đầu chưa yêu cầu nộp hoặc gửi ảnh giấy tờ. Tuy nhiên, giấy khai sinh thuộc danh mục hồ sơ nhập học hiện hành. Hãy khai đúng tình trạng, không tự dùng giấy khác thay thế, không gửi ảnh cho tài khoản lạ và chỉ mua vé đến Quảng Ninh khi điều kiện, lịch cùng cách chuẩn bị giấy tờ của chính mình đã được xác nhận.",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ; hồ sơ nhập học gồm CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; giấy tờ gốc không gửi qua bưu điện và người đăng ký chỉ đến sau khi được xác nhận lịch. Nguồn chuẩn không công bố loại giấy thay thế hoặc ngoại lệ chung khi thiếu giấy khai sinh.",
+      "faqs": [
+        [
+          "Mất giấy khai sinh có gửi đăng ký học nghề mỏ trước được không?",
+          "Có. Bước đăng ký ban đầu chưa cần nộp giấy tờ; hãy khai rõ tình trạng để được kiểm tra điều kiện và hướng dẫn trước khi đi."
+        ],
+        [
+          "Có thể gửi ảnh giấy khai sinh qua Zalo ngay không?",
+          "Bước đầu chưa cần gửi ảnh giấy khai sinh hoặc giấy tờ cá nhân. Chỉ chuẩn bị theo hướng dẫn sau khi điều kiện và lịch đã được xác nhận."
+        ],
+        [
+          "CCCD có thay giấy khai sinh trong hồ sơ nhập học không?",
+          "Nguồn tuyển hiện hành không công bố việc CCCD mặc nhiên thay giấy khai sinh. Trường hợp thiếu giấy cần hỏi đầu mối trước khi di chuyển."
+        ],
+        [
+          "Chưa đủ giấy tờ có nên mua vé lên Quảng Ninh không?",
+          "Chưa nên. Hãy chờ xác nhận rõ lịch, địa điểm và cách chuẩn bị giấy còn thiếu cho đúng hồ sơ của mình rồi mới đặt vé."
+        ]
+      ],
+      "related": [
+        [
+          "/ho-so-nhap-hoc/",
+          "Đối chiếu danh mục hồ sơ nhập học hiện hành"
+        ],
+        [
+          "/giai-dap-nghe-mo/dang-ky-hoc-nghe-mo-ban-dau-co-can-gui-anh-cccd-khong/",
+          "Phân biệt đăng ký ban đầu với nộp giấy tờ"
+        ],
+        [
+          "/kiem-tra-dieu-kien/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=thieu_giay_khai_sinh#dang-ky",
+          "Kiểm tra điều kiện trước khi chuẩn bị hồ sơ"
         ]
       ]
     }

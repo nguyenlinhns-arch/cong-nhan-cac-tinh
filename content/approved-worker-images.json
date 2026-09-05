@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-04T07:44:00+07:00",
+  "updated_at": "2026-09-05T07:30:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -169,6 +169,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/54A3D6581DF39F43C23BF9D15333137B3BA64E16AD53187556E61F113B34EEBE.jpg",
       "provider": "Vinacomin",
       "description": "Bác sĩ kiểm tra sức khỏe người lao động Than Vàng Danh trong đợt khám định kỳ năm 2026"
+    },
+    {
+      "asset": "vinacomin-ung-vien-cam-ho-so-lai-chau-2026.webp",
+      "source_article_url": "https://vinacomin.vn/vi/news/slug/than-thong-nhat-phoi-hop-tu-van-tuyen-sinh-dao-tao-nghe-mo-tai-tinh-lai-chau",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/D1F82C951855C469860FA4DD827D84DAFF35F7BA2DBBA33B3EA4E43617F57C59.jpg",
+      "provider": "Vinacomin",
+      "description": "Ứng viên cầm hồ sơ tại hội nghị tư vấn tuyển sinh nghề mỏ do Than Thống Nhất phối hợp tổ chức ở Lai Châu"
     }
   ]
 }
