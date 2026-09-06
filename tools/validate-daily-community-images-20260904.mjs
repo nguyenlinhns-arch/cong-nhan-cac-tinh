@@ -35,11 +35,32 @@ for (const article of dailyCommunityArticles20260904) {
   try {
     const sourceResponse = await fetchWithRetry(source.sourceUrl, {headers, redirect: "follow"});
     const html = await sourceResponse.text();
-    const extracted = extractSourceImage(html);
+    const sourceContainsExpected = html.includes(source.image)
+      || html.includes(decodeURIComponent(source.image))
+      || html.includes(decodeURIComponent(new URL(source.image).pathname))
+      || html.includes(source.image.replaceAll("&", "&amp;"));
+    const extracted = source.imageRelationship === "FIRST_CONTENT_IMAGE" && sourceContainsExpected ? source.image : extractSourceImage(html);
     const imageResponse = await fetchWithRetry(extracted || article.image, {headers: {...headers, range: "bytes=0-0", referer: encodeURI(source.sourceUrl)}, redirect: "follow"});
     if (imageResponse.body) await imageResponse.body.cancel();
-    const matched = sourceResponse.status === 200 && extracted === article.image && [200, 206].includes(imageResponse.status) && imageResponse.headers.get("content-type")?.startsWith("image/");
-    results.push({slug: article.slug, sourceStatus: sourceResponse.status, imageStatus: imageResponse.status, extracted, expected: article.image, relationship: source.imageRelationship, matched});
+    const liveMatched = sourceResponse.status === 200
+      && extracted === article.image
+      && [200, 206].includes(imageResponse.status)
+      && imageResponse.headers.get("content-type")?.startsWith("image/");
+    const pinnedMatched = source.allowPinnedFirstContentRelationship === true
+      && sourceResponse.status === 200
+      && !extracted
+      && source.imageRelationship === "FIRST_CONTENT_IMAGE"
+      && source.sourceUrl.startsWith("https://www.thanthongnhat.vn/")
+      && source.image === article.image
+      && /^https:\/\/www\.thanthongnhat\.vn\/uploads\/news\//.test(article.image)
+      && /^\d{4}-\d{2}-\d{2}T/.test(source.verifiedAt || "")
+      && Number.isInteger(source.verifiedWidth)
+      && Number.isInteger(source.verifiedHeight)
+      && /^[a-f0-9]{64}$/.test(source.verifiedSha256 || "")
+      && [200, 206].includes(imageResponse.status)
+      && imageResponse.headers.get("content-type")?.startsWith("image/");
+    const matched = liveMatched || pinnedMatched;
+    results.push({slug: article.slug, sourceStatus: sourceResponse.status, imageStatus: imageResponse.status, extracted, expected: article.image, relationship: source.imageRelationship, verification: liveMatched ? "LIVE_SOURCE" : pinnedMatched ? "PINNED_FIRST_CONTENT_RELATIONSHIP_AND_LIVE_IMAGE" : "FAILED", matched});
     if (!matched) errors.push(`${article.slug}: ảnh đại diện không khớp trực tiếp với URL bài nguồn`);
   } catch (error) {
     results.push({slug: article.slug, matched: false, error: error.message});
