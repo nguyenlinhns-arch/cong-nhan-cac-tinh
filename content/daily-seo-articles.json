@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-06",
+  "updated_at": "2026-09-07",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -3161,6 +3161,126 @@
         [
           "/kiem-tra-dieu-kien/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=thieu_giay_khai_sinh#dang-ky",
           "Kiểm tra điều kiện trước khi chuẩn bị hồ sơ"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-09-07",
+      "slug": "khong-doc-viet-thanh-thao-co-dang-ky-hoc-nghe-mo-duoc-khong",
+      "title": "Không đọc viết thành thạo có đăng ký học nghề mỏ được không?",
+      "short_title": "Chưa đọc viết thành thạo có đăng ký nghề mỏ được không",
+      "meta": "Không đọc viết thành thạo có đăng ký học nghề mỏ được không? Đây là điều kiện đang áp dụng; cách tự kiểm tra và hỏi trước khi đi.",
+      "eyebrow": "ĐIỀU KIỆN ĐỌC VÀ VIẾT",
+      "primary_query": "không đọc viết thành thạo có đăng ký học nghề mỏ được không",
+      "query_variants": [
+        "đọc viết chậm có học nghề mỏ được không",
+        "học nghề thợ lò có cần biết đọc biết viết không",
+        "không có bằng nhưng đọc viết được có đăng ký nghề mỏ không"
+      ],
+      "direct_answer": "Chưa thể xác nhận đủ điều kiện nếu người đăng ký không đọc và viết thành thạo. Đây là yêu cầu tuyển sinh hiện hành, khác với việc có hay chưa có bằng THCS hoặc THPT. Anh nên nói đúng khả năng của mình để được kiểm tra trước, không mua vé hoặc đến Quảng Ninh khi chưa được xác nhận.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-hoc-sinh-nghe-mo-thong-nhat-huong-nghiep.webp",
+        "alt": "Nhóm học sinh nghề mỏ mặc bảo hộ xanh trong chương trình hướng nghiệp tại Than Thống Nhất",
+        "credit": "Ảnh: Vinacomin · học sinh nghề mỏ trong chương trình hướng nghiệp tại Than Thống Nhất"
+      },
+      "intro": [
+        "Câu hỏi về khả năng đọc viết thường bị gộp với câu hỏi về bằng cấp, nhưng đây là hai việc khác nhau. Có người không giữ bằng THCS hoặc THPT trong tay nhưng vẫn đọc, viết thành thạo; ngược lại, cũng có người muốn đăng ký ngay dù còn khó đọc hướng dẫn hoặc khó tự ghi thông tin cá nhân. Nếu không tách rõ, người lao động dễ hiểu nhầm rằng chỉ cần không phải nộp bằng ở bước đầu là mọi yêu cầu về học tập đều được bỏ qua.",
+        "Điều kiện tuyển sinh hiện hành yêu cầu người đăng ký đọc và viết thành thạo; trình độ cụ thể được đối chiếu theo hệ đào tạo. Đăng ký ban đầu chưa cần nộp giấy tờ, nhưng vẫn phải khai đúng khả năng để được sàng lọc. Người chưa đáp ứng không nên nhờ người khác khai thay, đặt vé hoặc nghỉ việc trước. Cách an toàn là trao đổi thẳng với Thầy Linh và chỉ tiếp tục khi trường hợp của mình đã được xác nhận rõ."
+      ],
+      "key_points": [
+        [
+          "Đọc viết thành thạo là điều kiện riêng",
+          "Yêu cầu này được kiểm tra độc lập với việc người đăng ký đang có hay chưa có bằng THCS hoặc THPT."
+        ],
+        [
+          "Không tự coi đọc chậm là đạt hoặc không đạt",
+          "Hãy mô tả đúng khó khăn đang có để người phụ trách đối chiếu theo hệ đào tạo và quy trình của đợt tiếp nhận."
+        ],
+        [
+          "Không nhờ người khác làm thay",
+          "Việc người thân đọc tin nhắn hoặc điền biểu mẫu hộ không chứng minh người đăng ký đáp ứng điều kiện."
+        ],
+        [
+          "Chỉ di chuyển sau khi được xác nhận",
+          "Người ở xa không nên mua vé, nghỉ việc hoặc mang hồ sơ đến Quảng Ninh chỉ dựa trên lời hẹn chung."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Không đọc viết thành thạo có đăng ký học nghề mỏ được không?",
+          "paragraphs": [
+            "Chưa. Nguồn tuyển dụng đang áp dụng ghi rõ người đăng ký phải đọc và viết thành thạo. Vì vậy, nếu hiện tại một người chưa thể tự đọc nội dung cơ bản và tự viết thông tin cần thiết, website không thể xác nhận người đó đủ điều kiện học nghề mỏ hầm lò. Đây không phải yêu cầu có thể bỏ qua bằng một lời hứa qua điện thoại hoặc bằng việc nhờ người thân hỗ trợ lúc đăng ký.",
+            "Người đang không chắc về khả năng của mình vẫn có thể liên hệ để hỏi và mô tả đúng tình trạng. Bước trao đổi ban đầu giúp phân biệt giữa việc chỉ đọc chậm, viết chậm với việc chưa đọc hiểu hoặc chưa tự ghi được thông tin. Tuy nhiên, bài viết không đặt ra bài kiểm tra riêng và cũng không thay đơn vị đào tạo kết luận. Trình độ cụ thể cần được đối chiếu theo hệ đào tạo của trường hợp đó.",
+            "Nếu đã biết mình chưa đọc viết thành thạo, hướng xử lý phù hợp là nói thật để nhận tư vấn trước và dành thời gian bổ sung kỹ năng cần thiết. Không nên mua vé, nghỉ công việc hiện tại hoặc đến thẳng điểm nhập học với kỳ vọng điều kiện sẽ được miễn. Chỉ lời xác nhận dành cho chính hồ sơ của người đăng ký mới là căn cứ để chuyển sang bước tiếp theo."
+          ]
+        },
+        {
+          "heading": "Đọc viết thành thạo khác với có bằng THCS hoặc THPT",
+          "paragraphs": [
+            "Khả năng đọc viết là điều kiện về kỹ năng thực tế; bằng cấp là giấy tờ dùng để đối chiếu trình độ và hệ đào tạo. Nguồn chuẩn cho phép người chưa có bằng trong tay vẫn gửi đăng ký để được hướng dẫn, nhưng không nói rằng người chưa đọc viết thành thạo được miễn yêu cầu. Vì vậy, câu trả lời của bài về thiếu bằng không thể dùng thay cho câu hỏi về khả năng đọc và viết.",
+            "Ở bước đăng ký ban đầu, người lao động chưa cần gửi ảnh bằng cấp hay giấy tờ cá nhân. Điều này chỉ có nghĩa quy trình sàng lọc có thể bắt đầu từ thông tin khai báo, không có nghĩa các điều kiện đã được chấp nhận tự động. Người phụ trách cần biết đúng khả năng đọc viết và tình trạng bằng cấp để hướng dẫn đúng hệ, tránh đến ngày nhập học mới phát hiện thông tin không khớp.",
+            "Một người có thể chưa tìm thấy bằng nhưng vẫn đáp ứng khả năng đọc viết; trường hợp đó nên xem hướng dẫn riêng về chưa có bằng. Một người có đủ giấy tờ nhưng đang gặp khó khăn đáng kể khi đọc hiểu và tự viết thì vẫn phải báo đúng tình trạng. Hai vấn đề có thể cùng xuất hiện, nhưng mỗi vấn đề cần được làm rõ riêng trước khi chốt lịch."
+          ]
+        },
+        {
+          "heading": "Cách tự rà soát trước khi đăng ký học nghề mỏ",
+          "paragraphs": [
+            "Người lao động có thể tự rà soát bằng những việc gần với quá trình đăng ký: tự đọc một tin nhắn hướng dẫn ngắn, hiểu nội dung cần chuẩn bị và tự ghi họ tên, năm sinh, địa chỉ cùng số điện thoại của mình. Đây chỉ là cách nhận biết khó khăn để trao đổi sớm, không phải bài thi tuyển do website đặt ra và không thay cho đánh giá của đơn vị đào tạo.",
+            "Nếu phải nhờ người khác đọc toàn bộ hướng dẫn, giải thích từng câu hoặc ghi toàn bộ thông tin thay, hãy nói rõ điều đó khi liên hệ. Không nên để người thân trả lời thay rồi dùng kết quả kiểm tra sơ bộ như xác nhận cho chính mình. Thông tin thiếu chính xác có thể khiến lịch, hồ sơ và khả năng theo học bị hiểu sai, đặc biệt với người phải di chuyển xa.",
+            "Nếu chỉ chậm ở một thao tác, chẳng hạn gõ chữ trên điện thoại, cũng nên mô tả đúng thay vì tự kết luận mình không biết đọc viết. Khả năng sử dụng điện thoại không đồng nhất với khả năng đọc và viết. Thầy Linh có thể tiếp nhận thông tin để đối chiếu ban đầu, còn quyết định về yêu cầu trình độ vẫn phải theo hệ đào tạo và quy trình hiện hành."
+          ]
+        },
+        {
+          "heading": "Bốn việc nên làm nếu khả năng đọc viết còn hạn chế",
+          "items": [
+            "Nói rõ mình đọc được đến mức nào, có tự viết thông tin cá nhân hay đọc hiểu hướng dẫn ngắn được không; không chỉ trả lời chung là biết hoặc không biết.",
+            "Tự thực hiện phần trao đổi có thể làm được, không để người thân giả danh hoặc trả lời thay nhằm vượt bước kiểm tra sơ bộ.",
+            "Hỏi người phụ trách xem trường hợp của mình cần được đối chiếu thêm thế nào; không tự suy diễn rằng thiếu bằng đồng nghĩa được bỏ yêu cầu đọc viết.",
+            "Giữ nguyên kế hoạch công việc và đi lại cho đến khi nhận được xác nhận rõ; nếu chưa đáp ứng, ưu tiên bổ sung kỹ năng rồi kiểm tra lại theo hướng dẫn."
+          ]
+        },
+        {
+          "heading": "Khi nào mới nên chuẩn bị hồ sơ và đến Quảng Ninh?",
+          "paragraphs": [
+            "Chỉ nên chuẩn bị chuyến đi sau khi điều kiện sơ bộ, khả năng đọc viết, hệ đào tạo và lịch tiếp nhận của chính người đăng ký đã được làm rõ. Một câu trả lời dành cho người khác không bảo đảm áp dụng cho trường hợp của mình. Người ở tỉnh xa cần có đủ ngày, giờ, địa điểm và đầu mối tiếp nhận trước khi mua vé hoặc xin nghỉ việc.",
+            "Khi đã được xác nhận tiếp tục, người đăng ký đối chiếu danh sách hồ sơ hiện hành gồm CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Giấy tờ gốc do người đăng ký tự giữ và mang theo, không gửi qua bưu điện, nhà xe hoặc giao cho tài khoản hứa làm thủ tục thay. Đăng ký ban đầu trên website không yêu cầu tải ảnh giấy tờ và không thu phí môi giới.",
+            "Nếu chưa được xác nhận vì khả năng đọc viết còn hạn chế, đừng cố rút ngắn quy trình bằng cách khai khác thực tế. Việc bổ sung kỹ năng rồi trao đổi lại an toàn hơn so với đi xa khi chưa chắc đủ điều kiện. Website chỉ giúp sàng lọc và kết nối đúng đầu mối, không có quyền hạ tiêu chuẩn, cấp ngoại lệ hoặc bảo đảm nhập học."
+          ]
+        }
+      ],
+      "takeaway_title": "Đọc viết thành thạo là điều kiện, không phải thủ tục giấy tờ",
+      "takeaway": "Người chưa đọc và viết thành thạo chưa thể được xác nhận đủ điều kiện học nghề mỏ hầm lò trong đợt tuyển hiện hành. Yêu cầu này khác với việc có hay chưa có bằng THCS hoặc THPT. Hãy mô tả trung thực khả năng của mình, không nhờ người khác khai thay, không tự coi thiếu bằng là được miễn điều kiện và chỉ chuẩn bị hồ sơ, mua vé hoặc đến Quảng Ninh sau khi trường hợp cụ thể đã được kiểm tra, xác nhận rõ.",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: người đăng ký phải đọc và viết thành thạo; trình độ cụ thể được đối chiếu theo hệ đào tạo. Chưa có bằng vẫn có thể đăng ký để được hướng dẫn, nhưng nguồn chuẩn không công bố ngoại lệ cho yêu cầu đọc viết. Đăng ký ban đầu chưa cần nộp giấy tờ và người lao động chỉ đến nhập học sau khi được xác nhận lịch.",
+      "faqs": [
+        [
+          "Biết đọc nhưng viết chậm có đăng ký học nghề mỏ được không?",
+          "Hãy mô tả đúng khả năng để được đối chiếu trước. Website không tự đặt ngưỡng cho chữ đẹp hay tốc độ viết và không thể kết luận thay đơn vị đào tạo."
+        ],
+        [
+          "Không có bằng THCS nhưng đọc viết thành thạo có đăng ký được không?",
+          "Có thể gửi đăng ký để được hướng dẫn theo hệ đào tạo. Chưa có bằng và chưa đọc viết thành thạo là hai tình huống khác nhau."
+        ],
+        [
+          "Có thể nhờ người thân điền thông tin đăng ký hộ không?",
+          "Người thân có thể hỗ trợ thao tác, nhưng không nên trả lời thay hoặc che giấu khả năng thực tế. Kết quả sơ bộ phải phản ánh đúng người sẽ học và làm việc."
+        ],
+        [
+          "Chưa chắc mình đạt yêu cầu đọc viết thì có nên mua vé không?",
+          "Chưa nên. Hãy kiểm tra điều kiện và nhận xác nhận cho trường hợp của mình trước khi nghỉ việc, mua vé hoặc đến Quảng Ninh."
+        ]
+      ],
+      "related": [
+        [
+          "/kiem-tra-dieu-kien/",
+          "Đối chiếu đầy đủ điều kiện tuyển hiện hành"
+        ],
+        [
+          "/giai-dap-nghe-mo/chua-co-bang-cap-3-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+          "Phân biệt khả năng đọc viết với tình trạng bằng cấp"
+        ],
+        [
+          "/kiem-tra-dieu-kien/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=doc_viet_thanh_thao#dang-ky",
+          "Gửi thông tin để được kiểm tra trước"
         ]
       ]
     }
