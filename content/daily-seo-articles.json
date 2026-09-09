@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-07",
+  "updated_at": "2026-09-09",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -3280,6 +3280,126 @@
         ],
         [
           "/kiem-tra-dieu-kien/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=doc_viet_thanh_thao#dang-ky",
+          "Gửi thông tin để được kiểm tra trước"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-09-09",
+      "slug": "bi-benh-tim-mach-co-dang-ky-hoc-nghe-mo-duoc-khong",
+      "title": "Bị bệnh tim mạch có đăng ký học nghề mỏ được không?",
+      "short_title": "Bị bệnh tim mạch có học nghề mỏ được không",
+      "meta": "Bị bệnh tim mạch có đăng ký học nghề mỏ được không? Xem điều kiện hiện hành và cách khai sức khỏe trước khi đi Quảng Ninh.",
+      "eyebrow": "SÀNG LỌC SỨC KHỎE TIM MẠCH",
+      "primary_query": "bị bệnh tim mạch có đăng ký học nghề mỏ được không",
+      "query_variants": [
+        "có bệnh tim có học nghề thợ lò được không",
+        "từng điều trị tim mạch có đăng ký nghề mỏ được không",
+        "bệnh tim có đi làm mỏ than được không"
+      ],
+      "direct_answer": "Theo điều kiện tuyển đang áp dụng, người mắc bệnh tim mạch không thuộc nhóm đủ điều kiện sơ bộ để học nghề mỏ hầm lò. Nếu từng được chẩn đoán, đang điều trị hoặc chưa rõ tình trạng, anh hãy khai đúng thông tin để được hướng dẫn và không đi Quảng Ninh trước khi được kiểm tra.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-kham-suc-khoe-van-tai-tho-mo-2026.webp",
+        "alt": "Nhân viên y tế lấy mẫu xét nghiệm cho người lao động trong đợt khám sức khỏe ngành Than năm 2026",
+        "credit": "Ảnh: Vinacomin · khám sức khỏe người lao động Công ty CP Vận tải và Đưa đón Thợ mỏ năm 2026"
+      },
+      "intro": [
+        "Người lao động thường hỏi chung là “tim yếu” hoặc “trước đây có vấn đề về tim” nhưng mỗi cách nói có thể chỉ một tình trạng khác nhau. Website không thể chẩn đoán qua tin nhắn và cũng không thể lấy cảm giác hiện tại để thay kết luận y tế. Điều quan trọng ở bước đầu là nói đúng việc mình đã từng được cơ sở y tế chẩn đoán, đang theo dõi hay đang dùng thuốc, thay vì giấu thông tin vì sợ mất cơ hội.",
+        "Nguồn tuyển hiện hành liệt kê bệnh tim mạch trong nhóm không đáp ứng điều kiện sức khỏe sơ bộ. Vì vậy, câu trả lời không phải là cứ gửi đăng ký thì sẽ được nhận. Đăng ký từ xa chỉ giúp đối chiếu thông tin trước và hướng dẫn bước tiếp theo; kết quả khám tuyển mới là căn cứ cuối cùng. Người ở tỉnh xa nên làm rõ trường hợp của mình trước khi nghỉ việc, mua vé hoặc chuẩn bị hồ sơ lên Quảng Ninh."
+      ],
+      "key_points": [
+        [
+          "Bệnh tim mạch là điều kiện loại trừ sơ bộ",
+          "Thông tin tuyển đang áp dụng yêu cầu sức khỏe tốt và không mắc bệnh tim mạch ảnh hưởng đến việc học, thực tập và làm việc."
+        ],
+        [
+          "Không tự chẩn đoán qua triệu chứng",
+          "Hồi hộp, mệt hoặc từng đau ngực không đủ để website kết luận có bệnh hay không; cần khai đúng thông tin đã được cơ sở y tế xác nhận."
+        ],
+        [
+          "Không giấu bệnh hoặc tự ngừng thuốc",
+          "Việc che thông tin hay thay đổi điều trị để đi khám có thể làm sai lệch quá trình sàng lọc và không bảo đảm an toàn."
+        ],
+        [
+          "Chỉ di chuyển sau khi được hướng dẫn",
+          "Đăng ký ban đầu thực hiện từ xa; người lao động chỉ nên đến Quảng Ninh khi trường hợp cụ thể và lịch tiếp nhận đã được xác nhận."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Bị bệnh tim mạch có đăng ký học nghề mỏ được không?",
+          "paragraphs": [
+            "Theo điều kiện đang áp dụng, người đã được chẩn đoán mắc bệnh tim mạch không thuộc nhóm đủ điều kiện sức khỏe sơ bộ để học nghề mỏ hầm lò. Công việc sau đào tạo được tổ chức theo ca và có yêu cầu chặt chẽ về sức khỏe, kỹ thuật cùng kỷ luật an toàn. Website không có thẩm quyền bỏ điều kiện này, cấp ngoại lệ hoặc cam kết tiếp nhận chỉ dựa trên một cuộc trao đổi trực tuyến.",
+            "Người từng khám hoặc điều trị tim mạch vẫn có thể gửi thông tin ban đầu để hỏi đúng trường hợp, nhưng việc gửi đăng ký không đồng nghĩa đã đạt. Hãy nêu rõ mình từng được chẩn đoán gì, hiện có đang theo dõi hoặc dùng thuốc theo chỉ định hay không. Không cần tự diễn giải tên bệnh nếu không nhớ chính xác; chỉ cần nói trung thực những gì có trong kết quả khám và chờ hướng dẫn phù hợp.",
+            "Nếu mới chỉ thấy hồi hộp, mệt, khó chịu hoặc nghe người khác nói là “tim yếu”, người đăng ký cũng không nên tự kết luận mình có bệnh hoặc không có bệnh. Hãy đi khám theo chỉ dẫn của cơ sở y tế và trao đổi lại kết quả khi được yêu cầu. Kết quả khám tuyển theo quy trình của đợt tiếp nhận mới là căn cứ cuối cùng, không phải cảm giác khỏe trong một vài ngày."
+          ]
+        },
+        {
+          "heading": "Bệnh tim mạch khác với huyết áp cao thế nào trong bước sàng lọc?",
+          "paragraphs": [
+            "Nguồn tuyển hiện hành nêu bệnh tim mạch và huyết áp không phù hợp thành các nội dung sức khỏe cần loại trừ. Vì vậy, một người không nên dùng kết quả đo huyết áp bình thường tại nhà để tự khẳng định mình không có bệnh tim, cũng không nên cho rằng từng có huyết áp cao đồng nghĩa chắc chắn đã mắc một bệnh tim cụ thể. Đây là hai nhóm thông tin cần khai đúng và được kiểm tra theo chuyên môn.",
+            "Bài viết về huyết áp cao trả lời tình huống chỉ số huyết áp từng cao hoặc đang được theo dõi. Bài này tập trung vào người đã có chẩn đoán, tiền sử điều trị hoặc nghi ngờ liên quan đến tim mạch. Tách hai câu hỏi giúp người lao động tìm đúng hướng dẫn, đồng thời tránh lấy lời giải cho một tình trạng để áp dụng sang tình trạng khác.",
+            "Khi liên hệ, đừng chỉ nói “sức khỏe bình thường” nếu trước đây từng được bác sĩ hẹn tái khám, kê thuốc hoặc theo dõi tim mạch. Ngược lại, cũng không cần tự gắn tên bệnh từ một triệu chứng chưa được khám. Thông tin ngắn nhưng chính xác giúp người phụ trách sàng lọc đúng hơn và tránh yêu cầu người ở xa di chuyển khi chưa đủ căn cứ."
+          ]
+        },
+        {
+          "heading": "Nên khai thông tin sức khỏe tim mạch thế nào trước khi đăng ký?",
+          "paragraphs": [
+            "Ở bước kiểm tra từ xa, người lao động nên cung cấp năm sinh, nơi đang ở, chiều cao, cân nặng và tình trạng sức khỏe đúng thực tế. Với tim mạch, hãy nói rõ mình chưa từng được chẩn đoán, đã từng được chẩn đoán, đang theo dõi định kỳ hay đang dùng thuốc theo chỉ định. Nếu không nhớ tên bệnh hoặc kết luận, hãy nói là chưa rõ và hỏi cần đối chiếu thông tin nào; không đoán để điền cho đủ.",
+            "Đăng ký ban đầu chưa yêu cầu nộp hoặc gửi ảnh giấy tờ. Người lao động cũng không nên tự gửi bệnh án, đơn thuốc hoặc ảnh kết quả khám cho tài khoản lạ. Chỉ trao đổi qua đầu mối chính thức và thực hiện theo hướng dẫn dành cho chính trường hợp của mình. Hồ sơ sức khỏe là thông tin riêng tư; việc cung cấp cần đúng mục đích và đúng người tiếp nhận.",
+            "Không tự ngừng thuốc, đổi liều hoặc cố làm cho chỉ số khác đi trước buổi khám. Website không đưa hướng dẫn điều trị và không thay bác sĩ đang theo dõi. Nếu đang điều trị, hãy tiếp tục thực hiện theo chỉ định chuyên môn, đồng thời báo đúng tình trạng khi hỏi về khả năng đăng ký nghề mỏ."
+          ]
+        },
+        {
+          "heading": "Bốn việc cần làm trước khi mua vé đi Quảng Ninh",
+          "items": [
+            "Kiểm tra lại kết luận hoặc lịch sử điều trị mình đang có; không tự sửa tên bệnh và không dùng kết quả của người khác để tham khảo cho hồ sơ của mình.",
+            "Gửi thông tin sơ bộ trung thực cho Thầy Linh, nêu rõ tình trạng đã chẩn đoán, đang theo dõi hoặc chưa xác định để được hướng dẫn đúng bước.",
+            "Tiếp tục dùng thuốc và tái khám theo chỉ định của cơ sở y tế; không thay đổi điều trị nhằm cố vượt qua bước khám tuyển.",
+            "Chỉ nghỉ việc, mua vé và chuẩn bị đến Quảng Ninh sau khi đã nhận xác nhận rõ về điều kiện sơ bộ, lịch, địa điểm và đầu mối tiếp nhận."
+          ]
+        },
+        {
+          "heading": "Khi nào kết quả sức khỏe mới được coi là đã rõ?",
+          "paragraphs": [
+            "Một tin nhắn tư vấn chỉ giúp nhận diện trường hợp có dấu hiệu không phù hợp hoặc cần làm rõ thêm. Nó không phải giấy xác nhận đủ sức khỏe. Kết quả cuối cùng phải theo khám tuyển và quy trình của đợt tiếp nhận. Nếu người đăng ký đã có chẩn đoán bệnh tim mạch, website không được phép nói rằng chỉ cần thấy khỏe, làm việc bình thường hoặc còn trẻ là có thể bỏ qua điều kiện.",
+            "Nếu được hướng dẫn kiểm tra thêm, hãy thực hiện đúng nơi và nội dung được yêu cầu rồi chờ kết luận. Không nên gửi nhiều ảnh kết quả rời rạc để xin một lời bảo đảm qua mạng. Một chỉ số hoặc một lần khám cũ không cho phép website tự suy ra toàn bộ khả năng đáp ứng công việc mỏ hầm lò.",
+            "Nếu trường hợp chưa được xác nhận, quyết định an toàn là chưa di chuyển. Người ở tỉnh xa có thể giữ công việc hiện tại và chỉ chuẩn bị hồ sơ sau khi điều kiện cùng lịch nhập học đã rõ. Cách làm này giảm chi phí đi lại, tránh nghỉ việc sớm và bảo vệ chính sức khỏe của người đăng ký."
+          ]
+        }
+      ],
+      "takeaway_title": "Khai đúng bệnh sử và chờ kết quả khám tuyển",
+      "takeaway": "Điều kiện tuyển đang áp dụng không tiếp nhận người mắc bệnh tim mạch vào nhóm đủ sức khỏe sơ bộ cho nghề mỏ hầm lò. Người từng được chẩn đoán, đang điều trị hoặc chưa rõ tình trạng nên trao đổi trung thực để được hướng dẫn, không tự khẳng định đủ điều kiện, không giấu bệnh và không tự ngừng thuốc. Chỉ chuẩn bị hồ sơ, nghỉ việc hoặc mua vé đến Quảng Ninh sau khi trường hợp cụ thể đã được kiểm tra và lịch tiếp nhận đã được xác nhận.",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: ứng viên phải có sức khỏe tốt, đáp ứng yêu cầu khám tuyển; bệnh tim mạch và huyết áp không phù hợp thuộc nhóm loại trừ sức khỏe; kết quả khám tuyển là căn cứ cuối cùng. Đăng ký ban đầu chưa cần nộp giấy tờ và người lao động chỉ đến nhập học sau khi được xác nhận lịch.",
+      "faqs": [
+        [
+          "Từng điều trị bệnh tim nhưng hiện thấy khỏe có đăng ký được không?",
+          "Không nên tự kết luận đủ điều kiện từ cảm giác hiện tại. Hãy khai đúng tiền sử điều trị và chờ hướng dẫn, kết quả khám tuyển cho trường hợp cụ thể."
+        ],
+        [
+          "Huyết áp bình thường có nghĩa là không mắc bệnh tim không?",
+          "Website không thể kết luận như vậy. Huyết áp và bệnh tim mạch là các nội dung cần được đối chiếu riêng theo khám chuyên môn."
+        ],
+        [
+          "Có cần gửi ảnh bệnh án hoặc đơn thuốc khi đăng ký ban đầu không?",
+          "Không tự gửi cho tài khoản lạ. Bước đăng ký ban đầu chưa yêu cầu nộp ảnh giấy tờ; hãy khai đúng tình trạng và chỉ cung cấp thêm theo hướng dẫn chính thức."
+        ],
+        [
+          "Chưa rõ mình có bệnh tim thì có nên mua vé đi khám tuyển không?",
+          "Chưa nên. Hãy liên hệ và làm rõ bước cần kiểm tra trước; chỉ di chuyển khi điều kiện sơ bộ cùng lịch tiếp nhận của chính mình đã được xác nhận."
+        ]
+      ],
+      "related": [
+        [
+          "/kiem-tra-dieu-kien/",
+          "Đối chiếu đầy đủ điều kiện sức khỏe hiện hành"
+        ],
+        [
+          "/giai-dap-nghe-mo/di-kham-suc-khoe-hoc-nghe-mo-truoc-hay-sau-khi-dang-ky/",
+          "Xem nên khám sức khỏe trước hay sau khi đăng ký"
+        ],
+        [
+          "/kiem-tra-dieu-kien/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=benh_tim_mach#dang-ky",
           "Gửi thông tin để được kiểm tra trước"
         ]
       ]

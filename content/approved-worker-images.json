@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-06T07:50:00+07:00",
+  "updated_at": "2026-09-09T08:25:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -183,6 +183,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/61A924AAFDE1348A0890B409A5AABE6F319F40D60A4492B673FF4D1A786AE9AA.jpg",
       "provider": "Vinacomin",
       "description": "Nhóm học sinh nghề mỏ mặc bảo hộ xanh trong chương trình hướng nghiệp và tham quan thực tế tại Than Thống Nhất"
+    },
+    {
+      "asset": "vinacomin-kham-suc-khoe-van-tai-tho-mo-2026.webp",
+      "source_article_url": "https://vinacomin.vn/vi/news/slug/cong-ty-cp-van-tai-va-dua-don-tho-mo-to-chuc-kham-suc-khoe-cho-cnvcld-nam-2026",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/C009604D47C9B5CA09F887AA383B81C4B9F91700A9B10F9E80B4B02E555DC762.jpg",
+      "provider": "Vinacomin",
+      "description": "Nhân viên y tế lấy mẫu xét nghiệm cho người lao động Công ty CP Vận tải và Đưa đón Thợ mỏ trong đợt khám sức khỏe năm 2026"
     }
   ]
 }
