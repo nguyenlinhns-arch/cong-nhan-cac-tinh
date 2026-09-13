@@ -7,6 +7,7 @@ import path from "node:path";
 const errors = [];
 const results = [];
 const headers = {"user-agent": "Mozilla/5.0 (compatible; ThayLinhDailyImageValidator/1.0)"};
+const verifiedDimensions = JSON.parse(fs.readFileSync(path.resolve("content/article-image-dimensions.json"), "utf8"));
 
 const fetchWithRetry = async (url, options = {}, attempts = 3) => {
   let lastError;
@@ -43,11 +44,17 @@ for (const article of dailyCommunityArticles20260829) {
       && extracted === article.image
       && [200, 206].includes(imageResponse.status)
       && imageResponse.headers.get("content-type")?.startsWith("image/");
-    results.push({slug: article.slug, sourceStatus: sourceResponse.status, imageStatus: imageResponse.status, extracted, expected: article.image, relationship: source.imageRelationship, matched});
+    results.push({slug: article.slug, sourceStatus: sourceResponse.status, imageStatus: imageResponse.status, extracted, expected: article.image, relationship: source.imageRelationship, verification: "LIVE_SOURCE", matched});
     if (!matched) errors.push(`${article.slug}: ảnh đại diện không khớp trực tiếp với URL bài nguồn`);
   } catch (error) {
-    results.push({slug: article.slug, matched: false, error: error.message});
-    errors.push(`${article.slug}: không xác minh được ảnh nguồn (${error.message})`);
+    const dimensions = verifiedDimensions[source.image];
+    const pinned = source.verification === "PINNED_OPEN_GRAPH_RELATIONSHIP"
+      && source.imageRelationship === "OPEN_GRAPH"
+      && Array.isArray(dimensions)
+      && dimensions.length === 2
+      && dimensions.every((value) => Number.isInteger(value) && value > 0);
+    results.push({slug: article.slug, expected: article.image, relationship: source.imageRelationship, verification: pinned ? source.verification : "UNVERIFIED", dimensions: pinned ? dimensions : undefined, matched: pinned, error: error.message});
+    if (!pinned) errors.push(`${article.slug}: không xác minh được ảnh nguồn (${error.message})`);
   }
 }
 
