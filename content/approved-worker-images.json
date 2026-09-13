@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-09T09:35:00+07:00",
+  "updated_at": "2026-09-13T08:16:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -197,6 +197,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/0E1D2F41F15FBE4DA582304952BDB2865969BA29F211B01E69AD3274DC788EE5.jpg",
       "provider": "Vinacomin",
       "description": "Học sinh nghề mỏ hầm lò tại chương trình gặp mặt và hỗ trợ do Công ty Than Quang Hanh - TKV phối hợp tổ chức"
+    },
+    {
+      "asset": "vinacomin-hoc-sinh-nghe-mo-tham-quan-than-nui-beo-2026.webp",
+      "source_article_url": "https://vinacomin.vn/video-category/hoc-sinh-nghe-mo-ham-lo-tham-quan-thuc-te-san-xuat-tai-than-nui-beo",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/Media/2026/T8/16/anh%20H%E1%BB%8Dc%20sinh%20ngh%E1%BB%81%20m%E1%BB%8F%20h%E1%BA%A7m%20l%C3%B2%20tham%20quan%20th%E1%BB%B1c%20t%E1%BA%BF%20s%E1%BA%A3n%20xu%E1%BA%A5t%20t%E1%BA%A1i%20Than%20N%C3%BAi%20B%C3%A9o.jpg",
+      "provider": "Vinacomin",
+      "description": "Học sinh nghề mỏ hầm lò mặc bảo hộ tham quan thực tế sản xuất tại Than Núi Béo"
     }
   ]
 }

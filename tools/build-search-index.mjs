@@ -209,9 +209,9 @@ const coreUrlSet = new Set(coreItems.map((item) => item.url));
 const contentItems = items
   .filter((item) => item.category !== "province" && !coreUrlSet.has(item.url))
   // Keep the downloadable content tier lean on mobile. Title, description and
-  // the first 8 headings/keywords preserve the strongest intent signals;
+  // the first 7 headings/keywords preserve the strongest intent signals;
   // later headings are usually navigation or repeated FAQ wording.
-  .map((item) => compact(item, 8));
+  .map((item) => compact(item, 7));
 const files = {
   core: "search-core.json",
   provinces: "search-provinces.json",
@@ -221,8 +221,8 @@ const files = {
 fs.writeFileSync(path.join(root, files.core), `${JSON.stringify({ version: 4, tier: "core", items: coreItems }, null, 2)}\n`);
 fs.writeFileSync(path.join(root, files.provinces), `${JSON.stringify({ version: 4, tier: "provinces", items: provinceItems }, null, 2)}\n`);
 // Content is fetched on demand on mobile, so keep the exact same data but omit
-// pretty-print whitespace. This preserves all 152 entries/keywords while
-// reducing transfer size below the performance budget.
+// pretty-print whitespace. This preserves every content entry while
+// reducing transfer size below the performance budget as the library grows.
 fs.writeFileSync(path.join(root, files.content), `${JSON.stringify({ version: 4, tier: "content", items: contentItems })}\n`);
 fs.writeFileSync(path.join(root, "search-index.json"), `${JSON.stringify({
   version: 4,

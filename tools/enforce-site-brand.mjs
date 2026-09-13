@@ -37,6 +37,51 @@ async function runValidator(modulePath, label) {
   process.exitCode = previousExitCode;
 }
 
+function findStaleNewsroomPages() {
+  return walk(path.join(SITE, "tin-nganh-than"))
+    .filter((file) => file.endsWith(".html"))
+    .filter((file) => {
+      const html = fs.readFileSync(file, "utf8");
+      return html.includes("article-body--source") && !html.includes("newsroom-copy-v3:start");
+    });
+}
+
+async function repairLateNewsroomRegressions() {
+  const staleBefore = findStaleNewsroomPages();
+  if (!staleBefore.length) return;
+
+  // A few late renderers can recreate a valid v2 source body after the first
+  // newsroom pass in a clean Pages build. Replay the structural and copy passes
+  // in a fresh module context so the first build is as reliable as a rerun.
+  const replayModules = [
+    "./editorial-story-rewrite.mjs",
+    "./editorial-copy-sanitizer-v3.mjs",
+    "./editorial-faq-restore.mjs",
+    "./editorial-current-facts-link.mjs",
+    "./editorial-image-dimensions-guard.mjs",
+    "./editorial-daily-depth-guard.mjs",
+    "./editorial-prose-v4.mjs",
+    "./editorial-specialist-v6.mjs",
+    "./editorial-authority-pass.mjs",
+    "./editorial-copy-finalizer.mjs",
+    "./editorial-newspaper-v6.mjs",
+    "./editorial-uniqueness-rewrite-v9.mjs",
+    "./editorial-uniqueness-punctuation-v9.mjs",
+    "./optimize-article-keywords.mjs",
+    "./editorial-content-origin-v9.mjs",
+  ];
+  const replayToken = `${Date.now()}-${Math.random()}`;
+  for (const modulePath of replayModules) {
+    await import(`${modulePath}?final-newsroom-repair=${replayToken}`);
+  }
+
+  const staleAfter = findStaleNewsroomPages();
+  if (staleAfter.length) {
+    throw new Error(`Không thể phục hồi newsroom v3 cho: ${staleAfter.map(relativePath).join(", ")}`);
+  }
+  console.log(`Repaired ${staleBefore.length} late newsroom v2 regression(s) before validation.`);
+}
+
 function maskDuplicateLegacySeoValidation() {
   if (process.env.GITHUB_ACTIONS !== "true") return;
   const validator = path.join(ROOT, "tools", "validate-seo-library.mjs");
@@ -174,6 +219,8 @@ if (!CHECK_ONLY) {
   // Force a fresh run here, after every newsroom and field-report renderer has
   // finished, so late-created pages cannot miss their provenance declaration.
   await import(`./editorial-content-origin-v9.mjs?after-render=${Date.now()}`);
+
+  await repairLateNewsroomRegressions();
 
   await runValidator("./validate-home-field-report-entry-v9.mjs", "Kiểm định lối vào phóng sự trang chủ v9");
   await runValidator("./validate-home-kcn-reel-facade-v10.mjs", "Kiểm định video Làm mỏ hay KCN click-to-play");
