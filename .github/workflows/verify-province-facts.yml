@@ -64,25 +64,25 @@ jobs:
               fi
               set +e
               FILE="$file" SLUG="$slug" FACTS_DATE="$facts_date" node <<'NODE'
-              const fs=require('node:fs');
-              const html=fs.readFileSync(process.env.FILE,'utf8');
-              const slug=process.env.SLUG;
-              const factsDate=process.env.FACTS_DATE;
-              const failures=[];
-              if (!html.includes('Kỹ thuật cơ điện mỏ hầm lò')) failures.push('missing electrical-mine occupation');
-              if (!/(?:cơ điện mỏ[^<\n]{0,100}(?:học|đào tạo)[^<\n]{0,40}10 tháng|Kỹ thuật cơ điện mỏ hầm lò[\s\S]{0,180}10 tháng)/iu.test(html)) failures.push('missing 10-month electrical-mine duration');
-              if (/7[,.]5\s*triệu/iu.test(html) && !/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(html)) failures.push('7.5M missing /month');
-              for (const match of html.matchAll(/20\s*[–-]\s*25\s*triệu/giu)) {
-                const i=match.index||0;
-                const window=html.slice(Math.max(0,i-220),Math.min(html.length,i+340));
-                if (!/hoàn thành định mức lao động/iu.test(window)) { failures.push('20-25M missing labor-norm condition'); break; }
-              }
-              const reviewed=html.match(/"lastReviewed"\s*:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1] || '';
-              if (!reviewed || reviewed < factsDate) failures.push(`lastReviewed ${reviewed || 'missing'} older than canonical facts ${factsDate}`);
-              if (!html.includes('"reviewedBy":{"@id":"https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/#person"}')) failures.push('reviewedBy missing');
-              if (/cong-nhan-mo-ham-lo-quang-ninh\/\?province=/iu.test(html)) failures.push('crawlable province query URL remains');
-              if (failures.length) { console.error(JSON.stringify({slug,factsDate,failures},null,2)); process.exit(2); }
-              NODE
+          const fs=require('node:fs');
+          const html=fs.readFileSync(process.env.FILE,'utf8');
+          const slug=process.env.SLUG;
+          const factsDate=process.env.FACTS_DATE;
+          const failures=[];
+          if (!html.includes('Kỹ thuật cơ điện mỏ hầm lò')) failures.push('missing electrical-mine occupation');
+          if (!/(?:cơ điện mỏ[^<\n]{0,100}(?:học|đào tạo)[^<\n]{0,40}10 tháng|Kỹ thuật cơ điện mỏ hầm lò[\s\S]{0,180}10 tháng)/iu.test(html)) failures.push('missing 10-month electrical-mine duration');
+          if (/7[,.]5\s*triệu/iu.test(html) && !/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(html)) failures.push('7.5M missing /month');
+          for (const match of html.matchAll(/20\s*[–-]\s*25\s*triệu/giu)) {
+            const i=match.index||0;
+            const window=html.slice(Math.max(0,i-220),Math.min(html.length,i+340));
+            if (!/hoàn thành định mức lao động/iu.test(window)) { failures.push('20-25M missing labor-norm condition'); break; }
+          }
+          const reviewed=html.match(/"lastReviewed"\s*:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1] || '';
+          if (!reviewed || reviewed < factsDate) failures.push(`lastReviewed ${reviewed || 'missing'} older than canonical facts ${factsDate}`);
+          if (!html.includes('"reviewedBy":{"@id":"https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/#person"}')) failures.push('reviewedBy missing');
+          if (/cong-nhan-mo-ham-lo-quang-ninh\/\?province=/iu.test(html)) failures.push('crawlable province query URL remains');
+          if (failures.length) { console.error(JSON.stringify({slug,factsDate,failures},null,2)); process.exit(2); }
+          NODE
               status=$?
               set -e
               if [ "$status" -ne 0 ]; then ok=0; fi
