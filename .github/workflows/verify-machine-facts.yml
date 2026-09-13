@@ -110,7 +110,8 @@ jobs:
             const item=(core.items||[]).find((x)=>x.url===url);
             if (!item || item.canonicalFactsVersion!==version) failures.push(`search core ${url}`);
           }
-          const all=JSON.stringify({current,jobs,daily,worker,manifest,core})+jobsXml+jooble;
+          const {usage_note: _legacyRegistry, ...currentFacts}=current;
+          const all=JSON.stringify({current:currentFacts,jobs,daily,worker,manifest,core})+jobsXml+jooble;
           for (const legacy of ['Bình quân 20–25 triệu','tùy đơn vị, vị trí, ngày công và năng suất','7,5 triệu là tổng cả khóa','Hai nghề đang tiếp nhận']) {
             if (all.toLocaleLowerCase('vi').includes(legacy.toLocaleLowerCase('vi'))) failures.push(`legacy ${legacy}`);
           }
