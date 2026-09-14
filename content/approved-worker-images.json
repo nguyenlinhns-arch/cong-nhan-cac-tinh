@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-13T08:16:00+07:00",
+  "updated_at": "2026-09-14T07:48:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -204,6 +204,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/images/Media/2026/T8/16/anh%20H%E1%BB%8Dc%20sinh%20ngh%E1%BB%81%20m%E1%BB%8F%20h%E1%BA%A7m%20l%C3%B2%20tham%20quan%20th%E1%BB%B1c%20t%E1%BA%BF%20s%E1%BA%A3n%20xu%E1%BA%A5t%20t%E1%BA%A1i%20Than%20N%C3%BAi%20B%C3%A9o.jpg",
       "provider": "Vinacomin",
       "description": "Học sinh nghề mỏ hầm lò mặc bảo hộ tham quan thực tế sản xuất tại Than Núi Béo"
+    },
+    {
+      "asset": "vinacomin-kham-suc-khoe-tuyen-than-cua-ong-2024.webp",
+      "source_article_url": "https://vinacomin.vn/vi/news/slug/cong-ty-tuyen-than-cua-ong-tkv-to-chuc-kham-suc-khoe-dinh-ky-nam-2024-cho-nguoi-lao-dong",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/9A56CFF92FA14E4BF7DA248A7C51A6A6951DCFA24025E73BB94D44E1B4022CF6.jpg",
+      "provider": "Vinacomin",
+      "description": "Nhân viên y tế khám sức khỏe định kỳ cho người lao động Tuyển than Cửa Ông năm 2024"
     }
   ]
 }
