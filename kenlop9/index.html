@@ -3,22 +3,59 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#173a70">
-<title>Ken • Kiểm tra kiến thức</title>
+<meta name="theme-color" content="#10284d">
+<meta name="description" content="Ken Lớp 9 - kiểm tra kiến thức theo mốc tháng, giữa kỳ và cuối kỳ, ưu tiên dữ liệu Quảng Ninh.">
+<title>Ken Lớp 9 • Kiểm tra kiến thức</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="top"><div class="wrap"><div class="eyebrow">KEN • LỚP 9 • QUẢNG NINH</div><h1>Kiểm tra kiến thức</h1><p>Chọn mốc, nhóm môn, môn học và bắt đầu.</p></div></header>
-<main class="wrap">
-  <div id="milestones" class="segmented"></div>
-  <div id="subjectGroups" class="group-tabs"></div>
-  <div id="subjects" class="subjects"></div>
+<header class="top">
+  <div class="wrap hero">
+    <div class="hero-copy">
+      <div class="brandline"><span class="brandmark">K9</span><span>KEN • ÔN THI VÀO LỚP 10</span></div>
+      <h1>Kiểm tra kiến thức lớp 9</h1>
+      <p>Ôn đúng mốc, đánh giá đúng phần yếu. Ưu tiên cấu trúc và nguồn đề Quảng Ninh.</p>
+    </div>
+    <div class="hero-meta">
+      <div><b>12</b><span>môn học</span></div>
+      <div><b>3</b><span>mốc đánh giá</span></div>
+      <div><b>2024–2026</b><span>nguồn ưu tiên</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap page">
+  <section class="control-surface">
+    <div class="control-row">
+      <div>
+        <span class="step-label">Mốc đánh giá</span>
+        <div id="milestones" class="segmented"></div>
+      </div>
+      <div>
+        <span class="step-label">Nhóm môn</span>
+        <div id="subjectGroups" class="group-tabs"></div>
+      </div>
+    </div>
+
+    <div class="subjects-head">
+      <div><span class="step-label">Chọn môn</span><h2>Môn học</h2></div>
+      <span class="source-chip">Nguồn Quảng Ninh</span>
+    </div>
+    <div id="subjects" class="subjects"></div>
+  </section>
+
   <section id="ready" class="ready"></section>
   <section id="quiz" class="panel hidden"></section>
   <section id="result" class="hidden"></section>
   <section id="recent" class="recent"></section>
 </main>
-<footer>Nguồn đề Quảng Ninh • 12 môn</footer>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>Ken • Lớp 9</span>
+    <span>Đề chính thức Quảng Ninh được ưu tiên khi chuẩn hóa ngân hàng câu hỏi.</span>
+  </div>
+</footer>
 <script src="app.js"></script>
 </body>
 </html>
