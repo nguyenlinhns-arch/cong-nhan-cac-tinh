@@ -160,7 +160,7 @@ jobs:
             if curl --fail --silent --show-error --location --max-time 20 "$KEN_URL?run=${GITHUB_SHA}" -o "$html_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${KEN_URL}app.js?run=${GITHUB_SHA}" -o "$app_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${KEN_URL}styles.css?run=${GITHUB_SHA}" -o "$css_file" \
-              && grep -Fq 'KEN • LỚP 9' "$html_file" \
+              && grep -Fq 'Kiểm tra kiến thức lớp 9' "$html_file" \
               && grep -Fq "const TARGETS={month:15,midterm:25,final:35}" "$app_file" \
               && grep -Fq '.control-surface{' "$css_file"; then
               echo "Ken Lop9 is live on attempt $attempt."
