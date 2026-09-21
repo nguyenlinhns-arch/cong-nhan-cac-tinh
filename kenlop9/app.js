@@ -1,9 +1,9 @@
 'use strict';
 
 const SUBJECTS={
-  math:{name:'Toán',icon:'∑',topics:[['sqrt','Căn bậc hai & căn thức'],['radical','Biến đổi căn thức'],['system','Hệ phương trình'],['triangle','Hệ thức lượng tam giác vuông'],['circle','Đường tròn']]},
+  math:{name:'Toán',icon:'∑',topics:[['sqrt','Căn thức'],['radical','Biến đổi căn thức'],['function','Hàm số & đồ thị'],['system','Phương trình & hệ'],['inequality','Bất phương trình'],['probability','Xác suất'],['statistics','Thống kê'],['polygon','Đa giác đều'],['solid','Khối trụ • nón • cầu'],['triangle','Tam giác'],['circle','Đường tròn']]},
   literature:{name:'Ngữ văn',icon:'V',topics:[['reading','Đọc hiểu'],['writing','Nghị luận xã hội'],['literary','Nghị luận văn học']]},
-  english:{name:'Tiếng Anh',icon:'EN',topics:[['tenses','Thì & dạng động từ'],['passive','Câu bị động'],['relative','Mệnh đề quan hệ'],['conditional','Câu điều kiện'],['vocab','Từ loại & từ vựng']]},
+  english:{name:'Tiếng Anh',icon:'EN',topics:[['phonetics','Phát âm & trọng âm'],['tenses','Thì & dạng động từ'],['passive','Câu bị động'],['relative','Mệnh đề quan hệ'],['conditional','Câu điều kiện'],['vocab','Từ vựng & từ loại'],['communication','Giao tiếp'],['reading','Đọc hiểu'],['writing','Viết biến đổi câu']]},
   physics:{name:'Vật lí',icon:'Ω',topics:[['ohm','Điện trở & định luật Ôm'],['circuit','Mạch nối tiếp/song song'],['power','Công suất điện'],['energy','Điện năng'],['joule','Jun–Len-xơ']]},
   chemistry:{name:'Hóa học',icon:'H₂',topics:[['oxide','Oxit'],['acid','Axit'],['base','Bazơ'],['salt','Muối'],['exchange','Phản ứng trao đổi']]},
   biology:{name:'Sinh học',icon:'DNA',topics:[['genetics','Di truyền'],['variation','Biến dị'],['ecology','Sinh thái']]},
@@ -20,6 +20,21 @@ const GROUPS={
   science:{name:'KHTN',subjects:['physics','chemistry','biology']},
   social:{name:'KHXH',subjects:['history','geography','civics']},
   other:{name:'Khác',subjects:['informatics','chinese','french']}
+};
+
+const SUBJECT_META={
+  math:{status:'ready',badge:'Sẵn sàng',source:'TS10 Quảng Ninh'},
+  literature:{status:'official',badge:'Tự luận',source:'TS10 QN • 120 phút'},
+  english:{status:'ready',badge:'Sẵn sàng',source:'TS10 Quảng Ninh'},
+  physics:{status:'ready',badge:'Sẵn sàng',source:'QN • KHTN'},
+  chemistry:{status:'ready',badge:'Sẵn sàng',source:'QN • KHTN'},
+  biology:{status:'official',badge:'Đang chuẩn hóa',source:'Cấu trúc QN'},
+  history:{status:'official',badge:'Đang chuẩn hóa',source:'Cấu trúc QN'},
+  geography:{status:'official',badge:'Đang chuẩn hóa',source:'Cấu trúc QN'},
+  civics:{status:'curriculum',badge:'Theo CT lớp 9',source:'Chương trình lớp 9'},
+  informatics:{status:'official',badge:'Đang chuẩn hóa',source:'Cấu trúc QN'},
+  chinese:{status:'official',badge:'Đang chuẩn hóa',source:'TS10 Quảng Ninh'},
+  french:{status:'official',badge:'Đang chuẩn hóa',source:'TS10 Quảng Ninh'}
 };
 
 function Q(id,topic,text,options,answer,explain){return{id:id,topic:topic,text:text,options:options,answer:answer,explain:explain};}
@@ -217,6 +232,72 @@ Q('c39','exchange','AgNO₃ + NaCl xảy ra vì tạo:',['AgCl kết tủa','NaN
 Q('c40','exchange','BaCl₂ + Na₂SO₄ xảy ra vì tạo:',['BaSO₄ kết tủa','NaCl kết tủa','SO₂ khí','Ba kim loại'],0,'Tạo BaSO₄ không tan.')
 ]);
 
+
+/* Bổ sung nhóm câu theo cấu trúc tuyển sinh Quảng Ninh. */
+addQuestions('math',[
+Q('m41','function','Điểm nào thuộc đồ thị y=2x+1?',['(0;0)','(1;3)','(2;2)','(-1;1)'],1,'Thay x=1 được y=3.'),
+Q('m42','function','Hàm số y=-3x+2 có hệ số góc bằng:',['2','-3','3','-2'],1,'Hệ số của x là hệ số góc.'),
+Q('m43','function','Đồ thị y=2x-4 cắt trục Ox tại điểm có hoành độ:',['-2','0','2','4'],2,'Cho y=0: 2x-4=0 nên x=2.'),
+Q('m44','function','Với y=-x+5, khi x=2 thì y bằng:',['2','3','5','7'],1,'y=-2+5=3.'),
+Q('m45','function','Hai đường thẳng y=2x+1 và y=2x-3:',['cắt nhau','song song','vuông góc','trùng nhau'],1,'Cùng hệ số góc 2, khác tung độ gốc.'),
+
+Q('m46','inequality','Nghiệm của bất phương trình x+3>7 là:',['x>4','x<4','x≥4','x≤4'],0,'Trừ 3 hai vế được x>4.'),
+Q('m47','inequality','Nghiệm của 2x≤10 là:',['x≤5','x≥5','x<5','x>5'],0,'Chia hai vế cho 2.'),
+Q('m48','inequality','Nghiệm của -x<3 là:',['x<-3','x>-3','x<3','x>3'],1,'Nhân -1 phải đổi chiều: x>-3.'),
+Q('m49','inequality','Bất phương trình 3x-6≥0 tương đương:',['x≥2','x≤2','x>2','x<2'],0,'3x≥6 nên x≥2.'),
+Q('m50','inequality','Số nào là nghiệm của x-1<0?',['2','1','0','3'],2,'x<1 nên 0 là nghiệm.'),
+
+Q('m51','probability','Gieo một đồng xu cân đối một lần. Xác suất xuất hiện mặt ngửa là:',['0','1/4','1/2','1'],2,'Có 2 kết quả đồng khả năng.'),
+Q('m52','probability','Gieo một xúc xắc cân đối. Xác suất ra số 6 là:',['1/2','1/3','1/6','1/12'],2,'Có 6 kết quả đồng khả năng.'),
+Q('m53','probability','Túi có 3 bi đỏ, 2 bi xanh. Lấy ngẫu nhiên 1 bi. Xác suất lấy bi đỏ là:',['2/5','3/5','1/2','3/2'],1,'Có 3 kết quả thuận lợi trên 5 bi.'),
+Q('m54','probability','Gieo xúc xắc. Xác suất ra số chẵn là:',['1/6','1/3','1/2','2/3'],2,'Các số chẵn 2,4,6: 3/6=1/2.'),
+Q('m55','probability','Chọn ngẫu nhiên một số trong {1,2,3,4}. Xác suất chọn số lớn hơn 2 là:',['1/4','1/2','3/4','1'],1,'Có 2 số thuận lợi là 3,4 trong 4 số.'),
+
+Q('m56','statistics','Trung bình cộng của 2,4,6,8 là:',['4','5','6','20'],1,'Tổng 20 chia 4 bằng 5.'),
+Q('m57','statistics','Trung vị của dãy 1,3,5,7,9 là:',['3','5','7','9'],1,'Giá trị giữa là 5.'),
+Q('m58','statistics','Mốt của dãy 2,2,3,4,4,4,5 là:',['2','3','4','5'],2,'4 xuất hiện nhiều nhất.'),
+Q('m59','statistics','Khoảng biến thiên của dãy 3,5,8,10 là:',['5','7','8','10'],1,'10-3=7.'),
+Q('m60','statistics','Tổng của 5 giá trị có trung bình cộng 6 là:',['11','30','36','60'],1,'Tổng = trung bình × số giá trị =30.'),
+
+Q('m61','polygon','Tổng số đo các góc trong một tam giác là:',['90°','180°','270°','360°'],1,'Tổng ba góc trong tam giác bằng 180°.'),
+Q('m62','polygon','Một hình vuông là đa giác đều có:',['3 cạnh','4 cạnh','5 cạnh','6 cạnh'],1,'Hình vuông có 4 cạnh bằng nhau và 4 góc bằng nhau.'),
+Q('m63','polygon','Mỗi góc trong của hình vuông bằng:',['45°','60°','90°','120°'],2,'Hình vuông có bốn góc vuông.'),
+Q('m64','polygon','Lục giác đều có số cạnh bằng:',['4','5','6','8'],2,'Lục giác có 6 cạnh.'),
+Q('m65','polygon','Đa giác đều là đa giác có:',['các cạnh bằng nhau','các góc bằng nhau','các cạnh và các góc bằng nhau','hai đường chéo bằng nhau'],2,'Đa giác đều có cả cạnh và góc tương ứng bằng nhau.'),
+
+Q('m66','solid','Thể tích hình trụ bán kính r, chiều cao h là:',['πr²h','2πrh','πrh²','4πr³/3'],0,'V=πr²h.'),
+Q('m67','solid','Thể tích hình nón bán kính r, chiều cao h là:',['πr²h','πr²h/3','2πrh','4πr³/3'],1,'V=1/3 πr²h.'),
+Q('m68','solid','Thể tích khối cầu bán kính r là:',['πr²','4πr²','4πr³/3','2πr³'],2,'V=4/3 πr³.'),
+Q('m69','solid','Diện tích xung quanh hình trụ bán kính r, chiều cao h là:',['πr²','2πrh','πrh','4πr²'],1,'Sxq=2πrh.'),
+Q('m70','solid','Một hình trụ có r=2, h=3. Thể tích bằng:',['6π','12π','18π','24π'],1,'V=π·2²·3=12π.')
+]);
+
+addQuestions('english',[
+Q('e41','phonetics','Which word has “-ed” pronounced /ɪd/?',['worked','wanted','played','washed'],1,'wanted ends with /t/ before -ed, so /ɪd/.'),
+Q('e42','phonetics','Which word has “-s” pronounced /z/?',['books','cats','bags','maps'],2,'bags ends with a voiced sound, so -s is /z/.'),
+Q('e43','phonetics','Which word has stress on the second syllable?',['teacher','hotel','mother','table'],1,'hotel is stressed on the second syllable.'),
+Q('e44','phonetics','Which word has a different pronunciation of “th”?',['think','thank','this','three'],2,'this has voiced /ð/; the others have /θ/.'),
+Q('e45','phonetics','Which word has stress on the first syllable?',['begin','answer','decide','invite'],1,'answer is stressed on the first syllable.'),
+
+Q('e46','communication','“Would you like some tea?” – “___”',['Yes, please.','Yes, I do.','No, I am not.','I like tea yesterday.'],0,'Yes, please is a natural response to an offer.'),
+Q('e47','communication','“Thank you very much.” – “___”',['Never mind.','You’re welcome.','Not at all?','I’m sorry.'],1,'You’re welcome is a standard response to thanks.'),
+Q('e48','communication','“I’m sorry I’m late.” – “___”',['That’s all right.','Here you are.','Good idea.','Well done.'],0,'That’s all right accepts an apology.'),
+Q('e49','communication','“How about going to the cinema?” – “___”',['Sounds great.','Yes, I am.','No, I didn’t.','Thank you.'],0,'Sounds great accepts a suggestion.'),
+Q('e50','communication','“Could you help me with this bag?” – “___”',['Sure.','No, I couldn’t yesterday.','It is a bag.','I help you.'],0,'Sure is a natural response to a request.'),
+
+Q('e51','reading','Mai walks to school because her house is near the school. Why does Mai walk to school?',['She likes buses.','Her house is near the school.','She has no school.','The school is closed.'],1,'The reason is stated directly.'),
+Q('e52','reading','Nam studies every evening and always finishes his homework. What can we infer?',['He is lazy.','He has good study habits.','He never studies.','He dislikes homework.'],1,'Regular study and completed homework indicate good study habits.'),
+Q('e53','reading','The library closes at 5 p.m. Lan arrives at 5:30 p.m. What is true?',['The library is still open.','Lan arrives before closing.','The library has closed.','Lan works there.'],2,'5:30 p.m. is after the closing time.'),
+Q('e54','reading','A notice says “Keep off the grass.” What should people do?',['Walk on the grass.','Do not step on the grass.','Water the grass.','Cut the grass.'],1,'Keep off means do not enter or step on it.'),
+Q('e55','reading','Minh brings an umbrella because the sky is very dark. What does he expect?',['Snow','Rain','Sunshine','Wind only'],1,'A dark sky and umbrella suggest rain.'),
+
+Q('e56','writing','Choose the sentence closest in meaning: “I started learning English three years ago.”',['I learned English for three years.','I have learned English for three years.','I am learning English yesterday.','I will learn English three years ago.'],1,'Present perfect expresses an action started in the past and continuing now.'),
+Q('e57','writing','“The box is too heavy for me to carry.” is closest to:',['The box is so light that I can carry it.','The box is not light enough for me to carry.','I carry the box easily.','The box has no weight.'],1,'too heavy to carry = not light enough to carry.'),
+Q('e58','writing','“Although it rained, we went out.” is closest to:',['Because it rained, we stayed home.','In spite of the rain, we went out.','It rained so we did not go out.','We went out before it rained.'],1,'Although + clause can be changed to in spite of + noun phrase.'),
+Q('e59','writing','“People speak English worldwide.” Passive form:',['English speaks worldwide.','English is spoken worldwide.','English was spoken worldwide.','Worldwide speaks English.'],1,'Present simple passive: is spoken.'),
+Q('e60','writing','“I don’t have a bicycle.” Wish sentence:',['I wish I have a bicycle.','I wish I had a bicycle.','I wished I have a bicycle.','I wish I will have a bicycle yesterday.'],1,'Wish for the present uses past simple.')
+]);
+
 const TARGETS={month:15,midterm:25,final:35};
 
 const KEY='kenSimple.history.v2';
@@ -229,8 +310,8 @@ const MONTH_SCOPE={
   math:['sqrt','radical'], english:['tenses','vocab'], physics:['ohm','circuit'], chemistry:['oxide','acid']
 };
 const MID_SCOPE={
-  math:['sqrt','radical','system','triangle'],
-  english:['tenses','passive','relative','vocab'],
+  math:['sqrt','radical','function','system','inequality','triangle'],
+  english:['phonetics','tenses','passive','relative','vocab','communication'],
   physics:['ohm','circuit','power','energy'],
   chemistry:['oxide','acid','base','salt']
 };
@@ -285,9 +366,9 @@ function renderGroups(){
 function renderSubjects(){
   const list=GROUPS[group].subjects;
   $('subjects').innerHTML=list.map(k=>{
-    const s=SUBJECTS[k],l=latest(k),ready=isReady(k);
-    const status=l?l.percent+'% gần nhất':(ready?'Làm được ngay':'Nguồn đã có');
-    return '<button class="subject '+(k===subject?'active':'')+' '+(!ready?'pending':'')+'" data-sub="'+k+'"><div class="subject-icon">'+s.icon+'</div>'+s.name+'<small>'+status+'</small></button>';
+    const s=SUBJECTS[k],l=latest(k),ready=isReady(k),meta=SUBJECT_META[k]||{};
+    const status=l?l.percent+'% gần nhất':(ready?'Sẵn sàng kiểm tra':(meta.badge||'Đang chuẩn hóa'));
+    return '<button class="subject '+(k===subject?'active':'')+' '+(!ready?'pending':'')+'" data-sub="'+k+'"><div class="subject-card-top"><div class="subject-icon">'+s.icon+'</div><span class="subject-status '+(meta.status||'official')+'">'+esc(status)+'</span></div><strong>'+s.name+'</strong><small>'+esc(meta.source||'Quảng Ninh')+'</small></button>';
   }).join('');
   document.querySelectorAll('[data-sub]').forEach(b=>b.onclick=()=>{subject=b.dataset.sub;renderSubjects();renderReady()});
 }
@@ -296,10 +377,13 @@ function renderReady(){
   const ready=isReady(subject),c=qs(),target=Math.min(TARGETS[mode]||15,c.length),names=scope(subject,mode).map(t=>topicName(subject,t)).join(' • ');
   $('ready').classList.remove('hidden');$('quiz').classList.add('hidden');$('result').classList.add('hidden');
   if(!ready){
-    $('ready').innerHTML='<div class="ready-top"><div><h2>'+SUBJECTS[subject].name+'</h2><p>Đã có thư mục và nguồn đề Quảng Ninh trong kho dữ liệu.</p></div><button class="btn secondary" disabled>Đang chuẩn hóa</button></div><div class="topics">'+esc(names)+'</div><div class="source-note">Chỉ mở Quiz khi câu hỏi đã được chuẩn hóa từ đề chính thức/đề trường có nguồn rõ ràng.</div>';
+    const meta=SUBJECT_META[subject]||{};
+    const note=subject==='literature'?'Cấu trúc Quảng Ninh là bài tự luận: Đọc hiểu 4 điểm, Viết 6 điểm. Hệ thống đang xây chấm theo rubric, không thay bằng Quiz trắc nghiệm đơn giản.':'Nguồn chính thức đã được đưa vào kho; chỉ mở kiểm tra khi ngân hàng câu hỏi đạt đủ độ phủ.';
+    $('ready').innerHTML='<div class="ready-top"><div><span class="section-kicker">'+esc(meta.source||'Quảng Ninh')+'</span><h2>'+SUBJECTS[subject].name+'</h2><p>'+esc(meta.badge||'Đang chuẩn hóa')+'</p></div><button class="btn secondary" disabled>Đang chuẩn hóa</button></div><div class="source-note">'+esc(note)+'</div>';
     return;
   }
-  $('ready').innerHTML='<div class="ready-top"><div><h2>'+MODES[mode].full+' • '+SUBJECTS[subject].name+'</h2><p>'+target+' câu kiểm tra • cân bằng theo chuyên đề</p></div><button id="start" class="btn primary">Bắt đầu</button></div><div class="topics">'+esc(names)+'</div>';
+  const meta=SUBJECT_META[subject]||{};
+  $('ready').innerHTML='<div class="ready-top"><div><span class="section-kicker">'+esc(meta.source||'Quảng Ninh')+'</span><h2>'+MODES[mode].full+' • '+SUBJECTS[subject].name+'</h2><p>'+target+' câu • cân bằng theo chuyên đề</p></div><button id="start" class="btn primary">Bắt đầu kiểm tra</button></div><div class="topics">'+esc(names)+'</div>';
   $('start').onclick=startQuiz;
 }
 
@@ -315,7 +399,8 @@ function startQuiz(){
 
 function renderQuestion(){
   const q=state.questions[state.index],sel=state.answers[state.index];
-  $('quiz').innerHTML='<div class="quiz-head"><span>'+SUBJECTS[subject].name+' • '+MODES[mode].name+'</span><span>'+(state.index+1)+'/'+state.questions.length+' • <span id="clock">'+Math.floor((Date.now()-state.started)/1000)+'s</span></span></div><div class="question">'+esc(q.text)+'</div><div class="answers">'+q.options.map((o,i)=>'<label class="answer '+(sel===i?'selected':'')+'"><input type="radio" name="a" value="'+i+'" '+(sel===i?'checked':'')+'><span><b>'+String.fromCharCode(65+i)+'.</b> '+esc(o)+'</span></label>').join('')+'</div><div class="quiz-nav"><button id="prev" class="btn secondary" '+(state.index===0?'disabled':'')+'>←</button><button id="next" class="btn primary">'+(state.index===state.questions.length-1?'Nộp bài':'Tiếp →')+'</button></div>';
+  const pct=Math.round((state.index+1)/state.questions.length*100);
+  $('quiz').innerHTML='<div class="quiz-head"><span><strong>'+SUBJECTS[subject].name+'</strong> • '+MODES[mode].name+'</span><span>'+(state.index+1)+'/'+state.questions.length+' • <span id="clock">'+Math.floor((Date.now()-state.started)/1000)+'s</span></span></div><div class="quiz-progress"><div style="width:'+pct+'%"></div></div><div class="question">'+esc(q.text)+'</div><div class="answers">'+q.options.map((o,i)=>'<label class="answer '+(sel===i?'selected':'')+'"><input type="radio" name="a" value="'+i+'" '+(sel===i?'checked':'')+'><span><b>'+String.fromCharCode(65+i)+'.</b> '+esc(o)+'</span></label>').join('')+'</div><div class="quiz-nav"><button id="prev" class="btn secondary" '+(state.index===0?'disabled':'')+'>←</button><button id="next" class="btn primary">'+(state.index===state.questions.length-1?'Nộp bài':'Tiếp →')+'</button></div>';
   document.querySelectorAll('input[name=a]').forEach(r=>r.onchange=()=>{state.answers[state.index]=Number(r.value);renderQuestion()});
   $('prev').onclick=()=>{if(state.index>0){state.index--;renderQuestion()}};
   $('next').onclick=()=>{if(state.index<state.questions.length-1){state.index++;renderQuestion()}else submit()};
@@ -344,7 +429,7 @@ function renderResult(r,wrong){
   const strong=r.strongTopics.length?r.strongTopics.map(t=>'<span class="pill good">'+esc(topicName(r.subject,t))+'</span>').join(' '):'<span class="pill warn">Chưa đủ dữ liệu</span>';
   const weak=r.weakTopics.length?r.weakTopics.map(t=>'<span class="pill bad">'+esc(topicName(r.subject,t))+'</span>').join(' '):'<span class="pill good">Không có phần yếu rõ</span>';
   const detail=wrong.length?wrong.map(w=>'<div class="wrong"><b>Câu '+w.num+'. '+esc(w.q.text)+'</b><p>Đáp án đúng: '+esc(w.q.options[w.q.answer])+'</p><p>'+esc(w.q.explain)+'</p></div>').join(''):'<p>Không có câu sai.</p>';
-  $('result').innerHTML='<div class="score"><div class="eyebrow">'+MODES[r.mode].full.toUpperCase()+' • '+SUBJECTS[r.subject].name.toUpperCase()+'</div><b>'+r.percent+'%</b><span>'+r.score+'/'+r.total+' câu đúng • '+r.level+'</span></div><div class="result-cards"><div class="result-card"><h3>Đã vững</h3>'+strong+'</div><div class="result-card"><h3>Cần học lại</h3>'+weak+'</div><div class="result-card"><h3>Việc tiếp theo</h3><div>'+esc(nextTask(r))+'</div></div></div><details><summary>Xem câu sai ('+wrong.length+')</summary>'+detail+'</details><div style="margin-top:12px"><button id="again" class="btn primary">Làm lại</button></div>';
+  $('result').innerHTML='<div class="score"><div><div class="eyebrow">'+MODES[r.mode].full.toUpperCase()+' • '+SUBJECTS[r.subject].name.toUpperCase()+'</div><h2>'+r.level+'</h2><span>'+r.score+'/'+r.total+' câu đúng</span></div><div class="score-ring" style="--score:'+r.percent+'"><div><b>'+r.percent+'%</b><small>chính xác</small></div></div></div><div class="result-cards"><div class="result-card"><h3>Đã vững</h3>'+strong+'</div><div class="result-card"><h3>Cần học lại</h3>'+weak+'</div><div class="result-card"><h3>Việc tiếp theo</h3><div>'+esc(nextTask(r))+'</div></div></div><details><summary>Xem câu sai ('+wrong.length+')</summary>'+detail+'</details><div style="margin-top:12px"><button id="again" class="btn primary">Làm lại</button></div>';
   $('again').onclick=renderReady;
 }
 
