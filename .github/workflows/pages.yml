@@ -34,14 +34,24 @@ jobs:
           # /nhap-hoc is a separate operational project. Keep it out of the
           # recruitment SEO/branding pipeline, then restore it before publish.
           dashboard_tmp="$RUNNER_TEMP/nhap-hoc-dashboard"
-          rm -rf "$dashboard_tmp"
+          kenlop9_tmp="$RUNNER_TEMP/kenlop9-site"
+          rm -rf "$dashboard_tmp" "$kenlop9_tmp"
           if [ -d tuyen-tho-mo/nhap-hoc ]; then
             mv tuyen-tho-mo/nhap-hoc "$dashboard_tmp"
+          fi
+          # /kenlop9 is a separate learning project. Keep it out of the
+          # recruitment branding/SEO pipeline, then restore it before publish.
+          if [ -d tuyen-tho-mo/kenlop9 ]; then
+            mv tuyen-tho-mo/kenlop9 "$kenlop9_tmp"
           fi
           restore_dashboard() {
             if [ -d "$dashboard_tmp" ]; then
               rm -rf tuyen-tho-mo/nhap-hoc
               mv "$dashboard_tmp" tuyen-tho-mo/nhap-hoc
+            fi
+            if [ -d "$kenlop9_tmp" ]; then
+              rm -rf tuyen-tho-mo/kenlop9
+              mv "$kenlop9_tmp" tuyen-tho-mo/kenlop9
             fi
           }
           trap restore_dashboard EXIT
@@ -139,6 +149,27 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify live Ken Lop9
+        env:
+          KEN_URL: https://thaylinhtuyenthomo.vn/kenlop9/
+        run: |
+          html_file="$(mktemp)"
+          app_file="$(mktemp)"
+          css_file="$(mktemp)"
+          for attempt in $(seq 1 18); do
+            if curl --fail --silent --show-error --location --max-time 20 "$KEN_URL?run=${GITHUB_SHA}" -o "$html_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${KEN_URL}app.js?run=${GITHUB_SHA}" -o "$app_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${KEN_URL}styles.css?run=${GITHUB_SHA}" -o "$css_file" \
+              && grep -Fq 'KEN • LỚP 9' "$html_file" \
+              && grep -Fq "const TARGETS={month:15,midterm:25,final:35}" "$app_file" \
+              && grep -Fq '.control-surface{' "$css_file"; then
+              echo "Ken Lop9 is live on attempt $attempt."
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "Ken Lop9 was not exposed by the custom domain."
+          exit 1
       - name: Notify search engines about today's new SEO answer
         if: success() && github.event_name == 'schedule'
         shell: bash
