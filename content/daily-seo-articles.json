@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-22",
+  "updated_at": "2026-09-23",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -4001,6 +4001,126 @@
         [
           "/kiem-tra-dieu-kien/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=mat_hoc_ba#dang-ky",
           "Gửi tình trạng giấy tờ để Thầy Linh kiểm tra trước"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-09-23",
+      "slug": "dang-ky-hoc-nghe-mo-co-can-cong-chung-ho-so-truoc-khong",
+      "title": "Đăng ký học nghề mỏ có cần công chứng hồ sơ trước không?",
+      "short_title": "Có cần công chứng hồ sơ nghề mỏ trước không",
+      "meta": "Đăng ký học nghề mỏ có cần công chứng hồ sơ trước không? Chưa nên tự công chứng; hãy kiểm tra điều kiện và chờ danh sách giấy tờ theo lịch.",
+      "eyebrow": "CÔNG CHỨNG HỒ SƠ VÀ THỜI ĐIỂM CHUẨN BỊ",
+      "primary_query": "đăng ký học nghề mỏ có cần công chứng hồ sơ trước không",
+      "query_variants": [
+        "hồ sơ học nghề thợ lò có cần công chứng không",
+        "đăng ký nghề mỏ cần bản photo công chứng giấy tờ gì",
+        "chưa có lịch nhập học có nên công chứng hồ sơ không"
+      ],
+      "direct_answer": "Chưa nên tự công chứng hồ sơ trước khi được kiểm tra điều kiện và nhận hướng dẫn cho đợt nhập học cụ thể. Bước đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ; hãy chờ danh sách chính xác rồi mới chuẩn bị đúng loại và số lượng bản được yêu cầu.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tu-van-tuyen-sinh-quang-hanh-tuyen-quang-2025.webp",
+        "alt": "Cán bộ Than Quang Hanh hướng dẫn hồ sơ cho người lao động tại buổi tư vấn tuyển sinh nghề mỏ ở Tuyên Quang",
+        "credit": "Ảnh: Vinacomin · Than Quang Hanh tư vấn tuyển sinh nghề mỏ tại Tuyên Quang năm 2025"
+      },
+      "intro": [
+        "Người ở tỉnh xa thường muốn công chứng sẵn nhiều bộ CCCD, giấy khai sinh và bằng cấp để tránh thiếu giấy khi đi nhập học. Tuy nhiên, chuẩn bị quá sớm có thể làm sai loại tài liệu, sai số lượng hoặc tốn chi phí trước khi biết mình có phù hợp với điều kiện tuyển và hệ đào tạo đang tiếp nhận hay không.",
+        "Quy trình hiện hành tách rõ hai bước: đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ; sau khi điều kiện được đối chiếu và lịch tiếp nhận được xác nhận, người đăng ký mới chuẩn bị theo danh sách cụ thể. Vì nguồn chuẩn không quy định mọi giấy tờ đều phải công chứng, website không tự yêu cầu một bộ bản sao chung cho tất cả trường hợp."
+      ],
+      "key_points": [
+        [
+          "Chưa cần công chứng ở bước đăng ký ban đầu",
+          "Hãy gửi thông tin cá nhân và điều kiện cơ bản để kiểm tra trước; chưa phải tải ảnh giấy tờ hoặc làm sẵn nhiều bộ bản sao."
+        ],
+        [
+          "Chờ đúng danh sách của đợt nhập học",
+          "Chỉ chuẩn bị loại giấy, bản gốc hay bản sao và số lượng bản sau khi đầu mối tiếp nhận hướng dẫn rõ cho trường hợp của mình."
+        ],
+        [
+          "Bản gốc và bản công chứng không phải một",
+          "Danh mục hiện hành có CCCD bản gốc; một bản photo công chứng không nên được tự coi là tài liệu thay thế cho giấy tờ được yêu cầu mang bản gốc."
+        ],
+        [
+          "Không gửi giấy tờ gốc từ xa",
+          "Tự bảo quản hồ sơ và chỉ mang tới địa điểm tiếp nhận sau khi đã có ngày, giờ, địa chỉ cùng đầu mối xác nhận rõ ràng."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Đăng ký học nghề mỏ có cần công chứng hồ sơ trước không?",
+          "paragraphs": [
+            "Không cần tự đi công chứng trước ở bước kiểm tra ban đầu. Người đăng ký có thể gửi họ tên, năm sinh, nơi ở, chiều cao, cân nặng, tình trạng sức khỏe và trình độ học vấn để Thầy Linh đối chiếu sơ bộ. Luồng hiện hành chưa yêu cầu nộp hoặc gửi ảnh giấy tờ, nên một bộ hồ sơ công chứng chưa làm cho bước đăng ký được ưu tiên hay chắc chắn được tiếp nhận.",
+            "Sau khi trường hợp phù hợp được xác nhận và có lịch nhập học, người lao động mới cần xem danh sách giấy tờ dành cho đợt đó. Danh mục chuẩn hiện hành gồm căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Nguồn chuẩn không ghi rằng cả ba loại đều phải được công chứng, vì vậy không nên tự biến danh mục giấy tờ thành yêu cầu bản sao công chứng.",
+            "Nếu đầu mối tiếp nhận yêu cầu bản sao hoặc xác nhận bổ sung cho một trường hợp cụ thể, hãy hỏi rõ tên giấy, số lượng bản, yêu cầu bản gốc để đối chiếu và thời điểm phải nộp. Cách hỏi này thiết thực hơn việc nghe kinh nghiệm của người nhập học ở đợt khác, vì hồ sơ và hướng dẫn có thể phụ thuộc hệ đào tạo hoặc tình trạng giấy tờ của từng người."
+          ]
+        },
+        {
+          "heading": "Vì sao chưa nên công chứng hồ sơ nghề mỏ quá sớm?",
+          "paragraphs": [
+            "Lý do đầu tiên là chưa biết chính xác loại tài liệu cần chuẩn bị. Người còn bằng THCS, người chỉ có bằng THPT, người mất học bạ hoặc người chưa có bằng không ở cùng một tình trạng. Công chứng nhiều giấy tờ theo một danh sách truyền miệng có thể tạo ra các bản không dùng đến, trong khi phần cần làm rõ lại chưa được hỏi đúng.",
+            "Lý do thứ hai là điều kiện cá nhân cần được kiểm tra trước hồ sơ. Tuổi, chiều cao, cân nặng, sức khỏe, khả năng đọc viết và nghề đăng ký đều có thể ảnh hưởng bước tư vấn tiếp theo. Nếu chưa đối chiếu các điểm này mà đã xin nghỉ việc, mua vé và công chứng hàng loạt, người lao động phải chịu chi phí dù lịch tiếp nhận cho chính mình vẫn chưa được xác nhận.",
+            "Lý do thứ ba là bảo vệ dữ liệu cá nhân. Bản sao căn cước, giấy khai sinh và bằng cấp chứa nhiều thông tin không nên gửi tùy tiện cho tài khoản lạ. Chưa yêu cầu ảnh giấy tờ ở bước đầu giúp người đăng ký chỉ cung cấp dữ liệu tối thiểu để được kiểm tra, sau đó mới làm theo hướng dẫn từ đúng đầu mối khi mục đích sử dụng đã rõ."
+          ]
+        },
+        {
+          "heading": "Phân biệt giấy tờ bản gốc, bản photo và bản công chứng",
+          "paragraphs": [
+            "Bản gốc là giấy tờ chính được cấp cho người sử dụng; bản photo là bản chụp hoặc sao lại; còn bản sao được chứng thực là tài liệu đã qua thủ tục xác nhận theo quy định. Ba khái niệm này không thay thế cho nhau một cách tự động. Khi danh mục hiện hành ghi căn cước công dân bản gốc, người đăng ký nên hiểu là cần tự mang bản gốc để đối chiếu theo hướng dẫn, không phải gửi bản gốc qua bưu điện.",
+            "Với giấy khai sinh và bằng THCS hoặc THPT nếu có, thông tin chuẩn chỉ liệt kê tên giấy tờ, không ấn định trên website rằng phải mang bao nhiêu bản photo hay bản chứng thực. Vì vậy, câu trả lời an toàn là chờ hướng dẫn cụ thể thay vì tự chọn hình thức. Nếu được yêu cầu chuẩn bị bản sao, hãy xác nhận có cần mang kèm bản gốc để đối chiếu hay không.",
+            "Người đang thiếu bằng hoặc thất lạc giấy tờ cũng không nên tự công chứng một tài liệu khác rồi coi đó là giấy thay thế. Nguồn hiện hành cho phép người chưa có bằng đăng ký để được hướng dẫn đối chiếu theo hệ đào tạo, nhưng không trao quyền tự chọn giấy thay thế. Hãy khai đúng tình trạng để nhận câu trả lời phù hợp trước khi làm thủ tục ở nơi có thẩm quyền."
+          ]
+        },
+        {
+          "heading": "Cần hỏi gì khi nhận danh sách hồ sơ nhập học?",
+          "paragraphs": [
+            "Khi đã có phản hồi phù hợp và lịch dự kiến, hãy hỏi theo từng dòng: tên chính xác của giấy tờ, cần bản gốc hay bản sao, bản sao có cần chứng thực không, cần bao nhiêu bản và có phải mang bản gốc để đối chiếu không. Ghi lại câu trả lời trong cùng cuộc trao đổi với đầu mối phụ trách giúp tránh nhầm giữa thông tin của mình và hướng dẫn dành cho người khác.",
+            "Cũng cần xác nhận ngày, giờ, địa điểm nhập học và người tiếp nhận trước khi hoàn tất hồ sơ. Địa điểm hiện hành là Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh, nhưng người ở xa chỉ nên di chuyển sau khi lịch của mình đã được xác nhận. Một địa chỉ đúng không đồng nghĩa có thể đến bất kỳ ngày nào.",
+            "Nếu có chỗ chưa rõ, hãy chụp hoặc ghi lại tên giấy tờ được yêu cầu chứ không gửi ngay toàn bộ hồ sơ cá nhân. Người tuyển sinh có thể giải thích danh sách và lộ trình, nhưng không có quyền bán suất, thu tiền để bỏ qua đối chiếu hoặc hứa rằng công chứng nhiều bản sẽ bảo đảm nhập học."
+          ]
+        },
+        {
+          "heading": "Bốn bước chuẩn bị hồ sơ đúng thứ tự",
+          "items": [
+            "Gửi thông tin kiểm tra ban đầu trung thực, gồm năm sinh, nơi ở, chiều cao, cân nặng, sức khỏe và trình độ; chưa gửi ảnh giấy tờ khi chưa được yêu cầu.",
+            "Chờ người phụ trách đối chiếu điều kiện, hệ đào tạo và tình trạng giấy tờ của chính mình; không lấy danh sách của người khác làm mặc định.",
+            "Khi có lịch, hỏi rõ từng loại giấy cần bản gốc, bản photo hay bản chứng thực, số lượng bản và yêu cầu đối chiếu trước khi đi làm thủ tục.",
+            "Tự mang hồ sơ tới đúng địa điểm, thời gian và đầu mối đã xác nhận; không gửi giấy tờ gốc qua bưu điện, nhà xe hoặc người trung gian."
+          ]
+        }
+      ],
+      "takeaway_title": "Kiểm tra điều kiện trước, công chứng đúng giấy sau",
+      "takeaway": "Đăng ký học nghề mỏ chưa cần tự công chứng hồ sơ ngay. Bước đầu chỉ cần cung cấp thông tin để kiểm tra điều kiện, còn giấy tờ được chuẩn bị sau khi có lịch và danh sách rõ cho trường hợp cụ thể. Hãy hỏi chính xác loại giấy, hình thức bản gốc hay bản sao, số lượng và yêu cầu chứng thực; cách này giảm chi phí không cần thiết, bảo vệ dữ liệu cá nhân và tránh mang sai hồ sơ khi đi xa.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ; hồ sơ hiện hành gồm CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; người chưa có bằng được hướng dẫn theo hệ đào tạo; không gửi giấy tờ gốc qua bưu điện.",
+      "faqs": [
+        [
+          "Có cần công chứng CCCD trước khi đăng ký học nghề mỏ không?",
+          "Chưa cần ở bước đăng ký ban đầu vì hiện không yêu cầu nộp hoặc gửi ảnh giấy tờ. Khi có lịch, hãy hỏi rõ cần bản gốc, bản sao hay bản chứng thực và số lượng cụ thể."
+        ],
+        [
+          "Giấy khai sinh và bằng cấp có bắt buộc công chứng không?",
+          "Thông tin chuẩn hiện hành chỉ liệt kê giấy khai sinh và bằng THCS hoặc THPT nếu có, không quy định chung trên website rằng mọi bản đều phải công chứng. Hãy làm theo danh sách được xác nhận cho đợt nhập học."
+        ],
+        [
+          "Có thể gửi hồ sơ gốc qua bưu điện để giữ chỗ không?",
+          "Không. Không gửi giấy tờ gốc qua bưu điện hoặc người trung gian. Chỉ tự mang giấy tờ cần thiết khi đã có lịch, địa điểm và đầu mối tiếp nhận rõ ràng."
+        ],
+        [
+          "Đã công chứng sẵn nhiều bộ thì có được nhập học nhanh hơn không?",
+          "Không. Số bản công chứng không thay việc kiểm tra điều kiện, hệ đào tạo và lịch tiếp nhận. Chuẩn bị đúng giấy theo hướng dẫn có giá trị hơn làm nhiều bộ nhưng sai yêu cầu."
+        ]
+      ],
+      "related": [
+        [
+          "/bai-viet/ho-so-hoc-nghe-mo-can-gi/",
+          "Xem danh sách hồ sơ học nghề mỏ đang áp dụng"
+        ],
+        [
+          "/giai-dap-nghe-mo/dang-ky-hoc-nghe-mo-co-phai-cho-khai-giang-khong/",
+          "Xác nhận lịch trước khi chuẩn bị chuyến đi"
+        ],
+        [
+          "/kiem-tra-dieu-kien/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=cong_chung_ho_so#dang-ky",
+          "Kiểm tra điều kiện trước khi làm hồ sơ"
         ]
       ]
     }

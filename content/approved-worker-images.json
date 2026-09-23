@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-22T07:35:00+07:00",
+  "updated_at": "2026-09-23T07:54:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -225,6 +225,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/0536C55FFD61E08CA503F3AE8A27C79D31801040E3354BEC798BAB8DCC6F11B3.jpg",
       "provider": "Vinacomin",
       "description": "Nhân viên Nguyễn Thị Thoa của Than Núi Béo được tuyên dương vì đóng góp trong công tác tuyển sinh nghề mỏ"
+    },
+    {
+      "asset": "vinacomin-tu-van-tuyen-sinh-quang-hanh-tuyen-quang-2025.webp",
+      "source_article_url": "https://vinacomin.vn/vi/video-category/than-quang-hanh-phoi-hop-tu-van-tuyen-sinh-nghe-mo-ham-lo-tai-tinh-tuyen-quang",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/Media/2025/T8/13/QUANG%20HANH.jpg",
+      "provider": "Vinacomin",
+      "description": "Cán bộ Than Quang Hanh hướng dẫn hồ sơ cho người lao động tại buổi tư vấn tuyển sinh nghề mỏ ở Tuyên Quang năm 2025"
     }
   ]
 }
