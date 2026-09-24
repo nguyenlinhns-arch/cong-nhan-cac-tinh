@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-23T07:54:00+07:00",
+  "updated_at": "2026-09-24T08:22:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -232,6 +232,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/images/Media/2025/T8/13/QUANG%20HANH.jpg",
       "provider": "Vinacomin",
       "description": "Cán bộ Than Quang Hanh hướng dẫn hồ sơ cho người lao động tại buổi tư vấn tuyển sinh nghề mỏ ở Tuyên Quang năm 2025"
+    },
+    {
+      "asset": "vinacomin-lu-a-chinh-chon-nghe-mo-2026.webp",
+      "source_article_url": "https://vinacomin.vn/video-category/tap-2-vi-gia-dinh-toi-chon-nghe-mo-tu-ban-lang-den-vung-than",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/Media/2026/T7/27/LU%20A%20%20CHINH%202.jpg",
+      "provider": "Vinacomin",
+      "description": "Thợ mỏ Lù A Chinh trong ấn phẩm Tập 2 Vì gia đình, tôi chọn nghề mỏ do Vinacomin công bố năm 2026"
     }
   ]
 }
