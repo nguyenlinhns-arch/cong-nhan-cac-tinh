@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-24",
+  "updated_at": "2026-09-25",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -4241,6 +4241,127 @@
         [
           "/kiem-tra-dieu-kien/?utm_source=website&utm_medium=internal&utm_campaign=daily_seo_to_application_2026&utm_content=chua_duoc_phan_hoi#dang-ky",
           "Kiểm tra điều kiện và gửi đăng ký đúng luồng"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-09-25",
+      "slug": "doi-so-dien-thoai-sau-khi-dang-ky-hoc-nghe-mo-phai-lam-gi",
+      "title": "Đổi số điện thoại sau khi đăng ký học nghề mỏ phải làm gì?",
+      "short_title": "Đổi số điện thoại sau khi đăng ký nghề mỏ",
+      "meta": "Đổi số điện thoại sau khi đăng ký học nghề mỏ phải làm gì? Cách báo số cũ, số mới, giữ đúng một luồng liên hệ và tránh tạo hồ sơ trùng.",
+      "eyebrow": "CẬP NHẬT ĐẦU MỐI LIÊN HỆ SAU ĐĂNG KÝ",
+      "primary_query": "đổi số điện thoại sau khi đăng ký học nghề mỏ phải làm gì",
+      "query_variants": [
+        "mất số điện thoại đã đăng ký học nghề mỏ",
+        "đăng ký nghề mỏ rồi đổi số Zalo",
+        "cách cập nhật số điện thoại đăng ký thợ lò"
+      ],
+      "direct_answer": "Nếu đổi hoặc mất số điện thoại sau khi đã đăng ký học nghề mỏ, hãy báo số cũ, số mới và thông tin nhận diện cơ bản qua đúng kênh chính thức để người phụ trách nối lại hồ sơ. Không cần tạo nhiều đăng ký mới, gửi giấy tờ gốc hay mua vé khi lịch chưa được xác nhận.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-thanh-nien-tim-hieu-hoc-nghe-than-ha-long.webp",
+        "alt": "Học sinh và thanh niên tìm hiểu thông tin học nghề tại chương trình tư vấn của Than Hạ Long TKV",
+        "credit": "Ảnh: Vinacomin · chương trình tư vấn học nghề, việc làm của Than Hạ Long - TKV"
+      },
+      "intro": [
+        "Số điện thoại là đầu mối để đối chiếu thông tin, nhận câu hỏi bổ sung và nhận lịch khi trường hợp đã được kiểm tra. Người lao động có thể đổi SIM, mất máy, khóa tài khoản Zalo hoặc dùng số mới sau khi gửi biểu mẫu. Nếu không báo lại, cuộc gọi hoặc tin nhắn tiếp theo có thể vẫn được gửi về số cũ, trong khi người đăng ký tưởng hồ sơ của mình chưa được xem.",
+        "Kinh nghiệm tiếp nhận thực tế cho thấy cách xử lý hiệu quả không phải là điền lại nhiều lần. Hãy giúp người phụ trách nhận ra đây vẫn là cùng một người bằng cách nêu số đã dùng, số đang sử dụng, họ tên, năm sinh và tỉnh đang ở. Sau khi được xác nhận đã cập nhật, tiếp tục trao đổi trên một số chính để tránh chia nhỏ lịch sử tư vấn."
+      ],
+      "key_points": [
+        [
+          "Báo cả số cũ và số mới",
+          "Hai số giúp người phụ trách tìm đúng thông tin đã gửi và biết đầu mối nào phải dùng cho các cuộc gọi hoặc tin nhắn tiếp theo."
+        ],
+        [
+          "Gửi dữ liệu nhận diện vừa đủ",
+          "Nêu họ tên, năm sinh, tỉnh đang ở và thời điểm đăng ký gần đúng; chưa cần gửi ảnh CCCD hay hồ sơ cá nhân để chứng minh việc đổi số."
+        ],
+        [
+          "Giữ một kênh liên hệ chính",
+          "Sau khi cập nhật, dùng ổn định một số có thể nghe máy và nhận Zalo; không tiếp tục tạo nhiều biểu mẫu hoặc nhiều cuộc trò chuyện rời rạc."
+        ],
+        [
+          "Chỉ đi khi lịch đã xác nhận",
+          "Đổi số liên hệ không đồng nghĩa đã có lịch nhập học; vẫn cần chờ ngày, giờ, địa điểm và đầu mối tiếp nhận dành cho chính trường hợp của mình."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Đổi số điện thoại sau khi đăng ký học nghề mỏ phải làm gì?",
+          "paragraphs": [
+            "Trước hết, hãy liên hệ lại bằng số mới qua số điện thoại, Zalo hoặc biểu mẫu chính thức trên website. Trong tin nhắn đầu tiên, ghi rõ mình đã đăng ký trước đó và cần thay đổi đầu mối nhận liên hệ. Nêu số cũ nếu còn nhớ, số mới đang dùng, họ tên, năm sinh, tỉnh hiện ở và khoảng thời gian đã gửi đăng ký. Các dữ liệu này giúp tìm đúng trường hợp mà chưa phải thu thêm giấy tờ.",
+            "Nếu vẫn truy cập được cuộc trò chuyện Zalo cũ, nên nhắn ngay trong luồng đó vì lịch sử đã có sẵn. Nếu mất tài khoản hoặc không còn SIM cũ, hãy nói rõ tình trạng thay vì cố đăng nhập nhiều lần hoặc nhờ một tài khoản lạ nhắn thay. Người phụ trách cần biết số nào đã ngừng sử dụng và số nào có thể nhận cuộc gọi từ thời điểm cập nhật.",
+            "Sau khi gửi, hãy đề nghị xác nhận ngắn rằng số mới đã được ghi nhận. Việc xác nhận này chỉ có nghĩa đầu mối liên hệ đã thay đổi; không thay cho kết quả kiểm tra điều kiện, khám tuyển hoặc lịch nhập học. Người lao động vẫn cần đọc đúng nội dung phản hồi và chờ hướng dẫn tiếp theo trước khi chuẩn bị chuyến đi."
+          ]
+        },
+        {
+          "heading": "Tin nhắn cập nhật số điện thoại nên ghi những gì?",
+          "paragraphs": [
+            "Một tin nhắn dễ đối chiếu có thể trình bày theo từng dòng: họ tên; năm sinh; tỉnh đang sinh sống; số điện thoại đã dùng để đăng ký; số điện thoại mới; thời điểm đăng ký gần đúng; kênh đã gửi và nội dung cần cập nhật. Nếu đã được hỏi thêm về chiều cao, cân nặng, sức khỏe hoặc trình độ, hãy nhắc lại ngắn gọn để người phụ trách không phải ghép dữ liệu từ nhiều cuộc trò chuyện.",
+            "Không cần gửi ảnh mặt trước, mặt sau CCCD, giấy khai sinh, bằng cấp hoặc địa chỉ nhà chi tiết chỉ để báo đổi số. Luồng đăng ký ban đầu hiện chưa yêu cầu nộp hay gửi ảnh giấy tờ. Việc cung cấp dữ liệu dạng chữ vừa đủ giúp bảo vệ thông tin cá nhân, đồng thời vẫn tạo căn cứ để phân biệt với người trùng tên hoặc người khác trong gia đình.",
+            "Cuối tin nhắn nên đặt một yêu cầu cụ thể, chẳng hạn đề nghị dùng số mới để liên hệ và xác nhận xem thông tin trước đó còn thiếu mục nào. Không hỏi dồn nhiều vấn đề trong nhiều tin liên tiếp. Một nội dung hoàn chỉnh, có số cũ và số mới, thường dễ kiểm tra hơn các câu rời như “em đổi số rồi” hoặc “Thầy gọi lại cho em”."
+          ]
+        },
+        {
+          "heading": "Phân biệt đổi điện thoại, đổi SIM và đổi tài khoản Zalo",
+          "paragraphs": [
+            "Nếu chỉ đổi điện thoại nhưng vẫn giữ nguyên số, thông tin đăng ký không nhất thiết phải đổi. Tuy vậy, cần kiểm tra máy mới có nhận được cuộc gọi, tin nhắn và tài khoản Zalo cũ hay không. Trường hợp số vẫn hoạt động nhưng Zalo chưa đăng nhập được, có thể báo rằng cuộc gọi thông thường vẫn nhận được để đầu mối biết cách liên hệ tạm thời.",
+            "Nếu đổi sang số SIM mới hoặc mất quyền sử dụng số cũ, cần báo cập nhật vì cuộc gọi về số cũ sẽ không tới người đăng ký. Khi vẫn giữ được Zalo cũ nhưng số điện thoại đã thay đổi, hãy nêu rõ cả hai trạng thái. Không nên mặc định rằng việc đổi số trong ứng dụng sẽ tự động thay đổi dữ liệu đã gửi ở biểu mẫu hoặc danh sách tiếp nhận trước đó.",
+            "Nếu trước đây dùng số của người thân, hãy cho biết tên người đăng ký và mối liên hệ với số cũ, sau đó cung cấp số cá nhân đang dùng ổn định. Mục tiêu là để câu hỏi về điều kiện, giấy tờ và lịch được chuyển đúng người. Tránh tiếp tục để nhiều người cùng trả lời thay vì thông tin sức khỏe, trình độ hoặc thời gian di chuyển rất dễ bị sai lệch."
+          ]
+        },
+        {
+          "heading": "Những lỗi dễ làm thông tin bị tách thành nhiều hồ sơ",
+          "paragraphs": [
+            "Lỗi thường gặp nhất là dùng số mới để đăng ký lại nhưng không nói mình đã gửi bằng số cũ. Hai bản có thể được hiểu là hai người khác nhau hoặc hai lần đăng ký chưa rõ bản nào đang dùng. Nếu đã lỡ gửi lại, hãy chủ động thông báo hai số thuộc cùng một người và đề nghị giữ số mới làm đầu mối chính, thay vì tiếp tục tạo thêm biểu mẫu thứ ba.",
+            "Một lỗi khác là nhờ nhiều người thân, cộng tác viên hoặc tài khoản mạng xã hội cùng hỏi hộ. Khi mỗi người cung cấp một phần thông tin, câu trả lời có thể không đầy đủ hoặc không tới đúng người cần quyết định. Người đăng ký nên tự giữ một cuộc trò chuyện chính, tự khai tình trạng sức khỏe và hỏi lại khi chưa hiểu, còn người thân chỉ hỗ trợ khi thật sự cần thiết.",
+            "Cũng không nên chuyển tiền, gửi giấy tờ gốc hoặc mua vé để chứng minh mình nghiêm túc sau khi đổi số. Cập nhật liên hệ là thao tác hành chính trong luồng tư vấn, không phải bước giữ chỗ. Chỉ chuẩn bị hồ sơ và di chuyển khi đã có xác nhận rõ về điều kiện sơ bộ, ngày giờ, địa điểm cùng người tiếp nhận."
+          ]
+        },
+        {
+          "heading": "Năm bước kiểm tra sau khi đổi số liên hệ",
+          "items": [
+            "Đối chiếu số điện thoại hoặc Zalo đang liên hệ với thông tin chính thức trên website trước khi cung cấp dữ liệu cá nhân.",
+            "Gửi trong một tin nhắn số cũ, số mới, họ tên, năm sinh, tỉnh đang ở, thời điểm và kênh đã đăng ký trước đó.",
+            "Nói rõ số cũ còn hoạt động hay đã mất quyền sử dụng, đồng thời xác định số nào có thể nhận cuộc gọi và Zalo hiện nay.",
+            "Đề nghị xác nhận đã ghi nhận số mới và hỏi phần thông tin còn thiếu; sau đó tiếp tục dùng ổn định đúng một luồng trao đổi.",
+            "Chỉ làm hồ sơ, mua vé và di chuyển khi lịch nhập học của chính mình đã có ngày giờ, địa điểm và đầu mối xác nhận rõ."
+          ]
+        }
+      ],
+      "takeaway_title": "Cập nhật số mới, nhưng giữ nguyên một hành trình đăng ký",
+      "takeaway": "Đổi số điện thoại sau khi đăng ký học nghề mỏ không có nghĩa phải bắt đầu lại từ đầu. Hãy báo số cũ, số mới và thông tin nhận diện vừa đủ qua kênh chính thức, xin xác nhận đã cập nhật rồi dùng ổn định một đầu mối. Cách làm này giúp nối đúng lịch sử tư vấn, tránh hồ sơ trùng và bảo vệ dữ liệu cá nhân; việc chuẩn bị giấy tờ hoặc di chuyển chỉ bắt đầu sau khi lịch của chính người đăng ký được xác nhận.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ; người lao động chỉ di chuyển sau khi lịch được xác nhận, không gửi giấy tờ gốc qua bưu điện và liên hệ qua đầu mối Nguyễn Tử Linh công khai trên website.",
+      "faqs": [
+        [
+          "Chỉ đổi điện thoại nhưng vẫn giữ số cũ có phải báo lại không?",
+          "Nếu số cũ vẫn nhận cuộc gọi và Zalo bình thường thì không nhất thiết phải thay đổi dữ liệu. Hãy kiểm tra máy mới hoạt động ổn định; nếu mất Zalo nhưng vẫn nghe điện thoại được, nên báo cách liên hệ đang dùng."
+        ],
+        [
+          "Mất SIM cũ và không nhớ ngày đăng ký thì cập nhật thế nào?",
+          "Hãy cung cấp số cũ nếu còn nhớ, số mới, họ tên, năm sinh, tỉnh đang ở và kênh đã dùng. Thời điểm gần đúng cũng hữu ích; chưa cần gửi ảnh giấy tờ chỉ để chứng minh mình là người đã đăng ký."
+        ],
+        [
+          "Có nên điền lại biểu mẫu bằng số điện thoại mới không?",
+          "Không nên tự tạo nhiều bản nếu có thể báo cập nhật trực tiếp. Nếu đã lỡ gửi lại, hãy nói rõ hai số thuộc cùng một người và đề nghị dùng số mới làm đầu mối chính để tránh dữ liệu bị tách."
+        ],
+        [
+          "Đã cập nhật số mới thì có được mua vé đi nhập học chưa?",
+          "Chưa. Xác nhận đổi số chỉ giúp bảo đảm liên lạc, không phải lịch nhập học. Chỉ mua vé và di chuyển khi đã nhận đủ ngày giờ, địa điểm, người phụ trách và giấy tờ cần mang cho chính trường hợp của mình."
+        ]
+      ],
+      "related": [
+        [
+          "/giai-dap-nghe-mo/dang-ky-hoc-nghe-mo-roi-chua-duoc-phan-hoi-phai-lam-gi/",
+          "Cách theo dõi khi đã đăng ký nhưng chưa được phản hồi"
+        ],
+        [
+          "/giai-dap-nghe-mo/dang-ky-hoc-nghe-mo-qua-zalo-can-gui-thong-tin-gi/",
+          "Thông tin cần gửi khi đăng ký qua Zalo"
+        ],
+        [
+          "/lien-he-di-lam-mo-than-quang-ninh/",
+          "Kiểm tra số điện thoại và Zalo chính thức"
         ]
       ]
     }
