@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-25T07:40:00+07:00",
+  "updated_at": "2026-09-26T07:52:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -246,6 +246,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2025/T09/22/HL4.jpg",
       "provider": "Vinacomin",
       "description": "Học sinh và thanh niên địa phương tìm hiểu thông tin học nghề, việc làm tại chương trình tư vấn của Công ty Than Hạ Long - TKV"
+    },
+    {
+      "asset": "vinacomin-tho-co-dien-sua-chua-thiet-bi-dien.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/do-van-dang-nguoi-dang-vien-nguoi-tho-co-dien-giau-tam-huyet",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/AnhSuKien/11/07/%C4%90o%CC%82%CC%83%20Va%CC%86n%20%C4%90a%CC%86ng%20(Ngu%CC%9Bo%CC%9B%CC%80i%20%C4%91u%CC%9B%CC%81ng%20phi%CC%81a%20be%CC%82n%20tra%CC%81i)%20cu%CC%80ng%20%C4%91o%CC%82%CC%80ng%20nghie%CC%A3%CC%82p%20su%CC%9B%CC%89a%20chu%CC%9B%CC%83a%20thie%CC%82%CC%81t%20bi%CC%A3%20%C4%91ie%CC%A3%CC%82n%20phu%CC%A3c%20vu%CC%A3%20sa%CC%89n%20xua%CC%82%CC%81t.jpg",
+      "provider": "Vinacomin",
+      "description": "Hai thợ cơ điện Than Nam Mẫu sửa chữa thiết bị điện phục vụ sản xuất tại xưởng"
     }
   ]
 }
