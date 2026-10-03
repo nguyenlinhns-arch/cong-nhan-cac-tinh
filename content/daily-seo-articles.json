@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-27",
+  "updated_at": "2026-10-03",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -4598,6 +4598,126 @@
         [
           "/giai-dap-nghe-mo/nen-hoc-khai-thac-mo-hay-xay-dung-mo-ham-lo/",
           "So sánh nghề khai thác mỏ và xây dựng mỏ"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-10-03",
+      "slug": "di-lam-khai-thac-mo-ham-lo-co-phai-lam-mot-minh-khong",
+      "title": "Đi làm khai thác mỏ hầm lò có phải làm một mình không?",
+      "short_title": "Khai thác mỏ hầm lò có phải làm một mình không",
+      "meta": "Đi làm khai thác mỏ hầm lò có phải làm một mình không? Công việc được tổ chức theo ca, phối hợp tổ đội và phân công từng công đoạn rõ ràng.",
+      "eyebrow": "CÁCH TỔ CHỨC CÔNG VIỆC KHAI THÁC MỎ",
+      "primary_query": "đi làm khai thác mỏ hầm lò có phải làm một mình không",
+      "query_variants": [
+        "thợ khai thác mỏ làm một mình hay theo tổ đội",
+        "xuống lò có người làm cùng không",
+        "một ca khai thác mỏ hầm lò làm việc thế nào"
+      ],
+      "direct_answer": "Không. Công việc khai thác mỏ hầm lò được thực hiện theo ca và phối hợp theo tổ đội. Mỗi người có phần việc theo phân công nhưng không phải tự làm toàn bộ dây chuyền. Người lao động phải dùng bảo hộ, làm đúng quy trình kỹ thuật và phối hợp với các vị trí liên quan trong ca.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-to-doi-than-quang-hanh.webp",
+        "alt": "Tập thể công nhân Phân xưởng Đào lò 8 Than Quang Hanh tại buổi giao việc và biểu dương tổ đội",
+        "credit": "Ảnh: Vinacomin · tập thể lao động Phân xưởng Đào lò 8 Than Quang Hanh"
+      },
+      "intro": [
+        "Đi làm khai thác mỏ hầm lò có phải làm một mình không là nỗi lo thực tế của người chưa từng xuống lò. Hình dung một người tự đi trong đường lò, tự vận hành thiết bị và tự xử lý mọi tình huống không đúng với cách tổ chức công việc được mô tả trong hồ sơ nghề hiện hành. Khai thác than là một dây chuyền có nhiều công đoạn liên tiếp, nên người lao động làm theo ca, theo phân công và phối hợp theo tổ đội.",
+        "Kinh nghiệm tư vấn cho thấy câu hỏi này thường xuất hiện cùng nỗi lo không biết việc, sợ bị bỏ lại hoặc phải tự chịu trách nhiệm cho một máy móc chưa quen. Cách chuẩn bị đúng không phải là tìm lời hứa rằng công việc luôn dễ, mà là hiểu mình sẽ học nghề trước, nhận nhiệm vụ cụ thể và phải tuân thủ quy trình của ca sản xuất. Người mới vẫn cần chủ động học, hỏi và báo tình trạng bất thường; làm theo tổ đội không có nghĩa có thể dựa hoàn toàn vào người khác."
+      ],
+      "key_points": [
+        [
+          "Làm theo ca, theo tổ đội",
+          "Hồ sơ nghề xác định môi trường làm việc theo ca trong đường lò và phối hợp theo tổ đội, không phải một người tự vận hành cả dây chuyền."
+        ],
+        [
+          "Mỗi người có phần việc",
+          "Nhiệm vụ có thể thuộc khâu phá vỡ than, xúc bốc, vận tải, đưa vật tư hoặc chống giữ theo phân công cụ thể."
+        ],
+        [
+          "Phối hợp không thay trách nhiệm",
+          "Từng người vẫn phải làm đúng thao tác, dùng đủ bảo hộ và báo kịp thời khi công việc khác với hướng dẫn hoặc có dấu hiệu bất thường."
+        ],
+        [
+          "Được học nghề trước",
+          "Nguồn tuyển hiện hành không đòi hỏi kinh nghiệm sẵn có; nghề khai thác mỏ có thời gian đào tạo 2–3 tháng trước lộ trình thực tập và bố trí việc làm."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Đi làm khai thác mỏ hầm lò có phải làm một mình không?",
+          "paragraphs": [
+            "Không. Bối cảnh nghề hiện hành ghi rõ người lao động làm việc theo ca trong các đường lò được chiếu sáng bằng đèn điện và phối hợp theo tổ đội. Một ca sản xuất gồm nhiều công đoạn liên quan với nhau: phá vỡ đất đá hoặc than, xúc bốc, vận chuyển, đưa vật tư tới vị trí làm việc, kiểm tra và duy trì hệ thống chống giữ. Không có nghĩa một người phải tự làm đủ tất cả những việc đó từ đầu đến cuối.",
+            "Mỗi người vẫn có nhiệm vụ riêng theo phân công. Có người tham gia khâu khoan hoặc thiết bị khai thác cơ giới, người khác phối hợp xúc bốc, vận tải, vật tư hay chống giữ. Nhiệm vụ cụ thể còn tùy vị trí sản xuất, thiết bị của đơn vị và ca lệnh. Vì vậy, câu trả lời “làm theo tổ đội” không nên bị hiểu thành tất cả cùng đứng một chỗ hoặc ai cũng thực hiện một thao tác giống nhau.",
+            "Điểm quan trọng là các phần việc kết nối thành dây chuyền. Công đoạn trước, công đoạn sau và điều kiện tại khu vực làm việc cần được phối hợp. Người lao động không tự ý đổi thao tác, tự rời vị trí hoặc dùng thiết bị ngoài phân công chỉ vì đã quan sát người khác làm. Mọi việc phải theo hướng dẫn kỹ thuật, yêu cầu an toàn và cách tổ chức của đơn vị tiếp nhận."
+          ]
+        },
+        {
+          "heading": "Một tổ đội khai thác mỏ phối hợp những công đoạn nào?",
+          "paragraphs": [
+            "Theo mô tả nghề, chuỗi khai thác có thể bắt đầu từ việc phá vỡ đất đá và than bằng thiết bị cơ giới, bán cơ giới hoặc khoan theo quy trình. Sau đó, than và đất đá được xúc bốc lên thiết bị vận tải. Tùy điều kiện sản xuất, việc vận chuyển có thể sử dụng máng trượt, goòng, băng tải, máng cào hoặc tàu điện. Mỗi thiết bị và mỗi công đoạn đều cần người được phân công đúng vị trí để dây chuyền hoạt động đồng bộ.",
+            "Tổ đội còn phải phối hợp đưa vật tư tới khu vực sản xuất, lắp dựng, kiểm tra và duy trì hệ thống chống giữ. Khi có vị trí chống giữ hoặc đoạn lò cần khắc phục, công việc củng cố, sửa chữa cũng được thực hiện theo yêu cầu kỹ thuật. Người mới chỉ nhìn thấy khâu lấy than rất dễ bỏ qua những công việc hỗ trợ quyết định điều kiện làm việc của cả ca.",
+            "Thiết bị có thể gồm máy khoan, máy khấu hoặc combai, băng tải, máng cào, goòng, tàu điện, quạt gió, máy bơm, máy nén khí và các loại giá, giàn chống. Danh sách này cho thấy không thể giao toàn bộ cho một người. Tuy nhiên, bài viết không quy định một tổ có bao nhiêu người hay từng chức danh cụ thể, vì cách biên chế và phân công thuộc doanh nghiệp, khu vực sản xuất và thời điểm tiếp nhận."
+          ]
+        },
+        {
+          "heading": "Người mới chưa có kinh nghiệm sẽ bắt đầu như thế nào?",
+          "paragraphs": [
+            "Nguồn tuyển hiện hành không yêu cầu người đăng ký phải có kinh nghiệm làm mỏ sẵn có. Nghề kỹ thuật khai thác mỏ hầm lò có thời gian đào tạo hiện hành 2–3 tháng. Đây là giai đoạn để học nội dung nghề, nhận biết thiết bị, quy trình và yêu cầu an toàn trước khi đi tiếp trong lộ trình thực tập, tốt nghiệp và được doanh nghiệp bố trí việc làm khi đạt yêu cầu.",
+            "Không có kinh nghiệm không đồng nghĩa không cần chủ động. Người học phải đọc viết thành thạo, tiếp thu hướng dẫn, nhớ phần việc được giao và hỏi lại khi chưa rõ. Trong môi trường tổ đội, một câu hỏi đúng lúc có giá trị hơn việc im lặng rồi làm theo suy đoán. Khi công việc thực tế khác với điều đã được hướng dẫn, cần báo người phụ trách thay vì tự tìm cách xử lý ngoài phạm vi được giao.",
+            "Người mới cũng không nên so sánh tốc độ của mình với thợ đã quen việc để cố làm vượt hướng dẫn. Kỷ luật của tổ đội nằm ở việc từng người thực hiện đúng quy trình, đúng vị trí và phối hợp đúng thời điểm. Học nghề giúp hình thành nền tảng; khả năng theo ca, chấp hành phân công và làm việc cùng người khác là phần người đăng ký cần tự đánh giá trung thực."
+          ]
+        },
+        {
+          "heading": "Làm theo tổ đội có nghĩa là luôn có người làm thay không?",
+          "paragraphs": [
+            "Không. Làm theo tổ đội giúp các công đoạn phối hợp, nhưng mỗi người vẫn chịu trách nhiệm với nhiệm vụ được giao. Đồng đội không thể thay bạn mang đầy đủ phương tiện bảo hộ, kiểm tra phần việc của mình hoặc tuân thủ từng bước thao tác. Nếu một người bỏ qua quy trình, dây chuyền chung có thể bị ảnh hưởng dù các vị trí khác vẫn làm đúng.",
+            "Phối hợp tốt gồm ba việc dễ nhớ: nghe rõ phân công trước khi bắt đầu, giữ liên lạc theo cách đơn vị hướng dẫn trong quá trình làm và báo ngay khi có điểm chưa rõ hoặc dấu hiệu bất thường. Không tự ý nhận thêm việc để chứng tỏ mình nhanh, cũng không rời phần việc mà chưa có bàn giao. Những nguyên tắc này phù hợp với mô tả nghề về phối hợp tổ đội và tuân thủ quy trình kỹ thuật, an toàn.",
+            "Nếu người đăng ký thường hoảng loạn trong không gian kín, khó làm theo ca, khó phối hợp nhóm hoặc có vấn đề sức khỏe ảnh hưởng tới công việc hầm lò, cần nói rõ từ bước kiểm tra. Bài viết không thay kết luận khám tuyển. Việc khai trung thực giúp người phụ trách đối chiếu điều kiện trước khi người lao động chuẩn bị hồ sơ hoặc di chuyển."
+          ]
+        },
+        {
+          "heading": "Bốn điều nên xác nhận trước khi đăng ký nghề khai thác mỏ",
+          "items": [
+            "Xác nhận đúng nghề kỹ thuật khai thác mỏ hầm lò, thời gian đào tạo hiện hành 2–3 tháng và lịch của đợt đang tiếp nhận.",
+            "Hiểu công việc được tổ chức theo ca, phối hợp tổ đội nhưng mỗi người vẫn có nhiệm vụ riêng theo phân công và quy trình.",
+            "Khai trung thực tuổi, chiều cao, cân nặng, thị lực, tim mạch, huyết áp, khả năng đọc viết và mọi vấn đề sức khỏe liên quan.",
+            "Chỉ chuẩn bị di chuyển sau khi đã được kiểm tra điều kiện sơ bộ và nhận đủ ngày giờ, địa điểm cùng đầu mối tiếp nhận cho trường hợp của mình."
+          ]
+        }
+      ],
+      "takeaway_title": "Làm cùng tổ đội, chịu trách nhiệm đúng phần việc",
+      "takeaway": "Thợ khai thác mỏ hầm lò không làm việc một mình. Công việc được tổ chức theo ca và theo tổ đội, với các phần việc từ khai thác, xúc bốc, vận tải, vật tư đến chống giữ được phân công và phối hợp. Người mới được học nghề trước nhưng vẫn phải chủ động học, dùng đủ bảo hộ, làm đúng hướng dẫn và báo kịp thời khi chưa rõ hoặc có bất thường.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: kỹ thuật khai thác mỏ hầm lò đào tạo 2–3 tháng; thực hiện các công đoạn khai thác, xúc bốc, vận tải, đưa vật tư và chống giữ theo phân công; bối cảnh làm việc theo ca, phối hợp theo tổ đội, sử dụng bảo hộ và tuân thủ quy trình kỹ thuật, an toàn.",
+      "faqs": [
+        [
+          "Thợ khai thác mỏ có phải tự xuống lò một mình không?",
+          "Công việc được tổ chức theo ca và phối hợp theo tổ đội. Mỗi người có nhiệm vụ riêng nhưng không phải tự thực hiện toàn bộ dây chuyền khai thác."
+        ],
+        [
+          "Chưa biết dùng máy có được đăng ký khai thác mỏ không?",
+          "Nguồn tuyển hiện hành không yêu cầu kinh nghiệm sẵn có. Người đăng ký phải đáp ứng điều kiện đầu vào và theo được chương trình đào tạo 2–3 tháng trước các bước thực tập, tốt nghiệp và bố trí việc làm khi đạt yêu cầu."
+        ],
+        [
+          "Làm theo tổ đội thì một ca có bao nhiêu người?",
+          "Hồ sơ tuyển sinh không ấn định một con số chung. Số người và vị trí trong ca phụ thuộc doanh nghiệp, khu vực sản xuất, thiết bị và phân công tại thời điểm làm việc."
+        ],
+        [
+          "Nếu chưa hiểu phần việc dưới lò thì nên làm gì?",
+          "Hãy hỏi lại người phụ trách và chỉ thực hiện khi đã hiểu phân công cùng hướng dẫn an toàn. Không tự làm theo suy đoán hoặc nhận thao tác ngoài phạm vi được giao."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ công việc kỹ thuật khai thác mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/di-lam-mo-than-co-can-kinh-nghiem-khong/",
+          "Chưa có kinh nghiệm có đăng ký nghề mỏ được không"
         ],
         [
           "/kiem-tra-dieu-kien/",

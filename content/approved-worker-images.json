@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-27T07:52:00+07:00",
+  "updated_at": "2026-10-03T07:51:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -260,6 +260,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/images/Media/2025/T6/13/Than%20Vang%20Danh.jpg",
       "provider": "Vinacomin",
       "description": "Tập thể thợ đào lò Than Vàng Danh mặc bảo hộ tại hiện trường áp dụng giàn chống tạm kết hợp máy đào lò EBH45"
+    },
+    {
+      "asset": "vinacomin-to-doi-than-quang-hanh.webp",
+      "source_article_url": "https://vinacomin.vn/vi/news/slug/khi-the-soi-noi-thi-dua-lao-dong-san-xuat-tai-than-quang-hanh",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/174BDEE09637555CD0EAA1880A293B6E070F84F7DF8A36D67BA208D39BFB9F2A.jpg",
+      "provider": "Vinacomin",
+      "description": "Tập thể công nhân Phân xưởng Đào lò 8 Than Quang Hanh tại buổi giao việc và biểu dương kết quả của tổ đội"
     }
   ]
 }
