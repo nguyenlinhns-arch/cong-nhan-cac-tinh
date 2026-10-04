@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-03",
+  "updated_at": "2026-10-04",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -4718,6 +4718,126 @@
         [
           "/giai-dap-nghe-mo/di-lam-mo-than-co-can-kinh-nghiem-khong/",
           "Chưa có kinh nghiệm có đăng ký nghề mỏ được không"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-10-04",
+      "slug": "di-lam-khai-thac-mo-ham-lo-co-phai-xuc-than-hoan-toan-bang-tay-khong",
+      "title": "Đi làm khai thác mỏ hầm lò có phải xúc than hoàn toàn bằng tay không?",
+      "short_title": "Khai thác mỏ có phải xúc than hoàn toàn bằng tay không",
+      "meta": "Đi làm khai thác mỏ hầm lò có phải xúc than hoàn toàn bằng tay không? Công việc sử dụng thiết bị cơ giới, bán cơ giới và hệ thống vận tải theo từng vị trí.",
+      "eyebrow": "MỨC ĐỘ CƠ GIỚI HÓA TRONG KHAI THÁC MỎ",
+      "primary_query": "đi làm khai thác mỏ hầm lò có phải xúc than hoàn toàn bằng tay không",
+      "query_variants": [
+        "thợ khai thác mỏ có phải xúc than bằng tay không",
+        "khai thác than hầm lò dùng máy gì",
+        "làm thợ lò có phải mang than bằng sức người không"
+      ],
+      "direct_answer": "Không phải toàn bộ công việc khai thác mỏ hầm lò đều xúc hoặc vận chuyển than bằng tay. Than được phá vỡ bằng thiết bị cơ giới, bán cơ giới hoặc khoan rồi đưa lên hệ thống vận tải chuyên dùng. Mỗi người vẫn vận hành, hỗ trợ và kiểm tra phần việc theo phân công, bảo hộ và quy trình an toàn.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-co-gioi-hoa-nui-beo.webp",
+        "alt": "Thợ lò Than Núi Béo vận hành thiết bị tại lò chợ cơ giới hóa hạng nhẹ",
+        "credit": "Ảnh: Vinacomin · thợ lò Than Núi Béo vận hành thiết bị tại lò chợ cơ giới hóa"
+      },
+      "intro": [
+        "Đi làm khai thác mỏ hầm lò có phải xúc than hoàn toàn bằng tay không là câu hỏi thực tế của nhiều người mới tìm hiểu nghề. Hình dung người thợ dùng xẻng xúc từng xe than rồi tự kéo ra khỏi lò không phản ánh đầy đủ cách tổ chức sản xuất hiện nay. Hồ sơ nghề đang áp dụng xác định các công đoạn khai thác có thiết bị cơ giới, bán cơ giới, máy khoan và nhiều hệ thống xúc bốc, vận tải chuyên dùng.",
+        "Kinh nghiệm tư vấn cho thấy có hai cách hiểu đều dễ dẫn tới quyết định sai. Một là nghĩ mọi việc đều làm bằng sức người nên chưa kiểm tra đã bỏ qua cơ hội học nghề. Hai là thấy có máy móc rồi cho rằng công việc gần như tự động, người lao động không cần thể lực hoặc không phải trực tiếp xuống vị trí sản xuất. Cách hiểu đúng nằm ở giữa: thiết bị đảm nhiệm nhiều công đoạn nặng và lặp lại, còn người thợ phải học cách vận hành, phối hợp, theo dõi và thực hiện đúng phần việc trong dây chuyền."
+      ],
+      "key_points": [
+        [
+          "Không xúc và kéo toàn bộ bằng tay",
+          "Than, đất đá được xúc bốc lên thiết bị vận tải và di chuyển bằng máng, goòng, băng tải, máng cào hoặc tàu điện tùy dây chuyền."
+        ],
+        [
+          "Có nhiều mức cơ giới hóa",
+          "Công đoạn phá vỡ than có thể dùng thiết bị cơ giới, bán cơ giới hoặc khoan theo điều kiện sản xuất và phân công."
+        ],
+        [
+          "Người thợ vẫn trực tiếp tham gia",
+          "Máy móc không thay thế trách nhiệm vận hành, hỗ trợ, kiểm tra, phối hợp tổ đội và tuân thủ từng bước kỹ thuật, an toàn."
+        ],
+        [
+          "Không hứa mọi vị trí giống nhau",
+          "Thiết bị và mức độ cơ giới hóa phụ thuộc doanh nghiệp, khu vực sản xuất, công nghệ cùng nhiệm vụ được giao tại thời điểm làm việc."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Đi làm khai thác mỏ hầm lò có phải xúc than hoàn toàn bằng tay không?",
+          "paragraphs": [
+            "Không. Mô tả nghề kỹ thuật khai thác mỏ hầm lò hiện hành cho thấy than và đất đá sau khi được phá vỡ sẽ được xúc bốc lên thiết bị vận tải. Việc vận chuyển có thể sử dụng máng trượt, goòng, băng tải, máng cào hoặc tàu điện. Vật tư phục vụ sản xuất cũng được đưa tới vị trí làm việc bằng thiết bị chuyên dùng. Vì vậy, người lao động không tự dùng sức người để mang toàn bộ than từ khu vực khai thác ra ngoài.",
+            "Công đoạn tạo than cũng không chỉ có một cách làm. Nguồn chuẩn nêu thiết bị cơ giới, bán cơ giới hoặc khoan theo quy trình kỹ thuật. Ở dây chuyền có máy khấu hoặc thiết bị khai thác cơ giới, người thợ làm việc cùng hệ thống máy và chống giữ. Ở điều kiện khác, cách tổ chức có thể khác. Bài viết không khẳng định mọi mỏ, mọi lò chợ hoặc mọi ca đều dùng cùng một loại máy.",
+            "Điểm cần nhớ là câu trả lời “không hoàn toàn bằng tay” không đồng nghĩa “không phải làm việc trực tiếp”. Người thợ vẫn có mặt tại vị trí được giao, theo dõi tình trạng thiết bị, phối hợp với công đoạn trước và sau, thực hiện nhiệm vụ hỗ trợ cùng các thao tác đúng quy trình. Nếu chỉ muốn một công việc ngồi điều khiển từ xa hoặc không tham gia lao động thể lực, cần nói rõ kỳ vọng và tìm hiểu kỹ trước khi đăng ký."
+          ]
+        },
+        {
+          "heading": "Khai thác than hầm lò sử dụng những nhóm thiết bị nào?",
+          "paragraphs": [
+            "Nhóm đầu tiên phục vụ phá vỡ đất đá và than. Mô tả nghề nhắc tới máy khoan điện, máy khoan khí ép, máy khấu hoặc combai và thiết bị khai thác cơ giới. Người lao động không được tự chọn thiết bị hoặc tự vận hành chỉ vì đã nhìn thấy người khác làm. Mỗi loại máy gắn với điều kiện khu vực, hướng dẫn kỹ thuật, vị trí trong tổ đội và nhiệm vụ của ca.",
+            "Nhóm thứ hai phục vụ xúc bốc và vận tải. Than sau công đoạn khai thác cần được đưa lên hệ thống vận chuyển bằng máng trượt, goòng, băng tải, máng cào hoặc tàu điện. Đây là chuỗi liên tục chứ không phải một người xúc xong rồi tự kéo toàn bộ quãng đường. Khi một khâu dừng hoặc có dấu hiệu bất thường, người lao động phải báo theo cách đơn vị hướng dẫn thay vì tự ý can thiệp ngoài phần việc.",
+            "Nhóm thứ ba hỗ trợ điều kiện sản xuất và chống giữ, gồm quạt gió, máy bơm, máy nén khí, giá và giàn chống cùng các dụng cụ chuyên dùng khác. Những thiết bị này không trực tiếp tạo ra than ở mọi thời điểm nhưng giúp dây chuyền vận hành và duy trì khu vực làm việc theo yêu cầu kỹ thuật. Người mới cần học cách nhận biết chức năng, phạm vi an toàn và mối liên hệ giữa các nhóm thiết bị trước khi nghĩ tới tốc độ làm việc."
+          ]
+        },
+        {
+          "heading": "Có máy móc thì người thợ khai thác mỏ làm gì?",
+          "paragraphs": [
+            "Máy móc thực hiện công đoạn theo thiết kế, còn người thợ chịu trách nhiệm với phần việc được giao. Tùy vị trí, người lao động có thể tham gia vận hành, phối hợp xúc bốc, theo dõi vận tải, đưa vật tư, kiểm tra hoặc duy trì hệ thống chống giữ. Đây là những nhóm nhiệm vụ trong mô tả nghề, không phải danh sách cố định áp cho từng người ngay từ ngày đăng ký.",
+            "Cơ giới hóa làm thay đổi cách lao động nhưng không bỏ yêu cầu về sức khỏe, khả năng làm theo ca và kỷ luật tổ đội. Người vận hành phải hiểu tín hiệu và hướng dẫn; người phối hợp phải đúng thời điểm; người ở công đoạn tiếp theo cần biết khi nào dây chuyền có thể nhận vật liệu. Một thao tác không đúng có thể ảnh hưởng cả chuỗi, nên việc có máy không làm giảm trách nhiệm cá nhân.",
+            "Nguồn tuyển hiện hành không yêu cầu kinh nghiệm làm mỏ sẵn có. Nghề khai thác mỏ hầm lò có thời gian đào tạo 2–3 tháng để người học tiếp cận kiến thức, thiết bị, quy trình và yêu cầu an toàn trước các bước tiếp theo. Chưa biết dùng máy không phải lý do tự động bị loại, nhưng người đăng ký phải đọc viết thành thạo, học đúng hướng dẫn và không được che giấu điều mình chưa biết."
+          ]
+        },
+        {
+          "heading": "Công việc còn nặng không khi đã có cơ giới hóa?",
+          "paragraphs": [
+            "Đây vẫn là nghề đặc thù trong hầm lò. Có thiết bị vận tải và khai thác không đồng nghĩa mọi thao tác đều tự động hoặc người lao động không cần thể lực. Nguồn chuẩn không cam kết một vị trí “chỉ bấm nút”, cũng không cam kết tất cả khu vực có mức cơ giới hóa giống nhau. Người đăng ký cần chuẩn bị tâm lý làm theo ca, di chuyển trong khu vực sản xuất, mang bảo hộ và thực hiện phần việc trực tiếp theo phân công.",
+            "Không nên đánh giá độ nặng chỉ từ một video máy đang hoạt động. Một ca còn có bước nhận nhiệm vụ, chuẩn bị dụng cụ và bảo hộ, phối hợp vật tư, theo dõi thiết bị, kiểm tra chống giữ và bàn giao. Mức độ tham gia của từng người phụ thuộc vị trí và điều kiện thực tế. Vì thế, câu hỏi phù hợp hơn là “phần việc của tôi trong dây chuyền là gì” thay vì chỉ hỏi “có phải xúc than bằng tay không”.",
+            "Điều kiện sức khỏe vẫn phải được kiểm tra theo đợt tuyển. Người có vấn đề về thị lực, tim mạch, huyết áp hoặc bệnh ảnh hưởng tới công việc hầm lò cần khai trung thực từ bước đầu. Bài viết không thay kết luận khám tuyển. Việc hiểu có cơ giới hóa không phải căn cứ để tự bỏ qua yêu cầu sức khỏe hoặc nghĩ rằng mình chắc chắn được bố trí vào vị trí nhẹ hơn."
+          ]
+        },
+        {
+          "heading": "Bốn điều nên hỏi trước khi chọn nghề khai thác mỏ",
+          "items": [
+            "Xác nhận đúng nghề kỹ thuật khai thác mỏ hầm lò, thời gian đào tạo hiện hành 2–3 tháng và lịch của đợt đang tiếp nhận.",
+            "Hiểu rằng dây chuyền có thiết bị cơ giới, bán cơ giới, xúc bốc và vận tải chuyên dùng nhưng người thợ vẫn làm trực tiếp theo phân công.",
+            "Không yêu cầu người tư vấn hứa một loại máy, một mức cơ giới hóa hoặc một vị trí cụ thể khi doanh nghiệp chưa xác nhận.",
+            "Kiểm tra điều kiện sức khỏe, khả năng làm theo ca và phối hợp tổ đội trước khi chuẩn bị hồ sơ hoặc di chuyển tới Quảng Ninh."
+          ]
+        }
+      ],
+      "takeaway_title": "Có thiết bị hỗ trợ, nhưng người thợ vẫn phải làm đúng phần việc",
+      "takeaway": "Thợ khai thác mỏ hầm lò không phải xúc và mang toàn bộ than ra ngoài hoàn toàn bằng tay. Dây chuyền sử dụng thiết bị cơ giới, bán cơ giới, hệ thống xúc bốc và vận tải chuyên dùng. Tuy nhiên, đây vẫn là công việc trực tiếp trong hầm lò: mỗi người phải có sức khỏe phù hợp, học cách làm việc với thiết bị, phối hợp tổ đội, dùng đầy đủ bảo hộ và tuân thủ quy trình kỹ thuật, an toàn.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật khai thác mỏ hầm lò thực hiện phá vỡ đất đá và than bằng thiết bị cơ giới, bán cơ giới hoặc khoan; xúc bốc lên thiết bị vận tải; vận chuyển bằng máng trượt, goòng, băng tải, máng cào hoặc tàu điện; đưa vật tư bằng thiết bị chuyên dùng; làm việc theo ca, phối hợp tổ đội và tuân thủ quy trình kỹ thuật, an toàn.",
+      "faqs": [
+        [
+          "Thợ khai thác mỏ có phải dùng xẻng xúc than cả ca không?",
+          "Không thể mô tả công việc như vậy. Than được xúc bốc lên thiết bị vận tải và di chuyển qua các hệ thống chuyên dùng; nhiệm vụ cụ thể của từng người phụ thuộc vị trí, dây chuyền và phân công trong ca."
+        ],
+        [
+          "Khai thác mỏ hầm lò có hoàn toàn tự động không?",
+          "Không. Có thiết bị cơ giới và bán cơ giới nhưng người thợ vẫn phải trực tiếp vận hành, phối hợp, kiểm tra, hỗ trợ và thực hiện phần việc theo quy trình."
+        ],
+        [
+          "Chưa từng dùng máy khai thác có đăng ký học nghề được không?",
+          "Nguồn tuyển hiện hành không yêu cầu kinh nghiệm sẵn có. Người đăng ký cần đáp ứng điều kiện đầu vào và theo được chương trình đào tạo 2–3 tháng trước các bước thực tập, tốt nghiệp và bố trí việc làm khi đạt yêu cầu."
+        ],
+        [
+          "Có được chọn vị trí chỉ điều khiển máy không?",
+          "Không có căn cứ để hứa vị trí đó ở bước đăng ký. Thiết bị, nhiệm vụ và vị trí do doanh nghiệp bố trí theo nhu cầu, kết quả đào tạo, sức khỏe và phân công thực tế."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ công việc kỹ thuật khai thác mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/di-lam-khai-thac-mo-ham-lo-co-phai-lam-mot-minh-khong/",
+          "Công việc khai thác mỏ được tổ chức theo tổ đội thế nào"
         ],
         [
           "/kiem-tra-dieu-kien/",

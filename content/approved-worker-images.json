@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-03T07:51:00+07:00",
+  "updated_at": "2026-10-04T07:40:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -267,6 +267,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/174BDEE09637555CD0EAA1880A293B6E070F84F7DF8A36D67BA208D39BFB9F2A.jpg",
       "provider": "Vinacomin",
       "description": "Tập thể công nhân Phân xưởng Đào lò 8 Than Quang Hanh tại buổi giao việc và biểu dương kết quả của tổ đội"
+    },
+    {
+      "asset": "vinacomin-tho-lo-co-gioi-hoa-nui-beo.webp",
+      "source_article_url": "https://vinacomin.vn/video-category/than-nui-beo-chinh-thuc-dua-lo-cho-co-gioi-hoa-hang-nhe-40701-vao-hoat-dong",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/Media/2025/T12/10/%E1%BA%A3nh%20Than%20N%C3%BAi%20B%C3%A9o%20ch%C3%ADnh%20th%E1%BB%A9c%20%C4%91%C6%B0a%20l%C3%B2%20ch%E1%BB%A3%20c%C6%A1%20gi%E1%BB%9Bi%20h%C3%B3a%20h%E1%BA%A1ng%20nh%E1%BA%B9%2040701%20v%C3%A0o%20ho%E1%BA%A1t%20%C4%91%E1%BB%99ng.jpg",
+      "provider": "Vinacomin",
+      "description": "Thợ lò Than Núi Béo mặc bảo hộ, vận hành thiết bị tại lò chợ cơ giới hóa hạng nhẹ 40701"
     }
   ]
 }
