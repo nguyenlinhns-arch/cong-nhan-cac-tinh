@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-04T07:40:00+07:00",
+  "updated_at": "2026-10-07T07:52:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -274,6 +274,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/images/Media/2025/T12/10/%E1%BA%A3nh%20Than%20N%C3%BAi%20B%C3%A9o%20ch%C3%ADnh%20th%E1%BB%A9c%20%C4%91%C6%B0a%20l%C3%B2%20ch%E1%BB%A3%20c%C6%A1%20gi%E1%BB%9Bi%20h%C3%B3a%20h%E1%BA%A1ng%20nh%E1%BA%B9%2040701%20v%C3%A0o%20ho%E1%BA%A1t%20%C4%91%E1%BB%99ng.jpg",
       "provider": "Vinacomin",
       "description": "Thợ lò Than Núi Béo mặc bảo hộ, vận hành thiết bị tại lò chợ cơ giới hóa hạng nhẹ 40701"
+    },
+    {
+      "asset": "vinacomin-tho-lo-kiem-tra-gian-chong-nui-beo.webp",
+      "source_article_url": "https://vinacomin.vn/video-category/than-nui-beo-khan-truong-thao-do-van-chuyen-gian-chong-thuy-luc-phuc-vu-bao-tri",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/Media/2026/T5/04/%E1%BA%A3nh%20Than%20N%C3%BAi%20B%C3%A9o%20kh%E1%BA%A9n%20tr%C6%B0%C6%A1ng%20th%C3%A1o%20d%E1%BB%A1%2C%20v%E1%BA%ADn%20chuy%E1%BB%83n%20d%C3%A0n%20tr%E1%BB%91ng%20th%E1%BB%A7y%20l%E1%BB%B1c%20ph%E1%BB%A5c%20v%E1%BB%A5%20b%E1%BA%A3o%20tr%C3%AC.jpg",
+      "provider": "Vinacomin",
+      "description": "Thợ lò Than Núi Béo mặc bảo hộ, kiểm tra cụm thiết bị giàn chống thủy lực phục vụ công tác bảo trì"
     }
   ]
 }

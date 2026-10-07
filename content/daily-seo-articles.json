@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-04",
+  "updated_at": "2026-10-07",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -4838,6 +4838,126 @@
         [
           "/giai-dap-nghe-mo/di-lam-khai-thac-mo-ham-lo-co-phai-lam-mot-minh-khong/",
           "Công việc khai thác mỏ được tổ chức theo tổ đội thế nào"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-10-07",
+      "slug": "di-lam-khai-thac-mo-ham-lo-co-phai-lap-gian-chong-khong",
+      "title": "Đi làm khai thác mỏ hầm lò có phải lắp giàn chống không?",
+      "short_title": "Khai thác mỏ có phải lắp giàn chống không",
+      "meta": "Đi làm khai thác mỏ hầm lò có phải lắp giàn chống không? Phạm vi chống giữ, thiết bị và cách phân công theo tổ đội.",
+      "eyebrow": "CÔNG VIỆC VỚI HỆ THỐNG CHỐNG GIỮ",
+      "primary_query": "đi làm khai thác mỏ hầm lò có phải lắp giàn chống không",
+      "query_variants": [
+        "thợ khai thác mỏ có phải lắp giàn chống không",
+        "làm thợ lò có phải kiểm tra chống giữ không",
+        "công việc chống giữ trong khai thác mỏ hầm lò"
+      ],
+      "direct_answer": "Có thể có. Mô tả nghề hiện hành nêu người làm kỹ thuật khai thác mỏ hầm lò tham gia lắp dựng, kiểm tra và duy trì hệ thống chống giữ tại khu vực khai thác. Tuy nhiên, không phải ai cũng làm toàn bộ việc này trong mọi ca; nhiệm vụ phụ thuộc vị trí, công nghệ và phân công của tổ đội.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-kiem-tra-gian-chong-nui-beo.webp",
+        "alt": "Thợ lò Than Núi Béo kiểm tra cụm thiết bị giàn chống thủy lực",
+        "credit": "Ảnh: Vinacomin · thợ lò Than Núi Béo kiểm tra thiết bị giàn chống thủy lực phục vụ bảo trì"
+      },
+      "intro": [
+        "Đi làm khai thác mỏ hầm lò có phải lắp giàn chống không là câu hỏi quan trọng với người đang hình dung công việc thực tế sau khi học nghề. Câu trả lời ngắn là người thợ khai thác có thể tham gia lắp dựng, kiểm tra và duy trì hệ thống chống giữ tại khu vực sản xuất. Đây là một phần trong mô tả nghề hiện hành, bên cạnh khai thác, xúc bốc, vận tải và đưa vật tư tới vị trí làm việc.",
+        "Kinh nghiệm tư vấn cho thấy người mới thường hiểu theo hai thái cực: hoặc nghĩ chỉ thợ xây dựng mỏ mới làm công việc chống giữ, hoặc cho rằng ai vào nghề khai thác cũng phải tự lắp cả bộ giàn chống trong mọi ca. Cả hai cách hiểu đều chưa chính xác. Công việc cụ thể phụ thuộc khu vực, công nghệ, thiết bị và phân công của tổ đội. Vì vậy, người đăng ký nên hiểu đúng phạm vi nghề, không yêu cầu hứa trước một thao tác hay một vị trí cố định khi doanh nghiệp chưa bố trí."
+      ],
+      "key_points": [
+        [
+          "Có nhiệm vụ về chống giữ",
+          "Mô tả nghề khai thác mỏ nêu việc lắp dựng, kiểm tra và duy trì hệ thống chống giữ tại khu vực khai thác."
+        ],
+        [
+          "Phân công khác nhau",
+          "Phần việc thực tế phụ thuộc vị trí sản xuất, loại thiết bị, công nghệ và phân công trong ca."
+        ],
+        [
+          "Thiết bị chống giữ",
+          "Thiết bị có thể gồm giá, giàn chống thủy lực, vì chống kim loại hoặc cột thủy lực đơn theo điều kiện của khu vực."
+        ],
+        [
+          "Học nghề trước",
+          "Nguồn chuẩn không yêu cầu kinh nghiệm sẵn có; nghề khai thác mỏ hầm lò có thời gian đào tạo hiện hành 2–3 tháng."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Đi làm khai thác mỏ hầm lò có phải lắp giàn chống không?",
+          "paragraphs": [
+            "Có thể có. Nhiệm vụ của nghề kỹ thuật khai thác mỏ hầm lò bao gồm lắp dựng, kiểm tra và duy trì hệ thống chống giữ tại khu vực khai thác. Khi có vị trí chống giữ hoặc đoạn lò cần khắc phục, người lao động còn có thể tham gia củng cố, sửa chữa theo yêu cầu kỹ thuật. Vì vậy, chống giữ không phải công việc hoàn toàn tách khỏi nghề khai thác.",
+            "Tuy nhiên, mô tả nghề không nói mỗi người phải tự làm tất cả các bước hoặc thực hiện cùng một việc trong mọi ca. Một tổ đội còn có các công đoạn phá vỡ than, xúc bốc, vận tải, đưa vật tư và phối hợp thiết bị. Ai làm phần việc nào do đơn vị bố trí theo vị trí, dây chuyền, điều kiện khu vực và nhiệm vụ của ca. Người đăng ký không nên hiểu câu trả lời “có” thành một lời hứa rằng mình chắc chắn chỉ làm chống giữ, cũng không nên hiểu rằng tất cả thợ khai thác đều lắp một loại giàn giống nhau.",
+            "Điểm cần xác nhận trước khi đăng ký là bạn có chấp nhận học và làm theo phân công của nghề hay không. Nếu chỉ muốn vận hành một máy cụ thể, chỉ muốn làm một thao tác hoặc không muốn tham gia công việc liên quan tới chống giữ, hãy nói rõ với người tư vấn. Việc trao đổi sớm giúp đối chiếu kỳ vọng với mô tả nghề trước khi chuẩn bị hồ sơ hoặc di chuyển."
+          ]
+        },
+        {
+          "heading": "Hệ thống chống giữ trong khai thác mỏ gồm những thiết bị nào?",
+          "paragraphs": [
+            "Danh mục thiết bị của nghề hiện hành nhắc tới giá, giàn chống thủy lực, vì chống kim loại và cột thủy lực đơn. Đây là các nhóm thiết bị chống giữ có thể gặp trong môi trường sản xuất hầm lò. Bài viết không khẳng định một khu vực sẽ có đủ tất cả các loại, bởi thiết bị thực tế phụ thuộc công nghệ, điều kiện đường lò và tổ chức của doanh nghiệp.",
+            "Giàn chống thủy lực thường được người tìm việc chú ý vì xuất hiện trong hình ảnh lò chợ cơ giới hóa. Nhưng nhìn thấy giàn chống không có nghĩa người mới được tự thao tác ngay hoặc chỉ cần học một nút điều khiển. Mỗi thiết bị gắn với hướng dẫn kỹ thuật, vị trí làm việc và cách phối hợp của tổ đội. Người lao động chỉ thực hiện nhiệm vụ trong phạm vi được đào tạo và phân công.",
+            "Ngoài chống giữ, dây chuyền còn có máy khoan, máy khấu hoặc combai, băng tải, máng cào, goòng, tàu điện và các thiết bị hỗ trợ như quạt gió, máy bơm, máy nén khí. Việc liệt kê các nhóm máy cho thấy công việc khai thác là một chuỗi phối hợp, không phải một người vừa khai thác than, vừa vận tải, vừa lắp toàn bộ hệ thống chống giữ từ đầu đến cuối."
+          ]
+        },
+        {
+          "heading": "Người thợ làm việc chống giữ thế nào?",
+          "paragraphs": [
+            "Hồ sơ nghề hiện hành nêu phạm vi công việc gồm lắp dựng, kiểm tra và duy trì hệ thống chống giữ ở khu vực khai thác. Nếu có vị trí chống giữ hoặc đoạn lò cần khắc phục, nhiệm vụ có thể mở rộng sang củng cố và sửa chữa theo yêu cầu kỹ thuật. Những động từ này cho thấy công việc không chỉ là đưa thiết bị vào vị trí; còn có phần theo dõi và duy trì trong quá trình sản xuất.",
+            "Mức tham gia của từng người không thể xác định chỉ từ tên nghề. Có ca người lao động được giao phối hợp vật tư, có vị trí làm việc trực tiếp với thiết bị, có người thực hiện công đoạn khác trong dây chuyền. Người mới cần nghe rõ phân công, hỏi lại điểm chưa hiểu và không tự chuyển sang thao tác của người khác. Làm theo tổ đội không làm mất trách nhiệm cá nhân với phần việc được giao.",
+            "Người đăng ký cũng nên phân biệt công việc chống giữ tại khu vực khai thác với nghề kỹ thuật xây dựng mỏ hầm lò. Nghề xây dựng mỏ có phạm vi đào đường lò và lắp dựng hệ thống chống giữ cho công trình đường lò bằng các giải pháp được mô tả trong hồ sơ nghề. Hai nghề có điểm giao về thiết bị hoặc khái niệm chống giữ nhưng mục tiêu công việc, khu vực và phân công không hoàn toàn giống nhau."
+          ]
+        },
+        {
+          "heading": "Có giàn chống thủy lực thì người thợ còn phải làm gì?",
+          "paragraphs": [
+            "Thiết bị thủy lực không biến công việc thành hoàn toàn tự động. Người thợ vẫn phải thực hiện phần việc được giao, phối hợp với các công đoạn khai thác, xúc bốc và vận tải, đồng thời tuân thủ hướng dẫn kỹ thuật và yêu cầu an toàn. Không có căn cứ để hứa người học sau này chỉ đứng điều khiển hoặc không phải tham gia kiểm tra, duy trì hệ thống.",
+            "Mô tả nghề xác định bối cảnh làm việc theo ca, trong đường lò được chiếu sáng bằng đèn điện và phối hợp theo tổ đội. Người lao động sử dụng phương tiện bảo hộ, làm đúng quy trình và báo theo hướng dẫn khi công việc khác với phân công hoặc có điểm chưa rõ. Bài viết không đưa ra quy trình thao tác chi tiết cho giàn chống vì việc đó phải được học và hướng dẫn tại đúng thiết bị, đúng khu vực.",
+            "Nguồn hiện hành không yêu cầu kinh nghiệm làm mỏ sẵn có. Nghề kỹ thuật khai thác mỏ hầm lò có thời gian đào tạo 2–3 tháng. Khoảng thời gian này là bước học nghề trước lộ trình thực tập, tốt nghiệp và bố trí việc làm khi đạt yêu cầu; không phải cam kết rằng mọi người sẽ thành thạo mọi loại giàn chống hoặc được bố trí cùng một vị trí sau đào tạo."
+          ]
+        },
+        {
+          "heading": "Bốn điều nên hỏi trước khi chọn nghề khai thác mỏ",
+          "items": [
+            "Xác nhận đúng nghề kỹ thuật khai thác mỏ hầm lò, thời gian đào tạo hiện hành 2–3 tháng và lịch của đợt đang tiếp nhận.",
+            "Hiểu rằng chống giữ là một phần của chuỗi khai thác nhưng nhiệm vụ cụ thể do doanh nghiệp phân công theo vị trí, thiết bị và khu vực.",
+            "Không yêu cầu người tư vấn hứa trước một loại giàn chống, một thao tác cố định hoặc một vị trí chỉ điều khiển máy.",
+            "Kiểm tra điều kiện sức khỏe, khả năng làm theo ca và phối hợp tổ đội trước khi chuẩn bị hồ sơ hoặc di chuyển tới Quảng Ninh."
+          ]
+        }
+      ],
+      "takeaway_title": "Chống giữ theo phân công",
+      "takeaway": "Người làm kỹ thuật khai thác mỏ hầm lò có thể tham gia lắp dựng, kiểm tra, duy trì, củng cố hoặc sửa chữa hệ thống chống giữ theo yêu cầu kỹ thuật. Thiết bị có thể gồm giá, giàn chống thủy lực, vì chống kim loại và cột thủy lực đơn. Nhiệm vụ cụ thể không giống nhau ở mọi người hay mọi ca; người lao động phải học nghề, làm đúng phân công, phối hợp tổ đội và tuân thủ quy trình của đơn vị.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật khai thác mỏ hầm lò có nhiệm vụ lắp dựng, kiểm tra, duy trì hệ thống chống giữ tại khu vực khai thác; củng cố, sửa chữa vị trí chống giữ hoặc đoạn lò cần khắc phục theo yêu cầu kỹ thuật; thiết bị gồm giá, giàn chống thủy lực, vì chống kim loại và cột thủy lực đơn; thời gian đào tạo hiện hành 2–3 tháng.",
+      "faqs": [
+        [
+          "Có phải ai làm khai thác mỏ cũng lắp giàn chống trong mỗi ca?",
+          "Không. Chống giữ là một nhóm nhiệm vụ của nghề, nhưng phần việc cụ thể phụ thuộc vị trí, khu vực, thiết bị và phân công của tổ đội trong ca."
+        ],
+        [
+          "Chống giữ ở khu vực khai thác và đào đường lò có giống nhau không?",
+          "Không nên coi là hoàn toàn giống nhau. Nghề khai thác làm việc với hệ thống chống giữ tại khu vực sản xuất; nghề xây dựng mỏ tập trung vào đào và chống giữ công trình đường lò theo phân công chuyên môn."
+        ],
+        [
+          "Chưa biết thiết bị thủy lực có đăng ký học nghề khai thác mỏ được không?",
+          "Nguồn hiện hành không yêu cầu kinh nghiệm sẵn có. Người đăng ký cần đáp ứng điều kiện đầu vào và theo được chương trình đào tạo 2–3 tháng trước các bước tiếp theo."
+        ],
+        [
+          "Có được chọn chỉ làm công việc chống giữ không?",
+          "Không có căn cứ để hứa vị trí đó ở bước đăng ký. Doanh nghiệp bố trí công việc theo nhu cầu, kết quả đào tạo, sức khỏe và phân công thực tế."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ công việc kỹ thuật khai thác mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/di-lam-khai-thac-mo-ham-lo-co-phai-xuc-than-hoan-toan-bang-tay-khong/",
+          "Tìm hiểu mức độ cơ giới hóa trong khai thác mỏ"
         ],
         [
           "/kiem-tra-dieu-kien/",
