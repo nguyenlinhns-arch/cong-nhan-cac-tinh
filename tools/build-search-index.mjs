@@ -158,7 +158,12 @@ const pageItems = walk(root)
     const keywords = [...new Set([
       ...keywordText.split(",").map((item) => item.trim()).filter(Boolean),
       ...headingKeywords,
-    ])].slice(0, 60);
+    ])]
+      // The title is already searched as a first-class field. Repeating the
+      // exact same text in keywords increases the on-demand payload without
+      // adding recall, especially for the growing daily Q&A library.
+      .filter((keyword) => keyword.toLocaleLowerCase("vi") !== title.toLocaleLowerCase("vi"))
+      .slice(0, 60);
     const [category, categoryLabel] = classify(url, title, `${keywordText} ${headingKeywords.join(" ")}`);
     let priority = 10;
     if (url === "/") priority = 100;

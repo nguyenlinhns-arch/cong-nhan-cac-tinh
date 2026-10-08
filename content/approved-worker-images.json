@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-07T07:52:00+07:00",
+  "updated_at": "2026-10-08T07:47:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -281,6 +281,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/images/Media/2026/T5/04/%E1%BA%A3nh%20Than%20N%C3%BAi%20B%C3%A9o%20kh%E1%BA%A9n%20tr%C6%B0%C6%A1ng%20th%C3%A1o%20d%E1%BB%A1%2C%20v%E1%BA%ADn%20chuy%E1%BB%83n%20d%C3%A0n%20tr%E1%BB%91ng%20th%E1%BB%A7y%20l%E1%BB%B1c%20ph%E1%BB%A5c%20v%E1%BB%A5%20b%E1%BA%A3o%20tr%C3%AC.jpg",
       "provider": "Vinacomin",
       "description": "Thợ lò Than Núi Béo mặc bảo hộ, kiểm tra cụm thiết bị giàn chống thủy lực phục vụ công tác bảo trì"
+    },
+    {
+      "asset": "vinacomin-tho-mo-vang-danh-nhan-ca-lenh-dien-tu.webp",
+      "source_article_url": "https://vinacomin.vn/vi/news/slug/than-vang-danh-tien-phong-chuyen-doi-so-kien-tao-mo-thong-minh-trong-ky-nguyen-40",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/A2293081FFBB4BA9350B4D7275B76BA046F29245303840CF2E67C94EF2B30CAD.jpg",
+      "provider": "Vinacomin",
+      "description": "Công nhân Than Vàng Danh mặc bảo hộ nhận nhiệm vụ đầu ca qua hệ thống ca lệnh điện tử"
     }
   ]
 }
