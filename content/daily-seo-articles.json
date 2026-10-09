@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-08",
+  "updated_at": "2026-10-09",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -5078,6 +5078,127 @@
         [
           "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-xuong-ham-lo-lam-viec-khong/",
           "Tìm hiểu nơi làm việc của nghề cơ điện mỏ"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-10-09",
+      "slug": "hoc-nghe-mo-co-phai-hoc-an-toan-truoc-khi-xuong-lo-khong",
+      "title": "Học nghề mỏ có phải học an toàn trước khi xuống lò không?",
+      "short_title": "Học an toàn trước khi xuống lò",
+      "meta": "Học nghề mỏ có phải học an toàn trước khi xuống lò không? Tìm hiểu thứ tự huấn luyện, bảo hộ, ca lệnh và bước chuẩn bị trước khi vào thực tế.",
+      "eyebrow": "AN TOÀN TRƯỚC KHI TIẾP CẬN HẦM LÒ",
+      "primary_query": "học nghề mỏ có phải học an toàn trước khi xuống lò không",
+      "query_variants": [
+        "học sinh nghề mỏ được huấn luyện an toàn thế nào",
+        "trước khi xuống lò học sinh phải học gì",
+        "học nghề mỏ có được hướng dẫn bảo hộ không"
+      ],
+      "direct_answer": "Có. Người học nghề mỏ phải được hướng dẫn và huấn luyện an toàn trước khi tiếp cận môi trường hầm lò hoặc thực tế sản xuất. Nội dung cụ thể do nhà trường và đơn vị tiếp nhận tổ chức; người học chỉ xuống lò khi đã được phổ biến yêu cầu, trang bị bảo hộ và có người phụ trách hướng dẫn.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-hoc-sinh-khe-cham-huan-luyen-an-toan.webp",
+        "alt": "Học sinh nghề mỏ mặc đầy đủ bảo hộ trước khi tham gia chương trình thực tế tại Than Khe Chàm",
+        "credit": "Ảnh: Vinacomin · học sinh nghề mỏ mặc bảo hộ trong chương trình huấn luyện an toàn tại Than Khe Chàm"
+      },
+      "intro": [
+        "Học nghề mỏ có phải học an toàn trước khi xuống lò không là câu hỏi cần được trả lời rõ ngay từ đầu. Câu trả lời là có. Người học không đi thẳng từ lớp tuyển sinh tới vị trí sản xuất. Trước khi tiếp cận hầm lò hoặc tham gia một chương trình thực tế, học sinh phải được phổ biến yêu cầu an toàn, hướng dẫn sử dụng bảo hộ và tuân theo người phụ trách của nhà trường cùng doanh nghiệp.",
+        "Bài này không trả lời chung chung rằng nghề mỏ có an toàn hay không. Trọng tâm là thứ tự chuẩn bị trước lần đầu xuống lò: nghe hướng dẫn, hiểu ca lệnh và phạm vi được phép, kiểm tra bảo hộ, đi theo nhóm, nhận biết cách báo cáo khi chưa rõ hoặc thấy bất thường. Kinh nghiệm tư vấn cho thấy hiểu đúng thứ tự này giúp người lao động bớt lo, đồng thời tránh tâm lý chủ quan rằng chỉ cần có sức khỏe là có thể vào thực tế ngay."
+      ],
+      "key_points": [
+        [
+          "Học an toàn trước",
+          "Huấn luyện và phổ biến yêu cầu an toàn phải diễn ra trước khi học sinh tiếp cận hầm lò hoặc khu vực sản xuất."
+        ],
+        [
+          "Bảo hộ phải đúng",
+          "Người học được hướng dẫn trang bị và chỉ sử dụng phương tiện bảo hộ theo quy định của chương trình, khu vực và đơn vị tiếp nhận."
+        ],
+        [
+          "Không tự ý tách nhóm",
+          "Học sinh đi theo tổ chức của nhà trường và doanh nghiệp, nghe ca lệnh, đúng tuyến và đúng phạm vi được hướng dẫn."
+        ],
+        [
+          "Chưa rõ phải hỏi",
+          "Không đoán cách làm hoặc tự thao tác; cần báo người phụ trách khi chưa hiểu nhiệm vụ, tín hiệu hay yêu cầu tại hiện trường."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học nghề mỏ có phải học an toàn trước khi xuống lò không?",
+          "paragraphs": [
+            "Có. Mô tả nghề đang áp dụng xác định người lao động phải sử dụng đầy đủ phương tiện bảo hộ, làm theo ca, phối hợp tổ đội và tuân thủ quy trình kỹ thuật, an toàn. Những yêu cầu này không thể đợi tới khi đã đứng ở vị trí sản xuất mới bắt đầu học. Người học cần được chuẩn bị trước để biết mình được làm gì, đi theo ai và phải dừng lại, báo cáo trong tình huống nào.",
+            "Một chương trình đào tạo nghề mỏ phối hợp với doanh nghiệp được Vinacomin phản ánh cho thấy học sinh được huấn luyện an toàn trước khi vào khai trường và tham quan thực tế. Đây là bằng chứng thực tế về thứ tự tổ chức: an toàn đi trước trải nghiệm hiện trường. Bài viết không tự đặt số giờ huấn luyện, tên chứng chỉ hay quy trình riêng, vì nội dung cụ thể phải theo kế hoạch của nhà trường, doanh nghiệp và từng đợt tiếp nhận.",
+            "Người đăng ký nên phân biệt ba thời điểm. Bước đăng ký ban đầu chỉ để kiểm tra điều kiện và nhận tư vấn. Giai đoạn học nghề hình thành kiến thức, kỹ năng và kỷ luật an toàn. Khi tham quan, thực tập hoặc tiếp cận sản xuất, học sinh tiếp tục nghe hướng dẫn của đơn vị tại đúng khu vực. Việc đã được phổ biến một lần không cho phép tự ý bỏ qua chỉ dẫn ở lần sau."
+          ]
+        },
+        {
+          "heading": "Trước khi xuống lò, học sinh nghề mỏ cần được hướng dẫn những gì?",
+          "paragraphs": [
+            "Điều đầu tiên là phạm vi của buổi học hoặc chuyến thực tế: mục đích, người phụ trách, tuyến di chuyển, vị trí được tiếp cận và những khu vực không được tự ý vào. Người học phải biết mình đang tham quan, thực hành có hướng dẫn hay thực tập theo kế hoạch. Ba trạng thái này không giống nhau và không được tự chuyển từ quan sát sang thao tác thiết bị.",
+            "Điều thứ hai là phương tiện bảo hộ và cách kiểm tra trước khi sử dụng. Mô tả nghề hiện hành yêu cầu dùng đầy đủ phương tiện bảo hộ. Học sinh không nên mượn tùy tiện, tự tháo bỏ hoặc cho rằng một món bảo hộ chỉ mang tính hình thức. Nếu kích cỡ không phù hợp, thiết bị chưa được bàn giao hoặc có điểm chưa biết dùng, cần báo ngay cho người hướng dẫn thay vì tự điều chỉnh theo suy đoán.",
+            "Điều thứ ba là kỷ luật tổ đội, ca lệnh và cách báo cáo. Trong môi trường mỏ, mỗi người đi theo phân công và phối hợp với nhóm. Người mới cần tập thói quen nghe hết hướng dẫn, nhắc lại khi cần, không rời nhóm, không tự chạm vào máy móc và báo đúng đầu mối khi chưa hiểu. Đây là giá trị thực tế của huấn luyện an toàn: biến yêu cầu trên giấy thành cách cư xử nhất quán tại hiện trường."
+          ]
+        },
+        {
+          "heading": "Huấn luyện an toàn có phải chỉ nghe lý thuyết một lần không?",
+          "paragraphs": [
+            "Không nên hiểu như vậy. Buổi phổ biến trước khi vào thực tế là một cổng bắt buộc, nhưng an toàn còn đi cùng toàn bộ quá trình học nghề, thực hành và thực tập. Người học phải tiếp tục làm theo hướng dẫn tại từng địa điểm, bởi tuyến đi, thiết bị, nhiệm vụ và điều kiện tổ chức có thể khác nhau. Một nội dung đã học giúp tạo nền tảng, không thay thế ca lệnh hoặc chỉ dẫn tại chỗ.",
+            "Kinh nghiệm tuyển sinh thực tế cho thấy người mới thường lo theo hai hướng trái ngược. Có người sợ hầm lò nên nghe xong vẫn không dám hỏi; có người thấy đoàn đi đông và có người dẫn nên chủ quan. Cách phù hợp là chủ động hỏi ngắn, đúng việc: hôm nay mình làm gì, đi theo ai, bảo hộ đã đủ chưa, điểm nào không được tự ý tiếp cận và khi cần hỗ trợ thì báo ai.",
+            "Bài viết không hướng dẫn kỹ thuật thoát nạn, vận hành thiết bị hay xử lý sự cố cụ thể. Những nội dung đó phải do người có trách nhiệm đào tạo tại đúng chương trình và điều kiện thực tế. Người tìm hiểu trên mạng chỉ nên dùng bài này để biết nguyên tắc và câu hỏi cần xác nhận, không dùng thay tài liệu huấn luyện hoặc mệnh lệnh tại hiện trường."
+          ]
+        },
+        {
+          "heading": "Tham quan, thực tập và đi làm khác nhau thế nào về trách nhiệm?",
+          "paragraphs": [
+            "Khi tham quan, mục tiêu chính là quan sát môi trường, dây chuyền và cách tổ chức công việc theo hướng dẫn. Học sinh không tự biến chuyến tham quan thành buổi thử máy. Khi thực hành hoặc thực tập, phần việc được giao có thể cụ thể hơn nhưng vẫn nằm trong kế hoạch đào tạo, phạm vi giám sát và quy định của đơn vị. Sau tốt nghiệp đạt yêu cầu và ký hợp đồng, người lao động mới thực hiện nhiệm vụ theo vị trí doanh nghiệp bố trí.",
+            "Sự khác nhau này quan trọng với cả học sinh và phụ huynh. Việc được đưa đi thực tế không có nghĩa người học đã trở thành công nhân chính thức hoặc phải tự chịu trách nhiệm như người đã được bố trí việc làm. Ngược lại, là học sinh cũng không có nghĩa được bỏ qua quy định. Mỗi giai đoạn có người phụ trách, mục tiêu và giới hạn riêng; người học phải hiểu rõ trước khi tham gia.",
+            "Trước ngày di chuyển, người học nên xác nhận lịch, địa điểm tập trung, người liên hệ, yêu cầu trang phục và giấy tờ cần mang. Không mua thêm đồ bảo hộ theo lời quảng cáo bên ngoài khi chưa có hướng dẫn; không tự tới khai trường; không tách đoàn để quay phim hoặc khám phá khu vực khác. Những việc nhỏ này giúp giữ đúng luồng tiếp nhận và tránh rủi ro do hiểu sai vai trò."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước buổi thực tế đầu tiên",
+          "items": [
+            "Buổi này là tham quan, thực hành hay thực tập; phạm vi học sinh được tham gia đến đâu?",
+            "Ai là người phụ trách trực tiếp và học sinh phải tập trung, điểm danh ở đâu?",
+            "Nhà trường hoặc doanh nghiệp cấp những phương tiện bảo hộ nào, kiểm tra ở thời điểm nào?",
+            "Học sinh phải đi theo tuyến, tổ hoặc nhóm nào và cần báo ai khi chưa hiểu hướng dẫn?",
+            "Những vật dụng, hành vi hoặc khu vực nào không được phép trong chương trình thực tế?"
+          ]
+        }
+      ],
+      "takeaway_title": "An toàn đi trước trải nghiệm hầm lò",
+      "takeaway": "Người học nghề mỏ phải được hướng dẫn và huấn luyện an toàn trước khi tiếp cận hầm lò hoặc thực tế sản xuất. Cần hiểu phạm vi chương trình, dùng đúng bảo hộ, nghe ca lệnh, đi theo nhóm và báo người phụ trách khi chưa rõ. Buổi phổ biến ban đầu không thay thế hướng dẫn tại từng khu vực; học sinh tuyệt đối không tự ý thao tác thiết bị hoặc rời khỏi tổ chức của nhà trường và doanh nghiệp.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json về yêu cầu dùng đầy đủ phương tiện bảo hộ, làm theo ca, phối hợp tổ đội và tuân thủ quy trình kỹ thuật, an toàn; cùng bài chính thức Vinacomin “Cách làm mới trong công tác đào tạo nghề mỏ hầm lò” ghi nhận học sinh được huấn luyện an toàn trước khi vào khai trường và tham quan thực tế.",
+      "faqs": [
+        [
+          "Chưa học an toàn có được tự xuống lò tham quan không?",
+          "Không nên. Học sinh chỉ tiếp cận theo chương trình đã được tổ chức, sau khi nghe hướng dẫn, có bảo hộ phù hợp và đi cùng người phụ trách."
+        ],
+        [
+          "Học an toàn một lần rồi có được tự thao tác thiết bị không?",
+          "Không. Việc thao tác phụ thuộc nội dung đào tạo, thiết bị, khu vực, giám sát và phân công cụ thể; không được tự làm chỉ vì đã nghe phổ biến chung."
+        ],
+        [
+          "Nhà trường có hướng dẫn bảo hộ trước khi vào thực tế không?",
+          "Chương trình thực tế phải có bước hướng dẫn an toàn và bảo hộ theo tổ chức của nhà trường, doanh nghiệp. Học sinh cần xác nhận yêu cầu cụ thể của đúng lịch mình tham gia."
+        ],
+        [
+          "Phụ huynh nên hỏi gì trước khi con xuống lò thực tế?",
+          "Nên hỏi rõ mục đích chương trình, người phụ trách, nội dung huấn luyện, phương tiện bảo hộ, phạm vi tiếp cận và cách liên hệ khi cần hỗ trợ."
+        ]
+      ],
+      "related": [
+        [
+          "/hoc-nghe-mo-tai-quang-ninh/",
+          "Xem lộ trình học nghề mỏ tại Quảng Ninh"
+        ],
+        [
+          "/giai-dap-nghe-mo/phu-huynh-can-biet-gi-khi-con-di-hoc-nghe-mo/",
+          "Những điều phụ huynh cần biết"
         ],
         [
           "/kiem-tra-dieu-kien/",

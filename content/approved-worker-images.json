@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-08T07:47:00+07:00",
+  "updated_at": "2026-10-09T07:57:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -288,6 +288,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/A2293081FFBB4BA9350B4D7275B76BA046F29245303840CF2E67C94EF2B30CAD.jpg",
       "provider": "Vinacomin",
       "description": "Công nhân Than Vàng Danh mặc bảo hộ nhận nhiệm vụ đầu ca qua hệ thống ca lệnh điện tử"
+    },
+    {
+      "asset": "vinacomin-hoc-sinh-khe-cham-huan-luyen-an-toan.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/cach-lam-moi-trong-cong-tac-dao-tao-nghe-mo-ham-lo",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/1801E31082CB40098A13ECF1DD64BD38E04A2392E6D5F90F15BA1EF962A6D4E6.jpg",
+      "provider": "Vinacomin",
+      "description": "Học sinh nghề mỏ mặc đầy đủ bảo hộ trước chương trình huấn luyện an toàn và trải nghiệm thực tế tại Than Khe Chàm"
     }
   ]
 }
