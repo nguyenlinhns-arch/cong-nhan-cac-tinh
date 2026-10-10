@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-09T07:57:00+07:00",
+  "updated_at": "2026-10-10T07:42:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -295,6 +295,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/1801E31082CB40098A13ECF1DD64BD38E04A2392E6D5F90F15BA1EF962A6D4E6.jpg",
       "provider": "Vinacomin",
       "description": "Học sinh nghề mỏ mặc đầy đủ bảo hộ trước chương trình huấn luyện an toàn và trải nghiệm thực tế tại Than Khe Chàm"
+    },
+    {
+      "asset": "vinacomin-cong-nhan-xay-lap-mo-khoan-guong-lo.webp",
+      "source_article_url": "https://vinacomin.vn/vi/video-category/co-gioi-hoa-cong-tac-dao-lo-o-cong-ty-xay-lap-mo-tkv",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/Media/2024/T8/03/xay%20lap%20mo.jpg",
+      "provider": "Vinacomin",
+      "description": "Hai công nhân Xây lắp mỏ TKV mặc bảo hộ, phối hợp vận hành thiết bị khoan tại gương lò"
     }
   ]
 }

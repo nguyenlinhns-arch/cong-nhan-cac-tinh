@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-09",
+  "updated_at": "2026-10-10",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -5199,6 +5199,127 @@
         [
           "/giai-dap-nghe-mo/phu-huynh-can-biet-gi-khi-con-di-hoc-nghe-mo/",
           "Những điều phụ huynh cần biết"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-10-10",
+      "slug": "hoc-nghe-xay-dung-mo-ham-lo-co-phai-khoan-no-min-khong",
+      "title": "Học nghề xây dựng mỏ hầm lò có phải khoan nổ mìn không?",
+      "short_title": "Xây dựng mỏ có phải khoan nổ mìn",
+      "meta": "Học nghề xây dựng mỏ hầm lò có phải khoan nổ mìn không? Hiểu đúng công đoạn khoan, phân công tổ đội và giới hạn an toàn trước khi chọn nghề.",
+      "eyebrow": "HIỂU ĐÚNG CÔNG ĐOẠN KHOAN TRONG ĐÀO LÒ",
+      "primary_query": "học nghề xây dựng mỏ hầm lò có phải khoan nổ mìn không",
+      "query_variants": [
+        "thợ xây dựng mỏ có trực tiếp khoan gương lò không",
+        "học xây dựng mỏ có phải làm thuốc nổ không",
+        "nghề đào lò có phải ai cũng nổ mìn không"
+      ],
+      "direct_answer": "Có thể. Nghề xây dựng mỏ có công đoạn phá vỡ đất đá bằng thiết bị khoan, nhưng không có nghĩa mọi học sinh hoặc công nhân đều tự làm việc với vật liệu nổ. Nhiệm vụ thực tế phụ thuộc công nghệ, đào tạo, vị trí, ca lệnh và phân công an toàn của đơn vị.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-cong-nhan-xay-lap-mo-khoan-guong-lo.webp",
+        "alt": "Hai công nhân Xây lắp mỏ TKV mặc bảo hộ phối hợp vận hành thiết bị khoan tại gương lò",
+        "credit": "Ảnh: Vinacomin · công nhân Xây lắp mỏ TKV phối hợp khoan tại gương lò"
+      },
+      "intro": [
+        "Học nghề xây dựng mỏ hầm lò có phải khoan nổ mìn không là câu hỏi thực tế của nhiều người khi đã hiểu đây không phải nghề xây nhà dưới đất. Câu trả lời chính xác là: nghề có thể bao gồm công đoạn khoan để phá vỡ đất đá và tiến gương lò, nhưng không thể suy ra rằng mọi người học đều tự làm toàn bộ chu trình liên quan đến vật liệu nổ.",
+        "Điểm cần biết trước khi đăng ký là nghề xây dựng mỏ gồm nhiều công đoạn nối tiếp nhau: chuẩn bị vị trí, phá vỡ đất đá theo công nghệ được giao, xúc dỡ, vận chuyển, lắp đường ray, đưa vật liệu vào, dựng hoặc củng cố hệ thống chống giữ và sửa chữa đường lò. Người lao động làm theo tổ đội, ca lệnh và đúng phạm vi được huấn luyện; không tự chọn thao tác chỉ vì đã nhìn thấy thiết bị hoặc từng xem quy trình trên mạng."
+      ],
+      "key_points": [
+        [
+          "Khoan là một công đoạn có thể gặp",
+          "Mô tả nghề hiện hành có nội dung phá vỡ đất đá bằng thiết bị cơ giới, bán cơ giới hoặc thiết bị khoan theo công nghệ và phân công."
+        ],
+        [
+          "Không phải ai cũng làm mọi bước",
+          "Tổ đội phân chia nhiệm vụ theo vị trí, năng lực, đào tạo và ca lệnh; người mới không tự ý chuyển sang công việc khác."
+        ],
+        [
+          "Khoan không đồng nghĩa tự nổ mìn",
+          "Việc nhìn thấy hoặc vận hành thiết bị khoan không cho phép tự nạp, đấu nối hay kích nổ vật liệu nổ."
+        ],
+        [
+          "Công nghệ có thể khác nhau",
+          "Có nơi dùng thiết bị cơ giới để phá vỡ đất đá, có nơi có công đoạn khoan; công việc thực tế phụ thuộc điều kiện và tổ chức sản xuất."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học nghề xây dựng mỏ hầm lò có phải khoan nổ mìn không?",
+          "paragraphs": [
+            "Có thể học và tham gia công đoạn khoan trong phạm vi đào lò. Nguồn chuẩn tuyển sinh hiện hành mô tả thợ kỹ thuật xây dựng mỏ hầm lò thực hiện việc phá vỡ đất đá bằng thiết bị cơ giới, bán cơ giới hoặc thiết bị khoan; sau đó còn nhiều khâu khác để tạo và duy trì đường lò. Vì vậy, nói nghề xây dựng mỏ hoàn toàn không liên quan đến khoan là không đúng.",
+            "Nhưng cụm từ “khoan nổ mìn” thường khiến người mới ghép nhiều nhiệm vụ thành một việc duy nhất. Khoan lỗ, chuẩn bị gương, đưa thiết bị ra vị trí an toàn, kiểm soát khu vực và những công việc có liên quan đến vật liệu nổ là các phần phải được tổ chức theo quy trình và phân công. Một học sinh mới hoặc một công nhân không được mặc nhiên làm tất cả các phần chỉ vì đang ở cùng tổ đội đào lò.",
+            "Cách hiểu phù hợp là: người học xây dựng mỏ cần làm quen với mục đích của công đoạn khoan, thiết bị và cách phối hợp trong dây chuyền; còn thao tác thực tế nào được giao phải theo nội dung đào tạo, người hướng dẫn và đơn vị tiếp nhận. Bài viết này giúp nhận diện nghề và câu hỏi cần xác nhận, không thay thế tài liệu huấn luyện hoặc ca lệnh tại hiện trường."
+          ]
+        },
+        {
+          "heading": "Công đoạn khoan nằm ở đâu trong công việc xây dựng đường lò?",
+          "paragraphs": [
+            "Mục tiêu của nghề xây dựng mỏ là tạo, chống giữ, gia cố và duy trì đường lò phục vụ người, thiết bị, vật tư, thông gió và vận tải. Khi đường lò cần tiến qua đất đá, tổ đội phải thực hiện một chuỗi công việc theo công nghệ được phê duyệt. Khoan có thể là một khâu chuẩn bị để phá vỡ phần đất đá ở gương lò, nhưng nó không phải toàn bộ nghề.",
+            "Sau khi đất đá được phá vỡ và khu vực được xác nhận đủ điều kiện làm việc, còn các nhiệm vụ xúc dỡ, san nền, đưa đất đá ra ngoài, vận chuyển vì chống hoặc cấu kiện, lắp đặt đường ray, dựng và củng cố hệ thống chống giữ. Một ca có thể tập trung vào một số khâu nhất định. Bởi vậy, người đăng ký không nên hỏi theo kiểu “có phải ngày nào cũng khoan không”, mà nên hỏi mình sẽ được học các nhóm công việc nào và phân công sau đào tạo được xác định ra sao.",
+            "Tư liệu chính thức của Vinacomin về cơ giới hóa đào lò tại Công ty Xây lắp mỏ TKV cho thấy hai công nhân mặc bảo hộ phối hợp ở vị trí khoan tại gương lò. Hình ảnh này phản ánh đúng hai đặc điểm quan trọng: thiết bị được sử dụng trong bối cảnh sản xuất thật và công việc diễn ra theo phối hợp, không phải một người tự làm mọi bước."
+          ]
+        },
+        {
+          "heading": "Có phải học xây dựng mỏ là phải tự làm việc với thuốc nổ?",
+          "paragraphs": [
+            "Không nên hiểu như vậy. Phạm vi nghề có thể có công đoạn khoan, nhưng vật liệu nổ là phần việc được kiểm soát riêng theo tổ chức, người có trách nhiệm và quy trình an toàn. Người học không được suy đoán rằng sau vài buổi thực hành khoan là có thể tự chuẩn bị, nạp hoặc kích nổ. Nếu nội dung đào tạo có phần liên quan, nhà trường và đơn vị thực hành phải nêu rõ ai hướng dẫn, ai được thao tác và người học đứng ở phạm vi nào.",
+            "Khi tư vấn tuyển sinh, câu hỏi quan trọng không phải “có đáng sợ không” mà là “phần nào tôi được học để hiểu, phần nào tôi được thực hành có giám sát, và phần nào chỉ người được phân công mới được làm”. Cách hỏi này giúp người lao động hình dung đúng nghề mà không biến thông tin trên mạng thành hướng dẫn thao tác ngoài phạm vi được giao.",
+            "Nếu nghe một người bên ngoài hứa rằng vào học sẽ được tự thử nổ mìn, hoặc yêu cầu mua dụng cụ, vật tư liên quan trước khi nhập học, người đăng ký cần dừng lại và xác minh với đúng đầu mối tuyển sinh. Luồng đăng ký hiện hành chỉ yêu cầu kiểm tra điều kiện, nhận lịch và chuẩn bị hồ sơ theo hướng dẫn; không có bước tự mua vật liệu hay tự luyện thao tác nghề ở nhà."
+          ]
+        },
+        {
+          "heading": "Không dùng khoan nổ mìn thì đường lò được đào bằng cách nào?",
+          "paragraphs": [
+            "Mô tả công việc hiện hành cho phép nhiều nhóm giải pháp: cơ giới, bán cơ giới hoặc thiết bị khoan. Điều đó có nghĩa công nghệ thực tế không giống nhau ở mọi đường lò và mọi thời điểm. Một số khu vực có thể dùng tổ hợp máy để khấu cắt và xúc dỡ; khu vực khác có công đoạn khoan phù hợp với điều kiện đất đá và thiết kế sản xuất. Người tuyển sinh không được hứa trước người học chắc chắn chỉ làm với một loại máy hoặc chắc chắn không bao giờ gặp công đoạn khoan.",
+            "Sự thay đổi công nghệ cũng giải thích vì sao chương trình nghề cần dạy nền tảng thay vì chỉ dạy một động tác. Người học phải hiểu mục đích công việc, kiểm tra theo hướng dẫn, phối hợp tín hiệu, giữ khoảng cách và tuân thủ ranh giới an toàn. Khi doanh nghiệp bố trí vào vị trí cụ thể, người lao động tiếp tục được giao việc theo thiết bị, khu vực và tổ đội thực tế.",
+            "Vì vậy, nếu bạn thích công việc có máy móc nhưng không muốn tự làm việc với vật liệu nổ, đừng vội loại bỏ nghề chỉ từ tên một công đoạn. Hãy nói rõ băn khoăn khi được tư vấn và hỏi nội dung đào tạo, vị trí dự kiến cùng cách phân công. Quyết định cuối cùng nên dựa trên sức khỏe, khả năng làm việc theo ca trong hầm lò và mức phù hợp với toàn bộ nghề, không chỉ một hình ảnh."
+          ]
+        },
+        {
+          "heading": "Năm câu cần hỏi trước khi chọn nghề xây dựng mỏ",
+          "items": [
+            "Trong khóa học, học sinh được học lý thuyết và thực hành những công đoạn nào của đào, chống giữ và duy trì đường lò?",
+            "Phần thực hành khoan dùng loại thiết bị nào và được tổ chức dưới sự hướng dẫn của ai?",
+            "Những nội dung liên quan đến vật liệu nổ được giới thiệu, quan sát hay thực hành trong phạm vi nào?",
+            "Sau khi tốt nghiệp đạt yêu cầu, việc bố trí công đoạn cụ thể do đơn vị tiếp nhận xác định như thế nào?",
+            "Nếu chưa hiểu ca lệnh, tín hiệu hoặc giới hạn khu vực thì người lao động phải báo cho đầu mối nào?"
+          ]
+        }
+      ],
+      "takeaway_title": "Có thể có công đoạn khoan, nhưng không tự làm mọi bước",
+      "takeaway": "Nghề kỹ thuật xây dựng mỏ hầm lò có thể bao gồm khoan để phá vỡ đất đá và tiến gương, bên cạnh các công việc xúc dỡ, vận chuyển, lắp đường ray, chống giữ, gia cố và sửa chữa đường lò. Khoan không đồng nghĩa mọi học sinh hoặc công nhân được tự làm việc với vật liệu nổ. Mọi thao tác phải đúng nội dung đào tạo, vị trí, ca lệnh, tổ đội và quy trình của đơn vị.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: kỹ thuật xây dựng mỏ hầm lò có nhiệm vụ phá vỡ đất đá bằng thiết bị cơ giới, bán cơ giới hoặc thiết bị khoan; xúc dỡ, san nền, lắp đường ray, vận chuyển đất đá và vật liệu, lắp dựng, củng cố hệ thống chống giữ. Hình ảnh riêng được xác minh từ tư liệu chính thức Vinacomin “Cơ giới hóa công tác đào lò ở Công ty Xây lắp mỏ TKV”.",
+      "faqs": [
+        [
+          "Học xây dựng mỏ có phải ngày nào cũng khoan không?",
+          "Không thể khẳng định. Công việc theo công nghệ, khu vực, ca lệnh và phân công của tổ đội; một ca có thể tập trung vào khoan, xúc dỡ, vận chuyển, chống giữ hoặc công đoạn khác."
+        ],
+        [
+          "Biết vận hành máy khoan có được tự nổ mìn không?",
+          "Không. Vận hành thiết bị khoan không tự động cho phép làm các phần việc liên quan đến vật liệu nổ; phải đúng đào tạo, thẩm quyền, phân công và quy trình an toàn."
+        ],
+        [
+          "Nghề xây dựng mỏ có chỉ dùng sức người không?",
+          "Không. Phạm vi nghề có thiết bị cơ giới, bán cơ giới và thiết bị khoan; đồng thời vẫn có những công việc cần phối hợp, kiểm tra và thao tác trực tiếp theo tổ đội."
+        ],
+        [
+          "Sợ công đoạn nổ mìn thì có nên đăng ký nghề xây dựng mỏ không?",
+          "Nên tìm hiểu đầy đủ trước khi quyết định. Hãy hỏi rõ chương trình học, phạm vi thực hành và cách bố trí công việc; đồng thời cân nhắc sức khỏe, môi trường hầm lò, ca làm và khả năng tuân thủ kỷ luật an toàn."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ công việc kỹ thuật xây dựng mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/nghe-xay-dung-mo-ham-lo-co-phai-xay-nha-duoi-ham-khong/",
+          "Hiểu đúng tên nghề xây dựng mỏ"
         ],
         [
           "/kiem-tra-dieu-kien/",

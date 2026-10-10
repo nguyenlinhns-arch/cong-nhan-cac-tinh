@@ -129,7 +129,7 @@ function normalizeJsonStrings(node) {
   return node;
 }
 
-function normalizeSearchJson(file, {redirectRetiredProvince = false} = {}) {
+function normalizeSearchJson(file, {redirectRetiredProvince = false, compact = false} = {}) {
   if (!fs.existsSync(file)) return null;
   const data = JSON.parse(fs.readFileSync(file, "utf8"));
   if (redirectRetiredProvince && Array.isArray(data.items)) {
@@ -138,7 +138,7 @@ function normalizeSearchJson(file, {redirectRetiredProvince = false} = {}) {
     }
   }
   normalizeJsonStrings(data);
-  fs.writeFileSync(file, `${JSON.stringify(data, null, 2)}\n`);
+  fs.writeFileSync(file, `${JSON.stringify(data, null, compact ? 0 : 2)}\n`);
   return Array.isArray(data.items) ? data.items.length : null;
 }
 
@@ -270,7 +270,9 @@ if (fs.existsSync(llmsPath)) {
 
 const coreCount = normalizeSearchJson(path.join(root, "search-core.json"));
 const provinceCount = normalizeSearchJson(path.join(root, "search-provinces.json"), {redirectRetiredProvince: true});
-const contentCount = normalizeSearchJson(path.join(root, "search-content.json"));
+// The content tier grows every day. Keep it compact, as build-search-index does,
+// so formatting whitespace cannot consume the delivery budget.
+const contentCount = normalizeSearchJson(path.join(root, "search-content.json"), {compact: true});
 const searchIndexPath = path.join(root, "search-index.json");
 let searchIndexNormalized = false;
 if (fs.existsSync(searchIndexPath)) {
