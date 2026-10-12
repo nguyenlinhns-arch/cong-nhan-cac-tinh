@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-12T07:30:00+07:00",
+  "updated_at": "2026-10-13T07:30:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -316,6 +316,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2025/T03/14/TN2.jpg",
       "provider": "Vinacomin",
       "description": "Đoàn công tác và công nhân Than Thống Nhất mặc bảo hộ tại hiện trường sản xuất hầm lò"
+    },
+    {
+      "asset": "vinacomin-cong-nhan-dao-lo-1-vang-danh.webp",
+      "source_article_url": "https://vinacomin.vn/vi/video-category/chi-bo-phan-xuong-dao-lo-1-than-vang-danh-ban-linh-duoi-long-dat",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/Media/2025/T8/25/%E1%BA%A3nh%20Chi%20b%E1%BB%99%20Ph%C3%A2n%20x%C6%B0%E1%BB%9Fng%20%C4%90%C3%A0o%20l%C3%B2%201.jpg",
+      "provider": "Vinacomin",
+      "description": "Tập thể công nhân Phân xưởng Đào lò 1 Than Vàng Danh mặc bảo hộ tại vị trí làm việc trong hầm lò"
     }
   ]
 }
