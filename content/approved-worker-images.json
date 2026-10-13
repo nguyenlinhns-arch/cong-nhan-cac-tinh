@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-13T07:30:00+07:00",
+  "updated_at": "2026-10-14T07:30:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -323,6 +323,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/images/Media/2025/T8/25/%E1%BA%A3nh%20Chi%20b%E1%BB%99%20Ph%C3%A2n%20x%C6%B0%E1%BB%9Fng%20%C4%90%C3%A0o%20l%C3%B2%201.jpg",
       "provider": "Vinacomin",
       "description": "Tập thể công nhân Phân xưởng Đào lò 1 Than Vàng Danh mặc bảo hộ tại vị trí làm việc trong hầm lò"
+    },
+    {
+      "asset": "vinacomin-to-ung-cuu-quang-hanh.webp",
+      "source_article_url": "https://vinacomin.vn/vi/news/slug/cong-ty-than-quang-hanh-tkv-dien-tap-ung-cuu-su-co-tim-kiem-cuu-nan-nam-2025",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/EB42DBDF6BC7B95BD3A0C36F911FAFA13C6697DC32390AF68710D20D42B97C33.jpg",
+      "provider": "Vinacomin",
+      "description": "Tổ công nhân Than Quang Hanh mặc đầy đủ bảo hộ trong buổi diễn tập ứng cứu sự cố, tìm kiếm cứu nạn năm 2025"
     }
   ]
 }
