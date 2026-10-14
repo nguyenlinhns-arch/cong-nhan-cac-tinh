@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-14",
+  "updated_at": "2026-10-15",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -5804,6 +5804,127 @@
         [
           "/giai-dap-nghe-mo/hoc-co-dien-mo-co-chi-sua-dien-khong/",
           "Hiểu phạm vi nghề cơ điện mỏ ngoài sửa điện"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-10-15",
+      "slug": "hoc-nghe-khai-thac-mo-ham-lo-co-phai-su-dung-may-khoan-khong",
+      "title": "Học nghề khai thác mỏ hầm lò có phải sử dụng máy khoan không?",
+      "short_title": "Khai thác mỏ có phải sử dụng máy khoan",
+      "meta": "Học nghề khai thác mỏ hầm lò có phải sử dụng máy khoan không? Hiểu đúng nhiệm vụ khoan, cách phân công và giới hạn của người mới.",
+      "eyebrow": "HIỂU ĐÚNG CÔNG VIỆC KHOAN TRONG NGHỀ KHAI THÁC MỎ",
+      "primary_query": "học nghề khai thác mỏ hầm lò có phải sử dụng máy khoan không",
+      "query_variants": [
+        "học khai thác mỏ có phải dùng máy khoan không",
+        "thợ khai thác mỏ hầm lò có vận hành máy khoan không",
+        "người mới học nghề mỏ có được giao khoan không"
+      ],
+      "direct_answer": "Có thể có. Sử dụng thiết bị cơ giới, bán cơ giới hoặc máy khoan để thực hiện công đoạn phá vỡ đất đá và than thuộc phạm vi nghề kỹ thuật khai thác mỏ hầm lò. Tuy nhiên, không phải người học nào cũng dùng máy khoan trong mọi ca; người mới chỉ thực hiện phần việc đã được đào tạo, hướng dẫn và phân công trong tổ đội.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-phan-van-tuong-su-dung-may-khoan.webp",
+        "alt": "Hai thợ lò Than Hạ Long mặc bảo hộ phối hợp sử dụng thiết bị khoan tại vị trí sản xuất trong hầm lò",
+        "credit": "Ảnh: Vinacomin · Công ty Than Hạ Long - TKV"
+      },
+      "intro": [
+        "Học nghề khai thác mỏ hầm lò có phải sử dụng máy khoan không là câu hỏi thực tế của người đang chọn nghề nhưng chưa hình dung công việc ngoài lò chợ. Câu trả lời là người học có thể được tiếp cận và sau đào tạo có thể được phân công sử dụng máy khoan trong một số công đoạn. Nguồn nghề hiện hành nêu rõ việc phá vỡ đất đá và than có thể thực hiện bằng thiết bị cơ giới, bán cơ giới hoặc khoan theo quy trình kỹ thuật.",
+        "Điều đó không có nghĩa tất cả học sinh đều cầm máy khoan ngay, hoặc một công nhân sẽ khoan suốt mọi ca. Nghề khai thác còn có xúc bốc, vận chuyển, đưa vật tư tới vị trí sản xuất, lắp dựng và duy trì hệ thống chống giữ, củng cố các đoạn lò cần khắc phục. Công việc cụ thể phụ thuộc nội dung đã học, điều kiện sản xuất, năng lực và ca lệnh của tổ đội."
+      ],
+      "key_points": [
+        [
+          "Khoan thuộc phạm vi nghề",
+          "Nguồn chuẩn mô tả công đoạn phá vỡ đất đá và than bằng thiết bị cơ giới, bán cơ giới hoặc khoan theo quy trình kỹ thuật."
+        ],
+        [
+          "Không phải nhiệm vụ duy nhất",
+          "Người học còn cần hiểu các nhóm việc xúc bốc, vận chuyển, chống giữ, củng cố và phối hợp tổ đội."
+        ],
+        [
+          "Không phải ai cũng khoan mỗi ca",
+          "Vị trí thực tế phụ thuộc công đoạn, thiết bị, năng lực và phân công của đơn vị tiếp nhận."
+        ],
+        [
+          "Không tự thao tác",
+          "Người mới chỉ sử dụng thiết bị khi đã được học, hướng dẫn, kiểm tra và giao nhiệm vụ rõ ràng."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học nghề khai thác mỏ hầm lò có phải sử dụng máy khoan không?",
+          "paragraphs": [
+            "Có thể có. Trong mô tả nghề hiện hành, kỹ thuật khai thác mỏ hầm lò có nhiệm vụ thực hiện công đoạn phá vỡ đất đá và than bằng thiết bị cơ giới, bán cơ giới hoặc khoan theo quy trình kỹ thuật. Máy khoan vì vậy là một trong những nhóm thiết bị người học có thể được giới thiệu, thực hành theo hướng dẫn hoặc sử dụng khi đã đủ điều kiện nhận nhiệm vụ.",
+            "Tuy nhiên, cụm từ “thuộc phạm vi nghề” không đồng nghĩa mọi người đều được giao cùng một máy, cùng một vị trí hay cùng một thao tác. Ở từng ca, tổ đội có thể cần người phối hợp chuẩn bị khu vực làm việc, vận chuyển vật tư, xúc bốc, theo dõi hệ thống chống giữ hoặc làm phần việc khác. Đơn vị tiếp nhận bố trí theo nhu cầu sản xuất, kết quả đào tạo và khả năng thực tế của từng người.",
+            "Người mới không tự khởi động, điều chỉnh hoặc xử lý máy khoan chỉ vì đã từng dùng máy khoan dân dụng hay nhìn đồng nghiệp thao tác. Thiết bị, môi trường và yêu cầu phối hợp trong mỏ khác với công việc bên ngoài. Nếu ca lệnh chưa rõ, thiết bị có dấu hiệu bất thường hoặc chưa xác định người hướng dẫn, cần dừng ở bước an toàn và báo đúng đầu mối phụ trách."
+          ]
+        },
+        {
+          "heading": "Máy khoan nằm ở đâu trong dây chuyền khai thác mỏ hầm lò?",
+          "paragraphs": [
+            "Công đoạn khoan không đứng riêng lẻ. Sau khi tổ đội xác định nhiệm vụ của ca và chuẩn bị khu vực làm việc, thiết bị khoan có thể được sử dụng trong phần việc phá vỡ đất đá hoặc than theo biện pháp kỹ thuật đã được phê duyệt. Kết quả của công đoạn này liên kết với xúc bốc, đưa than hoặc đất đá lên thiết bị vận tải và tổ chức các bước tiếp theo trong dây chuyền.",
+            "Nguồn nghề cũng liệt kê máy khoan điện, máy khoan khí ép và thiết bị khai thác cơ giới. Việc có nhiều loại thiết bị cho thấy người đăng ký không nên hình dung chỉ có một mẫu máy và một cách làm cố định. Học sinh cần nắm nguyên lý, nhận biết phạm vi sử dụng, phối hợp với người hướng dẫn và tuân thủ quy trình của thiết bị cụ thể được giao.",
+            "Ảnh chính thức Vinacomin dùng trong bài cho thấy hai thợ lò Than Hạ Long mặc bảo hộ phối hợp với thiết bị khoan tại vị trí sản xuất trong hầm lò. Hình ảnh giúp người đăng ký hình dung tính phối hợp và bối cảnh thực tế; ảnh không phải tài liệu hướng dẫn thao tác, không dùng để suy ra trình tự vận hành hoặc giao nhiệm vụ cho người mới."
+          ]
+        },
+        {
+          "heading": "Dùng máy khoan trong khai thác khác gì bài khoan nổ mìn của nghề xây dựng mỏ?",
+          "paragraphs": [
+            "Hai câu hỏi có điểm chung là cùng nhắc đến khoan, nhưng ý định nghề nghiệp khác nhau. Bài về xây dựng mỏ giải thích công đoạn phá vỡ đất đá khi đào và tạo đường lò, trong bối cảnh nghề tập trung xây dựng, chống giữ và duy trì hạ tầng đường lò. Bài này tập trung riêng vào nghề khai thác mỏ, nơi mục tiêu là thực hiện các công đoạn khai thác than và phối hợp trong dây chuyền sản xuất.",
+            "Cũng không nên mặc định cứ cầm máy khoan là người lao động tự làm mọi bước liên quan. Mỗi khâu có yêu cầu kỹ thuật, phạm vi trách nhiệm và người chỉ huy cụ thể. Bài viết chỉ xác nhận máy khoan thuộc nhóm thiết bị của nghề khai thác; không mô tả vật liệu, thông số, trình tự kỹ thuật hoặc thao tác tại hiện trường.",
+            "Sự phân biệt này quan trọng khi chọn nghề. Nếu bạn quan tâm đào, gia cố và tạo đường lò, hãy đọc hồ sơ nghề xây dựng mỏ. Nếu bạn muốn hiểu công đoạn khai thác than, vận chuyển, chống giữ và phối hợp ở khu vực sản xuất, hồ sơ nghề khai thác mỏ là điểm đối chiếu phù hợp hơn. Tên thiết bị giống nhau không làm hai nghề trở thành một."
+          ]
+        },
+        {
+          "heading": "Người mới cần chuẩn bị gì trước khi được giao phần việc khoan?",
+          "paragraphs": [
+            "Trước hết, cần học thói quen nhận nhiệm vụ rõ ràng. Người mới nên biết ca lệnh giao phần việc nào, ai trực tiếp hướng dẫn, khu vực làm việc ở đâu và giới hạn trách nhiệm của mình đến bước nào. Nếu chỉ được quan sát hoặc hỗ trợ, không tự chuyển sang trực tiếp vận hành khi chưa có yêu cầu.",
+            "Tiếp theo, cần hiểu máy khoan là một mắt xích trong tổ đội. Người vận hành phải phối hợp với người chuẩn bị khu vực, người hỗ trợ thiết bị, người phụ trách vận chuyển và các vị trí liên quan. Khả năng nghe, nhắc lại đúng yêu cầu và báo tình trạng kịp thời quan trọng không kém việc ghi nhớ tên bộ phận của máy.",
+            "Cuối cùng, hãy trao đổi trung thực trước khi đăng ký. Nếu bạn lo về thiết bị rung, chưa từng dùng máy công nghiệp hoặc mong chắc chắn chỉ làm một vị trí khác, nên nói rõ để được giải thích toàn bộ phạm vi nghề. Thông tin tuyển hiện hành không yêu cầu kinh nghiệm, nhưng điều đó không có nghĩa bỏ qua đào tạo, đánh giá hoặc phân công sau khi học."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi chọn nghề khai thác mỏ",
+          "items": [
+            "Chương trình học giới thiệu những loại thiết bị khoan nào trong phạm vi nghề?",
+            "Phần nào người học được quan sát, hỗ trợ hoặc thực hành theo hướng dẫn?",
+            "Ngoài khoan, người học còn phải hiểu những công đoạn khai thác và vận chuyển nào?",
+            "Sau tốt nghiệp, đơn vị dựa vào đâu để phân công vị trí trong tổ đội?",
+            "Khi thiết bị hoặc khu vực làm việc có dấu hiệu bất thường, người mới phải báo cho ai?"
+          ]
+        }
+      ],
+      "takeaway_title": "Có thể sử dụng máy khoan, nhưng chỉ khi đã được đào tạo và phân công",
+      "takeaway": "Máy khoan điện, máy khoan khí ép và thiết bị khai thác cơ giới nằm trong nhóm thiết bị của nghề kỹ thuật khai thác mỏ hầm lò. Người học có thể được tiếp cận và sau đào tạo có thể được giao phần việc khoan, nhưng không phải ai cũng khoan trong mọi ca. Nhiệm vụ cụ thể phụ thuộc công đoạn, năng lực, thiết bị và phân công của đơn vị tiếp nhận.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật khai thác mỏ hầm lò thực hiện công đoạn phá vỡ đất đá và than bằng thiết bị cơ giới, bán cơ giới hoặc khoan theo quy trình; nhóm thiết bị gồm máy khoan điện, máy khoan khí ép và thiết bị khai thác cơ giới. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Người thợ mỏ ‘bàn tay vàng’ với thu nhập 420 triệu đồng mỗi năm” về thợ lò Công ty Than Hạ Long - TKV.",
+      "faqs": [
+        [
+          "Học khai thác mỏ có phải ai cũng dùng máy khoan không?",
+          "Không. Máy khoan thuộc nhóm thiết bị của nghề, nhưng vị trí từng người phụ thuộc chương trình đào tạo, công đoạn sản xuất, năng lực và phân công của đơn vị tiếp nhận."
+        ],
+        [
+          "Chưa từng dùng máy khoan có đăng ký học nghề khai thác mỏ được không?",
+          "Thông tin tuyển hiện hành không yêu cầu kinh nghiệm. Người đăng ký vẫn phải đáp ứng điều kiện tuyển, học theo chương trình và chỉ thao tác khi được hướng dẫn, đánh giá và giao nhiệm vụ."
+        ],
+        [
+          "Dùng máy khoan có phải làm việc một mình không?",
+          "Không nên hiểu như vậy. Công việc hầm lò được tổ chức theo ca và tổ đội; phần việc khoan liên kết với chuẩn bị khu vực, xúc bốc, vận chuyển, chống giữ và các vị trí phối hợp khác."
+        ],
+        [
+          "Học xong có được chọn không làm phần việc khoan không?",
+          "Không có căn cứ để bảo đảm một vị trí cố định từ bước đăng ký. Việc bố trí phụ thuộc kết quả đào tạo, khả năng thực tế và nhu cầu của đơn vị tiếp nhận."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ công việc kỹ thuật khai thác mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/hoc-nghe-khai-thac-mo-ham-lo-co-phai-lai-may-khau-khong/",
+          "Phân biệt máy khoan với thiết bị khấu than"
         ],
         [
           "/kiem-tra-dieu-kien/",
