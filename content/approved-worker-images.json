@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-15T07:30:00+07:00",
+  "updated_at": "2026-10-16T07:30:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -337,6 +337,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/52962BDF993767252A58DDB9B1B2705179AAC0898CE2ED724A9D6ED71EE2C29A.jpg",
       "provider": "Vinacomin",
       "description": "Hai thợ lò Than Hạ Long mặc bảo hộ, phối hợp sử dụng thiết bị khoan tại vị trí sản xuất trong hầm lò"
+    },
+    {
+      "asset": "vinacomin-cong-nhan-ham-lo-den-mu-nui-beo.webp",
+      "source_article_url": "https://vinacomin.vn/vi/news/slug/soi-dong-khi-the-thi-dua-san-xuat-phan-dau-hoan-thanh-ke-hoach-duoc-giao",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/48DC29AE1F81CB61F650A2D29A5A7B8809B89D2CD31D01EFF0ED9FE0708D3B3F.jpg",
+      "provider": "Vinacomin",
+      "description": "Công nhân Than Núi Béo mặc bảo hộ và sử dụng đèn mũ khi di chuyển trong đường lò"
     }
   ]
 }
