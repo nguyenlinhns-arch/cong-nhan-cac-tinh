@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-16",
+  "updated_at": "2026-10-17",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -6046,6 +6046,127 @@
         [
           "/giai-dap-nghe-mo/hoc-co-dien-mo-co-chi-sua-dien-khong/",
           "Hiểu phạm vi nghề cơ điện ngoài sửa điện"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-10-17",
+      "slug": "hoc-co-dien-mo-co-phai-sua-bang-tai-duoi-ham-lo-khong",
+      "title": "Học cơ điện mỏ có phải sửa băng tải dưới hầm lò không?",
+      "short_title": "Cơ điện mỏ có phải sửa băng tải hầm lò",
+      "meta": "Học cơ điện mỏ có phải sửa băng tải dưới hầm lò không? Hiểu phần việc bảo dưỡng, sửa chữa thiết bị vận tải và cách phân công người mới.",
+      "eyebrow": "HIỂU ĐÚNG CÔNG VIỆC BĂNG TẢI TRONG NGHỀ CƠ ĐIỆN MỎ",
+      "primary_query": "học cơ điện mỏ có phải sửa băng tải dưới hầm lò không",
+      "query_variants": [
+        "thợ cơ điện mỏ có sửa băng tải không",
+        "học cơ điện mỏ có bảo dưỡng thiết bị vận tải không",
+        "người mới học cơ điện mỏ có làm băng tải dưới lò không"
+      ],
+      "direct_answer": "Có thể có. Lắp đặt, vận hành, bảo dưỡng và sửa chữa thiết bị vận tải thuộc phạm vi nghề kỹ thuật cơ điện mỏ hầm lò, trong đó có hệ thống băng tải. Tuy nhiên, người mới không tự sửa hoặc xử lý mọi hỏng hóc; phần việc cụ thể phụ thuộc đào tạo, thiết bị, năng lực và phân công của đơn vị tiếp nhận.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-co-dien-quang-hanh-sua-bang-tai.webp",
+        "alt": "Tổ công nhân Than Quang Hanh mặc bảo hộ xanh và đội mũ phối hợp sửa chữa con lăn băng tải dưới hầm lò",
+        "credit": "Ảnh: Vinacomin · Đội lắp đặt công trình thiết bị cơ điện hầm lò Than Quang Hanh"
+      },
+      "intro": [
+        "Học cơ điện mỏ có phải sửa băng tải dưới hầm lò không là câu hỏi thực tế của người đang chọn giữa nghề khai thác và nghề cơ điện. Câu trả lời là người học cơ điện có thể được tiếp cận hệ thống vận tải và sau đào tạo có thể được phân công lắp đặt, vận hành, bảo dưỡng hoặc sửa chữa thiết bị liên quan. Băng tải là một phần dễ hình dung trong nhóm thiết bị này, nhưng không phải toàn bộ công việc của nghề.",
+        "Cần phân biệt rõ người vận hành băng tải trong dây chuyền khai thác với người làm phần cơ điện của thiết bị. Hai vị trí có thể phối hợp tại cùng một hệ thống nhưng nhiệm vụ, ca lệnh và giới hạn thao tác không giống nhau. Người mới không được tự tháo lắp con lăn, can thiệp điện hay xử lý thiết bị chỉ vì đã từng sửa máy dân dụng; mọi việc phải nằm trong nội dung đã học, được hướng dẫn và được giao."
+      ],
+      "key_points": [
+        [
+          "Băng tải thuộc nhóm thiết bị vận tải",
+          "Mô tả nghề hiện hành bao gồm lắp đặt, vận hành, bảo dưỡng và sửa chữa thiết bị vận tải phục vụ sản xuất mỏ."
+        ],
+        [
+          "Sửa chữa khác vận hành",
+          "Người vận hành theo dõi và sử dụng hệ thống theo vị trí; người sửa chữa thực hiện phần kỹ thuật khi có yêu cầu và phân công."
+        ],
+        [
+          "Không chỉ làm băng tải",
+          "Cơ điện mỏ còn có máy khoan, máy nén khí, thiết bị bốc xúc, điện, chiếu sáng, liên lạc và hệ thống cơ giới hóa."
+        ],
+        [
+          "Người mới không tự can thiệp",
+          "Chỉ kiểm tra, tháo lắp hoặc khắc phục thiết bị sau khi đã được đào tạo, hướng dẫn và giao đúng phạm vi trách nhiệm."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học cơ điện mỏ có phải sửa băng tải dưới hầm lò không?",
+          "paragraphs": [
+            "Có thể có. Nghề kỹ thuật cơ điện mỏ hầm lò bao gồm lắp đặt, vận hành, bảo dưỡng và sửa chữa thiết bị vận tải cùng các thiết bị cơ - điện phục vụ sản xuất. Băng tải nằm trong dây chuyền vận chuyển nên người học cơ điện có thể được học nguyên lý, quan sát, thực hành theo hướng dẫn và sau đó nhận nhiệm vụ phù hợp tại hệ thống này.",
+            "Điều đó không có nghĩa tất cả học sinh cơ điện đều sửa băng tải trong mọi ca. Đơn vị còn cần người cho hệ thống điện, chiếu sáng, thông tin liên lạc, máy khoan, máy nén khí, thiết bị bốc xúc và những hạng mục phụ trợ khác. Vị trí thực tế được xác định theo chương trình đào tạo, kết quả tay nghề, loại thiết bị tại nơi làm việc và nhu cầu bố trí của đơn vị tiếp nhận.",
+            "Cũng không thể hứa từ bước đăng ký rằng một người chắc chắn chỉ làm trên mặt bằng hoặc luôn làm dưới hầm lò. Môi trường làm việc của nghề có thể ở cả hai nơi. Nếu người đăng ký có giới hạn về không gian làm việc, sức khỏe hoặc khả năng tiếp xúc với máy móc, nên trao đổi trung thực trước khi chọn nghề và chờ hướng dẫn theo đợt tiếp nhận cụ thể."
+          ]
+        },
+        {
+          "heading": "Sửa băng tải khác gì vận hành băng tải trong nghề khai thác?",
+          "paragraphs": [
+            "Vận hành tập trung vào việc sử dụng và theo dõi hệ thống trong phần việc được giao của dây chuyền sản xuất. Bảo dưỡng, sửa chữa tập trung vào kiểm tra kỹ thuật, tháo lắp, thay thế hoặc khắc phục hạng mục khi có kế hoạch hay yêu cầu xử lý. Một người có thể được đào tạo nhiều nội dung, nhưng nhiệm vụ của từng ca vẫn phải theo ca lệnh và người phụ trách.",
+            "Bài giải đáp ngày 12/10 đã nói về khả năng người học nghề khai thác được phân công vận hành băng tải. Bài này trả lời một ý khác: người học cơ điện có thể làm phần kỹ thuật của thiết bị vận tải. Tách hai ý giúp người đăng ký không nhầm rằng cứ đứng gần băng tải là cùng một nghề, hoặc người vận hành đương nhiên được phép tháo sửa mọi bộ phận.",
+            "Trong thực tế tuyển sinh, cách hỏi hữu ích là: chương trình cơ điện dạy phần nào của hệ thống vận tải, học sinh được quan sát hay thực hành ở mức nào, và sau tốt nghiệp đơn vị dựa vào đâu để giao nhiệm vụ. Những câu hỏi đó giúp đánh giá đúng nghề hơn việc chỉ hỏi chung rằng có phải sửa máy hay không."
+          ]
+        },
+        {
+          "heading": "Một ca làm việc với thiết bị vận tải cần phối hợp ra sao?",
+          "paragraphs": [
+            "Thiết bị vận tải không hoạt động tách rời. Trước khi bắt đầu phần việc, người lao động cần nhận đúng nhiệm vụ, xác định khu vực, thiết bị và đầu mối phụ trách. Khi có dấu hiệu bất thường, người quan sát hoặc vận hành phải báo theo quy trình; người làm cơ điện chỉ can thiệp trong phạm vi đã được giao sau khi các điều kiện cần thiết được xác nhận.",
+            "Ảnh chính thức Vinacomin dùng trong bài cho thấy tổ công nhân Than Quang Hanh mặc bảo hộ xanh, đội mũ và phối hợp sửa chữa con lăn hệ thống băng tải dưới lò. Hình ảnh minh họa đúng bối cảnh tổ đội và thiết bị vận tải, nhưng không được dùng như tài liệu hướng dẫn tháo lắp, xác định trình tự kỹ thuật hay suy ra rằng mọi học viên mới đều thực hiện công việc giống nhau.",
+            "Điểm quan trọng với người mới là biết ranh giới giữa quan sát, hỗ trợ và trực tiếp thao tác. Nếu chưa biết ai hướng dẫn, chưa hiểu ca lệnh hoặc thấy thiết bị khác với nội dung đã học, cần dừng ở bước an toàn và hỏi lại. Không dùng kinh nghiệm sửa máy bên ngoài để tự mở rộng quyền can thiệp trong môi trường sản xuất mỏ."
+          ]
+        },
+        {
+          "heading": "Người chưa từng sửa máy có học cơ điện mỏ được không?",
+          "paragraphs": [
+            "Thông tin tuyển hiện hành không yêu cầu kinh nghiệm, nên người chưa từng sửa băng tải, động cơ hoặc thiết bị công nghiệp vẫn có thể đăng ký nếu đáp ứng các điều kiện tuyển khác. Chương trình cơ điện hiện hành có thời gian đào tạo 10 tháng; người học cần theo đủ nội dung, rèn thao tác và đạt yêu cầu trước khi được bố trí công việc.",
+            "Kinh nghiệm điện dân dụng hoặc sửa xe có thể giúp một số người quen dụng cụ và tư duy kỹ thuật, nhưng không thay thế đào tạo nghề mỏ. Thiết bị, môi trường, cách phối hợp và trách nhiệm trong dây chuyền sản xuất có yêu cầu riêng. Người đã có kinh nghiệm vẫn phải làm đúng hướng dẫn, không bỏ qua bước kiểm tra hoặc nhận phần việc ngoài phân công.",
+            "Nếu bạn chỉ muốn học sửa điện nhẹ, không muốn tiếp cận cơ khí hoặc không chấp nhận khả năng làm việc trong hầm lò, cần cân nhắc kỹ trước khi chọn nghề. Cơ điện mỏ là nghề có phạm vi rộng; người tư vấn có thể giải thích chương trình và điều kiện, nhưng không nên bảo đảm trước một vị trí cố định khi đơn vị chưa đánh giá và bố trí."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi chọn nghề cơ điện mỏ",
+          "items": [
+            "Chương trình học có những nội dung nào về thiết bị vận tải và băng tải?",
+            "Học sinh được quan sát, hỗ trợ và thực hành sửa chữa ở mức nào?",
+            "Sau tốt nghiệp, đơn vị dựa vào tiêu chí nào để phân công vị trí cơ điện dưới lò hoặc trên mặt bằng?",
+            "Khi băng tải hoặc thiết bị vận tải có dấu hiệu bất thường, người mới phải báo cho ai?",
+            "Nếu chưa từng học điện hoặc cơ khí thì cần chuẩn bị kiến thức và tác phong gì trước khi nhập học?"
+          ]
+        }
+      ],
+      "takeaway_title": "Có thể sửa băng tải, nhưng đó chỉ là một phần của nghề cơ điện mỏ",
+      "takeaway": "Lắp đặt, vận hành, bảo dưỡng và sửa chữa thiết bị vận tải thuộc phạm vi nghề kỹ thuật cơ điện mỏ hầm lò, nên người học có thể được phân công làm phần kỹ thuật của hệ thống băng tải. Tuy nhiên, nghề còn nhiều nhóm thiết bị khác; người mới chỉ thao tác sau đào tạo, hướng dẫn và giao nhiệm vụ. Vị trí cụ thể phụ thuộc năng lực, hệ thống tại nơi làm việc và nhu cầu của đơn vị tiếp nhận.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò có nhiệm vụ lắp đặt, vận hành, bảo dưỡng và sửa chữa thiết bị vận tải cùng các thiết bị cơ - điện phục vụ sản xuất. Ảnh riêng được xác minh từ bài chính thức Vinacomin về Đội lắp đặt công trình thiết bị cơ điện hầm lò của Công ty Than Quang Hanh - TKV, chú thích ảnh xác nhận công nhân đang sửa chữa, lắp đặt con lăn hệ thống băng tải dưới lò.",
+      "faqs": [
+        [
+          "Học cơ điện mỏ có phải ai cũng sửa băng tải không?",
+          "Không. Băng tải thuộc nhóm thiết bị vận tải trong phạm vi nghề, nhưng vị trí từng người phụ thuộc chương trình đào tạo, năng lực, thiết bị và phân công của đơn vị tiếp nhận."
+        ],
+        [
+          "Vận hành băng tải và sửa băng tải có phải một việc không?",
+          "Không nên đồng nhất. Vận hành là sử dụng, theo dõi hệ thống trong phạm vi vị trí; bảo dưỡng và sửa chữa là phần kỹ thuật được thực hiện khi có yêu cầu và giao nhiệm vụ phù hợp."
+        ],
+        [
+          "Chưa từng sửa máy có đăng ký nghề cơ điện mỏ được không?",
+          "Có thể đăng ký vì thông tin tuyển hiện hành không yêu cầu kinh nghiệm. Người học vẫn phải đáp ứng điều kiện tuyển, hoàn thành chương trình 10 tháng và đạt yêu cầu trước khi nhận việc."
+        ],
+        [
+          "Học xong có được chọn chỉ sửa băng tải không?",
+          "Không có căn cứ để bảo đảm một vị trí cố định từ bước đăng ký. Việc bố trí phụ thuộc kết quả đào tạo, khả năng thực tế và nhu cầu của đơn vị tiếp nhận."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ công việc kỹ thuật cơ điện mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/hoc-nghe-khai-thac-mo-ham-lo-co-phai-van-hanh-bang-tai-khong/",
+          "Phân biệt với công việc vận hành băng tải trong nghề khai thác"
         ],
         [
           "/kiem-tra-dieu-kien/",

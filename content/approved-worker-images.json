@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-16T07:30:00+07:00",
+  "updated_at": "2026-10-17T07:30:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -344,6 +344,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/48DC29AE1F81CB61F650A2D29A5A7B8809B89D2CD31D01EFF0ED9FE0708D3B3F.jpg",
       "provider": "Vinacomin",
       "description": "Công nhân Than Núi Béo mặc bảo hộ và sử dụng đèn mũ khi di chuyển trong đường lò"
+    },
+    {
+      "asset": "vinacomin-tho-co-dien-quang-hanh-sua-bang-tai.webp",
+      "source_article_url": "https://vinacomin.vn/vi/news/slug/doi-lap-dat-cong-trinh-thiet-bi-co-dien-ham-lo-nhung-chien-binh-tren-mat-tran-san-xuat-cua-than-quang-hanh",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2024/T12/11/QH9.jpg",
+      "provider": "Vinacomin",
+      "description": "Tổ công nhân Than Quang Hanh mặc bảo hộ xanh và đội mũ phối hợp sửa chữa con lăn hệ thống băng tải dưới hầm lò"
     }
   ]
 }
