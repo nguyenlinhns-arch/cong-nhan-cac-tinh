@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-17T07:30:00+07:00",
+  "updated_at": "2026-10-18T07:30:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -351,6 +351,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2024/T12/11/QH9.jpg",
       "provider": "Vinacomin",
       "description": "Tổ công nhân Than Quang Hanh mặc bảo hộ xanh và đội mũ phối hợp sửa chữa con lăn hệ thống băng tải dưới hầm lò"
+    },
+    {
+      "asset": "vinacomin-tho-lo-ha-long-duong-lo-vi-chong.webp",
+      "source_article_url": "https://vinacomin.vn/vi/news/slug/soi-dong-khi-the-thi-dua-san-xuat-dau-xuan-at-ty",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2025/T02/11/HL4.jpg",
+      "provider": "Vinacomin",
+      "description": "Thợ lò Than Hạ Long mặc bảo hộ làm việc trong đường lò có hệ thống vì chống chạy dọc theo tuyến"
     }
   ]
 }

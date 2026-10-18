@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-17",
+  "updated_at": "2026-10-18",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -6167,6 +6167,127 @@
         [
           "/giai-dap-nghe-mo/hoc-nghe-khai-thac-mo-ham-lo-co-phai-van-hanh-bang-tai-khong/",
           "Phân biệt với công việc vận hành băng tải trong nghề khai thác"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-10-18",
+      "slug": "hoc-nghe-xay-dung-mo-ham-lo-co-phai-lap-vi-chong-khong",
+      "title": "Học nghề xây dựng mỏ hầm lò có phải lắp vì chống không?",
+      "short_title": "Xây dựng mỏ có phải lắp vì chống",
+      "meta": "Học nghề xây dựng mỏ hầm lò có phải lắp vì chống không? Hiểu vì chống đường lò, công việc tổ đội và cách phân biệt với giàn chống lò chợ.",
+      "eyebrow": "HIỂU ĐÚNG CÔNG VIỆC CHỐNG GIỮ TRONG NGHỀ XÂY DỰNG MỎ",
+      "primary_query": "học nghề xây dựng mỏ hầm lò có phải lắp vì chống không",
+      "query_variants": [
+        "học xây dựng mỏ có phải dựng vì chống không",
+        "thợ xây dựng mỏ làm vì chống đường lò thế nào",
+        "vì chống đường lò khác giàn chống thủy lực không"
+      ],
+      "direct_answer": "Có. Lắp dựng hệ thống chống giữ bằng vì chống kim loại, vì neo hoặc bê tông cốt thép thuộc phạm vi nghề kỹ thuật xây dựng mỏ hầm lò. Tuy nhiên, người mới không tự dựng hoặc sửa vì chống; phần việc phải theo đào tạo, ca lệnh, điều kiện đường lò và phân công tổ đội.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-ha-long-duong-lo-vi-chong.webp",
+        "alt": "Thợ lò Than Hạ Long mặc bảo hộ làm việc trong đường lò có hệ thống vì chống",
+        "credit": "Ảnh: Vinacomin · thợ lò Than Hạ Long trong đường lò có kết cấu chống giữ"
+      },
+      "intro": [
+        "Học nghề xây dựng mỏ hầm lò có phải lắp vì chống không là câu hỏi thực tế của người đã nghe tên nghề nhưng chưa hình dung được một đường lò được tạo và duy trì ra sao. Câu trả lời là có: chống giữ đường lò là một nhóm nhiệm vụ chính của nghề. Người học có thể được làm quen với vì chống kim loại, vì neo, cấu kiện bê tông và công việc củng cố, sửa chữa vị trí cần khắc phục.",
+        "Dù vậy, không nên hiểu rằng học xong là một người phải tự mình bê, dựng và hoàn thiện cả bộ vì chống trong mọi ca. Xây dựng mỏ là công việc theo tổ đội, gắn với từng giai đoạn đào lò và ca lệnh cụ thể. Bài này tập trung vào việc lắp vì chống đường lò, tách biệt với bài tổng quan về nghề xây dựng mỏ và bài nói về giàn chống ở khu vực khai thác, để người đăng ký chọn nghề từ đúng công việc thay vì từ tên gọi gần giống nhau."
+      ],
+      "key_points": [
+        [
+          "Chống giữ là nhiệm vụ cốt lõi",
+          "Mô tả nghề hiện hành bao gồm lắp dựng vì chống kim loại, vì neo hoặc bê tông cốt thép và củng cố vị trí cần khắc phục."
+        ],
+        [
+          "Không phải một người làm toàn bộ",
+          "Công việc được tổ chức theo tổ đội, từng công đoạn, điều kiện đường lò và ca lệnh của đơn vị."
+        ],
+        [
+          "Vì chống khác giàn chống lò chợ",
+          "Vì chống trong bài này là kết cấu giữ ổn định đường lò; giàn chống thủy lực gắn với khu vực và công nghệ khai thác khác."
+        ],
+        [
+          "Người mới không tự xử lý",
+          "Chỉ vận chuyển, lắp dựng, củng cố hoặc sửa chữa khi đã được học, hướng dẫn và giao đúng phạm vi nhiệm vụ."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học nghề xây dựng mỏ hầm lò có phải lắp vì chống không?",
+          "paragraphs": [
+            "Có. Mô tả nghề kỹ thuật xây dựng mỏ hầm lò hiện hành xác định người lao động có thể lắp dựng hệ thống chống giữ bằng vì chống kim loại, vì neo hoặc bê tông cốt thép; đồng thời củng cố và sửa chữa vị trí cần khắc phục. Đây là phần việc trực tiếp tạo và duy trì hạ tầng đường lò phục vụ khai thác, không phải nhiệm vụ phụ được thêm vào tùy ý.",
+            "Tuy nhiên, từ “có” không đồng nghĩa mọi học sinh đều thực hiện cùng một thao tác ngay khi vào học hoặc mọi công nhân đều dựng vì chống trong mỗi ca. Nghề còn có phá vỡ đất đá, xúc dỡ, san nền, lắp đường ray, vận chuyển đất đá, đưa vật liệu và cấu kiện tới vị trí thi công. Tổ đội phân công theo tiến độ, năng lực và điều kiện thực tế của đoạn lò.",
+            "Thời gian đào tạo hiện hành của nghề xây dựng mỏ hầm lò là 2–3 tháng. Khoảng thời gian này là thông tin về chương trình tuyển hiện tại, không phải lời bảo đảm rằng mọi người sẽ thành thạo mọi kiểu chống giữ sau một số ngày cố định. Người học vẫn phải theo chương trình, thực hành trong phạm vi được hướng dẫn và đạt yêu cầu trước khi nhận phần việc tại đơn vị tiếp nhận."
+          ]
+        },
+        {
+          "heading": "Vì chống đường lò dùng để làm gì và có những nhóm nào?",
+          "paragraphs": [
+            "Có thể hiểu ngắn gọn, hệ thống chống giữ giúp đường lò duy trì hình dạng và điều kiện làm việc theo yêu cầu kỹ thuật sau khi đất đá được đào phá. Mô tả nghề hiện hành nhắc tới vì chống kim loại, vì neo và bê tông cốt thép. Đây là các nhóm giải pháp khác nhau; bài viết không đặt ra cấu tạo, khoảng cách hay cách lắp cụ thể vì những thông số đó phải theo thiết kế, điều kiện địa chất và quy trình của từng công trình.",
+            "Vật liệu chống giữ không tự xuất hiện tại gương lò. Nghề còn bao gồm vận chuyển vì chống, cấu kiện bê tông và vật liệu chèn lấp tới vị trí cần dùng. Vì vậy, một người mới có thể được giao khâu chuẩn bị, phối hợp vận chuyển hoặc hỗ trợ trong phạm vi đã học trước khi được giao thao tác khác. Không nên coi phần vận chuyển và chuẩn bị là việc tách rời khỏi quá trình tổ chức thi công.",
+            "Ảnh chính thức Vinacomin trong bài cho thấy thợ lò Than Hạ Long làm việc trong một đường lò có các khung chống giữ chạy dọc theo tuyến. Ảnh giúp người đăng ký nhìn thấy bối cảnh thật của kết cấu chống giữ đường lò, nhưng không phải tài liệu hướng dẫn lắp đặt, không cho biết kích thước kỹ thuật và không chứng minh rằng mọi nơi đều sử dụng cùng một loại vì chống."
+          ]
+        },
+        {
+          "heading": "Vì chống đường lò khác giàn chống thủy lực ở lò chợ thế nào?",
+          "paragraphs": [
+            "Hai khái niệm đều liên quan đến chống giữ nên người mới rất dễ gọi chung là “giàn chống”. Trong câu hỏi hôm nay, vì chống được đặt trong công việc xây dựng và duy trì đường lò: vì kim loại, vì neo hoặc bê tông cốt thép được lựa chọn theo công trình. Giàn chống thủy lực thường được nhắc trong bối cảnh khu vực khai thác và thiết bị của nghề khai thác mỏ hầm lò. Không nên dùng tên của thiết bị này để thay cho toàn bộ hệ thống chống giữ đường lò.",
+            "Bài giải đáp về người học nghề khai thác có phải lắp giàn chống đã xử lý nhiệm vụ chống giữ ở khu vực khai thác. Bài này trả lời một ý hẹp hơn nhưng thuộc nghề khác: người học xây dựng mỏ có tham gia lắp dựng vì chống để hình thành, gia cố và duy trì đường lò hay không. Sự khác nhau về nghề, vị trí và mục đích công việc là lý do hai câu hỏi cần hai trang riêng.",
+            "Khi được tư vấn, người đăng ký nên hỏi bằng tên nghề và bối cảnh cụ thể: “nghề xây dựng mỏ học chống giữ đường lò ở mức nào?” thay vì chỉ hỏi “có làm giàn chống không?”. Cách hỏi chính xác giúp người tư vấn giải thích đúng chương trình, đồng thời tránh tạo kỳ vọng rằng học một nghề sẽ tự động được giao mọi thiết bị chống giữ trong mỏ."
+          ]
+        },
+        {
+          "heading": "Một tổ lắp và củng cố vì chống phối hợp công việc ra sao?",
+          "paragraphs": [
+            "Công việc bắt đầu từ việc nhận ca lệnh và xác định đúng đoạn lò, vật liệu, công đoạn cùng người phụ trách. Có người chuẩn bị và đưa vật liệu tới vị trí, có người phối hợp thao tác trong phạm vi được giao, có người kiểm tra hoặc hướng dẫn theo tổ chức của đơn vị. Bài viết không ấn định số người hay chức danh cho một tổ vì cách bố trí phụ thuộc công trình và kế hoạch sản xuất thực tế.",
+            "Người mới cần phân biệt rõ ba mức: quan sát để hiểu công việc, hỗ trợ theo chỉ dẫn và trực tiếp thao tác khi đã đủ điều kiện. Nếu kết cấu, dụng cụ hoặc vị trí không giống nội dung đã học; nếu ca lệnh chưa rõ; hoặc nếu chưa xác định được người hướng dẫn, người mới không tự đổi cách làm. Kinh nghiệm xây dựng dân dụng bên ngoài cũng không thay thế đào tạo và phân công trong đường lò.",
+            "Củng cố và sửa chữa vị trí cần khắc phục cũng thuộc phạm vi nghề, nhưng không có nghĩa người lao động tự phát hiện rồi tự xử lý mọi dấu hiệu bất thường. Việc cần làm trước tiên là báo đúng đầu mối, bảo đảm không vượt khỏi phạm vi nhiệm vụ và chờ hướng dẫn theo quy trình. Tác phong phối hợp này quan trọng không kém khả năng sử dụng dụng cụ."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi chọn nghề xây dựng mỏ",
+          "items": [
+            "Chương trình 2–3 tháng giới thiệu và thực hành những nhóm chống giữ nào?",
+            "Học sinh được quan sát, hỗ trợ và trực tiếp thao tác ở mức nào trong từng giai đoạn?",
+            "Vì chống kim loại, vì neo và bê tông cốt thép được phân biệt trong chương trình ra sao?",
+            "Sau tốt nghiệp, đơn vị dựa vào tiêu chí nào để giao công đoạn trong tổ xây dựng mỏ?",
+            "Khi thấy vị trí chống giữ có dấu hiệu bất thường, người mới phải báo cho ai và dừng ở bước nào?"
+          ]
+        }
+      ],
+      "takeaway_title": "Có lắp vì chống, nhưng phải hiểu đó là công việc tổ đội của nghề xây dựng mỏ",
+      "takeaway": "Lắp dựng hệ thống chống giữ bằng vì chống kim loại, vì neo hoặc bê tông cốt thép; vận chuyển vật liệu chống giữ; củng cố và sửa chữa vị trí cần khắc phục đều thuộc phạm vi nghề kỹ thuật xây dựng mỏ hầm lò. Người mới không tự thao tác ngoài nhiệm vụ mà phải học, nhận ca lệnh và phối hợp theo tổ đội. Vì chống đường lò cũng không nên đồng nhất với giàn chống thủy lực tại khu vực khai thác.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật xây dựng mỏ hầm lò có nhiệm vụ vận chuyển vì chống và cấu kiện; lắp dựng hệ thống chống giữ bằng vì chống kim loại, vì neo hoặc bê tông cốt thép; củng cố, sửa chữa vị trí cần khắc phục; thời gian đào tạo hiện hành 2–3 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Sôi động khí thế thi đua sản xuất đầu Xuân Ất Tỵ”, chú thích ảnh xác nhận thợ lò Than Hạ Long bắt tay vào sản xuất sau kỳ nghỉ Tết.",
+      "faqs": [
+        [
+          "Học xây dựng mỏ có phải ai cũng trực tiếp dựng vì chống không?",
+          "Không phải trong mọi ca. Lắp dựng chống giữ thuộc phạm vi nghề, nhưng phần việc từng người phụ thuộc đào tạo, năng lực, giai đoạn thi công và phân công của tổ đội."
+        ],
+        [
+          "Vì chống kim loại và vì neo có phải là một loại không?",
+          "Không. Đây là hai nhóm chống giữ được nêu riêng trong mô tả nghề. Việc chọn loại nào và cách lắp phải theo thiết kế, điều kiện công trình và hướng dẫn của đơn vị."
+        ],
+        [
+          "Vì chống đường lò có phải giàn chống thủy lực không?",
+          "Không nên đồng nhất. Bài này nói về kết cấu chống giữ đường lò trong nghề xây dựng mỏ; giàn chống thủy lực thường được nhắc trong bối cảnh thiết bị và khu vực khai thác."
+        ],
+        [
+          "Chưa từng làm xây dựng có đăng ký nghề xây dựng mỏ được không?",
+          "Thông tin tuyển hiện hành không yêu cầu kinh nghiệm. Người đăng ký vẫn phải đáp ứng điều kiện tuyển, hoàn thành chương trình 2–3 tháng và đạt yêu cầu trước khi nhận việc."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ công việc kỹ thuật xây dựng mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/di-lam-khai-thac-mo-ham-lo-co-phai-lap-gian-chong-khong/",
+          "Phân biệt với giàn chống trong nghề khai thác mỏ"
         ],
         [
           "/kiem-tra-dieu-kien/",
