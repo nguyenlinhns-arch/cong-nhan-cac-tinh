@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-18T07:30:00+07:00",
+  "updated_at": "2026-10-19T07:30:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -358,6 +358,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2025/T02/11/HL4.jpg",
       "provider": "Vinacomin",
       "description": "Thợ lò Than Hạ Long mặc bảo hộ làm việc trong đường lò có hệ thống vì chống chạy dọc theo tuyến"
+    },
+    {
+      "asset": "vinacomin-tho-lo-van-hanh-may-xuc-zwy-60.webp",
+      "source_article_url": "https://vinacomin.vn/vi/news/slug/trai-nghiem-mot-ca-lam-viec-voi-cong-nghe-dao-lo-su-dung-may-xuc-zwy-60-o-than-nam-mau",
+      "original_image_url": "https://vinacomin.vn/Share/Image/2024/06/03/qk10-1439198431.jpg",
+      "provider": "Vinacomin",
+      "description": "Thợ lò Than Nam Mẫu mặc bảo hộ, ngồi tại vị trí điều khiển thủy lực của máy xúc ZWY-60 trong đường lò"
     }
   ]
 }
