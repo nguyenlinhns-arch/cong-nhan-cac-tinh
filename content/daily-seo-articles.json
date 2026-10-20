@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-19",
+  "updated_at": "2026-10-20",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -6409,6 +6409,127 @@
         [
           "/giai-dap-nghe-mo/di-lam-khai-thac-mo-ham-lo-co-phai-xuc-than-hoan-toan-bang-tay-khong/",
           "Phân biệt với công việc xúc than trong nghề khai thác"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-10-20",
+      "slug": "hoc-nghe-xay-dung-mo-ham-lo-co-phai-van-chuyen-vat-lieu-bang-tay-khong",
+      "title": "Học nghề xây dựng mỏ hầm lò có phải vận chuyển vật liệu bằng tay không?",
+      "short_title": "Xây dựng mỏ có phải chuyển vật liệu bằng tay",
+      "meta": "Học nghề xây dựng mỏ hầm lò có phải vận chuyển vật liệu bằng tay không? Hiểu loại vật liệu, thiết bị hỗ trợ và cách tổ đội phân công.",
+      "eyebrow": "HIỂU ĐÚNG VIỆC VẬN CHUYỂN VẬT LIỆU TRONG ĐƯỜNG LÒ",
+      "primary_query": "học nghề xây dựng mỏ hầm lò có phải vận chuyển vật liệu bằng tay không",
+      "query_variants": [
+        "học xây dựng mỏ có phải khuân vật liệu không",
+        "thợ xây dựng mỏ vận chuyển vì chống bằng tay hay bằng máy",
+        "vận chuyển vật liệu trong đường lò là công việc gì"
+      ],
+      "direct_answer": "Có tham gia vận chuyển vật liệu, nhưng không thể kết luận mọi vật liệu đều phải khuân hoàn toàn bằng tay. Nghề kỹ thuật xây dựng mỏ hầm lò có nhiệm vụ đưa vì chống, cấu kiện bê tông và vật liệu chèn lấp tới vị trí thi công; cách vận chuyển phụ thuộc thiết bị, tuyến đường lò, ca lệnh và phân công tổ đội.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-nguyen-van-phuc-van-chuyen-vat-tu.webp",
+        "alt": "Thợ lò Nguyễn Văn Phúc của Than Nam Mẫu mặc bảo hộ tại khai trường",
+        "credit": "Ảnh: Vinacomin · thợ lò Nguyễn Văn Phúc, Công ty Than Nam Mẫu"
+      },
+      "intro": [
+        "Học nghề xây dựng mỏ hầm lò có phải vận chuyển vật liệu bằng tay không là băn khoăn thực tế của người đã đọc về lắp ray, dựng vì chống nhưng chưa hình dung vật tư được đưa tới gương lò thế nào. Câu trả lời là nghề có nhiệm vụ vận chuyển vật liệu chuyên dùng, song không nên hiểu thành mỗi người phải tự khuân mọi thứ bằng sức tay trong suốt ca làm việc.",
+        "Nguồn chuẩn tuyển sinh hiện hành nêu rõ nhóm vật liệu gồm vì chống, cấu kiện bê tông và vật liệu chèn lấp. Công việc được tổ chức theo tuyến vận chuyển, thiết bị sẵn có, điều kiện đường lò và phân công của tổ đội. Bài này tập trung riêng vào khâu đưa vật liệu tới vị trí thi công, không lặp bài lắp vì chống ngày 18/10 và cũng không thay cho bài lắp đường ray ngày 13/10."
+      ],
+      "key_points": [
+        [
+          "Có vận chuyển vật liệu",
+          "Đưa vì chống, cấu kiện bê tông và vật liệu chèn lấp tới vị trí cần dùng thuộc phạm vi nghề xây dựng mỏ hầm lò."
+        ],
+        [
+          "Không mặc định hoàn toàn thủ công",
+          "Cách làm có thể kết hợp dụng cụ, phương tiện vận tải và thiết bị nâng hạ phù hợp với điều kiện thi công thực tế."
+        ],
+        [
+          "Khác với vận chuyển đất đá",
+          "Vật liệu được đưa vào phục vụ thi công; đất đá được đưa ra khỏi khu vực đào lò, nên mục đích và tổ chức hai luồng không giống nhau."
+        ],
+        [
+          "Làm theo tổ đội và ca lệnh",
+          "Người mới chỉ thực hiện phần đã được học, hướng dẫn và phân công; không tự chọn thiết bị hoặc tự thay đổi tuyến vận chuyển."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học nghề xây dựng mỏ hầm lò có phải vận chuyển vật liệu bằng tay không?",
+          "paragraphs": [
+            "Có tham gia vận chuyển vật liệu. Mô tả nghề kỹ thuật xây dựng mỏ hầm lò hiện hành xác định người lao động có thể vận chuyển các vật liệu chuyên dùng như vì chống, cấu kiện bê tông và vật liệu chèn lấp. Đây là khâu cần thiết để vật liệu có mặt đúng vị trí trước khi tổ đội lắp dựng, gia cố hoặc sửa chữa đường lò.",
+            "Tuy nhiên, câu trả lời không phải là “mọi thứ đều khuân bằng tay”. Nghề còn sử dụng goòng, tời trục, băng tải, máng cào hoặc tàu điện cho các nhiệm vụ vận chuyển phù hợp; tại từng đơn vị còn có thể bố trí thiết bị nâng hạ hoặc phương tiện chuyên dùng. Bài viết không gán một loại máy cho mọi nơi vì thiết bị thực tế phụ thuộc công trình và tổ chức sản xuất.",
+            "Người mới cũng không được tự ý móc tải, nâng vật liệu, điều khiển thiết bị hoặc bước vào tuyến vận chuyển khi chưa có hướng dẫn. Phần việc cụ thể phải nằm trong nội dung đã học, ca lệnh và phân công của tổ đội. Kinh nghiệm bốc xếp ở công trường bên ngoài không tự động thay thế cho quy trình kỹ thuật trong hầm lò."
+          ]
+        },
+        {
+          "heading": "Vật liệu nào cần được đưa vào đường lò?",
+          "paragraphs": [
+            "Ba nhóm được nêu trực tiếp trong mô tả nghề là vì chống, cấu kiện bê tông và vật liệu chèn lấp. Vì chống và cấu kiện phục vụ công việc tạo, duy trì hoặc củng cố hệ thống chống giữ; vật liệu chèn lấp được chuẩn bị theo yêu cầu của vị trí thi công. Tên nhóm vật liệu giúp người đăng ký hiểu công việc cụ thể hơn, nhưng không phải danh mục để tự chuẩn bị hoặc tự mua.",
+            "Mỗi loại có kích thước, khối lượng và yêu cầu xử lý khác nhau. Vì vậy, tổ đội phải biết vật liệu nào cần trước, điểm giao nhận ở đâu, tuyến đi qua khu vực nào và thiết bị nào được phép sử dụng. Người thực hiện không chỉ dùng sức mà còn phải phối hợp tín hiệu, giữ khoảng cách và bàn giao đúng vị trí theo quy trình của đơn vị.",
+            "Khâu vận chuyển gắn chặt với tiến độ đào và chống giữ. Nếu vật liệu đến sai thời điểm hoặc đặt sai vị trí, công đoạn tiếp theo có thể bị gián đoạn. Ngược lại, đưa vật liệu có tổ chức giúp nhóm lắp ray, nhóm chống giữ và nhóm củng cố đường lò có đủ điều kiện thực hiện phần việc của mình."
+          ]
+        },
+        {
+          "heading": "Vận chuyển vật liệu khác vận chuyển đất đá như thế nào?",
+          "paragraphs": [
+            "Vật liệu chuyên dùng thường được đưa từ nơi tập kết vào khu vực thi công để phục vụ lắp dựng và gia cố. Đất đá phát sinh sau công đoạn đào phá lại cần được xúc dỡ, đưa khỏi mặt bằng làm việc rồi chuyển theo tuyến quy định. Một luồng đưa vật liệu vào, một luồng đưa đất đá ra; hai luồng có thể dùng phương tiện quen thuộc nhưng mục đích không giống nhau.",
+            "Sự phân biệt này giúp tránh tự cạnh tranh với bài ngày 19/10 về xúc dỡ đất đá. Bài trước giải thích xử lý đất đá và chuẩn bị mặt bằng; bài hôm nay trả lời việc chuyển vì chống, cấu kiện và vật liệu chèn lấp tới đúng nơi cần dùng. Người tìm kiếm vì lo phải khuân vật liệu sẽ nhận được câu trả lời đúng trọng tâm thay vì đọc lại nội dung về máy xúc.",
+            "Trong một ca, một người có thể hỗ trợ nhiều mắt xích theo phân công, nhưng không vì thế mà hai công việc trở thành một. Khi hỏi tư vấn, nên nói rõ mình muốn biết về “vận chuyển vật liệu vào đường lò” hay “xúc dỡ đất đá ra khỏi gương”, để được giải thích đúng nghề và đúng công đoạn."
+          ]
+        },
+        {
+          "heading": "Thiết bị hỗ trợ có làm người lao động không phải mang vác nữa không?",
+          "paragraphs": [
+            "Thiết bị nâng hạ và phương tiện vận tải giúp giảm phần thao tác thủ công ở những khâu phù hợp, nhưng không thể suy ra rằng công việc hoàn toàn không còn chuẩn bị, căn chỉnh, phối hợp hoặc di chuyển vật liệu ở cự ly ngắn. Mức độ cơ giới hóa khác nhau theo tuyến đường lò, thiết bị được bố trí và yêu cầu của công trình.",
+            "Ảnh chính thức Vinacomin trong bài ghi lại thợ lò Nguyễn Văn Phúc của Than Nam Mẫu. Bài chân dung nhắc tới kinh nghiệm của anh trong cách vận chuyển vật tư trong lò và điều chỉnh thao tác khi đào tiến độ. Hình ảnh giúp người đăng ký nhận diện người thợ cùng bối cảnh đơn vị, nhưng không phải tài liệu hướng dẫn kỹ thuật và không chứng minh mọi nơi áp dụng cùng một cách vận chuyển.",
+            "Điều quan trọng với người mới là ranh giới thao tác: chỉ dùng thiết bị đã được hướng dẫn; kiểm tra nhiệm vụ và người chỉ huy trước khi làm; không đứng vào vùng nâng hạ hoặc tự xử lý khi tải, móc hoặc tuyến di chuyển có dấu hiệu khác thường. Quy trình cụ thể phải theo đơn vị tiếp nhận, không học từ một bức ảnh hoặc video ngắn."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi chọn nghề xây dựng mỏ",
+          "items": [
+            "Trong chương trình 2–3 tháng, phần vận chuyển và chuẩn bị vật liệu được học, thực hành ở mức nào?",
+            "Những nhóm vật liệu nào người mới thường được nhận biết và phối hợp đưa tới vị trí thi công?",
+            "Đơn vị sử dụng goòng, tời trục, phương tiện chuyên dùng hoặc thiết bị nâng hạ ở những công đoạn nào?",
+            "Ranh giới giữa người điều khiển thiết bị, người móc tải, người cảnh giới và người nhận vật liệu được phân công ra sao?",
+            "Nếu tuyến vận chuyển hoặc vật liệu khác nội dung đã học, người mới phải dừng và báo cho đầu mối nào?"
+          ]
+        }
+      ],
+      "takeaway_title": "Có vận chuyển vật liệu, nhưng không nên hiểu là khuân hoàn toàn bằng tay",
+      "takeaway": "Vận chuyển vì chống, cấu kiện bê tông và vật liệu chèn lấp tới vị trí thi công thuộc phạm vi nghề kỹ thuật xây dựng mỏ hầm lò. Công việc có thể được hỗ trợ bằng phương tiện vận tải hoặc thiết bị nâng hạ tùy điều kiện thực tế, nhưng người lao động vẫn phải phối hợp theo tổ đội và ca lệnh. Người mới không tự vận hành, móc tải hay chọn tuyến khi chưa được đào tạo, hướng dẫn và phân công.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật xây dựng mỏ hầm lò có nhiệm vụ vận chuyển vật liệu chuyên dùng như vì chống, cấu kiện bê tông và vật liệu chèn lấp; các phương tiện trong phạm vi nghề gồm goòng, tời trục, băng tải, máng cào hoặc tàu điện; thời gian đào tạo hiện hành 2–3 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Nguyễn Văn Phúc - Người thợ nói ít, làm chắc của Than Nam Mẫu”; nội dung bài nhắc tới kinh nghiệm vận chuyển vật tư trong lò của người thợ trong ảnh.",
+      "faqs": [
+        [
+          "Học xây dựng mỏ có phải tự khuân vì chống bằng tay không?",
+          "Không nên hiểu như vậy. Nghề có nhiệm vụ vận chuyển vì chống, nhưng cách thực hiện phụ thuộc thiết bị, tuyến đường lò, ca lệnh và phân công tổ đội; người mới không tự khuân hoặc nâng vật liệu ngoài hướng dẫn."
+        ],
+        [
+          "Vận chuyển vật liệu có dùng máy hoặc thiết bị nâng hạ không?",
+          "Có thể có. Thực tế TKV có thiết bị hỗ trợ nâng hạ và nhiều phương tiện vận tải trong hầm lò, nhưng loại thiết bị tại từng nơi phải được xác nhận theo đơn vị và công trình."
+        ],
+        [
+          "Vận chuyển vật liệu có giống xúc dỡ đất đá không?",
+          "Không. Vật liệu như vì chống và cấu kiện được đưa vào phục vụ thi công; đất đá phát sinh được xúc dỡ và đưa ra khỏi mặt bằng làm việc."
+        ],
+        [
+          "Học xong có được vận hành thiết bị nâng hạ ngay không?",
+          "Không mặc định. Việc trực tiếp vận hành phụ thuộc chương trình đã học, kết quả đạt yêu cầu, hướng dẫn tại nơi làm việc và phân công cụ thể."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/",
+          "Xem toàn bộ công việc kỹ thuật xây dựng mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/hoc-nghe-xay-dung-mo-ham-lo-co-phai-lap-vi-chong-khong/",
+          "Hiểu công đoạn lắp vì chống sau khi vật liệu tới vị trí"
         ],
         [
           "/kiem-tra-dieu-kien/",

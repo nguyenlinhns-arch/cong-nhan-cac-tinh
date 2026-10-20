@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19T08:20:00+07:00",
+  "updated_at": "2026-10-20T08:32:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -365,6 +365,13 @@
       "original_image_url": "https://vinacomin.vn/Share/Image/2024/06/03/qk10-1439198431.jpg",
       "provider": "Vinacomin",
       "description": "Thợ lò Than Nam Mẫu mặc bảo hộ, ngồi tại vị trí điều khiển thủy lực của máy xúc ZWY-60 trong đường lò"
+    },
+    {
+      "asset": "vinacomin-tho-lo-nguyen-van-phuc-van-chuyen-vat-tu.webp",
+      "source_article_url": "https://vinacomin.vn/vi/news/slug/nguyen-van-phuc-nguoi-tho-noi-it-lam-chac-cua-than-nam-mau",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/4D2CEBAB494A81BE61EB6130C6DD91A49881D271ABA70C3E8BC1B5AA1BF3B5CE.jpg",
+      "provider": "Vinacomin",
+      "description": "Thợ lò Nguyễn Văn Phúc của Than Nam Mẫu mặc bảo hộ xanh và đội mũ đèn tại khai trường"
     }
   ]
 }
