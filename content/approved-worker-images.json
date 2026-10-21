@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-20T08:32:00+07:00",
+  "updated_at": "2026-10-21T08:31:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -372,6 +372,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/4D2CEBAB494A81BE61EB6130C6DD91A49881D271ABA70C3E8BC1B5AA1BF3B5CE.jpg",
       "provider": "Vinacomin",
       "description": "Thợ lò Nguyễn Văn Phúc của Than Nam Mẫu mặc bảo hộ xanh và đội mũ đèn tại khai trường"
+    },
+    {
+      "asset": "vinacomin-tho-co-dien-thi-tay-nghe-than-ha-long.webp",
+      "source_article_url": "https://vinacomin.vn/vi/news/slug/than-ha-long-chu-trong-nang-cao-chat-luong-tay-nghe-cho-tho-mo",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2025/T11/05/HL4.jpg",
+      "provider": "Vinacomin",
+      "description": "Công nhân nhóm nghề sửa chữa cơ điện Than Hạ Long thực hiện phần thi thực hành tay nghề trên thiết bị"
     }
   ]
 }

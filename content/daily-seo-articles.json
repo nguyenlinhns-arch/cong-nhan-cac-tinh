@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-20",
+  "updated_at": "2026-10-21",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -6530,6 +6530,127 @@
         [
           "/giai-dap-nghe-mo/hoc-nghe-xay-dung-mo-ham-lo-co-phai-lap-vi-chong-khong/",
           "Hiểu công đoạn lắp vì chống sau khi vật liệu tới vị trí"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-10-21",
+      "slug": "hoc-co-dien-mo-co-phai-dau-noi-day-dien-duoi-ham-lo-khong",
+      "title": "Học cơ điện mỏ có phải đấu nối dây điện dưới hầm lò không?",
+      "short_title": "Cơ điện mỏ có phải đấu nối dây điện",
+      "meta": "Học cơ điện mỏ có phải đấu nối dây điện dưới hầm lò không? Hiểu phạm vi công việc, nơi làm việc và giới hạn của người mới.",
+      "eyebrow": "HIỂU ĐÚNG VIỆC ĐẤU NỐI DÂY DẪN ĐIỆN TRONG NGHỀ CƠ ĐIỆN MỎ",
+      "primary_query": "học cơ điện mỏ có phải đấu nối dây điện dưới hầm lò không",
+      "query_variants": [
+        "học cơ điện mỏ có phải nối dây điện không",
+        "thợ cơ điện mỏ làm điện dưới hầm lò thế nào",
+        "cơ điện mỏ có lắp đặt dây dẫn điện không"
+      ],
+      "direct_answer": "Có. Nhiệm vụ của nghề kỹ thuật cơ điện mỏ hầm lò bao gồm lắp đặt và đấu nối hệ thống dây dẫn điện theo thiết kế và quy trình kỹ thuật. Tuy nhiên, không phải người mới tự đấu nối ở mọi vị trí: phần việc cụ thể phụ thuộc nội dung đã học, nơi bố trí, loại thiết bị và phân công của đơn vị tiếp nhận.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-co-dien-thi-tay-nghe-than-ha-long.webp",
+        "alt": "Công nhân Than Hạ Long thực hành sửa chữa cơ điện trong phần thi tay nghề",
+        "credit": "Ảnh: Vinacomin · công nhân nhóm nghề sửa chữa cơ điện, Công ty Than Hạ Long"
+      },
+      "intro": [
+        "Học cơ điện mỏ có phải đấu nối dây điện dưới hầm lò không là câu hỏi thực tế của người biết nghề học 10 tháng nhưng chưa hình dung công việc sau đào tạo. Câu trả lời là có nội dung lắp đặt và đấu nối dây dẫn điện, nhưng thao tác phải theo thiết kế, quy trình kỹ thuật và phạm vi được phân công; không thể hiểu đơn giản như tự nối dây điện dân dụng.",
+        "Bài này tập trung riêng vào hệ thống dây dẫn điện và ranh giới công việc của người mới. Nội dung không lặp bài ngày 16/10 về hệ thống chiếu sáng, bài ngày 14/10 về thông tin liên lạc hoặc bài ngày 17/10 về sửa băng tải. Mục tiêu là giúp người đăng ký biết mình có thể gặp phần việc gì trước khi chọn nghề và hỏi tư vấn đúng trọng tâm."
+      ],
+      "key_points": [
+        [
+          "Có nhiệm vụ đấu nối",
+          "Nguồn chuẩn hiện hành nêu rõ nghề cơ điện mỏ lắp đặt và đấu nối hệ thống dây dẫn điện theo thiết kế, quy trình kỹ thuật."
+        ],
+        [
+          "Không chỉ làm dưới hầm",
+          "Người học có thể được bố trí trong hầm lò hoặc trên mặt bằng tùy hệ thống, thiết bị và yêu cầu của đơn vị tiếp nhận."
+        ],
+        [
+          "Không phải điện dân dụng",
+          "Công việc gắn với thiết bị, mạng điện và dây chuyền sản xuất mỏ; kinh nghiệm bên ngoài không thay thế đào tạo chuyên môn."
+        ],
+        [
+          "Người mới làm theo phân công",
+          "Chỉ thực hiện phần đã được học, hướng dẫn và giao nhiệm vụ; không tự thử điện, thay đổi thiết kế hoặc xử lý ngoài phạm vi."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học cơ điện mỏ có phải đấu nối dây điện dưới hầm lò không?",
+          "paragraphs": [
+            "Có. Hồ sơ nghề hiện hành xác định một trong các nhiệm vụ của kỹ thuật cơ điện mỏ hầm lò là lắp đặt và đấu nối hệ thống dây dẫn điện theo thiết kế và quy trình kỹ thuật. Điều đó có nghĩa người học cần chuẩn bị cho nội dung điện thực hành, nhận biết hệ thống và phối hợp lắp đặt, chứ không chỉ học sửa phần cơ khí của máy móc.",
+            "Tuy nhiên, từ “có” không đồng nghĩa mọi học sinh sau khi học xong đều tự đấu nối mọi đường dây dưới hầm lò. Công việc thực tế phụ thuộc chương trình đã hoàn thành, kết quả tay nghề, loại thiết bị tại vị trí làm việc và nhiệm vụ tổ đội giao trong ca. Một người có thể được bố trí ở phần lắp đặt, kiểm tra, bảo dưỡng hoặc phối hợp sửa chữa tùy nhu cầu của đơn vị.",
+            "Người mới không dùng kinh nghiệm nối điện gia đình để tự thao tác trong hệ thống sản xuất mỏ. Khi chưa xác định được thiết kế, phạm vi nhiệm vụ hoặc người hướng dẫn, cần dừng ở bước nhận biết và báo lại người phụ trách. Bài viết chỉ giúp hiểu công việc, không thay thế tài liệu kỹ thuật hoặc hướng dẫn tại nơi làm việc."
+          ]
+        },
+        {
+          "heading": "Đấu nối dây dẫn điện khác lắp hệ thống chiếu sáng thế nào?",
+          "paragraphs": [
+            "Đấu nối dây dẫn điện là phạm vi rộng hơn, liên quan tới việc đưa kết nối điện tới thiết bị hoặc hệ thống theo thiết kế. Hệ thống chiếu sáng là một nhóm nhiệm vụ riêng phục vụ khu vực sản xuất. Hai phần có liên quan về điện nhưng không đồng nhất: một câu hỏi nói về mạng dây dẫn, câu hỏi còn lại nói về chức năng chiếu sáng và thiết bị của hệ thống đó.",
+            "Sự khác biệt này giúp bài hôm nay không tự cạnh tranh với bài ngày 16/10. Người tìm “đấu nối dây điện” thường muốn biết có phải trực tiếp làm điện hay không, học những gì và giới hạn ra sao. Người tìm “lắp chiếu sáng” lại quan tâm đèn, khu vực chiếu sáng và trách nhiệm duy trì hệ thống phục vụ sản xuất.",
+            "Trong thực tế, cùng một tổ cơ điện có thể làm nhiều nhóm nhiệm vụ theo kế hoạch, nhưng từng người vẫn nhận công việc cụ thể. Không nên suy từ một nhiệm vụ sang toàn bộ ca làm hoặc kết luận rằng học cơ điện chỉ để nối dây và thay đèn."
+          ]
+        },
+        {
+          "heading": "Thợ cơ điện mỏ làm điện ở đâu?",
+          "paragraphs": [
+            "Nguồn chuẩn tuyển sinh nêu người làm nghề cơ điện mỏ có thể làm việc trong hầm lò hoặc trên mặt bằng. Vị trí cụ thể phụ thuộc máy móc, hệ thống điện, khu vực bảo dưỡng và phương án tổ chức của doanh nghiệp tiếp nhận. Vì vậy, câu hỏi “có phải xuống hầm không” và câu hỏi “có đấu nối dây điện không” cần được trả lời riêng.",
+            "Ngoài hệ thống dây dẫn, nghề còn liên quan tới thiết bị điện, chiếu sáng, thông tin liên lạc, điều khiển, máy khoan, máy nén khí, thiết bị bốc xúc, vận tải và hệ thống cơ giới hóa. Phạm vi đó cho thấy người học cần nền tảng cả điện và cơ khí, khả năng đo kiểm, tháo lắp, kiểm tra và xử lý thiết bị theo quy trình.",
+            "Người đăng ký nên hỏi rõ khả năng bố trí sau đào tạo thay vì mặc định chỉ làm ở xưởng hoặc chỉ làm dưới lò. Nhà trường và đơn vị tiếp nhận mới là nơi xác định chương trình, vị trí thực hành, vị trí làm việc và nhiệm vụ phù hợp ở từng thời điểm."
+          ]
+        },
+        {
+          "heading": "Học 10 tháng có được tự đấu nối ngay sau tốt nghiệp không?",
+          "paragraphs": [
+            "Thời gian đào tạo hiện hành của nghề kỹ thuật cơ điện mỏ hầm lò là 10 tháng. Khoảng thời gian này phản ánh phạm vi chuyên môn rộng hơn nhóm nghề mỏ học 2–3 tháng, nhưng không phải lời bảo đảm rằng người tốt nghiệp được tự quyết định mọi thao tác điện ngay khi nhận việc.",
+            "Sau đào tạo, nhiệm vụ vẫn phải theo kết quả đạt yêu cầu, hướng dẫn tại nơi làm việc, loại thiết bị và phân công của đơn vị. Người mới cần nhận diện đúng phần việc, dụng cụ đo kiểm và người phụ trách trước khi thao tác. Nếu tình huống thực tế khác nội dung đã được hướng dẫn, cách đúng là báo lại để được xác nhận, không tự suy đoán.",
+            "Ảnh riêng của bài từ Vinacomin ghi lại công nhân nhóm nghề sửa chữa cơ điện của Than Hạ Long thực hiện phần thi tay nghề. Hình ảnh cho thấy tính thực hành và việc quan sát thao tác trong đào tạo, đánh giá nghề; ảnh không phải hướng dẫn đấu nối và không dùng để suy ra một quy trình áp dụng cho mọi đơn vị."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi đăng ký nghề cơ điện mỏ",
+          "items": [
+            "Trong chương trình 10 tháng, phần lắp đặt và đấu nối dây dẫn điện được học, thực hành đến mức nào?",
+            "Người mới thường được phân công nhận biết, kiểm tra hay phối hợp lắp đặt những nhóm thiết bị nào?",
+            "Công việc có thể được bố trí trong hầm lò, trên mặt bằng hoặc luân chuyển theo nhiệm vụ ra sao?",
+            "Dụng cụ đo kiểm, tháo lắp và thiết bị điện nào thuộc nội dung đào tạo của khóa hiện tại?",
+            "Khi gặp hệ thống hoặc sơ đồ khác phần đã học, người mới phải báo cho đầu mối nào trước khi thao tác?"
+          ]
+        }
+      ],
+      "takeaway_title": "Có học và làm phần đấu nối, nhưng luôn theo thiết kế và phân công",
+      "takeaway": "Lắp đặt, đấu nối hệ thống dây dẫn điện theo thiết kế và quy trình kỹ thuật là một nhiệm vụ của nghề kỹ thuật cơ điện mỏ hầm lò. Người học được chuẩn bị kiến thức và tay nghề trong chương trình 10 tháng, nhưng phần việc sau tốt nghiệp còn phụ thuộc kết quả đào tạo, thiết bị, vị trí bố trí và phân công của đơn vị. Người mới không tự đấu nối hoặc xử lý ngoài nội dung đã được hướng dẫn.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò có nhiệm vụ lắp đặt, đấu nối hệ thống dây dẫn điện theo thiết kế và quy trình kỹ thuật; có thể làm việc trong hầm lò hoặc trên mặt bằng; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Than Hạ Long: Chú trọng nâng cao chất lượng tay nghề cho thợ mỏ”, chú thích công nhân nhóm nghề sửa chữa cơ điện thực hiện phần thi tay nghề.",
+      "faqs": [
+        [
+          "Học cơ điện mỏ có phải tự nối dây điện ngay khi mới vào học không?",
+          "Không. Người học thực hiện theo chương trình, hướng dẫn và điều kiện thực hành; không tự đấu nối ngoài nội dung được giao."
+        ],
+        [
+          "Đấu nối dây điện có phải toàn bộ công việc của nghề cơ điện mỏ không?",
+          "Không. Nghề còn gồm lắp đặt, vận hành, đo kiểm, bảo dưỡng và sửa chữa nhiều hệ thống cơ khí, điện, vận tải, chiếu sáng, liên lạc và cơ giới hóa."
+        ],
+        [
+          "Học cơ điện mỏ có thể làm trên mặt bằng không?",
+          "Có thể. Nguồn chuẩn nêu người làm nghề có thể được bố trí trong hầm lò hoặc trên mặt bằng, tùy hệ thống và nhiệm vụ thực tế."
+        ],
+        [
+          "Biết sửa điện dân dụng có được tự đấu nối thiết bị mỏ không?",
+          "Không mặc định. Kinh nghiệm dân dụng không thay thế chương trình cơ điện mỏ, hướng dẫn tại nơi làm việc và phân công cụ thể của đơn vị."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ phạm vi nghề kỹ thuật cơ điện mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-lap-he-thong-chieu-sang-duoi-ham-lo-khong/",
+          "Phân biệt đấu nối dây dẫn với lắp hệ thống chiếu sáng"
         ],
         [
           "/kiem-tra-dieu-kien/",
