@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-21",
+  "updated_at": "2026-10-22",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -6651,6 +6651,127 @@
         [
           "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-lap-he-thong-chieu-sang-duoi-ham-lo-khong/",
           "Phân biệt đấu nối dây dẫn với lắp hệ thống chiếu sáng"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-10-22",
+      "slug": "hoc-nghe-xay-dung-mo-ham-lo-co-phai-van-hanh-toi-truc-khong",
+      "title": "Học nghề xây dựng mỏ hầm lò có phải vận hành tời trục không?",
+      "short_title": "Xây dựng mỏ có phải vận hành tời trục",
+      "meta": "Học nghề xây dựng mỏ hầm lò có phải vận hành tời trục không? Phân biệt tham gia vận chuyển với người được giao điều khiển thiết bị.",
+      "eyebrow": "HIỂU ĐÚNG VIỆC VẬN HÀNH TỜI TRỤC TRONG NGHỀ XÂY DỰNG MỎ",
+      "primary_query": "học nghề xây dựng mỏ hầm lò có phải vận hành tời trục không",
+      "query_variants": [
+        "học xây dựng mỏ có phải lái tời trục không",
+        "thợ xây dựng mỏ có dùng tời trục không",
+        "người mới học nghề mỏ có được vận hành tời không"
+      ],
+      "direct_answer": "Có thể có công việc liên quan đến tời trục, vì hồ sơ nghề xác định vận chuyển đất đá bằng goòng, tời trục, băng tải, máng cào hoặc tàu điện. Tuy nhiên, điều đó không có nghĩa mọi người học đều trực tiếp điều khiển tời trục; người vận hành cụ thể phải được đào tạo, hướng dẫn và phân công theo thiết bị, vị trí làm việc của đơn vị.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-phong-dieu-khien-toi-truc-than-ha-long.webp",
+        "alt": "Cán bộ và công nhân tại phòng điều khiển hệ thống tời trục giếng đứng Than Hạ Long",
+        "credit": "Ảnh: Vinacomin · kiểm tra hiện trường dự án và hệ thống tời trục giếng đứng Than Hạ Long"
+      },
+      "intro": [
+        "Học nghề xây dựng mỏ hầm lò có phải vận hành tời trục không là câu hỏi thực tế của người đã biết nghề có khâu vận chuyển nhưng chưa rõ mình sẽ trực tiếp điều khiển thiết bị hay chỉ phối hợp trong tổ đội. Câu trả lời đúng là nghề có thể liên quan tới tời trục, nhưng vị trí vận hành không tự động giao cho tất cả học sinh sau khi hoàn thành khóa học.",
+        "Bài này tách riêng thao tác vận hành tời trục khỏi hai nội dung đã có: lắp đường ray ngày 13/10 và vận chuyển vật liệu bằng tay ngày 20/10. Mục tiêu là giúp người đăng ký phân biệt phương tiện được dùng trong phạm vi nghề với nhiệm vụ cụ thể của từng người, tránh hiểu rằng chỉ cần chọn nghề là được tự điều khiển mọi thiết bị vận tải."
+      ],
+      "key_points": [
+        [
+          "Có tời trục trong phạm vi nghề",
+          "Nguồn chuẩn nêu tời trục là một trong các phương tiện có thể dùng để vận chuyển đất đá trong nghề xây dựng mỏ hầm lò."
+        ],
+        [
+          "Không phải ai cũng trực tiếp vận hành",
+          "Phần việc cụ thể phụ thuộc nội dung đã học, thiết bị tại đơn vị và phân công của người phụ trách."
+        ],
+        [
+          "Vận chuyển khác điều khiển",
+          "Một người có thể phối hợp nhận, giao hoặc tổ chức vật liệu mà không phải là người ngồi tại bộ điều khiển tời."
+        ],
+        [
+          "Người mới không tự thử máy",
+          "Chỉ thao tác khi đã được hướng dẫn, xác nhận nhiệm vụ và bàn giao đúng vị trí trong ca."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học nghề xây dựng mỏ hầm lò có phải vận hành tời trục không?",
+          "paragraphs": [
+            "Có thể. Hồ sơ nghề hiện hành xác định người làm kỹ thuật xây dựng mỏ hầm lò tham gia vận chuyển đất đá bằng goòng, tời trục, băng tải, máng cào hoặc tàu điện. Vì vậy, tời trục không phải thiết bị xa lạ với phạm vi nghề; người học cần hiểu nó nằm trong dây chuyền đưa đất đá ra ngoài hoặc phục vụ vận chuyển theo tổ chức của công trình.",
+            "Tuy nhiên, câu chữ “vận chuyển bằng tời trục” không đồng nghĩa mọi người trong tổ xây dựng mỏ đều là người điều khiển tời. Một ca làm có nhiều phần việc: chuẩn bị tuyến, kiểm tra vị trí nhận và giao, phối hợp đưa tải, theo dõi tín hiệu, vận chuyển vật liệu hoặc thực hiện nhiệm vụ khác theo ca lệnh. Người vận hành thiết bị là vị trí cụ thể, được giao theo đào tạo và yêu cầu của đơn vị.",
+            "Người mới không nên tự suy rằng đã biết dùng máy kéo, tời dân dụng hoặc thiết bị nâng hạ bên ngoài thì có thể điều khiển tời trục trong mỏ. Loại thiết bị, hệ thống điều khiển và quy trình tại nơi làm việc phải được hướng dẫn riêng. Khi chưa được giao nhiệm vụ, việc đúng cần làm là quan sát, phối hợp theo chỉ dẫn và hỏi người phụ trách."
+          ]
+        },
+        {
+          "heading": "Vận chuyển bằng tời trục khác khuân vật liệu bằng tay thế nào?",
+          "paragraphs": [
+            "Bài ngày 20/10 trả lời việc vận chuyển vì chống, cấu kiện bê tông và vật liệu chèn lấp có phải hoàn toàn bằng tay hay không. Tời trục là một phương tiện có thể hỗ trợ vận chuyển theo tuyến hoặc theo phương án của công trình; còn mang, kê, sắp xếp hay đưa vật liệu vào đúng vị trí là nhóm thao tác khác. Hai nội dung liên quan nhưng không trùng ý định tìm kiếm.",
+            "Trong thực tế tổ đội, vật liệu có thể đi qua nhiều chặng. Có chặng dùng phương tiện vận tải, có chặng cần phối hợp thủ công ở vị trí nhận hoặc lắp dựng. Việc có tời trục không xóa toàn bộ thao tác của con người, đồng thời cũng không có nghĩa người lao động phải khuân mọi thứ bằng sức người từ đầu đến cuối.",
+            "Người đăng ký nên hỏi phương tiện thường dùng trong giai đoạn thực hành và vị trí dự kiến được bố trí, thay vì chỉ hỏi “có nặng không”. Câu hỏi cụ thể về tời trục, goòng, băng tải hoặc máng cào giúp người tư vấn giải thích đúng dây chuyền và giới hạn công việc hơn."
+          ]
+        },
+        {
+          "heading": "Ai được phân công điều khiển tời trục trong ca làm việc?",
+          "paragraphs": [
+            "Nguồn tuyển sinh không quy định mọi học sinh tốt nghiệp đều trở thành người điều khiển tời trục. Việc bố trí phụ thuộc kết quả đào tạo, nội dung đã được hướng dẫn, loại thiết bị, vị trí công trình và nhu cầu nhân lực của doanh nghiệp tiếp nhận. Vì vậy, bài viết không hứa một vị trí vận hành cụ thể cho người đăng ký.",
+            "Bài chính thức Vinacomin về Dự án khai thác hầm lò Khe Chàm II-IV cho thấy tời trục giếng đứng được quản lý cùng hồ sơ chất lượng, kiểm định, quy trình vận hành, đào tạo và sổ sách. Chi tiết đó giúp người đọc hiểu đây là hệ thống được tổ chức và kiểm soát, không phải thiết bị mà người mới tự thử hoặc tự thay đổi cách vận hành.",
+            "Khi nhận việc, người lao động cần xác định rõ mình đang ở vị trí điều khiển, phối hợp, nhận tải, giao tải hay thực hiện nhiệm vụ khác. Nếu ca lệnh hoặc hướng dẫn chưa rõ, cần hỏi lại người giao việc trước khi thao tác. Đây là ranh giới quan trọng hơn việc cố đoán trước mình sẽ dùng loại máy nào."
+          ]
+        },
+        {
+          "heading": "Tời trục khác đường ray và goòng ở điểm nào?",
+          "paragraphs": [
+            "Đường ray là hạ tầng tạo tuyến cho phương tiện phù hợp di chuyển trong đường lò. Goòng là phương tiện chứa hoặc chở đất đá, vật tư theo tuyến. Tời trục tạo lực kéo hoặc nâng hạ trong hệ thống được thiết kế cho vị trí cụ thể. Ba yếu tố có thể cùng xuất hiện trong một phương án vận tải nhưng không phải là một công việc duy nhất.",
+            "Bài ngày 13/10 tập trung vào việc lắp đặt đường ray; bài hôm nay tập trung vào câu hỏi ai vận hành tời trục. Người có nhiệm vụ lắp, duy trì tuyến ray không mặc định là người điều khiển tời, và người phối hợp vận chuyển bằng goòng cũng không tự động được giao vị trí điều khiển hệ thống.",
+            "Ảnh riêng của bài được lấy từ nguồn Vinacomin về chuyến kiểm tra Dự án Khe Chàm II-IV và tời trục giếng đứng phụ của Than Hạ Long. Hình ảnh phòng điều khiển giúp minh họa tính tổ chức của hệ thống; ảnh không phải tài liệu hướng dẫn thao tác và không dùng để suy ra thiết bị ở mọi doanh nghiệp đều giống nhau."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi chọn nghề xây dựng mỏ hầm lò",
+          "items": [
+            "Trong khóa học 2–3 tháng, học sinh được giới thiệu và thực hành những phương tiện vận chuyển nào?",
+            "Người mới thường phối hợp ở khâu nhận tải, giao tải hay được đào tạo cho vị trí điều khiển thiết bị?",
+            "Tời trục tại nơi thực hành phục vụ vận chuyển đất đá, vật tư hay nhiệm vụ nào khác?",
+            "Việc lắp đường ray, dùng goòng và vận hành tời được phân công cho cùng tổ hay các vị trí riêng?",
+            "Nếu chưa được giao vận hành, người lao động cần báo và nhận hướng dẫn từ đầu mối nào trong ca?"
+          ]
+        }
+      ],
+      "takeaway_title": "Có thể làm việc với tời trục, nhưng không mặc định ai cũng là người điều khiển",
+      "takeaway": "Tời trục nằm trong nhóm phương tiện có thể dùng để vận chuyển đất đá của nghề kỹ thuật xây dựng mỏ hầm lò. Người học cần hiểu vai trò của thiết bị và cách phối hợp trong dây chuyền, còn việc trực tiếp điều khiển phụ thuộc đào tạo, hướng dẫn, loại thiết bị và phân công của đơn vị. Người mới không tự vận hành khi chưa được giao nhiệm vụ.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật xây dựng mỏ hầm lò có nhiệm vụ vận chuyển đất đá bằng goòng, tời trục, băng tải, máng cào hoặc tàu điện; thời gian đào tạo hiện hành 2–3 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Thứ trưởng Bộ Công Thương Trương Thanh Hoài kiểm tra tiến độ Dự án khai thác hầm lò mỏ Khe Chàm II-IV - Công ty Than Hạ Long”, nội dung và ảnh về kiểm tra hiện trường, công tác vận hành tời trục giếng đứng phụ.",
+      "faqs": [
+        [
+          "Học xây dựng mỏ có chắc chắn được lái tời trục không?",
+          "Không. Nghề có công việc liên quan tới vận chuyển bằng tời trục, nhưng vị trí điều khiển phụ thuộc đào tạo, thiết bị và phân công của đơn vị."
+        ],
+        [
+          "Không vận hành tời thì người học xây dựng mỏ làm gì?",
+          "Có thể được phân công các công đoạn đào lò, xúc dỡ, san nền, lắp đường ray, vận chuyển vật liệu, lắp chống giữ hoặc phối hợp vận tải theo tổ đội."
+        ],
+        [
+          "Biết dùng tời bên ngoài có được tự vận hành tời trong mỏ không?",
+          "Không mặc định. Người lao động chỉ thao tác thiết bị tại nơi làm việc khi đã được hướng dẫn và giao nhiệm vụ cụ thể."
+        ],
+        [
+          "Tời trục có thay hoàn toàn việc vận chuyển thủ công không?",
+          "Không. Thiết bị hỗ trợ từng chặng phù hợp; vẫn có các thao tác nhận, giao, kê đặt hoặc lắp dựng theo vị trí và phân công thực tế."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ phạm vi nghề kỹ thuật xây dựng mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/hoc-nghe-xay-dung-mo-ham-lo-co-phai-lap-duong-ray-khong/",
+          "Phân biệt vận hành tời trục với lắp đường ray"
         ],
         [
           "/kiem-tra-dieu-kien/",
