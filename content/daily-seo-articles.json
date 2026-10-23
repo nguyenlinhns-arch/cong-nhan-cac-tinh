@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-22",
+  "updated_at": "2026-10-23",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -6772,6 +6772,127 @@
         [
           "/giai-dap-nghe-mo/hoc-nghe-xay-dung-mo-ham-lo-co-phai-lap-duong-ray-khong/",
           "Phân biệt vận hành tời trục với lắp đường ray"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-10-23",
+      "slug": "hoc-co-dien-mo-co-phai-sua-may-nen-khi-khong",
+      "title": "Học cơ điện mỏ có phải sửa máy nén khí không?",
+      "short_title": "Cơ điện mỏ có phải sửa máy nén khí",
+      "meta": "Học cơ điện mỏ có phải sửa máy nén khí không? Phân biệt vận hành, bảo dưỡng, sửa chữa và giới hạn công việc của người mới.",
+      "eyebrow": "HIỂU ĐÚNG VIỆC SỬA MÁY NÉN KHÍ TRONG NGHỀ CƠ ĐIỆN MỎ",
+      "primary_query": "học cơ điện mỏ có phải sửa máy nén khí không",
+      "query_variants": [
+        "thợ cơ điện mỏ có sửa máy nén khí không",
+        "học nghề cơ điện mỏ có làm máy nén khí không",
+        "người mới học cơ điện mỏ có phải bảo dưỡng máy nén khí không"
+      ],
+      "direct_answer": "Có thể. Hồ sơ nghề hiện hành nêu người học cơ điện mỏ có thể lắp đặt, vận hành, bảo dưỡng và sửa chữa máy nén khí cùng các thiết bị cơ - điện khác. Tuy nhiên, không phải mọi người đều sửa máy nén khí trong mọi ca; nhiệm vụ cụ thể phụ thuộc nội dung đã học, loại thiết bị, vị trí làm việc và phân công của đơn vị tiếp nhận.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-co-dien-ha-long-thi-thuc-hanh-2026.webp",
+        "alt": "Hai công nhân Than Hạ Long thực hành nghề cơ điện lò trên thiết bị",
+        "credit": "Ảnh: Vinacomin · công nhân Than Hạ Long thi thực hành nghề cơ điện lò"
+      },
+      "intro": [
+        "Học cơ điện mỏ có phải sửa máy nén khí không là câu hỏi của người đã biết nghề có cả phần cơ khí lẫn điện nhưng chưa hình dung mình sẽ làm với thiết bị nào sau đào tạo. Câu trả lời là có thể được giao lắp đặt, vận hành, bảo dưỡng hoặc sửa chữa máy nén khí, nhưng không thể hiểu rằng mọi học sinh tốt nghiệp đều trở thành người chuyên sửa loại máy này.",
+        "Bài này tập trung riêng vào máy nén khí và ranh giới giữa bốn nhóm việc: lắp đặt, vận hành, bảo dưỡng và sửa chữa. Nội dung không lặp bài tổng quan ngày 08/10 về việc nghề cơ điện có chỉ sửa điện hay không, bài ngày 17/10 về sửa băng tải hoặc bài ngày 21/10 về đấu nối dây điện. Mục tiêu là giúp người đăng ký hỏi đúng về thiết bị, phần thực hành và cách phân công trước khi chọn nghề."
+      ],
+      "key_points": [
+        [
+          "Máy nén khí thuộc phạm vi nghề",
+          "Nguồn chuẩn hiện hành liệt kê máy nén khí trong nhóm thiết bị người làm cơ điện mỏ có thể lắp đặt, vận hành, bảo dưỡng và sửa chữa."
+        ],
+        [
+          "Không phải ca nào cũng sửa máy",
+          "Công việc còn phụ thuộc loại thiết bị tại vị trí, tình trạng cần xử lý, tổ đội và nhiệm vụ được giao trong ca."
+        ],
+        [
+          "Vận hành khác sửa chữa",
+          "Theo dõi hoặc vận hành thiết bị không tự động đồng nghĩa được tháo lắp và xử lý mọi hạng mục của máy."
+        ],
+        [
+          "Người mới làm đúng phạm vi",
+          "Chỉ thực hiện phần đã được đào tạo, hướng dẫn và phân công; khi có biểu hiện bất thường phải báo người phụ trách."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học cơ điện mỏ có phải sửa máy nén khí không?",
+          "paragraphs": [
+            "Có thể. Hồ sơ nghề hiện hành xác định kỹ thuật cơ điện mỏ hầm lò có nhiệm vụ lắp đặt, vận hành, bảo dưỡng và sửa chữa máy khoan, máy nén khí, thiết bị bốc xúc, vận tải cùng các thiết bị cơ - điện phục vụ sản xuất. Vì vậy, máy nén khí là một nhóm thiết bị nằm trong phạm vi nghề, không phải nội dung nằm ngoài chuyên môn của người học cơ điện mỏ.",
+            "Tuy nhiên, câu trả lời “có thể” khác với việc khẳng định ai học xong cũng trực tiếp sửa máy nén khí hằng ngày. Một người có thể được bố trí theo dõi vận hành, kiểm tra theo phân công, phối hợp bảo dưỡng hoặc tham gia sửa chữa khi đã được giao nhiệm vụ. Người khác trong cùng nghề có thể tập trung vào máy khoan, băng tải, hệ thống điện, chiếu sáng, liên lạc hoặc thiết bị khác tùy nhu cầu thực tế.",
+            "Bài viết giúp người đăng ký hiểu phạm vi công việc, không phải tài liệu hướng dẫn sửa máy. Người mới không tự mở máy, thay đổi kết nối hoặc thử xử lý khi chưa xác định rõ thiết bị, nhiệm vụ và người phụ trách. Nếu máy có biểu hiện khác thường hoặc tình huống vượt phần đã học, bước đúng là dừng trong phạm vi an toàn được hướng dẫn và báo lại tổ đội."
+          ]
+        },
+        {
+          "heading": "Vận hành, bảo dưỡng và sửa máy nén khí khác nhau thế nào?",
+          "paragraphs": [
+            "Vận hành là làm việc với thiết bị theo vị trí và quy trình đã được giao. Bảo dưỡng là nhóm công việc nhằm duy trì trạng thái làm việc theo kế hoạch của đơn vị. Sửa chữa là xử lý hạng mục có vấn đề trong phạm vi chuyên môn và phân công. Ba khái niệm có liên quan nhưng không thể dùng thay cho nhau; biết theo dõi thiết bị không đồng nghĩa được tự tháo lắp mọi bộ phận.",
+            "Lắp đặt lại là một giai đoạn khác, gắn với việc đưa thiết bị hoặc bộ phận vào đúng vị trí trong hệ thống theo thiết kế và yêu cầu kỹ thuật. Một tổ cơ điện có thể phối hợp nhiều công đoạn, nhưng nhiệm vụ của từng người trong một ca vẫn cần được xác định rõ. Chính vì vậy, người đăng ký nên hỏi mình được học và thực hành đến đâu thay vì chỉ hỏi chung “có phải sửa máy không”.",
+            "Cách phân biệt này giúp tránh hai cách hiểu cực đoan. Thứ nhất là cho rằng học cơ điện mỏ chỉ làm điện nên không chạm tới máy nén khí. Thứ hai là cho rằng đã học cơ điện thì có quyền tự xử lý toàn bộ máy. Phạm vi nghề rộng, còn quyền thao tác cụ thể luôn đi cùng đào tạo, thiết bị thực tế và phân công của đơn vị."
+          ]
+        },
+        {
+          "heading": "Máy nén khí là một phần, không phải toàn bộ nghề cơ điện mỏ",
+          "paragraphs": [
+            "Ngoài máy nén khí, nguồn chuẩn còn nêu máy khoan, thiết bị bốc xúc, thiết bị vận tải và các thiết bị cơ - điện phục vụ sản xuất. Danh mục dụng cụ, thiết bị học nghề cũng bao gồm dụng cụ đo kiểm, dụng cụ sửa chữa máy, hệ thống điện, chiếu sáng, thông tin liên lạc và điều khiển. Người học vì thế cần chuẩn bị cho một nghề có phạm vi rộng hơn một loại máy duy nhất.",
+            "Bài ngày 08/10 trả lời câu hỏi tổng quát nghề cơ điện mỏ có chỉ sửa điện hay không. Bài ngày 17/10 đi sâu vào hệ thống băng tải, còn bài ngày 21/10 tách riêng việc đấu nối dây dẫn điện. Bài hôm nay trả lời đúng ý định về máy nén khí: thiết bị này có nằm trong phạm vi nghề không, người mới có mặc định phải sửa không và nên hiểu ranh giới công việc thế nào.",
+            "Sự tách biệt theo thiết bị có ích cho người lao động đang cân nhắc khả năng phù hợp. Nếu ngại làm việc với máy móc cơ khí, người đăng ký cần biết nghề không chỉ có dây điện. Nếu đã từng sửa máy bên ngoài, người đăng ký cũng cần hiểu kinh nghiệm đó không thay thế chương trình đào tạo và hướng dẫn cho thiết bị tại nơi làm việc."
+          ]
+        },
+        {
+          "heading": "Học 10 tháng có được tự sửa máy nén khí sau khi tốt nghiệp không?",
+          "paragraphs": [
+            "Thời gian đào tạo hiện hành của nghề kỹ thuật cơ điện mỏ hầm lò là 10 tháng. Khoảng thời gian này phản ánh phạm vi chuyên môn gồm nhiều nhóm thiết bị và công việc cơ - điện. Tuy vậy, hoàn thành khóa học không phải lời bảo đảm rằng người mới được tự quyết định mọi thao tác sửa chữa ngay khi vào đơn vị tiếp nhận.",
+            "Phần việc sau đào tạo còn phụ thuộc kết quả học nghề, thiết bị tại vị trí, nội dung hướng dẫn ở nơi làm việc và phân công của người phụ trách. Khi chưa được giao một hạng mục cụ thể, người mới cần hỏi lại thay vì suy từ kiến thức chung sang quyền thao tác. Điều này đặc biệt quan trọng khi cùng tên “máy nén khí” nhưng cấu hình, vị trí và cách tổ chức công việc tại từng nơi có thể khác nhau.",
+            "Ảnh riêng của bài được xác minh từ bài chính thức Vinacomin về kỳ thi thực hành tay nghề tại Than Hạ Long. Chú thích ảnh xác định đây là công nhân tham gia phần thi thực hành nghề cơ điện lò. Hình ảnh minh họa tính thực hành của nghề cơ điện, không phải ảnh máy nén khí và cũng không phải hướng dẫn một quy trình sửa chữa cụ thể."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi đăng ký nghề cơ điện mỏ",
+          "items": [
+            "Trong chương trình 10 tháng, học sinh được học và thực hành với máy nén khí ở phạm vi nào?",
+            "Người mới thường được phân công vận hành, phối hợp bảo dưỡng hay tham gia sửa chữa những nhóm thiết bị nào?",
+            "Công việc với máy nén khí có thể được bố trí trong hầm lò, trên mặt bằng hay tùy hệ thống của đơn vị?",
+            "Khi thiết bị có dấu hiệu khác thường, người mới cần dừng ở bước nào và báo cho đầu mối nào?",
+            "Nếu đã có kinh nghiệm sửa máy bên ngoài, phần nào vẫn phải học và được hướng dẫn lại trước khi thao tác?"
+          ]
+        }
+      ],
+      "takeaway_title": "Máy nén khí thuộc phạm vi nghề, nhưng sửa chữa phải theo đào tạo và phân công",
+      "takeaway": "Người học kỹ thuật cơ điện mỏ hầm lò có thể làm công việc lắp đặt, vận hành, bảo dưỡng và sửa chữa máy nén khí cùng nhiều thiết bị cơ - điện khác. Không phải mọi người đều sửa máy nén khí trong mọi ca và không ai nên tự thao tác ngoài phần đã được học, hướng dẫn, giao nhiệm vụ. Trước khi đăng ký, hãy hỏi rõ phạm vi thực hành và cách bố trí người mới.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò có nhiệm vụ lắp đặt, vận hành, bảo dưỡng và sửa chữa máy khoan, máy nén khí, thiết bị bốc xúc, vận tải và các thiết bị cơ - điện phục vụ sản xuất; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Than Hạ Long nâng cao chất lượng nguồn nhân lực qua thi thực hành tay nghề”, chú thích công nhân Than Hạ Long tham gia phần thi thực hành nghề cơ điện lò.",
+      "faqs": [
+        [
+          "Học cơ điện mỏ có chắc chắn được phân công sửa máy nén khí không?",
+          "Không. Máy nén khí thuộc phạm vi nghề, nhưng thiết bị và nhiệm vụ cụ thể phụ thuộc kết quả đào tạo, vị trí làm việc và phân công của đơn vị."
+        ],
+        [
+          "Vận hành máy nén khí có đồng nghĩa được tự sửa máy không?",
+          "Không. Vận hành, bảo dưỡng và sửa chữa là các nhóm việc liên quan nhưng có phạm vi khác nhau; người lao động chỉ làm phần đã được hướng dẫn và giao nhiệm vụ."
+        ],
+        [
+          "Nghề cơ điện mỏ ngoài máy nén khí còn làm thiết bị nào?",
+          "Nguồn chuẩn còn nêu máy khoan, thiết bị bốc xúc, vận tải, hệ thống điện, chiếu sáng, thông tin liên lạc, điều khiển và các thiết bị cơ - điện phục vụ sản xuất."
+        ],
+        [
+          "Biết sửa máy nén khí bên ngoài có được bỏ qua đào tạo nghề mỏ không?",
+          "Không mặc định. Kinh nghiệm sẵn có không thay thế chương trình cơ điện mỏ, hướng dẫn theo thiết bị và phân công tại đơn vị tiếp nhận."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ phạm vi nghề kỹ thuật cơ điện mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/hoc-co-dien-mo-co-chi-sua-dien-khong/",
+          "Hiểu vì sao nghề cơ điện mỏ không chỉ sửa điện"
         ],
         [
           "/kiem-tra-dieu-kien/",

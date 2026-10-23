@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22T08:43:00+07:00",
+  "updated_at": "2026-10-23T08:12:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -386,6 +386,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2025/T07/10/HL2.jpg",
       "provider": "Vinacomin",
       "description": "Cán bộ, công nhân tại phòng điều khiển trong chuyến kiểm tra dự án và hệ thống tời trục giếng đứng của Than Hạ Long"
+    },
+    {
+      "asset": "vinacomin-tho-co-dien-ha-long-thi-thuc-hanh-2026.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/than-ha-long-nang-cao-chat-luong-nguon-nhan-luc-qua-thi-thuc-hanh-tay-nghe",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2026/T06/01/HL3.jpg",
+      "provider": "Vinacomin",
+      "description": "Hai công nhân Than Hạ Long mặc bảo hộ thực hiện phần thi thực hành nghề cơ điện lò trên thiết bị"
     }
   ]
 }
