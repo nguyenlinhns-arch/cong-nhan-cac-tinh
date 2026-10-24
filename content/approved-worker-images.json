@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-23T08:12:00+07:00",
+  "updated_at": "2026-10-24T07:41:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -393,6 +393,14 @@
       "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2026/T06/01/HL3.jpg",
       "provider": "Vinacomin",
       "description": "Hai công nhân Than Hạ Long mặc bảo hộ thực hiện phần thi thực hành nghề cơ điện lò trên thiết bị"
+    },
+    {
+      "asset": "vinacomin-thi-sinh-sua-chua-co-dien-mao-khe-2026.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/cong-ty-than-mao-khe-soi-noi-ky-thi-chon-tho-gioi-nam-2026",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2026/T06/03/CTV5/MK2.jpg",
+      "provider": "Vinacomin",
+      "description": "Các thí sinh nghề kỹ thuật sửa chữa cơ điện mỏ hầm lò thực hiện phần thi thực hành tại Công ty Than Mạo Khê năm 2026"
     }
   ]
 }
+

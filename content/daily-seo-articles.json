@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-23",
+  "updated_at": "2026-10-24",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -6899,9 +6899,131 @@
           "Kiểm tra điều kiện trước khi đăng ký"
         ]
       ]
+    },
+    {
+      "publish_on": "2026-10-24",
+      "slug": "hoc-co-dien-mo-co-phai-sua-may-khoan-khong",
+      "title": "Học cơ điện mỏ có phải sửa máy khoan không?",
+      "short_title": "Cơ điện mỏ có phải sửa máy khoan",
+      "meta": "Học cơ điện mỏ có phải sửa máy khoan không? Phân biệt người cơ điện bảo dưỡng, sửa thiết bị với người khai thác sử dụng máy khoan.",
+      "eyebrow": "PHÂN BIỆT SỬ DỤNG VÀ SỬA MÁY KHOAN TRONG MỎ",
+      "primary_query": "học cơ điện mỏ có phải sửa máy khoan không",
+      "query_variants": [
+        "thợ cơ điện mỏ có sửa máy khoan không",
+        "học nghề cơ điện mỏ có bảo dưỡng máy khoan không",
+        "người học cơ điện mỏ làm gì với máy khoan"
+      ],
+      "direct_answer": "Có thể. Hồ sơ nghề hiện hành nêu người học kỹ thuật cơ điện mỏ hầm lò có thể lắp đặt, vận hành, bảo dưỡng và sửa chữa máy khoan. Phần việc cụ thể còn phụ thuộc nội dung đã học, loại thiết bị, vị trí làm việc và phân công; người mới không tự xử lý ngoài nhiệm vụ được giao.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-thi-sinh-sua-chua-co-dien-mao-khe-2026.webp",
+        "alt": "Thí sinh nghề sửa chữa cơ điện mỏ hầm lò thực hiện phần thi thực hành tại Than Mạo Khê",
+        "credit": "Ảnh: Vinacomin · thí sinh nghề sửa chữa cơ điện mỏ hầm lò thi thực hành tại Than Mạo Khê"
+      },
+      "intro": [
+        "Học cơ điện mỏ có phải sửa máy khoan không là câu hỏi dễ bị lẫn với việc người học khai thác mỏ sử dụng máy khoan để thực hiện một công đoạn sản xuất. Câu trả lời là người học cơ điện có thể được giao lắp đặt, vận hành, bảo dưỡng hoặc sửa chữa máy khoan, nhưng không mặc định ai tốt nghiệp cũng chuyên sửa mọi loại máy khoan.",
+        "Bài này tập trung vào ranh giới giữa người sử dụng thiết bị theo công đoạn và người làm công việc cơ điện đối với thiết bị. Nội dung vì vậy không trùng bài ngày 15/10 về người học khai thác mỏ có phải sử dụng máy khoan hay không, cũng không lặp bài ngày 23/10 về máy nén khí. Mục tiêu là giúp người đăng ký hiểu đúng vai trò, hỏi đúng phạm vi thực hành và không suy diễn quyền thao tác từ tên nghề."
+      ],
+      "key_points": [
+        [
+          "Máy khoan thuộc phạm vi nghề cơ điện",
+          "Nguồn chuẩn hiện hành nêu máy khoan trong nhóm thiết bị người làm cơ điện mỏ có thể lắp đặt, vận hành, bảo dưỡng và sửa chữa."
+        ],
+        [
+          "Sử dụng khác với sửa chữa",
+          "Người khai thác có thể dùng máy khoan cho công đoạn sản xuất; người cơ điện làm phần thiết bị theo chuyên môn và phân công."
+        ],
+        [
+          "Không phải mọi máy đều giống nhau",
+          "Loại máy, cấu hình, vị trí và yêu cầu kỹ thuật quyết định nội dung cần kiểm tra hoặc xử lý."
+        ],
+        [
+          "Người mới làm đúng phạm vi",
+          "Chỉ thao tác phần đã được đào tạo, hướng dẫn và giao nhiệm vụ; trường hợp vượt phạm vi phải báo người phụ trách."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học cơ điện mỏ có phải sửa máy khoan không?",
+          "paragraphs": [
+            "Có thể. Hồ sơ nghề hiện hành xác định kỹ thuật cơ điện mỏ hầm lò có nhiệm vụ lắp đặt, vận hành, bảo dưỡng và sửa chữa máy khoan, máy nén khí, thiết bị bốc xúc, vận tải cùng các thiết bị cơ - điện phục vụ sản xuất. Vì vậy, máy khoan nằm trong phạm vi nghề cơ điện mỏ chứ không chỉ liên quan đến người trực tiếp dùng máy để khoan.",
+            "Tuy nhiên, phạm vi nghề không đồng nghĩa với việc một người mới được tự xử lý mọi máy khoan. Công việc cụ thể còn tùy loại thiết bị tại vị trí, nội dung đã được học và thực hành, tình trạng thiết bị, tổ đội và nhiệm vụ trong ca. Có người được phân công kiểm tra hoặc phối hợp bảo dưỡng; người khác làm hệ thống điện, băng tải, chiếu sáng hoặc thiết bị khác.",
+            "Bài viết này không hướng dẫn tháo lắp hay sửa chữa máy. Khi thiết bị có biểu hiện khác thường, người lao động phải làm theo quy trình và báo đầu mối phụ trách thay vì tự thử xử lý. Cách hiểu đúng là máy khoan thuộc một trong nhiều nhóm thiết bị của nghề, còn quyền thao tác luôn đi cùng đào tạo, hướng dẫn và phân công rõ ràng."
+          ]
+        },
+        {
+          "heading": "Người khai thác sử dụng máy khoan và người cơ điện sửa máy khác nhau thế nào?",
+          "paragraphs": [
+            "Bài ngày 15/10 trả lời ý định của người chọn nghề khai thác: họ có thể phải sử dụng máy khoan điện, máy khoan khí ép hoặc thiết bị khai thác cơ giới để thực hiện công đoạn phá vỡ đất đá và than theo quy trình. Trọng tâm ở đó là sử dụng thiết bị như một phần của công việc khai thác.",
+            "Với nghề cơ điện, trọng tâm là tình trạng và khả năng làm việc của thiết bị: lắp đặt, vận hành trong phạm vi được giao, bảo dưỡng và sửa chữa. Hai nhóm công việc có thể cùng xuất hiện quanh một máy khoan nhưng mục tiêu khác nhau. Người sử dụng máy không tự động là người được giao sửa máy; ngược lại, người cơ điện không mặc định trực tiếp thực hiện công đoạn khoan sản xuất.",
+            "Sự phân biệt này giúp tránh tự cạnh tranh giữa hai câu hỏi tìm kiếm. Người đang cân nhắc nghề khai thác cần biết mình có dùng máy khoan hay không. Người cân nhắc cơ điện cần biết mình có làm với phần cơ khí, điện và bảo dưỡng của máy hay không. Nếu chưa rõ, nên hỏi riêng về nội dung học, loại thiết bị thực hành và cách phân công người mới."
+          ]
+        },
+        {
+          "heading": "Bảo dưỡng và sửa máy khoan không phải một việc duy nhất",
+          "paragraphs": [
+            "Lắp đặt, vận hành, bảo dưỡng và sửa chữa là bốn nhóm việc có liên quan nhưng không thể dùng thay cho nhau. Lắp đặt gắn với việc đưa thiết bị hoặc bộ phận vào hệ thống theo yêu cầu kỹ thuật. Vận hành là làm việc với thiết bị trong phạm vi được giao. Bảo dưỡng nhằm duy trì trạng thái làm việc theo kế hoạch, còn sửa chữa là xử lý hạng mục có vấn đề trong giới hạn chuyên môn và nhiệm vụ.",
+            "Tên gọi “máy khoan” cũng chưa đủ để xác định một thao tác cụ thể. Nguồn chuẩn liệt kê máy khoan điện, máy khoan khí ép và thiết bị cơ giới trong các nghề mỏ. Mỗi loại có cấu hình và bối cảnh sử dụng khác nhau. Vì vậy, người đăng ký không nên suy từ kinh nghiệm sửa một máy bên ngoài sang quyền xử lý tất cả thiết bị tại nơi làm việc.",
+            "Trong thực tế tuyển sinh, câu hỏi có ích không phải chỉ là “có sửa máy khoan không”, mà là “được học và thực hành phần nào, với loại máy nào, và người mới được giao đến đâu”. Ba câu hỏi này giúp người lao động đánh giá mức phù hợp tốt hơn, đồng thời tránh kỳ vọng rằng học xong 10 tháng là có thể tự quyết định mọi phương án sửa chữa."
+          ]
+        },
+        {
+          "heading": "Học cơ điện mỏ 10 tháng chuẩn bị gì cho công việc với máy khoan?",
+          "paragraphs": [
+            "Thời gian đào tạo hiện hành của nghề kỹ thuật cơ điện mỏ hầm lò là 10 tháng. Phạm vi nghề không chỉ có máy khoan mà còn có máy nén khí, thiết bị bốc xúc, vận tải, hệ thống điện, chiếu sáng, thông tin liên lạc, điều khiển và các hệ thống phụ trợ. Người học vì thế cần chuẩn bị cho một chương trình rộng hơn việc sửa một loại máy.",
+            "Khi trao đổi trước đăng ký, người lao động nên nói rõ mình đang quan tâm phần cơ khí, phần điện hay cả hai; đã từng dùng hoặc sửa loại thiết bị nào; và muốn biết phần thực hành của khóa học. Kinh nghiệm sẵn có là thông tin để tư vấn, không thay thế chương trình đào tạo hay hướng dẫn tại đơn vị tiếp nhận.",
+            "Ảnh riêng của bài được xác minh từ bài chính thức Vinacomin về kỳ thi chọn thợ giỏi năm 2026 tại Than Mạo Khê. Chú thích của nguồn xác định các thí sinh nghề kỹ thuật sửa chữa cơ điện mỏ hầm lò đang thực hiện phần thi. Hình ảnh minh họa tính thực hành của nghề cơ điện, không phải ảnh máy khoan và không phải hướng dẫn một quy trình sửa chữa cụ thể."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi chọn nghề cơ điện mỏ",
+          "items": [
+            "Trong chương trình 10 tháng, học sinh được học và thực hành với những loại máy khoan nào?",
+            "Phần cơ khí và phần điện của thiết bị được học ở phạm vi nào?",
+            "Người mới thường phối hợp kiểm tra, bảo dưỡng hay sửa chữa dưới sự hướng dẫn ra sao?",
+            "Khi máy có dấu hiệu khác thường, người lao động phải dừng ở bước nào và báo cho ai?",
+            "Nếu đã có kinh nghiệm dùng hoặc sửa máy khoan bên ngoài, nội dung nào vẫn phải học lại?"
+          ]
+        }
+      ],
+      "takeaway_title": "Máy khoan thuộc phạm vi nghề cơ điện, nhưng sửa chữa phải theo đào tạo và phân công",
+      "takeaway": "Người học kỹ thuật cơ điện mỏ hầm lò có thể được giao lắp đặt, vận hành, bảo dưỡng và sửa chữa máy khoan cùng nhiều thiết bị cơ - điện khác. Đây là ý định khác với người học khai thác sử dụng máy khoan cho công đoạn sản xuất. Người mới chỉ làm phần đã được đào tạo, hướng dẫn và giao nhiệm vụ; trước khi đăng ký nên hỏi rõ loại thiết bị, phạm vi thực hành và cách bố trí công việc.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò có nhiệm vụ lắp đặt, vận hành, bảo dưỡng và sửa chữa máy khoan, máy nén khí, thiết bị bốc xúc, vận tải và các thiết bị cơ - điện; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Công ty than Mạo Khê sôi nổi kỳ thi chọn thợ giỏi năm 2026”, chú thích thí sinh nghề kỹ thuật sửa chữa cơ điện mỏ hầm lò thực hiện phần thi.",
+      "faqs": [
+        [
+          "Học cơ điện mỏ có chắc chắn được phân công sửa máy khoan không?",
+          "Không. Máy khoan thuộc phạm vi nghề, nhưng thiết bị và nhiệm vụ cụ thể phụ thuộc kết quả đào tạo, vị trí làm việc và phân công của đơn vị."
+        ],
+        [
+          "Người khai thác dùng máy khoan có phải là người sửa máy không?",
+          "Không mặc định. Sử dụng máy cho công đoạn khai thác và bảo dưỡng, sửa chữa thiết bị là hai phạm vi công việc khác nhau, dù cùng liên quan đến máy khoan."
+        ],
+        [
+          "Nghề cơ điện mỏ ngoài máy khoan còn làm thiết bị nào?",
+          "Nguồn chuẩn còn nêu máy nén khí, thiết bị bốc xúc, vận tải, hệ thống điện, chiếu sáng, thông tin liên lạc, điều khiển và các thiết bị cơ - điện phục vụ sản xuất."
+        ],
+        [
+          "Biết sửa máy khoan bên ngoài có được bỏ qua đào tạo cơ điện mỏ không?",
+          "Không mặc định. Kinh nghiệm sẵn có không thay thế chương trình đào tạo, hướng dẫn theo thiết bị và phân công tại đơn vị tiếp nhận."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ phạm vi nghề kỹ thuật cơ điện mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/hoc-nghe-khai-thac-mo-ham-lo-co-phai-su-dung-may-khoan-khong/",
+          "Phân biệt việc người học khai thác sử dụng máy khoan"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
     }
   ],
   "canonical_facts_version": 8,
   "canonical_facts_url": "https://thaylinhtuyenthomo.vn/data/recruitment-facts-2026.json",
   "canonical_facts_confirmed_at": "2026-08-23T11:34:00+07:00"
 }
+
