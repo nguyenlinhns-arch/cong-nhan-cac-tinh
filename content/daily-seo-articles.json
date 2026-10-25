@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-24",
+  "updated_at": "2026-10-25",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -3817,15 +3817,7 @@
         {
           "heading": "Khác gì với chưa có bằng cấp 3 hoặc không đọc viết thành thạo?",
           "paragraphs": [
-            "Bài chưa có bằng cấp 3 trên website dành cho người không có bằng THPT nhưng có thể đã học hết THCS hoặc đang thiếu giấy chứng nhận. Câu hỏi chỉ học hết tiểu học hẹp hơn vì trình độ học cao nhất thấp hơn và cần làm rõ hệ đào tạo phù hợp. Hai trường hợp không nên gộp thành một, bởi cùng nói không có bằng cấp 3 nhưng nền tảng học tập và giấy tờ đang giữ có thể rất khác nhau.",
-            "Bài không đọc viết thành thạo lại xử lý năng lực thực tế. Có người chỉ học hết tiểu học nhưng vẫn đọc và viết thành thạo; cũng có người từng học cao hơn nhưng hiện gặp khó khăn khi đọc biểu mẫu, ghi thông tin hoặc hiểu hướng dẫn. Trình độ học vấn và khả năng đọc viết liên quan nhau nhưng không phải một dữ kiện duy nhất, nên cả hai đều cần được khai đúng.",
-            "Tách ba câu hỏi giúp tránh một kết luận quá rộng. Người chỉ thiếu bằng THPT không nên bị hiểu là chỉ học hết lớp 5; người học hết tiểu học cũng không nên được tự động coi là không biết đọc viết. Việc tư vấn đúng bắt đầu từ lớp học cao nhất, giấy tờ hiện có và khả năng thực tế của chính người đăng ký, sau đó mới đối chiếu với hệ đào tạo đang tiếp nhận."
-          ]
-        },
-        {
-          "heading": "Người học hết lớp 5 cần gửi thông tin gì để được kiểm tra?",
-          "paragraphs": [
-            "Ở bước đầu, hãy gửi họ tên, năm sinh, nơi đang ở, chiều cao, cân nặng, tình trạng sức khỏe đã biết, lớp học cao nhất và giấy tờ học tập hiện có. Phần trình độ nên viết thẳng như học hết lớp 5, không có bằng THCS, hoặc đã thất lạc giấy tờ nếu đúng thực tế. Cách ghi cụ thể giúp người phụ trách biết cần hỏi thêm điều gì và tránh xếp nhầm trường hợp.",
+            "Bài chưa có bằng cấp 3 trên website dành cho người không có bằng THPT nhưng có thể đã học hết THCS hoặc đang thiếu giấy chứng nhận. Câu hỏi chỉ học hết tiểu học hẹp hơn vì trình độ học cao nhất thấp hơn và cần làm rõ hệ đào tạo phù hợp. Hai trường hợp không nên gộp thành một, bởi cùng nói không có bằng cấp 3 nhưng nền tảng học t���vo+^����םn có. Phần trình độ nên viết thẳng như học hết lớp 5, không có bằng THCS, hoặc đã thất lạc giấy tờ nếu đúng thực tế. Cách ghi cụ thể giúp người phụ trách biết cần hỏi thêm điều gì và tránh xếp nhầm trường hợp.",
             "Người đăng ký cũng cần tự đánh giá trung thực việc đọc và viết. Có thể nói mình đọc được thông báo, tự điền thông tin cơ bản và viết được nội dung cần thiết; không cần làm một bài kiểm tra tự phát qua Zalo nếu chưa được yêu cầu. Nếu đang gặp khó khăn, hãy nói rõ thay vì nhờ người khác trả lời hộ, vì năng lực này liên quan việc học quy trình, đọc hướng dẫn và thực hiện yêu cầu an toàn.",
             "Bước đăng ký ban đầu chưa yêu cầu gửi ảnh giấy tờ. Không nên gửi căn cước, giấy khai sinh, học bạ hoặc giấy tờ có dữ liệu cá nhân cho tài khoản lạ chỉ để được hứa giữ chỗ. Sau khi trường hợp được đối chiếu và có lịch rõ, người lao động mới làm theo danh sách hồ sơ được hướng dẫn, đồng thời tự mang giấy tờ cần thiết khi đến làm thủ tục."
           ]
@@ -7014,6 +7006,127 @@
         [
           "/giai-dap-nghe-mo/hoc-nghe-khai-thac-mo-ham-lo-co-phai-su-dung-may-khoan-khong/",
           "Phân biệt việc người học khai thác sử dụng máy khoan"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-10-25",
+      "slug": "hoc-co-dien-mo-co-phai-sua-may-bom-thoat-nuoc-khong",
+      "title": "Học cơ điện mỏ có phải sửa máy bơm thoát nước không?",
+      "short_title": "Cơ điện mỏ có sửa máy bơm thoát nước",
+      "meta": "Học cơ điện mỏ có phải sửa máy bơm thoát nước không? Hiểu đúng việc vận hành, bảo dưỡng, sửa chữa và phạm vi người mới được giao.",
+      "eyebrow": "MÁY BƠM THOÁT NƯỚC VÀ PHẠM VI NGHỀ CƠ ĐIỆN MỎ",
+      "primary_query": "học cơ điện mỏ có phải sửa máy bơm thoát nước không",
+      "query_variants": [
+        "thợ cơ điện mỏ có sửa máy bơm nước không",
+        "học nghề cơ điện mỏ có trực trạm bơm không",
+        "người học cơ điện mỏ làm gì ở trạm bơm"
+      ],
+      "direct_answer": "Có thể được học và được phân công làm việc với máy bơm thoát nước, vì đây là hệ thống phụ trợ có thiết bị cơ khí, điện và điều khiển. Tuy nhiên, không phải mọi người học cơ điện đều trực hoặc tự sửa máy bơm; nhiệm vụ cụ thể phụ thuộc đào tạo, vị trí và phân công của đơn vị.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-hoc-vien-tham-quan-tram-bom-quang-hanh.webp",
+        "alt": "Đoàn Trường Cao đẳng TKV mặc bảo hộ khảo sát thiết bị tại khu vực trạm bơm hầm lò Than Quang Hanh",
+        "credit": "Ảnh: Vinacomin · đoàn Trường Cao đẳng TKV khảo sát khu vực thiết bị hầm lò tại Than Quang Hanh"
+      },
+      "intro": [
+        "Học cơ điện mỏ có phải sửa máy bơm thoát nước không là câu hỏi thực tế của người muốn biết nghề này có chỉ làm điện, máy khoan hoặc băng tải. Câu trả lời là người học có thể làm việc với máy bơm và trạm bơm trong phạm vi hệ thống phụ trợ của mỏ, nhưng không mặc định ai tốt nghiệp cũng được bố trí trực trạm hoặc tự xử lý mọi hư hỏng.",
+        "Bài này tập trung riêng vào ranh giới giữa theo dõi vận hành, bảo dưỡng và sửa chữa máy bơm thoát nước. Nội dung không trùng các bài đã có về máy nén khí, máy khoan, băng tải, chiếu sáng hay đấu nối dây điện. Mục tiêu là giúp người đăng ký hỏi đúng phần thực hành, hiểu đúng trách nhiệm của người mới và tránh suy diễn quyền thao tác chỉ từ tên nghề."
+      ],
+      "key_points": [
+        [
+          "Có thể làm việc với trạm bơm",
+          "Phạm vi nghề cơ điện gồm thiết bị cơ - điện và hệ thống phụ trợ; nguồn Vinacomin cũng ghi nhận học viên khảo sát trạm bơm trong hầm lò."
+        ],
+        [
+          "Trực máy khác với sửa máy",
+          "Theo dõi tình trạng vận hành, bảo dưỡng theo kế hoạch và sửa chữa sự cố là những nhóm việc khác nhau."
+        ],
+        [
+          "Không mặc định cho mọi học viên",
+          "Vị trí thực tế phụ thuộc thiết bị tại đơn vị, nội dung đã học, kết quả thực hành và phân công trong ca."
+        ],
+        [
+          "Người mới không tự xử lý",
+          "Khi thiết bị có biểu hiện khác thường, người lao động làm đúng quy trình, dừng ở phạm vi được giao và báo người phụ trách."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học cơ điện mỏ có phải sửa máy bơm thoát nước không?",
+          "paragraphs": [
+            "Có thể, nhưng cần hiểu theo phạm vi nghề thay vì hiểu thành một vị trí cố định. Hồ sơ nghề hiện hành mô tả kỹ thuật cơ điện mỏ hầm lò là công việc lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống cơ khí, điện cùng các hệ thống phụ trợ phục vụ sản xuất. Máy bơm thoát nước là thiết bị có phần cơ, điện và điều khiển nên có thể xuất hiện trong quá trình học hoặc công việc được giao.",
+            "Điều đó không có nghĩa mọi người học cơ điện đều trở thành người trực trạm bơm. Một người có thể được bố trí theo dõi thiết bị, kiểm tra tình trạng, phối hợp bảo dưỡng hoặc tham gia sửa chữa trong phạm vi chuyên môn; người khác làm hệ thống điện, băng tải, chiếu sáng, thông tin liên lạc, máy khoan hoặc máy nén khí. Vị trí cụ thể phải theo nhu cầu và phân công của đơn vị tiếp nhận.",
+            "Bài viết không hướng dẫn tháo lắp, đấu điện hay xử lý sự cố máy bơm. Đây là thiết bị phục vụ hoạt động của mỏ nên quyền thao tác luôn đi cùng quy trình, đào tạo và trách nhiệm rõ ràng. Người mới chỉ thực hiện phần đã được hướng dẫn; khi thấy tiếng, rung, nhiệt độ, điện hoặc trạng thái vận hành khác thường thì phải báo người phụ trách theo quy định tại nơi làm việc."
+          ]
+        },
+        {
+          "heading": "Trực máy bơm, bảo dưỡng và sửa chữa khác nhau thế nào?",
+          "paragraphs": [
+            "Trực hoặc theo dõi vận hành tập trung vào việc quan sát trạng thái thiết bị và thực hiện nhiệm vụ trong ca theo hướng dẫn. Bảo dưỡng là công việc có kế hoạch nhằm duy trì khả năng làm việc của thiết bị. Sửa chữa là xử lý hạng mục có vấn đề trong giới hạn chuyên môn và nhiệm vụ được giao. Ba nhóm việc liên quan với nhau nhưng không thể dùng thay thế cho nhau.",
+            "Người đăng ký thường hỏi “có phải sửa máy bơm không” vì muốn biết công việc có nặng về cơ khí hay điện. Thực tế một trạm bơm có thể liên quan nhiều phần việc và nhiều người phối hợp. Tên nghề cơ điện cho thấy người học cần nền tảng cả cơ khí lẫn điện, nhưng không đủ để kết luận một người sẽ phụ trách toàn bộ thiết bị hoặc tự quyết định cách xử lý.",
+            "Khi tư vấn tuyển sinh, cách hỏi hữu ích hơn là: trong chương trình 10 tháng có được quan sát hoặc thực hành với máy bơm không, người mới thường được giao phần nào, và phần việc nào phải có người có trách nhiệm hướng dẫn. Ba câu hỏi này giúp người lao động hình dung công việc rõ hơn mà không biến một mô tả nghề rộng thành lời hứa về vị trí cụ thể."
+          ]
+        },
+        {
+          "heading": "Vì sao máy bơm thoát nước là một hệ thống phụ trợ cần hiểu rõ?",
+          "paragraphs": [
+            "Nguồn chính thức Vinacomin về chương trình gắn kết đào tạo với sản xuất tại Than Quang Hanh cho biết đoàn Trường Cao đẳng TKV đã khảo sát các khu vực hầm lò gồm trạm bơm, trạm điện, quang lật và các tuyến đường lò. Chi tiết này cho thấy người học và giáo viên cần quan sát hệ thống thực tế, không chỉ học một thiết bị tách rời trong lớp.",
+            "Trạm bơm được đặt trong một dây chuyền có nguồn điện, đường ống, thiết bị điều khiển và quy trình vận hành. Vì vậy, người học cơ điện cần hiểu quan hệ giữa thiết bị với hệ thống, biết đọc nhiệm vụ trong ca và phối hợp với người phụ trách. Việc có mặt tại khu vực trạm bơm không đồng nghĩa được tự mở máy, dừng máy hoặc sửa một bộ phận khi chưa được giao.",
+            "Ảnh riêng của bài ghi lại đoàn mặc đầy đủ bảo hộ đứng bên hệ thống thiết bị và đường ống trong hầm lò Than Quang Hanh. Hình ảnh dùng để minh họa bối cảnh học tập, khảo sát thiết bị thực tế; không phải ảnh hướng dẫn thao tác và cũng không khẳng định tất cả học viên trong ảnh được phân công vận hành hay sửa chữa trạm bơm."
+          ]
+        },
+        {
+          "heading": "Người mới được làm đến đâu khi thiết bị có dấu hiệu bất thường?",
+          "paragraphs": [
+            "Giới hạn quan trọng nhất là phạm vi đã được đào tạo và giao việc. Người mới có thể được yêu cầu quan sát, ghi nhận, kiểm tra theo danh mục hoặc phối hợp cùng người có kinh nghiệm. Nếu tình trạng vượt nội dung đã được hướng dẫn, bước đúng là báo cáo và chờ phân công, không tự thử một phương án chỉ vì từng sửa máy bơm dân dụng hoặc thiết bị bên ngoài mỏ.",
+            "Kinh nghiệm cơ khí, điện hoặc sửa máy có thể giúp người học tiếp cận nhanh hơn, nhưng không thay thế yêu cầu của thiết bị tại nơi làm việc. Môi trường, cấu hình hệ thống, trách nhiệm trong ca và quy trình của đơn vị có thể khác với trải nghiệm trước đó. Người lao động cần coi việc hỏi lại khi chưa rõ là một phần của kỷ luật nghề, không phải dấu hiệu yếu tay nghề.",
+            "Nếu mục tiêu của bạn là theo hướng máy bơm, hãy nói rõ điều đó khi được tư vấn và trong quá trình học. Hỏi về nội dung cơ khí, điện, đo kiểm, điều khiển và thời lượng thực hành sẽ cho thông tin hữu ích hơn câu hỏi “ra trường có chắc chắn sửa máy bơm không”. Không ai nên hứa trước một vị trí khi đơn vị tiếp nhận và phân công cụ thể chưa được xác nhận."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi chọn cơ điện mỏ vì quan tâm máy bơm",
+          "items": [
+            "Trong chương trình 10 tháng, học viên được học hoặc quan sát hệ thống máy bơm ở phạm vi nào?",
+            "Phần cơ khí, phần điện và phần điều khiển của thiết bị được phân biệt ra sao?",
+            "Người mới thường theo dõi vận hành, bảo dưỡng hay phối hợp sửa chữa dưới sự hướng dẫn như thế nào?",
+            "Khi thiết bị có dấu hiệu khác thường, người lao động phải dừng ở bước nào và báo cho ai?",
+            "Kinh nghiệm sửa máy bơm bên ngoài có giá trị tham khảo gì và nội dung nào vẫn phải học lại?"
+          ]
+        }
+      ],
+      "takeaway_title": "Máy bơm có thể thuộc phạm vi công việc, nhưng nhiệm vụ phải theo đào tạo và phân công",
+      "takeaway": "Người học kỹ thuật cơ điện mỏ hầm lò có thể được học và làm việc với máy bơm thoát nước trong nhóm thiết bị cơ - điện, điều khiển và hệ thống phụ trợ. Điều đó không bảo đảm mọi người đều trực trạm hoặc tự sửa máy bơm. Trước khi đăng ký, nên hỏi rõ phạm vi thực hành; khi làm việc, chỉ thực hiện phần đã được hướng dẫn và giao nhiệm vụ, đồng thời báo người phụ trách khi tình trạng vượt giới hạn xử lý.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống cơ khí, điện cùng thiết bị và hệ thống phụ trợ; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh từ bài Vinacomin “Than Quang Hanh và Trường Cao đẳng TKV: Tăng cường gắn kết đào tạo với sản xuất thực tế”, trong đó đoàn khảo sát trạm bơm, trạm điện, quang lật và các tuyến đường lò.",
+      "faqs": [
+        [
+          "Học cơ điện mỏ có chắc chắn được phân công trực trạm bơm không?",
+          "Không. Trạm bơm thuộc nhóm hệ thống có thể liên quan tới nghề, nhưng vị trí cụ thể phụ thuộc đào tạo, nhu cầu và phân công của đơn vị tiếp nhận."
+        ],
+        [
+          "Trực máy bơm có giống sửa máy bơm không?",
+          "Không. Theo dõi vận hành, bảo dưỡng theo kế hoạch và sửa chữa là các nhóm nhiệm vụ khác nhau, dù cùng liên quan đến một hệ thống."
+        ],
+        [
+          "Biết sửa máy bơm dân dụng có được tự sửa máy bơm trong mỏ không?",
+          "Không. Kinh nghiệm cũ không thay thế đào tạo, quy trình thiết bị và phân công tại nơi làm việc; người mới không tự xử lý ngoài nhiệm vụ được giao."
+        ],
+        [
+          "Ngoài máy bơm, người học cơ điện mỏ còn làm với thiết bị nào?",
+          "Nguồn chuẩn còn nêu máy khoan, máy nén khí, thiết bị bốc xúc, vận tải, hệ thống điện, chiếu sáng, thông tin liên lạc, điều khiển và hệ thống cơ giới hóa."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ phạm vi nghề kỹ thuật cơ điện mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/hoc-co-dien-mo-co-chi-sua-dien-khong/",
+          "Cơ điện mỏ có chỉ sửa điện không?"
         ],
         [
           "/kiem-tra-dieu-kien/",
