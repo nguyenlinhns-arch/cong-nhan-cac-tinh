@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-24T07:41:00+07:00",
+  "updated_at": "2026-10-25T08:16:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -407,6 +407,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2025/T11/03/QH2.jpg",
       "provider": "Vinacomin",
       "description": "Đoàn Trường Cao đẳng TKV mặc bảo hộ xanh, đội mũ khảo sát hệ thống thiết bị và đường ống tại khu vực hầm lò Than Quang Hanh"
+    },
+    {
+      "asset": "vinacomin-tho-lo-gia-co-luoi-thep-duong-lo.webp",
+      "source_article_url": "https://vinacomin.vn/vi/news/slug/trai-nghiem-mot-ca-lam-viec-voi-cong-nghe-dao-lo-su-dung-may-xuc-zwy-60-o-than-nam-mau",
+      "original_image_url": "https://vinacomin.vn/Share/Image/2024/06/03/qk12-1442288591.jpg",
+      "provider": "Vinacomin",
+      "description": "Thợ lò Than Nam Mẫu mặc bảo hộ, đội mũ làm việc cạnh lưới thép và kết cấu chống giữ trong đường lò"
     }
   ]
 }

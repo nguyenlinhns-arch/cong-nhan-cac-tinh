@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-25",
+  "updated_at": "2026-10-26",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -3817,7 +3817,7 @@
         {
           "heading": "Khác gì với chưa có bằng cấp 3 hoặc không đọc viết thành thạo?",
           "paragraphs": [
-            "Bài chưa có bằng cấp 3 trên website dành cho người không có bằng THPT nhưng có thể đã học hết THCS hoặc đang thiếu giấy chứng nhận. Câu hỏi chỉ học hết tiểu học hẹp hơn vì trình độ học cao nhất thấp hơn và cần làm rõ hệ đào tạo phù hợp. Hai trường hợp không nên gộp thành một, bởi cùng nói không có bằng cấp 3 nhưng nền tảng học t���vo+^����םn có. Phần trình độ nên viết thẳng như học hết lớp 5, không có bằng THCS, hoặc đã thất lạc giấy tờ nếu đúng thực tế. Cách ghi cụ thể giúp người phụ trách biết cần hỏi thêm điều gì và tránh xếp nhầm trường hợp.",
+            "Bài chưa có bằng cấp 3 trên website dành cho người không có bằng THPT nhưng có thể đã học hết THCS hoặc đang thiếu giấy chứng nhận. Câu hỏi chỉ học hết tiểu học hẹp hơn vì trình độ học cao nhất thấp hơn và cần làm rõ hệ đào tạo phù hợp. Hai trường hợp không nên gộp thành một, bởi cùng nói không có bằng cấp 3 nhưng nền tảng học tập và giấy tờ đang giữ có thể rất khác nhau. Phần trình độ nên viết thẳng như học hết lớp 5, không có bằng THCS, hoặc đã thất lạc giấy tờ nếu đúng thực tế. Cách ghi cụ thể giúp người phụ trách biết cần hỏi thêm điều gì và tránh xếp nhầm trường hợp.",
             "Người đăng ký cũng cần tự đánh giá trung thực việc đọc và viết. Có thể nói mình đọc được thông báo, tự điền thông tin cơ bản và viết được nội dung cần thiết; không cần làm một bài kiểm tra tự phát qua Zalo nếu chưa được yêu cầu. Nếu đang gặp khó khăn, hãy nói rõ thay vì nhờ người khác trả lời hộ, vì năng lực này liên quan việc học quy trình, đọc hướng dẫn và thực hiện yêu cầu an toàn.",
             "Bước đăng ký ban đầu chưa yêu cầu gửi ảnh giấy tờ. Không nên gửi căn cước, giấy khai sinh, học bạ hoặc giấy tờ có dữ liệu cá nhân cho tài khoản lạ chỉ để được hứa giữ chỗ. Sau khi trường hợp được đối chiếu và có lịch rõ, người lao động mới làm theo danh sách hồ sơ được hướng dẫn, đồng thời tự mang giấy tờ cần thiết khi đến làm thủ tục."
           ]
@@ -7127,6 +7127,127 @@
         [
           "/giai-dap-nghe-mo/hoc-co-dien-mo-co-chi-sua-dien-khong/",
           "Cơ điện mỏ có chỉ sửa điện không?"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-10-26",
+      "slug": "hoc-nghe-xay-dung-mo-ham-lo-co-phai-lap-luoi-thep-khong",
+      "title": "Học nghề xây dựng mỏ hầm lò có phải lắp lưới thép không?",
+      "short_title": "Xây dựng mỏ có phải lắp lưới thép",
+      "meta": "Học nghề xây dựng mỏ hầm lò có phải lắp lưới thép không? Hiểu vai trò của lưới trong một số phương án gia cố và giới hạn việc người mới được giao.",
+      "eyebrow": "LƯỚI THÉP VÀ HỆ THỐNG GIA CỐ ĐƯỜNG LÒ",
+      "primary_query": "học nghề xây dựng mỏ hầm lò có phải lắp lưới thép không",
+      "query_variants": [
+        "thợ xây dựng mỏ có lắp lưới thép không",
+        "lưới thép trong đường lò dùng để làm gì",
+        "học xây dựng mỏ có làm lưới chống giữ không"
+      ],
+      "direct_answer": "Có thể được học và tham gia công việc với lưới thép khi lưới là một phần của phương án chống giữ hoặc gia cố đường lò. Tuy nhiên, không phải đường lò nào cũng dùng cùng cấu hình và không phải mọi người mới đều tự lắp lưới; việc cụ thể phụ thuộc thiết kế, đào tạo và phân công của tổ đội.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-gia-co-luoi-thep-duong-lo.webp",
+        "alt": "Thợ lò Than Nam Mẫu mặc bảo hộ làm việc cạnh lưới thép và kết cấu chống giữ trong đường lò",
+        "credit": "Ảnh: Vinacomin · thợ lò Than Nam Mẫu làm việc tại đường lò có lưới thép gia cố"
+      },
+      "intro": [
+        "Học nghề xây dựng mỏ hầm lò có phải lắp lưới thép không là câu hỏi cụ thể của người đã thấy ảnh đường lò có các ô thép bao quanh nhưng chưa biết đó có phải việc chính của nghề. Câu trả lời là người học có thể gặp và tham gia công việc này khi lưới nằm trong phương án chống giữ, gia cố được áp dụng tại vị trí làm việc. Lưới không phải một hệ thống độc lập và cũng không xuất hiện giống nhau ở mọi đường lò.",
+        "Bài này tập trung riêng vào vai trò của lưới thép và ranh giới công việc của người mới. Nội dung không lặp bài ngày 18/10 về lắp vì chống: bài trước giải thích cả hệ thống vì chống và cách phân biệt với giàn chống lò chợ, còn bài này trả lời liệu người học có trực tiếp làm với lưới, lưới liên hệ thế nào với vì neo hoặc kết cấu chống giữ, và vì sao không thể suy ra nhiệm vụ chỉ từ một bức ảnh."
+      ],
+      "key_points": [
+        [
+          "Có thể gặp trong công việc gia cố",
+          "Lưới thép có thể là một thành phần tại vị trí cần chống giữ, phối hợp với kết cấu và vật liệu khác theo phương án kỹ thuật."
+        ],
+        [
+          "Lưới không thay cho cả hệ thống",
+          "Nói lắp lưới không đồng nghĩa đã hoàn thành vì chống, vì neo hoặc toàn bộ công việc củng cố đường lò."
+        ],
+        [
+          "Không áp dụng giống nhau ở mọi nơi",
+          "Cấu hình thực tế phụ thuộc thiết kế, điều kiện địa chất, tình trạng đường lò và ca lệnh tại vị trí làm việc."
+        ],
+        [
+          "Người mới làm theo phân công",
+          "Chỉ thực hiện phần đã được đào tạo, hướng dẫn và giao nhiệm vụ; không tự chọn vật liệu hay thay đổi cách lắp đặt."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học nghề xây dựng mỏ hầm lò có phải lắp lưới thép không?",
+          "paragraphs": [
+            "Có thể, vì nghề kỹ thuật xây dựng mỏ hầm lò thực hiện đào, chống giữ, gia cố và duy trì đường lò. Khi phương án tại vị trí có sử dụng lưới thép, người lao động trong tổ đội có thể được giao vận chuyển, chuẩn bị, giữ, định vị hoặc phối hợp lắp đặt trong giới hạn nhiệm vụ. Cách nói đúng là có thể làm với lưới trong một số hệ thống gia cố, không phải học nghề này thì mọi ca đều lắp lưới.",
+            "Nguồn chuẩn tuyển sinh hiện hành nêu các hệ thống chống giữ bằng vì chống kim loại, vì neo hoặc bê tông cốt thép; đồng thời nêu công việc củng cố và sửa chữa vị trí cần khắc phục. Nguồn này không quy định lưới là nhiệm vụ riêng bắt buộc của mọi người. Vì thế bài viết không biến một chi tiết nhìn thấy trong ảnh thành cam kết về chương trình học, vị trí nhận việc hay tần suất công việc.",
+            "Người đăng ký nên phân biệt giữa việc được học về nguyên lý, được quan sát tại hiện trường, được thực hành có hướng dẫn và được phân công làm trong ca. Bốn mức này không giống nhau. Việc một học viên đã xem hoặc hỗ trợ một công đoạn không có nghĩa người đó được tự tổ chức thi công, chọn cấu hình hay xử lý vị trí bất thường."
+          ]
+        },
+        {
+          "heading": "Lưới thép khác gì với vì chống và vì neo trong đường lò?",
+          "paragraphs": [
+            "Lưới thép nên được hiểu là một thành phần có thể phối hợp với hệ thống chống giữ, không phải tên gọi thay thế cho toàn bộ vì chống. Vì chống kim loại tạo kết cấu chống giữ theo phương án đã thiết kế. Vì neo liên kết, gia cố khối đất đá theo yêu cầu kỹ thuật. Lưới có thể góp phần giữ bề mặt hoặc phối hợp với các bộ phận khác, nhưng vai trò cụ thể phải căn cứ phương án của vị trí, không thể kết luận chỉ bằng cách nhìn hình dạng các ô thép.",
+            "Đây là điểm khác với câu hỏi “có phải lắp vì chống không”. Lắp vì chống nói tới một nhóm nhiệm vụ cốt lõi của nghề xây dựng mỏ. Hỏi về lưới thép là hỏi sâu hơn về một vật liệu hoặc bộ phận có thể xuất hiện trong một số cấu hình gia cố. Hai ý định tìm kiếm có liên quan nhưng người lao động cần câu trả lời khác nhau để tránh nghĩ lưới, vì kim loại, vì neo và bê tông cốt thép đều là một thứ.",
+            "Trong thực tế tổ đội, các công đoạn còn liên quan đến vận chuyển vật tư, chuẩn bị mặt bằng, phối hợp thiết bị và kiểm tra theo ca lệnh. Một người chỉ được giao phần phù hợp với đào tạo và vị trí. Bài viết không hướng dẫn khoảng cách, cách liên kết, trình tự lắp hay thông số kỹ thuật; những nội dung đó phải theo thiết kế, quy trình và người có trách nhiệm tại đơn vị."
+          ]
+        },
+        {
+          "heading": "Vì sao không phải đường lò nào cũng dùng lưới giống nhau?",
+          "paragraphs": [
+            "Đường lò không phải một không gian đồng nhất. Vị trí, mục đích sử dụng, điều kiện đất đá, hiện trạng và yêu cầu chống giữ có thể khác nhau. Do đó, việc có lưới hay không, lưới phối hợp với kết cấu nào và tổ đội thực hiện công đoạn nào phải đi theo hồ sơ kỹ thuật và ca lệnh. Người mới không nên lấy một hình ảnh trên mạng làm mẫu mặc định cho tất cả nơi làm việc.",
+            "Ảnh riêng của bài được xác minh từ bài chính thức Vinacomin về một ca làm việc với công nghệ đào lò sử dụng máy xúc ZWY-60 tại Than Nam Mẫu. Trong ảnh có một thợ lò mặc bảo hộ làm việc cạnh hệ lưới thép và kết cấu chống giữ. Hình ảnh giúp người đọc nhận diện bối cảnh thực tế, nhưng không phải sơ đồ kỹ thuật và không chứng minh người trong ảnh đang thực hiện toàn bộ quy trình lắp lưới.",
+            "Cách đọc ảnh đúng là nhận biết lưới có thể xuất hiện trong đường lò và công việc diễn ra trong môi trường tổ đội, có bảo hộ và kết cấu hỗ trợ. Cách đọc sai là đoán vật liệu, kích thước, phương pháp lắp hoặc cho rằng mọi học viên nghề xây dựng mỏ sẽ làm y hệt. Phần việc cụ thể chỉ được xác nhận trong đào tạo và khi đơn vị giao nhiệm vụ."
+          ]
+        },
+        {
+          "heading": "Người mới có thể được giao phần nào khi làm với lưới thép?",
+          "paragraphs": [
+            "Người mới có thể bắt đầu từ việc nhận biết vật tư, chuẩn bị theo phân công, phối hợp vận chuyển hoặc hỗ trợ công đoạn dưới sự hướng dẫn. Khi đã được đào tạo và đánh giá phù hợp, phạm vi có thể thay đổi theo vị trí việc làm. Không có cơ sở để hứa trước rằng một người chắc chắn chỉ làm khâu nhẹ, chắc chắn trực tiếp lắp, hoặc chắc chắn không bao giờ làm với lưới.",
+            "Giới hạn quan trọng là không tự ý thay vật liệu, thay vị trí, thay cách liên kết hoặc tiếp tục khi điều kiện khác với hướng dẫn. Nếu thấy bề mặt, kết cấu, thiết bị hay khu vực làm việc có biểu hiện bất thường, người lao động dừng ở giới hạn được giao và báo người phụ trách. Kinh nghiệm xây dựng dân dụng hoặc hàn lưới bên ngoài không thay thế đào tạo và quy trình trong mỏ.",
+            "Khi được tư vấn, hãy nói rõ bạn muốn hiểu phần chống giữ và gia cố chứ không chỉ hỏi tên nghề. Hỏi xem chương trình 2–3 tháng giới thiệu những hệ thống nào, thời lượng thực hành ra sao, người mới phối hợp trong tổ đội thế nào và phần nào chỉ được quan sát. Câu trả lời cụ thể giúp bạn chọn nghề thực tế hơn một lời hứa chung rằng “có làm lưới”."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi chọn nghề vì quan tâm công việc lắp lưới",
+          "items": [
+            "Trong chương trình 2–3 tháng, học viên được học hoặc thực hành phần chống giữ và gia cố ở phạm vi nào?",
+            "Lưới thép được giải thích như một thành phần phối hợp với vì neo hoặc hệ thống nào tại nơi thực hành?",
+            "Người mới thường được giao chuẩn bị, vận chuyển, hỗ trợ hay trực tiếp thực hiện phần việc nào?",
+            "Khi hiện trạng khác hướng dẫn, người lao động phải dừng ở bước nào và báo cho ai?",
+            "Kinh nghiệm xây dựng, hàn hoặc làm lưới bên ngoài được xem xét ra sao và nội dung nào vẫn phải học lại?"
+          ]
+        }
+      ],
+      "takeaway_title": "Có thể làm với lưới thép, nhưng lưới chỉ là một phần của phương án gia cố",
+      "takeaway": "Người học kỹ thuật xây dựng mỏ hầm lò có thể gặp và tham gia công việc liên quan đến lưới thép khi phương án chống giữ, gia cố tại vị trí có sử dụng lưới. Không phải mọi đường lò dùng cùng cấu hình và không phải mọi người mới tự lắp. Trước khi đăng ký, nên hỏi rõ phạm vi học và thực hành; khi làm việc, chỉ thực hiện phần đã được hướng dẫn, giao nhiệm vụ và báo người phụ trách nếu điều kiện vượt giới hạn xử lý.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật xây dựng mỏ hầm lò đào, chống giữ, gia cố và duy trì đường lò; lắp dựng hệ thống bằng vì chống kim loại, vì neo hoặc bê tông cốt thép; thời gian đào tạo hiện hành 2–3 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Trải nghiệm một ca làm việc với công nghệ đào lò sử dụng máy xúc ZWY-60 ở Than Nam Mẫu”, cho thấy thợ lò làm việc tại đường lò có lưới thép và kết cấu chống giữ.",
+      "faqs": [
+        [
+          "Học xây dựng mỏ có chắc chắn được phân công lắp lưới thép không?",
+          "Không. Người học có thể làm với lưới khi phương án tại vị trí sử dụng lưới, nhưng nhiệm vụ cụ thể phụ thuộc đào tạo, thiết kế, hiện trạng và phân công của tổ đội."
+        ],
+        [
+          "Lắp lưới thép có giống lắp vì chống không?",
+          "Không hoàn toàn. Lưới có thể là một thành phần của phương án gia cố, còn vì chống hoặc vì neo là hệ thống chống giữ; các bộ phận phối hợp theo thiết kế cụ thể."
+        ],
+        [
+          "Biết hàn lưới hoặc làm xây dựng bên ngoài có được tự lắp trong mỏ không?",
+          "Không. Kinh nghiệm cũ không thay thế đào tạo, quy trình, thiết kế và phân công tại đơn vị; người mới chỉ làm phần đã được hướng dẫn và giao nhiệm vụ."
+        ],
+        [
+          "Nghề xây dựng mỏ ngoài gia cố còn làm công việc gì?",
+          "Nguồn chuẩn còn nêu phá vỡ và xúc dỡ đất đá, san nền, lắp đường ray, vận chuyển đất đá và vật liệu chuyên dùng, củng cố và sửa chữa vị trí cần khắc phục."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ phạm vi nghề kỹ thuật xây dựng mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/hoc-nghe-xay-dung-mo-ham-lo-co-phai-lap-vi-chong-khong/",
+          "Phân biệt lưới thép với công việc lắp vì chống"
         ],
         [
           "/kiem-tra-dieu-kien/",
