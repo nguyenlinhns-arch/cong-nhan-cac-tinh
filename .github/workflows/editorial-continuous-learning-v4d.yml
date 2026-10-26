@@ -50,6 +50,30 @@ jobs:
       - name: Build the same editorial library used by Pages
         shell: bash
         run: |
+          # Match the Pages build boundary: these are separate applications,
+          # not recruitment pages, so the editorial/SEO pipeline must not
+          # rewrite or validate them as part of the main site.
+          dashboard_tmp="$RUNNER_TEMP/nhap-hoc-dashboard"
+          kenlop9_tmp="$RUNNER_TEMP/kenlop9-site"
+          rm -rf "$dashboard_tmp" "$kenlop9_tmp"
+          if [ -d tuyen-tho-mo/nhap-hoc ]; then
+            mv tuyen-tho-mo/nhap-hoc "$dashboard_tmp"
+          fi
+          if [ -d tuyen-tho-mo/kenlop9 ]; then
+            mv tuyen-tho-mo/kenlop9 "$kenlop9_tmp"
+          fi
+          restore_separate_apps() {
+            if [ -d "$dashboard_tmp" ]; then
+              rm -rf tuyen-tho-mo/nhap-hoc
+              mv "$dashboard_tmp" tuyen-tho-mo/nhap-hoc
+            fi
+            if [ -d "$kenlop9_tmp" ]; then
+              rm -rf tuyen-tho-mo/kenlop9
+              mv "$kenlop9_tmp" tuyen-tho-mo/kenlop9
+            fi
+          }
+          trap restore_separate_apps EXIT
+
           node tools/generate-province-pages-2026.mjs
           node tools/generate-legacy-redirects.mjs
           node tools/generate-job-board-pages.mjs
@@ -60,6 +84,9 @@ jobs:
           node tools/generate-daily-seo-series.mjs
           node tools/enforce-blue-worker-illustrations.mjs
           node tools/enforce-site-brand.mjs
+
+          restore_separate_apps
+          trap - EXIT
 
       - name: Validate source and rendered editorial quality
         shell: bash
