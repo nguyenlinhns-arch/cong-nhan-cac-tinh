@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-25T08:16:00+07:00",
+  "updated_at": "2026-10-26T07:34:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -414,6 +414,13 @@
       "original_image_url": "https://vinacomin.vn/Share/Image/2024/06/03/qk12-1442288591.jpg",
       "provider": "Vinacomin",
       "description": "Thợ lò Than Nam Mẫu mặc bảo hộ, đội mũ làm việc cạnh lưới thép và kết cấu chống giữ trong đường lò"
+    },
+    {
+      "asset": "vinacomin-tho-co-dien-quang-hanh-han-sua-thiet-bi.webp",
+      "source_article_url": "https://vinacomin.vn/news/slug/doi-lap-dat-cong-trinh-thiet-bi-co-dien-ham-lo-nhung-chien-binh-tren-mat-tran-san-xuat-cua-than-quang-hanh",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2024/T12/11/QH5.jpg",
+      "provider": "Vinacomin",
+      "description": "Công nhân Đội lắp đặt thiết bị cơ điện Than Quang Hanh mặc bảo hộ xanh, thực hiện hàn sửa một chi tiết thiết bị tại xưởng"
     }
   ]
 }

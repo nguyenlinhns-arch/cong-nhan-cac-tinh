@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-26",
+  "updated_at": "2026-10-27",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -7248,6 +7248,127 @@
         [
           "/giai-dap-nghe-mo/hoc-nghe-xay-dung-mo-ham-lo-co-phai-lap-vi-chong-khong/",
           "Phân biệt lưới thép với công việc lắp vì chống"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-10-27",
+      "slug": "hoc-co-dien-mo-co-phai-han-thiet-bi-khong",
+      "title": "Học cơ điện mỏ có phải hàn thiết bị không?",
+      "short_title": "Cơ điện mỏ có phải hàn thiết bị",
+      "meta": "Học cơ điện mỏ có phải hàn thiết bị không? Hiểu khi nào công việc hàn có thể xuất hiện và giới hạn thao tác của học viên, người mới.",
+      "eyebrow": "HÀN THIẾT BỊ VÀ PHẠM VI NGHỀ CƠ ĐIỆN MỎ",
+      "primary_query": "học cơ điện mỏ có phải hàn thiết bị không",
+      "query_variants": [
+        "thợ cơ điện mỏ có phải biết hàn không",
+        "học cơ điện mỏ có học hàn không",
+        "công nhân cơ điện mỏ hàn sửa thiết bị gì"
+      ],
+      "direct_answer": "Có thể gặp và tham gia công việc hàn khi lắp đặt hoặc sửa chữa một số chi tiết cơ khí, nhưng hàn không phải toàn bộ nghề cơ điện mỏ và không mặc định giao cho mọi người mới. Chỉ người đã được đào tạo, hướng dẫn, trang bị phù hợp và phân công mới thực hiện phần việc này.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-co-dien-quang-hanh-han-sua-thiet-bi.webp",
+        "alt": "Công nhân cơ điện Than Quang Hanh mặc bảo hộ thực hiện hàn sửa một chi tiết thiết bị tại xưởng",
+        "credit": "Ảnh: Vinacomin · công nhân Đội lắp đặt thiết bị cơ điện Than Quang Hanh hàn sửa chi tiết tại xưởng"
+      },
+      "intro": [
+        "Học cơ điện mỏ có phải hàn thiết bị không là câu hỏi thực tế của người từng làm cơ khí, biết hàn dân dụng hoặc muốn hình dung chương trình 10 tháng có thiên về hàn hay điện. Câu trả lời là thao tác hàn có thể xuất hiện trong một số công việc lắp đặt, gia công hoặc sửa chữa chi tiết cơ khí, nhưng không thể dùng riêng kỹ năng hàn để mô tả toàn bộ nghề cơ điện mỏ.",
+        "Bài này không lặp các trang đã có về sửa băng tải, máy khoan, máy nén khí, máy bơm hoặc đấu nối dây điện. Nội dung tập trung vào ba điểm riêng: hàn nằm ở đâu trong phạm vi lắp đặt và sửa chữa, người mới có được tự hàn hay không, và người đã biết hàn bên ngoài cần hỏi gì trước khi chọn nghề."
+      ],
+      "key_points": [
+        [
+          "Có thể gặp trong phần cơ khí",
+          "Hàn có thể là một thao tác phục vụ lắp đặt, gia công hoặc sửa chữa một số chi tiết khi phương án công việc yêu cầu."
+        ],
+        [
+          "Không phải toàn bộ nghề",
+          "Cơ điện mỏ còn gồm điện, đo kiểm, vận hành, bảo dưỡng, thiết bị vận tải, chiếu sáng, liên lạc và hệ thống cơ giới hóa."
+        ],
+        [
+          "Không mặc định cho người mới",
+          "Khả năng thực hiện phụ thuộc nội dung đã học, đánh giá tay nghề, thiết bị bảo hộ, điều kiện làm việc và phân công."
+        ],
+        [
+          "Kinh nghiệm cũ không thay quy trình",
+          "Biết hàn bên ngoài là thông tin tham khảo, không tự tạo quyền hàn hoặc sửa thiết bị tại đơn vị tiếp nhận."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học cơ điện mỏ có phải hàn thiết bị không?",
+          "paragraphs": [
+            "Có thể, nhưng cần hiểu hàn là một thao tác có thể phục vụ một số nhiệm vụ chứ không phải tên gọi khác của nghề cơ điện mỏ. Nguồn chuẩn hiện hành mô tả nghề này lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống cơ khí, điện, vận tải, chiếu sáng, thông tin liên lạc cùng thiết bị cơ giới. Khi một chi tiết cơ khí cần gia công hoặc sửa chữa theo phương án được duyệt, công việc hàn có thể được bố trí cho người phù hợp.",
+            "Điều đó không có nghĩa mọi học viên đều được giao hàn ngay hoặc sau tốt nghiệp ai cũng làm thợ hàn. Một người có thể thiên về phần điện, đo kiểm, vận hành thiết bị, bảo dưỡng cơ khí hoặc phối hợp lắp đặt. Nhiệm vụ trong ca phụ thuộc thiết bị tại đơn vị, kết quả đào tạo, tay nghề và phân công của người phụ trách.",
+            "Người đăng ký cũng không nên hiểu rằng chỉ cần biết hàn là đủ theo học hoặc làm nghề. Chương trình cơ điện mỏ rộng hơn một kỹ năng đơn lẻ, còn điều kiện tiếp nhận phải được đối chiếu với thông tin tuyển sinh đang áp dụng. Kinh nghiệm hàn nên được khai đúng để người tư vấn hiểu nền tảng, không dùng làm lời bảo đảm về vị trí việc làm."
+          ]
+        },
+        {
+          "heading": "Hàn thiết bị khác gì với sửa chữa cơ điện mỏ?",
+          "paragraphs": [
+            "Sửa chữa cơ điện bắt đầu từ việc xác định tình trạng, phạm vi nhiệm vụ và phương án xử lý. Hàn chỉ có thể là một công đoạn trong phương án đó. Có trường hợp cần tháo lắp, căn chỉnh, thay chi tiết, đo kiểm hoặc xử lý phần điện mà không có thao tác hàn. Vì thế không thể nhìn thấy một mối hàn rồi kết luận toàn bộ việc sửa chữa đã hoàn thành.",
+            "Phần cơ khí và phần điện còn có ranh giới trách nhiệm. Người được giao hàn một chi tiết không mặc nhiên được đấu nối điện, mở thiết bị đang vận hành hoặc xử lý bộ phận khác. Ngược lại, người làm đo kiểm điện không mặc nhiên được thực hiện hàn nếu chưa đáp ứng yêu cầu của công việc đó. Phân công rõ giúp tổ đội phối hợp đúng thay vì một người tự làm tất cả.",
+            "Bài viết không hướng dẫn chọn dòng điện, vật liệu hàn, trình tự thao tác hay cách xử lý chi tiết. Những nội dung kỹ thuật phải theo thiết bị, phương án, nơi làm việc và người có trách nhiệm. Mục tiêu ở đây là giúp người học hiểu đúng phạm vi nghề trước khi đăng ký."
+          ]
+        },
+        {
+          "heading": "Ảnh thợ cơ điện hàn sửa cho biết điều gì về công việc thực tế?",
+          "paragraphs": [
+            "Ảnh riêng của bài được xác minh từ bài chính thức Vinacomin về Đội lắp đặt Công trình thiết bị cơ điện hầm lò của Than Quang Hanh. Hình ảnh ghi lại một công nhân áo xanh thực hiện công việc hàn sửa trên một chi tiết lớn tại khu vực xưởng. Đây là bằng chứng trực quan rằng hàn có thể xuất hiện trong hoạt động của đội cơ điện, không phải bằng chứng mọi học viên hoặc mọi vị trí đều làm giống nhau.",
+            "Đội cơ điện trong tư liệu gồm những công nhân có tay nghề, kinh nghiệm và chuyên môn, thực hiện các nhiệm vụ lắp đặt, sửa chữa thiết bị. Bối cảnh đó cũng cho thấy công việc hàn không tách khỏi tổ chức sản xuất và yêu cầu tay nghề. Người mới không nên lấy hình ảnh một công nhân có kinh nghiệm để suy ra mình được tự thao tác ngay khi vào học hoặc nhận việc.",
+            "Ảnh được dùng để minh họa môi trường làm việc thật, không phải tài liệu hướng dẫn. Tên thiết bị, vật liệu, yêu cầu kỹ thuật và kết quả của công đoạn không được suy đoán thêm từ hình ảnh. Khi cần biết khóa học có phần thực hành hàn đến mức nào, người lao động phải hỏi trực tiếp về chương trình đang áp dụng."
+          ]
+        },
+        {
+          "heading": "Người đã biết hàn bên ngoài có lợi thế gì và phải học lại gì?",
+          "paragraphs": [
+            "Kinh nghiệm hàn dân dụng, cơ khí hoặc làm tại xưởng có thể giúp người học quen dụng cụ, tư thế phối hợp và kỷ luật thao tác. Tuy nhiên, thiết bị mỏ, điều kiện làm việc, vật liệu, trách nhiệm trong ca và yêu cầu kiểm soát có thể khác. Nền tảng cũ giúp tiếp cận nhanh hơn nhưng không thay thế nội dung đào tạo, kiểm tra tay nghề hoặc hướng dẫn tại đơn vị.",
+            "Khi khai thông tin, nên nói rõ đã học hàn ở đâu, từng làm loại công việc nào và còn giấy tờ hay chứng chỉ gì nếu có. Không nên khai quá mức như “sửa được mọi máy” hoặc “có thể hàn ở mọi vị trí”. Thông tin cụ thể giúp người phụ trách tư vấn đúng hơn và tránh bố trí kỳ vọng không phù hợp.",
+            "Nếu trong ca gặp chi tiết khác với hướng dẫn, khu vực chưa bảo đảm hoặc nhiệm vụ vượt phạm vi được giao, người mới phải dừng ở giới hạn trách nhiệm và báo người phụ trách. Tinh thần chủ động trong nghề cơ điện là quan sát, báo cáo và phối hợp đúng, không phải tự thử cách xử lý khi chưa được giao."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi chọn cơ điện mỏ vì đã biết hoặc muốn học hàn",
+          "items": [
+            "Trong chương trình 10 tháng, phần cơ khí và thực hành hàn được bố trí ở phạm vi nào?",
+            "Học viên thực hành trên mẫu, tại xưởng hay quan sát công việc thực tế theo hướng dẫn?",
+            "Người mới sau đào tạo thường được giao phần cơ khí, phần điện hay phối hợp cả hai?",
+            "Kinh nghiệm hoặc chứng chỉ hàn đã có được ghi nhận thế nào và nội dung nào vẫn phải học lại?",
+            "Khi công việc vượt tay nghề hoặc khác phương án, người lao động phải dừng và báo cho ai?"
+          ]
+        }
+      ],
+      "takeaway_title": "Hàn có thể là một thao tác của nghề cơ điện, không phải nhiệm vụ mặc định cho mọi người",
+      "takeaway": "Người học kỹ thuật cơ điện mỏ có thể gặp công việc hàn khi lắp đặt, gia công hoặc sửa chữa một số chi tiết cơ khí. Tuy nhiên, nghề còn nhiều phần việc điện, cơ khí, vận hành và đo kiểm khác; việc hàn chỉ được thực hiện khi người lao động đã được đào tạo, trang bị, hướng dẫn và phân công. Người đã biết hàn nên khai đúng kinh nghiệm và hỏi rõ phạm vi thực hành của chương trình 10 tháng.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống cơ khí, điện, vận tải cùng thiết bị cơ giới; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Đội lắp đặt Công trình thiết bị cơ điện hầm lò - Những chiến binh trên mặt trận sản xuất của Than Quang Hanh”, ghi lại công nhân thực hiện công việc hàn sửa tại xưởng.",
+      "faqs": [
+        [
+          "Không biết hàn có đăng ký học cơ điện mỏ được không?",
+          "Có thể gửi thông tin để được kiểm tra điều kiện. Nguồn tuyển sinh hiện hành không yêu cầu người đăng ký phải có sẵn kinh nghiệm; kỹ năng cụ thể được học và đánh giá theo chương trình."
+        ],
+        [
+          "Biết hàn dân dụng có được tự hàn thiết bị mỏ không?",
+          "Không. Kinh nghiệm cũ không thay thế đào tạo, phương án kỹ thuật, bảo hộ và phân công tại đơn vị; chỉ thực hiện phần đã được giao."
+        ],
+        [
+          "Học cơ điện mỏ có chỉ làm phần cơ khí không?",
+          "Không. Phạm vi nghề còn gồm hệ thống điện, vận tải, chiếu sáng, thông tin liên lạc, điều khiển, thiết bị cơ giới cùng công việc vận hành, bảo dưỡng và sửa chữa."
+        ],
+        [
+          "Học cơ điện mỏ trong bao lâu?",
+          "Thời gian đào tạo đang áp dụng là 10 tháng; nội dung và lịch thực hành cụ thể cần xác nhận theo đợt tiếp nhận."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ phạm vi nghề kỹ thuật cơ điện mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/hoc-co-dien-mo-co-chi-sua-dien-khong/",
+          "Cơ điện mỏ có chỉ sửa điện không?"
         ],
         [
           "/kiem-tra-dieu-kien/",

@@ -61,6 +61,12 @@ const editorialOverrides = {
     heading1: "Chăm lo đời sống bắt đầu từ những nhu cầu thiết yếu",
     heading2: "Đối thoại giúp phúc lợi đi tới đúng vấn đề",
   },
+  "che-tao-may-khen-thuong-con-nguoi-lao-dong-2026": {
+    lede: "Ngày 07/08/2026, Công ty Cổ phần Chế tạo máy tổ chức gặp mặt, tuyên dương 229 con cán bộ, công nhân, người lao động có thành tích học tập và rèn luyện trong năm học 2025–2026.",
+    nutgraph: "Trong số này có 7 học sinh đạt giải cấp tỉnh; tổng kinh phí khen thưởng được công bố gần 140 triệu đồng. Chương trình đồng thời quan tâm những học sinh có hoàn cảnh khó khăn nhưng vẫn nỗ lực học tập.",
+    heading1: "Kết quả khen thưởng được công bố bằng số liệu cụ thể",
+    heading2: "Phúc lợi gia đình góp phần giữ người lao động",
+  },
   "tai-co-cau-tkv-2026-viec-lam-tho-mo": {
     lede: "Trong định hướng giai đoạn 2026-2030, TKV đặt tuyển dụng, đào tạo, giữ chân thợ lò và cơ giới hóa trong cùng một chiến lược phát triển. Người lao động trẻ vì thế đứng trước cả cơ hội việc làm lẫn yêu cầu kỹ năng mới.",
     nutgraph: "Tái cơ cấu không tự động tạo ra một vị trí ổn định cho mọi người. Cơ hội cụ thể phụ thuộc kế hoạch của từng đơn vị, còn khả năng theo nghề phụ thuộc sức khỏe, kỷ luật, tay nghề và mức độ thích nghi với thiết bị hiện đại.",
