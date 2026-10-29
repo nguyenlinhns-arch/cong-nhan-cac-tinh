@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-28",
+  "updated_at": "2026-10-29",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -7498,6 +7498,135 @@
         [
           "/giai-dap-nghe-mo/hoc-co-dien-mo-co-chi-sua-dien-khong/",
           "Phân biệt phần điện với các nhiệm vụ cơ khí của nghề"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-10-29",
+      "slug": "hoc-co-dien-mo-co-phai-sua-thiet-bi-van-tai-ham-lo-khong",
+      "title": "Học cơ điện mỏ có phải sửa thiết bị vận tải hầm lò không?",
+      "short_title": "Cơ điện mỏ có sửa thiết bị vận tải",
+      "meta": "Học cơ điện mỏ có phải sửa thiết bị vận tải hầm lò không? Phân biệt thợ cơ điện với người vận hành và giới hạn công việc của người mới.",
+      "eyebrow": "THIẾT BỊ VẬN TẢI VÀ PHẠM VI NGHỀ CƠ ĐIỆN MỎ",
+      "primary_query": "học cơ điện mỏ có phải sửa thiết bị vận tải hầm lò không",
+      "query_variants": [
+        "thợ cơ điện mỏ có sửa thiết bị vận tải không",
+        "học cơ điện mỏ có làm với xe vận tải trong lò không",
+        "người mới học cơ điện mỏ sửa thiết bị vận tải gì"
+      ],
+      "direct_answer": "Có thể. Nguồn tuyển sinh hiện hành nêu nghề kỹ thuật cơ điện mỏ thực hiện lắp đặt, vận hành, bảo dưỡng và sửa chữa thiết bị vận tải. Tuy nhiên, sửa chữa không đồng nghĩa trực tiếp điều khiển phương tiện; người mới chỉ kiểm tra, bảo dưỡng hoặc hỗ trợ xử lý phần đã được đào tạo, hướng dẫn và phân công.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-hoc-sinh-xuong-lo-xe-song-loan.webp",
+        "alt": "Đoàn học sinh mặc bảo hộ ngồi trên xe song loan để xuống lò tại Than Dương Huy",
+        "credit": "Ảnh: Vinacomin · đoàn học sinh xuống lò bằng xe song loan tại Than Dương Huy"
+      },
+      "intro": [
+        "Học cơ điện mỏ có phải sửa thiết bị vận tải hầm lò không là câu hỏi của người nhìn thấy xe chở người, goòng, băng tải hoặc các thiết bị vận chuyển trong mỏ và muốn biết mình sẽ lái, phục vụ hay sửa chúng. Câu trả lời đúng là thiết bị vận tải nằm trong phạm vi lắp đặt, vận hành, bảo dưỡng và sửa chữa của nghề cơ điện mỏ, nhưng mỗi người chỉ thực hiện nhiệm vụ phù hợp với đào tạo và phân công.",
+        "Bài này không lặp trang đã có về sửa băng tải, sửa thiết bị bốc xúc hoặc người học nghề xây dựng mỏ trực tiếp vận chuyển vật liệu. Nội dung tập trung vào một ý định riêng: thợ cơ điện làm gì để thiết bị vận tải hoạt động đúng, khác gì người điều khiển thiết bị và người mới được tham gia đến đâu trước khi có đủ tay nghề."
+      ],
+      "key_points": [
+        [
+          "Có trong phạm vi nghề",
+          "Nguồn chuẩn nêu rõ thiết bị vận tải thuộc nhóm thiết bị mà nghề cơ điện mỏ có thể lắp đặt, vận hành, bảo dưỡng và sửa chữa."
+        ],
+        [
+          "Sửa không đồng nghĩa điều khiển",
+          "Người vận hành thực hiện nhiệm vụ vận chuyển; thợ cơ điện tập trung vào tình trạng kỹ thuật và phần việc được giao."
+        ],
+        [
+          "Nhiều loại thiết bị khác nhau",
+          "Không thể dùng một ảnh hoặc một tên thiết bị để khẳng định mọi học viên sẽ làm cùng vị trí sau khóa học."
+        ],
+        [
+          "Người mới có giới hạn rõ",
+          "Chỉ kiểm tra, bảo dưỡng hoặc hỗ trợ sửa phần đã được hướng dẫn; không tự điều khiển, tháo lắp hoặc chạy thử."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học cơ điện mỏ có phải sửa thiết bị vận tải hầm lò không?",
+          "paragraphs": [
+            "Có thể. Hồ sơ nghề hiện hành mô tả kỹ thuật cơ điện mỏ hầm lò thực hiện lắp đặt, vận hành, bảo dưỡng và sửa chữa máy khoan, máy nén khí, thiết bị bốc xúc, vận tải cùng các thiết bị cơ điện phục vụ sản xuất. Vì vậy, khi tổ cơ điện được giao phụ trách một hệ thống hoặc thiết bị vận tải, người lao động có thể tham gia theo dõi tình trạng, bảo dưỡng hoặc sửa chữa trong phạm vi chuyên môn.",
+            "Cách hiểu này không có nghĩa mọi học viên sau khóa 10 tháng đều sửa cùng một loại thiết bị. Vận tải trong mỏ là một nhóm nhiệm vụ rộng; thiết bị tại từng nơi có thể khác nhau về cấu tạo, nguồn động lực, hệ thống điện, vị trí làm việc và cách tổ chức vận hành. Kết quả đào tạo, tay nghề, nhu cầu của đơn vị và phân công trong tổ đội mới quyết định một người làm phần nào.",
+            "Nguồn chuẩn không hứa một vị trí riêng như lái tàu điện, lái xe chở người hoặc thợ sửa một model cụ thể. Vì vậy, người đăng ký nên hỏi về phạm vi học và cách bố trí sau đào tạo, không yêu cầu người tư vấn bảo đảm trước một thiết bị hoặc vị trí chỉ từ tên nghề."
+          ]
+        },
+        {
+          "heading": "Sửa thiết bị vận tải khác gì trực tiếp vận hành để chở người, than hoặc vật tư?",
+          "paragraphs": [
+            "Người vận hành thực hiện nhiệm vụ đưa người, than, đất đá, vật tư hoặc thiết bị từ vị trí này tới vị trí khác theo phân công. Thợ cơ điện quan tâm đến tình trạng kỹ thuật: tiếp nhận thông tin bất thường, kiểm tra phần được giao, bảo dưỡng và phối hợp xử lý để thiết bị có thể hoạt động theo yêu cầu. Hai vai trò có thể làm việc cùng một thiết bị nhưng mục tiêu và quyền thao tác không giống nhau.",
+            "Một người biết quan sát hoặc hỗ trợ sửa chữa không mặc nhiên được ngồi vào vị trí điều khiển. Ngược lại, người đã quen vận hành không mặc nhiên được tháo cụm cơ khí, xử lý phần điện hoặc thay đổi thiết lập. Khi cần kiểm tra hoặc chạy thử sau bảo dưỡng, tổ đội phải phân công rõ ai thực hiện, ai giám sát và điều kiện nào đã được xác nhận.",
+            "Ranh giới này giúp trả lời đúng các câu hỏi đời thường như “học cơ điện có lái xe trong lò không” hoặc “sửa thiết bị có phải chở người không”. Không thể suy ra vai trò từ việc cùng đứng cạnh một phương tiện. Cần xác định người hỏi đang quan tâm đến vận hành, bảo dưỡng hay sửa chữa rồi mới đối chiếu với nghề phù hợp."
+          ]
+        },
+        {
+          "heading": "Thợ cơ điện kiểm tra, bảo dưỡng và sửa thiết bị vận tải ở phạm vi nào?",
+          "paragraphs": [
+            "Phạm vi hợp lý bắt đầu từ nhiệm vụ được giao và tình trạng thực tế của thiết bị. Người lao động tiếp nhận thông tin, quan sát, kiểm tra phần đã được hướng dẫn rồi báo cáo kết quả để tổ đội xác định bước tiếp theo. Có công việc thuộc bảo dưỡng định kỳ, có việc cần điều chỉnh hoặc thay thế, cũng có dấu hiệu phải chuyển cho người có chuyên môn và trách nhiệm phù hợp hơn.",
+            "Thiết bị vận tải có thể kết hợp phần cơ khí, điện, điều khiển và các bộ phận chuyên dùng. Người được giao kiểm tra một phần không tự có quyền xử lý toàn bộ hệ thống. Nếu tình trạng khác hướng dẫn, vượt tay nghề hoặc liên quan bộ phận chưa được bàn giao, cách làm đúng là dừng ở giới hạn trách nhiệm và báo người phụ trách.",
+            "Bài viết không hướng dẫn chẩn đoán lỗi, tháo lắp, đấu nối, điều khiển hoặc chạy thử bất kỳ thiết bị nào. Những thao tác đó phải dựa trên đúng thiết bị, tài liệu, quy trình và người chịu trách nhiệm tại nơi làm việc. Trang này chỉ giúp người lao động hiểu phạm vi nghề trước khi đăng ký."
+          ]
+        },
+        {
+          "heading": "Ảnh xe song loan tại Than Dương Huy cho biết gì về thiết bị vận tải hầm lò?",
+          "paragraphs": [
+            "Ảnh riêng của bài được xác minh từ tin chính thức Vinacomin về tuyển sinh và việc làm tại Than Dương Huy, đăng ngày 13/10/2026. Chú thích gốc ghi “Đoàn học sinh xuống lò bằng xe song loan”. Hình ảnh cho thấy học sinh mặc bảo hộ, đội mũ đèn và ngồi trên một phương tiện vận chuyển người trước khi xuống lò.",
+            "Ảnh giúp người đọc nhận diện rằng vận tải trong mỏ không chỉ liên quan đến than hoặc vật tư mà còn có phương tiện phục vụ con người. Tuy nhiên, đây là ảnh di chuyển, không phải ảnh sửa chữa. Không thể nhìn ảnh rồi kết luận người học cơ điện sẽ điều khiển phương tiện này, sửa một bộ phận cụ thể hoặc được bố trí đúng nơi xuất hiện trong tư liệu.",
+            "Việc tách điều nhìn thấy khỏi điều phải xác nhận là nguyên tắc quan trọng khi tìm hiểu nghề. Hình ảnh thật giúp hình dung bối cảnh; còn nhiệm vụ kỹ thuật, loại thiết bị, mức độ thực hành và vị trí sau đào tạo phải được đối chiếu với chương trình và đợt tiếp nhận đang áp dụng."
+          ]
+        },
+        {
+          "heading": "Người mới hoặc người từng sửa xe, máy bên ngoài cần chuẩn bị gì?",
+          "paragraphs": [
+            "Người mới nên chuẩn bị tâm thế học cả phần cơ khí, điện, đo kiểm và phối hợp tổ đội, thay vì chỉ chờ được sửa một phương tiện. Nếu từng sửa xe, máy công trình, mô-tơ hoặc thiết bị vận chuyển bên ngoài, cần khai đúng nơi học, thời gian làm việc, loại công việc từng thực hiện và giấy tờ còn giữ nếu có. Kinh nghiệm cũ là nền tảng tham khảo, không thay cho chương trình đào tạo và đánh giá tại đơn vị.",
+            "Trong thực tế tuyển sinh, câu trả lời hữu ích không phải “em sửa được hết”, mà là mô tả cụ thể mình đã biết gì và phần nào chưa từng làm. Thông tin rõ giúp người tư vấn phân biệt kinh nghiệm cơ khí, điện hay vận hành, từ đó hướng người lao động kiểm tra đúng nghề và điều kiện hồ sơ.",
+            "Khi vào học hoặc thực hành, người mới chỉ làm phần đã được hướng dẫn và giao nhiệm vụ. Chủ động đúng nghĩa là quan sát, hỏi lại khi chưa rõ, báo cáo dấu hiệu bất thường và phối hợp với người phụ trách; không phải tự điều khiển hoặc thử cách sửa trên thiết bị chưa được bàn giao."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi chọn cơ điện mỏ vì quan tâm thiết bị vận tải",
+          "items": [
+            "Trong chương trình cơ điện mỏ 10 tháng, nhóm thiết bị vận tải được học ở phần lý thuyết, xưởng thực hành hay hiện trường?",
+            "Người mới thường được giao kiểm tra, bảo dưỡng hoặc hỗ trợ sửa chữa ở phạm vi nào?",
+            "Vai trò người vận hành và thợ cơ điện được phân công ra sao khi cần kiểm tra hoặc chạy thử sau bảo dưỡng?",
+            "Kinh nghiệm sửa xe, máy công trình hoặc thiết bị vận chuyển đã có được ghi nhận thế nào và phần nào vẫn phải học lại?",
+            "Nếu tình trạng thiết bị vượt tay nghề hoặc khác hướng dẫn, người lao động phải dừng và báo cho ai?"
+          ]
+        }
+      ],
+      "takeaway_title": "Có thể sửa thiết bị vận tải, nhưng không mặc định trực tiếp điều khiển",
+      "takeaway": "Nghề kỹ thuật cơ điện mỏ có phạm vi lắp đặt, vận hành, bảo dưỡng và sửa chữa thiết bị vận tải. Nhiệm vụ cụ thể phụ thuộc loại thiết bị, nơi làm việc, kết quả đào tạo và phân công. Người mới chỉ thực hiện phần đã được hướng dẫn, không tự điều khiển, tháo lắp hoặc chạy thử; trước khi đăng ký nên hỏi rõ ranh giới giữa người vận hành và thợ cơ điện.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò lắp đặt, vận hành, bảo dưỡng và sửa chữa thiết bị vận tải cùng các thiết bị cơ điện khác; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Than Dương Huy: Tuyển sinh thiết thực từ đào tạo đến việc làm”, đăng ngày 13/10/2026, với chú thích gốc “Đoàn học sinh xuống lò bằng xe song loan”.",
+      "faqs": [
+        [
+          "Học cơ điện mỏ có được trực tiếp lái hoặc điều khiển thiết bị vận tải không?",
+          "Không thể mặc định. Vận hành và sửa chữa là các vai trò có phạm vi khác nhau; chỉ người đáp ứng yêu cầu và được phân công mới trực tiếp điều khiển."
+        ],
+        [
+          "Biết sửa xe hoặc máy bên ngoài có được tự sửa thiết bị vận tải trong mỏ không?",
+          "Không. Kinh nghiệm cũ là nền tảng tham khảo, không thay thế đào tạo, tài liệu thiết bị, quy trình và phân công tại đơn vị."
+        ],
+        [
+          "Người mới có phải tự xử lý toàn bộ khi thiết bị vận tải gặp sự cố không?",
+          "Không. Người mới chỉ làm phần đã được hướng dẫn và giao nhiệm vụ; tình trạng vượt tay nghề hoặc khác hướng dẫn phải báo người phụ trách."
+        ],
+        [
+          "Học cơ điện mỏ trong bao lâu?",
+          "Thời gian đào tạo đang áp dụng là 10 tháng; lịch học, thực hành và đợt tiếp nhận cụ thể cần xác nhận theo thông báo hiện hành."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ phạm vi nghề kỹ thuật cơ điện mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-sua-bang-tai-duoi-ham-lo-khong/",
+          "Xem riêng công việc với băng tải trong nhóm thiết bị vận tải"
         ],
         [
           "/kiem-tra-dieu-kien/",

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-27T07:30:00+07:00",
+  "updated_at": "2026-10-29T07:30:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -428,6 +428,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2026/T06/12/CS3.jpg",
       "provider": "Vinacomin",
       "description": "Máy xúc thủy lực bốc đất đá lên xe vận tải tại khai trường Than Cao Sơn trong Hội thi chọn thợ giỏi năm 2026"
+    },
+    {
+      "asset": "vinacomin-hoc-sinh-xuong-lo-xe-song-loan.webp",
+      "source_article_url": "https://vinacomin.vn/vi/news/slug/than-duong-huy-tuyen-sinh-thiet-thuc-tu-dao-tao-den-viec-lam",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2026/T10/13/DH4.jpg",
+      "provider": "Vinacomin",
+      "description": "Đoàn học sinh mặc bảo hộ xanh, đội mũ đèn ngồi trên xe song loan để xuống lò tại Than Dương Huy"
     }
   ]
 }
