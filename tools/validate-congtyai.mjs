@@ -1,7 +1,7 @@
 import {readFileSync,readdirSync} from 'node:fs';
 import assert from 'node:assert/strict';
 const dir='tuyen-tho-mo/congtyai/';
-const allowed=['app.js','handoffs.js','health.js','index.html','meeting.js','office3d.js','portraits.js','quy-trinh-cong-khai.txt','roles.js','rooms.js','style.css'];
+const allowed=['app.js','handoffs.js','health.js','index.html','layout3d.js','meeting.js','office3d.js','portraits.js','quy-trinh-cong-khai.txt','roles.js','rooms.js','style.css'];
 assert.deepEqual(readdirSync(dir).sort(),allowed);
 const texts=Object.fromEntries(allowed.map(f=>[f,readFileSync(dir+f,'utf8')]));
 const all=Object.values(texts).join('\n');
@@ -49,3 +49,9 @@ const {meetingGate}=await moduleFrom(texts['meeting.js']);assert.equal(meetingGa
 assert.equal(mg([{...opinion('Quyên'),id:'duplicate'}, {...opinion('Khôi'),id:'duplicate'},opinion('An')]).state,'HOLD');
 
 assert.equal(meetingGate({jobId:'sample',revision:2,participantSetVerified:true,opinions:[opinion('Quyên'),opinion('Khôi')]}).state,'HOLD');assert.equal(meetingGate({jobId:'sample',revision:2,required:['An'],opinions:[opinion('Quyên'),opinion('Khôi'),opinion('An')]}).state,'HOLD');
+
+assert(html.includes('id="officePlan" hidden'));assert(html.includes('id="roomTabs" hidden'));assert(html.includes('id="directory" hidden'));assert(html.includes('<h2 id="boardsTitle">Góc điều hành</h2>'));assert(html.includes('id="sceneFallback"'));assert(html.includes('ẢNH VĂN PHÒNG TĨNH'));assert(!html.includes('Xem sơ đồ 2D'));assert(texts['office3d.js'].includes('b.textContent=p.name'));assert(texts['office3d.js'].includes('project(p.homeX,.9,p.homeZ+1.8)'));assert(!texts['office3d.js'].includes('project(x,3.4,z)'));assert(texts['office3d.js'].includes("b.setAttribute('aria-label','Gặp '+p.name"));assert(texts['app.js'].includes("$('#inspectPerson').onchange"));assert(!texts['app.js'].includes("c.innerHTML=portrait(e.from"));
+
+assert(html.includes('id="visualEvents"'));assert(texts['app.js'].includes("e.mode!=='DEMO_ONLY'"));assert(texts['office3d.js'].includes("origin:'synthetic-ui'"));assert(texts['office3d.js'].includes('onVisualEvent(Object.freeze(visualEvent))'));assert(texts['office3d.js'].includes('gesture.elapsed>=8000'));
+
+assert(html.includes('id="sceneStage" tabindex="0" role="region"'));
