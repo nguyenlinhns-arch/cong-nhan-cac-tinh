@@ -41,6 +41,16 @@ for(const content of ['pass','condition_pass','condition_review']){
 assert(read('v4-conversion.js').includes('Gửi thông tin để Thầy Linh tư vấn'));
 const home=read('index.html');assert(!/data-home-content-loader>addEventListener\("load"/.test(home));assert(home.includes('<noscript><link rel="stylesheet" href="/home-content.css?v=3">'));
 const load=home.match(/<script data-home-content-loader>([\s\S]*?)<\/script>/)[1];let appended;vm.runInNewContext(load,{document:{createElement:()=>({}),head:{append:n=>appended=n}}});assert.equal(appended.href,'/home-content.css?v=3');
-assert(home.includes('TIN NGÀNH THAN CHỌN LỌC'));assert(read('kiem-tra-dieu-kien/index.html').includes('Gửi thông tin để Thầy Linh tư vấn'));
+assert(home.includes('TIN NGÀNH THAN CHỌN LỌC'));
+// Pages regenerates the verification-only page; the optional v4 builder emits
+// a registration form instead. Assert each action's actual semantics, not one variant.
+function assertConditionAction(page){
+ if(/data-application-(?:form|submit)/.test(page))assert(/data-application-submit[^>]*>Gửi thông tin để Thầy Linh tư vấn<\/button>/.test(page));
+ else {assert(page.includes('data-verification-condition-form'));assert(/class="verification-check__submit" type="submit">Xem kết quả sơ bộ<\/button>/.test(page));}
+}
+assertConditionAction(read('kiem-tra-dieu-kien/index.html'));
+assert.throws(()=>assertConditionAction('<form data-application-form><button data-application-submit>Nhận kết quả ngay</button></form>'));
+assert.throws(()=>assertConditionAction('<form data-verification-condition-form><button class="verification-check__submit" type="submit">Gửi thông tin</button></form>'));
+assert.throws(()=>assertConditionAction('<main>Missing form</main>'));
 assert(read('homepage-redesign-critical.css').includes('.home-v6-facts span{font-size:13px;'));
 console.log(JSON.stringify({status:'passed',checks:['incomplete focus','pass CTA','review Zalo','repeat answers','pass-to-incomplete resets CTA','fresh-state legacy URL/attribution sanitized','reduced-motion result scroll','storage denied','legacy screening cleanup','no outcome analytics','legacy event ignored','actual submission event preserved','CSS starts immediately','noscript fallback','accurate CTA/news labels','mobile explanatory font source']},null,2));
