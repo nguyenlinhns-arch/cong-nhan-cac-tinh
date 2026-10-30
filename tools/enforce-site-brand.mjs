@@ -109,9 +109,12 @@ if (!CHECK_ONLY) {
   await import("./normalize-site-scope-v10.mjs");
 }
 
-// /nhap-hoc is a separate operational dashboard and does not share the
+// /nhap-hoc and /kenlop9 are separate projects and do not share the
 // recruitment portal's header, brand shell or editorial pipeline.
-const htmlFiles = walk(SITE).filter((file) => file.endsWith(".html") && !relativePath(file).startsWith("nhap-hoc/"));
+const htmlFiles = walk(SITE).filter((file) => {
+  const relative = relativePath(file);
+  return file.endsWith(".html") && !relative.startsWith("nhap-hoc/") && !relative.startsWith("kenlop9/");
+});
 const changed = [];
 for (const file of htmlFiles) {
   const current = fs.readFileSync(file, "utf8");

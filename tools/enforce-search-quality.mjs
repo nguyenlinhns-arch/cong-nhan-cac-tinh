@@ -17,6 +17,12 @@ function walk(directory) {
   });
 }
 
+function isRecruitmentPortalHtml(file) {
+  if (!file.endsWith(".html")) return false;
+  const relativePath = path.relative(SITE, file).split(path.sep).join("/");
+  return !relativePath.startsWith("nhap-hoc/") && !relativePath.startsWith("kenlop9/");
+}
+
 function decodeHtml(value = "") {
   return String(value)
     .replaceAll("&amp;", "&")
@@ -98,7 +104,7 @@ function searchTitle(html) {
 }
 
 const rawTitleOwners = new Map();
-for (const file of walk(SITE).filter((target) => target.endsWith(".html"))) {
+for (const file of walk(SITE).filter(isRecruitmentPortalHtml)) {
   const relativePath = path.relative(SITE, file).split(path.sep).join("/");
   if (!localityUnit(relativePath)) continue;
   const html = fs.readFileSync(file, "utf8");
@@ -123,7 +129,9 @@ function qualifyDuplicateLocality(html, relativePath) {
 }
 
 const changed = [];
-const htmlFiles = walk(SITE).filter((file) => file.endsWith(".html") && !/^google[a-z0-9_-]+\.html$/i.test(path.basename(file)));
+// /nhap-hoc and /kenlop9 are separate projects published beside the recruitment
+// portal. Their canonical and content rules are intentionally independent.
+const htmlFiles = walk(SITE).filter((file) => isRecruitmentPortalHtml(file) && !/^google[a-z0-9_-]+\.html$/i.test(path.basename(file)));
 for (const file of htmlFiles) {
   const relativePath = path.relative(SITE, file).split(path.sep).join("/");
   const current = fs.readFileSync(file, "utf8");
