@@ -18,7 +18,7 @@
   const compactAction = Object.freeze({
     click_zalo: "zalo", click_call: "call", click_messenger: "msg",
     open_condition: "cond", open_application: "app", form_start: "form",
-    three_info_complete: "info3", condition_pass: "pass", form_submit: "submit",
+    three_info_complete: "info3", form_submit: "submit",
   });
 
   function normalize(value = "") {
@@ -61,11 +61,21 @@
     return pageGroup();
   }
 
+  function screeningSafeContent(value = "") {
+    return ["pass", "condition_pass", "condition_review"].includes(value) ? "" : value;
+  }
+
   function readState() {
     try {
       const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
       const lastSeen = Date.parse(state?.last_seen_at || "");
       if (!state || state.version !== 3 || !Number.isFinite(lastSeen) || Date.now() - lastSeen > STORAGE_TTL_MS || lastSeen > Date.now() + 60_000) return null;
+      // Remove legacy screening-derived state without removing draft/submission data.
+      if (state.condition_pass) state.score = Math.max(0, Number(state.score || 0) - 10);
+      delete state.condition_pass;
+      if (state.stage === "condition_pass") state.stage = "view";
+      if (state.last_action === "condition_pass") state.last_action = "view";
+      state.content = screeningSafeContent(state.content);
       return state;
     } catch (_) {
       return null;
@@ -88,12 +98,22 @@
   const attribution = (() => {
     const params = new URLSearchParams(location.search);
     let stored = {};
-    try { stored = JSON.parse(localStorage.getItem("thaylinh_attribution") || "{}"); } catch (_) {}
+    try {
+      stored = JSON.parse(localStorage.getItem("thaylinh_attribution") || "{}");
+      let cleaned = false;
+      for (const key of ["utm_content", "first_utm_content"]) {
+        if (stored[key] && screeningSafeContent(stored[key]) !== stored[key]) {
+          delete stored[key];
+          cleaned = true;
+        }
+      }
+      if (cleaned) localStorage.setItem("thaylinh_attribution", JSON.stringify(stored));
+    } catch (_) {}
     return {
       source: params.get("utm_source") || stored.utm_source || "",
       medium: params.get("utm_medium") || stored.utm_medium || "",
       campaign: params.get("utm_campaign") || stored.utm_campaign || "",
-      content: params.get("utm_content") || stored.utm_content || "",
+      content: screeningSafeContent(params.get("utm_content") || stored.utm_content || ""),
     };
   })();
 
@@ -116,7 +136,6 @@
     stage: "view",
     last_action: "view",
     first_action_at: "",
-    condition_pass: false,
     form_started: false,
     three_info_complete: false,
   };
@@ -446,11 +465,6 @@
     window.dataLayer = window.dataLayer || [];
     const inspect = item => {
       if (!item || Object.prototype.toString.call(item) !== "[object Object]") return;
-      if (item.event === "condition_pass" && !state.condition_pass) {
-        state.condition_pass = true;
-        mark("condition_pass", 10, "condition_pass");
-        track("journey_stage", { action: "condition_pass", eligibility: "eligible" });
-      }
       if ((item.event === "ApplicationSubmit" || item.event === "form_submit") && state.stage !== "form_submit") {
         mark("form_submit", 10, "form_submit");
       }
@@ -510,3 +524,4 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });
   else init();
 })();
+

@@ -8,7 +8,7 @@
   const DRAFT_KEY = "thaylinh_application_draft_v1";
   const DRAFT_TTL_MS = 24 * 60 * 60 * 1000;
   const ZALO_URL = "https://zalo.me/0963048585";
-  const FALLBACK_APPLICATION_URL = "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&utm_medium=internal&utm_campaign=home_mobile_journey_2026&utm_content=condition_pass#dang-ky";
+  const FALLBACK_APPLICATION_URL = "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&utm_medium=internal&utm_campaign=home_mobile_journey_2026&utm_content=checker_next#dang-ky";
 
   if (!document.querySelector("script[data-home-province-reels-loader]")) {
     const provinceReels = document.createElement("script");
@@ -82,23 +82,13 @@
     }
   }
 
-  function rememberedState() {
-    try {
-      const value = sessionStorage.getItem(STATE_KEY) || "";
-      return value === "pass" || value === "review" ? value : "start";
-    } catch (_) {
-      return "start";
-    }
-  }
-
-  function rememberState(value) {
-    if (value !== "pass" && value !== "review") return;
-    try { sessionStorage.setItem(STATE_KEY, value); } catch (_) {}
-  }
+  // Keep screening outcomes only for this page; remove the legacy saved value.
+  let currentConditionState = "start";
+  try { sessionStorage.removeItem(STATE_KEY); } catch (_) {}
 
   function applicationUrl(content) {
     return window.ThayLinhMobile?.trackedApplicationUrl?.("home_mobile_journey_2026", content)
-      || FALLBACK_APPLICATION_URL.replace("condition_pass", content);
+      || FALLBACK_APPLICATION_URL.replace("checker_next", content);
   }
 
   function journeyButton() {
@@ -123,7 +113,7 @@
     }
   }
 
-  function applyJourneyState(state = rememberedState()) {
+  function applyJourneyState(state = currentConditionState) {
     const button = journeyButton();
     if (!button) return false;
 
@@ -140,7 +130,7 @@
 
     if (state === "pass") {
       configureButton(button, {
-        href: applicationUrl("condition_pass"),
+        href: applicationUrl("checker_next"),
         label: "Đăng ký",
         icon: "✓",
         action: "application",
@@ -154,7 +144,7 @@
         href: ZALO_URL,
         label: "Hỏi điều kiện",
         icon: "?",
-        action: "condition_review",
+        action: "ask_conditions",
         contact: "zalo",
         external: true,
       });
@@ -176,10 +166,9 @@
   if (result) {
     const syncResult = () => {
       const state = result.dataset.state || "";
-      if (state !== "pass" && state !== "review") return;
-      rememberState(state);
-      applyJourneyState(state);
-      track("worker_journey_stage", { stage: state === "pass" ? "condition_pass" : "condition_review" });
+      if (!["pass", "review", "incomplete"].includes(state)) return;
+      currentConditionState = state === "incomplete" ? "start" : state;
+      applyJourneyState(currentConditionState);
     };
     new MutationObserver(syncResult).observe(result, { attributes: true, attributeFilter: ["data-state"] });
   }
@@ -196,8 +185,7 @@
     const mobileAction = event.target.closest?.(".tl-mobile-contact__journey");
     if (mobileAction) {
       track("worker_journey_bar_click", {
-        action: mobileAction.dataset.workerJourneyAction || "unknown",
-        condition_state: rememberedState(),
+        action: "contact_or_check",
       });
     }
   });
@@ -217,3 +205,4 @@
     document.querySelectorAll("[data-journey-section]").forEach((section) => observer.observe(section));
   }
 })();
+

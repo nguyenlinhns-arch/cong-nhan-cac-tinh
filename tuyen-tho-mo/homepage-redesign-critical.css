@@ -39,8 +39,9 @@
   .home-v6-actions{display:grid;grid-template-columns:1fr;gap:8px;margin-top:20px}.home-v6 .home-v6-button{width:100%;min-height:51px;padding:10px 9px;border-radius:12px;font-size:12px}
   .home-v6-hero__assist{align-items:flex-start;flex-direction:column;gap:4px;margin-top:10px}
   .home-v6-hero__visual{border-radius:20px}.home-v6-hero__visual img{height:auto;min-height:285px;aspect-ratio:4/3;object-position:center}.home-v6-hero__visual figcaption{right:15px;bottom:14px;left:15px}.home-v6-hero__visual figcaption strong{max-width:250px;font-size:14px}
-  .home-v6-income{top:12px;right:12px;max-width:205px;padding:10px 12px;border-radius:13px}.home-v6-income strong{font-size:18px}.home-v6-income span{font-size:9px}
-  .home-v6-facts__grid{width:100%;grid-template-columns:1fr 1fr}.home-v6-facts article{padding:15px 13px}.home-v6-facts small{font-size:7.5px;letter-spacing:.04em}.home-v6-facts strong{margin-top:4px;font-size:13px}.home-v6-facts span{font-size:9.5px;line-height:1.35}
+  .home-v6-income{top:12px;right:12px;max-width:205px;padding:10px 12px;border-radius:13px}.home-v6-income strong{font-size:18px}.home-v6-income span{font-size:12px}
+  .home-v6-facts__grid{width:100%;grid-template-columns:1fr 1fr}.home-v6-facts article{padding:15px 13px}.home-v6-facts small{font-size:12px;letter-spacing:.04em}.home-v6-facts strong{margin-top:4px;font-size:13px}.home-v6-facts span{font-size:13px;line-height:1.35}
 }
 @media(max-width:390px){.home-v6-hero__visual img{min-height:270px}.home-v6-facts strong{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.home-v6 *{scroll-behavior:auto!important;transition:none!important}}
+

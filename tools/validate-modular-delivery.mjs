@@ -1,3 +1,4 @@
+import "./test-home-screening-privacy.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -45,7 +46,7 @@ for (const marker of ["analytics-vendors.js?v=1", "consent-analytics.js?v=1", "m
 for (const marker of ["gtagEvent(`click_${channel}`", '"zalo", "messenger", "phone", "application"', "condition_check_start", "condition_check_complete", "generate_lead", "WebVital"]) requireText(vendors, marker, "analytics-vendors.js");
 if (vendors.includes('gtagEvent("conversion", { send_to: GOOGLE_ADS_ZALO_SEND_TO')) errors.push("analytics-vendors.js: không được gửi trùng conversion Zalo");
 for (const marker of ["internal_campaign", "measurement_client_id", "lead_key: applicationCode", "schema_version: Number(recruitment.schemaVersion) || 2"]) requireText(application, marker, "job-application.js");
-for (const marker of ["condition_check_start", "condition_check_complete", "condition_pass"]) requireText(finder, marker, "worker-info-finder.js");
+for (const marker of ["condition_check_start", "condition_check_complete"]) requireText(finder, marker, "worker-info-finder.js");
 for (const marker of ["--zalo:#0565b6", ".header-cta"]) requireText(landingCss, marker, "landing-recruitment.css");
 requireText(finderCss, "background:#f18724;color:#102a30", "worker-info-finder.css");
 for (const marker of ["button-zalo{background:#f18724;color:#102a30", "color:#b54708"]) requireText(richMediaCss, marker, "home-rich-media.css");
@@ -113,3 +114,4 @@ console.log(JSON.stringify({
   sampleErrors: errors.slice(0, 25),
 }, null, 2));
 if (errors.length) process.exitCode = 1;
+

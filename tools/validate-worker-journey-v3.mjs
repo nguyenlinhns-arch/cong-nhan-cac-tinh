@@ -48,7 +48,6 @@ for (const marker of [
   'track("journey_action"',
   'track("form_start"',
   'track("three_info_complete"',
-  'item.event === "condition_pass"',
   "seconds_to_action",
   "journey_score_bucket",
   "journey-fast-facts",
@@ -63,6 +62,7 @@ for (const marker of [
   "state.full_name", "state.phone", "state.birth_date", "state.health", "state.height", "state.weight",
   "localStorage.setItem(STORAGE_KEY, JSON.stringify(values))",
   "sessionStorage.setItem",
+  'mark("condition_pass"', 'eligibility: "eligible"',
 ]) if (journey.includes(marker)) errors.push(`Hành trình V3 có dấu hiệu lưu dữ liệu cá nhân: ${marker}`);
 
 for (const marker of [
@@ -130,3 +130,4 @@ console.log(JSON.stringify({
 }, null, 2));
 
 if (errors.length) process.exit(1);
+

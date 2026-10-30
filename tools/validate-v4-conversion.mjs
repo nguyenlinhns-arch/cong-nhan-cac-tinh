@@ -65,7 +65,7 @@ for (const marker of [
   'class="v4-hidden-field">Nghề',
   '/recruitment-config.js?v=2',
   '/job-application.js?v=9',
-  'Gửi 3 thông tin để Thầy Linh kiểm tra',
+  'Gửi thông tin để Thầy Linh tư vấn',
 ]) if (!condition.includes(marker)) errors.push(`Trang kiểm tra điều kiện thiếu ${marker}`);
 
 const conditionVisibleFields = ["full_name", "phone", "birth_date", "province", "district", "height", "weight", "health"];
@@ -174,3 +174,4 @@ console.log(JSON.stringify({
 }, null, 2));
 
 if (errors.length) process.exit(1);
+

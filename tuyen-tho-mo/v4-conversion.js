@@ -143,7 +143,7 @@
     }
 
     const submit = form.querySelector("[data-application-submit]");
-    if (submit) submit.textContent = "Gửi 3 thông tin để Thầy Linh kiểm tra";
+    if (submit) submit.textContent = "Gửi thông tin để Thầy Linh tư vấn";
 
     let started = false;
     let complete = false;
@@ -237,3 +237,4 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });
   else init();
 })();
+

@@ -14,7 +14,6 @@
   const checkResult = document.querySelector("[data-worker-check-result]");
   const checkNames = ["age_range", "height_range", "weight_range", "health_screen"];
   let checkStarted = false;
-  let checkCompleted = false;
 
   function startCheck() {
     if (checkStarted) return;
@@ -24,7 +23,7 @@
 
   function resultLink(status) {
     if (status === "pass") {
-      return "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&utm_medium=internal&utm_campaign=worker_self_check_2026&utm_content=pass#dang-ky";
+      return "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&utm_medium=internal&utm_campaign=worker_self_check_2026&utm_content=checker_next#dang-ky";
     }
     return "https://zalo.me/0963048585";
   }
@@ -42,7 +41,7 @@
       checkResult.dataset.state = "incomplete";
       checkResult.innerHTML = "<strong>Bạn chưa chọn đủ 4 mục.</strong><span>Chọn một câu trả lời cho từng điều kiện rồi kiểm tra lại.</span>";
       checkForm.querySelector(`input[name="${checkNames[missingIndex]}"]`)?.focus();
-      track("worker_self_check_incomplete", { missing: checkNames[missingIndex] });
+      track("worker_self_check_incomplete", { context: "home_self_check" });
       return;
     }
 
@@ -54,12 +53,9 @@
       ? `<strong>Bạn phù hợp sơ bộ với điều kiện đang tuyển.</strong><span>Tiếp tục đăng ký để được xác nhận thông tin và hướng dẫn lịch khám tuyển. Kết luận cuối cùng căn cứ kết quả khám tuyển.</span><a href="${resultLink(status)}" data-contact="application" data-context="worker-self-check">Tiếp tục đăng ký</a>${backLink}`
       : `<strong>Có ít nhất một điều kiện bạn chưa đạt hoặc chưa chắc chắn.</strong><span>Đây chưa phải kết luận cuối cùng. Hãy trao đổi trực tiếp để được kiểm tra đúng trường hợp trước khi chuẩn bị hồ sơ.</span><a href="${resultLink(status)}" target="_blank" rel="noopener" data-contact="zalo" data-context="worker-self-check">Nhắn Zalo để hỏi</a>${backLink}`;
     checkResult.focus({ preventScroll: true });
-    checkResult.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    track("worker_self_check_complete", { result: status });
-    if (!checkCompleted) {
-      checkCompleted = true;
-      track("condition_check_complete", { context: "home_self_check", result: status });
-      if (pass) track("condition_pass", { context: "home_self_check", result: status, journey_stage: "condition_pass" });
-    }
+    checkResult.scrollIntoView({ behavior: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest" });
+    // Screening answers and outcomes remain in the current DOM only.
+    track("condition_check_complete", { context: "home_self_check" });
   });
 })();
+

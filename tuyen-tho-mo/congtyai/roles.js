@@ -124,5 +124,12 @@ export const roles = [
     "group": "Phòng chuyên môn",
     "task": "Nghiên cứu đối thủ từ nguồn công khai; xây đề bài, viết nội dung nguyên bản, chuẩn bị hình ảnh và bàn giao gói nội dung cho Ads hoặc kênh xuất bản.",
     "standard": "Vai trò trong mô hình, chưa kết nối hệ thống. Dẫn nguồn nghiên cứu, tôn trọng quyền sử dụng hình ảnh; không sao chép hoặc thu thập dữ liệu riêng. Qua Khuê kiểm định độc lập; không tự đăng hoặc phát động chiến dịch."
+  },
+  {
+    "name": "An",
+    "title": "Nhân viên quản trị website · Marketing",
+    "group": "Phòng chuyên môn",
+    "task": "Dưới sự phụ trách của Diệu: kiểm nội dung, giao diện, hiệu năng, biểu mẫu, liên kết, khả năng tiếp cận và SEO của website. Phối hợp Tuệ về ưu tiên, Khôi khi cần sửa code và Khuê để kiểm định độc lập.",
+    "standard": "Vai trò hư cấu trong mô hình; không tự cấp quyền xuất bản hoặc thay đổi bảo mật. Mỗi thay đổi cần phiên bản, bản thử nghiệm, bằng chứng và phương án phục hồi. Chỉ dùng công cụ nằm trong phạm vi được giao."
   }
 ];

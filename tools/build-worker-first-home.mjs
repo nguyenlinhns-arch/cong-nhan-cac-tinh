@@ -28,7 +28,7 @@ html = html
   )
   .replace(
     /(<link\s+rel=["']stylesheet["']\s+href=["']\/home-critical\.css\?v=2["']\s*\/?>)/iu,
-    '$1\n  <script data-home-content-loader>addEventListener("load",()=>{const link=document.createElement("link");link.rel="stylesheet";link.href="/home-content.css?v=3";document.head.append(link)},{once:true})</script>',
+    '$1\n  <script data-home-content-loader>(()=>{const link=document.createElement("link");link.rel="stylesheet";link.href="/home-content.css?v=3";document.head.append(link)})()</script>',
   );
 fs.writeFileSync(file, html);
 
@@ -60,3 +60,4 @@ console.log(JSON.stringify({
   homeCriticalCss: "/home-critical.css?v=2",
   homeContentCss: "/home-content.css?v=3",
 }, null, 2));
+

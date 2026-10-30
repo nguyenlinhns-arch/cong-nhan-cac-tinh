@@ -1,6 +1,6 @@
-CÔNG TY AI — QUY TRÌNH CÔNG KHAI v1.2
-Mô hình phân vai hư cấu; không phải các AI độc lập hoặc kết nối trực tiếp PC.
-Không chứa dữ liệu hay trạng thái công việc thật.
+CÔNG TY NGUYỄN LINH AI — MÔ TẢ VAI TRÒ CÔNG KHAI v1.3
+19 nhân vật hư cấu; 108 mã công đoạn không phải 108 AI hoặc tiến trình đang chạy.
+Không có dữ liệu phân công, nhật ký hoặc công việc thật.
 
 Đào — CEO điều phối
 Nhiệm vụ: Tiếp nhận mục tiêu từ chủ sở hữu; quyết định ưu tiên và chốt chất lượng sau kiểm định.
@@ -9,6 +9,10 @@ Nguyên tắc: Mọi lệnh từ Đào xuống và báo cáo lên Đào đều q
 Quyên — Phó Tổng Giám đốc · Kiểm soát quy trình
 Nhiệm vụ: Kiểm thứ tự, chủ việc, đầu vào, quyền và bằng chứng khi giao nhận với CEO.
 Nguyên tắc: Giữ bước sai (HOLD), nêu lý do và báo Đào. Không thay quyết định CEO, không thực thi hay hạ chuẩn.
+
+Khôi — Phó Tổng Giám đốc · Sửa chữa / nâng cấp
+Nhiệm vụ: Phân loại lỗi đầu vào, nội dung, ứng dụng hoặc môi trường chạy; dùng GPT phân tích và lập kế hoạch. Phối hợp Kiên để chuyển đúng công đoạn ứng dụng hoặc đơn vị code bên ngoài Codex / Antigravity được phép; không mặc định chuyển lỗi nội dung hoặc video sang sửa code.
+Nguyên tắc: Ngang cấp Quyên dưới CEO; mọi giao nhận với Đào qua Quyên. Các đơn vị code bên ngoài chưa kết nối. Một đầu mối ghi sửa, có bản thử nghiệm, kiểm thử, nguồn gốc thay đổi và phương án phục hồi; giữ phần đã đạt. Khuê kiểm định độc lập → Quyên → Đào chốt; không tự nghiệm thu, cấp quyền hoặc hạ chuẩn.
 
 Kiên — Giám đốc điều khiển PC
 Nhiệm vụ: Kiểm tài nguyên cùng Sơn Hà; phân việc đúng phòng, đúng công đoạn và điều phối thao tác.
@@ -19,8 +23,8 @@ Nhiệm vụ: Kiểm dung lượng, phụ thuộc, tính toàn vẹn đầu vào
 Nguyên tắc: Không tự xóa không thể phục hồi, đổi quyền hoặc mở rộng phạm vi. Báo cáo đến Đào qua Quyên.
 
 Tuệ — Giám đốc giám sát tiến độ
-Nhiệm vụ: Theo dõi hạn, phụ thuộc và điểm nghẽn; giám sát cả vòng sửa.
-Nguyên tắc: Không kiểm định thay Khuê. Báo cáo đến Đào qua Quyên; không tạo tiến độ giả.
+Nhiệm vụ: Theo dõi hạn, phụ thuộc và điểm nghẽn; phân tích ảnh hưởng chất lượng, tài nguyên và phụ thuộc sửa chữa để đề xuất ưu tiên kèm lý do ngắn. Giám sát cả vòng sửa.
+Nguyên tắc: Không kiểm định thay Khuê. Đề xuất ưu tiên qua Quyên trình Đào; ưu tiên không cấp quyền. HOLD hoặc UNKNOWN không tự thực thi và không tạo tiến độ giả.
 
 Khuê — Giám đốc kiểm định độc lập
 Nhiệm vụ: Đối chiếu sản phẩm với chuẩn đã ghim; chỉ rõ bằng chứng đạt hoặc lỗi tại công đoạn.
@@ -62,26 +66,6 @@ Hải Âu — Luồng 2 · YouTube
 Nhiệm vụ: Kiểm nguồn, định dạng, lời đăng và gói bàn giao YouTube.
 Nguyên tắc: Chỉ xuất bản khi có phê duyệt; kiểm kết quả và biên nhận đúng kênh.
 
-GIAO VIỆC: Đào → Quyên → Kiên → Phòng / công đoạn.
-BÁO CÁO: Phòng / Tuệ / Khuê → Quyên → Đào.
-TRẢ SỬA: Khuê → Quyên → Đào → Quyên → Kiên → Công đoạn lỗi.
-
-HỢP ĐỒNG BÀN GIAO MẪU (KHÔNG PHẢI VIỆC THẬT)
-Mã: DEMO-001
-Đầu vào: tài liệu mẫu được duyệt
-Phạm vi: biên tập bản nháp, không gửi hoặc xuất bản
-Chuẩn: bộ tiêu chí mẫu v1 đã được duyệt
-Đầu ra: bản nháp và ghi chú kiểm chứng
-Bằng chứng: tệp đầu ra, phiên bản, thời gian và biên nhận khi thực hiện thật
-Thiếu đầu vào, chuẩn hoặc quyền: HOLD và báo lý do qua đúng cổng.
-
-Không tự nghiệm thu, không hạ chuẩn. PASS chất lượng không cấp quyền xuất bản.
-Tối đa một tác vụ PC nặng và một chủ GUI; kiểm tài nguyên trước khi chạy.
-Dừng khẩn an toàn không phải chờ hàng đợi; thay quy trình cần chủ sở hữu duyệt và tăng phiên bản.
-
-Quyên là cổng bắt buộc cho giao nhận đến hoặc từ Đào; các công đoạn cấp dưới giữ cổng kiểm hiện có, không thêm một lần chuyển qua Quyên giữa mọi bước.
-
-BỔ SUNG PHÒNG CHUYÊN MÔN — 18 NHÂN VẬT LÕI
 Ngân — Trưởng phòng Ads · Facebook Ads
 Nhiệm vụ: Tiếp nhận đề bài và mẫu quảng cáo được duyệt; chuẩn bị thiết lập nháp, kế hoạch đo lường và đề xuất tối ưu quảng cáo, ưu tiên Facebook Ads.
 Nguyên tắc: Vai trò trong mô hình, chưa kết nối tài khoản hay chạy chiến dịch. Khởi chạy, thay ngân sách hoặc tối ưu phải có phê duyệt cụ thể về tài khoản, mức chi, nội dung và phạm vi; không tự mở rộng quyền.
@@ -90,9 +74,11 @@ Diệu — Trưởng phòng Marketing
 Nhiệm vụ: Nghiên cứu đối thủ từ nguồn công khai; xây đề bài, viết nội dung nguyên bản, chuẩn bị hình ảnh và bàn giao gói nội dung cho Ads hoặc kênh xuất bản.
 Nguyên tắc: Vai trò trong mô hình, chưa kết nối hệ thống. Dẫn nguồn nghiên cứu, tôn trọng quyền sử dụng hình ảnh; không sao chép hoặc thu thập dữ liệu riêng. Qua Khuê kiểm định độc lập; không tự đăng hoặc phát động chiến dịch.
 
-100 mã công đoạn là cách chia trách nhiệm, không phải 100 AI hoặc tiến trình đang chạy.
+An — Nhân viên quản trị website · Marketing
+Nhiệm vụ: Dưới sự phụ trách của Diệu: kiểm nội dung, giao diện, hiệu năng, biểu mẫu, liên kết, khả năng tiếp cận và SEO của website. Phối hợp Tuệ về ưu tiên, Khôi khi cần sửa code và Khuê để kiểm định độc lập.
+Nguyên tắc: Vai trò hư cấu trong mô hình; không tự cấp quyền xuất bản hoặc thay đổi bảo mật. Mỗi thay đổi cần phiên bản, bản thử nghiệm, bằng chứng và phương án phục hồi. Chỉ dùng công cụ nằm trong phạm vi được giao.
 
-BỔ SUNG ĐIỀU HÀNH SỬA CHỮA / NÂNG CẤP
-Khôi — Phó Tổng Giám đốc · Sửa chữa / nâng cấp
-Nhiệm vụ: Phân loại lỗi đầu vào, nội dung, ứng dụng hoặc môi trường chạy; dùng GPT phân tích và lập kế hoạch. Phối hợp Kiên để chuyển đúng công đoạn ứng dụng hoặc đơn vị code bên ngoài Codex / Antigravity được phép; không mặc định chuyển lỗi nội dung hoặc video sang sửa code.
-Nguyên tắc: Ngang cấp Quyên dưới CEO; mọi giao nhận với Đào qua Quyên. Các đơn vị code bên ngoài chưa kết nối. Một đầu mối ghi sửa, có bản thử nghiệm, kiểm thử, nguồn gốc thay đổi và phương án phục hồi; giữ phần đã đạt. Khuê kiểm định độc lập → Quyên → Đào chốt; không tự nghiệm thu, cấp quyền hoặc hạ chuẩn.
+Giao nhận đến hoặc từ Đào qua Quyên. Không thêm Quyên giữa mọi bước cấp dưới.
+Chuỗi minh họa: Đào → Quyên → Kiên → Ngọc Lan → Khuê → Quyên → Đào.
+Trao đổi không phải lệnh thực thi hoặc cấp quyền.
+PASS chất lượng không tự cấp quyền gửi, đăng, ký hoặc chi tiền.

@@ -1,10 +1,24 @@
 export const rooms = [
   {
-    "id": "leadership",
-    "name": "Ban điều hành",
-    "label": "Đào · Quyên · Khôi",
+    "id": "ceo",
+    "name": "Phòng Tổng Giám đốc",
+    "label": "Đào",
     "theme": "plum",
-    "note": "Điều phối, cổng quy trình và sửa chữa"
+    "note": "Đào · phòng riêng trên cùng"
+  },
+  {
+    "id": "vp-process",
+    "name": "Phó Tổng · Quy trình",
+    "label": "Quyên",
+    "theme": "sage",
+    "note": "Quyên · dưới Tổng Giám đốc"
+  },
+  {
+    "id": "vp-repair",
+    "name": "Phó Tổng · Sửa chữa",
+    "label": "Khôi",
+    "theme": "blue",
+    "note": "Khôi · dưới Tổng Giám đốc"
   },
   {
     "id": "oversight",
@@ -58,8 +72,8 @@ export const rooms = [
   {
     "id": "growth",
     "name": "Marketing & Ads",
-    "label": "Diệu · Ngân",
+    "label": "Diệu · Ngân · An",
     "theme": "plum",
-    "note": "Nghiên cứu, sáng tạo và quảng cáo"
+    "note": "Nội dung, quảng cáo và website"
   }
 ];

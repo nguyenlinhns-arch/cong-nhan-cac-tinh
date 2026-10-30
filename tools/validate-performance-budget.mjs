@@ -66,7 +66,7 @@ for (const marker of ["data-open-consent", "LCP, INP, CLS", "Mặc định Googl
 const home = read("index.html");
 const homeScript = read("portal-official.js");
 const homeStyles = read("landing-recruitment.css");
-if (!home.includes("data-home-content-loader") || !home.includes('addEventListener("load"')) fail("Trang chủ: CSS dưới màn hình phải đợi sự kiện load");
+if (!home.includes("data-home-content-loader") || /data-home-content-loader>addEventListener\("load"/.test(home)) fail("Trang chủ: CSS nội dung phải bắt đầu tải trước window.load");
 const homeVideoFacades = (home.match(/data-featured-video-facade/g) || []).length;
 if (homeVideoFacades !== 1) fail(`Trang chủ đơn giản: dự kiến 1 lớp xem trước video, thực tế ${homeVideoFacades}`);
 if (/<iframe\b[^>]+youtube/i.test(home)) fail("Trang chủ: còn tạo trình phát YouTube trước khi người dùng bấm xem");
@@ -245,3 +245,4 @@ console.log(JSON.stringify({
   warnings,
 }, null, 2));
 if (errors.length) process.exit(1);
+
