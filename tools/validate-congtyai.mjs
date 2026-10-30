@@ -19,7 +19,7 @@ assert.equal(new Set(roles.map(r=>portrait(r.name))).size,19);
 const html=texts['index.html'];assert(html.includes('<h1>Công ty Nguyễn Linh AI</h1>'));
 for(const title of ['Đã làm hôm nay','Đang lỗi','Nhân viên cần sửa'])assert(html.includes(title));
 assert(html.indexOf('id="office"')<html.indexOf('id="boards"'));assert(html.includes('UNKNOWN · không tính hoàn thành'));assert(html.includes('Dữ liệu thật: chưa kết nối'));
-assert(html.includes('108 mã công đoạn'));assert(html.includes('không suy đoán từ tên'));
+assert(texts['quy-trinh-cong-khai.txt'].includes('108')); // role metadata retained, not profile UI
 for(const m of html.matchAll(/(?:src|href)="\.\/([^"]+)"/g))assert(allowed.includes(m[1]),`Missing asset ${m[1]}`);
 for(const m of texts['app.js'].matchAll(/from '\.\/([^']+)'/g))assert(allowed.includes(m[1]));
 assert(texts['style.css'].includes('prefers-reduced-motion'));assert(texts['style.css'].includes('repeat(3,minmax(0,1fr))'));
@@ -50,7 +50,7 @@ assert.equal(mg([{...opinion('Quyên'),id:'duplicate'}, {...opinion('Khôi'),id:
 
 assert.equal(meetingGate({jobId:'sample',revision:2,participantSetVerified:true,opinions:[opinion('Quyên'),opinion('Khôi')]}).state,'HOLD');assert.equal(meetingGate({jobId:'sample',revision:2,required:['An'],opinions:[opinion('Quyên'),opinion('Khôi'),opinion('An')]}).state,'HOLD');
 
-assert(html.includes('id="officePlan" hidden'));assert(html.includes('id="roomTabs" hidden'));assert(html.includes('id="directory" hidden'));assert(html.includes('<h2 id="boardsTitle">Góc điều hành</h2>'));assert(html.includes('id="sceneFallback"'));assert(html.includes('ẢNH VĂN PHÒNG TĨNH'));assert(!html.includes('Xem sơ đồ 2D'));assert(texts['office3d.js'].includes('b.textContent=p.name'));assert(texts['office3d.js'].includes('project(p.homeX,.9,p.homeZ+1.8)'));assert(!texts['office3d.js'].includes('project(x,3.4,z)'));assert(texts['office3d.js'].includes("b.setAttribute('aria-label','Gặp '+p.name"));assert(texts['app.js'].includes("$('#inspectPerson').onchange"));assert(!texts['app.js'].includes("c.innerHTML=portrait(e.from"));
+assert(html.includes('id="officePlan" hidden'));assert(html.includes('id="roomTabs" hidden'));assert(!html.includes('id="directory"'));assert(!html.includes('id="detail"'));assert(!html.includes('inspectPerson'));assert(!texts['app.js'].includes('openRole'));assert(html.includes('<h2 id="boardsTitle">Góc điều hành</h2>'));assert(html.includes('id="sceneFallback"'));assert(html.includes('ẢNH VĂN PHÒNG TĨNH'));assert(!html.includes('Xem sơ đồ 2D'));assert(texts['office3d.js'].includes('b.textContent=p.name'));assert(texts['office3d.js'].includes('project(p.homeX,.9,p.homeZ+1.8)'));assert(!texts['office3d.js'].includes('project(x,3.4,z)'));assert(texts['office3d.js'].includes("b.setAttribute('aria-label','Bàn làm việc của '+p.name"));assert(!texts['app.js'].includes("c.innerHTML=portrait(e.from"));
 
 assert(html.includes('id="visualEvents"'));assert(texts['app.js'].includes("e.mode!=='DEMO_ONLY'"));assert(texts['office3d.js'].includes("origin:'synthetic-ui'"));assert(texts['office3d.js'].includes('onVisualEvent(Object.freeze(visualEvent))'));assert(texts['office3d.js'].includes('gesture.elapsed>=8000'));
 
