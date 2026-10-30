@@ -14,6 +14,13 @@ export const roles = [
     "standard": "Giữ bước sai (HOLD), nêu lý do và báo Đào. Không thay quyết định CEO, không thực thi hay hạ chuẩn."
   },
   {
+    "name": "Khôi",
+    "title": "Phó Tổng Giám đốc · Sửa chữa / nâng cấp",
+    "group": "Điều hành",
+    "task": "Phân loại lỗi đầu vào, nội dung, ứng dụng hoặc môi trường chạy; dùng GPT phân tích và lập kế hoạch. Phối hợp Kiên để chuyển đúng công đoạn ứng dụng hoặc đơn vị code bên ngoài Codex / Antigravity được phép; không mặc định chuyển lỗi nội dung hoặc video sang sửa code.",
+    "standard": "Ngang cấp Quyên dưới CEO; mọi giao nhận với Đào qua Quyên. Các đơn vị code bên ngoài chưa kết nối. Một đầu mối ghi sửa, có bản thử nghiệm, kiểm thử, nguồn gốc thay đổi và phương án phục hồi; giữ phần đã đạt. Khuê kiểm định độc lập → Quyên → Đào chốt; không tự nghiệm thu, cấp quyền hoặc hạ chuẩn."
+  },
+  {
     "name": "Kiên",
     "title": "Giám đốc điều khiển PC",
     "group": "Giám đốc",
@@ -103,5 +110,19 @@ export const roles = [
     "group": "Kênh xuất bản",
     "task": "Kiểm nguồn, định dạng, lời đăng và gói bàn giao YouTube.",
     "standard": "Chỉ xuất bản khi có phê duyệt; kiểm kết quả và biên nhận đúng kênh."
+  },
+  {
+    "name": "Ngân",
+    "title": "Trưởng phòng Ads · Facebook Ads",
+    "group": "Phòng chuyên môn",
+    "task": "Tiếp nhận đề bài và mẫu quảng cáo được duyệt; chuẩn bị thiết lập nháp, kế hoạch đo lường và đề xuất tối ưu quảng cáo, ưu tiên Facebook Ads.",
+    "standard": "Vai trò trong mô hình, chưa kết nối tài khoản hay chạy chiến dịch. Khởi chạy, thay ngân sách hoặc tối ưu phải có phê duyệt cụ thể về tài khoản, mức chi, nội dung và phạm vi; không tự mở rộng quyền."
+  },
+  {
+    "name": "Diệu",
+    "title": "Trưởng phòng Marketing",
+    "group": "Phòng chuyên môn",
+    "task": "Nghiên cứu đối thủ từ nguồn công khai; xây đề bài, viết nội dung nguyên bản, chuẩn bị hình ảnh và bàn giao gói nội dung cho Ads hoặc kênh xuất bản.",
+    "standard": "Vai trò trong mô hình, chưa kết nối hệ thống. Dẫn nguồn nghiên cứu, tôn trọng quyền sử dụng hình ảnh; không sao chép hoặc thu thập dữ liệu riêng. Qua Khuê kiểm định độc lập; không tự đăng hoặc phát động chiến dịch."
   }
 ];
