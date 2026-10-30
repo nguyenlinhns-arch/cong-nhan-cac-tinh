@@ -1,0 +1,107 @@
+export const roles = [
+  {
+    "name": "Đào",
+    "title": "CEO điều phối",
+    "group": "Điều hành",
+    "task": "Tiếp nhận mục tiêu từ chủ sở hữu; quyết định ưu tiên và chốt chất lượng sau kiểm định.",
+    "standard": "Mọi lệnh từ Đào xuống và báo cáo lên Đào đều qua Quyên. Việc vượt quyền phải trình chủ sở hữu."
+  },
+  {
+    "name": "Quyên",
+    "title": "Phó Tổng Giám đốc · Kiểm soát quy trình",
+    "group": "Điều hành",
+    "task": "Kiểm thứ tự, chủ việc, đầu vào, quyền và bằng chứng khi giao nhận với CEO.",
+    "standard": "Giữ bước sai (HOLD), nêu lý do và báo Đào. Không thay quyết định CEO, không thực thi hay hạ chuẩn."
+  },
+  {
+    "name": "Kiên",
+    "title": "Giám đốc điều khiển PC",
+    "group": "Giám đốc",
+    "task": "Kiểm tài nguyên cùng Sơn Hà; phân việc đúng phòng, đúng công đoạn và điều phối thao tác.",
+    "standard": "Chỉ một chủ điều khiển giao diện; tối đa một tác vụ PC nặng. Cần lệnh và biên nhận trong phạm vi được duyệt."
+  },
+  {
+    "name": "Sơn Hà",
+    "title": "Giám đốc hạ tầng",
+    "group": "Giám đốc",
+    "task": "Kiểm dung lượng, phụ thuộc, tính toàn vẹn đầu vào và khả năng phục hồi trước khi chạy.",
+    "standard": "Không tự xóa không thể phục hồi, đổi quyền hoặc mở rộng phạm vi. Báo cáo đến Đào qua Quyên."
+  },
+  {
+    "name": "Tuệ",
+    "title": "Giám đốc giám sát tiến độ",
+    "group": "Giám đốc",
+    "task": "Theo dõi hạn, phụ thuộc và điểm nghẽn; giám sát cả vòng sửa.",
+    "standard": "Không kiểm định thay Khuê. Báo cáo đến Đào qua Quyên; không tạo tiến độ giả."
+  },
+  {
+    "name": "Khuê",
+    "title": "Giám đốc kiểm định độc lập",
+    "group": "Giám đốc",
+    "task": "Đối chiếu sản phẩm với chuẩn đã ghim; chỉ rõ bằng chứng đạt hoặc lỗi tại công đoạn.",
+    "standard": "Không tự sản xuất rồi tự nghiệm thu; không trực tiếp giao sửa. PASS chất lượng không cấp quyền xuất bản."
+  },
+  {
+    "name": "Ngọc Lan",
+    "title": "Phòng Linh Văn Bản",
+    "group": "Phòng chuyên môn",
+    "task": "Tiếp nhận nguồn, soạn nội dung, dàn trang và bàn giao tài liệu.",
+    "standard": "Đúng nguồn và yêu cầu; kiểm bản dựng cuối, không suy diễn dữ kiện thiếu."
+  },
+  {
+    "name": "Hải Đường",
+    "title": "Phòng Linh Edit",
+    "group": "Phòng chuyên môn",
+    "task": "Chuẩn bị nguồn, kịch bản, dựng, phụ đề, âm thanh và xuất video.",
+    "standard": "Kiểm hình, tiếng, phụ đề và tệp xuất theo chuẩn; giữ nguyên đầu vào gốc."
+  },
+  {
+    "name": "Hạ Vy",
+    "title": "Phòng MXH",
+    "group": "Phòng chuyên môn",
+    "task": "Chuẩn hóa nguồn và định dạng nội dung cho từng kênh.",
+    "standard": "Bản nội dung và bản xuất đúng đặc tả; không coi render xong là đã được phép đăng."
+  },
+  {
+    "name": "Trúc",
+    "title": "Phòng Zalo",
+    "group": "Phòng chuyên môn",
+    "task": "Phân loại nội dung, chuẩn bị phản hồi và đối chiếu biên nhận trong phạm vi được giao.",
+    "standard": "Chỉ đúng người nhận và hội thoại được phép; không tự mở rộng phạm vi hoặc công khai tin nhắn."
+  },
+  {
+    "name": "Tường Vy",
+    "title": "Phòng Fanpage",
+    "group": "Phòng chuyên môn",
+    "task": "Tiếp nhận câu hỏi, đối chiếu tri thức, soạn nháp và chuyển việc phù hợp.",
+    "standard": "Phản hồi theo nguồn được duyệt; việc gửi cần quyền tương ứng và biên nhận."
+  },
+  {
+    "name": "Châu",
+    "title": "Phòng LINH JOB",
+    "group": "Phòng chuyên môn",
+    "task": "Kiểm kênh, chuẩn bị nội dung và tổ chức hồ sơ bàn giao.",
+    "standard": "Đúng tài khoản, nội dung và phạm vi; đối chiếu kết quả thực tế, không tạo biên nhận giả."
+  },
+  {
+    "name": "Mộc Lan",
+    "title": "Luồng 2 · Facebook",
+    "group": "Kênh xuất bản",
+    "task": "Kiểm nguồn, định dạng, lời đăng và gói bàn giao Facebook.",
+    "standard": "Chỉ xuất bản khi có phê duyệt; kiểm kết quả và biên nhận đúng kênh."
+  },
+  {
+    "name": "Thùy Dung",
+    "title": "Luồng 2 · TikTok",
+    "group": "Kênh xuất bản",
+    "task": "Kiểm nguồn, định dạng, lời đăng và gói bàn giao TikTok.",
+    "standard": "Chỉ xuất bản khi có phê duyệt; kiểm kết quả và biên nhận đúng kênh."
+  },
+  {
+    "name": "Hải Âu",
+    "title": "Luồng 2 · YouTube",
+    "group": "Kênh xuất bản",
+    "task": "Kiểm nguồn, định dạng, lời đăng và gói bàn giao YouTube.",
+    "standard": "Chỉ xuất bản khi có phê duyệt; kiểm kết quả và biên nhận đúng kênh."
+  }
+];

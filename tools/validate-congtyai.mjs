@@ -1,0 +1,23 @@
+import {readFileSync,readdirSync} from 'node:fs';
+import assert from 'node:assert/strict';
+const dir='tuyen-tho-mo/congtyai/';
+const allowed=['app.js','index.html','quy-trinh-cong-khai.txt','roles.js','style.css'];
+assert.deepEqual(readdirSync(dir).sort(),allowed);
+const texts=Object.fromEntries(allowed.map(f=>[f,readFileSync(dir+f,'utf8')]));
+const all=Object.values(texts).join('\n');
+for(const rule of [/localStorage|sessionStorage|fetch\(|XMLHttpRequest|WebSocket/,/branch_link|thread[_-]?id|heartbeat|snapshot|telemetry/i,/C:\\|D:\\|\/workspace\/|\/home\//,/sk-[a-zA-Z0-9]{12}|ghp_[a-zA-Z0-9]+/,/mailto:|tel:|\+84[0-9]/]) assert(!rule.test(all),`Privacy/side-effect rule: ${rule}`);
+const roles=JSON.parse(texts['roles.js'].replace(/^export const roles = /,'').replace(/;\s*$/,''));
+assert.equal(roles.length,15);assert.equal(new Set(roles.map(r=>r.name)).size,15);
+for(const n of ['Đào','Quyên','Kiên','Sơn Hà','Tuệ','Khuê','Trúc','Châu'])assert(roles.some(r=>r.name===n));
+for(const r of roles){assert.deepEqual(Object.keys(r),['name','title','group','task','standard']);assert(r.task&&r.standard)}
+for(const route of ['Đào → Quyên → Kiên → Phòng / công đoạn','Phòng → Khuê → Quyên → Đào','Khuê → Quyên → Đào → Quyên → Kiên → Công đoạn lỗi'])assert(texts['index.html'].includes(route));
+for(const m of texts['index.html'].matchAll(/(?:src|href)="\.\/([^"]+)"/g))assert(allowed.includes(m[1]),`Missing asset ${m[1]}`);
+assert(texts['index.html'].includes('không phải AI độc lập hoặc kết nối trực tiếp PC'));
+assert(texts['index.html'].includes('78 mã công đoạn'));
+assert(texts['app.js'].includes('dialog.showModal()'));
+const workflow=readFileSync('.github/workflows/pages.yml','utf8');
+assert(workflow.indexOf('mv tuyen-tho-mo/congtyai "$congtyai_tmp"')<workflow.indexOf('node tools/generate-province-pages'));
+assert(workflow.indexOf('mv "$congtyai_tmp" tuyen-tho-mo/congtyai')>0);
+assert(workflow.includes('trap restore_dashboard EXIT'));
+assert(workflow.includes('node tools/validate-congtyai.mjs'));
+console.log('PASS: public allowlist, 15 roles, CEO routing, scoped assets, no private snapshot/storage/network code, workflow isolation');
