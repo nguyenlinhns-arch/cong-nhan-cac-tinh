@@ -15,3 +15,5 @@
 .scene-label{width:88px;height:32px;white-space:nowrap;padding:4px 2px;font-size:10px;line-height:20px}@media(max-width:600px){.scene-label{width:70px;font-size:9px;height:32px}}
 
 .meeting-gate{padding:14px 16px;background:#efece0;border-left:3px solid #b39e67;border-radius:8px}.meeting-gate strong{font-size:12px}.meeting-gate p{font-size:11px;margin:6px 0}
+/* Keep every social desk visible in the fallback room at all widths. */
+.room-social .desks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));justify-items:center}.room-social .desk{width:100%;max-width:132px;min-width:0}.room-social .desk-avatar{max-width:100%;height:auto;aspect-ratio:240/280}.room-social .desk-furniture{width:100%;max-width:132px}.room-social .nameplate{width:100%;min-width:0;overflow-wrap:anywhere}@media(max-width:560px){.room-social .desks{grid-template-columns:repeat(2,minmax(0,1fr))}}
