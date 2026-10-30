@@ -38,8 +38,8 @@ export const roles = [
     "name": "Tuệ",
     "title": "Giám đốc giám sát tiến độ",
     "group": "Giám đốc",
-    "task": "Theo dõi hạn, phụ thuộc và điểm nghẽn; giám sát cả vòng sửa.",
-    "standard": "Không kiểm định thay Khuê. Báo cáo đến Đào qua Quyên; không tạo tiến độ giả."
+    "task": "Theo dõi hạn, phụ thuộc và điểm nghẽn; phân tích ảnh hưởng chất lượng, tài nguyên và phụ thuộc sửa chữa để đề xuất ưu tiên kèm lý do ngắn. Giám sát cả vòng sửa.",
+    "standard": "Không kiểm định thay Khuê. Đề xuất ưu tiên qua Quyên trình Đào; ưu tiên không cấp quyền. HOLD hoặc UNKNOWN không tự thực thi và không tạo tiến độ giả."
   },
   {
     "name": "Khuê",
