@@ -215,7 +215,7 @@ function hubPage() {
 
 for (const article of released) {
   let articleHtml = articlePage(article);
-  if (isOccupationArticle(article)) {
+  if (isOccupationArticle(article) && article.display_image !== true) {
     articleHtml = articleHtml
       .replace('<body class="daily-seo-page">', '<body class="daily-seo-page occupation-text-only">')
       .replace('class="network-wrap daily-seo-hero__grid"', 'class="network-wrap daily-seo-hero__grid daily-seo-hero__grid--text-only"')

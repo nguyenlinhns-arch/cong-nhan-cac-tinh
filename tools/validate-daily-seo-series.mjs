@@ -166,8 +166,12 @@ for (const article of released) {
   ]) if (!html.includes(marker)) errors.push(`${article.slug}: thiếu ${marker}`);
   if (isOccupationArticle(article)) {
     const main = html.match(/<main\b[\s\S]*?<\/main>/i)?.[0] || "";
-    if (!/<body\b[^>]*class="[^"]*\bdaily-seo-page\b[^"]*\boccupation-text-only\b[^"]*"/i.test(html)) errors.push(`${article.slug}: chưa bật chế độ bài nghề chỉ dùng nội dung chữ`);
-    if (/<(?:img|picture|figure)\b/i.test(main)) errors.push(`${article.slug}: bài nghề còn ảnh minh họa trong nội dung chính`);
+    if (article.display_image === true) {
+      if (!/<figure><img\b[^>]*><figcaption>[\s\S]*?<\/figcaption><\/figure>/i.test(main)) errors.push(`${article.slug}: bài nghề đã bật ảnh nhưng thiếu ảnh hoặc chú thích trong nội dung chính`);
+    } else {
+      if (!/<body\b[^>]*class="[^"]*\bdaily-seo-page\b[^"]*\boccupation-text-only\b[^"]*"/i.test(html)) errors.push(`${article.slug}: chưa bật chế độ bài nghề chỉ dùng nội dung chữ`);
+      if (/<(?:img|picture|figure)\b/i.test(main)) errors.push(`${article.slug}: bài nghề còn ảnh minh họa trong nội dung chính`);
+    }
   }
   if (!sitemap.includes(`<loc>${canonical}</loc>`)) errors.push(`${article.slug}: thiếu trong sitemap`);
   if (!llms.includes(canonical)) errors.push(`${article.slug}: thiếu trong llms.txt`);
