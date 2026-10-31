@@ -29,8 +29,9 @@ export function refreshPrivateSnapshotAge(projection,now=Date.now()){
  if(projection?.mode!=='PRIVATE_LOCAL_SNAPSHOT')return projection;
  return {...projection,rows:projection.rows.map(r=>{
   if(!r.observedAt||!r.evidenceRef)return r;
-  const observed=Date.parse(r.observedAt);
-  if(!Number.isFinite(now)||!Number.isFinite(observed)||now<observed)return {...r,state:'UNKNOWN',label:labels.UNKNOWN,freshness:'UNKNOWN'};
+  const generated=time(projection.generatedAt,now),event=time(r.eventAt,now),observed=time(r.observedAt,now),reported=time(r.reportedAt,now);
+  const chronology=Number.isFinite(now)&&generated!==null&&event!==null&&observed!==null&&reported!==null&&event<=observed&&observed<=reported&&reported<=generated;
+  if(!chronology)return {...r,state:'UNKNOWN',label:labels.UNKNOWN,freshness:'UNKNOWN'};
   return {...r,freshness:r.freshnessWindowMs===null?'UNSPECIFIED':now-observed>r.freshnessWindowMs?'STALE':'RECENT_SELF_DECLARED'};
  })};
 }
