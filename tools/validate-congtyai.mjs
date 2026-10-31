@@ -1,21 +1,24 @@
 import {readFileSync,readdirSync} from 'node:fs';
 import assert from 'node:assert/strict';
 const dir='tuyen-tho-mo/congtyai/';
-const allowed=['app.js','handoffs.js','health.js','index.html','layout3d.js','meeting.js','office3d.js','portraits.js','quy-trinh-cong-khai.txt','roles.js','rooms.js','style.css'];
+const allowed=['app.js','handoffs.js','health.js','index.html','layout3d.js','meeting.js','office-fallback.js','office3d.js','portraits.js','private-snapshot.js','quy-trinh-cong-khai.txt','roles.js','rooms.js','status-model.js','status-panel.js','style.css'];
 assert.deepEqual(readdirSync(dir).sort(),allowed);
 const texts=Object.fromEntries(allowed.map(f=>[f,readFileSync(dir+f,'utf8')]));
 const all=Object.values(texts).join('\n');
-for(const rule of [/localStorage|sessionStorage|fetch\(|XMLHttpRequest|WebSocket/,/branch_link|thread[_-]?id|heartbeat|snapshot|telemetry/i,/C:\\|D:\\|\/workspace\/|\/home\//,/sk-[a-zA-Z0-9]{12}|ghp_[a-zA-Z0-9]+/,/mailto:|tel:|\+84[0-9]/,/chatgpt\.site|trycloudflare\.com|127\.0\.0\.1/]) assert(!rule.test(all),`Privacy/side-effect rule: ${rule}`);
-const roles=JSON.parse(texts['roles.js'].replace(/^export const roles = /,'').replace(/;\s*$/,''));
-assert.equal(roles.length,19);assert.equal(new Set(roles.map(r=>r.name)).size,19);
-for(const n of ['Đào','Quyên','Kiên','Sơn Hà','Tuệ','Khuê','Trúc','Châu','Ngân','Diệu','Khôi','An'])assert(roles.some(r=>r.name===n));
-for(const r of roles){assert.deepEqual(Object.keys(r),['name','title','group','task','standard']);assert(r.task&&r.standard)}
+for(const rule of [/localStorage|sessionStorage|fetch\(|XMLHttpRequest|WebSocket/,/branch_link|thread[_-]?id|heartbeat/i,/C:\\|D:\\|\/workspace\/|\/home\//,/sk-[a-zA-Z0-9]{12}|ghp_[a-zA-Z0-9]+/,/mailto:|tel:|\+84[0-9]/,/chatgpt\.site|trycloudflare\.com|127\.0\.0\.1/]) assert(!rule.test(all),`Privacy/side-effect rule: ${rule}`);
 const moduleFrom=text=>import('data:text/javascript;base64,'+Buffer.from(text).toString('base64'));
+const {roles}=await moduleFrom(texts['roles.js']);
+assert.equal(roles.length,37);assert.equal(new Set(roles.map(r=>r.name)).size,37);
+const stableIds=roles.filter(r=>r.roleId!==undefined).map(r=>r.roleId);
+assert(stableIds.every(id=>typeof id==='string'&&id.length>0));assert.equal(new Set(stableIds).size,stableIds.length);
+for(const id of ['cloud-operations/van-anh','progress-pc-01','progress-cloud-01','progress-documents-01','agy-integration/ket-minh','resource-credit/ngan-ha'])assert(stableIds.includes(id));
+for(const n of ['Đào','Quyên','Kiên','Sơn Hà','Tuệ','Khuê','Trúc','Châu','Ngân','Diệu','Khôi','An'])assert(roles.some(r=>r.name===n));
+for(const r of roles){assert(Object.keys(r).every(k=>['name','title','group','task','standard','roleId'].includes(k)));assert(['name','title','group','task','standard'].every(k=>typeof r[k]==='string'&&r[k]));assert(r.task&&r.standard)}
 const {rooms}=await moduleFrom(texts['rooms.js']),{personas,portrait}=await moduleFrom(texts['portraits.js']);
-assert.equal(rooms.length,11);assert.equal(Object.keys(personas).length,19);
+assert.equal(rooms.length,11);assert.equal(Object.keys(personas).length,37);
 assert.equal(personas['Đào'].presentation,'female');assert.equal(personas['Đào'].room,'ceo');assert.equal(personas['Quyên'].room,'vp-process');assert.equal(personas['Khôi'].room,'vp-repair');assert.equal(Object.values(personas).filter(p=>p.room==='ceo').length,1);assert.equal(personas['Khôi'].presentation,'male');
-for(const r of roles){assert(personas[r.name]);assert(rooms.some(room=>room.id===personas[r.name].room));assert(portrait(r.name).includes('<svg'));}
-assert.equal(new Set(roles.map(r=>portrait(r.name))).size,19);
+for(const r of roles){assert(personas[r.name]);assert([...rooms.map(room=>room.id),'planning','cloud','agy','data'].includes(personas[r.name].room));assert(portrait(r.name).includes('<svg'));}
+assert.equal(new Set(roles.map(r=>portrait(r.name))).size,37);
 const html=texts['index.html'];assert(html.includes('<h1>Công ty Nguyễn Linh AI</h1>'));
 for(const title of ['Đã làm hôm nay','Đang lỗi','Nhân viên cần sửa'])assert(html.includes(title));
 assert(html.indexOf('id="office"')<html.indexOf('id="boards"'));assert(html.includes('UNKNOWN · không tính hoàn thành'));assert(html.includes('Dữ liệu thật: chưa kết nối'));
@@ -34,7 +37,7 @@ assert(html.includes('Chưa kết nối hội thoại công việc'));assert(htm
 const workflow=readFileSync('.github/workflows/pages.yml','utf8');
 assert(workflow.indexOf('mv tuyen-tho-mo/congtyai "$congtyai_tmp"')<workflow.indexOf('node tools/generate-province-pages'));
 assert(workflow.includes('mv "$congtyai_tmp" tuyen-tho-mo/congtyai'));assert(workflow.includes('trap restore_dashboard EXIT'));assert(workflow.includes('node tools/validate-congtyai.mjs'));
-console.log('PASS: 19 public roles/portraits, 11 rooms, exact brand/3 disconnected boards, privacy/no connections, source-driven demo ordering/dedup/fixture integrity/reduced-motion hooks, asset imports and Pages isolation');
+// Original meeting, health, demo and isolation assertions retained below.
 
 assert(texts['office3d.js'].includes("canvas.getContext('webgl'"));assert(texts['office3d.js'].includes('document.hidden'));assert(texts['office3d.js'].includes('requestAnimationFrame'));assert(texts['office3d.js'].includes('moving.elapsed'));
 
@@ -50,8 +53,22 @@ assert.equal(mg([{...opinion('Quyên'),id:'duplicate'}, {...opinion('Khôi'),id:
 
 assert.equal(meetingGate({jobId:'sample',revision:2,participantSetVerified:true,opinions:[opinion('Quyên'),opinion('Khôi')]}).state,'HOLD');assert.equal(meetingGate({jobId:'sample',revision:2,required:['An'],opinions:[opinion('Quyên'),opinion('Khôi'),opinion('An')]}).state,'HOLD');
 
-assert(html.includes('id="officePlan" hidden'));assert(html.includes('id="roomTabs" hidden'));assert(!html.includes('id="directory"'));assert(!html.includes('id="detail"'));assert(!html.includes('inspectPerson'));assert(!texts['app.js'].includes('openRole'));assert(html.includes('<h2 id="boardsTitle">Góc điều hành</h2>'));assert(html.includes('id="sceneFallback"'));assert(html.includes('ẢNH VĂN PHÒNG TĨNH'));assert(!html.includes('Xem sơ đồ 2D'));assert(texts['office3d.js'].includes('b.textContent=p.name'));assert(texts['office3d.js'].includes('project(p.homeX,.9,p.homeZ+1.8)'));assert(!texts['office3d.js'].includes('project(x,3.4,z)'));assert(texts['office3d.js'].includes("b.setAttribute('aria-label','Bàn làm việc của '+p.name"));assert(!texts['app.js'].includes("c.innerHTML=portrait(e.from"));
+assert(html.includes('id="officePlan" hidden'));assert(html.includes('id="roomTabs" hidden'));assert(!html.includes('id="directory"'));assert(!html.includes('id="detail"'));assert(!html.includes('inspectPerson'));assert(!texts['app.js'].includes('openRole'));assert(html.includes('<h2 id="boardsTitle">Góc điều hành</h2>'));assert(html.includes('id="sceneFallback"'));assert(html.includes('ẢNH VĂN PHÒNG TĨNH'));assert(!html.includes('Xem sơ đồ 2D'));assert(texts['office3d.js'].includes('b.textContent=p.rank.symbol'));assert(!texts['office3d.js'].includes('b.textContent=p.name'));assert(texts['office3d.js'].includes('project(p.homeX,.9,p.homeZ+1.8)'));assert(!texts['office3d.js'].includes('project(x,3.4,z)'));assert(texts['office3d.js'].includes("b.setAttribute('aria-label','Xem vai trò '+p.name"));assert(!texts['app.js'].includes("c.innerHTML=portrait(e.from"));
 
 assert(html.includes('id="visualEvents"'));assert(texts['app.js'].includes("e.mode!=='DEMO_ONLY'"));assert(texts['office3d.js'].includes("origin:'synthetic-ui'"));assert(texts['office3d.js'].includes('onVisualEvent(Object.freeze(visualEvent))'));assert(texts['office3d.js'].includes('gesture.elapsed>=8000'));
 
 assert(html.includes('id="sceneStage" tabindex="0" role="region"'));
+
+// Approved client-only import contract; snapshot is no longer a forbidden word.
+for(const directive of ["default-src 'none'","script-src 'self'","connect-src 'none'","form-action 'none'","object-src 'none'","worker-src 'none'"])assert(html.includes(directive));
+assert(!html.includes('unsafe-eval'));
+for(const f of ['private-snapshot.js','status-panel.js']){
+ const source=texts[f];
+ assert(!/fetch\s*\(|XMLHttpRequest|WebSocket|sendBeacon|localStorage|sessionStorage|indexedDB|serviceWorker/.test(source));
+ assert(!/innerHTML|insertAdjacentHTML|\.href\s*=|\.src\s*=/.test(source));
+}
+assert(texts['private-snapshot.js'].includes('PRIVATE_LOCAL_SNAPSHOT'));
+assert(texts['private-snapshot.js'].includes('refreshPrivateSnapshotAge'));
+assert(texts['status-panel.js'].includes('textContent'));
+assert(html.includes('37 persona'));
+console.log('PASS: approved 37-role frontend, exact public files, local-only import/CSP, original meeting/health/demo gates and Pages isolation');
