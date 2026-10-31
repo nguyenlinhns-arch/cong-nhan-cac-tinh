@@ -1,9 +1,401 @@
 {
   "version": "1.0",
-  "updated_at": "2026-08-27",
+  "updated_at": "2026-10-31",
   "canonical_hub": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/",
   "publisher": "Thầy Linh – Tuyển Thợ Mỏ",
   "articles": [
+    {
+      "title": "Học cơ điện mỏ có phải vận hành trạm điện không?",
+      "primary_query": "học cơ điện mỏ có phải vận hành trạm điện không",
+      "direct_answer": "Có thể. Vận hành hệ thống điện và sử dụng khí cụ điện thuộc phạm vi nghề cơ điện mỏ, nên người lao động có thể được bố trí làm việc liên quan đến trạm điện. Tuy nhiên, không phải học xong là được tự trực hoặc thao tác mọi thiết bị; công việc cụ thể phụ thuộc đào tạo, tay nghề và phân công.",
+      "date_published": "2026-10-31",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-van-hanh-tram-dien-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống điện, đồng thời lắp đặt và sử dụng các loại khí cụ điện; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Đỗ Tiến Dũng - Tổ trưởng gương mẫu, giữ mạch điện cho sản xuất ở Phân xưởng Quản lý Hầm trạm”, đăng ngày 13/08/2026, với chú thích gốc về việc kiểm tra hoạt động tại trạm biến áp của Than Dương Huy."
+    },
+    {
+      "title": "Học cơ điện mỏ có phải vận hành hệ thống khai thác cơ giới hóa không?",
+      "primary_query": "học cơ điện mỏ có phải vận hành hệ thống khai thác cơ giới hóa không",
+      "direct_answer": "Có thể. Nguồn chuẩn hiện hành nêu nghề kỹ thuật cơ điện mỏ có nhiệm vụ vận hành hệ thống khai thác cơ giới hóa. Tuy nhiên, người học không mặc định được điều khiển toàn bộ dây chuyền ngay sau khi tốt nghiệp; chỉ thực hiện phần đã được đào tạo, hướng dẫn và phân công tại vị trí cụ thể.",
+      "date_published": "2026-10-30",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-van-hanh-he-thong-khai-thac-co-gioi-hoa-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò có nhiệm vụ lắp đặt, sử dụng khí cụ điện và vận hành hệ thống khai thác cơ giới hóa; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Chuyển đổi số TKV: Xây dựng nền tảng từ một nghị quyết (Kỳ 1)”, đăng ngày 15/09/2026, với chú thích gốc về dây chuyền lò chợ cơ giới hóa được áp dụng số hóa."
+    },
+    {
+      "title": "Học cơ điện mỏ có phải sửa thiết bị vận tải hầm lò không?",
+      "primary_query": "học cơ điện mỏ có phải sửa thiết bị vận tải hầm lò không",
+      "direct_answer": "Có thể. Nguồn tuyển sinh hiện hành nêu nghề kỹ thuật cơ điện mỏ thực hiện lắp đặt, vận hành, bảo dưỡng và sửa chữa thiết bị vận tải. Tuy nhiên, sửa chữa không đồng nghĩa trực tiếp điều khiển phương tiện; người mới chỉ kiểm tra, bảo dưỡng hoặc hỗ trợ xử lý phần đã được đào tạo, hướng dẫn và phân công.",
+      "date_published": "2026-10-29",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-sua-thiet-bi-van-tai-ham-lo-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò lắp đặt, vận hành, bảo dưỡng và sửa chữa thiết bị vận tải cùng các thiết bị cơ điện khác; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Than Dương Huy: Tuyển sinh thiết thực từ đào tạo đến việc làm”, đăng ngày 13/10/2026, với chú thích gốc “Đoàn học sinh xuống lò bằng xe song loan”."
+    },
+    {
+      "title": "Học cơ điện mỏ có phải sửa thiết bị bốc xúc không?",
+      "primary_query": "học cơ điện mỏ có phải sửa thiết bị bốc xúc không",
+      "direct_answer": "Có thể. Nguồn tuyển sinh hiện hành nêu nghề kỹ thuật cơ điện mỏ thực hiện lắp đặt, vận hành, bảo dưỡng và sửa chữa thiết bị bốc xúc. Tuy nhiên, sửa chữa không đồng nghĩa trực tiếp lái máy; người mới chỉ kiểm tra, bảo dưỡng hoặc xử lý phần việc đã được đào tạo, hướng dẫn và phân công.",
+      "date_published": "2026-10-28",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-sua-thiet-bi-boc-xuc-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò lắp đặt, vận hành, bảo dưỡng và sửa chữa thiết bị khoan, khí nén, bốc xúc, vận tải cùng các thiết bị cơ điện khác; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Than Cao Sơn tổ chức thành công Hội thi chọn thợ giỏi cấp Công ty năm 2026”, cho thấy máy xúc thủy lực bốc đất đá lên xe vận tải tại khai trường."
+    },
+    {
+      "title": "Học cơ điện mỏ có phải hàn thiết bị không?",
+      "primary_query": "học cơ điện mỏ có phải hàn thiết bị không",
+      "direct_answer": "Có thể gặp và tham gia công việc hàn khi lắp đặt hoặc sửa chữa một số chi tiết cơ khí, nhưng hàn không phải toàn bộ nghề cơ điện mỏ và không mặc định giao cho mọi người mới. Chỉ người đã được đào tạo, hướng dẫn, trang bị phù hợp và phân công mới thực hiện phần việc này.",
+      "date_published": "2026-10-27",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-han-thiet-bi-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống cơ khí, điện, vận tải cùng thiết bị cơ giới; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Đội lắp đặt Công trình thiết bị cơ điện hầm lò - Những chiến binh trên mặt trận sản xuất của Than Quang Hanh”, ghi lại công nhân thực hiện công việc hàn sửa tại xưởng."
+    },
+    {
+      "title": "Học nghề xây dựng mỏ hầm lò có phải lắp lưới thép không?",
+      "primary_query": "học nghề xây dựng mỏ hầm lò có phải lắp lưới thép không",
+      "direct_answer": "Có thể được học và tham gia công việc với lưới thép khi lưới là một phần của phương án chống giữ hoặc gia cố đường lò. Tuy nhiên, không phải đường lò nào cũng dùng cùng cấu hình và không phải mọi người mới đều tự lắp lưới; việc cụ thể phụ thuộc thiết kế, đào tạo và phân công của tổ đội.",
+      "date_published": "2026-10-26",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-nghe-xay-dung-mo-ham-lo-co-phai-lap-luoi-thep-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật xây dựng mỏ hầm lò đào, chống giữ, gia cố và duy trì đường lò; lắp dựng hệ thống bằng vì chống kim loại, vì neo hoặc bê tông cốt thép; thời gian đào tạo hiện hành 2–3 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Trải nghiệm một ca làm việc với công nghệ đào lò sử dụng máy xúc ZWY-60 ở Than Nam Mẫu”, cho thấy thợ lò làm việc tại đường lò có lưới thép và kết cấu chống giữ."
+    },
+    {
+      "title": "Học cơ điện mỏ có phải sửa máy bơm thoát nước không?",
+      "primary_query": "học cơ điện mỏ có phải sửa máy bơm thoát nước không",
+      "direct_answer": "Có thể được học và được phân công làm việc với máy bơm thoát nước, vì đây là hệ thống phụ trợ có thiết bị cơ khí, điện và điều khiển. Tuy nhiên, không phải mọi người học cơ điện đều trực hoặc tự sửa máy bơm; nhiệm vụ cụ thể phụ thuộc đào tạo, vị trí và phân công của đơn vị.",
+      "date_published": "2026-10-25",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-sua-may-bom-thoat-nuoc-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống cơ khí, điện cùng thiết bị và hệ thống phụ trợ; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh từ bài Vinacomin “Than Quang Hanh và Trường Cao đẳng TKV: Tăng cường gắn kết đào tạo với sản xuất thực tế”, trong đó đoàn khảo sát trạm bơm, trạm điện, quang lật và các tuyến đường lò."
+    },
+    {
+      "title": "Học cơ điện mỏ có phải sửa máy khoan không?",
+      "primary_query": "học cơ điện mỏ có phải sửa máy khoan không",
+      "direct_answer": "Có thể. Hồ sơ nghề hiện hành nêu người học kỹ thuật cơ điện mỏ hầm lò có thể lắp đặt, vận hành, bảo dưỡng và sửa chữa máy khoan. Phần việc cụ thể còn phụ thuộc nội dung đã học, loại thiết bị, vị trí làm việc và phân công; người mới không tự xử lý ngoài nhiệm vụ được giao.",
+      "date_published": "2026-10-24",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-sua-may-khoan-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò có nhiệm vụ lắp đặt, vận hành, bảo dưỡng và sửa chữa máy khoan, máy nén khí, thiết bị bốc xúc, vận tải và các thiết bị cơ - điện; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Công ty than Mạo Khê sôi nổi kỳ thi chọn thợ giỏi năm 2026”, chú thích thí sinh nghề kỹ thuật sửa chữa cơ điện mỏ hầm lò thực hiện phần thi."
+    },
+    {
+      "title": "Học cơ điện mỏ có phải sửa máy nén khí không?",
+      "primary_query": "học cơ điện mỏ có phải sửa máy nén khí không",
+      "direct_answer": "Có thể. Hồ sơ nghề hiện hành nêu người học cơ điện mỏ có thể lắp đặt, vận hành, bảo dưỡng và sửa chữa máy nén khí cùng các thiết bị cơ - điện khác. Tuy nhiên, không phải mọi người đều sửa máy nén khí trong mọi ca; nhiệm vụ cụ thể phụ thuộc nội dung đã học, loại thiết bị, vị trí làm việc và phân công của đơn vị tiếp nhận.",
+      "date_published": "2026-10-23",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-sua-may-nen-khi-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò có nhiệm vụ lắp đặt, vận hành, bảo dưỡng và sửa chữa máy khoan, máy nén khí, thiết bị bốc xúc, vận tải và các thiết bị cơ - điện phục vụ sản xuất; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Than Hạ Long nâng cao chất lượng nguồn nhân lực qua thi thực hành tay nghề”, chú thích công nhân Than Hạ Long tham gia phần thi thực hành nghề cơ điện lò."
+    },
+    {
+      "title": "Học nghề xây dựng mỏ hầm lò có phải vận hành tời trục không?",
+      "primary_query": "học nghề xây dựng mỏ hầm lò có phải vận hành tời trục không",
+      "direct_answer": "Có thể có công việc liên quan đến tời trục, vì hồ sơ nghề xác định vận chuyển đất đá bằng goòng, tời trục, băng tải, máng cào hoặc tàu điện. Tuy nhiên, điều đó không có nghĩa mọi người học đều trực tiếp điều khiển tời trục; người vận hành cụ thể phải được đào tạo, hướng dẫn và phân công theo thiết bị, vị trí làm việc của đơn vị.",
+      "date_published": "2026-10-22",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-nghe-xay-dung-mo-ham-lo-co-phai-van-hanh-toi-truc-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật xây dựng mỏ hầm lò có nhiệm vụ vận chuyển đất đá bằng goòng, tời trục, băng tải, máng cào hoặc tàu điện; thời gian đào tạo hiện hành 2–3 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Thứ trưởng Bộ Công Thương Trương Thanh Hoài kiểm tra tiến độ Dự án khai thác hầm lò mỏ Khe Chàm II-IV - Công ty Than Hạ Long”, nội dung và ảnh về kiểm tra hiện trường, công tác vận hành tời trục giếng đứng phụ."
+    },
+    {
+      "title": "Học cơ điện mỏ có phải đấu nối dây điện dưới hầm lò không?",
+      "primary_query": "học cơ điện mỏ có phải đấu nối dây điện dưới hầm lò không",
+      "direct_answer": "Có. Nhiệm vụ của nghề kỹ thuật cơ điện mỏ hầm lò bao gồm lắp đặt và đấu nối hệ thống dây dẫn điện theo thiết kế và quy trình kỹ thuật. Tuy nhiên, không phải người mới tự đấu nối ở mọi vị trí: phần việc cụ thể phụ thuộc nội dung đã học, nơi bố trí, loại thiết bị và phân công của đơn vị tiếp nhận.",
+      "date_published": "2026-10-21",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-dau-noi-day-dien-duoi-ham-lo-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò có nhiệm vụ lắp đặt, đấu nối hệ thống dây dẫn điện theo thiết kế và quy trình kỹ thuật; có thể làm việc trong hầm lò hoặc trên mặt bằng; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Than Hạ Long: Chú trọng nâng cao chất lượng tay nghề cho thợ mỏ”, chú thích công nhân nhóm nghề sửa chữa cơ điện thực hiện phần thi tay nghề."
+    },
+    {
+      "title": "Học nghề xây dựng mỏ hầm lò có phải vận chuyển vật liệu bằng tay không?",
+      "primary_query": "học nghề xây dựng mỏ hầm lò có phải vận chuyển vật liệu bằng tay không",
+      "direct_answer": "Có tham gia vận chuyển vật liệu, nhưng không thể kết luận mọi vật liệu đều phải khuân hoàn toàn bằng tay. Nghề kỹ thuật xây dựng mỏ hầm lò có nhiệm vụ đưa vì chống, cấu kiện bê tông và vật liệu chèn lấp tới vị trí thi công; cách vận chuyển phụ thuộc thiết bị, tuyến đường lò, ca lệnh và phân công tổ đội.",
+      "date_published": "2026-10-20",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-nghe-xay-dung-mo-ham-lo-co-phai-van-chuyen-vat-lieu-bang-tay-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật xây dựng mỏ hầm lò có nhiệm vụ vận chuyển vật liệu chuyên dùng như vì chống, cấu kiện bê tông và vật liệu chèn lấp; các phương tiện trong phạm vi nghề gồm goòng, tời trục, băng tải, máng cào hoặc tàu điện; thời gian đào tạo hiện hành 2–3 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Nguyễn Văn Phúc - Người thợ nói ít, làm chắc của Than Nam Mẫu”; nội dung bài nhắc tới kinh nghiệm vận chuyển vật tư trong lò của người thợ trong ảnh."
+    },
+    {
+      "title": "Học nghề xây dựng mỏ hầm lò có phải xúc dỡ đất đá không?",
+      "primary_query": "học nghề xây dựng mỏ hầm lò có phải xúc dỡ đất đá không",
+      "direct_answer": "Có. Xúc dỡ đất đá, san nền và chuẩn bị mặt bằng làm việc thuộc phạm vi nghề kỹ thuật xây dựng mỏ hầm lò. Công việc có thể dùng dụng cụ hoặc thiết bị cơ giới theo điều kiện thi công và phân công tổ đội; không nên hiểu là mọi người đều phải xúc hoàn toàn bằng tay trong mọi ca.",
+      "date_published": "2026-10-19",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-nghe-xay-dung-mo-ham-lo-co-phai-xuc-do-dat-da-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật xây dựng mỏ hầm lò có nhiệm vụ phá vỡ đất đá bằng thiết bị cơ giới, bán cơ giới hoặc khoan; xúc dỡ đất đá, san nền và chuẩn bị mặt bằng bằng dụng cụ hoặc thiết bị cơ giới; vận chuyển đất đá bằng goòng, tời trục, băng tải, máng cào hoặc tàu điện; thời gian đào tạo hiện hành 2–3 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Trải nghiệm một ca làm việc với công nghệ đào lò sử dụng máy xúc ZWY-60 ở Than Nam Mẫu”, chú thích ảnh xác nhận thợ vận hành điều khiển máy bằng tay khiển thủy lực."
+    },
+    {
+      "title": "Học nghề xây dựng mỏ hầm lò có phải lắp vì chống không?",
+      "primary_query": "học nghề xây dựng mỏ hầm lò có phải lắp vì chống không",
+      "direct_answer": "Có. Lắp dựng hệ thống chống giữ bằng vì chống kim loại, vì neo hoặc bê tông cốt thép thuộc phạm vi nghề kỹ thuật xây dựng mỏ hầm lò. Tuy nhiên, người mới không tự dựng hoặc sửa vì chống; phần việc phải theo đào tạo, ca lệnh, điều kiện đường lò và phân công tổ đội.",
+      "date_published": "2026-10-18",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-nghe-xay-dung-mo-ham-lo-co-phai-lap-vi-chong-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật xây dựng mỏ hầm lò có nhiệm vụ vận chuyển vì chống và cấu kiện; lắp dựng hệ thống chống giữ bằng vì chống kim loại, vì neo hoặc bê tông cốt thép; củng cố, sửa chữa vị trí cần khắc phục; thời gian đào tạo hiện hành 2–3 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Sôi động khí thế thi đua sản xuất đầu Xuân Ất Tỵ”, chú thích ảnh xác nhận thợ lò Than Hạ Long bắt tay vào sản xuất sau kỳ nghỉ Tết."
+    },
+    {
+      "title": "Học cơ điện mỏ có phải sửa băng tải dưới hầm lò không?",
+      "primary_query": "học cơ điện mỏ có phải sửa băng tải dưới hầm lò không",
+      "direct_answer": "Có thể có. Lắp đặt, vận hành, bảo dưỡng và sửa chữa thiết bị vận tải thuộc phạm vi nghề kỹ thuật cơ điện mỏ hầm lò, trong đó có hệ thống băng tải. Tuy nhiên, người mới không tự sửa hoặc xử lý mọi hỏng hóc; phần việc cụ thể phụ thuộc đào tạo, thiết bị, năng lực và phân công của đơn vị tiếp nhận.",
+      "date_published": "2026-10-17",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-sua-bang-tai-duoi-ham-lo-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò có nhiệm vụ lắp đặt, vận hành, bảo dưỡng và sửa chữa thiết bị vận tải cùng các thiết bị cơ - điện phục vụ sản xuất. Ảnh riêng được xác minh từ bài chính thức Vinacomin về Đội lắp đặt công trình thiết bị cơ điện hầm lò của Công ty Than Quang Hanh - TKV, chú thích ảnh xác nhận công nhân đang sửa chữa, lắp đặt con lăn hệ thống băng tải dưới lò."
+    },
+    {
+      "title": "Học cơ điện mỏ có phải lắp hệ thống chiếu sáng dưới hầm lò không?",
+      "primary_query": "học cơ điện mỏ có phải lắp hệ thống chiếu sáng dưới hầm lò không",
+      "direct_answer": "Có thể có. Lắp đặt, sửa chữa và vận hành hệ thống chiếu sáng trong khu vực sản xuất thuộc phạm vi nghề kỹ thuật cơ điện mỏ hầm lò. Tuy nhiên, không phải người học nào cũng làm việc này trong mọi ca; vị trí cụ thể phụ thuộc nội dung đào tạo, hệ thống thiết bị, năng lực và phân công của đơn vị tiếp nhận.",
+      "date_published": "2026-10-16",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-lap-he-thong-chieu-sang-duoi-ham-lo-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò có nhiệm vụ lắp đặt, sửa chữa và vận hành hệ thống chiếu sáng trong khu vực sản xuất; đồng thời thực hiện các nhóm việc cơ khí, điện, vận tải, thông tin liên lạc và thiết bị cơ giới. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Sôi động khí thế thi đua sản xuất, phấn đấu hoàn thành kế hoạch được giao” tại Than Núi Béo."
+    },
+    {
+      "title": "Học nghề khai thác mỏ hầm lò có phải sử dụng máy khoan không?",
+      "primary_query": "học nghề khai thác mỏ hầm lò có phải sử dụng máy khoan không",
+      "direct_answer": "Có thể có. Sử dụng thiết bị cơ giới, bán cơ giới hoặc máy khoan để thực hiện công đoạn phá vỡ đất đá và than thuộc phạm vi nghề kỹ thuật khai thác mỏ hầm lò. Tuy nhiên, không phải người học nào cũng dùng máy khoan trong mọi ca; người mới chỉ thực hiện phần việc đã được đào tạo, hướng dẫn và phân công trong tổ đội.",
+      "date_published": "2026-10-15",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-nghe-khai-thac-mo-ham-lo-co-phai-su-dung-may-khoan-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật khai thác mỏ hầm lò thực hiện công đoạn phá vỡ đất đá và than bằng thiết bị cơ giới, bán cơ giới hoặc khoan theo quy trình; nhóm thiết bị gồm máy khoan điện, máy khoan khí ép và thiết bị khai thác cơ giới. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Người thợ mỏ ‘bàn tay vàng’ với thu nhập 420 triệu đồng mỗi năm” về thợ lò Công ty Than Hạ Long - TKV."
+    },
+    {
+      "title": "Học cơ điện mỏ có phải vận hành hệ thống thông tin liên lạc không?",
+      "primary_query": "học cơ điện mỏ có phải vận hành hệ thống thông tin liên lạc không",
+      "direct_answer": "Có thể có. Vận hành hệ thống thông tin liên lạc, trạm và mạng phục vụ điều hành là một nhiệm vụ trong phạm vi nghề kỹ thuật cơ điện mỏ hầm lò. Tuy nhiên, không phải người học nào cũng phụ trách công việc này ở mọi ca; vị trí cụ thể phụ thuộc đào tạo, năng lực và phân công của đơn vị tiếp nhận.",
+      "date_published": "2026-10-14",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-van-hanh-he-thong-thong-tin-lien-lac-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò có nhiệm vụ sử dụng, vận hành hệ thống thông tin liên lạc, trạm và mạng phục vụ điều hành; đồng thời thực hiện các nhóm việc cơ khí, điện, vận tải, chiếu sáng và thiết bị cơ giới theo phân công. Ảnh riêng được xác minh từ bài chính thức Vinacomin về diễn tập ứng cứu sự cố, tìm kiếm cứu nạn năm 2025 tại Công ty Than Quang Hanh - TKV."
+    },
+    {
+      "title": "Học nghề xây dựng mỏ hầm lò có phải lắp đường ray không?",
+      "primary_query": "học nghề xây dựng mỏ hầm lò có phải lắp đường ray không",
+      "direct_answer": "Có thể có. Lắp đặt đường ray phục vụ vận chuyển đất đá, vật tư, thiết bị và người là một nhiệm vụ của nghề kỹ thuật xây dựng mỏ hầm lò. Tuy nhiên, không phải ai cũng làm việc này trong mọi ca; phần việc cụ thể phụ thuộc chương trình học, tiến độ đường lò, tổ đội và phân công của đơn vị tiếp nhận.",
+      "date_published": "2026-10-13",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-nghe-xay-dung-mo-ham-lo-co-phai-lap-duong-ray-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật xây dựng mỏ hầm lò có nhiệm vụ lắp đặt đường ray phục vụ vận chuyển đất đá, vật tư, thiết bị và người; đồng thời đào, xúc dỡ, san nền, vận chuyển và chống giữ theo phân công. Ảnh riêng được xác minh từ tư liệu chính thức Vinacomin “Chi bộ Phân xưởng Đào lò 1 Than Vàng Danh – Bản lĩnh dưới lòng đất”."
+    },
+    {
+      "title": "Học nghề khai thác mỏ hầm lò có phải vận hành băng tải không?",
+      "primary_query": "học nghề khai thác mỏ hầm lò có phải vận hành băng tải không",
+      "direct_answer": "Không phải ai học nghề khai thác mỏ hầm lò cũng được giao vận hành băng tải. Băng tải là một trong nhiều thiết bị có thể dùng để vận chuyển than và đất đá; nhiệm vụ thực tế phụ thuộc dây chuyền, nội dung đào tạo, vị trí, năng lực và phân công của đơn vị tiếp nhận.",
+      "date_published": "2026-10-12",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-nghe-khai-thac-mo-ham-lo-co-phai-van-hanh-bang-tai-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật khai thác mỏ hầm lò vận chuyển đất đá, than bằng máng trượt, goòng, băng tải, máng cào hoặc tàu điện; từng công đoạn thực hiện theo phân công tổ đội. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Thực hiện tốt công tác kỹ thuật, đảm bảo an toàn lao động trong sản xuất”."
+    },
+    {
+      "title": "Học nghề khai thác mỏ hầm lò có phải lái máy khấu không?",
+      "primary_query": "học nghề khai thác mỏ hầm lò có phải lái máy khấu không",
+      "direct_answer": "Không phải ai học nghề khai thác mỏ hầm lò cũng được giao lái máy khấu. Máy khấu hoặc combai có thể nằm trong dây chuyền khai thác cơ giới, nhưng nhiệm vụ thực tế còn phụ thuộc công nghệ của diện sản xuất, nội dung đào tạo, năng lực, vị trí và ca lệnh của đơn vị tiếp nhận.",
+      "date_published": "2026-10-11",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-nghe-khai-thac-mo-ham-lo-co-phai-lai-may-khau-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật khai thác mỏ hầm lò có thể dùng máy khấu hoặc combai cùng các thiết bị phục vụ sản xuất; công việc gồm phá vỡ than theo công nghệ, xúc dỡ, vận chuyển và chống giữ. Hình ảnh riêng được xác minh từ tư liệu chính thức Vinacomin “Than Hòn Gai phát Lệnh vận hành, hoạt động lò chợ cơ giới hoá đầu tiên”."
+    },
+    {
+      "title": "Học nghề xây dựng mỏ hầm lò có phải khoan nổ mìn không?",
+      "primary_query": "học nghề xây dựng mỏ hầm lò có phải khoan nổ mìn không",
+      "direct_answer": "Có thể. Nghề xây dựng mỏ có công đoạn phá vỡ đất đá bằng thiết bị khoan, nhưng không có nghĩa mọi học sinh hoặc công nhân đều tự làm việc với vật liệu nổ. Nhiệm vụ thực tế phụ thuộc công nghệ, đào tạo, vị trí, ca lệnh và phân công an toàn của đơn vị.",
+      "date_published": "2026-10-10",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-nghe-xay-dung-mo-ham-lo-co-phai-khoan-no-min-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: kỹ thuật xây dựng mỏ hầm lò có nhiệm vụ phá vỡ đất đá bằng thiết bị cơ giới, bán cơ giới hoặc thiết bị khoan; xúc dỡ, san nền, lắp đường ray, vận chuyển đất đá và vật liệu, lắp dựng, củng cố hệ thống chống giữ. Hình ảnh riêng được xác minh từ tư liệu chính thức Vinacomin “Cơ giới hóa công tác đào lò ở Công ty Xây lắp mỏ TKV”."
+    },
+    {
+      "title": "Học nghề mỏ có phải học an toàn trước khi xuống lò không?",
+      "primary_query": "học nghề mỏ có phải học an toàn trước khi xuống lò không",
+      "direct_answer": "Có. Người học nghề mỏ phải được hướng dẫn và huấn luyện an toàn trước khi tiếp cận môi trường hầm lò hoặc thực tế sản xuất. Nội dung cụ thể do nhà trường và đơn vị tiếp nhận tổ chức; người học chỉ xuống lò khi đã được phổ biến yêu cầu, trang bị bảo hộ và có người phụ trách hướng dẫn.",
+      "date_published": "2026-10-09",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-nghe-mo-co-phai-hoc-an-toan-truoc-khi-xuong-lo-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json về yêu cầu dùng đầy đủ phương tiện bảo hộ, làm theo ca, phối hợp tổ đội và tuân thủ quy trình kỹ thuật, an toàn; cùng bài chính thức Vinacomin “Cách làm mới trong công tác đào tạo nghề mỏ hầm lò” ghi nhận học sinh được huấn luyện an toàn trước khi vào khai trường và tham quan thực tế."
+    },
+    {
+      "title": "Học cơ điện mỏ có chỉ sửa điện không?",
+      "primary_query": "học cơ điện mỏ có chỉ sửa điện không",
+      "direct_answer": "Không. Kỹ thuật cơ điện mỏ hầm lò không chỉ sửa điện. Phạm vi nghề gồm lắp đặt, vận hành, bảo dưỡng và sửa chữa thiết bị cơ khí, điện, vận tải, chiếu sáng, thông tin liên lạc và hệ thống cơ giới hóa. Công việc cụ thể phụ thuộc vị trí và phân công của doanh nghiệp sau đào tạo.",
+      "date_published": "2026-10-08",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-chi-sua-dien-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò đào tạo 10 tháng; nhiệm vụ gồm lắp đặt, vận hành, bảo dưỡng và sửa chữa thiết bị cơ khí, điện, vận tải, chiếu sáng, thông tin liên lạc và hệ thống cơ giới hóa; có thể làm việc trong hầm lò hoặc trên mặt bằng."
+    },
+    {
+      "title": "Đi làm khai thác mỏ hầm lò có phải lắp giàn chống không?",
+      "primary_query": "đi làm khai thác mỏ hầm lò có phải lắp giàn chống không",
+      "direct_answer": "Có thể có. Mô tả nghề hiện hành nêu người làm kỹ thuật khai thác mỏ hầm lò tham gia lắp dựng, kiểm tra và duy trì hệ thống chống giữ tại khu vực khai thác. Tuy nhiên, không phải ai cũng làm toàn bộ việc này trong mọi ca; nhiệm vụ phụ thuộc vị trí, công nghệ và phân công của tổ đội.",
+      "date_published": "2026-10-07",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/di-lam-khai-thac-mo-ham-lo-co-phai-lap-gian-chong-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật khai thác mỏ hầm lò có nhiệm vụ lắp dựng, kiểm tra, duy trì hệ thống chống giữ tại khu vực khai thác; củng cố, sửa chữa vị trí chống giữ hoặc đoạn lò cần khắc phục theo yêu cầu kỹ thuật; thiết bị gồm giá, giàn chống thủy lực, vì chống kim loại và cột thủy lực đơn; thời gian đào tạo hiện hành 2–3 tháng."
+    },
+    {
+      "title": "Đi làm khai thác mỏ hầm lò có phải xúc than hoàn toàn bằng tay không?",
+      "primary_query": "đi làm khai thác mỏ hầm lò có phải xúc than hoàn toàn bằng tay không",
+      "direct_answer": "Không phải toàn bộ công việc khai thác mỏ hầm lò đều xúc hoặc vận chuyển than bằng tay. Than được phá vỡ bằng thiết bị cơ giới, bán cơ giới hoặc khoan rồi đưa lên hệ thống vận tải chuyên dùng. Mỗi người vẫn vận hành, hỗ trợ và kiểm tra phần việc theo phân công, bảo hộ và quy trình an toàn.",
+      "date_published": "2026-10-04",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/di-lam-khai-thac-mo-ham-lo-co-phai-xuc-than-hoan-toan-bang-tay-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật khai thác mỏ hầm lò thực hiện phá vỡ đất đá và than bằng thiết bị cơ giới, bán cơ giới hoặc khoan; xúc bốc lên thiết bị vận tải; vận chuyển bằng máng trượt, goòng, băng tải, máng cào hoặc tàu điện; đưa vật tư bằng thiết bị chuyên dùng; làm việc theo ca, phối hợp tổ đội và tuân thủ quy trình kỹ thuật, an toàn."
+    },
+    {
+      "title": "Đi làm khai thác mỏ hầm lò có phải làm một mình không?",
+      "primary_query": "đi làm khai thác mỏ hầm lò có phải làm một mình không",
+      "direct_answer": "Không. Công việc khai thác mỏ hầm lò được thực hiện theo ca và phối hợp theo tổ đội. Mỗi người có phần việc theo phân công nhưng không phải tự làm toàn bộ dây chuyền. Người lao động phải dùng bảo hộ, làm đúng quy trình kỹ thuật và phối hợp với các vị trí liên quan trong ca.",
+      "date_published": "2026-10-03",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/di-lam-khai-thac-mo-ham-lo-co-phai-lam-mot-minh-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: kỹ thuật khai thác mỏ hầm lò đào tạo 2–3 tháng; thực hiện các công đoạn khai thác, xúc bốc, vận tải, đưa vật tư và chống giữ theo phân công; bối cảnh làm việc theo ca, phối hợp theo tổ đội, sử dụng bảo hộ và tuân thủ quy trình kỹ thuật, an toàn."
+    },
+    {
+      "title": "Nghề xây dựng mỏ hầm lò có phải xây nhà dưới hầm không?",
+      "primary_query": "nghề xây dựng mỏ hầm lò có phải xây nhà dưới hầm không",
+      "direct_answer": "Không. “Xây dựng” trong nghề xây dựng mỏ hầm lò không phải xây nhà dưới đất. Công việc chính là đào, chống giữ, gia cố và duy trì các đường lò để tạo hạ tầng cho khai thác than. Người lao động làm theo ca trong hầm lò, theo tổ đội và quy trình an toàn.",
+      "date_published": "2026-09-27",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/nghe-xay-dung-mo-ham-lo-co-phai-xay-nha-duoi-ham-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: kỹ thuật xây dựng mỏ hầm lò đào tạo 2–3 tháng; nhiệm vụ gồm phá vỡ đất đá, xúc dỡ, san nền, lắp đường ray, vận chuyển đất đá và vật liệu, lắp dựng, củng cố hệ thống chống giữ; làm việc theo ca tại các đường lò."
+    },
+    {
+      "title": "Học cơ điện mỏ có phải xuống hầm lò làm việc không?",
+      "primary_query": "học cơ điện mỏ có phải xuống hầm lò làm việc không",
+      "direct_answer": "Không phải mọi vị trí cơ điện mỏ đều làm dưới hầm. Theo mô tả nghề hiện hành, người học có thể làm trong hầm hoặc trên mặt bằng, tùy hệ thống thiết bị, nhiệm vụ và phân công của doanh nghiệp. Nếu không thể xuống lò, cần nói rõ khi tư vấn và chờ xác nhận trước khi chọn nghề.",
+      "date_published": "2026-09-26",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-xuong-ham-lo-lam-viec-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: kỹ thuật cơ điện mỏ hầm lò đào tạo 10 tháng; nhiệm vụ gồm lắp đặt, vận hành, bảo dưỡng, sửa chữa các hệ thống cơ khí, điện, vận tải, chiếu sáng, thông tin liên lạc và thiết bị cơ giới; môi trường làm việc có thể trong hầm lò hoặc trên mặt bằng."
+    },
+    {
+      "title": "Đổi số điện thoại sau khi đăng ký học nghề mỏ phải làm gì?",
+      "primary_query": "đổi số điện thoại sau khi đăng ký học nghề mỏ phải làm gì",
+      "direct_answer": "Nếu đổi hoặc mất số điện thoại sau khi đã đăng ký học nghề mỏ, hãy báo số cũ, số mới và thông tin nhận diện cơ bản qua đúng kênh chính thức để người phụ trách nối lại hồ sơ. Không cần tạo nhiều đăng ký mới, gửi giấy tờ gốc hay mua vé khi lịch chưa được xác nhận.",
+      "date_published": "2026-09-25",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/doi-so-dien-thoai-sau-khi-dang-ky-hoc-nghe-mo-phai-lam-gi/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ; người lao động chỉ di chuyển sau khi lịch được xác nhận, không gửi giấy tờ gốc qua bưu điện và liên hệ qua đầu mối Nguyễn Tử Linh công khai trên website."
+    },
+    {
+      "title": "Đăng ký học nghề mỏ rồi chưa được phản hồi phải làm gì?",
+      "primary_query": "đăng ký học nghề mỏ rồi chưa được phản hồi phải làm gì",
+      "direct_answer": "Nếu đã đăng ký học nghề mỏ nhưng chưa được phản hồi, hãy kiểm tra mình đã gửi đúng kênh và đủ thông tin cơ bản, rồi nhắn lại ngắn gọn trong cùng cuộc trò chuyện hoặc gọi số chính thức trên website. Chưa có thời hạn trả lời cố định; đừng gửi nhiều tài khoản, chuyển tiền, mua vé hay tự đến khi lịch chưa được xác nhận.",
+      "date_published": "2026-09-24",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/dang-ky-hoc-nghe-mo-roi-chua-duoc-phan-hoi-phai-lam-gi/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: bước đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ; người lao động chỉ di chuyển sau khi lịch được xác nhận, không gửi giấy tờ gốc qua bưu điện và không có cơ chế thu phí để ưu tiên phản hồi hay giữ chỗ."
+    },
+    {
+      "title": "Đăng ký học nghề mỏ có cần công chứng hồ sơ trước không?",
+      "primary_query": "đăng ký học nghề mỏ có cần công chứng hồ sơ trước không",
+      "direct_answer": "Chưa nên tự công chứng hồ sơ trước khi được kiểm tra điều kiện và nhận hướng dẫn cho đợt nhập học cụ thể. Bước đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ; hãy chờ danh sách chính xác rồi mới chuẩn bị đúng loại và số lượng bản được yêu cầu.",
+      "date_published": "2026-09-23",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/dang-ky-hoc-nghe-mo-co-can-cong-chung-ho-so-truoc-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ; hồ sơ hiện hành gồm CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; người chưa có bằng được hướng dẫn theo hệ đào tạo; không gửi giấy tờ gốc qua bưu điện."
+    },
+    {
+      "title": "Mất học bạ có đăng ký học nghề mỏ được không?",
+      "primary_query": "mất học bạ có đăng ký học nghề mỏ được không",
+      "direct_answer": "Có thể đăng ký kiểm tra ban đầu dù đã mất học bạ. Danh mục hồ sơ hiện hành không liệt kê học bạ và bước đầu chưa yêu cầu gửi ảnh giấy tờ. Tuy vậy, phải khai đúng lớp học cao nhất, bằng đang có và chờ hướng dẫn cho hệ đào tạo cụ thể; không tự dùng giấy khác thay thế.",
+      "date_published": "2026-09-22",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/mat-hoc-ba-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: đăng ký ban đầu không yêu cầu tải ảnh giấy tờ; hồ sơ hiện hành gồm CCCD bản gốc, giấy khai sinh, bằng THCS hoặc THPT nếu có; người chưa có bằng được đăng ký để nhận hướng dẫn. Nguồn không liệt kê học bạ và không chỉ định giấy tự động thay thế."
+    },
+    {
+      "title": "Chỉ học hết tiểu học có đăng ký học nghề mỏ được không?",
+      "primary_query": "chỉ học hết tiểu học có đăng ký học nghề mỏ được không",
+      "direct_answer": "Có thể gửi thông tin để được kiểm tra ban đầu, nhưng chỉ học hết tiểu học không đồng nghĩa chắc chắn được xếp lớp. Điều kiện hiện hành yêu cầu đọc và viết thành thạo; trình độ cụ thể phải đối chiếu theo hệ đào tạo, còn trường hợp chưa có bằng được hướng dẫn riêng trước khi đi nhập học.",
+      "date_published": "2026-09-21",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/chi-hoc-het-tieu-hoc-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: yêu cầu đọc và viết thành thạo; trình độ cụ thể theo hệ đào tạo; hồ sơ nhập học có bằng THCS hoặc THPT nếu có, người chưa có bằng được đăng ký để nhận hướng dẫn."
+    },
+    {
+      "title": "Bị huyết áp thấp có đăng ký học nghề mỏ được không?",
+      "primary_query": "bị huyết áp thấp có đăng ký học nghề mỏ được không",
+      "direct_answer": "Có thể gửi thông tin để được kiểm tra ban đầu, nhưng không thể tự kết luận đủ điều kiện chỉ từ lời kể hoặc một lần đo. Nguồn tuyển hiện hành nêu huyết áp không phù hợp là vấn đề sức khỏe cần loại trừ và không công bố một ngưỡng số chung; kết quả phải dựa vào tình trạng thật cùng khám tuyển theo quy trình.",
+      "date_published": "2026-09-14",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/bi-huyet-ap-thap-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: ứng viên phải có sức khỏe tốt; cận thị, bệnh tim mạch, huyết áp không phù hợp và bệnh về mắt ảnh hưởng công việc thuộc nhóm loại trừ. Nguồn chuẩn không công bố ngưỡng huyết áp thấp dùng để tự duyệt trên website."
+    },
+    {
+      "title": "Người dân tộc thiểu số có đăng ký học nghề mỏ được không?",
+      "primary_query": "người dân tộc thiểu số có đăng ký học nghề mỏ được không",
+      "direct_answer": "Có thể đăng ký để được kiểm tra điều kiện. Tiêu chí tuyển hiện hành áp dụng cho ứng viên toàn quốc và không liệt kê dân tộc là điều kiện loại trừ; mỗi người vẫn phải đáp ứng cùng yêu cầu về giới tính, tuổi, thể lực, sức khỏe và khả năng đọc viết.",
+      "date_published": "2026-09-13",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/nguoi-dan-toc-thieu-so-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: phạm vi ứng viên là toàn quốc; điều kiện chung gồm nam 18–40 tuổi, cao từ 1,53 m, nặng từ 47 kg, sức khỏe tốt, đọc viết thành thạo và đáp ứng học vấn theo hệ đào tạo. Nguồn chuẩn không liệt kê dân tộc là điều kiện loại trừ hoặc công bố quyền lợi riêng theo dân tộc."
+    },
+    {
+      "title": "CCCD hết hạn có đăng ký học nghề mỏ được không?",
+      "primary_query": "CCCD hết hạn có đăng ký học nghề mỏ được không",
+      "direct_answer": "Có thể gửi thông tin đăng ký sơ bộ dù CCCD đã hết hạn vì bước này chưa yêu cầu nộp hoặc gửi ảnh giấy tờ. Tuy nhiên, hồ sơ nhập học hiện yêu cầu CCCD bản gốc; anh cần báo đúng tình trạng, làm theo hướng dẫn về giấy tờ và chỉ đến Quảng Ninh sau khi được xác nhận lịch.",
+      "date_published": "2026-09-10",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/cccd-het-han-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ; hồ sơ nhập học hiện có CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; không gửi giấy tờ gốc qua bưu điện và chỉ đến nhập học sau khi được xác nhận lịch. Nguồn chuẩn không công bố ngoại lệ hoặc giấy tờ thay thế tự động cho CCCD hết hạn."
+    },
+    {
+      "title": "Bị bệnh tim mạch có đăng ký học nghề mỏ được không?",
+      "primary_query": "bị bệnh tim mạch có đăng ký học nghề mỏ được không",
+      "direct_answer": "Theo điều kiện tuyển đang áp dụng, người mắc bệnh tim mạch không thuộc nhóm đủ điều kiện sơ bộ để học nghề mỏ hầm lò. Nếu từng được chẩn đoán, đang điều trị hoặc chưa rõ tình trạng, anh hãy khai đúng thông tin để được hướng dẫn và không đi Quảng Ninh trước khi được kiểm tra.",
+      "date_published": "2026-09-09",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/bi-benh-tim-mach-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: ứng viên phải có sức khỏe tốt, đáp ứng yêu cầu khám tuyển; bệnh tim mạch và huyết áp không phù hợp thuộc nhóm loại trừ sức khỏe; kết quả khám tuyển là căn cứ cuối cùng. Đăng ký ban đầu chưa cần nộp giấy tờ và người lao động chỉ đến nhập học sau khi được xác nhận lịch."
+    },
+    {
+      "title": "Không đọc viết thành thạo có đăng ký học nghề mỏ được không?",
+      "primary_query": "không đọc viết thành thạo có đăng ký học nghề mỏ được không",
+      "direct_answer": "Chưa thể xác nhận đủ điều kiện nếu người đăng ký không đọc và viết thành thạo. Đây là yêu cầu tuyển sinh hiện hành, khác với việc có hay chưa có bằng THCS hoặc THPT. Anh nên nói đúng khả năng của mình để được kiểm tra trước, không mua vé hoặc đến Quảng Ninh khi chưa được xác nhận.",
+      "date_published": "2026-09-07",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/khong-doc-viet-thanh-thao-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: người đăng ký phải đọc và viết thành thạo; trình độ cụ thể được đối chiếu theo hệ đào tạo. Chưa có bằng vẫn có thể đăng ký để được hướng dẫn, nhưng nguồn chuẩn không công bố ngoại lệ cho yêu cầu đọc viết. Đăng ký ban đầu chưa cần nộp giấy tờ và người lao động chỉ đến nhập học sau khi được xác nhận lịch."
+    },
+    {
+      "title": "Chưa có giấy khai sinh có đăng ký học nghề mỏ được không?",
+      "primary_query": "chưa có giấy khai sinh có đăng ký học nghề mỏ được không",
+      "direct_answer": "Có thể đăng ký và kiểm tra điều kiện ban đầu dù chưa có giấy khai sinh, vì bước đầu chưa yêu cầu nộp giấy tờ. Tuy nhiên, giấy khai sinh thuộc hồ sơ nhập học. Anh cần báo đúng tình trạng và nhận hướng dẫn rõ trước khi mua vé hoặc đến Quảng Ninh; không tự dùng giấy khác thay thế.",
+      "date_published": "2026-09-06",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/chua-co-giay-khai-sinh-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ; hồ sơ nhập học gồm CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; giấy tờ gốc không gửi qua bưu điện và người đăng ký chỉ đến sau khi được xác nhận lịch. Nguồn chuẩn không công bố loại giấy thay thế hoặc ngoại lệ chung khi thiếu giấy khai sinh."
+    },
+    {
+      "title": "Khám sức khỏe không đạt có học nghề mỏ được không?",
+      "primary_query": "khám sức khỏe không đạt có học nghề mỏ được không",
+      "direct_answer": "Nếu kết quả khám tuyển kết luận chưa đáp ứng yêu cầu sức khỏe, hồ sơ chưa thể được xác nhận đủ điều kiện học nghề mỏ hầm lò trong đợt đó. Anh vẫn có thể gửi thông tin để được kiểm tra ban đầu, nhưng kết quả khám tuyển là căn cứ cuối cùng; không nên mua vé, nghỉ việc hoặc giấu bệnh khi chưa có hướng dẫn rõ.",
+      "date_published": "2026-09-05",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/kham-suc-khoe-khong-dat-co-hoc-nghe-mo-duoc-khong/",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: ứng viên phải có sức khỏe tốt, đáp ứng yêu cầu khám tuyển; các vấn đề cần lưu ý gồm cận thị, bệnh tim mạch, huyết áp không phù hợp và bệnh về mắt ảnh hưởng công việc. Kết quả khám tuyển là căn cứ cuối cùng. Nguồn chuẩn không công bố cơ chế tự động khám lại, bảo lưu kết quả hoặc chuyển nghề khi không đạt."
+    },
+    {
+      "title": "Không có hộ khẩu Quảng Ninh, học nghề mỏ được không?",
+      "primary_query": "không có hộ khẩu Quảng Ninh, học nghề mỏ được không",
+      "direct_answer": "Có thể đăng ký dù không có hộ khẩu Quảng Ninh. Phạm vi tiếp nhận hiện hành là nam trên toàn quốc, đủ điều kiện tuổi, thể hình, sức khỏe và khám tuyển. Đăng ký ban đầu thực hiện từ xa; chỉ đến Quảng Ninh sau khi được xác nhận lịch nhập học dành cho chính mình.",
+      "date_published": "2026-09-04",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/khong-co-ho-khau-quang-ninh-co-dang-ky-hoc-nghe-mo-duoc-khong/",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: phạm vi ứng viên là toàn quốc – 34 tỉnh, thành; điều kiện không yêu cầu hộ khẩu Quảng Ninh; đăng ký ban đầu chưa cần giấy tờ; hồ sơ nhập học gồm CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; chỉ đến sau khi được xác nhận lịch."
+    },
+    {
+      "title": "Đang đi làm có đăng ký học nghề mỏ trước được không?",
+      "primary_query": "đang đi làm có đăng ký học nghề mỏ trước được không",
+      "direct_answer": "Có thể đăng ký kiểm tra điều kiện trước khi nghỉ công ty. Bước ban đầu chỉ cần gửi thông tin cơ bản, chưa phải nộp giấy tờ hay di chuyển. Chỉ nên chốt ngày nghỉ, bàn giao công việc và mua vé sau khi được xác nhận đủ điều kiện sơ bộ cùng lịch nhập học cụ thể.",
+      "date_published": "2026-09-03",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/dang-lam-cong-ty-co-dang-ky-hoc-nghe-mo-truoc-duoc-khong/",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ; không yêu cầu kinh nghiệm; chỉ đến nhập học sau khi được xác nhận lịch; điều kiện và giấy tờ được đối chiếu theo dữ liệu tuyển sinh hiện hành. Website không xác nhận thời hạn báo trước hoặc thủ tục nghỉ tại công ty hiện tại."
+    },
+    {
+      "title": "Ở tỉnh xa học nghề mỏ có phải tự thuê trọ không?",
+      "primary_query": "ở tỉnh xa học nghề mỏ có phải tự thuê trọ không",
+      "direct_answer": "Không phải tự thuê trọ trong thời gian học nếu người đăng ký thuộc chỉ tiêu: chính sách hiện hành bố trí ký túc xá khép kín miễn phí. Hãy xác nhận lịch, địa điểm và thời điểm nhận chỗ trước khi đi; quyền lợi này không xác nhận nhà ở sau khi đi làm.",
+      "date_published": "2026-09-02",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/o-tinh-xa-hoc-nghe-mo-co-phai-tu-thue-tro-khong/",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: người học thuộc chỉ tiêu được miễn phí ký túc xá khép kín trong thời gian học; thời gian đào tạo hiện hành là 2–3 tháng với khai thác, xây dựng mỏ và 10 tháng với cơ điện mỏ; chỉ đến nhập học sau khi được xác nhận lịch."
+    },
+    {
+      "title": "Chưa có lịch nhập học nghề mỏ, có nên mua vé?",
+      "primary_query": "chưa có lịch nhập học nghề mỏ có nên mua vé lên Quảng Ninh không",
+      "direct_answer": "Không nên mua vé lên Quảng Ninh khi chưa có lịch nhập học nghề mỏ được xác nhận cho chính mình. Hãy chờ đủ ngày, giờ, địa điểm, đầu mối tiếp nhận và danh sách giấy tờ rồi mới đặt vé; nếu đường đi có nhiều chặng, nên báo hành trình dự kiến cho Thầy Linh trước khi thanh toán.",
+      "date_published": "2026-09-01",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/chua-co-lich-nhap-hoc-nghe-mo-co-nen-mua-ve-khong/",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: tiếp nhận liên tục trong năm 2026, nhưng người đăng ký chỉ đến nhập học sau khi được xác nhận lịch; giấy tờ gốc không gửi qua bưu điện; địa điểm nhập học và người phụ trách phải được đối chiếu trước chuyến đi."
+    },
+    {
+      "title": "Đi nhập học nghề mỏ có phải mang CCCD bản gốc không?",
+      "primary_query": "đi nhập học nghề mỏ có phải mang CCCD bản gốc không",
+      "direct_answer": "Có. Khi đã được xác nhận lịch và đến làm thủ tục nhập học nghề mỏ, người đăng ký cần mang CCCD bản gốc. Bước đăng ký ban đầu chưa cần gửi ảnh giấy tờ và không gửi CCCD gốc qua bưu điện. Nếu bản gốc chưa sẵn sàng, hãy báo Thầy Linh trước khi di chuyển để được hướng dẫn.",
+      "date_published": "2026-08-31",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/di-nhap-hoc-nghe-mo-co-phai-mang-cccd-ban-goc-khong/",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: đăng ký ban đầu chưa cần nộp hoặc gửi ảnh giấy tờ; hồ sơ nhập học có CCCD bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; không gửi giấy tờ gốc qua bưu điện và chỉ đến nhập học sau khi lịch được xác nhận."
+    },
+    {
+      "title": "Đăng ký học nghề mỏ qua Zalo cần gửi thông tin gì?",
+      "primary_query": "đăng ký học nghề mỏ qua Zalo cần gửi thông tin gì",
+      "direct_answer": "Để đăng ký học nghề mỏ qua Zalo, người lao động nên gửi 7 thông tin bằng chữ: họ tên, năm sinh, nơi đang ở, chiều cao, cân nặng, tình trạng sức khỏe và số điện thoại chính chủ. Bước đầu chưa cần gửi ảnh CCCD hoặc giấy tờ gốc. Sau khi kiểm tra sơ bộ, Thầy Linh mới hướng dẫn hồ sơ và lịch phù hợp.",
+      "date_published": "2026-08-30",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/dang-ky-hoc-nghe-mo-qua-zalo-can-gui-thong-tin-gi/",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: điều kiện sơ bộ gồm tuổi, chiều cao, cân nặng, sức khỏe và khả năng đọc viết; đăng ký ban đầu chưa cần gửi ảnh giấy tờ; chỉ đến nhập học sau khi lịch được xác nhận."
+    },
+    {
+      "title": "Đăng ký học nghề mỏ có phải chờ khai giảng không?",
+      "primary_query": "đăng ký học nghề mỏ có phải chờ khai giảng không",
+      "direct_answer": "Chương trình đang tiếp nhận liên tục trong năm 2026, nên người phù hợp không phải chờ một mùa tuyển sinh duy nhất. Tuy nhiên, gửi đăng ký chưa đồng nghĩa có thể đến nhập học ngay. Người lao động vẫn phải chờ xác nhận điều kiện sơ bộ, ngày, địa điểm và đầu mối tiếp nhận của đợt cụ thể rồi mới chuẩn bị hồ sơ, di chuyển.",
+      "date_published": "2026-08-29",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/dang-ky-hoc-nghe-mo-co-phai-cho-khai-giang-khong/",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: chương trình tiếp nhận liên tục trong năm 2026; đăng ký ban đầu chưa cần hồ sơ; người lao động chỉ đến nhập học sau khi được xác nhận lịch. Bộ dữ liệu không công bố số ngày chờ hoặc lịch khai giảng cố định."
+    },
+    {
+      "title": "Học nghề mỏ đi thực tập có được trả lương không?",
+      "primary_query": "học nghề mỏ đi thực tập có được trả lương không",
+      "direct_answer": "Có. Trong thời gian thực tập tại doanh nghiệp, người học nghề mỏ được hưởng 85–100% lương công nhân trong cùng dây chuyền theo quy định hiện hành. Đây không phải một mức tiền cố định cho mọi người; tỷ lệ, kỳ tính và số tiền thực nhận cần được đối chiếu với vị trí thực tập, dây chuyền và hướng dẫn của đợt tiếp nhận.",
+      "date_published": "2026-08-28",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-nghe-mo-di-thuc-tap-co-duoc-tra-luong-khong/",
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ba bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học; khi thực tập tại doanh nghiệp được hưởng 85–100% lương công nhân trong cùng dây chuyền theo quy định."
+    },
     {
       "title": "Mất CCCD gốc có đăng ký học nghề mỏ được không?",
       "primary_query": "mất CCCD gốc có đăng ký học nghề mỏ được không",

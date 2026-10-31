@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-30",
+  "updated_at": "2026-10-31",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -7753,6 +7753,128 @@
         [
           "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-van-hanh-he-thong-thong-tin-lien-lac-khong/",
           "Phân biệt thêm một hệ thống mà nghề cơ điện mỏ có thể vận hành"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-10-31",
+      "slug": "hoc-co-dien-mo-co-phai-van-hanh-tram-dien-khong",
+      "title": "Học cơ điện mỏ có phải vận hành trạm điện không?",
+      "short_title": "Cơ điện mỏ có vận hành trạm điện",
+      "meta": "Học cơ điện mỏ có phải vận hành trạm điện không? Hiểu phạm vi hệ thống điện, khác biệt giữa vận hành và sửa chữa, giới hạn của người mới.",
+      "eyebrow": "TRẠM ĐIỆN VÀ PHẠM VI NGHỀ CƠ ĐIỆN MỎ",
+      "primary_query": "học cơ điện mỏ có phải vận hành trạm điện không",
+      "query_variants": [
+        "thợ cơ điện mỏ có trực trạm điện không",
+        "học cơ điện mỏ có làm ở trạm biến áp không",
+        "người mới học cơ điện mỏ có được vận hành trạm điện không"
+      ],
+      "direct_answer": "Có thể. Vận hành hệ thống điện và sử dụng khí cụ điện thuộc phạm vi nghề cơ điện mỏ, nên người lao động có thể được bố trí làm việc liên quan đến trạm điện. Tuy nhiên, không phải học xong là được tự trực hoặc thao tác mọi thiết bị; công việc cụ thể phụ thuộc đào tạo, tay nghề và phân công.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-co-dien-kiem-tra-tram-bien-ap-duong-huy.webp",
+        "alt": "Tổ trưởng cơ điện Than Dương Huy mặc bảo hộ kiểm tra thiết bị tại trạm biến áp 35 kV",
+        "credit": "Ảnh: Vinacomin · thợ cơ điện Than Dương Huy kiểm tra hoạt động tại trạm biến áp"
+      },
+      "display_image": true,
+      "intro": [
+        "Học cơ điện mỏ có phải vận hành trạm điện không là câu hỏi thực tế của người đang cân nhắc khóa học 10 tháng nhưng chưa phân biệt phần điện, phần cơ khí và công việc ở hầm trạm. Câu trả lời là người học có thể được tiếp cận hoặc được phân công vận hành hệ thống điện, sử dụng khí cụ điện và làm việc liên quan đến trạm điện sau khi đáp ứng yêu cầu chuyên môn. Đây là một khả năng trong phạm vi nghề, không phải lời cam kết rằng mọi học viên đều trực cùng một trạm.",
+        "Bài này không lặp trang về đấu nối dây điện, lắp hệ thống chiếu sáng hay sửa máy móc. Nội dung tập trung vào một ranh giới riêng: vận hành trạm điện khác sửa chữa thiết bị thế nào, người mới được làm đến đâu, hình ảnh một thợ cơ điện có kinh nghiệm cho biết gì và người đăng ký cần hỏi gì trước khi chọn nghề."
+      ],
+      "key_points": [
+        [
+          "Có thể thuộc vị trí sau đào tạo",
+          "Nguồn chuẩn nêu nghề cơ điện mỏ lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống điện, đồng thời lắp đặt và sử dụng khí cụ điện."
+        ],
+        [
+          "Không phải ai cũng trực trạm",
+          "Vị trí thực tế phụ thuộc nội dung đã học, kết quả đánh giá, hệ thống tại đơn vị và phân công trong tổ đội."
+        ],
+        [
+          "Vận hành khác sửa chữa",
+          "Theo dõi và thao tác trong phạm vi vận hành không đồng nghĩa được tự tháo, đấu nối hoặc xử lý mọi bất thường."
+        ],
+        [
+          "Người mới không tự thao tác",
+          "Chỉ làm phần đã được hướng dẫn, bàn giao và giao nhiệm vụ; gặp tình huống ngoài phạm vi phải báo người phụ trách."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học cơ điện mỏ có phải vận hành trạm điện không?",
+          "paragraphs": [
+            "Có thể. Nguồn tuyển sinh hiện hành mô tả nghề kỹ thuật cơ điện mỏ hầm lò thực hiện lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống cơ khí, điện cùng các thiết bị phục vụ sản xuất. Nguồn cũng nêu việc lắp đặt, sử dụng các loại khí cụ điện. Vì vậy, một vị trí liên quan đến vận hành hệ thống hoặc trạm điện phù hợp với phạm vi nghề mà người học có thể gặp sau đào tạo.",
+            "Tuy nhiên, cụm từ “có thể được bố trí” khác với “ai cũng phải trực trạm”. Nghề cơ điện mỏ còn có thiết bị vận tải, chiếu sáng, thông tin liên lạc, máy khoan, máy nén khí, thiết bị bốc xúc và hệ thống cơ giới hóa. Từng đơn vị có dây chuyền, nhu cầu nhân lực và cách phân công khác nhau; người lao động chỉ làm vị trí phù hợp với nội dung đã học, năng lực thực tế và nhiệm vụ được giao.",
+            "Người đăng ký cũng không nên hiểu trạm điện là một chỗ ngồi cố định hoặc một công việc chỉ quan sát đồng hồ. Trách nhiệm cụ thể phải theo thiết bị, ca lệnh, quy trình và người quản lý tại nơi làm việc. Website không hứa trước tên trạm, cấp điện áp, ca trực hoặc doanh nghiệp tiếp nhận vì những thông tin đó không có trong nguồn tuyển sinh chuẩn hiện hành."
+          ]
+        },
+        {
+          "heading": "Vận hành trạm điện khác gì lắp đặt và sửa chữa thiết bị điện?",
+          "paragraphs": [
+            "Vận hành tập trung vào việc tiếp nhận hệ thống đã được bàn giao, theo dõi tình trạng thuộc phạm vi trách nhiệm và thực hiện thao tác được quy định cho vị trí. Lắp đặt là nhóm việc đưa thiết bị, đường dây hoặc khí cụ điện vào đúng cấu hình theo thiết kế và hướng dẫn. Sửa chữa bắt đầu khi cần kiểm tra nguyên nhân, bảo dưỡng, thay thế hoặc khắc phục một phần thiết bị theo phương án được giao. Ba nhóm việc có liên quan nhưng không thể coi là một.",
+            "Một người được hướng dẫn vận hành không mặc nhiên được tháo tủ, thay linh kiện, đấu nối dây hoặc điều chỉnh mọi thiết bị trong trạm. Ngược lại, người tham gia bảo dưỡng một bộ phận cũng không tự có quyền chuyển trạng thái toàn hệ thống. Ranh giới nhiệm vụ giúp tổ đội biết ai chịu trách nhiệm ở từng bước và tránh việc người mới tự xử lý dựa trên kinh nghiệm điện dân dụng.",
+            "Bài viết này không hướng dẫn trình tự đóng cắt, kiểm tra điện, đấu nối hay xử lý sự cố. Những thao tác kỹ thuật phải dựa trên thiết bị thực tế, tài liệu, điều kiện làm việc và người có trách nhiệm. Mục tiêu của trang là giúp người lao động hiểu đúng nghề trước khi đăng ký, không thay thế chương trình đào tạo hoặc quy trình tại đơn vị."
+          ]
+        },
+        {
+          "heading": "Ảnh thợ cơ điện kiểm tra trạm biến áp cho biết điều gì?",
+          "paragraphs": [
+            "Ảnh riêng của bài được xác minh từ tin chính thức Vinacomin về tổ trưởng Đỗ Tiến Dũng tại Phân xưởng Quản lý Hầm trạm của Than Dương Huy, đăng ngày 13/08/2026. Chú thích gốc cho biết anh kiểm tra hoạt động tại trạm biến áp của công ty. Hình ảnh cho người đọc thấy một bối cảnh làm việc thật của thợ cơ điện gắn với hệ thống điện và trạm, thay vì chỉ hình dung nghề này là sửa đồ điện nhỏ.",
+            "Ảnh không phải bằng chứng rằng học viên mới sẽ được đứng đúng vị trí đó hoặc được thao tác trên cùng loại thiết bị. Nhân vật trong tư liệu là một tổ trưởng có kinh nghiệm và làm việc trong tổ chức sản xuất cụ thể. Vì vậy, bài chỉ dùng ảnh để chứng minh công việc trạm điện tồn tại trong thực tế ngành than, không suy đoán thêm tên thiết bị, thao tác hoặc phạm vi quyền hạn từ những gì nhìn thấy.",
+            "Điểm đáng chú ý đối với người đăng ký là công việc điện được tổ chức theo tổ, có người phụ trách và gắn với yêu cầu duy trì hệ thống phục vụ sản xuất. Người mới cần học cách nhận nhiệm vụ, báo cáo tình trạng và phối hợp đúng đầu mối trước khi nghĩ đến việc tự xử lý thiết bị."
+          ]
+        },
+        {
+          "heading": "Người mới học cơ điện mỏ được làm gì ở khu vực trạm điện?",
+          "paragraphs": [
+            "Người mới trước hết phải hoàn thành nội dung đào tạo, hiểu giới hạn phần việc và làm theo hướng dẫn. Khi được tiếp cận khu vực trạm điện, nhiệm vụ có thể bắt đầu từ quan sát, nhận biết hệ thống, hỗ trợ kiểm tra hoặc thực hiện phần việc cụ thể đã được giao. Mức độ trực tiếp phụ thuộc kết quả học, đánh giá tay nghề và cách bố trí tại đơn vị, không phụ thuộc việc người lao động tự tin đến đâu.",
+            "Nếu từng học điện dân dụng, làm cơ khí hoặc có kinh nghiệm bảo dưỡng máy, người đăng ký nên khai rõ đã học ở đâu và đã làm công việc nào. Kinh nghiệm cũ có thể giúp tiếp cận kiến thức nhanh hơn nhưng không thay thế chương trình cơ điện mỏ, việc hướng dẫn trên thiết bị thực tế và phân công của người chịu trách nhiệm.",
+            "Khi thấy dấu hiệu khác thường, nội dung vượt hướng dẫn hoặc không chắc mình có được thao tác hay không, cách làm đúng là dừng ở giới hạn được giao và báo người phụ trách. Chủ động trong nghề kỹ thuật là quan sát chính xác, truyền đạt rõ và phối hợp đúng, không phải tự thử cách xử lý khi chưa được giao nhiệm vụ."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi chọn nghề vì quan tâm công việc trạm điện",
+          "items": [
+            "Trong chương trình cơ điện mỏ 10 tháng, phần hệ thống điện và khí cụ điện được học ở phạm vi nào?",
+            "Học viên thực hành tại xưởng, quan sát hiện trường hay thao tác trên mô hình theo hướng dẫn?",
+            "Sau đào tạo, tiêu chí nào được dùng để bố trí người làm việc liên quan đến trạm điện?",
+            "Người vận hành, người lắp đặt và người sửa chữa phối hợp ra sao khi hệ thống có dấu hiệu bất thường?",
+            "Kinh nghiệm điện đã có được ghi nhận thế nào và nội dung nào vẫn phải học lại?"
+          ]
+        }
+      ],
+      "takeaway_title": "Có thể vận hành trạm điện, nhưng chỉ trong phạm vi đã học và được giao",
+      "takeaway": "Vận hành hệ thống điện và sử dụng khí cụ điện thuộc phạm vi nghề kỹ thuật cơ điện mỏ hầm lò, nên người lao động có thể được bố trí công việc liên quan đến trạm điện. Tuy nhiên, vị trí không mặc định cho mọi học viên; người mới chỉ thực hiện phần đã được đào tạo, hướng dẫn, bàn giao và phân công. Muốn biết mình có phù hợp hay không, cần đối chiếu điều kiện hiện hành rồi hỏi rõ phạm vi chương trình 10 tháng.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống điện, đồng thời lắp đặt và sử dụng các loại khí cụ điện; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Đỗ Tiến Dũng - Tổ trưởng gương mẫu, giữ mạch điện cho sản xuất ở Phân xưởng Quản lý Hầm trạm”, đăng ngày 13/08/2026, với chú thích gốc về việc kiểm tra hoạt động tại trạm biến áp của Than Dương Huy.",
+      "faqs": [
+        [
+          "Học cơ điện mỏ có phải ai cũng trực trạm điện không?",
+          "Không. Trạm điện là một bối cảnh có thể thuộc phạm vi nghề; việc bố trí từng người phụ thuộc nội dung đào tạo, năng lực, nhu cầu vị trí và phân công của đơn vị tiếp nhận."
+        ],
+        [
+          "Biết điện dân dụng có được tự vận hành trạm điện mỏ không?",
+          "Không. Kinh nghiệm cũ không thay thế đào tạo, hướng dẫn trên thiết bị thực tế, bàn giao và phân công tại nơi làm việc."
+        ],
+        [
+          "Vận hành trạm điện có giống sửa chữa thiết bị điện không?",
+          "Không hoàn toàn. Vận hành, lắp đặt và sửa chữa là các nhóm việc liên quan nhưng có mục tiêu, phạm vi thao tác và trách nhiệm khác nhau."
+        ],
+        [
+          "Chưa có kinh nghiệm điện có đăng ký học cơ điện mỏ được không?",
+          "Nguồn tuyển sinh hiện hành không yêu cầu kinh nghiệm. Người đăng ký vẫn phải đáp ứng các điều kiện tuyển và học, được đánh giá trước khi được giao công việc cụ thể."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ phạm vi nghề kỹ thuật cơ điện mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-dau-noi-day-dien-duoi-ham-lo-khong/",
+          "Phân biệt thêm công việc đấu nối dây điện"
         ],
         [
           "/kiem-tra-dieu-kien/",

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-26T08:25:00+07:00",
+  "updated_at": "2026-09-04T08:35:00+07:00",
   "policy": "Mỗi bài công khai ghi một dòng Nguồn bằng chữ và một câu SEO ở cuối bài; URL chỉ dùng cho kiểm chứng nội bộ, không đặt liên kết ra ngoài.",
   "articles": [
     {
@@ -1185,6 +1185,292 @@
           "title": "Công ty Than Thống Nhất – TKV chăm lo sức khỏe người lao động qua chương trình ‘Phúc lợi Thợ Mỏ – Nghỉ dưỡng cuối tuần’",
           "date": "18/08/2026",
           "url": "https://www.thanthongnhat.vn/tin-san-xuat/cong-ty-than-thong-nhat-tkv-cham-lo-suc-khoe-nguoi-lao-dong-qua-chuong-trinh-phuc-loi-tho-mo-nghi-duong-cuoi-tuan-15710.html"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "nam-hang-hong-thu-hop-tac-dao-tao-nghe-viec-lam-2026",
+      "title": "Nậm Hàng, Hồng Thu hợp tác đào tạo nghề và việc làm ngành Than",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Trường Cao đẳng Than – Khoáng sản Việt Nam ký kết hợp tác đào tạo nghề, giải quyết việc làm với xã Nậm Hàng và xã Hồng Thu tỉnh Lai Châu",
+          "date": "26/08/2026",
+          "url": "https://caodangtkv.edu.vn/truong-cao-dang-than-khoang-san-viet-nam-ky-ket-hop-tac-dao-tao-nghe-giai-quyet-viec-lam-voi-xa-nam-hang-va-xa-hong-thu-tinh-lai-chau/"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-duong-huy-giam-sat-che-do-nguoi-lao-dong-2026",
+      "title": "Than Dương Huy giám sát chế độ và điều kiện làm việc",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Ban Thanh tra nhân dân TKV giám sát việc thực hiện chế độ người lao động tại Than Dương Huy",
+          "date": "26/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46083/Ban-Thanh-tra-nhan-dan-TKV-giam-sat-viec-thuc-hien-che-đo-nguoi-lao-đong-tai-Than-Duong-Huy"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-thong-nhat-kham-suc-khoe-lao-dong-nang-nhoc-2026",
+      "title": "Than Thống Nhất khám sức khỏe cho lao động nặng nhọc, độc hại",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Than Thống Nhất chăm lo sức khỏe người lao động làm việc trong điều kiện nặng nhọc, độc hại",
+          "date": "26/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46084/Than-Thong-Nhat-cham-lo-suc-khoe-nguoi-lao-đong-lam-viec-trong-đieu-kien-nang-nhoc-đoc-hai"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-duong-huy-ung-pho-bao-narra-cham-lo-nguoi-lao-dong-2026",
+      "title": "Than Dương Huy ứng phó bão NARRA, chăm lo người lao động",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Chuyên môn và Công đoàn Than Dương Huy đồng hành vượt qua bão NARRA",
+          "date": "27/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46085/Chuyen-mon-va-Cong-đoan-Than-Duong-Huy-đong-hanh-vuot-qua-bao-NARRA"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "tuyen-than-hon-gai-nghi-mat-nguoi-lao-dong-thang-8-2026",
+      "title": "Tuyển than Hòn Gai tổ chức nghỉ mát cho hơn 100 người lao động",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Công ty Tuyển than Hòn Gai tổ chức chương trình phúc lợi nghỉ mát tháng 8 cho CBCNV, người lao động",
+          "date": "27/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46086/Cong-ty-Tuyen-than-Hon-Gai-to-chuc-chuong-trinh-phuc-loi-nghi-mat-thang-8-cho-CBCNV-nguoi-lao-đong"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "phoi-hop-dao-tao-nghe-ho-tro-tai-hoa-nhap-cong-dong-2026",
+      "title": "TKV phối hợp đào tạo nghề, hỗ trợ tái hòa nhập cộng đồng",
+      "sources": [
+        {
+          "publisher": "Tập đoàn Công nghiệp Than – Khoáng sản Việt Nam",
+          "title": "Phối hợp đào tạo nghề, hỗ trợ tái hòa nhập cộng đồng cho người sau cai nghiện trở về địa phương",
+          "date": "05/03/2026",
+          "url": "https://vinacomin.vn/news/slug/phoi-hop-dao-tao-nghe-ho-tro-tai-hoa-nhap-cong-dong-cho-nguoi-sau-cai-nghien-tro-ve-dia-phuong"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-nui-beo-ho-tro-hoc-sinh-nghe-mo-quoc-khanh-2026",
+      "title": "Than Núi Béo hỗ trợ 148 học sinh đang học nghề mỏ hầm lò",
+      "sources": [
+        {
+          "publisher": "Tập đoàn Công nghiệp Than – Khoáng sản Việt Nam",
+          "title": "Than Núi Béo hỗ trợ học sinh nghề mỏ hầm lò nhân dịp Quốc khánh 2/9",
+          "date": "28/08/2026",
+          "url": "https://vinacomin.vn/news/slug/than-nui-beo-ho-tro-hoc-sinh-nghe-mo-ham-lo-nhan-dip-quoc-khanh-29"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "kho-van-da-bac-tang-phong-hoc-stem-ba-che-2026",
+      "title": "Kho vận Đá Bạc trao phòng học STEM 50 triệu đồng tại Ba Chẽ",
+      "sources": [
+        {
+          "publisher": "Tập đoàn Công nghiệp Than – Khoáng sản Việt Nam",
+          "title": "Công ty Kho vận Đá Bạc - Vinacomin trao tặng công trình “Phòng học STEM cho em” tại Ba Chẽ",
+          "date": "28/08/2026",
+          "url": "https://vinacomin.vn/news/slug/cong-ty-kho-van-da-bac-vinacomin-trao-tang-cong-trinh-phong-hoc-stem-cho-em-tai-ba-che"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "dong-ta-phoi-ho-tro-108-ho-kho-khan-hop-thanh-2026",
+      "title": "Đồng Tả Phời hỗ trợ 108 hộ khó khăn tại xã Hợp Thành",
+      "sources": [
+        {
+          "publisher": "Tập đoàn Công nghiệp Than – Khoáng sản Việt Nam",
+          "title": "Công ty Cổ phần đồng Tả Phời - Vinacomin trao hỗ trợ an sinh xã hội tại xã Hợp Thành nhân dịp Quốc khánh 2/9",
+          "date": "28/08/2026",
+          "url": "https://vinacomin.vn/news/slug/cong-ty-co-phan-dong-ta-phoi-vinacomin-trao-ho-tro-an-sinh-xa-hoi-tai-xa-hop-thanh-nhan-dip-quoc-khanh-29"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "tuyen-than-cua-ong-ho-tro-cuu-nu-thanh-nien-xung-phong-2026",
+      "title": "Tuyển than Cửa Ông hỗ trợ cựu nữ thanh niên xung phong khó khăn",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Công ty Tuyển than Cửa Ông tặng quà hỗ trợ cựu nữ TNXP phường Cửa Ông có hoàn cảnh khó khăn",
+          "date": "28/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46088/Cong-ty-Tuyen-than-Cua-Ong-tang-qua-ho-tro-cuu-nu-TNXP-phuong-Cua-Ong-co-hoan-canh-kho-khan"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-thong-nhat-trao-qua-quoc-khanh-nguoi-lao-dong-2026",
+      "title": "Than Thống Nhất trao quà Quốc khánh cho người lao động",
+      "sources": [
+        {
+          "publisher": "Công ty Than Thống Nhất – TKV",
+          "title": "Ấm áp tình người Thợ mỏ Than Thống Nhất",
+          "date": "27/08/2026",
+          "url": "https://www.thanthongnhat.vn/tin-san-xuat/am-ap-tinh-nguoi-tho-mo-than-thong-nhat-15726.html"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-khe-cham-22-chuyen-xe-dua-nguoi-lao-dong-ve-que-2026",
+      "title": "Than Khe Chàm tổ chức 22 chuyến xe đưa người lao động về quê",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Than Khe Chàm: Tổ chức xe đưa, đón người lao động về quê dịp nghỉ lễ Quốc khánh 2/9",
+          "date": "30/08/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46092/Than-Khe-Cham-To-chuc-xe-%C4%91ua-%C4%91on-nguoi-lao-%C4%91ong-ve-que-dip-nghi-le-Quoc-khanh-29"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-ha-long-hop-tac-dao-tao-nghe-tien-yen-2026",
+      "title": "Than Hạ Long hợp tác đào tạo nghề, việc làm tại Tiên Yên",
+      "sources": [
+        {
+          "publisher": "Tập đoàn Công nghiệp Than – Khoáng sản Việt Nam",
+          "title": "Than Hạ Long liên kết đào tạo nghề, mở hướng việc làm bền vững cho lao động địa phương",
+          "date": "21/05/2026",
+          "url": "https://vinacomin.vn/news/slug/than-ha-long-lien-ket-dao-tao-nghe-mo-huong-viec-lam-ben-vung-cho-lao-dong-dia-phuong"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "tkv-hien-mau-lam-dong-180-don-vi-2026",
+      "title": "Chương trình hiến máu TKV tại Lâm Đồng tiếp nhận 180 đơn vị máu",
+      "sources": [
+        {
+          "publisher": "Tập đoàn Công nghiệp Than – Khoáng sản Việt Nam",
+          "title": "Ban QLDA Tổ hợp bauxit - nhôm Lâm Đồng: Lan tỏa ‘Giọt hồng yêu thương’ năm 2026",
+          "date": "28/08/2026",
+          "url": "https://vinacomin.vn/news/slug/ban-qlda-to-hop-bauxit-nhom-lam-dong-lan-toa-giot-hong-yeu-thuong-nam-2026"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "giu-nguon-tho-lo-tkv-tu-dia-ban-quang-ninh-2026",
+      "title": "Bám địa bàn tuyển sinh, giữ nguồn thợ lò cho TKV",
+      "sources": [
+        {
+          "publisher": "Báo Quảng Ninh",
+          "title": "Người bí thư chi bộ bám địa bàn, giữ nguồn thợ lò cho TKV",
+          "date": "20/07/2026",
+          "url": "https://baoquangninh.vn/nguoi-bi-thu-chi-bo-bam-dia-ban-giu-nguon-tho-lo-cho-tkv-post3415463.html"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "tuoi-tre-tkv-an-sinh-hung-yen-thang-thanh-nien-2026",
+      "title": "Tuổi trẻ TKV dành 100 triệu đồng hỗ trợ cộng đồng tại Hưng Yên",
+      "sources": [
+        {
+          "publisher": "Tập đoàn Công nghiệp Than – Khoáng sản Việt Nam",
+          "title": "Đoàn Thanh niên TKV - Triển khai các hoạt động an sinh xã hội Hưởng ứng Tháng Thanh niên năm 2026",
+          "date": "02/03/2026",
+          "url": "https://vinacomin.vn/news/slug/doan-thanh-nien-tkv-trien-khai-cac-hoat-dong-an-sinh-xa-hoi-huong-ung-thang-thanh-nien-nam-2026"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "nam-tuan-khai-giang-lop-nghe-mo-30-hoc-vien-2026",
+      "title": "Nam Tuấn khai giảng lớp nghề mỏ cho 30 học viên",
+      "sources": [
+        {
+          "publisher": "Trường Cao đẳng Than – Khoáng sản Việt Nam",
+          "title": "Khai giảng lớp đào tạo nghề cho lao động xã Nam Tuấn: Dấu ấn phối hợp hiệu quả giữa Nhà trường – Doanh nghiệp – Địa phương",
+          "date": "10/06/2026",
+          "url": "https://caodangtkv.edu.vn/khai-giang-lop-dao-tao-nghe-cho-lao-dong-xa-nam-tuan-dau-an-phoi-hop-hieu-qua-giua-nha-truong-doanh-nghiep-dia-phuong/"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-duong-huy-tuyen-sinh-nghe-mo-5-thang-cuoi-2026",
+      "title": "Than Dương Huy đẩy mạnh tuyển sinh nghề mỏ cuối năm 2026",
+      "sources": [
+        {
+          "publisher": "Tập đoàn Công nghiệp Than – Khoáng sản Việt Nam",
+          "title": "Than Dương Huy đẩy mạnh công tác tuyển sinh nghề mỏ 5 tháng cuối năm 2026",
+          "date": "07/08/2026",
+          "url": "https://vinacomin.vn/news/slug/than-duong-huy-day-manh-cong-tac-tuyen-sinh-nghe-mo-5-thang-cuoi-nam-2026"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "lao-dong-tai-tuyen-tro-lai-nghe-mo-tkv-2026",
+      "title": "Lao động tái tuyển trở lại nghề mỏ tại TKV",
+      "sources": [
+        {
+          "publisher": "Tập đoàn Công nghiệp Than – Khoáng sản Việt Nam",
+          "title": "Trở lại nghề mỏ - Lựa chọn từ sự ổn định và niềm tin",
+          "date": "04/08/2026",
+          "url": "https://vinacomin.vn/news/slug/tro-lai-nghe-mo-lua-chon-tu-su-on-dinh-va-niem-tin"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-khe-cham-nghi-mat-90-gia-dinh-tho-lo-2026",
+      "title": "Than Khe Chàm tổ chức nghỉ mát cho 90 gia đình thợ lò",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Than Khe Chàm: Tổ chức cho 90 gia đình thợ lò, cơ điện lò xuất sắc, tiêu biểu đi tham quan, nghỉ mát năm 2026",
+          "date": "01/09/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46094/Than-Khe-Cham-To-chuc-cho-90-gia-%C4%91inh-tho-lo-co-%C4%91ien-lo-xuat-sac-tieu-bieu-%C4%91i-tham-quan-nghi-mat-nam-2026"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-mao-khe-cham-lo-nguoi-lao-dong-quoc-khanh-2026",
+      "title": "Than Mạo Khê chăm lo gần 4.000 lao động dịp Quốc khánh",
+      "sources": [
+        {
+          "publisher": "Công đoàn Than – Khoáng sản Việt Nam",
+          "title": "Công ty Than Mạo Khê: nhiều hoạt động thiết thực dịp Quốc khánh 2/9",
+          "date": "03/09/2026",
+          "url": "https://congdoantkv.vn/tin-tuc/chi-tiet/46099/Cong-ty-Than-Mao-Khe-nhieu-hoat-%C4%91ong-thiet-thuc-dip-Quoc-khanh-29"
+        }
+      ],
+      "public_source_urls": false
+    },
+    {
+      "slug": "than-thong-nhat-nghi-mat-90-gia-dinh-nguoi-lao-dong-2026",
+      "title": "Than Thống Nhất tổ chức nghỉ mát cho 90 gia đình lao động tiêu biểu",
+      "sources": [
+        {
+          "publisher": "Công ty Than Thống Nhất – TKV",
+          "title": "Lan tỏa yêu thương từ hành trình nghỉ mát của 90 gia đình người lao động tiêu biểu Công ty Than Thống Nhất - TKV",
+          "date": "29/08/2026",
+          "url": "https://www.thanthongnhat.vn/tin-san-xuat/lan-toa-yeu-thuong-tu-hanh-trinh-nghi-mat-cua-90-gia-dinh-nguoi-lao-dong-tieu-bieu-cong-ty-than-thong-nhat-tkv-15731.html"
         }
       ],
       "public_source_urls": false
