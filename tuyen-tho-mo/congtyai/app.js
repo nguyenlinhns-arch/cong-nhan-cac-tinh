@@ -1,3 +1,5 @@
+import {mountOfficeFallback} from './office-fallback.js';
+import {mountStatusPanel} from './status-panel.js';
 import {meetingGate} from './meeting.js';
 import {officeHealth} from './health.js';
 import {createOffice3D} from './office3d.js';
@@ -9,7 +11,7 @@ const meeting=meetingGate();$('#commonRoom').dataset.gate=meeting.state;
 const health=officeHealth();$('#healthLabel').textContent=health.label;$('#healthDetail').textContent=health.detail;
 const seenVisualEvents=new Set();function recordVisualEvent(e){if(e.mode!=='DEMO_ONLY'||e.origin!=='synthetic-ui'||seenVisualEvents.has(e.visualEventId))return;seenVisualEvents.add(e.visualEventId);const li=document.createElement('li');li.textContent=`DEMO · ${e.actorName} · ${e.type==='meeting.enter'?'đến':'rời'} ${e.seatId} · ${e.visualEventId}`;$('#visualEvents').append(li);}
 let scene3d=null;try{scene3d=createOffice3D({canvas:$('#office3d'),labels:$('#sceneLabels'),status:$('#sceneStatus'),viewControl:$('#roomView'),roles,personas,onVisualEvent:recordVisualEvent});}catch{$('#sceneStatus').textContent='Không thể khởi tạo 3D · đang hiển thị ảnh tĩnh';}
-if(!scene3d){$('#roomView').disabled=true;$('#sceneStage').hidden=true;$('#sceneFallback').hidden=false;}
+if(!scene3d){$('#roomView').disabled=true;$('#sceneStage').hidden=true;$('#sceneFallback').hidden=false;mountOfficeFallback($('#sceneFallback'),roles,personas);$('#sceneStatus').textContent='WebGL chưa hỗ trợ · văn phòng 2.5D tương thích';}
 $('#closeEvent').onclick=()=>$('#eventDetail').close();$('#eventDetail').addEventListener('close',()=>eventOpener?.focus());
 for(const d of [$('#eventDetail')])d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}});
 let generation=1,session='demo-1',ledger=createDemoLedger(session),running=false,paused=false,activeAnimation=null,resume=null;
@@ -32,3 +34,6 @@ for(const name of ['Evidence','Discussion']){$('#tab'+name).onclick=()=>selectEv
 for(const id of ['gestureDemo','meetingDemo'])$('#'+id).disabled=!scene3d?.available;
 async function runIllustration(kind){if(running||!scene3d?.available)return;scene3d.pause(false);running=true;paused=false;document.body.classList.add('demo-running');$('#pauseDemo').disabled=false;$('#startDemo').disabled=true;$('#gestureDemo').disabled=true;$('#meetingDemo').disabled=true;$('#resetDemo').disabled=true;$('#office').scrollIntoView({behavior:$('#reduceMotion').checked?'instant':'smooth',block:'start'});try{if(kind==='meeting')await scene3d.meeting(['Đào','Quyên','Khôi','Diệu','An'],()=>$('#reduceMotion').checked);else await scene3d.gestures($('#reduceMotion').checked);if(!scene3d.available)throw Error('3D unavailable');$('#meetingDemoStatus').textContent='Đã xem minh họa. Không có cuộc họp, ý kiến, phê duyệt hoặc công việc thật được tạo.';}catch{$('#meetingDemoStatus').textContent='HOLD minh họa: chưa tìm được tuyến đi hoặc danh sách hợp lệ. Không chạy thay thế.';}finally{running=false;paused=false;document.body.classList.remove('demo-running');$('#pauseDemo').disabled=true;$('#pauseDemo').textContent='Tạm dừng';$('#startDemo').disabled=ledger.events.length>0;$('#gestureDemo').disabled=!scene3d?.available;$('#meetingDemo').disabled=!scene3d?.available;$('#resetDemo').disabled=!ledger.events.length;}}
 $('#gestureDemo').onclick=()=>runIllustration('gesture');$('#meetingDemo').onclick=()=>runIllustration('meeting');
+
+
+mountStatusPanel(document.querySelector('#progress'));

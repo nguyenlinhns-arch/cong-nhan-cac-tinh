@@ -1,8 +1,11 @@
 // Deterministic public illustration layout. One actor moves at a time.
 export function officeLayout(roles,personas){
- const rows=[['ceo'],['vp-process','vp-repair'],['oversight','infra','documents'],['studio','social','care'],['recruitment','growth']];const zs=[-48,-30,8,26,44],spaces=[],people=[];
- for(let row=0;row<rows.length;row++)for(let col=0;col<rows[row].length;col++){const id=rows[row][col],members=roles.filter(r=>personas[r.name].room===id),cols=Math.min(2,members.length),countRows=Math.ceil(members.length/cols),width=Math.max(9,cols*5+4),depth=Math.max(8.8,countRows*4.8+4),x=(col-(rows[row].length-1)/2)*20,z=zs[row];spaces.push({id,x,z,width,depth,headcount:members.length});members.forEach((r,i)=>people.push({name:r.name,room:id,x:x+(i%cols-(cols-1)/2)*5,z:z+(Math.floor(i/cols)-(countRows-1)/2)*4.8}));}
- return {rooms:spaces,people,meeting:{id:'meeting',x:0,z:-12,width:18,depth:9},bounds:{minX:-33.5,maxX:33.5,minZ:-56.5,maxZ:55}};
+ const groups=[['ceo'],['vp-process','vp-repair'],['meeting'],['oversight','infra','documents'],['studio','social','care'],['recruitment','growth','planning'],['cloud','agy','data']];
+ const spaces=[],people=[];let cursor=-65,meeting;
+ for(const group of groups){const plans=group.map(id=>{const members=roles.filter(r=>personas[r.name]?.room===id);const cols=Math.max(1,Math.min(2,members.length));return {id,members,cols,width:id==='meeting'?18:Math.max(9,cols*5+4),depth:id==='meeting'?9:Math.max(8.8,Math.ceil(members.length/cols)*4.8+4)};});const depth=Math.max(...plans.map(r=>r.depth));const z=cursor+depth/2;
+  plans.forEach((r,col)=>{const x=(col-(plans.length-1)/2)*23;const room={id:r.id,x,z,width:r.width,depth:r.depth,headcount:r.members.length};if(r.id==='meeting'){meeting=room;return;}spaces.push(room);const countRows=Math.ceil(r.members.length/r.cols);r.members.forEach((role,i)=>people.push({name:role.name,room:r.id,x:x+(i%r.cols-(r.cols-1)/2)*5,z:z+(Math.floor(i/r.cols)-(countRows-1)/2)*4.8}));});cursor+=depth+8;
+ }
+ return {rooms:spaces,people,meeting,bounds:{minX:-35,maxX:35,minZ:-69,maxZ:cursor-4}};
 }
 export function meetingSeats(roster,room){if(!Array.isArray(roster)||!roster.length||new Set(roster).size!==roster.length)throw Error('Invalid meeting roster');return roster.map((name,i)=>({name,seatId:'seat-'+(i+1),x:room.x+(i%2?4.8:-4.8),z:room.z+(Math.floor(i/2)-(Math.ceil(roster.length/2)-1)/2)*2.2}));}
 export function routeWalk(start,end,obstacles,bounds){
@@ -16,3 +19,4 @@ export const BODY_CLEARANCE={halfX:1.15,halfZ:.7}; // includes swinging arms, fe
 export function actorObstacle(p){return {x:p.x,z:p.z,w:2*(.82+BODY_CLEARANCE.halfX),d:2*(.5+BODY_CLEARANCE.halfZ)};}
 export function segmentClear(a,b,obstacles){return !obstacles.some(o=>{let lo=0,hi=1;for(const [axis,extent]of [['x',o.w/2],['z',o.d/2]]){const delta=b[axis]-a[axis],min=o[axis]-extent+1e-8,max=o[axis]+extent-1e-8;if(Math.abs(delta)<1e-9){if(a[axis]<=min||a[axis]>=max)return false;}else{let t1=(min-a[axis])/delta,t2=(max-a[axis])/delta;if(t1>t2)[t1,t2]=[t2,t1];lo=Math.max(lo,t1);hi=Math.min(hi,t2);if(lo>hi)return false;}}return lo<=hi;});}
 export function layoutObstacles(layout){const o=[],{halfX:rx,halfZ:rz}=BODY_CLEARANCE;for(const r of layout.rooms){o.push({x:r.x,z:r.z-r.depth/2,w:r.width+2*rx,d:.16+2*rz},{x:r.x-r.width/2,z:r.z,w:.16+2*rx,d:r.depth+2*rz});}for(const r of layout.rooms)o.push({x:r.x+r.width/2-.7,z:r.z-r.depth/2+.8,w:1+2*rx,d:1+2*rz});for(const p of layout.people)o.push({x:p.x,z:p.z+1.2,w:1.9+2*rx,d:.8+2*rz});const mr=layout.meeting;o.push({x:mr.x,z:mr.z-mr.depth/2,w:mr.width+2*rx,d:.16+2*rz},{x:mr.x-mr.width/2,z:mr.z,w:.16+2*rx,d:mr.depth+2*rz},{x:mr.x+mr.width/2,z:mr.z,w:.16+2*rx,d:mr.depth+2*rz});o.push({x:layout.meeting.x,z:layout.meeting.z,w:6+2*rx,d:2.4+2*rz});return o;}
+

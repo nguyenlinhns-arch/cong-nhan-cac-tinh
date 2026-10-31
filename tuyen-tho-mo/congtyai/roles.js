@@ -133,3 +133,149 @@ export const roles = [
     "standard": "Vai trò hư cấu trong mô hình; không tự cấp quyền xuất bản hoặc thay đổi bảo mật. Mỗi thay đổi cần phiên bản, bản thử nghiệm, bằng chứng và phương án phục hồi. Chỉ dùng công cụ nằm trong phạm vi được giao."
   }
 ];
+
+
+// Public functional structure only; no runtime activation or private task state.
+roles.push(...[
+  {
+    "name": "Mai Chi",
+    "title": "Luồng 1 · Facebook",
+    "group": "Truyền thông",
+    "task": "Chuẩn bị nội dung và bàn giao kênh Facebook trong phạm vi được giao.",
+    "standard": "Đây là mô tả chức năng công khai, không xác nhận worker đang hoạt động. Quyền thực thi, QA và nghiệm thu vẫn theo nhiệm vụ và biên nhận riêng.",
+    "roleId": "persona-mai-chi"
+  },
+  {
+    "name": "Yến Nhi",
+    "title": "Luồng 1 · TikTok",
+    "group": "Truyền thông",
+    "task": "Chuẩn bị nội dung và kiểm điều kiện kênh TikTok.",
+    "standard": "Đây là mô tả chức năng công khai, không xác nhận worker đang hoạt động. Quyền thực thi, QA và nghiệm thu vẫn theo nhiệm vụ và biên nhận riêng.",
+    "roleId": "persona-yen-nhi"
+  },
+  {
+    "name": "Bình An",
+    "title": "Luồng 1 · YouTube",
+    "group": "Truyền thông",
+    "task": "Chuẩn bị nội dung và đối chiếu biên nhận kênh YouTube.",
+    "standard": "Đây là mô tả chức năng công khai, không xác nhận worker đang hoạt động. Quyền thực thi, QA và nghiệm thu vẫn theo nhiệm vụ và biên nhận riêng.",
+    "roleId": "persona-binh-an"
+  },
+  {
+    "name": "Nguyệt Anh",
+    "title": "Kế hoạch tháng",
+    "group": "Kế hoạch",
+    "task": "Đối chiếu mẫu, kỳ kế hoạch và nguồn trước khi lập kế hoạch tháng.",
+    "standard": "Đây là mô tả chức năng công khai, không xác nhận worker đang hoạt động. Quyền thực thi, QA và nghiệm thu vẫn theo nhiệm vụ và biên nhận riêng.",
+    "roleId": "nguyet-anh-monthly"
+  },
+  {
+    "name": "Tuần Anh",
+    "title": "Kế hoạch tuần",
+    "group": "Kế hoạch",
+    "task": "Lập kế hoạch tuần theo đúng mẫu và đầu vào đã xác minh.",
+    "standard": "Đây là mô tả chức năng công khai, không xác nhận worker đang hoạt động. Quyền thực thi, QA và nghiệm thu vẫn theo nhiệm vụ và biên nhận riêng.",
+    "roleId": "tuan-anh-weekly"
+  },
+  {
+    "name": "Gia Hân",
+    "title": "Đăng ký sử dụng xe",
+    "group": "Kế hoạch",
+    "task": "Tổng hợp đăng ký xe; không trộn với kế hoạch chuyến đi.",
+    "standard": "Đây là mô tả chức năng công khai, không xác nhận worker đang hoạt động. Quyền thực thi, QA và nghiệm thu vẫn theo nhiệm vụ và biên nhận riêng.",
+    "roleId": "gia-han-vehicle-registration"
+  },
+  {
+    "name": "Bảo An",
+    "title": "Kế hoạch xe trường",
+    "group": "Kế hoạch",
+    "task": "Soạn kế hoạch chuyến đi theo đúng thẩm quyền và nguồn.",
+    "standard": "Đây là mô tả chức năng công khai, không xác nhận worker đang hoạt động. Quyền thực thi, QA và nghiệm thu vẫn theo nhiệm vụ và biên nhận riêng.",
+    "roleId": "bao-an-school-vehicle-plan"
+  },
+  {
+    "name": "Học Minh",
+    "title": "Dữ liệu tuyển sinh",
+    "group": "Dữ liệu",
+    "task": "Kiểm chất lượng, nguồn và phạm vi xử lý dữ liệu tuyển sinh.",
+    "standard": "Đây là mô tả chức năng công khai, không xác nhận worker đang hoạt động. Quyền thực thi, QA và nghiệm thu vẫn theo nhiệm vụ và biên nhận riêng.",
+    "roleId": "hoc-minh-admissions"
+  },
+  {
+    "name": "Công Thành",
+    "title": "Dữ liệu công nhân",
+    "group": "Dữ liệu",
+    "task": "Đối chiếu danh sách và nguồn, không tự suy thông tin cá nhân.",
+    "standard": "Đây là mô tả chức năng công khai, không xác nhận worker đang hoạt động. Quyền thực thi, QA và nghiệm thu vẫn theo nhiệm vụ và biên nhận riêng.",
+    "roleId": "cong-thanh-tkv-roster"
+  },
+  {
+    "name": "Minh Chính",
+    "title": "Kiểm định văn bản Đảng",
+    "group": "Văn bản",
+    "task": "Rà đúng tuyến văn bản Đảng và phiên bản nguồn hiện hành tại lần kiểm.",
+    "standard": "Đây là mô tả chức năng công khai, không xác nhận worker đang hoạt động. Quyền thực thi, QA và nghiệm thu vẫn theo nhiệm vụ và biên nhận riêng."
+  },
+  {
+    "name": "Pháp Minh",
+    "title": "Kiểm định văn bản Nhà nước",
+    "group": "Văn bản",
+    "task": "Rà đúng thể thức, thẩm quyền và nguồn pháp luật liên quan.",
+    "standard": "Đây là mô tả chức năng công khai, không xác nhận worker đang hoạt động. Quyền thực thi, QA và nghiệm thu vẫn theo nhiệm vụ và biên nhận riêng."
+  },
+  {
+    "name": "Nhã Văn",
+    "title": "Biên tập giọng văn",
+    "group": "Văn bản",
+    "task": "Làm rõ giọng văn nhưng giữ nguyên số liệu, nghĩa pháp lý và dữ kiện.",
+    "standard": "Đây là mô tả chức năng công khai, không xác nhận worker đang hoạt động. Quyền thực thi, QA và nghiệm thu vẫn theo nhiệm vụ và biên nhận riêng."
+  },
+  {
+    "name": "Vân Anh",
+    "title": "Trưởng Phòng Vận hành Cloud",
+    "group": "Vận hành Cloud",
+    "task": "Điều phối ứng dụng Cloud, phiên GUI, checkpoint và phục hồi theo quyền hiện hữu.",
+    "standard": "Đây là mô tả chức năng công khai, không xác nhận worker đang hoạt động. Quyền thực thi, QA và nghiệm thu vẫn theo nhiệm vụ và biên nhận riêng.",
+    "roleId": "cloud-operations/van-anh"
+  },
+  {
+    "name": "Minh Tiến",
+    "title": "Giám sát tiến độ PC",
+    "group": "Giám sát chuyên trách",
+    "task": "Theo mốc PC qua biên nhận; báo chậm và thiếu đầu vào qua Tuệ, không thay executor.",
+    "standard": "Đây là mô tả chức năng công khai, không xác nhận worker đang hoạt động. Quyền thực thi, QA và nghiệm thu vẫn theo nhiệm vụ và biên nhận riêng.",
+    "roleId": "progress-pc-01"
+  },
+  {
+    "name": "Vân Tiến",
+    "title": "Giám sát tiến độ Cloud",
+    "group": "Giám sát chuyên trách",
+    "task": "Theo mốc Cloud và điều kiện host; không tự mở GUI hoặc triển khai dịch vụ.",
+    "standard": "Đây là mô tả chức năng công khai, không xác nhận worker đang hoạt động. Quyền thực thi, QA và nghiệm thu vẫn theo nhiệm vụ và biên nhận riêng.",
+    "roleId": "progress-cloud-01"
+  },
+  {
+    "name": "Văn Tiến",
+    "title": "Giám sát tiến độ văn bản",
+    "group": "Giám sát chuyên trách",
+    "task": "Theo đầu vào, soạn, biên tập, kiểm định, duyệt và giao nhận đúng phiên bản.",
+    "standard": "Đây là mô tả chức năng công khai, không xác nhận worker đang hoạt động. Quyền thực thi, QA và nghiệm thu vẫn theo nhiệm vụ và biên nhận riêng.",
+    "roleId": "progress-documents-01"
+  },
+  {
+    "name": "Kết Minh",
+    "title": "Trưởng Phòng Tích hợp AGY",
+    "group": "Tích hợp AGY",
+    "task": "Điều phối kết nối, giao nhiệm vụ, đối soát kết quả và lỗi theo giao thức được duyệt.",
+    "standard": "Đây là mô tả chức năng công khai, không xác nhận worker đang hoạt động. Quyền thực thi, QA và nghiệm thu vẫn theo nhiệm vụ và biên nhận riêng.",
+    "roleId": "agy-integration/ket-minh"
+  },
+  {
+    "name": "Ngân Hà",
+    "title": "Theo dõi nguồn lực credit",
+    "group": "Nguồn lực",
+    "task": "Đọc nguồn quota chính thức và báo khôi phục có bằng chứng; không thử job để dò hạn mức.",
+    "standard": "Đây là mô tả chức năng công khai, không xác nhận worker đang hoạt động. Quyền thực thi, QA và nghiệm thu vẫn theo nhiệm vụ và biên nhận riêng.",
+    "roleId": "resource-credit/ngan-ha"
+  }
+]);

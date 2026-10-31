@@ -138,3 +138,152 @@ const front=p.hair==='pixie'?`<path d="M66 83Q49 46 89 28q44-20 77 18l10 34-26-9
 const glasses=name==='Tuệ'?'<g fill="none" stroke="#806b51" stroke-width="2"><circle cx="96" cy="94" r="13"/><circle cx="143" cy="94" r="13"/><path d="M109 93h21M78 91h5m73 0h8"/></g>':(name==='Sơn Hà'||name==='An')?'<g fill="none" stroke="#4d5a62" stroke-width="2.4"><rect x="80" y="83" width="31" height="21" rx="5"/><rect x="130" y="83" width="31" height="21" rx="5"/><path d="M111 92h19"/></g>':'';
 return `<svg width="240" height="280" viewBox="0 0 240 280" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="coat-${i}-${kind}" x2=".8" y2="1"><stop stop-color="${p.color}"/><stop offset="1" stop-color="#253c50"/></linearGradient><linearGradient id="face-${i}-${kind}" x2=".8" y2="1"><stop stop-color="#f5d6bc"/><stop offset="1" stop-color="${skin}"/></linearGradient></defs><ellipse cx="120" cy="260" rx="78" ry="11" fill="#253e4420"/>${extra}${back}<path d="M94 126v30l26 19 28-19v-31" fill="${skin}"/><path d="M96 133q24 17 50-2v13q-26 16-50-1" fill="#aa71581e"/><path d="M36 254l8-61q2-35 51-40l25 19 26-20q48 7 51 42l7 60Z" fill="url(#coat-${i}-${kind})"/><path d="M98 151l22 21 25-21-4 103H102Z" fill="#f5eee2"/><path d="M94 151l26 21-20 31-20-38Zm53 0-27 21 22 31 20-39Z" fill="${p.color}"/><path d="m101 197-12 57m52-55 10 55" fill="none" stroke="#ffffff45" stroke-width="1.5"/>${!female?'<path d="m115 175 6-3 6 4-3 12 9 51-12 13-11-14 9-51Z" fill="#547b89"/>':''}<ellipse cx="67" cy="97" rx="8" ry="13" fill="${skin}"/><ellipse cx="173" cy="97" rx="8" ry="13" fill="${skin}"/><path d="M68 77Q68 40 121 40q50 2 50 38l-7 41q-9 28-43 30-33-2-45-28Z" fill="url(#face-${i}-${kind})"/>${front}<path d="M84 82q12-6 23-1m25 0q11-5 22 2" fill="none" stroke="${hair}" stroke-width="2.4" stroke-linecap="round"/><path d="M85 94q11-8 22 0m25 0q11-8 22 0" fill="none" stroke="#664a46" stroke-width="2" stroke-linecap="round"/><ellipse cx="97" cy="95" rx="3.5" ry="4.5" fill="#332c32"/><ellipse cx="143" cy="95" rx="3.5" ry="4.5" fill="#332c32"/><circle cx="98" cy="93" r="1.2" fill="white"/><circle cx="144" cy="93" r="1.2" fill="white"/>${female?'<path d="m85 94-4-3m73 3 4-3" stroke="#664a46" stroke-width="1.7"/><ellipse cx="86" cy="112" rx="9" ry="4" fill="#d5807728"/><ellipse cx="154" cy="112" rx="9" ry="4" fill="#d5807728"/>':''}<path d="m120 99-3 12 6 1" fill="none" stroke="#bc8c70" stroke-width="1.5" stroke-linecap="round"/><path d="M107 123q13 11 27-1" fill="${female?'#b66b68':'#a6685c'}"/><path d="M110 123q10 4 21 0" fill="none" stroke="#f9e1d4" stroke-width="2" stroke-linecap="round"/>${glasses}${female?'<circle cx="73" cy="118" r="3" fill="#d4b574"/><circle cx="165" cy="118" r="3" fill="#d4b574"/>':''}<path d="M49 210q21-4 34 15l26 13-7 13-31-10-30-7" fill="${skin}"/><path d="M188 212q-16-2-27 13l-26 13 6 13 28-9 28-9" fill="${skin}"/><rect x="94" y="211" width="53" height="40" rx="6" fill="#e9d7b0" transform="rotate(-5 120 230)"/><path d="M104 222h31m-31 8h22" stroke="#b99a68" stroke-width="2"/><circle cx="162" cy="182" r="13" fill="#f5e8c8"/>${p.prop==='web'?'<g fill="none" stroke="#43616c" stroke-width="1.5"><rect x="154" y="176" width="16" height="11" rx="1.5"/><path d="M162 187v3m-5 0h10m-13-10h16"/></g>':p.prop==='mail'?'<g fill="none" stroke="#43616c" stroke-width="1.6" stroke-linejoin="round"><rect x="154" y="177" width="16" height="11" rx="1.5"/><path d="m154 178 8 6 8-6"/></g>':`<text x="162" y="187" font-size="16" text-anchor="middle" fill="#43616c" font-family="system-ui,sans-serif">${symbols[p.prop]}</text>`}<path d="M43 251h156" stroke="#1c3b4c20" stroke-width="2"/></svg>`;
 }
+
+
+// Explicitly designed fictional presentations, not name-based inference.
+Object.assign(personas,{
+  "Mai Chi": {
+    "presentation": "female",
+    "appearanceSource": "Explicit fictional design for this illustration; not inferred human gender",
+    "hair": "bob",
+    "color": "#328775",
+    "prop": "document",
+    "room": "social"
+  },
+  "Yến Nhi": {
+    "presentation": "female",
+    "appearanceSource": "Explicit fictional design for this illustration; not inferred human gender",
+    "hair": "bob",
+    "color": "#328775",
+    "prop": "document",
+    "room": "social"
+  },
+  "Bình An": {
+    "presentation": "male",
+    "appearanceSource": "Explicit fictional design for this illustration; not inferred human gender",
+    "hair": "part",
+    "color": "#328775",
+    "prop": "document",
+    "room": "social"
+  },
+  "Nguyệt Anh": {
+    "presentation": "female",
+    "appearanceSource": "Explicit fictional design for this illustration; not inferred human gender",
+    "hair": "bob",
+    "color": "#328775",
+    "prop": "document",
+    "room": "planning"
+  },
+  "Tuần Anh": {
+    "presentation": "male",
+    "appearanceSource": "Explicit fictional design for this illustration; not inferred human gender",
+    "hair": "part",
+    "color": "#328775",
+    "prop": "document",
+    "room": "planning"
+  },
+  "Gia Hân": {
+    "presentation": "female",
+    "appearanceSource": "Explicit fictional design for this illustration; not inferred human gender",
+    "hair": "bob",
+    "color": "#328775",
+    "prop": "document",
+    "room": "planning"
+  },
+  "Bảo An": {
+    "presentation": "male",
+    "appearanceSource": "Explicit fictional design for this illustration; not inferred human gender",
+    "hair": "part",
+    "color": "#328775",
+    "prop": "document",
+    "room": "planning"
+  },
+  "Học Minh": {
+    "presentation": "male",
+    "appearanceSource": "Explicit fictional design for this illustration; not inferred human gender",
+    "hair": "part",
+    "color": "#328775",
+    "prop": "document",
+    "room": "data"
+  },
+  "Công Thành": {
+    "presentation": "male",
+    "appearanceSource": "Explicit fictional design for this illustration; not inferred human gender",
+    "hair": "part",
+    "color": "#328775",
+    "prop": "document",
+    "room": "data"
+  },
+  "Minh Chính": {
+    "presentation": "male",
+    "appearanceSource": "Explicit fictional design for this illustration; not inferred human gender",
+    "hair": "part",
+    "color": "#328775",
+    "prop": "document",
+    "room": "documents"
+  },
+  "Pháp Minh": {
+    "presentation": "male",
+    "appearanceSource": "Explicit fictional design for this illustration; not inferred human gender",
+    "hair": "part",
+    "color": "#328775",
+    "prop": "document",
+    "room": "documents"
+  },
+  "Nhã Văn": {
+    "presentation": "female",
+    "appearanceSource": "Explicit fictional design for this illustration; not inferred human gender",
+    "hair": "bob",
+    "color": "#328775",
+    "prop": "document",
+    "room": "documents"
+  },
+  "Vân Anh": {
+    "presentation": "female",
+    "appearanceSource": "Explicit fictional design for this illustration; not inferred human gender",
+    "hair": "bob",
+    "color": "#328775",
+    "prop": "document",
+    "room": "cloud"
+  },
+  "Minh Tiến": {
+    "presentation": "male",
+    "appearanceSource": "Explicit fictional design for this illustration; not inferred human gender",
+    "hair": "part",
+    "color": "#328775",
+    "prop": "document",
+    "room": "oversight"
+  },
+  "Vân Tiến": {
+    "presentation": "male",
+    "appearanceSource": "Explicit fictional design for this illustration; not inferred human gender",
+    "hair": "part",
+    "color": "#328775",
+    "prop": "document",
+    "room": "oversight"
+  },
+  "Văn Tiến": {
+    "presentation": "male",
+    "appearanceSource": "Explicit fictional design for this illustration; not inferred human gender",
+    "hair": "part",
+    "color": "#328775",
+    "prop": "document",
+    "room": "oversight"
+  },
+  "Kết Minh": {
+    "presentation": "male",
+    "appearanceSource": "Explicit fictional design for this illustration; not inferred human gender",
+    "hair": "part",
+    "color": "#328775",
+    "prop": "document",
+    "room": "agy"
+  },
+  "Ngân Hà": {
+    "presentation": "female",
+    "appearanceSource": "Explicit fictional design for this illustration; not inferred human gender",
+    "hair": "bob",
+    "color": "#328775",
+    "prop": "document",
+    "room": "infra"
+  }
+});
