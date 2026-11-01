@@ -1,39 +1,18 @@
-import {mountOfficeFallback} from './office-fallback.js';
-import {mountStatusPanel} from './status-panel.js';
-import {meetingGate} from './meeting.js';
-import {officeHealth} from './health.js';
-import {createOffice3D} from './office3d.js';
-import {roles} from './roles.js';
-import {personas} from './portraits.js';
-import {demoRoute,createDemoLedger,makeDemoEvent} from './handoffs.js';
-const $=s=>document.querySelector(s);let eventOpener=null;
-const meeting=meetingGate();$('#commonRoom').dataset.gate=meeting.state;
-const health=officeHealth();$('#healthLabel').textContent=health.label;$('#healthDetail').textContent=health.detail;
-const seenVisualEvents=new Set();function recordVisualEvent(e){if(e.mode!=='DEMO_ONLY'||e.origin!=='synthetic-ui'||seenVisualEvents.has(e.visualEventId))return;seenVisualEvents.add(e.visualEventId);const li=document.createElement('li');li.textContent=`DEMO · ${e.actorName} · ${e.type==='meeting.enter'?'đến':'rời'} ${e.seatId} · ${e.visualEventId}`;$('#visualEvents').append(li);}
-let scene3d=null;try{scene3d=createOffice3D({canvas:$('#office3d'),labels:$('#sceneLabels'),status:$('#sceneStatus'),viewControl:$('#roomView'),roles,personas,onVisualEvent:recordVisualEvent});}catch{$('#sceneStatus').textContent='Không thể khởi tạo 3D · đang hiển thị ảnh tĩnh';}
-if(!scene3d){$('#roomView').disabled=true;$('#sceneStage').hidden=true;$('#sceneFallback').hidden=false;mountOfficeFallback($('#sceneFallback'),roles,personas);$('#sceneStatus').textContent='WebGL chưa hỗ trợ · văn phòng 2.5D tương thích';}
-$('#closeEvent').onclick=()=>$('#eventDetail').close();$('#eventDetail').addEventListener('close',()=>eventOpener?.focus());
-for(const d of [$('#eventDetail')])d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}});
-let generation=1,session='demo-1',ledger=createDemoLedger(session),running=false,paused=false,activeAnimation=null,resume=null;
-$('#officePlan').append($('#courier'));
-const reduced=matchMedia('(prefers-reduced-motion: reduce)');$('#reduceMotion').checked=reduced.matches;
-function syncMotion(){document.body.classList.toggle('reduced-motion',$('#reduceMotion').checked);if($('#reduceMotion').checked)scene3d?.finish();if($('#reduceMotion').checked&&activeAnimation){activeAnimation.finish();}}
-$('#reduceMotion').onchange=syncMotion;reduced.addEventListener('change',e=>{$('#reduceMotion').checked=e.matches;syncMotion();});syncMotion();
-function eventDetails(e){eventOpener=document.activeElement;$('#eventTitle').textContent=e.job+' · '+e.from+' → '+e.to;const fields=[['Chế độ','DEMO — sự kiện minh họa do người xem khởi chạy'],['Mã sự kiện',e.id],['Công đoạn',e.stage],['Người giao / nhận',e.from+' → '+e.to],['Bằng chứng',e.evidence],['Trạng thái QA',e.qa],['Quyền thực thi','Không có lệnh chạy, không được dùng như phê duyệt thật']];$('#eventFields').innerHTML='';for(const [name,value] of fields){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=name;dd.textContent=value;$('#eventFields').append(dt,dd);}$('#discussionContext').textContent='Ngữ cảnh mẫu: '+e.job+' · '+e.stage+' · '+e.from+' → '+e.to;selectEventTab('Evidence');$('#eventDetail').showModal();$('#closeEvent').focus();}
-function recordView(e){const li=document.createElement('li'),b=document.createElement('button');b.className='event-folder';b.textContent=`▰ ${e.id} · ${e.from} → ${e.to}`;b.onclick=()=>eventDetails(e);li.append(b);$('#eventList').append(li);}
-async function move(e){if(scene3d?.available&&!$('#sceneStage').hidden)await scene3d.handoff(e.from,e.to,$('#reduceMotion').checked);}
-$('#startDemo').onclick=async()=>{if(running||ledger.events.length)return;running=true;paused=false;document.body.classList.add('demo-running');$('#startDemo').disabled=true;$('#gestureDemo').disabled=true;$('#meetingDemo').disabled=true;$('#pauseDemo').disabled=false;$('#resetDemo').disabled=true;document.querySelectorAll('[data-room-filter]').forEach(b=>b.disabled=true);$('#office').scrollIntoView({behavior:$('#reduceMotion').checked?'instant':'smooth',block:'start'});const current=generation;try{for(let i=0;i<demoRoute.length-1;i++){if(paused)await new Promise(r=>resume=r);if(current!==generation)break;const e=makeDemoEvent(session,i);if(!ledger.append(e))continue;recordView(e);$('#demoStatus').textContent=`DEMO · ${i+1}/6 · ${e.from} đang bàn giao mẫu đến ${e.to}`;await move(e);}if(current===generation)$('#demoStatus').textContent='Đã xem đủ 6 sự kiện DEMO. Đây không phải nghiệm thu hoặc công việc đã hoàn thành thật.';}finally{running=false;paused=false;document.body.classList.remove('demo-running');$('#pauseDemo').disabled=true;$('#pauseDemo').textContent='Tạm dừng';$('#resetDemo').disabled=false;$('#gestureDemo').disabled=!scene3d?.available;$('#meetingDemo').disabled=!scene3d?.available;document.querySelectorAll('[data-room-filter]').forEach(b=>b.disabled=false);}};
-$('#pauseDemo').onclick=()=>{if(!running)return;paused=!paused;scene3d?.pause(paused);$('#pauseDemo').textContent=paused?'Tiếp tục':'Tạm dừng';if(paused){activeAnimation?.pause();$('#demoStatus').textContent='DEMO đã tạm dừng. Không phát sinh sự kiện tiếp theo.';}else{activeAnimation?.play();if(resume){resume();resume=null;}}};
-$('#resetDemo').onclick=()=>{if(running)return;generation++;session='demo-'+generation;ledger=createDemoLedger(session);$('#eventList').replaceChildren();$('#demoStatus').textContent='Đã xóa lượt mẫu trong phiên. Chưa có sự kiện.';$('#startDemo').disabled=false;$('#resetDemo').disabled=true;};
-
-window.addEventListener('resize',()=>{scene3d?.finish();if(activeAnimation)activeAnimation.finish();});
-
-function selectEventTab(which){for(const name of ['Evidence','Discussion']){const active=name===which;$('#tab'+name).setAttribute('aria-selected',String(active));$('#tab'+name).tabIndex=active?0:-1;$('#panel'+name).hidden=!active;}}
-for(const name of ['Evidence','Discussion']){$('#tab'+name).onclick=()=>selectEventTab(name);$('#tab'+name).addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const next=e.key==='Home'?'Evidence':e.key==='End'?'Discussion':name==='Evidence'?'Discussion':'Evidence';selectEventTab(next);$('#tab'+next).focus();}});}
-
-for(const id of ['gestureDemo','meetingDemo'])$('#'+id).disabled=!scene3d?.available;
-async function runIllustration(kind){if(running||!scene3d?.available)return;scene3d.pause(false);running=true;paused=false;document.body.classList.add('demo-running');$('#pauseDemo').disabled=false;$('#startDemo').disabled=true;$('#gestureDemo').disabled=true;$('#meetingDemo').disabled=true;$('#resetDemo').disabled=true;$('#office').scrollIntoView({behavior:$('#reduceMotion').checked?'instant':'smooth',block:'start'});try{if(kind==='meeting')await scene3d.meeting(['Đào','Quyên','Khôi','Diệu','An'],()=>$('#reduceMotion').checked);else await scene3d.gestures($('#reduceMotion').checked);if(!scene3d.available)throw Error('3D unavailable');$('#meetingDemoStatus').textContent='Đã xem minh họa. Không có cuộc họp, ý kiến, phê duyệt hoặc công việc thật được tạo.';}catch{$('#meetingDemoStatus').textContent='HOLD minh họa: chưa tìm được tuyến đi hoặc danh sách hợp lệ. Không chạy thay thế.';}finally{running=false;paused=false;document.body.classList.remove('demo-running');$('#pauseDemo').disabled=true;$('#pauseDemo').textContent='Tạm dừng';$('#startDemo').disabled=ledger.events.length>0;$('#gestureDemo').disabled=!scene3d?.available;$('#meetingDemo').disabled=!scene3d?.available;$('#resetDemo').disabled=!ledger.events.length;}}
-$('#gestureDemo').onclick=()=>runIllustration('gesture');$('#meetingDemo').onclick=()=>runIllustration('meeting');
-
-
-mountStatusPanel(document.querySelector('#progress'));
+// Taskboard-only entry. Historical office modules are not imported or initialized.
+import {mountStatusPanel} from './status-panel.js?v=20261031-taskboard-r4';
+const board=document.querySelector('#progress');
+mountStatusPanel(board);
+for(const button of document.querySelectorAll('[data-board-nav]')){
+ button.addEventListener('click',()=>{
+  const target=button.dataset.boardNav;
+  const select=board.querySelector('[data-status-scope]');
+  select.value=target==='RESULTS'?'ALL':target;
+  select.dispatchEvent(new Event('change',{bubbles:true}));
+  const notice=document.querySelector('[data-board-notice]');
+  if(target==='RESULTS'){
+   const result=board.querySelector('[data-category="completed"]');
+   notice.textContent=result?'Kết quả đã nghiệm thu và bàn giao trong snapshot này.':'Chưa có kết quả đã nghiệm thu và bàn giao trong snapshot này.';
+   (result||board).scrollIntoView({block:'start'});
+  }else{notice.textContent='';board.scrollIntoView({block:'start'});}
+ });
+}

@@ -1,3 +1,4 @@
+import {projectMilestones} from './private-snapshot.js?v=20261031-taskboard-r4';
 // Public synthetic projection only. Authentication and private collection are NOT implemented.
 export const STATES = Object.freeze(['ALLOCATED','ACTIVE','BLOCKED','UNKNOWN','COMPLETE']);
 const labels = {ALLOCATED:'Đã phân công · chưa hoạt động',ACTIVE:'Có bước làm được ghi nhận',BLOCKED:'Đang vướng điều kiện',UNKNOWN:'Chưa đủ bằng chứng',COMPLETE:'Đạt mốc đã xác minh'};
@@ -17,18 +18,20 @@ export function projectStatus(snapshot, now=Date.now()) {
     if (state==='ACTIVE' && r.workerAcknowledged!==true) state='UNKNOWN';
     if (state==='COMPLETE' && !(r.qa==='PASS' && r.outputVerified===true)) state='UNKNOWN';
     const text=(v,fallback)=>typeof v==='string'?v.slice(0,180):fallback;
-    return {id:'synthetic-'+i, scope:['PC','CLOUD','DOCUMENTS'].includes(r.scope)?r.scope:'UNKNOWN', owner:text(r.owner,'Chưa xác định'), stage:text(r.stage,'Chưa có công đoạn'), state, label:labels[state], freshness:!evidence?'UNKNOWN':stale?'STALE':ttl===null?'UNSPECIFIED':'FRESH', ageMs:evidence?now-observed:null, eventAt:evidence?r.eventAt:null, observedAt:evidence?r.observedAt:null, reportedAt:evidence?r.reportedAt:null, evidenceRef:evidence?r.evidenceRef:null, next:text(r.next,'Chưa có bước tiếp theo'), qa:text(r.qa,'UNKNOWN')};
+    return {id:'synthetic-'+i, taskId:r.taskId||'DEMO-'+i,environment:r.scope,progress:projectMilestones({...r,taskId:r.taskId||'DEMO-'+i,state},now,r.reportedAt), scope:['PC','CLOUD','DOCUMENTS'].includes(r.scope)?r.scope:'UNKNOWN', owner:text(r.owner,'Chưa xác định'), stage:text(r.stage,'Chưa có công đoạn'), state, label:labels[state], freshness:!evidence?'UNKNOWN':stale?'STALE':ttl===null?'UNSPECIFIED':'FRESH', ageMs:evidence?now-observed:null, eventAt:evidence?r.eventAt:null, observedAt:evidence?r.observedAt:null, reportedAt:evidence?r.reportedAt:null, evidenceRef:evidence?r.evidenceRef:null, next:text(r.next,'Chưa có bước tiếp theo'), qa:text(r.qa,'UNKNOWN')};
   });
   return {mode:'SYNTHETIC',label:'DỮ LIỆU MINH HỌA · KHÔNG PHẢI HOẠT ĐỘNG THẬT',rows,connected:false};
 }
 export function exampleStatus(now=Date.now()) {
   const t=delta=>new Date(now-delta).toISOString();
+  const milestones=(done)=>['PREPARED','QA','ACCEPTED','DELIVERED'].map((id,i)=>({id,label:id,state:i<done?'DONE':'PENDING',...(i<done?{completedAt:t(180000),evidenceRef:'DEMO-MILESTONE-'+i}:{})}));
+  const progress=(done,target)=>({planId:'demo-plan@v1',target,lifecycle:'OPEN',milestones:milestones(done)});
   const base={evidenceVerified:true,evidenceRef:'DEMO-RECEIPT-01',eventAt:t(180000),observedAt:t(120000),reportedAt:t(60000),freshnessWindowMs:600000,qa:'UNKNOWN'};
   return {mode:'SYNTHETIC',records:[
-    {...base,scope:'PC',owner:'Vai thực thi PC mẫu',stage:'Kiểm tra bản sửa',state:'ACTIVE',workerAcknowledged:true,next:'Chuyển kết quả kiểm thử cho QA'},
-    {...base,scope:'CLOUD',owner:'Vai triển khai Cloud mẫu',stage:'Chờ điều kiện host',state:'BLOCKED',next:'Xác minh cơ chế lưu trữ bền vững'},
+    {...base,scope:'PC',owner:'Vai thực thi PC mẫu',stage:'Kiểm tra bản sửa',progress:progress(2,'Bản sửa mẫu'),state:'ACTIVE',workerAcknowledged:true,next:'Chuyển kết quả kiểm thử cho QA'},
+    {...base,scope:'CLOUD',owner:'Vai triển khai Cloud mẫu',stage:'Chờ điều kiện host',progress:progress(1,'Triển khai mẫu chưa vận hành'),state:'BLOCKED',next:'Xác minh cơ chế lưu trữ bền vững'},
     {scope:'DOCUMENTS',owner:'Vai giám sát văn bản mẫu',stage:'Chuẩn bị nhận việc',state:'ALLOCATED',next:'Đọc hướng dẫn và nhận đúng phiên bản hồ sơ'},
     {...base,scope:'PC',owner:'Vai giám sát PC mẫu',stage:'Biên nhận cũ',state:'ACTIVE',workerAcknowledged:true,eventAt:t(1500000),observedAt:t(1400000),reportedAt:t(1300000),next:'Đối soát biên nhận mới; không tự phát lại lệnh'},
-    {...base,scope:'CLOUD',owner:'Vai kiểm thử nguồn mẫu',stage:'Đạt mốc kiểm thử nguồn',state:'COMPLETE',qa:'PASS',outputVerified:true,next:'Còn cổng triển khai; không đồng nghĩa đã vận hành'}
+    {...base,scope:'CLOUD',owner:'Vai kiểm thử nguồn mẫu',stage:'Đạt mốc kiểm thử nguồn',progress:progress(4,'Chỉ gói kiểm thử nguồn mẫu, không phải production'),state:'COMPLETE',qa:'PASS',outputVerified:true,next:'Còn cổng triển khai; không đồng nghĩa đã vận hành'}
   ]};
 }
