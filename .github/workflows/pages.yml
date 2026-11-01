@@ -152,6 +152,34 @@ jobs:
           trap - EXIT
           node tools/validate-congtyai.mjs
           git diff --exit-code -- . ':(exclude)content/editorial-sources.json' ':(exclude)tuyen-tho-mo/assets/articles/sources.json' ':(exclude)tuyen-tho-mo/daily-seo-articles.json' ':(exclude)tuyen-tho-mo/feed.json' ':(exclude)tuyen-tho-mo/feed.xml' ':(exclude)tuyen-tho-mo/llms.txt' ':(exclude)tuyen-tho-mo/sitemap.xml' ':(exclude)tuyen-tho-mo/news-sitemap.xml' ':(exclude)tuyen-tho-mo/index.html' ':(exclude)tuyen-tho-mo/home-critical.css' ':(exclude)tuyen-tho-mo/home-content.css' ':(exclude)tuyen-tho-mo/job-application.js' ':(exclude)tuyen-tho-mo/search-index.json' ':(exclude)tuyen-tho-mo/search-core.json' ':(exclude)tuyen-tho-mo/search-provinces.json' ':(exclude)tuyen-tho-mo/search-content.json' ':(exclude)tuyen-tho-mo/jobs.json' ':(exclude)tuyen-tho-mo/jobs.xml' ':(exclude)tuyen-tho-mo/jooble.xml' ':(glob,exclude)tuyen-tho-mo/viec-lam-nganh-than/**'
+      - name: Validate Ken revision app
+        run: |
+          # Validate the complete revision bank before publishing any app assets.
+          node <<'NODE'
+          const fs = require('node:fs');
+          const assert = require('node:assert/strict');
+          const root = './tuyen-tho-mo/kenlop9/';
+          const core = require(root + 'core.js');
+          const bank = core.validateBank(JSON.parse(fs.readFileSync(root + 'questions.json', 'utf8')));
+          const expected = ['Ngữ văn','Toán','Tiếng Anh','Lịch sử','Địa lí','KHTN - Vật lí','KHTN - Hóa học','KHTN - Sinh học','Tin học','Công nghệ','GDCD'];
+          assert.ok(bank.length > 0);
+          const sources = new Set(['ngu-van-9','toan-9','tieng-anh-9','lich-su-9','dia-li-9','vat-li-9','hoa-hoc-9','sinh-hoc-9','tin-hoc-9','cong-nghe-9','gdcd-9']);
+          bank.forEach(q => {
+            assert.ok(sources.has(q.source?.document), 'Anonymous source code required');
+            assert.ok(Number.isInteger(q.source.page) && q.source.page >= 1);
+            assert.ok(typeof q.source.item === 'string' && q.source.item.trim());
+            assert.ok(['easy','medium','hard'].includes(q.difficulty));
+          });
+          assert.deepEqual([...new Set(bank.map(q => q.subject))].sort(), expected.sort());
+          const session = core.makeSession(bank);
+          bank.forEach(q => { session.answers[q.id] = q.answerIndex; });
+          assert.equal(core.score(session, bank).points, 10);
+          assert.equal(core.score(core.makeSession(bank), bank).blank, bank.length);
+          const app = fs.readFileSync(root + 'app.js', 'utf8');
+          assert.ok(app.includes('e.textContent=text'));
+          assert.ok(app.includes('explanation(q,item,feedback)'));
+          assert.ok(!/innerHTML|sendBeacon|XMLHttpRequest/.test(app));
+          NODE
       - uses: actions/upload-pages-artifact@v3
         with:
           # Publish the recruitment portal at the custom-domain root.
@@ -163,22 +191,24 @@ jobs:
         env:
           KEN_URL: https://thaylinhtuyenthomo.vn/kenlop9/
         run: |
-          html_file="$(mktemp)"
-          app_file="$(mktemp)"
-          css_file="$(mktemp)"
+          live_dir="$(mktemp -d)"
+          trap 'rm -rf "$live_dir"' EXIT
           for attempt in $(seq 1 18); do
-            if curl --fail --silent --show-error --location --max-time 20 "$KEN_URL?run=${GITHUB_SHA}" -o "$html_file" \
-              && curl --fail --silent --show-error --location --max-time 20 "${KEN_URL}app.js?run=${GITHUB_SHA}" -o "$app_file" \
-              && curl --fail --silent --show-error --location --max-time 20 "${KEN_URL}styles.css?run=${GITHUB_SHA}" -o "$css_file" \
-              && grep -Fq 'Kiểm tra kiến thức lớp 9' "$html_file" \
-              && grep -Fq "const TARGETS={month:15,midterm:25,final:35}" "$app_file" \
-              && grep -Fq '.control-surface{' "$css_file"; then
-              echo "Ken Lop9 is live on attempt $attempt."
+            complete=true
+            for asset in index.html app.js core.js styles.css questions.json; do
+              if ! curl --fail --silent --show-error --location --max-time 20 "${KEN_URL}${asset}?run=${GITHUB_SHA}" -o "$live_dir/$asset" \
+                || ! cmp -s "tuyen-tho-mo/kenlop9/$asset" "$live_dir/$asset"; then
+                complete=false
+                break
+              fi
+            done
+            if [ "$complete" = true ]; then
+              echo "Ken Lop9 revision app and complete bank match commit $GITHUB_SHA."
               exit 0
             fi
             sleep 5
           done
-          echo "Ken Lop9 was not exposed by the custom domain."
+          echo "The custom domain did not expose the exact Ken revision release."
           exit 1
       - name: Notify search engines about today's new SEO answer
         if: success() && github.event_name == 'schedule'

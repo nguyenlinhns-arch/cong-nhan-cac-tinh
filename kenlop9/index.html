@@ -1,61 +1,23 @@
 <!doctype html>
 <html lang="vi">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#10284d">
-<meta name="description" content="Ken Lớp 9 - kiểm tra kiến thức theo mốc tháng, giữa kỳ và cuối kỳ, ưu tiên dữ liệu Quảng Ninh.">
-<title>Ken Lớp 9 • Kiểm tra kiến thức</title>
-<link rel="stylesheet" href="styles.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#123e45"><meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Đề cương ôn tập lớp 9 dạng trắc nghiệm, luyện tập theo môn và chủ đề, chấm điểm và xem giải thích.">
+<title>Đề cương trắc nghiệm • Lớp 9</title>
+<link rel="stylesheet" href="./styles.css">
+<script src="./core.js" defer></script><script src="./app.js" defer></script>
 </head>
 <body>
-<header class="top">
-  <div class="wrap hero">
-    <div class="hero-copy">
-      <div class="brandline"><span class="brandmark">K9</span><span>KEN • ÔN THI VÀO LỚP 10</span></div>
-      <h1>Kiểm tra kiến thức lớp 9</h1>
-      <p>Ôn đúng mốc, đánh giá đúng phần yếu. Ưu tiên cấu trúc và nguồn đề Quảng Ninh.</p>
-    </div>
-    <div class="hero-meta">
-      <div><b>12</b><span>môn học</span></div>
-      <div><b>3</b><span>mốc đánh giá</span></div>
-      <div><b>2024–2026</b><span>nguồn ưu tiên</span></div>
-    </div>
-  </div>
-</header>
-
-<main class="wrap page">
-  <section class="control-surface">
-    <div class="control-row">
-      <div>
-        <span class="step-label">Mốc đánh giá</span>
-        <div id="milestones" class="segmented"></div>
-      </div>
-      <div>
-        <span class="step-label">Nhóm môn</span>
-        <div id="subjectGroups" class="group-tabs"></div>
-      </div>
-    </div>
-
-    <div class="subjects-head">
-      <div><span class="step-label">Chọn môn</span><h2>Môn học</h2></div>
-      <span class="source-chip">Nguồn Quảng Ninh</span>
-    </div>
-    <div id="subjects" class="subjects"></div>
-  </section>
-
-  <section id="ready" class="ready"></section>
-  <section id="quiz" class="panel hidden"></section>
-  <section id="result" class="hidden"></section>
-  <section id="recent" class="recent"></section>
-</main>
-
-<footer>
-  <div class="wrap footer-inner">
-    <span>Ken • Lớp 9</span>
-    <span>Đề chính thức Quảng Ninh được ưu tiên khi chuẩn hóa ngân hàng câu hỏi.</span>
-  </div>
-</footer>
-<script src="app.js"></script>
-</body>
-</html>
+<a class="skip" href="#main">Đến nội dung chính</a>
+<header><div class="wrap"><div class="eyebrow">GÓC HỌC TẬP / LỚP 9</div><h1>Hiểu bài từng chút.<br>Vững kiến thức từng ngày.</h1><p>Đề cương trắc nghiệm · Chọn môn, luyện tập và xem lại điều cần nhớ.</p></div></header>
+<main id="main" class="wrap">
+<div id="notice" role="status" aria-live="polite">Đang tải đề cương…</div>
+<section id="setup" class="panel" aria-labelledby="setup-title" hidden><div class="section-head"><div><div class="eyebrow">01 / CHỌN NỘI DUNG</div><h2 id="setup-title" tabindex="-1">Hôm nay mình ôn gì?</h2></div><span id="bank-count" class="badge"></span></div><div id="subjects" class="subjects" role="group" aria-label="Chọn môn học"></div>
+<div class="filters"><label>Phân môn<select id="component"><option value="">Tất cả phân môn</option></select></label><label>Chủ đề<select id="topic"><option value="">Tất cả chủ đề</option></select></label><label>Chế độ<select id="mode"><option value="practice">Luyện tập — xem từng câu sau khi trả lời</option><option value="exam">Tự kiểm tra — xem lời giải sau khi nộp</option></select></label><label>Số câu<select id="limit"><option value="0">Toàn bộ phần đã chọn</option><option value="10">10 câu</option><option value="20">20 câu</option><option value="30">30 câu</option></select></label></div>
+<label class="check"><input type="checkbox" id="shuffle" checked> Đảo thứ tự câu hỏi và đáp án</label><div class="actions"><button id="start" class="primary">Bắt đầu ôn tập</button><button id="resume" hidden>Tiếp tục bài đã lưu</button><span id="selection-count"></span></div></section>
+<section id="quiz" class="panel" hidden aria-labelledby="quiz-title"><div class="section-head"><div><div class="eyebrow">02 / LÀM BÀI</div><h2 id="quiz-title" tabindex="-1">Bài luyện tập</h2></div><button id="home">Về chọn môn</button></div><p id="progress" aria-live="polite"></p><progress id="progress-bar" value="0" max="1" aria-label="Tiến độ trả lời"></progress><div id="questions"></div><div class="actions"><button id="submit" class="primary">Nộp bài và chấm điểm</button></div></section>
+<section id="results" class="panel" hidden tabindex="-1" aria-labelledby="results-title"><div class="eyebrow">03 / NHÌN LẠI</div><h2 id="results-title">Kết quả tự kiểm tra</h2><div id="score"></div><div id="breakdown"></div><div class="actions"><button id="retry" class="primary">Làm lại câu sai và bỏ trống</button><button id="restart">Chọn bài khác</button></div></section>
+<aside class="note"><h2>Học để hiểu, không chỉ để chọn đáp án</h2><p>Trắc nghiệm hỗ trợ ôn kiến thức, không thay thế việc tự viết bài, trình bày lập luận, giải toán hoặc thực hành. Điểm ở đây chỉ phản ánh bài vừa làm, không bảo đảm điểm kiểm tra ở trường.</p><p>Bài làm chỉ lưu trong trình duyệt trên thiết bị này, không đồng bộ sang thiết bị khác. Không cần tài khoản; không gửi đáp án, điểm số hay thông tin cá nhân lên máy chủ. Xóa dữ liệu trình duyệt có thể làm mất tiến độ.</p><button id="reset" class="text-button">Xóa bài làm đã lưu trên thiết bị này</button></aside>
+</main><footer class="wrap">Đề cương lớp 9 · Mỗi lần ôn là một lần hiểu thêm.</footer><noscript><p>Cần bật JavaScript để làm bài và chấm điểm.</p></noscript>
+</body></html>
