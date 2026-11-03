@@ -1,11 +1,206 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'self'; frame-src 'none'; worker-src 'none'"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bảng công việc · PC · Cloud · Văn bản</title><meta name="description" content="Bảng công việc theo mốc nghiệm thu và biên nhận. Snapshot thủ công, không LIVE."><link rel="canonical" href="https://thaylinhtuyenthomo.vn/congtyai/"><link rel="stylesheet" href="./style.css?v=20261031-taskboard-r4"></head><body><a class="skip" href="#progress">Đến bảng công việc</a>
-<header class="topbar"><a class="brand" href="/congtyai/">BẢNG CÔNG VIỆC</a><nav aria-label="Phạm vi công việc"><button type="button" data-board-nav="PC">PC</button><button type="button" data-board-nav="CLOUD">Cloud</button><button type="button" data-board-nav="DOCUMENTS">Văn bản</button><button type="button" data-board-nav="RESULTS">Kết quả đã làm</button></nav><span class="mode">SNAPSHOT · KHÔNG LIVE</span></header>
-<main id="main"><section class="welcome"><div><h1>BẢNG CÔNG VIỆC</h1><p>Chọn snapshot riêng để xem việc thực. Dữ liệu không được tải lên; minh họa chỉ xuất hiện khi bạn chọn.</p><p data-board-notice role="status"></p></div></section>
-<section id="progress" class="progress-panel" aria-labelledby="progressTitle">
- <div class="section-bar"><div><span class="eyebrow">PHÂN CÔNG · BẰNG CHỨNG · BÀN GIAO</span><h2 id="progressTitle">Tiến độ theo mốc nghiệm thu</h2></div><span class="disconnected" data-status-mode>CHƯA KẾT NỐI</span></div>
- <p data-status-message role="status">Chưa kết nối nguồn riêng có xác thực.</p>
- <div class="status-controls"><label class="snapshot-import">Mở snapshot riêng (JSON) <input type="file" accept=".json,application/json" data-status-import></label><label>Lọc phạm vi <select data-status-scope aria-label="Lọc phạm vi công việc"><option value="ALL">Tất cả</option><option value="PC">PC</option><option value="CLOUD">Cloud</option><option value="DOCUMENTS">Văn bản</option></select></label><button type="button" data-status-demo>Xem dữ liệu minh họa</button><button type="button" data-status-clear>Về trạng thái chưa kết nối</button><span data-status-count>Chưa có số liệu thật</span></div>
- <p class="small-note">Tỷ lệ mốc nghiệm thu, không phải thời gian hay công sức. UNKNOWN không phải 0%. Snapshot thủ công, không LIVE; không có tỷ lệ tổng giữa các việc.</p><div data-task-summary class="task-summary"></div><div class="status-rows" data-status-rows aria-live="polite"><p class="status-empty">Chưa có biên nhận để hiển thị.</p></div>
- <details class="status-boundary"><summary>Hiểu đúng trạng thái và quyền riêng tư</summary><p>Đã phân công không có nghĩa là worker đang hoạt động. Đạt kiểm thử nguồn không có nghĩa là đã triển khai hoặc đăng bài. Bằng chứng cũ được đánh dấu riêng; không tự suy mất mạng, lỗi tài khoản hay không có công việc.</p><p>Bản công khai này chỉ chứa tình huống giả. Tệp snapshot anh chọn chỉ được đọc vào bộ nhớ tab, không tải lên hoặc lưu lại; các khai báo trong tệp không phải nguồn đã xác thực. Nút xóa loại bỏ dữ liệu đang hiển thị. Kết nối dữ liệu thật cần collector riêng, xác thực và phân quyền phía máy chủ. Không đưa journal, đường dẫn nội bộ, token hoặc hội thoại riêng vào mã trang, kể cả phần bị ẩn. Cửa sổ độ mới chỉ để hiển thị, không phải cam kết kiểm tra liên tục.</p></details>
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-kSgKELxaktns4SwheeLdAAxaIgkz4mDWaE2cD0Rv89Q='; style-src 'unsafe-inline'; img-src 'none'; connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'; frame-src 'none'; worker-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="canonical" href="https://thaylinhtuyenthomo.vn/congtyai/">
+<meta name="referrer" content="no-referrer">
+<title>Phòng chat AI – chuyển tin</title>
+<style>
+:root{--bg:#f2f5f7;--panel:#fff;--ink:#17232e;--mute:#5a6b7a;--line:#d3dbe2;--acc:#0b7a85;--acc-ink:#fff;--warn:#a96a0c;--sel:#e1f1f3;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10181f;--panel:#17222c;--ink:#e6edf2;--mute:#97a8b6;--line:#2c3b48;--acc:#4cc2cd;--acc-ink:#06242a;--warn:#e0a84b;--sel:#1b3a40}}
+:root[data-theme="dark"]{--bg:#10181f;--panel:#17222c;--ink:#e6edf2;--mute:#97a8b6;--line:#2c3b48;--acc:#4cc2cd;--acc-ink:#06242a;--warn:#e0a84b;--sel:#1b3a40}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:1.6rem;margin:0 0 4px}
+h2{font-size:1.05rem;margin:0 0 8px}
+.sub,.hint{color:var(--mute);font-size:.88rem;margin:0}
+.grid{display:grid;gap:0 16px;margin-top:16px}
+@media(min-width:900px){.grid{grid-template-columns:1fr 1.15fr;align-items:start}}
+.grid>div{min-width:0}
+section{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:16px}
+label{display:block;font-weight:600;font-size:.9rem;margin:12px 0 4px}
+textarea,input,select{width:100%;font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px 10px}
+textarea{resize:vertical}
+#out{font:13px/1.5 ui-monospace,Menlo,Consolas,monospace}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.row input{flex:1 1 200px;width:auto}
+.row select{width:auto;flex:1 1 150px}
+.btn{font:inherit;font-weight:600;border:1px solid var(--acc);background:var(--acc);color:var(--acc-ink);padding:8px 14px;border-radius:6px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--acc)}
+.btn.danger{border-color:var(--warn);color:var(--warn);background:transparent}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font:inherit;border:1px solid var(--line);background:transparent;color:inherit;padding:6px 12px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--sel);border-color:var(--acc);font-weight:600}
+.lnk{color:var(--acc)}
+details{margin-top:12px}
+summary{cursor:pointer;color:var(--acc);font-weight:600}
+.ag{border-top:1px solid var(--line);padding-top:8px;margin-top:8px}
+#log{padding:0;list-style:none;margin:10px 0 0}
+#log li{border-top:1px solid var(--line);padding:10px 0}
+.who{font-weight:700}
+.me .who{color:var(--warn)}
+.txt{white-space:pre-wrap;overflow-wrap:anywhere;margin:4px 0 0;font-size:.93rem}
+.x{float:right;font:inherit;font-size:.8rem;background:none;border:0;color:var(--mute);cursor:pointer}
+</style>
+</head>
+<body>
+<main>
+<h1>Phòng chat AI</h1>
+<p class="sub">Anh chuyển tin giữa các tab AI. Công cụ giữ bảng trạng thái chung và soạn sẵn prompt cho từng AI. Chuyển tin thủ công, không tự gọi AI hay xác nhận đồng thuận. Trang không gọi API; tài khoản AI vẫn theo gói và giới hạn riêng.</p>
+<p class="hint">Nội dung chỉ lưu trong trình duyệt này, không tự đồng bộ hay công khai. Người dùng cùng hồ sơ trình duyệt có thể xem; hãy sao chép nhật ký trước khi xóa dữ liệu trình duyệt. Chỉ dán sang AI những thông tin anh muốn chia sẻ.</p>
+<p id="storageStatus" class="hint" role="status" aria-live="polite"></p>
+<p id="actionStatus" class="hint" role="status" aria-live="polite"></p>
+<div class="grid">
+<div>
+<section>
+<h2>Nhiệm vụ</h2>
+<label for="task">Việc cần cả nhóm giải quyết</label>
+<textarea id="task" rows="4" placeholder="Ví dụ: viết script Python đổi tên hàng loạt ảnh theo ngày chụp"></textarea>
+<label for="preset">Bộ vai trò</label>
+<div class="row" style="margin-top:0"><select id="preset"><option value="code">Viết code</option><option value="social">Đăng bài mạng xã hội</option><option value="free">Thảo luận chung</option></select><button class="btn ghost" id="applyPreset">Áp dụng vai trò</button></div>
+<details><summary>Chỉnh tên và vai trò</summary><div id="agentEdit"></div></details>
 </section>
-</main><script type="module" src="./app.js?v=20261031-taskboard-r4"></script></body></html>
+<section>
+<h2>Bảng trạng thái chung</h2>
+<p class="hint">Sau mỗi vòng, dán bản tóm tắt ngắn vào đây. Prompt chỉ mang theo bảng này và vài ý kiến gần nhất, nên ngắn và đỡ chạm giới hạn của gói free.</p>
+<textarea id="board" rows="7" placeholder="Đã chốt: …&#10;Còn tranh cãi: …&#10;Việc tiếp theo: …"></textarea>
+<div class="row"><button class="btn ghost" id="boardPrompt">Sao chép prompt cập nhật bảng</button><select id="keep" aria-label="Số ý kiến gần nhất đi kèm prompt"><option value="2">Kèm 2 ý kiến gần nhất</option><option value="3">Kèm 3 ý kiến gần nhất</option><option value="4">Kèm 4 ý kiến gần nhất</option><option value="6">Kèm 6 ý kiến gần nhất</option></select></div>
+</section>
+</div>
+<div>
+<section>
+<h2>Lượt tiếp theo</h2>
+<div class="chips" id="chips"></div>
+<label for="out">Prompt gửi cho <span id="curName"></span></label>
+<textarea id="out" rows="9" readonly></textarea>
+<div class="row"><button class="btn" id="copyOut">Sao chép prompt</button><a id="openAi" class="lnk" target="_blank" rel="noopener noreferrer">Mở tab AI</a><span id="len" class="hint"></span></div>
+<label for="reply">Dán câu trả lời của AI vào đây</label><p class="hint">Nội dung do anh dán, chưa xác minh nguồn.</p>
+<textarea id="reply" rows="5"></textarea>
+<div class="row"><button class="btn" id="saveReply">Lưu câu trả lời</button></div>
+</section>
+<section>
+<h2>Nhật ký <span id="count" class="hint"></span></h2>
+<div class="row" style="margin-top:0"><input id="note" placeholder="Ý kiến hoặc chỉ đạo của anh"><button class="btn ghost" id="addNote">Thêm ý kiến</button></div>
+<ol id="log"></ol>
+<p class="hint">Prompt chốt chỉ kèm bảng trạng thái và 14 ý kiến gần nhất. Giữ điểm chưa thống nhất trong bảng trước khi chốt.</p>
+<div class="row"><button class="btn ghost" id="copyLog">Sao chép nhật ký</button><button class="btn ghost" id="finalPrompt">Sao chép prompt chốt kết luận</button><button class="btn danger" id="reset">Xóa phiên</button></div>
+</section>
+</div>
+</div>
+</main>
+<script>
+const KEY="phongchat-ai-v1";
+const PRESETS={
+code:["Người thực thi: viết code cụ thể, chạy được, kèm cách chạy thử và test.","Người kiểm chứng: soi lỗi logic, kiểm tra thư viện hoặc API có thật không, các trường hợp biên.","Người phản biện: tìm rủi ro bảo mật, hiệu năng, và phương án đơn giản hơn.","Người lập kế hoạch và chốt: chia việc, review ngắn, tổng hợp kết luận."],
+social:["Người soạn bài: viết bản nháp đúng giọng thương hiệu, hợp từng nền tảng.","Người kiểm chứng: kiểm tra dữ kiện, quy định của nền tảng, từ ngữ nhạy cảm.","Người phản biện: nhìn như người đọc khó tính, chỉ ra rủi ro phản ứng tiêu cực.","Biên tập và chốt: gọn câu chữ, chọn bản cuối, đề xuất giờ đăng."],
+free:["Người đề xuất: đưa ra hướng giải quyết rõ ràng.","Người kiểm chứng: soi dữ kiện và chỗ thiếu căn cứ.","Người phản biện: tìm điểm yếu và phương án thay thế.","Người tổng hợp: gom ý kiến, chốt kết luận."]};
+const BASE=Object.freeze([["GPT Pro","https://chatgpt.com"],["Gemini","https://gemini.google.com"],["Grok","https://grok.com"],["Claude","https://claude.ai"]].map(Object.freeze));
+const fresh=()=>({task:"",preset:"code",board:"",keep:3,cur:0,agents:BASE.map((b,i)=>({name:b[0],url:b[1],role:PRESETS.code[i]})),log:[]});
+function validateState(v){
+ if(!v||typeof v!=="object"||Array.isArray(v))throw Error("Định dạng phiên không hợp lệ.");
+ const str=(x,max)=>{if(typeof x!=="string"||x.length>max)throw Error("Nội dung không hợp lệ hoặc quá dài.");return x;};
+ if(!Object.hasOwn(PRESETS,v.preset)||![2,3,4,6].includes(v.keep)||!Number.isInteger(v.cur)||v.cur<0||v.cur>3)throw Error("Cấu hình phiên không hợp lệ.");
+ if(!Array.isArray(v.agents)||v.agents.length!==4||!Array.isArray(v.log)||v.log.length>1000)throw Error("Danh sách phiên không hợp lệ.");
+ return {task:str(v.task,100000),board:str(v.board,100000),preset:v.preset,keep:v.keep,cur:v.cur,
+ agents:v.agents.map((a,i)=>{if(!a||typeof a!=="object")throw Error("Vai trò không hợp lệ.");return {name:str(a.name,200),role:str(a.role,10000),url:BASE[i][1]};}),
+ log:v.log.map(m=>{if(!m||typeof m!=="object"||typeof m.ai!=="boolean")throw Error("Nhật ký không hợp lệ.");
+ return {who:str(m.who,200),text:str(m.text,100000),ai:m.ai};})};
+}
+let S=fresh(),loadWarning="";
+try{const r=localStorage.getItem(KEY);if(r){if(r.length>5000000)throw Error("Phiên quá lớn");S=validateState(JSON.parse(r));}}
+catch(e){loadWarning="Không đọc được phiên đã lưu. Đang mở phiên trống; dữ liệu cũ chưa bị ghi đè cho đến khi anh chỉnh sửa.";}
+const $=id=>document.getElementById(id);
+const notice=t=>$("actionStatus").textContent=t;
+const save=()=>{try{validateState(S);const data=JSON.stringify(S);if(data.length>5000000)throw Error("Phiên quá lớn");localStorage.setItem(KEY,data);$("storageStatus").textContent="Đã lưu trên trình duyệt này.";return true;}catch(e){$("storageStatus").textContent="Chưa lưu được trên trình duyệt. Hãy sao chép nhật ký trước khi đóng trang.";return false;}};
+const fmt=m=>"["+m.who+(m.ai?" | dán thủ công, chưa xác minh":" | ý kiến người dùng")+"]: "+m.text;
+function recent(n){return S.log.slice(-n).map(fmt).join("\n\n")||"(chưa có ai phát biểu)";}
+function buildPrompt(i){
+ const a=S.agents[i],others=S.agents.filter((_,j)=>j!==i).map(x=>x.name).join(", ");
+ return "Bạn là "+a.name+" trong phòng làm việc nhóm cùng "+others+" và một con người (“Anh”).\nVai trò của bạn: "+a.role+
+ "\n\nNHIỆM VỤ CHUNG:\n"+(S.task||"(chưa nhập)")+"\n\nBẢNG TRẠNG THÁI (điểm đã chốt, câu hỏi còn mở):\n"+(S.board||"(trống)")+
+ "\n\nÝ KIẾN GẦN ĐÂY:\n"+recent(S.keep)+
+ "\n\nQUY TẮC: trả lời tiếng Việt, tối đa khoảng 200 từ. Phản hồi trực tiếp ý kiến trước đó (đồng ý, phản đối hoặc bổ sung, kèm lý do). Không đồng ý chỉ để cho êm; nếu phản biện, nêu ít nhất một điểm yếu cụ thể hoặc nói rõ không tìm thấy lỗi. Không lặp lại điều đã nói. Nếu đã đủ thông tin để chốt, mở đầu bằng “ĐỀ XUẤT CHỐT:”.";
+}
+function boardPrompt(){
+ return "Hãy cập nhật BẢNG TRẠNG THÁI của nhóm, dưới 150 từ, gồm ba mục: Đã chốt / Còn tranh cãi / Việc tiếp theo. Chỉ trả về nội dung bảng, không giải thích thêm.\n\nNHIỆM VỤ:\n"+(S.task||"(chưa nhập)")+"\n\nBẢNG HIỆN TẠI:\n"+(S.board||"(trống)")+"\n\nÝ KIẾN MỚI:\n"+recent(6);
+}
+function finalPrompt(){
+ return "Hãy tổng hợp cuộc thảo luận thành KẾT LUẬN CUỐI, tiếng Việt, gồm: (1) phương án được chọn, (2) các bước thực hiện, (3) rủi ro còn lại và điểm chưa thống nhất, (4) những việc con người phải duyệt trước khi làm. Giữ nguyên các điểm chưa thống nhất trong bảng; không suy diễn đồng thuận từ ý kiến bị lược bỏ.\n\nNHIỆM VỤ:\n"+(S.task||"(chưa nhập)")+"\n\nBẢNG TRẠNG THÁI:\n"+(S.board||"(trống)")+"\n\nCHỈ 14 Ý KIẾN GẦN NHẤT (không phải toàn bộ nhật ký):\n"+recent(14);
+}
+function flash(b,t){const o=b.textContent;b.textContent=t||"Đã sao chép";setTimeout(()=>b.textContent=o,1200);}
+async function copy(text,b){
+ let ok=false;
+ try{await navigator.clipboard.writeText(text);ok=true;}
+ catch(e){const t=document.createElement("textarea");t.value=text;t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.select();try{ok=document.execCommand("copy")===true;}catch(_){}t.remove();}
+ if(ok){flash(b);notice("Đã sao chép vào bộ nhớ tạm.");}
+ else{$("out").value=text;$("out").focus();$("out").select();notice("Không sao chép được. Nội dung đã chọn trong ô prompt; hãy sao chép thủ công.");}
+ return ok;
+}
+function refresh(){
+ const p=buildPrompt(S.cur);$("out").value=p;
+ $("len").textContent=p.length.toLocaleString("vi-VN")+" ký tự";
+ $("curName").textContent=S.agents[S.cur].name;
+ $("openAi").href=BASE[S.cur][1];
+ $("openAi").textContent="Mở "+S.agents[S.cur].name;
+}
+function renderChips(){
+ const c=$("chips");c.textContent="";
+ S.agents.forEach((a,i)=>{const b=document.createElement("button");b.className="chip";b.textContent=a.name;b.setAttribute("aria-pressed",i===S.cur);b.onclick=()=>{S.cur=i;save();renderChips();refresh();};c.appendChild(b);});
+}
+function renderLog(){
+ const ol=$("log");ol.textContent="";
+ const agentTurns=S.log.filter(m=>m.ai).length;
+ $("count").textContent="· "+agentTurns+" lượt AI"+(agentTurns>=12?" · nên chốt, đừng kéo dài thêm":"");
+ S.log.forEach((m,i)=>{
+  const li=document.createElement("li");if(!m.ai)li.className="me";
+  const x=document.createElement("button");x.className="x";x.textContent="Xóa";x.onclick=()=>{S.log.splice(i,1);save();renderLog();refresh();};
+  const w=document.createElement("span");w.className="who";w.textContent=m.who;
+  const t=document.createElement("p");t.className="txt";t.textContent=m.text;
+  li.append(x,w,t);ol.appendChild(li);
+ });
+}
+function renderAgents(){
+ const d=$("agentEdit");d.textContent="";
+ S.agents.forEach((a,i)=>{
+  const w=document.createElement("div");w.className="ag";
+  const n=document.createElement("input");n.value=a.name;n.setAttribute("aria-label","Tên AI "+(i+1));
+  const r=document.createElement("textarea");r.rows=2;r.value=a.role;r.setAttribute("aria-label","Vai trò của "+a.name);
+  n.oninput=()=>{a.name=n.value||"AI "+(i+1);save();renderChips();refresh();};
+  r.oninput=()=>{a.role=r.value;save();refresh();};
+  w.append(n,r);d.appendChild(w);
+ });
+}
+$("task").value=S.task;$("board").value=S.board;$("preset").value=S.preset;$("keep").value=String(S.keep);
+$("task").oninput=e=>{S.task=e.target.value;save();refresh();};
+$("board").oninput=e=>{S.board=e.target.value;save();refresh();};
+$("keep").onchange=e=>{S.keep=+e.target.value;save();refresh();};
+$("preset").onchange=e=>{S.preset=e.target.value;save();};
+$("applyPreset").onclick=()=>{S.agents.forEach((a,i)=>a.role=PRESETS[S.preset][i]);save();renderAgents();refresh();flash($("applyPreset"),"Đã áp dụng");};
+$("copyOut").onclick=e=>copy($("out").value,e.target);
+$("boardPrompt").onclick=e=>copy(boardPrompt(),e.target);
+$("finalPrompt").onclick=e=>copy(finalPrompt(),e.target);
+$("copyLog").onclick=e=>copy("NHIỆM VỤ: "+S.task+"\n\nBẢNG TRẠNG THÁI:\n"+S.board+"\n\nTHẢO LUẬN:\n\n"+S.log.map(fmt).join("\n\n"),e.target);
+$("saveReply").onclick=()=>{
+ const t=$("reply").value.trim();if(!t){$("reply").focus();return;}
+ S.log.push({who:S.agents[S.cur].name,text:t,ai:true});
+ $("reply").value="";S.cur=(S.cur+1)%S.agents.length;save();renderChips();renderLog();refresh();
+};
+$("addNote").onclick=()=>{
+ const t=$("note").value.trim();if(!t){$("note").focus();return;}
+ S.log.push({who:"Anh",text:t,ai:false});$("note").value="";save();renderLog();refresh();
+};
+$("reset").onclick=e=>{
+ if(e.target.dataset.sure!=="1"){e.target.dataset.sure="1";e.target.textContent="Bấm lần nữa để xóa hết";setTimeout(()=>{e.target.dataset.sure="";e.target.textContent="Xóa phiên";},3000);return;}
+ S.task="";S.board="";S.log=[];S.cur=0;$("task").value="";$("board").value="";$("reply").value="";$("note").value="";save();renderChips();renderLog();refresh();
+ e.target.dataset.sure="";e.target.textContent="Xóa phiên";
+};
+$("storageStatus").textContent=loadWarning||"Dữ liệu chỉ lưu trên trình duyệt này.";
+renderAgents();renderChips();renderLog();refresh();
+</script>
+</body>
+</html>

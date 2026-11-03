@@ -1,131 +1,70 @@
 import {readFileSync,readdirSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {Script,createContext,runInContext} from 'node:vm';
 import assert from 'node:assert/strict';
 const dir='tuyen-tho-mo/congtyai/';
-const allowed=['app.js','handoffs.js','health.js','index.html','layout3d.js','meeting.js','office-fallback.js','office3d.js','portraits.js','private-snapshot.js','quy-trinh-cong-khai.txt','roles.js','rooms.js','status-model.js','status-panel.js','style.css'];
-assert.deepEqual(readdirSync(dir).sort(),allowed);
-const texts=Object.fromEntries(allowed.map(f=>[f,readFileSync(dir+f,'utf8')]));
-const all=Object.values(texts).join('\n');
-for(const rule of [/localStorage|sessionStorage|fetch\(|XMLHttpRequest|WebSocket/,/branch_link|thread[_-]?id|heartbeat/i,/C:\\|D:\\|\/workspace\/|\/home\//,/sk-[a-zA-Z0-9]{12}|ghp_[a-zA-Z0-9]+/,/mailto:|tel:|\+84[0-9]/,/chatgpt\.site|trycloudflare\.com|127\.0\.0\.1/]) assert(!rule.test(all),`Privacy/side-effect rule: ${rule}`);
-const moduleFrom=text=>import('data:text/javascript;base64,'+Buffer.from(text).toString('base64'));
-const {roles}=await moduleFrom(texts['roles.js']);
-assert.equal(roles.length,37);assert.equal(new Set(roles.map(r=>r.name)).size,37);
-const stableIds=roles.filter(r=>r.roleId!==undefined).map(r=>r.roleId);
-assert(stableIds.every(id=>typeof id==='string'&&id.length>0));assert.equal(new Set(stableIds).size,stableIds.length);
-for(const id of ['cloud-operations/van-anh','progress-pc-01','progress-cloud-01','progress-documents-01','agy-integration/ket-minh','resource-credit/ngan-ha'])assert(stableIds.includes(id));
-for(const n of ['Đào','Quyên','Kiên','Sơn Hà','Tuệ','Khuê','Trúc','Châu','Ngân','Diệu','Khôi','An'])assert(roles.some(r=>r.name===n));
-for(const r of roles){assert(Object.keys(r).every(k=>['name','title','group','task','standard','roleId'].includes(k)));assert(['name','title','group','task','standard'].every(k=>typeof r[k]==='string'&&r[k]));assert(r.task&&r.standard)}
-const {rooms}=await moduleFrom(texts['rooms.js']),{personas,portrait}=await moduleFrom(texts['portraits.js']);
-assert.equal(rooms.length,11);assert.equal(Object.keys(personas).length,37);
-assert.equal(personas['Đào'].presentation,'female');assert.equal(personas['Đào'].room,'ceo');assert.equal(personas['Quyên'].room,'vp-process');assert.equal(personas['Khôi'].room,'vp-repair');assert.equal(Object.values(personas).filter(p=>p.room==='ceo').length,1);assert.equal(personas['Khôi'].presentation,'male');
-for(const r of roles){assert(personas[r.name]);assert([...rooms.map(room=>room.id),'planning','cloud','agy','data'].includes(personas[r.name].room));assert(portrait(r.name).includes('<svg'));}
-assert.equal(new Set(roles.map(r=>portrait(r.name))).size,37);
-const html=texts['index.html'];// Retired active-office UI assertion.
-
-// Retired active office-board labels; replacement taskboard assertions below.
-// Retired active-office UI assertion.
-// Retired active-office UI assertion.
-// Retired active-office UI assertion.
-
-assert(texts['quy-trinh-cong-khai.txt'].includes('108')); // role metadata retained, not profile UI
-const releaseQuery='?v=20261031-taskboard-r4';
-function approvedAsset(spec){
- const parts=spec.split('?');assert(parts.length<=2,'Multiple query delimiters');
- assert(parts.length===1||'?'+parts[1]===releaseQuery,'Unapproved release query');
- assert(!spec.includes('#'),'Asset fragment forbidden');assert(allowed.includes(parts[0]),`Missing asset ${spec}`);return parts[0];
+const legacy={"app.js":"4e7066611ba8cf4e559d97f8cb1c237a85b81016","handoffs.js":"44f5d3c3ce009083981bc374220d44b6b71a2d30","health.js":"2a1aba5285cacd564e3877d73c485ebead911407","layout3d.js":"c5f4791b779878c666bdd3d5c236de2708f5073b","meeting.js":"a952e8d057cc4b13689e8694c2e6c7fdb726c817","office-fallback.js":"a391be41f23f7e4a07388f7056b2087687643586","office3d.js":"5103318fea51a70afab08803cb3819cc29db439e","portraits.js":"79fe4235bb1efba2057b2c46d30455ec1d176a89","private-snapshot.js":"9f9ae4b64bcebd4150c923443089862d864425cc","quy-trinh-cong-khai.txt":"d42def67278d7d5694610557d2d10076f0648cfa","roles.js":"59773ef03c7bc8f7f5cef3d15295f73e5d5bccbf","rooms.js":"a1787554071d3424a5fe98799dbe872772386b61","status-model.js":"5f092a60d3e3a54cdd8d5c24fef50a6ca14cb095","status-panel.js":"7e7ab022a85dfcee65b185a31dc0a4334303cc21","style.css":"2315c32a52dd899f94379483eaa8083eb8a74714"};
+assert.deepEqual(readdirSync(dir).sort(),[...Object.keys(legacy),'index.html'].sort());
+const texts=Object.fromEntries(readdirSync(dir).map(f=>[f,readFileSync(dir+f,'utf8')]));
+// Retired modules stay byte-for-byte unchanged. They are not loaded by this page.
+for(const [file,sha] of Object.entries(legacy)){
+ const bytes=Buffer.from(texts[file]);
+ assert.equal(createHash('sha1').update(Buffer.concat([Buffer.from('blob '+bytes.length+'\0'),bytes])).digest('hex'),sha,'Legacy file changed: '+file);
+ assert(!/localStorage|sessionStorage|fetch\(|XMLHttpRequest|WebSocket/.test(texts[file]));
 }
-for(const m of html.matchAll(/(?:src|href)="\.\/([^"]+)"/g))approvedAsset(m[1]);
-for(const m of texts['app.js'].matchAll(/from '\.\/([^']+)'/g))approvedAsset(m[1]);
-for(const [file,dependencies] of Object.entries({'app.js':['status-panel.js'],'status-panel.js':['private-snapshot.js','status-model.js'],'status-model.js':['private-snapshot.js']})){
- const actual=[...texts[file].matchAll(/from '([^']+)'/g)].map(m=>m[1]);
- assert.deepEqual(actual,dependencies.map(name=>'./'+name+releaseQuery),'Release graph mismatch: '+file);
- for(const spec of actual)approvedAsset(spec.slice(2));
-}
-assert(html.includes('src="./app.js'+releaseQuery+'"'));assert(html.includes('href="./style.css'+releaseQuery+'"'));
-assert(texts['style.css'].includes('prefers-reduced-motion'));assert(texts['style.css'].includes('repeat(3,minmax(0,1fr))'));
-// Retired active demo entry assertion; legacy demo unit gates remain.
-assert(!texts['app.js'].includes('setInterval'));
-const {demoRoute,createDemoLedger,makeDemoEvent}=await moduleFrom(texts['handoffs.js']);
-assert.deepEqual(demoRoute,['Đào','Quyên','Kiên','Ngọc Lan','Khuê','Quyên','Đào']);
-const ledger=createDemoLedger('qa-demo');
-for(let i=0;i<6;i++){const e=makeDemoEvent('qa-demo',i);assert.equal(ledger.append(e),true);assert.equal(ledger.append(e),false);}
-assert.equal(ledger.events.length,6);assert(Object.isFrozen(ledger.events[0]));
-for(const invalid of [null,{},makeDemoEvent('other',0),makeDemoEvent('qa-test',1),{...makeDemoEvent('qa-test',0),mode:'LIVE'},{...makeDemoEvent('qa-test',0),evidence:'not-a-fixture'},{...makeDemoEvent('qa-test',0),to:'Kiên'}])assert.throws(()=>createDemoLedger('qa-test').append(invalid));
-// Retired active-office UI assertion.
-// Retired active-office UI assertion.
-// Retired active-office UI assertion.
-
+const html=texts['index.html'],all=Object.values(texts).join('\n');
+for(const rule of [/branch_link|thread[_-]?id|heartbeat/i,/C:\\|D:\\|\/workspace\/|\/home\//,/sk-[a-zA-Z0-9]{12}|ghp_[a-zA-Z0-9]+/,/mailto:|tel:|\+84[0-9]/,/chatgpt\.site|trycloudflare\.com|127\.0\.0\.1/])assert(!rule.test(all),'Privacy rule: '+rule);
+const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
+assert.equal(scripts.length,1);const js=scripts[0][1];
+assert(!/<script[^>]+src=|<iframe|<form\b|<img\b/.test(html));
+assert(!/fetch\s*\(|XMLHttpRequest|WebSocket|sendBeacon|indexedDB|serviceWorker|innerHTML|insertAdjacentHTML|eval\s*\(|new Function/.test(js));
+new Script(js);
+const digest=createHash('sha256').update(js).digest('base64');
+for(const directive of ["default-src 'none'","script-src 'sha256-"+digest+"'","connect-src 'none'","form-action 'none'","object-src 'none'","worker-src 'none'","base-uri 'none'"])assert(html.includes(directive));
+assert(!html.includes('unsafe-eval'));assert(html.includes('<h1>Phòng chat AI</h1>'));
+for(const text of ['Chuyển tin thủ công','chưa xác minh nguồn','chỉ lưu trong trình duyệt này','14 ý kiến gần nhất','aria-live="polite"'])assert(html.includes(text));
+assert(html.includes('https://thaylinhtuyenthomo.vn/congtyai/'));
+assert(html.includes('rel="noopener noreferrer"'));
 const workflow=readFileSync('.github/workflows/pages.yml','utf8');
 assert(workflow.indexOf('mv tuyen-tho-mo/congtyai "$congtyai_tmp"')<workflow.indexOf('node tools/generate-province-pages'));
-assert(workflow.includes('mv "$congtyai_tmp" tuyen-tho-mo/congtyai'));assert(workflow.includes('trap restore_dashboard EXIT'));assert(workflow.includes('node tools/validate-congtyai.mjs'));
-// Original meeting, health, demo and isolation assertions retained below.
-
-assert(texts['office3d.js'].includes("canvas.getContext('webgl'"));assert(texts['office3d.js'].includes('document.hidden'));assert(texts['office3d.js'].includes('requestAnimationFrame'));assert(texts['office3d.js'].includes('moving.elapsed'));
-
-const {officeHealth}=await moduleFrom(texts['health.js']);assert.equal(officeHealth().state,'UNKNOWN');assert.equal(officeHealth().allowOperationalAnimation,false);const h=(source,status)=>officeHealth({verified:true,source,status,observedAt:1000},2000);assert.equal(h('pc-agent','POWER_OFF_CONFIRMED').label,'Văn phòng mất điện');assert.equal(h('network-monitor','DEGRADED_CONFIRMED').label,'Văn phòng mất mạng');assert.equal(h('auth-gateway','DENIED').state,'CONTROL_BLOCKED');assert.equal(h('pc-agent','TIMEOUT').state,'UNKNOWN');assert.equal(officeHealth({verified:true,source:'pc-agent',status:'READY_CONFIRMED',observedAt:0},90000).state,'UNKNOWN');
-
-assert.equal(officeHealth().label,'Chưa kết nối dữ liệu PC');assert.equal(h('auth-gateway',403).state,'CONTROL_BLOCKED');assert.equal(officeHealth({verified:true,source:'pc-agent',status:'READY_CONFIRMED',observedAt:0,previouslyConnected:true},90000).label,'Văn phòng mất kết nối, đang xác minh');assert.equal(officeHealth({verified:true,source:'pc-agent',status:'READY_CONFIRMED',observedAt:0},90000).label,'Chưa kết nối dữ liệu PC');
-
-// Retired active-office UI assertion.
-// Retired active-office UI assertion.
-// Retired active-office UI assertion.
-
-
-const {meetingGate}=await moduleFrom(texts['meeting.js']);assert.equal(meetingGate().state,'HOLD');const opinion=person=>({id:'sample-'+person,jobId:'sample',revision:2,person,verified:true,sourceRef:'sample-only',comment:'Fixture opinion'});const mg=opinions=>meetingGate({jobId:'sample',revision:2,participantSetVerified:true,required:['An'],opinions});assert.equal(mg([opinion('Quyên'),opinion('Khôi')]).state,'HOLD');assert.equal(mg([opinion('Quyên'),opinion('Khôi'),{...opinion('An'),revision:1}]).state,'HOLD');assert.equal(mg([opinion('Quyên'),opinion('Quyên'),opinion('Khôi')]).state,'HOLD');assert.equal(mg([opinion('Quyên'),opinion('Khôi'),opinion('An')]).state,'READY_FOR_QUYEN');assert.equal(mg([opinion('Quyên'),opinion('Khôi'),opinion('An')]).mayExecute,false);
-
-assert.equal(mg([{...opinion('Quyên'),id:'duplicate'}, {...opinion('Khôi'),id:'duplicate'},opinion('An')]).state,'HOLD');
-
-assert.equal(meetingGate({jobId:'sample',revision:2,participantSetVerified:true,opinions:[opinion('Quyên'),opinion('Khôi')]}).state,'HOLD');assert.equal(meetingGate({jobId:'sample',revision:2,required:['An'],opinions:[opinion('Quyên'),opinion('Khôi'),opinion('An')]}).state,'HOLD');
-
-// Retired active-office UI assertion.
-// Retired active-office UI assertion.
-assert(!html.includes('id="directory"'));assert(!html.includes('id="detail"'));assert(!html.includes('inspectPerson'));assert(!texts['app.js'].includes('openRole'));// Retired active-office UI assertion.
-// Retired active-office UI assertion.
-// Retired active-office UI assertion.
-assert(!html.includes('Xem sơ đồ 2D'));assert(texts['office3d.js'].includes('b.textContent=p.rank.symbol'));assert(!texts['office3d.js'].includes('b.textContent=p.name'));assert(texts['office3d.js'].includes('project(p.homeX,.9,p.homeZ+1.8)'));assert(!texts['office3d.js'].includes('project(x,3.4,z)'));assert(texts['office3d.js'].includes("b.setAttribute('aria-label','Xem vai trò '+p.name"));assert(!texts['app.js'].includes("c.innerHTML=portrait(e.from"));
-
-// Retired active-office UI assertion.
-// Retired active demo entry assertion; legacy demo unit gates remain.
-assert(texts['office3d.js'].includes("origin:'synthetic-ui'"));assert(texts['office3d.js'].includes('onVisualEvent(Object.freeze(visualEvent))'));assert(texts['office3d.js'].includes('gesture.elapsed>=8000'));
-
-// Retired active-office UI assertion.
-
-
-// Approved client-only import contract; snapshot is no longer a forbidden word.
-for(const directive of ["default-src 'none'","script-src 'self'","connect-src 'none'","form-action 'none'","object-src 'none'","worker-src 'none'"])assert(html.includes(directive));
-assert(!html.includes('unsafe-eval'));
-for(const f of ['private-snapshot.js','status-panel.js']){
- const source=texts[f];
- assert(!/fetch\s*\(|XMLHttpRequest|WebSocket|sendBeacon|localStorage|sessionStorage|indexedDB|serviceWorker/.test(source));
- assert(!/innerHTML|insertAdjacentHTML|\.href\s*=|\.src\s*=/.test(source));
+assert(workflow.includes('mv "$congtyai_tmp" tuyen-tho-mo/congtyai'));
+assert(workflow.includes('node tools/validate-congtyai.mjs'));
+assert(workflow.includes('path: ./tuyen-tho-mo'));
+// Run production inline code in a minimal DOM. Browser integration is additionally
+// exercised during release QA; no user data or private fixtures belong here.
+function harness(saved=null,failSave=false,clipboardFail=false){
+ const elements=new Map();
+ function elem(){
+  return {value:'',textContent:'',dataset:{},style:{},children:[],attributes:{},
+   append(...x){this.children.push(...x)},appendChild(x){this.children.push(x)},
+   setAttribute(k,v){this.attributes[k]=String(v)},focus(){},select(){},remove(){}};
+ }
+ const document={getElementById(id){if(!elements.has(id))elements.set(id,elem());return elements.get(id)},
+  createElement:elem,body:elem(),execCommand:()=>false};
+ let stored=saved;
+ const ctx=createContext({document,localStorage:{getItem:()=>stored,setItem:(k,v)=>{if(failSave)throw Error('full');stored=v}},
+  navigator:{clipboard:{writeText:async()=>{if(clipboardFail)throw Error('denied')}}},
+  setTimeout:()=>0,console});
+ runInContext(js,ctx);
+ return {ctx,e:id=>document.getElementById(id),get stored(){return stored},run:code=>runInContext(code,ctx)};
 }
-assert(texts['private-snapshot.js'].includes('PRIVATE_LOCAL_SNAPSHOT'));
-assert(texts['private-snapshot.js'].includes('refreshPrivateSnapshotAge'));
-assert(texts['status-panel.js'].includes('textContent'));
-// Retired active-office UI assertion.
-
-
-// Approved taskboard-only active contract; historical modules remain unit-tested above.
-assert(html.includes('<h1>BẢNG CÔNG VIỆC</h1>'));
-assert(!/id="(?:office|boards|commonRoom|operations|sceneStage)"|<canvas|Phòng Họp|Bàn giao mẫu/.test(html));
-for(const target of ['PC','CLOUD','DOCUMENTS','RESULTS'])assert(html.includes(`data-board-nav="${target}"`));
-assert(html.includes('data-status-scope aria-label="Lọc phạm vi công việc"'));
-assert(html.includes('data-status-import'));assert(html.includes('data-status-clear'));
-assert(html.includes('không LIVE'));assert(html.includes('Tỷ lệ mốc nghiệm thu'));
-assert.deepEqual([...texts['app.js'].matchAll(/from '\.\/([^']+)'/g)].map(m=>m[1]),['status-panel.js'+releaseQuery]);
-assert(!/office3d|createOffice|scene3d|startDemo|runIllustration|requestAnimationFrame/.test(texts['app.js']));
-assert(texts['status-panel.js'].includes("category==='unfinished'&&Number.isFinite(progress?.percent)"));
-assert(texts['status-panel.js'].includes('Kết quả đã làm'));
-const {projectMilestones,parsePrivateSnapshot,orderTaskRows,refreshPrivateSnapshotAge}=await moduleFrom(texts['private-snapshot.js']);
-const t='2026-10-31T11:00:00Z',now=Date.parse('2026-10-31T12:00:00Z');
-const fixture=()=>({taskId:'fixture-only',scope:'PC',state:'BLOCKED',eventAt:t,observedAt:t,reportedAt:t,evidenceRef:'TEST',progress:{planId:'fixture@v1',target:'Synthetic bounded artifact',lifecycle:'OPEN',milestones:['SOURCE','ACCEPTED','DELIVERED'].map((id,i)=>({id,label:id,state:i===0?'DONE':'PENDING',...(i===0?{completedAt:t,evidenceRef:'TEST-SOURCE'}:{})}))}});
-assert.equal(projectMilestones(fixture(),now,t).percent,33);
-let f=fixture();f.state='UNKNOWN';assert.equal(projectMilestones(f,now,t).percent,null);
-f=fixture();for(const m of f.progress.milestones)Object.assign(m,{state:'DONE',completedAt:t,evidenceRef:'TEST'});assert.equal(projectMilestones(f,now,t).percent,100);
-f.progress.milestones[2].completedAt='2026-10-31T10:59:00Z';assert.equal(projectMilestones(f,now,t).percent,null);
-f=fixture();f.state='CANCELLED';assert.equal(projectMilestones(f,now,t).percent,null);f.progress.lifecycle='CANCELLED';assert.equal(projectMilestones(f,now,t).category,'cancelled');
-const snap={schemaVersion:1,mode:'PRIVATE_LOCAL_SNAPSHOT',generatedAt:t,source:{kind:'USER_SUPPLIED_RECEIPT_SUMMARY',label:'Synthetic'},records:[fixture()]};
-const projection=parsePrivateSnapshot(JSON.stringify(snap),now);assert.equal(refreshPrivateSnapshotAge(projection,Date.parse('2026-10-31T10:59:00Z')).rows[0].progress.percent,null);
-assert.throws(()=>parsePrivateSnapshot(JSON.stringify({...snap,records:[fixture(),fixture()]}),now),/SNAPSHOT_DUPLICATE_TASK_ID/);
-const tie=[{taskId:'b',stage:'same',reportedAt:t,progress:{percent:50}},{taskId:'a',stage:'same',reportedAt:t,progress:{percent:50}},{taskId:'unknown',progress:{percent:null}}];
-assert.deepEqual(orderTaskRows(tie).map(r=>r.taskId),['a','b','unknown']);assert.deepEqual(orderTaskRows([...tie].reverse()).map(r=>r.taskId),['a','b','unknown']);
-console.log('PASS: taskboard-only UI, milestone semantics, exact public files, local-only import/CSP, retained legacy module gates and Pages isolation');
+const h=harness();
+assert.equal(h.run('S.log.length'),0);assert.equal(h.run('S.task'),'');assert.equal(h.run('S.cur'),0);
+assert.deepEqual(Array.from(h.run('BASE.map(b=>b[1])')),['https://chatgpt.com','https://gemini.google.com','https://grok.com','https://claude.ai']);
+assert(h.run('Object.isFrozen(BASE)&&BASE.every(Object.isFrozen)'));
+h.e('task').oninput({target:{value:'Synthetic test task'}});assert(h.e('out').value.includes('Synthetic test task'));
+h.e('reply').value='Synthetic reply';h.e('saveReply').onclick();assert.equal(h.run('S.log.length'),1);assert.equal(h.run('S.cur'),1);
+h.e('note').value='<img src=x onerror=alert(1)>';h.e('addNote').onclick();assert.equal(h.run('S.log[1].text'),'<img src=x onerror=alert(1)>');
+assert(h.e('out').value.includes('dán thủ công, chưa xác minh'));
+const valid=JSON.parse(h.stored),poison=structuredClone(valid);poison.agents[0].url='javascript:alert(1)';
+const safe=harness(JSON.stringify(poison));assert.equal(safe.run('S.agents[0].url'),'https://chatgpt.com');
+for(const bad of [null,[],{}, {...valid,agents:[]},{...valid,cur:-1},{...valid,cur:4},{...valid,log:[null]},{...valid,keep:0},{...valid,preset:'__proto__'},{...valid,task:123}]){
+ const broken=harness(JSON.stringify(bad));assert.equal(broken.run('S.log.length'),0);assert(broken.e('storageStatus').textContent.includes('Không đọc được'));
+}
+const quota=harness(null,true);quota.e('task').oninput({target:{value:'Synthetic'}});assert(quota.e('storageStatus').textContent.includes('Chưa lưu được'));
+const failed=harness(null,false,true);assert.equal(await failed.run('copy("Synthetic", $("copyOut"))'),false);assert(failed.e('actionStatus').textContent.includes('Không sao chép được'));assert.equal(failed.e('out').value,'Synthetic');
+assert.equal(await h.run('copy("Synthetic", $("copyOut"))'),true);assert.equal(h.e('copyOut').textContent,'Đã sao chép');
+h.e('reset').onclick({target:h.e('reset')});assert.equal(h.run('S.log.length'),2);
+h.e('reset').onclick({target:h.e('reset')});assert.equal(h.run('S.log.length'),0);assert.equal(h.run('S.task'),'');
+assert(h.run('finalPrompt()').includes('CHỈ 14 Ý KIẾN'));
+console.log('PASS: manual relay, empty public state, text-only rendering, strict saved-state schema, fixed AI URLs, clipboard/storage errors, reset confirmation, CSP hash, no networking, retained legacy bytes, Pages isolation.');
