@@ -1,6 +1,7 @@
 import {dailyCommunityArticles20260829} from "./daily-community-articles-20260829.mjs";
 import {dailyCommunitySourceImages20260829 as images} from "./daily-community-source-images-20260829.mjs";
 import {extractSourceImage} from "./audit-source-images.mjs";
+import {resolveVinacominSourceImage} from "./resolve-vinacomin-source-image.mjs";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -34,21 +35,37 @@ for (const article of dailyCommunityArticles20260829) {
   if (!articleHtml.includes('<script src="/analytics.js?v=6" defer></script>')) errors.push(`${article.slug}: thiếu bộ tải GA4 và Meta Pixel`);
   if (articleHtml.includes(`href="${source.sourceUrl}"`) || /"(?:citation|isBasedOn)"/.test(articleHtml)) errors.push(`${article.slug}: còn liên kết hoặc schema URL nguồn công khai`);
 
+  let usedPublicArticleData = false;
   try {
     const sourceResponse = await fetchWithRetry(source.sourceUrl, {headers, redirect: "follow"});
     const html = await sourceResponse.text();
-    const extracted = extractSourceImage(html);
+    let extracted = extractSourceImage(html);
+    let verification = "LIVE_SOURCE";
+    let sourceDataUrl;
+    if (!extracted) {
+      const resolved = await resolveVinacominSourceImage(source.sourceUrl);
+      extracted = resolved.image;
+      verification = resolved.verification;
+      sourceDataUrl = resolved.sourceDataUrl;
+      usedPublicArticleData = verification === "LIVE_PUBLIC_ARTICLE_DATA";
+      if (!extracted) {
+        results.push({slug: article.slug, sourceStatus: sourceResponse.status, extracted: "", expected: article.image, verification: "UNVERIFIED", matched: false});
+        errors.push(`${article.slug}: không xác minh được quan hệ ảnh từ trang nguồn hoặc dữ liệu công khai của bài`);
+        continue;
+      }
+    }
     const imageResponse = await fetchWithRetry(extracted || article.image, {headers: {...headers, range: "bytes=0-0", referer: encodeURI(source.sourceUrl)}, redirect: "follow"});
     if (imageResponse.body) await imageResponse.body.cancel();
     const matched = sourceResponse.status === 200
       && extracted === article.image
       && [200, 206].includes(imageResponse.status)
       && imageResponse.headers.get("content-type")?.startsWith("image/");
-    results.push({slug: article.slug, sourceStatus: sourceResponse.status, imageStatus: imageResponse.status, extracted, expected: article.image, relationship: source.imageRelationship, verification: "LIVE_SOURCE", matched});
+    results.push({slug: article.slug, sourceStatus: sourceResponse.status, imageStatus: imageResponse.status, extracted, expected: article.image, relationship: usedPublicArticleData ? "PUBLIC_ARTICLE_THUMBNAIL" : source.imageRelationship, verification, sourceDataUrl, matched});
     if (!matched) errors.push(`${article.slug}: ảnh đại diện không khớp trực tiếp với URL bài nguồn`);
   } catch (error) {
     const dimensions = verifiedDimensions[source.image];
-    const pinned = source.verification === "PINNED_OPEN_GRAPH_RELATIONSHIP"
+    const pinned = !usedPublicArticleData
+      && source.verification === "PINNED_OPEN_GRAPH_RELATIONSHIP"
       && source.imageRelationship === "OPEN_GRAPH"
       && Array.isArray(dimensions)
       && dimensions.length === 2
@@ -61,3 +78,4 @@ for (const article of dailyCommunityArticles20260829) {
 if (new Set(dailyCommunityArticles20260829.map((article) => article.image)).size !== dailyCommunityArticles20260829.length) errors.push("Ảnh đại diện trong lượt 29/08 bị trùng nhau");
 console.log(JSON.stringify({checked: results.length, errors: errors.length, results}, null, 2));
 if (errors.length) { console.error(errors.join("\n")); process.exitCode = 1; }
+
