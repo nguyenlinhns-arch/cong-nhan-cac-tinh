@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-31",
+  "updated_at": "2026-11-05",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -7875,6 +7875,136 @@
         [
           "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-dau-noi-day-dien-duoi-ham-lo-khong/",
           "Phân biệt thêm công việc đấu nối dây điện"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-11-05",
+      "slug": "hoc-co-dien-mo-co-phai-bao-duong-dong-co-thiet-bi-khong",
+      "title": "Học cơ điện mỏ có phải bảo dưỡng động cơ thiết bị không?",
+      "short_title": "Cơ điện mỏ bảo dưỡng động cơ thiết bị",
+      "meta": "Học cơ điện mỏ có phải bảo dưỡng động cơ thiết bị không? Hiểu phạm vi bảo dưỡng, khác biệt với sửa chữa và giới hạn công việc của người mới.",
+      "eyebrow": "BẢO DƯỠNG ĐỘNG CƠ THIẾT BỊ VÀ PHẠM VI NGHỀ CƠ ĐIỆN MỎ",
+      "primary_query": "học cơ điện mỏ có phải bảo dưỡng động cơ thiết bị không",
+      "query_variants": [
+        "thợ cơ điện mỏ có bảo dưỡng động cơ không",
+        "học cơ điện mỏ có sửa động cơ quạt gió không",
+        "người mới học cơ điện mỏ có được tháo lắp động cơ thiết bị không"
+      ],
+      "direct_answer": "Có thể. Bảo dưỡng và sửa chữa máy móc, thiết bị cơ - điện thuộc phạm vi nghề kỹ thuật cơ điện mỏ; tư liệu chính thức Vinacomin cũng ghi nhận thợ cơ điện sửa chữa động cơ thiết bị quạt gió. Tuy nhiên, người mới chỉ làm phần đã được đào tạo, hướng dẫn và phân công.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-co-dien-quang-hanh-sua-dong-co-quat-gio.webp",
+        "alt": "Thợ cơ điện Than Quang Hanh mặc bảo hộ sửa chữa động cơ thiết bị quạt gió tại xưởng",
+        "credit": "Ảnh: Vinacomin · thợ cơ điện Than Quang Hanh sửa chữa động cơ thiết bị quạt gió"
+      },
+      "display_image": true,
+      "intro": [
+        "Học cơ điện mỏ có phải bảo dưỡng động cơ thiết bị không là câu hỏi của người thích máy móc nhưng chưa rõ sau khóa học 10 tháng mình sẽ làm phần cơ khí, phần điện hay chỉ hỗ trợ vận hành. Câu trả lời là bảo dưỡng và sửa chữa máy móc nằm trong phạm vi nghề; động cơ của thiết bị quạt gió cũng xuất hiện trong tư liệu công việc thực tế của thợ cơ điện TKV. Điều đó không có nghĩa mọi học viên đều được giao cùng một động cơ hoặc được tự tháo sửa ngay sau tốt nghiệp.",
+        "Bài này không lặp trang tổng quan về nghề cơ điện, bài sửa thiết bị điện, sửa máy khoan, máy nén khí hay vận hành trạm điện. Nội dung tập trung vào một ranh giới riêng: bảo dưỡng động cơ khác sửa chữa thế nào, người mới được tham gia đến đâu, ảnh công việc thật chứng minh được điều gì và cần hỏi gì trước khi chọn nghề."
+      ],
+      "key_points": [
+        [
+          "Có trong phạm vi nghề",
+          "Nguồn chuẩn nêu nghề cơ điện mỏ bảo dưỡng, sửa chữa máy móc và thiết bị cơ - điện phục vụ sản xuất."
+        ],
+        [
+          "Động cơ gắn với thiết bị",
+          "Tư liệu Vinacomin cho thấy thợ cơ điện thực tế sửa chữa động cơ thiết bị quạt gió tại Than Quang Hanh."
+        ],
+        [
+          "Bảo dưỡng khác sửa chữa",
+          "Bảo dưỡng nhằm duy trì tình trạng làm việc; sửa chữa xử lý phần hư hỏng hoặc bất thường theo phương án được giao."
+        ],
+        [
+          "Người mới có giới hạn",
+          "Không tự tháo lắp, đấu nối, chạy thử hoặc kết luận nguyên nhân khi chưa được hướng dẫn và phân công."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học cơ điện mỏ có phải bảo dưỡng động cơ thiết bị không?",
+          "paragraphs": [
+            "Có thể. Hồ sơ nghề hiện hành mô tả kỹ thuật cơ điện mỏ hầm lò thực hiện lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống cơ khí, điện, vận tải, chiếu sáng, thông tin liên lạc cùng thiết bị cơ giới phục vụ sản xuất. Trong nhóm trách nhiệm cụ thể, nguồn chuẩn tiếp tục nêu việc bảo dưỡng và sửa chữa máy khoan, máy nén khí, thiết bị bốc xúc, vận tải và các thiết bị cơ - điện. Vì vậy, động cơ nằm trong một máy hoặc hệ thống có thể là bộ phận người thợ cơ điện được giao kiểm tra, bảo dưỡng hoặc sửa chữa.",
+            "Từ “có thể” rất quan trọng. Nguồn tuyển sinh không quy định mọi học viên sẽ làm cùng một loại động cơ, tại cùng phân xưởng hoặc theo một lịch bảo dưỡng giống nhau. Thiết bị đang sử dụng, nội dung đã học, kết quả đánh giá tay nghề và nhu cầu bố trí của đơn vị tiếp nhận mới quyết định phần việc thực tế.",
+            "Người đăng ký cũng không nên đồng nhất công việc động cơ với điện dân dụng. Một động cơ là bộ phận trong thiết bị sản xuất và có liên hệ với cơ khí, nguồn điện, phần truyền động, điều khiển cùng điều kiện vận hành của cả hệ thống. Người lao động chỉ xử lý phần thuộc trách nhiệm của mình, không tự suy từ kinh nghiệm sửa đồ điện bên ngoài."
+          ]
+        },
+        {
+          "heading": "Bảo dưỡng động cơ khác gì sửa chữa động cơ thiết bị?",
+          "paragraphs": [
+            "Bảo dưỡng hướng tới duy trì tình trạng làm việc của thiết bị theo kế hoạch và phạm vi đã giao. Người thợ có thể được yêu cầu quan sát, đo kiểm, làm sạch, kiểm tra liên kết hoặc phối hợp thay phần hao mòn theo tài liệu và quy trình của thiết bị. Sửa chữa bắt đầu khi cần xác định, khắc phục một hư hỏng hoặc đưa bộ phận trở lại tình trạng đáp ứng yêu cầu. Hai nhóm việc liên quan nhưng mục tiêu và quyền thao tác không hoàn toàn giống nhau.",
+            "Một người được giao hỗ trợ bảo dưỡng không mặc nhiên có quyền tháo toàn bộ động cơ, thay đổi đấu nối hoặc chạy thử độc lập. Ngược lại, người tham gia một công đoạn sửa chữa cũng không tự chịu trách nhiệm cho toàn bộ hệ thống quạt gió hay dây chuyền có động cơ đó. Từng việc phải có thiết bị được nhận diện rõ, người phụ trách, điều kiện bàn giao và giới hạn thao tác.",
+            "Trang này không hướng dẫn tháo lắp, đo điện, đấu dây, căn chỉnh hoặc chạy thử động cơ. Những thao tác kỹ thuật phụ thuộc đúng thiết bị, tài liệu, điều kiện hiện trường và quy trình của đơn vị. Mục tiêu là giúp người lao động hiểu bản chất vị trí trước khi đăng ký, không thay thế chương trình đào tạo hoặc hướng dẫn tại nơi làm việc."
+          ]
+        },
+        {
+          "heading": "Ảnh sửa chữa động cơ thiết bị quạt gió của Vinacomin cho biết điều gì?",
+          "paragraphs": [
+            "Ảnh riêng của bài được xác minh từ tin chính thức Vinacomin “Đội lắp đặt Công trình thiết bị cơ điện hầm lò - ‘Những chiến binh’ trên mặt trận sản xuất của Than Quang Hanh”, công bố ngày 11/12/2024. Chú thích gốc ghi rõ “Sửa chữa động cơ thiết bị quạt gió”. Ảnh có kích thước gốc 1276 × 956 pixel và cho thấy công nhân mặc bảo hộ làm việc với một cụm động cơ tại xưởng.",
+            "Tư liệu này xác nhận bảo dưỡng, sửa chữa động cơ thiết bị là công việc có thật trong hoạt động cơ điện của một đơn vị ngành than. Bài không dùng ảnh để đoán model, thông số, tình trạng hư hỏng, thao tác đang thực hiện hoặc tên từng người trong khung hình vì nguồn chính thức không cung cấp các dữ kiện đó.",
+            "Ảnh cũng không phải lời hứa rằng học viên mới sẽ được giao đúng vị trí này. Bài gốc mô tả một phân xưởng cơ khí sửa chữa và đội lắp đặt gồm những công nhân có chuyên môn, tay nghề, kinh nghiệm. Vì vậy, cách hiểu đúng là công việc tồn tại trong phạm vi nghề; mức độ tham gia của từng người vẫn phụ thuộc đào tạo, đánh giá và phân công."
+          ]
+        },
+        {
+          "heading": "Người mới học cơ điện mỏ được tham gia bảo dưỡng động cơ đến đâu?",
+          "paragraphs": [
+            "Người mới trước hết phải hoàn thành nội dung đào tạo và hiểu đúng nhiệm vụ được giao. Khi tiếp cận một động cơ hoặc thiết bị có động cơ, phần việc có thể bắt đầu từ nhận biết bộ phận, chuẩn bị dụng cụ, quan sát quy trình, hỗ trợ kiểm tra hoặc thực hiện một công đoạn cụ thể dưới hướng dẫn. Mức độ trực tiếp không dựa vào sự tự tin mà dựa vào phần đã học, kết quả đánh giá và trách nhiệm được phân công.",
+            "Nếu từng sửa động cơ, máy bơm, quạt hoặc thiết bị công nghiệp bên ngoài, người đăng ký nên mô tả chính xác mình đã làm gì và trong điều kiện nào. Kinh nghiệm cũ có thể giúp tiếp thu kiến thức nhanh hơn, nhưng không thay thế khóa học cơ điện mỏ, việc làm quen với thiết bị thực tế và yêu cầu của đơn vị tiếp nhận.",
+            "Khi tình trạng thiết bị khác hướng dẫn, thiếu thông tin bàn giao hoặc công việc vượt tay nghề, người mới cần dừng ở giới hạn được giao và báo đúng người phụ trách. Với nghề cơ điện, làm chắc phần của mình và truyền đạt rõ dấu hiệu quan sát được quan trọng hơn việc cố tự xử lý toàn bộ."
+          ]
+        },
+        {
+          "heading": "Bảo dưỡng động cơ có phải là toàn bộ công việc của thợ cơ điện mỏ không?",
+          "paragraphs": [
+            "Không. Hồ sơ nghề hiện hành có phạm vi rộng hơn một bộ phận máy. Người học còn có thể tham gia công việc với máy khoan, máy nén khí, thiết bị bốc xúc, vận tải, dây dẫn điện, chiếu sáng, thông tin liên lạc, khí cụ điện và hệ thống khai thác cơ giới hóa. Động cơ chỉ là một điểm cụ thể giúp người quan tâm hình dung nghề có cả cơ khí, điện và thiết bị.",
+            "Điều này giải thích vì sao thời gian đào tạo cơ điện mỏ hiện hành là 10 tháng, dài hơn các nghề khai thác và xây dựng mỏ đang tuyển theo khóa 2–3 tháng. Người học cần nền tảng đủ rộng để nhận biết nhiều hệ thống, sử dụng dụng cụ đo kiểm, tháo lắp và phối hợp trong tổ đội, thay vì chỉ học một thao tác sửa động cơ.",
+            "Nếu mục tiêu duy nhất là được sửa một loại động cơ cụ thể, người đăng ký nên hỏi rõ phạm vi chương trình và cách bố trí sau đào tạo. Website chỉ xác nhận những gì nguồn chuẩn cho phép: nghề có nhiệm vụ bảo dưỡng, sửa chữa máy móc và thiết bị cơ - điện; không hứa trước loại máy, phân xưởng hay vị trí làm việc cho từng người."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi chọn cơ điện mỏ vì thích sửa động cơ",
+          "items": [
+            "Trong chương trình cơ điện mỏ 10 tháng, phần bảo dưỡng máy móc và động cơ được học ở mức nào?",
+            "Học viên thực hành nhận biết, đo kiểm, tháo lắp hay hỗ trợ sửa chữa trong điều kiện nào?",
+            "Người mới được đánh giá ra sao trước khi trực tiếp làm trên thiết bị sản xuất?",
+            "Bảo dưỡng theo kế hoạch và sửa chữa khi có bất thường được phân công khác nhau thế nào?",
+            "Kinh nghiệm sửa động cơ đã có được ghi nhận ra sao và phần nào vẫn phải học lại?"
+          ]
+        }
+      ],
+      "takeaway_title": "Có thể bảo dưỡng động cơ, nhưng không tự sửa ngoài phạm vi được giao",
+      "takeaway": "Bảo dưỡng và sửa chữa máy móc, thiết bị cơ - điện thuộc phạm vi nghề kỹ thuật cơ điện mỏ; tư liệu Vinacomin cho thấy thợ cơ điện thực tế sửa chữa động cơ thiết bị quạt gió. Tuy nhiên, động cơ chỉ là một bộ phận trong phạm vi nghề rộng. Người mới phải hoàn thành đào tạo, làm đúng công đoạn đã được hướng dẫn, bàn giao và phân công, đồng thời báo người phụ trách khi tình huống vượt giới hạn.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò lắp đặt, vận hành, bảo dưỡng và sửa chữa máy móc, thiết bị cơ - điện; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Đội lắp đặt Công trình thiết bị cơ điện hầm lò - ‘Những chiến binh’ trên mặt trận sản xuất của Than Quang Hanh”, công bố ngày 11/12/2024, với chú thích gốc “Sửa chữa động cơ thiết bị quạt gió”; ảnh gốc 1276 × 956 pixel.",
+      "faqs": [
+        [
+          "Học cơ điện mỏ có phải ai cũng bảo dưỡng động cơ không?",
+          "Không. Bảo dưỡng máy móc thuộc phạm vi nghề, nhưng thiết bị và công đoạn cụ thể phụ thuộc chương trình đã học, tay nghề và phân công của đơn vị tiếp nhận."
+        ],
+        [
+          "Biết sửa động cơ bên ngoài có được tự làm trên thiết bị mỏ không?",
+          "Không. Kinh nghiệm cũ không thay thế đào tạo, nhận diện đúng thiết bị, bàn giao, hướng dẫn và phân công tại nơi làm việc."
+        ],
+        [
+          "Bảo dưỡng động cơ có giống sửa chữa động cơ không?",
+          "Không hoàn toàn. Bảo dưỡng nhằm duy trì tình trạng thiết bị theo kế hoạch; sửa chữa xử lý phần hư hỏng hoặc bất thường trong phạm vi được giao."
+        ],
+        [
+          "Chưa từng sửa máy có đăng ký học cơ điện mỏ được không?",
+          "Nguồn tuyển sinh hiện hành không yêu cầu kinh nghiệm. Người đăng ký vẫn phải đáp ứng các điều kiện tuyển và hoàn thành đào tạo, đánh giá trước khi được giao việc cụ thể."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ phạm vi nghề kỹ thuật cơ điện mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/hoc-co-dien-mo-co-chi-sua-dien-khong/",
+          "Hiểu vì sao nghề cơ điện mỏ không chỉ sửa điện"
         ],
         [
           "/kiem-tra-dieu-kien/",

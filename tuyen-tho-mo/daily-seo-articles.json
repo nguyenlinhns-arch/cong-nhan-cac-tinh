@@ -1,9 +1,17 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-31",
+  "updated_at": "2026-11-05",
   "canonical_hub": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/",
   "publisher": "Thầy Linh – Tuyển Thợ Mỏ",
   "articles": [
+    {
+      "title": "Học cơ điện mỏ có phải bảo dưỡng động cơ thiết bị không?",
+      "primary_query": "học cơ điện mỏ có phải bảo dưỡng động cơ thiết bị không",
+      "direct_answer": "Có thể. Bảo dưỡng và sửa chữa máy móc, thiết bị cơ - điện thuộc phạm vi nghề kỹ thuật cơ điện mỏ; tư liệu chính thức Vinacomin cũng ghi nhận thợ cơ điện sửa chữa động cơ thiết bị quạt gió. Tuy nhiên, người mới chỉ làm phần đã được đào tạo, hướng dẫn và phân công.",
+      "date_published": "2026-11-05",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-bao-duong-dong-co-thiet-bi-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò lắp đặt, vận hành, bảo dưỡng và sửa chữa máy móc, thiết bị cơ - điện; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh từ bài chính thức Vinacomin “Đội lắp đặt Công trình thiết bị cơ điện hầm lò - ‘Những chiến binh’ trên mặt trận sản xuất của Than Quang Hanh”, công bố ngày 11/12/2024, với chú thích gốc “Sửa chữa động cơ thiết bị quạt gió”; ảnh gốc 1276 × 956 pixel."
+    },
     {
       "title": "Học cơ điện mỏ có phải vận hành trạm điện không?",
       "primary_query": "học cơ điện mỏ có phải vận hành trạm điện không",
