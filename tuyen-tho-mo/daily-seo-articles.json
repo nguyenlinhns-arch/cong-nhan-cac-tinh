@@ -1,9 +1,17 @@
 {
   "version": "1.0",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "canonical_hub": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/",
   "publisher": "Thầy Linh – Tuyển Thợ Mỏ",
   "articles": [
+    {
+      "title": "Học cơ điện mỏ có phải dùng dụng cụ đo kiểm điện không?",
+      "primary_query": "học cơ điện mỏ có phải dùng dụng cụ đo kiểm điện không",
+      "direct_answer": "Có. Dụng cụ đo kiểm điện và cơ khí nằm trong nhóm thiết bị của nghề cơ điện mỏ. Người học cần biết chọn đúng dụng cụ, đọc và báo kết quả trong phạm vi đã được hướng dẫn; không tự đo trên thiết bị hoặc mạch điện khi chưa được giao nhiệm vụ.",
+      "date_published": "2026-11-06",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-dung-dung-cu-do-kiem-dien-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nhóm thiết bị của nghề kỹ thuật cơ điện mỏ hầm lò có dụng cụ đo kiểm điện và cơ khí; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh ngày 06/11/2026 từ trang Công ty thành viên của Viện Khoa học Công nghệ Mỏ - Vinacomin, chú thích chính thức “Thí nghiệm hiệu chỉnh thiết bị điện tại hiện trường”; ảnh gốc 670 × 365 pixel."
+    },
     {
       "title": "Học cơ điện mỏ có phải bảo dưỡng động cơ thiết bị không?",
       "primary_query": "học cơ điện mỏ có phải bảo dưỡng động cơ thiết bị không",

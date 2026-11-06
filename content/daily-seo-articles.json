@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -8001,6 +8001,132 @@
         [
           "/giai-dap-nghe-mo/hoc-co-dien-mo-co-chi-sua-dien-khong/",
           "Hiểu vì sao nghề cơ điện mỏ không chỉ sửa điện"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-11-06",
+      "slug": "hoc-co-dien-mo-co-phai-dung-dung-cu-do-kiem-dien-khong",
+      "title": "Học cơ điện mỏ có phải dùng dụng cụ đo kiểm điện không?",
+      "short_title": "Cơ điện mỏ dùng dụng cụ đo kiểm điện",
+      "meta": "Học cơ điện mỏ có phải dùng dụng cụ đo kiểm điện không? Hiểu mục đích đo kiểm, giới hạn của người mới và khác biệt giữa đo, bảo dưỡng, sửa chữa.",
+      "eyebrow": "ĐO KIỂM ĐIỆN VÀ PHẠM VI NGHỀ CƠ ĐIỆN MỎ",
+      "primary_query": "học cơ điện mỏ có phải dùng dụng cụ đo kiểm điện không",
+      "query_variants": [
+        "thợ cơ điện mỏ có dùng đồng hồ đo điện không",
+        "học cơ điện mỏ có phải đo kiểm thiết bị không",
+        "người mới học cơ điện mỏ có được tự đo thiết bị điện không"
+      ],
+      "direct_answer": "Có. Dụng cụ đo kiểm điện và cơ khí nằm trong nhóm thiết bị của nghề cơ điện mỏ. Người học cần biết chọn đúng dụng cụ, đọc và báo kết quả trong phạm vi đã được hướng dẫn; không tự đo trên thiết bị hoặc mạch điện khi chưa được giao nhiệm vụ.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/imsat-ky-su-thi-nghiem-hieu-chinh-thiet-bi-dien.webp",
+        "alt": "Kỹ sư Viện Khoa học Công nghệ Mỏ - Vinacomin dùng thiết bị đo để thí nghiệm hiệu chỉnh thiết bị điện tại hiện trường",
+        "credit": "Ảnh: Viện Khoa học Công nghệ Mỏ - Vinacomin · thí nghiệm hiệu chỉnh thiết bị điện tại hiện trường"
+      },
+      "display_image": true,
+      "intro": [
+        "Học cơ điện mỏ có phải dùng dụng cụ đo kiểm điện không là câu hỏi thực tế của người đã từng cầm đồng hồ đo điện ở nhà hoặc người chưa biết gì về điện nhưng đang cân nhắc khóa học 10 tháng. Câu trả lời là có: hồ sơ nghề hiện hành liệt kê dụng cụ đo kiểm điện và cơ khí trong nhóm thiết bị của nghề. Tuy nhiên, biết tên dụng cụ không đồng nghĩa được tự chọn điểm đo, tự đưa thiết bị vào mạch hoặc tự kết luận thiết bị đã an toàn.",
+        "Bài này không lặp trang tổng quan về cơ điện mỏ, các bài đấu nối dây, vận hành trạm điện hay bảo dưỡng động cơ. Nội dung tập trung vào một bước riêng thường có trước quyết định bảo dưỡng hoặc sửa chữa: dùng phép đo để ghi nhận tình trạng thiết bị, đọc kết quả trong bối cảnh công việc và báo lại đúng người phụ trách. Đây là ranh giới quan trọng để người mới hiểu nghề trước khi đăng ký, thay vì nghĩ đo điện chỉ là chạm hai que đo rồi nhìn con số."
+      ],
+      "key_points": [
+        [
+          "Có trong phạm vi nghề",
+          "Hồ sơ tuyển sinh hiện hành liệt kê dụng cụ đo kiểm điện và cơ khí trong nhóm thiết bị của nghề kỹ thuật cơ điện mỏ hầm lò."
+        ],
+        [
+          "Đo trước khi quyết định",
+          "Kết quả đo hỗ trợ nhận biết tình trạng và báo cáo; nó không tự động cho phép người đo tháo, sửa hoặc đưa thiết bị vào vận hành."
+        ],
+        [
+          "Không có một dụng cụ cho mọi việc",
+          "Loại dụng cụ, điểm đo và cách đọc phụ thuộc thiết bị, mục đích kiểm tra, tài liệu kỹ thuật và nhiệm vụ được giao."
+        ],
+        [
+          "Người mới phải giữ giới hạn",
+          "Chỉ đo phần đã được hướng dẫn, xác nhận điều kiện làm việc và phân công; không thử bằng cảm giác hoặc kinh nghiệm điện dân dụng."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học cơ điện mỏ có phải dùng dụng cụ đo kiểm điện không?",
+          "paragraphs": [
+            "Có. Hồ sơ nghề hiện hành ghi rõ nhóm thiết bị, dụng cụ của kỹ thuật cơ điện mỏ hầm lò có “dụng cụ đo kiểm điện và cơ khí”. Phạm vi công việc còn bao gồm lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống cơ khí, điện cùng thiết bị phục vụ sản xuất. Vì vậy, đo kiểm không phải kỹ năng đứng ngoài nghề; đó là một phần giúp người thợ thu thập thông tin trước khi đánh giá tình trạng và thực hiện phần việc tiếp theo.",
+            "Dù vậy, hồ sơ chuẩn không quy định mọi học viên dùng cùng một đồng hồ, đo cùng một đại lượng hoặc làm trên cùng loại máy. Thiết bị có thể thuộc hệ thống điện, khí cụ điện, máy móc cơ khí hoặc một cụm cơ - điện. Dụng cụ và cách thực hiện phải phù hợp mục đích kiểm tra, tài liệu của thiết bị, điều kiện tại nơi làm việc và trách nhiệm được giao cho từng người.",
+            "Người đăng ký nên hiểu đây là kỹ năng cần học có hệ thống. Việc từng dùng đồng hồ vạn năng ở nhà có thể giúp quen thao tác cơ bản, nhưng không thay thế nhận diện thiết bị mỏ, xác định phạm vi công việc, kiểm tra điều kiện trước khi đo và cách báo cáo kết quả trong tổ đội. Người chưa có kinh nghiệm vẫn có thể đăng ký nếu đáp ứng điều kiện tuyển hiện hành; khóa học là nơi xây nền tảng trước khi được đánh giá và giao việc."
+          ]
+        },
+        {
+          "heading": "Đo kiểm điện khác gì bảo dưỡng và sửa chữa thiết bị?",
+          "paragraphs": [
+            "Đo kiểm nhằm thu thập một giá trị hoặc dấu hiệu để biết thiết bị đang ở trạng thái nào so với yêu cầu của phần việc. Bảo dưỡng hướng tới duy trì tình trạng làm việc theo kế hoạch. Sửa chữa xử lý bộ phận hư hỏng hoặc bất thường theo phương án được giao. Ba nhóm việc có thể nối tiếp nhau, nhưng kết quả đo chỉ là một phần căn cứ; nó không biến người đo thành người được quyền quyết định toàn bộ công việc.",
+            "Ví dụ, một con số chỉ có ý nghĩa khi người thực hiện biết đang đo đại lượng gì, tại vị trí nào, trong điều kiện nào và cần so sánh với căn cứ nào. Nếu thiếu bối cảnh, cùng một con số có thể bị hiểu sai. Vì vậy, người mới không nên học thuộc một ngưỡng rời rạc rồi áp cho mọi thiết bị, cũng không tự suy rằng số đo “có vẻ bình thường” là đủ để đóng điện, chạy thử hoặc bàn giao.",
+            "Website không hướng dẫn chọn thang đo, đặt que đo, mở tủ điện hay thao tác trên mạch đang có điện. Những bước đó phụ thuộc thiết bị thực tế, tài liệu kỹ thuật, điều kiện an toàn và người chịu trách nhiệm. Giá trị của bài là giúp người lao động nhận ra đo kiểm là công việc chuyên môn có chuẩn bị, ghi nhận và báo cáo, không phải mẹo thử điện có thể làm theo một bài đọc trên mạng."
+          ]
+        },
+        {
+          "heading": "Người học cần nắm những gì khi dùng dụng cụ đo kiểm điện?",
+          "paragraphs": [
+            "Trước hết là nhận đúng dụng cụ và mục đích của lần kiểm tra. Người học cần phân biệt việc nhận biết tên thiết bị với việc được phép sử dụng thiết bị đó. Tiếp theo là kiểm tra tình trạng dụng cụ, xác nhận phạm vi công việc, hiểu điểm cần ghi nhận và biết ai là người nhận kết quả. Đây là chuỗi tư duy quan trọng hơn việc chỉ nhớ vị trí nút bấm.",
+            "Khi có kết quả, người thực hiện phải đọc đúng đơn vị, ghi lại đầy đủ điều kiện liên quan và báo cáo rõ điều gì đã quan sát được. Nếu kết quả không ổn định, không khớp hướng dẫn hoặc vượt phần đã học, cách làm đúng là dừng ở giới hạn nhiệm vụ và hỏi người phụ trách. Không tự đổi cách đo nhiều lần chỉ để tìm một con số mong muốn, cũng không che bỏ kết quả bất thường vì sợ ảnh hưởng tiến độ.",
+            "Cuối cùng là hiểu mối liên hệ giữa điện và cơ khí. Nghề cơ điện mỏ không chỉ có dây dẫn; thiết bị sản xuất thường gồm phần điện, cơ khí, truyền động và điều khiển liên quan nhau. Dữ liệu đo cần được đặt cạnh dấu hiệu vận hành, lịch sử bảo dưỡng và thông tin bàn giao. Người mới học cách phối hợp với tổ đội sẽ an toàn và hữu ích hơn người cố tự kết luận mọi nguyên nhân từ một phép đo."
+          ]
+        },
+        {
+          "heading": "Ảnh thí nghiệm hiệu chỉnh thiết bị điện cho thấy điều gì?",
+          "paragraphs": [
+            "Ảnh riêng của bài được xác minh trên trang Công ty thành viên của Viện Khoa học Công nghệ Mỏ - Vinacomin. Chú thích chính thức là “Thí nghiệm hiệu chỉnh thiết bị điện tại hiện trường”. Ảnh gốc 670 × 365 pixel cho thấy hai kỹ sư làm việc bên thiết bị điện và bộ dụng cụ đo, phù hợp trực tiếp với câu hỏi về bối cảnh đo kiểm trong ngành mỏ.",
+            "Tư liệu này chứng minh công việc đo, thí nghiệm và hiệu chỉnh thiết bị điện được thực hiện bằng dụng cụ chuyên môn tại hiện trường, có người phối hợp và thiết bị cụ thể. Ảnh không đủ căn cứ để xác định model máy, đại lượng đang đo, cấp điện áp hoặc trình tự thao tác; bài không suy đoán các chi tiết đó. Cách dùng ảnh như vậy giúp người đọc hình dung đúng môi trường nghề mà không biến một khoảnh khắc thành hướng dẫn kỹ thuật.",
+            "Nhân vật trong ảnh là kỹ sư của đơn vị chuyên kiểm định, thí nghiệm và sửa chữa thiết bị điện, không phải học viên mới. Vì vậy, ảnh không phải lời hứa rằng người vừa hoàn thành khóa học sẽ được tự làm cùng công việc. Nó chỉ xác nhận một nguyên tắc: đo kiểm có thiết bị, bối cảnh, quy trình và trách nhiệm; mức độ tham gia của từng người phụ thuộc đào tạo, đánh giá và phân công."
+          ]
+        },
+        {
+          "heading": "Người mới không nên tự đo trong những tình huống nào?",
+          "paragraphs": [
+            "Người mới không tự đo khi chưa biết rõ thiết bị, mục đích kiểm tra, điều kiện làm việc hoặc người giao nhiệm vụ. Cũng không thực hiện khi dụng cụ có dấu hiệu không phù hợp, thông tin bàn giao thiếu, vị trí đo khác hướng dẫn hoặc tình huống thực tế vượt phần đã học. Việc dừng lại để xác nhận không phải chậm chạp; đó là cách bảo vệ người, dụng cụ và thiết bị.",
+            "Kinh nghiệm điện dân dụng không cho phép bỏ qua giới hạn tại nơi làm việc. Một người có thể rất quen đo pin, ổ cắm hoặc thiết bị gia dụng nhưng vẫn phải học lại cách nhận nhiệm vụ, phối hợp và ghi kết quả trên hệ thống cơ điện mỏ. Không thử bằng cách chạm, nghe, ngửi hoặc đổi điểm đo tùy ý; những dấu hiệu bất thường phải được mô tả và chuyển cho người có trách nhiệm.",
+            "Nếu đang được hướng dẫn mà kết quả khác dự kiến, người học nên nói rõ mình đã làm bước nào, quan sát điều gì và đang không chắc ở đâu. Cách báo cáo cụ thể giúp người phụ trách kiểm tra lại điều kiện, dụng cụ hoặc thiết bị. Tự che giấu sự không chắc chắn mới là rủi ro; hỏi đúng lúc là một phần của năng lực nghề."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi chọn học cơ điện mỏ vì quan tâm đo kiểm điện",
+          "items": [
+            "Trong chương trình cơ điện mỏ 10 tháng, học viên được nhận biết và thực hành những nhóm dụng cụ đo kiểm nào?",
+            "Phần thực hành diễn ra trên mô hình, tại xưởng hay trên thiết bị thực tế dưới sự hướng dẫn?",
+            "Học viên được đánh giá cách chọn dụng cụ, đọc kết quả và báo cáo sai khác ra sao?",
+            "Ranh giới giữa người đo, người bảo dưỡng và người quyết định sửa chữa được phân công thế nào?",
+            "Kinh nghiệm dùng đồng hồ đo điện đã có được ghi nhận ra sao và phần nào vẫn phải học lại?"
+          ]
+        }
+      ],
+      "takeaway_title": "Có dùng dụng cụ đo kiểm, nhưng chỉ đo đúng phần đã học và được giao",
+      "takeaway": "Dụng cụ đo kiểm điện và cơ khí thuộc nhóm thiết bị của nghề kỹ thuật cơ điện mỏ hầm lò. Người học cần biết mục đích phép đo, nhận đúng dụng cụ, đọc và ghi kết quả, đồng thời báo người phụ trách khi có sai khác. Đo kiểm không đồng nghĩa được tự sửa, chạy thử hay kết luận thiết bị an toàn; người mới chỉ làm trên thiết bị và phạm vi đã được hướng dẫn, xác nhận điều kiện và phân công.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nhóm thiết bị của nghề kỹ thuật cơ điện mỏ hầm lò có dụng cụ đo kiểm điện và cơ khí; thời gian đào tạo hiện hành 10 tháng. Ảnh riêng được xác minh ngày 06/11/2026 từ trang Công ty thành viên của Viện Khoa học Công nghệ Mỏ - Vinacomin, chú thích chính thức “Thí nghiệm hiệu chỉnh thiết bị điện tại hiện trường”; ảnh gốc 670 × 365 pixel.",
+      "faqs": [
+        [
+          "Học cơ điện mỏ có phải ai cũng dùng cùng một dụng cụ đo không?",
+          "Không. Dụng cụ, đại lượng và vị trí đo phụ thuộc thiết bị, mục đích kiểm tra, nội dung đã học và nhiệm vụ được giao cho từng người."
+        ],
+        [
+          "Biết dùng đồng hồ vạn năng ở ngoài có được tự đo thiết bị mỏ không?",
+          "Không. Kinh nghiệm bên ngoài không thay thế việc nhận diện thiết bị, xác nhận điều kiện, hướng dẫn tại nơi làm việc và phân công của người chịu trách nhiệm."
+        ],
+        [
+          "Đo kiểm điện có phải là sửa chữa thiết bị không?",
+          "Không. Đo kiểm thu thập thông tin về tình trạng; bảo dưỡng và sửa chữa là các phần việc tiếp theo, chỉ được thực hiện theo phương án và phạm vi đã giao."
+        ]
+      ],
+      "related": [
+        [
+          "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ phạm vi nghề kỹ thuật cơ điện mỏ hầm lò"
+        ],
+        [
+          "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-bao-duong-dong-co-thiet-bi-khong/",
+          "Phân biệt đo kiểm với bảo dưỡng động cơ thiết bị"
         ],
         [
           "/kiem-tra-dieu-kien/",

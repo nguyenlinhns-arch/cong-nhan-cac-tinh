@@ -35,7 +35,7 @@ const retiredRemoteImages = new Map([
 ]);
 const RETIRED_REFERENCES = new Map([...retiredLocalImages, ...retiredRemoteImages]);
 const approvedWorkerImages = JSON.parse(fs.readFileSync(path.join(ROOT, "content", "approved-worker-images.json"), "utf8"));
-const APPROVED_VINACOMIN_IMAGES = new Set([
+const APPROVED_OFFICIAL_IMAGES = new Set([
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp",
   "https://thaylinhtuyenthomo.vn/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp",
@@ -77,14 +77,17 @@ for (const file of walk(SITE).filter((target) => target.endsWith(".html"))) {
 }
 
 const dailySeo = JSON.parse(fs.readFileSync(path.join(ROOT, "content", "daily-seo-articles.json"), "utf8"));
-const invalidDailyImages = dailySeo.articles.filter((article) => !APPROVED_VINACOMIN_IMAGES.has(article.image?.src));
+const invalidDailyImages = dailySeo.articles.filter((article) => !APPROVED_OFFICIAL_IMAGES.has(article.image?.src));
 if (invalidDailyImages.length) {
   throw new Error(`Bài giải đáp còn ảnh chưa có trong sổ ảnh Vinacomin đã duyệt: ${invalidDailyImages.map((article) => article.slug).join(", ")}`);
 }
 
+const officialImageSourceHosts = new Set(["vinacomin.vn", "www.vinacomin.vn", "web.vinacomin.vn", "imsat.vn", "www.imsat.vn"]);
 for (const image of approvedWorkerImages.images) {
-  if (!/^https:\/\/(?:www\.)?(?:web\.)?vinacomin\.vn\//.test(image.source_article_url)) {
-    throw new Error(`Nguồn ảnh minh họa không thuộc Vinacomin: ${image.asset}`);
+  const sourceHost = new URL(image.source_article_url).hostname.toLowerCase();
+  const officialProvider = /vinacomin/iu.test(image.provider || "");
+  if (!officialImageSourceHosts.has(sourceHost) || !officialProvider) {
+    throw new Error(`Nguồn ảnh minh họa không thuộc Vinacomin hoặc đơn vị chính thức của Vinacomin: ${image.asset}`);
   }
   if (!fs.existsSync(path.join(SITE, "assets", image.asset))) {
     throw new Error(`Thiếu ảnh minh họa đã duyệt: assets/${image.asset}`);
