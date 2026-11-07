@@ -124,7 +124,9 @@ for (const marker of ["commune-sitemap.xml","province-sitemap.xml","jobs-sitemap
 const llms = read("llms.txt");
 if (!llms.includes("localities.json")) fail("llms.txt: thiếu localities.json");
 
-const htmlFiles = walk(root);
+// /diaban is a noindex, client-side internal data workspace. It is not part of
+// the public recruitment content network and intentionally uses its own shell.
+const htmlFiles = walk(root).filter((file) => !path.relative(root, file).split(path.sep).join("/").startsWith("diaban/"));
 const contentFiles = htmlFiles.filter(file => !path.basename(file).startsWith("google"));
 const materializedDelta = 3321 + 34 + Math.max(0, provinceEntries.length - 26);
 const dailySeoFeed = JSON.parse(read("daily-seo-articles.json"));

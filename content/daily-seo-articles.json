@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-11-06",
+  "updated_at": "2026-11-07",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -8127,6 +8127,140 @@
         [
           "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-bao-duong-dong-co-thiet-bi-khong/",
           "Phân biệt đo kiểm với bảo dưỡng động cơ thiết bị"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-11-07",
+      "slug": "hoc-co-dien-mo-co-phai-kiem-tra-ro-le-bao-ve-khong",
+      "title": "Học cơ điện mỏ có phải kiểm tra rơ-le bảo vệ không?",
+      "short_title": "Cơ điện mỏ kiểm tra rơ-le bảo vệ",
+      "meta": "Học cơ điện mỏ có phải kiểm tra rơ-le bảo vệ không? Hiểu mục đích kiểm tra, phần việc của người mới và giới hạn không được tự ý thay đổi.",
+      "eyebrow": "RƠ-LE BẢO VỆ VÀ GIỚI HẠN CÔNG VIỆC CƠ ĐIỆN MỎ",
+      "primary_query": "học cơ điện mỏ có phải kiểm tra rơ-le bảo vệ không",
+      "query_variants": [
+        "thợ cơ điện mỏ có kiểm tra rơ-le bảo vệ không",
+        "học cơ điện mỏ có phải hiệu chỉnh rơ-le không",
+        "người mới học cơ điện mỏ có được thay thông số rơ-le không"
+      ],
+      "direct_answer": "Có thể. Người học cơ điện mỏ cần làm quen với việc nhận biết, kiểm tra trạng thái và phối hợp thử nghiệm rơ-le bảo vệ trong phạm vi được đào tạo, hướng dẫn và phân công. Người mới không tự ý đổi thông số, vô hiệu bảo vệ hoặc thao tác trên thiết bị điện chưa được bàn giao an toàn.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/imsat-thi-nghiem-hieu-chinh-ro-le-bao-ve.webp",
+        "alt": "Nhóm kỹ thuật viên IMSAT - Vinacomin thí nghiệm hiệu chỉnh hệ thống rơ-le bảo vệ cho trạm biến áp 110 kV",
+        "credit": "Ảnh: Viện Khoa học Công nghệ Mỏ - Vinacomin · thí nghiệm hiệu chỉnh hệ thống rơ-le bảo vệ"
+      },
+      "display_image": true,
+      "intro": [
+        "Học cơ điện mỏ có phải kiểm tra rơ-le bảo vệ không là câu hỏi nối tiếp tự nhiên sau khi người lao động biết nghề này có dùng dụng cụ đo kiểm điện. Câu trả lời là có thể: rơ-le bảo vệ là một phần của hệ thống điện cần được nhận biết, kiểm tra và thử nghiệm trong công việc chuyên môn. Nhưng kiểm tra không đồng nghĩa người mới được tự mở tủ, thay giá trị cài đặt hoặc quyết định đưa thiết bị vào vận hành.",
+        "Trang này tập trung vào một ranh giới chưa có ở các bài trước: rơ-le bảo vệ làm nhiệm vụ gì, một lần kiểm tra nhằm xác nhận điều gì, người mới có thể tham gia đến đâu và khi nào phải dừng để báo người phụ trách. Nội dung không lặp bài dùng dụng cụ đo kiểm điện, vận hành trạm điện, đấu nối dây hay bảo dưỡng động cơ; mỗi bài trả lời một quyết định công việc khác nhau trong hành trình tìm hiểu nghề cơ điện mỏ."
+      ],
+      "key_points": [
+        [
+          "Có thể gặp trong nghề",
+          "Hoạt động thí nghiệm điện của đơn vị chuyên môn thuộc Vinacomin có kiểm tra rơ-le trung gian, rơ-le tín hiệu và rơ-le bảo vệ kỹ thuật số."
+        ],
+        [
+          "Mục đích là xác nhận bảo vệ",
+          "Kiểm tra giúp đối chiếu trạng thái, tín hiệu và khả năng làm việc của phần bảo vệ theo hồ sơ, quy trình và nhiệm vụ được giao."
+        ],
+        [
+          "Không tự ý hiệu chỉnh",
+          "Người mới không đổi thông số, bỏ qua liên động, vô hiệu bảo vệ hoặc kết luận thiết bị đủ điều kiện vận hành khi chưa có thẩm quyền."
+        ],
+        [
+          "Phải ghi và báo kết quả",
+          "Giá trị của người tham gia không chỉ ở thao tác mà còn ở việc ghi đúng hiện tượng, điều kiện kiểm tra và chuyển thông tin cho người chịu trách nhiệm."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học cơ điện mỏ có phải kiểm tra rơ-le bảo vệ không?",
+          "paragraphs": [
+            "Có thể. Phạm vi nghề kỹ thuật cơ điện mỏ hầm lò hiện hành bao gồm lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống điện cùng thiết bị phục vụ sản xuất. Tư liệu chuyên môn của Viện Khoa học Công nghệ Mỏ - Vinacomin còn liệt kê việc kiểm tra rơ-le trung gian, rơ-le tín hiệu và rơ-le bảo vệ kỹ thuật số trong năng lực thí nghiệm điện. Vì vậy, người học có lý do thực tế để làm quen với bộ phận bảo vệ và cách phối hợp kiểm tra.",
+            "Từ “có thể” cần được hiểu đúng. Hồ sơ tuyển sinh không quy định mọi học viên sẽ trực tiếp hiệu chỉnh rơ-le, làm tại một trạm biến áp cụ thể hoặc sử dụng cùng một bộ thiết bị thử. Phần việc thực tế phụ thuộc nội dung đã học, kết quả đánh giá tay nghề, loại hệ thống tại đơn vị tiếp nhận và phân công của người chịu trách nhiệm.",
+            "Người đăng ký cũng không nên đồng nhất việc nhìn trạng thái rơ-le với quyền thay thông số. Một người có thể được giao quan sát chỉ thị, ghi nhận tín hiệu, chuẩn bị hồ sơ hoặc hỗ trợ nhóm thử nghiệm nhưng chưa được phép tác động vào cấu hình bảo vệ. Nghề cơ điện đòi hỏi hiểu rõ giới hạn này ngay từ lúc học."
+          ]
+        },
+        {
+          "heading": "Rơ-le bảo vệ có vai trò gì trong hệ thống điện mỏ?",
+          "paragraphs": [
+            "Rơ-le bảo vệ là phần theo dõi những đại lượng hoặc trạng thái đã được thiết kế cho hệ thống để phát hiện điều kiện bất thường và phát tín hiệu bảo vệ phù hợp. Nó làm việc cùng thiết bị đóng cắt, mạch điều khiển, nguồn đo lường và các liên động khác. Vì vậy, không thể đánh giá một rơ-le chỉ bằng việc đèn có sáng hay màn hình có hiển thị.",
+            "Một kết quả kiểm tra chỉ có ý nghĩa khi gắn với đúng thiết bị, sơ đồ, hồ sơ cài đặt, điều kiện thử và người phê duyệt. Cùng một tên rơ-le nhưng vị trí, chức năng và giá trị áp dụng có thể khác nhau giữa các hệ thống. Người mới cần học cách nhận diện tài liệu và báo đúng thông tin trước khi nghĩ đến thao tác kỹ thuật.",
+            "Trang này không hướng dẫn tạo sự cố giả, đưa tín hiệu thử, đấu bộ thí nghiệm hoặc thay giá trị bảo vệ. Những việc đó có thể ảnh hưởng trực tiếp đến khả năng bảo vệ của hệ thống và chỉ được thực hiện bằng thiết bị phù hợp, trong điều kiện đã được kiểm soát, theo quy trình của đơn vị và dưới trách nhiệm của người có chuyên môn."
+          ]
+        },
+        {
+          "heading": "Kiểm tra rơ-le bảo vệ khác gì hiệu chỉnh rơ-le?",
+          "paragraphs": [
+            "Kiểm tra có thể bắt đầu từ việc xác nhận đúng thiết bị, xem trạng thái và tín hiệu, đối chiếu hồ sơ, ghi kết quả hoặc phối hợp trong một phép thử đã được lập kế hoạch. Hiệu chỉnh là bước có thể liên quan đến thay đổi hoặc xác lập giá trị để thiết bị đáp ứng yêu cầu kỹ thuật. Hai khái niệm liên quan nhưng không phải ai tham gia kiểm tra cũng có quyền hiệu chỉnh.",
+            "Người học cần tránh suy luận rằng phát hiện một giá trị khác dự kiến thì được phép sửa ngay. Sai khác có thể đến từ điều kiện thử, cách kết nối, thiết bị đo, hồ sơ chưa cập nhật hoặc chính phần tử đang kiểm tra. Cách làm đúng là giữ nguyên hiện trạng trong phạm vi được giao, ghi rõ điều quan sát được và báo người phụ trách để quyết định bước tiếp theo.",
+            "Sau kiểm tra còn có phần xác nhận kết quả, hoàn trả hệ thống và bàn giao. Người chỉ tham gia một công đoạn không tự kết luận toàn bộ hệ thống đã sẵn sàng. Đây là lý do hồ sơ, chữ ký trách nhiệm và trao đổi trong tổ đội quan trọng không kém thao tác với dụng cụ."
+          ]
+        },
+        {
+          "heading": "Người mới học cơ điện mỏ được tham gia đến đâu?",
+          "paragraphs": [
+            "Ở giai đoạn đầu, người học có thể bắt đầu từ nhận biết tên và chức năng của bộ phận, đọc ký hiệu trên sơ đồ, quan sát quy trình, chuẩn bị dụng cụ hoặc ghi chép theo biểu mẫu. Khi đã được hướng dẫn và đánh giá, người học mới thực hiện công đoạn cụ thể trong phạm vi phân công. Mức độ tham gia tăng theo năng lực được xác nhận, không tăng chỉ vì đã xem người khác làm.",
+            "Người mới không tự mở tủ điện, thay dây, đưa tín hiệu thử, đổi giá trị cài đặt, bỏ qua liên động hoặc vô hiệu chức năng bảo vệ. Cũng không tự đóng điện, chạy thử hay bàn giao thiết bị sau một phép kiểm tra. Nếu thiết bị, sơ đồ, nhãn nhận diện hoặc điều kiện hiện trường khác với hướng dẫn, cần dừng và báo đúng người chịu trách nhiệm.",
+            "Kinh nghiệm sửa điện dân dụng hoặc dùng đồng hồ đo bên ngoài có thể giúp tiếp thu nhanh hơn nhưng không thay thế đào tạo cơ điện mỏ. Hệ thống công nghiệp có thiết bị, tài liệu, tổ chức công việc và trách nhiệm khác. Người làm nghề đáng tin cậy là người biết phần nào mình làm được, phần nào cần xác nhận và không che giấu điều mình chưa chắc."
+          ]
+        },
+        {
+          "heading": "Ảnh thí nghiệm hiệu chỉnh rơ-le bảo vệ cho biết điều gì?",
+          "paragraphs": [
+            "Ảnh riêng của bài được trích từ ấn phẩm Thông tin Khoa học Công nghệ Mỏ số 1 năm 2024 do Viện Khoa học Công nghệ Mỏ - Vinacomin công bố. Chú thích gốc là “Thí nghiệm hiệu chỉnh hệ thống rơ le bảo vệ cho trạm biến áp 110kV”. Ảnh gốc trong tệp PDF có kích thước 327 × 180 pixel và cho thấy nhóm kỹ thuật viên mặc bảo hộ làm việc trước các tủ thiết bị điện.",
+            "Tư liệu xác nhận hoạt động thí nghiệm, hiệu chỉnh rơ-le bảo vệ có thật trong hệ thống chuyên môn của ngành than. Ảnh không cung cấp đủ căn cứ để xác định model rơ-le, giá trị cài đặt, phép thử cụ thể hoặc tên từng người, nên bài không suy đoán các chi tiết đó. Cách dùng ảnh này giúp người đọc thấy đúng bối cảnh công việc mà không biến hình minh họa thành hướng dẫn thao tác.",
+            "Những người trong ảnh là nhóm kỹ thuật viên làm công tác chuyên môn, không phải bằng chứng rằng học viên mới được giao hiệu chỉnh độc lập. Điều người đăng ký có thể rút ra là công việc đòi hỏi phối hợp, thiết bị thử, hồ sơ và trách nhiệm rõ ràng. Muốn biết mình sẽ học và thực hành đến mức nào, cần hỏi trực tiếp phạm vi chương trình cơ điện mỏ và cách đánh giá trước khi giao việc."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi chọn học cơ điện mỏ vì quan tâm rơ-le bảo vệ",
+          "items": [
+            "Trong chương trình cơ điện mỏ 10 tháng, học viên được học nhận biết và kiểm tra những nhóm thiết bị bảo vệ nào?",
+            "Phần thực hành rơ-le diễn ra trên mô hình, tại xưởng hay khi quan sát nhóm chuyên môn tại hiện trường?",
+            "Học viên được đánh giá cách đọc sơ đồ, ghi kết quả và báo sai khác ra sao trước khi tham gia công việc thực tế?",
+            "Ai có quyền xác nhận thông số, quyết định hiệu chỉnh và bàn giao hệ thống sau kiểm tra?",
+            "Người đã biết dùng dụng cụ đo điện cần học lại phần nào để làm đúng quy trình của thiết bị công nghiệp và đơn vị tiếp nhận?"
+          ]
+        }
+      ],
+      "takeaway_title": "Có thể tham gia kiểm tra, nhưng không tự ý hiệu chỉnh rơ-le bảo vệ",
+      "takeaway": "Người học cơ điện mỏ có thể được làm quen với việc nhận biết, theo dõi trạng thái, ghi kết quả và phối hợp kiểm tra rơ-le bảo vệ. Tuy nhiên, hiệu chỉnh thông số, vô hiệu bảo vệ, thao tác trên tủ điện hoặc quyết định đưa hệ thống vào vận hành không phải quyền mặc định của người mới. Chỉ thực hiện phần đã được đào tạo, xác nhận điều kiện và phân công; khi có sai khác phải giữ giới hạn công việc và báo người chịu trách nhiệm.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json về phạm vi nghề kỹ thuật cơ điện mỏ hầm lò. Tư liệu chuyên môn và ảnh riêng được xác minh ngày 07/11/2026 từ ấn phẩm Thông tin Khoa học Công nghệ Mỏ số 1 năm 2024 của Viện Khoa học Công nghệ Mỏ - Vinacomin; chú thích gốc “Thí nghiệm hiệu chỉnh hệ thống rơ le bảo vệ cho trạm biến áp 110kV”, ảnh trong PDF 327 × 180 pixel.",
+      "faqs": [
+        [
+          "Học cơ điện mỏ có phải ai cũng trực tiếp hiệu chỉnh rơ-le bảo vệ không?",
+          "Không. Người học cần hiểu chức năng và có thể tham gia kiểm tra trong phần được đào tạo; quyền hiệu chỉnh phụ thuộc tay nghề được xác nhận, quy trình và phân công cụ thể."
+        ],
+        [
+          "Biết dùng đồng hồ đo điện có được tự kiểm tra rơ-le không?",
+          "Không. Biết dụng cụ chưa đủ để xác định điểm thử, điều kiện kiểm tra, hồ sơ cài đặt hoặc quyền thao tác trên hệ thống bảo vệ."
+        ],
+        [
+          "Kiểm tra thấy sai khác có được tự đổi thông số rơ-le không?",
+          "Không. Cần giữ nguyên trong phạm vi được giao, ghi rõ điều kiện và kết quả rồi báo người có trách nhiệm quyết định bước tiếp theo."
+        ],
+        [
+          "Rơ-le bảo vệ có phải chỉ cần nhìn đèn báo là biết tốt hay hỏng không?",
+          "Không. Trạng thái hiển thị chỉ là một phần thông tin; kết luận phải dựa trên đúng thiết bị, sơ đồ, hồ sơ, điều kiện thử và quy trình kiểm tra."
+        ]
+      ],
+      "related": [
+        [
+          "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-dung-dung-cu-do-kiem-dien-khong/",
+          "Hiểu vai trò của dụng cụ đo kiểm điện trong nghề cơ điện mỏ"
+        ],
+        [
+          "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-bao-duong-dong-co-thiet-bi-khong/",
+          "Phân biệt kiểm tra bảo vệ với bảo dưỡng động cơ thiết bị"
+        ],
+        [
+          "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ phạm vi nghề kỹ thuật cơ điện mỏ hầm lò"
         ],
         [
           "/kiem-tra-dieu-kien/",

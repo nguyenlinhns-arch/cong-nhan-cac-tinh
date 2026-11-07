@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-29T07:30:00+07:00",
+  "updated_at": "2026-11-07T07:30:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -463,6 +463,13 @@
       "original_image_url": "https://imsat.vn/wp-content/uploads/2025/08/3.-CTy-_-CSWeb-_-2025_-1-image010.jpg",
       "provider": "Viện Khoa học Công nghệ Mỏ - Vinacomin",
       "description": "Kỹ sư của đơn vị thành viên Viện Khoa học Công nghệ Mỏ - Vinacomin dùng thiết bị đo trong công tác thí nghiệm, hiệu chỉnh thiết bị điện tại hiện trường"
+    },
+    {
+      "asset": "imsat-thi-nghiem-hieu-chinh-ro-le-bao-ve.webp",
+      "source_article_url": "https://imsat.vn/wp-content/uploads/2024/03/TTKHCN-Mo-_-1_-2024-1.pdf",
+      "original_image_url": "https://imsat.vn/wp-content/uploads/2024/03/TTKHCN-Mo-_-1_-2024-1.pdf#page=55",
+      "provider": "Viện Khoa học Công nghệ Mỏ - Vinacomin",
+      "description": "Nhóm kỹ thuật viên mặc bảo hộ thí nghiệm, hiệu chỉnh hệ thống rơ-le bảo vệ cho trạm biến áp 110 kV"
     }
   ]
 }

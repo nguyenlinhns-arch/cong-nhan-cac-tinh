@@ -109,11 +109,11 @@ if (!CHECK_ONLY) {
   await import("./normalize-site-scope-v10.mjs");
 }
 
-// /nhap-hoc and /kenlop9 are separate projects and do not share the
-// recruitment portal's header, brand shell or editorial pipeline.
+// /nhap-hoc, /kenlop9 and the noindex /diaban workspace are separate projects
+// and do not share the recruitment portal's header, brand shell or editorial pipeline.
 const htmlFiles = walk(SITE).filter((file) => {
   const relative = relativePath(file);
-  return file.endsWith(".html") && !relative.startsWith("nhap-hoc/") && !relative.startsWith("kenlop9/");
+  return file.endsWith(".html") && !relative.startsWith("nhap-hoc/") && !relative.startsWith("kenlop9/") && !relative.startsWith("diaban/");
 });
 const changed = [];
 for (const file of htmlFiles) {

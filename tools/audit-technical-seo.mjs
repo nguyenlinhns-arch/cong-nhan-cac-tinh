@@ -121,7 +121,10 @@ for (const url of sitemapUrls) {
   if (/[?#]/.test(url)) errors.push(`Sitemap URL contains a query or fragment: ${url}`);
 }
 
-const htmlFiles = collectFiles(root, (file) => file.endsWith(".html"));
+// /diaban is a noindex, client-side internal data workspace with an isolated
+// CSP and UI shell, so it is outside the public SEO page inventory.
+const htmlFiles = collectFiles(root, (file) => file.endsWith(".html"))
+  .filter((file) => !path.relative(root, file).split(path.sep).join("/").startsWith("diaban/"));
 const indexableUrls = new Set();
 let jsonLdBlocks = 0;
 let mobileViewportPages = 0;

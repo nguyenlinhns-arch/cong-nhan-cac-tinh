@@ -1,9 +1,17 @@
 {
   "version": "1.0",
-  "updated_at": "2026-11-06",
+  "updated_at": "2026-11-07",
   "canonical_hub": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/",
   "publisher": "Thầy Linh – Tuyển Thợ Mỏ",
   "articles": [
+    {
+      "title": "Học cơ điện mỏ có phải kiểm tra rơ-le bảo vệ không?",
+      "primary_query": "học cơ điện mỏ có phải kiểm tra rơ-le bảo vệ không",
+      "direct_answer": "Có thể. Người học cơ điện mỏ cần làm quen với việc nhận biết, kiểm tra trạng thái và phối hợp thử nghiệm rơ-le bảo vệ trong phạm vi được đào tạo, hướng dẫn và phân công. Người mới không tự ý đổi thông số, vô hiệu bảo vệ hoặc thao tác trên thiết bị điện chưa được bàn giao an toàn.",
+      "date_published": "2026-11-07",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-kiem-tra-ro-le-bao-ve-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json về phạm vi nghề kỹ thuật cơ điện mỏ hầm lò. Tư liệu chuyên môn và ảnh riêng được xác minh ngày 07/11/2026 từ ấn phẩm Thông tin Khoa học Công nghệ Mỏ số 1 năm 2024 của Viện Khoa học Công nghệ Mỏ - Vinacomin; chú thích gốc “Thí nghiệm hiệu chỉnh hệ thống rơ le bảo vệ cho trạm biến áp 110kV”, ảnh trong PDF 327 × 180 pixel."
+    },
     {
       "title": "Học cơ điện mỏ có phải dùng dụng cụ đo kiểm điện không?",
       "primary_query": "học cơ điện mỏ có phải dùng dụng cụ đo kiểm điện không",
