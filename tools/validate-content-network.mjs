@@ -153,7 +153,7 @@ for (const file of contentFiles) {
   const relative = path.relative(root,file).split(path.sep).join("/");
   if (!html.includes('/analytics.js?v=6')) fail(`${relative}: chưa nạp analytics v6`);
   const isAdsLanding = relative === "tuyen-tho-mo-quang-ninh/index.html";
-  const css = relative === "index.html" ? "/home-critical.css?v=2" : "/mobile-core.css?v=1";
+  const css = relative === "index.html" ? "/home-critical.css?v=3" : "/mobile-core.css?v=1";
   if (!isAdsLanding && !html.includes(css)) fail(`${relative}: chưa nạp ${css}`);
   if (!isAdsLanding && !html.includes('/mobile-core.js?v=1')) fail(`${relative}: chưa nạp /mobile-core.js?v=1`);
 }

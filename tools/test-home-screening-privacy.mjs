@@ -39,8 +39,11 @@ for(const content of ['pass','condition_pass','condition_review']){
  for(const mode of ['query','saved']){const h=harness({old:false,search:mode==='query'?`?utm_content=${content}`:'',attribution:mode==='saved'?content:''});assert.equal(JSON.parse(h.local.get('thaylinh_worker_journey_v3')).content,'');if(mode==='saved'){const saved=JSON.parse(h.local.get('thaylinh_attribution'));assert.equal(saved.utm_content,undefined);assert.equal(saved.first_utm_content,undefined);assert.equal(saved.utm_source,'google');assert.equal(saved.utm_campaign,'keep');}}
 }
 assert(read('v4-conversion.js').includes('Gửi thông tin để Thầy Linh tư vấn'));
-const home=read('index.html');assert(!/data-home-content-loader>addEventListener\("load"/.test(home));assert(home.includes('<noscript><link rel="stylesheet" href="/home-content.css?v=3">'));
-const load=home.match(/<script data-home-content-loader>([\s\S]*?)<\/script>/)[1];let appended;vm.runInNewContext(load,{document:{createElement:()=>({}),head:{append:n=>appended=n}}});assert.equal(appended.href,'/home-content.css?v=3');
+const home=read('index.html');
+const head=home.split('</head>')[0];
+assert(!home.includes('data-home-content-loader'));
+// A parser-discovered stylesheet also works when JavaScript is disabled.
+assert.equal((head.match(/<link rel="stylesheet" href="\/home-content\.css\?v=3">/g)||[]).length,1);
 assert(home.includes('TIN NGÀNH THAN CHỌN LỌC'));
 // Pages regenerates the verification-only page; the optional v4 builder emits
 // a registration form instead. Assert each action's actual semantics, not one variant.
@@ -53,4 +56,4 @@ assert.throws(()=>assertConditionAction('<form data-application-form><button dat
 assert.throws(()=>assertConditionAction('<form data-verification-condition-form><button class="verification-check__submit" type="submit">Gửi thông tin</button></form>'));
 assert.throws(()=>assertConditionAction('<main>Missing form</main>'));
 assert(read('homepage-redesign-critical.css').includes('.home-v6-facts span{font-size:13px;'));
-console.log(JSON.stringify({status:'passed',checks:['incomplete focus','pass CTA','review Zalo','repeat answers','pass-to-incomplete resets CTA','fresh-state legacy URL/attribution sanitized','reduced-motion result scroll','storage denied','legacy screening cleanup','no outcome analytics','legacy event ignored','actual submission event preserved','CSS starts immediately','noscript fallback','accurate CTA/news labels','mobile explanatory font source']},null,2));
+console.log(JSON.stringify({status:'passed',checks:['incomplete focus','pass CTA','review Zalo','repeat answers','pass-to-incomplete resets CTA','fresh-state legacy URL/attribution sanitized','reduced-motion result scroll','storage denied','legacy screening cleanup','no outcome analytics','legacy event ignored','actual submission event preserved','CSS starts immediately','CSS without JavaScript','accurate CTA/news labels','mobile explanatory font source']},null,2));

@@ -156,7 +156,7 @@ for (const file of htmlFiles) {
   const faviconHrefs = new Set(linkTags.filter((item) => item.rel?.split(/\s+/).includes("icon")).map((item) => item.href));
   const appleIcon = linkTags.find((item) => item.rel === "apple-touch-icon")?.href || "";
   const isAdsLanding = relative === "tuyen-tho-mo-quang-ninh/index.html";
-  const expectedMobileStyle = relative === "index.html" ? "/home-critical.css?v=2" : isAdsLanding ? "/google-ads-landing.css?v=3" : "/mobile-core.css?v=1";
+  const expectedMobileStyle = relative === "index.html" ? "/home-critical.css?v=3" : isAdsLanding ? "/google-ads-landing.css?v=3" : "/mobile-core.css?v=1";
   const mobileStyles = linkTags.filter((item) => item.rel?.split(/\s+/).includes("stylesheet") && item.href === expectedMobileStyle);
   const mobileScripts = tags(html, "script").filter((item) => /\/mobile-core\.js\?v=/.test(item.src || ""));
 

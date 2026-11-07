@@ -13,23 +13,25 @@ const file = path.join(root, "tuyen-tho-mo", "index.html");
 if (!fs.existsSync(file)) throw new Error("Worker-first homepage v11: thiếu index.html");
 let html = fs.readFileSync(file, "utf8");
 
-// Keep the cache-busting versions aligned with the current modular-delivery
-// contract. This is deterministic and idempotent across PR and Pages builds.
+// Both bundles affect the visible header, typography and responsive layout.
+// Keep them parser-discovered and render-blocking, in their existing cascade
+// order. A JavaScript-inserted stylesheet allowed the partial layout to paint.
 html = html
-  .replace(/\/home-critical\.css\?v=\d+/gu, "/home-critical.css?v=2")
+  .replace(/\/home-critical\.css\?v=\d+/gu, "/home-critical.css?v=3")
   .replace(/\/home-content\.css\?v=\d+/gu, "/home-content.css?v=3")
-  .replace(
-    /\s*<link\s+rel=["']preload["']\s+href=["']\/home-content\.css\?v=3["']\s+as=["']style["']\s+onload=["'][^"']*["']\s*\/?>/giu,
-    "",
-  )
-  .replace(
-    /\s*<script\s+data-home-content-loader>[\s\S]*?<\/script>/giu,
-    "",
-  )
-  .replace(
-    /(<link\s+rel=["']stylesheet["']\s+href=["']\/home-critical\.css\?v=2["']\s*\/?>)/iu,
-    '$1\n  <script data-home-content-loader>(()=>{const link=document.createElement("link");link.rel="stylesheet";link.href="/home-content.css?v=3";document.head.append(link)})()</script>',
-  );
+  .replace(/\s*<script\s+data-home-content-loader>[\s\S]*?<\/script>/giu, "")
+  .replace(/\s*<noscript>\s*<link[^>]+home-content\.css[^>]*>\s*<\/noscript>/giu, "")
+  .replace(/\s*<link\b[^>]+href=["']\/home-content\.css\?v=3["'][^>]*>/giu, "")
+  .replace(/\s*<link\b[^>]+data-home-font-preload[^>]*>/giu, "");
+const fontPreloads = [400, 700, 800].flatMap((weight) =>
+  ["vietnamese", "latin"].map((subset) =>
+    `  <link data-home-font-preload rel="preload" href="/assets/fonts/be-vietnam-pro-${subset}-${weight}-normal.woff2" as="font" type="font/woff2" crossorigin>`,
+  ),
+).join("\n");
+html = html.replace(
+  /(<link\s+rel=["']stylesheet["']\s+href=["']\/home-critical\.css\?v=3["']\s*\/?>)/iu,
+  `${fontPreloads}\n  $1\n  <link rel="stylesheet" href="/home-content.css?v=3">`,
+);
 fs.writeFileSync(file, html);
 
 const required = [
@@ -40,7 +42,7 @@ const required = [
   'class="home-funnel"',
   "7,5 triệu đồng/tháng",
   "20–25 triệu",
-  "/home-critical.css?v=2",
+  "/home-critical.css?v=3",
   "/home-content.css?v=3",
   "home-library__card--payroll",
   "home-library__grid--four",
@@ -57,7 +59,6 @@ console.log(JSON.stringify({
   status: "worker-first-home-v11-current-source-ready",
   legacyBase64Renderer: "retained-for-audit-not-executed",
   homepage: "/index.html",
-  homeCriticalCss: "/home-critical.css?v=2",
+  homeCriticalCss: "/home-critical.css?v=3",
   homeContentCss: "/home-content.css?v=3",
 }, null, 2));
-

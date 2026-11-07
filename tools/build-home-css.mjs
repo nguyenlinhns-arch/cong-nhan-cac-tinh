@@ -11,7 +11,15 @@ for (const [target, sources] of Object.entries(bundles)) {
   const content = sources.map((source) => {
     const file = path.join(root, source);
     if (!fs.existsSync(file)) throw new Error(`Missing homepage CSS source: ${source}`);
-    return `/* ${source} */\n${fs.readFileSync(file, "utf8").trim()}`;
+    let css = fs.readFileSync(file, "utf8").trim();
+    // Homepage fonts are preloaded. If a cold/slow connection misses the short
+    // font block period, keep the fallback for this visit instead of reflowing
+    // the heading and navigation seconds after the first paint. Other pages
+    // keep the shared fonts.css swap policy.
+    if (target === "home-critical.css" && source === "fonts.css") {
+      css = css.replace(/font-display:swap/g, "font-display:optional");
+    }
+    return `/* ${source} */\n${css}`;
   }).join("\n");
   fs.writeFileSync(path.join(root, target), `${content}\n`);
 }

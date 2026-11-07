@@ -1,3 +1,4 @@
+import "./test-home-first-paint.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -66,7 +67,9 @@ for (const marker of ["data-open-consent", "LCP, INP, CLS", "Mặc định Googl
 const home = read("index.html");
 const homeScript = read("portal-official.js");
 const homeStyles = read("landing-recruitment.css");
-if (!home.includes("data-home-content-loader") || /data-home-content-loader>addEventListener\("load"/.test(home)) fail("Trang chủ: CSS nội dung phải bắt đầu tải trước window.load");
+if (!/<link rel="stylesheet" href="\/home-content\.css\?v=3">/.test(home) || home.includes("data-home-content-loader")) fail("Trang chủ: CSS bố cục phải có trong HTML trước lần vẽ đầu tiên");
+if ((home.match(/data-home-font-preload/g) || []).length !== 6) fail("Trang chủ: thiếu preload các font cục bộ");
+if ((read("home-critical.css").match(/font-display:optional/g) || []).length !== 6) fail("Trang chủ: font không được hoán đổi muộn gây xô lệch bố cục");
 const homeVideoFacades = (home.match(/data-featured-video-facade/g) || []).length;
 if (homeVideoFacades !== 1) fail(`Trang chủ đơn giản: dự kiến 1 lớp xem trước video, thực tế ${homeVideoFacades}`);
 if (/<iframe\b[^>]+youtube/i.test(home)) fail("Trang chủ: còn tạo trình phát YouTube trước khi người dùng bấm xem");
@@ -245,4 +248,3 @@ console.log(JSON.stringify({
   warnings,
 }, null, 2));
 if (errors.length) process.exit(1);
-
