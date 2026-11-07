@@ -1,0 +1,7 @@
+# Private snapshots and embedded data must never be committed.
+private/
+dist/
+*-private.html
+*.csv
+qa/*.png
+__pycache__/
