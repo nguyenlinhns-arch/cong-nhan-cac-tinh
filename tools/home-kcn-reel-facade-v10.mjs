@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { reelImage, reelThumbnail } from "./video-thumbnail-assets.mjs";
 
 const file = path.resolve("tuyen-tho-mo", "index.html");
 let html = fs.readFileSync(file, "utf8");
@@ -39,6 +40,16 @@ html = html.replace(/<button\b[^>]*\bdata-facebook-reel-facade\b[^>]*>/i, (tag) 
   if (/\baria-label="[^"]*"/i.test(tag)) return tag.replace(/\baria-label="[^"]*"/i, `aria-label="${label}"`);
   return tag.replace(/>$/, ` aria-label="${label}">`);
 });
+
+// Keep the poster tied to the exact public Reel; never substitute a stock photo.
+html = html.replace(/(<button\b[^>]*\bdata-facebook-reel-facade\b[^>]*>)([\s\S]*?)(<\/button>)/i,
+  (_match, start, body, end) => start + reelImage("1145886217664123") + body.replace(/<img\b[^>]*>/gi, "") + end);
+html = html.replace(/(<script\b[^>]*data-home-reel-schema[^>]*>)([\s\S]*?)(<\/script>)/i,
+  (_match, start, json, end) => {
+    const schema = JSON.parse(json);
+    schema.thumbnailUrl = `https://thaylinhtuyenthomo.vn${reelThumbnail("1145886217664123").image}`;
+    return start + JSON.stringify(schema) + end;
+  });
 
 const device = html.match(/<div class="home-v6-reel__device">[\s\S]*?<\/div>/i)?.[0] || "";
 if (!device.includes("data-facebook-reel-facade")) throw new Error("KCN reel v10: chưa tạo được facade click-to-play");

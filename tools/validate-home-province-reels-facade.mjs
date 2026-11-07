@@ -17,7 +17,7 @@ for (const marker of [
 if (reelsSource.includes('<iframe title="${reel.title}"')) {
   errors.push("Hai Reel tỉnh vẫn được dựng iframe ngay trong HTML ban đầu");
 }
-if (!journeySource.includes('/home-province-reels.js?v=20260823-1')) {
+if (!journeySource.includes('/home-province-reels.js?v=20261107-1')) {
   errors.push("Loader trang chủ chưa bump cache cho home-province-reels.js");
 }
 for (const marker of [".home-province-reel__facade", ".home-province-reel__play", ".home-province-reel__watch"]) {

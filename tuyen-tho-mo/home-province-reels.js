@@ -18,6 +18,9 @@
       title: "Từ Ia RDeh đến vùng mỏ Quảng Ninh",
       description: "Nhà trường trực tiếp về địa phương tư vấn, kết nối chính quyền và doanh nghiệp để người lao động hiểu rõ nơi học, nghề học và cơ hội nhận việc sau đào tạo.",
       url: "https://www.facebook.com/reel/988978737487363",
+      thumbnail: "/assets/video-thumbnails/988978737487363.webp",
+      thumbnailWidth: 320,
+      thumbnailHeight: 569,
       embedUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F988978737487363%2F&show_text=false&width=500",
       page: "/viec-lam-nganh-than/gia-lai/",
       pageLabel: "Cơ hội tại Gia Lai",
@@ -27,6 +30,9 @@
       title: "Hành trình từ Quảng Ngãi đến vùng Than",
       description: "Theo chân người lao động từ quê nhà đến Quảng Ninh để thấy rõ quá trình lên đường, nhập học, học nghề và bắt đầu một hướng đi việc làm mới.",
       url: "https://www.facebook.com/reel/1015675787556708",
+      thumbnail: "/assets/video-thumbnails/1015675787556708.webp",
+      thumbnailWidth: 320,
+      thumbnailHeight: 569,
       embedUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1015675787556708%2F&show_text=false&width=500",
       page: "/viec-lam-nganh-than/quang-ngai/",
       pageLabel: "Cơ hội tại Quảng Ngãi",
@@ -50,6 +56,7 @@
           <article class="home-province-reel">
             <div class="home-province-reel__media" data-province-reel-host>
               <button class="home-province-reel__facade" type="button" data-province-reel-play="${index}" aria-label="Phát video ${reel.title}">
+                <img src="${reel.thumbnail}" alt="" width="${reel.thumbnailWidth}" height="${reel.thumbnailHeight}" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
                 <span class="home-province-reel__play" aria-hidden="true">▶</span>
                 <span class="home-province-reel__watch">Bấm để xem video · ${reel.province}</span>
               </button>
@@ -89,6 +96,7 @@
         description: reel.description,
         contentUrl: reel.url,
         embedUrl: reel.embedUrl,
+        thumbnailUrl: `https://thaylinhtuyenthomo.vn${reel.thumbnail}`,
         inLanguage: "vi-VN",
         author: { "@id": "https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/#person" },
       })),
