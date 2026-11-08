@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-11-08",
+  "updated_at": "2026-11-09",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -8387,6 +8387,144 @@
         [
           "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-kiem-tra-ro-le-bao-ve-khong/",
           "Phân biệt kiểm tra tiếp địa với kiểm tra rơ-le bảo vệ"
+        ],
+        [
+          "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ phạm vi nghề kỹ thuật cơ điện mỏ hầm lò"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-11-09",
+      "slug": "hoc-co-dien-mo-co-phai-kiem-tra-thiet-bi-dien-phong-no-khong",
+      "title": "Học cơ điện mỏ có phải kiểm tra thiết bị điện phòng nổ không?",
+      "short_title": "Cơ điện mỏ kiểm tra thiết bị điện phòng nổ",
+      "meta": "Học cơ điện mỏ có phải kiểm tra thiết bị điện phòng nổ không? Hiểu phần cần quan sát, đối chiếu và giới hạn thao tác an toàn của người mới.",
+      "eyebrow": "THIẾT BỊ ĐIỆN PHÒNG NỔ VÀ GIỚI HẠN THAO TÁC",
+      "primary_query": "học cơ điện mỏ có phải kiểm tra thiết bị điện phòng nổ không",
+      "query_variants": [
+        "thợ cơ điện mỏ có kiểm tra thiết bị điện phòng nổ không",
+        "học cơ điện mỏ có phải kiểm tra vỏ phòng nổ không",
+        "người mới học cơ điện mỏ có được mở thiết bị phòng nổ không"
+      ],
+      "direct_answer": "Có thể. Người học cơ điện mỏ cần biết nhận diện thiết bị điện phòng nổ và có thể được phân công quan sát, đối chiếu nhãn hoặc hồ sơ. Người mới không tự mở vỏ, tháo đầu cáp, sửa chữa, thử điện hay đưa thiết bị vào vận hành khi chưa được giao nhiệm vụ.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-ha-long-huong-dan-thiet-bi-ham-lo.webp",
+        "alt": "Nhóm công nhân Than Hạ Long trao đổi, hướng dẫn tay nghề tại khu vực thiết bị trong hầm lò",
+        "credit": "Ảnh: Vinacomin · công nhân Than Hạ Long được hướng dẫn tay nghề trong hầm lò"
+      },
+      "display_image": true,
+      "intro": [
+        "Học cơ điện mỏ có phải kiểm tra thiết bị điện phòng nổ không là câu hỏi cần tách khỏi việc dùng đồng hồ đo, kiểm tra rơ-le hoặc đo tiếp địa. Câu trả lời là có thể: người học cần nhận biết loại thiết bị, hiểu vì sao kết cấu bảo vệ phải được giữ nguyên và biết cách báo cáo dấu hiệu bất thường. Nhưng kiến thức nhận diện không đồng nghĩa người mới được tự mở vỏ, tháo đầu cáp hay cho thiết bị làm việc.",
+        "Bài này trả lời đúng một ý định riêng: kiểm tra thiết bị điện phòng nổ cần quan sát và đối chiếu những nhóm thông tin nào, khác sửa chữa ở đâu, người mới được tham gia đến mức nào và nên hỏi gì trước khi chọn học. Nội dung không đưa thông số đạt, quy trình tháo lắp hay hướng dẫn thử điện vì tiêu chí cụ thể phụ thuộc tài liệu của thiết bị, quy trình đơn vị và người có trách nhiệm tại hiện trường."
+      ],
+      "key_points": [
+        [
+          "Có thể gặp trong nghề",
+          "Tư liệu chuyên môn của Viện Khoa học Công nghệ Mỏ - Vinacomin nêu các thiết bị điện an toàn tia lửa dùng cho đo lường, giám sát, điều khiển và thông tin trong mỏ hầm lò."
+        ],
+        [
+          "Kiểm tra không chỉ nhìn vỏ",
+          "Cần xác định đúng thiết bị, nhãn nhận diện, tình trạng bên ngoài, vị trí đầu cáp, chi tiết cố định và hồ sơ áp dụng cho đúng nơi làm việc."
+        ],
+        [
+          "Không tự mở hoặc sửa",
+          "Người mới không tự tháo nắp, nới đầu cáp, thay gioăng, xử lý bề mặt lắp ghép, đo thử hay đóng điện khi chưa được giao nhiệm vụ."
+        ],
+        [
+          "Báo cáo đúng hiện trạng",
+          "Khi nhãn khó đọc, vỏ có dấu hiệu va đập, chi tiết thiếu hoặc hồ sơ không khớp, cần giữ giới hạn công việc và báo người phụ trách."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học cơ điện mỏ có phải kiểm tra thiết bị điện phòng nổ không?",
+          "paragraphs": [
+            "Có thể. Nguồn tuyển sinh hiện hành xác định nghề kỹ thuật cơ điện mỏ hầm lò có nhiệm vụ lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống điện cùng thiết bị mỏ. Tư liệu của Viện Khoa học Công nghệ Mỏ - Vinacomin còn cho thấy thiết bị điện an toàn tia lửa được dùng trong các mạch đo lường, cảm biến giám sát, tự động hóa, điều khiển và thông tin liên lạc. Vì vậy, người học phải hiểu đây là một nhóm thiết bị thực tế của môi trường hầm lò, không phải nội dung lý thuyết đứng riêng.",
+            "Từ “có thể” không có nghĩa mọi học viên đều kiểm tra cùng một loại thiết bị hoặc được giao cùng một công đoạn. Phạm vi tham gia phụ thuộc nội dung đã học, kết quả đánh giá tay nghề, loại thiết bị tại đơn vị tiếp nhận, tình trạng hiện trường và phân công của người chịu trách nhiệm. Có người bắt đầu bằng nhận diện nhãn và hồ sơ; có người được hướng dẫn quan sát tình trạng bên ngoài; thao tác sâu hơn chỉ diễn ra khi đủ điều kiện.",
+            "Mục tiêu đầu tiên của người mới là phân biệt được việc mình đang quan sát với việc mình chưa có quyền tác động. Nhìn thấy vỏ thiết bị, nút bấm, đầu cáp hay bu lông không đủ để kết luận thiết bị đáp ứng yêu cầu. Nếu không xác định chắc đúng đối tượng, tài liệu áp dụng và trạng thái an toàn, người học cần dừng ở bước ghi nhận rồi báo người phụ trách."
+          ]
+        },
+        {
+          "heading": "Thiết bị điện phòng nổ là gì và vì sao phải giữ nguyên kết cấu bảo vệ?",
+          "paragraphs": [
+            "Có thể hiểu ngắn gọn: thiết bị điện phòng nổ là thiết bị được thiết kế với một dạng bảo vệ phù hợp cho môi trường có nguy cơ cháy nổ. “Phòng nổ” không có nghĩa thiết bị không bao giờ hỏng hoặc người sử dụng được bỏ qua quy trình an toàn. Khả năng bảo vệ chỉ có ý nghĩa khi đúng loại thiết bị được dùng đúng vị trí, các bộ phận liên quan còn đúng trạng thái và điều kiện vận hành nằm trong phạm vi cho phép.",
+            "Tài liệu thiết bị điện tổng hợp phòng nổ do hệ thống quản lý thiết bị của Vinacomin công bố cho thấy một thiết bị có thể đồng thời phục vụ cấp điện, chiếu sáng hoặc khoan và bảo vệ mạch điện trong hầm lò. Điều này giúp người học thấy rằng tên gọi bên ngoài chưa nói hết chức năng. Trước khi kiểm tra, phải nhận diện đúng thiết bị và đối chiếu tài liệu đi kèm thay vì đoán theo hình dáng hoặc kinh nghiệm từ thiết bị dân dụng.",
+            "Những thay đổi nhỏ như thiếu chi tiết cố định, đầu cáp không đúng trạng thái, vỏ bị tác động hoặc bộ phận lắp ghép không còn nguyên có thể cần được người có trách nhiệm đánh giá. Bài viết không đặt ra ngưỡng đạt và không hướng dẫn cách tháo kiểm tra bên trong. Người học cần hiểu nguyên tắc bảo toàn hiện trạng trước khi học một quy trình cụ thể dưới sự giám sát."
+          ]
+        },
+        {
+          "heading": "Khi kiểm tra thiết bị điện phòng nổ cần quan sát và đối chiếu gì?",
+          "paragraphs": [
+            "Bước đầu là xác nhận đúng đối tượng: tên hoặc mã thiết bị, vị trí sử dụng, nhãn nhận diện và hồ sơ liên quan. Sau đó mới ghi nhận tình trạng nhìn thấy từ bên ngoài như vỏ, chi tiết cố định, đầu vào cáp, dấu hiệu va đập, biến dạng, ăn mòn hoặc phần nhận diện khó đọc. Danh sách cụ thể phải theo tài liệu kỹ thuật và biểu mẫu của đơn vị, không lấy một danh sách chung để thay thế quy trình tại hiện trường.",
+            "Người tham gia cũng cần chú ý sự khớp nhau giữa hiện trường và hồ sơ. Một thiết bị trông còn mới nhưng nhãn không đọc được hoặc tài liệu không xác định đúng vị trí vẫn cần được báo lại. Ngược lại, không nên chỉ vì có đủ giấy tờ mà bỏ qua dấu hiệu bất thường ngoài vỏ. Kết quả kiểm tra có giá trị khi tên thiết bị, tình trạng quan sát, thời điểm và người chịu trách nhiệm được liên kết rõ ràng.",
+            "Bài này cố ý không mô tả cách mở nắp, đo khe hở, thử cách điện, đấu nguồn hay kiểm tra mạch bên trong. Các thao tác đó có thể làm thay đổi hiện trạng hoặc tạo rủi ro nếu sai điều kiện. Người mới nên học cách dùng từ mô tả như “khó đọc”, “có dấu hiệu biến dạng” hoặc “không khớp hồ sơ”, thay vì tự kết luận thiết bị đạt, hỏng hay còn an toàn để vận hành."
+          ]
+        },
+        {
+          "heading": "Kiểm tra thiết bị điện phòng nổ khác sửa chữa như thế nào?",
+          "paragraphs": [
+            "Kiểm tra nhằm xác nhận đối tượng, quan sát tình trạng, đối chiếu thông tin và ghi nhận sai khác. Sửa chữa có thể phải tháo, làm sạch, thay chi tiết, xử lý đầu cáp, lắp lại, thử nghiệm và bàn giao. Hai công việc liên quan nhưng khác nhau về phạm vi, dụng cụ, điều kiện thực hiện và trách nhiệm xác nhận sau cùng.",
+            "Nếu thấy bu lông có dấu hiệu thiếu, đầu cáp bất thường hoặc vỏ bị va đập, người mới không tự siết, tháo hay thay bằng chi tiết “tương tự”. Một hành động tưởng như giúp thiết bị tốt hơn có thể xóa mất hiện trạng cần đánh giá hoặc làm thay đổi kết cấu bảo vệ. Cách làm đúng là bảo vệ khu vực theo hướng dẫn, ghi nhận điều nhìn thấy và chuyển thông tin cho người có thẩm quyền quyết định bước tiếp theo.",
+            "Sau sửa chữa, thiết bị còn cần được kiểm tra hoặc thử nghiệm theo tài liệu và quy trình trước khi bàn giao. Người chỉ tham gia một công đoạn không tự ký thay người chịu trách nhiệm, không tự xóa cảnh báo và không cho rằng lắp lại được là đã đủ điều kiện vận hành. Đây là ranh giới nghề nghiệp quan trọng mà học viên cần nắm trước cả kỹ năng tháo lắp."
+          ]
+        },
+        {
+          "heading": "Người mới học cơ điện mỏ được tham gia đến đâu?",
+          "paragraphs": [
+            "Ở giai đoạn đầu, người học có thể được hướng dẫn đọc tên thiết bị, nhận biết nhãn, xác định vị trí trên sơ đồ hoặc danh mục, quan sát quy trình và ghi chép theo biểu mẫu. Khi đã được đào tạo và đánh giá, người học mới thực hiện công đoạn cụ thể trong phạm vi phân công. Việc từng sửa tủ điện, động cơ hoặc thiết bị dân dụng không thay thế yêu cầu đào tạo đối với thiết bị dùng trong hầm lò.",
+            "Người mới không tự mở vỏ, tháo đầu cáp, thay gioăng hoặc bu lông, làm sạch bề mặt lắp ghép, đấu thiết bị đo, cấp điện, chạy thử hay đưa thiết bị trở lại làm việc. Cũng không tự chuyển thiết bị sang vị trí khác vì cho rằng thông số “gần giống”. Nếu nhãn, hồ sơ, hiện trường hoặc điều kiện an toàn không khớp hướng dẫn, cần dừng và báo đúng người chịu trách nhiệm.",
+            "Thói quen hữu ích là đọc lại tên thiết bị trước khi ghi, chụp hoặc đánh dấu theo đúng quy định của đơn vị, mô tả dấu hiệu thay vì đoán nguyên nhân và xác nhận người đã nhận bàn giao thông tin. Những việc này không thay thế tay nghề kỹ thuật, nhưng giúp người mới tránh nhầm thiết bị, tránh làm mất hiện trạng và phối hợp tốt hơn với tổ đội."
+          ]
+        },
+        {
+          "heading": "Ảnh Vinacomin cho thấy điều gì về cách học kiểm tra thiết bị trong hầm lò?",
+          "paragraphs": [
+            "Ảnh riêng của bài được Vinacomin công bố trong tin về Công ty Than Hạ Long chú trọng nâng cao tay nghề cho thợ mỏ. Ảnh gốc 1280 × 853 pixel cho thấy nhóm công nhân mặc bảo hộ đang trao đổi, hướng dẫn tại khu vực thiết bị trong hầm lò. Ảnh không ghi lại một phép kiểm tra điện phòng nổ cụ thể, nên bài không gán cho người trong ảnh thao tác mà tư liệu không thể hiện.",
+            "Giá trị của ảnh nằm ở bối cảnh học nghề có người hướng dẫn và thiết bị thực tế. Với thiết bị điện phòng nổ, việc quan sát đúng tên gọi, giới hạn công việc và cách báo cáo phải đi trước thao tác. Người mới không nên học bằng cách tự mở thiết bị để “xem bên trong” hoặc sao chép động tác mà chưa biết điều kiện an toàn và mục tiêu của công đoạn.",
+            "Tư liệu ảnh cũng nhắc người đăng ký hỏi rõ cách thực hành: ai hướng dẫn, học viên quan sát hay thao tác, tiêu chí nào dùng để đánh giá và ai chịu trách nhiệm xác nhận. Câu trả lời giúp phân biệt một chương trình có lộ trình tay nghề với việc chỉ nghe giới thiệu chung về thiết bị mỏ."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi chọn học cơ điện mỏ vì quan tâm thiết bị phòng nổ",
+          "items": [
+            "Trong chương trình cơ điện mỏ 10 tháng, học viên học nhận diện nhãn và dạng bảo vệ của thiết bị ở phần nào?",
+            "Học viên được quan sát hay thực hành công đoạn kiểm tra nào, và điều kiện nào phải đáp ứng trước khi được giao thao tác?",
+            "Khi phát hiện vỏ, đầu cáp, chi tiết cố định hoặc hồ sơ có dấu hiệu không khớp, học viên phải báo cho vị trí phụ trách nào?",
+            "Thiết bị sau sửa chữa được kiểm tra, thử nghiệm và bàn giao theo chuỗi trách nhiệm ra sao?",
+            "Kinh nghiệm sửa điện dân dụng được công nhận đến đâu và nội dung nào phải học lại để làm việc với thiết bị điện trong hầm lò?"
+          ]
+        }
+      ],
+      "takeaway_title": "Có thể tham gia kiểm tra, nhưng không tự mở hoặc sửa thiết bị điện phòng nổ",
+      "takeaway": "Người học cơ điện mỏ cần biết nhận diện thiết bị điện phòng nổ và có thể được giao quan sát, đối chiếu nhãn, hồ sơ, tình trạng bên ngoài hoặc phối hợp kiểm tra trong phạm vi đã được đào tạo. Tự mở vỏ, tháo đầu cáp, thay chi tiết, thử điện, sửa chữa, kết luận đạt hoặc đưa thiết bị vào vận hành không phải quyền mặc định của người mới. Khi hiện trường không khớp tài liệu hoặc có dấu hiệu bất thường, cần giữ giới hạn công việc và báo người chịu trách nhiệm.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json về phạm vi nghề kỹ thuật cơ điện mỏ hầm lò. Nội dung chuyên môn được xác minh ngày 08/11/2026 từ Tạp chí Công nghiệp Mỏ của Viện Khoa học Công nghệ Mỏ - Vinacomin về thiết bị điện an toàn tia lửa và tài liệu thiết bị điện tổng hợp phòng nổ ZBZ-4.0 do hệ thống quản lý thiết bị Vinacomin công bố. Ảnh riêng được xác minh từ tin Vinacomin về Than Hạ Long nâng cao chất lượng tay nghề; ảnh gốc dạng thumbnail kích thước 1280 × 853 pixel, mã SHA-256 bắt đầu bằng aa214c58.",
+      "faqs": [
+        [
+          "Học cơ điện mỏ có phải ai cũng được mở thiết bị điện phòng nổ để kiểm tra không?",
+          "Không. Người học cần hiểu thiết bị và có thể tham gia phần đã được đào tạo; quyền mở, thử hoặc sửa phụ thuộc điều kiện an toàn, quy trình, đánh giá tay nghề và phân công cụ thể."
+        ],
+        [
+          "Biết sửa điện dân dụng có được tự kiểm tra thiết bị phòng nổ không?",
+          "Không. Kinh nghiệm dân dụng không thay thế việc nhận diện đúng thiết bị, tài liệu áp dụng, trạng thái hiện trường và thẩm quyền thao tác trong môi trường hầm lò."
+        ],
+        [
+          "Thấy đầu cáp hoặc bu lông bất thường có được tự siết lại không?",
+          "Không nên tự xử lý khi chưa được giao việc. Cần ghi nhận đúng dấu hiệu, giữ hiện trạng trong phạm vi an toàn và báo người phụ trách để quyết định bước kiểm tra hoặc sửa chữa."
+        ]
+      ],
+      "related": [
+        [
+          "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-dung-dung-cu-do-kiem-dien-khong/",
+          "Hiểu giới hạn khi dùng dụng cụ đo kiểm điện trong nghề cơ điện mỏ"
+        ],
+        [
+          "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-kiem-tra-he-thong-tiep-dia-khong/",
+          "Phân biệt kiểm tra thiết bị phòng nổ với kiểm tra hệ thống tiếp địa"
         ],
         [
           "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
