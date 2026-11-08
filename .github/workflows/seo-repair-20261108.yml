@@ -1,0 +1,42 @@
+name: Repair SEO payload 2026-11-08
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".seo-repair-20261108/**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: seo-repair-20261108
+  cancel-in-progress: false
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - name: Restore verified SEO files and clean repair payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .seo-repair-20261108/chunk-* > "$RUNNER_TEMP/seo-20261108.tar.gz"
+          echo "afe86554cbf9b19b7826c6cf9f296efd310d820f311888b3525acad9c60a7a5c  $RUNNER_TEMP/seo-20261108.tar.gz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/seo-20261108.tar.gz" -C .
+          node -e "JSON.parse(require('fs').readFileSync('content/daily-seo-articles.json','utf8'))"
+          node -e "JSON.parse(require('fs').readFileSync('content/approved-worker-images.json','utf8'))"
+          node -e "JSON.parse(require('fs').readFileSync('content/article-image-dimensions.json','utf8'))"
+          node -e "JSON.parse(require('fs').readFileSync('tuyen-tho-mo/daily-seo-articles.json','utf8'))"
+          node -e "JSON.parse(require('fs').readFileSync('tuyen-tho-mo/search-content.json','utf8'))"
+          rm -rf .seo-repair-20261108
+          rm -f .github/workflows/seo-repair-20261108.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- .seo-repair-20261108 .github/workflows/seo-repair-20261108.yml content/approved-worker-images.json content/article-image-dimensions.json content/daily-seo-articles.json tuyen-tho-mo/assets/vinacomin-tho-co-dien-duong-huy-doi-chieu-so-do-so-truc.webp tuyen-tho-mo/cam-nang-nghe-mo/index.html tuyen-tho-mo/daily-seo-articles.json tuyen-tho-mo/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-kiem-tra-he-thong-tiep-dia-khong/index.html tuyen-tho-mo/giai-dap-nghe-mo/index.html tuyen-tho-mo/index.html tuyen-tho-mo/llms.txt tuyen-tho-mo/search-content.json tuyen-tho-mo/search-index.json tuyen-tho-mo/sitemap.xml
+          git commit -m "Repair SEO payload 2026-11-08"
+          git push origin HEAD:main
