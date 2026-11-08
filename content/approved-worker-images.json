@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07T07:30:00+07:00",
+  "updated_at": "2026-11-08T07:30:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -470,6 +470,13 @@
       "original_image_url": "https://imsat.vn/wp-content/uploads/2024/03/TTKHCN-Mo-_-1_-2024-1.pdf#page=55",
       "provider": "Viện Khoa học Công nghệ Mỏ - Vinacomin",
       "description": "Nhóm kỹ thuật viên mặc bảo hộ thí nghiệm, hiệu chỉnh hệ thống rơ-le bảo vệ cho trạm biến áp 110 kV"
+    },
+    {
+      "asset": "vinacomin-tho-co-dien-duong-huy-doi-chieu-so-do-so-truc.webp",
+      "source_article_url": "https://vinacomin.vn/vi/news/slug/do-tien-dung-to-truong-guong-mau-giu-mach-dien-cho-san-xuat-o-phan-xuong-quan-ly-ham-tram",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2026/T08/13/DH1.jpg",
+      "provider": "Vinacomin",
+      "description": "Nhóm công nhân cơ điện Than Dương Huy mặc bảo hộ xanh đối chiếu sổ trực trước sơ đồ nguyên lý cung cấp điện của mỏ"
     }
   ]
 }

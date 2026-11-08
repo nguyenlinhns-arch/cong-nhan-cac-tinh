@@ -32,10 +32,19 @@
 - [Đi làm mỏ than cần chuẩn bị bao nhiêu tiền?](https://thaylinhtuyenthomo.vn/di-lam-mo-than-can-chuan-bi-bao-nhieu-tien/): Không có một con số chung vì chi phí đi lại và nhu cầu cá nhân khác nhau. Theo chính sách đang áp dụng, người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí 3 bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học. Chỉ nên dự trù tiền đi lại, giấy tờ, khám theo hướng dẫn và chi tiêu cá nhân sau khi được xác nhận lịch.
 - Các câu đã có trang chuẩn về điều kiện, hồ sơ, học phí, thu nhập, an toàn và so sánh nghề được định tuyến từ trang trung tâm; không tạo trang lặp nội dung.
 
+## Phóng sự hiện trường nguyên bản
+
+- [Chuyên mục phóng sự hiện trường](https://thaylinhtuyenthomo.vn/phong-su/): ghi chép từ video, chuyến công tác và dữ liệu thực địa do Thầy Linh – Tuyển Thợ Mỏ trực tiếp công bố.
+- [RSS phóng sự](https://thaylinhtuyenthomo.vn/phong-su/feed.xml) và [JSON Feed phóng sự](https://thaylinhtuyenthomo.vn/phong-su/feed.json): kênh phân phối riêng cho nội dung nguyên bản, tách khỏi feed bài biên tập từ nguồn ngoài.
+- [Ở Ia RDeh, con đường đến vùng mỏ bắt đầu từ một cuộc gặp ngay tại xã](https://thaylinhtuyenthomo.vn/phong-su/ia-rdeh-gia-lai-con-duong-den-vung-mo/): Ghi chép hiện trường tại Ia RDeh, Gia Lai: tư vấn nghề mỏ, phối hợp ba bên và câu chuyện gia đình công nhân Kso Sới.
+- [Một chuyến đi từ Quảng Ngãi cho thấy điều tin tuyển dụng thường bỏ sót](https://thaylinhtuyenthomo.vn/phong-su/quang-ngai-hanh-trinh-den-vung-mo-quang-ninh/): Ghi chép hành trình từ Quảng Ngãi tới Quảng Ninh: rời quê, đến nơi tiếp nhận, nhập học và kiểm chứng lộ trình học nghề mỏ.
+<!-- field-report-v8:end -->
+
 ## Giải đáp nghề mỏ hằng ngày
 
 - Trang trung tâm: [Giải đáp nghề mỏ Quảng Ninh mỗi ngày](https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/).
 - Dữ liệu máy đọc: [daily-seo-articles.json](https://thaylinhtuyenthomo.vn/daily-seo-articles.json).
+- [Học cơ điện mỏ có phải kiểm tra hệ thống tiếp địa không?](https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-kiem-tra-he-thong-tiep-dia-khong/): Có thể. Người học cơ điện mỏ cần hiểu hệ thống tiếp địa và có thể được phân công nhận biết, đối chiếu hồ sơ hoặc phối hợp kiểm tra trong phạm vi đã học. Người mới không tự tách dây nối đất, đấu thiết bị đo, kết luận đạt hay đóng điện khi chưa được giao nhiệm vụ.
 - [Học cơ điện mỏ có phải kiểm tra rơ-le bảo vệ không?](https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-kiem-tra-ro-le-bao-ve-khong/): Có thể. Người học cơ điện mỏ cần làm quen với việc nhận biết, kiểm tra trạng thái và phối hợp thử nghiệm rơ-le bảo vệ trong phạm vi được đào tạo, hướng dẫn và phân công. Người mới không tự ý đổi thông số, vô hiệu bảo vệ hoặc thao tác trên thiết bị điện chưa được bàn giao an toàn.
 - [Học cơ điện mỏ có phải dùng dụng cụ đo kiểm điện không?](https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-dung-dung-cu-do-kiem-dien-khong/): Có. Dụng cụ đo kiểm điện và cơ khí nằm trong nhóm thiết bị của nghề cơ điện mỏ. Người học cần biết chọn đúng dụng cụ, đọc và báo kết quả trong phạm vi đã được hướng dẫn; không tự đo trên thiết bị hoặc mạch điện khi chưa được giao nhiệm vụ.
 - [Học cơ điện mỏ có phải bảo dưỡng động cơ thiết bị không?](https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-bao-duong-dong-co-thiet-bi-khong/): Có thể. Bảo dưỡng và sửa chữa máy móc, thiết bị cơ - điện thuộc phạm vi nghề kỹ thuật cơ điện mỏ; tư liệu chính thức Vinacomin cũng ghi nhận thợ cơ điện sửa chữa động cơ thiết bị quạt gió. Tuy nhiên, người mới chỉ làm phần đã được đào tạo, hướng dẫn và phân công.
@@ -336,12 +345,3 @@
 - [Điều kiện tuyển thợ lò năm 2026: cánh cửa mở với ai?](https://thaylinhtuyenthomo.vn/bai-viet/dieu-kien-tuyen-tho-lo-2026/): Cánh cửa vào nghề không đòi hỏi kinh nghiệm sẵn có; nó bắt đầu bằng sức khỏe, thể lực và quyết tâm học một công việc có tay nghề.
 - [TKV bước vào giai đoạn mới: cơ hội nào cho người thợ trẻ?](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/07/31/tai-co-cau-tkv-2026-viec-lam-tho-mo/): Tuyển dụng, đào tạo, giữ chân thợ lò và cơ giới hóa được đặt trong cùng một chiến lược—tín hiệu rõ về giá trị của người thợ có tay nghề trong giai đoạn 2026–2030.
 - [Sau ca làm: đời sống thợ mỏ được chăm lo ra sao?](https://thaylinhtuyenthomo.vn/tin-nganh-than/2026/07/30/phuc-loi-tho-mo-tkv-2026/): Từ 108 mái ấm, hơn 71.000 lượt khám sức khỏe đến những bữa cơm công đoàn, đời sống người thợ được xây dựng cả trong và ngoài ca sản xuất.
-
-<!-- field-report-v8:start -->
-## Phóng sự hiện trường nguyên bản
-
-- [Chuyên mục phóng sự hiện trường](https://thaylinhtuyenthomo.vn/phong-su/): ghi chép từ video, chuyến công tác và dữ liệu thực địa do Thầy Linh – Tuyển Thợ Mỏ trực tiếp công bố.
-- [RSS phóng sự](https://thaylinhtuyenthomo.vn/phong-su/feed.xml) và [JSON Feed phóng sự](https://thaylinhtuyenthomo.vn/phong-su/feed.json): kênh phân phối riêng cho nội dung nguyên bản, tách khỏi feed bài biên tập từ nguồn ngoài.
-- [Ở Ia RDeh, con đường đến vùng mỏ bắt đầu từ một cuộc gặp ngay tại xã](https://thaylinhtuyenthomo.vn/phong-su/ia-rdeh-gia-lai-con-duong-den-vung-mo/): Ghi chép hiện trường tại Ia RDeh, Gia Lai: tư vấn nghề mỏ, phối hợp ba bên và câu chuyện gia đình công nhân Kso Sới.
-- [Một chuyến đi từ Quảng Ngãi cho thấy điều tin tuyển dụng thường bỏ sót](https://thaylinhtuyenthomo.vn/phong-su/quang-ngai-hanh-trinh-den-vung-mo-quang-ninh/): Ghi chép hành trình từ Quảng Ngãi tới Quảng Ninh: rời quê, đến nơi tiếp nhận, nhập học và kiểm chứng lộ trình học nghề mỏ.
-<!-- field-report-v8:end -->

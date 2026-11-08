@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://thaylinhtuyenthomo.vn/</loc><lastmod>2026-11-07</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://thaylinhtuyenthomo.vn/</loc><lastmod>2026-11-08</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://thaylinhtuyenthomo.vn/an-toan-ky-luat-moi-truong/</loc><lastmod>2026-08-01</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://thaylinhtuyenthomo.vn/anh-video-thuc-te/</loc><lastmod>2026-08-01</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://thaylinhtuyenthomo.vn/bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/</loc><lastmod>2026-08-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -510,7 +510,11 @@
   <url><loc>https://thaylinhtuyenthomo.vn/nguoi-tinh-xa-dang-ky-di-lam-mo-the-nao/</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://thaylinhtuyenthomo.vn/hoc-xong-nghe-mo-lam-o-cong-ty-nao/</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://thaylinhtuyenthomo.vn/di-lam-mo-than-can-chuan-bi-bao-nhieu-tien/</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/</loc><lastmod>2026-11-07</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://thaylinhtuyenthomo.vn/phong-su/</loc><lastmod>2026-08-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://thaylinhtuyenthomo.vn/phong-su/ia-rdeh-gia-lai-con-duong-den-vung-mo/</loc><lastmod>2026-08-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://thaylinhtuyenthomo.vn/phong-su/quang-ngai-hanh-trinh-den-vung-mo-quang-ninh/</loc><lastmod>2026-08-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/</loc><lastmod>2026-11-08</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-kiem-tra-he-thong-tiep-dia-khong/</loc><lastmod>2026-11-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-kiem-tra-ro-le-bao-ve-khong/</loc><lastmod>2026-11-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-dung-dung-cu-do-kiem-dien-khong/</loc><lastmod>2026-11-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-bao-duong-dong-co-thiet-bi-khong/</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -581,7 +585,4 @@
   <url><loc>https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/nen-hoc-khai-thac-mo-hay-xay-dung-mo-ham-lo/</loc><lastmod>2026-08-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/di-lam-mo-than-co-can-kinh-nghiem-khong/</loc><lastmod>2026-08-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/lo-trinh-di-lam-mo-than-quang-ninh-tu-dang-ky-den-nhan-viec/</loc><lastmod>2026-08-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thaylinhtuyenthomo.vn/phong-su/</loc><lastmod>2026-08-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thaylinhtuyenthomo.vn/phong-su/ia-rdeh-gia-lai-con-duong-den-vung-mo/</loc><lastmod>2026-08-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://thaylinhtuyenthomo.vn/phong-su/quang-ngai-hanh-trinh-den-vung-mo-quang-ninh/</loc><lastmod>2026-08-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

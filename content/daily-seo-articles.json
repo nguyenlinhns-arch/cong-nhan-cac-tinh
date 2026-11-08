@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-11-07",
+  "updated_at": "2026-11-08",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -8257,6 +8257,136 @@
         [
           "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-bao-duong-dong-co-thiet-bi-khong/",
           "Phân biệt kiểm tra bảo vệ với bảo dưỡng động cơ thiết bị"
+        ],
+        [
+          "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ phạm vi nghề kỹ thuật cơ điện mỏ hầm lò"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-11-08",
+      "slug": "hoc-co-dien-mo-co-phai-kiem-tra-he-thong-tiep-dia-khong",
+      "title": "Học cơ điện mỏ có phải kiểm tra hệ thống tiếp địa không?",
+      "short_title": "Cơ điện mỏ kiểm tra hệ thống tiếp địa",
+      "meta": "Học cơ điện mỏ có phải kiểm tra hệ thống tiếp địa không? Hiểu mục đích kiểm tra, cách đọc hồ sơ và giới hạn an toàn của người mới.",
+      "eyebrow": "TIẾP ĐỊA VÀ GIỚI HẠN CÔNG VIỆC CƠ ĐIỆN MỎ",
+      "primary_query": "học cơ điện mỏ có phải kiểm tra hệ thống tiếp địa không",
+      "query_variants": [
+        "thợ cơ điện mỏ có kiểm tra tiếp địa không",
+        "học cơ điện mỏ có phải đo điện trở tiếp địa không",
+        "người mới học cơ điện mỏ có được kiểm tra nối đất không"
+      ],
+      "direct_answer": "Có thể. Người học cơ điện mỏ cần hiểu hệ thống tiếp địa và có thể được phân công nhận biết, đối chiếu hồ sơ hoặc phối hợp kiểm tra trong phạm vi đã học. Người mới không tự tách dây nối đất, đấu thiết bị đo, kết luận đạt hay đóng điện khi chưa được giao nhiệm vụ.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-tho-co-dien-duong-huy-doi-chieu-so-do-so-truc.webp",
+        "alt": "Nhóm công nhân cơ điện Than Dương Huy đối chiếu sổ trực trước sơ đồ nguyên lý cung cấp điện của mỏ",
+        "credit": "Ảnh: Vinacomin · công nhân cơ điện Than Dương Huy tác nghiệp cùng đồng nghiệp"
+      },
+      "display_image": true,
+      "intro": [
+        "Học cơ điện mỏ có phải kiểm tra hệ thống tiếp địa không là câu hỏi thực tế khi người lao động đã biết nghề này có liên quan đến trạm điện, dụng cụ đo kiểm và rơ-le bảo vệ. Câu trả lời là có thể: hệ thống tiếp địa là một phần cần được nhận biết và kiểm tra trong công việc điện. Tuy nhiên, người mới không mặc nhiên được tự đo, tháo điểm nối hoặc quyết định hệ thống đủ điều kiện làm việc.",
+        "Bài này giải quyết một ý định riêng chưa có trong chuỗi: vì sao tiếp địa phải được quản lý như một hệ thống, kiểm tra khác sửa chữa ở điểm nào, hồ sơ và sổ trực có vai trò gì, và người học phải dừng ở đâu. Nội dung không lặp bài vận hành trạm điện, dùng dụng cụ đo kiểm hay kiểm tra rơ-le bảo vệ; mỗi trang trả lời một quyết định công việc khác nhau."
+      ],
+      "key_points": [
+        [
+          "Có thể gặp trong nghề",
+          "Năng lực thí nghiệm điện của đơn vị thuộc Viện Khoa học Công nghệ Mỏ - Vinacomin có nội dung đo điện trở tiếp địa của hệ thống tiếp địa."
+        ],
+        [
+          "Không chỉ nhìn một sợi dây",
+          "Cần đối chiếu đúng thiết bị, điểm nối, sơ đồ, tình trạng hiện trường và hồ sơ kiểm tra trước khi báo kết quả."
+        ],
+        [
+          "Người mới không tự đo",
+          "Không tự tách điểm nối, đóng cọc phụ, đấu dây đo, tác động thiết bị điện hoặc kết luận đạt khi chưa được giao nhiệm vụ."
+        ],
+        [
+          "Ghi chép là phần công việc",
+          "Sổ trực và sơ đồ giúp tổ đội biết hệ thống nào đã kiểm tra, điều kiện lúc kiểm tra và sai khác nào cần bàn giao."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học cơ điện mỏ có phải kiểm tra hệ thống tiếp địa không?",
+          "paragraphs": [
+            "Có thể. Phạm vi nghề kỹ thuật cơ điện mỏ hầm lò hiện hành gồm lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống điện cùng thiết bị phục vụ sản xuất. Tư liệu của Viện Khoa học Công nghệ Mỏ - Vinacomin về phòng thí nghiệm hiệu chỉnh điện VILAS 534 còn nêu phép thử đối với hệ thống tiếp địa, trong đó có đo điện trở tiếp địa. Vì vậy, người học cần hiểu tiếp địa là một phần có thật trong công việc chuyên môn, không phải khái niệm chỉ xuất hiện trong sách.",
+            "Từ “có thể” rất quan trọng. Hồ sơ tuyển sinh không quy định mọi học viên sẽ trực tiếp đo điện trở tiếp địa, làm ở cùng một loại trạm hoặc dùng cùng một thiết bị đo. Mức độ tham gia phụ thuộc chương trình đã học, kết quả đánh giá tay nghề, hệ thống tại đơn vị tiếp nhận, điều kiện hiện trường và phân công cụ thể của người chịu trách nhiệm.",
+            "Người đăng ký cũng không nên hiểu rằng đã biết dùng đồng hồ điện là có thể tự kiểm tra tiếp địa. Một phép kiểm tra chỉ có giá trị khi đúng hệ thống, đúng phương pháp, đúng điều kiện và có người chịu trách nhiệm xác nhận. Người mới có thể bắt đầu từ nhận biết, quan sát, chuẩn bị hồ sơ và ghi chép trước khi được giao thao tác kỹ thuật."
+          ]
+        },
+        {
+          "heading": "Hệ thống tiếp địa bảo vệ điều gì và vì sao phải kiểm tra?",
+          "paragraphs": [
+            "Có thể hình dung hệ thống tiếp địa là một phần của giải pháp bảo vệ điện, giúp tạo đường dẫn đã được thiết kế cho dòng điện trong những điều kiện nhất định và liên kết các bộ phận cần nối đất. Nó làm việc cùng thiết bị đóng cắt, bảo vệ, dây dẫn, vỏ thiết bị và kết cấu liên quan. Vì thế, chỉ thấy một dây nối còn nguyên không đủ để kết luận toàn bộ hệ thống đang đáp ứng yêu cầu.",
+            "Việc kiểm tra nhằm xác nhận tình trạng thực tế so với sơ đồ, hồ sơ và yêu cầu kỹ thuật áp dụng cho đúng vị trí. Sai khác có thể nằm ở mối nối, nhận diện, sự liên tục, tình trạng cơ học, điều kiện môi trường hoặc kết quả đo. Người tham gia phải mô tả đúng điều quan sát được, không suy đoán nguyên nhân khi chưa có đủ căn cứ.",
+            "Bài này không hướng dẫn lựa chọn điểm đo, bố trí cọc phụ, đấu dây đo hoặc xác định ngưỡng đạt. Những chi tiết đó phụ thuộc loại hệ thống, tài liệu kỹ thuật và quy trình của đơn vị; thao tác sai còn có thể làm thay đổi trạng thái bảo vệ. Người học cần nắm nguyên tắc nhận diện và báo cáo trước khi học quy trình thực hành có giám sát."
+          ]
+        },
+        {
+          "heading": "Kiểm tra hệ thống tiếp địa khác gì sửa chữa hoặc cải tạo?",
+          "paragraphs": [
+            "Kiểm tra có thể gồm xác nhận đúng đối tượng, quan sát tình trạng, đối chiếu sơ đồ, ghi nhận kết quả hoặc hỗ trợ một phép đo đã được lập kế hoạch. Sửa chữa và cải tạo có thể làm thay đổi mối nối, dây dẫn, điện cực hoặc cấu hình của hệ thống. Hai nhóm việc liên quan nhưng khác nhau về thẩm quyền, phương án và trách nhiệm nghiệm thu.",
+            "Khi phát hiện điểm nối có dấu hiệu bất thường hoặc kết quả khác dự kiến, người mới không tự tháo ra để làm sạch, siết lại, thay dây hay đo lại theo cách khác. Thao tác tưởng như nhỏ có thể khiến hiện trạng bị mất, làm sai lệch bước đánh giá tiếp theo hoặc ảnh hưởng đến khả năng bảo vệ. Cách làm đúng là giữ giới hạn công việc, đánh dấu thông tin cần thiết theo hướng dẫn và báo người phụ trách.",
+            "Sau sửa chữa còn phải có bước kiểm tra lại và bàn giao theo quy trình. Người chỉ tham gia một công đoạn không tự ký thay người có trách nhiệm hoặc kết luận toàn bộ hệ thống đã sẵn sàng. Học nghề cơ điện không chỉ học cách dùng dụng cụ; còn phải học cách quản lý hiện trạng, chuyển giao thông tin và tôn trọng chuỗi trách nhiệm."
+          ]
+        },
+        {
+          "heading": "Người mới học cơ điện mỏ được tham gia đến đâu?",
+          "paragraphs": [
+            "Ở giai đoạn đầu, người học có thể được hướng dẫn nhận biết ký hiệu tiếp địa trên sơ đồ, xác định tên thiết bị, quan sát cách kiểm tra và ghi chép theo biểu mẫu. Khi đã được đào tạo và đánh giá, người học mới thực hiện công đoạn cụ thể trong phạm vi phân công. Việc đã quan sát người khác làm hoặc từng đo tiếp địa ở công trình dân dụng không thay thế quyền thao tác trong hệ thống điện mỏ.",
+            "Người mới không tự mở tủ điện, tách dây nối đất, tháo mối nối, đấu thiết bị đo, đóng điện hoặc cho thiết bị chạy thử. Cũng không tự chọn phương pháp đo, tự đặt tiêu chí đạt hay bỏ qua sai khác vì cho rằng giá trị “gần đúng”. Nếu sơ đồ, nhãn thiết bị, hiện trường hoặc điều kiện an toàn không khớp hướng dẫn, cần dừng và báo đúng người chịu trách nhiệm.",
+            "Một cách chuẩn bị tốt là luyện thói quen đọc đúng tên hệ thống, ghi thời điểm và điều kiện quan sát, dùng từ mô tả thay vì phán đoán, rồi xác nhận lại nội dung bàn giao. Những kỹ năng này có vẻ chậm ở buổi đầu nhưng giúp người mới giảm nhầm lẫn khi làm việc theo tổ đội và tạo nền tảng để học thao tác kỹ thuật an toàn hơn."
+          ]
+        },
+        {
+          "heading": "Sơ đồ và sổ trực giúp kiểm tra hệ thống tiếp địa như thế nào?",
+          "paragraphs": [
+            "Ảnh riêng của bài do Vinacomin công bố trong tin về Tổ điện 3KV, Phân xưởng Quản lý Hầm Trạm của Công ty Than Dương Huy - TKV ngày 13/08/2026. Ảnh gốc 1600 × 1200 pixel cho thấy ba công nhân cơ điện mặc bảo hộ xanh đang tác nghiệp với sổ ghi chép; phía sau là sơ đồ nguyên lý cung cấp điện của mỏ. Ảnh không ghi lại một phép đo tiếp địa, nên bài không gán cho người trong ảnh thao tác mà tư liệu không thể hiện.",
+            "Giá trị của ảnh nằm ở quy trình làm việc: hệ thống điện được quản lý bằng sơ đồ, sổ trực và trao đổi giữa đồng nghiệp, không chỉ bằng thao tác tại thiết bị. Khi kiểm tra tiếp địa, người thực hiện cần biết mình đang xem phần nào của hệ thống, kết quả được ghi ở đâu và thông tin nào phải bàn giao. Thiếu mối liên hệ này, một con số đo riêng lẻ chưa đủ giúp tổ đội ra quyết định.",
+            "Tư liệu ảnh cũng giúp người đăng ký hình dung nghề cơ điện có phần quan sát, đối chiếu và ghi chép bên cạnh công việc tại hiện trường. Điều đó không chứng minh học viên mới được giao đo tiếp địa độc lập. Muốn biết phạm vi thực hành cụ thể, người đăng ký nên hỏi chương trình đào tạo, cách đánh giá tay nghề và người chịu trách nhiệm khi học viên tham gia kiểm tra."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi chọn học cơ điện mỏ vì quan tâm hệ thống tiếp địa",
+          "items": [
+            "Trong chương trình cơ điện mỏ 10 tháng, học viên học nhận biết hệ thống tiếp địa và đọc ký hiệu trên sơ đồ ở phần nào?",
+            "Học viên được quan sát hay thực hành phép kiểm tra nào, và điều kiện nào phải đáp ứng trước khi được giao thao tác?",
+            "Kết quả kiểm tra được ghi vào biểu mẫu hoặc sổ trực ra sao, ai là người xem xét và xác nhận?",
+            "Khi phát hiện sai khác ở dây nối, mối nối hoặc kết quả đo, học viên phải dừng và báo cho vị trí phụ trách nào?",
+            "Kinh nghiệm điện dân dụng được công nhận đến đâu và phần kiến thức nào phải học lại để làm việc trong hệ thống điện mỏ?"
+          ]
+        }
+      ],
+      "takeaway_title": "Có thể tham gia kiểm tra, nhưng không tự ý đo hoặc sửa hệ thống tiếp địa",
+      "takeaway": "Người học cơ điện mỏ cần hiểu vai trò của hệ thống tiếp địa và có thể được giao nhận biết, quan sát, đối chiếu hồ sơ, ghi kết quả hoặc phối hợp kiểm tra trong phạm vi đã được đào tạo. Tự tách dây nối đất, đấu thiết bị đo, sửa mối nối, kết luận đạt hoặc đóng điện không phải quyền mặc định của người mới. Khi hiện trường khác sơ đồ hoặc có sai khác, cần giữ nguyên trong phạm vi an toàn và báo người chịu trách nhiệm.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json về phạm vi nghề kỹ thuật cơ điện mỏ hầm lò. Nội dung chuyên môn được xác minh ngày 08/11/2026 từ bài của Viện Khoa học Công nghệ Mỏ - Vinacomin về phòng thí nghiệm hiệu chỉnh điện VILAS 534, trong đó nêu phép đo điện trở tiếp địa của hệ thống tiếp địa. Ảnh riêng được xác minh từ tin Vinacomin ngày 13/08/2026 về Tổ điện 3KV, Phân xưởng Quản lý Hầm Trạm, Công ty Than Dương Huy - TKV; ảnh gốc DH1.jpg kích thước 1600 × 1200 pixel.",
+      "faqs": [
+        [
+          "Học cơ điện mỏ có phải ai cũng trực tiếp đo điện trở tiếp địa không?",
+          "Không. Người học cần hiểu hệ thống và có thể tham gia phần được đào tạo; quyền đo phụ thuộc đánh giá tay nghề, điều kiện an toàn, quy trình và phân công cụ thể."
+        ],
+        [
+          "Biết dùng đồng hồ điện có được tự kiểm tra tiếp địa không?",
+          "Không. Dụng cụ đo thông thường và kinh nghiệm bên ngoài không thay thế việc xác định đúng hệ thống, phương pháp, điều kiện thử và thẩm quyền thao tác."
+        ],
+        [
+          "Thấy mối nối tiếp địa lỏng có được tự siết lại không?",
+          "Không nên tự xử lý khi chưa được giao việc. Cần giữ hiện trạng trong phạm vi an toàn, ghi nhận dấu hiệu và báo người phụ trách để quyết định bước kiểm tra hoặc sửa chữa."
+        ]
+      ],
+      "related": [
+        [
+          "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-dung-dung-cu-do-kiem-dien-khong/",
+          "Hiểu giới hạn khi dùng dụng cụ đo kiểm điện trong nghề cơ điện mỏ"
+        ],
+        [
+          "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-kiem-tra-ro-le-bao-ve-khong/",
+          "Phân biệt kiểm tra tiếp địa với kiểm tra rơ-le bảo vệ"
         ],
         [
           "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",

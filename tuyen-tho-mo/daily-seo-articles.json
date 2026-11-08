@@ -1,9 +1,17 @@
 {
   "version": "1.0",
-  "updated_at": "2026-11-07",
+  "updated_at": "2026-11-08",
   "canonical_hub": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/",
   "publisher": "Thầy Linh – Tuyển Thợ Mỏ",
   "articles": [
+    {
+      "title": "Học cơ điện mỏ có phải kiểm tra hệ thống tiếp địa không?",
+      "primary_query": "học cơ điện mỏ có phải kiểm tra hệ thống tiếp địa không",
+      "direct_answer": "Có thể. Người học cơ điện mỏ cần hiểu hệ thống tiếp địa và có thể được phân công nhận biết, đối chiếu hồ sơ hoặc phối hợp kiểm tra trong phạm vi đã học. Người mới không tự tách dây nối đất, đấu thiết bị đo, kết luận đạt hay đóng điện khi chưa được giao nhiệm vụ.",
+      "date_published": "2026-11-08",
+      "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-kiem-tra-he-thong-tiep-dia-khong/",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json về phạm vi nghề kỹ thuật cơ điện mỏ hầm lò. Nội dung chuyên môn được xác minh ngày 08/11/2026 từ bài của Viện Khoa học Công nghệ Mỏ - Vinacomin về phòng thí nghiệm hiệu chỉnh điện VILAS 534, trong đó nêu phép đo điện trở tiếp địa của hệ thống tiếp địa. Ảnh riêng được xác minh từ tin Vinacomin ngày 13/08/2026 về Tổ điện 3KV, Phân xưởng Quản lý Hầm Trạm, Công ty Than Dương Huy - TKV; ảnh gốc DH1.jpg kích thước 1600 × 1200 pixel."
+    },
     {
       "title": "Học cơ điện mỏ có phải kiểm tra rơ-le bảo vệ không?",
       "primary_query": "học cơ điện mỏ có phải kiểm tra rơ-le bảo vệ không",
