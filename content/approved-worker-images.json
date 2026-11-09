@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-09T07:30:00+07:00",
+  "updated_at": "2026-11-09T08:35:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -491,6 +491,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2026/T10/13/DH5.jpg",
       "provider": "Vinacomin",
       "description": "Nhóm học sinh mặc bảo hộ, đội mũ đèn tham quan một diện sản xuất hầm lò tại Công ty Than Dương Huy - TKV"
+    },
+    {
+      "asset": "vinacomin-cong-nhan-theo-doi-bang-dieu-khien-tap-trung.webp",
+      "source_article_url": "https://vinacomin.vn/vi/news/slug/tkv-day-manh-chuyen-doi-so-trong-quan-ly-va-san-xuat",
+      "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2026/T09/29/TTHG1.jpg",
+      "provider": "Vinacomin",
+      "description": "Hai công nhân theo dõi sơ đồ, trạng thái thiết bị trên hệ thống điều khiển tập trung tại Công ty Tuyển than Hòn Gai - Vinacomin"
     }
   ]
 }
