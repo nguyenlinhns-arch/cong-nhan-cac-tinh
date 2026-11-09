@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-11-09",
+  "updated_at": "2026-11-10",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -8525,6 +8525,136 @@
         [
           "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-kiem-tra-he-thong-tiep-dia-khong/",
           "Phân biệt kiểm tra thiết bị phòng nổ với kiểm tra hệ thống tiếp địa"
+        ],
+        [
+          "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ phạm vi nghề kỹ thuật cơ điện mỏ hầm lò"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-11-10",
+      "slug": "hoc-co-dien-mo-co-phai-kiem-tra-cap-dien-ham-lo-khong",
+      "title": "Học cơ điện mỏ có phải kiểm tra cáp điện hầm lò không?",
+      "short_title": "Cơ điện mỏ kiểm tra cáp điện hầm lò",
+      "meta": "Học cơ điện mỏ có phải kiểm tra cáp điện hầm lò không? Hiểu phần cần quan sát, đối chiếu và giới hạn thao tác an toàn của người mới.",
+      "eyebrow": "CÁP ĐIỆN HẦM LÒ VÀ GIỚI HẠN KIỂM TRA",
+      "primary_query": "học cơ điện mỏ có phải kiểm tra cáp điện hầm lò không",
+      "query_variants": [
+        "thợ cơ điện mỏ có kiểm tra cáp điện hầm lò không",
+        "học cơ điện mỏ có phải kiểm tra đường cáp điện không",
+        "người mới học cơ điện mỏ được kiểm tra cáp điện đến đâu"
+      ],
+      "direct_answer": "Có thể. Nghề cơ điện mỏ có phần lắp đặt, đấu nối và bảo dưỡng hệ thống điện nên người học cần biết nhận diện, quan sát và báo cáo tình trạng cáp trong phạm vi được hướng dẫn. Người mới không tự chạm, tháo đầu cáp, đấu lại, đo thử hay cấp điện khi chưa được giao nhiệm vụ và xác nhận điều kiện an toàn.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-hoc-sinh-tham-quan-dien-san-xuat-duong-huy.webp",
+        "alt": "Nhóm học sinh mặc bảo hộ tham quan một diện sản xuất hầm lò tại Than Dương Huy",
+        "credit": "Ảnh: Vinacomin · học sinh tham quan diện sản xuất hầm lò tại Than Dương Huy"
+      },
+      "display_image": true,
+      "intro": [
+        "Học cơ điện mỏ có phải kiểm tra cáp điện hầm lò không là câu hỏi khác với bài đã có về đấu nối dây điện. Câu trả lời là có thể: người học cần biết cáp thuộc tuyến nào, phục vụ thiết bị nào, tình trạng nhìn thấy có gì bất thường và phải báo cho ai. Nhưng quan sát, ghi nhận không đồng nghĩa được tự tháo đầu cáp, đấu lại hoặc thử điện.",
+        "Bài này tập trung vào một ý định riêng trước khi người lao động chọn khóa cơ điện mỏ 10 tháng: kiểm tra cáp gồm những nhóm việc nào, khác đấu nối và sửa chữa ra sao, người mới được tham gia đến đâu và nên hỏi gì khi học thực hành. Nội dung không đưa ngưỡng kỹ thuật, sơ đồ đấu dây hay trình tự đóng cắt vì những phần đó phải theo thiết kế, tài liệu thiết bị, quy trình đơn vị và người chịu trách nhiệm tại hiện trường."
+      ],
+      "key_points": [
+        [
+          "Có liên quan trực tiếp đến nghề",
+          "Nguồn chuẩn hiện hành nêu kỹ thuật cơ điện mỏ lắp đặt, đấu nối hệ thống dây dẫn điện và bảo dưỡng thiết bị phục vụ sản xuất."
+        ],
+        [
+          "Kiểm tra khác đấu nối",
+          "Kiểm tra bắt đầu bằng nhận diện tuyến cáp, quan sát hiện trạng và đối chiếu hồ sơ; đấu nối làm thay đổi kết nối điện và cần phân công riêng."
+        ],
+        [
+          "Không tự xử lý dấu hiệu bất thường",
+          "Người mới không tự kéo, nắn, tháo đầu cáp, thay chi tiết, đo thử hoặc cấp điện chỉ vì nhìn thấy một dấu hiệu nghi ngờ."
+        ],
+        [
+          "Báo cáo phải đủ bối cảnh",
+          "Cần ghi đúng vị trí, tuyến hoặc thiết bị liên quan, điều nhìn thấy và thời điểm để người phụ trách quyết định bước tiếp theo."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học cơ điện mỏ có phải kiểm tra cáp điện hầm lò không?",
+          "paragraphs": [
+            "Có thể. Hồ sơ nghề đang áp dụng mô tả kỹ thuật cơ điện mỏ hầm lò thực hiện lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống điện cùng thiết bị mỏ. Trong nhóm trách nhiệm cụ thể, nguồn chuẩn còn nêu việc lắp đặt và đấu nối hệ thống dây dẫn điện theo thiết kế và quy trình kỹ thuật. Vì vậy, nhận biết và kiểm tra tình trạng cáp là kiến thức thực tế gắn với nghề, không phải một việc tách rời chỉ dành cho người thiết kế.",
+            "Từ “có thể” cần được hiểu đúng. Không phải học viên nào cũng kiểm tra cùng một tuyến cáp, tại cùng vị trí hoặc với cùng mức độ thao tác. Phần việc thực tế phụ thuộc nội dung đã học, đánh giá tay nghề, thiết kế hệ thống, tình trạng làm việc và phân công của đơn vị. Người mới có thể bắt đầu bằng xác định tên tuyến, vị trí và quan sát bên ngoài; thao tác sâu hơn chỉ thực hiện khi đủ điều kiện.",
+            "Mục tiêu đầu tiên là biết giới hạn giữa nhìn thấy và tác động. Một đoạn cáp nằm trong hệ thống đang vận hành không phải vật để tự cầm lên xem cho rõ. Nếu chưa xác nhận đúng tuyến, trạng thái nguồn, phạm vi khu vực và người chịu trách nhiệm, học viên cần dừng ở mức quan sát từ vị trí được hướng dẫn rồi báo lại, không tự suy đoán rằng cáp đã mất điện hoặc an toàn."
+          ]
+        },
+        {
+          "heading": "Kiểm tra cáp điện khác đấu nối dây điện dưới hầm lò như thế nào?",
+          "paragraphs": [
+            "Kiểm tra nhằm nhận diện đúng tuyến cáp, quan sát tình trạng có thể nhìn thấy, đối chiếu thông tin và ghi nhận sai khác. Đấu nối là công việc tạo, thay đổi hoặc khôi phục kết nối điện tại đầu cáp hay thiết bị. Hai việc liên quan nhưng khác mục tiêu, điều kiện thực hiện, dụng cụ và trách nhiệm xác nhận sau cùng.",
+            "Bài đấu nối đã có trên website trả lời câu hỏi người học có phải lắp đặt và đấu dây theo thiết kế hay không. Bài hiện tại không lặp hướng dẫn đó mà tập trung vào giai đoạn theo dõi tình trạng: cáp đang thuộc tuyến nào, thông tin nhận diện có khớp, vị trí đi cáp và phần nhìn thấy có dấu hiệu cần báo hay không. Đây là nhu cầu riêng của người muốn hiểu công việc thường ngày trước khi đăng ký học.",
+            "Nếu thấy phần cáp, đầu vào cáp hoặc chi tiết cố định có dấu hiệu khác thường, người mới không tự siết, tháo, kéo hoặc đấu lại để “sửa nhanh”. Hành động đó có thể làm thay đổi hiện trạng và vượt quá nhiệm vụ được giao. Cách làm đúng là giữ giới hạn công việc, ghi nhận mô tả khách quan và chuyển thông tin cho người có trách nhiệm xác định phương án kiểm tra hoặc sửa chữa."
+          ]
+        },
+        {
+          "heading": "Khi kiểm tra cáp điện hầm lò cần quan sát và đối chiếu những gì?",
+          "paragraphs": [
+            "Bước đầu là xác nhận đúng đối tượng: tuyến cáp hoặc thiết bị liên quan, vị trí, ký hiệu nhận diện và hồ sơ đang áp dụng. Sau đó mới quan sát phần bên ngoài được phép tiếp cận như đường đi của cáp, cách treo đỡ hoặc bảo vệ, bề mặt vỏ, vị trí đi vào thiết bị và dấu hiệu va chạm, biến dạng hay thông tin khó đọc. Danh mục cụ thể phải theo thiết kế và biểu mẫu của đơn vị, không dùng một danh sách chung để thay thế quy trình hiện trường.",
+            "Một nhận xét hữu ích phải gắn với bối cảnh. Chỉ viết “cáp xấu” hoặc “đầu cáp lỏng” là kết luận quá sớm nếu người ghi chưa được giao đánh giá. Người học nên mô tả điều nhìn thấy, xác định vị trí và thời điểm, đồng thời nói rõ phần nào chưa kiểm chứng. Cách ghi này giúp tổ đội không nhầm tuyến và giúp người phụ trách quyết định có cần cô lập, đo kiểm hoặc sửa chữa hay không.",
+            "Bài viết không hướng dẫn chạm thử, uốn thử, tháo đầu cáp, đo cách điện, tìm điểm rò, xác định tiết diện hoặc đóng cắt nguồn. Đó là các thao tác kỹ thuật cần điều kiện, thiết bị, phương án và thẩm quyền cụ thể. Người mới không dùng kinh nghiệm điện dân dụng để thay cho xác nhận trạng thái hệ thống trong môi trường hầm lò."
+          ]
+        },
+        {
+          "heading": "Người mới học cơ điện mỏ được tham gia kiểm tra cáp đến đâu?",
+          "paragraphs": [
+            "Ở giai đoạn đầu, học viên có thể được hướng dẫn đọc sơ đồ hoặc danh mục, nhận biết ký hiệu tuyến cáp, xác định thiết bị đầu cuối, quan sát cách bố trí và ghi chép theo biểu mẫu. Khi đã học và được đánh giá, học viên mới thực hiện công đoạn cụ thể dưới phân công. Việc từng kéo dây hoặc sửa điện ở nhà không tự động cho phép thao tác với hệ thống điện mỏ.",
+            "Người mới không tự di chuyển cáp, nới hoặc tháo đầu cáp, mở thiết bị, đấu dây, gắn dụng cụ đo, cấp điện, chạy thử hay xác nhận tuyến cáp đủ điều kiện làm việc. Cũng không tự tháo thẻ, bỏ cảnh báo hoặc chuyển cáp sang vị trí khác. Nếu tên tuyến, hồ sơ, vị trí thực tế hay điều kiện an toàn không khớp hướng dẫn, cần dừng và báo người phụ trách.",
+            "Một thói quen hữu ích là đọc lại tên tuyến trước khi ghi, mô tả dấu hiệu thay vì đoán nguyên nhân, và xác nhận người đã nhận thông tin. Trong công việc có nhiều tuyến và thiết bị, báo đúng đối tượng quan trọng không kém việc phát hiện dấu hiệu. Đây là kỹ năng phối hợp người học có thể rèn ngay cả khi chưa được giao thao tác kỹ thuật."
+          ]
+        },
+        {
+          "heading": "Ảnh Vinacomin cho thấy điều gì về cách học trong môi trường hầm lò?",
+          "paragraphs": [
+            "Ảnh riêng của bài được Vinacomin công bố trong tin về Than Dương Huy gắn tuyển sinh với đào tạo và việc làm. Ảnh gốc 1280 × 853 pixel cho thấy nhóm học sinh mặc bảo hộ, đội mũ đèn tham quan một diện sản xuất hầm lò. Ảnh không thể hiện một thao tác kiểm tra cáp cụ thể, nên bài không gán cho người trong ảnh hành động mà tư liệu không ghi lại.",
+            "Bối cảnh ảnh phù hợp với thông điệp quan trọng: người học cần được tiếp cận môi trường sản xuất có tổ chức, có bảo hộ và hướng dẫn trước khi tham gia công việc thực tế. Tin chính thức ghi nhận học sinh được tham quan diện sản xuất phù hợp; bài này chỉ dùng nguồn để xác nhận bối cảnh học tập, không lấy một khoảnh khắc tham quan làm quy trình kiểm tra cho mọi tuyến cáp.",
+            "Người đăng ký nên hỏi rõ phần thực hành của khóa học: ai hướng dẫn, học viên quan sát hay thao tác, tiêu chí đánh giá nào được dùng và ai chịu trách nhiệm xác nhận kết quả. Những câu trả lời này giúp phân biệt chương trình có lộ trình tay nghề với việc chỉ nghe giới thiệu chung về điện mỏ."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi chọn học cơ điện mỏ vì quan tâm hệ thống cáp điện",
+          "items": [
+            "Trong chương trình cơ điện mỏ 10 tháng, học viên học nhận diện tuyến cáp và đọc thông tin liên quan ở phần nào?",
+            "Học viên được quan sát hay thực hành công đoạn kiểm tra nào, và điều kiện nào phải đáp ứng trước khi được giao thao tác?",
+            "Khi thấy đường cáp, vỏ cáp, vị trí treo đỡ hoặc đầu vào thiết bị có dấu hiệu bất thường, học viên phải báo cho ai?",
+            "Ranh giới giữa kiểm tra, đo kiểm, đấu nối và sửa chữa cáp được phân công như thế nào?",
+            "Kinh nghiệm điện dân dụng được ghi nhận đến đâu và nội dung nào phải học lại để làm việc với hệ thống điện mỏ?"
+          ]
+        }
+      ],
+      "takeaway_title": "Có thể kiểm tra cáp, nhưng không tự tháo, đấu hoặc đo thử",
+      "takeaway": "Người học cơ điện mỏ cần biết nhận diện tuyến cáp, quan sát hiện trạng, đối chiếu hồ sơ và báo cáo dấu hiệu bất thường trong phạm vi đã được hướng dẫn. Kiểm tra không đồng nghĩa được tự di chuyển cáp, tháo đầu cáp, đấu lại, gắn dụng cụ đo, kết luận an toàn hay cấp điện. Khi đối tượng hoặc điều kiện hiện trường chưa rõ, người mới cần dừng ở mức ghi nhận và báo người chịu trách nhiệm.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json: nghề kỹ thuật cơ điện mỏ hầm lò có nhiệm vụ lắp đặt, đấu nối hệ thống dây dẫn điện theo thiết kế và quy trình kỹ thuật. Bối cảnh học thực tế được xác minh ngày 09/11/2026 từ tin Vinacomin về Than Dương Huy gắn tuyển sinh với đào tạo và việc làm. Ảnh riêng DH5.jpg kích thước 1280 × 853 pixel, SHA-256 bản gốc bắt đầu bằng c0281438; ảnh WebP dùng trên website có SHA-256 bắt đầu bằng 05347eaa.",
+      "faqs": [
+        [
+          "Học cơ điện mỏ có phải ai cũng được tự kiểm tra cáp điện hầm lò không?",
+          "Không. Người học cần hiểu hệ thống và có thể tham gia phần đã được đào tạo; mức tiếp cận và thao tác phụ thuộc điều kiện an toàn, quy trình, đánh giá tay nghề và phân công cụ thể."
+        ],
+        [
+          "Kiểm tra cáp điện có giống đấu nối dây điện không?",
+          "Không. Kiểm tra tập trung nhận diện, quan sát, đối chiếu và báo cáo; đấu nối làm thay đổi kết nối điện và chỉ được thực hiện theo thiết kế, quy trình cùng nhiệm vụ được giao."
+        ],
+        [
+          "Thấy vỏ cáp hoặc đầu cáp bất thường có được tự tháo ra xem không?",
+          "Không. Cần giữ giới hạn công việc, ghi nhận đúng vị trí và dấu hiệu rồi báo người phụ trách; không tự tháo, chạm, đo thử, đấu lại hoặc cấp điện."
+        ]
+      ],
+      "related": [
+        [
+          "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-dau-noi-day-dien-duoi-ham-lo-khong/",
+          "Phân biệt kiểm tra cáp với lắp đặt và đấu nối dây điện"
+        ],
+        [
+          "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-dung-dung-cu-do-kiem-dien-khong/",
+          "Hiểu giới hạn khi dùng dụng cụ đo kiểm điện"
         ],
         [
           "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
