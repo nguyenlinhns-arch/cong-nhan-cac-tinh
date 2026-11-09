@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-11-11",
+  "updated_at": "2026-11-12",
   "hub": {
     "title": "Giải đáp nghề mỏ Quảng Ninh mỗi ngày",
     "meta": "Mỗi ngày một câu trả lời rõ ràng về điều kiện, học nghề, hồ sơ, thu nhập và cách đăng ký đi làm mỏ than Quảng Ninh.",
@@ -8785,6 +8785,136 @@
         [
           "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-kiem-tra-ro-le-bao-ve-khong/",
           "Hiểu ranh giới giữa đọc trạng thái và kiểm tra rơ-le bảo vệ"
+        ],
+        [
+          "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
+          "Xem đầy đủ phạm vi nghề kỹ thuật cơ điện mỏ hầm lò"
+        ],
+        [
+          "/kiem-tra-dieu-kien/",
+          "Kiểm tra điều kiện trước khi đăng ký"
+        ]
+      ]
+    },
+    {
+      "publish_on": "2026-11-12",
+      "slug": "hoc-co-dien-mo-co-phai-nhan-ca-lenh-tren-phan-mem-khong",
+      "title": "Học cơ điện mỏ có phải nhận ca lệnh trên phần mềm không?",
+      "short_title": "Cơ điện mỏ nhận ca lệnh trên phần mềm",
+      "meta": "Học cơ điện mỏ có phải nhận ca lệnh trên phần mềm không? Hiểu cách xác nhận nhiệm vụ trước ca, kiểm tra sai khác và giới hạn của người mới.",
+      "eyebrow": "CA LỆNH SỐ VÀ CÁCH XÁC NHẬN NHIỆM VỤ TRƯỚC CA",
+      "primary_query": "học cơ điện mỏ có phải nhận ca lệnh trên phần mềm không",
+      "query_variants": [
+        "thợ cơ điện mỏ có nhận lệnh sản xuất trên điện thoại không",
+        "đi làm cơ điện mỏ có phải dùng phần mềm ca lệnh không",
+        "người mới nhận ca lệnh điện tử cần kiểm tra gì"
+      ],
+      "direct_answer": "Có thể, nhưng không phải nơi nào cũng dùng cùng phần mềm. Vinacomin ghi nhận Than Vàng Danh giao ca lệnh trên máy tính, điện thoại và dùng nhận diện để công nhân nhận nhiệm vụ. Người mới cần đọc đúng người, ca, vị trí, phạm vi việc; nếu thiếu hoặc sai phải báo, không tự sửa lệnh hay nhận thêm việc.",
+      "image": {
+        "src": "https://thaylinhtuyenthomo.vn/assets/vinacomin-cong-nhan-than-vang-danh-nhan-ca-lenh.webp",
+        "alt": "Công nhân Than Vàng Danh nhận lệnh sản xuất bằng nhận diện khuôn mặt trước khi vào ca",
+        "credit": "Ảnh: Vinacomin · công nhân Than Vàng Danh nhận ca lệnh số trước khi vào ca"
+      },
+      "display_image": true,
+      "intro": [
+        "Học cơ điện mỏ có phải nhận ca lệnh trên phần mềm không là câu hỏi thực tế của người chuẩn bị đi làm trong môi trường sản xuất đã số hóa. Câu trả lời là có thể: một số đơn vị đã dùng máy tính, điện thoại hoặc thiết bị nhận diện để chuyển nhiệm vụ trước ca. Nhưng người học không nên hiểu rằng mọi nơi dùng cùng ứng dụng, hay chỉ cần bấm xác nhận là đã được quyền làm mọi việc hiện trên màn hình.",
+        "Bài này trả lời một ý định riêng chưa có trang ưu tiên: ca lệnh số dùng để giao nhiệm vụ khác bảng điều khiển thiết bị ở điểm nào, người mới cần đối chiếu thông tin gì trước khi nhận, xử lý ra sao khi lệnh thiếu hoặc không khớp hiện trường, và dữ liệu nhận diện có chứng minh tay nghề hay không. Nội dung không hướng dẫn vượt đăng nhập, sửa dữ liệu hoặc thao tác trên một phần mềm cụ thể."
+      ],
+      "key_points": [
+        [
+          "Có thể nhận lệnh trên phần mềm",
+          "Vinacomin ghi nhận Than Vàng Danh dùng phần mềm giao ca lệnh trên máy tính và điện thoại."
+        ],
+        [
+          "Ca lệnh không phải lệnh điều khiển máy",
+          "Ca lệnh xác định nhiệm vụ và đầu mối; bảng điều khiển phản ánh trạng thái hoặc cho phép thao tác thiết bị theo quyền riêng."
+        ],
+        [
+          "Phải đọc trước khi xác nhận",
+          "Tên người, ca, vị trí, thiết bị, phạm vi việc và thông tin điều chỉnh cần khớp hướng dẫn được giao."
+        ],
+        [
+          "Sai khác phải được báo",
+          "Người mới không tự sửa ca lệnh, đổi vị trí, nhận thay tài khoản hoặc suy đoán phần việc còn thiếu."
+        ]
+      ],
+      "sections": [
+        {
+          "heading": "Học cơ điện mỏ có phải nhận ca lệnh trên phần mềm không?",
+          "paragraphs": [
+            "Có thể. Hồ sơ nghề hiện hành xác định kỹ thuật cơ điện mỏ hầm lò làm việc với hệ thống cơ khí, điện, vận tải, chiếu sáng, thông tin liên lạc và thiết bị phục vụ sản xuất theo quy trình. Khi vào môi trường làm việc, nhiệm vụ trong một ca cần được xác định rõ trước khi người lao động đến vị trí. Phần mềm ca lệnh là một cách chuyển và xác nhận thông tin đó, bên cạnh cách giao trực tiếp hoặc theo biểu mẫu của từng đơn vị.",
+            "Tư liệu chính thức của Vinacomin ngày 29/09/2026 nêu Công ty CP Than Vàng Danh - Vinacomin đã triển khai phần mềm giao ca lệnh trên máy tính và điện thoại. Công nhân có thể nhận nhiệm vụ bằng nhận diện khuôn mặt hoặc quét vân tay; thông tin điều chỉnh, phát sinh được cập nhật trên hệ thống. Đây là ví dụ đã xác minh tại một đơn vị, không có nghĩa mọi doanh nghiệp tiếp nhận đều dùng cùng công nghệ.",
+            "Đối với người đang học, điều cần chuẩn bị không phải là ghi nhớ một ứng dụng cụ thể mà là thói quen đọc đủ nhiệm vụ, xác định đúng người giao, đúng ca và đúng vị trí. Khi được tiếp nhận vào đơn vị, người lao động sẽ phải làm theo hệ thống, tài khoản, quy trình và hướng dẫn thực tế tại nơi đó. Kinh nghiệm dùng điện thoại thông minh không thay thế phần đào tạo nghề hoặc xác nhận quyền làm việc."
+          ]
+        },
+        {
+          "heading": "Ca lệnh trên phần mềm khác gì bảng điều khiển thiết bị?",
+          "paragraphs": [
+            "Ca lệnh trả lời câu hỏi ai làm việc gì, ở đâu, trong thời gian nào và báo cáo cho đầu mối nào. Bảng điều khiển thiết bị cho biết trạng thái, tín hiệu hoặc chức năng thao tác của một hệ thống kỹ thuật. Một người có thể nhận ca lệnh trên điện thoại rồi đến vị trí chỉ để quan sát, kiểm tra hoặc hỗ trợ; ca lệnh không tự động trao quyền bấm nút trên thiết bị.",
+            "Bài về bảng điều khiển ngày 11/11 tập trung vào đọc trạng thái, ghi nhận và giới hạn điều khiển. Bài hiện tại tập trung vào bước trước đó: tiếp nhận phạm vi nhiệm vụ và phát hiện sai khác ngay từ lúc giao ca. Hai ý định nối tiếp nhau nhưng không cạnh tranh từ khóa. Người tìm hiểu nghề cần biết cả hai để không nhầm giữa “đã nhận việc” và “được phép thực hiện mọi thao tác liên quan”.",
+            "Nếu ca lệnh nêu tên một thiết bị nhưng nhãn tại hiện trường khác, nếu vị trí đã thay đổi hoặc nếu phần việc vượt nội dung được hướng dẫn, người mới không tự suy đoán. Cần giữ nguyên giới hạn, liên hệ đúng người giao nhiệm vụ và chờ thông tin được xác nhận. Một lần bấm nhận trên phần mềm không làm mất trách nhiệm kiểm tra điều kiện thực tế trước khi bắt đầu."
+          ]
+        },
+        {
+          "heading": "Người mới cần kiểm tra gì trước khi xác nhận ca lệnh điện tử?",
+          "paragraphs": [
+            "Trước hết cần kiểm tra đúng tài khoản hoặc thông tin nhận diện của mình, ngày giờ và ca làm việc. Tiếp theo là tên công việc, vị trí, thiết bị hoặc khu vực liên quan, tổ đội phối hợp và người chịu trách nhiệm. Nếu hệ thống có thông tin điều chỉnh, người nhận cần đọc phần mới nhất thay vì dựa vào ảnh chụp hoặc lời nhắn cũ từ một ca trước.",
+            "Nhiệm vụ cần được hiểu bằng lời rõ ràng. Những mô tả quá ngắn như “kiểm tra máy”, “xử lý điện” hoặc “hỗ trợ vị trí cũ” chưa đủ để người mới tự chọn thiết bị và công đoạn. Cần hỏi lại phạm vi, kết quả cần báo và điểm dừng của công việc. Việc hỏi để xác nhận không phải chậm chạp; đó là cách tránh làm sai đối tượng hoặc bỏ sót thông tin quan trọng.",
+            "Người lao động không dùng tài khoản của người khác, không nhờ người khác xác nhận thay, không tự đổi ca, xóa lịch sử hoặc chỉnh nội dung nhiệm vụ khi chưa được phân quyền. Bài viết không mô tả nút bấm hay đường đi trên giao diện vì hệ thống có thể thay đổi. Nguyên tắc ổn định là xác minh danh tính, đọc đủ nhiệm vụ, đối chiếu hiện trường và báo sai khác qua đúng kênh."
+          ]
+        },
+        {
+          "heading": "Nhận diện khuôn mặt hoặc vân tay có chứng minh đủ tay nghề không?",
+          "paragraphs": [
+            "Không. Nhận diện khuôn mặt hoặc vân tay giúp hệ thống xác định người nhận nhiệm vụ theo cách đơn vị đang áp dụng. Nó không thay thế kết quả đào tạo, đánh giá tay nghề, khám sức khỏe, hướng dẫn tại vị trí hoặc quyền thao tác trên thiết bị. Người đăng nhập đúng vẫn chỉ được làm phần đã được giao và đủ điều kiện thực hiện.",
+            "Ảnh Vinacomin dùng cho bài cho thấy một công nhân Than Vàng Danh đứng trước thiết bị nhận diện, phía sau là tập thể công nhân trong nhà giao ca. Chú thích gốc xác định đây là bước nhận lệnh sản xuất trước khi vào ca. Ảnh chứng minh bối cảnh giao ca số tại đơn vị đó, nhưng không chứng minh tất cả học viên cơ điện mỏ sẽ dùng cùng thiết bị hoặc được bố trí vào cùng doanh nghiệp.",
+            "Người mới nên tách ba việc: xác nhận mình là người nhận lệnh, hiểu đúng nội dung được giao và đủ năng lực thực hiện. Ba việc có liên quan nhưng không thay thế nhau. Nếu chỉ hoàn thành bước nhận diện mà chưa hiểu nhiệm vụ, cần hỏi lại trước khi rời nhà giao ca; nếu hiểu nhiệm vụ nhưng chưa được hướng dẫn công đoạn, cần báo rõ giới hạn năng lực."
+          ]
+        },
+        {
+          "heading": "Khi ca lệnh thiếu, sai hoặc thay đổi thì phải làm gì?",
+          "paragraphs": [
+            "Khi không thấy ca lệnh, tên người hoặc ca làm việc không đúng, nhiệm vụ trùng với người khác, hay thông tin trên phần mềm khác lời giao trực tiếp, người mới không tự chọn phương án thuận tiện nhất. Cần chụp hoặc ghi lại nội dung trong phạm vi được phép, báo người giao nhiệm vụ và chờ xác nhận bằng kênh chính thức của đơn vị.",
+            "Nếu thay đổi phát sinh trong ca, thông tin cần nêu rõ thời điểm, người thông báo, phần việc cũ, phần việc mới và ảnh hưởng tới thiết bị hoặc vị trí đang làm. Người nhận không nên chỉ dựa vào lời truyền qua nhiều người. Tư liệu Vinacomin cho thấy hệ thống số có thể cập nhật điều chỉnh tức thời; giá trị của công cụ nằm ở việc thông tin được chuyển rõ và có đầu mối, không phải ở tốc độ bấm xác nhận.",
+            "Khi hệ thống không hoạt động, người lao động làm theo phương án giao việc và báo cáo mà đơn vị đã quy định, không tự tạo tài khoản khác hoặc dùng công cụ ngoài để thay thế. Bài này không khẳng định một quy trình dự phòng chung cho mọi doanh nghiệp. Người đăng ký nên hỏi rõ cách nhận nhiệm vụ, cách báo lỗi và người xác nhận cuối cùng trong buổi hướng dẫn trước khi vào ca."
+          ]
+        },
+        {
+          "heading": "Năm câu nên hỏi trước khi đi làm vì quan tâm ca lệnh số",
+          "items": [
+            "Đơn vị giao nhiệm vụ trước ca bằng cách nào: trực tiếp, biểu mẫu hay phần mềm trên máy tính hoặc điện thoại?",
+            "Người mới cần kiểm tra những trường nào trước khi xác nhận đã nhận ca lệnh?",
+            "Nếu ca lệnh và hiện trường không khớp, ai là người có quyền xác nhận hoặc điều chỉnh?",
+            "Nhận diện khuôn mặt, vân tay hoặc tài khoản dùng để xác nhận danh tính hay còn gắn với quyền thao tác nào khác?",
+            "Khi phần mềm không hoạt động, kênh giao nhiệm vụ và báo cáo dự phòng chính thức của đơn vị là gì?"
+          ]
+        }
+      ],
+      "takeaway_title": "Có thể nhận ca lệnh số, nhưng phải đọc và đối chiếu trước khi xác nhận",
+      "takeaway": "Người học cơ điện mỏ có thể gặp hình thức giao ca lệnh qua máy tính, điện thoại hoặc thiết bị nhận diện khi vào làm việc. Ca lệnh xác định nhiệm vụ, không tự trao quyền điều khiển thiết bị. Trước khi xác nhận, cần kiểm tra đúng người, ca, vị trí, phạm vi việc và thông tin điều chỉnh; khi thiếu hoặc sai phải báo người phụ trách, không tự sửa lệnh, dùng tài khoản khác hoặc đoán phần việc.",
+      "source_note": "Đối chiếu operations/job-posting-master-2026.json về phạm vi nghề kỹ thuật cơ điện mỏ hầm lò và yêu cầu làm việc theo quy trình. Bối cảnh ca lệnh số được xác minh ngày 09/11/2026 từ tin Vinacomin ngày 29/09/2026 “TKV đẩy mạnh chuyển đổi số trong quản lý và sản xuất”: Than Vàng Danh triển khai phần mềm giao ca lệnh trên máy tính, điện thoại và nhận nhiệm vụ bằng nhận diện khuôn mặt hoặc vân tay. Ảnh gốc VDanh1.jpg kích thước 1600 × 962 pixel, SHA-256 bản gốc bắt đầu bằng f71e8730; ảnh WebP dùng trên website có SHA-256 bắt đầu bằng e8aff494.",
+      "faqs": [
+        [
+          "Học cơ điện mỏ có phải nơi nào cũng nhận ca lệnh trên điện thoại không?",
+          "Không. Vinacomin ghi nhận mô hình này tại Than Vàng Danh; cách giao ca tại đơn vị khác có thể dùng máy tính, thiết bị nhận diện, biểu mẫu hoặc giao trực tiếp theo quy định riêng."
+        ],
+        [
+          "Bấm xác nhận ca lệnh có nghĩa là được tự vận hành thiết bị không?",
+          "Không. Xác nhận đã nhận nhiệm vụ khác với quyền thao tác. Người mới chỉ làm đúng phần đã được đào tạo, giao việc và xác nhận đủ điều kiện."
+        ],
+        [
+          "Ca lệnh trên phần mềm sai vị trí thì có được tự sửa không?",
+          "Không nên tự sửa hoặc chọn vị trí khác. Cần báo đúng người giao nhiệm vụ và chờ nội dung được xác nhận qua kênh chính thức của đơn vị."
+        ]
+      ],
+      "related": [
+        [
+          "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-theo-doi-bang-dieu-khien-thiet-bi-khong/",
+          "Phân biệt nhận ca lệnh với theo dõi bảng điều khiển thiết bị"
+        ],
+        [
+          "/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-van-hanh-tram-dien-khong/",
+          "Hiểu giới hạn thao tác khi được phân công tại vị trí trạm điện"
         ],
         [
           "/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/",
