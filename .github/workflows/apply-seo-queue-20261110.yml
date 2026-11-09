@@ -1,0 +1,35 @@
+name: Apply SEO queue 2026-11-10
+
+on:
+  push:
+    paths:
+      - '.github/workflows/apply-seo-queue-20261110.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.repository == 'nguyenlinhns-arch/cong-nhan-cac-tinh'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Restore validated SEO queue files
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .seo-patch/queue-20261110-part-* > "$RUNNER_TEMP/queue-20261110.tar.gz"
+          echo "6e2f031fa15f7e3af36b3a2357ad11d7710b62882df0857fb6065893821f7dd0  $RUNNER_TEMP/queue-20261110.tar.gz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/queue-20261110.tar.gz"
+          node -e "JSON.parse(require('fs').readFileSync('content/daily-seo-articles.json','utf8')); JSON.parse(require('fs').readFileSync('content/approved-worker-images.json','utf8')); JSON.parse(require('fs').readFileSync('content/article-image-dimensions.json','utf8'))"
+          test -s tuyen-tho-mo/assets/vinacomin-hoc-sinh-tham-quan-dien-san-xuat-duong-huy.webp
+          git config user.name "nguyenlinhns-arch"
+          git config user.email "nguyenlinhns@gmail.com"
+          git add content/daily-seo-articles.json content/approved-worker-images.json content/article-image-dimensions.json tuyen-tho-mo/assets/vinacomin-hoc-sinh-tham-quan-dien-san-xuat-duong-huy.webp
+          git rm -r .seo-patch .github/workflows/apply-seo-queue-20261110.yml
+          git diff --cached --check
+          git commit -m "Chuẩn bị giải đáp SEO ngày 2026-11-10"
+          git push origin HEAD:main
