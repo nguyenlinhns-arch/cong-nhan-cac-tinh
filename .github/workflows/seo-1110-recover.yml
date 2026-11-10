@@ -65,9 +65,9 @@ jobs:
           original="$RUNNER_TEMP/alumina-original.jpg"
           curl --fail --silent --show-error --location --retry 4 --max-time 60 "$source_url" -o "$original"
           test "$(file --brief --mime-type "$original")" = "image/jpeg"
-          sha256sum "$original"
+          test "$(sha256sum "$original" | cut -d' ' -f1)" = '4e1df03f48fed8c99246ab9d7eb18bb202ccf50962210db897bd8e9da0b531de'
           cwebp -quiet -q 82 -resize 1600 0 "$original" -o tuyen-tho-mo/assets/vinacomin-toan-canh-nha-may-alumina-lam-dong.webp
-          webpinfo tuyen-tho-mo/assets/vinacomin-toan-canh-nha-may-alumina-lam-dong.webp | grep -F 'Canvas size 1600 x 916'
+          webpinfo tuyen-tho-mo/assets/vinacomin-toan-canh-nha-may-alumina-lam-dong.webp | grep -F 'Canvas size: 1600 x 916'
           git add content/daily-seo-articles.json content/approved-worker-images.json content/article-image-dimensions.json tools/build-search-index.mjs tuyen-tho-mo/assets/vinacomin-toan-canh-nha-may-alumina-lam-dong.webp
       - name: Validate current and queue end
         shell: bash
