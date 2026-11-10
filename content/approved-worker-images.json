@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-09T09:05:00+07:00",
+  "updated_at": "2026-11-10T14:00:00+07:00",
   "policy": "Chỉ dùng ảnh thật từ TKV/Vinacomin cho phần minh họa chung; ưu tiên công nhân mặc bảo hộ xanh, đội mũ, khuôn mặt rõ và bối cảnh tích cực. Không dùng ảnh lãnh đạo, khách tham quan, khuôn mặt phủ than hoặc thao tác gợi cảm giác quá nặng nhọc.",
   "images": [
     {
@@ -512,7 +512,13 @@
       "original_image_url": "https://vinacomin.vn/userfiles/images/AnhTinTuc/2025/T10/02/VD4.jpg",
       "provider": "Vinacomin",
       "description": "Tập thể công nhân Than Vàng Danh mặc bảo hộ xanh tham gia giao ca trực tuyến tại nhà giao ca"
+    },
+    {
+      "asset": "vinacomin-toan-canh-nha-may-alumina-lam-dong.webp",
+      "source_article_url": "https://vinacomin.vn/vi/news/slug/cong-ty-nhom-lam-dong-dau-an-tien-phong-tren-vung-dat-do-tay-nguyen",
+      "original_image_url": "https://vinacomin.vn/userfiles/thumbnail/4E1DF03F48FED8C99246AB9D7EB18BB202CCF50962210DB897BD8E9DA0B531DE.jpg",
+      "provider": "Vinacomin",
+      "description": "Toàn cảnh Nhà máy Alumina Lâm Đồng với các khu vực thiết bị và dây chuyền công nghệ"
     }
   ]
 }
-
