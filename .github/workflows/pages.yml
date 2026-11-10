@@ -37,7 +37,8 @@ jobs:
           diaban_tmp="$RUNNER_TEMP/diaban-dashboard"
           kenlop9_tmp="$RUNNER_TEMP/kenlop9-site"
           congtyai_tmp="$RUNNER_TEMP/congtyai-site"
-          rm -rf "$dashboard_tmp" "$diaban_tmp" "$kenlop9_tmp" "$congtyai_tmp"
+          zalo_tmp="$RUNNER_TEMP/zalo-portal"
+          rm -rf "$dashboard_tmp" "$diaban_tmp" "$kenlop9_tmp" "$congtyai_tmp" "$zalo_tmp"
           if [ -d tuyen-tho-mo/nhap-hoc ]; then
             mv tuyen-tho-mo/nhap-hoc "$dashboard_tmp"
           fi
@@ -49,6 +50,11 @@ jobs:
           # /congtyai is a separate public role-model site, not recruitment SEO.
           if [ -d tuyen-tho-mo/congtyai ]; then
             mv tuyen-tho-mo/congtyai "$congtyai_tmp"
+          fi
+          # /zalo is a noindex launcher for the separate private Zalo app. Keep
+          # it out of recruitment transforms, then restore it unchanged.
+          if [ -d tuyen-tho-mo/zalo ]; then
+            mv tuyen-tho-mo/zalo "$zalo_tmp"
           fi
           # Keep the local-data dashboard out of recruitment SEO transforms.
           if [ -d tuyen-tho-mo/diaban ]; then
@@ -70,6 +76,10 @@ jobs:
             if [ -d "$congtyai_tmp" ]; then
               rm -rf tuyen-tho-mo/congtyai
               mv "$congtyai_tmp" tuyen-tho-mo/congtyai
+            fi
+            if [ -d "$zalo_tmp" ]; then
+              rm -rf tuyen-tho-mo/zalo
+              mv "$zalo_tmp" tuyen-tho-mo/zalo
             fi
           }
           trap restore_dashboard EXIT
