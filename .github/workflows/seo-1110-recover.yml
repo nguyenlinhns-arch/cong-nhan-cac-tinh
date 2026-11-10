@@ -82,6 +82,7 @@ jobs:
           for run_date in 2026-11-10 2026-11-14; do
             git restore --worktree .
             git clean -fd
+            rm -f .github/workflows/seo-1110-recover.yml
             export SEO_DAILY_DATE="$run_date"
             pipeline_tmp="$(mktemp -d)"
             export RUNNER_TEMP="$pipeline_tmp"
