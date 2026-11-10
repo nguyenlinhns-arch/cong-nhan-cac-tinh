@@ -82,7 +82,7 @@ jobs:
           for run_date in 2026-11-10 2026-11-14; do
             git restore --worktree .
             git clean -fd
-            rm -f .github/workflows/seo-1110-recover.yml
+            git rm -q --ignore-unmatch .github/workflows/seo-1110-recover.yml
             export SEO_DAILY_DATE="$run_date"
             pipeline_tmp="$(mktemp -d)"
             export RUNNER_TEMP="$pipeline_tmp"
@@ -98,7 +98,7 @@ jobs:
           test "$(tr -d '\r\n' < tuyen-tho-mo/CNAME)" = "thaylinhtuyenthomo.vn"
           rg -q 'G-PZRRY10JNN' tuyen-tho-mo
           rg -q '1382247304000287' tuyen-tho-mo
-          rm .github/workflows/seo-1110-recover.yml
+          rm -f .github/workflows/seo-1110-recover.yml
           git add -A
           git diff --cached --check
           git config user.name 'github-actions[bot]'
