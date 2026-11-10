@@ -96,8 +96,8 @@ jobs:
           git restore --worktree .
           git clean -fd
           test "$(tr -d '\r\n' < tuyen-tho-mo/CNAME)" = "thaylinhtuyenthomo.vn"
-          rg -q 'G-PZRRY10JNN' tuyen-tho-mo
-          rg -q '1382247304000287' tuyen-tho-mo
+          grep -R -q 'G-PZRRY10JNN' tuyen-tho-mo
+          grep -R -q '1382247304000287' tuyen-tho-mo
           rm -f .github/workflows/seo-1110-recover.yml
           git add -A
           git diff --cached --check
