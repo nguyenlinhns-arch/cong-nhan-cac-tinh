@@ -1,0 +1,1 @@
+Temporary validation marker for full pipeline check after compacting search-content.json without removing search data.
