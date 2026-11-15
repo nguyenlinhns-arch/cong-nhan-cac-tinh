@@ -1,206 +1,667 @@
 <!doctype html>
-<html lang="vi">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-kSgKELxaktns4SwheeLdAAxaIgkz4mDWaE2cD0Rv89Q='; style-src 'unsafe-inline'; img-src 'none'; connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'; frame-src 'none'; worker-src 'none'">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="canonical" href="https://thaylinhtuyenthomo.vn/congtyai/">
-<meta name="referrer" content="no-referrer">
-<title>Phòng chat AI – chuyển tin</title>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Văn phòng 3D · Công ty Nguyễn Linh AI</title>
+<meta name="robots" content="noindex">
 <style>
-:root{--bg:#f2f5f7;--panel:#fff;--ink:#17232e;--mute:#5a6b7a;--line:#d3dbe2;--acc:#0b7a85;--acc-ink:#fff;--warn:#a96a0c;--sel:#e1f1f3;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10181f;--panel:#17222c;--ink:#e6edf2;--mute:#97a8b6;--line:#2c3b48;--acc:#4cc2cd;--acc-ink:#06242a;--warn:#e0a84b;--sel:#1b3a40}}
-:root[data-theme="dark"]{--bg:#10181f;--panel:#17222c;--ink:#e6edf2;--mute:#97a8b6;--line:#2c3b48;--acc:#4cc2cd;--acc-ink:#06242a;--warn:#e0a84b;--sel:#1b3a40}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,"Segoe UI",Roboto,sans-serif}
-main{max-width:1100px;margin:0 auto;padding:20px 16px 48px}
-h1{font-size:1.6rem;margin:0 0 4px}
-h2{font-size:1.05rem;margin:0 0 8px}
-.sub,.hint{color:var(--mute);font-size:.88rem;margin:0}
-.grid{display:grid;gap:0 16px;margin-top:16px}
-@media(min-width:900px){.grid{grid-template-columns:1fr 1.15fr;align-items:start}}
-.grid>div{min-width:0}
-section{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:16px}
-label{display:block;font-weight:600;font-size:.9rem;margin:12px 0 4px}
-textarea,input,select{width:100%;font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px 10px}
-textarea{resize:vertical}
-#out{font:13px/1.5 ui-monospace,Menlo,Consolas,monospace}
-.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
-.row input{flex:1 1 200px;width:auto}
-.row select{width:auto;flex:1 1 150px}
-.btn{font:inherit;font-weight:600;border:1px solid var(--acc);background:var(--acc);color:var(--acc-ink);padding:8px 14px;border-radius:6px;cursor:pointer}
-.btn.ghost{background:transparent;color:var(--acc)}
-.btn.danger{border-color:var(--warn);color:var(--warn);background:transparent}
-:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-.chips{display:flex;gap:6px;flex-wrap:wrap}
-.chip{font:inherit;border:1px solid var(--line);background:transparent;color:inherit;padding:6px 12px;border-radius:999px;cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--sel);border-color:var(--acc);font-weight:600}
-.lnk{color:var(--acc)}
-details{margin-top:12px}
-summary{cursor:pointer;color:var(--acc);font-weight:600}
-.ag{border-top:1px solid var(--line);padding-top:8px;margin-top:8px}
-#log{padding:0;list-style:none;margin:10px 0 0}
-#log li{border-top:1px solid var(--line);padding:10px 0}
-.who{font-weight:700}
-.me .who{color:var(--warn)}
-.txt{white-space:pre-wrap;overflow-wrap:anywhere;margin:4px 0 0;font-size:.93rem}
-.x{float:right;font:inherit;font-size:.8rem;background:none;border:0;color:var(--mute);cursor:pointer}
-</style>
-</head>
-<body>
-<main>
-<h1>Phòng chat AI</h1>
-<p class="sub">Anh chuyển tin giữa các tab AI. Công cụ giữ bảng trạng thái chung và soạn sẵn prompt cho từng AI. Chuyển tin thủ công, không tự gọi AI hay xác nhận đồng thuận. Trang không gọi API; tài khoản AI vẫn theo gói và giới hạn riêng.</p>
-<p class="hint">Nội dung chỉ lưu trong trình duyệt này, không tự đồng bộ hay công khai. Người dùng cùng hồ sơ trình duyệt có thể xem; hãy sao chép nhật ký trước khi xóa dữ liệu trình duyệt. Chỉ dán sang AI những thông tin anh muốn chia sẻ.</p>
-<p id="storageStatus" class="hint" role="status" aria-live="polite"></p>
-<p id="actionStatus" class="hint" role="status" aria-live="polite"></p>
-<div class="grid">
-<div>
-<section>
-<h2>Nhiệm vụ</h2>
-<label for="task">Việc cần cả nhóm giải quyết</label>
-<textarea id="task" rows="4" placeholder="Ví dụ: viết script Python đổi tên hàng loạt ảnh theo ngày chụp"></textarea>
-<label for="preset">Bộ vai trò</label>
-<div class="row" style="margin-top:0"><select id="preset"><option value="code">Viết code</option><option value="social">Đăng bài mạng xã hội</option><option value="free">Thảo luận chung</option></select><button class="btn ghost" id="applyPreset">Áp dụng vai trò</button></div>
-<details><summary>Chỉnh tên và vai trò</summary><div id="agentEdit"></div></details>
-</section>
-<section>
-<h2>Bảng trạng thái chung</h2>
-<p class="hint">Sau mỗi vòng, dán bản tóm tắt ngắn vào đây. Prompt chỉ mang theo bảng này và vài ý kiến gần nhất, nên ngắn và đỡ chạm giới hạn của gói free.</p>
-<textarea id="board" rows="7" placeholder="Đã chốt: …&#10;Còn tranh cãi: …&#10;Việc tiếp theo: …"></textarea>
-<div class="row"><button class="btn ghost" id="boardPrompt">Sao chép prompt cập nhật bảng</button><select id="keep" aria-label="Số ý kiến gần nhất đi kèm prompt"><option value="2">Kèm 2 ý kiến gần nhất</option><option value="3">Kèm 3 ý kiến gần nhất</option><option value="4">Kèm 4 ý kiến gần nhất</option><option value="6">Kèm 6 ý kiến gần nhất</option></select></div>
-</section>
-</div>
-<div>
-<section>
-<h2>Lượt tiếp theo</h2>
-<div class="chips" id="chips"></div>
-<label for="out">Prompt gửi cho <span id="curName"></span></label>
-<textarea id="out" rows="9" readonly></textarea>
-<div class="row"><button class="btn" id="copyOut">Sao chép prompt</button><a id="openAi" class="lnk" target="_blank" rel="noopener noreferrer">Mở tab AI</a><span id="len" class="hint"></span></div>
-<label for="reply">Dán câu trả lời của AI vào đây</label><p class="hint">Nội dung do anh dán, chưa xác minh nguồn.</p>
-<textarea id="reply" rows="5"></textarea>
-<div class="row"><button class="btn" id="saveReply">Lưu câu trả lời</button></div>
-</section>
-<section>
-<h2>Nhật ký <span id="count" class="hint"></span></h2>
-<div class="row" style="margin-top:0"><input id="note" placeholder="Ý kiến hoặc chỉ đạo của anh"><button class="btn ghost" id="addNote">Thêm ý kiến</button></div>
-<ol id="log"></ol>
-<p class="hint">Prompt chốt chỉ kèm bảng trạng thái và 14 ý kiến gần nhất. Giữ điểm chưa thống nhất trong bảng trước khi chốt.</p>
-<div class="row"><button class="btn ghost" id="copyLog">Sao chép nhật ký</button><button class="btn ghost" id="finalPrompt">Sao chép prompt chốt kết luận</button><button class="btn danger" id="reset">Xóa phiên</button></div>
-</section>
-</div>
-</div>
-</main>
+:root{color-scheme:dark}
+html,body{margin:0;background:#0b1512;color:#e6f2ee;font:13px system-ui,-apple-system,"Segoe UI",sans-serif}
+.dau{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px max(16px,env(safe-area-inset-left,0px));background:#102a24;border-bottom:1px solid #1f4a40}
+.dau b{font-size:14px}.dau .moc{color:#9fd8c9}.dau a{color:#9fd8c9}.dau small{color:#94a3b8;flex-basis:100%}
+#viewArea{height:calc(100vh - 74px);min-height:520px}
+#viewArea{position:relative}
+#vanPhong{position:absolute;inset:0;background:#0f1c1a;display:flex;flex-direction:column;z-index:5;color:#e6f2ee;font:13px system-ui,sans-serif}
+#vanPhong[hidden]{display:none!important}
+#vanPhong.nua{bottom:33.334%}
+#vanPhong canvas{display:block;flex:1;min-height:0;width:100%;cursor:pointer}
+#vanPhong .vp-thanh{order:-1;display:flex;align-items:center;gap:10px;padding:6px 10px;background:#173e37}
+#vanPhong .vp-sp{flex:1}
+#vanPhong .vp-chu-giai{display:flex;flex-wrap:wrap;gap:4px 12px;padding:6px 10px;background:#122b26;font-size:11px}
+#vanPhong .vp-chu-giai i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:-1px}
+#vanPhong .vp-the{position:absolute;right:10px;top:42px;max-width:280px;background:#0b1220ee;border:1px solid #334155;border-radius:8px;padding:8px 10px;line-height:1.5}
+#vanPhong .vp-the small{color:#94a3b8}
+#vanPhong .vp-the .vp-ten{font-weight:600}
+.vp-c-mat_ket_noi{background:#EF4444}.vp-c-het_han_muc{background:#F97316}.vp-c-dang_noi{background:#FACC15}.vp-c-dang_lam{background:#22C55E}.vp-c-cho{background:#38BDF8}.vp-c-ranh{background:#E2E8F0}.vp-c-khong_ro{background:#64748B}
+.vp-t-mat_ket_noi{color:#EF4444}.vp-t-het_han_muc{color:#F97316}.vp-t-dang_noi{color:#FACC15}.vp-t-dang_lam{color:#22C55E}.vp-t-cho{color:#38BDF8}.vp-t-ranh{color:#E2E8F0}.vp-t-khong_ro{color:#94a3b8}
+#vanPhong .vp-nut-viec{background:#1f5a4f;color:#e6f2ee;border:1px solid #2f7a6c;border-radius:6px;padding:2px 8px;cursor:pointer;font:12px system-ui}
+#vanPhong .vp-bang{position:absolute;left:10px;top:42px;bottom:40px;width:min(560px,60%);overflow:auto;background:#0b1220f2;border:1px solid #334155;border-radius:8px;padding:8px 10px;line-height:1.45;z-index:2}
+#vanPhong .vp-bang table{border-collapse:collapse;width:100%;margin:6px 0;font-size:11px}
+#vanPhong .vp-bang th{text-align:left;color:#94a3b8;font-weight:600;border-bottom:1px solid #334155;padding:3px 4px}
+#vanPhong .vp-bang td{border-bottom:1px solid #1e293b;padding:3px 4px;vertical-align:top}
+#vanPhong .vp-bang small,#vanPhong .vp-the small{display:block;color:#94a3b8}
+#vanPhong .vp-the{max-height:calc(100% - 90px);overflow:auto}
+
+</style></head><body>
+<div class="dau"><b>Văn phòng 3D · Phòng họp AI của Thầy Linh</b><span class="moc">Số liệu lúc 19:32 15/11/2026</span><a href="https://thaylinhtuyenthomo.vn/congtyai/phong-chat/" rel="noopener noreferrer">Công cụ Phòng chat AI →</a>
+<small>Ảnh chụp trạng thái từ phòng họp AI trên máy chính của Thầy Linh (cập nhật định kỳ). Bấm vào từng người để xem việc.</small></div>
+<div id="viewArea"></div>
 <script>
-const KEY="phongchat-ai-v1";
-const PRESETS={
-code:["Người thực thi: viết code cụ thể, chạy được, kèm cách chạy thử và test.","Người kiểm chứng: soi lỗi logic, kiểm tra thư viện hoặc API có thật không, các trường hợp biên.","Người phản biện: tìm rủi ro bảo mật, hiệu năng, và phương án đơn giản hơn.","Người lập kế hoạch và chốt: chia việc, review ngắn, tổng hợp kết luận."],
-social:["Người soạn bài: viết bản nháp đúng giọng thương hiệu, hợp từng nền tảng.","Người kiểm chứng: kiểm tra dữ kiện, quy định của nền tảng, từ ngữ nhạy cảm.","Người phản biện: nhìn như người đọc khó tính, chỉ ra rủi ro phản ứng tiêu cực.","Biên tập và chốt: gọn câu chữ, chọn bản cuối, đề xuất giờ đăng."],
-free:["Người đề xuất: đưa ra hướng giải quyết rõ ràng.","Người kiểm chứng: soi dữ kiện và chỗ thiếu căn cứ.","Người phản biện: tìm điểm yếu và phương án thay thế.","Người tổng hợp: gom ý kiến, chốt kết luận."]};
-const BASE=Object.freeze([["GPT Pro","https://chatgpt.com"],["Gemini","https://gemini.google.com"],["Grok","https://grok.com"],["Claude","https://claude.ai"]].map(Object.freeze));
-const fresh=()=>({task:"",preset:"code",board:"",keep:3,cur:0,agents:BASE.map((b,i)=>({name:b[0],url:b[1],role:PRESETS.code[i]})),log:[]});
-function validateState(v){
- if(!v||typeof v!=="object"||Array.isArray(v))throw Error("Định dạng phiên không hợp lệ.");
- const str=(x,max)=>{if(typeof x!=="string"||x.length>max)throw Error("Nội dung không hợp lệ hoặc quá dài.");return x;};
- if(!Object.hasOwn(PRESETS,v.preset)||![2,3,4,6].includes(v.keep)||!Number.isInteger(v.cur)||v.cur<0||v.cur>3)throw Error("Cấu hình phiên không hợp lệ.");
- if(!Array.isArray(v.agents)||v.agents.length!==4||!Array.isArray(v.log)||v.log.length>1000)throw Error("Danh sách phiên không hợp lệ.");
- return {task:str(v.task,100000),board:str(v.board,100000),preset:v.preset,keep:v.keep,cur:v.cur,
- agents:v.agents.map((a,i)=>{if(!a||typeof a!=="object")throw Error("Vai trò không hợp lệ.");return {name:str(a.name,200),role:str(a.role,10000),url:BASE[i][1]};}),
- log:v.log.map(m=>{if(!m||typeof m!=="object"||typeof m.ai!=="boolean")throw Error("Nhật ký không hợp lệ.");
- return {who:str(m.who,200),text:str(m.text,100000),ai:m.ai};})};
-}
-let S=fresh(),loadWarning="";
-try{const r=localStorage.getItem(KEY);if(r){if(r.length>5000000)throw Error("Phiên quá lớn");S=validateState(JSON.parse(r));}}
-catch(e){loadWarning="Không đọc được phiên đã lưu. Đang mở phiên trống; dữ liệu cũ chưa bị ghi đè cho đến khi anh chỉnh sửa.";}
-const $=id=>document.getElementById(id);
-const notice=t=>$("actionStatus").textContent=t;
-const save=()=>{try{validateState(S);const data=JSON.stringify(S);if(data.length>5000000)throw Error("Phiên quá lớn");localStorage.setItem(KEY,data);$("storageStatus").textContent="Đã lưu trên trình duyệt này.";return true;}catch(e){$("storageStatus").textContent="Chưa lưu được trên trình duyệt. Hãy sao chép nhật ký trước khi đóng trang.";return false;}};
-const fmt=m=>"["+m.who+(m.ai?" | dán thủ công, chưa xác minh":" | ý kiến người dùng")+"]: "+m.text;
-function recent(n){return S.log.slice(-n).map(fmt).join("\n\n")||"(chưa có ai phát biểu)";}
-function buildPrompt(i){
- const a=S.agents[i],others=S.agents.filter((_,j)=>j!==i).map(x=>x.name).join(", ");
- return "Bạn là "+a.name+" trong phòng làm việc nhóm cùng "+others+" và một con người (“Anh”).\nVai trò của bạn: "+a.role+
- "\n\nNHIỆM VỤ CHUNG:\n"+(S.task||"(chưa nhập)")+"\n\nBẢNG TRẠNG THÁI (điểm đã chốt, câu hỏi còn mở):\n"+(S.board||"(trống)")+
- "\n\nÝ KIẾN GẦN ĐÂY:\n"+recent(S.keep)+
- "\n\nQUY TẮC: trả lời tiếng Việt, tối đa khoảng 200 từ. Phản hồi trực tiếp ý kiến trước đó (đồng ý, phản đối hoặc bổ sung, kèm lý do). Không đồng ý chỉ để cho êm; nếu phản biện, nêu ít nhất một điểm yếu cụ thể hoặc nói rõ không tìm thấy lỗi. Không lặp lại điều đã nói. Nếu đã đủ thông tin để chốt, mở đầu bằng “ĐỀ XUẤT CHỐT:”.";
-}
-function boardPrompt(){
- return "Hãy cập nhật BẢNG TRẠNG THÁI của nhóm, dưới 150 từ, gồm ba mục: Đã chốt / Còn tranh cãi / Việc tiếp theo. Chỉ trả về nội dung bảng, không giải thích thêm.\n\nNHIỆM VỤ:\n"+(S.task||"(chưa nhập)")+"\n\nBẢNG HIỆN TẠI:\n"+(S.board||"(trống)")+"\n\nÝ KIẾN MỚI:\n"+recent(6);
-}
-function finalPrompt(){
- return "Hãy tổng hợp cuộc thảo luận thành KẾT LUẬN CUỐI, tiếng Việt, gồm: (1) phương án được chọn, (2) các bước thực hiện, (3) rủi ro còn lại và điểm chưa thống nhất, (4) những việc con người phải duyệt trước khi làm. Giữ nguyên các điểm chưa thống nhất trong bảng; không suy diễn đồng thuận từ ý kiến bị lược bỏ.\n\nNHIỆM VỤ:\n"+(S.task||"(chưa nhập)")+"\n\nBẢNG TRẠNG THÁI:\n"+(S.board||"(trống)")+"\n\nCHỈ 14 Ý KIẾN GẦN NHẤT (không phải toàn bộ nhật ký):\n"+recent(14);
-}
-function flash(b,t){const o=b.textContent;b.textContent=t||"Đã sao chép";setTimeout(()=>b.textContent=o,1200);}
-async function copy(text,b){
- let ok=false;
- try{await navigator.clipboard.writeText(text);ok=true;}
- catch(e){const t=document.createElement("textarea");t.value=text;t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.select();try{ok=document.execCommand("copy")===true;}catch(_){}t.remove();}
- if(ok){flash(b);notice("Đã sao chép vào bộ nhớ tạm.");}
- else{$("out").value=text;$("out").focus();$("out").select();notice("Không sao chép được. Nội dung đã chọn trong ô prompt; hãy sao chép thủ công.");}
- return ok;
-}
-function refresh(){
- const p=buildPrompt(S.cur);$("out").value=p;
- $("len").textContent=p.length.toLocaleString("vi-VN")+" ký tự";
- $("curName").textContent=S.agents[S.cur].name;
- $("openAi").href=BASE[S.cur][1];
- $("openAi").textContent="Mở "+S.agents[S.cur].name;
-}
-function renderChips(){
- const c=$("chips");c.textContent="";
- S.agents.forEach((a,i)=>{const b=document.createElement("button");b.className="chip";b.textContent=a.name;b.setAttribute("aria-pressed",i===S.cur);b.onclick=()=>{S.cur=i;save();renderChips();refresh();};c.appendChild(b);});
-}
-function renderLog(){
- const ol=$("log");ol.textContent="";
- const agentTurns=S.log.filter(m=>m.ai).length;
- $("count").textContent="· "+agentTurns+" lượt AI"+(agentTurns>=12?" · nên chốt, đừng kéo dài thêm":"");
- S.log.forEach((m,i)=>{
-  const li=document.createElement("li");if(!m.ai)li.className="me";
-  const x=document.createElement("button");x.className="x";x.textContent="Xóa";x.onclick=()=>{S.log.splice(i,1);save();renderLog();refresh();};
-  const w=document.createElement("span");w.className="who";w.textContent=m.who;
-  const t=document.createElement("p");t.className="txt";t.textContent=m.text;
-  li.append(x,w,t);ol.appendChild(li);
- });
-}
-function renderAgents(){
- const d=$("agentEdit");d.textContent="";
- S.agents.forEach((a,i)=>{
-  const w=document.createElement("div");w.className="ag";
-  const n=document.createElement("input");n.value=a.name;n.setAttribute("aria-label","Tên AI "+(i+1));
-  const r=document.createElement("textarea");r.rows=2;r.value=a.role;r.setAttribute("aria-label","Vai trò của "+a.name);
-  n.oninput=()=>{a.name=n.value||"AI "+(i+1);save();renderChips();refresh();};
-  r.oninput=()=>{a.role=r.value;save();refresh();};
-  w.append(n,r);d.appendChild(w);
- });
-}
-$("task").value=S.task;$("board").value=S.board;$("preset").value=S.preset;$("keep").value=String(S.keep);
-$("task").oninput=e=>{S.task=e.target.value;save();refresh();};
-$("board").oninput=e=>{S.board=e.target.value;save();refresh();};
-$("keep").onchange=e=>{S.keep=+e.target.value;save();refresh();};
-$("preset").onchange=e=>{S.preset=e.target.value;save();};
-$("applyPreset").onclick=()=>{S.agents.forEach((a,i)=>a.role=PRESETS[S.preset][i]);save();renderAgents();refresh();flash($("applyPreset"),"Đã áp dụng");};
-$("copyOut").onclick=e=>copy($("out").value,e.target);
-$("boardPrompt").onclick=e=>copy(boardPrompt(),e.target);
-$("finalPrompt").onclick=e=>copy(finalPrompt(),e.target);
-$("copyLog").onclick=e=>copy("NHIỆM VỤ: "+S.task+"\n\nBẢNG TRẠNG THÁI:\n"+S.board+"\n\nTHẢO LUẬN:\n\n"+S.log.map(fmt).join("\n\n"),e.target);
-$("saveReply").onclick=()=>{
- const t=$("reply").value.trim();if(!t){$("reply").focus();return;}
- S.log.push({who:S.agents[S.cur].name,text:t,ai:true});
- $("reply").value="";S.cur=(S.cur+1)%S.agents.length;save();renderChips();renderLog();refresh();
-};
-$("addNote").onclick=()=>{
- const t=$("note").value.trim();if(!t){$("note").focus();return;}
- S.log.push({who:"Anh",text:t,ai:false});$("note").value="";save();renderLog();refresh();
-};
-$("reset").onclick=e=>{
- if(e.target.dataset.sure!=="1"){e.target.dataset.sure="1";e.target.textContent="Bấm lần nữa để xóa hết";setTimeout(()=>{e.target.dataset.sure="";e.target.textContent="Xóa phiên";},3000);return;}
- S.task="";S.board="";S.log=[];S.cur=0;$("task").value="";$("board").value="";$("reply").value="";$("note").value="";save();renderChips();renderLog();refresh();
- e.target.dataset.sure="";e.target.textContent="Xóa phiên";
-};
-$("storageStatus").textContent=loadWarning||"Dữ liệu chỉ lưu trên trình duyệt này.";
-renderAgents();renderChips();renderLog();refresh();
+window.aiState = {}; const SNAP = {"at":1794745958421,"nguon":{"now":1794745958293,"tac_vu":{"codex":{"dang":0,"cho":0,"ten":"","observed":1794745958293},"claude_code":{"dang":0,"cho":0,"ten":"","observed":1794745958293}},"han_muc":{"observed":1794745916837,"claude":{"het":false,"dat_lai":"2026-11-13T07:20:00.000Z"},"codex":{"het":false,"dat_lai":"2026-11-18T07:22:01.000Z"}},"tram":{"observed":1794745958293,"ram_trong_mb":1640,"ram_tong_mb":16125,"mxh":"1.10.35 · rảnh","mxh_ban":false,"mxh_luc":1794745954386.2612,"khung_mxh":false,"cau_noi":"đẩy trạng thái 19:27","tre":8,"dang_lam":11,"tien_do_luc":1794745299970},"giam_sat":{"luc":1794745299970,"tre":[{"so":57,"lenh":"Cần có bộ phận giám sát điều khiển PC, cảnh báo, phục hồi điều khiển v7 v8","tt":"CHỜ GỬI 08:05","tuoi_phut":2142,"ben":"dieu_khien_pc"},{"so":96,"lenh":"Tự làm (3 việc: YouTube Studio video 14/11; cấp quyền 2 trang FB mới; /duyet P-I0002-P05-0","tt":"(1) YouTube: RSS 15:2x chưa có video → duyệt đăng mới 15:26 → ĐÃ LÊN https://www.youtube.c","tuoi_phut":242,"ben":"mxh"},{"so":97,"lenh":"2 Fanpage kia đăng ký bằng luồng nào, tìm lại và mở ra","tt":"TẠM DỪNG — anh Linh 16:00 \"Tạm thời bỏ qua 2 fanpage này đã\": bỏ khỏi 1.10.36, lượt Luồng ","tuoi_phut":207,"ben":"mxh"},{"so":99,"lenh":"Tạm thời bỏ qua 2 fanpage này đã","tt":"ĐÃ GIAO","tuoi_phut":202,"ben":"mxh"},{"so":104,"lenh":"Cần có chuyển động sao cho sinh động hơn. Toàn bộ bố trí vào 1 phòng họp tròn trung tâm, m","tt":"ĐANG LÀM — hội đồng chốt 16:41 (biên bản 20261115_163840); phiên điều khiển đã dựng tab \"V","tuoi_phut":157,"ben":"claude_code"},{"so":106,"lenh":"Có 1 đoạn 'ưu tiên người đã làm ngành mỏ...' dính tay trong video, cần đổi video khác","tt":"ĐÃ GIAO","tuoi_phut":137,"ben":"linh_edit"},{"so":107,"lenh":"Các AI cần có hình ảnh đặc trưng của AI đó","tt":"ĐANG KIỂM ĐỊNH","tuoi_phut":127,"ben":"claude_code"},{"so":108,"lenh":"ai có ý kiến gì thì mới hiện ra? … Cho nó hiển thị luôn 1/2 văn phòng … hình ảnh, tinh chỉ","tt":"ĐANG LÀM","tuoi_phut":122,"ben":"claude_code"}],"cho_anh":[{"so":76,"lenh":"Video tuyển dụng chuyên viên cần giao cho phòng họp AI phân tích, đánh giá. Đạt thì mới bá","tt":"CHỜ ANH LINH duyệt đăng — v15 ĐẠT 9,2 (Codex K85); v16 sửa theo anh Linh (1 thẻ tên, số nh","tuoi_phut":497,"ben":"linh_edit"},{"so":109,"lenh":"(anh Linh nhắn phiên Linh Edit) Vẫn có đoạn còn nguyên tay của người quay video… chọn vide","tt":"CHỜ ANH LINH DUYỆT","tuoi_phut":102,"ben":"linh_edit"}],"dang_lam":[{"so":57,"lenh":"Cần có bộ phận giám sát điều khiển PC, cảnh báo, phục hồi điều khiển v7 v8","tt":"CHỜ GỬI 08:05","tuoi_phut":2142,"ben":"dieu_khien_pc"},{"so":96,"lenh":"Tự làm (3 việc: YouTube Studio video 14/11; cấp quyền 2 trang FB mới; /duyet P-I0002-P05-0","tt":"(1) YouTube: RSS 15:2x chưa có video → duyệt đăng mới 15:26 → ĐÃ LÊN https://www.youtube.c","tuoi_phut":242,"ben":"mxh"},{"so":97,"lenh":"2 Fanpage kia đăng ký bằng luồng nào, tìm lại và mở ra","tt":"TẠM DỪNG — anh Linh 16:00 \"Tạm thời bỏ qua 2 fanpage này đã\": bỏ khỏi 1.10.36, lượt Luồng ","tuoi_phut":207,"ben":"mxh"},{"so":99,"lenh":"Tạm thời bỏ qua 2 fanpage này đã","tt":"ĐÃ GIAO","tuoi_phut":202,"ben":"mxh"},{"so":104,"lenh":"Cần có chuyển động sao cho sinh động hơn. Toàn bộ bố trí vào 1 phòng họp tròn trung tâm, m","tt":"ĐANG LÀM — hội đồng chốt 16:41 (biên bản 20261115_163840); phiên điều khiển đã dựng tab \"V","tuoi_phut":157,"ben":"claude_code"},{"so":106,"lenh":"Có 1 đoạn 'ưu tiên người đã làm ngành mỏ...' dính tay trong video, cần đổi video khác","tt":"ĐÃ GIAO","tuoi_phut":137,"ben":"linh_edit"},{"so":107,"lenh":"Các AI cần có hình ảnh đặc trưng của AI đó","tt":"ĐANG KIỂM ĐỊNH","tuoi_phut":127,"ben":"claude_code"},{"so":108,"lenh":"ai có ý kiến gì thì mới hiện ra? … Cho nó hiển thị luôn 1/2 văn phòng … hình ảnh, tinh chỉ","tt":"ĐANG LÀM","tuoi_phut":122,"ben":"claude_code"},{"so":110,"lenh":"Chữ ở đoạn mở đầu anh thấy vẫn to và chưa đẹp. Em gửi vào phòng họp lấy ý kiến vì video ch","tt":"LINH EDIT ĐANG DỰNG v19","tuoi_phut":97,"ben":"linh_edit"},{"so":111,"lenh":"Phòng họp đóng vai trò điều phối: app nào làm thì mới mở, tránh trường hợp nặng máy, chiếm","tt":"ĐANG LÀM","tuoi_phut":107,"ben":"linh_edit"},{"so":114,"lenh":"việc rảnh tay tức là các app MXH, Linh Edit, Linh Job, Zalo Linh… không dùng thì tắt, kể c","tt":"ĐANG LÀM (tự tắt app chờ GĐ2)","tuoi_phut":72,"ben":"zalo_linh"}],"cho_sua":0},"kiem_dinh":{"luc":1794745299970,"tong":15,"ds":[{"tep":"ket_qua_codex_K92_fanpage_tin_hieu_r2.md","luc":"18:34","dat":false},{"tep":"ket_qua_codex_K91_zalo_09138.md","luc":"18:29","dat":true},{"tep":"ket_qua_codex_K90_cong_viec_that.md","luc":"17:50","dat":false},{"tep":"ket_qua_codex_K89_fanpage_tin_hieu.md","luc":"17:40","dat":false},{"tep":"ket_qua_codex_K88_dieu_phoi_van_phong.md","luc":"17:38","dat":false},{"tep":"ket_qua_codex_van_phong_3d_r2.md","luc":"17:08","dat":false},{"tep":"ket_qua_codex_van_phong_3d.md","luc":"16:52","dat":false},{"tep":"hoi_dong_video_tuyen_chuyen_vien_v15_20261115.md","luc":"16:42","dat":true},{"tep":"hoi_dong_video_tuyen_chuyen_vien_v14_20261115.md","luc":"16:30","dat":false},{"tep":"hoi_dong_video_tuyen_chuyen_vien_v13_20261115.md","luc":"16:06","dat":false},{"tep":"codex_kiem_zalo_09133_20261115.md","luc":"14:38","dat":false},{"tep":"codex_kiem_zalo_09132_20261115.md","luc":"14:24","dat":false},{"tep":"ket_qua_codex_MXH_1135_r7.md","luc":"14:19","dat":true},{"tep":"codex_kiem_zalo_09131_20261115.md","luc":"14:12","dat":false},{"tep":"ket_qua_codex_MXH_1135_r6.md","luc":"14:08","dat":false}]},"viec":{"mo":[{"id":"T2[số đã ẩn]0_3aacee3b","ten":"Codex soát MXH 1.10.36: lệnh \"đăng nguyên bản\" qua hộp lệnh (finished=true)","ai":"phong","tt":"chờ_duyệt","tao":1794745380790,"bat_dau":null,"xong_luc":null},{"id":"T2[số đã ẩn]0_1b213151","ten":"Codex soát Linh Edit 1.36.0 (INFO REEL khoá cách dựng video tuyển chuyên viên v22)","ai":"phong","tt":"chờ_duyệt","tao":1794743620788,"bat_dau":null,"xong_luc":null},{"id":"T2[số đã ẩn]5_29e2c076","ten":"PC: Soát Zalo Linh 0.9.137 — khối gửi tay 'send_verified' (two_zalo_runtime.py) + UI","ai":"phong","tt":"chờ_duyệt","tao":1794739905873,"bat_dau":null,"xong_luc":null},{"id":"T2[số đã ẩn]6_dbf0cdb6","ten":"Lệnh anh Linh 15/11 ~16:45: nâng mô hình 3D công ty AI — p","ai":"phong","tt":"chờ_duyệt","tao":1794735676416,"bat_dau":null,"xong_luc":null},{"id":"T2[số đã ẩn]6_4b5dfc9a","ten":"Lệnh anh Linh ~07:40 14/11: \"Cần có bộ phận giám sát điều","ai":"phong","tt":"chờ_duyệt","tao":1794716876947,"bat_dau":null,"xong_luc":null},{"id":"T2[số đã ẩn]6_848b93e0","ten":"Công ty AI trực quan: Phòng họp là trung tâm Nguồn: GPT (Đ","ai":"phong","tt":"chờ_duyệt","tao":1794557606961,"bat_dau":null,"xong_luc":null},{"id":"T2[số đã ẩn]8_925c8cd7","ten":"RÀ SOÁT VIỆC 13/11 CHIỀU — hội đồng rà, phân công, phòng t","ai":"claude_code","tt":"chờ_nghiệm_thu","tao":1794555888827,"bat_dau":1794556247234,"xong_luc":1794557324278},{"id":"T2[số đã ẩn]8_a6513a70","ten":"TỔNG HỢP TOÀN BỘ CÔNG VIỆC 13/11 — hội đồng cho ý kiến, ph","ai":"kiem_dinh","tt":"chờ_nghiệm_thu","tao":1794542878010,"bat_dau":1794543233651,"xong_luc":1794543404718},{"id":"T2[số đã ẩn]1_d1efb11a","ten":"TỔNG HỢP TOÀN BỘ CÔNG VIỆC 13/11 — hội đồng cho ý kiến, ph","ai":"claude_code","tt":"chờ_nghiệm_thu","tao":1794540821829,"bat_dau":1794541758742,"xong_luc":1794542877886},{"id":"T2[số đã ẩn]7_9434af28","ten":"Kiểm định commit 8442b1d của Phòng Chat AI, sửa lỗi nếu có","ai":"kiem_dinh","tt":"chờ_nghiệm_thu","tao":1794538297758,"bat_dau":1794539129697,"xong_luc":1794539365436},{"id":"T2[số đã ẩn]4_2d8ca202","ten":"Kiểm định commit 8442b1d của Phòng Chat AI, sửa lỗi nếu có","ai":"claude_code","tt":"chờ_nghiệm_thu","tao":1794537014341,"bat_dau":1794537732633,"xong_luc":1794538297603},{"id":"T2[số đã ẩn]3_2407","ten":"Avatar: giữ mặt giống anh Linh nhất, không làm hỏng tiếng","ai":"claude_code","tt":"chờ_nghiệm_thu","tao":1794489333207,"bat_dau":1794489391399,"xong_luc":1794489594420},{"id":"T2[số đã ẩn]3_d9e1","ten":"PC: Đo nền độ tin cậy và tốc độ điều khiển PC qua V7/V8 (CHỈ ĐỌC: không bấm, không g","ai":"codex","tt":"chờ_nghiệm_thu","tao":1794485103414,"bat_dau":1794485103653,"xong_luc":1794485192624},{"id":"T2[số đã ẩn]8_187a","ten":"Việc 1.1: xác minh chỉ-đọc các mục \"chưa kiểm lại\"","ai":"codex","tt":"chờ_nghiệm_thu","tao":1794476448942,"bat_dau":1794478410454,"xong_luc":1794478468488},{"id":"T2[số đã ẩn]6_e6d3","ten":"LINH JOB: giao việc theo bảng phân công ĐÃ DUYỆT (12/11 ~1","ai":"codex","tt":"chờ_nghiệm_thu","tao":1794472666429,"bat_dau":1794472666796,"xong_luc":1794472731254},{"id":"T2[số đã ẩn]0_3cb1","ten":"THỬ LUỒNG VIẾT APP (việc thử nhỏ, thư mục thử, không đụng","ai":"claude_code","tt":"chờ_nghiệm_thu","tao":1794471820647,"bat_dau":1794471820809,"xong_luc":1794471988949},{"id":"T2[số đã ẩn]6_de4b","ten":"Ý kiến của Claude Code (phiên làm việc của chủ phòng) về p","ai":"codex","tt":"chờ_nghiệm_thu","tao":1794469956603,"bat_dau":1794469957157,"xong_luc":1794469980615},{"id":"T2[số đã ẩn]4_7b11","ten":"Phân vai GPT, Codex và Claude theo kết quả thực tế Nguồn:","ai":"codex","tt":"chờ_nghiệm_thu","tao":1794469764287,"bat_dau":1794469764895,"xong_luc":1794469810742},{"id":"T2[số đã ẩn]9_a8a4","ten":"Chủ đề: Đánh giá và lộ trình nâng cấp, tối ưu app Linh Edi","ai":"phong","tt":"chờ_duyệt","tao":1794460139937,"bat_dau":null,"xong_luc":null},{"id":"T2[số đã ẩn]0_2a21","ten":"Nguồn: GPT (Đào), chuyển nguyên văn chỉ đạo tiếp của anh Lin","ai":"phong","tt":"chờ_duyệt","tao":1794456890420,"bat_dau":null,"xong_luc":null},{"id":"T2[số đã ẩn]6_cc93","ten":"Giao việc: tạo fanpage \"Thầy Linh - Tuyển Thợ Mỏ \u003cvùng>\",","ai":"phong","tt":"chờ_duyệt","tao":1794453946466,"bat_dau":null,"xong_luc":null}],"hom_nay":{"phong":{"xong":0,"loi":0,"phut":0,"giao":11},"codex":{"xong":4,"loi":0,"phut":18,"giao":4},"claude_code":{"xong":0,"loi":2,"phut":36,"giao":2},"kiem_dinh":{"xong":0,"loi":2,"phut":5,"giao":2}},"luc":1794745958350},"ca_hom_nay":{},"van_hanh":{"luc":1794745606635,"dang":{"v7":{"so":6,"mb":272},"v8":{"so":17,"mb":269},"hub":{"so":4,"mb":87},"claude_app":{"so":24,"mb":3024},"linh_edit":{"so":5,"mb":88},"codex_app":{"so":48,"mb":1587},"fanpage":{"so":8,"mb":223},"edge":{"so":15,"mb":1245},"phong_ai":{"so":11,"mb":2125},"mxh":{"so":1,"mb":18},"zalo_linh":{"so":1,"mb":64},"playwright":{"so":2,"mb":224},"chrome":{"so":14,"mb":2249}},"tin_hieu":{"fanpage":{"ban":false,"song":true,"at":1794745669000,"ly_do":"đang trực, chờ tin khách (webhook)"},"zalo_linh":{"ban":false,"song":true,"at":1794745929000,"ly_do":"đang trực (Đào trả lời nhóm, hộp thư chung)"}}}},"web":{"claude":{"ready":true,"working":false,"loginHint":false,"adapterErr":false,"seen":1794745958093},"dao":{"ready":true,"working":false,"loginHint":false,"adapterErr":false,"seen":1794745958093},"gemini":{"ready":true,"working":false,"loginHint":false,"adapterErr":false,"seen":1794745958093}},"noi":{},"loi":{},"progress":{},"luot":{},"chuToa":0}; const thatNow = Date.now.bind(Date); const mocTai = thatNow();
+Date.now = function () { return SNAP.at + Math.min(thatNow() - mocTai, 2000); };
+window.aiState = SNAP.web || {};
+window.api = { onProgress() {}, vanPhongSnapshot: async () => true, vanPhongNguon: async () => Object.assign({}, SNAP.nguon || {}, { now: SNAP.at }) };
 </script>
-</body>
-</html>
+<script>
+// VĂN PHÒNG 3D — BỘ TÍNH TRẠNG THÁI (hội đồng chốt 15/11 16:41, biên bản 20261115_163840; anh Linh: "phòng họp tròn trung tâm,
+// mỗi người có ghế ngồi và bàn làm việc… ai đang cho ý kiến thì đèn sáng… ai mất kết nối hay đang làm").
+// Thuần hàm, dùng chung cho renderer (window.VanPhongLogic) và kiểm thử Node (module.exports). Không suy diễn: thiếu bằng chứng
+// hoặc quá expires_at → "khong_ro".
+(function (goc) {
+  // 7 trạng thái theo thứ tự ưu tiên (đứng trước thắng).
+  const TRANG_THAI = [
+    { ma: 'mat_ket_noi', ten: 'Mất kết nối / đăng xuất', mau: '#EF4444', bieu_tuong: '✕' },
+    { ma: 'het_han_muc', ten: 'Hết hạn mức', mau: '#F97316', bieu_tuong: '⌛' },
+    { ma: 'dang_noi', ten: 'Đang cho ý kiến', mau: '#FACC15', bieu_tuong: '🎙' },
+    { ma: 'dang_lam', ten: 'Đang làm việc', mau: '#22C55E', bieu_tuong: '⚙' },
+    { ma: 'cho', ten: 'Chờ (trong hàng đợi)', mau: '#38BDF8', bieu_tuong: '…' },
+    { ma: 'ranh', ten: 'Rảnh / sẵn sàng', mau: '#E2E8F0', bieu_tuong: '●' },
+    { ma: 'khong_ro', ten: 'Không rõ (thiếu/quá hạn bằng chứng)', mau: '#64748B', bieu_tuong: '?' },
+  ];
+  const UU_TIEN = Object.fromEntries(TRANG_THAI.map((t, i) => [t.ma, i]));
+  const THANH_VIEN = [
+    { id: 'anh', ten: 'Anh Linh', vai: 'Chủ toạ' },
+    { id: 'claude', ten: 'Claude', vai: 'Thành viên hội đồng (web)' },
+    { id: 'dao', ten: 'Đào (GPT)', vai: 'Thành viên hội đồng (web)' },
+    { id: 'gemini', ten: 'Gemini', vai: 'Thành viên hội đồng (web)' },
+    { id: 'codex', ten: 'Codex', vai: 'Làm + kiểm định' },
+    { id: 'claude_code', ten: 'Claude Code', vai: 'Phiên điều khiển / viết mã' },
+  ];
+  // TTL theo nguồn (giây) — hội đồng: sự kiện họp 20 s, khung web 60 s, tác vụ 60 s, hạn mức 300 s, trạm PC 30 s.
+  const TTL = { hop: 20, web: 60, tac_vu: 60, han_muc: 300, tram: 30, chu_toa: 120, luot: 480 };   // luot = tối đa một lượt hỏi (COUNCIL_MAX_S 480 s)
+
+  function bangChung(state, source, evidence, observed, ttlGiay) {
+    return { state, source, evidence, observed_at: observed, expires_at: observed + ttlGiay * 1000 };
+  }
+
+  // vao = { now, web: { claude|dao|gemini: { ready, working, loginHint, adapterErr, observed } },
+  //         noi: { <id>: ms lúc có lời gần nhất }, tac_vu: { codex: {dang:n, cho:n, observed}, claude_code: {...} },
+  //         han_muc: { claude:{het:bool,dat_lai}, codex:{het:bool,dat_lai}, observed }, chu_toa: { observed } }
+  function tinh(vao) {
+    const now = vao.now || Date.now();
+    const out = {};
+    const ung = {}; // id -> danh sách bằng chứng
+    const them = (id, bc) => { (ung[id] = ung[id] || []).push(bc); };
+    // 1) Khung web Claude/Đào/Gemini (Codex K86): observed = lúc probe thật (seen) hoặc lúc nhận chữ thật (progressAt).
+    //    Chỉ trang đăng nhập / lỗi adapter mới là mất kết nối; ready=false khi trang đang tải → KHÔNG kết luận (không rõ).
+    //    working + có chữ đang về (≤20 s) → đang cho ý kiến; working chưa có chữ → chờ (đã gửi, chờ trả lời).
+    for (const id of ['claude', 'dao', 'gemini']) {
+      const w = (vao.web || {})[id]; if (!w) continue;
+      // ô nhập đang sẵn sàng thì lỗi trang cũ không còn là mất kết nối (15/11)
+      if (w.loginHint || (w.adapterErr && !w.ready)) { if (w.seen) them(id, bangChung('mat_ket_noi', 'khung web phòng họp', w.loginHint ? 'trang đăng nhập' : 'lỗi adapter', w.seen, TTL.web)); continue; }
+      if (w.working) {
+        if (w.progressAt && now - w.progressAt <= TTL.hop * 1000) them(id, bangChung('dang_noi', 'chữ trả lời đang về (ai:progress)', 'đang viết câu trả lời', w.progressAt, TTL.hop));
+        else if (w.askAt) them(id, bangChung('cho', 'lượt họp đang hỏi', 'đã gửi câu hỏi, chưa có chữ trả lời', w.askAt, TTL.luot));   // Codex K88: mốc = lúc bắt đầu lượt, hết hạn theo TTL lượt
+        else them(id, bangChung('cho', 'lượt họp đang hỏi', 'đã gửi câu hỏi (chưa rõ lúc bắt đầu)', now, 5));
+        continue;
+      }
+      if (w.ready && w.seen) them(id, bangChung('ranh', 'khung web phòng họp (probe)', 'ô nhập sẵn sàng', w.seen, TTL.web));
+    }
+    // 2) Vừa có lời trong phòng (≤ 20 s) → đang cho ý kiến
+    for (const [id, t] of Object.entries(vao.noi || {})) if (now - t <= TTL.hop * 1000) them(id, bangChung('dang_noi', 'tin nhắn phòng họp', 'vừa phát biểu', t, TTL.hop));
+    // 3) Tác vụ nền Codex / Claude Code
+    for (const id of ['codex', 'claude_code']) {
+      const t = (vao.tac_vu || {})[id]; if (!t) continue;
+      const o = t.observed || now;
+      if (t.dang > 0) them(id, bangChung('dang_lam', 'hàng việc phòng (tasks)', `${t.dang} việc đang chạy${t.ten ? ': ' + t.ten : ''}`, o, TTL.tac_vu));
+      else if (t.cho > 0) them(id, bangChung('cho', 'hàng việc phòng (tasks)', `${t.cho} việc chờ giao`, o, TTL.tac_vu));
+      else them(id, bangChung('ranh', 'hàng việc phòng (tasks)', 'không có việc chạy', o, TTL.tac_vu));
+    }
+    // 4) Hạn mức (Claude Code dùng hạn mức Claude; Codex)
+    const hm = vao.han_muc || {}; const oh = hm.observed || now;
+    if (hm.claude && hm.claude.het) them('claude_code', bangChung('het_han_muc', 'han_muc/trang_thai.json', 'hết hạn mức' + (hm.claude.dat_lai ? ', đặt lại ' + hm.claude.dat_lai : ''), oh, TTL.han_muc));
+    if (hm.codex && hm.codex.het) them('codex', bangChung('het_han_muc', 'han_muc/trang_thai.json', 'hết hạn mức' + (hm.codex.dat_lai ? ', đặt lại ' + hm.codex.dat_lai : ''), oh, TTL.han_muc));
+    // 5) Chủ toạ: có mặt khi anh Linh vừa thao tác trong phòng (≤ 2 phút)
+    if (vao.chu_toa && vao.chu_toa.observed) them('anh', bangChung('ranh', 'thao tác chủ phòng', 'có mặt', vao.chu_toa.observed, TTL.chu_toa));
+    for (const tv of THANH_VIEN) {
+      const cac = (ung[tv.id] || []).filter((b) => now <= b.expires_at);
+      cac.sort((a, b) => UU_TIEN[a.state] - UU_TIEN[b.state]);
+      out[tv.id] = cac[0] || { state: 'khong_ro', source: 'không có', evidence: (ung[tv.id] || []).length ? 'bằng chứng đã quá hạn' : 'chưa có nguồn', observed_at: null, expires_at: null };
+    }
+    return out;
+  }
+
+  const xuat = { TRANG_THAI, UU_TIEN, THANH_VIEN, TTL, tinh, thongTin: (ma) => TRANG_THAI[UU_TIEN[ma]] };
+  if (typeof module !== 'undefined' && module.exports) module.exports = xuat; else goc.VanPhongLogic = xuat;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<script>
+// VĂN PHÒNG 3D — tab trong khung bên phải của Phòng Chat AI (hội đồng chốt 15/11 16:41, biên bản 20261115_163840).
+// Một phòng họp TRÒN: bàn tròn giữa + trạm PC chính ở tâm; 6 ghế + bàn làm việc riêng (Anh Linh, Claude, Đào, Gemini, Codex,
+// Claude Code), mỗi AI có HÌNH ĐẶC TRƯNG (anh Linh 15/11: "Các AI cần có hình ảnh đặc trưng của AI đó"). Đèn/hào quang theo 7
+// trạng thái THẬT (ui/van_phong_logic.js). Canvas 2D chiếu giả 3D, nền tĩnh đệm sẵn; 24 FPS khi có người nói, 5 FPS khi yên,
+// 0 FPS khi ẩn tab/cửa sổ. Không thư viện ngoài.
+// Sửa theo Codex K86: "đang nói" chỉ khi CHỮ TRẢ LỜI ĐANG VỀ (ai:progress) hoặc tin nhắn thật (không phải lỗi); giữ giờ nguồn
+// (không đóng dấu lại); trang đang tải ≠ mất kết nối; tính lại ngay khi có sự kiện (<1 s); một vòng vẽ duy nhất; escape mọi dữ liệu.
+(function () {
+  const L = window.VanPhongLogic;
+  const VP = { bat: false, hieuUng: true, trang: {}, nguon: null, noi: {}, loi: {}, progress: {}, chuToa: 0, chon: null };
+  const LOI_GIAY = 25;   // bong bóng ý kiến hiện 25 s rồi tắt (anh Linh 15/11: "ai có ý kiến gì thì mới hiện ra")
+  window.VanPhong = VP;
+
+  // ---- tín hiệu thật ----
+  const ID_PHONG = { owner: 'anh', claude: 'claude', dao: 'dao', gemini: 'gemini', codex: 'codex', 'claude-code': 'claude_code', claude_code: 'claude_code' };
+  if (typeof window.addMsg === 'function') {
+    const goc = window.addMsg;
+    window.addMsg = function (who, round, text, error, ...r) {
+      try { const k = ID_PHONG[who]; if (k && !error && text && String(text).trim()) { VP.noi[k] = Date.now(); VP.loi[k] = { t: Date.now(), chu: String(text).replace(/\s+/g, ' ').trim() }; if (k === 'anh') VP.chuToa = Date.now(); tinhLai(); } } catch {}
+      return goc.call(this, who, round, text, error, ...r);
+    };
+  }
+  // Codex K87: main phát ai:progress 1,5 s/lần kể cả khi chữ đứng yên → chỉ ghi mốc khi SỐ CHỮ TĂNG; chữ giảm/0 = lượt mới → xoá mốc.
+  VP.soChu = {};
+  try { window.api.onProgress(({ id, chars }) => { const k = ID_PHONG[id]; if (!k) return; const truoc = VP.soChu[k] || 0; VP.soChu[k] = chars || 0;
+    if (chars > truoc) { VP.progress[k] = Date.now(); tinhLai(); } else if (!chars || chars < truoc) { delete VP.progress[k]; tinhLai(); } }); } catch {}
+  for (const ev of ['keydown', 'pointerdown']) document.addEventListener(ev, () => { VP.chuToa = Date.now(); }, { passive: true });
+
+  // ---- khung vẽ ----
+  const hop = document.createElement('div'); hop.id = 'vanPhong'; hop.hidden = true;
+  hop.innerHTML = '<div class="vp-thanh"><b>Văn phòng 3D · Phòng họp AI</b><span class="vp-sp"></span><button type="button" class="vp-nut-viec">📋 Công việc</button><label><input type="checkbox" checked> Hiệu ứng</label></div>' +
+    '<canvas></canvas><div class="vp-chu-giai"></div><div class="vp-the" hidden></div><div class="vp-bang" hidden></div>';
+  document.getElementById('viewArea').append(hop);
+  const cv = hop.querySelector('canvas'); const g = cv.getContext('2d');
+  const theTT = hop.querySelector('.vp-the'); const chuGiai = hop.querySelector('.vp-chu-giai');
+  hop.querySelector('input').onchange = (e) => { VP.hieuUng = e.target.checked; };
+  const bang = hop.querySelector('.vp-bang');
+  hop.querySelector('.vp-nut-viec').onclick = () => { bang.hidden = !bang.hidden; if (!bang.hidden) veBang(); };
+  for (const t of L.TRANG_THAI) { const sp = document.createElement('span'); const i = document.createElement('i'); i.className = 'vp-c-' + t.ma; sp.append(i, document.createTextNode(`${t.bieu_tuong} ${t.ten}`)); chuGiai.append(sp); }
+  let nen = null; let kt = { w: 0, h: 0, dpr: 1 };
+
+  function hinh() {
+    const r = cv.getBoundingClientRect(); const dpr = window.devicePixelRatio || 1;
+    const w = Math.max(320, Math.floor(r.width)), h = Math.max(260, Math.floor(r.height));
+    if (w !== kt.w || h !== kt.h || dpr !== kt.dpr) { kt = { w, h, dpr }; cv.width = w * dpr; cv.height = h * dpr; nen = null; }
+  }
+  const tam = () => ({ x: kt.w / 2, y: kt.h * 0.42, rx: Math.min(kt.w * 0.40, kt.h * 0.78), ry: Math.min(kt.h * 0.34, kt.w * 0.20) });
+  // Cỡ nhân vật tự co theo khoảng cách thật giữa các ghế (nửa khung ~ 10 px đầu, toàn khung ~ 25 px) để không chen nhau.
+  const coH = () => Math.max(8, Math.min(28, tam().ry * 0.15));
+  // Hình học khung chữ nhật: sàn phòng + bàn gỗ chữ nhật giữa phòng.
+  const hcn = () => { const c = tam(); const bw = Math.min(kt.w * 0.6, c.rx * 1.45), bh = Math.min(kt.h * 0.26, c.ry * 0.85);
+    return { x: c.x, y: c.y, bw, bh, trai: c.x - bw / 2, phai: c.x + bw / 2, tren: c.y - bh / 2, duoi: c.y + bh / 2 }; };
+  // 5 AI: 3 ghế cạnh trên (Đào, Gemini, Codex), 2 ghế cạnh dưới (Claude, Claude Code). Anh Linh (i=0) ngồi trên bàn, phía trái.
+  function viTri(i) {
+    const b = hcn();
+    if (i === 0) return { x: b.trai + b.bw * 0.13, y: b.y - b.bh * 0.06, a: 0, trong: true, ban: viTriCafe() };
+    const ghe = { 1: [-0.25, 1], 2: [-0.33, -1], 3: [0, -1], 4: [0.33, -1], 5: [0.25, 1] }[i];   // [tỉ lệ ngang, -1 trên / 1 dưới]
+    const x = b.x + ghe[0] * b.bw; const tren = ghe[1] < 0;
+    const y = tren ? b.tren - b.bh * 0.32 : b.duoi + b.bh * 0.42;
+    return { x, y, a: tren ? -Math.PI / 2 : Math.PI / 2, ban: { x, y: tren ? b.tren + 10 : b.duoi - 2 } };
+  }
+  const viTriCafe = () => { const b = hcn(); return { x: b.trai + b.bw * 0.27, y: b.y + b.bh * 0.02 }; };   // bàn trà giữa anh và ghế khách
+  const viTriGheKhach = () => { const b = hcn(); return { x: b.trai + b.bw * 0.41, y: b.y - b.bh * 0.06 }; };
+  // Trạm PC chính: nửa phải bàn.
+  const viTriPC = () => { const b = hcn(); const w = Math.max(140, Math.min(240, b.bw * 0.3)); const h = w * 0.58; return { x: b.x + b.bw * 0.2, y: b.y - b.bh * 0.08, w, h }; };
+
+  function veNen() {
+    const o = document.createElement('canvas'); o.width = cv.width; o.height = cv.height; const c = o.getContext('2d'); c.scale(kt.dpr, kt.dpr);
+    const t = tam();
+    const nenG = c.createLinearGradient(0, 0, 0, kt.h); nenG.addColorStop(0, '#0f1c1a'); nenG.addColorStop(1, '#16302b'); c.fillStyle = nenG; c.fillRect(0, 0, kt.w, kt.h);
+    const b = hcn(); const rr = (x, y, w, h, r) => { c.beginPath(); c.moveTo(x + r, y); c.arcTo(x + w, y, x + w, y + h, r); c.arcTo(x + w, y + h, x, y + h, r); c.arcTo(x, y + h, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath(); };
+    const sx = kt.w * 0.04, sy = Math.max(46, b.tren - b.bh * 1.15), sw = kt.w * 0.92, sh = kt.h - 8 - sy;
+    c.fillStyle = '#21423b'; rr(sx, sy + 8, sw, sh, 18); c.fill();   // chân tường
+    const san = c.createLinearGradient(0, sy, 0, sy + sh); san.addColorStop(0, '#2f5a50'); san.addColorStop(1, '#3c6b60');
+    c.fillStyle = san; rr(sx, sy, sw, sh, 18); c.fill();
+    c.strokeStyle = 'rgba(255,255,255,.07)'; c.lineWidth = 1; for (let k = 1; k < 8; k++) { const x = sx + (sw * k) / 8; c.beginPath(); c.moveTo(x, sy + 6); c.lineTo(x, sy + sh - 6); c.stroke(); }   // vân sàn
+    c.fillStyle = 'rgba(0,0,0,.28)'; rr(b.trai + 6, b.tren + 16, b.bw, b.bh, 12); c.fill();   // bóng bàn
+    c.fillStyle = '#5b3a24'; rr(b.trai, b.tren + 10, b.bw, b.bh, 12); c.fill();   // cạnh trước bàn
+    const mat = c.createLinearGradient(b.trai, b.tren, b.phai, b.duoi); mat.addColorStop(0, '#a87a52'); mat.addColorStop(1, '#7b5232');
+    c.fillStyle = mat; rr(b.trai, b.tren, b.bw, b.bh, 12); c.fill();
+    c.strokeStyle = 'rgba(255,255,255,.10)'; c.beginPath(); c.moveTo(b.x - b.bw * 0.03, b.tren + 10); c.lineTo(b.x - b.bw * 0.03, b.duoi - 10); c.stroke();   // vạch chia trái (anh) / phải (PC)
+    for (let i = 1; i < 6; i++) banLamViec(c, viTri(i));
+    { const q = viTriGheKhach(); c.fillStyle = 'rgba(0,0,0,.22)'; c.beginPath(); c.ellipse(q.x, q.y + 12, 22, 7, 0, 0, 7); c.fill();
+      c.fillStyle = '#2d3e50'; c.beginPath(); c.ellipse(q.x, q.y + 8, 18, 8, 0, 0, 7); c.fill(); c.fillStyle = '#34495e'; c.beginPath(); c.moveTo(q.x - 15 + 6, q.y - 26); c.arcTo(q.x + 15, q.y - 26, q.x + 15, q.y, 6); c.arcTo(q.x + 15, q.y, q.x - 15, q.y, 6); c.arcTo(q.x - 15, q.y, q.x - 15, q.y - 26, 6); c.arcTo(q.x - 15, q.y - 26, q.x + 15, q.y - 26, 6); c.closePath(); c.fill(); }
+    { const k = viTriCafe(); const r = Math.max(14, b.bw * 0.055);   // bàn cà phê tròn + 2 tách
+      c.fillStyle = 'rgba(0,0,0,.25)'; c.beginPath(); c.ellipse(k.x, k.y + 10, r * 1.1, r * 0.45, 0, 0, 7); c.fill();
+      c.fillStyle = '#4a2f1c'; c.fillRect(k.x - 2, k.y, 4, 10);
+      c.fillStyle = '#e7d3b5'; c.beginPath(); c.ellipse(k.x, k.y, r, r * 0.42, 0, 0, 7); c.fill(); c.strokeStyle = '#8b6b4a'; c.lineWidth = 1.2; c.stroke();
+      for (const dx of [-r * 0.4, r * 0.35]) { c.fillStyle = '#fafafa'; c.beginPath(); c.ellipse(k.x + dx, k.y - 3, r * 0.2, r * 0.1, 0, 0, 7); c.fill(); c.fillRect(k.x + dx - r * 0.2, k.y - 3, r * 0.4, r * 0.22); c.fillStyle = '#6b4226'; c.beginPath(); c.ellipse(k.x + dx, k.y - 3, r * 0.15, r * 0.07, 0, 0, 7); c.fill(); } }
+    nen = o;
+  }
+  function banLamViec(c, p) {
+    const w = 46, d = 22;
+    c.save(); c.translate(p.ban.x, p.ban.y);
+    c.fillStyle = 'rgba(0,0,0,.25)'; c.beginPath(); c.ellipse(0, 12, w * 0.7, 8, 0, 0, 7); c.fill();
+    c.fillStyle = '#6d4a2f'; c.fillRect(-w / 2, -d / 2 + 6, w, 8);
+    c.fillStyle = '#b08458'; c.beginPath(); c.moveTo(-w / 2, -d / 2 + 6); c.lineTo(w / 2, -d / 2 + 6); c.lineTo(w / 2 - 6, -d / 2 - 6); c.lineTo(-w / 2 + 6, -d / 2 - 6); c.closePath(); c.fill();
+    c.restore();
+  }
+
+  // ---- HÌNH ĐẶC TRƯNG từng thành viên (vẽ phỏng theo nét nhận diện, không dùng tệp logo) ----
+  function bieuTuong(id, x, y, r, mo) {
+    g.save(); g.translate(x, y); g.globalAlpha = mo ? 0.45 : 1;
+    if (id === 'claude' || id === 'claude_code') { // ngôi sao tia cam đặc trưng Claude
+      g.fillStyle = '#f5ede4'; g.beginPath(); g.arc(0, 0, r, 0, 7); g.fill();
+      g.fillStyle = '#D97757'; g.beginPath();
+      for (let k = 0; k < 12; k++) { const a = (k * Math.PI) / 6; const rr = k % 2 ? r * 0.32 : r * 0.82; g.lineTo(Math.cos(a) * rr, Math.sin(a) * rr); }
+      g.closePath(); g.fill();
+      if (id === 'claude_code') { g.fillStyle = '#1f2937'; roundRect(-r * 0.75, r * 0.45, r * 1.5, r * 0.7, 3); g.fill(); g.fillStyle = '#fbbf24'; g.font = `bold ${Math.round(r * 0.55)}px ui-monospace,monospace`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('</>', 0, r * 0.8); }
+    } else if (id === 'dao') { // nút hoa 6 cánh của ChatGPT (Đào)
+      g.fillStyle = '#10a37f'; g.beginPath(); g.arc(0, 0, r, 0, 7); g.fill();
+      g.strokeStyle = '#fff'; g.lineWidth = Math.max(1.5, r * 0.13);
+      for (let k = 0; k < 6; k++) { g.save(); g.rotate((k * Math.PI) / 3); g.beginPath(); g.ellipse(0, -r * 0.32, r * 0.22, r * 0.42, 0, 0, 7); g.stroke(); g.restore(); }
+    } else if (id === 'gemini') { // sao 4 cánh chuyển màu xanh–tím của Gemini
+      g.fillStyle = '#0f172a'; g.beginPath(); g.arc(0, 0, r, 0, 7); g.fill();
+      const gr = g.createLinearGradient(-r, -r, r, r); gr.addColorStop(0, '#4285f4'); gr.addColorStop(0.55, '#9b72cb'); gr.addColorStop(1, '#d96570'); g.fillStyle = gr;
+      g.beginPath(); g.moveTo(0, -r * 0.88); g.quadraticCurveTo(0, 0, r * 0.88, 0); g.quadraticCurveTo(0, 0, 0, r * 0.88); g.quadraticCurveTo(0, 0, -r * 0.88, 0); g.quadraticCurveTo(0, 0, 0, -r * 0.88); g.fill();
+    } else if (id === 'codex') { // cửa sổ dòng lệnh ">_" của Codex
+      g.fillStyle = '#111827'; roundRect(-r, -r, r * 2, r * 2, r * 0.35); g.fill();
+      g.strokeStyle = '#374151'; g.lineWidth = 1; g.stroke();
+      g.fillStyle = '#34d399'; g.font = `bold ${Math.round(r * 1.0)}px ui-monospace,monospace`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('>_', 0, r * 0.05);
+    } else { // Anh Linh: mũ bảo hộ thợ mỏ có đèn
+      g.fillStyle = '#f1d3b3'; g.beginPath(); g.arc(0, r * 0.15, r * 0.85, 0, 7); g.fill();
+      g.fillStyle = '#facc15'; g.beginPath(); g.ellipse(0, -r * 0.15, r * 1.0, r * 0.75, 0, Math.PI, 0); g.fill(); g.fillRect(-r * 1.15, -r * 0.2, r * 2.3, r * 0.2);
+      g.fillStyle = '#fff7cc'; g.beginPath(); g.arc(0, -r * 0.55, r * 0.22, 0, 7); g.fill();
+    }
+    g.restore();
+  }
+
+  const TRANG_PHUC = { // Đào 15/11: màu áo, tóc, phụ kiện
+    anh: { ao: '#F8FAFC', vien: '#253244', cavat: '#1E6091', mu: true, h: 1.15 },
+    claude: { ao: '#C77449', trong: '#F5E6D3', h: 1.0 },
+    dao: { ao: '#10A37F', trong: '#FFFFFF', tai_nghe: true, h: 1.03 },
+    gemini: { ao: '#6474D9', trong: '#E0E7FF', h: 1.0 },
+    codex: { ao: '#263445', vien: '#22C55E', kinh: true, h: 0.97 },
+    claude_code: { ao: '#AE6843', trong: '#F5E6D3', tai_nghe: true, h: 1.0 },
+    gs: { ao: '#2563EB', trong: '#DBEAFE', h: 1.0 }, kd: { ao: '#334155', cavat: '#16A34A', h: 1.0 },
+  };
+  // Vẽ một nhân vật. x,y = điểm giữa hông (ngồi) hoặc bàn chân (đứng). opt: { H, dung, st, nhip, pha, tay }
+  function nhanVat(id, x, y, o) {
+    const tp = TRANG_PHUC[id] || TRANG_PHUC.claude; const H = o.H * (tp.h || 1); const st = o.st || 'ranh'; const nhip = o.nhip || 0;
+    const mat = st === 'mat_ket_noi', kr = st === 'khong_ro', noi = st === 'dang_noi', lam = st === 'dang_lam', cho = st === 'cho';
+    g.save(); g.globalAlpha = mat ? 0.45 : kr ? 0.6 : 1;
+    const da = '#F1C9A5', toc = '#1F2937';
+    const than = 1.5 * H, rong = 1.15 * H;
+    const yVai = o.dung ? y - 1.3 * H - than : y - than;   // đứng: chân 1,3H dưới thân
+    if (o.dung) { g.fillStyle = '#253244'; roundRect(x - rong * 0.38, y - 1.3 * H, rong * 0.32, 1.3 * H, 3); g.fill(); roundRect(x + rong * 0.06, y - 1.3 * H, rong * 0.32, 1.3 * H, 3); g.fill();
+      g.fillStyle = '#111827'; roundRect(x - rong * 0.42, y - 4, rong * 0.38, 5, 2); g.fill(); roundRect(x + rong * 0.04, y - 4, rong * 0.38, 5, 2); g.fill(); }
+    // thân hình thang bo góc
+    g.fillStyle = tp.ao; g.beginPath(); g.moveTo(x - rong / 2, yVai + 4); g.quadraticCurveTo(x - rong / 2, yVai, x - rong / 2 + 4, yVai);
+    g.lineTo(x + rong / 2 - 4, yVai); g.quadraticCurveTo(x + rong / 2, yVai, x + rong / 2, yVai + 4); g.lineTo(x + rong * 0.42, yVai + than); g.lineTo(x - rong * 0.42, yVai + than); g.closePath(); g.fill();
+    if (tp.vien) { g.strokeStyle = tp.vien; g.lineWidth = 1.5; g.stroke(); }
+    if (tp.trong) { g.fillStyle = tp.trong; g.beginPath(); g.moveTo(x - rong * 0.14, yVai); g.lineTo(x + rong * 0.14, yVai); g.lineTo(x, yVai + than * 0.45); g.closePath(); g.fill(); }
+    if (tp.cavat) { g.fillStyle = tp.cavat; g.beginPath(); g.moveTo(x - 2, yVai + 2); g.lineTo(x + 2, yVai + 2); g.lineTo(x + 3, yVai + than * 0.55); g.lineTo(x, yVai + than * 0.65); g.lineTo(x - 3, yVai + than * 0.55); g.closePath(); g.fill(); }
+    // huy hiệu trên ngực
+    if (id !== 'gs' && id !== 'kd') bieuTuong(id, x + rong * 0.24, yVai + than * 0.35, Math.max(4.5, H * 0.24), false);
+    // tay (viên nang xoay tại vai)
+    const tay = (ben, goc) => { g.save(); g.translate(x + ben * rong * 0.47, yVai + 3); g.rotate(goc); g.fillStyle = tp.ao; roundRect(-H * 0.13, 0, H * 0.26, H * 1.1, H * 0.13); g.fill(); g.fillStyle = da; g.beginPath(); g.ellipse(0, H * 1.15, H * 0.14, H * 0.13, 0, 0, 7); g.fill(); g.restore(); };
+    let gT = 0.18, gP = -0.18;
+    if (lam && !o.dung) { gT = 0.55 + Math.sin(nhip * 4.5) * 0.08; gP = -0.55 - Math.sin(nhip * 4.5 + 1.6) * 0.08; }   // gõ phím 1,4 s
+    if (noi) gP = -2.35 + Math.sin(nhip * 7.8) * 0.12;   // giơ tay khi phát biểu
+    if (o.tay === 'bang') gP = -1.1; if (o.tay === 'kinh') gP = -1.5; if (o.tay === 'cafe') gP = -1.25;
+    tay(-1, gT); tay(1, gP);
+    // phụ kiện tay phải: bảng kẹp/đồng hồ (Giám sát), kính lúp (Kiểm định)
+    const tx = x + rong * 0.47 + Math.sin(-gP) * H * 1.15, ty = yVai + 3 + Math.cos(-gP) * H * 1.15;
+    if (o.tay === 'bang') { g.fillStyle = '#F8FAFC'; roundRect(tx - H * 0.3, ty - H * 0.5, H * 0.6, H * 0.75, 2); g.fill(); g.fillStyle = '#94A3B8'; for (let k = 0; k < 3; k++) g.fillRect(tx - H * 0.2, ty - H * 0.3 + k * H * 0.17, H * 0.4, 1.2); }
+    if (o.tay === 'cafe') { g.fillStyle = '#F8FAFC'; roundRect(tx - H * 0.2, ty - H * 0.42, H * 0.36, H * 0.42, 2); g.fill(); g.strokeStyle = '#F8FAFC'; g.lineWidth = 1.4; g.beginPath(); g.arc(tx + H * 0.18, ty - H * 0.22, H * 0.1, -1.4, 1.4); g.stroke();
+      g.fillStyle = '#6B4226'; g.fillRect(tx - H * 0.17, ty - H * 0.4, H * 0.3, H * 0.08); if (VP.hieuUng) { g.strokeStyle = 'rgba(226,232,240,.5)'; g.lineWidth = 1; g.beginPath(); g.moveTo(tx - H * 0.05, ty - H * 0.5); g.quadraticCurveTo(tx + H * 0.08, ty - H * 0.65, tx - H * 0.03, ty - H * 0.8); g.stroke(); } }
+    if (o.tay === 'kinh') { g.strokeStyle = '#E2E8F0'; g.lineWidth = 2; g.beginPath(); g.arc(tx + H * 0.1, ty - H * 0.25, H * 0.24, 0, 7); g.stroke(); g.fillStyle = 'rgba(56,217,203,.25)'; g.fill(); }
+    // cổ + đầu (cúi khi mất kết nối, nghiêng khi chờ)
+    g.fillStyle = da; g.fillRect(x - H * 0.12, yVai - H * 0.2, H * 0.24, H * 0.22);
+    g.save(); g.translate(x, yVai - H * 0.72);
+    g.rotate(mat ? 0.14 : cho ? Math.sin(nhip * 2.1) * 0.05 : 0);
+    g.fillStyle = da; g.beginPath(); g.ellipse(0, 0, H * 0.5, H * 0.55, 0, 0, 7); g.fill();
+    if (tp.mu) { // mũ thợ mỏ vàng có đèn
+      g.fillStyle = '#FBBF24'; g.beginPath(); g.ellipse(0, -H * 0.12, H * 0.56, H * 0.46, 0, Math.PI, 0); g.fill(); g.fillRect(-H * 0.66, -H * 0.16, H * 1.32, H * 0.12);
+      g.fillStyle = '#FFF7CC'; g.beginPath(); g.arc(0, -H * 0.4, H * 0.12, 0, 7); g.fill();
+    } else { g.fillStyle = toc; g.beginPath(); g.ellipse(0, -H * 0.2, H * 0.52, H * 0.38, 0, Math.PI * 1.02, Math.PI * 1.98); g.fill(); g.fillRect(-H * 0.5, -H * 0.24, H, H * 0.12); }
+    if (tp.tai_nghe) { g.strokeStyle = '#0F172A'; g.lineWidth = 2; g.beginPath(); g.arc(0, -H * 0.05, H * 0.56, Math.PI * 1.05, Math.PI * 1.95); g.stroke(); g.fillStyle = '#0F172A'; roundRect(-H * 0.62, -H * 0.1, H * 0.14, H * 0.3, 2); g.fill(); roundRect(H * 0.48, -H * 0.1, H * 0.14, H * 0.3, 2); g.fill(); }
+    // mắt (chớp mỗi ~6 s), kính, miệng (mở/đóng 0,8 s khi nói)
+    const chop = ((nhip + (id.length * 1.7)) % 6.2) < 0.15;
+    g.fillStyle = '#1E293B';
+    if (mat) { g.fillRect(-H * 0.24, H * 0.04, H * 0.14, 1.4); g.fillRect(H * 0.1, H * 0.04, H * 0.14, 1.4); }
+    else if (chop) { g.fillRect(-H * 0.24, H * 0.02, H * 0.14, 1.2); g.fillRect(H * 0.1, H * 0.02, H * 0.14, 1.2); }
+    else { g.beginPath(); g.ellipse(-H * 0.17, H * 0.02, H * 0.05, H * 0.07, 0, 0, 7); g.fill(); g.beginPath(); g.ellipse(H * 0.17, H * 0.02, H * 0.05, H * 0.07, 0, 0, 7); g.fill(); }
+    if (tp.kinh) { g.strokeStyle = '#94A3B8'; g.lineWidth = 1.1; g.strokeRect(-H * 0.3, -H * 0.06, H * 0.24, H * 0.16); g.strokeRect(H * 0.06, -H * 0.06, H * 0.24, H * 0.16); g.beginPath(); g.moveTo(-H * 0.06, H * 0.02); g.lineTo(H * 0.06, H * 0.02); g.stroke(); }
+    g.fillStyle = '#9F3A38';
+    if (noi) { const m = 0.04 + 0.08 * Math.abs(Math.sin(nhip * 3.9)); g.beginPath(); g.ellipse(0, H * 0.27, H * 0.1, H * m, 0, 0, 7); g.fill(); }
+    else { g.strokeStyle = '#9F3A38'; g.lineWidth = 1.2; g.beginPath(); g.arc(0, H * (mat ? 0.36 : 0.18), H * 0.12, mat ? Math.PI * 1.2 : 0.25, mat ? Math.PI * 1.8 : Math.PI - 0.25); g.stroke(); }
+    g.restore();
+    g.restore();
+    return { dinh: yVai - H * 1.3 };
+  }
+
+  function soChoAnh() { const gs = (VP.nguon || {}).giam_sat; return gs && gs.luc && Date.now() - gs.luc <= 20 * 60000 ? gs.cho_anh.length : null; }
+  function veNguoi(p, tv, st, t) {
+    const info = L.thongTin(st.state) || L.thongTin('khong_ro'); const mau = info.mau;
+    const noi = st.state === 'dang_noi', lam = st.state === 'dang_lam', mat = st.state === 'mat_ket_noi';
+    const nhip = VP.hieuUng ? t / 1000 : 0;
+    g.fillStyle = lam ? `rgba(34,197,94,${0.6 + 0.3 * Math.sin(nhip * 4)})` : mat ? '#3a1515' : '#1e293b';
+    if (!p.trong) { g.fillRect(p.ban.x - 11, p.ban.y - 22, 22, 14); g.fillStyle = '#0b1220'; g.fillRect(p.ban.x - 2, p.ban.y - 8, 4, 4); }
+    const R = 34 + (noi && VP.hieuUng ? 6 * Math.sin(nhip * 6) : 0);
+    const hq = g.createRadialGradient(p.x, p.y, 6, p.x, p.y, R + 18);
+    const doSang = noi ? 0.85 : mat ? (VP.hieuUng ? 0.25 + 0.25 * Math.sin(nhip * 2) : 0.35) : st.state === 'khong_ro' ? 0.12 : 0.35;
+    hq.addColorStop(0, hexA(mau, doSang)); hq.addColorStop(1, hexA(mau, 0)); g.fillStyle = hq; g.beginPath(); g.arc(p.x, p.y, R + 18, 0, 7); g.fill();
+    g.lineWidth = noi ? 4 : 2.5; g.strokeStyle = mau; if (st.state === 'khong_ro') g.setLineDash([5, 4]);
+    g.beginPath(); g.ellipse(p.x, p.y + 10, 24, 10, 0, 0, 7); g.stroke(); g.setLineDash([]);
+    const choAnh = tv.id === 'anh' ? soChoAnh() : null;
+    g.fillStyle = mat ? '#3b3b3b' : '#2d3e50'; g.beginPath(); g.ellipse(p.x, p.y + 8, 18, 8, 0, 0, 7); g.fill();
+    g.fillStyle = mat ? '#444' : '#34495e'; roundRect(p.x - 15, p.y - 26, 30, 26, 6); g.fill();
+    const bob = VP.hieuUng && !mat ? Math.sin(nhip * 2 + p.a) * 1.5 : 0;
+    g.fillStyle = mat ? '#5b5b5b' : mauThan(tv.id); roundRect(p.x - 11, p.y - 16 + bob, 22, 20, 8); g.fill();
+    g.fillStyle = mat ? '#777' : '#f1d3b3'; g.beginPath(); g.arc(p.x, p.y - 24 + bob, 9, 0, 7); g.fill();   // nhân vật ban đầu (anh Linh 15/11 18:3x): đầu tròn màu da
+    bieuTuong(tv.bt || tv.id, p.x + 5, p.y - 7 + bob, 5.5, mat);   // huy hiệu đặc trưng nhỏ trên ngực
+    if (tv.id === 'anh' && !choAnh) { g.font = '13px system-ui'; g.textAlign = 'center'; g.fillText('☕', p.x + 17, p.y - 6 + bob); }
+    g.font = 'bold 14px system-ui,sans-serif'; g.textAlign = 'center'; g.textBaseline = 'alphabetic'; g.fillStyle = mau; g.fillText(info.bieu_tuong, p.x + 22, p.y - 32);
+    if (noi && VP.hieuUng) {
+      g.strokeStyle = hexA('#FACC15', 0.8); g.lineWidth = 2;
+      for (let k = 0; k < 3; k++) { const rr = 16 + ((nhip * 30 + k * 8) % 24); g.globalAlpha = Math.max(0, 1 - rr / 40); g.beginPath(); g.arc(p.x, p.y - 26, rr, -0.9, 0.9); g.stroke(); }
+      g.globalAlpha = 1; const c0 = tam(); g.setLineDash([6, 6]); g.lineDashOffset = -nhip * 40; const P0 = viTriPC(); g.beginPath(); g.moveTo(p.x, p.y - 10); g.lineTo(P0.x, P0.y); g.stroke(); g.setLineDash([]);
+    }
+    g.font = '600 12px system-ui,sans-serif'; g.fillStyle = '#e6f2ee'; g.fillText(tv.ten, p.x, p.y + 32);
+    // Anh Linh 15/11: việc tồn cần anh quyết → ghi rõ số việc dưới hình anh; còn lại báo "Rảnh / Đang uống cà phê".
+    if (tv.id === 'anh') { g.font = 'bold 11px system-ui,sans-serif'; if (choAnh) { g.fillStyle = '#FACC15'; g.fillText('Cần anh duyệt: ' + choAnh + ' việc', p.x, p.y + 46); } else { g.fillStyle = '#E2E8F0'; g.fillText('Rảnh / Đang uống cà phê ☕', p.x, p.y + 46); } }
+    else { g.font = '11px system-ui,sans-serif'; g.fillStyle = mau; g.fillText(info.ten.split(' (')[0], p.x, p.y + 46); }
+  }
+  // Bong bóng ý kiến: chỉ hiện khi người đó vừa nói (tin thật) hoặc đang viết (chữ đang về); tự tắt sau LOI_GIAY.
+  function bongBong(id, p, mau) {
+    const now = Date.now(); const l = VP.loi[id]; let chu = null;
+    if (l && now - l.t <= LOI_GIAY * 1000) { const moi = Object.entries(VP.loi).filter(([, v]) => now - v.t <= LOI_GIAY * 1000).sort((a, b) => b[1].t - a[1].t).slice(0, kt.h < 360 ? 1 : 2).map(([k]) => k); if (moi.includes(id)) chu = l.chu; }
+    else if (VP.progress[id] && now - VP.progress[id] <= 20000 && (VP.trang[id] || {}).state === 'dang_noi') chu = 'đang viết ý kiến…';
+    if (!chu) return;
+    const tuoi = (now - ((l && l.t) || now)) / 1000; const a = tuoi < 0.25 ? tuoi / 0.25 : tuoi > LOI_GIAY - 0.45 ? Math.max(0, (LOI_GIAY - tuoi) / 0.45) : 1; const nang = tuoi < 0.25 ? 6 * (1 - tuoi / 0.25) : 0;
+    g.save(); g.globalAlpha = a; g.font = '11px system-ui,sans-serif';
+    const W = Math.min(240, kt.w * 0.36); const dong = catDong(chu, W - 20, kt.h < 360 ? 1 : 2); const tv = L.THANH_VIEN.find((x) => x.id === id) || BO_PHAN.find((x) => x.id === id);
+    const h = 24 + dong.length * 14; const x = Math.max(4, Math.min(kt.w - W - 4, p.x - W / 2)); const y = Math.max(4, p.y - 58 - h + nang);
+    g.fillStyle = 'rgba(25,44,64,.94)'; roundRect(x, y, W, h, 14); g.fill(); g.strokeStyle = '#426078'; g.lineWidth = 1.2; g.stroke();
+    g.beginPath(); g.moveTo(p.x - 6, y + h); g.lineTo(p.x, y + h + 7); g.lineTo(p.x + 6, y + h); g.closePath(); g.fillStyle = 'rgba(25,44,64,.94)'; g.fill();
+    g.textAlign = 'left'; g.font = 'bold 11px system-ui,sans-serif'; g.fillStyle = mauNguoi(id); g.fillText(tv ? tv.ten : id, x + 10, y + 15);
+    g.font = '11px system-ui,sans-serif'; g.fillStyle = '#F1F5F9'; dong.forEach((d, i) => g.fillText(d, x + 10, y + 30 + i * 14)); g.textAlign = 'center'; g.restore();
+  }
+  function catDong(s, w, max) {
+    const tu = []; for (const t0 of s.split(' ')) { let t = t0; while (t && g.measureText(t).width > w) { let k = t.length; while (k > 1 && g.measureText(t.slice(0, k)).width > w) k--; tu.push(t.slice(0, k)); t = t.slice(k); } if (t) tu.push(t); }
+    const ra = []; let cur = '';
+    for (const t of tu) { const thu = cur ? cur + ' ' + t : t; if (g.measureText(thu).width <= w) cur = thu; else { ra.push(cur || t); cur = cur ? t : ''; if (ra.length === max) break; } }
+    if (ra.length < max && cur) ra.push(cur);
+    const het = ra.join(' ').length < s.length; if (het && ra.length) { let d = ra[ra.length - 1]; while (d && g.measureText(d + '…').width > w) d = d.slice(0, -1); ra[ra.length - 1] = d + '…'; }
+    return ra;
+  }
+  // ---- VÒNG SAU: 2 người cụ thể (anh Linh 15/11: "cần có người cụ thể giám sát, người kiểm định … chỗ ngồi làm việc ở vòng sau,
+  // cũng có báo cáo, ý kiến"). Giám sát tiến độ = Claude Điều phối (phiên Claude điều khiển phòng + bảng tiến độ tự chạy 15 phút/lần);
+  // Kiểm định chất lượng = Codex Kiểm định (làn codex_qa, độc lập, chỉ đọc).
+  // TỔ VẬN HÀNH TRÊN PC: mỗi app = 1 nhân viên, có tên, việc hằng ngày, giờ, người giữ mã (theo data/lich_phan_cong.json + CLAUDE.md).
+  const TO_VAN_HANH = [
+    { id: 'mxh', ten: 'MXH', viec: 'Tải video Vinacomin, dựng + đăng Luồng 2; Luồng 1 đến hạn', gio: '06:00–08:00', giu: 'Claude phiên MXH/Linh Edit', khung: [['05:50', '08:30']], kt: 'M', mau: '#e11d48' },
+    { id: 'zalo_linh', ten: 'Zalo Linh', viec: 'Chiến dịch Zalo + Đào trả lời nhóm', gio: '09:30 · 12:00 · 19:00, cả ngày', giu: 'Claude phiên Zalo Linh', luon: true, kt: 'Z', mau: '#2563eb' },
+    { id: 'fanpage', ten: 'Fanpage', viec: 'Tự trả lời bình luận, tin nhắn fanpage', gio: 'cả ngày', giu: 'Claude phiên Fanpage', luon: true, kt: 'F', mau: '#1d4ed8' },
+    { id: 'linh_job', ten: 'LINH JOB', viec: 'Đăng tin tuyển dụng lên các trang việc làm', gio: 'hằng ngày', giu: 'Claude phiên LINH JOB', kt: 'J', mau: '#7c3aed' },
+    { id: 'linh_edit', ten: 'Linh Edit', viec: 'Dựng, biên tập video (GPT biên tập)', gio: 'theo việc', giu: 'Claude phiên MXH/Linh Edit', kt: 'E', mau: '#db2777' },
+    { id: 'mb_top2', ten: 'MB TOP2+', viec: 'Chốt sổ theo dõi (chỉ ghi, không cược)', gio: '10:20', giu: 'Claude phiên MB TOP2+', khong_tien_trinh: true, kt: 'S', mau: '#0891b2' },
+    { id: 'hub', ten: 'Automation Hub', viec: 'Cài, cập nhật app, sao lưu', gio: 'theo việc', giu: 'Claude phiên điều khiển', luon: true, kt: 'H', mau: '#ca8a04' },
+    { id: 'v7v8', ten: 'Điều khiển PC', viec: 'V7 + V8 cho AI điều khiển máy', gio: 'luôn bật', giu: 'anh Linh cài (quyền quản trị)', luon: true, kt: 'PC', mau: '#475569' },
+  ];
+  function ttNV(nv) {
+    const vh = (VP.nguon || {}).van_hanh; if (!vh || !vh.luc || Date.now() - vh.luc > 30 * 60000) return { st: 'khong_ro', nhan: 'chưa đo' };
+    const now = new Date(); const ph = now.getHours() * 60 + now.getMinutes(); const p2 = (x) => { const [a, b] = x.split(':').map(Number); return a * 60 + b; };
+    const trongKhung = (nv.khung || []).some(([a, b]) => ph >= p2(a) && ph < p2(b));
+    if (nv.khong_tien_trinh) return { st: 'ranh', nhan: 'chạy lúc ' + nv.gio };
+    const chay = nv.id === 'v7v8' ? !!(vh.dang.v7 || vh.dang.v8) : !!vh.dang[nv.id];
+    const mb = nv.id === 'v7v8' ? ((vh.dang.v7 || {}).mb || 0) + ((vh.dang.v8 || {}).mb || 0) : (vh.dang[nv.id] || {}).mb || 0;
+    const th = (vh.tin_hieu || {})[nv.id]; const thMoi = th && th.at && Date.now() - th.at < 180000;
+    if (!chay) return nv.luon ? { st: 'mat_ket_noi', nhan: 'ĐANG TẮT (cần chạy)' } : trongKhung ? { st: 'cho', nhan: 'đến giờ, chưa mở' } : { st: 'tat', nhan: 'đang tắt (chưa cần)' };
+    if (thMoi && th.ban) return { st: 'dang_lam', nhan: 'đang làm' + (th.ly_do ? ': ' + th.ly_do : ''), mb };
+    if (nv.id === 'mxh' && ((VP.nguon || {}).tram || {}).mxh_ban) return { st: 'dang_lam', nhan: 'đang dựng/đăng', mb };
+    return { st: 'ranh', nhan: 'đang chạy, rảnh', mb };
+  }
+  const viTriNV = (k) => { const n = TO_VAN_HANH.length; const x0 = kt.w * 0.08, w = kt.w * 0.84; return { x: x0 + (w * (k + 0.5)) / n, y: kt.h - 76 }; };
+  function veNV(nv, k, t) {
+    const p = viTriNV(k); const s = ttNV(nv); const tat = s.st === 'tat';
+    const info = s.st === 'tat' ? { mau: '#475569' } : (L.thongTin(s.st) || L.thongTin('khong_ro')); const nhip = VP.hieuUng ? t / 1000 : 0;
+    g.save(); g.globalAlpha = tat ? 0.5 : 1;
+    g.fillStyle = 'rgba(0,0,0,.25)'; g.beginPath(); g.ellipse(p.x, p.y + 6, 26, 6, 0, 0, 7); g.fill();
+    g.fillStyle = '#6d4a2f'; g.fillRect(p.x - 22, p.y - 2, 44, 6); g.fillStyle = '#b08458'; g.fillRect(p.x - 22, p.y - 8, 44, 7);   // bàn nhỏ
+    g.fillStyle = s.st === 'dang_lam' ? 'rgba(34,197,94,' + (0.6 + 0.3 * Math.sin(nhip * 4)) + ')' : tat ? '#1e293b' : '#0f172a'; g.fillRect(p.x + 4, p.y - 22, 16, 11);   // màn hình
+    g.fillStyle = tat ? '#475569' : nv.mau; roundRect(p.x - 18, p.y - 26, 18, 18, 6); g.fill();   // thân
+    g.fillStyle = tat ? '#777' : '#f1d3b3'; g.beginPath(); g.arc(p.x - 9, p.y - 32, 7, 0, 7); g.fill();   // đầu
+    g.fillStyle = '#fff'; g.font = 'bold 8px system-ui'; g.textAlign = 'center'; g.fillText(nv.kt, p.x - 9, p.y - 14);   // ký hiệu app
+    g.strokeStyle = info.mau; g.lineWidth = s.st === 'khong_ro' ? 1 : 2; g.beginPath(); g.arc(p.x - 9, p.y - 32, 10, 0, 7); g.stroke();
+    g.restore();
+    g.textAlign = 'center'; g.font = '600 10px system-ui,sans-serif'; g.fillStyle = tat ? '#94a3b8' : '#e6f2ee'; g.fillText(nv.ten, p.x, p.y + 18);
+    g.font = '9px system-ui,sans-serif'; g.fillStyle = '#a7b8cc'; g.fillText(nv.gio.length > 18 ? nv.gio.slice(0, 17) + '…' : nv.gio, p.x, p.y + 29);
+    g.fillStyle = info.mau; g.fillText(s.nhan.length > 20 ? s.nhan.slice(0, 19) + '…' : s.nhan, p.x, p.y + 40);
+    const ca = (((VP.nguon || {}).ca_hom_nay || {})[nv.id] || []).slice(-1)[0];   // kết quả ca gần nhất hôm nay (lich_nhan_vien.js)
+    if (ca) { g.fillStyle = ca.kq === 'DAT' ? '#22C55E' : ca.kq === 'KHONG_DAT' ? '#EF4444' : '#94a3b8'; g.fillText('Ca: ' + (ca.kq === 'DAT' ? '✓ đạt' : ca.kq === 'KHONG_DAT' ? '✗ không đạt' : '? chưa có nguồn'), p.x, p.y + 51); }
+  }
+  const BO_PHAN = [
+    { id: 'gs', ten: 'Claude Điều phối', vai: 'Giám sát tiến độ', bt: 'claude', tay: 'bang', goc: (247 * Math.PI) / 180 },
+    { id: 'kd', ten: 'Codex Kiểm định', vai: 'Kiểm định chất lượng', bt: 'codex', tay: 'kinh', goc: (293 * Math.PI) / 180 },
+  ];
+  const viTriBP = (id) => { const h = hcn(); const ben = id === 'gs' ? -1 : 1; const x = h.x + ben * h.bw * 0.66, y = h.tren - h.bh * 0.62;
+    return { x, y, a: -Math.PI / 2, ban: { x: x - ben * 4, y: y + 30 } }; };
+  function soBP(id) {
+    const n = VP.nguon || {}; const cu = !n.now || Date.now() - n.now > 30000;
+    if (id === 'gs') {
+      const gs = n.giam_sat; if (cu || !gs || !gs.luc || Date.now() - gs.luc > 20 * 60000) return { st: 'khong_ro', mau: '#64748B', dong: ['chưa có bảng mới'] };
+      return { st: 'dang_lam', mau: gs.tre.length ? '#EF4444' : gs.cho_anh.length ? '#FACC15' : '#22C55E', dong: ['Trễ ' + gs.tre.length + ' · chờ anh ' + gs.cho_anh.length + ' · đang làm ' + gs.dang_lam.length] };
+    }
+    const kd = n.kiem_dinh; if (cu || !kd || !kd.ds || !kd.luc || Date.now() - kd.luc > 20 * 60000) return { st: 'khong_ro', mau: '#64748B', dong: ['chưa có dữ liệu mới'] };
+    const dat = kd.ds.filter((k) => k.dat).length; const kdat = kd.ds.length - dat;
+    const dangKiem = ((n.viec || {}).mo || []).some((v) => v.ai === 'kiem_dinh' && v.tt === 'đang_chạy');
+    return { st: dangKiem ? 'dang_lam' : 'ranh', mau: kd.ds[0] && !kd.ds[0].dat ? '#F97316' : '#22C55E', dong: [(kd.tong > kd.ds.length ? kd.ds.length + ' lần gần nhất' : '24h') + ': ĐẠT ' + dat + ' · KHÔNG ĐẠT ' + kdat] };
+  }
+  function veBP(id, t) {
+    const b = BO_PHAN.find((x) => x.id === id); const p = viTriBP(id); const so = soBP(id);
+    veNguoi(p, b, { state: so.st }, t);
+    g.font = '10px system-ui,sans-serif'; g.textAlign = 'center'; g.fillStyle = so.mau; g.fillText(so.dong[0], p.x, p.y + 60);
+    if (id === 'gs' && so.mau === '#EF4444' && VP.hieuUng) { const nhip = t / 1000; g.fillStyle = hexA('#FACC15', 0.45 + 0.4 * Math.sin(nhip * Math.PI)); g.beginPath(); g.arc(p.x + 20, p.y - 44, 4, 0, 7); g.fill(); }   // đèn vàng 2 s khi có việc trễ
+  }
+  // ---- DẢI SÁNG: mỗi việc đang chạy = 1 dải về trạm PC chính (anh Linh 15/11); việc chờ giao = dải mờ nét đứt ----
+  function soDai(id) {
+    const vi = (VP.nguon || {}).viec; const mo = (vi && vi.mo) || []; const st = (VP.trang[id] || {}).state;
+    const ai = id === 'kd' ? 'kiem_dinh' : id;
+    let chay = mo.filter((v) => v.ai === ai && v.tt === 'đang_chạy').length; const cho = mo.filter((v) => v.ai === ai && v.tt === 'chờ_duyệt').length;
+    if (['claude', 'dao', 'gemini'].includes(id) && (st === 'dang_noi' || st === 'cho')) chay = Math.max(chay, 1);   // đang trả lời trong phiên họp
+    if (id === 'gs' && soBP('gs').st === 'dang_lam') chay = Math.max(chay, 1);   // giám sát liên tục
+    return { chay, cho };
+  }
+  function veDai(p, id, mau, t) {
+    const { chay, cho } = soDai(id); const c = tam(); const tong = Math.min(6, chay + cho); if (!tong) return;
+    const P = viTriPC(); const x0 = p.x, y0 = p.y - 10, x1 = P.x, y1 = P.y; const dx = x1 - x0, dy = y1 - y0; const L0 = Math.hypot(dx, dy) || 1; const nx = -dy / L0, ny = dx / L0;
+    for (let k = 0; k < tong; k++) {
+      const lech = (k - (tong - 1) / 2) * 16; const cx = (x0 + x1) / 2 + nx * lech, cy = (y0 + y1) / 2 + ny * lech; const sang = k < chay;
+      g.save(); g.strokeStyle = hexA(mau, sang ? 0.55 : 0.22); g.lineWidth = sang ? 2.2 : 1.2; if (!sang) g.setLineDash([4, 5]);
+      g.beginPath(); g.moveTo(x0, y0); g.quadraticCurveTo(cx, cy, x1, y1); g.stroke(); g.restore();
+      if (sang && VP.hieuUng) { const u = ((t / 1600) + k / tong) % 1; const bx = (1 - u) * (1 - u) * x0 + 2 * (1 - u) * u * cx + u * u * x1, by = (1 - u) * (1 - u) * y0 + 2 * (1 - u) * u * cy + u * u * y1;
+        g.fillStyle = hexA(mau, 0.95); g.beginPath(); g.arc(bx, by, 2.6, 0, 7); g.fill(); }
+    }
+    if (chay + cho > 6) { g.fillStyle = mau; g.font = '10px system-ui'; g.textAlign = 'center'; g.fillText('+' + (chay + cho - 6), (x0 + x1) / 2, (y0 + y1) / 2 - 6); }
+  }
+  function veTram() {
+    const n = (VP.nguon && VP.nguon.tram) || {}; const P = viTriPC();
+    const cu = !VP.nguon || Date.now() - VP.nguon.now > 30000;   // TTL trạm 30 s
+    const mxhCu = !n.mxh_luc || Date.now() - n.mxh_luc > 180000;   // status.json MXH quá 3 phút → không kết luận bận/rảnh
+    const tdCu = !n.tien_do_luc || Date.now() - n.tien_do_luc > 20 * 60000;   // bảng tiến độ quá 20 phút → không hiện
+    const vien = n.khung_mxh || (n.mxh_ban && !mxhCu) ? '#F97316' : cu ? '#64748B' : '#22C55E';
+    const x = P.x - P.w / 2, y = P.y - P.h / 2;
+    // thùng máy bên phải
+    const tw = P.w * 0.2, th = P.h * 1.05, tx = x + P.w + P.w * 0.06, ty = P.y + P.h / 2 + P.h * 0.32 - th;
+    g.fillStyle = 'rgba(0,0,0,.3)'; g.beginPath(); g.ellipse(P.x + P.w * 0.08, P.y + P.h * 0.86, P.w * 0.72, P.h * 0.12, 0, 0, 7); g.fill();
+    g.fillStyle = '#1f2937'; roundRect(tx, ty, tw, th, 5); g.fill(); g.strokeStyle = '#475569'; g.lineWidth = 1; g.stroke();
+    g.fillStyle = '#334155'; for (let k = 0; k < 3; k++) g.fillRect(tx + tw * 0.18, ty + th * (0.12 + k * 0.08), tw * 0.64, 2);
+    g.fillStyle = vien; g.beginPath(); g.arc(tx + tw / 2, ty + th * 0.82, Math.max(2.5, tw * 0.07), 0, 7); g.fill();   // đèn nguồn theo trạng thái
+    // chân + đế màn hình
+    g.fillStyle = '#374151'; g.fillRect(P.x - P.w * 0.04, y + P.h, P.w * 0.08, P.h * 0.2); g.beginPath(); g.ellipse(P.x, y + P.h * 1.22, P.w * 0.2, P.h * 0.05, 0, 0, 7); g.fill();
+    // bàn phím
+    g.fillStyle = '#273244'; roundRect(P.x - P.w * 0.32, y + P.h * 1.28, P.w * 0.64, P.h * 0.1, 3); g.fill();
+    // màn hình
+    g.fillStyle = '#111827'; roundRect(x, y, P.w, P.h, 8); g.fill(); g.strokeStyle = vien; g.lineWidth = 2.5; g.stroke();
+    const sx = x + P.w * 0.05, sy = y + P.h * 0.07, sw = P.w * 0.9, sh = P.h * 0.78;
+    const gr = g.createLinearGradient(sx, sy, sx, sy + sh); gr.addColorStop(0, '#0b2a33'); gr.addColorStop(1, '#0a1a22'); g.fillStyle = gr; roundRect(sx, sy, sw, sh, 4); g.fill();
+    const fs = Math.max(10, Math.min(14, P.w * 0.058));
+    g.textAlign = 'center'; g.textBaseline = 'alphabetic';
+    g.fillStyle = '#e2e8f0'; g.font = '600 ' + (fs + 1) + 'px system-ui,sans-serif'; g.fillText('Trạm PC chính', P.x, sy + fs * 1.4);
+    g.font = fs + 'px system-ui,sans-serif'; g.fillStyle = '#a7f3d0';
+    g.fillText(cu ? 'dữ liệu cũ / chưa đọc' : 'RAM trống ' + (n.ram_trong_mb / 1024).toFixed(1) + ' / ' + Math.round((n.ram_tong_mb || 0) / 1024) + ' GB', P.x, sy + fs * 2.8);
+    g.fillStyle = '#e2e8f0'; g.fillText(mxhCu ? 'MXH: không chạy / chưa rõ' : ('MXH ' + (n.mxh || '?')).slice(0, 30), P.x, sy + fs * 4.1);
+    if (n.khung_mxh) { g.fillStyle = '#F97316'; g.fillText('06–08: giữ máy yên', P.x, sy + fs * 5.4); }
+    else if (typeof n.tre === 'number' && !tdCu) { g.fillStyle = n.tre ? '#FACC15' : '#94a3b8'; g.fillText('Trễ ' + n.tre + ' · đang làm ' + (n.dang_lam || 0), P.x, sy + fs * 5.4); }
+    g.fillStyle = '#64748B'; g.font = '9px system-ui'; g.fillText('THAYLINH-PC', P.x, y + P.h - 4);
+  }
+
+  function ve(t) {
+    hinh(); if (!nen) veNen();
+    g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(nen, 0, 0); g.setTransform(kt.dpr, 0, 0, kt.dpr, 0, 0);
+    const ds = L.THANH_VIEN.map((tv, i) => ({ tv, p: viTri(i) })).sort((a, b) => a.p.y - b.p.y);
+    const yT = tam().y;
+    for (const x of ds) veDai(x.p, x.tv.id, mauNguoi(x.tv.id), t);
+    for (const b of BO_PHAN) veDai(viTriBP(b.id), b.id, mauNguoi(b.id), t);
+    for (const b of BO_PHAN) veBP(b.id, t);   // vòng sau vẽ trước (xa hơn)
+    { const p0 = viTriNV(0); g.textAlign = 'left'; g.font = '600 10px system-ui,sans-serif'; g.fillStyle = '#9fd8c9'; g.fillText('TỔ VẬN HÀNH TRÊN PC — việc hằng ngày', kt.w * 0.08, p0.y - 52); }
+    TO_VAN_HANH.forEach((nv, k) => { if (ttNV(nv).st === 'dang_lam') { const P = viTriPC(); const p = viTriNV(k); g.save(); g.strokeStyle = hexA(nv.mau, 0.5); g.lineWidth = 1.8; g.beginPath(); g.moveTo(p.x - 9, p.y - 40); g.quadraticCurveTo((p.x + P.x) / 2, p.y - 120, P.x, P.y + P.h * 0.4); g.stroke(); g.restore(); } });
+    TO_VAN_HANH.forEach((nv, k) => veNV(nv, k, t));
+    for (const x of ds) if (x.p.y < yT) veNguoi(x.p, x.tv, VP.trang[x.tv.id] || {}, t);
+    veTram();
+    for (const x of ds) if (x.p.y >= yT) veNguoi(x.p, x.tv, VP.trang[x.tv.id] || {}, t);
+    for (const x of ds) bongBong(x.tv.id, x.p, (L.thongTin((VP.trang[x.tv.id] || {}).state) || L.thongTin('khong_ro')).mau);   // bong bóng vẽ sau cùng, không bị che
+    for (const b of BO_PHAN) bongBong(b.id, viTriBP(b.id), mauNguoi(b.id));
+  }
+
+  // ---- MỘT vòng vẽ duy nhất, giới hạn FPS ----
+  let dangVe = false, truocDo = 0;
+  function batDauVe() { if (!dangVe && VP.bat && !document.hidden) { dangVe = true; requestAnimationFrame(vong); } }
+  function vong(t) {
+    if (!VP.bat || document.hidden) { dangVe = false; truocDo = 0; return; }
+    const coNoi = Object.values(VP.trang).some((s) => s.state === 'dang_noi');
+    const coDai = ((VP.nguon || {}).viec || { mo: [] }).mo.some((v) => v.tt === 'đang_chạy');
+    const fps = VP.hieuUng ? (coNoi ? 24 : coDai ? 12 : 5) : 1;
+    if (t - truocDo >= 1000 / fps) { truocDo = t; try { ve(t); } catch (e) { console.error(e); } }
+    requestAnimationFrame(vong);
+  }
+  document.addEventListener('visibilitychange', batDauVe);
+
+  // ---- tính trạng thái: ngay khi có sự kiện (không chờ IPC) + đọc nguồn main 4 s/lần ----
+  function tinhLai() {
+    if (!VP.bat || document.hidden) return;
+    const now = Date.now(); const web = {};
+    VP.luot = VP.luot || {};
+    try { for (const id of ['claude', 'dao', 'gemini']) { const s = aiState[id]; if (!s) continue;
+      if (s.working && !VP.luot[id]) { VP.luot[id] = now; delete VP.progress[id]; VP.soChu[id] = 0; } else if (!s.working) delete VP.luot[id];   // Codex K88: lượt mới không dùng lại đèn nói lượt trước
+      web[id] = { ready: s.ready, working: s.working, loginHint: s.loginHint, adapterErr: s.adapterErr, seen: s.seen, progressAt: VP.progress[id], askAt: VP.luot[id] }; } } catch {}
+    const ng = VP.nguon && now - VP.nguon.now <= 30000 ? VP.nguon : null;   // nguồn main quá 30 s → không dùng
+    VP.trang = L.tinh({ now, web, noi: VP.noi, tac_vu: ng && ng.tac_vu, han_muc: ng && ng.han_muc, chu_toa: VP.chuToa ? { observed: VP.chuToa } : null });
+    if (VP.chon) hienThe(VP.chon);
+  }
+  // Claude Điều phối báo cáo mỗi lần bảng tiến độ mới; Codex Kiểm định lên tiếng mỗi khi có kết luận kiểm định mới (chỉ số liệu thật).
+  VP.daBao = VP.daBao || {};
+  function baoCaoBP() {
+    const n = VP.nguon || {}; const now = Date.now();
+    const gs = n.giam_sat;
+    if (gs && gs.luc && gs.luc !== VP.daBao.gs) { VP.daBao.gs = gs.luc;
+      const t0 = gs.tre[0]; VP.loi.gs = { t: now, chu: 'Báo cáo tiến độ: trễ ' + gs.tre.length + (t0 ? ' (#' + t0.so + ' ' + t0.lenh + ')' : '') + '; chờ anh duyệt ' + gs.cho_anh.length + '; đang làm ' + gs.dang_lam.length + '.' }; VP.noi.gs = now; }
+    const kd = n.kiem_dinh; const k0 = kd && kd.ds && kd.ds[0];
+    if (k0 && (k0.tep + k0.luc) !== VP.daBao.kd) { VP.daBao.kd = k0.tep + k0.luc;
+      VP.loi.kd = { t: now, chu: 'Kết luận kiểm định ' + (k0.luc || '') + ': ' + (k0.dat ? 'ĐẠT' : 'KHÔNG ĐẠT') + ' — ' + k0.tep.replace(/\.md$/, '') }; VP.noi.kd = now; }
+  }
+  let dangDoc = false;
+  async function capNhat() {
+    if (!VP.bat || document.hidden || dangDoc) return; dangDoc = true;
+    try { VP.nguon = await window.api.vanPhongNguon(); } catch {} finally { dangDoc = false; }
+    try { baoCaoBP(); } catch {}
+    tinhLai();
+  }
+  setInterval(capNhat, 4000);
+  // Bản chụp cho trang xem online: 1 phút/lần, kể cả khi tab văn phòng đang ẩn (chỉ đọc nguồn + gửi main ghi tệp, không vẽ).
+  setInterval(async () => {
+    try {
+      const ng = VP.bat && VP.nguon && Date.now() - VP.nguon.now < 10000 ? VP.nguon : await window.api.vanPhongNguon();
+      const web = {}; for (const id of ['claude', 'dao', 'gemini']) { const s = aiState[id]; if (s) web[id] = { ready: s.ready, working: s.working, loginHint: s.loginHint, adapterErr: s.adapterErr, seen: s.seen }; }
+      const loi = {}; for (const [k, v] of Object.entries(VP.loi)) if (Date.now() - v.t < 60000) loi[k] = { t: v.t, chu: String(v.chu).slice(0, 300) };
+      await window.api.vanPhongSnapshot({ at: Date.now(), nguon: ng, web, noi: VP.noi, loi, progress: VP.progress, luot: VP.luot || {}, chuToa: VP.chuToa });
+    } catch {}
+  }, 60000);
+  setInterval(tinhLai, 1000);   // hết hạn TTL tự chuyển "không rõ" kể cả khi không có sự kiện
+
+  // ---- thẻ chi tiết khi nhấp (chỉ textContent, không chèn HTML từ dữ liệu) ----
+  cv.addEventListener('click', (e) => {
+    const r = cv.getBoundingClientRect(); const x = e.clientX - r.left, y = e.clientY - r.top;
+    let gan = null, dmin = 50;
+    L.THANH_VIEN.forEach((tv, i) => { const p = viTri(i); const d = Math.hypot(p.x - x, p.y - 10 - y); if (d < dmin) { dmin = d; gan = tv.id; } });
+    const P = viTriPC(); if (!gan && Math.abs(P.x - x) < P.w * 0.65 && Math.abs(P.y - y) < P.h * 0.8) gan = 'tram';
+    TO_VAN_HANH.forEach((nv, k) => { const p = viTriNV(k); if (!gan && Math.abs(p.x - x) < 40 && y > p.y - 45 && y < p.y + 42) gan = 'nv:' + nv.id; });
+    for (const b of BO_PHAN) { const p = viTriBP(b.id); if (!gan && Math.hypot(p.x - x, p.y - 10 - y) < 45) gan = b.id; }
+    VP.chon = gan; if (gan) hienThe(gan); else theTT.hidden = true;
+  });
+  function dong(text, cls) { const d = document.createElement(cls === 'small' ? 'small' : 'div'); if (cls && cls !== 'small') d.className = cls; d.textContent = text; return d; }
+  function hienThe(id) {
+    const gio = (v) => v ? new Date(v).toLocaleTimeString('vi-VN') : '—';
+    theTT.replaceChildren();
+    if (id === 'tram') {
+      const n = (VP.nguon && VP.nguon.tram) || {};
+      theTT.append(dong('Trạm PC chính', 'vp-ten'), dong(`RAM trống: ${n.ram_trong_mb ?? '?'} / ${n.ram_tong_mb ?? '?'} MB`), dong(`MXH: ${n.mxh || '?'} (tệp ${gio(n.mxh_luc)})`),
+        dong(`Cầu nối GitHub: ${n.cau_noi || '?'}`), dong(`Tiến độ: trễ ${n.tre ?? '?'} · đang làm ${n.dang_lam ?? '?'} (bảng ${gio(n.tien_do_luc)})`),
+        dong(`Nguồn: os.freemem, MXH status.json, lien_thong_github.json, tien_do.json · đọc lúc ${gio(VP.nguon && VP.nguon.now)}`, 'small'));
+    } else if (String(id).startsWith('nv:')) {
+      const nv = TO_VAN_HANH.find((x) => 'nv:' + x.id === id); const s = ttNV(nv); const vh = (VP.nguon || {}).van_hanh;
+      theTT.append(dong(nv.ten + ' · Tổ vận hành trên PC', 'vp-ten'), dong('Việc hằng ngày: ' + nv.viec), dong('Giờ làm: ' + nv.gio), dong('Người giữ mã: ' + nv.giu),
+        dong('Trạng thái: ' + s.nhan + (s.mb ? ' · ' + s.mb + ' MB RAM' : ''), 'vp-t-' + (s.st === 'tat' ? 'khong_ro' : s.st)),
+        ...((((VP.nguon || {}).ca_hom_nay || {})[nv.id] || []).slice(-4).map((c) => dong('Ca ' + c.ten + ': ' + ({ DAT: 'ĐẠT', KHONG_DAT: 'KHÔNG ĐẠT', KHONG_RO: 'chưa có nguồn' }[c.kq] || c.kq) + ' — ' + c.chi_tiet + (c.xu_ly ? ' → ' + c.xu_ly : ''), 'small'))),
+        dong('Nguồn: đo tiến trình 10 phút/lần (dieu_phoi_app) lúc ' + gio(vh && vh.luc) + '; tín hiệu bận [đường dẫn máy]', 'small'));
+    } else if (id === 'gs' || id === 'kd') {
+      const n = VP.nguon || {};
+      if (id === 'gs') {
+        const gs = n.giam_sat || { tre: [], cho_anh: [], dang_lam: [] };
+        theTT.append(dong('Claude Điều phối · Giám sát tiến độ', 'vp-ten'), dong('Phiên Claude điều khiển phòng + bảng tiến độ tự chạy 15 phút/lần; việc trễ > 2 giờ thì nhắc bên làm', 'small'), dong('TRỄ (' + gs.tre.length + ')', 'vp-t-mat_ket_noi'));
+        for (const x of gs.tre.slice(0, 5)) theTT.append(dong('#' + x.so + ' ' + x.lenh + ' — ' + x.tt + ' (' + (x.tuoi_phut ?? '?') + ' phút)', 'small'));
+        theTT.append(dong('CHỜ ANH LINH (' + gs.cho_anh.length + ')', 'vp-t-dang_noi'));
+        for (const x of gs.cho_anh.slice(0, 5)) theTT.append(dong('#' + x.so + ' ' + x.lenh, 'small'));
+        theTT.append(dong('ĐANG LÀM (' + gs.dang_lam.length + ') · chờ sửa sau kiểm định ' + (gs.cho_sua || 0), 'vp-t-dang_lam'), dong('Bảng lúc ' + gio(gs.luc) + ' · data/trung_tam/tien_do.md', 'small'));
+      } else {
+        const kd = n.kiem_dinh || { ds: [] }; const hn = ((n.viec || {}).hom_nay || {}).kiem_dinh || {};
+        theTT.append(dong('Codex Kiểm định · Kiểm định chất lượng (độc lập, chỉ đọc)', 'vp-ten'), dong('Hôm nay: giao ' + (hn.giao || 0) + ' · xong ' + (hn.xong || 0) + ' · lỗi ' + (hn.loi || 0) + ' · ' + (hn.phut || 0) + ' phút làm'));
+        for (const k of kd.ds.slice(0, 8)) theTT.append(dong((k.luc || '') + ' ' + (k.dat ? '✓ ĐẠT' : '✗ KHÔNG ĐẠT') + ' — ' + k.tep, k.dat ? 'vp-t-dang_lam' : 'vp-t-het_han_muc'));
+      }
+    } else {
+      const tv = L.THANH_VIEN.find((x) => x.id === id); const s = VP.trang[id] || {}; const info = L.thongTin(s.state) || L.thongTin('khong_ro');
+      theTT.append(dong(`${tv.ten} · ${tv.vai}`, 'vp-ten'), dong(`${info.bieu_tuong} ${info.ten}`, 'vp-t-' + info.ma), dong(`Nguồn: ${s.source || '—'}`), dong(`Bằng chứng: ${s.evidence || '—'}`),
+        dong('Ghi nhận ' + gio(s.observed_at) + ' · hết hạn ' + gio(s.expires_at), 'small'));
+      const vi = (VP.nguon || {}).viec;
+      if (vi && (id === 'codex' || id === 'claude_code')) {
+        const h = vi.hom_nay[id] || {}; theTT.append(dong('Hôm nay: giao ' + (h.giao || 0) + ' · xong ' + (h.xong || 0) + ' · lỗi ' + (h.loi || 0) + ' · thời gian làm ' + (h.phut || 0) + ' phút', 'vp-ten'));
+        const cua = vi.mo.filter((v) => v.ai === id); if (!cua.length) theTT.append(dong('Không có việc đang mở.', 'small'));
+        for (const v of cua.slice(0, 6)) theTT.append(dong((TEN_TT[v.tt] || v.tt) + ' · ' + v.ten + ' · ' + thoiGian(v), 'small'));
+      } else if (id === 'anh' && (VP.nguon || {}).giam_sat) {
+        const ca = VP.nguon.giam_sat.cho_anh; theTT.append(dong('Việc chờ anh duyệt: ' + ca.length, 'vp-ten')); for (const x of ca.slice(0, 5)) theTT.append(dong('#' + x.so + ' ' + x.lenh, 'small'));
+      } else if (id !== 'anh') theTT.append(dong('Thành viên hội đồng: làm việc trong các phiên họp (khung Thảo luận).', 'small'));
+    }
+    theTT.hidden = false;
+  }
+
+  const TEN_TT = { 'đang_chạy': '⚙ Đang làm', 'chờ_duyệt': '… Chờ giao', 'chờ_nghiệm_thu': '🔎 Chờ nghiệm thu' };
+  const TEN_AI = { codex: 'Codex', claude_code: 'Claude Code', kiem_dinh: 'Kiểm định', dao: 'Đào (V7)', antigravity: 'Antigravity', cowork: 'Cowork', phong: 'Phòng' };
+  function thoiGian(v) { if (v.tt === 'đang_chạy' && v.bat_dau) return 'đã làm ' + phutTu(v.bat_dau); if (v.bat_dau && v.xong_luc) return 'chạy ' + Math.max(0, Math.round((v.xong_luc - v.bat_dau) / 60000)) + ' phút'; return v.tao ? 'tạo ' + phutTu(v.tao) + ' trước' : '—'; }
+  function phutTu(ms) { const m = Math.max(0, Math.round((Date.now() - ms) / 60000)); return m >= 60 ? Math.floor(m / 60) + ' giờ ' + (m % 60) + ' phút' : m + ' phút'; }
+  function veBang() {
+    if (bang.hidden) return; bang.replaceChildren();
+    const n = VP.nguon || {}; const vi = n.viec;
+    bang.append(dong('Bảng công việc (thật: hàng việc của phòng + Sổ lệnh)', 'vp-ten'));
+    if (!vi) { bang.append(dong('Chưa đọc được hàng việc.', 'small')); return; }
+    const tk = Object.entries(vi.hom_nay).map(([k, h]) => (TEN_AI[k] || k) + ': ' + h.xong + '/' + h.giao + ' xong, ' + h.phut + ' phút').join(' · ');
+    bang.append(dong('Hôm nay — ' + (tk || 'chưa có việc'), 'small'));
+    const tb = document.createElement('table'); const tr0 = tb.insertRow();
+    for (const h of ['Người làm', 'Việc', 'Trạng thái', 'Thời gian']) { const th = document.createElement('th'); th.textContent = h; tr0.append(th); }
+    for (const v of vi.mo) { const tr = tb.insertRow(); for (const c of [TEN_AI[v.ai] || v.ai, v.ten, TEN_TT[v.tt] || v.tt, thoiGian(v)]) tr.insertCell().textContent = c; }
+    bang.append(tb);
+    const gs = n.giam_sat;
+    if (gs) { bang.append(dong('Sổ lệnh anh Linh — đang làm ' + gs.dang_lam.length + ', trễ ' + gs.tre.length + ', chờ anh ' + gs.cho_anh.length, 'vp-ten'));
+      for (const x of gs.dang_lam) bang.append(dong('#' + x.so + ' [' + (x.ben || '?') + '] ' + x.lenh + ' — ' + x.tt, 'small')); }
+  }
+  setInterval(veBang, 5000);
+  VP.batTat = function (on, che) {
+    hop.classList.toggle('nua', on && che === 'nua');
+    if (on && VP.bat) { nen = null; return; }
+    VP.bat = on; hop.hidden = !on; theTT.hidden = true; VP.chon = null;
+    if (on) { nen = null; tinhLai(); capNhat(); batDauVe(); }
+  };
+  VP.tinhLai = tinhLai;
+  // 15/11 18:20: văn phòng là tab riêng (bấm "Văn phòng 3D"), không tự chiếm khung khi mở phòng.
+
+  function roundRect(x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
+  function hexA(hex, a) { const n = parseInt(hex.slice(1), 16); return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`; }
+  function mauThan(id) { return { anh: '#1d4ed8', claude: '#c2410c', dao: '#047857', gemini: '#4f46e5', codex: '#0f766e', claude_code: '#b45309', gs: '#1e40af', kd: '#115e59' }[id] || '#475569'; }
+  function mauNguoi(id) { return { anh: '#FBBF24', claude: '#E98A55', dao: '#34D399', gemini: '#A5B4FC', codex: '#4ADE80', claude_code: '#F0A06A', gs: '#60A5FA', kd: '#38D9CB' }[id] || '#A7B8CC'; }
+})();
+
+</script>
+<script>
+(function () { const VP = window.VanPhong; VP.noi = SNAP.noi || {}; VP.loi = SNAP.loi || {}; VP.progress = SNAP.progress || {}; VP.luot = SNAP.luot || {}; VP.chuToa = SNAP.chuToa || 0;
+  VP.batTat(true, 'full'); setTimeout(() => window.dispatchEvent(new Event('resize')), 300); })();
+</script>
+</body></html>
