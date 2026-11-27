@@ -15,7 +15,7 @@ assert.doesNotMatch(block,/tkv-video__next|home-video-next/);
 const consult=block.match(/<div class="tkv-consult"[\s\S]+?<\/a>\s*<\/div>\s*<\/div>/)?.[0];
 assert.ok(consult,"missing consultation after the picker");
 assert.ok(block.indexOf('data-tkv-rail')<block.indexOf(consult));
-assert.match(consult,/<h3 id="tkv-consult-title">Tư vấn nghề mỏ<\/h3>/);
+assert.match(consult,/<h3 id="tkv-consult-title">Tư vấn việc làm ngành mỏ thu nhập <strong>20-25 triệu\/tháng<\/strong><\/h3>/);
 assert.match(consult,/href="https:\/\/zalo\.me\/0963048585"[^>]+data-contact="zalo" data-context="home-video-consult"/);
 assert.match(consult,/href="tel:\+84963048585"[^>]+data-contact="phone" data-context="home-video-consult"/);
 assert.ok(fs.statSync("tuyen-tho-mo/assets/home-video-rail/tkv-tho-lo-13500-poster.jpg").size <= 320_000, "homepage poster exceeds performance limit");

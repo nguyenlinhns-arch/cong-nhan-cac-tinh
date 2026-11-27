@@ -59,10 +59,11 @@ body:has(.tkv-video) button[data-consent-choice="granted"]{color:#102a30!importa
 
 /* Consultation immediately after the video picker. */
 .tkv-consult{display:flex;align-items:center;justify-content:space-between;gap:14px 24px;margin:14px 0 0;padding:16px 22px;border:1px solid #b7d0c3;border-radius:12px;background:#e8f2eb;color:#102a22;scroll-margin-top:88px}
-.tkv-consult__copy{min-width:0}
-.tkv-consult .tkv-consult__copy h3{margin:0;color:#102a22;font-size:clamp(1.25rem,2.45cqw,1.65rem);line-height:1.16;font-weight:800;letter-spacing:-.023em}
+.tkv-consult__copy{min-width:0;max-width:780px}
+.tkv-consult__copy strong{color:#075b66;font-weight:850;white-space:nowrap}
+.tkv-consult .tkv-consult__copy h3{margin:0;color:#102a22;font-size:clamp(1.55rem,4.2cqw,2.45rem);line-height:1.16;font-weight:800;letter-spacing:-.023em}
 .tkv-consult .tkv-consult__copy p{margin:.28rem 0 0;color:#314f46;line-height:1.45;font-size:.94rem}
-.tkv-consult__links{display:flex;align-items:center;justify-content:flex-end;gap:5px 15px;flex-wrap:wrap}
+.tkv-consult__links{flex:0 0 auto;display:flex;align-items:center;justify-content:flex-end;gap:5px 15px;flex-wrap:wrap}
 .tkv-consult .tkv-consult__main,.tkv-consult .tkv-consult__phone{display:inline-flex;min-height:44px;box-sizing:border-box;align-items:center;justify-content:center;gap:.45rem;font-size:.94rem;font-weight:750;line-height:1.35;text-align:center}
 .tkv-consult .tkv-consult__main{border-radius:8px;padding:.57rem .85rem;background:#075b66;color:#fff;text-decoration:none}
 .tkv-consult .tkv-consult__main:hover{background:#064650}
@@ -75,3 +76,5 @@ body:has(.tkv-video) button[data-consent-choice="granted"]{color:#102a30!importa
 @media(max-width:395px){
  .tkv-consult__links{grid-template-columns:minmax(0,1fr);gap:2px}
 }
+
+@media(min-width:641px) and (max-width:950px){.tkv-consult__links{flex-direction:column;align-items:stretch}}
