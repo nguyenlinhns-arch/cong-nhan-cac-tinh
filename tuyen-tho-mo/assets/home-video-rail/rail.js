@@ -3,13 +3,13 @@
   const root = document.querySelector('[data-tkv-video]');
   if (!root) return;
   const stage = root.querySelector('[data-tkv-stage]');
-  const rail = root.querySelector('[data-tkv-rail]');
+  const rail = root.querySelector('[data-tkv-rail]') || document.querySelector('[data-tkv-rail]');
   const status = root.querySelector('[data-tkv-status]');
   const source = root.querySelector('[data-tkv-source]');
   const actions = root.querySelector('[data-tkv-actions]');
   const notice = root.querySelector('[data-tkv-notice]');
   const retry = root.querySelector('[data-tkv-retry]');
-  const cards = Array.from(rail.querySelectorAll('[data-tkv-pick]'));
+  const cards = Array.from(rail?.querySelectorAll('[data-tkv-pick]') ?? []);
 
   let current, generation = 0, timeout, player, apiPromise;
   function youtubeAPI() {
@@ -142,10 +142,12 @@
     load(current, true, false);
     stage.focus({preventScroll: true});
   });
-  root.addEventListener('click', event => {
+  function chooseVideo(event) {
     const link = event.target.closest('[data-tkv-pick]');
-    if (!link || !root.contains(link) || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    if (!link || !(root.contains(link) || rail?.contains(link)) || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
     load(link, event.detail === 0);
-  });
+  }
+  root.addEventListener('click', chooseVideo);
+  if (rail && !root.contains(rail)) rail.addEventListener?.('click', chooseVideo);
 })();
