@@ -8,9 +8,9 @@ assert.deepEqual([...block.matchAll(/data-tkv-pick="([^"]+)"/g)].map(x=>x[1]),[h
 assert.equal((html.match(/<h1\b/g)||[]).length,1);
 assert.ok(block.indexOf('id="tkv-video-title"')<block.indexOf('data-tkv-stage'));
 assert.doesNotMatch(block,/tkv-video__eyebrow|THU NHẬP THỰC TẾ NĂM 2025/);
-const visibleHeading=block.match(/<h2[^>]+id="tkv-video-title"[^>]*>(.*?)<\/h2>/)?.[1].replace(/<[^>]*>/g,'');
-assert.ok(visibleHeading?.includes('trên 300 triệu'));
-assert.doesNotMatch(visibleHeading,/\(2025\)/);
+assert.match(block,/<h2 id="tkv-video-title" class="tkv-video__sr">[^<]+<\/h2>/);
+assert.doesNotMatch(block,/tkv-video__(?:desktop|compact)/);
+assert.match(block,/class="tkv-video__cover" src="https:\/\/i\.ytimg\.com\/vi\/6MJLc5mBhsA\/maxresdefault\.jpg"/);
 assert.ok(!block.includes('<iframe')&&!block.includes('tkv-video__note'));
 assert.ok(block.includes('list='+playlist));
 assert.doesNotMatch(block,/data-tkv-(?:live|controls|prev|next)\b|<small>\d{2} \/ \d+:\d{2}<\/small>/);
