@@ -47,7 +47,7 @@ function upgradeRecruitmentCRMV3() {
 }
 
 function doGet() {
-  return json_({ ok: true, service: 'Thầy Linh recruitment intake', version: 3 });
+  return json_({ ok: true, service: 'Thầy Linh recruitment intake', version: 3, callback_schema: 5 });
 }
 
 function doPost(event) {
@@ -69,6 +69,7 @@ function doPost(event) {
         const headers = headerMap_(sheet);
         rowNumber = sheet.getLastRow() + 1;
         sheet.getRange(rowNumber, 1, 1, sheet.getLastColumn()).setValues([toRow_(data, headers)]);
+        SpreadsheetApp.flush();
       }
     } finally {
       lock.releaseLock();
@@ -84,8 +85,14 @@ function doPost(event) {
         alertStatus = 'temporarily_unavailable';
       }
     }
-    if (!duplicate) refreshSourcePerformance_();
-    return json_({ ok: true, code: data.code, duplicate: duplicate, alert: alertStatus });
+    if (!duplicate) {
+      try { refreshSourcePerformance_(); } catch (reportError) {
+        console.error('Không cập nhật báo cáo tổng hợp cho ' + data.code + ': ' + reportError);
+      }
+    }
+    const reply = { ok: true, code: data.code, duplicate: duplicate, alert: alertStatus };
+    if (data.request_kind === 'callback') reply.receipt_type = 'callback';
+    return json_(reply);
   } catch (error) {
     console.error(error);
     return json_({ ok: false, error: String(error.message || error).slice(0, 160) });
@@ -360,12 +367,28 @@ function installAutomationTriggers_(spreadsheetId) {
 }
 
 function validate_(data) {
-  if (![1, 2, 3, 4].includes(Number(data.schema_version))) throw new Error('Phiên bản dữ liệu không hợp lệ');
+  const schema = Number(data.schema_version);
+  const callback = schema === 5 && data.request_kind === 'callback';
+  if (!callback && ![1, 2, 3, 4].includes(schema)) throw new Error('Phiên bản dữ liệu không hợp lệ');
+  if (data.request_kind && !callback) throw new Error('Loại yêu cầu không hợp lệ');
   if (String(data.website || '').trim()) throw new Error('Yêu cầu không hợp lệ');
   if (!/^TL-\d{6}-[A-Z0-9]{5}$/.test(String(data.code || ''))) throw new Error('Mã đăng ký không hợp lệ');
   if (!/^0[35789]\d{8}$/.test(String(data.phone || ''))) throw new Error('Số điện thoại không hợp lệ');
-  if (!data.consent) throw new Error('Chưa có sự đồng ý');
+  if (data.consent !== true) throw new Error('Chưa có sự đồng ý');
   if (String(data.full_name || '').trim().length < 2) throw new Error('Họ tên không hợp lệ');
+  if (callback) {
+    const province = clean_(data.province, 40);
+    const trade = clean_(data.trade, 80);
+    if (province.length < 2 || !['Kỹ thuật khai thác mỏ hầm lò', 'Kỹ thuật xây dựng mỏ hầm lò', 'Kỹ thuật cơ điện mỏ hầm lò', 'Cần tư vấn chọn nghề'].includes(trade)) {
+      throw new Error('Tỉnh/thành hoặc nghề quan tâm không hợp lệ');
+    }
+    if (['birth_date','age','height_cm','weight_kg','education','health_screen'].some(function(key) {
+      return data[key] !== undefined && data[key] !== '';
+    })) throw new Error('Yêu cầu gọi lại không nhận dữ liệu sơ tuyển');
+    data.eligibility = 'needs_review';
+    data.form_context = 'callback';
+    return;
+  }
   if (Number(data.height_cm) < 130 || Number(data.height_cm) > 220) throw new Error('Chiều cao không hợp lệ');
   if (Number(data.weight_kg) < 30 || Number(data.weight_kg) > 200) throw new Error('Cân nặng không hợp lệ');
   if (['eligible', 'needs_review', 'not_eligible'].indexOf(data.eligibility) === -1) throw new Error('Kết quả không hợp lệ');
@@ -382,8 +405,8 @@ function toRow_(data, headers) {
     'Ngày sinh': clean_(data.birth_date, 10),
     'Tuổi': Number(data.age) || '',
     'Tỉnh/thành': clean_(data.province, 40),
-    'Chiều cao (cm)': Number(data.height_cm),
-    'Cân nặng (kg)': Number(data.weight_kg),
+    'Chiều cao (cm)': data.request_kind === 'callback' ? '' : Number(data.height_cm),
+    'Cân nặng (kg)': data.request_kind === 'callback' ? '' : Number(data.weight_kg),
     'Trình độ': clean_(data.education, 60),
     'Nghề quan tâm': clean_(data.trade, 80),
     'Sức khỏe sơ bộ': clean_(data.health_screen, 80),

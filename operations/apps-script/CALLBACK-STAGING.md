@@ -1,0 +1,5 @@
+# Callback staging gate
+
+The website's current entry continues to use the existing complete form. Do not switch the homepage or mobile CTA until the private staging Apps Script is connected to a **sandbox candidate sheet** and test alerts go to an approved test recipient, with follow-up triggers inactive there. Keep the production deployment unchanged until the pass is recorded.
+
+Use Code.gs in staging and verify GET `callback_schema: 5`. Run `node tools/test-recruitment-callback.mjs` in this branch. In the staging web browser, verify normal save, forced network loss after save, retry of the same code, explicit refusal without consent, and Zalo/phone fallback. Verify one row in staging, assigned owner, and expected alert. Also test the existing full application without regression. No test data in production. Announce callback availability only after the test and deployment; at that point update homepage CTA, privacy description, and release checks as a single release. Do not change recruitment criteria.
