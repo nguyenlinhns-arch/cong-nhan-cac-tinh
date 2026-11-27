@@ -139,6 +139,8 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
 
   const firstCode = code.textContent;
   if (deliverySequence[0] === "failed") {
+    if (tracked.some(([name]) => name === "Lead")) throw new Error("Unacknowledged application was counted as received");
+    if (tracked.filter(([name]) => name === "application_message_created").length !== 1) throw new Error("Fallback was not measured separately");
     if (delivery.dataset.state !== "fallback") throw new Error(`Expected fallback delivery, got ${delivery.dataset.state}`);
     if (submit.disabled || submit.textContent !== "Thử gửi lại cùng mã") throw new Error("Failed delivery did not offer a stable-code retry");
     const safeDraft = stored.get("thaylinh_application_draft_v1") || "";
@@ -200,7 +202,9 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
   if (deliverySequence[0] !== "failed" && tracked.some(([name]) => name === "ApplicationDeliveryFailure")) throw new Error("Failure event fired for a successful delivery");
 
   if (deliverySequence[0] === "failed") {
-    if (tracked.filter(([name]) => name === "Lead").length !== 1) throw new Error("Retry counted the same lead more than once");
+    const leads = tracked.filter(([name]) => name === "Lead");
+    if (leads.length !== 1 || leads[0][1].action !== "application_saved") throw new Error("Retry acknowledgement was not counted exactly once");
+    if (tracked.filter(([name]) => name === "application_message_created").length !== 1) throw new Error("Retry changed the number of fallback events");
     if (tracked.filter(([name]) => name === "ApplicationSubmit").length !== 2) throw new Error("Retry attempt was not measured");
     if (tracked.filter(([name]) => name === "ApplicationDeliveryFailure").length !== 1) throw new Error("Failed first attempt was not measured once");
   }

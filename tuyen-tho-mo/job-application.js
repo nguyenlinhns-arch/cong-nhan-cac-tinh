@@ -483,6 +483,7 @@
       application,
       message,
       leadTracked: previousAttempt?.leadTracked || false,
+      fallbackTracked: previousAttempt?.fallbackTracked || false,
     };
     retryState = attempt;
     saveDraft();
@@ -532,7 +533,7 @@
     if (deliveryOutput) {
       deliveryOutput.dataset.state = delivery.saved ? "saved" : "fallback";
       deliveryOutput.textContent = delivery.saved
-        ? "Thầy Linh đã nhận thông tin. Anh giữ điện thoại/Zalo; nếu sau 2 giờ chưa nhận phản hồi, hãy bấm Nhắn Zalo hoặc Gọi ngay bên dưới để được kiểm tra điều kiện."
+        ? "Hệ thống đã tiếp nhận đăng ký. Anh giữ điện thoại/Zalo; nếu sau 2 giờ chưa nhận phản hồi, hãy bấm Nhắn Zalo hoặc Gọi ngay bên dưới để được kiểm tra điều kiện."
         : "Chưa chuyển tự động được. Mã đăng ký được giữ nguyên; hãy thử gửi lại hoặc mở Zalo, Messenger, SMS bên dưới.";
     }
     if (submitButton) {
@@ -550,9 +551,7 @@
       }));
     } catch (_) {}
 
-    if (!attempt.leadTracked) {
-      track("Lead", {
-        action: delivery.saved ? "application_saved" : "application_message_created",
+    const deliveryEvent = {
         context: formContext,
         eligibility: assessment.key,
         job_id: values.trade === "Kỹ thuật khai thác mỏ hầm lò" ? "khai_thac" : values.trade === "Kỹ thuật xây dựng mỏ hầm lò" ? "xay_dung" : values.trade === "Kỹ thuật cơ điện mỏ hầm lò" ? "co_dien" : "can_tu_van",
@@ -561,8 +560,14 @@
         campaign: source.campaign,
         content: source.content,
         lead_key: applicationCode,
-      });
+    };
+    if (delivery.saved && !attempt.leadTracked) {
+      track("Lead", { ...deliveryEvent, action: "application_saved" });
       attempt.leadTracked = true;
+    }
+    if (!delivery.saved && !attempt.fallbackTracked) {
+      track("application_message_created", { ...deliveryEvent, action: "application_message_created" });
+      attempt.fallbackTracked = true;
     }
     if (!delivery.saved) track("ApplicationDeliveryFailure", { action: "crm_delivery_failed", context: formContext });
     if (delivery.saved) {

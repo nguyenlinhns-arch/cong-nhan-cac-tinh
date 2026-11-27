@@ -159,6 +159,15 @@ function collectHtmlFiles(directory) {
 }
 collectHtmlFiles(root);
 
+const home = fs.readFileSync(path.join(root, "index.html"), "utf8");
+const callbackLink = home.match(/<a\b[^>]*href="([^"]+)"[^>]*data-context="home-register"[^>]*><small>ĐƯỢC GỌI LẠI<\/small>/)?.[1];
+const callbackUrl = callbackLink && new URL(callbackLink.replaceAll("&amp;", "&"), "https://thaylinhtuyenthomo.vn/");
+const callbackPage = callbackUrl && path.join(root, callbackUrl.pathname.replace(/^\//, ""), "index.html");
+if (!callbackUrl || callbackUrl.pathname !== "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/" || callbackUrl.hash !== "#dang-ky"
+    || !fs.existsSync(callbackPage) || !/<section\b[^>]*id="dang-ky"[^>]*>[\s\S]*?<form\b[^>]*data-application-form/.test(fs.readFileSync(callbackPage, "utf8"))) {
+  errors.push("Homepage callback CTA must open a real application form, not the anonymous eligibility checker");
+}
+
 let attributedCrossPageApplications = 0;
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, "utf8");
