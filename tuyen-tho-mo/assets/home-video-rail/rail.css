@@ -3,10 +3,10 @@
 .tkv-video h2{color:#fff;font-size:clamp(1.65rem,3.45cqw,2.625rem);line-height:1.17;margin:0 0 1.15rem;letter-spacing:-.035em}
 .tkv-video h2 strong{color:#ffcf7c}
 .tkv-video__compact{display:none}
-.tkv-video__stage{width:100%;aspect-ratio:16/9;min-height:200px;position:relative;background:#0c1513;border-radius:16px;overflow:hidden;scroll-margin-top:86px}
+.tkv-video__stage{width:100%;aspect-ratio:16/9;min-height:0;position:relative;background:#0c1513;border-radius:16px;overflow:hidden;scroll-margin-top:86px}
 .tkv-video__stage iframe,.tkv-video__cover,.tkv-video__cover-link{display:block;width:100%;height:100%;border:0}
-.tkv-video__cover{object-fit:contain}
-.tkv-video__play{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:clamp(48px,7vw,76px);aspect-ratio:1;border-radius:50%;background:#ffcf7c;color:#102a22;box-shadow:0 3px 24px #0008}
+.tkv-video__cover{object-fit:cover}
+.tkv-video__play{position:absolute;inset:64% auto auto 41%;transform:translate(-50%,-50%);display:grid;place-items:center;width:clamp(44px,5vw,64px);aspect-ratio:1;border-radius:50%;background:#ffcf7c;color:#102a22;box-shadow:0 3px 24px #0008}
 .tkv-video__sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .tkv-video__recovery:not([hidden]){display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin:.55rem 0;font-size:.85rem}
 .tkv-video__recovery a{color:#ffcf7c;text-decoration:underline}
@@ -30,3 +30,32 @@
 
 .tkv-video__notice{flex-basis:100%;color:#ffdda5}
 .tkv-video__recovery button{font:inherit;color:#ffcf7c;background:transparent;border:1px solid currentColor;border-radius:5px;padding:.2rem .55rem;cursor:pointer}
+
+/* Homepage: one main action; use brand colours without losing readable contrast. */
+.tkv-video__next{display:flex;justify-content:center;margin:.7rem 0 0}
+.tkv-video__next a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.45rem 1.05rem;background:#ffcf7c;color:#102a22;border:1px solid #ffcf7c;border-radius:8px;text-decoration:none;font-weight:800}
+body:has(.tkv-video) .site-header .header-cta{background:#075b66!important;color:#fff!important}
+@media(max-width:767px){
+  .tkv-video{padding:16px 0 20px}
+  .tkv-video__rail{padding-bottom:5px}
+  .tkv-video__rail a{padding:.32rem .35rem .45rem}
+  .tkv-video__rail a span{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+  .tkv-video__next a{width:100%}
+  body:has(.tkv-video) nav.tl-mobile-contact.home-v6-mobile-contact a.tl-mobile-contact__journey,
+  body:has(.tkv-video) nav.tl-mobile-contact.home-v6-mobile-contact a.tl-mobile-contact__journey b{background:#075b66!important;color:#fff!important}
+  body:has(.tkv-video) nav.tl-mobile-contact.home-v6-mobile-contact a.tl-mobile-contact__zalo,
+  body:has(.tkv-video) nav.tl-mobile-contact.home-v6-mobile-contact a.tl-mobile-contact__call{background:#f7f9f6!important;color:#102a30!important;border:1px solid #8fa69b}
+  body:has(.tkv-video) nav.tl-mobile-contact.home-v6-mobile-contact a.tl-mobile-contact__zalo b,
+  body:has(.tkv-video) nav.tl-mobile-contact.home-v6-mobile-contact a.tl-mobile-contact__call b{color:#102a30!important}
+}
+
+body:has(.tkv-video) .home-v6 .home-v6-hero{background:#f7f9f6;color:#102a30;border-bottom:1px solid #dbe8df}
+body:has(.tkv-video) .home-v6 .home-v6-hero h1{color:#102a30}
+body:has(.tkv-video) .home-v6 .home-v6-hero h1 span,
+body:has(.tkv-video) .home-v6 .home-v6-hero .eyebrow{color:#075b66}
+body:has(.tkv-video) .home-v6 .home-v6-hero__lead,
+body:has(.tkv-video) .home-v6 .home-v6-hero__copy>p:not(.eyebrow){color:#24454a}
+body:has(.tkv-video) .home-v6 .home-v6-hero__lead a{color:#075b66}
+body:has(.tkv-video) .home-v6 .home-v6-hero .home-v6-button:not(.home-v6-button--primary){color:#102a30;background:#fff;border-color:#8fa69b}
+body:has(.tkv-video) .home-v6 .home-v6-hero .home-v6-button--primary{background:#075b66;color:#fff}
+body:has(.tkv-video) button[data-consent-choice="granted"]{color:#102a30!important}

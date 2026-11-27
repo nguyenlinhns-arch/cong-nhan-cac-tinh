@@ -10,7 +10,10 @@ assert.ok(block.indexOf('id="tkv-video-title"')<block.indexOf('data-tkv-stage'))
 assert.doesNotMatch(block,/tkv-video__eyebrow|THU NHẬP THỰC TẾ NĂM 2025/);
 assert.match(block,/<h2 id="tkv-video-title" class="tkv-video__sr">[^<]+<\/h2>/);
 assert.doesNotMatch(block,/tkv-video__(?:desktop|compact)/);
-assert.match(block,/class="tkv-video__cover" src="https:\/\/i\.ytimg\.com\/vi\/6MJLc5mBhsA\/maxresdefault\.jpg"/);
+assert.match(block,/class="tkv-video__cover" src="\/assets\/home-video-rail\/tkv-tho-lo-13500-poster\.jpg"/);
+assert.match(block,/class="tkv-video__next"><a href="#tu-kiem-tra"/);
+assert.ok(block.indexOf('data-tkv-rail')<block.indexOf('class="tkv-video__next"'));
+assert.ok(fs.statSync("tuyen-tho-mo/assets/home-video-rail/tkv-tho-lo-13500-poster.jpg").size <= 320_000, "homepage poster exceeds performance limit");
 assert.ok(!block.includes('<iframe')&&!block.includes('tkv-video__note'));
 assert.ok(block.includes('list='+playlist));
 assert.doesNotMatch(block,/data-tkv-(?:live|controls|prev|next)\b|<small>\d{2} \/ \d+:\d{2}<\/small>/);
