@@ -59,3 +59,13 @@ body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-hero__visual figcap
  body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-actions .home-v6-button--brief{width:auto;min-height:42px}
  body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-income{margin-top:8px}
 }
+
+/* Bring the photo further into the first screen on small handsets. */
+@media(max-width:540px){
+ body .home-v6 .home-v6-hero[data-recruitment-entry]{padding-top:24px}
+ body .home-v6 .home-v6-hero[data-recruitment-entry] .eyebrow{margin-bottom:12px}
+ body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-hero__lead{margin-top:12px}
+ body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-hero__grid{gap:15px}
+ body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-actions .home-v6-button--secondary,
+ body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-actions .home-v6-button--brief{font-size:.76rem;min-height:44px}
+}

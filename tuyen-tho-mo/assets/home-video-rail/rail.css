@@ -46,15 +46,6 @@ body:has(.tkv-video) .site-header .header-cta{background:#075b66!important;color
   body:has(.tkv-video) nav.tl-mobile-contact.home-v6-mobile-contact a.tl-mobile-contact__call b{color:#102a30!important}
 }
 
-body:has(.tkv-video) .home-v6 .home-v6-hero{background:#f7f9f6;color:#102a30;border-bottom:1px solid #dbe8df}
-body:has(.tkv-video) .home-v6 .home-v6-hero h1{color:#102a30}
-body:has(.tkv-video) .home-v6 .home-v6-hero h1 span,
-body:has(.tkv-video) .home-v6 .home-v6-hero .eyebrow{color:#075b66}
-body:has(.tkv-video) .home-v6 .home-v6-hero__lead,
-body:has(.tkv-video) .home-v6 .home-v6-hero__copy>p:not(.eyebrow){color:#24454a}
-body:has(.tkv-video) .home-v6 .home-v6-hero__lead a{color:#075b66}
-body:has(.tkv-video) .home-v6 .home-v6-hero .home-v6-button:not(.home-v6-button--primary){color:#102a30;background:#fff;border-color:#8fa69b}
-body:has(.tkv-video) .home-v6 .home-v6-hero .home-v6-button--primary{background:#075b66;color:#fff}
 body:has(.tkv-video) button[data-consent-choice="granted"]{color:#102a30!important}
 
 
