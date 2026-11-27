@@ -78,3 +78,13 @@ body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-hero__visual figcap
  .home-v6 .home-v6-careers__grid .career-field-note{grid-template-columns:1fr}
  .home-v6 .home-v6-careers__grid .career-field-note figcaption{padding:12px 14px}
 }
+
+/* Documentary jobsite photography: keep the whole frame and place the process caption outside it. */
+.home-v6 .home-journey__layout{align-items:start}
+.home-v6 .home-journey__layout .home-journey__visual{position:relative;min-height:0;max-height:none;height:auto;display:block;align-self:start;margin:0;border:1px solid #d9e2d4;border-radius:12px;background:#efefe5;box-shadow:none;overflow:hidden}
+.home-v6 .home-journey__layout .home-journey__visual::before,
+.home-v6 .home-journey__layout .home-journey__visual::after{content:none;display:none}
+.home-v6 .home-journey__layout .home-journey__visual img{display:block;position:static;inset:auto;width:100%;height:auto;min-height:0;max-height:none;aspect-ratio:1280/802;object-fit:contain}
+.home-v6 .home-journey__layout .home-journey__visual figcaption{position:static;inset:auto;padding:13px 18px;background:none;color:#19382b}
+.home-v6 .home-journey__layout .home-journey__visual figcaption small{display:block;color:#426052;font-size:.72rem;line-height:1.4}
+.home-v6 .home-journey__layout .home-journey__visual figcaption strong{display:block;color:#19382b;margin-top:4px;font-size:clamp(.94rem,1.4vw,1.1rem);line-height:1.45}
