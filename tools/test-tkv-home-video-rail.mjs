@@ -9,7 +9,8 @@ assert.equal((html.match(/<h1\b/g)||[]).length,1);
 assert.ok(block.indexOf('id="tkv-video-title"')<block.indexOf('data-tkv-stage'));
 assert.ok(!block.includes('<iframe')&&!block.includes('tkv-video__note'));
 assert.ok(block.includes('list='+playlist));
-assert.match(block,/data-tkv-live aria-pressed="false" hidden/);
+assert.match(block,/data-tkv-live hidden/);
+assert.match(block,/data-tkv-live-notice[^>]+role="status" hidden/);
 ids.forEach((id,i)=>assert.ok(block.includes('v='+id+'&amp;list='+playlist+'&amp;index='+(i+1))));
 const card=(key,i)=>({dataset:{tkvPick:key},offsetLeft:201*i,href:'https://www.youtube.com/watch?v='+key,attrs:new Map(),querySelector:()=>({textContent:'  Video '+key+'  '}),setAttribute(k,v){this.attrs.set(k,v)},removeAttribute(k){this.attrs.delete(k)}});
 const cards=ids.map(card),first=card(hero,-1);first.dataset.tkvTitle='Video đầu';
@@ -23,7 +24,9 @@ const fields={'[data-tkv-stage]':stage,'[data-tkv-rail]':rail,'[data-tkv-status]
 const retry=Object.assign(button('retry'),{hidden:true});fields['[data-tkv-notice]']=notice;fields['[data-tkv-retry]']=retry;
 const live=Object.assign(button('live'),{hidden:true,setAttribute(_,v){this.pressed=v}});
 fields['[data-tkv-live]']=live;
-const root={async requestFullscreen(){doc.fullscreenElement=this;listeners.fullscreenchange()},contains:link=>link===first||cards.includes(link),querySelector:s=>fields[s],addEventListener(_,fn){listeners.pick=fn}};
+const liveNotice={hidden:true};fields['[data-tkv-live-notice]']=liveNotice;
+let rejectFullscreen=false;
+const root={async requestFullscreen(){if(rejectFullscreen)throw Error('not allowed');doc.fullscreenElement=this;listeners.fullscreenchange()},contains:link=>link===first||cards.includes(link),querySelector:s=>fields[s],addEventListener(_,fn){listeners.pick=fn}};
 doc.querySelector=()=>root;
 doc.exitFullscreen=async()=>{doc.fullscreenElement=null;listeners.fullscreenchange()};
 vm.runInNewContext(fs.readFileSync('tuyen-tho-mo/assets/home-video-rail/rail.js','utf8'),{URL,document:doc,window:{location:{origin:'https://example.test'}, matchMedia:()=>({matches:true}),setTimeout(fn){timers.set(++seq,fn);return seq}, clearTimeout(id){timers.delete(id)},YT:{PlayerState:{PLAYING:1,BUFFERING:3},Player:class{constructor(frame,opts){Object.assign(this,{frame,opts});players.push(this)} destroy(){this.destroyed=true}}}}});
@@ -38,8 +41,12 @@ function verify(id, autoplay='1'){
 }
 assert.equal(controls.hidden,false);
 assert.equal(live.hidden,false);
-await listeners.live();assert.equal(doc.fullscreenElement,root);assert.equal(live.pressed,'true');
-await listeners.live();assert.equal(doc.fullscreenElement,null);assert.equal(live.pressed,'false');
+await listeners.live();assert.equal(doc.fullscreenElement,root);assert.equal(live.textContent,'Thoát khung chia sẻ');
+await listeners.live();assert.equal(doc.fullscreenElement,null);assert.equal(live.textContent,'Khung chia sẻ màn hình');
+rejectFullscreen=true;
+await listeners.live();assert.match(liveNotice.textContent,/không mở được/);assert.equal(liveNotice.hidden,false);assert.equal(live.textContent,'Khung chia sẻ màn hình');
+rejectFullscreen=false;
+await listeners.live();assert.equal(liveNotice.hidden,true);await listeners.live();
 listeners.prev();assert.equal(rail.scrollLeft,1005);listeners.next();assert.equal(rail.scrollLeft,0);
 listeners.next();assert.equal(rail.scrollLeft,201);
 assert.equal(stage.children[0],first);

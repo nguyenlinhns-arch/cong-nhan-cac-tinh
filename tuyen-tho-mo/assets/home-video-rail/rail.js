@@ -8,6 +8,7 @@
   const source = root.querySelector('[data-tkv-source]');
   const notice = root.querySelector('[data-tkv-notice]');
   const retry = root.querySelector('[data-tkv-retry]');
+  const liveNotice = root.querySelector('[data-tkv-live-notice]');
   const live = root.querySelector('[data-tkv-live]');
   const cards = Array.from(rail.querySelectorAll('[data-tkv-pick]'));
 
@@ -133,7 +134,8 @@
     live.hidden = false;
     document.addEventListener('fullscreenchange', () => {
       const active = document.fullscreenElement === root;
-      live.setAttribute('aria-pressed', String(active));
+      liveNotice.textContent = '';
+      liveNotice.hidden = true;
       live.textContent = active ? 'Thoát khung chia sẻ' : 'Khung chia sẻ màn hình';
     });
     live.addEventListener('click', async () => {
@@ -141,7 +143,8 @@
         if (document.fullscreenElement === root) await document.exitFullscreen();
         else await root.requestFullscreen();
       } catch {
-        live.textContent = 'Không mở được khung chia sẻ';
+        liveNotice.textContent = 'Trình duyệt không mở được toàn màn hình. Anh có thể chia sẻ cửa sổ trình duyệt như bình thường.';
+        liveNotice.hidden = false;
       }
     });
   }
