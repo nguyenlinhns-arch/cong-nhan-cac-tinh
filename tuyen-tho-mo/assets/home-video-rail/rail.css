@@ -33,3 +33,6 @@
  .tkv-video__rail{grid-auto-columns:43%;gap:8px}
  .tkv-video__rail a{font-size:.78rem}
 }
+
+.tkv-video__notice{flex-basis:100%;color:#ffdda5}
+.tkv-video__meta button{font:inherit;color:#ffcf7c;background:transparent;border:1px solid currentColor;border-radius:5px;padding:.2rem .55rem;cursor:pointer}

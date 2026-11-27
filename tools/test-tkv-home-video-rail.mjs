@@ -15,17 +15,19 @@ const cards=ids.map(card),first=card(hero,-1);first.dataset.tkvTitle='Video đ�
 const listeners={},doc={activeElement:first,createElement:n=>({tag:n})};
 const stage={children:[first],scrolls:0,contains(x){return this.children.includes(x)},replaceChildren(...args){this.children=args},focus(){doc.activeElement=this},scrollIntoView(){this.scrolls++}};
 const rail={querySelectorAll:()=>cards,scrollLeft:0,scrollWidth:2010,clientWidth:1005,scrollTo({left}){this.scrollLeft=left}};
-const status={},source={},controls={hidden:true};const button=k=>({addEventListener(_,fn){listeners[k]=fn}});
+const status={},source={},controls={hidden:true},notice={hidden:true};const timers=new Map();let seq=0;const players=[];const button=k=>({addEventListener(_,fn){listeners[k]=fn}});
 const fields={'[data-tkv-stage]':stage,'[data-tkv-rail]':rail,'[data-tkv-status]':status,'[data-tkv-source]':source,'[data-tkv-controls]':controls,'[data-tkv-prev]':button('prev'),'[data-tkv-next]':button('next')};
+const retry=Object.assign(button('retry'),{hidden:true});fields['[data-tkv-notice]']=notice;fields['[data-tkv-retry]']=retry;
 const root={contains:link=>link===first||cards.includes(link),querySelector:s=>fields[s],addEventListener(_,fn){listeners.pick=fn}};
 doc.querySelector=()=>root;
-vm.runInNewContext(fs.readFileSync('tuyen-tho-mo/assets/home-video-rail/rail.js','utf8'),{URL,document:doc,window:{matchMedia:()=>({matches:true})}});
+vm.runInNewContext(fs.readFileSync('tuyen-tho-mo/assets/home-video-rail/rail.js','utf8'),{URL,document:doc,window:{location:{origin:'https://example.test'}, matchMedia:()=>({matches:true}),setTimeout(fn){timers.set(++seq,fn);return seq}, clearTimeout(id){timers.delete(id)},YT:{PlayerState:{PLAYING:1,BUFFERING:3},Player:class{constructor(frame,opts){Object.assign(this,{frame,opts});players.push(this)} destroy(){this.destroyed=true}}}}});
 function click(link,extra={}){let prevented=false;listeners.pick({button:0,detail:1,target:{closest:()=>link},preventDefault(){prevented=true},...extra});return prevented}
-function verify(id){
+function verify(id, autoplay='1'){
  assert.equal(stage.children.length,1);
  const frame=stage.children[0], u=new URL(frame.src);
  assert.equal(frame.tag,'iframe'); assert.equal(u.pathname,'/embed/'+id);
- assert.equal(u.searchParams.get('autoplay'),'1');assert.equal(u.searchParams.get('playsinline'),'1');
+ assert.equal(u.searchParams.get('autoplay'),autoplay);assert.equal(u.searchParams.get('playsinline'),'1');
+ assert.equal(u.searchParams.get('enablejsapi'),'1');assert.equal(u.searchParams.get('origin'),'https://example.test');
  assert.equal(u.searchParams.get('start'),null);assert.ok(frame.allow.includes('autoplay'));assert.ok(frame.title);
 }
 assert.equal(controls.hidden,false);
@@ -41,4 +43,30 @@ for(const [i,link] of cards.entries()){
  assert.equal(doc.activeElement,link);assert.equal(stage.scrolls,i);
  assert.ok(status.textContent.includes(ids[i]));
 }
+await Promise.resolve();
+assert.equal(players.length,1);
+assert.equal(timers.size,1);
+[...timers.values()][0]();
+assert.equal(retry.hidden,false);
+assert.match(notice.textContent,/Video chưa phát/);
+listeners.retry();
+verify(ids.at(-1),'0');
+assert.equal(source.href,cards.at(-1).href);
+assert.equal(doc.activeElement,stage);
+assert.ok(players[0].destroyed);
+players[0].opts.events.onError();
+assert.match(notice.textContent,/Bấm nút Play/);
+await Promise.resolve();
+players[1].opts.events.onStateChange({data:3});
+assert.equal(timers.size,1);
+players[1].opts.events.onStateChange({data:1});
+assert.equal(timers.size,0);
+assert.equal(notice.hidden,true);
+assert.equal(retry.hidden,true);
+click(cards[0]);verify(ids[0]);
+await Promise.resolve();
+players[2].opts.events.onError();
+assert.equal(retry.hidden,false);
+assert.match(notice.textContent,/Không phát được/);
+console.log('PASS: blocked/slow/error feedback, retry exact video with native Play, playback state clears feedback');
 console.log('PASS: official playlist order, one player, all 11 selections, stable heading and focus, wrap, desktop-independent fallback links');

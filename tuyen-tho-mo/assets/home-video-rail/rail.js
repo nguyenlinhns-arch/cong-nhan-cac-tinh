@@ -6,15 +6,42 @@
   const rail = root.querySelector('[data-tkv-rail]');
   const status = root.querySelector('[data-tkv-status]');
   const source = root.querySelector('[data-tkv-source]');
+  const notice = root.querySelector('[data-tkv-notice]');
+  const retry = root.querySelector('[data-tkv-retry]');
   const cards = Array.from(rail.querySelectorAll('[data-tkv-pick]'));
 
-  function load(link, keyboard) {
+  let current, generation = 0, timeout, player, apiPromise;
+  function youtubeAPI() {
+    if (window.YT?.Player) return Promise.resolve(window.YT);
+    if (apiPromise) return apiPromise;
+    apiPromise = new Promise((resolve, reject) => {
+      const previous = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = () => {
+        resolve(window.YT);
+        if (typeof previous === 'function') previous();
+      };
+      const script = document.createElement('script');
+      script.src = 'https://www.youtube.com/iframe_api';
+      script.async = true;
+      script.addEventListener('error', reject, {once: true});
+      document.head.appendChild(script);
+    });
+    return apiPromise;
+  }
+  function feedback(text, canRetry) {
+    notice.textContent = text;
+    notice.hidden = !text;
+    retry.hidden = !canRetry;
+  }
+  function load(link, keyboard, autoplay = true) {
     const id = link.dataset.tkvPick;
     if (!/^[A-Za-z0-9_-]{11}$/.test(id)) return;
     const title = link.dataset.tkvTitle || link.querySelector('span').textContent.trim();
     const movedFocus = stage.contains(document.activeElement);
     const url = new URL('https://www.youtube.com/embed/' + id);
-    url.searchParams.set('autoplay', '1');
+    url.searchParams.set('autoplay', autoplay ? '1' : '0');
+    url.searchParams.set('enablejsapi', '1');
+    url.searchParams.set('origin', window.location.origin);
     url.searchParams.set('playsinline', '1');
     url.searchParams.set('rel', '0');
     const frame = document.createElement('iframe');
@@ -23,7 +50,41 @@
     frame.referrerPolicy = 'strict-origin-when-cross-origin';
     frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     frame.allowFullscreen = true;
+    const run = ++generation;
+    if (timeout) window.clearTimeout(timeout);
+    timeout = undefined;
+    if (player) { player.destroy(); player = null; }
+    current = link;
     stage.replaceChildren(frame);
+    feedback(autoplay ? '' : 'Bấm nút Play ở giữa video để phát.', false);
+    function slow() {
+      if (run !== generation) return;
+      feedback('Video chưa phát. Bấm Play trong khung, thử lại hoặc mở trên YouTube.', true);
+    }
+    if (autoplay) timeout = window.setTimeout(slow, 8000);
+    youtubeAPI().then(YT => {
+      if (run !== generation || !YT?.Player) return;
+      player = new YT.Player(frame, {events: {
+        onStateChange(event) {
+          if (run !== generation) return;
+          if (event.data === YT.PlayerState.BUFFERING && !timeout) {
+            timeout = window.setTimeout(slow, 8000);
+          }
+          if (event.data === YT.PlayerState.PLAYING) {
+            window.clearTimeout(timeout);
+            timeout = undefined;
+            feedback('', false);
+          }
+        },
+        onAutoplayBlocked: slow,
+        onError() {
+          if (run !== generation) return;
+          window.clearTimeout(timeout);
+          timeout = undefined;
+          feedback('Không phát được trong khung. Anh chị có thể thử lại hoặc mở trên YouTube.', true);
+        }
+      }});
+    }).catch(() => {});
     cards.forEach(card => card === link ? card.setAttribute('aria-current', 'true') : card.removeAttribute('aria-current'));
     status.textContent = title + ' · YouTube TKV';
     source.href = link.href;
@@ -43,6 +104,11 @@
       : (rail.scrollLeft < 2 ? max : Math.max(0, rail.scrollLeft - step));
     rail.scrollTo({left: next, behavior: 'instant'});
   }
+  retry.addEventListener('click', () => {
+    if (!current) return;
+    load(current, true, false);
+    stage.focus({preventScroll: true});
+  });
   root.querySelector('[data-tkv-controls]').hidden = false;
   root.querySelector('[data-tkv-prev]').addEventListener('click', () => move(-1));
   root.querySelector('[data-tkv-next]').addEventListener('click', () => move(1));
