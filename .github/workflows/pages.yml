@@ -206,9 +206,14 @@ jobs:
         with:
           # Publish the recruitment portal at the custom-domain root.
           path: ./tuyen-tho-mo
+          name: ${{ format('github-pages-{0}-{1}', github.run_id, github.run_attempt) }}
+      - name: Allow the Pages artifact index to update
+        run: sleep 12
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: ${{ format('github-pages-{0}-{1}', github.run_id, github.run_attempt) }}
       - name: Verify live Ken Lop9
         env:
           KEN_URL: https://thaylinhtuyenthomo.vn/kenlop9/
