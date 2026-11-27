@@ -51,3 +51,18 @@
  .tkv-video:fullscreen .tkv-video__rail img{grid-row:span 2;align-self:center}
  .tkv-video:fullscreen .tkv-video__rail small,.tkv-video:fullscreen .tkv-video__rail span{grid-column:2}
 }
+
+/* Reserve the measured rows before sizing the 16:9 picture. */
+@media (min-width:791px) and (min-height:520px){
+ .tkv-video:fullscreen .tkv-video__inner{
+  display:grid;grid-template-rows:auto auto minmax(200px,1fr) auto auto auto auto;
+  height:100%;width:min(1480px,calc(100% - 32px))
+ }
+ .tkv-video:fullscreen .tkv-video__stage{
+  width:auto;height:100%;max-width:100%;max-height:56.25cqw;min-height:0;
+  align-self:center;justify-self:center
+ }
+ .tkv-video:fullscreen .tkv-video__rail a span{
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden
+ }
+}
