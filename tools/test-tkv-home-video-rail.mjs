@@ -7,6 +7,8 @@ const ids=["bWUDKQ1r6xA","9DjYfc6Q1m0","WkSt6eOvlkA","h4zuijHumME","l0MFR1SNey8"
 assert.deepEqual([...block.matchAll(/data-tkv-pick="([^"]+)"/g)].map(x=>x[1]),[hero,...ids]);
 assert.equal((html.match(/<h1\b/g)||[]).length,1);
 assert.ok(block.indexOf('id="tkv-video-title"')<block.indexOf('data-tkv-stage'));
+assert.doesNotMatch(block,/tkv-video__eyebrow|THU NHẬP THỰC TẾ NĂM 2025/);
+assert.match(block,/<h2[^>]+id="tkv-video-title"[^>]*>[^\n]+\(2025\)<\/h2>/);
 assert.ok(!block.includes('<iframe')&&!block.includes('tkv-video__note'));
 assert.ok(block.includes('list='+playlist));
 assert.match(block,/data-tkv-live hidden/);
