@@ -56,3 +56,22 @@ body:has(.tkv-video) .home-v6 .home-v6-hero__lead a{color:#075b66}
 body:has(.tkv-video) .home-v6 .home-v6-hero .home-v6-button:not(.home-v6-button--primary){color:#102a30;background:#fff;border-color:#8fa69b}
 body:has(.tkv-video) .home-v6 .home-v6-hero .home-v6-button--primary{background:#075b66;color:#fff}
 body:has(.tkv-video) button[data-consent-choice="granted"]{color:#102a30!important}
+
+/* Consultation immediately after the video picker. */
+.tkv-consult{display:flex;align-items:center;justify-content:space-between;gap:14px 24px;margin:14px 0 0;padding:16px 22px;border:1px solid #b7d0c3;border-radius:12px;background:#e8f2eb;color:#102a22;scroll-margin-top:88px}
+.tkv-consult__copy{min-width:0}
+.tkv-consult .tkv-consult__copy h3{margin:0;color:#102a22;font-size:clamp(1.25rem,2.45cqw,1.65rem);line-height:1.16;font-weight:800;letter-spacing:-.023em}
+.tkv-consult .tkv-consult__copy p{margin:.28rem 0 0;color:#314f46;line-height:1.45;font-size:.94rem}
+.tkv-consult__links{display:flex;align-items:center;justify-content:flex-end;gap:5px 15px;flex-wrap:wrap}
+.tkv-consult .tkv-consult__main,.tkv-consult .tkv-consult__phone{display:inline-flex;min-height:44px;box-sizing:border-box;align-items:center;justify-content:center;gap:.45rem;font-size:.94rem;font-weight:750;line-height:1.35;text-align:center}
+.tkv-consult .tkv-consult__main{border-radius:8px;padding:.57rem .85rem;background:#075b66;color:#fff;text-decoration:none}
+.tkv-consult .tkv-consult__main:hover{background:#064650}
+.tkv-consult .tkv-consult__phone{padding-inline:.2rem;color:#07515b;text-decoration:underline;text-underline-offset:3px}
+.tkv-consult a:focus-visible{outline:2px solid #075b66;outline-offset:3px}
+@media(max-width:640px){
+ .tkv-consult{flex-direction:column;align-items:stretch;gap:12px;margin-top:10px;padding:13px 14px}
+ .tkv-consult__links{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px}
+}
+@media(max-width:395px){
+ .tkv-consult__links{grid-template-columns:minmax(0,1fr);gap:2px}
+}
