@@ -1,6 +1,7 @@
 export const dailyCommunitySourceImages20260901 = Object.freeze({
   "nam-tuan-khai-giang-lop-nghe-mo-30-hoc-vien-2026": Object.freeze({
     sourceUrl: "https://caodangtkv.edu.vn/khai-giang-lop-dao-tao-nghe-cho-lao-dong-xa-nam-tuan-dau-an-phoi-hop-hieu-qua-giua-nha-truong-doanh-nghiep-dia-phuong/",
+    publicPostJson: "https://caodangtkv.edu.vn/wp-json/wp/v2/posts/7169",
     image: "https://caodangtkv.edu.vn/wp-content/uploads/2026/06/DSC05203.jpg",
     imageRelationship: "FIRST_CONTENT_IMAGE",
     allowPinnedFirstContentRelationship: true,
