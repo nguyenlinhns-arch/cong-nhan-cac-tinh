@@ -142,30 +142,72 @@
     <main id="noi-dung" class="home-funnel">
       <section class="tkv-video" data-tkv-video aria-labelledby="tkv-video-title">
         <div class="tkv-video__inner">
-          <div class="tkv-video__stage" data-tkv-stage aria-label="Khung phát video ngang 16:9">
-            <img class="tkv-video__cover" src="https://i.ytimg.com/vi/6MJLc5mBhsA/maxresdefault.jpg" width="1280" height="720" alt="Bìa phóng sự phỏng vấn công nhân thợ mỏ tiêu biểu năm 2024 của TKV" referrerpolicy="no-referrer">
-            <div class="tkv-video__copy">
-              <p class="tkv-video__eyebrow">TKV · THU NHẬP THỰC TẾ NĂM 2025</p>
-              <h2 id="tkv-video-title">Hơn 13.500 thợ lò thu nhập <strong>trên 300 triệu đồng/năm</strong></h2>
-              <p class="tkv-video__note">Số liệu tại Hội nghị Người lao động TKV 2026, không phải mức cam kết cho người mới.</p>
-              <a class="tkv-video__play" data-tkv-pick="all" href="https://www.youtube.com/watch?v=6MJLc5mBhsA">Xem video</a>
-            </div>
+          <p class="tkv-video__eyebrow">
+            <span class="tkv-video__desktop">TKV · THU NHẬP THỰC TẾ NĂM 2025</span>
+            <span class="tkv-video__compact">HƠN 13.500 THỢ LÒ TKV · NĂM 2025</span>
+          </p>
+          <h2 id="tkv-video-title" aria-label="Hơn 13.500 thợ lò TKV có thu nhập trên 300 triệu đồng trong năm 2025"><span class="tkv-video__desktop">Hơn 13.500 thợ lò thu nhập </span><strong><span class="tkv-video__desktop">trên</span><span class="tkv-video__compact">Trên</span> 300 triệu đồng/năm</strong></h2>
+          <div class="tkv-video__stage" data-tkv-stage tabindex="-1" role="group" aria-label="Khung phát video">
+            <a class="tkv-video__cover-link" data-tkv-pick="6MJLc5mBhsA" data-tkv-title="Phỏng vấn công nhân thợ mỏ tiêu biểu năm 2024" href="https://www.youtube.com/watch?v=6MJLc5mBhsA" aria-label="Phát video phỏng vấn công nhân thợ mỏ tiêu biểu năm 2024">
+              <img class="tkv-video__cover" src="https://i.ytimg.com/vi/6MJLc5mBhsA/maxresdefault.jpg" width="1280" height="720" alt="" fetchpriority="high">
+              <span class="tkv-video__badge">PHỎNG VẤN · TKV 2024</span>
+              <span class="tkv-video__play" aria-hidden="true"><svg width="22" height="24" viewBox="0 0 22 24" focusable="false"><path fill="currentColor" d="M3 2v20l17-10Z"/></svg></span>
+            </a>
           </div>
           <div class="tkv-video__meta">
-            <span data-tkv-status role="status">Phỏng vấn công nhân thợ mỏ tiêu biểu năm 2024 · YouTube TKV</span>
-            <span><a href="https://tapchicongthuong.vn/tkv--hon-13-500-tho-lo-thu-nhap-tren-300-trieu-nam-436800.htm">Nguồn số liệu</a><span aria-hidden="true"> · </span><a data-tkv-source href="https://www.youtube.com/watch?v=6MJLc5mBhsA" target="_blank" rel="noopener">Mở trên YouTube</a></span>
+            <span data-tkv-status role="status" aria-live="polite">Phỏng vấn công nhân thợ mỏ tiêu biểu năm 2024 · YouTube TKV</span>
+            <a data-tkv-source href="https://www.youtube.com/watch?v=6MJLc5mBhsA" target="_blank" rel="noopener">Mở trên YouTube</a>
           </div>
           <div class="tkv-video__head">
-            <h3>Chọn đoạn phóng sự</h3>
-            <div data-tkv-controls hidden><button type="button" data-tkv-prev aria-label="Lùi dải video">Trước</button> <button type="button" data-tkv-next aria-label="Tiến dải video">Sau</button></div>
+            <h3 id="tkv-rail-title">10 video trong danh sách phát TKV</h3>
+            <div data-tkv-controls hidden>
+              <button type="button" data-tkv-prev aria-controls="tkv-rail" aria-label="Lùi dải video">‹</button>
+              <button type="button" data-tkv-next aria-controls="tkv-rail" aria-label="Tiến dải video">›</button>
+            </div>
           </div>
-          <div class="tkv-video__rail" data-tkv-rail role="group" aria-label="Các đoạn trong bản phát lại 24 phút 42 giây">
-            <a data-tkv-pick="all" aria-current="true" href="https://www.youtube.com/watch?v=6MJLc5mBhsA"><img src="https://i.ytimg.com/vi/6MJLc5mBhsA/mqdefault.jpg" width="320" height="180" alt="" loading="lazy"><small>TOÀN BỘ · 24:42</small><span>Phỏng vấn công nhân thợ mỏ tiêu biểu</span></a>
-            <a data-tkv-pick="80" href="https://www.youtube.com/watch?v=6MJLc5mBhsA&amp;t=80s"><img src="/assets/home-video-rail/moc-80.jpg" width="160" height="90" alt="" loading="lazy"><small>01:20</small><span>Học nghề và làm việc trong lò</span></a>
-            <a data-tkv-pick="450" href="https://www.youtube.com/watch?v=6MJLc5mBhsA&amp;t=450s"><img src="/assets/home-video-rail/moc-450.jpg" width="160" height="90" alt="" loading="lazy"><small>07:30</small><span>Một ca làm: vào lò và vận hành</span></a>
-            <a data-tkv-pick="630" href="https://www.youtube.com/watch?v=6MJLc5mBhsA&amp;t=630s"><img src="/assets/home-video-rail/moc-630.jpg" width="160" height="90" alt="" loading="lazy"><small>10:30</small><span>Công việc và đời sống thợ mỏ</span></a>
-            <a data-tkv-pick="1130" href="https://www.youtube.com/watch?v=6MJLc5mBhsA&amp;t=1130s"><img src="/assets/home-video-rail/moc-1130.jpg" width="160" height="90" alt="" loading="lazy"><small>18:50</small><span>Từ quê nhà đến vùng mỏ</span></a>
+          <div class="tkv-video__rail" id="tkv-rail" data-tkv-rail role="group" aria-labelledby="tkv-rail-title">
+            <a data-tkv-pick="bWUDKQ1r6xA" href="https://www.youtube.com/watch?v=bWUDKQ1r6xA&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=1" aria-label="Phát Thợ lò Ngân Văn Viên (Tri Lễ, Nghệ An)">
+              <img src="https://i.ytimg.com/vi/bWUDKQ1r6xA/mqdefault.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
+              <small>01 / 3:28</small><span>Thợ lò Ngân Văn Viên (Tri Lễ, Nghệ An)</span>
+            </a>
+            <a data-tkv-pick="9DjYfc6Q1m0" href="https://www.youtube.com/watch?v=9DjYfc6Q1m0&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=2" aria-label="Phát Kso Sới: từ Gia Lai đến Quảng Ninh làm thợ mỏ">
+              <img src="https://i.ytimg.com/vi/9DjYfc6Q1m0/mqdefault.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
+              <small>02 / 5:56</small><span>Kso Sới: từ Gia Lai đến Quảng Ninh làm thợ mỏ</span>
+            </a>
+            <a data-tkv-pick="WkSt6eOvlkA" href="https://www.youtube.com/watch?v=WkSt6eOvlkA&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=3" aria-label="Phát Chuyện những người thợ lò thu nhập cao">
+              <img src="https://i.ytimg.com/vi/WkSt6eOvlkA/mqdefault.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
+              <small>03 / 11:35</small><span>Chuyện những người thợ lò thu nhập cao</span>
+            </a>
+            <a data-tkv-pick="h4zuijHumME" href="https://www.youtube.com/watch?v=h4zuijHumME&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=4" aria-label="Phát Thợ lò Lầu A Súa (Sơn La)">
+              <img src="https://i.ytimg.com/vi/h4zuijHumME/mqdefault.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
+              <small>04 / 3:57</small><span>Thợ lò Lầu A Súa (Sơn La)</span>
+            </a>
+            <a data-tkv-pick="l0MFR1SNey8" href="https://www.youtube.com/watch?v=l0MFR1SNey8&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=5" aria-label="Phát Bốn bố con cùng làm mỏ (Tuyên Quang)">
+              <img src="https://i.ytimg.com/vi/l0MFR1SNey8/mqdefault.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
+              <small>05 / 3:03</small><span>Bốn bố con cùng làm mỏ (Tuyên Quang)</span>
+            </a>
+            <a data-tkv-pick="XNMQwM_5fyI" href="https://www.youtube.com/watch?v=XNMQwM_5fyI&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=6" aria-label="Phát Thợ lò Mùa A Sinh (Lai Châu)">
+              <img src="https://i.ytimg.com/vi/XNMQwM_5fyI/mqdefault.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
+              <small>06 / 4:33</small><span>Thợ lò Mùa A Sinh (Lai Châu)</span>
+            </a>
+            <a data-tkv-pick="Y5skQm8A1ho" href="https://www.youtube.com/watch?v=Y5skQm8A1ho&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=7" aria-label="Phát Thợ lò Dương Văn Lực (Cao Bằng)">
+              <img src="https://i.ytimg.com/vi/Y5skQm8A1ho/mqdefault.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
+              <small>07 / 4:00</small><span>Thợ lò Dương Văn Lực (Cao Bằng)</span>
+            </a>
+            <a data-tkv-pick="0kWCKhpw5B8" href="https://www.youtube.com/watch?v=0kWCKhpw5B8&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=8" aria-label="Phát Thợ lò Đinh Văn Ne (Quảng Ngãi)">
+              <img src="https://i.ytimg.com/vi/0kWCKhpw5B8/mqdefault.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
+              <small>08 / 3:31</small><span>Thợ lò Đinh Văn Ne (Quảng Ngãi)</span>
+            </a>
+            <a data-tkv-pick="7i-hlu2Ol7Y" href="https://www.youtube.com/watch?v=7i-hlu2Ol7Y&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=9" aria-label="Phát Lò Văn Khoan: Hành trình của khát vọng tuổi trẻ">
+              <img src="https://i.ytimg.com/vi/7i-hlu2Ol7Y/mqdefault.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
+              <small>09 / 9:05</small><span>Lò Văn Khoan: Hành trình của khát vọng tuổi trẻ</span>
+            </a>
+            <a data-tkv-pick="cpeiTxtJKu4" href="https://www.youtube.com/watch?v=cpeiTxtJKu4&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=10" aria-label="Phát Thợ lò Hồ Văn Cương (Quảng Trị)">
+              <img src="https://i.ytimg.com/vi/cpeiTxtJKu4/mqdefault.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
+              <small>10 / 3:01</small><span>Thợ lò Hồ Văn Cương (Quảng Trị)</span>
+            </a>
           </div>
+          <a class="tkv-video__playlist" href="https://www.youtube.com/playlist?list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG">Xem danh sách phát gốc trên YouTube</a>
         </div>
       </section>
 
