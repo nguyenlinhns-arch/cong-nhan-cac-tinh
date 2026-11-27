@@ -366,3 +366,8 @@ body:has([data-recruitment-entry]) .site-footer--home .footer-bottom {
     order:2;margin-top:2px;
   }
 }
+
+/* Keep the plain-link version for scripts-off readers and old direct links. */
+body:has([data-home-province-reels]) #hanh-trinh-tu-que:not(:target) {
+  display:none;
+}
