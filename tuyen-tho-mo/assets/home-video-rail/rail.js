@@ -6,6 +6,7 @@
   const rail = root.querySelector('[data-tkv-rail]');
   const status = root.querySelector('[data-tkv-status]');
   const source = root.querySelector('[data-tkv-source]');
+  const actions = root.querySelector('[data-tkv-actions]');
   const notice = root.querySelector('[data-tkv-notice]');
   const retry = root.querySelector('[data-tkv-retry]');
   const liveNotice = root.querySelector('[data-tkv-live-notice]');
@@ -55,6 +56,7 @@
     notice.textContent = text;
     notice.hidden = !text;
     retry.hidden = !canRetry;
+    actions.hidden = !canRetry;
   }
   function load(link, keyboard, autoplay = true) {
     const id = link.dataset.tkvPick;
@@ -67,6 +69,7 @@
     url.searchParams.set('origin', window.location.origin);
     url.searchParams.set('playsinline', '1');
     url.searchParams.set('rel', '0');
+    url.searchParams.set('cc_load_policy', '0');
     const frame = document.createElement('iframe');
     frame.src = url.href;
     frame.title = title;
@@ -92,13 +95,29 @@
     if (autoplay) timeout = window.setTimeout(slow, 8000);
     youtubeAPI().then(YT => {
       if (run !== generation || !YT?.Player) return;
+      // Reset the initial track only. Never undo CC changes made after playback starts.
+      let starting = true, resetCaptions = false;
+      function initialCaptionsOff(event) {
+        if (!starting || resetCaptions || run !== generation) return;
+        const instance = event.target;
+        try {
+          if (!instance?.getOptions?.().includes('captions') ||
+              typeof instance.setOption !== 'function') return;
+          resetCaptions = true;
+          instance.setOption('captions', 'track', {});
+        } catch { /* Keep native playback and the viewer's CC button available. */ }
+      }
       player = new YT.Player(frame, {events: {
+        onReady: initialCaptionsOff,
+        onApiChange: initialCaptionsOff,
         onStateChange(event) {
           if (run !== generation) return;
           if (event.data === YT.PlayerState.BUFFERING && timeout === undefined) {
             timeout = window.setTimeout(slow, 8000);
           }
           if (event.data === YT.PlayerState.PLAYING) {
+            initialCaptionsOff(event);
+            starting = false;
             clearWatch();
             feedback('', false);
           }

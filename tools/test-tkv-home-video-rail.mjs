@@ -8,10 +8,14 @@ assert.deepEqual([...block.matchAll(/data-tkv-pick="([^"]+)"/g)].map(x=>x[1]),[h
 assert.equal((html.match(/<h1\b/g)||[]).length,1);
 assert.ok(block.indexOf('id="tkv-video-title"')<block.indexOf('data-tkv-stage'));
 assert.doesNotMatch(block,/tkv-video__eyebrow|THU NHẬP THỰC TẾ NĂM 2025/);
-assert.match(block,/<h2[^>]+id="tkv-video-title"[^>]*>[^\n]+\(2025\)<\/h2>/);
+const visibleHeading=block.match(/<h2[^>]+id="tkv-video-title"[^>]*>(.*?)<\/h2>/)?.[1].replace(/<[^>]*>/g,'');
+assert.ok(visibleHeading?.includes('trên 300 triệu'));
+assert.doesNotMatch(visibleHeading,/\(2025\)/);
 assert.ok(!block.includes('<iframe')&&!block.includes('tkv-video__note'));
 assert.ok(block.includes('list='+playlist));
 assert.match(block,/data-tkv-live hidden/);
+assert.doesNotMatch(block,/tkv-video__meta/);
+assert.match(block,/data-tkv-actions[^>]+hidden/);
 assert.match(block,/data-tkv-live-notice[^>]+role="status" hidden/);
 ids.forEach((id,i)=>assert.ok(block.includes('v='+id+'&amp;list='+playlist+'&amp;index='+(i+1))));
 const card=(key,i)=>({dataset:{tkvPick:key},offsetLeft:201*i,href:'https://www.youtube.com/watch?v='+key,attrs:new Map(),querySelector:()=>({textContent:'  Video '+key+'  '}),setAttribute(k,v){this.attrs.set(k,v)},removeAttribute(k){this.attrs.delete(k)}});
@@ -26,6 +30,7 @@ const stage={children:[first],scrolls:0,contains(x){return this.children.include
 const rail={querySelectorAll:()=>cards,scrollLeft:0,scrollWidth:2010,clientWidth:1005,scrollTo({left}){this.scrollLeft=left}};
 const status={},source={},controls={hidden:true},notice={hidden:true};const timers=new Map();let seq=0;const players=[];const button=k=>({addEventListener(_,fn){listeners[k]=fn}});
 const fields={'[data-tkv-stage]':stage,'[data-tkv-rail]':rail,'[data-tkv-status]':status,'[data-tkv-source]':source,'[data-tkv-controls]':controls,'[data-tkv-prev]':button('prev'),'[data-tkv-next]':button('next')};
+const actions={hidden:true};fields['[data-tkv-actions]']=actions;
 const retry=Object.assign(button('retry'),{hidden:true});fields['[data-tkv-notice]']=notice;fields['[data-tkv-retry]']=retry;
 const live=Object.assign(button('live'),{hidden:true,focus(){doc.activeElement=this}});
 fields['[data-tkv-live]']=live;
@@ -41,6 +46,7 @@ function verify(id, autoplay='1'){
  assert.equal(stage.children.length,1);
  const frame=stage.children[0], u=new URL(frame.src);
  assert.equal(frame.tag,'iframe'); assert.equal(u.pathname,'/embed/'+id);
+ assert.equal(u.searchParams.get('cc_load_policy'),'0');
  assert.equal(u.searchParams.get('autoplay'),autoplay);assert.equal(u.searchParams.get('playsinline'),'1');
  assert.equal(u.searchParams.get('enablejsapi'),'1');assert.equal(u.searchParams.get('origin'),'https://example.test');
  assert.equal(u.searchParams.get('start'),null);assert.ok(frame.allow.includes('autoplay'));assert.ok(frame.title);
@@ -74,9 +80,20 @@ for(const [i,link] of cards.entries()){
 }
 await Promise.resolve();
 assert.equal(players.length,1);
+const ccEvents=players[0].opts.events, ccCalls=[];
+let ccOptions=[];
+const ccPlayer={getOptions:()=>ccOptions,setOption(type,name,value){ccCalls.push([type,name,Object.keys(value).length]);}};
+ccEvents.onReady({target:ccPlayer});
+assert.equal(ccCalls.length,0);
+ccOptions=['captions'];
+ccEvents.onApiChange({target:ccPlayer});
+assert.deepEqual(ccCalls,[['captions','track',0]]);
+ccEvents.onApiChange({target:ccPlayer});
+assert.equal(ccCalls.length,1);
 assert.equal(timers.size,1);
 [...timers.values()][0]();
 assert.equal(retry.hidden,false);
+assert.equal(actions.hidden,false);
 assert.match(notice.textContent,/Video chưa phát/);
 assert.equal(timers.size,0);
 players[0].opts.events.onStateChange({data:3});
