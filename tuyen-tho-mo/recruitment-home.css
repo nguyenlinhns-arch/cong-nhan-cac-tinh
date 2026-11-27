@@ -41,8 +41,6 @@ body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-hero__visual figcap
 .home-v6 .home-v6-career-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .home-v6 .home-v6-career-list a{display:grid;grid-template-columns:1fr;align-content:start;gap:12px;height:100%;padding:18px;border-radius:10px;border-color:#d7ded2;box-shadow:none;background:#fff;text-decoration:none}
 .home-v6 .home-v6-career-list a:hover{background:#f3f7ef;border-color:#7e9a88}
-.home-v6 .home-v6-careers__grid figure{order:1;max-height:240px;margin:0;border-radius:10px;box-shadow:none}
-.home-v6 .home-v6-careers__grid figure img{display:block;width:100%;height:clamp(150px,22vw,240px);min-height:0;object-fit:cover;object-position:center 42%}
 #tkv-video-title{scroll-margin-top:84px}
 @media(max-width:850px){
  body .home-v6 .home-v6-hero[data-recruitment-entry]{padding:34px 0 27px}
@@ -68,4 +66,15 @@ body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-hero__visual figcap
  body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-hero__grid{gap:15px}
  body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-actions .home-v6-button--secondary,
  body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-actions .home-v6-button--brief{font-size:.76rem;min-height:44px}
+}
+
+.home-v6 .home-v6-careers__grid .career-field-note{position:relative;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);align-items:center;max-height:none;min-height:0;margin:0;border:1px solid #d9e2d4;border-radius:10px;background:#efefe5;box-shadow:none;overflow:hidden}
+.home-v6 .home-v6-careers__grid .career-field-note::after,.home-v6 .home-v6-careers__grid .career-field-note::before{content:none;display:none}
+.home-v6 .home-v6-careers__grid .career-field-note img{display:block;width:100%;height:auto;min-height:0;max-height:none;aspect-ratio:1055/593;object-fit:contain}
+.home-v6 .home-v6-careers__grid .career-field-note figcaption{position:static;inset:auto;min-height:0;padding:18px 24px;color:#19382b;background:none}
+.home-v6 .home-v6-careers__grid .career-field-note figcaption small{display:block;color:#426052;font-size:.72rem;line-height:1.4}
+.home-v6 .home-v6-careers__grid .career-field-note figcaption strong{display:block;color:#19382b;font-size:clamp(1rem,2vw,1.4rem);margin:5px 0 0}
+@media(max-width:650px){
+ .home-v6 .home-v6-careers__grid .career-field-note{grid-template-columns:1fr}
+ .home-v6 .home-v6-careers__grid .career-field-note figcaption{padding:12px 14px}
 }
