@@ -120,24 +120,33 @@ jobs:
           node tools/enforce-blue-worker-illustrations.mjs
           node tools/validate-modular-delivery.mjs
           node tools/validate-editorial-sources.mjs
-          node tools/validate-daily-community-images-20260804.mjs
-          node tools/validate-daily-community-images-20260809.mjs
-          node tools/validate-daily-community-images-20260810.mjs
-          node tools/validate-daily-community-images-20260811.mjs
-          node tools/validate-daily-community-images-20260812.mjs
-          node tools/validate-daily-community-images-20260813.mjs
-          node tools/validate-daily-community-images-20260814.mjs
-          node tools/validate-daily-community-images-20260821.mjs
-          node tools/validate-daily-community-images-20260822.mjs
-          node tools/validate-daily-community-images-20260826.mjs
-          node tools/validate-daily-community-images-20260827.mjs
-          node tools/validate-daily-community-images-20260828.mjs
-          node tools/validate-daily-community-images-20260829.mjs
-          node tools/validate-daily-community-images-20260830.mjs
-          node tools/validate-daily-community-images-20260831.mjs
-          node tools/validate-daily-community-images-20260901.mjs
-          node tools/validate-daily-community-images-20260902.mjs
-          node tools/validate-daily-community-images-20260904.mjs
+          # Remote news pages sometimes answer with a temporary placeholder.
+          # No validation is skipped: a persistent mismatch still fails the release.
+          check_remote_images() {
+            for delay in 0 3 8; do
+              if [ "$delay" -gt 0 ]; then sleep "$delay"; fi
+              if node "$1"; then return 0; fi
+            done
+            return 1
+          }
+          check_remote_images tools/validate-daily-community-images-20260804.mjs
+          check_remote_images tools/validate-daily-community-images-20260809.mjs
+          check_remote_images tools/validate-daily-community-images-20260810.mjs
+          check_remote_images tools/validate-daily-community-images-20260811.mjs
+          check_remote_images tools/validate-daily-community-images-20260812.mjs
+          check_remote_images tools/validate-daily-community-images-20260813.mjs
+          check_remote_images tools/validate-daily-community-images-20260814.mjs
+          check_remote_images tools/validate-daily-community-images-20260821.mjs
+          check_remote_images tools/validate-daily-community-images-20260822.mjs
+          check_remote_images tools/validate-daily-community-images-20260826.mjs
+          check_remote_images tools/validate-daily-community-images-20260827.mjs
+          check_remote_images tools/validate-daily-community-images-20260828.mjs
+          check_remote_images tools/validate-daily-community-images-20260829.mjs
+          check_remote_images tools/validate-daily-community-images-20260830.mjs
+          check_remote_images tools/validate-daily-community-images-20260831.mjs
+          check_remote_images tools/validate-daily-community-images-20260901.mjs
+          check_remote_images tools/validate-daily-community-images-20260902.mjs
+          check_remote_images tools/validate-daily-community-images-20260904.mjs
           node tools/validate-home-copy-actions.mjs
           node tools/validate-homepage-redesign.mjs
           node tools/validate-top-block-hotfix.mjs
