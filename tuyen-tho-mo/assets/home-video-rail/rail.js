@@ -3,14 +3,25 @@
   const root = document.querySelector('[data-tkv-video]');
   if (!root) return;
   const stage = root.querySelector('[data-tkv-stage]');
-  const rail = root.querySelector('[data-tkv-rail]') || document.querySelector('[data-tkv-rail]');
+  const rail = root.querySelector('[data-tkv-rail]');
   const status = root.querySelector('[data-tkv-status]');
   const source = root.querySelector('[data-tkv-source]');
   const actions = root.querySelector('[data-tkv-actions]');
   const notice = root.querySelector('[data-tkv-notice]');
   const retry = root.querySelector('[data-tkv-retry]');
-  const cards = Array.from(rail?.querySelectorAll('[data-tkv-pick]') ?? []);
+  const cards = Array.from(rail.querySelectorAll('[data-tkv-pick]'));
 
+  const advance = root.querySelector('[data-tkv-advance]');
+  if (advance && cards.length > 1) {
+    advance.hidden = false;
+    advance.addEventListener('click', () => {
+      const max = Math.max(0, rail.scrollWidth - rail.clientWidth);
+      const from = rail.scrollLeft;
+      const stride = cards[1].offsetLeft - cards[0].offsetLeft;
+      rail.scrollTo({left: from >= max - 3 ? 0 : Math.min(max, from + stride),
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+    });
+  }
   let current, generation = 0, timeout, player, apiPromise;
   function youtubeAPI() {
     if (window.YT?.Player) return Promise.resolve(window.YT);
@@ -142,12 +153,10 @@
     load(current, true, false);
     stage.focus({preventScroll: true});
   });
-  function chooseVideo(event) {
+  root.addEventListener('click', event => {
     const link = event.target.closest('[data-tkv-pick]');
-    if (!link || !(root.contains(link) || rail?.contains(link)) || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    if (!link || !root.contains(link) || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
     load(link, event.detail === 0);
-  }
-  root.addEventListener('click', chooseVideo);
-  if (rail && !root.contains(rail)) rail.addEventListener?.('click', chooseVideo);
+  });
 })();
