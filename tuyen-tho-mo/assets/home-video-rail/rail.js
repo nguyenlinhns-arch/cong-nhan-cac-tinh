@@ -9,8 +9,6 @@
   const actions = root.querySelector('[data-tkv-actions]');
   const notice = root.querySelector('[data-tkv-notice]');
   const retry = root.querySelector('[data-tkv-retry]');
-  const liveNotice = root.querySelector('[data-tkv-live-notice]');
-  const live = root.querySelector('[data-tkv-live]');
   const cards = Array.from(rail.querySelectorAll('[data-tkv-pick]'));
 
   let current, generation = 0, timeout, player, apiPromise;
@@ -139,83 +137,11 @@
     }
   }
 
-  function move(dir) {
-    if (cards.length < 2) return;
-    const step = cards[1].offsetLeft - cards[0].offsetLeft;
-    if (step <= 0) return;
-    const max = Math.max(0, rail.scrollWidth - rail.clientWidth);
-    if (max === 0) return;
-    const next = dir > 0 ? (rail.scrollLeft >= max - 2 ? 0 : Math.min(max, rail.scrollLeft + step))
-      : (rail.scrollLeft < 2 ? max : Math.max(0, rail.scrollLeft - step));
-    rail.scrollTo({left: next, behavior: 'instant'});
-  }
-  if (live) {
-    const panelClass = 'is-sharing';
-    let overlay = false;
-    let busy = false;
-    const suspended = [];
-    live.hidden = false;
-    function syncShare() {
-      const active = overlay || document.fullscreenElement === root;
-      live.textContent = active ? 'Thoát khung chia sẻ' : 'Khung chia sẻ màn hình';
-      liveNotice.textContent = overlay ? 'Khung chia sẻ đang mở trong cửa sổ trình duyệt.' : '';
-      liveNotice.hidden = !overlay;
-    }
-    function setOverlay(on) {
-      overlay = on;
-      root.classList.toggle(panelClass, on);
-      document.documentElement.classList.toggle('tkv-share-active', on);
-      if (on) {
-        for (let branch = root; branch && branch !== document.body; branch = branch.parentElement) {
-          for (const sibling of branch.parentElement?.children || []) {
-            if (sibling === branch || sibling.inert) continue;
-            sibling.inert = true;
-            suspended.push(sibling);
-          }
-        }
-      } else {
-        for (const sibling of suspended.splice(0)) sibling.inert = false;
-      }
-      syncShare();
-      live.focus({preventScroll: true});
-    }
-    document.addEventListener('fullscreenchange', syncShare);
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape' && overlay) {
-        event.preventDefault();
-        setOverlay(false);
-      }
-    });
-    live.addEventListener('click', async () => {
-      if (busy) return;
-      busy = true;
-      try {
-        if (overlay) {
-          setOverlay(false);
-        } else if (document.fullscreenElement === root) {
-          await document.exitFullscreen();
-        } else if (!document.fullscreenEnabled || typeof root.requestFullscreen !== 'function') {
-          setOverlay(true);
-        } else {
-          try {
-            await root.requestFullscreen();
-          } catch {
-            setOverlay(true);
-          }
-        }
-      } finally {
-        busy = false;
-      }
-    });
-  }
   retry.addEventListener('click', () => {
     if (!current) return;
     load(current, true, false);
     stage.focus({preventScroll: true});
   });
-  root.querySelector('[data-tkv-controls]').hidden = false;
-  root.querySelector('[data-tkv-prev]').addEventListener('click', () => move(-1));
-  root.querySelector('[data-tkv-next]').addEventListener('click', () => move(1));
   root.addEventListener('click', event => {
     const link = event.target.closest('[data-tkv-pick]');
     if (!link || !root.contains(link) || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
