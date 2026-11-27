@@ -130,21 +130,62 @@
       : (rail.scrollLeft < 2 ? max : Math.max(0, rail.scrollLeft - step));
     rail.scrollTo({left: next, behavior: 'instant'});
   }
-  if (live && document.fullscreenEnabled && typeof root.requestFullscreen === 'function') {
+  if (live) {
+    const panelClass = 'is-sharing';
+    let overlay = false;
+    let busy = false;
+    const suspended = [];
     live.hidden = false;
-    document.addEventListener('fullscreenchange', () => {
-      const active = document.fullscreenElement === root;
-      liveNotice.textContent = '';
-      liveNotice.hidden = true;
+    function syncShare() {
+      const active = overlay || document.fullscreenElement === root;
       live.textContent = active ? 'Thoát khung chia sẻ' : 'Khung chia sẻ màn hình';
+      liveNotice.textContent = overlay ? 'Khung chia sẻ đang mở trong cửa sổ trình duyệt.' : '';
+      liveNotice.hidden = !overlay;
+    }
+    function setOverlay(on) {
+      overlay = on;
+      root.classList.toggle(panelClass, on);
+      document.documentElement.classList.toggle('tkv-share-active', on);
+      if (on) {
+        for (let branch = root; branch && branch !== document.body; branch = branch.parentElement) {
+          for (const sibling of branch.parentElement?.children || []) {
+            if (sibling === branch || sibling.inert) continue;
+            sibling.inert = true;
+            suspended.push(sibling);
+          }
+        }
+      } else {
+        for (const sibling of suspended.splice(0)) sibling.inert = false;
+      }
+      syncShare();
+      live.focus({preventScroll: true});
+    }
+    document.addEventListener('fullscreenchange', syncShare);
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && overlay) {
+        event.preventDefault();
+        setOverlay(false);
+      }
     });
     live.addEventListener('click', async () => {
+      if (busy) return;
+      busy = true;
       try {
-        if (document.fullscreenElement === root) await document.exitFullscreen();
-        else await root.requestFullscreen();
-      } catch {
-        liveNotice.textContent = 'Trình duyệt không mở được toàn màn hình. Anh có thể chia sẻ cửa sổ trình duyệt như bình thường.';
-        liveNotice.hidden = false;
+        if (overlay) {
+          setOverlay(false);
+        } else if (document.fullscreenElement === root) {
+          await document.exitFullscreen();
+        } else if (!document.fullscreenEnabled || typeof root.requestFullscreen !== 'function') {
+          setOverlay(true);
+        } else {
+          try {
+            await root.requestFullscreen();
+          } catch {
+            setOverlay(true);
+          }
+        }
+      } finally {
+        busy = false;
       }
     });
   }
