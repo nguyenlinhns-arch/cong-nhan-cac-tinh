@@ -8,6 +8,7 @@
   const source = root.querySelector('[data-tkv-source]');
   const notice = root.querySelector('[data-tkv-notice]');
   const retry = root.querySelector('[data-tkv-retry]');
+  const live = root.querySelector('[data-tkv-live]');
   const cards = Array.from(rail.querySelectorAll('[data-tkv-pick]'));
 
   let current, generation = 0, timeout, player, apiPromise;
@@ -78,8 +79,13 @@
     current = link;
     stage.replaceChildren(frame);
     feedback(autoplay ? '' : 'Bấm nút Play ở giữa video để phát.', !autoplay);
+    function clearWatch() {
+      if (timeout !== undefined) window.clearTimeout(timeout);
+      timeout = undefined;
+    }
     function slow() {
       if (run !== generation) return;
+      clearWatch();
       feedback('Video chưa phát. Bấm Play trong khung, thử lại hoặc mở trên YouTube.', true);
     }
     if (autoplay) timeout = window.setTimeout(slow, 8000);
@@ -88,20 +94,18 @@
       player = new YT.Player(frame, {events: {
         onStateChange(event) {
           if (run !== generation) return;
-          if (event.data === YT.PlayerState.BUFFERING && !timeout) {
+          if (event.data === YT.PlayerState.BUFFERING && timeout === undefined) {
             timeout = window.setTimeout(slow, 8000);
           }
           if (event.data === YT.PlayerState.PLAYING) {
-            window.clearTimeout(timeout);
-            timeout = undefined;
+            clearWatch();
             feedback('', false);
           }
         },
         onAutoplayBlocked: slow,
         onError() {
           if (run !== generation) return;
-          window.clearTimeout(timeout);
-          timeout = undefined;
+          clearWatch();
           feedback('Không phát được trong khung. Anh chị có thể thử lại hoặc mở trên YouTube.', true);
         }
       }});
@@ -124,6 +128,22 @@
     const next = dir > 0 ? (rail.scrollLeft >= max - 2 ? 0 : Math.min(max, rail.scrollLeft + step))
       : (rail.scrollLeft < 2 ? max : Math.max(0, rail.scrollLeft - step));
     rail.scrollTo({left: next, behavior: 'instant'});
+  }
+  if (live && document.fullscreenEnabled && typeof root.requestFullscreen === 'function') {
+    live.hidden = false;
+    document.addEventListener('fullscreenchange', () => {
+      const active = document.fullscreenElement === root;
+      live.setAttribute('aria-pressed', String(active));
+      live.textContent = active ? 'Thoát khung chia sẻ' : 'Khung chia sẻ màn hình';
+    });
+    live.addEventListener('click', async () => {
+      try {
+        if (document.fullscreenElement === root) await document.exitFullscreen();
+        else await root.requestFullscreen();
+      } catch {
+        live.textContent = 'Không mở được khung chia sẻ';
+      }
+    });
   }
   retry.addEventListener('click', () => {
     if (!current) return;
