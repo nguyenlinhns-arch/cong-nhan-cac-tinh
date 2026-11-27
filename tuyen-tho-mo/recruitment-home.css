@@ -1,0 +1,39 @@
+
+/* Homepage: recruitment first, workplace stories second. */
+body .home-v6 [data-recruitment-entry]{background:#f4f5ed;color:#102a22;border-bottom:1px solid #d6dfd3;padding:54px 0 48px}
+body .home-v6 [data-recruitment-entry]::before{display:none}
+body .home-v6 [data-recruitment-entry] .home-v6-hero__grid{grid-template-columns:minmax(0,1.13fr) minmax(0,1fr);gap:clamp(28px,5vw,72px)}
+body .home-v6 [data-recruitment-entry] .eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 16px;color:#315447;font-weight:850;letter-spacing:.12em}
+body .home-v6 [data-recruitment-entry] .eyebrow::before{content:"";width:26px;height:2px;background:#80612d}
+body .home-v6 [data-recruitment-entry] h1{color:#102a22;font-size:clamp(2.3rem,4.3vw,4.2rem);letter-spacing:-.045em;line-height:1.055;text-wrap:initial}
+body .home-v6 [data-recruitment-entry] h1 span{margin-top:6px;color:#075b66}
+body .home-v6 [data-recruitment-entry] .home-v6-hero__lead{color:#2f5046;max-width:51ch;margin-top:19px;font-size:1rem;line-height:1.65;text-wrap:pretty}
+[data-recruitment-entry] .home-v6-actions{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-top:25px}
+body .home-v6 [data-recruitment-entry] .home-v6-button{min-height:46px;border-radius:9px;font-size:.89rem;font-weight:780;text-align:center;box-shadow:none}
+body .home-v6 [data-recruitment-entry] .home-v6-button--primary{background:#075b66;color:#fff;border-color:#075b66}
+[data-recruitment-entry] .home-v6-button--primary b{padding-inline-start:7px}
+body .home-v6 [data-recruitment-entry] .home-v6-button--secondary{border:1px solid #8da69b;color:#17392e;background:transparent}
+body .home-v6 [data-recruitment-entry] .home-v6-button--brief{background:none;border-color:transparent;color:#075b66;padding-inline:3px;text-decoration:underline;text-underline-offset:4px}
+[data-recruitment-entry] .home-v6-hero__assist{color:#36594e;font-size:.81rem;margin-top:10px}
+body .home-v6 [data-recruitment-entry] .home-v6-hero__visual{border:1px solid #23473a;border-radius:17px;box-shadow:0 16px 35px #12312720}
+[data-recruitment-entry] .home-v6-hero__visual::after{inset:50% 0 0}
+body .home-v6 [data-recruitment-entry] .home-v6-hero__visual img{display:block;width:100%;height:auto;aspect-ratio:1.27;min-height:0;object-fit:cover;object-position:55% 46%}
+body .home-v6 [data-recruitment-entry] .home-v6-income{top:16px;right:auto;bottom:auto;left:16px;max-width:calc(100% - 32px);background:#102a22;color:#fff;border-color:#b18b54;border-radius:9px;padding:10px 12px}
+body .home-v6 [data-recruitment-entry] .home-v6-income strong{color:#ffcf7c;margin-top:4px}
+.home-v6 .home-v6-facts{background:#e6ede4}
+.home-v6 .home-v6-careers{background:#fff}
+.home-v6 .home-v6-career-list a{border-radius:12px;border-color:#cddbd0;box-shadow:none}
+.home-v6 .home-v6-career-list a:hover{border-color:#548779;background:#f1f6f3}
+@media(max-width:959px){
+ body .home-v6 [data-recruitment-entry]{padding:38px 0 35px}
+ body .home-v6 [data-recruitment-entry] .home-v6-hero__grid{grid-template-columns:1fr;gap:21px}
+ body .home-v6 [data-recruitment-entry] .home-v6-hero__visual img{aspect-ratio:1.65}
+}
+@media(max-width:580px){
+ body .home-v6 [data-recruitment-entry]{padding:26px 0 23px}
+ body .home-v6 [data-recruitment-entry] .home-v6-hero__grid{width:calc(100% - 32px)}
+ body .home-v6 [data-recruitment-entry] h1{font-size:clamp(2rem,8vw,2.8rem)}
+ body .home-v6 [data-recruitment-entry] .home-v6-hero__lead{margin-top:13px;font-size:.92rem}
+ [data-recruitment-entry] .home-v6-actions{display:grid;grid-template-columns:1fr;margin-top:16px;gap:7px}
+ body .home-v6 [data-recruitment-entry] .home-v6-button--brief{justify-self:start;margin:0}
+}

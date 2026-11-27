@@ -8,13 +8,11 @@ assert.deepEqual([...block.matchAll(/data-tkv-pick="([^"]+)"/g)].map(x=>x[1]),[h
 assert.equal((html.match(/<h1\b/g)||[]).length,1);
 assert.ok(block.indexOf('id="tkv-video-title"')<block.indexOf('data-tkv-stage'));
 assert.doesNotMatch(block,/tkv-video__eyebrow|THU NHẬP THỰC TẾ NĂM 2025/);
-assert.match(block,/<h2 id="tkv-video-title" class="tkv-video__sr">[^<]+<\/h2>/);
 assert.doesNotMatch(block,/tkv-video__(?:desktop|compact)/);
 assert.match(block,/class="tkv-video__cover" src="\/assets\/home-video-rail\/tkv-tho-lo-13500-poster\.jpg"/);
 assert.doesNotMatch(block,/tkv-video__next|home-video-next/);
-assert.match(block,/<h3 class="tkv-live-hook" id="tu-van-nghe-mo">TƯ VẤN VIỆC LÀM NGÀNH MỎ THU NHẬP <strong>20&#45;25 TRIỆU\/THÁNG<\/strong><\/h3>/);
-assert.ok(block.indexOf('data-tkv-stage')<block.indexOf('class="tkv-live-hook"'));
-assert.ok(block.indexOf('class="tkv-live-hook"')<block.indexOf('data-tkv-rail'));
+assert.match(block,/<h2 id="tkv-video-title">Chuyện nghề từ người trong cuộc<\/h2>/);
+assert.ok(html.indexOf('id="nghe-dang-tuyen"')<html.indexOf('id="tkv-video-title"'));
 assert.match(block,/aria-controls="tkv-rail" data-tkv-advance hidden/);
 assert.doesNotMatch(block,/home-video-consult|tel:|zalo\.me|khi hoàn thành định mức/i);
 assert.ok(fs.statSync("tuyen-tho-mo/assets/home-video-rail/tkv-tho-lo-13500-poster.jpg").size <= 320_000, "homepage poster exceeds performance limit");

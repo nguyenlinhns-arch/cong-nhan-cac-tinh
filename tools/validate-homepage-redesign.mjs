@@ -37,11 +37,13 @@ for (const marker of [
 ]) requireText(home, marker, "Trang chủ mới");
 
 const heroActions = home.match(/<div class="home-v6-actions">([\s\S]*?)<\/div>/)?.[1] || "";
-for (const marker of ["home-v6-button--primary", "home-v6-button--video", "home-v6-button--brief"]) {
+for (const marker of ["home-v6-button--primary", "home-v6-button--secondary", "home-v6-button--brief"]) {
   if (!heroActions.includes(marker)) errors.push(`Cụm nút đầu trang: thiếu ${marker}`);
 }
 
-const order = ["home-kcn-video", "nghe-dang-tuyen", "tu-kiem-tra", "thuc-te", "thong-tin", "tu-van"];
+if (!heroActions.includes('href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky"')) errors.push("Nút đăng ký đầu trang phải dẫn đến form thật");
+if (!(home.indexOf('data-recruitment-entry') < home.indexOf('id="tkv-video-title"'))) errors.push("Trang chủ phải mở đầu bằng tuyển dụng thay vì video");
+const order = ["nghe-dang-tuyen", "home-kcn-video", "tu-kiem-tra", "thuc-te", "tkv-video-title", "thong-tin", "tu-van"];
 let previous = -1;
 for (const id of order) {
   const current = home.indexOf(`id="${id}"`);
