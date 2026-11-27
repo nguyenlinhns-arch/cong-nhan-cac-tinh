@@ -37,3 +37,5 @@ body .home-v6 [data-recruitment-entry] .home-v6-income strong{color:#ffcf7c;marg
  [data-recruitment-entry] .home-v6-actions{display:grid;grid-template-columns:1fr;margin-top:16px;gap:7px}
  body .home-v6 [data-recruitment-entry] .home-v6-button--brief{justify-self:start;margin:0}
 }
+
+[data-recruitment-entry] .home-v6-hero__assist a{color:#075b66;text-decoration:underline;text-underline-offset:3px}
