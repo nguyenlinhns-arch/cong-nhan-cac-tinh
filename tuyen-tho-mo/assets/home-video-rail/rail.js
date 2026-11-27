@@ -16,15 +16,36 @@
     if (apiPromise) return apiPromise;
     apiPromise = new Promise((resolve, reject) => {
       const previous = window.onYouTubeIframeAPIReady;
-      window.onYouTubeIframeAPIReady = () => {
+      const script = document.createElement('script');
+      let deadline, settled = false;
+      function cleanup() {
+        window.clearTimeout(deadline);
+        if (window.onYouTubeIframeAPIReady === ready) window.onYouTubeIframeAPIReady = previous;
+      }
+      function fail() {
+        if (settled) return;
+        settled = true;
+        cleanup();
+        script.remove();
+        reject(new Error('YouTube player API unavailable'));
+      }
+      function ready() {
+        if (settled) return;
+        if (!window.YT?.Player) return fail();
+        settled = true;
+        cleanup();
         resolve(window.YT);
         if (typeof previous === 'function') previous();
-      };
-      const script = document.createElement('script');
+      }
+      window.onYouTubeIframeAPIReady = ready;
       script.src = 'https://www.youtube.com/iframe_api';
       script.async = true;
-      script.addEventListener('error', reject, {once: true});
+      script.addEventListener('error', fail, {once: true});
+      deadline = window.setTimeout(fail, 8000);
       document.head.appendChild(script);
+    }).catch(error => {
+      apiPromise = undefined;
+      throw error;
     });
     return apiPromise;
   }
@@ -56,7 +77,7 @@
     if (player) { player.destroy(); player = null; }
     current = link;
     stage.replaceChildren(frame);
-    feedback(autoplay ? '' : 'Bấm nút Play ở giữa video để phát.', false);
+    feedback(autoplay ? '' : 'Bấm nút Play ở giữa video để phát.', !autoplay);
     function slow() {
       if (run !== generation) return;
       feedback('Video chưa phát. Bấm Play trong khung, thử lại hoặc mở trên YouTube.', true);
@@ -84,7 +105,7 @@
           feedback('Không phát được trong khung. Anh chị có thể thử lại hoặc mở trên YouTube.', true);
         }
       }});
-    }).catch(() => {});
+    }).catch(slow);
     cards.forEach(card => card === link ? card.setAttribute('aria-current', 'true') : card.removeAttribute('aria-current'));
     status.textContent = title + ' · YouTube TKV';
     source.href = link.href;
