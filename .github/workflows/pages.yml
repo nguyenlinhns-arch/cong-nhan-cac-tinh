@@ -302,7 +302,7 @@ jobs:
                 && grep -Fq 'home-v6-mobile-contact' "$html_file" \
                 && grep -Fq 'id="kho-noi-dung"' "$html_file" \
                 && grep -Fq 'id="tu-kiem-tra"' "$html_file" \
-                && grep -Fq '/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&amp;utm_medium=internal&amp;utm_campaign=home_consultation_2026&amp;utm_content=home_form#dang-ky' "$html_file" \
+                && grep -Fq 'class="contact-choice contact-choice--form" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky"' "$html_file" \
                 && grep -Fq 'if (delivery.saved && !attempt.leadTracked)' "$application_file" \
                 && grep -Fq 'data-open-site-search' "$html_file" \
                 && grep -Fq '/worker-info-finder.js?v=4' "$html_file" \
