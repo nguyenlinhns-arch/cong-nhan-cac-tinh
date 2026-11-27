@@ -86,7 +86,8 @@ for (const marker of ["home-video-facade", "home-video-facade__play", "focus-vis
   if (!homeStyles.includes(marker)) fail(`Trang chủ: thiếu kiểu lớp xem trước ${marker}`);
 }
 const optimizedHomeImages = [
-  ["/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp", "1200", "736", "eager"],
+  ["/assets/home-video-rail/tkv-tho-lo-13500-poster.jpg", "1672", "941", "eager"],
+  ["/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp", "1200", "736", "lazy"],
   ["/assets/vinacomin-tho-lo-ha-lam-giao-ca.webp", "1055", "593", "lazy"],
   ["/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp", "1600", "860", "lazy"],
   ["/assets/vinacomin-tho-lo-than-thong-nhat-ngoai-khai-truong.webp", "789", "895", "lazy"],
