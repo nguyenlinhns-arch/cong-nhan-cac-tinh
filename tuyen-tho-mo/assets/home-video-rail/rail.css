@@ -55,3 +55,8 @@ body:has(.tkv-video) button[data-consent-choice="granted"]{color:#102a30!importa
 .tkv-more-videos [data-tkv-rail]{display:grid;gap:6px 20px;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr))}
 .tkv-more-videos a{padding:.3rem 0;color:#075b66;text-decoration:underline;text-underline-offset:2px}
 .tkv-more-videos a[aria-current=true]{font-weight:800}
+
+/* Fit the whole player and hook on standard desktop capture viewports. */
+@media(min-width:800px){
+ .tkv-video .tkv-video__stage{width:min(100%,max(620px,calc((100svh - 182px) * 16 / 9)));margin-inline:auto}
+}
