@@ -81,14 +81,14 @@ function normalizeHomepageSeo(html) {
   html = html.replace(/<meta\s+name=["']twitter:title["']\s+content=["'][^"']*["']\s*>/i, '<meta name="twitter:title" content="Học nghề mỏ &amp; việc làm ngành Than – Thầy Linh">');
   html = html.replace(/<meta\s+name=["']twitter:description["']\s+content=["'][^"']*["']\s*>/i, '<meta name="twitter:description" content="Tìm hiểu nghề mỏ, điều kiện, hồ sơ, quyền lợi và lộ trình từ học nghề đến việc làm ngành Than.">');
 
-  const preferredH1 = '<h1 id="home-v6-title">Học nghề mỏ và việc làm ngành Than.<span>Bắt đầu từ đây.</span></h1>';
+  const preferredH1 = '<h1 id="home-v6-title">Học nghề mỏ <span>và việc làm ngành Than</span></h1>';
   if (/<h1\b[^>]*id=["']home-v6-title["'][^>]*>[\s\S]*?<\/h1>/i.test(html)) {
     html = html.replace(/<h1\b[^>]*id=["']home-v6-title["'][^>]*>[\s\S]*?<\/h1>/i, preferredH1);
   } else {
     html = html.replace(/<h1\b[^>]*>[\s\S]*?<\/h1>/i, preferredH1);
   }
 
-  html = html.replace(/<p class=["']home-v6-hero__lead["']>[\s\S]*?<\/p>/i, '<p class="home-v6-hero__lead">Tìm hiểu nghề mỏ, chọn nghề phù hợp, kiểm tra điều kiện và hồ sơ trước khi đăng ký. Nếu mục tiêu là làm việc tại Quảng Ninh, xem <a href="/tuyen-tho-mo-quang-ninh/">trang tuyển thợ mỏ Quảng Ninh 2026</a>.</p>');
+  html = html.replace(/<p class=["']home-v6-hero__lead["']>[\s\S]*?<\/p>/i, '<p class="home-v6-hero__lead">Tìm hiểu nghề khai thác, xây dựng và cơ điện mỏ. Chọn công việc phù hợp và xem hồ sơ cần chuẩn bị trên <a href="/tuyen-tho-mo-quang-ninh/">trang tuyển thợ mỏ Quảng Ninh 2026</a>.</p>');
 
   html = html.replace(/<script\s+type=["']application\/ld\+json["']>([\s\S]*?)<\/script>/gi, (full, body) => {
     try {
