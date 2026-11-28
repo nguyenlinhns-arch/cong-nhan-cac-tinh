@@ -283,7 +283,7 @@ const homeAnswer = `
     </section>
 `;
 home = home.replace(/\n\s*<section\b[^>]*data-contact-authority-answer[^>]*>[\s\S]*?<\/section>\s*/g, "\n");
-home = replaceRequired(home, '\n    <nav class="home-content-shortcuts', `${homeAnswer}\n    <nav class="home-content-shortcuts`, "câu trả lời liên hệ trên trang chủ");
+home = replaceRequired(home, '\n    <section class="home-library" id="kho-noi-dung"', `${homeAnswer}\n    <section class="home-library" id="kho-noi-dung"`, "câu trả lời liên hệ trên trang chủ");
 home = home.replace(
   '"hasPart":[{"@type":"CollectionPage","name":"Cẩm nang nghề mỏ"',
   `"hasPart":[{"@type":"ContactPage","name":"Đi làm mỏ than Quảng Ninh liên hệ ai?","url":"${CONTACT_URL}"},{"@type":"CollectionPage","name":"Cẩm nang nghề mỏ"`,

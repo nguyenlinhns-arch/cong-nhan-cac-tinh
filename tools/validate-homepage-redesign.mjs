@@ -100,9 +100,9 @@ for (const banned of ["nặng nhọc", "độc hại", "nguy hiểm"]) {
 for (const marker of ["@media(max-width:767px)", ".home-v6-hero__grid", ".home-v6-actions", ".home-v6-facts__grid"]) requireText(critical, marker, "CSS đầu trang");
 for (const marker of ["@media(max-width:767px)", ".home-facebook-facade", ".home-v6-career-list", ".home-v6-mobile-contact", "grid-template-columns:repeat(3,minmax(0,1fr))"]) requireText(content, marker, "CSS trang chủ");
 
-const dailyAnswerGrid = home.match(/<div class="home-daily-seo__grid">([\s\S]*?)<\/div><\/div><\/section>/)?.[1] || "";
-const dailyAnswerCards = (dailyAnswerGrid.match(/<a\b/g) || []).length;
-if (dailyAnswerCards !== 3) errors.push(`Khối giải đáp trang chủ: cần đúng 3 thẻ, hiện có ${dailyAnswerCards}`);
+if (home.includes('id="home-daily-seo-title"') || home.includes('class="home-content-shortcuts home-journey-shortcuts"')) {
+  errors.push("Trang chủ không được chèn lại khối giải đáp mới hoặc ba ô lối tắt đã bỏ");
+}
 
 const homepageImageSources = [...home.matchAll(/<img\b[^>]*\bsrc="([^"]+)"[^>]*>/gi)]
   .map((match) => match[1])
@@ -116,7 +116,6 @@ console.log(JSON.stringify({
   careers: (home.match(/\/viec-lam\/ky-thuat-[^\"]+\/"/g) || []).length,
   facebookReelFacades: reelFacade ? 1 : 0,
   mobileActions: mobileOrder.length,
-  dailyAnswerCards,
   homepageImages: homepageImageSources.length,
   duplicateHomepageImages,
   seoRole: "learning-and-career-hub",

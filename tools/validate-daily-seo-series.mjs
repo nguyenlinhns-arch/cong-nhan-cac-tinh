@@ -190,7 +190,7 @@ if (machineFeed.articles.length !== released.length) errors.push("Dữ liệu m�
 if (machineFeed.canonical_facts_version !== canonicalFacts.version) errors.push(`daily-seo-articles.json chưa gắn facts v${canonicalFacts.version}`);
 if (machineFeed.canonical_facts_confirmed_at !== canonicalFacts.confirmed_at) errors.push("daily-seo-articles.json facts timestamp không khớp");
 if (machineFeed.canonical_facts_url !== "https://thaylinhtuyenthomo.vn/data/recruitment-facts-2026.json") errors.push("daily-seo-articles.json sai canonical facts URL");
-if (!fs.readFileSync(path.join(site, "index.html"), "utf8").includes("home-daily-seo")) errors.push("Trang chủ thiếu khối giải đáp mới mỗi ngày");
+if (fs.readFileSync(path.join(site, "index.html"), "utf8").includes('id="home-daily-seo-title"')) errors.push("Khối giải đáp hằng ngày không còn đặt trên trang chủ");
 if (!fs.readFileSync(path.join(site, "cam-nang-nghe-mo", "index.html"), "utf8").includes("daily-seo-guide:start")) errors.push("Cẩm nang thiếu liên kết tới chuỗi SEO hằng ngày");
 
 console.log(JSON.stringify({releaseDate, canonicalFactsVersion: canonicalFacts.version, sourceRegistryFactsMode: sourceFactsMetadataPresent ? "strict" : "legacy-compatible", planned: data.articles.length, released: released.length, future: future.length, errors: errors.length, sampleErrors: errors.slice(0, 30), editorialGuard: "newsroom-v2-facts-v8", finalSeoGate: "freshness+province-integrity", policyFactScope: "claim-bearing-fields"}, null, 2));

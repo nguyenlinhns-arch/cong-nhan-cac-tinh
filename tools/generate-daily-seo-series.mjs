@@ -270,43 +270,10 @@ if (!llms.includes(llmsAnchor)) throw new Error("Không tìm thấy vị trí ch
 llms = llms.replace(llmsAnchor, `${llmsSection}${llmsAnchor}`);
 write("llms.txt", llms);
 
-let home = read("index.html");
-// daily-seo.css đã nằm trong home-content.css để không chặn lần vẽ đầu tiên.
-home = home.replace(/<!-- daily-seo:start -->[\s\S]*?<!-- daily-seo:end -->/g, "");
-const homeCards = released.slice(0, 3).map((article) => ({
-  href: `${SERIES_PATH}${article.slug}/`,
-  kicker: article.publish_on.split("-").reverse().join("/"),
-  title: article.title,
-  answer: article.direct_answer,
-  query: article.primary_query,
-}));
-const evergreenHomeAnswers = [
-  {
-    href: "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/",
-    kicker: "GIẢI ĐÁP CƠ BẢN",
-    title: "Đi làm mỏ than có cần kinh nghiệm không?",
-    answer: "Không yêu cầu kinh nghiệm làm mỏ sẵn có. Người đủ điều kiện được đào tạo từ đầu, học nghề và thực hành trước khi doanh nghiệp tiếp nhận, bố trí việc làm.",
-    query: "đi làm mỏ than có cần kinh nghiệm không",
-  },
-  {
-    href: "/nghe-mo-ham-lo/",
-    kicker: "CHỌN NGHỀ PHÙ HỢP",
-    title: "Nên chọn khai thác, xây dựng hay cơ điện mỏ?",
-    answer: "Khai thác và xây dựng mỏ học 2 tháng; cơ điện mỏ học 10 tháng. Hãy chọn theo nội dung công việc, khả năng học và nhu cầu tiếp nhận của đợt tuyển.",
-    query: "nên học khai thác mỏ hay xây dựng mỏ hầm lò",
-  },
-];
-for (const answer of evergreenHomeAnswers) {
-  if (homeCards.length >= 3) break;
-  if (homeCards.some((card) => card.query === answer.query)) continue;
-  homeCards.push(answer);
-}
-const homeLinks = homeCards.map((card) => `<a href="${card.href}"><small>${esc(card.kicker)}</small><strong>${esc(card.title)}</strong><span>${esc(card.answer)}</span></a>`).join("");
-const homeBlock = `\n    <!-- daily-seo:start --><section class="home-daily-seo" aria-labelledby="home-daily-seo-title"><div class="container"><div class="home-daily-seo__head"><div><p class="home-step">Giải đáp mới mỗi ngày</p><h2 id="home-daily-seo-title">Người lao động hỏi gì, website trả lời thẳng câu đó</h2></div><a href="${SERIES_PATH}">Xem toàn bộ →</a></div><div class="home-daily-seo__grid">${homeLinks}</div></div></section><!-- daily-seo:end -->\n`;
-const homeAnchor = "    <nav class=\"home-content-shortcuts";
-if (!home.includes(homeAnchor)) throw new Error("Không tìm thấy vị trí chèn bài SEO hằng ngày trên trang chủ");
-home = home.replace(homeAnchor, `${homeBlock}${homeAnchor}`);
-write("index.html", home);
+// The landing page no longer shows the daily answer grid. Keep the series on the guide and hub.
+const home = read("index.html");
+const trimmedHome = home.replace(/\n\s*<!-- daily-seo:start -->[\s\S]*?<!-- daily-seo:end -->/g, "");
+if (trimmedHome !== home) write("index.html", trimmedHome);
 
 let guide = read("cam-nang-nghe-mo/index.html");
 guide = guide.replace(/\n\s*<!-- daily-seo-guide:start -->[\s\S]*?<!-- daily-seo-guide:end -->\s*/g, "\n");
