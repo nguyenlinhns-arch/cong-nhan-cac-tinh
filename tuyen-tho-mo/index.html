@@ -121,8 +121,8 @@
   <script type="application/ld+json" id="home-origin-reels-schema">{"@context":"https://schema.org","@graph":[{"@type":"VideoObject","@id":"https://thaylinhtuyenthomo.vn/#journey-gia-lai","name":"Từ Ia RDeh đến vùng mỏ Quảng Ninh","description":"Hành trình tư vấn, kết nối học nghề và mở lối việc làm ngành Than cho lao động Gia Lai.","contentUrl":"https://www.facebook.com/reel/988978737487363","thumbnailUrl":"https://thaylinhtuyenthomo.vn/assets/video-thumbnails/988978737487363.webp","inLanguage":"vi-VN","author":{"@id":"https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/#person"}},{"@type":"VideoObject","@id":"https://thaylinhtuyenthomo.vn/#journey-quang-ngai","name":"Hành trình từ Quảng Ngãi đến vùng than","description":"Câu chuyện người lao động từ Quảng Ngãi ra Quảng Ninh học nghề, chuẩn bị tay nghề và bước vào công việc mới.","contentUrl":"https://www.facebook.com/reel/1015675787556708","thumbnailUrl":"https://thaylinhtuyenthomo.vn/assets/video-thumbnails/1015675787556708.webp","inLanguage":"vi-VN","author":{"@id":"https://thaylinhtuyenthomo.vn/tac-gia/nguyen-tu-linh/#person"}}]}</script>
 <meta name="content-origin" content="current-recruitment-policy">
   <link rel="stylesheet" href="/assets/home-video-rail/rail.css?v=19">
-  <link rel="stylesheet" href="/recruitment-home.css?v=16">
-  <script defer src="/assets/home-video-rail/rail.js?v=12"></script>
+  <link rel="stylesheet" href="/recruitment-home.css?v=17">
+  <script defer src="/assets/home-video-rail/rail.js?v=11"></script>
 </head>
 <body>
   <a class="skip-link" href="#noi-dung">Bỏ qua menu</a>
@@ -134,7 +134,7 @@
       </a>
       <button class="worker-header-search" type="button" data-open-site-search data-worker-search data-context="header" aria-haspopup="dialog" aria-label="Tìm thông tin trên website"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg><span class="sr-only">Tìm thông tin</span></button>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-button><span></span><span></span><span></span><span class="sr-only">Mở menu</span></button>
-      <nav class="main-nav" id="main-nav" data-nav aria-label="Điều hướng chính"><a href="#thuc-te" data-journey-shortcut="videos">Video</a><a href="#thong-tin-tuyen-sinh">Thông tin tuyển sinh</a></nav>
+      <nav class="main-nav" id="main-nav" data-nav aria-label="Điều hướng chính"><a href="#thuc-te">Video thực tế</a><a href="#doc-truoc-khi-dang-ky">Cẩm nang</a><a href="#nghe-dang-tuyen">Nghề đang tuyển</a><a href="#tu-kiem-tra">Kiểm tra điều kiện</a></nav>
       <a class="header-cta" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" data-contact="application" data-context="home-header">Đăng ký ngay</a>
     </div>
     <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
@@ -143,130 +143,114 @@
     <main id="noi-dung" class="home-funnel">
 
     <div class="home-v6">
-    <section class="home-v6-hero home-video-intro" data-recruitment-entry data-hero aria-labelledby="home-v6-title">
-      <div class="container">
-        <h1 id="home-v6-title">Học nghề mỏ <span>Việc làm ngành Than</span></h1>
-        <p>Quảng Ninh</p>
+    <section class="home-v6-hero" data-recruitment-entry data-hero aria-labelledby="home-v6-title">
+      <div class="container home-v6-hero__grid">
+        <div class="home-v6-hero__copy">
+          <p class="eyebrow">Tuyển sinh nghề mỏ · Quảng Ninh</p>
+          <h1 id="home-v6-title">Học nghề mỏ <span>Việc làm ngành Than</span></h1>
+          <p class="home-v6-hero__lead">Tìm hiểu nghề khai thác, xây dựng và cơ điện mỏ. Thầy Linh hướng dẫn <a href="/tuyen-tho-mo-quang-ninh/">hồ sơ tuyển sinh tại Quảng Ninh</a>.</p>
+          <div class="home-v6-actions">
+            <a class="button home-v6-button home-v6-button--primary" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" data-contact="application" data-context="home-hero">Đăng ký ngay <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="button home-v6-button home-v6-button--secondary" href="#thuc-te" data-journey-shortcut="videos">Xem video thực tế <b aria-hidden="true">↓</b></a>
+            <button class="button button-brief home-v6-button home-v6-button--brief" type="button" data-open-worker-brief data-worker-shortcut="brief" aria-haspopup="dialog">Điều kiện và hồ sơ</button>
+          </div>
+          <div class="home-v6-income"><small>THU NHẬP SAU ĐÀO TẠO</small><strong>20–25 triệu/tháng <span>khi hoàn thành định mức lao động</span></strong></div>
+        </div>
+        <figure class="home-v6-hero__visual">
+          <img src="/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" alt="Công nhân thợ lò mặc bảo hộ xanh, đội mũ chuẩn bị thiết bị trước ca làm việc" fetchpriority="high" decoding="async" width="1200" height="736">
+          <figcaption><small>ẢNH THỰC TẾ</small><strong>Chuẩn bị thiết bị trước ca làm việc</strong></figcaption>
+        </figure>
       </div>
     </section>
 
     <div class="home-chapter home-chapter--media">
     <section class="home-proof home-proof--early" id="thuc-te" data-journey-section="proof" aria-labelledby="tkv-video-title"><span id="nguoi-that-viec-that" aria-hidden="true"></span>
-      <div class="tkv-video" data-tkv-video data-active-topic="pay">
+      <div class="tkv-video" data-tkv-video>
         <div class="tkv-video__inner">
-          <h2 id="tkv-video-title" class="home-watch-hook" data-tkv-hook>Hơn 13.500 thợ mỏ thu nhập trên 300 triệu/năm</h2>
-          <div class="home-watch-topics" data-tkv-topics role="group" aria-label="Chọn chủ đề video" hidden>
-            <button type="button" data-tkv-theme="pay" data-tkv-hook-text="Hơn 13.500 thợ mỏ thu nhập trên 300 triệu/năm" aria-pressed="true" aria-controls="tkv-rail">Thu nhập</button>
-            <button type="button" data-tkv-theme="work" data-tkv-hook-text="Đi làm mỏ thực tế ra sao?" aria-pressed="false" aria-controls="tkv-rail">Công việc</button>
-            <button type="button" data-tkv-theme="stories" data-tkv-hook-text="Từ quê đến vùng mỏ, họ bắt đầu thế nào?" aria-pressed="false" aria-controls="tkv-rail">Chuyện thợ mỏ</button>
-          </div>
+          <header class="tkv-video__header"><p class="home-step">Video nghề mỏ</p><h2 id="tkv-video-title">Xem công việc và cuộc sống của thợ mỏ</h2><p>Nghe người trong nghề kể về một ca làm, thu nhập và cuộc sống xa nhà.</p></header>
           <div class="home-watch-layout">
             <div class="home-watch-main">
               <div class="tkv-video__stage" data-tkv-stage tabindex="-1" role="group" aria-label="Khung phát video">
                 <a class="tkv-video__cover-link" data-tkv-pick="cNKyZWaPYN8" data-tkv-title="Thợ mỏ thu nhập cao · Quảng Ninh TV" href="https://www.youtube.com/watch?v=cNKyZWaPYN8" aria-label="Phát Thợ mỏ thu nhập cao · Quảng Ninh TV">
-                  <picture><img class="tkv-video__cover" src="/assets/home-video-rail/tkv-tho-lo-13500-poster.jpg" width="1672" height="941" alt="" fetchpriority="high" decoding="async"></picture>
+                  <picture><img class="tkv-video__cover" src="/assets/home-video-rail/tkv-tho-lo-13500-poster.jpg" width="1672" height="941" alt="Hơn 13.500 thợ lò TKV thu nhập trên 300 triệu đồng trong năm 2025" loading="lazy" decoding="async"></picture>
                   <span class="tkv-video__play" aria-hidden="true"><svg width="20" height="22" viewBox="0 0 22 24" focusable="false"><path fill="currentColor" d="M3 2v20l17-10Z"/></svg></span>
                 </a>
               </div>
-              <p class="home-watch-current"><span data-tkv-current-title>Thợ mỏ thu nhập cao · Quảng Ninh TV</span><a class="home-watch-host-link" data-tkv-host-link href="https://www.youtube.com/watch?v=cNKyZWaPYN8" target="_blank" rel="noopener" hidden>Mở trên YouTube ↗</a></p>
+              <p class="home-watch-current"><span data-tkv-current-title>Thợ mỏ thu nhập cao · Quảng Ninh TV</span><a class="home-watch-host-link home-watch-cover-source" href="/bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/">Số liệu TKV · 2025</a><a class="home-watch-host-link" data-tkv-host-link href="https://www.youtube.com/watch?v=cNKyZWaPYN8" target="_blank" rel="noopener" hidden>Mở trên YouTube ↗</a></p>
               <span data-tkv-status class="tkv-video__sr" role="status" aria-live="polite"></span>
               <div data-tkv-actions class="tkv-video__recovery" hidden>
                 <span data-tkv-notice class="tkv-video__notice" role="status" hidden></span>
                 <button type="button" data-tkv-retry hidden>Thử lại</button>
                 <a data-tkv-source href="https://www.youtube.com/watch?v=cNKyZWaPYN8" target="_blank" rel="noopener">Xem trên YouTube</a>
               </div>
-              <p class="home-watch-citation" data-tkv-citation><a href="/bai-viet/13500-tho-lo-thu-nhap-tren-300-trieu-2025/">Số liệu TKV về thợ lò · 2025</a></p>
-              <a class="home-video-apply" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" data-contact="application" data-context="home-watch">Đăng ký ngay <span aria-hidden="true">→</span></a>
             </div>
             <div class="home-watch-queue">
-              <div class="home-watch-queue__head"><h3 data-tkv-queue-label>Video thực tế</h3><div class="home-watch-controls"><button class="tkv-carousel__advance" type="button" aria-label="Lùi danh sách video" aria-controls="tkv-rail" data-tkv-back hidden><span aria-hidden="true">‹</span></button><button class="tkv-carousel__advance" type="button" aria-label="Tiến danh sách video" aria-controls="tkv-rail" data-tkv-advance hidden><span aria-hidden="true">›</span></button></div></div>
-              <div class="tkv-video__rail" id="tkv-rail" data-tkv-rail tabindex="0" role="group" aria-label="Video về nghề mỏ">
-                <a data-tkv-pick="ts41cqu7r9c" data-tkv-topic="work" data-tkv-preview="/assets/video-thumbnails/home-featured-16x9.jpg" href="https://www.youtube.com/watch?v=ts41cqu7r9c" aria-label="Phát Hành trình lập nghiệp cùng nghề mỏ">
-                  <img src="/assets/video-thumbnails/youtube-ts41cqu7r9c.jpg" width="480" height="360" alt="" loading="lazy" decoding="async">
-                  <span>Hành trình lập nghiệp cùng nghề mỏ</span>
-                </a>
-                <a data-tkv-pick="xW92UBKmWok" data-tkv-topic="stories" href="https://www.youtube.com/watch?v=xW92UBKmWok" aria-label="Phát Mùa A Vàng: từ Điện Biên đến Quảng Ninh">
-                  <img src="/assets/video-thumbnails/youtube-xW92UBKmWok.jpg" width="480" height="360" alt="" loading="lazy" decoding="async">
-                  <span>Mùa A Vàng: từ Điện Biên đến Quảng Ninh</span>
-                </a>
-                <a data-tkv-pick="bWUDKQ1r6xA" data-tkv-topic="stories" href="https://www.youtube.com/watch?v=bWUDKQ1r6xA&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=1" aria-label="Phát Thợ lò Ngân Văn Viên (Tri Lễ, Nghệ An)">
-                  <img src="/assets/home-video-rail/thumbs/bWUDKQ1r6xA.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
-                  <span>Thợ lò Ngân Văn Viên (Tri Lễ, Nghệ An)</span>
-                </a>
-                <a data-tkv-pick="9DjYfc6Q1m0" data-tkv-topic="stories" href="https://www.youtube.com/watch?v=9DjYfc6Q1m0&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=2" aria-label="Phát Kso Sới: từ Gia Lai đến Quảng Ninh làm thợ mỏ">
-                  <img src="/assets/home-video-rail/thumbs/9DjYfc6Q1m0.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
-                  <span>Kso Sới: từ Gia Lai đến Quảng Ninh làm thợ mỏ</span>
-                </a>
-                <a data-tkv-pick="cNKyZWaPYN8" data-tkv-topic="pay" href="https://www.youtube.com/watch?v=cNKyZWaPYN8" aria-label="Phát Thợ mỏ thu nhập cao · Quảng Ninh TV">
+              <div class="home-watch-queue__head"><h3>Chọn video <span>13 video</span></h3><div class="home-watch-controls"><button class="tkv-carousel__advance" type="button" aria-label="Lùi danh sách video" aria-controls="tkv-rail" data-tkv-back hidden><span aria-hidden="true">‹</span></button><button class="tkv-carousel__advance" type="button" aria-label="Tiến danh sách video" aria-controls="tkv-rail" data-tkv-advance hidden><span aria-hidden="true">›</span></button></div></div>
+              <div class="tkv-video__rail" id="tkv-rail" data-tkv-rail tabindex="0" role="group" aria-label="13 video về nghề mỏ">
+                <a data-tkv-pick="cNKyZWaPYN8" href="https://www.youtube.com/watch?v=cNKyZWaPYN8" aria-label="Phát Thợ mỏ thu nhập cao · Quảng Ninh TV">
                   <img src="/assets/home-video-rail/thumbs/cNKyZWaPYN8.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
                   <span>Thợ mỏ thu nhập cao · Quảng Ninh TV</span>
                 </a>
-                <a data-tkv-pick="WkSt6eOvlkA" data-tkv-topic="pay" href="https://www.youtube.com/watch?v=WkSt6eOvlkA&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=3" aria-label="Phát Chuyện những người thợ lò thu nhập cao">
+                <a data-tkv-pick="xW92UBKmWok" href="https://www.youtube.com/watch?v=xW92UBKmWok" aria-label="Phát Mùa A Vàng: từ Điện Biên đến Quảng Ninh">
+                  <img src="/assets/video-thumbnails/youtube-xW92UBKmWok.jpg" width="480" height="360" alt="" loading="lazy" decoding="async">
+                  <span>Mùa A Vàng: từ Điện Biên đến Quảng Ninh</span>
+                </a>
+                <a data-tkv-pick="bWUDKQ1r6xA" href="https://www.youtube.com/watch?v=bWUDKQ1r6xA&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=1" aria-label="Phát Thợ lò Ngân Văn Viên (Tri Lễ, Nghệ An)">
+                  <img src="/assets/home-video-rail/thumbs/bWUDKQ1r6xA.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
+                  <span>Thợ lò Ngân Văn Viên (Tri Lễ, Nghệ An)</span>
+                </a>
+                <a data-tkv-pick="9DjYfc6Q1m0" href="https://www.youtube.com/watch?v=9DjYfc6Q1m0&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=2" aria-label="Phát Kso Sới: từ Gia Lai đến Quảng Ninh làm thợ mỏ">
+                  <img src="/assets/home-video-rail/thumbs/9DjYfc6Q1m0.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
+                  <span>Kso Sới: từ Gia Lai đến Quảng Ninh làm thợ mỏ</span>
+                </a>
+                <a data-tkv-pick="WkSt6eOvlkA" href="https://www.youtube.com/watch?v=WkSt6eOvlkA&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=3" aria-label="Phát Chuyện những người thợ lò thu nhập cao">
                   <img src="/assets/home-video-rail/thumbs/WkSt6eOvlkA.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
                   <span>Chuyện những người thợ lò thu nhập cao</span>
                 </a>
-                <a data-tkv-pick="h4zuijHumME" data-tkv-topic="stories" href="https://www.youtube.com/watch?v=h4zuijHumME&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=4" aria-label="Phát Thợ lò Lầu A Súa (Sơn La)">
+                <a data-tkv-pick="h4zuijHumME" href="https://www.youtube.com/watch?v=h4zuijHumME&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=4" aria-label="Phát Thợ lò Lầu A Súa (Sơn La)">
                   <img src="/assets/home-video-rail/thumbs/h4zuijHumME.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
                   <span>Thợ lò Lầu A Súa (Sơn La)</span>
                 </a>
-                <a data-tkv-pick="l0MFR1SNey8" data-tkv-topic="stories" href="https://www.youtube.com/watch?v=l0MFR1SNey8&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=5" aria-label="Phát Bốn bố con cùng làm mỏ (Tuyên Quang)">
+                <a data-tkv-pick="l0MFR1SNey8" href="https://www.youtube.com/watch?v=l0MFR1SNey8&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=5" aria-label="Phát Bốn bố con cùng làm mỏ (Tuyên Quang)">
                   <img src="/assets/home-video-rail/thumbs/l0MFR1SNey8.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
                   <span>Bốn bố con cùng làm mỏ (Tuyên Quang)</span>
                 </a>
-                <a data-tkv-pick="XNMQwM_5fyI" data-tkv-topic="stories" href="https://www.youtube.com/watch?v=XNMQwM_5fyI&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=6" aria-label="Phát Thợ lò Mùa A Sinh (Lai Châu)">
+                <a data-tkv-pick="XNMQwM_5fyI" href="https://www.youtube.com/watch?v=XNMQwM_5fyI&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=6" aria-label="Phát Thợ lò Mùa A Sinh (Lai Châu)">
                   <img src="/assets/home-video-rail/thumbs/XNMQwM_5fyI.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
                   <span>Thợ lò Mùa A Sinh (Lai Châu)</span>
                 </a>
-                <a data-tkv-pick="Y5skQm8A1ho" data-tkv-topic="stories" href="https://www.youtube.com/watch?v=Y5skQm8A1ho&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=7" aria-label="Phát Thợ lò Dương Văn Lực (Cao Bằng)">
+                <a data-tkv-pick="Y5skQm8A1ho" href="https://www.youtube.com/watch?v=Y5skQm8A1ho&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=7" aria-label="Phát Thợ lò Dương Văn Lực (Cao Bằng)">
                   <img src="/assets/home-video-rail/thumbs/Y5skQm8A1ho.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
                   <span>Thợ lò Dương Văn Lực (Cao Bằng)</span>
                 </a>
-                <a data-tkv-pick="0kWCKhpw5B8" data-tkv-topic="stories" href="https://www.youtube.com/watch?v=0kWCKhpw5B8&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=8" aria-label="Phát Thợ lò Đinh Văn Ne (Quảng Ngãi)">
+                <a data-tkv-pick="0kWCKhpw5B8" href="https://www.youtube.com/watch?v=0kWCKhpw5B8&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=8" aria-label="Phát Thợ lò Đinh Văn Ne (Quảng Ngãi)">
                   <img src="/assets/home-video-rail/thumbs/0kWCKhpw5B8.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
                   <span>Thợ lò Đinh Văn Ne (Quảng Ngãi)</span>
                 </a>
-                <a data-tkv-pick="7i-hlu2Ol7Y" data-tkv-topic="stories" href="https://www.youtube.com/watch?v=7i-hlu2Ol7Y&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=9" aria-label="Phát Lò Văn Khoan: Hành trình của khát vọng tuổi trẻ">
+                <a data-tkv-pick="7i-hlu2Ol7Y" href="https://www.youtube.com/watch?v=7i-hlu2Ol7Y&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=9" aria-label="Phát Lò Văn Khoan: Hành trình của khát vọng tuổi trẻ">
                   <img src="/assets/home-video-rail/thumbs/7i-hlu2Ol7Y.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
                   <span>Lò Văn Khoan: Hành trình của khát vọng tuổi trẻ</span>
                 </a>
-                <a data-tkv-pick="cpeiTxtJKu4" data-tkv-topic="stories" href="https://www.youtube.com/watch?v=cpeiTxtJKu4&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=10" aria-label="Phát Thợ lò Hồ Văn Cương (Quảng Trị)">
+                <a data-tkv-pick="cpeiTxtJKu4" href="https://www.youtube.com/watch?v=cpeiTxtJKu4&amp;list=PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG&amp;index=10" aria-label="Phát Thợ lò Hồ Văn Cương (Quảng Trị)">
                   <img src="/assets/home-video-rail/thumbs/cpeiTxtJKu4.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
                   <span>Thợ lò Hồ Văn Cương (Quảng Trị)</span>
                 </a>
-                <a data-tkv-pick="6MJLc5mBhsA" data-tkv-topic="stories" href="https://www.youtube.com/watch?v=6MJLc5mBhsA" aria-label="Phát Phỏng vấn thợ mỏ tiêu biểu năm 2024">
+                <a data-tkv-pick="6MJLc5mBhsA" href="https://www.youtube.com/watch?v=6MJLc5mBhsA" aria-label="Phát Phỏng vấn thợ mỏ tiêu biểu năm 2024">
                   <img src="/assets/video-thumbnails/youtube-6MJLc5mBhsA.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
                   <span>Phỏng vấn thợ mỏ tiêu biểu năm 2024</span>
-                </a>
-                <a data-tkv-pick="3PW12HZv79s" data-tkv-topic="work" href="https://www.youtube.com/watch?v=3PW12HZv79s" aria-label="Phát Xuống hầm lò Than Thống Nhất · TKV">
-                  <img src="/assets/home-video-rail/thumbs/3PW12HZv79s.jpg" width="320" height="180" alt="" loading="lazy" decoding="async">
-                  <span>Xuống hầm lò Than Thống Nhất · TKV</span>
                 </a>
               </div>
             </div>
           </div>
-          <div class="home-watch-foot"><a class="home-editor-link" href="/anh-video-thuc-te/">Kho video <span aria-hidden="true">→</span></a></div>
+          <div class="home-watch-foot"><a class="home-editor-link" href="/anh-video-thuc-te/">Xem kho ảnh và video <span aria-hidden="true">→</span></a><a class="home-editor-link" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" data-contact="application" data-context="home-watch">Đăng ký ngay <span aria-hidden="true">→</span></a></div>
           <details class="home-watch-extra" id="hanh-trinh-tu-que">
-            <summary id="hanh-trinh-dia-phuong"><b data-tkv-supplement-title>Video ngắn: chọn nghề, chuyện từ quê</b> <span aria-hidden="true">+</span></summary>
+            <summary id="hanh-trinh-dia-phuong">Video ngắn: Gia Lai, Quảng Ngãi và so sánh nghề <span aria-hidden="true">+</span></summary>
             <div class="home-watch-extra__grid">
-              <div class="home-watch-extra__item" data-tkv-topic-extra="stories"><div class="home-compare-video" data-home-reel-host><button class="home-video-facade" type="button" aria-label="Phát Từ Ia RDeh đến vùng mỏ Quảng Ninh" data-home-reel="988978737487363"><img src="/assets/video-thumbnails/988978737487363.webp" alt="" width="320" height="569" loading="lazy" decoding="async" data-reel-thumbnail="988978737487363" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span class="home-video-facade__play" aria-hidden="true">▶</span></button></div><span><small>Gia Lai</small>Từ Ia RDeh đến vùng mỏ Quảng Ninh<a href="https://www.facebook.com/reel/988978737487363" target="_blank" rel="noopener noreferrer">Mở trên Facebook ↗</a></span></div>
-              <div class="home-watch-extra__item" data-tkv-topic-extra="stories"><div class="home-compare-video" data-home-reel-host><button class="home-video-facade" type="button" aria-label="Phát Hành trình từ Quảng Ngãi đến vùng than" data-home-reel="1015675787556708"><img src="/assets/video-thumbnails/1015675787556708.webp" alt="" width="320" height="569" loading="lazy" decoding="async" data-reel-thumbnail="1015675787556708" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span class="home-video-facade__play" aria-hidden="true">▶</span></button></div><span><small>Quảng Ngãi</small>Hành trình từ Quảng Ngãi đến vùng than<a href="https://www.facebook.com/reel/1015675787556708" target="_blank" rel="noopener noreferrer">Mở trên Facebook ↗</a></span></div>
-              <div id="home-kcn-video" data-tkv-topic-extra="work"><div class="home-compare-video"><button class="home-video-facade home-kcn-reel-facade" type="button" style="height:auto;aspect-ratio:9/16" data-facebook-reel-facade data-facebook-embed="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1145886217664123%2F&amp;show_text=false&amp;width=500" aria-label="Phát video Làm mỏ hay làm khu công nghiệp của Thầy Linh"><img src="/assets/video-thumbnails/1145886217664123.webp" alt="" width="480" height="818" loading="lazy" decoding="async" data-reel-thumbnail="1145886217664123" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span class="home-video-facade__play" aria-hidden="true">▶</span><span class="home-video-facade__label">Bấm để xem video · Làm mỏ hay KCN?</span></button></div><span><small>Thầy Linh giải đáp</small>Làm mỏ hay làm khu công nghiệp?<a href="https://www.facebook.com/reel/1145886217664123" target="_blank" rel="noopener noreferrer">Mở trên Facebook ↗</a></span></div>
+              <div class="home-watch-extra__item"><div class="home-compare-video" data-home-reel-host><button class="home-video-facade" type="button" aria-label="Phát Từ Ia RDeh đến vùng mỏ Quảng Ninh" data-home-reel="988978737487363"><img src="/assets/video-thumbnails/988978737487363.webp" alt="" width="320" height="569" loading="lazy" decoding="async" data-reel-thumbnail="988978737487363" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span class="home-video-facade__play" aria-hidden="true">▶</span></button></div><span><small>Gia Lai</small>Từ Ia RDeh đến vùng mỏ Quảng Ninh<a href="https://www.facebook.com/reel/988978737487363" target="_blank" rel="noopener noreferrer">Mở trên Facebook ↗</a></span></div>
+              <div class="home-watch-extra__item"><div class="home-compare-video" data-home-reel-host><button class="home-video-facade" type="button" aria-label="Phát Hành trình từ Quảng Ngãi đến vùng than" data-home-reel="1015675787556708"><img src="/assets/video-thumbnails/1015675787556708.webp" alt="" width="320" height="569" loading="lazy" decoding="async" data-reel-thumbnail="1015675787556708" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span class="home-video-facade__play" aria-hidden="true">▶</span></button></div><span><small>Quảng Ngãi</small>Hành trình từ Quảng Ngãi đến vùng than<a href="https://www.facebook.com/reel/1015675787556708" target="_blank" rel="noopener noreferrer">Mở trên Facebook ↗</a></span></div>
+              <div id="home-kcn-video"><div class="home-compare-video"><button class="home-video-facade home-kcn-reel-facade" type="button" style="height:auto;aspect-ratio:9/16" data-facebook-reel-facade data-facebook-embed="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1145886217664123%2F&amp;show_text=false&amp;width=500" aria-label="Phát video Làm mỏ hay làm khu công nghiệp của Thầy Linh"><img src="/assets/video-thumbnails/1145886217664123.webp" alt="" width="480" height="818" loading="lazy" decoding="async" data-reel-thumbnail="1145886217664123" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span class="home-video-facade__play" aria-hidden="true">▶</span><span class="home-video-facade__label">Bấm để xem video · Làm mỏ hay KCN?</span></button></div><span><small>Thầy Linh giải đáp</small>Làm mỏ hay làm khu công nghiệp?<a href="https://www.facebook.com/reel/1145886217664123" target="_blank" rel="noopener noreferrer">Mở trên Facebook ↗</a></span></div>
             </div>
           </details>
-        </div>
-      </div>
-    </section>
-    </div>
-
-    <details class="home-video-info" id="thong-tin-tuyen-sinh">
-      <summary>Thông tin tuyển sinh <span aria-hidden="true">+</span></summary>
-      <div class="home-video-info__content">
-        <nav class="container home-video-info__digits" aria-label="Lối vào thông tin tuyển sinh">
-          <a href="#tu-kiem-tra">Kiểm tra điều kiện</a>
-          <a href="#nghe-dang-tuyen">Ba nghề đang tuyển</a>
-          <a href="/tuyen-tho-mo-quang-ninh/">Hồ sơ tuyển sinh tại Quảng Ninh</a>
-        </nav>
-        <div class="container home-video-info__facts"><div class="home-v6-income"><small>THU NHẬP SAU ĐÀO TẠO</small><strong>20–25 triệu/tháng <span>khi hoàn thành định mức lao động</span></strong></div><button class="button button-brief home-v6-button home-v6-button--brief" type="button" data-open-worker-brief data-worker-shortcut="brief" aria-haspopup="dialog">Điều kiện và hồ sơ</button></div>
           <div class="home-editor-reading" id="doc-truoc-khi-dang-ky">
             <h3>Đọc trước khi đăng ký</h3>
             <ul>
@@ -279,6 +263,11 @@
             </ul>
             <a class="home-editor-link" href="/cam-nang-nghe-mo/">Mở toàn bộ cẩm nang <span aria-hidden="true">→</span></a>
           </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
     <section class="home-v6-facts" id="quyen-loi" aria-label="Thông tin tuyển sinh chính">
       <div class="container home-v6-facts__grid">
         <article><small>Điều kiện sơ bộ</small><strong>Nam 18–40 tuổi</strong><span>Từ 1m53 · từ 47kg · sức khỏe phù hợp</span></article>
@@ -354,10 +343,6 @@
       </div>
     </section>
 
-    <div class="container home-video-info__photo"><figure class="home-v6-hero__visual">
-          <img src="/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp" alt="Công nhân thợ lò mặc bảo hộ xanh, đội mũ chuẩn bị thiết bị trước ca làm việc" loading="lazy" decoding="async" width="1200" height="736">
-          <figcaption><small>ẢNH THỰC TẾ</small><strong>Chuẩn bị thiết bị trước ca làm việc</strong></figcaption>
-        </figure></div>
     <div class="home-chapter home-chapter--reference">
 
     <section class="home-contact-answer" aria-labelledby="home-contact-answer-title" data-contact-authority-answer>
@@ -404,8 +389,6 @@
     </section>
 
     </div>
-      </div>
-    </details>
 
     </div>
   </main>
@@ -429,6 +412,6 @@
   <script src="/mobile-core.js?v=1" defer></script>
   <script src="/worker-info-finder.js?v=4" defer></script>
   <script src="/journey-optimizer.js?v=2" defer></script>
-  <script src="/home-worker-journey.js?v=20261128-5" defer></script>
+  <script src="/home-worker-journey.js?v=20261128-4" defer></script>
 </body>
 </html>

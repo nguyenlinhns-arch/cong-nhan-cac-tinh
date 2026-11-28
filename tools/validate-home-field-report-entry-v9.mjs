@@ -5,18 +5,15 @@ const html = fs.readFileSync(path.resolve("tuyen-tho-mo", "index.html"), "utf8")
 const errors = [];
 const proofSection = html.match(/<section\b[^>]*class=["'][^"']*\bhome-proof\b[^"']*["'][^>]*>[\s\S]*?<\/section>/i)?.[0] || "";
 
-const reading = html.match(/<div class="home-editor-reading"[^>]*>[\s\S]*?<\/ul>/)?.[0] || "";
-const fieldReportEntry = [proofSection, reading].some(block => block.includes('href="/phong-su/"><strong>Đọc phóng sự hiện trường</strong>'));
-
 if (!proofSection) errors.push("Trang chủ thiếu khối Người thật · việc thật");
-if (!fieldReportEntry) errors.push("Không có lối đọc phóng sự trong khu vực video hoặc thông tin tuyển sinh");
+if (!proofSection.includes('href="/phong-su/"><strong>Đọc phóng sự hiện trường</strong>')) errors.push("Khối Người thật · việc thật chưa dẫn tới /phong-su/");
 if ((html.match(/href="\/phong-su\/"/g) || []).length < 1) errors.push("Trang chủ thiếu liên kết phóng sự hiện trường");
 if (!html.includes('"@type":"CollectionPage","name":"Phóng sự hiện trường nghề mỏ","url":"https://thaylinhtuyenthomo.vn/phong-su/"')) errors.push("WebPage schema chưa khai báo Phóng sự hiện trường trong hasPart");
 if (!html.includes('href="/anh-video-thuc-te/"')) errors.push("Trang chủ phải giữ lối vào kho ảnh/video thực tế ở thư viện nội dung");
 if ((html.match(/<section\b[^>]*class=["'][^"']*\bhome-proof\b/gi) || []).length !== 1) errors.push("Trang chủ phải giữ đúng một khối home-proof, không tạo section phóng sự lặp");
 
 console.log(JSON.stringify({
-  fieldReportEntry,
+  fieldReportEntry: proofSection.includes('href="/phong-su/"'),
   videoLibraryPreserved: html.includes('href="/anh-video-thuc-te/"'),
   schemaHasPart: html.includes('"url":"https://thaylinhtuyenthomo.vn/phong-su/"'),
   errors: errors.length,

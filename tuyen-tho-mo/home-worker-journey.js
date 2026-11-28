@@ -166,28 +166,18 @@
     checkTrigger.form?.dispatchEvent(new Event("submit", {bubbles:true, cancelable:true}));
   });
 
-  // Keep legacy section links usable even though the supporting material starts closed.
-  function revealDetails(target) {
-    let changed = false;
-    for (let node = target; node; node = node.parentElement) {
-      if (node.tagName === "DETAILS" && !node.open) { node.open = true; changed = true; }
+  function openLinkedVideo() {
+    if (location.hash === "#home-kcn-video") {
+      const section = document.getElementById("home-kcn-video");
+      const details = section?.closest("details");
+      if (details) {
+        details.open = true;
+        requestAnimationFrame(() => section.scrollIntoView({ block: "start" }));
+      }
     }
-    return changed;
   }
-  function openLinkedSection() {
-    let id;
-    try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
-    if (!id) return;
-    const target = document.getElementById(id);
-    if (revealDetails(target)) requestAnimationFrame(() => target.scrollIntoView({block:"start"}));
-  }
-  document.addEventListener("click", event => {
-    const link = event.target.closest?.('a[href^="#"]');
-    const id = link?.getAttribute("href")?.slice(1);
-    if (id) revealDetails(document.getElementById(id));
-  });
-  openLinkedSection();
-  window.addEventListener("hashchange", openLinkedSection);
+  openLinkedVideo();
+  window.addEventListener("hashchange", openLinkedVideo);
 
   if ("IntersectionObserver" in window) {
     const viewed = new Set();

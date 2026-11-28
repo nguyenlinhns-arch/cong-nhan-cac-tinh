@@ -38,20 +38,13 @@ assert(content.includes('.site-header .header-inner'), 'Full responsive header r
 assert(Buffer.byteLength(critical) <= 18000, 'Keep existing critical CSS budget');
 
 const editorial = read('recruitment-home.css');
-assert(html.includes('/recruitment-home.css?v=16'), 'Homepage editorial surface must invalidate older overrides');
+assert(html.includes('/recruitment-home.css?v=17'), 'Homepage editorial surface must invalidate older overrides');
 assert.match(html, /<div class="home-v6-income"><small>[^<]+<\/small><strong>20–25 triệu\/tháng <span>khi hoàn thành định mức lao động<\/span><\/strong><\/div>/, 'Keep the income amount and its qualification visible together');
 const homepageOrder = ['thuc-te','doc-truoc-khi-dang-ky','nghe-dang-tuyen','tu-kiem-tra','thong-tin','tu-van','kho-noi-dung'].map(id => html.indexOf(`id="${id}"`));
 assert(homepageOrder.every((at,index) => at >= 0 && (index === 0 || at > homepageOrder[index-1])), 'Offer proof and useful reading before eligibility; keep registration and library reachable');
-assert.match(html, /<div class="tkv-video" data-tkv-video[^>]*>/, 'Keep the main playlist visible without opening a disclosure');
+assert.match(html, /<div class="tkv-video" data-tkv-video>/, 'Keep the main playlist visible without opening a disclosure');
 assert.match(html, /<details class="home-watch-extra"/, 'Secondary external reels do not add pressure to the primary layout');
-assert.match(html, /href="#thuc-te" data-journey-shortcut="videos"/, 'Keep direct access to videos');
-const info = html.indexOf('<details class="home-video-info" id="thong-tin-tuyen-sinh">');
-assert.ok(info > html.indexOf('data-tkv-stage') && info > html.indexOf('class="home-video-apply"'), 'Lead with video and registration, not reference copy');
-for (const id of ['doc-truoc-khi-dang-ky','tu-kiem-tra','kho-noi-dung']) {
-  assert.ok(html.indexOf(`id="${id}"`) > info, 'Make long supporting material optional');
-}
-assert.match(html, /class="tkv-video__cover"[^>]*fetchpriority="high"/);
-assert.doesNotMatch(html, /<details class="home-video-info"[^>]*\sopen(?=\s|>)/);
+assert.match(html, /href="#thuc-te" data-journey-shortcut="videos"/, 'Homepage hero offers a direct path to video');
 assert.match(editorial, /html:root \.home-v6\{background:var\(--d-bg\)!important;color:var\(--d-ink\)!important\}/, 'The dark canvas must back transparent sections');
 assert.match(editorial, /\.home-province-reels__intro\{color:var\(--d-sub\)!important\}/, 'Style the late-mounted province story introduction alongside the heading');
 

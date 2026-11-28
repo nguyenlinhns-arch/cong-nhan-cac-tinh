@@ -39,11 +39,12 @@ for (const marker of [
 
 requireText(home, '<a class="header-cta" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" data-contact="application" data-context="home-header">Đăng ký ngay</a>', "Nút đăng ký thanh đầu trang");
 
-const appPath = '/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky';
-const pitch = home.match(/<section class="home-v6-hero home-video-intro"[\s\S]*?<\/section>/)?.[0] || "";
-if (!pitch || /<figure|home-v6-income|home-v6-hero__lead/.test(pitch)) errors.push("Phải bắt đầu bằng tiêu đề ngắn, không có ảnh thay video");
-requireText(home, `class="home-video-apply" href="${appPath}"`, "Nút đăng ký ngay dưới video");
-requireText(home, '<details class="home-video-info" id="thong-tin-tuyen-sinh">', "Nội dung tham khảo mở theo nhu cầu");
+const heroActions = home.match(/<div class="home-v6-actions">([\s\S]*?)<\/div>/)?.[1] || "";
+for (const marker of ["home-v6-button--primary", "home-v6-button--secondary", "home-v6-button--brief"]) {
+  if (!heroActions.includes(marker)) errors.push(`Cụm nút đầu trang: thiếu ${marker}`);
+}
+
+if (!heroActions.includes('href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky"')) errors.push("Nút đăng ký đầu trang phải dẫn đến form thật");
 if (!(home.indexOf('data-recruitment-entry') < home.indexOf('id="tkv-video-title"'))) errors.push("Trang chủ phải mở đầu bằng tuyển dụng thay vì video");
 const order = ["thuc-te", "tkv-video-title", "home-kcn-video", "doc-truoc-khi-dang-ky", "nghe-dang-tuyen", "tu-kiem-tra", "thong-tin", "tu-van", "kho-noi-dung"];
 let previous = -1;
