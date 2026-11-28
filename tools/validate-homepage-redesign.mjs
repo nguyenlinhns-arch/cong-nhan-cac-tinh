@@ -64,6 +64,12 @@ if (/<iframe\b/i.test(field)) errors.push("Video chỉ nạp iframe sau khi bấ
 if ((field.match(/data-home-pin=/g) || []).length !== 3) errors.push("Cần đúng ba Reel ghim");
 if ((home.match(/id="hanh-trinh-tu-que"/g) || []).length !== 1) errors.push("Chỉ có một mục hành trình tuyển sinh");
 
+const realReads = home.match(/<div class="home-real-reads">([\s\S]*?)<\/div>/)?.[1] || "";
+const realReadPaths = [...realReads.matchAll(/href="(\/tin-nganh-than\/[^"]+\/)"/g)].map(m => m[1]);
+if (realReadPaths.length !== 3 || realReadPaths.some(href => !fs.existsSync(path.join(root, href, "index.html")))) {
+  errors.push("Ba bài thực tế phải có đường dẫn hợp lệ");
+}
+
 const worksheet = home.match(/<form class="worker-check"[\s\S]*?<\/form>/)?.[0] || "";
 if (!/type="button" data-worker-check-trigger/.test(worksheet) || /type="submit"/.test(worksheet) || !worksheet.includes("<noscript>")) {
   errors.push("Tự kiểm tra chỉ xử lý cục bộ, kể cả khi JavaScript không tải");
