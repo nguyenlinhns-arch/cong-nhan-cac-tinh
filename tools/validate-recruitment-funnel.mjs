@@ -160,7 +160,7 @@ function collectHtmlFiles(directory) {
 collectHtmlFiles(root);
 
 const home = fs.readFileSync(path.join(root, "index.html"), "utf8");
-const callbackLink = home.match(/<a\b[^>]*href="([^"]+)"[^>]*data-context="home-register"[^>]*><small>ĐƯỢC GỌI LẠI<\/small>/)?.[1];
+const callbackLink = home.match(/<a\b[^>]*href="([^"]+)"[^>]*data-context="home-register"[^>]*\bdata-form-fallback(?=[\s>])[^>]*>/)?.[1];
 const callbackUrl = callbackLink && new URL(callbackLink.replaceAll("&amp;", "&"), "https://thaylinhtuyenthomo.vn/");
 const callbackPage = callbackUrl && path.join(root, callbackUrl.pathname.replace(/^\//, ""), "index.html");
 if (!callbackUrl || callbackUrl.pathname !== "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/" || callbackUrl.hash !== "#dang-ky"
