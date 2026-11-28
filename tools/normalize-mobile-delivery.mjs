@@ -6,7 +6,7 @@ const FONT_URL = "/fonts.css?v=2";
 const CSS_URL = "/mobile-core.css?v=1";
 const JS_URL = "/mobile-core.js?v=1";
 const ANALYTICS_URL = "/analytics.js?v=6";
-const APPLICATION_URL = "/job-application.js?v=10";
+const APPLICATION_URL = "/job-application.js?v=11";
 const FINDER_URL = "/worker-info-finder.js?v=4";
 const RECRUITMENT_URL = "/recruitment-config.js?v=4";
 const HOME_URL = "https://thaylinhtuyenthomo.vn/";

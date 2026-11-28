@@ -18,6 +18,13 @@
   const params = new URLSearchParams(location.search);
   const recruitment = window.THAY_LINH_RECRUITMENT || {};
   const criteria = recruitment.criteria || {};
+  // Keep these values aligned with the canonical registry; the application
+  // contract test checks every trade against it.
+  const trainingByTrade = new Map([
+    ["Kỹ thuật khai thác mỏ hầm lò", "2–3 tháng"],
+    ["Kỹ thuật xây dựng mỏ hầm lò", "2–3 tháng"],
+    ["Kỹ thuật cơ điện mỏ hầm lò", "10 tháng"],
+  ]);
   const formContext = form.dataset.formContext || "central_application";
   const today = new Date();
   let started = false;
@@ -409,6 +416,7 @@
         lead_key: applicationCode,
       });
     }
+    const trainingDuration = trainingByTrade.get(values.trade);
     const message = [
       "ĐĂNG KÝ TUYỂN LAO ĐỘNG HỌC NGHỀ MỎ 2026",
       `- Mã đăng ký: ${applicationCode}`,
@@ -422,7 +430,8 @@
       `- Sức khỏe sơ bộ: ${values.health}`,
       `- Kết quả tự kiểm tra: ${assessment.label}`,
       `- Nguồn: ${source.source} / ${source.content}`,
-      "- Thời gian học đã tìm hiểu: 2–3 tháng; hỗ trợ trong thời gian học: 7,5 triệu đồng",
+      ...(trainingDuration ? [`- Thời gian học: ${trainingDuration}`] : []),
+      "- Hỗ trợ 7,5 triệu đồng trong thời gian học",
       "Nhờ anh Nguyễn Tử Linh kiểm tra điều kiện và hướng dẫn bước tiếp theo.",
     ].join("\n");
 

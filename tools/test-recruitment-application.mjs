@@ -4,7 +4,15 @@ import { webcrypto } from "node:crypto";
 
 const source = fs.readFileSync("tuyen-tho-mo/job-application.js", "utf8");
 
-async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, expected, utmSource = "test_qa", referrer = "", expectedSource = utmSource || "website", deliverySequence = ["saved"], draftSeed = null, blankSafeFields = false }) {
+const canonicalFacts = JSON.parse(fs.readFileSync("content/recruitment-facts-2026.json", "utf8"));
+const trades = {
+  khai_thac_mo: "Kỹ thuật khai thác mỏ hầm lò",
+  xay_dung_mo: "Kỹ thuật xây dựng mỏ hầm lò",
+  co_dien_mo: "Kỹ thuật cơ điện mỏ hầm lò",
+  undecided: "Cần được tư vấn chọn nghề",
+};
+
+async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, expected, utmSource = "test_qa", referrer = "", expectedSource = utmSource || "website", deliverySequence = ["saved"], draftSeed = null, blankSafeFields = false, tradeKey = "khai_thac_mo", defaultTrade = false }) {
   const listeners = {};
   const tracked = [];
   const delivered = [];
@@ -43,10 +51,11 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
   });
   const fields = Object.fromEntries(Object.keys(values).map(name => [name, makeElement({ name, value: values[name] })]));
   fields.province.options = [{ value: "" }, { value: "Hồ Chí Minh" }, { value: "An Giang" }];
-  fields.trade.options = [{ value: "" }, { value: "Kỹ thuật khai thác mỏ hầm lò" }, { value: "Kỹ thuật xây dựng mỏ hầm lò" }, { value: "Kỹ thuật cơ điện mỏ hầm lò" }];
+  fields.trade.options = ["", ...Object.values(trades)].map(value => ({ value }));
 
   const form = makeElement({
     elements: { namedItem: name => fields[name] },
+    dataset: defaultTrade ? { defaultTrade: trades[tradeKey] } : {},
     reportValidity: () => true,
     addEventListener(type, handler) { listeners[type] = handler; },
   });
@@ -81,7 +90,7 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
     encodeURIComponent,
     location: {
       href: `https://thaylinhtuyenthomo.vn/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/${utmSource ? `?utm_source=${encodeURIComponent(utmSource)}` : ""}`,
-      search: `?province=Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh&trade=K%E1%BB%B9%20thu%E1%BA%ADt%20khai%20th%C3%A1c%20m%E1%BB%8F%20h%E1%BA%A7m%20l%C3%B2${utmSource ? `&utm_source=${encodeURIComponent(utmSource)}` : ""}&utm_medium=owned&utm_campaign=tuyen_tho_mo_2026&utm_content=unit&utm_term=tho+mo&gclid=qa-gclid&gbraid=qa-gbraid&wbraid=qa-wbraid&gad_source=1&gad_campaignid=123&tl_campaign=paid-2026&tl_adgroup=miners&tl_creative=456&tl_matchtype=e&tl_device=m&tl_network=g&tl_intent=tho_mo`,
+      search: `?province=Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh${defaultTrade ? "" : `&trade=${encodeURIComponent(trades[tradeKey])}`}${utmSource ? `&utm_source=${encodeURIComponent(utmSource)}` : ""}&utm_medium=owned&utm_campaign=tuyen_tho_mo_2026&utm_content=unit&utm_term=tho+mo&gclid=qa-gclid&gbraid=qa-gbraid&wbraid=qa-wbraid&gad_source=1&gad_campaignid=123&tl_campaign=paid-2026&tl_adgroup=miners&tl_creative=456&tl_matchtype=e&tl_device=m&tl_network=g&tl_intent=tho_mo`,
     },
     document: {
       referrer,
@@ -127,7 +136,7 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
 
   vm.runInNewContext(source, context, { filename: "job-application.js" });
   if (fields.province.value !== "Hồ Chí Minh") throw new Error(`Province prefill failed: ${fields.province.value}`);
-  if (fields.trade.value !== "Kỹ thuật khai thác mỏ hầm lò") throw new Error(`Trade prefill failed: ${fields.trade.value}`);
+  if (fields.trade.value !== trades[tradeKey]) throw new Error(`Trade prefill failed: ${fields.trade.value}`);
   if (draftSeed) {
     if (fields.height.value !== String(draftSeed.height) || fields.weight.value !== String(draftSeed.weight) || fields.education.value !== draftSeed.education) throw new Error("Safe draft fields were not restored");
     if (draftStatus.dataset.restored !== "true") throw new Error("Draft restoration was not disclosed to the applicant");
@@ -158,10 +167,20 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
   for (const expectedText of [
     "Số điện thoại: 0963048585",
     `Nguồn: ${expectedSource} / unit`,
-    "2–3 tháng",
-    "7,5 triệu đồng",
+    `Hỗ trợ ${canonicalFacts.study_benefits.living_support}`,
   ]) if (!output.value.includes(expectedText)) throw new Error(`Message missing: ${expectedText}`);
-  if (!sms.href.startsWith("sms:+84963048585?body=")) throw new Error(`Invalid SMS link: ${sms.href}`);
+  const expectedDuration = canonicalFacts.training[tradeKey];
+  const durationLines = output.value.split("\n").filter(line => line.startsWith("- Thời gian học:"));
+  if (expectedDuration
+    ? durationLines.length !== 1 || durationLines[0] !== `- Thời gian học: ${expectedDuration}`
+    : durationLines.length !== 0 || /2–3 tháng|10 tháng/u.test(output.value)) {
+    throw new Error(`Unexpected study duration for ${tradeKey}: ${durationLines.join(", ")}`);
+  }
+  const smsPrefix = "sms:+84963048585?body=";
+  if (!sms.href.startsWith(smsPrefix) || decodeURIComponent(sms.href.slice(smsPrefix.length)) !== output.value) {
+    throw new Error("The SMS must use the same prepared text");
+  }
+  if (delivered[0]?.trade !== trades[tradeKey]) throw new Error("The selected trade changed in delivery");
   if (delivered.length !== deliverySequence.length || delivered[0].phone !== "0963048585") throw new Error("Application was not delivered as expected");
   if (delivered[0].schema_version !== 2) throw new Error(`Unexpected schema version: ${delivered[0].schema_version}`);
   if (delivered[0].measurement_client_id !== "tl-test-measurement-12345") throw new Error("Anonymous measurement key was not delivered");
@@ -247,4 +266,11 @@ results.push(await runCase({
   blankSafeFields: true,
   draftSeed: { province: "An Giang", height: "165", weight: "58", education: "Tốt nghiệp THPT", trade: "Kỹ thuật xây dựng mỏ hầm lò" },
 }));
+for (const tradeKey of ["xay_dung_mo", "co_dien_mo", "undecided"]) {
+  results.push(await runCase({
+    height: 165, weight: 58, health: "Sức khỏe tốt, sẵn sàng khám tuyển",
+    expected: "eligible", tradeKey, defaultTrade: true,
+    deliverySequence: tradeKey === "co_dien_mo" ? ["failed", "saved"] : ["saved"],
+  }));
+}
 console.log(JSON.stringify({ cases: results.length, results, errors: 0 }, null, 2));
