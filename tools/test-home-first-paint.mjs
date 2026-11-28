@@ -38,7 +38,7 @@ assert(content.includes('.site-header .header-inner'), 'Full responsive header r
 assert(Buffer.byteLength(critical) <= 18000, 'Keep existing critical CSS budget');
 
 const editorial = read('recruitment-home.css');
-assert(html.includes('/recruitment-home.css?v=11'), 'Homepage editorial surface must invalidate older overrides');
+assert(html.includes('/recruitment-home.css?v=12'), 'Homepage editorial surface must invalidate older overrides');
 const homepageOrder = ['nghe-dang-tuyen','tu-kiem-tra','thuc-te','thong-tin','tu-van','kho-noi-dung'].map(id => html.indexOf(`id="${id}"`));
 assert(homepageOrder.every((at,index) => at >= 0 && (index === 0 || at > homepageOrder[index-1])), 'Order careers, eligibility, proof, process, registration, and reference');
 assert.match(html, /<details class="home-media-more">[\s\S]*?<section class="tkv-video"[\s\S]*?<\/details>/, 'Keep the secondary playlist available on demand');

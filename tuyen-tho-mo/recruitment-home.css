@@ -670,3 +670,75 @@ html:root .home-v6 .worker-check legend{color:var(--d-ink)!important}
 html:root .home-v6 .home-library__card::before,html:root .home-v6 .home-library__card::after{display:none!important}
 html:root .home-v6 .home-contact-answer__link{background:none!important;border:0!important;text-decoration:underline;text-underline-offset:4px}
 html:root .home-v6:has([data-home-province-reels]) .home-origin-reels:not(:target){display:none!important}
+
+/* A photographic cover, followed by the facts rather than promotional panels. */
+html:root body .home-v6 section.home-v6-hero[data-recruitment-entry]{
+  background:linear-gradient(112deg,#151a17 20%,#1b231e 68%,#202b24)!important;
+  padding:clamp(42px,6vw,88px) 0 clamp(24px,4vw,50px)!important;
+}
+html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-hero__grid{
+  width:min(1280px,calc(100% - 64px))!important;max-width:none!important;
+  grid-template-columns:minmax(0,.83fr) minmax(0,1.17fr)!important;gap:clamp(32px,5.5vw,80px)!important;
+}
+html:root body .home-v6 .home-v6-hero[data-recruitment-entry] h1{
+  margin:0;font-size:clamp(3rem,5.7vw,6rem)!important;line-height:1.025!important;
+  letter-spacing:-.067em!important;overflow-wrap:normal;
+}
+html:root body .home-v6 .home-v6-hero[data-recruitment-entry] h1 span{
+  display:block;margin-block-start:.32em;font-size:clamp(1.48rem,3.05vw,3.2rem)!important;
+  line-height:1.12!important;letter-spacing:-.045em!important;color:#e5c38a!important;
+}
+html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .eyebrow{
+ margin:0 0 clamp(16px,2vw,26px)!important;letter-spacing:.145em!important;font-size:clamp(.65rem,.9vw,.78rem)!important;
+}
+html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-hero__lead{
+  max-width:43ch!important;margin-block-start:18px!important;color:#d1ddd3!important;line-height:1.68!important;
+}
+html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-actions{
+  margin-block-start:20px!important;column-gap:17px;
+}
+html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-actions .home-v6-button--primary{
+  border-radius:4px!important;padding-inline:21px!important;padding-block:10px;min-height:48px;
+}
+html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-income{
+  display:grid!important;gap:3px;margin-block-start:18px!important;padding-block-start:14px!important;
+}
+html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-income strong{
+  font-size:clamp(1.3rem,2.3vw,2.38rem)!important;line-height:1.15!important;letter-spacing:-.045em;color:#f2eee3!important;
+}
+html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-income span{font-size:.85rem;line-height:1.35}
+html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-hero__visual{
+  border:0!important;border-radius:1px!important;background:transparent!important;box-shadow:none!important;
+}
+html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-hero__visual img{
+  display:block;height:auto!important;width:100%!important;aspect-ratio:1200/736!important;object-fit:contain!important;
+}
+html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-hero__visual figcaption{
+  padding:10px 0 0!important;background:transparent!important;font-size:.83rem;gap:8px 12px;
+}
+html:root .home-v6 .home-v6-facts__grid{margin-top:0!important}
+html:root .home-v6 .home-v6-facts__grid article strong{
+  font-size:clamp(1rem,1.6vw,1.35rem)!important;line-height:1.2!important;
+}
+html:root .home-v6 .home-adviser{display:inline-flex;gap:12px;align-items:center;min-height:48px;margin-block-start:14px;color:var(--d-ink)!important;text-decoration:none}
+html:root .home-v6 .home-adviser img{height:48px;width:48px;border-radius:50%;object-fit:cover;border:1px solid var(--home-rule)}
+html:root .home-v6 .home-adviser strong{display:block;text-decoration:underline;text-underline-offset:4px}
+html:root .home-v6 .home-adviser small{display:block;margin-top:3px;color:var(--d-sub);font-size:.78rem;line-height:1.4}
+@media(max-width:850px){
+ html:root body .home-v6 section.home-v6-hero[data-recruitment-entry]{padding:27px 0 22px!important}
+ html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-hero__grid{
+   width:min(100% - 36px,650px)!important;grid-template-columns:1fr!important;gap:14px!important;
+ }
+ html:root body .home-v6 .home-v6-hero[data-recruitment-entry] h1{font-size:clamp(2.3rem,9.8vw,4.4rem)!important}
+ html:root body .home-v6 .home-v6-hero[data-recruitment-entry] h1 span{font-size:clamp(1.32rem,5.25vw,2.45rem)!important;margin-block-start:.21em}
+ html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-hero__lead{margin-block-start:11px!important;line-height:1.55!important}
+ html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-actions{margin-block-start:12px!important}
+ html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-income{margin-block-start:10px!important;padding-block-start:9px!important;gap:2px}
+ html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-income strong{font-size:1.3rem!important}
+}
+@media(min-width:960px){
+ html:root .home-v6-career-list>a>div{display:grid!important;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;column-gap:12px}
+ html:root .home-v6-career-list>a>div h3{grid-area:1/1}
+ html:root .home-v6-career-list>a>div small{grid-area:1/2;white-space:nowrap;text-align:end}
+ html:root .home-v6-career-list>a>div :is(p,b){grid-column:1/-1}
+}
