@@ -14,3 +14,7 @@
 .ads-landing :is(a,button,summary):focus-visible{outline:2px solid #fff;outline-offset:1px;box-shadow:0 0 0 5px #855016}
 @media(max-width:760px){.ads-landing .ads-hero h1{font-size:clamp(29px,8.3vw,37px)}.ads-landing .ads-hero{padding-top:28px}.ads-landing .ads-top{gap:8px}}
 @media(prefers-reduced-motion:reduce){.ads-landing :is(a,article){transition:none!important;animation:none!important;transform:none!important}}
+
+/* Keep breadcrumb and consent choices readable without changing the enrollment path. */
+.ads-landing .ads-breadcrumb strong{color:#435951}
+.ads-landing .tl-consent-banner [data-consent-choice="granted"]{background:#7d4315!important;color:#fff!important}

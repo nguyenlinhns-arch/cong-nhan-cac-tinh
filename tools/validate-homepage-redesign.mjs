@@ -45,7 +45,7 @@ for (const marker of ["home-v6-button--primary", "home-v6-button--secondary", "h
 
 if (!heroActions.includes('href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky"')) errors.push("Nút đăng ký đầu trang phải dẫn đến form thật");
 if (!(home.indexOf('data-recruitment-entry') < home.indexOf('id="tkv-video-title"'))) errors.push("Trang chủ phải mở đầu bằng tuyển dụng thay vì video");
-const order = ["nghe-dang-tuyen", "home-kcn-video", "tu-kiem-tra", "thuc-te", "tkv-video-title", "thong-tin", "tu-van"];
+const order = ["nghe-dang-tuyen", "tu-kiem-tra", "thuc-te", "tkv-video-title", "home-kcn-video", "thong-tin", "tu-van", "kho-noi-dung"];
 let previous = -1;
 for (const id of order) {
   const current = home.indexOf(`id="${id}"`);
