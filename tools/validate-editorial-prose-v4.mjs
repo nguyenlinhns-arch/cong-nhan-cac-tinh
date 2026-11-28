@@ -14,7 +14,7 @@ const stats = {
 const manualRequirements = {
   "dieu-kien-tuyen-tho-lo-2026": ["18–40 tuổi", "1,53 m", "47 kg", "khám sức khỏe trực tiếp"],
   "ho-so-hoc-nghe-mo-can-gi": ["chưa cần nộp hồ sơ", "CCCD gốc", "giấy khai sinh", "tự giữ"],
-  "hoc-nghe-khai-thac-mo-2-3-thang": ["2–3 tháng", "thực hành", "an toàn", "tổ đội"],
+  "hoc-nghe-khai-thac-mo-2-3-thang": ["2 tháng", "thực hành", "an toàn", "tổ đội"],
   "nghe-tho-lo-co-on-dinh-khong": ["19,7 triệu tấn", "22,77 triệu tấn", "đơn vị tiếp nhận", "tay nghề"],
   "13500-tho-lo-thu-nhap-tren-300-trieu-2025": ["13.507", "57%", "16,5%", "700 triệu đồng"],
   "an-toan-mua-mua-bao-2026": ["2,712 triệu tấn", "7,75 triệu m³", "24.445 m", "trạng thái kiểm soát"],

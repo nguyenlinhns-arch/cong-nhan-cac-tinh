@@ -41,7 +41,7 @@ data.canonical_facts_url = "https://thaylinhtuyenthomo.vn/data/recruitment-facts
 fs.writeFileSync(outputPath, `${JSON.stringify(data, null, 2)}\n`);
 
 const replacements = [
-  ["Khai thác mỏ hầm lò và xây dựng mỏ hầm lò thường học 2–3 tháng theo chương trình đang tuyển; lịch cụ thể được xác nhận theo từng đợt.", durationAnswer],
+  ["Khai thác mỏ hầm lò và xây dựng mỏ hầm lò thường học 2 tháng theo chương trình đang tuyển; lịch cụ thể được xác nhận theo từng đợt.", durationAnswer],
   ["Hai hướng đang tuyển là khai thác mỏ hầm lò và xây dựng mỏ hầm lò. Người học được đào tạo thao tác, thiết bị, an toàn và phối hợp tổ đội trước khi nhận việc.", workAnswer],
   ["Chương trình đang áp dụng Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.", incomeAnswer],
 ];

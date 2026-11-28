@@ -56,8 +56,8 @@ else {
   ]) {
     if (!runtime.includes(marker)) errors.push(`google-search-intent.js thiếu marker: ${marker}`);
   }
-  const trainingPattern = /(?:Khai thác\s+(?:và|,)\s*xây dựng mỏ|Khai thác,\s*xây dựng mỏ)\s*:\s*2[–-]3 tháng\s*[.;]\s*Cơ điện mỏ\s*:\s*10 tháng/iu;
-  if (!trainingPattern.test(runtime)) errors.push("google-search-intent.js chưa thể hiện đủ khai thác/xây dựng 2–3 tháng và cơ điện 10 tháng trong cùng facts block");
+  const trainingPattern = /(?:Khai thác\s+(?:và|,)\s*xây dựng mỏ|Khai thác,\s*xây dựng mỏ)\s*:\s*2 tháng\s*[.;]\s*Cơ điện mỏ\s*:\s*10 tháng/iu;
+  if (!trainingPattern.test(runtime)) errors.push("google-search-intent.js chưa thể hiện đủ khai thác/xây dựng 2 tháng và cơ điện 10 tháng trong cùng facts block");
   if (/Cam kết 20[–-]25 triệu\/tháng/iu.test(runtime)) errors.push("google-search-intent.js còn câu Cam kết 20–25 triệu/tháng thiếu điều kiện");
   if (/20[–-]25 triệu\/tháng\.;/u.test(runtime)) errors.push("google-search-intent.js còn lỗi dấu câu .;");
 }

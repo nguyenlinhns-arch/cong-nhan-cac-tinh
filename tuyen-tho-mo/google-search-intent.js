@@ -61,7 +61,7 @@
       primary: "Kiểm tra điều kiện",
       facts: [
         ["Điều kiện cơ bản", "Nam 18–40 tuổi, cao từ 1m53, nặng từ 47kg; sức khỏe phù hợp công việc hầm lò."],
-        ["Thời gian học", "Khai thác và xây dựng mỏ: 2–3 tháng. Cơ điện mỏ: 10 tháng."],
+        ["Thời gian học", "Khai thác và xây dựng mỏ: 2 tháng. Cơ điện mỏ: 10 tháng."],
         ["Trong thời gian học", `Miễn học phí theo chỉ tiêu, bố trí 3 bữa/ngày, ký túc xá và hỗ trợ ${CANONICAL_SUPPORT}.`],
         ["Sau đào tạo", "Làm việc tại các đơn vị ngành Than thuộc TKV ở Quảng Ninh."],
         ["Thu nhập", `${CANONICAL_INCOME}.`],
@@ -81,7 +81,7 @@
         ["Học phí", "Miễn học phí theo chỉ tiêu tuyển đang áp dụng."],
         ["Ăn và ở", "Bố trí 3 bữa/ngày và ký túc xá trong thời gian học."],
         ["Hỗ trợ sinh hoạt", `Hỗ trợ ${CANONICAL_SUPPORT} theo chính sách đợt tuyển.`],
-        ["Thời gian học", "Khai thác, xây dựng mỏ: 2–3 tháng. Cơ điện mỏ: 10 tháng."],
+        ["Thời gian học", "Khai thác, xây dựng mỏ: 2 tháng. Cơ điện mỏ: 10 tháng."],
         ["Sau đào tạo", "Hoàn thành chương trình và đạt yêu cầu thì được bố trí việc tại các đơn vị ngành Than thuộc TKV ở Quảng Ninh."],
       ],
       proof: [
@@ -135,7 +135,7 @@
     "training:duration": {
       eyebrow: "HỌC NGHỀ MỎ · THỜI GIAN ĐÀO TẠO",
       title: "Học thợ lò bao lâu thì đi làm?",
-      lead: "Khai thác và xây dựng mỏ hầm lò học khoảng 2–3 tháng; cơ điện mỏ 10 tháng. Người học phải đạt yêu cầu trước khi được tiếp nhận làm việc.",
+      lead: "Khai thác và xây dựng mỏ hầm lò học 2 tháng; cơ điện mỏ 10 tháng. Người học phải đạt yêu cầu trước khi được tiếp nhận làm việc.",
       primary: "Kiểm tra điều kiện học nghề",
       proof: [["/hoc-tho-lo-bao-lau/", "Xem thời gian học"], ["/hoc-nghe-mo-tai-quang-ninh/", "Xem từng nghề đào tạo"], ["/thong-tin-tuyen-tho-mo/", "Xem thông tin tuyển hiện hành"]],
     },

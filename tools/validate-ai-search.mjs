@@ -195,7 +195,7 @@ else {
     "Nam 18–40 tuổi",
     "1m53",
     "47 kg",
-    "2–3 tháng",
+    "2 tháng",
     "10 tháng",
     canonicalFacts.study_benefits.living_support,
     "20–25 triệu đồng/tháng",

@@ -180,7 +180,7 @@ function writeLegacyRedirect(file) {
     <h1>Thông tin việc làm ngành Than Quảng Ninh đã được hợp nhất</h1>
     <p>Để tránh nhiều trang cùng cạnh tranh một nhóm từ khóa, nội dung này được chuyển về trang chuyên biệt về việc làm công nhân mỏ hầm lò tại Quảng Ninh.</p>
     <a href="${JOB_PATH}">Xem việc làm công nhân mỏ hầm lò Quảng Ninh</a>
-    <p>Khai thác và xây dựng mỏ học 2–3 tháng; kỹ thuật cơ điện mỏ hầm lò học 10 tháng. <a href="/thong-tin-tuyen-tho-mo/">Đối chiếu thông tin tuyển đang áp dụng</a>.</p>
+    <p>Khai thác và xây dựng mỏ học 2 tháng; kỹ thuật cơ điện mỏ hầm lò học 10 tháng. <a href="/thong-tin-tuyen-tho-mo/">Đối chiếu thông tin tuyển đang áp dụng</a>.</p>
     <p><a href="/viec-lam-nganh-than/quang-ninh/xa-phuong/">Xem danh mục tuyển thợ mỏ theo xã, phường Quảng Ninh</a>.</p>
   </main>
   <script>location.replace('${JOB_PATH}' + location.search + location.hash);</script>

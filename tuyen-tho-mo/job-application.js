@@ -21,8 +21,8 @@
   // Keep these values aligned with the canonical registry; the application
   // contract test checks every trade against it.
   const trainingByTrade = new Map([
-    ["Kỹ thuật khai thác mỏ hầm lò", "2–3 tháng"],
-    ["Kỹ thuật xây dựng mỏ hầm lò", "2–3 tháng"],
+    ["Kỹ thuật khai thác mỏ hầm lò", "2 tháng"],
+    ["Kỹ thuật xây dựng mỏ hầm lò", "2 tháng"],
     ["Kỹ thuật cơ điện mỏ hầm lò", "10 tháng"],
   ]);
   const formContext = form.dataset.formContext || "central_application";

@@ -42,7 +42,7 @@ for (const file of articleFiles) {
       errors.push(`${relative}: CTA đọc thêm phải mở chuyên mục Tin ngành Than`);
     }
     if (text.includes("Xem lộ trình học nghề") && href !== "/bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/") {
-      errors.push(`${relative}: CTA lộ trình học nghề phải mở bài học 2-3 tháng`);
+      errors.push(`${relative}: CTA lộ trình học nghề phải mở bài học 2 tháng`);
     }
     if (contact === "application") {
       applicationAsideCount += 1;

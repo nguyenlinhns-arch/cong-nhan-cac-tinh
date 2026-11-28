@@ -79,7 +79,7 @@ for (const marker of [
   'rel="canonical" href="https://thaylinhtuyenthomo.vn/hoc-nghe-mo-tai-quang-ninh/"',
   '"@type":"FAQPage"',
   "Khu C – Phân hiệu Đào tạo Cẩm Phả",
-  "Học nghề chính khoảng 2–3 tháng",
+  "Học nghề chính 2 tháng",
   "Hỗ trợ 7,5 triệu đồng trong thời gian học",
   "Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.",
 ]) if (!fullInfo.includes(marker)) errors.push(`Trang học nghề đầy đủ thiếu ${marker}`);

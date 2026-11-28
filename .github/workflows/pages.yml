@@ -147,6 +147,7 @@ jobs:
           check_remote_images tools/validate-daily-community-images-20260901.mjs
           check_remote_images tools/validate-daily-community-images-20260902.mjs
           check_remote_images tools/validate-daily-community-images-20260904.mjs
+          node tools/validate-training-duration-copy.mjs --normalize-localities
           node tools/validate-home-copy-actions.mjs
           node tools/validate-homepage-redesign.mjs
           node tools/validate-top-block-hotfix.mjs
@@ -299,7 +300,7 @@ jobs:
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}search-provinces.json?run=${GITHUB_SHA}" -o "$province_index_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}analytics.js?run=${GITHUB_SHA}" -o "$analytics_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}worker-info-finder.js?run=${GITHUB_SHA}" -o "$finder_file" \
-              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}job-application.js?run=${GITHUB_SHA}" -o "$application_file" \
+              && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}job-application.js?v=12&run=${GITHUB_SHA}" -o "$application_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}lien-he-di-lam-mo-than-quang-ninh/?run=${GITHUB_SHA}" -o "$contact_authority_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}giai-dap-nghe-mo/?run=${GITHUB_SHA}" -o "$daily_seo_hub_file" \
               && curl --fail --silent --show-error --location --max-time 20 "${LIVE_URL}giai-dap-nghe-mo/lo-trinh-di-lam-mo-than-quang-ninh-tu-dang-ky-den-nhan-viec/?run=${GITHUB_SHA}" -o "$daily_seo_article_file" \
@@ -317,6 +318,10 @@ jobs:
                 && grep -Fq 'id="kho-noi-dung"' "$html_file" \
                 && grep -Fq 'id="tu-kiem-tra"' "$html_file" \
                 && grep -Fq 'class="contact-choice contact-choice--form" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky"' "$html_file" \
+                && grep -Fq 'HỌC 2 THÁNG' "$html_file" \
+                && grep -Fq '["Kỹ thuật khai thác mỏ hầm lò", "2 tháng"]' "$application_file" \
+                && grep -Fq '["Kỹ thuật xây dựng mỏ hầm lò", "2 tháng"]' "$application_file" \
+                && grep -Fq '["Kỹ thuật cơ điện mỏ hầm lò", "10 tháng"]' "$application_file" \
                 && grep -Fq 'if (delivery.saved && !attempt.leadTracked)' "$application_file" \
                 && grep -Fq 'data-open-site-search' "$html_file" \
                 && grep -Fq '/worker-info-finder.js?v=4' "$html_file" \

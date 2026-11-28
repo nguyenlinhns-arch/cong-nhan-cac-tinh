@@ -110,7 +110,7 @@ for (const [marker, label] of order) {
 for (const anchor of ["dieu-kien", "quyen-loi", "thoi-gian-hoc", "ho-tro-hoc-nghe", "ho-so", "noi-lam-viec", "dia-diem", "dang-ky"]) {
   if (count(home, `id="${anchor}"`) !== 1) fail(`Thông tin nhanh: neo #${anchor} phải có đúng một lần`);
 }
-if (!home.includes("Khai thác và xây dựng mỏ: 2–3 tháng") || !home.includes("Cơ điện mỏ: 10 tháng")) fail("Thời gian học chưa tách rõ theo nghề");
+if (!home.includes("Khai thác và xây dựng mỏ: 2 tháng") || !home.includes("Cơ điện mỏ: 10 tháng")) fail("Thời gian học chưa tách rõ theo nghề");
 if (!home.includes('/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp')) fail("Thiếu ảnh câu chuyện người mới");
 if (!home.includes('/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp')) fail("Thiếu ảnh tổ đội công nhân mặc bảo hộ xanh");
 if (!home.includes('/assets/vinacomin-to-doi-mong-duong-ao-xanh.webp')) fail("Thiếu ảnh câu chuyện tổ đội công nhân áo xanh");

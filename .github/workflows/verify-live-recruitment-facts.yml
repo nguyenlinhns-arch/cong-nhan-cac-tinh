@@ -70,12 +70,19 @@ jobs:
           const worker = JSON.parse(fs.readFileSync(process.env.WORKER_QUESTIONS, 'utf8'));
           const llms = fs.readFileSync(process.env.LLMS_FILE, 'utf8');
           const expectedVersion = Number(process.env.FACTS_VERSION);
+          const expectedTraining = JSON.parse(fs.readFileSync('content/recruitment-facts-2026.json','utf8')).training;
           const support = process.env.SUPPORT;
           if (support !== "7,5 triệu đồng trong thời gian học") throw new Error("Unexpected recruitment study allowance");
           const income = process.env.INCOME;
           const failures = [];
 
           if (facts.version !== expectedVersion) failures.push(`facts version ${facts.version} != ${expectedVersion}`);
+          for (const [trade, duration] of Object.entries(expectedTraining)) {
+            if (facts.training?.[trade] !== duration) failures.push(`live training ${trade} != ${duration}`);
+          }
+          for (const [label, text] of [['home', home], ['facts page', factsPage], ['KCN', kcn], ['worker questions', JSON.stringify(worker)], ['llms', llms]]) {
+            if (/\b2\s*[–-]\s*3\s*(?:tháng|\/\s*10|hoặc\s*10)/iu.test(text)) failures.push(`${label}: outdated 2–3 month duration`);
+          }
           if (facts.study_benefits?.living_support !== support) failures.push('live facts support mismatch');
           if (facts.after_training?.income_commitment !== income) failures.push('live facts income mismatch');
 

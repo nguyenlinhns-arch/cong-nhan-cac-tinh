@@ -434,7 +434,7 @@ const campaignFile = path.join(root, "viec-lam", "cong-nhan-mo-ham-lo-quang-ninh
 if (!fs.existsSync(campaignFile)) errors.push("Missing recruitment campaign page");
 else {
   const campaignHtml = fs.readFileSync(campaignFile, "utf8");
-  for (const phrase of ["2–3 tháng", "10 tháng", "7,5 triệu", `${criteria.age_min}–${criteria.age_max}`, "1m53", `${criteria.weight_min_kg}kg`, "ky-thuat-khai-thac-mo-ham-lo-quang-ninh", "ky-thuat-xay-dung-mo-ham-lo-quang-ninh", "ky-thuat-co-dien-mo-ham-lo-quang-ninh"]) {
+  for (const phrase of ["2 tháng", "10 tháng", "7,5 triệu", `${criteria.age_min}–${criteria.age_max}`, "1m53", `${criteria.weight_min_kg}kg`, "ky-thuat-khai-thac-mo-ham-lo-quang-ninh", "ky-thuat-xay-dung-mo-ham-lo-quang-ninh", "ky-thuat-co-dien-mo-ham-lo-quang-ninh"]) {
     if (!campaignHtml.includes(phrase)) errors.push(`Recruitment campaign page is missing ${phrase}`);
   }
 }

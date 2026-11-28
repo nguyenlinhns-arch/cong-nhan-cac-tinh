@@ -173,7 +173,7 @@ async function runCase({ height, weight = 47, birthDate = "2000-01-01", health, 
   const durationLines = output.value.split("\n").filter(line => line.startsWith("- Thời gian học:"));
   if (expectedDuration
     ? durationLines.length !== 1 || durationLines[0] !== `- Thời gian học: ${expectedDuration}`
-    : durationLines.length !== 0 || /2–3 tháng|10 tháng/u.test(output.value)) {
+    : durationLines.length !== 0 || /2[–-]3 tháng|2 tháng|10 tháng/u.test(output.value)) {
     throw new Error(`Unexpected study duration for ${tradeKey}: ${durationLines.join(", ")}`);
   }
   const smsPrefix = "sms:+84963048585?body=";

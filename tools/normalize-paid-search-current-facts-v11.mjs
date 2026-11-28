@@ -24,7 +24,7 @@ function normalizeString(value) {
     .replace(legacyMonthlySupport, "7,5 triệu đồng trong thời gian học")
     .replace(averageIncome, income)
     .replace(variableIncome, income)
-    .replace(twoRoleTraining, "khai thác và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng");
+    .replace(twoRoleTraining, "khai thác và xây dựng mỏ học 2 tháng; cơ điện mỏ học 10 tháng");
 }
 
 function normalizeNode(value) {

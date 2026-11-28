@@ -83,7 +83,7 @@ const shareTools = fs.readFileSync(path.join(site, "share-tools.js"), "utf8");
 for (const marker of [
   livingSupport,
   incomeCommitment,
-  "Ba nghề đang tiếp nhận: khai thác và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng.",
+  "Ba nghề đang tiếp nhận: khai thác và xây dựng mỏ học 2 tháng; cơ điện mỏ học 10 tháng.",
 ]) if (!shareTools.includes(marker)) add(`share-tools thiếu canonical marker: ${marker}`);
 
 const answers = fs.readFileSync(path.join(root, "tools", "recruitment-answers.mjs"), "utf8");

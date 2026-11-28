@@ -15,7 +15,7 @@ for (const fixture of [
   "7,5 triệu đồng/tháng", "7.5 triệu/tháng", "7,5 triệu đồng mỗi tháng",
   "7,5 triệu đồng/tháng mỗi tháng trong thời gian học",
 ]) assert.equal(fixture.replace(legacyMonthlySupport, exact), exact);
-for (const fixture of [exact, "20–25 triệu đồng/tháng", "7,5 triệu người", "học 2–3 tháng"]) {
+for (const fixture of [exact, "20–25 triệu đồng/tháng", "7,5 triệu người", "học 2 tháng"]) {
   assert.equal(fixture.replace(legacyMonthlySupport, exact), fixture);
 }
 const report = {checked:0, errors:[]};

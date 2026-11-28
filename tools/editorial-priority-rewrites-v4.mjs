@@ -31,7 +31,7 @@ const rewrites = {
     conclusion: "Người cân nhắc nghề thợ lò nên tự đánh giá sức khỏe, khả năng làm việc theo ca, mức độ tuân thủ quy trình và kế hoạch gắn bó tại Quảng Ninh. Ổn định là kết quả của cả môi trường doanh nghiệp và năng lực duy trì công việc của mỗi người.",
   },
   "bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/index.html": {
-    lede: "Chương trình khai thác mỏ hầm lò kéo dài khoảng 2-3 tháng, tập trung vào kiến thức an toàn, kỹ năng nghề cơ bản và tác phong trước khi người học bước sang giai đoạn thực tập sản xuất.",
+    lede: "Chương trình khai thác mỏ hầm lò kéo dài 2 tháng, tập trung vào kiến thức an toàn, kỹ năng nghề cơ bản và tác phong trước khi người học bước sang giai đoạn thực tập sản xuất.",
     nutgraph: "Thời gian đào tạo ngắn không có nghĩa yêu cầu thấp. Mỗi nội dung phải giúp người học nhận biết nguy cơ, sử dụng trang bị, phối hợp trong tổ đội và thực hiện đúng quy trình tại vị trí được phân công.",
     conclusion: "Trước khi nhập học, người lao động cần xác nhận đúng tên nghề, thời gian khóa học, chế độ ăn ở, khoản hỗ trợ và kế hoạch thực tập. Trong quá trình học, an toàn và kỷ luật phải được đặt cao hơn tâm lý muốn hoàn thành thật nhanh.",
   },

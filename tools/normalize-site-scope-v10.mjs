@@ -95,15 +95,15 @@ mutate("viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html", (html) => {
 });
 
 mutate("hoc-nghe-mo-tai-quang-ninh/index.html", (html) => {
-  const oldDescription = "Thông tin học nghề mỏ tại Quảng Ninh năm 2026: điều kiện, thời gian 2–3 tháng, miễn kinh phí đào tạo, ăn ở, hỗ trợ, hồ sơ và thu nhập.";
-  const newDescription = "Thông tin học nghề mỏ tại Quảng Ninh năm 2026: khai thác/xây dựng 2–3 tháng, cơ điện 10 tháng; có hỗ trợ ăn ở và hồ sơ rõ ràng.";
+  const oldDescription = "Thông tin học nghề mỏ tại Quảng Ninh năm 2026: điều kiện, thời gian 2 tháng, miễn kinh phí đào tạo, ăn ở, hỗ trợ, hồ sơ và thu nhập.";
+  const newDescription = "Thông tin học nghề mỏ tại Quảng Ninh năm 2026: khai thác/xây dựng 2 tháng, cơ điện 10 tháng; có hỗ trợ ăn ở và hồ sơ rõ ràng.";
   let next = normalizeProvinceNav(html)
     .replaceAll(oldDescription, newDescription)
-    .replace("Học nghề chính khoảng 2–3 tháng tại Quang Hanh", "Khai thác/xây dựng 2–3 tháng · cơ điện 10 tháng")
-    .replace("Nghề khai thác và xây dựng mỏ hầm lò có thời gian đào tạo khoảng 2–3 tháng; nghề cơ điện mỏ có lộ trình dài hơn theo chương trình.",
-      "Nghề khai thác và xây dựng mỏ hầm lò học khoảng 2–3 tháng; nghề cơ điện mỏ hầm lò học 10 tháng.")
-    .replace("Kỹ thuật khai thác và xây dựng mỏ hầm lò học khoảng 2–3 tháng. Nghề cơ điện mỏ có chương trình dài hơn.",
-      "Kỹ thuật khai thác và xây dựng mỏ hầm lò học khoảng 2–3 tháng. Kỹ thuật cơ điện mỏ hầm lò học 10 tháng.");
+    .replace("Học nghề chính 2 tháng tại Quang Hanh", "Khai thác/xây dựng 2 tháng · cơ điện 10 tháng")
+    .replace("Nghề khai thác và xây dựng mỏ hầm lò có thời gian đào tạo 2 tháng; nghề cơ điện mỏ có lộ trình dài hơn theo chương trình.",
+      "Nghề khai thác và xây dựng mỏ hầm lò học 2 tháng; nghề cơ điện mỏ hầm lò học 10 tháng.")
+    .replace("Kỹ thuật khai thác và xây dựng mỏ hầm lò học 2 tháng. Nghề cơ điện mỏ có chương trình dài hơn.",
+      "Kỹ thuật khai thác và xây dựng mỏ hầm lò học 2 tháng. Kỹ thuật cơ điện mỏ hầm lò học 10 tháng.");
   next = setLastReviewed(next);
   return setDateModified(next);
 });

@@ -50,7 +50,7 @@ const editorialOverrides = {
     heading2: "Người lao động cần nhìn rõ toàn bộ chặng đường",
   },
   "viec-lam-nganh-than-thang-8-2026": {
-    lede: "Trong đợt tuyển sinh tháng 8/2026, nam 18-40 tuổi đủ điều kiện sức khỏe có thể đăng ký học nghề mỏ tại Quảng Ninh. Hai nghề khai thác và xây dựng mỏ học 2-3 tháng; nghề cơ điện mỏ học 10 tháng.",
+    lede: "Trong đợt tuyển sinh tháng 8/2026, nam 18-40 tuổi đủ điều kiện sức khỏe có thể đăng ký học nghề mỏ tại Quảng Ninh. Hai nghề khai thác và xây dựng mỏ học 2 tháng; nghề cơ điện mỏ học 10 tháng.",
     nutgraph: "Thông tin tuyển sinh mô tả một lộ trình cụ thể: kiểm tra điều kiện, nhận lịch, học nghề, thực tập và được doanh nghiệp tiếp nhận khi hoàn thành chương trình; quyền lợi và đầu mối được xác nhận theo từng đợt.",
     heading1: "Từ đăng ký đến lớp học phải có lịch trình rõ ràng",
     heading2: "Việc làm sau đào tạo gắn với kết quả học tập",

@@ -101,12 +101,12 @@ for (const profile of activeProfiles) {
 if (!factsPage.includes("cơ điện mỏ học 10 tháng")) add("thong-tin-tuyen-tho-mo/index.html", "FAQ chưa nêu cơ điện mỏ học 10 tháng");
 
 const training = fs.readFileSync(path.join(site, "hoc-nghe-mo-tai-quang-ninh", "index.html"), "utf8");
-for (const marker of ["2–3 tháng", "10 tháng"]) if (!training.includes(marker)) add("hoc-nghe-mo-tai-quang-ninh/index.html", `thiếu mốc đào tạo ${marker}`);
+for (const marker of ["2 tháng", "10 tháng"]) if (!training.includes(marker)) add("hoc-nghe-mo-tai-quang-ninh/index.html", `thiếu mốc đào tạo ${marker}`);
 
 const shareTools = fs.readFileSync(path.join(site, "share-tools.js"), "utf8");
 for (const marker of [
   "Ba nghề đang tiếp nhận",
-  "2–3 tháng",
+  "2 tháng",
   "10 tháng",
   "7,5 triệu đồng trong thời gian học",
   "20–25 triệu đồng/tháng khi hoàn thành định mức lao động",

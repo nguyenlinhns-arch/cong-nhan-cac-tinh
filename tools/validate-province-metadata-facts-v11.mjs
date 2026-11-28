@@ -16,7 +16,7 @@ function field(html, pattern) {
 function checkPolicy(text, label) {
   if (!text) return;
   if (/(?:hai|2)\s+nghề\s+(?:đang\s+)?(?:tuyển|tiếp nhận)/iu.test(text)) errors.push(`${label}: còn mô hình 2 nghề`);
-  if (/2[–-]3\s*tháng/iu.test(text) && /(?:nghề|học|đào tạo)/iu.test(text) && !/10\s*tháng/iu.test(text)) errors.push(`${label}: nhắc 2–3 tháng nhưng bỏ cơ điện 10 tháng`);
+  if (/\b2\s*tháng/iu.test(text) && /(?:nghề|học|đào tạo)/iu.test(text) && !/10\s*tháng/iu.test(text)) errors.push(`${label}: nhắc 2 tháng nhưng bỏ cơ điện 10 tháng`);
   if (/7[,.]5\s*triệu/iu.test(text) && !/7,5\s*triệu\s+đồng\s+trong thời gian học/iu.test(text)) errors.push(`${label}: 7,5 triệu thiếu ghi rõ trong thời gian học`);
   if (/20\s*[–-]\s*25\s*triệu/iu.test(text) && !/hoàn thành định mức lao động/iu.test(text)) errors.push(`${label}: 20–25 triệu thiếu điều kiện định mức`);
   for (const legacy of facts.forbidden_legacy_phrases || []) {

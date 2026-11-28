@@ -77,9 +77,9 @@ function provincePage(province) {
   const aliasNames = aliases.join(", ");
   const aliasPhrase = aliases.length ? ` (gồm ${aliasNames})` : "";
   const localContext = provinceEditorialAngles[slug]
-    || `Từ ${name}, người lao động có thể kiểm tra điều kiện từ xa, học nghề trong 2–3 tháng và chuẩn bị cho công việc tại Quảng Ninh theo một lộ trình rõ ràng.`;
+    || `Từ ${name}, người lao động có thể kiểm tra điều kiện từ xa, học nghề trong 2 tháng và chuẩn bị cho công việc tại Quảng Ninh theo một lộ trình rõ ràng.`;
   const hasLocalEvidence = Boolean(story || reportage);
-  const description = `Tuyển thợ mỏ tại ${name}: nam 18–40 tuổi, học 2–3 tháng, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.`;
+  const description = `Tuyển thợ mỏ tại ${name}: nam 18–40 tuổi, học 2 tháng, hỗ trợ ăn ở; thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.`;
   const localStories = [
     story ? {
       title: story,
@@ -112,7 +112,7 @@ function provincePage(province) {
         "@type": "WebPage",
         "@id": `${canonical}#webpage`,
         url: canonical,
-        name: `Tuyển thợ mỏ tại ${name} – học nghề 2–3 tháng`,
+        name: `Tuyển thợ mỏ tại ${name} – học nghề 2 tháng`,
         description,
         inLanguage: "vi-VN",
         dateModified: "2026-08-23",
@@ -144,7 +144,7 @@ function provincePage(province) {
           {
             "@type": "Question",
             name: "Thời gian học nghề mỏ bao lâu?",
-            acceptedAnswer: { "@type": "Answer", text: "Nghề khai thác mỏ và xây dựng mỏ có thời gian học 2–3 tháng theo kế hoạch từng đợt." },
+            acceptedAnswer: { "@type": "Answer", text: "Nghề khai thác mỏ và xây dựng mỏ có thời gian học 2 tháng theo kế hoạch từng đợt." },
           },
         ],
       },
@@ -157,7 +157,7 @@ function provincePage(province) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b222b">
-  <title>Tuyển thợ mỏ tại ${name} | Học nghề 2–3 tháng – Thầy Linh</title>
+  <title>Tuyển thợ mỏ tại ${name} | Học nghề 2 tháng – Thầy Linh</title>
   <meta name="description" content="${description}">
   <meta name="keywords" content="${keywords}">
   <meta name="robots" content="${hasLocalEvidence ? "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" : "noindex,follow"}">
@@ -173,12 +173,12 @@ function provincePage(province) {
   <meta property="og:type" content="website">
   <meta property="og:locale" content="vi_VN">
   <meta property="og:site_name" content="Thầy Linh – Tuyển Thợ Mỏ">
-  <meta property="og:title" content="Tuyển thợ mỏ tại ${name} – học nghề 2–3 tháng">
+  <meta property="og:title" content="Tuyển thợ mỏ tại ${name} – học nghề 2 tháng">
   <meta property="og:description" content="${description}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tuyển thợ mỏ tại ${name} – học nghề 2–3 tháng">
+  <meta name="twitter:title" content="Tuyển thợ mỏ tại ${name} – học nghề 2 tháng">
   <meta name="twitter:description" content="${description}">
   <meta name="twitter:image" content="https://thaylinhtuyenthomo.vn/assets/og-cover-luong-25-trieu-v4.jpg">
   <link rel="stylesheet" href="../../styles.css">
@@ -187,7 +187,7 @@ function provincePage(province) {
 </head>
 <body>
   <a class="skip-link" href="#noi-dung">Bỏ qua menu</a>
-  <div class="notice-bar"><span>✓</span> Học nghề 2–3 tháng · Hỗ trợ ăn ở · Cơ hội làm việc lâu dài tại Quảng Ninh</div>
+  <div class="notice-bar"><span>✓</span> Học nghề 2 tháng · Hỗ trợ ăn ở · Cơ hội làm việc lâu dài tại Quảng Ninh</div>
   <header class="site-header" data-header>
     <a class="brand" href="../../" aria-label="Trang chủ Thầy Linh Tuyển Thợ Mỏ"><img class="brand-mark" src="/assets/thay-linh-avatar.webp?v=3" alt="" width="45" height="45"><span class="brand-copy"><strong>Thầy Linh</strong><small>Tuyển Thợ Mỏ</small></span></a>
     <button class="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false" data-menu-toggle><span></span><span></span><span></span></button>
@@ -218,7 +218,7 @@ function provincePage(province) {
       <div class="overview-grid">
         <article><span>01</span><h3>Mở cửa cho người chưa có nghề</h3><p>Nam ${criteria.age_min}–${criteria.age_max} tuổi, cao từ ${heightLabel}, nặng từ ${criteria.weight_min_kg}kg và có sức khỏe tốt có thể đăng ký kiểm tra ban đầu.</p></article>
         <article><span>02</span><h3>Yên tâm học nghề</h3><p>Miễn kinh phí đào tạo, bố trí ba bữa ăn mỗi ngày, ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển.</p></article>
-        <article><span>03</span><h3>Rèn tay nghề trong 2–3 tháng</h3><p>Học kiến thức, an toàn và kỹ năng thực hành của nghề khai thác mỏ hoặc xây dựng mỏ hầm lò.</p></article>
+        <article><span>03</span><h3>Rèn tay nghề trong 2 tháng</h3><p>Học kiến thức, an toàn và kỹ năng thực hành của nghề khai thác mỏ hoặc xây dựng mỏ hầm lò.</p></article>
         <article><span>04</span><h3>Bắt đầu công việc đúng nghề</h3><p>Người tốt nghiệp đạt yêu cầu được doanh nghiệp tiếp nhận, bố trí công việc theo nghề đào tạo tại Quảng Ninh.</p></article>
       </div>
     </section>
@@ -232,7 +232,7 @@ ${storySection}
 
     <section class="section local-overview" aria-labelledby="read-more-title">
       <div class="section-heading"><div><p class="eyebrow">HIỂU NGHỀ ĐỂ VỮNG TIN</p><h2 id="read-more-title">Năm câu hỏi cần trả lời trước khi đăng ký</h2></div><p>Mỗi trang đi thẳng vào một vấn đề thiết thực để người lao động và gia đình có đủ thông tin trước khi quyết định.</p></div>
-      <div class="overview-grid"><article><h3>15 câu hỏi tuyển thợ mỏ</h3><p>Thông tin đang áp dụng về điều kiện, học nghề, hồ sơ, nơi làm việc và thu nhập.</p><a href="../../thong-tin-tuyen-tho-mo/">Xem thông tin đang áp dụng →</a></article><article><h3>Điều kiện tuyển thợ lò</h3><p>Tuổi, chiều cao, cân nặng và yêu cầu sức khỏe.</p><a href="../../bai-viet/dieu-kien-tuyen-tho-lo-2026/">Đọc điều kiện →</a></article><article><h3>Hồ sơ dự tuyển</h3><p>CCCD gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; chỉ chuẩn bị sau khi được hướng dẫn.</p><a href="../../bai-viet/ho-so-hoc-nghe-mo-can-gi/">Xem hồ sơ →</a></article><article><h3>Khóa học 2–3 tháng</h3><p>Nội dung học nghề khai thác mỏ trước khi nhận việc.</p><a href="../../bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/">Xem khóa học →</a></article><article><h3>Tin tuyển dụng 2026</h3><p>Xem đầy đủ quyền lợi, thu nhập và tạo tin nhắn đăng ký.</p><a href="../../viec-lam/cong-nhan-mo-ham-lo-quang-ninh/">Ứng tuyển ngay →</a></article></div>
+      <div class="overview-grid"><article><h3>15 câu hỏi tuyển thợ mỏ</h3><p>Thông tin đang áp dụng về điều kiện, học nghề, hồ sơ, nơi làm việc và thu nhập.</p><a href="../../thong-tin-tuyen-tho-mo/">Xem thông tin đang áp dụng →</a></article><article><h3>Điều kiện tuyển thợ lò</h3><p>Tuổi, chiều cao, cân nặng và yêu cầu sức khỏe.</p><a href="../../bai-viet/dieu-kien-tuyen-tho-lo-2026/">Đọc điều kiện →</a></article><article><h3>Hồ sơ dự tuyển</h3><p>CCCD gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có; chỉ chuẩn bị sau khi được hướng dẫn.</p><a href="../../bai-viet/ho-so-hoc-nghe-mo-can-gi/">Xem hồ sơ →</a></article><article><h3>Khóa học 2 tháng</h3><p>Nội dung học nghề khai thác mỏ trước khi nhận việc.</p><a href="../../bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/">Xem khóa học →</a></article><article><h3>Tin tuyển dụng 2026</h3><p>Xem đầy đủ quyền lợi, thu nhập và tạo tin nhắn đăng ký.</p><a href="../../viec-lam/cong-nhan-mo-ham-lo-quang-ninh/">Ứng tuyển ngay →</a></article></div>
     </section>
 
     <section class="section local-overview seo-topic-cluster" aria-labelledby="seo-cluster-title">
@@ -242,7 +242,7 @@ ${storySection}
 
     <section class="section section--faq local-faq" aria-labelledby="faq-title">
       <div class="faq-intro"><p class="eyebrow">HỎI ĐÁP TẠI ${name.toLocaleUpperCase("vi")}</p><h2 id="faq-title">Trước khi chuẩn bị đi học</h2><p>Câu trả lời dùng để sàng lọc ban đầu; lịch và chính sách cụ thể được xác nhận theo từng đợt.</p></div>
-      <div class="faq-list"><details open><summary>Người ở ${name} có đăng ký được không?</summary><p>Có thể gửi thông tin để kiểm tra điều kiện. Nơi tuyển nguồn là ${name}; nơi học và làm việc thực tế là Quảng Ninh.</p></details><details><summary>Có cần đến Quảng Ninh để hỏi trước không?</summary><p>Không. Bước đầu có thể trao đổi qua Zalo hoặc Messenger; chỉ di chuyển sau khi có lịch và hướng dẫn rõ ràng.</p></details><details><summary>Thời gian học bao lâu?</summary><p>Nghề khai thác mỏ và xây dựng mỏ học 2–3 tháng. Lịch cụ thể phụ thuộc từng đợt tiếp nhận.</p></details><details><summary>Cần chuẩn bị hồ sơ ngay không?</summary><p>Chưa cần. Hãy gửi năm sinh, chiều cao/cân nặng và sức khỏe trước; hồ sơ được hướng dẫn sau khi phù hợp điều kiện.</p></details></div>
+      <div class="faq-list"><details open><summary>Người ở ${name} có đăng ký được không?</summary><p>Có thể gửi thông tin để kiểm tra điều kiện. Nơi tuyển nguồn là ${name}; nơi học và làm việc thực tế là Quảng Ninh.</p></details><details><summary>Có cần đến Quảng Ninh để hỏi trước không?</summary><p>Không. Bước đầu có thể trao đổi qua Zalo hoặc Messenger; chỉ di chuyển sau khi có lịch và hướng dẫn rõ ràng.</p></details><details><summary>Thời gian học bao lâu?</summary><p>Nghề khai thác mỏ và xây dựng mỏ học 2 tháng. Lịch cụ thể phụ thuộc từng đợt tiếp nhận.</p></details><details><summary>Cần chuẩn bị hồ sơ ngay không?</summary><p>Chưa cần. Hãy gửi năm sinh, chiều cao/cân nặng và sức khỏe trước; hồ sơ được hướng dẫn sau khi phù hợp điều kiện.</p></details></div>
     </section>
   </main>
 

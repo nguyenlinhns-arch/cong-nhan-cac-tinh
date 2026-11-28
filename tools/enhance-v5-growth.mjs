@@ -14,7 +14,7 @@ const faqItems = [
   ["chieu-cao-can-nang", "Cao 1m53, nặng 47kg có đủ điều kiện không?", "Mốc sàng lọc sơ bộ là chiều cao từ 1m53 và cân nặng từ 47kg. Khám tuyển và đối chiếu sức khỏe là căn cứ xác nhận cuối cùng."],
   ["can-thi", "Bị cận thị có học nghề mỏ hầm lò được không?", "Điều kiện đang công bố yêu cầu không cận thị và không mắc bệnh về mắt ảnh hưởng công việc. Trường hợp chưa rõ cần trao đổi trước và thực hiện khám tuyển."],
   ["khong-co-bang", "Không có bằng THPT có đăng ký được không?", "Người lao động vẫn có thể gửi thông tin đăng ký sơ bộ. Khi nhập học mang bằng THCS hoặc THPT nếu có; trường hợp chưa có bằng sẽ được hướng dẫn theo hồ sơ thực tế."],
-  ["hoc-bao-lau", "Học nghề mỏ bao lâu?", "Nghề khai thác và xây dựng mỏ hầm lò thường đào tạo khoảng 2–3 tháng. Nghề cơ điện mỏ có thời gian đào tạo khoảng 10 tháng."],
+  ["hoc-bao-lau", "Học nghề mỏ bao lâu?", "Nghề khai thác và xây dựng mỏ hầm lò thường đào tạo 2 tháng. Nghề cơ điện mỏ có thời gian đào tạo khoảng 10 tháng."],
   ["hoc-phi-an-o", "Học nghề mỏ có mất học phí và tự lo ăn ở không?", "Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ba bữa ăn mỗi ngày, ở ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học."],
   ["dia-diem-hoc", "Học nghề mỏ ở đâu tại Quảng Ninh?", "Địa điểm nhập học là Khu C – Phân hiệu Đào tạo Cẩm Phả, phường Quang Hanh, tỉnh Quảng Ninh. Chỉ đến sau khi được xác nhận lịch tiếp nhận."],
   ["ho-so-nhap-hoc", "Hồ sơ nhập học nghề mỏ cần những gì?", "Khi có lịch nhập học, người lao động mang căn cước công dân bản gốc, giấy khai sinh và bằng THCS hoặc THPT nếu có. Đăng ký ban đầu chưa cần gửi ảnh giấy tờ."],
@@ -142,7 +142,7 @@ function enhanceFullInfoPage() {
   const before = fs.readFileSync(target, "utf8");
   let html = before;
   const title = "Học nghề mỏ tại Quảng Ninh 2026: điều kiện, ăn ở, hồ sơ | Thầy Linh";
-  const description = "Thông tin học nghề mỏ tại Quảng Ninh năm 2026: khai thác, xây dựng mỏ học 2–3 tháng, cơ điện mỏ học 10 tháng; miễn kinh phí đào tạo, có ăn ở, hỗ trợ và việc làm.";
+  const description = "Thông tin học nghề mỏ tại Quảng Ninh năm 2026: khai thác, xây dựng mỏ học 2 tháng, cơ điện mỏ học 10 tháng; miễn kinh phí đào tạo, có ăn ở, hỗ trợ và việc làm.";
   html = replaceMeta(html, "title", title);
   html = replaceMeta(html, "description", description);
   html = replaceMeta(html, "ogTitle", "Học nghề mỏ tại Quảng Ninh 2026");
@@ -188,7 +188,7 @@ function enhanceSearchIndex() {
     {
       url: "/hoc-nghe-mo-tai-quang-ninh/",
       title: "Học nghề mỏ tại Quảng Ninh 2026: điều kiện, ăn ở, hồ sơ",
-      description: "Nơi học; khai thác, xây dựng mỏ học 2–3 tháng, cơ điện mỏ học 10 tháng; miễn kinh phí đào tạo, ăn ở, hỗ trợ 7,5 triệu đồng trong thời gian học, hồ sơ, việc làm và thu nhập.",
+      description: "Nơi học; khai thác, xây dựng mỏ học 2 tháng, cơ điện mỏ học 10 tháng; miễn kinh phí đào tạo, ăn ở, hỗ trợ 7,5 triệu đồng trong thời gian học, hồ sơ, việc làm và thu nhập.",
       keywords: ["học nghề mỏ tại Quảng Ninh", "học nghề mỏ bao lâu", "học nghề mỏ có mất tiền không", "ký túc xá", "hỗ trợ 7,5 triệu đồng trong thời gian học", "hồ sơ học nghề mỏ", "thu nhập thợ mỏ"],
       category: "entry",
       categoryLabel: "Điều kiện & hồ sơ",

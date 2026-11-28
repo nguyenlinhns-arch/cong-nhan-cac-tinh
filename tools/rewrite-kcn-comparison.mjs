@@ -57,7 +57,7 @@ const faqSchema = {
       name: "Thời gian học nghề mỏ bao lâu?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Các nghề khai thác và xây dựng mỏ hầm lò thường đào tạo khoảng 2–3 tháng; nghề cơ điện mỏ đào tạo khoảng 10 tháng.",
+        text: "Các nghề khai thác và xây dựng mỏ hầm lò thường đào tạo 2 tháng; nghề cơ điện mỏ đào tạo khoảng 10 tháng.",
       },
     },
   ],
@@ -112,7 +112,7 @@ const heroAndBody = `    <section class="verification-page__hero kcn-hero">
         <div class="verification-comparison kcn-comparison-table"><table><thead><tr><th>Điều cần so</th><th>Làm tại khu công nghiệp</th><th>Học nghề và làm mỏ</th></tr></thead><tbody>
           <tr><td><strong>Nơi làm việc</strong></td><td>Có thể gần quê hoặc tại tỉnh có khu công nghiệp; cần xác định đúng nhà máy và địa chỉ làm việc.</td><td>Học và làm việc tại Quảng Ninh; phải chấp nhận xa nhà và thích nghi với cuộc sống vùng mỏ.</td></tr>
           <tr><td><strong>Cách bắt đầu</strong></td><td>Ứng tuyển trực tiếp vào vị trí; điều kiện, thử việc và kinh nghiệm do từng doanh nghiệp quy định.</td><td>Kiểm tra điều kiện đầu vào, nhập học nghề, hoàn thành đào tạo rồi được bố trí làm việc tại đơn vị ngành Than ở Quảng Ninh.</td></tr>
-          <tr><td><strong>Thời gian chuẩn bị</strong></td><td>Tùy lịch tuyển, thời gian thử việc và yêu cầu của nhà máy.</td><td>Khai thác hoặc xây dựng mỏ hầm lò khoảng 2–3 tháng; cơ điện mỏ khoảng 10 tháng.</td></tr>
+          <tr><td><strong>Thời gian chuẩn bị</strong></td><td>Tùy lịch tuyển, thời gian thử việc và yêu cầu của nhà máy.</td><td>Khai thác hoặc xây dựng mỏ hầm lò 2 tháng; cơ điện mỏ khoảng 10 tháng.</td></tr>
           <tr><td><strong>Chi phí ban đầu</strong></td><td>Phải hỏi rõ có hỗ trợ nhà ở, bữa ăn, xe đưa đón hay phải tự túc toàn bộ.</td><td>Miễn kinh phí đào tạo theo chỉ tiêu; ăn 3 bữa/ngày, ở ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học.</td></tr>
           <tr><td><strong>Thu nhập</strong></td><td>Cần tách rõ lương cơ bản, phụ cấp, tiền tăng ca và số ngày công; sau đó trừ chi phí sinh hoạt thực tế.</td><td><strong>Cam kết 20–25 triệu đồng/tháng.</strong></td></tr>
           <tr><td><strong>Tính chất công việc</strong></td><td>Thường làm theo ca, dây chuyền, máy móc hoặc công đoạn sản xuất; nhịp độ và mức độ lặp lại tùy vị trí.</td><td>Làm việc trong môi trường mỏ hầm lò theo tổ đội; yêu cầu thể lực, phối hợp, tay nghề và tuân thủ quy trình an toàn.</td></tr>

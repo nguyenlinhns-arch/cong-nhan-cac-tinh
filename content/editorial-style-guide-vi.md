@@ -96,7 +96,7 @@ Nội dung không được viết chỉ để lặp từ khóa. SEO phải đế
 - Một đoạn thường gồm 2–4 câu, tự đứng được về nghĩa.
 - Dùng động từ chủ động: “Nhà trường tổ chức”, “doanh nghiệp tiếp nhận”, “người lao động chuẩn bị”.
 - Giải thích thuật ngữ chuyên môn ở lần xuất hiện đầu tiên.
-- Viết “2–3 tháng”, “20–25 triệu đồng/tháng”, ngày theo dạng “19/08/2026”.
+- Viết “2 tháng”, “20–25 triệu đồng/tháng”, ngày theo dạng “19/08/2026”.
 - Không dùng chữ in hoa để tạo cảm giác khẩn cấp trong thân bài.
 - Không lạm dụng dấu gạch ngang dài; ưu tiên dấu chấm, dấu phẩy hoặc tách câu.
 - Không mở liên tiếp nhiều đoạn bằng “Điều này”, “Trong bối cảnh đó”, “Đáng chú ý”, “Có thể thấy”.

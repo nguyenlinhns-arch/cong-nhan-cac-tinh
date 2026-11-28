@@ -264,7 +264,7 @@
       message: "Tin ngành giúp kiểm chứng; bước tiếp theo vẫn là kiểm tra điều kiện cá nhân.",
     },
     home: {
-      facts: ["Nam 18–40 tuổi", "Học nghề 2–3 tháng với nghề chính", "20–25 triệu/tháng"],
+      facts: ["Nam 18–40 tuổi", "Học nghề 2 tháng với nghề chính", "20–25 triệu/tháng"],
       message: "Thầy Linh trực tiếp kiểm tra điều kiện và hướng dẫn hồ sơ.",
     },
   });

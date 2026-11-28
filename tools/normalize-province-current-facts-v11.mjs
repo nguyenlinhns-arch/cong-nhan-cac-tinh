@@ -1,3 +1,4 @@
+import {updateMiningTrainingCopy} from "./recruitment-training-copy.mjs";
 import {legacyMonthlySupport} from "./study-support-copy.mjs";
 import fs from "node:fs";
 import path from "node:path";
@@ -43,9 +44,9 @@ function cleanLegacy(text) {
 function normalizeMetadataText(value) {
   let text = cleanLegacy(value);
   text = text
-    .replace(/học nghề\s+2[–-]3\s*tháng/giu, "học 2–3/10 tháng theo nghề")
-    .replace(/học\s+2[–-]3\s*tháng(?=\s*[,;|–—-])/giu, "học 2–3/10 tháng theo nghề");
-  if (/2[–-]3\s*tháng/iu.test(text) && /(?:học|nghề|đào tạo)/iu.test(text) && !/10\s*tháng/iu.test(text)) {
+    .replace(/học nghề\s+2(?:[–-]3)?\s*tháng/giu, "học 2 hoặc 10 tháng theo nghề")
+    .replace(/học\s+2(?:[–-]3)?\s*tháng(?=\s*[,;|–—-])/giu, "học 2 hoặc 10 tháng theo nghề");
+  if (/2(?:[–-]3)?\s*tháng/iu.test(text) && /(?:học|nghề|đào tạo)/iu.test(text) && !/10\s*tháng/iu.test(text)) {
     text = `${text.replace(/[.\s]+$/u, "")}; cơ điện mỏ 10 tháng.`;
   }
   return text;
@@ -54,11 +55,11 @@ function normalizeMetadataText(value) {
 function normalizeJsonString(value) {
   let text = cleanLegacy(value);
   text = text
-    .replace(/Nghề khai thác mỏ và xây dựng mỏ (?:có thời gian )?học 2[–-]3 tháng(?: theo kế hoạch từng đợt)?\.?/giu,
-      "Khai thác và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng theo kế hoạch từng đợt.")
-    .replace(/Nghề khai thác mỏ và xây dựng mỏ học 2[–-]3 tháng\. Lịch cụ thể phụ thuộc từng đợt tiếp nhận\./giu,
-      "Khai thác và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng. Lịch cụ thể phụ thuộc từng đợt tiếp nhận.");
-  if (/Tuyển thợ mỏ tại|học nghề 2[–-]3 tháng/iu.test(text)) text = normalizeMetadataText(text);
+    .replace(/Nghề khai thác mỏ và xây dựng mỏ (?:có thời gian )?học 2(?:[–-]3)? tháng(?: theo kế hoạch từng đợt)?\.?/giu,
+      "Khai thác và xây dựng mỏ học 2 tháng; cơ điện mỏ học 10 tháng theo kế hoạch từng đợt.")
+    .replace(/Nghề khai thác mỏ và xây dựng mỏ học 2(?:[–-]3)? tháng\. Lịch cụ thể phụ thuộc từng đợt tiếp nhận\./giu,
+      "Khai thác và xây dựng mỏ học 2 tháng; cơ điện mỏ học 10 tháng. Lịch cụ thể phụ thuộc từng đợt tiếp nhận.");
+  if (/Tuyển thợ mỏ tại|học nghề 2(?:[–-]3)? tháng/iu.test(text)) text = normalizeMetadataText(text);
   return text;
 }
 
@@ -144,10 +145,10 @@ function normalizeApplicationLinks(html, provinceName, slug) {
 
 function ensureElectricalTrainingBlock(html) {
   let next = html
-    .replace(/<h3>Rèn tay nghề trong 2[–-]3 tháng<\/h3><p>Học kiến thức, an toàn và kỹ năng thực hành của nghề khai thác mỏ hoặc xây dựng mỏ hầm lò\.<\/p>/giu,
-      `<h3>Học nghề theo từng nhóm nghề</h3><p>Khai thác và xây dựng mỏ học 2–3 tháng; <strong>Kỹ thuật cơ điện mỏ hầm lò</strong> học 10 tháng, cùng nội dung an toàn và thực hành theo nghề.</p>`)
-    .replace(/<summary>Thời gian học bao lâu\?<\/summary><p>Nghề khai thác mỏ và xây dựng mỏ học 2[–-]3 tháng\. Lịch cụ thể phụ thuộc từng đợt tiếp nhận\.<\/p>/giu,
-      `<summary>Thời gian học bao lâu?</summary><p>Khai thác và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng. Lịch cụ thể phụ thuộc từng đợt tiếp nhận.</p>`)
+    .replace(/<h3>Rèn tay nghề trong 2(?:[–-]3)? tháng<\/h3><p>Học kiến thức, an toàn và kỹ năng thực hành của nghề khai thác mỏ hoặc xây dựng mỏ hầm lò\.<\/p>/giu,
+      `<h3>Học nghề theo từng nhóm nghề</h3><p>Khai thác và xây dựng mỏ học 2 tháng; <strong>Kỹ thuật cơ điện mỏ hầm lò</strong> học 10 tháng, cùng nội dung an toàn và thực hành theo nghề.</p>`)
+    .replace(/<summary>Thời gian học bao lâu\?<\/summary><p>Nghề khai thác mỏ và xây dựng mỏ học 2(?:[–-]3)? tháng\. Lịch cụ thể phụ thuộc từng đợt tiếp nhận\.<\/p>/giu,
+      `<summary>Thời gian học bao lâu?</summary><p>Khai thác và xây dựng mỏ học 2 tháng; cơ điện mỏ học 10 tháng. Lịch cụ thể phụ thuộc từng đợt tiếp nhận.</p>`)
     .replace(/<h3>Kỹ thuật cơ điện mỏ hầm lò<\/h3><p>Đào tạo nghề cơ điện mỏ theo kế hoạch tuyển sinh\.<\/p>/giu,
       `<h3>Kỹ thuật cơ điện mỏ hầm lò</h3><p>Cơ điện mỏ học 10 tháng theo kế hoạch tuyển sinh.</p>`)
     .replace(/<h3>Kỹ thuật cơ điện mỏ hầm lò<\/h3><p>Đào tạo 10 tháng theo kế hoạch tuyển sinh\.<\/p>/giu,
@@ -158,7 +159,7 @@ function ensureElectricalTrainingBlock(html) {
       `<p>Cơ điện mỏ học 10 tháng theo kế hoạch tuyển sinh.</p>`);
 
   if (!/Kỹ thuật cơ điện mỏ hầm lò/i.test(next)) {
-    const block = `\n    <section class="section local-overview province-training-facts-v11" aria-labelledby="province-training-facts-title">\n      <div class="section-heading"><div><p class="eyebrow">BA NGHỀ ĐANG TIẾP NHẬN</p><h2 id="province-training-facts-title">Thời gian học theo từng nghề</h2></div><p>Khai thác và xây dựng mỏ học 2–3 tháng; <strong>Kỹ thuật cơ điện mỏ hầm lò</strong> học 10 tháng.</p></div>\n    </section>\n`;
+    const block = `\n    <section class="section local-overview province-training-facts-v11" aria-labelledby="province-training-facts-title">\n      <div class="section-heading"><div><p class="eyebrow">BA NGHỀ ĐANG TIẾP NHẬN</p><h2 id="province-training-facts-title">Thời gian học theo từng nghề</h2></div><p>Khai thác và xây dựng mỏ học 2 tháng; <strong>Kỹ thuật cơ điện mỏ hầm lò</strong> học 10 tháng.</p></div>\n    </section>\n`;
     const marker = next.match(/\s*<section class=["'][^"']*section--faq[^"']*["']/i)?.[0];
     if (marker) next = next.replace(marker, `${block}${marker}`);
     else next = next.replace(/\s*<\/main>/i, `${block}\n  </main>`);
@@ -173,14 +174,14 @@ function normalize(html, slug) {
     .replace(/<strong>Hỗ trợ học nghề<\/strong><p>Miễn học phí, bố trí ăn ở và hỗ trợ trong thời gian học\.<\/p>/giu,
       `<strong>Hỗ trợ học nghề</strong><p>Miễn học phí, bố trí ăn ở và hỗ trợ ${support}.</p>`)
     .replace(/Xem thông tin tháng \d{1,2}\/\d{4} →/giu, "Xem thông tin đang áp dụng →")
-    .replace(/học nghề trong 2[–-]3 tháng và chuẩn bị cho công việc tại Quảng Ninh/giu,
-      "học nghề 2–3 hoặc 10 tháng theo nghề và chuẩn bị cho công việc tại Quảng Ninh");
+    .replace(/học nghề trong 2(?:[–-]3)? tháng và chuẩn bị cho công việc tại Quảng Ninh/giu,
+      "học nghề 2 hoặc 10 tháng theo nghề và chuẩn bị cho công việc tại Quảng Ninh");
   next = normalizeMeta(next);
   next = ensureElectricalTrainingBlock(next);
   next = normalizeJsonLd(next, slug);
   next = ensureReviewJsonLd(next, slug);
   next = normalizeApplicationLinks(next, extractProvinceName(next, slug), slug.replace(/\/index\.html$/u, ""));
-  return next;
+  return updateMiningTrainingCopy(next);
 }
 
 const files = provinceFiles();

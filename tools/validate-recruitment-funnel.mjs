@@ -28,7 +28,7 @@ for (const hook of [
   "autocomplete=\"address-level1\"",
   "<noscript>",
   "recruitment-config.js?v=4",
-  "job-application.js?v=11",
+  "job-application.js?v=12",
   "analytics.js?v=6",
 ]) requireText(campaign, hook, "central application page");
 
@@ -49,7 +49,7 @@ for (const field of ["full_name", "phone", "birth_date", "province", "height", "
 for (const text of [
   "Mã đăng ký:",
   "Kết quả tự kiểm tra:",
-  "2–3 tháng",
+  "2 tháng",
   "7,5 triệu đồng",
   "TL-${date}-${suffix}",
   "thaylinh_last_application",
@@ -136,7 +136,7 @@ for (const marker of ["Bản nháp trên thiết bị", "tối đa 24 giờ", "k
 
 for (const slug of master.occupation_profiles.filter((profile) => profile.active_intake).map((profile) => profile.slug)) {
   const role = read(`viec-lam/${slug}/index.html`);
-  for (const marker of ["data-application-form", "data-form-context=\"job_", "directApply\":true", "job-application.js?v=11", "data-application-draft-status", "application-result-title", "<noscript>", "recruitment-config.js?v=4"]) {
+  for (const marker of ["data-application-form", "data-form-context=\"job_", "directApply\":true", "job-application.js?v=12", "data-application-draft-status", "application-result-title", "<noscript>", "recruitment-config.js?v=4"]) {
     requireText(role, marker, `${slug} direct application`);
   }
   if (role.includes("data-copy-application") || role.includes("Sao chép lại tin nhắn")) errors.push(`${slug}: removed copy-message control returned`);

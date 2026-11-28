@@ -292,7 +292,7 @@ const evergreenHomeAnswers = [
     href: "/nghe-mo-ham-lo/",
     kicker: "CHỌN NGHỀ PHÙ HỢP",
     title: "Nên chọn khai thác, xây dựng hay cơ điện mỏ?",
-    answer: "Khai thác và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng. Hãy chọn theo nội dung công việc, khả năng học và nhu cầu tiếp nhận của đợt tuyển.",
+    answer: "Khai thác và xây dựng mỏ học 2 tháng; cơ điện mỏ học 10 tháng. Hãy chọn theo nội dung công việc, khả năng học và nhu cầu tiếp nhận của đợt tuyển.",
     query: "nên học khai thác mỏ hay xây dựng mỏ hầm lò",
   },
 ];

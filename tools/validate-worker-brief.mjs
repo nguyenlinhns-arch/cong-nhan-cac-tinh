@@ -52,7 +52,7 @@ if (!api || !Array.isArray(api.workerBriefFacts) || typeof api.createWorkerBrief
 } else {
   const expected = [
     ["conditions", "/#dieu-kien", "Nam 18–40 tuổi"],
-    ["training", "/#thoi-gian-hoc", "2–3 tháng"],
+    ["training", "/#thoi-gian-hoc", "2 tháng"],
     ["support", "/#ho-tro-hoc-nghe", "7,5 triệu đồng"],
     ["work", "/#noi-lam-viec", "20–25 triệu đồng/tháng"],
     ["dossier", "/#ho-so", "chưa có bằng vẫn đăng ký được"],

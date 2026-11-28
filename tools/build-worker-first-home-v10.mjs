@@ -140,7 +140,7 @@ const redesignedMain = `  <main id="noi-dung" class="home-funnel">
     <section class="home-v6-facts" id="quyen-loi" aria-label="Thông tin tuyển sinh chính">
       <div class="container home-v6-facts__grid">
         <article><small>Điều kiện sơ bộ</small><strong>Nam 18–40 tuổi</strong><span>Từ 1m53 · từ 47kg · sức khỏe phù hợp</span></article>
-        <article><small>Thời gian học</small><strong>2–3 tháng / 10 tháng</strong><span>Khai thác, xây dựng / cơ điện mỏ</span></article>
+        <article><small>Thời gian học</small><strong>2 tháng / 10 tháng</strong><span>Khai thác, xây dựng / cơ điện mỏ</span></article>
         <article><small>Trong thời gian học</small><strong>Miễn học phí · có ăn ở</strong><span>Hỗ trợ 7,5 triệu đồng trong thời gian học</span></article>
         <article><small>Sau đào tạo</small><strong>Được bố trí việc làm</strong><span>Tại các đơn vị ngành Than ở Quảng Ninh</span></article>
       </div>
@@ -177,8 +177,8 @@ const redesignedMain = `  <main id="noi-dung" class="home-funnel">
         <div class="home-v6-careers__grid">
           <figure><img src="/assets/vinacomin-tho-lo-ha-lam-giao-ca.webp" alt="Nhóm thợ lò Than Hà Lầm mặc bảo hộ xanh, đội mũ trong buổi giao ca" loading="lazy" decoding="async" width="1055" height="593"><figcaption><small>HỌC TỪ NỀN TẢNG</small><strong>Không yêu cầu kinh nghiệm trước khi đăng ký</strong></figcaption></figure>
           <div class="home-v6-career-list">
-            <a href="/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/"><span>01</span><div><small>HỌC 2–3 THÁNG</small><h3>Kỹ thuật khai thác mỏ hầm lò</h3><p>Khai thác than, vận hành thiết bị, vận tải và phối hợp công việc trong dây chuyền sản xuất.</p><b>Xem công việc và đăng ký →</b></div></a>
-            <a href="/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/"><span>02</span><div><small>HỌC 2–3 THÁNG</small><h3>Kỹ thuật xây dựng mỏ hầm lò</h3><p>Đào, chống giữ, gia cố và duy trì đường lò phục vụ khai thác than hầm lò.</p><b>Xem công việc và đăng ký →</b></div></a>
+            <a href="/viec-lam/ky-thuat-khai-thac-mo-ham-lo-quang-ninh/"><span>01</span><div><small>HỌC 2 THÁNG</small><h3>Kỹ thuật khai thác mỏ hầm lò</h3><p>Khai thác than, vận hành thiết bị, vận tải và phối hợp công việc trong dây chuyền sản xuất.</p><b>Xem công việc và đăng ký →</b></div></a>
+            <a href="/viec-lam/ky-thuat-xay-dung-mo-ham-lo-quang-ninh/"><span>02</span><div><small>HỌC 2 THÁNG</small><h3>Kỹ thuật xây dựng mỏ hầm lò</h3><p>Đào, chống giữ, gia cố và duy trì đường lò phục vụ khai thác than hầm lò.</p><b>Xem công việc và đăng ký →</b></div></a>
             <a href="/viec-lam/ky-thuat-co-dien-mo-ham-lo-quang-ninh/"><span>03</span><div><small>HỌC 10 THÁNG</small><h3>Kỹ thuật cơ điện mỏ hầm lò</h3><p>Lắp đặt, vận hành, bảo dưỡng và sửa chữa hệ thống cơ khí, điện cùng thiết bị mỏ.</p><b>Xem công việc và đăng ký →</b></div></a>
           </div>
         </div>
@@ -211,7 +211,7 @@ ${selfCheckBlock}
           <ol class="home-journey__steps">
             <li><span>01</span><div><h3>Kiểm tra và tư vấn từ xa</h3><p>Gửi năm sinh, tỉnh đang sống, chiều cao, cân nặng và sức khỏe hiện tại.</p><a class="home-journey__detail" href="/kiem-tra-dieu-kien/">Xem điều kiện tuyển →</a></div></li>
             <li id="ho-so"><span>02</span><div><h3>Nhập học tại Quang Hanh</h3><p id="dia-diem">Mang CCCD, giấy khai sinh và bằng THCS hoặc THPT nếu có.</p><a class="home-journey__detail" href="/ho-so-nhap-hoc/">Xem hồ sơ và địa chỉ →</a></div></li>
-            <li id="thoi-gian-hoc"><span>03</span><div><h3>Học nghề và thực hành</h3><p>Khai thác, xây dựng mỏ: 2–3 tháng. Cơ điện mỏ: 10 tháng.</p><p id="ho-tro-hoc-nghe" class="home-journey__support">Miễn học phí · 3 bữa/ngày · KTX · hỗ trợ 7,5 triệu đồng trong thời gian học.</p><a class="home-journey__detail" href="/thu-nhap-an-o-ho-tro/">Xem đầy đủ quyền lợi →</a></div></li>
+            <li id="thoi-gian-hoc"><span>03</span><div><h3>Học nghề và thực hành</h3><p>Khai thác, xây dựng mỏ: 2 tháng. Cơ điện mỏ: 10 tháng.</p><p id="ho-tro-hoc-nghe" class="home-journey__support">Miễn học phí · 3 bữa/ngày · KTX · hỗ trợ 7,5 triệu đồng trong thời gian học.</p><a class="home-journey__detail" href="/thu-nhap-an-o-ho-tro/">Xem đầy đủ quyền lợi →</a></div></li>
             <li id="noi-lam-viec"><span>04</span><div><h3>Nhận việc tại Quảng Ninh</h3><p>Người hoàn thành đào tạo và đạt yêu cầu được bố trí làm việc tại các đơn vị ngành Than.</p><a class="home-journey__detail" href="/thong-tin-tuyen-tho-mo/">Đối chiếu thông tin đang áp dụng →</a></div></li>
           </ol>
         </div>

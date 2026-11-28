@@ -36,7 +36,7 @@ export function buildRecruitmentAnswers(recruitment) {
     {
       id: "hoc-bao-lau-o-dau",
       question: "Học nghề mỏ bao lâu và học ở đâu?",
-      answer: `Khai thác mỏ và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng tại Quảng Ninh theo lịch tiếp nhận. Địa điểm nhập học là ${contact.admission_address}; chỉ đến sau khi đã được xác nhận lịch.`,
+      answer: `Khai thác mỏ và xây dựng mỏ học 2 tháng; cơ điện mỏ học 10 tháng tại Quảng Ninh theo lịch tiếp nhận. Địa điểm nhập học là ${contact.admission_address}; chỉ đến sau khi đã được xác nhận lịch.`,
       href: "/bai-viet/hoc-nghe-khai-thac-mo-2-3-thang/",
       linkLabel: "Xem lộ trình khóa học",
     },
