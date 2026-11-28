@@ -5,7 +5,22 @@ import { reelImage, reelThumbnail } from "./video-thumbnail-assets.mjs";
 
 const file = "tuyen-tho-mo/index.html";
 const before = fs.readFileSync(file, "utf8");
-assert.ok(before.includes("/home-worker-journey.js?v=20261107-2"), "Invalidate the parent loader cache too");
+assert.ok(before.includes("/home-worker-journey.js?v=20261128-3"), "Invalidate the parent loader cache too");
+// Preserve the exact YouTube posters and avoid requesting an outside image before Play.
+const posterOwner = fs.readFileSync('tuyen-tho-mo/home-worker-journey.js', 'utf8');
+assert.doesNotMatch(posterOwner, /i\.ytimg\.com/);
+assert.equal((posterOwner.match(/\/assets\/video-thumbnails\/youtube-/g) || []).length, 2);
+const { createHash } = await import('node:crypto');
+const captured = {
+  ts41cqu7r9c: '4889fcffd33d737cabf7127b9f02cdb58d724f9fb939aae866f2155254fe46a7',
+  xW92UBKmWok: 'cf17e228e386478f968c8e029fb7ee5535b954152e996b71f2ac8233f8ce314c',
+};
+for (const [id, sha] of Object.entries(captured)) {
+  // Official original: https://i.ytimg.com/vi/<video-id>/hqdefault.jpg
+  const bytes = fs.readFileSync(`tuyen-tho-mo/assets/video-thumbnails/youtube-${id}.jpg`);
+  assert.equal(createHash('sha256').update(bytes).digest('hex'), sha);
+  assert(bytes.length < 16000);
+}
 const records = JSON.parse(fs.readFileSync("content/video-thumbnails.json", "utf8"));
 assert.equal(records.length, 3);
 let totalBytes = 0;

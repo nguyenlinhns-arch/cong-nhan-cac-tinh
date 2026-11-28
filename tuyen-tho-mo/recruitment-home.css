@@ -754,3 +754,18 @@ html:root .home-v6 .home-contact-answer__card p{font-size:.9rem;line-height:1.55
 @media(max-width:767px){
  html:root .home-v6 .home-contact-answer__card{grid-template-columns:minmax(0,1fr)!important}
 }
+
+/* A figure and its qualifier must remain together after the SEO build. */
+html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-income strong span{
+ display:block;margin-top:4px;line-height:1.4;letter-spacing:0;font-weight:500;color:var(--d-sub)!important;
+}
+html:root .home-v6 .home-proof .home-video-facade img,
+html:root .home-v6 .home-kcn-reel-facade img{opacity:1!important}
+html:root .home-v6 .home-video-facade:focus-visible,
+html:root .home-v6 .home-province-reel__facade:focus-visible{outline-offset:-5px!important}
+html:root .home-v6 .worker-check fieldset legend{
+  padding:0!important;line-height:1.45!important;min-height:2.9em;display:flex!important;gap:7px;align-items:start;
+}
+@media(max-width:767px){
+ html:root .home-v6 .worker-check fieldset legend{min-height:0;line-height:1.38!important}
+}

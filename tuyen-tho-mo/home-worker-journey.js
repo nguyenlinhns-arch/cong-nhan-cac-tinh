@@ -23,7 +23,7 @@
     const featuredImage = featuredFacade?.querySelector("img");
     const featuredId = featuredFacade?.dataset.videoId;
     if (featuredImage && featuredId) {
-      featuredImage.src = `https://i.ytimg.com/vi/${featuredId}/hqdefault.jpg`;
+      featuredImage.src = `/assets/video-thumbnails/youtube-${featuredId}.jpg`;
       featuredImage.alt = "Ảnh đại diện video Hành trình lập nghiệp cùng nghề mỏ";
       featuredImage.width = 480;
       featuredImage.height = 360;
@@ -40,7 +40,7 @@
     article.innerHTML = `
       <div class="home-proof__story-frame">
         <button class="home-video-facade" type="button" data-home-story-video aria-label="Phát video ${videoTitle}">
-          <img src="https://i.ytimg.com/vi/${videoId}/hqdefault.jpg" alt="Ảnh đại diện video Mùa A Vàng từ Điện Biên đến vùng mỏ Quảng Ninh" loading="lazy" decoding="async" width="480" height="360">
+          <img src="/assets/video-thumbnails/youtube-${videoId}.jpg" alt="Ảnh đại diện video Mùa A Vàng từ Điện Biên đến vùng mỏ Quảng Ninh" loading="lazy" decoding="async" width="480" height="360">
           <span class="home-video-facade__play" aria-hidden="true">▶</span>
           <span class="home-video-facade__label">Bấm để xem video</span>
         </button>

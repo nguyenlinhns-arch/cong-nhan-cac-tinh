@@ -83,7 +83,7 @@ function setHomeIntent(file) {
   });
   html = html.replace(
     /<div class="home-v6-income">[\s\S]*?<\/div>/i,
-    `<div class="home-v6-income"><small>THU NHẬP SAU ĐÀO TẠO</small><strong>${INCOME_SHORT_COMMITMENT}</strong></div>`
+    `<div class="home-v6-income"><small>THU NHẬP SAU ĐÀO TẠO</small><strong>${INCOME_SHORT} <span>${INCOME_CONDITION}</span></strong></div>`
   );
 
   const decisionActions = '<div class="home-v6-decision__actions">';
