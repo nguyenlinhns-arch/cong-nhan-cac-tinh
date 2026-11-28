@@ -769,3 +769,8 @@ html:root .home-v6 .worker-check fieldset legend{
 @media(max-width:767px){
  html:root .home-v6 .worker-check fieldset legend{min-height:0;line-height:1.38!important}
 }
+@media(max-width:650px){
+ /* Never put a pinned contact bar between the amount and its qualification. */
+ html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-hero__visual{order:3}
+ html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-income{order:2}
+}
