@@ -3,14 +3,11 @@ import path from 'node:path';
 
 const root = path.resolve('tuyen-tho-mo');
 const slugs = ['thu-nhap-an-o-ho-tro','ho-so-nhap-hoc','chon-kcn-hay-lam-mo','phong-su','cau-chuyen-cong-nhan','bang-luong'];
-const source = fs.readFileSync(path.join(root,'index.html'),'utf8');
-const reading = source.match(/<div class="home-editor-reading"[^>]*>[\s\S]*?<\/ul>/)?.[0] || '';
 const action = '/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky';
 const guard = '<!-- home-reading-actions -->';
 const css = '<link rel="stylesheet" href="/reading-registration.css?v=1">';
 if (!fs.existsSync(path.join(root,'reading-registration.css'))) throw new Error('Missing action stylesheet');
 for (const slug of slugs) {
-  if (!reading.includes(`href="/${slug}/"`)) throw new Error(`Not a featured reading page: ${slug}`);
   const file = path.join(root,slug,'index.html');
   const article = fs.readFileSync(file,'utf8');
   if ((article.match(/<\/main>/g)||[]).length!==1 || !article.includes('</head>')) throw new Error(`Invalid page to link: ${slug}`);

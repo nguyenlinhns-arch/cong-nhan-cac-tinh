@@ -9,7 +9,7 @@ const read = name => fs.readFileSync(path.join(root, 'tuyen-tho-mo', name), 'utf
 const html = read('index.html');
 const head = html.split('</head>')[0];
 assert.match(html, /class="home-hero-video-link" href="#thuc-te"/, 'The existing hero photo links to the video, without loading an iframe');
-assert.match(html, /class="[^"]*home-article-shortcut" href="#doc-truoc-khi-dang-ky"/, 'Put the reading shortcut near the top');
+assert.doesNotMatch(html, /home-editor-reading|home-article-shortcut/, "Keep the landing page free of the removed reading block");
 const app = read('viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html');
 assert.ok(app.includes('<h2 id="apply-title">Đăng ký học nghề mỏ</h2>'));
 assert.ok(app.includes('Điền 4 thông tin trước, sau đó kiểm tra điều kiện. Chưa cần nộp giấy tờ.'));
@@ -47,8 +47,8 @@ assert(Buffer.byteLength(critical) <= 18000, 'Keep existing critical CSS budget'
 const editorial = read('recruitment-home.css');
 assert(html.includes('/recruitment-home.css?v=18'), 'Homepage editorial surface must invalidate older overrides');
 assert.match(html, /<div class="home-v6-income">\s*<small>[^<]+<\/small>\s*<p><strong>20–25 triệu\/tháng<\/strong> <span>khi hoàn thành định mức lao động<\/span><\/p>\s*<\/div>/, "Keep the income amount and its qualification visible together");
-const homepageOrder = ['thuc-te','doc-truoc-khi-dang-ky','tu-van','nghe-dang-tuyen','tu-kiem-tra','thong-tin','kho-noi-dung'].map(id => html.indexOf(`id="${id}"`));
-assert(homepageOrder.every((at,index) => at >= 0 && (index === 0 || at > homepageOrder[index-1])), 'Offer proof and useful reading before eligibility; keep registration and library reachable');
+const homepageOrder = ['thuc-te','tu-van','nghe-dang-tuyen','tu-kiem-tra','thong-tin','kho-noi-dung'].map(id => html.indexOf(`id="${id}"`));
+assert(homepageOrder.every((at,index) => at >= 0 && (index === 0 || at > homepageOrder[index-1])), 'Show video before registration; keep the library accessible');
 assert.match(html, /<div class="tkv-video" data-tkv-video>/, 'Keep the main playlist visible without opening a disclosure');
 assert.match(html, /<section class="home-field" id="hanh-trinh-tu-que"/, 'The three priority topics must be visible without a disclosure');
 assert.ok(html.indexOf('id="home-kcn-video"') < html.indexOf('id="thuc-te"'), 'Show the comparison before the main video archive');

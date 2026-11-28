@@ -29,8 +29,6 @@ for (const marker of [
   'class="tl-mobile-contact__call"',
   'class="tl-mobile-contact__journey"',
   'href="/bang-luong/"',
-  'href="/phong-su/"',
-  'id="doc-truoc-khi-dang-ky"',
   'data-tkv-current-title',
   'data-context="home-watch"',
   'href="/hoi-dap-di-lam-mo-than-quang-ninh/"',
@@ -46,7 +44,7 @@ for (const marker of ["home-v6-button--primary", "home-v6-button--secondary", 'h
 
 if (!heroActions.includes('href="#dang-ky"')) errors.push("Nút đăng ký đầu trang phải dẫn đến form thật");
 if (!(home.indexOf('data-recruitment-entry') < home.indexOf('id="tkv-video-title"'))) errors.push("Trang chủ phải mở đầu bằng tuyển dụng thay vì video");
-const order = ["hanh-trinh-tu-que", "home-kcn-video", "tuyen-sinh-tai-cac-tinh", "don-hoc-sinh-nhap-hoc", "thuc-te", "tkv-video-title", "doc-truoc-khi-dang-ky", "tu-van", "nghe-dang-tuyen", "tu-kiem-tra", "thong-tin", "kho-noi-dung"];
+const order = ["hanh-trinh-tu-que", "home-kcn-video", "tuyen-sinh-tai-cac-tinh", "don-hoc-sinh-nhap-hoc", "thuc-te", "tkv-video-title", "tu-van", "nghe-dang-tuyen", "tu-kiem-tra", "thong-tin", "kho-noi-dung"];
 let previous = -1;
 for (const id of order) {
   const current = home.indexOf(`id="${id}"`);
@@ -64,10 +62,11 @@ if (/<iframe\b/i.test(field)) errors.push("Video chỉ nạp iframe sau khi bấ
 if ((field.match(/data-home-pin=/g) || []).length !== 3) errors.push("Cần đúng ba Reel ghim");
 if ((home.match(/id="hanh-trinh-tu-que"/g) || []).length !== 1) errors.push("Chỉ có một mục hành trình tuyển sinh");
 
-const realReads = home.match(/<div class="home-real-reads">([\s\S]*?)<\/div>/)?.[1] || "";
-const realReadPaths = [...realReads.matchAll(/href="(\/tin-nganh-than\/[^"]+\/)"/g)].map(m => m[1]);
-if (realReadPaths.length !== 3 || realReadPaths.some(href => !fs.existsSync(path.join(root, href, "index.html")))) {
-  errors.push("Ba bài thực tế phải có đường dẫn hợp lệ");
+if (/home-editor-reading|home-real-reads|home-article-shortcut|6 bài cần biết trước khi đăng ký/.test(home)) {
+  errors.push("Trang chủ không được chèn lại khối bài viết đã bỏ");
+}
+for (const slug of ["cam-nang-nghe-mo", "tin-nganh-than"]) {
+  if (!fs.existsSync(path.join(root, slug, "index.html"))) errors.push(`Không xóa trang lưu trữ /${slug}/`);
 }
 
 const worksheet = home.match(/<form class="worker-check"[\s\S]*?<\/form>/)?.[0] || "";
