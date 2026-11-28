@@ -84,13 +84,14 @@ html:root .home-v6 .worker-self-check__head .home-v6-button--brief{
   html:root .home-v6 .home-field .home-field__links .home-field__textlink{min-height:44px;font-size:.77rem}
 }
 
-/* One-page layout: three pinned videos, actual stories, then application. */
+/* One-page layout: featured videos, actual stories, then application. */
 html:root body .home-v6 section.recruitment-landing-hero[data-recruitment-entry]{padding-block:clamp(22px,3vw,42px)!important}
-.home-pin-grid,.home-real-reads{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,24px)}
-.home-pin{min-width:0;border-top:1px solid var(--home-rule);padding-top:12px;display:grid;grid-template-columns:clamp(76px,8vw,112px) minmax(0,1fr);gap:13px}
+.home-real-reads{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,24px)}
+.home-pin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(23px,3.35vw,42px)}
+.home-pin{min-width:0;border-top:1px solid var(--home-rule)}
 .home-pin__play{position:relative;align-self:start;display:block;width:100%;aspect-ratio:9/16;overflow:hidden;border-radius:5px}
 .home-pin__play>img{display:block;width:100%;height:100%;object-fit:cover}
-.home-pin__play>span{display:grid;place-items:center;position:absolute;inset:auto auto 8px 8px;width:31px;height:31px;border:1px solid white;border-radius:100%;background:#151a17dd;color:white;font-size:.75rem}
+.home-pin__play>span{display:grid;place-items:center;position:absolute;inset:auto auto 10px 10px;width:clamp(38px,4vw,48px);aspect-ratio:1;border:1px solid #fff;border-radius:50%;background:#151a17e8;color:#fff;font-size:.95rem;line-height:1}
 .home-pin h3{margin:5px 0 4px;font-size:clamp(1rem,1.7vw,1.42rem);line-height:1.2;color:var(--d-ink)}
 .home-pin p{margin:0;font-size:.89rem;line-height:1.45;color:var(--d-sub)}
 .home-field-extra{margin-top:15px}
@@ -121,11 +122,9 @@ html:root .home-v6 .worker-register__grid{margin-block-start:14px}
 .home-pin-dialog__actions a:focus-visible{outline:2px solid #f2eee3;outline-offset:2px}
 #thuc-te{scroll-margin-top:85px}
 @media(max-width:760px){
- .home-pin-grid,.home-real-reads{grid-template-columns:1fr;gap:9px}
- .home-pin{grid-template-columns:65px minmax(0,1fr);gap:12px;padding-top:9px}
+ .home-real-reads{grid-template-columns:1fr}
  .home-pin h3{margin-top:2px}
  .home-pin p{font-size:.82rem}
- .home-pin__play>span{left:5px;bottom:5px;width:25px;height:25px}
  .home-real-reads{gap:1px}
  .home-real-reads>a{padding:10px 0}
 }
@@ -139,18 +138,17 @@ html:root .home-v6 .landing-apply__intro>p{color:var(--d-sub);font-size:.94rem;m
 /* Lead with the viewer's questions; the whole preview opens its video. */
 .home-field__head.home-watch-guide{display:block}
 .home-watch-guide>p{max-width:66ch;margin:8px 0 0;color:var(--d-sub);font-size:clamp(.9rem,1.22vw,1rem);line-height:1.58}
-.home-pin-grid .home-pin{display:block;padding:0}
-.home-pin__card{display:grid;grid-template-columns:clamp(73px,7vw,100px) minmax(0,1fr);gap:13px;align-items:start;min-height:100%;padding-block:13px;color:var(--d-ink);text-decoration:none}
+.home-pin__card{display:grid;grid-template-columns:minmax(0,42%) minmax(0,1fr);gap:clamp(13px,2vw,26px);align-items:center;min-height:100%;padding-block:14px;color:var(--d-ink);text-decoration:none}
 .home-pin__card:focus-visible{outline:2px solid var(--d-focus);outline-offset:4px}
 .home-pin__step{color:var(--d-mark);font-size:.7rem;font-weight:780}
 .home-pin__step>span{opacity:.7}
-.home-pin .home-pin__copy h3{margin:4px 0 6px;font-size:clamp(1.05rem,1.65vw,1.4rem)}
-.home-pin__action{display:inline-flex;gap:5px;align-items:center;min-height:40px;color:var(--d-strong);font-size:.79rem;font-weight:750;}
+.home-pin .home-pin__copy h3{margin:4px 0 6px;font-size:clamp(1.05rem,1.9vw,1.63rem)}
+.home-pin__action{display:inline-flex;gap:5px;align-items:center;min-height:44px;color:var(--d-strong);font-size:.84rem;font-weight:750;}
 .home-pin__card:is(:hover,:focus-visible) .home-pin__action{text-decoration:underline;text-underline-offset:3px}
-.home-watch-guide__next{margin-top:6px}
+.home-watch-guide__next{display:flex;flex-wrap:wrap;column-gap:clamp(16px,2.5vw,36px);border-top:1px solid var(--home-rule);padding-top:4px}
 .home-watch-guide__next + .home-field-extra{margin-top:0}
 @media(max-width:760px){
- .home-pin-grid{gap:0}
- .home-pin__card{grid-template-columns:72px minmax(0,1fr);padding-block:10px;gap:11px}
+ .home-pin-grid{grid-template-columns:minmax(0,1fr)}
+ .home-pin__card{grid-template-columns:clamp(108px,38%,170px) minmax(0,1fr);padding-block:12px;gap:13px}
  .home-pin__step{font-size:.67rem}
 }

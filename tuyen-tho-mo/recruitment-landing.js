@@ -60,6 +60,8 @@
     });
     apply?.addEventListener("click", event => leave(event, "#dang-ky", "consult-title"));
     dialog.addEventListener("close", () => {
+      // A queued close event may arrive after another video has opened.
+      if (dialog.open) return;
       stage.replaceChildren();
       if (!leaving) opener?.focus({preventScroll:true});
     });

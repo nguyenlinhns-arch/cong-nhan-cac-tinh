@@ -50,11 +50,14 @@ assert.match(html, /<div class="home-v6-income">\s*<small>[^<]+<\/small>\s*<p><s
 const homepageOrder = ['thuc-te','tu-van','nghe-dang-tuyen','tu-kiem-tra','thong-tin','kho-noi-dung'].map(id => html.indexOf(`id="${id}"`));
 assert(homepageOrder.every((at,index) => at >= 0 && (index === 0 || at > homepageOrder[index-1])), 'Show video before registration; keep the library accessible');
 assert.match(html, /<div class="tkv-video" data-tkv-video>/, 'Keep the main playlist visible without opening a disclosure');
-assert.match(html, /<section class="home-field" id="hanh-trinh-tu-que"/, 'The three priority topics must be visible without a disclosure');
+assert.match(html, /<section class="home-field" id="hanh-trinh-tu-que"/, 'Keep the video guide easy to reach');
 assert.ok(html.indexOf('id="home-kcn-video"') < html.indexOf('id="thuc-te"'), 'Show the comparison before the main video archive');
 assert.ok(Buffer.byteLength(read('recruitment-landing.css')) <= 13000, 'Keep the landing layout CSS small');
 assert.match(html, /href="#thuc-te" data-journey-shortcut="videos"/, 'Homepage offers a direct path to video');
 assert.deepEqual([...html.matchAll(/data-home-pin="(\d+)"/g)].map(m=>m[1]), ['1830954464696355','2512643852519964','1015675787556708']);
+assert.equal((html.match(/class="home-pin__card"/g)||[]).length, 2, 'Lead with two large video previews');
+assert.match(html, /<div class="home-watch-guide__next">\s*<a [^>]*data-home-pin="1015675787556708"/, 'Keep the third Reel as a link below both previews, still in the watch order');
+assert.match(read('recruitment-landing.css'), /\.home-pin-grid\{display:grid;grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/, 'Featured videos share two equally sized columns where there is room');
 assert.match(html, /class="tl-mobile-contact__journey" href="#dang-ky"/, "Mobile CTA reaches the embedded sign-up without JavaScript");
 assert.match(html, /href="#dang-ky" data-pin-apply/, "Reel dialog has a visible path to sign-up");
 assert.match(html, /href="#thuc-te" data-pin-next/, "The last Reel can continue to the video library");
