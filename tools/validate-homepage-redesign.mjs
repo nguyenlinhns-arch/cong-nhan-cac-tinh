@@ -36,6 +36,8 @@ for (const marker of [
   'href="/tuyen-tho-mo-quang-ninh/"',
 ]) requireText(home, marker, "Trang chủ mới");
 
+requireText(home, '<a class="header-cta" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" data-contact="application" data-context="home-header">Đăng ký ngay</a>', "Nút đăng ký thanh đầu trang");
+
 const heroActions = home.match(/<div class="home-v6-actions">([\s\S]*?)<\/div>/)?.[1] || "";
 for (const marker of ["home-v6-button--primary", "home-v6-button--secondary", "home-v6-button--brief"]) {
   if (!heroActions.includes(marker)) errors.push(`Cụm nút đầu trang: thiếu ${marker}`);
