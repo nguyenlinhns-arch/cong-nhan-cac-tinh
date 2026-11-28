@@ -1,0 +1,11 @@
+.reading-registration{
+  width:min(960px,calc(100% - 36px));margin:clamp(20px,4vw,48px) auto 0;
+  padding:19px 0 32px;border-top:1px solid #9aa89d;font-size:.96rem;
+}
+.reading-registration p{margin:0 0 8px;font-weight:700;line-height:1.45}
+.reading-registration>div{display:flex;align-items:center;flex-wrap:wrap;gap:5px 18px}
+.reading-registration a{display:inline-flex;align-items:center;gap:.46em;min-height:44px;color:inherit;text-decoration:underline;text-underline-offset:3px;font-weight:700}
+.reading-registration .reading-registration__primary{border:1px solid transparent;border-radius:7px;background:#214936;color:#fff!important;text-decoration:none;padding:0 14px}
+.reading-registration .reading-registration__primary:hover{background:#143425}
+.reading-registration a:focus-visible{outline:2px solid #b67128;outline-offset:3px}
+@media(max-width:650px){.reading-registration{scroll-margin-bottom:80px}}

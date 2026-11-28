@@ -212,6 +212,11 @@ jobs:
           assert.ok(app.includes('explanation(q,item,feedback)'));
           assert.ok(!/innerHTML|sendBeacon|XMLHttpRequest/.test(app));
           NODE
+      - name: Link featured reading pages to registration
+        run: |
+          # Add these six contextual links to the deployment artifact, not the editorial sources.
+          node tools/publish-home-reading-actions.mjs
+          node tools/publish-home-reading-actions.mjs --check
       - uses: actions/upload-pages-artifact@v3
         with:
           # Publish the recruitment portal at the custom-domain root.
