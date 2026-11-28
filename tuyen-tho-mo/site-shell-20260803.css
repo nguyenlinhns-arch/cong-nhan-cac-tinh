@@ -238,3 +238,43 @@ main .verification-page__section--soft .verification-page__eyebrow{color:var(--t
     color:inherit!important;-webkit-text-fill-color:currentColor;
   }
 }
+
+/* Approved palette A: graphite, muted moss, aged brass and ivory. */
+:root{--d-bg:#151a17;--d-mid:#1b231e;--d-panel:#222d26;--d-line:#3c4b41;--d-ink:#f2eee3;--d-sub:#b7c5b8;--d-mark:#cfad79;--d-strong:#d7b37b;--d-on:#1b211a;--d-focus:#f1cc92}
+html:root body:has([data-recruitment-entry]){background:var(--d-bg);color:var(--d-ink)}
+html:root body .site-header,html:root body .network-header{
+  background:var(--d-bg)!important;color:var(--d-ink)!important;border-color:var(--d-line)!important;
+}
+html:root .site-header :is(.brand strong,.main-nav a,.tl-desktop-paths a),html:root .network-header .network-brand{color:var(--d-ink)!important}
+html:root .site-header .brand small{color:var(--d-sub)!important}
+html:root .site-header [data-open-site-search],html:root .network-header [data-open-site-search]{
+  background:var(--d-mid)!important;color:var(--d-ink)!important;border-color:var(--d-line)!important;
+}
+html:root body .site-header .header-cta,html:root .network-header .network-apply{
+  background:transparent!important;border-color:var(--d-mark)!important;color:var(--d-strong)!important;box-shadow:none!important;
+}
+html:root body .site-header .header-cta:hover{background:var(--d-panel)!important}
+html:root main :is(.job-hero,.local-hero){background:linear-gradient(112deg,var(--d-bg),var(--d-panel))!important;color:var(--d-ink)!important}
+html:root main .job-hero .job-hero__lead{color:var(--d-sub)!important}
+html:root main .job-hero h1 em,html:root main .job-hero .eyebrow--light{color:var(--d-mark)!important}
+html:root main .job-summary{background:var(--d-panel)!important;color:var(--d-ink)!important;border-color:var(--d-line)!important}
+html:root main .job-summary :is(h2,dd){color:var(--d-ink)!important}
+html:root main .job-summary dt{color:var(--d-sub)!important}
+html:root main .job-summary dl>div{border-color:var(--d-line)!important}
+html:root main .job-summary .eyebrow{color:var(--d-mark)!important}
+html:root main .job-summary__button,html:root main .job-hero .contact-pair a[href="#dang-ky"]{background:var(--d-strong)!important;color:var(--d-on)!important;border-color:var(--d-strong)!important}
+html:root :is(.site-header,.home-v6,.job-hero) :is(a,button):focus-visible{outline:2px solid var(--d-focus)!important;outline-offset:3px!important;box-shadow:none!important}
+html:root .notice-bar:has(+ .site-header){background:var(--d-mid)!important;color:var(--d-sub)!important;border-bottom:1px solid var(--d-line)}
+
+html:root main .job-hero .contact-pair a[href="#dang-ky"] .contact-icon{color:var(--d-on)!important;background:#00000014!important}
+html:root .network-header :is(.network-brand strong,.network-brand span){color:var(--d-ink)!important}
+html:root .network-header .network-brand small{color:var(--d-sub)!important}
+html:root .network-header .network-nav a{color:var(--d-ink)!important}
+html:root .network-header .network-nav a[aria-current]{background:var(--d-panel)!important;color:var(--d-strong)!important}
+html:root .payroll-header{background:var(--d-bg)!important;border-color:var(--d-line)!important}
+html:root .payroll-header :is(.payroll-brand strong,.payroll-back){color:var(--d-ink)!important}
+html:root .payroll-header .payroll-brand small{color:var(--d-sub)!important}
+html:root main :is(.network-hero,.daily-seo-hub-hero,.daily-seo-hero,.news-hero,.payroll-hero,.verification-page__hero){
+  background:linear-gradient(112deg,var(--d-bg),var(--d-panel))!important;color:var(--d-ink)!important;
+}
+html:root main :is(.network-hero,.daily-seo-hub-hero,.daily-seo-hero,.news-hero,.payroll-hero,.verification-page__hero) :is(.network-eyebrow,.verification-page__eyebrow,.payroll-eyebrow){color:var(--d-mark)!important}

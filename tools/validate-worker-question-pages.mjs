@@ -127,7 +127,7 @@ for (const legacy of ["hai hướng đang tuyển là khai thác mỏ hầm lò 
 const home = load("index.html");
 requireText(home, "data-worker-question-hub", "trang chủ");
 requireText(home, "Xem đủ 20 câu hỏi", "trang chủ");
-requireText(home, "/home-content.css?v=3", "trang chủ");
+requireText(home, "/home-content.css?v=4", "trang chủ");
 
 const contact = load("lien-he-di-lam-mo-than-quang-ninh/index.html");
 requireText(contact, "20 câu hỏi cần biết trước khi đi làm mỏ", "trang liên hệ");

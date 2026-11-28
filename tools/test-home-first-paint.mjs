@@ -12,7 +12,7 @@ const critical = read('home-critical.css');
 const content = read('home-content.css');
 const cssLinks = [...head.matchAll(/<link\b[^>]*>/g)].map(match => match[0]);
 for (const file of ['home-critical.css', 'home-content.css']) {
-  const links = cssLinks.filter(link => link.includes(`/${file}?v=3`));
+  const links = cssLinks.filter(link => link.includes(`/${file}?v=${file === "home-content.css" ? 4 : 3}`));
   assert.equal(links.length, 1, `${file} must be declared once in the head`);
   assert.match(links[0], /rel="stylesheet"/);
   assert.doesNotMatch(links[0], /\bonload=|\bmedia=|\bas="style"/);
@@ -53,7 +53,7 @@ try {
   const file = path.join(temp, 'tuyen-tho-mo/index.html');
   const legacy = html.replace(/\s*<link\b[^>]+data-home-font-preload[^>]*>/g, '')
     .replace('/home-critical.css?v=3', '/home-critical.css?v=2')
-    .replace('<link rel="stylesheet" href="/home-content.css?v=3">', '<script data-home-content-loader>(()=>{const link=document.createElement("link");link.rel="stylesheet";link.href="/home-content.css?v=3";document.head.append(link)})()</script>\n  <noscript><link rel="stylesheet" href="/home-content.css?v=3"></noscript>');
+    .replace('<link rel="stylesheet" href="/home-content.css?v=4">', '<script data-home-content-loader>(()=>{const link=document.createElement("link");link.rel="stylesheet";link.href="/home-content.css?v=4";document.head.append(link)})()</script>\n  <noscript><link rel="stylesheet" href="/home-content.css?v=4"></noscript>');
   fs.writeFileSync(file, legacy);
   const build = () => {
     const result = spawnSync(process.execPath, ['tools/build-worker-first-home.mjs'], {cwd: temp, encoding: 'utf8'});

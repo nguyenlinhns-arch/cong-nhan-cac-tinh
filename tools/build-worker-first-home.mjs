@@ -18,10 +18,10 @@ let html = fs.readFileSync(file, "utf8");
 // order. A JavaScript-inserted stylesheet allowed the partial layout to paint.
 html = html
   .replace(/\/home-critical\.css\?v=\d+/gu, "/home-critical.css?v=3")
-  .replace(/\/home-content\.css\?v=\d+/gu, "/home-content.css?v=3")
+  .replace(/\/home-content\.css\?v=\d+/gu, "/home-content.css?v=4")
   .replace(/\s*<script\s+data-home-content-loader>[\s\S]*?<\/script>/giu, "")
   .replace(/\s*<noscript>\s*<link[^>]+home-content\.css[^>]*>\s*<\/noscript>/giu, "")
-  .replace(/\s*<link\b[^>]+href=["']\/home-content\.css\?v=3["'][^>]*>/giu, "")
+  .replace(/\s*<link\b[^>]+href=["']\/home-content\.css\?v=4["'][^>]*>/giu, "")
   .replace(/\s*<link\b[^>]+data-home-font-preload[^>]*>/giu, "");
 const fontPreloads = [400, 700, 800].flatMap((weight) =>
   ["vietnamese", "latin"].map((subset) =>
@@ -30,7 +30,7 @@ const fontPreloads = [400, 700, 800].flatMap((weight) =>
 ).join("\n");
 html = html.replace(
   /(<link\s+rel=["']stylesheet["']\s+href=["']\/home-critical\.css\?v=3["']\s*\/?>)/iu,
-  `${fontPreloads}\n  $1\n  <link rel="stylesheet" href="/home-content.css?v=3">`,
+  `${fontPreloads}\n  $1\n  <link rel="stylesheet" href="/home-content.css?v=4">`,
 );
 fs.writeFileSync(file, html);
 
@@ -43,7 +43,7 @@ const required = [
   "7,5 triệu đồng trong thời gian học",
   "20–25 triệu",
   "/home-critical.css?v=3",
-  "/home-content.css?v=3",
+  "/home-content.css?v=4",
   "home-library__card--payroll",
   "home-library__grid--four",
   'href="/bang-luong/"',
@@ -60,5 +60,5 @@ console.log(JSON.stringify({
   legacyBase64Renderer: "retained-for-audit-not-executed",
   homepage: "/index.html",
   homeCriticalCss: "/home-critical.css?v=3",
-  homeContentCss: "/home-content.css?v=3",
+  homeContentCss: "/home-content.css?v=4",
 }, null, 2));

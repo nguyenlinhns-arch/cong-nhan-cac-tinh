@@ -68,7 +68,7 @@ for (const marker of ["data-open-consent", "LCP, INP, CLS", "Mặc định Googl
 const home = read("index.html");
 const homeScript = read("portal-official.js");
 const homeStyles = read("landing-recruitment.css");
-if (!/<link rel="stylesheet" href="\/home-content\.css\?v=3">/.test(home) || home.includes("data-home-content-loader")) fail("Trang chủ: CSS bố cục phải có trong HTML trước lần vẽ đầu tiên");
+if (!/<link rel="stylesheet" href="\/home-content\.css\?v=4">/.test(home) || home.includes("data-home-content-loader")) fail("Trang chủ: CSS bố cục phải có trong HTML trước lần vẽ đầu tiên");
 if ((home.match(/data-home-font-preload/g) || []).length !== 6) fail("Trang chủ: thiếu preload các font cục bộ");
 if ((read("home-critical.css").match(/font-display:optional/g) || []).length !== 6) fail("Trang chủ: font không được hoán đổi muộn gây xô lệch bố cục");
 if (/<link\b(?=[^>]*rel=["']preload["'])(?=[^>]*tkv-tho-lo-13500-poster\.jpg)[^>]*>/i.test(home)) {

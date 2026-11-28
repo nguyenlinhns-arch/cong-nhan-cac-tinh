@@ -43,7 +43,7 @@ const home=read('index.html');
 const head=home.split('</head>')[0];
 assert(!home.includes('data-home-content-loader'));
 // A parser-discovered stylesheet also works when JavaScript is disabled.
-assert.equal((head.match(/<link rel="stylesheet" href="\/home-content\.css\?v=3">/g)||[]).length,1);
+assert.equal((head.match(/<link rel="stylesheet" href="\/home-content\.css\?v=4">/g)||[]).length,1);
 assert(home.includes('TIN NGÀNH THAN CHỌN LỌC'));
 // Pages regenerates the verification-only page; the optional v4 builder emits
 // a registration form instead. Assert each action's actual semantics, not one variant.
