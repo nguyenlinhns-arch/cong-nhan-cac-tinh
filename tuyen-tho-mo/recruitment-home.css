@@ -742,3 +742,15 @@ html:root .home-v6 .home-adviser small{display:block;margin-top:3px;color:var(--
  html:root .home-v6-career-list>a>div small{grid-area:1/2;white-space:nowrap;text-align:end}
  html:root .home-v6-career-list>a>div :is(p,b){grid-column:1/-1}
 }
+/* The adviser is already introduced next to the form; make the later source a footnote. */
+html:root .home-v6 .home-contact-answer__card{
+  display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;
+  gap:12px 24px!important;background:none!important;border:0!important;box-shadow:none!important;
+}
+html:root .home-v6 .home-contact-answer__card>img{display:none}
+html:root .home-v6 .home-contact-answer__card .home-step{display:none}
+html:root .home-v6 .home-contact-answer__card h2{font-size:clamp(1.03rem,1.65vw,1.4rem)!important;margin-block:0 6px!important}
+html:root .home-v6 .home-contact-answer__card p{font-size:.9rem;line-height:1.55!important;margin-block:0!important}
+@media(max-width:767px){
+ html:root .home-v6 .home-contact-answer__card{grid-template-columns:minmax(0,1fr)!important}
+}
