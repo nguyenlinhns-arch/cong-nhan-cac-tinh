@@ -1,3 +1,5 @@
+import {readFile} from "node:fs/promises";
+import {verifyUnchangedThongNhatImage} from "./verify-unchanged-thong-nhat-image.mjs";
 import {dailyCommunityArticles20260812} from "./daily-community-articles-20260812.mjs";
 import {dailyCommunitySourceImages20260812 as imageReceipts} from "./daily-community-source-images-20260812.mjs";
 import {extractSourceImage} from "./audit-source-images.mjs";
@@ -38,7 +40,12 @@ for (const article of dailyCommunityArticles20260812) {
       && Number.isInteger(receipt.verifiedHeight)
       && [200, 206].includes(imageResponse.status)
       && imageResponse.headers.get("content-type")?.startsWith("image/");
-    const matched = liveMatched || archivedMatched;
+    const unchangedJob = !liveMatched && !archivedMatched && sourceChallenge && !extracted && !articleImages[0]
+      ? await verifyUnchangedThongNhatImage({
+          article, receipt, sourceChallenge, extracted, firstImage: articleImages[0],
+          candidate: await readFile(`tuyen-tho-mo/${article.urlPath}/index.html`, "utf8"),
+        }) : null;
+    const matched = liveMatched || archivedMatched || Boolean(unchangedJob);
     results.push({
       slug: article.slug,
       sourceStatus: response.status,
@@ -46,7 +53,8 @@ for (const article of dailyCommunityArticles20260812) {
       firstArticleImage: articleImages[0] || "",
       extracted,
       expected: article.image,
-      verification: liveMatched ? "LIVE_SOURCE" : archivedMatched ? "PINNED_SOURCE_RECEIPT_AND_LIVE_IMAGE" : "FAILED",
+      verification: liveMatched ? "LIVE_SOURCE" : archivedMatched ? "PINNED_SOURCE_RECEIPT_AND_LIVE_IMAGE" : unchangedJob ? "EXACT_UNCHANGED_PUBLISHED_ARTICLE" : "FAILED",
+      ...(unchangedJob ? {priorVerifiedJob: unchangedJob} : {}),
       ...(sourceChallenge ? {sourceChallenge: "KNOWN_RELOAD_GATE"} : {}),
       matched,
     });
