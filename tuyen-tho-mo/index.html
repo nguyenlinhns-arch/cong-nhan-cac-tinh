@@ -122,6 +122,7 @@
 <meta name="content-origin" content="current-recruitment-policy">
   <link rel="stylesheet" href="/assets/home-video-rail/rail.css?v=19">
   <link rel="stylesheet" href="/recruitment-home.css?v=18">
+  <link rel="stylesheet" href="/recruitment-landing.css?v=1">
   <script defer src="/assets/home-video-rail/rail.js?v=13"></script>
 </head>
 <body>
@@ -134,7 +135,7 @@
       </a>
       <button class="worker-header-search" type="button" data-open-site-search data-worker-search data-context="header" aria-haspopup="dialog" aria-label="Tìm thông tin trên website"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg><span class="sr-only">Tìm thông tin</span></button>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-button><span></span><span></span><span></span><span class="sr-only">Mở menu</span></button>
-      <nav class="main-nav" id="main-nav" data-nav aria-label="Điều hướng chính"><a href="#thuc-te">Video thực tế</a><a href="#doc-truoc-khi-dang-ky">Cẩm nang</a><a href="#nghe-dang-tuyen">Nghề đang tuyển</a><a href="#tu-kiem-tra">Kiểm tra điều kiện</a></nav>
+      <nav class="main-nav" id="main-nav" data-nav aria-label="Điều hướng chính"><a href="#home-kcn-video">KCN hay làm mỏ?</a><a href="#tuyen-sinh-tai-cac-tinh">Tuyển sinh tại các tỉnh</a><a href="#don-hoc-sinh-nhap-hoc">Nhập học</a><a class="home-article-shortcut" href="#doc-truoc-khi-dang-ky" data-journey-shortcut="articles">Bài viết</a><a href="#nghe-dang-tuyen">Nghề đang tuyển</a><a href="#tu-kiem-tra">Kiểm tra điều kiện</a></nav>
       <a class="header-cta" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" data-contact="application" data-context="home-header">Đăng ký ngay</a>
     </div>
     <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
@@ -143,19 +144,20 @@
     <main id="noi-dung" class="home-funnel">
 
     <div class="home-v6">
-    <section class="home-v6-hero" data-recruitment-entry data-hero aria-labelledby="home-v6-title">
+    <section class="home-v6-hero recruitment-landing-hero" data-recruitment-entry data-hero aria-labelledby="home-v6-title">
       <div class="container home-v6-hero__grid">
         <div class="home-v6-hero__copy">
           <p class="eyebrow">Tuyển sinh nghề mỏ · Quảng Ninh</p>
           <h1 id="home-v6-title">Học nghề mỏ <span>Việc làm ngành Than</span></h1>
-          <p class="home-v6-hero__lead">Tìm hiểu nghề khai thác, xây dựng và cơ điện mỏ. Thầy Linh hướng dẫn <a href="/tuyen-tho-mo-quang-ninh/">hồ sơ tuyển sinh tại Quảng Ninh</a>.</p>
+          <p class="home-v6-hero__lead">Khai thác, xây dựng mỏ học 2 tháng. Cơ điện mỏ học 10 tháng. Làm việc tại Quảng Ninh.</p>
+          <div class="home-v6-income">
+            <small>Thu nhập sau đào tạo</small>
+            <p><strong>20–25 triệu/tháng</strong> <span>khi hoàn thành định mức lao động</span></p>
+          </div>
           <div class="home-v6-actions">
             <a class="button home-v6-button home-v6-button--primary" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" data-contact="application" data-context="home-hero">Đăng ký ngay <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-            <a class="button home-v6-button home-v6-button--secondary" href="#thuc-te" data-journey-shortcut="videos">Xem video thực tế <b aria-hidden="true">↓</b></a>
-            <a class="button home-v6-button home-v6-button--secondary home-article-shortcut" href="#doc-truoc-khi-dang-ky" data-journey-shortcut="articles">Bài viết <b aria-hidden="true">↓</b></a>
-            <button class="button button-brief home-v6-button home-v6-button--brief" type="button" data-open-worker-brief data-worker-shortcut="brief" aria-haspopup="dialog">Điều kiện và hồ sơ</button>
+            <a class="button home-v6-button home-v6-button--secondary" href="#home-kcn-video" data-journey-shortcut="compare_kcn">KCN hay làm mỏ? <b aria-hidden="true">↓</b></a>
           </div>
-          <div class="home-v6-income"><small>THU NHẬP SAU ĐÀO TẠO</small><strong>20–25 triệu/tháng <span>khi hoàn thành định mức lao động</span></strong></div>
         </div>
         <figure class="home-v6-hero__visual">
           <a class="home-hero-video-link" href="#thuc-te" data-journey-shortcut="hero_photo_video" aria-label="Xem video về thu nhập thợ mỏ">
@@ -164,6 +166,47 @@
           </a>
           <figcaption><small>ẢNH THỰC TẾ</small><strong>Chuẩn bị thiết bị trước ca làm việc</strong></figcaption>
         </figure>
+      </div>
+    </section>
+
+    <section class="home-field" id="hanh-trinh-tu-que" aria-labelledby="hanh-trinh-dia-phuong">
+      <div class="container">
+        <header class="home-field__head">
+          <h2 id="hanh-trinh-dia-phuong">Từ chọn nghề đến ngày nhập học</h2>
+          <a class="home-field__textlink" href="#thuc-te" data-journey-shortcut="videos">Video nghề mỏ <span aria-hidden="true">↓</span></a>
+        </header>
+        <div class="home-field__grid">
+          <article class="home-field__story" id="home-kcn-video">
+            <h3>KCN hay làm mỏ?</h3>
+            <div class="home-compare-video home-field__media"><button class="home-video-facade home-kcn-reel-facade" type="button" data-facebook-reel-facade data-facebook-embed="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1145886217664123%2F&amp;show_text=false&amp;width=500" aria-label="Phát video Làm mỏ hay làm khu công nghiệp của Thầy Linh" style="height:auto;aspect-ratio:9/16"><img src="/assets/video-thumbnails/1145886217664123.webp" alt="" width="480" height="818" loading="lazy" decoding="async" data-reel-thumbnail="1145886217664123" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span class="home-video-facade__play" aria-hidden="true">▶</span><span class="home-video-facade__label">Xem video</span></button></div>
+            <p>So sánh công việc, thu nhập và tiền để dành.</p>
+            <div class="home-field__links">
+              <a class="home-field__textlink" href="/chon-kcn-hay-lam-mo/">Đọc bài so sánh <span aria-hidden="true">→</span></a>
+              <a class="home-field__textlink" href="https://www.facebook.com/reel/1145886217664123" target="_blank" rel="noopener noreferrer">Facebook <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="home-field__story" id="tuyen-sinh-tai-cac-tinh">
+            <h3>Tuyển sinh tại các tỉnh</h3>
+            <a class="home-field__media" href="/tin-nganh-than/2026/08/01/duong-thuong-tuyen-quang-than-quang-hanh-tuyen-nghe-mo/" aria-label="Đọc bài tư vấn nghề mỏ tại xã Đường Thượng">
+              <img src="/assets/vinacomin-tu-van-tuyen-sinh-quang-hanh-tuyen-quang-2025.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Buổi tư vấn nghề mỏ của Than Quang Hanh tại Tuyên Quang">
+            </a>
+            <p>Than Quang Hanh tư vấn nghề mỏ tại xã Đường Thượng, Tuyên Quang.</p>
+            <div class="home-field__links">
+              <a class="home-field__textlink" href="https://www.facebook.com/reel/988978737487363" target="_blank" rel="noopener noreferrer">Video Gia Lai <span aria-hidden="true">↗</span></a>
+              <a class="home-field__textlink" href="https://www.facebook.com/reel/1015675787556708" target="_blank" rel="noopener noreferrer">Video Quảng Ngãi <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="home-field__story" id="don-hoc-sinh-nhap-hoc">
+            <h3>Đón học sinh nhập học</h3>
+            <a class="home-field__media" href="/ho-so-nhap-hoc/" aria-label="Xem hồ sơ và địa chỉ nhập học tại Quang Hanh">
+              <img src="/assets/vinacomin-hoc-sinh-nghe-mo-quang-hanh-2026.webp" width="1137" height="799" loading="lazy" decoding="async" alt="Học sinh nghề mỏ tại Quang Hanh">
+            </a>
+            <p>Nhập học tại Khu C, Quang Hanh. Nhóm từ 30 người có xe đón về trường theo kế hoạch.</p>
+            <div class="home-field__links">
+              <a class="home-field__textlink" href="/ho-so-nhap-hoc/">Hồ sơ và địa chỉ <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -247,14 +290,6 @@
             </div>
           </div>
           <div class="home-watch-foot"><a class="home-editor-link" href="/anh-video-thuc-te/">Xem kho ảnh và video <span aria-hidden="true">→</span></a><a class="home-editor-link" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" data-contact="application" data-context="home-watch">Đăng ký ngay <span aria-hidden="true">→</span></a></div>
-          <details class="home-watch-extra" id="hanh-trinh-tu-que">
-            <summary id="hanh-trinh-dia-phuong">Video ngắn: Gia Lai, Quảng Ngãi và so sánh nghề <span aria-hidden="true">+</span></summary>
-            <div class="home-watch-extra__grid">
-              <div class="home-watch-extra__item"><div class="home-compare-video" data-home-reel-host><button class="home-video-facade" type="button" aria-label="Phát Từ Ia RDeh đến vùng mỏ Quảng Ninh" data-home-reel="988978737487363"><img src="/assets/video-thumbnails/988978737487363.webp" alt="" width="320" height="569" loading="lazy" decoding="async" data-reel-thumbnail="988978737487363" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span class="home-video-facade__play" aria-hidden="true">▶</span></button></div><span><small>Gia Lai</small>Từ Ia RDeh đến vùng mỏ Quảng Ninh<a href="https://www.facebook.com/reel/988978737487363" target="_blank" rel="noopener noreferrer">Mở trên Facebook ↗</a></span></div>
-              <div class="home-watch-extra__item"><div class="home-compare-video" data-home-reel-host><button class="home-video-facade" type="button" aria-label="Phát Hành trình từ Quảng Ngãi đến vùng than" data-home-reel="1015675787556708"><img src="/assets/video-thumbnails/1015675787556708.webp" alt="" width="320" height="569" loading="lazy" decoding="async" data-reel-thumbnail="1015675787556708" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span class="home-video-facade__play" aria-hidden="true">▶</span></button></div><span><small>Quảng Ngãi</small>Hành trình từ Quảng Ngãi đến vùng than<a href="https://www.facebook.com/reel/1015675787556708" target="_blank" rel="noopener noreferrer">Mở trên Facebook ↗</a></span></div>
-              <div id="home-kcn-video"><div class="home-compare-video"><button class="home-video-facade home-kcn-reel-facade" type="button" style="height:auto;aspect-ratio:9/16" data-facebook-reel-facade data-facebook-embed="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1145886217664123%2F&amp;show_text=false&amp;width=500" aria-label="Phát video Làm mỏ hay làm khu công nghiệp của Thầy Linh"><img src="/assets/video-thumbnails/1145886217664123.webp" alt="" width="480" height="818" loading="lazy" decoding="async" data-reel-thumbnail="1145886217664123" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><span class="home-video-facade__play" aria-hidden="true">▶</span><span class="home-video-facade__label">Bấm để xem video · Làm mỏ hay KCN?</span></button></div><span><small>Thầy Linh giải đáp</small>Làm mỏ hay làm khu công nghiệp?<a href="https://www.facebook.com/reel/1145886217664123" target="_blank" rel="noopener noreferrer">Mở trên Facebook ↗</a></span></div>
-            </div>
-          </details>
           <div class="home-editor-reading" id="doc-truoc-khi-dang-ky">
             <h3>Đọc trước khi đăng ký</h3>
             <ul>
@@ -302,6 +337,8 @@
           <div><h2 id="worker-self-check-title">Tự kiểm tra điều kiện</h2></div>
           <p>Trả lời 4 câu để biết mình có phù hợp sơ bộ không. Kết luận cuối cùng dựa trên khám tuyển.</p>
           <p class="worker-check__privacy">Không cần nhập tên, số điện thoại. Câu trả lời không được lưu.</p>
+          <button class="button button-brief home-v6-button home-v6-button--brief" type="button" data-open-worker-brief data-worker-shortcut="brief" aria-haspopup="dialog">Điều kiện và hồ sơ</button>
+          <a class="home-editor-link" href="/tuyen-tho-mo-quang-ninh/">Thông tin tuyển sinh tại Quảng Ninh <span aria-hidden="true">→</span></a>
           <a class="home-editor-link" href="/kiem-tra-dieu-kien/">Đọc đầy đủ điều kiện tuyển <span aria-hidden="true">→</span></a>
         </div>
         <form class="worker-check" data-worker-check-form novalidate>
@@ -362,7 +399,7 @@
 
     
 
-    <!-- daily-seo:start --><section class="home-daily-seo" aria-labelledby="home-daily-seo-title"><div class="container"><div class="home-daily-seo__head"><div><p class="home-step">Giải đáp mới mỗi ngày</p><h2 id="home-daily-seo-title">Người lao động hỏi gì, website trả lời thẳng câu đó</h2></div><a href="/giai-dap-nghe-mo/">Xem toàn bộ →</a></div><div class="home-daily-seo__grid"><a href="/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-kiem-tra-he-thong-tiep-dia-khong/"><small>08/11/2026</small><strong>Học cơ điện mỏ có phải kiểm tra hệ thống tiếp địa không?</strong><span>Có thể. Người học cơ điện mỏ cần hiểu hệ thống tiếp địa và có thể được phân công nhận biết, đối chiếu hồ sơ hoặc phối hợp kiểm tra trong phạm vi đã học. Người mới không tự tách dây nối đất, đấu thiết bị đo, kết luận đạt hay đóng điện khi chưa được giao nhiệm vụ.</span></a><a href="/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-kiem-tra-ro-le-bao-ve-khong/"><small>07/11/2026</small><strong>Học cơ điện mỏ có phải kiểm tra rơ-le bảo vệ không?</strong><span>Có thể. Người học cơ điện mỏ cần làm quen với việc nhận biết, kiểm tra trạng thái và phối hợp thử nghiệm rơ-le bảo vệ trong phạm vi được đào tạo, hướng dẫn và phân công. Người mới không tự ý đổi thông số, vô hiệu bảo vệ hoặc thao tác trên thiết bị điện chưa được bàn giao an toàn.</span></a><a href="/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-dung-dung-cu-do-kiem-dien-khong/"><small>06/11/2026</small><strong>Học cơ điện mỏ có phải dùng dụng cụ đo kiểm điện không?</strong><span>Có. Dụng cụ đo kiểm điện và cơ khí nằm trong nhóm thiết bị của nghề cơ điện mỏ. Người học cần biết chọn đúng dụng cụ, đọc và báo kết quả trong phạm vi đã được hướng dẫn; không tự đo trên thiết bị hoặc mạch điện khi chưa được giao nhiệm vụ.</span></a></div></div></section><!-- daily-seo:end -->
+    <!-- daily-seo:start --><section class="home-daily-seo" aria-labelledby="home-daily-seo-title"><div class="container"><div class="home-daily-seo__head"><div><p class="home-step">Giải đáp mới mỗi ngày</p><h2 id="home-daily-seo-title">Người lao động hỏi gì, Thầy Linh - Tuyển Thợ Mỏ trả lời thẳng câu đó</h2></div><a href="/giai-dap-nghe-mo/">Xem toàn bộ →</a></div><div class="home-daily-seo__grid"><a href="/giai-dap-nghe-mo/hoc-co-dien-mo-dung-du-lieu-nhan-biet-thiet-bi-bat-thuong/"><small>14/11/2026</small><strong>Học cơ điện mỏ có phải dùng dữ liệu để nhận biết thiết bị bất thường không?</strong><span>Có thể. Người học cơ điện mỏ cần biết đối chiếu tín hiệu, lịch sử vận hành và tình trạng thực tế để nhận ra dấu hiệu cần chú ý, rồi báo đúng người phụ trách. Dữ liệu là căn cứ hỗ trợ, không cho phép người mới tự chẩn đoán nguyên nhân, đổi ngưỡng cảnh báo hoặc tự quyết định cho thiết bị vận hành tiếp.</span></a><a href="/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-cap-nhat-lich-su-bao-duong-thiet-bi-tren-phan-mem-khong/"><small>13/11/2026</small><strong>Học cơ điện mỏ có phải cập nhật lịch sử bảo dưỡng thiết bị trên phần mềm không?</strong><span>Có thể, tùy đơn vị và nhiệm vụ. Vinacomin ghi nhận Than Vàng Danh dùng phần mềm quản lý thiết bị cơ điện từ lúc đưa vào sử dụng, bảo dưỡng, sửa chữa đến thay thế. Người mới chỉ ghi việc đã làm theo biểu mẫu và tài khoản được cấp; không tự sửa lịch sử hay xác nhận thay người phụ trách.</span></a><a href="/giai-dap-nghe-mo/hoc-co-dien-mo-co-phai-nhan-ca-lenh-tren-phan-mem-khong/"><small>12/11/2026</small><strong>Học cơ điện mỏ có phải nhận ca lệnh trên phần mềm không?</strong><span>Có thể, nhưng không phải nơi nào cũng dùng cùng phần mềm. Vinacomin ghi nhận Than Vàng Danh giao ca lệnh trên máy tính, điện thoại và dùng nhận diện để công nhân nhận nhiệm vụ. Người mới cần đọc đúng người, ca, vị trí, phạm vi việc; nếu thiếu hoặc sai phải báo, không tự sửa lệnh hay nhận thêm việc.</span></a></div></div></section><!-- daily-seo:end -->
     <nav class="home-content-shortcuts home-journey-shortcuts" aria-label="Ba bước chính dành cho người lao động">
       <div class="container">
         <a href="#tu-kiem-tra" data-journey-shortcut="condition"><b aria-hidden="true">01</b><span><small>4 câu hỏi</small><strong>Kiểm tra điều kiện</strong></span></a>

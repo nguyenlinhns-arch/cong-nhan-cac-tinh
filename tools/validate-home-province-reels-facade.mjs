@@ -29,6 +29,10 @@ if (extras) {
   for (const marker of ['"[data-home-reel]"', 'document.createElement("iframe")', 'host.replaceChildren(frame)']) {
     if (!journeySource.includes(marker)) errors.push(`Thiếu hành vi phát Reel: ${marker}`);
   }
+} else if (home.includes('class="home-field"')) {
+  for (const id of ["988978737487363", "1015675787556708"]) {
+    if (!home.includes(`href="https://www.facebook.com/reel/${id}"`)) errors.push(`Thiếu video tỉnh: ${id}`);
+  }
 } else if (!journeySource.includes('/home-province-reels.js?v=20261107-1')) {
   errors.push("Loader trang chủ chưa bump cache cho home-province-reels.js");
 }

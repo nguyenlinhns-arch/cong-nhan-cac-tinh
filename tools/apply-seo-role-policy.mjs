@@ -81,9 +81,15 @@ function setHomeIntent(file) {
       return full;
     }
   });
+  const landing = html.includes("recruitment-landing-hero");
   html = html.replace(
     /<div class="home-v6-income">[\s\S]*?<\/div>/i,
-    `<div class="home-v6-income"><small>THU NHẬP SAU ĐÀO TẠO</small><strong>${INCOME_SHORT} <span>${INCOME_CONDITION}</span></strong></div>`
+    landing
+      ? `<div class="home-v6-income">
+            <small>Thu nhập sau đào tạo</small>
+            <p><strong>${INCOME_SHORT}</strong> <span>${INCOME_CONDITION}</span></p>
+          </div>`
+      : `<div class="home-v6-income"><small>THU NHẬP SAU ĐÀO TẠO</small><strong>${INCOME_SHORT} <span>${INCOME_CONDITION}</span></strong></div>`
   );
 
   const decisionActions = '<div class="home-v6-decision__actions">';

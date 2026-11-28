@@ -34,13 +34,17 @@ for (const item of records) {
   assert.equal(bytes.subarray(8, 12).toString(), "WEBP");
   assert.ok(bytes.length < 65000, `Thumbnail too large: ${item.id}`);
   totalBytes += bytes.length;
-  assert.ok(before.includes(reelImage(item.id)), `Missing sized, lazy poster: ${item.id}`);
-  assert.equal(before.split(`data-reel-thumbnail="${item.id}"`).length - 1, 1);
+  if (item.id === "1145886217664123") {
+    assert.ok(before.includes(reelImage(item.id)), `Missing sized, lazy poster: ${item.id}`);
+    assert.equal(before.split(`data-reel-thumbnail="${item.id}"`).length - 1, 1);
+  } else {
+    assert.ok(before.includes(`href="https://www.facebook.com/reel/${item.id}"`), `Missing direct province video: ${item.id}`);
+  }
   assert.ok(before.includes(`"thumbnailUrl":"https://thaylinhtuyenthomo.vn${item.image}"`));
 }
 assert.ok(totalBytes < 125000);
 assert.doesNotMatch(before, /<iframe\b[^>]*facebook\.com/i);
-assert.match(before, /<details class="home-watch-extra"/);
+assert.match(before, /<section class="home-field"/);
 assert.doesNotMatch(before, /class="home-origin-reels"/);
 assert.match(before, /class="tkv-video__cover" src="\/assets\/home-video-rail\/tkv-tho-lo-13500-poster.jpg" width="1672" height="941"/);
 assert.match(before, /height:auto;aspect-ratio:9\/16/);

@@ -80,7 +80,7 @@ if (/<iframe\b[^>]+youtube/i.test(home)) fail("Trang chủ: còn tạo trình ph
 const facebookReelFrames = home.match(/<iframe\b[^>]+facebook\.com\/plugins\/video\.php[^>]*>/gi) || [];
 const facebookReelFacades = home.match(/data-facebook-reel-facade|data-home-reel="/g) || [];
 if (facebookReelFrames.length) fail("Trang chủ: iframe Facebook chỉ được tạo sau khi người dùng bấm phát");
-if (facebookReelFacades.length !== 3) fail(`Trang chủ: dự kiến 3 lớp xem trước Facebook Reel, thực tế ${facebookReelFacades.length}`);
+if (facebookReelFacades.length !== 1) fail(`Trang chủ: dự kiến 1 lớp xem trước Facebook Reel, thực tế ${facebookReelFacades.length}`);
 if (/rel=["']preconnect["'][^>]+youtube-nocookie\.com/i.test(home)) fail("Trang chủ: còn mở sớm kết nối trình phát YouTube");
 for (const marker of ["mountYouTubePlayer", "mountFacebookReel", "renderVideoFacade", "activateFacade", "host.replaceChildren(frame)"]) {
   if (!homeScript.includes(marker)) fail(`Trang chủ: thiếu hành vi video ${marker}`);

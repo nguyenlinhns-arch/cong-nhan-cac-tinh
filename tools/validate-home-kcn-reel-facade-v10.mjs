@@ -2,7 +2,7 @@ import fs from "node:fs";
 
 const html = fs.readFileSync("tuyen-tho-mo/index.html", "utf8");
 const portal = fs.readFileSync("tuyen-tho-mo/portal-official.js", "utf8");
-const device = html.match(/<div class="(?:home-v6-reel__device|home-compare-video)">[\s\S]*?<\/div>/i)?.[0] || "";
+const device = html.match(/<div class="(?:home-v6-reel__device|home-compare-video(?: home-field__media)?)">[\s\S]*?<\/div>/i)?.[0] || "";
 const errors = [];
 
 if (!device) errors.push("Thiếu khối video Làm mỏ hay KCN trên trang chủ");

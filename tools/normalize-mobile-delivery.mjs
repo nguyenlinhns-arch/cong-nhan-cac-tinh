@@ -88,7 +88,9 @@ function normalizeHomepageSeo(html) {
     html = html.replace(/<h1\b[^>]*>[\s\S]*?<\/h1>/i, preferredH1);
   }
 
-  html = html.replace(/<p class=["']home-v6-hero__lead["']>[\s\S]*?<\/p>/i, '<p class="home-v6-hero__lead">Chọn nghề khai thác, xây dựng hoặc cơ điện mỏ. Thầy Linh hướng dẫn từ lúc tìm hiểu đến khi chuẩn bị <a href="/tuyen-tho-mo-quang-ninh/">hồ sơ tuyển sinh tại Quảng Ninh</a>.</p>');
+  if (!html.includes("recruitment-landing-hero")) {
+    html = html.replace(/<p class=["']home-v6-hero__lead["']>[\s\S]*?<\/p>/i, '<p class="home-v6-hero__lead">Chọn nghề khai thác, xây dựng hoặc cơ điện mỏ. Thầy Linh hướng dẫn từ lúc tìm hiểu đến khi chuẩn bị <a href="/tuyen-tho-mo-quang-ninh/">hồ sơ tuyển sinh tại Quảng Ninh</a>.</p>');
+  }
 
   html = html.replace(/<script\s+type=["']application\/ld\+json["']>([\s\S]*?)<\/script>/gi, (full, body) => {
     try {

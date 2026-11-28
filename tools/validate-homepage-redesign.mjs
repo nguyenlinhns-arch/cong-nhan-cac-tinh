@@ -40,19 +40,28 @@ for (const marker of [
 requireText(home, '<a class="header-cta" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" data-contact="application" data-context="home-header">Đăng ký ngay</a>', "Nút đăng ký thanh đầu trang");
 
 const heroActions = home.match(/<div class="home-v6-actions">([\s\S]*?)<\/div>/)?.[1] || "";
-for (const marker of ["home-v6-button--primary", "home-v6-button--secondary", "home-v6-button--brief"]) {
+for (const marker of ["home-v6-button--primary", "home-v6-button--secondary", 'href="#home-kcn-video"']) {
   if (!heroActions.includes(marker)) errors.push(`Cụm nút đầu trang: thiếu ${marker}`);
 }
 
 if (!heroActions.includes('href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky"')) errors.push("Nút đăng ký đầu trang phải dẫn đến form thật");
 if (!(home.indexOf('data-recruitment-entry') < home.indexOf('id="tkv-video-title"'))) errors.push("Trang chủ phải mở đầu bằng tuyển dụng thay vì video");
-const order = ["thuc-te", "tkv-video-title", "home-kcn-video", "doc-truoc-khi-dang-ky", "nghe-dang-tuyen", "tu-kiem-tra", "thong-tin", "tu-van", "kho-noi-dung"];
+const order = ["hanh-trinh-tu-que", "home-kcn-video", "tuyen-sinh-tai-cac-tinh", "don-hoc-sinh-nhap-hoc", "thuc-te", "tkv-video-title", "doc-truoc-khi-dang-ky", "nghe-dang-tuyen", "tu-kiem-tra", "thong-tin", "tu-van", "kho-noi-dung"];
 let previous = -1;
 for (const id of order) {
   const current = home.indexOf(`id="${id}"`);
   if (current < 0 || current <= previous) errors.push(`Trang chủ mới: sai thứ tự tại ${id}`);
   previous = current;
 }
+
+const field = home.match(/<section class="home-field"[\s\S]*?<\/section>/)?.[0] || "";
+for (const marker of [
+  'href="/chon-kcn-hay-lam-mo/"', 'href="/ho-so-nhap-hoc/"',
+  'href="https://www.facebook.com/reel/988978737487363"',
+  'href="https://www.facebook.com/reel/1015675787556708"',
+]) requireText(field, marker, "Ba chủ đề nổi bật");
+if (/<(?:details|iframe)\b/i.test(field)) errors.push("Ba chủ đề phải hiện sẵn và không tải iframe trước khi bấm");
+if ((home.match(/id="hanh-trinh-tu-que"/g) || []).length !== 1) errors.push("Chỉ có một mục hành trình tuyển sinh");
 
 const worksheet = home.match(/<form class="worker-check"[\s\S]*?<\/form>/)?.[0] || "";
 if (!/type="button" data-worker-check-trigger/.test(worksheet) || /type="submit"/.test(worksheet) || !worksheet.includes("<noscript>")) {
