@@ -2,42 +2,46 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
 const html=fs.readFileSync('tuyen-tho-mo/index.html','utf8');
-const block=html.match(/<section class="tkv-video"[\s\S]+?<\/section>/)[0];
-const ids=["bWUDKQ1r6xA","9DjYfc6Q1m0","WkSt6eOvlkA","h4zuijHumME","l0MFR1SNey8","XNMQwM_5fyI","Y5skQm8A1ho","0kWCKhpw5B8","7i-hlu2Ol7Y","cpeiTxtJKu4"], hero='6MJLc5mBhsA', playlist='PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG';
-assert.deepEqual([...block.matchAll(/data-tkv-pick="([^"]+)"/g)].map(x=>x[1]),[hero,...ids]);
+const block=html.match(/<section class="home-proof home-proof--early"[\s\S]+?<\/section>/)[0];
+const ids=["bWUDKQ1r6xA","9DjYfc6Q1m0","WkSt6eOvlkA","h4zuijHumME","l0MFR1SNey8","XNMQwM_5fyI","Y5skQm8A1ho","0kWCKhpw5B8","7i-hlu2Ol7Y","cpeiTxtJKu4"], hero='ts41cqu7r9c', playlist='PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG';
+assert.deepEqual([...block.matchAll(/data-tkv-pick="([^"]+)"/g)].map(x=>x[1]),[hero,hero,"xW92UBKmWok",...ids,"6MJLc5mBhsA"]);
 assert.equal((html.match(/<h1\b/g)||[]).length,1);
 assert.ok(block.indexOf('id="tkv-video-title"')<block.indexOf('data-tkv-stage'));
 assert.doesNotMatch(block,/tkv-video__eyebrow|THU NHẬP THỰC TẾ NĂM 2025/);
 assert.doesNotMatch(block,/tkv-video__(?:desktop|compact)/);
-assert.match(block,/class="tkv-video__cover" src="\/assets\/home-video-rail\/tkv-tho-lo-13500-poster\.jpg"/);
+assert.match(block,/class="tkv-video__cover" src="\/assets\/video-thumbnails\/home-featured-16x9\.jpg"/);
 assert.doesNotMatch(block,/tkv-video__next|home-video-next/);
-assert.match(block,/<h2 id="tkv-video-title">Chuyện nghề từ người trong cuộc<\/h2>/);
-assert.ok(html.indexOf('id="nghe-dang-tuyen"')<html.indexOf('id="tkv-video-title"'));
+assert.match(block,/<h2 id="tkv-video-title">Xem công việc và cuộc sống của thợ mỏ<\/h2>/);
+assert.ok(html.indexOf('id="nghe-dang-tuyen"')>html.indexOf('id="tkv-video-title"'));
 assert.match(block,/aria-controls="tkv-rail" data-tkv-advance hidden/);
 assert.doesNotMatch(block,/home-video-consult|tel:|zalo\.me|khi hoàn thành định mức/i);
-assert.ok(fs.statSync("tuyen-tho-mo/assets/home-video-rail/tkv-tho-lo-13500-poster.jpg").size <= 320_000, "homepage poster exceeds performance limit");
+assert.ok(fs.statSync("tuyen-tho-mo/assets/video-thumbnails/home-featured-16x9.jpg").size <= 60_000, "homepage poster exceeds performance limit");
 assert.ok(!block.includes('<iframe')&&!block.includes('tkv-video__note'));
 assert.ok(block.includes('list='+playlist));
 assert.doesNotMatch(block,/data-tkv-(?:live|controls|prev|next)\b|<small>\d{2} \/ \d+:\d{2}<\/small>/);
 assert.doesNotMatch(block,/tkv-video__meta|tkv-video__badge|tkv-video__playlist|<h3 id="tkv-rail-title"/);
-assert.match(block,/data-tkv-rail tabindex="0" role="group" aria-label="10 video trong danh sách phát TKV"/);
+assert.match(block,/data-tkv-rail tabindex="0" role="group" aria-label="13 video về nghề mỏ"/);
 assert.match(block,/data-tkv-actions[^>]+hidden/);
 ids.forEach((id,i)=>assert.ok(block.includes('v='+id+'&amp;list='+playlist+'&amp;index='+(i+1))));
 const card=(key,i)=>({dataset:{tkvPick:key},offsetLeft:201*i,href:'https://www.youtube.com/watch?v='+key,attrs:new Map(),querySelector:()=>({textContent:'  Video '+key+'  '}),setAttribute(k,v){this.attrs.set(k,v)},removeAttribute(k){this.attrs.delete(k)}});
 const cards=ids.map(card),first=card(hero,-1);first.dataset.tkvTitle='Video đầu';
 const listeners={},doc={activeElement:first,createElement:n=>({tag:n})};
 const stage={children:[first],scrolls:0,contains(x){return this.children.includes(x)},replaceChildren(...args){this.children=args},focus(){doc.activeElement=this},scrollIntoView(){this.scrolls++}};
-const rail={querySelectorAll:()=>cards,scrollLeft:0,scrollWidth:2010,clientWidth:1005,scrollTo({left}){this.scrollLeft=left}};
-const status={},source={},notice={hidden:true};const timers=new Map();let seq=0;const players=[];const button=k=>({addEventListener(_,fn){listeners[k]=fn}});
-const fields={'[data-tkv-stage]':stage,'[data-tkv-rail]':rail,'[data-tkv-status]':status,'[data-tkv-source]':source};
+const rail={querySelectorAll:()=>cards,scrollLeft:0,scrollWidth:2010,clientWidth:1005,addEventListener(){},scrollTo({left}){this.scrollLeft=Math.max(0,Math.min(1005,left))}};
+const status={},source={},currentTitle={},notice={hidden:true};const timers=new Map();let seq=0;const players=[];const button=k=>({addEventListener(_,fn){listeners[k]=fn}});
+const fields={'[data-tkv-stage]':stage,'[data-tkv-rail]':rail,'[data-tkv-status]':status,'[data-tkv-source]':source,'[data-tkv-current-title]':currentTitle};
 const actions={hidden:true};fields['[data-tkv-actions]']=actions;
 const retry=Object.assign(button('retry'),{hidden:true});fields['[data-tkv-notice]']=notice;fields['[data-tkv-retry]']=retry;
 const advance=Object.assign(button('advance'),{hidden:true});fields['[data-tkv-advance]']=advance;
+const back=Object.assign(button('back'),{hidden:true});fields['[data-tkv-back]']=back;
 const root={contains:link=>link===first||cards.includes(link),querySelector:s=>fields[s],addEventListener(_,fn){listeners.pick=fn}};
 doc.querySelector=()=>root;
-vm.runInNewContext(fs.readFileSync('tuyen-tho-mo/assets/home-video-rail/rail.js','utf8'),{URL,document:doc,window:{location:{origin:'https://example.test'}, matchMedia:()=>({matches:true}),setTimeout(fn){timers.set(++seq,fn);return seq}, clearTimeout(id){timers.delete(id)},YT:{PlayerState:{PLAYING:1,BUFFERING:3},Player:class{constructor(frame,opts){Object.assign(this,{frame,opts});players.push(this)} destroy(){this.destroyed=true}}}}});
+vm.runInNewContext(fs.readFileSync('tuyen-tho-mo/assets/home-video-rail/rail.js','utf8'),{URL,document:doc,window:{location:{origin:'https://example.test'}, matchMedia:q=>({matches:q.includes('reduced-motion')}),addEventListener(){},setTimeout(fn){timers.set(++seq,fn);return seq}, clearTimeout(id){timers.delete(id)},YT:{PlayerState:{PLAYING:1,BUFFERING:3},Player:class{constructor(frame,opts){Object.assign(this,{frame,opts});players.push(this)} destroy(){this.destroyed=true}}}}});
 assert.equal(advance.hidden,false);
-for (const left of [201,402,603,804,1005,0]) {listeners.advance();assert.equal(rail.scrollLeft,left);}
+assert.equal(back.hidden,false);
+assert.equal(back.disabled,true);
+for (const left of [201,402,603,804,1005,1005]) {listeners.advance();assert.equal(rail.scrollLeft,left);}
+listeners.back();assert.equal(rail.scrollLeft,804);
 function click(link,extra={}){let prevented=false;listeners.pick({button:0,detail:1,target:{closest:()=>link},preventDefault(){prevented=true},...extra});return prevented}
 function verify(id, autoplay='1'){
  assert.equal(stage.children.length,1);
@@ -57,6 +61,7 @@ for(const [i,link] of cards.entries()){
  assert.equal(cards.filter(x=>x.attrs.has('aria-current')).length,1);assert.equal(link.attrs.get('aria-current'),'true');
  assert.equal(doc.activeElement,link);assert.equal(stage.scrolls,i);
  assert.ok(status.textContent.includes(ids[i]));
+ assert.ok(currentTitle.textContent.includes(ids[i]));
 }
 await Promise.resolve();
 assert.equal(players.length,1);
@@ -98,13 +103,13 @@ players[2].opts.events.onError();
 assert.equal(retry.hidden,false);
 assert.match(notice.textContent,/Không phát được/);
 console.log('PASS: blocked/slow/error feedback, retry exact video with native Play, playback state clears feedback');
-console.log('PASS: official playlist order, one player, all 11 selections, stable heading and focus, desktop-independent fallback links');
+console.log('PASS: official playlist order, one player, all official playlist selections, stable heading and focus, desktop-independent fallback links');
 
 timers.clear();
 players.length=0;
 const scripts=[];
 const restoreCallback=()=>{};
-const apiWindow={location:{origin:'https://example.test'},matchMedia:()=>({matches:false}),
+const apiWindow={location:{origin:'https://example.test'},matchMedia:()=>({matches:false}),addEventListener(){},
   setTimeout(fn){timers.set(++seq,fn);return seq},clearTimeout(id){timers.delete(id)},
   onYouTubeIframeAPIReady:restoreCallback};
 doc.createElement=tag=>tag==='script'?{tag,handlers:{},addEventListener(k,fn){this.handlers[k]=fn},remove(){this.removed=true}}:{tag};

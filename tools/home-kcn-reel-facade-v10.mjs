@@ -7,8 +7,8 @@ let html = fs.readFileSync(file, "utf8");
 const before = html;
 const embed = "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1145886217664123%2F&show_text=false&width=500";
 
-const devicePattern = /(<div class="home-v6-reel__device">)\s*<iframe\b[^>]*src="https:\/\/www\.facebook\.com\/plugins\/video\.php\?href=https%3A%2F%2Fwww\.facebook\.com%2Freel%2F1145886217664123%2F&amp;show_text=false&amp;width=500"[^>]*><\/iframe>\s*(<\/div>)/i;
-const alreadyFacade = /<div class="home-v6-reel__device">[\s\S]*?data-facebook-reel-facade/i.test(html);
+const devicePattern = /(<div class="(?:home-v6-reel__device|home-compare-video)">)\s*<iframe\b[^>]*src="https:\/\/www\.facebook\.com\/plugins\/video\.php\?href=https%3A%2F%2Fwww\.facebook\.com%2Freel%2F1145886217664123%2F&amp;show_text=false&amp;width=500"[^>]*><\/iframe>\s*(<\/div>)/i;
+const alreadyFacade = /<div class="(?:home-v6-reel__device|home-compare-video)">[\s\S]*?data-facebook-reel-facade/i.test(html);
 
 if (!alreadyFacade) {
   if (!devicePattern.test(html)) throw new Error("KCN reel v10: không tìm thấy iframe Facebook gốc trên trang chủ");
@@ -51,7 +51,7 @@ html = html.replace(/(<script\b[^>]*data-home-reel-schema[^>]*>)([\s\S]*?)(<\/sc
     return start + JSON.stringify(schema) + end;
   });
 
-const device = html.match(/<div class="home-v6-reel__device">[\s\S]*?<\/div>/i)?.[0] || "";
+const device = html.match(/<div class="(?:home-v6-reel__device|home-compare-video)">[\s\S]*?<\/div>/i)?.[0] || "";
 if (!device.includes("data-facebook-reel-facade")) throw new Error("KCN reel v10: chưa tạo được facade click-to-play");
 if (/<iframe\b/i.test(device)) throw new Error("KCN reel v10: iframe Facebook vẫn tải ngay ở HTML ban đầu");
 if (!device.includes("1145886217664123")) throw new Error("KCN reel v10: facade không trỏ đúng Reel Làm mỏ hay KCN");

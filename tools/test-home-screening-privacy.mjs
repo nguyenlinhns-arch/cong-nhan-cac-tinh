@@ -26,7 +26,7 @@ for(const blocked of [false,true]){
  h.submit();assert.equal(h.result.dataset.state,'pass');assert.match(h.result.innerHTML,/Tiếp tục đăng ký/);assert.match(h.button.href,/#dang-ky/);assert.equal(h.result.scroll.behavior,'auto');
  h.values.health_screen='review';h.submit();assert.equal(h.result.dataset.state,'review');assert.equal(h.button.href,'https://zalo.me/0963048585');assert.match(h.result.innerHTML,/chưa phải kết luận cuối cùng/);
  h.values.health_screen='yes';h.submit();assert.equal(h.result.dataset.state,'pass');
- delete h.values.weight_range;h.submit();assert.equal(h.button.href,'#tu-kiem-tra');
+ delete h.values.weight_range;h.submit();assert.match(h.button.href,/mobile_ready#dang-ky/);
  assert(!h.window.dataLayer.some(e=>e.result||e.eligibility||e.condition_state||e.event==='condition_pass'||['condition_pass','condition_review'].includes(e.stage)));
  if(!blocked){assert.equal(h.session.get('thaylinh_home_condition_state'),undefined);const state=JSON.parse(h.local.get('thaylinh_worker_journey_v3'));assert(!('condition_pass' in state));assert.equal(state.stage,'view');assert.equal(state.score,0);}
  // A legacy event cannot recreate eligibility state; actual submission tracking remains.
@@ -40,6 +40,7 @@ for(const content of ['pass','condition_pass','condition_review']){
 }
 assert(read('v4-conversion.js').includes('Gửi thông tin để Thầy Linh tư vấn'));
 const home=read('index.html');
+assert.match(home, /type="button" data-worker-check-trigger/);
 const head=home.split('</head>')[0];
 assert(!home.includes('data-home-content-loader'));
 // A parser-discovered stylesheet also works when JavaScript is disabled.

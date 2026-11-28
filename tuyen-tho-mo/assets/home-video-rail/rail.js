@@ -12,15 +12,33 @@
   const cards = Array.from(rail.querySelectorAll('[data-tkv-pick]'));
 
   const advance = root.querySelector('[data-tkv-advance]');
+  const back = root.querySelector('[data-tkv-back]');
+  const currentTitle = root.querySelector('[data-tkv-current-title]');
+  const hostLink = root.querySelector('[data-tkv-host-link]');
+  const stack = window.matchMedia('(min-width: 841px)');
+  function syncQueue() {
+    if (!back || !advance) return;
+    const position = stack.matches ? rail.scrollTop : rail.scrollLeft;
+    const max = stack.matches ? rail.scrollHeight - rail.clientHeight : rail.scrollWidth - rail.clientWidth;
+    back.disabled = position <= 2;
+    advance.disabled = position >= max - 2;
+  }
   if (advance && cards.length > 1) {
     advance.hidden = false;
-    advance.addEventListener('click', () => {
-      const max = Math.max(0, rail.scrollWidth - rail.clientWidth);
-      const from = rail.scrollLeft;
-      const stride = cards[1].offsetLeft - cards[0].offsetLeft;
-      rail.scrollTo({left: from >= max - 3 ? 0 : Math.min(max, from + stride),
-        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
-    });
+    if (back) back.hidden = false;
+    function step(direction) {
+      const vertical = stack.matches;
+      const stride = vertical ? cards[1].offsetTop - cards[0].offsetTop : cards[1].offsetLeft - cards[0].offsetLeft;
+      const from = vertical ? rail.scrollTop : rail.scrollLeft;
+      const axis = vertical ? 'top' : 'left';
+      rail.scrollTo({[axis]: from + stride * direction, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+    }
+    advance.addEventListener('click', () => step(1));
+    back?.addEventListener('click', () => step(-1));
+    rail.addEventListener('scroll', syncQueue, {passive: true});
+    window.addEventListener('resize', syncQueue);
+    document.fonts?.ready.then(syncQueue);
+    syncQueue();
   }
   let current, generation = 0, timeout, player, apiPromise;
   function youtubeAPI() {
@@ -139,11 +157,13 @@
         }
       }});
     }).catch(slow);
-    cards.forEach(card => card === link ? card.setAttribute('aria-current', 'true') : card.removeAttribute('aria-current'));
-    status.textContent = title + ' · YouTube TKV';
+    cards.forEach(card => card.dataset.tkvPick === id ? card.setAttribute('aria-current', 'true') : card.removeAttribute('aria-current'));
+    status.textContent = 'Đã chọn: ' + title;
+    if (currentTitle) currentTitle.textContent = title;
     source.href = link.href;
+    if (hostLink) { hostLink.href = link.href; hostLink.hidden = false; }
     if (movedFocus) stage.focus({preventScroll: true});
-    if (!keyboard && window.matchMedia('(max-width: 640px)').matches) {
+    if (!keyboard && !stack.matches) {
       stage.scrollIntoView({block: 'start', behavior: 'instant'});
     }
   }

@@ -10,60 +10,6 @@
   const ZALO_URL = "https://zalo.me/0963048585";
   const FALLBACK_APPLICATION_URL = "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=website&utm_medium=internal&utm_campaign=home_mobile_journey_2026&utm_content=checker_next#dang-ky";
 
-  if (!document.querySelector("script[data-home-province-reels-loader]")) {
-    const provinceReels = document.createElement("script");
-    provinceReels.src = "/home-province-reels.js?v=20261107-1";
-    provinceReels.defer = true;
-    provinceReels.dataset.homeProvinceReelsLoader = "";
-    document.head.append(provinceReels);
-  }
-
-  function useRealVideoThumbnails() {
-    const featuredFacade = document.querySelector("[data-featured-video-facade]");
-    const featuredImage = featuredFacade?.querySelector("img");
-    const featuredId = featuredFacade?.dataset.videoId;
-    if (featuredImage && featuredId) {
-      featuredImage.src = `/assets/video-thumbnails/youtube-${featuredId}.jpg`;
-      featuredImage.alt = "Ảnh đại diện video Hành trình lập nghiệp cùng nghề mỏ";
-      featuredImage.width = 480;
-      featuredImage.height = 360;
-      featuredImage.removeAttribute("referrerpolicy");
-    }
-
-    const story = document.querySelector(".home-proof__story");
-    if (!story || story.dataset.videoThumbnail === "youtube-dien-bien") return;
-    const videoId = "xW92UBKmWok";
-    const videoTitle = "Mùa A Vàng – Điện Biên, hành trình đổi đời tại vùng mỏ Quảng Ninh";
-    const article = document.createElement("article");
-    article.className = story.className;
-    article.dataset.videoThumbnail = "youtube-dien-bien";
-    article.innerHTML = `
-      <div class="home-proof__story-frame">
-        <button class="home-video-facade" type="button" data-home-story-video aria-label="Phát video ${videoTitle}">
-          <img src="/assets/video-thumbnails/youtube-${videoId}.jpg" alt="Ảnh đại diện video Mùa A Vàng từ Điện Biên đến vùng mỏ Quảng Ninh" loading="lazy" decoding="async" width="480" height="360">
-          <span class="home-video-facade__play" aria-hidden="true">▶</span>
-          <span class="home-video-facade__label">Bấm để xem video</span>
-        </button>
-      </div>
-      <span><small>CÂU CHUYỆN NGƯỜI THỢ</small><strong>Từ Điện Biên đến vùng mỏ Quảng Ninh</strong><a href="/viec-lam-nganh-than/dien-bien/"><b>Xem câu chuyện Mùa A Vàng →</b></a></span>`;
-    story.replaceWith(article);
-
-    article.querySelector("[data-home-story-video]")?.addEventListener("click", (event) => {
-      const host = event.currentTarget.parentElement;
-      const frame = document.createElement("iframe");
-      frame.src = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&autoplay=1`;
-      frame.title = videoTitle;
-      frame.loading = "eager";
-      frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-      frame.setAttribute("allowfullscreen", "");
-      host.replaceChildren(frame);
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: "video_play", video_id: videoId, context: "home_worker_story", page_path: location.pathname });
-    });
-  }
-
-  useRealVideoThumbnails();
-
   const track = (event, payload = {}) => {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event, page_path: location.pathname, ...payload });
@@ -131,7 +77,7 @@
     if (state === "pass") {
       configureButton(button, {
         href: applicationUrl("checker_next"),
-        label: "Đăng ký",
+        label: "Đăng ký ngay",
         icon: "✓",
         action: "application",
         contact: "application",
@@ -152,10 +98,11 @@
     }
 
     configureButton(button, {
-      href: "#tu-kiem-tra",
-      label: "Kiểm tra",
-      icon: "✓",
-      action: "condition_check",
+      href: applicationUrl("mobile_ready"),
+      label: "Đăng ký ngay",
+      icon: "↗",
+      action: "application",
+      contact: "application",
     });
     return true;
   }
@@ -189,6 +136,48 @@
       });
     }
   });
+
+  document.querySelectorAll("[data-home-reel]").forEach(button => {
+    button.addEventListener("click", () => {
+      const id = button.dataset.homeReel;
+      const host = button.closest("[data-home-reel-host]");
+      if (!host || !/^\d{10,20}$/.test(id)) return;
+      const url = new URL("https://www.facebook.com/plugins/video.php");
+      url.search = new URLSearchParams({
+        href: "https://www.facebook.com/reel/" + id,
+        show_text: "false",
+        width: "500",
+      });
+      const frame = document.createElement("iframe");
+      frame.src = url.href;
+      frame.title = button.getAttribute("aria-label").replace(/^Phát /, "");
+      frame.allow = "autoplay; encrypted-media; picture-in-picture; web-share";
+      frame.referrerPolicy = "strict-origin-when-cross-origin";
+      frame.allowFullscreen = true;
+      host.replaceChildren(frame);
+      frame.focus({preventScroll:true});
+      track("home_province_reel_play", {video_id: id});
+    });
+  });
+
+  // The check is local-only, even if the eligibility script fails to load.
+  const checkTrigger = document.querySelector("[data-worker-check-trigger]");
+  checkTrigger?.addEventListener("click", () => {
+    checkTrigger.form?.dispatchEvent(new Event("submit", {bubbles:true, cancelable:true}));
+  });
+
+  function openLinkedVideo() {
+    if (location.hash === "#home-kcn-video") {
+      const section = document.getElementById("home-kcn-video");
+      const details = section?.closest("details");
+      if (details) {
+        details.open = true;
+        requestAnimationFrame(() => section.scrollIntoView({ block: "start" }));
+      }
+    }
+  }
+  openLinkedVideo();
+  window.addEventListener("hashchange", openLinkedVideo);
 
   if ("IntersectionObserver" in window) {
     const viewed = new Set();

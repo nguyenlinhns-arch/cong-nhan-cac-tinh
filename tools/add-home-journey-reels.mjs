@@ -44,7 +44,9 @@ const section = `
 const sectionMarkup = section.trim();
 
 const sectionPattern = /\n\s*<section class="home-origin-reels"[\s\S]*?<\/section>\n/i;
-if (sectionPattern.test(html)) {
+if (html.includes('class="home-watch-extra"')) {
+  html = html.replace(sectionPattern, "\n");
+} else if (sectionPattern.test(html)) {
   html = html.replace(sectionPattern, `\n    ${sectionMarkup}\n`);
 } else {
   const marker = '<section class="home-journey"';

@@ -5,13 +5,14 @@ import { reelImage, reelThumbnail } from "./video-thumbnail-assets.mjs";
 
 const file = "tuyen-tho-mo/index.html";
 const before = fs.readFileSync(file, "utf8");
-assert.ok(before.includes("/home-worker-journey.js?v=20261128-3"), "Invalidate the parent loader cache too");
+assert.ok(before.includes("/home-worker-journey.js?v=20261128-4"), "Invalidate the parent loader cache too");
 // Preserve the exact YouTube posters and avoid requesting an outside image before Play.
 const posterOwner = fs.readFileSync('tuyen-tho-mo/home-worker-journey.js', 'utf8');
 assert.doesNotMatch(posterOwner, /i\.ytimg\.com/);
-assert.equal((posterOwner.match(/\/assets\/video-thumbnails\/youtube-/g) || []).length, 2);
+assert.doesNotMatch(before, /<img[^>]+i\.ytimg\.com/);
 const { createHash } = await import('node:crypto');
 const captured = {
+  '6MJLc5mBhsA': '0744b25624a78e072bdad2fec53f9cb9c1503c3f0065537f7c06e92e1784b6b0',
   ts41cqu7r9c: '4889fcffd33d737cabf7127b9f02cdb58d724f9fb939aae866f2155254fe46a7',
   xW92UBKmWok: 'cf17e228e386478f968c8e029fb7ee5535b954152e996b71f2ac8233f8ce314c',
 };
@@ -20,6 +21,7 @@ for (const [id, sha] of Object.entries(captured)) {
   const bytes = fs.readFileSync(`tuyen-tho-mo/assets/video-thumbnails/youtube-${id}.jpg`);
   assert.equal(createHash('sha256').update(bytes).digest('hex'), sha);
   assert(bytes.length < 16000);
+  assert(before.includes(`src="/assets/video-thumbnails/youtube-${id}.jpg"`), "Local poster is available before JavaScript runs");
 }
 const records = JSON.parse(fs.readFileSync("content/video-thumbnails.json", "utf8"));
 assert.equal(records.length, 3);
@@ -39,8 +41,9 @@ for (const item of records) {
 }
 assert.ok(totalBytes < 125000);
 assert.doesNotMatch(before, /<iframe\b[^>]*facebook\.com/i);
-assert.match(before, /class="home-origin-reel__visual"/);
-assert.match(before, /\.home-origin-reel__visual span\{position:relative;z-index:1/);
+assert.match(before, /<details class="home-watch-extra"/);
+assert.doesNotMatch(before, /class="home-origin-reels"/);
+assert.match(before, /class="tkv-video__cover" src="\/assets\/video-thumbnails\/home-featured-16x9.jpg" width="480" height="270"/);
 assert.match(before, /height:auto;aspect-ratio:9\/16/);
 assert.throws(() => reelThumbnail("unverified"), /Missing verified/);
 for (const script of ["home-kcn-reel-facade-v10.mjs", "add-home-journey-reels.mjs"]) {

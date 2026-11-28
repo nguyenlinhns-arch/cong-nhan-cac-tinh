@@ -17,7 +17,19 @@ for (const marker of [
 if (reelsSource.includes('<iframe title="${reel.title}"')) {
   errors.push("Hai Reel tỉnh vẫn được dựng iframe ngay trong HTML ban đầu");
 }
-if (!journeySource.includes('/home-province-reels.js?v=20261107-1')) {
+const home = fs.readFileSync("tuyen-tho-mo/index.html", "utf8");
+const extras = home.match(/<details class="home-watch-extra"[\s\S]*?<\/details>/)?.[0];
+if (extras) {
+  for (const id of ["988978737487363", "1015675787556708"]) {
+    for (const marker of [`data-home-reel="${id}"`, `href="https://www.facebook.com/reel/${id}"`]) {
+      if (!extras.includes(marker)) errors.push(`Thiếu lựa chọn hoặc liên kết dự phòng: ${marker}`);
+    }
+  }
+  if (/<iframe\b/i.test(extras)) errors.push("Không được tải Reel trước khi bấm phát");
+  for (const marker of ['"[data-home-reel]"', 'document.createElement("iframe")', 'host.replaceChildren(frame)']) {
+    if (!journeySource.includes(marker)) errors.push(`Thiếu hành vi phát Reel: ${marker}`);
+  }
+} else if (!journeySource.includes('/home-province-reels.js?v=20261107-1')) {
   errors.push("Loader trang chủ chưa bump cache cho home-province-reels.js");
 }
 for (const marker of [".home-province-reel__facade", ".home-province-reel__play", ".home-province-reel__watch"]) {

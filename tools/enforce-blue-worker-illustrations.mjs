@@ -98,8 +98,6 @@ const home = fs.readFileSync(path.join(SITE, "index.html"), "utf8");
 for (const required of [
   "/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp",
   "/assets/vinacomin-tho-lo-ha-lam-giao-ca.webp",
-  "/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp",
-  "/assets/vinacomin-tho-lo-than-thong-nhat-ngoai-khai-truong.webp",
   "/assets/vinacomin-hoc-vien-quang-hanh-ao-xanh-doi-mu.webp",
   "/assets/vinacomin-tho-lo-lo-van-ky-mu-bao-ho.webp",
   "/assets/vinacomin-tho-lo-guong-sang-mu-bao-ho.webp",

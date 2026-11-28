@@ -18,8 +18,6 @@ for (const marker of [
   'class="button button-brief home-v6-button home-v6-button--brief"',
   '/assets/vinacomin-tho-lo-ha-lam-giao-ca.webp',
   'Nhóm thợ lò Than Hà Lầm mặc bảo hộ xanh, đội mũ',
-  '/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp',
-  '/assets/vinacomin-tho-lo-than-thong-nhat-ngoai-khai-truong.webp',
   '/assets/vinacomin-hoc-vien-quang-hanh-ao-xanh-doi-mu.webp',
   '/assets/vinacomin-tho-lo-lo-van-ky-mu-bao-ho.webp',
   '/assets/vinacomin-tho-lo-guong-sang-mu-bao-ho.webp',
@@ -31,7 +29,10 @@ for (const marker of [
   'class="tl-mobile-contact__call"',
   'class="tl-mobile-contact__journey"',
   'href="/bang-luong/"',
-  'href="/cau-chuyen-cong-nhan/"',
+  'href="/phong-su/"',
+  'id="doc-truoc-khi-dang-ky"',
+  'data-tkv-current-title',
+  'data-context="home-watch"',
   'href="/hoi-dap-di-lam-mo-than-quang-ninh/"',
   'href="/tuyen-tho-mo-quang-ninh/"',
 ]) requireText(home, marker, "Trang chủ mới");
@@ -45,12 +46,17 @@ for (const marker of ["home-v6-button--primary", "home-v6-button--secondary", "h
 
 if (!heroActions.includes('href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky"')) errors.push("Nút đăng ký đầu trang phải dẫn đến form thật");
 if (!(home.indexOf('data-recruitment-entry') < home.indexOf('id="tkv-video-title"'))) errors.push("Trang chủ phải mở đầu bằng tuyển dụng thay vì video");
-const order = ["nghe-dang-tuyen", "tu-kiem-tra", "thuc-te", "tkv-video-title", "home-kcn-video", "thong-tin", "tu-van", "kho-noi-dung"];
+const order = ["thuc-te", "tkv-video-title", "home-kcn-video", "doc-truoc-khi-dang-ky", "nghe-dang-tuyen", "tu-kiem-tra", "thong-tin", "tu-van", "kho-noi-dung"];
 let previous = -1;
 for (const id of order) {
   const current = home.indexOf(`id="${id}"`);
   if (current < 0 || current <= previous) errors.push(`Trang chủ mới: sai thứ tự tại ${id}`);
   previous = current;
+}
+
+const worksheet = home.match(/<form class="worker-check"[\s\S]*?<\/form>/)?.[0] || "";
+if (!/type="button" data-worker-check-trigger/.test(worksheet) || /type="submit"/.test(worksheet) || !worksheet.includes("<noscript>")) {
+  errors.push("Tự kiểm tra chỉ xử lý cục bộ, kể cả khi JavaScript không tải");
 }
 
 const h1s = [...home.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)];
@@ -92,6 +98,7 @@ if (dailyAnswerCards !== 3) errors.push(`Khối giải đáp trang chủ: cần 
 const homepageImageSources = [...home.matchAll(/<img\b[^>]*\bsrc="([^"]+)"[^>]*>/gi)]
   .map((match) => match[1])
   .filter((source) => !source.includes("thay-linh-avatar.webp"));
+// Separate thumbnails of the same player selection are intentional.
 const duplicateHomepageImages = [...new Set(homepageImageSources.filter((source, index) => homepageImageSources.indexOf(source) !== index))];
 if (duplicateHomepageImages.length) errors.push(`Ảnh minh họa trang chủ bị lặp: ${duplicateHomepageImages.join(", ")}`);
 

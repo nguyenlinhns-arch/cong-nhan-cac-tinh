@@ -71,16 +71,16 @@ const homeStyles = read("landing-recruitment.css");
 if (!/<link rel="stylesheet" href="\/home-content\.css\?v=4">/.test(home) || home.includes("data-home-content-loader")) fail("Trang chủ: CSS bố cục phải có trong HTML trước lần vẽ đầu tiên");
 if ((home.match(/data-home-font-preload/g) || []).length !== 6) fail("Trang chủ: thiếu preload các font cục bộ");
 if ((read("home-critical.css").match(/font-display:optional/g) || []).length !== 6) fail("Trang chủ: font không được hoán đổi muộn gây xô lệch bố cục");
-if (/<link\b(?=[^>]*rel=["']preload["'])(?=[^>]*tkv-tho-lo-13500-poster\.jpg)[^>]*>/i.test(home)) {
+if (/<link\b(?=[^>]*rel=["']preload["'])(?=[^>]*(?:home-featured-16x9|youtube-[\w-]+)\.jpg)[^>]*>/i.test(home)) {
   fail("Trang chủ: không tải trước ảnh bìa video nằm dưới màn hình đầu");
 }
-const homeVideoFacades = (home.match(/data-featured-video-facade/g) || []).length;
+const homeVideoFacades = (home.match(/<a\b[^>]*class="tkv-video__cover-link"[^>]*data-tkv-pick/g) || []).length;
 if (homeVideoFacades !== 1) fail(`Trang chủ đơn giản: dự kiến 1 lớp xem trước video, thực tế ${homeVideoFacades}`);
 if (/<iframe\b[^>]+youtube/i.test(home)) fail("Trang chủ: còn tạo trình phát YouTube trước khi người dùng bấm xem");
 const facebookReelFrames = home.match(/<iframe\b[^>]+facebook\.com\/plugins\/video\.php[^>]*>/gi) || [];
-const facebookReelFacades = home.match(/data-facebook-reel-facade/g) || [];
+const facebookReelFacades = home.match(/data-facebook-reel-facade|data-home-reel="/g) || [];
 if (facebookReelFrames.length) fail("Trang chủ: iframe Facebook chỉ được tạo sau khi người dùng bấm phát");
-if (facebookReelFacades.length !== 1) fail(`Trang chủ: dự kiến 1 lớp xem trước Facebook Reel, thực tế ${facebookReelFacades.length}`);
+if (facebookReelFacades.length !== 3) fail(`Trang chủ: dự kiến 3 lớp xem trước Facebook Reel, thực tế ${facebookReelFacades.length}`);
 if (/rel=["']preconnect["'][^>]+youtube-nocookie\.com/i.test(home)) fail("Trang chủ: còn mở sớm kết nối trình phát YouTube");
 for (const marker of ["mountYouTubePlayer", "mountFacebookReel", "renderVideoFacade", "activateFacade", "host.replaceChildren(frame)"]) {
   if (!homeScript.includes(marker)) fail(`Trang chủ: thiếu hành vi video ${marker}`);
@@ -89,11 +89,12 @@ for (const marker of ["home-video-facade", "home-video-facade__play", "focus-vis
   if (!homeStyles.includes(marker)) fail(`Trang chủ: thiếu kiểu lớp xem trước ${marker}`);
 }
 const optimizedHomeImages = [
-  ["/assets/home-video-rail/tkv-tho-lo-13500-poster.jpg", "1672", "941", "lazy"],
+  ["/assets/video-thumbnails/home-featured-16x9.jpg", "480", "270", "lazy"],
+  ["/assets/video-thumbnails/youtube-ts41cqu7r9c.jpg", "480", "360", "lazy"],
+  ["/assets/video-thumbnails/youtube-xW92UBKmWok.jpg", "480", "360", "lazy"],
+  ["/assets/video-thumbnails/youtube-6MJLc5mBhsA.jpg", "320", "180", "lazy"],
   ["/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp", "1200", "736", "eager"],
   ["/assets/vinacomin-tho-lo-ha-lam-giao-ca.webp", "1055", "593", "lazy"],
-  ["/assets/vinacomin-tho-mo-mong-duong-ao-xanh.webp", "1600", "860", "lazy"],
-  ["/assets/vinacomin-tho-lo-than-thong-nhat-ngoai-khai-truong.webp", "789", "895", "lazy"],
   ["/assets/vinacomin-hoc-vien-quang-hanh-ao-xanh-doi-mu.webp", "1280", "802", "lazy"],
   ["/assets/vinacomin-tho-lo-lo-van-ky-mu-bao-ho.webp", "794", "1000", "lazy"],
   ["/assets/vinacomin-tho-lo-guong-sang-mu-bao-ho.webp", "1280", "718", "lazy"],
