@@ -60,8 +60,10 @@ jobs:
             done
             if [ "$ok" -eq 1 ]; then
               set +e
-              DIR="$dir" VERSION="$VERSION" CONFIRMED_AT="$CONFIRMED_AT" SUPPORT="$SUPPORT" INCOME="$INCOME" node <<'NODE'
-          const fs=require('node:fs');
+              DIR="$dir" VERSION="$VERSION" CONFIRMED_AT="$CONFIRMED_AT" SUPPORT="$SUPPORT" INCOME="$INCOME" node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import {legacyMonthlySupport} from './tools/study-support-copy.mjs';
+          const staleStudySupport = new RegExp(legacyMonthlySupport.source,'iu');
           const dir=process.env.DIR;
           const version=Number(process.env.VERSION);
           const confirmedAt=process.env.CONFIRMED_AT;
@@ -89,7 +91,7 @@ jobs:
           if ((jobs.jobs||[]).length!==3) failures.push(`jobs count ${(jobs.jobs||[]).length}`);
           for (const job of jobs.jobs||[]) {
             const text=JSON.stringify(job);
-            if (!text.includes('7,5 triệu đồng/tháng')) failures.push(`${job.id}: jobs support`);
+            if (!text.includes(support)) failures.push(`${job.id}: jobs support`);
             if (!text.includes('hoàn thành định mức lao động')) failures.push(`${job.id}: jobs income condition`);
           }
           for (const [name,text,generated] of [['jobs.xml',jobsXml,true],['jooble.xml',jooble,false]]) {
@@ -112,6 +114,7 @@ jobs:
           }
           const {usage_note: _legacyRegistry, ...currentFacts}=current;
           const all=JSON.stringify({current:currentFacts,jobs,daily,worker,manifest,core})+jobsXml+jooble;
+          if (staleStudySupport.test(JSON.stringify(facts)) || staleStudySupport.test(all)) failures.push('obsolete monthly study allowance');
           for (const legacy of ['Bình quân 20–25 triệu','tùy đơn vị, vị trí, ngày công và năng suất','7,5 triệu là tổng cả khóa','Hai nghề đang tiếp nhận']) {
             if (all.toLocaleLowerCase('vi').includes(legacy.toLocaleLowerCase('vi'))) failures.push(`legacy ${legacy}`);
           }

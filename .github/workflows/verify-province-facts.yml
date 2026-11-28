@@ -13,6 +13,7 @@ on:
       - 'tools/validate-province-current-facts-v11.mjs'
       - 'tools/validate-province-metadata-facts-v11.mjs'
       - 'tools/enhance-all-province-search.mjs'
+      - 'tools/study-support-copy.mjs'
       - '.github/workflows/verify-province-facts.yml'
   workflow_run:
     workflows: ["Deploy GitHub Pages"]
@@ -63,15 +64,19 @@ jobs:
                 continue
               fi
               set +e
-              FILE="$file" SLUG="$slug" FACTS_DATE="$facts_date" node <<'NODE'
-          const fs=require('node:fs');
+              FILE="$file" SLUG="$slug" FACTS_DATE="$facts_date" node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import {legacyMonthlySupport} from './tools/study-support-copy.mjs';
+          const staleStudySupport = new RegExp(legacyMonthlySupport.source,'iu');
+          const {study_benefits: {living_support: support}} = JSON.parse(fs.readFileSync('content/recruitment-facts-2026.json','utf8'));
           const html=fs.readFileSync(process.env.FILE,'utf8');
           const slug=process.env.SLUG;
           const factsDate=process.env.FACTS_DATE;
           const failures=[];
           if (!html.includes('Kỹ thuật cơ điện mỏ hầm lò')) failures.push('missing electrical-mine occupation');
           if (!/(?:cơ điện mỏ[^<\n]{0,100}(?:học|đào tạo)[^<\n]{0,40}10 tháng|Kỹ thuật cơ điện mỏ hầm lò[\s\S]{0,180}10 tháng)/iu.test(html)) failures.push('missing 10-month electrical-mine duration');
-          if (/7[,.]5\s*triệu/iu.test(html) && !/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(html)) failures.push('7.5M missing /month');
+          if (/7[,.]5\s*triệu/iu.test(html) && !html.toLocaleLowerCase('vi').includes(support.toLocaleLowerCase('vi'))) failures.push(`missing canonical study allowance`);
+          if (staleStudySupport.test(html)) failures.push(`obsolete monthly study allowance`);
           for (const match of html.matchAll(/20\s*[–-]\s*25\s*triệu/giu)) {
             const i=match.index||0;
             const window=html.slice(Math.max(0,i-220),Math.min(html.length,i+340));

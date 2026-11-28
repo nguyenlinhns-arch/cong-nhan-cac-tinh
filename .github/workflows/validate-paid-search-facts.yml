@@ -12,6 +12,7 @@ on:
       - 'tuyen-tho-mo/analytics.js'
       - 'tuyen-tho-mo/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html'
       - 'tools/validate-paid-search-runtime-v11.mjs'
+      - 'tools/study-support-copy.mjs'
       - '.github/workflows/validate-paid-search-facts.yml'
   workflow_run:
     workflows: ["Deploy GitHub Pages"]
@@ -55,8 +56,11 @@ jobs:
               && curl --fail --silent --show-error --location --max-time 20 "${BASE}/google-search-intent.js?release=${nonce}" -o "$runtime" \
               && curl --fail --silent --show-error --location --max-time 20 "${BASE}/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?utm_source=google&utm_medium=cpc&utm_campaign=facts_v8_check&utm_term=hoc+nghe+mo&release=${nonce}" -o "$landing"; then
               set +e
-              INTENT="$intent" RUNTIME="$runtime" LANDING="$landing" node <<'NODE'
-          const fs = require('node:fs');
+              INTENT="$intent" RUNTIME="$runtime" LANDING="$landing" node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import {legacyMonthlySupport} from './tools/study-support-copy.mjs';
+          const staleStudySupport = new RegExp(legacyMonthlySupport.source,'iu');
+          const {study_benefits: {living_support: support}} = JSON.parse(fs.readFileSync('content/recruitment-facts-2026.json','utf8'));
           const texts = [
             ['intent', fs.readFileSync(process.env.INTENT, 'utf8')],
             ['runtime', fs.readFileSync(process.env.RUNTIME, 'utf8')],
@@ -64,7 +68,8 @@ jobs:
           ];
           const failures=[];
           for (const [label,text] of texts) {
-            if (/7[,.]5\s*triệu/iu.test(text) && !/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(text)) failures.push(`${label}: 7.5M missing /month`);
+            if (/7[,.]5\s*triệu/iu.test(text) && !text.toLocaleLowerCase('vi').includes(support.toLocaleLowerCase('vi'))) failures.push(`${label}: missing canonical study allowance`);
+            if (staleStudySupport.test(text)) failures.push(`${label}: obsolete monthly study allowance`);
             if (/20\s*[–-]\s*25\s*triệu/iu.test(text) && !/hoàn thành định mức lao động/iu.test(text)) failures.push(`${label}: 20-25M missing labor-norm condition`);
             for (const legacy of ['Bình quân 20–25 triệu','tùy đơn vị, vị trí, ngày công và năng suất','7,5 triệu là tổng cả khóa','Hai nghề đang tiếp nhận']) {
               if (text.toLocaleLowerCase('vi').includes(legacy.toLocaleLowerCase('vi'))) failures.push(`${label}: legacy ${legacy}`);
