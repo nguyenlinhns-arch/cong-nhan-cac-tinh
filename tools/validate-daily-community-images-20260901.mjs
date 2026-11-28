@@ -1,3 +1,4 @@
+import {verifyUnchangedNamTuanImage} from "./verify-unchanged-nam-tuan-image.mjs";
 import {dailyCommunityArticles20260901} from "./daily-community-articles-20260901.mjs";
 import {dailyCommunitySourceImages20260901 as images} from "./daily-community-source-images-20260901.mjs";
 import {extractSourceImage} from "./audit-source-images.mjs";
@@ -84,8 +85,14 @@ for (const article of dailyCommunityArticles20260901) {
       && Number.isInteger(source.verifiedHeight)
       && /^[a-f0-9]{64}$/.test(source.verifiedSha256 || "");
     const officialPost = !liveMatched && !pinnedMatched ? await verifyPublishedPostImage(source, article) : null;
-    const matched = liveMatched || pinnedMatched || Boolean(officialPost);
-    results.push({slug: article.slug, sourceStatus: sourceResponse.status, imageStatus: officialPost?.imageStatus ?? imageResponse.status, extracted: officialPost?.extracted ?? extracted, expected: article.image, relationship: source.imageRelationship, verification: liveMatched ? "LIVE_SOURCE" : pinnedMatched ? "PINNED_FIRST_CONTENT_RELATIONSHIP" : officialPost ? "LIVE_PUBLISHED_POST" : "FAILED", matched});
+    const unchangedPublished = !liveMatched && !pinnedMatched && !officialPost
+      ? await verifyUnchangedNamTuanImage({
+          article, source, articleHtml, sourceStatus: sourceResponse.status,
+          sourceHtml: html, extracted, fetchPublic: (url, options) => fetchWithRetry(url, options, 1),
+        })
+      : null;
+    const matched = liveMatched || pinnedMatched || Boolean(officialPost || unchangedPublished);
+    results.push({slug: article.slug, sourceStatus: sourceResponse.status, imageStatus: officialPost?.imageStatus ?? imageResponse.status, extracted: officialPost?.extracted ?? unchangedPublished?.extracted ?? extracted, expected: article.image, relationship: source.imageRelationship, verification: liveMatched ? "LIVE_SOURCE" : pinnedMatched ? "PINNED_FIRST_CONTENT_RELATIONSHIP" : officialPost ? "LIVE_PUBLISHED_POST" : unchangedPublished ? "EXACT_UNCHANGED_PUBLISHED_ARTICLE" : "FAILED", ...(unchangedPublished ? {priorVerifiedJob: unchangedPublished.job} : {}), matched});
     if (!matched) errors.push(`${article.slug}: ảnh đại diện không khớp trực tiếp với URL bài nguồn`);
   } catch (error) {
     const officialPost = await verifyPublishedPostImage(source, article);
