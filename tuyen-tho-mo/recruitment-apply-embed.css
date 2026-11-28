@@ -1,0 +1,8 @@
+html[data-embedded-apply],html[data-embedded-apply] body{margin:0!important;padding:0!important;background:#202b24!important;color-scheme:dark}
+html[data-embedded-apply] body>:not(main),html[data-embedded-apply] main>:not(#dang-ky){display:none!important}
+html[data-embedded-apply] body main{margin:0!important;padding:0!important;width:100%!important}
+html[data-embedded-apply] main #dang-ky{width:100%!important;max-width:none!important;box-sizing:border-box;min-height:0!important;background:transparent!important;display:block!important;margin:0;padding:16px!important;border:0;scroll-margin:0;}
+html[data-embedded-apply] .job-apply__intro{display:none!important}
+html[data-embedded-apply] :is(.application-form,.application-result){margin:8px 0!important;}
+html[data-embedded-apply] :is(.application-form,.application-result){color-scheme:light;}
+@media(max-width:520px){html[data-embedded-apply] main #dang-ky{padding:10px!important}}

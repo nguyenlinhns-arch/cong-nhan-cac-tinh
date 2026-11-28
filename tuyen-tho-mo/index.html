@@ -122,8 +122,9 @@
 <meta name="content-origin" content="current-recruitment-policy">
   <link rel="stylesheet" href="/assets/home-video-rail/rail.css?v=19">
   <link rel="stylesheet" href="/recruitment-home.css?v=18">
-  <link rel="stylesheet" href="/recruitment-landing.css?v=1">
+  <link rel="stylesheet" href="/recruitment-landing.css?v=2">
   <script defer src="/assets/home-video-rail/rail.js?v=13"></script>
+  <script defer src="/recruitment-landing.js?v=1"></script>
 </head>
 <body>
   <a class="skip-link" href="#noi-dung">Bỏ qua menu</a>
@@ -135,13 +136,13 @@
       </a>
       <button class="worker-header-search" type="button" data-open-site-search data-worker-search data-context="header" aria-haspopup="dialog" aria-label="Tìm thông tin trên website"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg><span class="sr-only">Tìm thông tin</span></button>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-button><span></span><span></span><span></span><span class="sr-only">Mở menu</span></button>
-      <nav class="main-nav" id="main-nav" data-nav aria-label="Điều hướng chính"><a href="#home-kcn-video">KCN hay làm mỏ?</a><a href="#tuyen-sinh-tai-cac-tinh">Tuyển sinh tại các tỉnh</a><a href="#don-hoc-sinh-nhap-hoc">Nhập học</a><a class="home-article-shortcut" href="#doc-truoc-khi-dang-ky" data-journey-shortcut="articles">Bài viết</a><a href="#nghe-dang-tuyen">Nghề đang tuyển</a><a href="#tu-kiem-tra">Kiểm tra điều kiện</a></nav>
-      <a class="header-cta" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" data-contact="application" data-context="home-header">Đăng ký ngay</a>
+      <nav class="main-nav" id="main-nav" data-nav aria-label="Điều hướng chính"><a href="#hanh-trinh-tu-que">Reel ghim</a><a href="#thuc-te">Video thực tế</a><a class="home-article-shortcut" href="#doc-truoc-khi-dang-ky" data-journey-shortcut="articles">Bài viết</a><a href="#thong-tin-tuyen-sinh">Thông tin tuyển sinh</a></nav>
+      <a class="header-cta" href="#dang-ky" data-contact="application" data-context="home-header">Đăng ký ngay</a>
     </div>
     <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
   </header>
 
-    <main id="noi-dung" class="home-funnel">
+    <main id="noi-dung" class="home-funnel" data-single-landing>
 
     <div class="home-v6">
     <section class="home-v6-hero recruitment-landing-hero" data-recruitment-entry data-hero aria-labelledby="home-v6-title">
@@ -155,8 +156,8 @@
             <p><strong>20–25 triệu/tháng</strong> <span>khi hoàn thành định mức lao động</span></p>
           </div>
           <div class="home-v6-actions">
-            <a class="button home-v6-button home-v6-button--primary" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" data-contact="application" data-context="home-hero">Đăng ký ngay <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-            <a class="button home-v6-button home-v6-button--secondary" href="#home-kcn-video" data-journey-shortcut="compare_kcn">KCN hay làm mỏ? <b aria-hidden="true">↓</b></a>
+            <a class="button home-v6-button home-v6-button--primary" href="#dang-ky" data-contact="application" data-context="home-hero">Đăng ký ngay <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="button home-v6-button home-v6-button--secondary" href="#hanh-trinh-tu-que" data-journey-shortcut="pinned_reels">Xem 3 Reel ghim <b aria-hidden="true">↓</b></a>
           </div>
         </div>
         <figure class="home-v6-hero__visual">
@@ -172,9 +173,31 @@
     <section class="home-field" id="hanh-trinh-tu-que" aria-labelledby="hanh-trinh-dia-phuong">
       <div class="container">
         <header class="home-field__head">
-          <h2 id="hanh-trinh-dia-phuong">Từ chọn nghề đến ngày nhập học</h2>
-          <a class="home-field__textlink" href="#thuc-te" data-journey-shortcut="videos">Video nghề mỏ <span aria-hidden="true">↓</span></a>
+          <h2 id="hanh-trinh-dia-phuong">3 video ghim của Thầy Linh</h2>
+          <a class="home-field__textlink" href="#thuc-te" data-journey-shortcut="videos">Xem thêm video thực tế <span aria-hidden="true">↓</span></a>
         </header>
+        <div class="home-pin-grid">
+          <article class="home-pin">
+            <a class="home-pin__play" href="https://www.facebook.com/reel/1830954464696355/" target="_blank" rel="noopener noreferrer" data-home-pin="1830954464696355" data-pin-title="Thu nhập của thợ mỏ" aria-label="Phát: Thu nhập của thợ mỏ">
+              <img src="/assets/video-thumbnails/1830954464696355.webp" alt="" width="405" height="720" loading="lazy" decoding="async"><span aria-hidden="true">▶</span>
+            </a>
+            <div><h3>Thu nhập của thợ mỏ</h3><p>Hơn 13.500 thợ lò TKV thu nhập trên 300 triệu năm 2025.</p><a class="home-field__textlink" href="https://www.facebook.com/reel/1830954464696355/" target="_blank" rel="noopener noreferrer">Mở trên Facebook <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="home-pin">
+            <a class="home-pin__play" href="https://www.facebook.com/reel/2512643852519964/" target="_blank" rel="noopener noreferrer" data-home-pin="2512643852519964" data-pin-title="Nộp hồ sơ tại Cẩm Phả" aria-label="Phát: Nộp hồ sơ tại Cẩm Phả">
+              <img src="/assets/video-thumbnails/2512643852519964.webp" alt="" width="407" height="720" loading="lazy" decoding="async"><span aria-hidden="true">▶</span>
+            </a>
+            <div><h3>Nộp hồ sơ tại Cẩm Phả</h3><p>Xem đường đi và nơi nộp hồ sơ học nghề mỏ.</p><a class="home-field__textlink" href="https://www.facebook.com/reel/2512643852519964/" target="_blank" rel="noopener noreferrer">Mở trên Facebook <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="home-pin">
+            <a class="home-pin__play" href="https://www.facebook.com/reel/1015675787556708/" target="_blank" rel="noopener noreferrer" data-home-pin="1015675787556708" data-pin-title="Từ Quảng Ngãi đến vùng than" aria-label="Phát: Từ Quảng Ngãi đến vùng than">
+              <img src="/assets/video-thumbnails/1015675787556708.webp" alt="" width="320" height="569" loading="lazy" decoding="async"><span aria-hidden="true">▶</span>
+            </a>
+            <div><h3>Từ Quảng Ngãi đến vùng than</h3><p>Theo chân người lao động từ quê ra Quảng Ninh.</p><a class="home-field__textlink" href="https://www.facebook.com/reel/1015675787556708/" target="_blank" rel="noopener noreferrer">Mở trên Facebook <span aria-hidden="true">↗</span></a></div>
+          </article>
+        </div>
+        <details class="landing-detail home-field-extra">
+          <summary>So sánh KCN, công tác tại các tỉnh và đón học sinh nhập học</summary>
         <div class="home-field__grid">
           <article class="home-field__story" id="home-kcn-video">
             <h3>KCN hay làm mỏ?</h3>
@@ -207,6 +230,7 @@
             </div>
           </article>
         </div>
+        </details>
       </div>
     </section>
 
@@ -214,7 +238,7 @@
     <section class="home-proof home-proof--early" id="thuc-te" data-journey-section="proof" aria-labelledby="tkv-video-title"><span id="nguoi-that-viec-that" aria-hidden="true"></span>
       <div class="tkv-video" data-tkv-video>
         <div class="tkv-video__inner">
-          <header class="tkv-video__header"><p class="home-step">Video nghề mỏ</p><h2 id="tkv-video-title">Xem công việc và cuộc sống của thợ mỏ</h2><p>Nghe người trong nghề kể về một ca làm, thu nhập và cuộc sống xa nhà.</p></header>
+          <header class="tkv-video__header"><p class="home-step">Video nghề mỏ</p><h2 id="tkv-video-title">Người thật, việc thật trong nghề mỏ</h2></header>
           <div class="home-watch-layout">
             <div class="home-watch-main">
               <div class="tkv-video__stage" data-tkv-stage tabindex="-1" role="group" aria-label="Khung phát video">
@@ -289,9 +313,15 @@
               </div>
             </div>
           </div>
-          <div class="home-watch-foot"><a class="home-editor-link" href="/anh-video-thuc-te/">Xem kho ảnh và video <span aria-hidden="true">→</span></a><a class="home-editor-link" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" data-contact="application" data-context="home-watch">Đăng ký ngay <span aria-hidden="true">→</span></a></div>
+          <div class="home-watch-foot"><a class="home-editor-link" href="/anh-video-thuc-te/">Xem kho ảnh và video <span aria-hidden="true">→</span></a><a class="home-editor-link" href="#dang-ky" data-contact="application" data-context="home-watch">Đăng ký ngay <span aria-hidden="true">→</span></a></div>
           <div class="home-editor-reading" id="doc-truoc-khi-dang-ky">
-            <h3>Đọc trước khi đăng ký</h3>
+            <h3>Chuyện thợ mỏ và tuyển sinh tại các tỉnh</h3>
+            <div class="home-real-reads">
+              <a href="/tin-nganh-than/2026/08/01/duong-thuong-tuyen-quang-than-quang-hanh-tuyen-nghe-mo/"><small>Tuyên Quang</small><strong>Đi 20 thôn tư vấn nghề mỏ ở Đường Thượng</strong></a>
+              <a href="/tin-nganh-than/2026/08/01/than-thong-nhat-tuyen-sinh-nghe-mo-lai-chau-2026/"><small>Lai Châu</small><strong>Than Thống Nhất tuyển học nghề mỏ tại Lai Châu</strong></a>
+              <a href="/tin-nganh-than/2026/08/01/gia-dinh-ba-the-he-tho-lo-thong-nhat/"><small>Quảng Ninh</small><strong>Gia đình ba thế hệ làm thợ lò ở Than Thống Nhất</strong></a>
+            </div>
+            <details class="landing-detail landing-reading"><summary>6 bài cần biết trước khi đăng ký</summary>
             <ul>
               <li><a href="/thu-nhap-an-o-ho-tro/"><strong>Thu nhập, ăn ở và hỗ trợ học nghề</strong><span>Học được hỗ trợ gì, đi làm tính thu nhập thế nào?</span><b aria-hidden="true">→</b></a></li>
               <li><a href="/ho-so-nhap-hoc/"><strong>Hồ sơ và địa chỉ nhập học</strong><span>Cần mang giấy tờ gì và đến đâu?</span><b aria-hidden="true">→</b></a></li>
@@ -301,13 +331,15 @@
               <li><a href="/bang-luong/"><strong>Xem bảng lương công khai</strong><span>Bảng lương theo công ty, đã ẩn thông tin cá nhân.</span><b aria-hidden="true">→</b></a></li>
             </ul>
             <a class="home-editor-link" href="/cam-nang-nghe-mo/">Mở toàn bộ cẩm nang <span aria-hidden="true">→</span></a>
+            </details>
           </div>
         </div>
       </div>
     </section>
     </div>
 
-    <section class="home-v6-facts" id="quyen-loi" aria-label="Thông tin tuyển sinh chính">
+    <section class="home-v6-facts" id="thong-tin-tuyen-sinh" aria-label="Thông tin tuyển sinh chính">
+      <span id="quyen-loi" class="home-anchor" aria-hidden="true"></span>
       <div class="container home-v6-facts__grid">
         <article><small>Điều kiện sơ bộ</small><strong>Nam 18–40 tuổi</strong><span>Từ 1m53 · từ 47kg · sức khỏe phù hợp</span></article>
         <article><small>Thời gian học</small><strong>2 tháng / 10 tháng</strong><span>Khai thác, xây dựng / cơ điện mỏ</span></article>
@@ -316,6 +348,26 @@
       </div>
     </section>
 
+    <section class="worker-register" id="dang-ky" data-journey-section="consultation" aria-labelledby="consult-title"><span id="tu-van" class="home-anchor" aria-hidden="true"></span>
+      <header class="container landing-apply__intro"><h2 id="consult-title">Đăng ký học nghề mỏ</h2><p>Điền 4 thông tin trước. Chưa cần nộp giấy tờ.</p></header>
+      <div class="container landing-apply">
+        <iframe id="landing-apply-frame" src="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?nhung=1#dang-ky" loading="lazy" title="Biểu mẫu đăng ký học nghề mỏ" width="760" height="690"></iframe>
+      </div>
+      <div class="container worker-register__grid">
+        <div>
+          <a class="home-adviser" href="/lien-he-di-lam-mo-than-quang-ninh/"><img src="/assets/thay-linh-avatar.webp?v=3" alt="" width="48" height="48" loading="lazy" decoding="async"><span><strong>Nguyễn Tử Linh</strong><small>Trưởng phòng Tuyển sinh Miền Trung</small></span></a>
+        </div>
+        <div class="contact-choice-grid" aria-label="Bốn cách đăng ký và liên hệ">
+          <a class="contact-choice contact-choice--form" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" data-contact="application" data-context="home-register"><small>ĐƯỢC GỌI LẠI</small><strong data-application-resume-label>Mở biểu mẫu riêng</strong></a>
+          <a class="contact-choice contact-choice--zalo" href="https://zalo.me/0963048585" target="_blank" rel="noopener" data-contact="zalo" data-context="home-register"><small>NHẮN TIN</small><strong>Zalo 096 304 8585</strong></a>
+          <a class="contact-choice contact-choice--messenger" href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener" data-contact="messenger" data-context="home-register"><small>NHẮN TIN</small><strong>Messenger Thầy Linh</strong></a>
+          <a class="contact-choice contact-choice--phone" href="tel:+84963048585" data-contact="phone" data-context="home-register"><small>GỌI TRỰC TIẾP</small><strong>096 304 8585</strong></a>
+        </div>
+      </div>
+    </section>
+
+    <details class="landing-detail landing-details-full">
+      <summary>Điều kiện, hồ sơ, nơi học và cẩm nang</summary>
     <section class="home-v6-careers" id="nghe-dang-tuyen" aria-labelledby="home-careers-title">
       <div class="container">
         <div class="home-v6-heading"><div><h2 id="home-careers-title">Ba nghề đang tuyển</h2></div><p>Mô tả nghề được chuẩn hóa theo Hướng dẫn số 554/HD-CĐTKV của Trường Cao đẳng Than – Khoáng sản Việt Nam.</p></div>
@@ -370,20 +422,6 @@
       </div>
     </section>
 
-    <section class="worker-register" id="tu-van" data-journey-section="consultation" aria-labelledby="consult-title"><span id="dang-ky" aria-hidden="true"></span>
-      <div class="container worker-register__grid">
-        <div><h2 id="consult-title">Đăng ký tư vấn</h2><p class="worker-register__lead">Chỉ cần gửi: năm sinh · cao/nặng · sức khỏe · tỉnh đang sống.</p>
-          <a class="home-adviser" href="/lien-he-di-lam-mo-than-quang-ninh/"><img src="/assets/thay-linh-avatar.webp?v=3" alt="" width="48" height="48" loading="lazy" decoding="async"><span><strong>Nguyễn Tử Linh</strong><small>Trưởng phòng Tuyển sinh Miền Trung</small></span></a>
-        </div>
-        <div class="contact-choice-grid" aria-label="Bốn cách đăng ký và liên hệ">
-          <a class="contact-choice contact-choice--form" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" data-contact="application" data-context="home-register"><small>ĐƯỢC GỌI LẠI</small><strong data-application-resume-label>Đăng ký ngay</strong></a>
-          <a class="contact-choice contact-choice--zalo" href="https://zalo.me/0963048585" target="_blank" rel="noopener" data-contact="zalo" data-context="home-register"><small>NHẮN TIN</small><strong>Zalo 096 304 8585</strong></a>
-          <a class="contact-choice contact-choice--messenger" href="https://m.me/thaylinhtuyenthomo" target="_blank" rel="noopener" data-contact="messenger" data-context="home-register"><small>NHẮN TIN</small><strong>Messenger Thầy Linh</strong></a>
-          <a class="contact-choice contact-choice--phone" href="tel:+84963048585" data-contact="phone" data-context="home-register"><small>GỌI TRỰC TIẾP</small><strong>096 304 8585</strong></a>
-        </div>
-      </div>
-    </section>
-
     <div class="home-chapter home-chapter--reference">
 
     <section class="home-contact-answer" aria-labelledby="home-contact-answer-title" data-contact-authority-answer>
@@ -419,9 +457,15 @@
 
     </div>
 
+    </details>
     </div>
   </main>
 
+  <dialog class="home-pin-dialog" aria-labelledby="home-pin-dialog-title">
+    <div class="home-pin-dialog__head"><h2 id="home-pin-dialog-title">Video Facebook</h2><form method="dialog"><button type="submit" aria-label="Đóng video">×</button></form></div>
+    <div class="home-pin-dialog__stage"></div>
+    <a class="home-pin-dialog__link" href="https://www.facebook.com/thaylinhtuyenthomo/reels/" target="_blank" rel="noopener noreferrer">Mở trên Facebook ↗</a>
+  </dialog>
   <footer class="site-footer site-footer--home">
     <div class="container footer-simple">
       <a class="brand brand-light" href="./"><img class="brand-mark" src="/assets/thay-linh-avatar.webp?v=3" alt="" width="45" height="45"><span><strong>Thầy Linh</strong><small>Tuyển Thợ Mỏ</small></span></a>
@@ -441,6 +485,6 @@
   <script src="/mobile-core.js?v=1" defer></script>
   <script src="/worker-info-finder.js?v=4" defer></script>
   <script src="/journey-optimizer.js?v=2" defer></script>
-  <script src="/home-worker-journey.js?v=20261128-4" defer></script>
+  <script src="/home-worker-journey.js?v=20261128-5" defer></script>
 </body>
 </html>

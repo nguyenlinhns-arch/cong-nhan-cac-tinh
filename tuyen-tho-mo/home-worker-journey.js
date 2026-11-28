@@ -33,6 +33,7 @@
   try { sessionStorage.removeItem(STATE_KEY); } catch (_) {}
 
   function applicationUrl(content) {
+    if (document.getElementById("landing-apply-frame")) return "#dang-ky";
     return window.ThayLinhMobile?.trackedApplicationUrl?.("home_mobile_journey_2026", content)
       || FALLBACK_APPLICATION_URL.replace("checker_next", content);
   }

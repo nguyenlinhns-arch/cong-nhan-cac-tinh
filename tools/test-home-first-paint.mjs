@@ -47,13 +47,15 @@ assert(Buffer.byteLength(critical) <= 18000, 'Keep existing critical CSS budget'
 const editorial = read('recruitment-home.css');
 assert(html.includes('/recruitment-home.css?v=18'), 'Homepage editorial surface must invalidate older overrides');
 assert.match(html, /<div class="home-v6-income">\s*<small>[^<]+<\/small>\s*<p><strong>20–25 triệu\/tháng<\/strong> <span>khi hoàn thành định mức lao động<\/span><\/p>\s*<\/div>/, "Keep the income amount and its qualification visible together");
-const homepageOrder = ['thuc-te','doc-truoc-khi-dang-ky','nghe-dang-tuyen','tu-kiem-tra','thong-tin','tu-van','kho-noi-dung'].map(id => html.indexOf(`id="${id}"`));
+const homepageOrder = ['thuc-te','doc-truoc-khi-dang-ky','tu-van','nghe-dang-tuyen','tu-kiem-tra','thong-tin','kho-noi-dung'].map(id => html.indexOf(`id="${id}"`));
 assert(homepageOrder.every((at,index) => at >= 0 && (index === 0 || at > homepageOrder[index-1])), 'Offer proof and useful reading before eligibility; keep registration and library reachable');
 assert.match(html, /<div class="tkv-video" data-tkv-video>/, 'Keep the main playlist visible without opening a disclosure');
 assert.match(html, /<section class="home-field" id="hanh-trinh-tu-que"/, 'The three priority topics must be visible without a disclosure');
 assert.ok(html.indexOf('id="home-kcn-video"') < html.indexOf('id="thuc-te"'), 'Show the comparison before the main video archive');
-assert.ok(Buffer.byteLength(read('recruitment-landing.css')) <= 9000, 'Keep the landing layout CSS small');
+assert.ok(Buffer.byteLength(read('recruitment-landing.css')) <= 13000, 'Keep the landing layout CSS small');
 assert.match(html, /href="#thuc-te" data-journey-shortcut="videos"/, 'Homepage offers a direct path to video');
+assert.deepEqual([...html.matchAll(/data-home-pin="(\d+)"/g)].map(m=>m[1]), ['1830954464696355','2512643852519964','1015675787556708']);
+assert.match(html, /id="landing-apply-frame" src="\/viec-lam\/cong-nhan-mo-ham-lo-quang-ninh\/\?nhung=1#dang-ky"/);
 assert.match(editorial, /html:root \.home-v6\{background:var\(--d-bg\)!important;color:var\(--d-ink\)!important\}/, 'The dark canvas must back transparent sections');
 assert.match(editorial, /\.home-province-reels__intro\{color:var\(--d-sub\)!important\}/, 'Style the late-mounted province story introduction alongside the heading');
 

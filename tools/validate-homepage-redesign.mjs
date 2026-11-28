@@ -37,16 +37,16 @@ for (const marker of [
   'href="/tuyen-tho-mo-quang-ninh/"',
 ]) requireText(home, marker, "Trang chủ mới");
 
-requireText(home, '<a class="header-cta" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" data-contact="application" data-context="home-header">Đăng ký ngay</a>', "Nút đăng ký thanh đầu trang");
+requireText(home, '<a class="header-cta" href="#dang-ky" data-contact="application" data-context="home-header">Đăng ký ngay</a>', "Nút đăng ký thanh đầu trang");
 
 const heroActions = home.match(/<div class="home-v6-actions">([\s\S]*?)<\/div>/)?.[1] || "";
-for (const marker of ["home-v6-button--primary", "home-v6-button--secondary", 'href="#home-kcn-video"']) {
+for (const marker of ["home-v6-button--primary", "home-v6-button--secondary", 'href="#hanh-trinh-tu-que"']) {
   if (!heroActions.includes(marker)) errors.push(`Cụm nút đầu trang: thiếu ${marker}`);
 }
 
-if (!heroActions.includes('href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky"')) errors.push("Nút đăng ký đầu trang phải dẫn đến form thật");
+if (!heroActions.includes('href="#dang-ky"')) errors.push("Nút đăng ký đầu trang phải dẫn đến form thật");
 if (!(home.indexOf('data-recruitment-entry') < home.indexOf('id="tkv-video-title"'))) errors.push("Trang chủ phải mở đầu bằng tuyển dụng thay vì video");
-const order = ["hanh-trinh-tu-que", "home-kcn-video", "tuyen-sinh-tai-cac-tinh", "don-hoc-sinh-nhap-hoc", "thuc-te", "tkv-video-title", "doc-truoc-khi-dang-ky", "nghe-dang-tuyen", "tu-kiem-tra", "thong-tin", "tu-van", "kho-noi-dung"];
+const order = ["hanh-trinh-tu-que", "home-kcn-video", "tuyen-sinh-tai-cac-tinh", "don-hoc-sinh-nhap-hoc", "thuc-te", "tkv-video-title", "doc-truoc-khi-dang-ky", "tu-van", "nghe-dang-tuyen", "tu-kiem-tra", "thong-tin", "kho-noi-dung"];
 let previous = -1;
 for (const id of order) {
   const current = home.indexOf(`id="${id}"`);
@@ -60,7 +60,8 @@ for (const marker of [
   'href="https://www.facebook.com/reel/988978737487363"',
   'href="https://www.facebook.com/reel/1015675787556708"',
 ]) requireText(field, marker, "Ba chủ đề nổi bật");
-if (/<(?:details|iframe)\b/i.test(field)) errors.push("Ba chủ đề phải hiện sẵn và không tải iframe trước khi bấm");
+if (/<iframe\b/i.test(field)) errors.push("Video chỉ nạp iframe sau khi bấm");
+if ((field.match(/data-home-pin=/g) || []).length !== 3) errors.push("Cần đúng ba Reel ghim");
 if ((home.match(/id="hanh-trinh-tu-que"/g) || []).length !== 1) errors.push("Chỉ có một mục hành trình tuyển sinh");
 
 const worksheet = home.match(/<form class="worker-check"[\s\S]*?<\/form>/)?.[0] || "";
