@@ -278,3 +278,15 @@ html:root main :is(.network-hero,.daily-seo-hub-hero,.daily-seo-hero,.news-hero,
   background:linear-gradient(112deg,var(--d-bg),var(--d-panel))!important;color:var(--d-ink)!important;
 }
 html:root main :is(.network-hero,.daily-seo-hub-hero,.daily-seo-hero,.news-hero,.payroll-hero,.verification-page__hero) :is(.network-eyebrow,.verification-page__eyebrow,.payroll-eyebrow){color:var(--d-mark)!important}
+
+/* Keep the actual application link primary on locality pages, not the contact-channel brand. */
+html:root main .local-hero .eyebrow{color:var(--d-mark)!important}
+html:root main .local-hero .local-check .eyebrow{color:#765420!important}
+html:root main .local-hero .contact-pair .contact-button{
+  color:var(--d-ink)!important;background:var(--d-panel)!important;border:1px solid #7d9184!important;box-shadow:none!important;
+}
+html:root main .local-hero .contact-pair .contact-button[data-contact="application"]{
+  color:var(--d-on)!important;background:var(--d-strong)!important;border-color:var(--d-strong)!important;
+}
+html:root main .local-hero .contact-button :is(strong,small){color:inherit!important;opacity:1!important}
+html:root main .local-hero .contact-button .contact-icon{color:inherit!important;background:#00000016!important}
