@@ -1,3 +1,4 @@
+import {legacyMonthlySupport} from "./study-support-copy.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import {execFileSync} from "node:child_process";
@@ -16,16 +17,15 @@ const canonicalSupport = facts.study_benefits?.living_support || "";
 const canonicalIncome = facts.after_training?.income_commitment
   || `${facts.after_training?.income || ""} ${facts.after_training?.income_condition || ""}`.trim();
 const forbiddenLegacy = (facts.forbidden_legacy_phrases || []).map((value) => String(value).toLocaleLowerCase("vi"));
-if (canonicalSupport !== "7,5 triệu đồng/tháng trong thời gian học") throw new Error(`Daily SEO: living_support canonical sai: ${canonicalSupport}`);
+if (canonicalSupport !== "7,5 triệu đồng trong thời gian học") throw new Error(`Daily SEO: living_support canonical sai: ${canonicalSupport}`);
 if (canonicalIncome !== "20–25 triệu đồng/tháng khi hoàn thành định mức lao động") throw new Error(`Daily SEO: income canonical sai: ${canonicalIncome}`);
 
-const supportWithoutMonth = /7[,.]5 triệu(?!\s*(?:đồng\s*)?\/\s*tháng)(?:\s*đồng)?/giu;
 const averageIncome = /(?:thu nhập\s+)?bình quân\s+20[–-]25 triệu(?: đồng)?\s*\/\s*tháng(?:\s*,?\s*tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất)?/giu;
 const variableIncome = /20[–-]25 triệu(?: đồng)?\s*\/\s*tháng\s*,?\s*tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất/giu;
 
 function normalizeString(value) {
   return String(value)
-    .replace(supportWithoutMonth, "7,5 triệu đồng/tháng")
+    .replace(legacyMonthlySupport, "7,5 triệu đồng trong thời gian học")
     .replace(averageIncome, canonicalIncome)
     .replace(variableIncome, canonicalIncome);
 }
@@ -54,8 +54,8 @@ function validatePolicy(article, sourceLabel) {
     for (const phrase of forbiddenLegacy) {
       if (phrase && lowered.includes(phrase)) throw new Error(`${sourceLabel}: ${article.slug} ${pointer} còn legacy phrase "${phrase}"`);
     }
-    if (/7[,.]5\s*triệu/iu.test(text) && !/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(text)) {
-      throw new Error(`${sourceLabel}: ${article.slug} ${pointer} nhắc 7,5 triệu nhưng thiếu /tháng`);
+    if (/7[,.]5\s*triệu/iu.test(text) && !/7,5\s*triệu\s+đồng\s+trong thời gian học/iu.test(text)) {
+      throw new Error(`${sourceLabel}: ${article.slug} ${pointer} nhắc 7,5 triệu nhưng thiếu ghi rõ trong thời gian học`);
     }
     if (/20\s*[–-]\s*25\s*triệu/iu.test(text) && !/hoàn thành định mức lao động/iu.test(text)) {
       throw new Error(`${sourceLabel}: ${article.slug} ${pointer} nhắc 20–25 triệu nhưng thiếu điều kiện hoàn thành định mức lao động`);

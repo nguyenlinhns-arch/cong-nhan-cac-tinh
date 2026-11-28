@@ -1,3 +1,4 @@
+import {legacyMonthlySupport} from "./study-support-copy.mjs";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -18,7 +19,7 @@ const answers = new Map([
 ]);
 
 if (income !== master.income_commitment) throw new Error("Search facts: income canonical lệch master");
-if (support !== "7,5 triệu đồng/tháng trong thời gian học") throw new Error("Search facts: living support canonical không đúng");
+if (support !== "7,5 triệu đồng trong thời gian học") throw new Error("Search facts: living support canonical không đúng");
 
 const corePath = path.join(site, "search-core.json");
 if (!fs.existsSync(corePath)) throw new Error("Search facts: thiếu search-core.json");
@@ -55,7 +56,7 @@ for (const [url, expected] of answers) {
 const coreText = JSON.stringify(core);
 if (/bình quân\s+20[–-]25\s*triệu/iu.test(coreText)) throw new Error("Search facts: search-core còn thu nhập bình quân legacy");
 if (/tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất/iu.test(coreText)) throw new Error("Search facts: search-core còn điều kiện thu nhập legacy");
-if (/7[,.]5\s*triệu(?:\s*đồng)?\s+(?:là\s+)?tổng(?:\s+cả)?\s+khóa/iu.test(coreText)) throw new Error("Search facts: search-core còn cách hiểu 7,5 triệu tổng cả khóa");
+if (new RegExp(legacyMonthlySupport.source, "iu").test(coreText)) throw new Error("Search facts: còn ghi hỗ trợ theo tháng");
 if (manifest.canonicalFactsVersion !== facts.version) throw new Error("Search facts: manifest thiếu canonicalFactsVersion");
 if (manifest.discovery.canonicalFactsJson !== "/data/recruitment-facts-2026.json") throw new Error("Search facts: manifest thiếu canonicalFactsJson");
 

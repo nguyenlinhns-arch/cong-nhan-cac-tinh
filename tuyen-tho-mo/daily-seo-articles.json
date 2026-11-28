@@ -426,7 +426,7 @@
       "direct_answer": "Có. Trong thời gian thực tập tại doanh nghiệp, người học nghề mỏ được hưởng 85–100% lương công nhân trong cùng dây chuyền theo quy định hiện hành. Đây không phải một mức tiền cố định cho mọi người; tỷ lệ, kỳ tính và số tiền thực nhận cần được đối chiếu với vị trí thực tập, dây chuyền và hướng dẫn của đợt tiếp nhận.",
       "date_published": "2026-08-28",
       "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-nghe-mo-di-thuc-tap-co-duoc-tra-luong-khong/",
-      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ba bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học; khi thực tập tại doanh nghiệp được hưởng 85–100% lương công nhân trong cùng dây chuyền theo quy định."
+      "source_note": "Thông tin được đối chiếu từ operations/job-posting-master-2026.json: người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ba bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học; khi thực tập tại doanh nghiệp được hưởng 85–100% lương công nhân trong cùng dây chuyền theo quy định."
     },
     {
       "title": "Mất CCCD gốc có đăng ký học nghề mỏ được không?",
@@ -541,9 +541,9 @@
       "source_note": "Thông tin tuyển năm 2026 và hồ sơ công khai của người phụ trách tuyển sinh trên website Thầy Linh – Tuyển Thợ Mỏ."
     },
     {
-      "title": "Học nghề mỏ được hỗ trợ 7,5 triệu đồng/tháng thế nào?",
-      "primary_query": "học nghề mỏ được hỗ trợ 7,5 triệu đồng/tháng",
-      "direct_answer": "Người học thuộc chỉ tiêu được hỗ trợ 7,5 triệu đồng/tháng trong thời gian học theo chính sách đợt tuyển; đồng thời được miễn kinh phí đào tạo, bố trí 3 bữa/ngày với mức ăn 90.000 đồng/ngày và ở ký túc xá khép kín. Lịch, cách thực hiện và hồ sơ nhận hỗ trợ cần được xác nhận theo đợt nhập học.",
+      "title": "Học nghề mỏ được hỗ trợ 7,5 triệu đồng trong thời gian học thế nào?",
+      "primary_query": "học nghề mỏ được hỗ trợ 7,5 triệu đồng trong thời gian học",
+      "direct_answer": "Người học thuộc chỉ tiêu được hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển; đồng thời được miễn kinh phí đào tạo, bố trí 3 bữa/ngày với mức ăn 90.000 đồng/ngày và ở ký túc xá khép kín. Lịch, cách thực hiện và hồ sơ nhận hỗ trợ cần được xác nhận theo đợt nhập học.",
       "date_published": "2026-08-07",
       "canonical_url": "https://thaylinhtuyenthomo.vn/giai-dap-nghe-mo/hoc-nghe-mo-duoc-ho-tro-75-trieu-dong-the-nao/",
       "source_note": "Chính sách quyền lợi trong nguồn tuyển dụng năm 2026, cập nhật ngày 01/08/2026; mức hỗ trợ, bữa ăn và ký túc xá được quản lý theo đợt tuyển."

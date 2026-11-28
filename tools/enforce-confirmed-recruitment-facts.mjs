@@ -1,7 +1,8 @@
+import {legacyMonthlySupport} from "./study-support-copy.mjs";
 import fs from 'node:fs';
 import path from 'node:path';
 
-const SUPPORT = '7,5 triệu đồng/tháng trong thời gian học';
+const SUPPORT = '7,5 triệu đồng trong thời gian học';
 const INCOME = '20–25 triệu đồng/tháng khi hoàn thành định mức lao động';
 const INCOME_NOTE = 'Tùy đơn vị, vị trí, ngày công và năng suất';
 const UPDATED_AT = '2026-08-23T10:38:00+07:00';
@@ -43,7 +44,7 @@ const facts = {
     phone: '096 304 8585',
     cta: 'Gửi năm sinh – chiều cao/cân nặng – tình trạng sức khỏe để Thầy Linh kiểm tra điều kiện.'
   },
-  forbidden_legacy_phrases: ['6 triệu', '18–25 triệu', '7,5 triệu đồng/tháng trong thời gian học']
+  forbidden_legacy_phrases: ['6 triệu', '18–25 triệu', '7,5 triệu tính theo từng tháng']
 };
 
 const regexReplacements = [
@@ -55,17 +56,15 @@ const regexReplacements = [
   [/20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động/giu, '20–25 triệu đồng/tháng'],
   [/20[–-]25 triệu\/tháng khi hoàn thành định mức lao động/giu, '20–25 triệu/tháng'],
   [/Điều kiện áp dụng:\s*hoàn thành định mức lao động\.?/giu, INCOME_NOTE + '.'],
+  [legacyMonthlySupport, SUPPORT],
   [/7,5 triệu là tổng (?:mức hỗ trợ )?cả khóa/giu, SUPPORT],
-  [/7,5 triệu đồng\/tháng(?:\/tháng|\s+đồng)+/giu, '7,5 triệu đồng/tháng'],
-  [/Hỗ trợ 7,5 triệu đồng/tháng(?!\/tháng)/gu, 'Hỗ trợ 7,5 triệu đồng/tháng'],
-  [/hỗ trợ 7,5 triệu đồng/tháng(?!\/tháng)/gu, 'hỗ trợ 7,5 triệu đồng/tháng']
 ];
 
 const exactReplacements = [
   ['<div class="home-v6-income"><small>THU NHẬP SAU ĐÀO TẠO</small><strong>20–25 triệu/tháng</strong></div>', '<div class="home-v6-income"><small>THU NHẬP BÌNH QUÂN</small><strong>20–25 triệu/tháng</strong></div>'],
   ['<div class="home-v6-income"><small>HOÀN THÀNH ĐỊNH MỨC LAO ĐỘNG</small><strong>20–25 triệu/tháng</strong></div>', '<div class="home-v6-income"><small>THU NHẬP BÌNH QUÂN</small><strong>20–25 triệu/tháng</strong></div>'],
-  ['<div><dt>Hỗ trợ trong thời gian học</dt><dd>7,5 triệu đồng</dd></div>', '<div><dt>Hỗ trợ trong thời gian học</dt><dd>7,5 triệu đồng/tháng</dd></div>'],
-  ['<strong>7,5 triệu</strong>Hỗ trợ trong thời gian học', '<strong>7,5 triệu/tháng</strong>Hỗ trợ trong thời gian học'],
+  ['<div><dt>Hỗ trợ trong thời gian học</dt><dd>7,5 triệu đồng</dd></div>', '<div><dt>Hỗ trợ trong thời gian học</dt><dd>7,5 triệu đồng trong thời gian học</dd></div>'],
+  ['<strong>7,5 triệu</strong>Hỗ trợ trong thời gian học', '<strong>7,5 triệu đồng trong thời gian học</strong>Hỗ trợ trong thời gian học'],
   ['Mức thu nhập được cam kết theo chính sách đang áp dụng.', 'Thu nhập bình quân; tùy đơn vị, vị trí, ngày công và năng suất.'],
   ['Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.', 'Thu nhập 20–25 triệu đồng/tháng khi hoàn thành định mức lao động.'],
   ['<article><small>01</small><strong>Miễn học phí</strong><p>Được miễn toàn bộ kinh phí đào tạo theo chương trình.</p></article>', '<article><small>01</small><strong>Miễn học phí</strong><p>Miễn học phí theo chỉ tiêu.</p></article>'],
@@ -110,7 +109,7 @@ if (fs.existsSync(currentPath)) {
   current.after_training ||= {};
   current.after_training.income_reference = `${INCOME}, tùy đơn vị, vị trí, ngày công và năng suất`;
   current.after_training.income_commitment = current.after_training.income_reference;
-  current.usage_note = 'Dùng bộ dữ liệu này để đối chiếu thông tin tuyển đang áp dụng. Hai mốc người dùng đã xác nhận: hỗ trợ 7,5 triệu đồng/tháng trong thời gian học; thu nhập 20–25 triệu đồng/tháng.';
+  current.usage_note = 'Dùng bộ dữ liệu này để đối chiếu thông tin tuyển đang áp dụng. Hai mốc người dùng đã xác nhận: hỗ trợ 7,5 triệu đồng trong thời gian học; thu nhập 20–25 triệu đồng/tháng.';
   fs.writeFileSync(currentPath, JSON.stringify(current, null, 2) + '\n');
 }
 
@@ -137,6 +136,6 @@ const criticalFiles = [
   'tuyen-tho-mo/tuyen-tho-mo-quang-ninh/index.html'
 ].filter(fs.existsSync);
 const critical = criticalFiles.map(x => fs.readFileSync(x, 'utf8')).join('\n');
-if (/7,5 triệu đồng/tháng trong thời gian học|18[–-]25 triệu|6 triệu/iu.test(critical)) throw new Error('Legacy recruitment fact remains on a critical public page');
+if (new RegExp(legacyMonthlySupport.source, "iu").test(critical) || /18[–-]25 triệu|6 triệu/iu.test(critical)) throw new Error('Legacy recruitment fact remains on a critical public page');
 
 console.log(JSON.stringify({status:'ok', changedFiles, income:INCOME, income_note:INCOME_NOTE, support:SUPPORT}, null, 2));

@@ -80,8 +80,8 @@ function policyClaims(article) {
 function validateFactsStrings(article) {
   for (const [pointer, value] of policyClaims(article)) {
     const text = String(value);
-    if (/7[,.]5\s*triệu/iu.test(text) && !/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(text)) {
-      errors.push(`${article.slug} ${pointer}: mệnh đề nhắc 7,5 triệu nhưng thiếu /tháng`);
+    if (/7[,.]5\s*triệu/iu.test(text) && !/7,5\s*triệu\s+đồng\s+trong thời gian học/iu.test(text)) {
+      errors.push(`${article.slug} ${pointer}: mệnh đề nhắc 7,5 triệu nhưng thiếu ghi rõ trong thời gian học`);
     }
     if (/20\s*[–-]\s*25\s*triệu/iu.test(text) && !/hoàn thành định mức lao động/iu.test(text)) {
       errors.push(`${article.slug} ${pointer}: mệnh đề nhắc 20–25 triệu nhưng thiếu điều kiện hoàn thành định mức lao động`);

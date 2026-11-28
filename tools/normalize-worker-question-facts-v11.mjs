@@ -15,7 +15,7 @@ const workAnswer = "Ba nghề đang tiếp nhận là kỹ thuật khai thác m�
 const incomeAnswer = `Thu nhập đang áp dụng là ${income}.`;
 
 if (income !== master.income_commitment) throw new Error("Worker questions: income facts lệch master");
-if (support !== "7,5 triệu đồng/tháng trong thời gian học") throw new Error("Worker questions: support facts không đúng");
+if (support !== "7,5 triệu đồng trong thời gian học") throw new Error("Worker questions: support facts không đúng");
 if (!fs.existsSync(outputPath)) throw new Error("Worker questions: thiếu worker-questions.json sau bước build");
 
 const data = JSON.parse(fs.readFileSync(outputPath, "utf8"));
@@ -71,7 +71,7 @@ for (const legacy of [
   "Hai hướng đang tuyển là khai thác mỏ hầm lò và xây dựng mỏ hầm lò",
   "bình quân 20–25 triệu",
   "tùy đơn vị, vị trí, ngày công và năng suất",
-  "7,5 triệu là tổng cả khóa",
+  "7,5 triệu tính theo từng tháng",
 ]) if (outputText.toLocaleLowerCase("vi").includes(legacy.toLocaleLowerCase("vi"))) throw new Error(`Worker questions còn legacy: ${legacy}`);
 
 if (process.env.GITHUB_ACTIONS === "true") {

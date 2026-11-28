@@ -217,7 +217,7 @@ function provincePage(province) {
       <div class="section-heading"><div><p class="eyebrow">CƠ HỘI CHO LAO ĐỘNG ${name.toLocaleUpperCase("vi")}</p><h2 id="overview-title">Từ kiểm tra điều kiện đến ngày nhận việc</h2></div><p>${localContext}</p></div>
       <div class="overview-grid">
         <article><span>01</span><h3>Mở cửa cho người chưa có nghề</h3><p>Nam ${criteria.age_min}–${criteria.age_max} tuổi, cao từ ${heightLabel}, nặng từ ${criteria.weight_min_kg}kg và có sức khỏe tốt có thể đăng ký kiểm tra ban đầu.</p></article>
-        <article><span>02</span><h3>Yên tâm học nghề</h3><p>Miễn kinh phí đào tạo, bố trí ba bữa ăn mỗi ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng theo chính sách đợt tuyển.</p></article>
+        <article><span>02</span><h3>Yên tâm học nghề</h3><p>Miễn kinh phí đào tạo, bố trí ba bữa ăn mỗi ngày, ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển.</p></article>
         <article><span>03</span><h3>Rèn tay nghề trong 2–3 tháng</h3><p>Học kiến thức, an toàn và kỹ năng thực hành của nghề khai thác mỏ hoặc xây dựng mỏ hầm lò.</p></article>
         <article><span>04</span><h3>Bắt đầu công việc đúng nghề</h3><p>Người tốt nghiệp đạt yêu cầu được doanh nghiệp tiếp nhận, bố trí công việc theo nghề đào tạo tại Quảng Ninh.</p></article>
       </div>

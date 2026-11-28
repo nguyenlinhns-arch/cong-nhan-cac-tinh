@@ -71,6 +71,7 @@ jobs:
           const llms = fs.readFileSync(process.env.LLMS_FILE, 'utf8');
           const expectedVersion = Number(process.env.FACTS_VERSION);
           const support = process.env.SUPPORT;
+          if (support !== "7,5 triệu đồng trong thời gian học") throw new Error("Unexpected recruitment study allowance");
           const income = process.env.INCOME;
           const failures = [];
 
@@ -79,7 +80,7 @@ jobs:
           if (facts.after_training?.income_commitment !== income) failures.push('live facts income mismatch');
 
           for (const [label, text] of [['home', home], ['facts page', factsPage]]) {
-            if (!text.includes('7,5 triệu đồng/tháng')) failures.push(`${label}: missing 7.5M/month`);
+            if (!text.includes(support)) failures.push(`${label}: missing study allowance`);
             if (!text.includes('hoàn thành định mức lao động')) failures.push(`${label}: missing labor-norm condition`);
             if (!text.includes('Kỹ thuật cơ điện mỏ hầm lò') && !text.includes('cơ điện mỏ')) failures.push(`${label}: missing electrical-mine occupation`);
           }
@@ -87,7 +88,7 @@ jobs:
           if (home.includes('Xem đủ 26 tỉnh, thành')) failures.push('home: stale 26-province label remains');
           if (!home.includes('facebook.com/reel/988978737487363') || !home.includes('facebook.com/reel/1015675787556708')) failures.push('home: worker journey reels missing');
           if (!factsPage.includes('Thông tin tuyển thợ mỏ đang áp dụng')) failures.push('facts page: evergreen title missing');
-          if (!factsPage.includes('7,5 triệu đồng/tháng')) failures.push('facts page: monthly support missing');
+          if (!factsPage.includes(support)) failures.push('facts page: study allowance missing');
 
           if (!kcn.includes('data-facebook-reel-facade')) failures.push('KCN: click-to-play facade missing');
           const reelBlock = kcn.match(/<div class="kcn-reel">([\s\S]*?)<\/div>/i)?.[1] || '';
@@ -96,15 +97,15 @@ jobs:
           if (worker.canonical_facts_version !== expectedVersion) failures.push('worker questions: facts version mismatch');
           const workerText = JSON.stringify(worker);
           if (!workerText.includes('cơ điện mỏ hầm lò học 10 tháng')) failures.push('worker questions: 10-month electrical-mine answer missing');
-          if (!workerText.includes('7,5 triệu đồng/tháng')) failures.push('worker questions: monthly support missing');
+          if (!workerText.includes(support)) failures.push('worker questions: study allowance missing');
           if (!workerText.includes('hoàn thành định mức lao động')) failures.push('worker questions: income condition missing');
 
           if (!llms.includes(`Facts tuyển sinh canonical v${expectedVersion}`)) failures.push('llms: canonical facts version missing');
           if (!llms.includes('/data/recruitment-facts-2026.json')) failures.push('llms: canonical facts URL missing');
-          if (!llms.includes('7,5 triệu đồng/tháng')) failures.push('llms: monthly support missing');
+          if (!llms.includes(support)) failures.push('llms: study allowance missing');
           if (!llms.includes('hoàn thành định mức lao động')) failures.push('llms: income condition missing');
 
-          for (const legacy of ['Bình quân 20–25 triệu', 'tùy đơn vị, vị trí, ngày công và năng suất', '7,5 triệu là tổng cả khóa']) {
+          for (const legacy of ['Bình quân 20–25 triệu', 'tùy đơn vị, vị trí, ngày công và năng suất', '7,5 triệu đồng/tháng', '7,5 triệu/tháng', '7,5 triệu đồng mỗi tháng']) {
             for (const [label, text] of [['home', home], ['facts page', factsPage], ['worker questions', workerText], ['llms', llms]]) {
               if (text.toLocaleLowerCase('vi').includes(legacy.toLocaleLowerCase('vi'))) failures.push(`${label}: legacy phrase ${legacy}`);
             }

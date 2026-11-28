@@ -99,7 +99,7 @@ if (!fs.existsSync(liveVerifyPath)) {
   if (/git\s+(?:commit|push)/i.test(text)) errors.push("verify-live-recruitment-facts.yml: hậu kiểm live không được ghi repository");
   for (const marker of [
     "/data/recruitment-facts-2026.json",
-    "7,5 triệu đồng/tháng",
+    "7,5 triệu đồng trong thời gian học",
     "hoàn thành định mức lao động",
     'href="/viec-lam-nganh-than/"',
     "data-facebook-reel-facade",

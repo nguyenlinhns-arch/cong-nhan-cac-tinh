@@ -3,7 +3,7 @@
 
   const JOB_PATH = "/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/";
   const CANONICAL_FACTS_VERSION = 8;
-  const CANONICAL_SUPPORT = "7,5 triệu đồng/tháng trong thời gian học";
+  const CANONICAL_SUPPORT = "7,5 triệu đồng trong thời gian học";
   const CANONICAL_INCOME = "20–25 triệu đồng/tháng khi hoàn thành định mức lao động";
   const params = new URLSearchParams(location.search);
   const hasGoogleClickId = Boolean(params.get("gclid") || params.get("gbraid") || params.get("wbraid"));

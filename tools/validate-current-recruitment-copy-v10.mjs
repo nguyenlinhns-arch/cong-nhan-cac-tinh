@@ -12,7 +12,7 @@ const livingSupport = canonicalFacts.study_benefits?.living_support || "";
 const incomeBase = canonicalFacts.after_training?.income || "";
 const incomeCondition = canonicalFacts.after_training?.income_condition || "";
 const incomeStatement = canonicalFacts.after_training?.income_commitment || `${incomeBase} ${incomeCondition}`.trim();
-if (livingSupport !== "7,5 triệu đồng/tháng trong thời gian học") errors.push(`Canonical facts: living_support sai: ${livingSupport}`);
+if (livingSupport !== "7,5 triệu đồng trong thời gian học") errors.push(`Canonical facts: living_support sai: ${livingSupport}`);
 if (incomeStatement !== "20–25 triệu đồng/tháng khi hoàn thành định mức lao động") errors.push(`Canonical facts: income_commitment sai: ${incomeStatement}`);
 if (recruitment.income_commitment !== incomeStatement) errors.push("Master và canonical facts lệch cách ghi thu nhập");
 
@@ -48,8 +48,7 @@ function add(relative, message) {
 }
 
 const forbiddenCurrentCopy = [
-  [/7[,.]5\s*triệu(?:\s*đồng)?(?:\s*\/\s*tháng)?\s+(?:là\s+)?tổng(?:\s+cả)?\s+khóa/iu, "còn cách hiểu sai 7,5 triệu là tổng cả khóa"],
-  [/7[,.]5\s*triệu\s*đồng(?!\s*\/\s*tháng)\s+trong thời gian học/iu, "hỗ trợ 7,5 triệu trong thời gian học nhưng thiếu /tháng"],
+  [/7[,.]5\s*triệu(?:\s*đồng)?\s*(?:\/\s*tháng|mỗi tháng)/iu, "ghi nhầm khoản hỗ trợ thành theo tháng"],
   [/\bbình quân\s+20[–-]25\s*triệu/iu, "còn cách ghi thu nhập bình quân đã bị loại"],
   [/tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất/iu, "còn điều kiện thu nhập legacy tùy đơn vị/vị trí/ngày công/năng suất"],
   [/(?:hai|2)\s+nghề\s+(?:đang\s+)?(?:tuyển|tiếp nhận)/iu, "còn mô hình cũ hai nghề"],
@@ -73,8 +72,8 @@ function validateIncomeContext(relative, text) {
 function validateCurrentFacts(relative, content) {
   const text = normalizeText(content);
   for (const [pattern, message] of forbiddenCurrentCopy) if (pattern.test(text)) add(relative, message);
-  if (/7[,.]5\s*triệu/iu.test(text) && !/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(text)) {
-    add(relative, "có nhắc hỗ trợ 7,5 triệu nhưng thiếu đơn vị /tháng");
+  if (/7[,.]5\s*triệu/iu.test(text) && !/7,5\s*triệu\s+đồng\s+trong thời gian học/iu.test(text)) {
+    add(relative, "có nhắc hỗ trợ 7,5 triệu nhưng thiếu ghi rõ trong thời gian học");
   }
   validateIncomeContext(relative, text);
 }
@@ -109,7 +108,7 @@ for (const marker of [
   "Ba nghề đang tiếp nhận",
   "2–3 tháng",
   "10 tháng",
-  "7,5 triệu đồng/tháng trong thời gian học",
+  "7,5 triệu đồng trong thời gian học",
   "20–25 triệu đồng/tháng khi hoàn thành định mức lao động",
 ]) {
   if (!shareTools.includes(marker)) add("share-tools.js", `thiếu nội dung chia sẻ chuẩn: ${marker}`);
@@ -136,7 +135,7 @@ for (const profile of activeProfiles) {
     continue;
   }
   if (job.training_duration !== profile.training_duration_current) add("jobs.json", `${profile.id} sai thời gian học`);
-  if (!String(job.description || "").includes("7,5 triệu đồng/tháng")) add("jobs.json", `${profile.id} chưa mô tả hỗ trợ 7,5 triệu đồng/tháng`);
+  if (!String(job.description || "").includes("7,5 triệu đồng trong thời gian học")) add("jobs.json", `${profile.id} chưa mô tả hỗ trợ 7,5 triệu đồng trong thời gian học`);
   if (!String(job.description || "").includes(incomeStatement)) add("jobs.json", `${profile.id} thiếu thu nhập canonical có điều kiện định mức`);
   const compensationText = JSON.stringify(job.compensation || {});
   if (!compensationText.includes("hoàn thành định mức lao động")) add("jobs.json", `${profile.id} compensation thiếu điều kiện thu nhập`);

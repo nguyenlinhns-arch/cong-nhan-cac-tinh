@@ -24,7 +24,7 @@ for (const {slug, file} of files) {
   if (!/(?:cơ điện mỏ[^<\n]{0,100}(?:học|đào tạo)[^<\n]{0,40}10 tháng|Kỹ thuật cơ điện mỏ hầm lò[\s\S]{0,180}10 tháng)/iu.test(html)) {
     errors.push(`${label}: thiếu thời gian cơ điện 10 tháng`);
   }
-  if (/7[,.]5\s*triệu/iu.test(html) && !/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(html)) errors.push(`${label}: 7,5 triệu thiếu /tháng`);
+  if (/7[,.]5\s*triệu/iu.test(html) && !/7,5\s*triệu\s+đồng\s+trong thời gian học/iu.test(html)) errors.push(`${label}: 7,5 triệu thiếu ghi rõ trong thời gian học`);
   for (const match of html.matchAll(/20\s*[–-]\s*25\s*triệu/giu)) {
     const index = match.index || 0;
     const window = html.slice(Math.max(0, index - 220), Math.min(html.length, index + 340));

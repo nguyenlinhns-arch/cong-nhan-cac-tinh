@@ -1,3 +1,4 @@
+import {legacyMonthlySupport} from "./study-support-copy.mjs";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -27,7 +28,7 @@ if (facts.version !== publicFacts.version) errors.push(`Facts version lệch pub
 if (facts.confirmed_at !== publicFacts.confirmed_at) errors.push(`Facts confirmed_at lệch public copy: ${facts.confirmed_at} != ${publicFacts.confirmed_at}`);
 if (master.updated_at !== facts.confirmed_at) errors.push(`job-posting-master.updated_at ${master.updated_at} != facts.confirmed_at ${facts.confirmed_at}`);
 if (master.income_commitment !== canonicalIncome) errors.push("Income commitment trong master lệch facts canonical");
-if (!String(master.benefits || []).includes("7,5 triệu đồng/tháng")) errors.push("Master không còn hỗ trợ 7,5 triệu đồng/tháng");
+if (!String(master.benefits || []).includes("7,5 triệu đồng trong thời gian học")) errors.push("Master không còn hỗ trợ 7,5 triệu đồng trong thời gian học");
 
 if (errors.length) {
   console.error(JSON.stringify({ status: "machine-feed-normalize-blocked", errors }, null, 2));
@@ -61,8 +62,7 @@ for (const file of jobPagePaths) {
   if (!fs.existsSync(file)) continue;
   let text = fs.readFileSync(file, "utf8");
   text = text
-    .replace(/7[,.]5 triệu đồng(?!\s*\/\s*tháng)/giu, "7,5 triệu đồng/tháng")
-    .replace(/7[,.]5 triệu đồng\/tháng theo chính sách/giu, "7,5 triệu đồng/tháng trong thời gian học")
+    .replace(legacyMonthlySupport, facts.study_benefits.living_support)
     .replace(/(20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động)\.\s*;/giu, "$1;")
     .replace(/\.\s*;/g, ";");
   text = normalizeVisibleIncome(text)

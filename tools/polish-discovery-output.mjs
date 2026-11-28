@@ -23,7 +23,7 @@ const income = canonicalFacts.after_training?.income_commitment
 if (Number(canonicalFacts.version) < 8 || canonicalFacts.status !== "confirmed_by_user") {
   throw new Error(`Discovery polish: canonical facts chưa đạt v8 confirmed_by_user (${canonicalFacts.version}/${canonicalFacts.status})`);
 }
-if (support !== "7,5 triệu đồng/tháng trong thời gian học") throw new Error(`Discovery polish: support canonical sai: ${support}`);
+if (support !== "7,5 triệu đồng trong thời gian học") throw new Error(`Discovery polish: support canonical sai: ${support}`);
 if (income !== "20–25 triệu đồng/tháng khi hoàn thành định mức lao động") throw new Error(`Discovery polish: income canonical sai: ${income}`);
 if (currentRecruitment.canonical_facts !== canonicalFactsUrl) throw new Error("Discovery polish: recruitment-current không trỏ về canonical facts JSON");
 

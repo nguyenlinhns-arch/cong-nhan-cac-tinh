@@ -1,3 +1,4 @@
+import {legacyMonthlySupport} from "./study-support-copy.mjs";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -10,18 +11,17 @@ const master = JSON.parse(fs.readFileSync(path.join(root, "operations", "job-pos
 const support = facts.study_benefits?.living_support || "";
 const income = facts.after_training?.income_commitment
   || `${facts.after_training?.income || ""} ${facts.after_training?.income_condition || ""}`.trim();
-if (support !== "7,5 triệu đồng/tháng trong thời gian học") throw new Error(`Paid search facts: support canonical sai: ${support}`);
+if (support !== "7,5 triệu đồng trong thời gian học") throw new Error(`Paid search facts: support canonical sai: ${support}`);
 if (income !== master.income_commitment) throw new Error(`Paid search facts: income canonical lệch master: ${income}`);
 if (!fs.existsSync(target)) throw new Error("Paid search facts: thiếu ad-landing-pages.json");
 
-const supportWithoutMonth = /7[,.]5 triệu(?!\s*(?:đồng\s*)?\/\s*tháng)(?:\s*đồng)?/giu;
 const averageIncome = /(?:thu nhập\s+)?bình quân\s+20[–-]25 triệu(?: đồng)?\s*\/\s*tháng(?:\s*,?\s*tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất)?/giu;
 const variableIncome = /20[–-]25 triệu(?: đồng)?\s*\/\s*tháng\s*,?\s*tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất/giu;
 const twoRoleTraining = /khai thác(?: mỏ)?(?: hầm lò)?\s+(?:hoặc|và)\s+xây dựng(?: mỏ)?(?: hầm lò)?(?:\s+học)?\s+2[–-]3 tháng/giu;
 
 function normalizeString(value) {
   return String(value)
-    .replace(supportWithoutMonth, "7,5 triệu đồng/tháng")
+    .replace(legacyMonthlySupport, "7,5 triệu đồng trong thời gian học")
     .replace(averageIncome, income)
     .replace(variableIncome, income)
     .replace(twoRoleTraining, "khai thác và xây dựng mỏ học 2–3 tháng; cơ điện mỏ học 10 tháng");
@@ -66,7 +66,7 @@ delete data.canonicalFactsUrl;
 const errors = [];
 walkStrings(data, (value, pointer) => {
   const text = String(value);
-  if (/7[,.]5\s*triệu/iu.test(text) && !/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(text)) errors.push(`${pointer}: 7,5 triệu thiếu /tháng`);
+  if (/7[,.]5\s*triệu/iu.test(text) && !/7,5\s*triệu\s+đồng\s+trong thời gian học/iu.test(text)) errors.push(`${pointer}: 7,5 triệu thiếu ghi rõ trong thời gian học`);
   if (/20\s*[–-]\s*25\s*triệu/iu.test(text) && !/hoàn thành định mức lao động/iu.test(text)) errors.push(`${pointer}: 20–25 triệu thiếu điều kiện định mức`);
   if (/\bbình quân\s+20[–-]25\s*triệu/iu.test(text)) errors.push(`${pointer}: còn thu nhập bình quân legacy`);
   if (/tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất/iu.test(text)) errors.push(`${pointer}: còn điều kiện thu nhập legacy`);

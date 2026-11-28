@@ -1,3 +1,4 @@
+import {legacyMonthlySupport} from "./study-support-copy.mjs";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -11,7 +12,7 @@ const touched = [];
 const livingSupport = facts.study_benefits?.living_support || "";
 const incomeStatement = facts.after_training?.income_commitment
   || `${facts.after_training?.income || ""} ${facts.after_training?.income_condition || ""}`.trim();
-if (livingSupport !== "7,5 triệu đồng/tháng trong thời gian học") {
+if (livingSupport !== "7,5 triệu đồng trong thời gian học") {
   throw new Error(`normalize-current-recruitment-copy-v10: living_support canonical không hợp lệ: ${livingSupport}`);
 }
 if (incomeStatement !== "20–25 triệu đồng/tháng khi hoàn thành định mức lao động") {
@@ -21,21 +22,15 @@ if (master.income_commitment !== incomeStatement) {
   throw new Error(`normalize-current-recruitment-copy-v10: master income lệch canonical facts: ${master.income_commitment} <> ${incomeStatement}`);
 }
 if (!master.benefits.some((item) => String(item).includes(livingSupport))) {
-  throw new Error("normalize-current-recruitment-copy-v10: master benefits chưa chứa hỗ trợ 7,5 triệu đồng/tháng");
+  throw new Error("normalize-current-recruitment-copy-v10: master benefits chưa chứa hỗ trợ 7,5 triệu đồng trong thời gian học");
 }
 
-const totalCourseSupport = /7[,.]5 triệu(?: đồng)?(?:\s*\/\s*tháng)?\s*(?:là\s+)?tổng(?:\s+cả)?\s+khóa/giu;
-// Put the negative look-ahead immediately after "triệu" so the optional
-// "đồng" token cannot backtrack and accidentally turn an already-correct
-// "7,5 triệu đồng/tháng" into a duplicated "/tháng" string.
-const supportWithoutMonth = /7[,.]5 triệu(?!\s*(?:đồng\s*)?\/\s*tháng)(?: đồng)?/giu;
 const averageIncome = /(?:thu nhập\s+)?bình quân\s+20[–-]25 triệu(?: đồng)?\s*\/\s*tháng(?:\s*,?\s*tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất)?/giu;
 const variableIncomeSuffix = /20[–-]25 triệu(?: đồng)?\s*\/\s*tháng\s*,?\s*tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất/giu;
 
 function normalizeString(value) {
   return String(value)
-    .replace(totalCourseSupport, livingSupport)
-    .replace(supportWithoutMonth, "7,5 triệu đồng/tháng")
+    .replace(legacyMonthlySupport, livingSupport)
     .replace(averageIncome, incomeStatement)
     .replace(variableIncomeSuffix, incomeStatement);
 }
@@ -90,17 +85,15 @@ if (jobsAfter !== jobsBefore) {
 
 for (const relative of currentPages) {
   const html = fs.readFileSync(path.join(site, relative), "utf8");
-  totalCourseSupport.lastIndex = 0;
-  if (totalCourseSupport.test(html)) throw new Error(`${relative}: còn cách hiểu sai 7,5 triệu là tổng cả khóa`);
-  totalCourseSupport.lastIndex = 0;
+  if (new RegExp(legacyMonthlySupport.source, "iu").test(html)) throw new Error(`${relative}: còn cách hiểu sai 7,5 triệu tính theo từng tháng`);
   averageIncome.lastIndex = 0;
   if (averageIncome.test(html)) throw new Error(`${relative}: còn cách ghi thu nhập bình quân cũ`);
   averageIncome.lastIndex = 0;
   variableIncomeSuffix.lastIndex = 0;
   if (variableIncomeSuffix.test(html)) throw new Error(`${relative}: còn cách ghi thu nhập tùy đơn vị/vị trí/ngày công/năng suất`);
   variableIncomeSuffix.lastIndex = 0;
-  if (/7[,.]5 triệu/iu.test(html) && !/7[,.]5 triệu(?: đồng)?\s*\/\s*tháng/iu.test(html)) {
-    throw new Error(`${relative}: có nhắc 7,5 triệu nhưng thiếu đơn vị /tháng`);
+  if (/7[,.]5 triệu/iu.test(html) && !/7,5\s*triệu\s+đồng\s+trong thời gian học/iu.test(html)) {
+    throw new Error(`${relative}: có nhắc 7,5 triệu nhưng thiếu ghi rõ trong thời gian học`);
   }
   if (/20[–-]25 triệu/iu.test(html) && !/hoàn thành định mức lao động/iu.test(html)) {
     throw new Error(`${relative}: có nhắc 20–25 triệu nhưng thiếu điều kiện hoàn thành định mức lao động`);
@@ -116,6 +109,6 @@ console.log(JSON.stringify({
   income: incomeStatement,
   forbiddenLegacyPhrases: facts.forbidden_legacy_phrases || [],
   machineFeedsNormalized: ["jobs.json", "jobs.xml", "jooble.xml"],
-  idempotentMonthlySupport: true,
+  idempotentStudySupport: true,
   touched,
 }, null, 2));

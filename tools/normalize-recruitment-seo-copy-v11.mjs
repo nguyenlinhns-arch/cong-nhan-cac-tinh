@@ -1,3 +1,4 @@
+import {legacyMonthlySupport} from "./study-support-copy.mjs";
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -91,7 +92,7 @@ function normalizeText(text) {
       '20–25 triệu đồng/tháng khi hoàn thành định mức lao động')
     .replace(/20[–-]25 triệu\/tháng(?!(?:(?:\s|<[^>]*>){0,5})khi hoàn thành định mức lao động)/gu,
       '20–25 triệu/tháng khi hoàn thành định mức lao động')
-    .replace(/7[,.]5 triệu đồng(?!\/tháng)/gu, '7,5 triệu đồng/tháng');
+    .replace(legacyMonthlySupport, canonicalFacts.study_benefits.living_support);
 }
 
 function writeIfChanged(file, next) {
@@ -138,7 +139,7 @@ function walk(dir, visitor) {
   for (const entry of fs.readdirSync(dir, {withFileTypes: true})) {
     const file = path.join(dir, entry.name);
     if (entry.isDirectory()) {
-      if (path.normalize(file) === path.normalize(path.join(SITE, 'nhap-hoc'))) continue;
+      if (['nhap-hoc','diaban'].some(name => path.normalize(file) === path.join(SITE, name))) continue;
       walk(file, visitor);
       continue;
     }

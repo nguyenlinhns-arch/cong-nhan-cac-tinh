@@ -22,7 +22,7 @@ const errors = [];
 if (canonicalFacts.version !== review.canonical_facts_version) errors.push(`AI gate facts version mismatch: ${canonicalFacts.version} != ${review.canonical_facts_version}`);
 if (canonicalFacts.confirmed_at !== review.canonical_facts_confirmed_at) errors.push("AI gate facts confirmation timestamp does not match review metadata");
 if (master.version !== review.job_master_version) errors.push(`AI gate master version mismatch: ${master.version} != ${review.job_master_version}`);
-if (canonicalFacts.study_benefits?.living_support !== "7,5 triệu đồng/tháng trong thời gian học") errors.push("AI gate canonical monthly support is incomplete");
+if (canonicalFacts.study_benefits?.living_support !== "7,5 triệu đồng trong thời gian học") errors.push("AI gate canonical study support is incorrect");
 if (canonicalFacts.after_training?.income_commitment !== master.income_commitment) errors.push("AI gate canonical income does not match master");
 
 function collectFiles(directory, predicate, output = []) {
@@ -67,11 +67,11 @@ function assertQualifiedIncome(text, label) {
   }
 }
 
-function assertMonthlySupport(text, label) {
+function assertStudySupport(text, label) {
   const normalized = String(text).replace(/\s+/g, " ").trim();
   if (!/7[,.]5\s*triệu/iu.test(normalized)) return;
-  if (!/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(normalized)) {
-    errors.push(`${label}: chuỗi chứa hỗ trợ 7,5 triệu nhưng thiếu đơn vị /tháng`);
+  if (!/7,5\s*triệu\s+đồng\s+trong thời gian học/iu.test(normalized)) {
+    errors.push(`${label}: chuỗi chứa hỗ trợ 7,5 triệu nhưng thiếu ghi rõ trong thời gian học`);
   }
 }
 
@@ -93,20 +93,20 @@ function validateIncomeContexts(html, label) {
     const index = match.index || 0;
     const context = visibleText(withoutScripts.slice(Math.max(0, index - 260), Math.min(withoutScripts.length, index + 360)));
     assertQualifiedIncome(context, `${label} (ngữ cảnh văn bản ${contextIndex})`);
-    assertMonthlySupport(context, `${label} (ngữ cảnh văn bản ${contextIndex})`);
+    assertStudySupport(context, `${label} (ngữ cảnh văn bản ${contextIndex})`);
   }
   let attributeIndex = 0;
   for (const tag of withoutScripts.matchAll(/<[^>]+>/g)) {
     for (const attribute of tag[0].matchAll(/\b([:\w-]+)=["']([^"']*)["']/g)) {
       attributeIndex += 1;
       assertQualifiedIncome(attribute[2], `${label} (thuộc tính ${attribute[1]} ${attributeIndex})`);
-      assertMonthlySupport(attribute[2], `${label} (thuộc tính ${attribute[1]} ${attributeIndex})`);
+      assertStudySupport(attribute[2], `${label} (thuộc tính ${attribute[1]} ${attributeIndex})`);
     }
   }
   const documents = parseJsonLd(html, `${label} income validation`);
   documents.forEach((document, index) => walkStrings(document, (value, pointer) => {
     assertQualifiedIncome(value, `${label} (JSON-LD ${index + 1} ${pointer})`);
-    assertMonthlySupport(value, `${label} (JSON-LD ${index + 1} ${pointer})`);
+    assertStudySupport(value, `${label} (JSON-LD ${index + 1} ${pointer})`);
   }));
 }
 
@@ -442,3 +442,6 @@ if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
+
+// Enforce the corrected allowance in all generated public recruitment artifacts.
+await import("./validate-study-support-copy.mjs");

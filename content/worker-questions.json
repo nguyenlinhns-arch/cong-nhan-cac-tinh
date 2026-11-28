@@ -58,7 +58,7 @@
     {
       "group": "Học nghề và hồ sơ",
       "question": "Trong thời gian học có được ăn ở và hỗ trợ không?",
-      "answer": "Người học thuộc chỉ tiêu được bố trí 3 bữa/ngày, ký túc xá khép kín và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học theo chính sách đợt tuyển.",
+      "answer": "Người học thuộc chỉ tiêu được bố trí 3 bữa/ngày, ký túc xá khép kín và hỗ trợ 7,5 triệu đồng trong thời gian học theo chính sách đợt tuyển.",
       "path": "/thu-nhap-an-o-ho-tro/"
     },
     {
@@ -70,7 +70,7 @@
     {
       "group": "Đi từ tỉnh xa",
       "question": "Đi học và làm mỏ cần chuẩn bị bao nhiêu tiền?",
-      "answer": "Không có một con số chung. Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ăn ở và hỗ trợ 7,5 triệu đồng/tháng; chỉ nên dự trù đi lại, giấy tờ và chi tiêu cá nhân sau khi có lịch.",
+      "answer": "Không có một con số chung. Người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí ăn ở và hỗ trợ 7,5 triệu đồng trong thời gian học; chỉ nên dự trù đi lại, giấy tờ và chi tiêu cá nhân sau khi có lịch.",
       "path": "/di-lam-mo-than-can-chuan-bi-bao-nhieu-tien/"
     },
     {
@@ -352,19 +352,19 @@
       "short_title": "Chi phí ban đầu khi học nghề mỏ",
       "meta": "Đi làm mỏ than cần chuẩn bị bao nhiêu tiền? Khoản được hỗ trợ, khoản cá nhân cần dự trù và cách tránh đóng tiền khi chưa có lịch.",
       "eyebrow": "CHI PHÍ BAN ĐẦU",
-      "answer": "Không có một con số chung vì chi phí đi lại và nhu cầu cá nhân khác nhau. Theo chính sách đang áp dụng, người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí 3 bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng/tháng trong thời gian học. Chỉ nên dự trù tiền đi lại, giấy tờ, khám theo hướng dẫn và chi tiêu cá nhân sau khi được xác nhận lịch.",
+      "answer": "Không có một con số chung vì chi phí đi lại và nhu cầu cá nhân khác nhau. Theo chính sách đang áp dụng, người học thuộc chỉ tiêu được miễn kinh phí đào tạo, bố trí 3 bữa/ngày, ký túc xá và hỗ trợ 7,5 triệu đồng trong thời gian học. Chỉ nên dự trù tiền đi lại, giấy tờ, khám theo hướng dẫn và chi tiêu cá nhân sau khi được xác nhận lịch.",
       "note": "Không chuyển tiền đặt cọc cho người trung gian. Hãy xác minh qua Thầy Linh trước khi phát sinh bất kỳ khoản chi nào.",
       "facts": [
         ["Miễn kinh phí đào tạo", "Áp dụng cho người học thuộc chỉ tiêu của chương trình."],
         ["Bố trí 3 bữa/ngày", "Chính sách ăn trong thời gian học được xác nhận theo đợt tuyển."],
         ["Ký túc xá khép kín", "Giúp giảm khoản thuê trọ trong giai đoạn học nghề."],
-        ["Hỗ trợ 7,5 triệu đồng/tháng", "Khoản hỗ trợ trong khóa học theo chính sách đang áp dụng."]
+        ["Hỗ trợ 7,5 triệu đồng trong thời gian học", "Khoản hỗ trợ trong khóa học theo chính sách đang áp dụng."]
       ],
       "sections": [
         {
           "heading": "Khoản nào được hỗ trợ, khoản nào cần tự dự trù?",
           "paragraphs": [
-            "Chương trình hỗ trợ kinh phí đào tạo theo chỉ tiêu, ba bữa ăn mỗi ngày, chỗ ở ký túc xá và 7,5 triệu đồng/tháng trong thời gian học.",
+            "Chương trình hỗ trợ kinh phí đào tạo theo chỉ tiêu, ba bữa ăn mỗi ngày, chỗ ở ký túc xá và 7,5 triệu đồng trong thời gian học.",
             "Cá nhân nên dự trù vé xe, chi phí giấy tờ hoặc khám khi được yêu cầu, đồ dùng cá nhân và một khoản dự phòng phù hợp hoàn cảnh."
           ]
         },
@@ -391,7 +391,7 @@
       "faqs": [
         ["Có phải đóng học phí trước không?", "Người học thuộc chỉ tiêu được miễn kinh phí đào tạo. Hãy xác nhận điều kiện trước, không chuyển tiền cho trung gian."],
         ["Có phải tự thuê trọ trong thời gian học không?", "Chương trình đang áp dụng bố trí ký túc xá khép kín cho người học thuộc chỉ tiêu."],
-        ["Hỗ trợ 7,5 triệu đồng/tháng nhận lúc nào?", "Thời điểm và cách chi trả cần được xác nhận theo chính sách của đợt tiếp nhận cụ thể."],
+        ["Hỗ trợ 7,5 triệu đồng trong thời gian học nhận lúc nào?", "Thời điểm và cách chi trả cần được xác nhận theo chính sách của đợt tiếp nhận cụ thể."],
         ["Tỉnh xa có nên đi ngay để tiết kiệm thời gian không?", "Không. Đi khi chưa có lịch dễ phát sinh vé xe, ăn ở và giấy tờ không cần thiết."]
       ],
       "related": [

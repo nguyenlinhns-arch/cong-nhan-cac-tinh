@@ -191,7 +191,7 @@ ${selfCheck}
           <ol class="home-journey__steps">
             <li><span>01</span><div><h3>Tư vấn sơ bộ</h3><p>Gửi năm sinh, cao/nặng, sức khỏe và tỉnh đang sống.</p><a class="home-journey__detail" href="/kiem-tra-dieu-kien/">Xem điều kiện tuyển →</a></div></li>
             <li id="ho-so"><span>02</span><div><h3>Nhập học tại Quang Hanh</h3><p id="dia-diem">Mang CCCD, giấy khai sinh và bằng nếu có.</p><a class="home-journey__detail" href="/ho-so-nhap-hoc/">Xem hồ sơ cần mang →</a></div></li>
-            <li id="thoi-gian-hoc"><span>03</span><div><h3>Học nghề</h3><p>Khai thác và xây dựng mỏ: 2–3 tháng · Cơ điện mỏ: 10 tháng.</p><p id="ho-tro-hoc-nghe" class="home-journey__support">Miễn học phí · 3 bữa/ngày · KTX · hỗ trợ 7,5 triệu đồng/tháng.</p><a class="home-journey__detail" href="/thu-nhap-an-o-ho-tro/">Xem quyền lợi khi học →</a></div></li>
+            <li id="thoi-gian-hoc"><span>03</span><div><h3>Học nghề</h3><p>Khai thác và xây dựng mỏ: 2–3 tháng · Cơ điện mỏ: 10 tháng.</p><p id="ho-tro-hoc-nghe" class="home-journey__support">Miễn học phí · 3 bữa/ngày · KTX · hỗ trợ 7,5 triệu đồng trong thời gian học.</p><a class="home-journey__detail" href="/thu-nhap-an-o-ho-tro/">Xem quyền lợi khi học →</a></div></li>
             <li id="noi-lam-viec"><span>04</span><div><h3>Nhận việc tại Quảng Ninh</h3><p>Làm việc tại các đơn vị ngành Than.</p><a class="home-journey__detail" href="/thong-tin-tuyen-tho-mo/">Xem thông tin tuyển đang áp dụng →</a></div></li>
           </ol>
         </div>

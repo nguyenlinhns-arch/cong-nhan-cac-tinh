@@ -1,3 +1,4 @@
+import {legacyMonthlySupport} from "./study-support-copy.mjs";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -17,7 +18,7 @@ const errors = [];
 const changed = [];
 
 if (income !== "20–25 triệu đồng/tháng khi hoàn thành định mức lao động") throw new Error(`Province facts: income canonical sai: ${income}`);
-if (support !== "7,5 triệu đồng/tháng trong thời gian học") throw new Error(`Province facts: support canonical sai: ${support}`);
+if (support !== "7,5 triệu đồng trong thời gian học") throw new Error(`Province facts: support canonical sai: ${support}`);
 
 function provinceFiles() {
   if (!fs.existsSync(provinceRoot)) throw new Error("Province facts: thiếu thư mục viec-lam-nganh-than");
@@ -34,7 +35,7 @@ function cleanLegacy(text) {
     .replace(/được\s+Thu nhập\s+20[–-]25 triệu đồng\/tháng khi hoàn thành định mức lao động/gu, `có mức thu nhập ${income}`)
     .replace(/,?\s*tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất/giu, "")
     .replace(/(khi hoàn thành định mức lao động)[\s.,;:]+khi hoàn thành định mức lao động/giu, "$1")
-    .replace(/7[,.]5 triệu(?!\s*(?:đồng\s*)?\/\s*tháng)(?:\s*đồng)?/giu, "7,5 triệu đồng/tháng")
+    .replace(legacyMonthlySupport, support)
     .replace(/Xem đủ\s+\d+\s+tỉnh,\s*thành/giu, "Xem các địa bàn tuyển nguồn")
     .replace(/\.\s*\./g, ".");
 }
@@ -197,7 +198,7 @@ for (const {slug, file} of files) {
   const noindex = /<meta\s+name=["']robots["']\s+content=["'][^"']*noindex/i.test(html);
   if (!/Kỹ thuật cơ điện mỏ hầm lò/i.test(html)) errors.push(`${relative}: thiếu nghề cơ điện mỏ`);
   if (!/(?:cơ điện mỏ[^<\n]{0,100}(?:học|đào tạo)[^<\n]{0,40}10 tháng|Kỹ thuật cơ điện mỏ hầm lò[\s\S]{0,220}10 tháng)/iu.test(html)) errors.push(`${relative}: chưa nêu cơ điện mỏ 10 tháng`);
-  if (/7[,.]5\s*triệu/iu.test(html) && !/7[,.]5\s*triệu(?:\s*đồng)?\s*\/\s*tháng/iu.test(html)) errors.push(`${relative}: hỗ trợ 7,5 triệu thiếu /tháng`);
+  if (/7[,.]5\s*triệu/iu.test(html) && !/7,5\s*triệu\s+đồng\s+trong thời gian học/iu.test(html)) errors.push(`${relative}: hỗ trợ 7,5 triệu thiếu ghi rõ trong thời gian học`);
   if (/tùy đơn vị,?\s*vị trí,?\s*ngày công và năng suất/iu.test(html)) errors.push(`${relative}: còn điều kiện thu nhập legacy`);
   if (!noindex && !new RegExp(`"lastReviewed"\\s*:\\s*"${reviewDate}"`).test(html)) errors.push(`${relative}: lastReviewed chưa là ${reviewDate}`);
   if (!noindex && !html.includes(`"reviewedBy":{"@id":"${authorId}"}`)) errors.push(`${relative}: thiếu reviewedBy canonical author`);

@@ -61,7 +61,7 @@ const polishDamHaArticle = (article) => {
           ...section,
           title: "Học nghề mỏ hầm lò được miễn học phí, bố trí nội trú",
           paragraphs: [
-            "Người học nghề mỏ hầm lò theo chỉ tiêu được miễn học phí, bố trí chỗ ở ký túc xá, phục vụ ba bữa ăn mỗi ngày và hỗ trợ 7,5 triệu đồng/tháng sinh hoạt phí trong thời gian đào tạo. Sau khi hoàn thành khóa học và đạt yêu cầu, học viên được bố trí việc làm tại các đơn vị ngành Than ở Quảng Ninh.",
+            "Người học nghề mỏ hầm lò theo chỉ tiêu được miễn học phí, bố trí chỗ ở ký túc xá, phục vụ ba bữa ăn mỗi ngày và hỗ trợ 7,5 triệu đồng trong thời gian học sinh hoạt phí trong thời gian đào tạo. Sau khi hoàn thành khóa học và đạt yêu cầu, học viên được bố trí việc làm tại các đơn vị ngành Than ở Quảng Ninh.",
           ],
         };
       }

@@ -52,7 +52,7 @@ for (const profile of activeProfiles) {
 const livingSupport = facts.study_benefits?.living_support || "";
 const incomeCommitment = facts.after_training?.income_commitment
   || `${facts.after_training?.income || ""} ${facts.after_training?.income_condition || ""}`.trim();
-eq(livingSupport, "7,5 triệu đồng/tháng trong thời gian học", "canonical living support");
+eq(livingSupport, "7,5 triệu đồng trong thời gian học", "canonical living support");
 eq(incomeCommitment, "20–25 triệu đồng/tháng khi hoàn thành định mức lao động", "canonical income commitment");
 eq(master.income_commitment, incomeCommitment, "master income_commitment");
 eq(master.income_reference, incomeCommitment, "master income_reference");
@@ -77,7 +77,7 @@ for (const phrase of forbidden) {
 }
 if (!String(usageNote || "").includes(livingSupport)) add("recruitment-current usage_note thiếu hỗ trợ canonical");
 if (!String(usageNote || "").includes(incomeCommitment)) add("recruitment-current usage_note thiếu thu nhập canonical");
-if (!/tổng cả khóa/iu.test(String(usageNote || ""))) add("recruitment-current usage_note chưa cảnh báo cách hiểu sai '7,5 triệu là tổng cả khóa'");
+if (!/tính theo từng tháng/iu.test(String(usageNote || ""))) add("recruitment-current usage_note chưa cảnh báo cách hiểu sai '7,5 triệu tính theo từng tháng'");
 
 const shareTools = fs.readFileSync(path.join(site, "share-tools.js"), "utf8");
 for (const marker of [
@@ -88,7 +88,7 @@ for (const marker of [
 
 const answers = fs.readFileSync(path.join(root, "tools", "recruitment-answers.mjs"), "utf8");
 for (const marker of [
-  "7,5 triệu đồng/tháng trong thời gian học",
+  "7,5 triệu đồng trong thời gian học",
   "recruitment.income_commitment",
   "hoàn thành định mức lao động",
 ]) if (!answers.includes(marker)) add(`recruitment-answers thiếu canonical marker: ${marker}`);
@@ -99,7 +99,7 @@ for (const phrase of ["bình quân 20–25 triệu", "tùy đơn vị, vị trí
 const supplementPath = path.join(root, "content", "daily-seo-supplements-20260823.json");
 if (fs.existsSync(supplementPath)) {
   const supplement = fs.readFileSync(supplementPath, "utf8");
-  if (!supplement.includes(livingSupport)) add("SEO 23/08 thiếu hỗ trợ 7,5 triệu đồng/tháng");
+  if (!supplement.includes(livingSupport)) add("SEO 23/08 thiếu hỗ trợ 7,5 triệu đồng trong thời gian học");
   if (!supplement.includes(incomeCommitment)) add("SEO 23/08 thiếu thu nhập canonical");
   for (const phrase of ["bình quân 20–25 triệu", "tùy đơn vị, vị trí, ngày công và năng suất"]) {
     if (supplement.toLocaleLowerCase("vi").includes(phrase)) add(`SEO 23/08 còn legacy phrase: ${phrase}`);

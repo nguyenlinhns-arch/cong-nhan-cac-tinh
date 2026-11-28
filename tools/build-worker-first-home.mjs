@@ -40,7 +40,7 @@ const required = [
   'id="dieu-kien"',
   'id="dang-ky"',
   'class="home-funnel"',
-  "7,5 triệu đồng/tháng",
+  "7,5 triệu đồng trong thời gian học",
   "20–25 triệu",
   "/home-critical.css?v=3",
   "/home-content.css?v=3",

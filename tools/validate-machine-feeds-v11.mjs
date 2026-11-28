@@ -10,7 +10,7 @@ const errors = [];
 
 const canonicalFactsJson = "/data/recruitment-facts-2026.json";
 const canonicalFactsUrl = `https://thaylinhtuyenthomo.vn${canonicalFactsJson}`;
-const supportNeedle = "7,5 triệu đồng/tháng";
+const supportNeedle = "7,5 triệu đồng trong thời gian học";
 const incomeNeedle = "hoàn thành định mức lao động";
 
 if (facts.version !== publicFacts.version) errors.push("Public facts version lệch source facts");
@@ -55,7 +55,7 @@ function validateXml(relative, { generatedAt = false } = {}) {
   const count = (text.match(/<job\s+id=/gu) || []).length;
   if (count !== 3) errors.push(`${relative}: phải có 3 job, hiện có ${count}`);
   const normalized = text.toLocaleLowerCase("vi");
-  if (!normalized.includes(supportNeedle.toLocaleLowerCase("vi"))) errors.push(`${relative}: thiếu hỗ trợ 7,5 triệu đồng/tháng`);
+  if (!normalized.includes(supportNeedle.toLocaleLowerCase("vi"))) errors.push(`${relative}: thiếu hỗ trợ 7,5 triệu đồng trong thời gian học`);
   if (!normalized.includes(incomeNeedle.toLocaleLowerCase("vi"))) errors.push(`${relative}: thiếu điều kiện thu nhập định mức`);
 }
 
@@ -70,7 +70,7 @@ const all = ["jobs.json", "jobs.xml", "jooble.xml"]
 for (const legacy of [
   "bình quân 20–25 triệu",
   "tùy đơn vị, vị trí, ngày công và năng suất",
-  "7,5 triệu là tổng cả khóa",
+  "7,5 triệu tính theo từng tháng",
   "hai nghề đang tiếp nhận",
 ]) {
   if (all.includes(legacy.toLocaleLowerCase("vi"))) errors.push(`Machine feed còn legacy: ${legacy}`);
