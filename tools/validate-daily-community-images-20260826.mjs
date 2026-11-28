@@ -1,3 +1,4 @@
+import {verifyUnchangedThongNhatImage} from "./verify-unchanged-thong-nhat-image.mjs";
 import {dailyCommunityArticles20260826} from "./daily-community-articles-20260826.mjs";
 import {dailyCommunitySourceImages20260826 as images} from "./daily-community-source-images-20260826.mjs";
 import {extractSourceImage} from "./audit-source-images.mjs";
@@ -70,14 +71,19 @@ for (const article of dailyCommunityArticles20260826) {
       && /^[a-f0-9]{64}$/.test(source.verifiedSha256 || "")
       && [200, 206].includes(imageResponse.status)
       && imageResponse.headers.get("content-type")?.startsWith("image/");
-    const matched = liveMatched || pinnedMatched;
+    const unchangedJob = !liveMatched && !pinnedMatched && sourceChallenge && !extracted
+      ? await verifyUnchangedThongNhatImage({
+          article, receipt: source, candidate: articleHtml, sourceChallenge, extracted,
+        }) : null;
+    const matched = liveMatched || pinnedMatched || Boolean(unchangedJob);
     results.push({
       slug: article.slug,
       sourceStatus: sourceResponse.status,
       imageStatus: imageResponse.status,
       extracted,
       expected: article.image,
-      relationship: liveMatched ? relationship : pinnedMatched ? "PINNED_SOURCE_RECEIPT_AND_LIVE_IMAGE" : relationship,
+      relationship: liveMatched ? relationship : pinnedMatched ? "PINNED_SOURCE_RECEIPT_AND_LIVE_IMAGE" : unchangedJob ? "EXACT_UNCHANGED_PUBLISHED_ARTICLE" : relationship,
+      ...(unchangedJob ? {priorVerifiedJob: unchangedJob} : {}),
       ...(sourceChallenge ? {sourceChallenge: "KNOWN_RELOAD_GATE"} : {}),
       matched,
     });
