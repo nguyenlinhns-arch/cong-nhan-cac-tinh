@@ -7,11 +7,11 @@ const before = html;
 
 const proofLink = /(<div class="home-proof__video-copy"><small>PHÓNG SỰ CÔNG NHÂN<\/small><h3>Nghe người trong nghề kể về công việc và cuộc sống<\/h3>)<a href="\/anh-video-thuc-te\/">Xem toàn bộ video thực tế →<\/a>(<\/div>)/i;
 const currentProofLink = /<div class="home-proof__video-copy"><small>PHÓNG SỰ CÔNG NHÂN<\/small><h3>Nghe người trong nghề kể về công việc và cuộc sống<\/h3><a href="\/phong-su\/">Đọc phóng sự hiện trường →<\/a><\/div>/i;
-const inlineProofLink = '<a href="/phong-su/"><strong>Đọc phóng sự hiện trường</strong>';
+const archiveLink = /<footer\b[^>]*>[\s\S]*?<a href="\/phong-su\/">Phóng sự<\/a>[\s\S]*?<\/footer>/i;
 if (proofLink.test(html)) {
   html = html.replace(proofLink, '$1<a href="/phong-su/">Đọc phóng sự hiện trường →</a>$2');
-} else if (!currentProofLink.test(html) && !html.includes(inlineProofLink)) {
-  throw new Error("Homepage field-report v9: thiếu lối ra từ khối Người thật · việc thật");
+} else if (!currentProofLink.test(html) && !archiveLink.test(html)) {
+  throw new Error("Homepage field-report v9: thiếu liên kết đến kho phóng sự");
 }
 
 html = html.replace(/<script\b([^>]*type=["']application\/ld\+json["'][^>]*)>([\s\S]*?)<\/script>/gi, (full, attrs, payload) => {
@@ -30,7 +30,7 @@ html = html.replace(/<script\b([^>]*type=["']application\/ld\+json["'][^>]*)>([\
   return `<script${attrs}>${JSON.stringify(data)}</script>`;
 });
 
-if (!currentProofLink.test(html) && !html.includes(inlineProofLink)) throw new Error("Homepage field-report v9: chưa tạo được link phóng sự");
+if (!currentProofLink.test(html) && !archiveLink.test(html)) throw new Error("Homepage field-report v9: chưa tạo được link phóng sự");
 if (!html.includes('"url":"https://thaylinhtuyenthomo.vn/phong-su/"')) throw new Error("Homepage field-report v9: schema chưa có chuyên mục phóng sự");
 
 if (html !== before) fs.writeFileSync(file, html);

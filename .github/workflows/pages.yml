@@ -217,6 +217,10 @@ jobs:
           # Keep the registration links on the article pages without promoting them on the homepage.
           node tools/publish-home-reading-actions.mjs
           node tools/publish-home-reading-actions.mjs --check
+      - name: Polish public recruitment copy
+        run: |
+          node tools/publish-recruitment-copy.mjs
+          node tools/publish-recruitment-copy.mjs --check
       - uses: actions/upload-pages-artifact@v3
         with:
           # Publish the recruitment portal at the custom-domain root.
