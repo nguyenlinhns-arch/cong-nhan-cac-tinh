@@ -5,7 +5,7 @@ import { reelImage, reelThumbnail } from "./video-thumbnail-assets.mjs";
 
 const file = "tuyen-tho-mo/index.html";
 const before = fs.readFileSync(file, "utf8");
-assert.ok(before.includes("/home-worker-journey.js?v=20261128-4"), "Invalidate the parent loader cache too");
+assert.ok(before.includes("/home-worker-journey.js?v=20261128-5"), "Invalidate the parent loader cache too");
 // Preserve the exact YouTube posters and avoid requesting an outside image before Play.
 const posterOwner = fs.readFileSync('tuyen-tho-mo/home-worker-journey.js', 'utf8');
 assert.doesNotMatch(posterOwner, /i\.ytimg\.com/);

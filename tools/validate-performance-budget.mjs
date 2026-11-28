@@ -72,7 +72,7 @@ if (!/<link rel="stylesheet" href="\/home-content\.css\?v=4">/.test(home) || hom
 if ((home.match(/data-home-font-preload/g) || []).length !== 6) fail("Trang chủ: thiếu preload các font cục bộ");
 if ((read("home-critical.css").match(/font-display:optional/g) || []).length !== 6) fail("Trang chủ: font không được hoán đổi muộn gây xô lệch bố cục");
 if (/<link\b(?=[^>]*rel=["']preload["'])(?=[^>]*(?:home-featured-16x9|youtube-[\w-]+)\.jpg)[^>]*>/i.test(home)) {
-  fail("Trang chủ: không tải trước ảnh bìa video nằm dưới màn hình đầu");
+  fail("Trang chủ: để trình duyệt lấy ảnh bìa từ HTML, không yêu cầu preloads trùng");
 }
 const homeVideoFacades = (home.match(/<a\b[^>]*class="tkv-video__cover-link"[^>]*data-tkv-pick/g) || []).length;
 if (homeVideoFacades !== 1) fail(`Trang chủ đơn giản: dự kiến 1 lớp xem trước video, thực tế ${homeVideoFacades}`);
@@ -89,11 +89,11 @@ for (const marker of ["home-video-facade", "home-video-facade__play", "focus-vis
   if (!homeStyles.includes(marker)) fail(`Trang chủ: thiếu kiểu lớp xem trước ${marker}`);
 }
 const optimizedHomeImages = [
-  ["/assets/video-thumbnails/home-featured-16x9.jpg", "480", "270", "lazy"],
+  ["/assets/video-thumbnails/home-featured-16x9.jpg", "480", "270", "eager"],
   ["/assets/video-thumbnails/youtube-ts41cqu7r9c.jpg", "480", "360", "lazy"],
   ["/assets/video-thumbnails/youtube-xW92UBKmWok.jpg", "480", "360", "lazy"],
   ["/assets/video-thumbnails/youtube-6MJLc5mBhsA.jpg", "320", "180", "lazy"],
-  ["/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp", "1200", "736", "eager"],
+  ["/assets/vinacomin-tho-lo-tieu-bieu-pham-dinh-duan.webp", "1200", "736", "lazy"],
   ["/assets/vinacomin-tho-lo-ha-lam-giao-ca.webp", "1055", "593", "lazy"],
   ["/assets/vinacomin-hoc-vien-quang-hanh-ao-xanh-doi-mu.webp", "1280", "802", "lazy"],
   ["/assets/vinacomin-tho-lo-lo-van-ky-mu-bao-ho.webp", "794", "1000", "lazy"],
