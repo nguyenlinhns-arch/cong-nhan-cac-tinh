@@ -783,6 +783,56 @@ html:root main :is(.network-hero,.daily-seo-hub-hero,.daily-seo-hero,.news-hero,
   background:linear-gradient(112deg,var(--d-bg),var(--d-panel))!important;color:var(--d-ink)!important;
 }
 html:root main :is(.network-hero,.daily-seo-hub-hero,.daily-seo-hero,.news-hero,.payroll-hero,.verification-page__hero) :is(.network-eyebrow,.verification-page__eyebrow,.payroll-eyebrow){color:var(--d-mark)!important}
+
+/* Keep the actual application link primary on locality pages, not the contact-channel brand. */
+html:root main .local-hero .eyebrow{color:var(--d-mark)!important}
+html:root main .local-hero .local-check .eyebrow{color:#765420!important}
+html:root main .local-hero .contact-pair .contact-button{
+  color:var(--d-ink)!important;background:var(--d-panel)!important;border:1px solid #7d9184!important;box-shadow:none!important;
+}
+html:root main .local-hero .contact-pair .contact-button[data-contact="application"]{
+  color:var(--d-on)!important;background:var(--d-strong)!important;border-color:var(--d-strong)!important;
+}
+html:root main .local-hero .contact-button :is(strong,small){color:inherit!important;opacity:1!important}
+html:root main .local-hero .contact-button .contact-icon{color:inherit!important;background:#00000016!important}
+
+/* Scoped contrast pairs on the reading surfaces beneath charcoal headers. */
+html:root main :is(.job-section,.seo-topic-cluster,.faq-intro,.job-apply__intro) .eyebrow,
+html:root main :is(.news-kicker,.news-card__body small,.library-heading .eyebrow,.decision-card small,.proof-video-library__head .eyebrow,.tkv-video-card__content small,.payroll-period){color:#814713!important}
+html:root main .network-section .network-heading .network-eyebrow,html:root main .network-section .network-heading time{color:#814713!important}
+html:root main .network-card:not(.network-card--accent) .network-card__body small{color:#814713!important}
+html:root main .network-card:not(.network-card--accent) .network-card__body a{color:#205c40!important}
+html:root main .network-card--accent .network-card__body :is(small,a){color:var(--d-strong)!important}
+html:root main :is(.daily-seo-card small,.proof-video-library__head>p,.tkv-video-card__content>span,.story-link>div>p,
+.job-apply__intro>p:not(.eyebrow),.job-form-note,.proof-video-library__intro){color:#435951!important}
+html:root main .benefit-grid__accent :is(p,small){color:#372a10!important}
+html:root main .condition-grid__highlight>span{background:#236247!important;color:#fff!important}
+html:root main .income-note>strong{color:#244f3b!important}
+html:root main .job-section a[data-v5-cta-context],html:root main .job-section aside>a[href^="tel:"]{color:#205c40!important;text-decoration:underline;text-underline-offset:3px}
+html:root main .final-cta :is(.eyebrow--light,p){color:#fff!important}
+html:root main .final-cta .contact-button{background:#164532!important;color:#fff!important;border-color:#afcabb!important}
+html:root main .final-cta .contact-button :is(small,strong){color:#fff!important;opacity:1!important}
+html:root main .news-hero .back-link{color:var(--d-strong)!important}
+html:root main:has(.news-hero) .back-link{color:var(--d-strong)!important}
+html:root main:has(.news-hero) a[data-journey-action="condition"]{background:#7d4315!important;color:#fff!important}
+html:root main .job-section.section--dark .section-heading .eyebrow{color:var(--d-strong)!important}
+html:root main .dossier-board .eyebrow{color:var(--d-strong)!important}
+html:root main [data-progress-step="2"]:not([aria-current="step"]){color:#435951!important}
+html:root main:has(.local-hero) .section-heading .eyebrow{color:#814713!important}
+html:root body .final-cta :is(.eyebrow--light,p){color:#fff!important}
+html:root body .final-cta .contact-button{background:#164532!important;color:#fff!important;border-color:#afcabb!important}
+html:root body .final-cta .contact-button :is(small,strong){color:#fff!important;opacity:1!important}
+html:root main .network-card .network-card__body :is(a,small){background:#f0f3eb!important;color:#244f3b!important}
+html:root main .network-card .network-card__body small{color:#765024!important}
+html:root body:has(.news-hero) .back-link{color:var(--d-strong)!important}
+html:root main .section--faq details>summary{color:#1b4033!important;background:#f0f3eb!important}
+/* Keep deeper reading templates and the standalone eligibility action legible. */
+html:root .verification-check__submit{background:#7d4315!important;color:#fff!important}
+html:root body.contact-authority-page :is(.contact-authority__heading,.contact-authority__two-column,.contact-authority__faq,.contact-authority__more-questions) .network-eyebrow{color:#814713!important}
+html:root body.editorial-newsroom-page .site-header .back-link{color:var(--d-strong)!important}
+html:root .article-hero--newspaper-v6 .article-byline a{color:#205c40!important}
+html:root body.editorial-newspaper-v6-page .breadcrumbs :is(a,span){color:#4d615a!important;opacity:1!important}
+html:root .daily-seo-takeaway{background:#eef3ed!important;color:#244339!important}
 /* homepage-redesign.css */
 /* Trang chủ 04/08/2026: hành trình đầy đủ, các trang sau là lớp đọc sâu. */
 .home-v6>section:not(.home-v6-hero):not(.home-v6-facts){content-visibility:auto;contain-intrinsic-size:720px}
