@@ -371,3 +371,68 @@ body:has([data-recruitment-entry]) .site-footer--home .footer-bottom {
 body:has([data-home-province-reels]) #hanh-trinh-tu-que:not(:target) {
   display:none;
 }
+
+/* Carry the homepage's recruitment palette through the comparison, checks and footer. */
+.home-v6 .home-v6-decision__grid {
+  width:min(1220px,calc(100% - 64px));
+  grid-template-columns:minmax(0,1.2fr) minmax(255px,.8fr);
+  gap:clamp(24px,5vw,76px);
+}
+.home-v6 .home-v6-decision__copy h2,
+.home-v6 .home-v6-heading h2,
+.home-v6 .home-journey .home-section-head h2 {
+  color:var(--mine-ink);
+  line-height:1.12;
+  text-wrap:balance;
+}
+.home-v6 .home-v6-decision__lead,
+.home-v6 .home-journey__steps p {color:var(--mine-soft)}
+.home-v6 .home-v6-decision__points,
+.home-v6 .home-v6-decision__points li,
+.home-v6 .home-journey__steps,
+.home-v6 .home-journey__steps li {border-color:var(--mine-line)}
+.home-v6 .home-v6-decision__points li>b,
+.home-v6 .home-v6-career-list>a>span:first-child,
+.home-v6 .home-journey__steps>li>span {background:var(--mine-green);color:#fff}
+.home-v6 .home-v6-decision__actions a {
+  border-radius:8px;border-color:#8ca296;color:var(--mine-green);
+}
+.home-v6 .home-v6-decision__actions a:first-child,
+.home-v6 .worker-check__submit {
+  background:var(--mine-green);border-color:var(--mine-green);color:#fff;
+}
+.home-v6 .home-v6-decision__actions a:first-child:hover,
+.home-v6 .worker-check__submit:hover {background:#143a2d;color:#fff}
+.home-v6 .home-v6-reel__device {border-radius:16px;background:#1b3029;box-shadow:none}
+.home-v6 button.home-kcn-reel-facade {border-radius:10px}
+.home-v6 .home-kcn-reel-facade img {object-fit:contain!important;background:#12251d}
+.home-v6 .worker-self-check {background:#edf0e7}
+.home-v6 .worker-self-check h2 {color:var(--mine-ink)}
+.home-v6 .worker-check {border-color:var(--mine-line);box-shadow:none}
+.home-v6 .worker-check legend>span {background:var(--mine-green);color:#fff}
+.home-v6 .home-journey__steps .home-journey__support {color:#8c451b}
+.home-v6 .tkv-video__header {margin-bottom:16px}
+.home-v6 .tkv-video__header h2 {margin-bottom:5px}
+.home-v6 .tkv-video__header p {margin:0;color:#dae8de}
+.home-v6 .tkv-video__rail a {font-weight:660}
+.home-v6 .tkv-video__recovery :is(button,a) {
+  display:inline-flex;align-items:center;min-height:44px;
+}
+.home-v6 .tkv-video__recovery button[hidden] {display:none}
+body:has([data-recruitment-entry]) .site-footer--home {background:#132a21}
+@media (max-width:767px) {
+  .home-v6 .home-v6-decision__grid {
+    width:calc(100% - 36px);grid-template-columns:minmax(0,1fr);gap:24px;
+  }
+  .home-v6 .home-v6-decision__copy h2 {font-size:clamp(1.86rem,8vw,2.5rem)}
+  .home-v6 .home-v6-decision__lead {font-size:.94rem;line-height:1.6;margin-top:12px}
+  .home-v6 .home-v6-decision__points {margin-top:18px}
+  .home-v6 .home-v6-decision__points li {padding-block:13px}
+  .home-v6 .home-v6-decision__actions {margin-top:16px}
+  .home-v6 .home-v6-reel__device {width:min(100%,218px)}
+  body:has([data-recruitment-entry]):has(.tkv-video) nav.tl-mobile-contact.home-v6-mobile-contact a.tl-mobile-contact__journey,
+  body:has([data-recruitment-entry]):has(.tkv-video) nav.tl-mobile-contact.home-v6-mobile-contact a.tl-mobile-contact__journey b {
+    background:var(--mine-green)!important;color:#fff!important;
+  }
+  .home-v6 :where(a,button,input):focus-visible {scroll-margin-bottom:76px}
+}
