@@ -71,6 +71,9 @@ const homeStyles = read("landing-recruitment.css");
 if (!/<link rel="stylesheet" href="\/home-content\.css\?v=3">/.test(home) || home.includes("data-home-content-loader")) fail("Trang chủ: CSS bố cục phải có trong HTML trước lần vẽ đầu tiên");
 if ((home.match(/data-home-font-preload/g) || []).length !== 6) fail("Trang chủ: thiếu preload các font cục bộ");
 if ((read("home-critical.css").match(/font-display:optional/g) || []).length !== 6) fail("Trang chủ: font không được hoán đổi muộn gây xô lệch bố cục");
+if (/<link\b(?=[^>]*rel=["']preload["'])(?=[^>]*tkv-tho-lo-13500-poster\.jpg)[^>]*>/i.test(home)) {
+  fail("Trang chủ: không tải trước ảnh bìa video nằm dưới màn hình đầu");
+}
 const homeVideoFacades = (home.match(/data-featured-video-facade/g) || []).length;
 if (homeVideoFacades !== 1) fail(`Trang chủ đơn giản: dự kiến 1 lớp xem trước video, thực tế ${homeVideoFacades}`);
 if (/<iframe\b[^>]+youtube/i.test(home)) fail("Trang chủ: còn tạo trình phát YouTube trước khi người dùng bấm xem");

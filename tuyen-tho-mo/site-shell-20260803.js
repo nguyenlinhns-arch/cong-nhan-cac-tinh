@@ -223,6 +223,39 @@
     document.documentElement.dataset.provinceDirectory = "34";
   }
 
+  function polishRecruitmentPaths() {
+    const header = document.querySelector("body > .site-header");
+    if (header && document.querySelector("main .job-hero, main .local-hero") &&
+        !header.querySelector(".tl-desktop-paths")) {
+      const host = header.querySelector(".header-inner") || header;
+      const nav = document.createElement("nav");
+      nav.className = "tl-desktop-paths";
+      nav.setAttribute("aria-label", "Tuyển sinh và việc làm");
+      const links = [
+        ["/#nghe-dang-tuyen", "Ba nghề"],
+        ["/viec-lam-nganh-than/", "Theo tỉnh"],
+        ["/thong-tin-tuyen-tho-mo/", "Hỏi đáp"],
+      ];
+      for (const [href, label] of links) {
+        const a = document.createElement("a");
+        a.href = href;
+        a.textContent = label;
+        nav.append(a);
+      }
+      const next = [...host.children].find(child => child.matches("[data-open-site-search],.header-cta"));
+      host.insertBefore(nav, next || null);
+    }
+
+    const form = document.querySelector("main [data-application-form]");
+    if (!form || typeof IntersectionObserver !== "function") return;
+    // Keep normal contact links available on the page, but avoid a fixed
+    // contact tray covering fields while the applicant is in the form.
+    const observer = new IntersectionObserver(([entry]) => {
+      document.body.toggleAttribute("data-tl-entry-form-visible", entry.isIntersecting);
+    }, { rootMargin: "-12px 0px -110px 0px" });
+    observer.observe(form);
+  }
+
   function cleanPageShell() {
     ensureMobilePolishStyle();
     removeKnownBlocks();
@@ -231,6 +264,7 @@
     insertNetworkSearchButton();
     polishVerificationHeader();
     polishMobileContact();
+    polishRecruitmentPaths();
     cleanArticleHero();
     enhanceProvinceDirectory();
     document.documentElement.dataset.siteShell = "20260803-v3";

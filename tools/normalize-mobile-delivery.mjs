@@ -226,7 +226,7 @@ for (const file of collectHtml(root)) {
   html = consolidateQuangNinhReferences(html);
   if (html !== beforeReferences) quangNinhReferencesConsolidated += 1;
 
-  const skipStandaloneFonts = relative === "index.html" || relative === "tuyen-tho-mo-quang-ninh/index.html";
+  const skipStandaloneFonts = relative === "index.html";
   if (/<\/head>/i.test(html) && !skipStandaloneFonts) {
     html = html.replace(/<\/head>/i, `  <link rel="stylesheet" href="${FONT_URL}">\n</head>`);
     if (!before.includes(FONT_URL) || before.lastIndexOf(FONT_URL) < before.lastIndexOf('rel="stylesheet"')) fontLinksFixed += 1;

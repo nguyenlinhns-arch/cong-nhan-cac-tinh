@@ -183,7 +183,7 @@
     const bar = document.createElement("nav");
     bar.className = "v4-mobile-bar";
     bar.setAttribute("aria-label", "Liên hệ nhanh qua Zalo, Messenger hoặc điện thoại");
-    bar.innerHTML = `<a href="${ZALO_URL}" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="v4-mobile">Zalo</a><a href="${MESSENGER_URL}" target="_blank" rel="noopener noreferrer" data-contact="messenger" data-context="v4-mobile">Mess</a><a href="${PHONE_URL}" data-contact="phone" data-context="v4-mobile">Gọi</a>`;
+    bar.innerHTML = `<a href="${ZALO_URL}" target="_blank" rel="noopener noreferrer" data-contact="zalo" data-context="v4-mobile">Zalo</a><a href="${MESSENGER_URL}" target="_blank" rel="noopener noreferrer" data-contact="messenger" data-context="v4-mobile">Messenger</a><a href="${PHONE_URL}" data-contact="phone" data-context="v4-mobile">Gọi</a>`;
     document.body.append(bar);
   }
 
