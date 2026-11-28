@@ -8,6 +8,13 @@ const root = path.resolve(import.meta.dirname, '..');
 const read = name => fs.readFileSync(path.join(root, 'tuyen-tho-mo', name), 'utf8');
 const html = read('index.html');
 const head = html.split('</head>')[0];
+assert.match(html, /class="home-hero-video-link" href="#thuc-te"/, 'The existing hero photo links to the video, without loading an iframe');
+assert.match(html, /class="[^"]*home-article-shortcut" href="#doc-truoc-khi-dang-ky"/, 'Put the reading shortcut near the top');
+const app = read('viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html');
+assert.ok(app.includes('<h2 id="apply-title">Đăng ký học nghề mỏ</h2>'));
+assert.ok(app.includes('Điền 4 thông tin trước, sau đó kiểm tra điều kiện. Chưa cần nộp giấy tờ.'));
+assert.ok(app.includes('/application-form-view.js?v=1'));
+
 const critical = read('home-critical.css');
 const content = read('home-content.css');
 const cssLinks = [...head.matchAll(/<link\b[^>]*>/g)].map(match => match[0]);
@@ -38,7 +45,7 @@ assert(content.includes('.site-header .header-inner'), 'Full responsive header r
 assert(Buffer.byteLength(critical) <= 18000, 'Keep existing critical CSS budget');
 
 const editorial = read('recruitment-home.css');
-assert(html.includes('/recruitment-home.css?v=17'), 'Homepage editorial surface must invalidate older overrides');
+assert(html.includes('/recruitment-home.css?v=18'), 'Homepage editorial surface must invalidate older overrides');
 assert.match(html, /<div class="home-v6-income"><small>[^<]+<\/small><strong>20–25 triệu\/tháng <span>khi hoàn thành định mức lao động<\/span><\/strong><\/div>/, 'Keep the income amount and its qualification visible together');
 const homepageOrder = ['thuc-te','doc-truoc-khi-dang-ky','nghe-dang-tuyen','tu-kiem-tra','thong-tin','tu-van','kho-noi-dung'].map(id => html.indexOf(`id="${id}"`));
 assert(homepageOrder.every((at,index) => at >= 0 && (index === 0 || at > homepageOrder[index-1])), 'Offer proof and useful reading before eligibility; keep registration and library reachable');

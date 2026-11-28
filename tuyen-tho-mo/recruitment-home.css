@@ -904,3 +904,30 @@ html:root .home-v6 #tu-kiem-tra .worker-check__choices input:not(:checked)+span{
 /* Only the opening clip uses this report cover; keep its lettering clear. */
 .home-watch-main .tkv-video__cover-link[data-tkv-pick="cNKyZWaPYN8"] .tkv-video__play{left:26%;top:67%}
 .home-watch-main:not(:has(.tkv-video__cover-link[data-tkv-pick="cNKyZWaPYN8"])) .home-watch-cover-source{display:none}
+
+/* Keep the original photo and make its purpose clear without a new section. */
+.home-v6-hero__visual .home-hero-video-link{position:relative;display:block}
+html:root .home-v6 .home-v6-hero__visual .home-hero-video-link>.home-hero-video-link__label{
+  position:absolute;left:10px;bottom:10px;display:inline-flex!important;align-items:center;gap:7px;
+  min-height:42px;max-width:calc(100% - 20px);padding:6px 11px;background:#151a17;color:#fff;
+  border:1px solid #d4b682;border-radius:6px;font-size:.88rem;font-weight:750;line-height:1.3
+}
+.home-hero-video-link__label>svg{color:#f2d29e;flex:none}
+.home-hero-video-link:hover html:root .home-v6 .home-v6-hero__visual .home-hero-video-link>.home-hero-video-link__label{text-decoration:underline}
+.home-hero-video-link:focus-visible{outline:2px solid var(--d-focus);outline-offset:-4px}
+@media(max-width:650px){
+  html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-actions{
+    grid-template-columns:minmax(0,1.3fr) minmax(0,.72fr) minmax(0,1fr);column-gap:6px
+  }
+  html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-actions .home-v6-button--primary{
+    grid-column:1/-1
+  }
+  html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-actions :is(.home-v6-button--secondary,.home-v6-button--brief){
+    justify-content:flex-start;white-space:normal;text-align:left
+  }
+}
+
+@media(min-width:651px){
+ html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-actions{grid-template-columns:max-content max-content minmax(0,1fr)!important;gap:2px 14px}
+ html:root body .home-v6 .home-v6-hero[data-recruitment-entry] .home-v6-button--primary{grid-column:1/-1;justify-self:start}
+}

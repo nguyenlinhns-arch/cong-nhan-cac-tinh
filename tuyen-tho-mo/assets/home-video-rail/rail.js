@@ -40,6 +40,7 @@
     document.fonts?.ready.then(syncQueue);
     syncQueue();
   }
+  const playbackMeasured = new Set();
   let current, generation = 0, timeout, player, apiPromise;
   function youtubeAPI() {
     if (window.YT?.Player) return Promise.resolve(window.YT);
@@ -147,6 +148,11 @@
             starting = false;
             clearWatch();
             feedback('', false);
+            const analytics = window.thayLinhAnalytics;
+            if (analytics?.consentState() === 'granted' && !playbackMeasured.has(id)) {
+              playbackMeasured.add(id);
+              analytics.track({event:'home_video_started', page_path:'/', context:'home_video_rail', content:id});
+            }
           }
         },
         onAutoplayBlocked: slow,
