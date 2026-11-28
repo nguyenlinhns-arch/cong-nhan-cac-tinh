@@ -11,7 +11,7 @@ assert.doesNotMatch(block,/tkv-video__eyebrow|THU NHẬP THỰC TẾ NĂM 2025/)
 assert.doesNotMatch(block,/tkv-video__(?:desktop|compact)/);
 assert.match(block,/class="tkv-video__cover" src="\/assets\/home-video-rail\/tkv-tho-lo-13500-poster\.jpg"/);
 assert.doesNotMatch(block,/tkv-video__next|home-video-next/);
-assert.match(block,/<h2 id="tkv-video-title">Xem công việc và cuộc sống của thợ mỏ<\/h2>/);
+assert.match(block,/<h2 id="tkv-video-title" tabindex="-1">Xem công việc và cuộc sống của thợ mỏ<\/h2>/);
 assert.ok(html.indexOf('id="nghe-dang-tuyen"')>html.indexOf('id="tkv-video-title"'));
 assert.match(block,/aria-controls="tkv-rail" data-tkv-advance hidden/);
 assert.doesNotMatch(block,/home-video-consult|tel:|zalo\.me|khi hoàn thành định mức/i);
