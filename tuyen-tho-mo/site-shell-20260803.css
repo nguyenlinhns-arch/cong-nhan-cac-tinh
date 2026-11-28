@@ -321,3 +321,10 @@ html:root main .network-card .network-card__body :is(a,small){background:#f0f3eb
 html:root main .network-card .network-card__body small{color:#765024!important}
 html:root body:has(.news-hero) .back-link{color:var(--d-strong)!important}
 html:root main .section--faq details>summary{color:#1b4033!important;background:#f0f3eb!important}
+/* Keep deeper reading templates and the standalone eligibility action legible. */
+html:root .verification-check__submit{background:#7d4315!important;color:#fff!important}
+html:root body.contact-authority-page :is(.contact-authority__heading,.contact-authority__two-column,.contact-authority__faq,.contact-authority__more-questions) .network-eyebrow{color:#814713!important}
+html:root body.editorial-newsroom-page .site-header .back-link{color:var(--d-strong)!important}
+html:root .article-hero--newspaper-v6 .article-byline a{color:#205c40!important}
+html:root body.editorial-newspaper-v6-page .breadcrumbs :is(a,span){color:#4d615a!important;opacity:1!important}
+html:root .daily-seo-takeaway{background:#eef3ed!important;color:#244339!important}
