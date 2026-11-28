@@ -959,3 +959,51 @@ body:has(.home-video-intro) .site-footer--home .footer-simple>p{display:none}
   body:has(.home-video-intro) .site-footer--home .footer-simple{padding-block:8px}
   body:has(.home-video-intro) .site-footer--home .footer-simple__links>a:not([href="/quyen-rieng.html"]){display:none}
 }
+
+/* A short question and three subjects before the video, not an unlabelled feed. */
+html:root .home-proof--early .tkv-video .home-watch-hook{
+  color:var(--d-ink);font-size:clamp(1.24rem,2.65vw,2.12rem);line-height:1.2;
+  letter-spacing:-.025em;margin:0 0 10px;max-width:32ch;text-wrap:pretty
+}
+.home-watch-topics:not([hidden]){display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px}
+.home-watch-topics>button{
+  cursor:pointer;min-height:44px;border:1px solid var(--home-rule);border-radius:7px;
+  padding:6px 13px;color:var(--d-ink);font:inherit;font-size:.86rem;font-weight:700;background:transparent
+}
+.home-watch-topics>button:hover{background:var(--d-mid)}
+.home-watch-topics>button[aria-pressed="true"]{
+  color:#151a17;background:var(--d-strong);border-color:var(--d-strong)
+}
+.home-watch-topics>button:focus-visible{outline:2px solid var(--d-focus);outline-offset:3px}
+.home-proof--early .tkv-video__rail a[hidden]{display:none!important}
+@media(max-width:390px){
+  .home-watch-topics:not([hidden]){gap:5px}
+  .home-watch-topics>button{font-size:.77rem;padding-inline:8px}
+}
+.home-proof--early [data-tkv-topic-extra][hidden],
+.home-proof--early .home-watch-extra[hidden]{display:none!important}
+.home-proof--early:has([data-tkv-host-link]:not([hidden])) [data-tkv-source]{display:none!important}
+.home-watch-extra summary [data-tkv-supplement-title]{font:inherit}
+.home-watch-citation{margin:6px 0 0;font-size:.84rem;line-height:1.35;color:var(--d-sub)}
+.home-watch-citation[hidden]{display:none!important}
+.home-watch-citation a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.home-proof--early [data-active-topic="pay"] .tkv-video__cover-link .tkv-video__play{left:26%;top:67%}
+@media(min-width:651px){
+  .home-proof--early [data-active-topic="pay"] .home-watch-hook{
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+    clip:rect(0,0,0,0);white-space:nowrap;border:0
+  }
+}
+@media(min-width:841px){
+  html:root body .home-v6 section.home-video-intro[data-recruitment-entry]{
+    padding-top:20px!important
+  }
+  .home-video-intro>.container{display:flex;align-items:baseline;gap:12px 24px;flex-wrap:wrap}
+  html:root body .home-v6 section.home-video-intro[data-recruitment-entry] h1{
+    font-size:clamp(1.9rem,3.1vw,2.5rem)!important
+  }
+  .home-video-intro p{margin:0}
+}
+@media(min-width:841px) and (max-height:820px){
+  .home-watch-layout{grid-template-columns:minmax(0,1fr) minmax(270px,34%)}
+}

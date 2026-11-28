@@ -4,14 +4,14 @@ import assert from 'node:assert/strict';
 const html=fs.readFileSync('tuyen-tho-mo/index.html','utf8');
 const block=html.match(/<section class="home-proof home-proof--early"[\s\S]+?<\/section>/)[0];
 const ids=["bWUDKQ1r6xA","9DjYfc6Q1m0","WkSt6eOvlkA","h4zuijHumME","l0MFR1SNey8","XNMQwM_5fyI","Y5skQm8A1ho","0kWCKhpw5B8","7i-hlu2Ol7Y","cpeiTxtJKu4"], hero='ts41cqu7r9c', playlist='PLhy1BqQ18EgT5sFMEg1aOlHYCAoTDDMgG';
-assert.deepEqual([...block.matchAll(/data-tkv-pick="([^"]+)"/g)].map(x=>x[1]),[hero,hero,"xW92UBKmWok",...ids,"6MJLc5mBhsA"]);
+assert.deepEqual([...block.matchAll(/data-tkv-pick="([^"]+)"/g)].map(x=>x[1]),["cNKyZWaPYN8",hero,"xW92UBKmWok",...ids.slice(0,2),"cNKyZWaPYN8",...ids.slice(2),"6MJLc5mBhsA","3PW12HZv79s"]);
 assert.equal((html.match(/<h1\b/g)||[]).length,1);
 assert.ok(block.indexOf('id="tkv-video-title"')<block.indexOf('data-tkv-stage'));
 assert.doesNotMatch(block,/tkv-video__eyebrow|THU NHẬP THỰC TẾ NĂM 2025/);
 assert.doesNotMatch(block,/tkv-video__(?:desktop|compact)/);
-assert.match(block,/class="tkv-video__cover" src="\/assets\/video-thumbnails\/home-featured-16x9\.jpg"/);
+assert.match(block,/class="tkv-video__cover" src="\/assets\/home-video-rail\/tkv-tho-lo-13500-poster\.jpg"/);
 assert.doesNotMatch(block,/tkv-video__next|home-video-next/);
-assert.match(block,/<h2 id="tkv-video-title" class="sr-only">Video thực tế<\/h2>/);
+assert.match(block,/<h2 id="tkv-video-title" class="home-watch-hook" data-tkv-hook>Hơn 13.500 thợ mỏ thu nhập trên 300 triệu\/năm<\/h2>/);
 assert.ok(html.indexOf('id="nghe-dang-tuyen"')>html.indexOf('id="tkv-video-title"'));
 assert.match(block,/aria-controls="tkv-rail" data-tkv-advance hidden/);
 assert.doesNotMatch(block,/home-video-consult|tel:|zalo\.me|khi hoàn thành định mức/i);
@@ -20,8 +20,16 @@ assert.ok(!block.includes('<iframe')&&!block.includes('tkv-video__note'));
 assert.ok(block.includes('list='+playlist));
 assert.doesNotMatch(block,/data-tkv-(?:live|controls|prev|next)\b|<small>\d{2} \/ \d+:\d{2}<\/small>/);
 assert.doesNotMatch(block,/tkv-video__meta|tkv-video__badge|tkv-video__playlist|<h3 id="tkv-rail-title"/);
-assert.match(block,/data-tkv-rail tabindex="0" role="group" aria-label="13 video về nghề mỏ"/);
+assert.match(block,/data-tkv-rail tabindex="0" role="group" aria-label="Video về nghề mỏ"/);
 assert.match(block,/data-tkv-actions[^>]+hidden/);
+for (const [topic,count] of Object.entries({work:2,pay:2,stories:11})) {
+  assert.equal((block.match(new RegExp(`data-tkv-topic="${topic}"`,'g')) || []).length,count);
+  assert.match(block,new RegExp(`data-tkv-theme="${topic}" data-tkv-hook-text="[^"]+"`));
+}
+assert.match(block,/data-tkv-pick="WkSt6eOvlkA" data-tkv-topic="pay"/);
+assert.match(block,/data-tkv-pick="cNKyZWaPYN8" data-tkv-topic="pay"/);
+assert.match(block,/data-tkv-pick="3PW12HZv79s" data-tkv-topic="work"/);
+
 ids.forEach((id,i)=>assert.ok(block.includes('v='+id+'&amp;list='+playlist+'&amp;index='+(i+1))));
 const card=(key,i)=>({dataset:{tkvPick:key},offsetLeft:201*i,href:'https://www.youtube.com/watch?v='+key,attrs:new Map(),querySelector:()=>({textContent:'  Video '+key+'  '}),setAttribute(k,v){this.attrs.set(k,v)},removeAttribute(k){this.attrs.delete(k)}});
 const cards=ids.map(card),first=card(hero,-1);first.dataset.tkvTitle='Video đầu';

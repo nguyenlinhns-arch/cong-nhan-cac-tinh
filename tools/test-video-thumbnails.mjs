@@ -43,7 +43,7 @@ assert.ok(totalBytes < 125000);
 assert.doesNotMatch(before, /<iframe\b[^>]*facebook\.com/i);
 assert.match(before, /<details class="home-watch-extra"/);
 assert.doesNotMatch(before, /class="home-origin-reels"/);
-assert.match(before, /class="tkv-video__cover" src="\/assets\/video-thumbnails\/home-featured-16x9.jpg" width="480" height="270"/);
+assert.match(before, /class="tkv-video__cover" src="\/assets\/home-video-rail\/tkv-tho-lo-13500-poster.jpg" width="1672" height="941"/);
 assert.match(before, /height:auto;aspect-ratio:9\/16/);
 assert.throws(() => reelThumbnail("unverified"), /Missing verified/);
 for (const script of ["home-kcn-reel-facade-v10.mjs", "add-home-journey-reels.mjs"]) {

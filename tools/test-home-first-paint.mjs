@@ -38,11 +38,11 @@ assert(content.includes('.site-header .header-inner'), 'Full responsive header r
 assert(Buffer.byteLength(critical) <= 18000, 'Keep existing critical CSS budget');
 
 const editorial = read('recruitment-home.css');
-assert(html.includes('/recruitment-home.css?v=15'), 'Homepage editorial surface must invalidate older overrides');
+assert(html.includes('/recruitment-home.css?v=16'), 'Homepage editorial surface must invalidate older overrides');
 assert.match(html, /<div class="home-v6-income"><small>[^<]+<\/small><strong>20–25 triệu\/tháng <span>khi hoàn thành định mức lao động<\/span><\/strong><\/div>/, 'Keep the income amount and its qualification visible together');
 const homepageOrder = ['thuc-te','doc-truoc-khi-dang-ky','nghe-dang-tuyen','tu-kiem-tra','thong-tin','tu-van','kho-noi-dung'].map(id => html.indexOf(`id="${id}"`));
 assert(homepageOrder.every((at,index) => at >= 0 && (index === 0 || at > homepageOrder[index-1])), 'Offer proof and useful reading before eligibility; keep registration and library reachable');
-assert.match(html, /<div class="tkv-video" data-tkv-video>/, 'Keep the main playlist visible without opening a disclosure');
+assert.match(html, /<div class="tkv-video" data-tkv-video[^>]*>/, 'Keep the main playlist visible without opening a disclosure');
 assert.match(html, /<details class="home-watch-extra"/, 'Secondary external reels do not add pressure to the primary layout');
 assert.match(html, /href="#thuc-te" data-journey-shortcut="videos"/, 'Keep direct access to videos');
 const info = html.indexOf('<details class="home-video-info" id="thong-tin-tuyen-sinh">');

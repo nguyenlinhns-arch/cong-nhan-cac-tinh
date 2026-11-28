@@ -11,6 +11,16 @@
   const retry = root.querySelector('[data-tkv-retry]');
   const cards = Array.from(rail.querySelectorAll('[data-tkv-pick]'));
 
+  const topicBar = root.querySelector('[data-tkv-topics]');
+  const topicButtons = topicBar ? Array.from(topicBar.querySelectorAll('[data-tkv-theme]')) : [];
+  const hook = root.querySelector('[data-tkv-hook]');
+  const citation = root.querySelector('[data-tkv-citation]');
+  const queueLabel = root.querySelector('[data-tkv-queue-label]');
+  const extras = topicBar ? Array.from(root.querySelectorAll('[data-tkv-topic-extra]')) : [];
+  const extraTitle = root.querySelector('[data-tkv-supplement-title]');
+  const extraGroup = extraTitle?.closest('details');
+  const originalCover = topicBar ? stage.querySelector('[data-tkv-pick]') : null;
+  let visibleCards = cards;
   const advance = root.querySelector('[data-tkv-advance]');
   const back = root.querySelector('[data-tkv-back]');
   const currentTitle = root.querySelector('[data-tkv-current-title]');
@@ -18,6 +28,7 @@
   const stack = window.matchMedia('(min-width: 841px)');
   function syncQueue() {
     if (!back || !advance) return;
+    if (visibleCards.length < 2) { back.disabled = advance.disabled = true; return; }
     const position = stack.matches ? rail.scrollTop : rail.scrollLeft;
     const max = stack.matches ? rail.scrollHeight - rail.clientHeight : rail.scrollWidth - rail.clientWidth;
     back.disabled = position <= 2;
@@ -27,8 +38,9 @@
     advance.hidden = false;
     if (back) back.hidden = false;
     function step(direction) {
+      if (visibleCards.length < 2) return;
       const vertical = stack.matches;
-      const stride = vertical ? cards[1].offsetTop - cards[0].offsetTop : cards[1].offsetLeft - cards[0].offsetLeft;
+      const stride = vertical ? visibleCards[1].offsetTop - visibleCards[0].offsetTop : visibleCards[1].offsetLeft - visibleCards[0].offsetLeft;
       const from = vertical ? rail.scrollTop : rail.scrollLeft;
       const axis = vertical ? 'top' : 'left';
       rail.scrollTo({[axis]: from + stride * direction, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
@@ -85,10 +97,70 @@
     retry.hidden = !canRetry;
     actions.hidden = !canRetry;
   }
+  function titleOf(link) {
+    return link.dataset.tkvTitle || link.querySelector('span').textContent.trim();
+  }
+  function markChoice(id) {
+    cards.forEach(card => card.dataset.tkvPick === id ? card.setAttribute('aria-current', 'true') : card.removeAttribute('aria-current'));
+  }
+  function chooseTopic(button, initial) {
+    // Topic changes only choose a preview; never make an embed request until Play.
+    const topic = button.dataset.tkvTheme;
+    const picks = cards.filter(card => card.dataset.tkvTopic === topic);
+    if (!picks.length || (!initial && button.getAttribute('aria-pressed') === 'true')) return;
+    for (const b of topicButtons) b.setAttribute('aria-pressed', String(b === button));
+    root.dataset.activeTopic = topic;
+    if (citation) citation.hidden = topic !== 'pay';
+    visibleCards = picks;
+    const preferredId = topic === 'pay' ? originalCover.dataset.tkvPick : '';
+    const firstPick = picks.find(pick => pick.dataset.tkvPick === preferredId) || picks[0];
+    for (const card of cards) card.hidden = !picks.includes(card);
+    rail.scrollTo({top: 0, left: 0, behavior:'instant'});
+    const label = button.textContent.trim();
+    if (extraGroup) {
+      extraGroup.open = false;
+      const activeExtras = extras.filter(item => item.dataset.tkvTopicExtra === topic);
+      for (const item of extras) item.hidden = !activeExtras.includes(item);
+      extraGroup.hidden = !activeExtras.length;
+      extraTitle.textContent = topic === 'work' ? 'Video ngắn: Mỏ hay khu công nghiệp?' : 'Video ngắn: Từ quê đến vùng mỏ';
+    }
+    if (queueLabel) queueLabel.textContent = picks.length + ' video';
+    rail.setAttribute('aria-label', label + ': ' + picks.length + ' video');
+    if (hook) hook.textContent = button.dataset.tkvHookText;
+    if (!initial) {
+      generation++;
+      if (timeout !== undefined) window.clearTimeout(timeout);
+      timeout = undefined;
+      if (player) { player.destroy(); player = null; }
+      current = undefined;
+      feedback('', false);
+      const cover = originalCover.cloneNode(true);
+      const pick = firstPick;
+      const title = titleOf(pick);
+      cover.dataset.tkvPick = pick.dataset.tkvPick;
+      cover.dataset.tkvTitle = title;
+      cover.href = pick.href;
+      cover.setAttribute('aria-label', 'Phát ' + title);
+      if (pick.dataset.tkvPick !== originalCover.dataset.tkvPick) {
+        const img = cover.querySelector('img');
+        const thumb = pick.querySelector('img');
+        img.src = pick.dataset.tkvPreview || thumb.src;
+        img.width = thumb.width;
+        img.height = thumb.height;
+      }
+      stage.replaceChildren(cover);
+      if (currentTitle) currentTitle.textContent = title;
+      if (hostLink) hostLink.hidden = true;
+      if (source) source.href = pick.href;
+      status.textContent = label + '. ' + picks.length + ' video. Video mở đầu: ' + title;
+    }
+    markChoice(firstPick.dataset.tkvPick);
+    syncQueue();
+  }
   function load(link, keyboard, autoplay = true) {
     const id = link.dataset.tkvPick;
     if (!/^[A-Za-z0-9_-]{11}$/.test(id)) return;
-    const title = link.dataset.tkvTitle || link.querySelector('span').textContent.trim();
+    const title = titleOf(link);
     const movedFocus = stage.contains(document.activeElement);
     const url = new URL('https://www.youtube.com/embed/' + id);
     url.searchParams.set('autoplay', autoplay ? '1' : '0');
@@ -157,7 +229,7 @@
         }
       }});
     }).catch(slow);
-    cards.forEach(card => card.dataset.tkvPick === id ? card.setAttribute('aria-current', 'true') : card.removeAttribute('aria-current'));
+    markChoice(id);
     status.textContent = 'Đã chọn: ' + title;
     if (currentTitle) currentTitle.textContent = title;
     source.href = link.href;
@@ -166,6 +238,22 @@
     if (!keyboard && !stack.matches) {
       stage.scrollIntoView({block: 'start', behavior: 'instant'});
     }
+  }
+
+  if (topicButtons.length && originalCover) {
+    for (const button of topicButtons) button.addEventListener('click', () => chooseTopic(button, false));
+    chooseTopic(topicButtons[0], true);
+    topicBar.hidden = false;
+    function revealTopicByHash() {
+      const hash = window.location.hash;
+      const key = hash === '#home-kcn-video' ? 'work' : (hash === '#hanh-trinh-tu-que' || hash === '#hanh-trinh-dia-phuong') ? 'stories' : '';
+      const match = topicButtons.find(b => b.dataset.tkvTheme === key);
+      if (!match) return;
+      chooseTopic(match, false);
+      if (extraGroup) extraGroup.open = true;
+    }
+    revealTopicByHash();
+    window.addEventListener('hashchange', revealTopicByHash);
   }
 
   retry.addEventListener('click', () => {

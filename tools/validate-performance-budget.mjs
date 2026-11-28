@@ -89,7 +89,7 @@ for (const marker of ["home-video-facade", "home-video-facade__play", "focus-vis
   if (!homeStyles.includes(marker)) fail(`Trang chủ: thiếu kiểu lớp xem trước ${marker}`);
 }
 const optimizedHomeImages = [
-  ["/assets/video-thumbnails/home-featured-16x9.jpg", "480", "270", "eager"],
+  ["/assets/home-video-rail/tkv-tho-lo-13500-poster.jpg", "1672", "941", "eager"],
   ["/assets/video-thumbnails/youtube-ts41cqu7r9c.jpg", "480", "360", "lazy"],
   ["/assets/video-thumbnails/youtube-xW92UBKmWok.jpg", "480", "360", "lazy"],
   ["/assets/video-thumbnails/youtube-6MJLc5mBhsA.jpg", "320", "180", "lazy"],
