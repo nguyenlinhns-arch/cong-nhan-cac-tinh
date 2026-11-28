@@ -111,9 +111,15 @@ html:root .home-v6 .worker-register__grid{margin-block-start:14px}
 .home-pin-dialog__head{display:flex;justify-content:space-between;gap:12px;align-items:center}
 .home-pin-dialog__head h2{font-size:1rem;line-height:1.35;margin:0;color:inherit}
 .home-pin-dialog__head button{background:transparent;color:inherit;border:1px solid #808980;border-radius:5px;min-width:44px;min-height:44px;font-size:1.4rem;cursor:pointer}
-.home-pin-dialog__stage{margin:8px auto 0;height:min(63dvh,620px);aspect-ratio:9/16;max-width:100%}
+.home-pin-dialog__stage{margin:8px auto 0;height:clamp(96px,min(59dvh,calc(100dvh - 175px)),620px);aspect-ratio:9/16;max-width:100%}
 .home-pin-dialog__stage>iframe{display:block;width:100%;height:100%;border:0}
-.home-pin-dialog__link{color:#e5c38a;display:inline-flex;align-items:center;min-height:44px;text-decoration:underline}
+.home-pin-dialog__actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px 10px;margin-top:9px}
+.home-pin-dialog__actions a{display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;padding:4px 5px;border-radius:5px;font-size:.79rem;font-weight:750;line-height:1.2}
+.home-pin-dialog__next{color:#f2eee3;border:1px solid #808980}
+.home-pin-dialog__apply{color:#20190d;background:#dfbd83}
+.home-pin-dialog__actions .home-pin-dialog__link{color:#e5c38a;grid-column:1/-1;justify-self:center;text-decoration:underline}
+.home-pin-dialog__actions a:focus-visible{outline:2px solid #f2eee3;outline-offset:2px}
+#thuc-te{scroll-margin-top:85px}
 @media(max-width:760px){
  .home-pin-grid,.home-real-reads{grid-template-columns:1fr;gap:9px}
  .home-pin{grid-template-columns:65px minmax(0,1fr);gap:12px;padding-top:9px}

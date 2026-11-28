@@ -55,6 +55,9 @@ assert.ok(html.indexOf('id="home-kcn-video"') < html.indexOf('id="thuc-te"'), 'S
 assert.ok(Buffer.byteLength(read('recruitment-landing.css')) <= 13000, 'Keep the landing layout CSS small');
 assert.match(html, /href="#thuc-te" data-journey-shortcut="videos"/, 'Homepage offers a direct path to video');
 assert.deepEqual([...html.matchAll(/data-home-pin="(\d+)"/g)].map(m=>m[1]), ['1830954464696355','2512643852519964','1015675787556708']);
+assert.match(html, /class="tl-mobile-contact__journey" href="#dang-ky"/, "Mobile CTA reaches the embedded sign-up without JavaScript");
+assert.match(html, /href="#dang-ky" data-pin-apply/, "Reel dialog has a visible path to sign-up");
+assert.match(html, /href="#thuc-te" data-pin-next/, "The last Reel can continue to the video library");
 assert.match(html, /id="landing-apply-frame" src="\/viec-lam\/cong-nhan-mo-ham-lo-quang-ninh\/\?nhung=1#dang-ky"/);
 assert.match(editorial, /html:root \.home-v6\{background:var\(--d-bg\)!important;color:var\(--d-ink\)!important\}/, 'The dark canvas must back transparent sections');
 assert.match(editorial, /\.home-province-reels__intro\{color:var\(--d-sub\)!important\}/, 'Style the late-mounted province story introduction alongside the heading');

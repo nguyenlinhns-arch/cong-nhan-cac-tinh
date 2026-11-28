@@ -122,9 +122,9 @@
 <meta name="content-origin" content="current-recruitment-policy">
   <link rel="stylesheet" href="/assets/home-video-rail/rail.css?v=19">
   <link rel="stylesheet" href="/recruitment-home.css?v=18">
-  <link rel="stylesheet" href="/recruitment-landing.css?v=3">
+  <link rel="stylesheet" href="/recruitment-landing.css?v=4">
   <script defer src="/assets/home-video-rail/rail.js?v=13"></script>
-  <script defer src="/recruitment-landing.js?v=1"></script>
+  <script defer src="/recruitment-landing.js?v=2"></script>
 </head>
 <body>
   <a class="skip-link" href="#noi-dung">Đến nội dung chính</a>
@@ -256,7 +256,7 @@
     <section class="home-proof home-proof--early" id="thuc-te" data-journey-section="proof" aria-labelledby="tkv-video-title"><span id="nguoi-that-viec-that" aria-hidden="true"></span>
       <div class="tkv-video" data-tkv-video>
         <div class="tkv-video__inner">
-          <header class="tkv-video__header"><p class="home-step">Video nghề mỏ</p><h2 id="tkv-video-title">Xem công việc và cuộc sống của thợ mỏ</h2><p>Thợ mỏ kể chuyện đi ca, thu nhập và cuộc sống ở Quảng Ninh.</p></header>
+          <header class="tkv-video__header"><p class="home-step">Video nghề mỏ</p><h2 id="tkv-video-title" tabindex="-1">Xem công việc và cuộc sống của thợ mỏ</h2><p>Thợ mỏ kể chuyện đi ca, thu nhập và cuộc sống ở Quảng Ninh.</p></header>
           <div class="home-watch-layout">
             <div class="home-watch-main">
               <div class="tkv-video__stage" data-tkv-stage tabindex="-1" role="group" aria-label="Khung phát video">
@@ -348,7 +348,7 @@
     </section>
 
     <section class="worker-register" id="dang-ky" data-journey-section="consultation" aria-labelledby="consult-title"><span id="tu-van" class="home-anchor" aria-hidden="true"></span>
-      <header class="container landing-apply__intro"><h2 id="consult-title">Đăng ký học nghề mỏ</h2><p>Điền 4 mục để bắt đầu. Chưa cần nộp giấy tờ.</p></header>
+      <header class="container landing-apply__intro"><h2 id="consult-title" tabindex="-1">Đăng ký học nghề mỏ</h2><p>Điền 4 mục để bắt đầu. Chưa cần nộp giấy tờ.</p></header>
       <div class="container landing-apply">
         <iframe id="landing-apply-frame" src="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/?nhung=1#dang-ky" loading="lazy" title="Biểu mẫu đăng ký học nghề mỏ" width="760" height="690"></iframe>
       </div>
@@ -401,7 +401,7 @@
             <fieldset><legend><span>03</span><strong>Bạn nặng từ 47kg?</strong></legend><div class="worker-check__choices"><label><input type="radio" name="weight_range" value="yes"><span>Có</span></label><label><input type="radio" name="weight_range" value="review"><span>Không / chưa rõ</span></label></div></fieldset>
             <fieldset><legend><span>04</span><strong>Sức khỏe tốt, không cận thị hoặc mắc bệnh ảnh hưởng đến công việc?</strong></legend><div class="worker-check__choices"><label><input type="radio" name="health_screen" value="yes"><span>Có</span></label><label><input type="radio" name="health_screen" value="review"><span>Không / chưa rõ</span></label></div></fieldset>
           </div>
-          <div class="worker-check__footer"><button class="worker-check__submit" type="button" data-worker-check-trigger>Xem kết quả</button><a class="home-editor-link" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" data-contact="application" data-context="home-check-skip">Đăng ký ngay <span aria-hidden="true">→</span></a></div>
+          <div class="worker-check__footer"><button class="worker-check__submit" type="button" data-worker-check-trigger>Xem kết quả</button><a class="home-editor-link" href="#dang-ky" data-contact="application" data-context="home-check-skip">Đăng ký ngay <span aria-hidden="true">→</span></a></div>
           <div class="worker-check__result" data-worker-check-result role="status" aria-live="polite" tabindex="-1" hidden></div>
         </form>
       </div>
@@ -464,7 +464,11 @@
   <dialog class="home-pin-dialog" aria-labelledby="home-pin-dialog-title">
     <div class="home-pin-dialog__head"><h2 id="home-pin-dialog-title">Video Facebook</h2><form method="dialog"><button type="submit" aria-label="Đóng video">×</button></form></div>
     <div class="home-pin-dialog__stage"></div>
-    <a class="home-pin-dialog__link" href="https://www.facebook.com/thaylinhtuyenthomo/reels/" target="_blank" rel="noopener noreferrer">Mở trên Facebook ↗</a>
+    <div class="home-pin-dialog__actions">
+      <a class="home-pin-dialog__next" href="#thuc-te" data-pin-next>Xem video tiếp</a>
+      <a class="home-pin-dialog__apply" href="#dang-ky" data-pin-apply data-contact="application" data-context="home-reel">Đăng ký ngay</a>
+      <a class="home-pin-dialog__link" href="https://www.facebook.com/thaylinhtuyenthomo/reels/" target="_blank" rel="noopener noreferrer">Mở trên Facebook ↗</a>
+    </div>
   </dialog>
   <footer class="site-footer site-footer--home">
     <div class="container footer-simple">
@@ -478,7 +482,7 @@
   <nav class="tl-mobile-contact home-v6-mobile-contact" aria-label="Liên hệ nhanh trên điện thoại">
     <a class="tl-mobile-contact__zalo" href="https://zalo.me/0963048585" target="_blank" rel="noopener noreferrer" aria-label="Nhắn Zalo cho Thầy Linh" data-contact="zalo" data-context="home-mobile"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h14v10H9l-4 4z"/><path d="M9 10h6"/></svg><span>Zalo</span></a>
     <a class="tl-mobile-contact__call" href="tel:+84963048585" aria-label="Gọi Thầy Linh theo số 096 304 8585" data-contact="phone" data-context="home-mobile"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h3l1 4-2 1a10 10 0 0 0 6 6l1-2 4 1v3a2 2 0 0 1-2 2C11 19 5 13 5 6a2 2 0 0 1 2-2z"/></svg><span>Gọi điện</span></a>
-    <a class="tl-mobile-contact__journey" href="/viec-lam/cong-nhan-mo-ham-lo-quang-ninh/#dang-ky" aria-label="Đăng ký ngay" data-contact="application" data-worker-journey-action="application" data-context="home-mobile-journey"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg><span>Đăng ký ngay</span></a>
+    <a class="tl-mobile-contact__journey" href="#dang-ky" aria-label="Đăng ký ngay" data-contact="application" data-worker-journey-action="application" data-context="home-mobile-journey"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg><span>Đăng ký ngay</span></a>
   </nav>
   <script src="portal-official.js?v=11" defer></script>
   <script src="/analytics.js?v=6" defer></script>
