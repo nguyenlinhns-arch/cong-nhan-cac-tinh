@@ -8,7 +8,7 @@ const root = path.resolve(import.meta.dirname, '..');
 const read = name => fs.readFileSync(path.join(root, 'tuyen-tho-mo', name), 'utf8');
 const html = read('index.html');
 const head = html.split('</head>')[0];
-assert.match(html, /class="home-hero-video-link" href="#thuc-te"/, 'The existing hero photo links to the video, without loading an iframe');
+assert.match(html, /class="home-hero-video-link" href="#hanh-trinh-tu-que" data-pin-featured/, 'The hero photo opens the featured video or links to the video guide without JavaScript');
 assert.doesNotMatch(html, /home-editor-reading|home-article-shortcut/, "Keep the landing page free of the removed reading block");
 const app = read('viec-lam/cong-nhan-mo-ham-lo-quang-ninh/index.html');
 assert.ok(app.includes('<h2 id="apply-title">Đăng ký học nghề mỏ</h2>'));
@@ -61,6 +61,7 @@ assert.match(read('recruitment-landing.css'), /\.home-pin-grid\{display:grid;gri
 assert.match(html, /class="tl-mobile-contact__journey" href="#dang-ky"/, "Mobile CTA reaches the embedded sign-up without JavaScript");
 assert.match(html, /href="#dang-ky" data-pin-apply/, "Reel dialog has a visible path to sign-up");
 assert.match(html, /href="#thuc-te" data-pin-next/, "The last Reel can continue to the video library");
+assert.match(html, /class="landing-apply__line">[\s\S]*?data-context="home-register-direct"/, 'Provide a visible full-page form fallback above the embed');
 assert.match(html, /id="landing-apply-frame" src="\/viec-lam\/cong-nhan-mo-ham-lo-quang-ninh\/\?nhung=1#dang-ky"/);
 assert.match(editorial, /html:root \.home-v6\{background:var\(--d-bg\)!important;color:var\(--d-ink\)!important\}/, 'The dark canvas must back transparent sections');
 assert.match(editorial, /\.home-province-reels__intro\{color:var\(--d-sub\)!important\}/, 'Style the late-mounted province story introduction alongside the heading');

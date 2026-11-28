@@ -86,7 +86,6 @@ html:root .home-v6 .worker-self-check__head .home-v6-button--brief{
 
 /* One-page layout: featured videos, actual stories, then application. */
 html:root body .home-v6 section.recruitment-landing-hero[data-recruitment-entry]{padding-block:clamp(22px,3vw,42px)!important}
-.home-real-reads{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,24px)}
 .home-pin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(23px,3.35vw,42px)}
 .home-pin{min-width:0;border-top:1px solid var(--home-rule)}
 .home-pin__play{position:relative;align-self:start;display:block;width:100%;aspect-ratio:9/16;overflow:hidden;border-radius:5px}
@@ -98,15 +97,14 @@ html:root body .home-v6 section.recruitment-landing-hero[data-recruitment-entry]
 .landing-detail>summary{padding-block:14px;cursor:pointer;color:var(--d-strong);font-weight:720;line-height:1.45}
 .landing-detail>summary:focus-visible{outline:2px solid var(--d-focus);outline-offset:3px}
 .landing-details-full>summary{margin-inline:auto;width:min(1160px,calc(100% - 36px))}
-.home-real-reads{margin:7px 0 12px}
-.home-real-reads>a{padding:12px 0;min-height:52px;border-top:1px solid var(--home-rule);color:var(--d-ink);text-decoration:none;font-size:.95rem;line-height:1.38}
-.home-real-reads>a:hover{text-decoration:underline;text-underline-offset:4px}
-.home-real-reads>a>small{display:block;color:var(--d-strong);margin-bottom:4px}
 .landing-reading{border-top:1px solid var(--home-rule)}
 #dang-ky,#thong-tin-tuyen-sinh{scroll-margin-top:85px}
 .landing-apply{color-scheme:dark}
 .landing-apply iframe{display:block;width:100%;max-width:760px;border:0;border-radius:6px;margin-inline:auto;background:#202b24}
-html:root .home-v6 .worker-register__grid{margin-block-start:14px}
+.home-funnel #dang-ky{padding-block:clamp(22px,4vw,52px);content-visibility:visible}
+.home-funnel #dang-ky .worker-register__grid{margin-block-start:24px;gap:16px 24px;grid-template-columns:1fr}
+.home-funnel #dang-ky .contact-choice-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,155px),1fr));gap:8px}
+.home-funnel #dang-ky .contact-choice{min-height:56px;padding:8px 10px}
 .home-pin-dialog{background:#1b231e;color:#f2eee3;border:1px solid #536258;border-radius:9px;margin:auto;padding:11px 15px 9px;width:min(calc(100% - 24px),430px);max-height:calc(100dvh - 20px)}
 .home-pin-dialog::backdrop{background:#1118}
 .home-pin-dialog__head{display:flex;justify-content:space-between;gap:12px;align-items:center}
@@ -122,15 +120,15 @@ html:root .home-v6 .worker-register__grid{margin-block-start:14px}
 .home-pin-dialog__actions a:focus-visible{outline:2px solid #f2eee3;outline-offset:2px}
 #thuc-te{scroll-margin-top:85px}
 @media(max-width:760px){
- .home-real-reads{grid-template-columns:1fr}
  .home-pin h3{margin-top:2px}
  .home-pin p{font-size:.82rem}
- .home-real-reads{gap:1px}
- .home-real-reads>a{padding:10px 0}
 }
-html:root .home-v6 .landing-apply__intro{max-width:760px;margin:0 auto 12px;}
-html:root .home-v6 .landing-apply__intro>h2{font-size:clamp(1.55rem,3vw,2.55rem);line-height:1.17;margin:0 0 7px;}
-html:root .home-v6 .landing-apply__intro>p{color:var(--d-sub);font-size:.94rem;margin:0;}
+.home-funnel #dang-ky :is(.landing-apply__intro,.worker-register__grid){width:min(760px,calc(100% - 36px));margin-inline:auto}
+.home-funnel #dang-ky .landing-apply__intro{margin-bottom:9px}
+.home-funnel #dang-ky .landing-apply__intro>h2{font-size:clamp(1.6rem,3vw,2.55rem);line-height:1.2;margin:0}
+.landing-apply__line{display:flex;align-items:baseline;justify-content:space-between;gap:0 16px;flex-wrap:wrap}
+.home-funnel #dang-ky .landing-apply__line p{color:var(--d-sub);font-size:.9rem;margin:9px 0 0}
+.landing-apply__line a{display:inline-flex;align-items:center;min-height:44px;gap:5px;color:var(--d-strong);font-size:.83rem;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:760px){
  html:root body:has(#landing-apply-frame:focus) .home-v6-mobile-contact{visibility:hidden!important;pointer-events:none!important}
 }
@@ -142,6 +140,13 @@ html:root .home-v6 .landing-apply__intro>p{color:var(--d-sub);font-size:.94rem;m
 .home-pin__card:focus-visible{outline:2px solid var(--d-focus);outline-offset:4px}
 .home-pin__step{color:var(--d-mark);font-size:.7rem;font-weight:780}
 .home-pin__step>span{opacity:.7}
+@media(min-width:761px){
+ .home-pin__card{align-items:start}
+ .home-pin__copy{padding-top:clamp(28px,7vw,103px)}
+}
+html:root .home-v6 .recruitment-landing-hero .home-v6-hero__visual figcaption{
+  background:transparent!important;color:var(--d-sub)!important;font-size:.8rem;line-height:1.45;
+}
 .home-pin .home-pin__copy h3{margin:4px 0 6px;font-size:clamp(1.05rem,1.9vw,1.63rem)}
 .home-pin__action{display:inline-flex;gap:5px;align-items:center;min-height:44px;color:var(--d-strong);font-size:.84rem;font-weight:750;}
 .home-pin__card:is(:hover,:focus-visible) .home-pin__action{text-decoration:underline;text-underline-offset:3px}

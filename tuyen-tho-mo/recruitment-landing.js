@@ -33,14 +33,17 @@
       stage.replaceChildren(frame);
       if (next) next.textContent = (index + 1 < cards.length) ? "Xem video tiếp" : "Xem thêm video";
     };
-    cards.forEach((card, index) => card.addEventListener("click", event => {
+    const openFrom = (link, index) => link.addEventListener("click", event => {
       if (!ordinaryClick(event)) return;
       event.preventDefault();
-      opener = card;
+      opener = link;
       leaving = false;
       show(index);
       dialog.showModal();
-    }));
+    });
+    cards.forEach(openFrom);
+    const featured = root.querySelector("a[data-pin-featured]");
+    if (featured && cards.length) openFrom(featured, 0);
     function leave(event, hash, heading) {
       if (!ordinaryClick(event)) return;
       event.preventDefault();
